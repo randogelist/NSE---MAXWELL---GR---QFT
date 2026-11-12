@@ -268,19 +268,54 @@ try {
         "NSEMaxwell.PeriodicIntegration",
         "NSEMaxwell.Spacetime",
         "NSEMaxwell.FourierPeriodic",
+        "NSEMaxwell.DominatedWithin",
+        "NSEMaxwell.LocalEvolution",
+        "NSEMaxwell.TemporalMean",
+        "NSEMaxwell.MeanConservation",
         "NSEMaxwell.Residual",
         "NSEMaxwell.ExistenceTransport",
         "NSEMaxwell.AnalyticBridge",
+        "NSEMaxwell.AnalyticReduction",
         "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE"
     )
     $Evidence.module_build_schedule = $BuildModules
     $Evidence.module_build_concurrency = 1
+    $FailedModules = [Collections.Generic.List[string]]::new()
+    $SkippedModules = [Collections.Generic.List[string]]::new()
+    $Evidence.failed_modules = @()
+    $Evidence.skipped_modules = @()
     Write-JsonFile $ProvenancePath $Evidence
     foreach ($Module in $BuildModules) {
         $Evidence.current_build_module = $Module
-        Write-JsonFile $ProvenancePath $Evidence
         $ModuleLog = "run-build-" + $Module.Replace(".", "-") + ".log"
-        $null = Invoke-NativeLogged "lake" @("build", $Module) $ModuleLog
+        $SourcePath = $Module.Replace(".", "/") + ".lean"
+        $Dependencies = @()
+        foreach ($Line in Get-Content -LiteralPath $SourcePath) {
+            if ($Line -match '^import\s+(.+)$') {
+                $Dependencies += $Matches[1].Trim().Split(' ', [StringSplitOptions]::RemoveEmptyEntries)
+            }
+        }
+        $Blocked = @($Dependencies | Where-Object { $FailedModules.Contains($_) -or $SkippedModules.Contains($_) })
+        if ($Blocked.Count -gt 0) {
+            $SkippedModules.Add($Module)
+            $Evidence.skipped_modules = @($SkippedModules.ToArray())
+            [IO.File]::WriteAllText((Join-Path $ReportRoot $ModuleLog),
+                "SKIPPED_FAILED_DEPENDENCY: " + ($Blocked -join ", ") + [Environment]::NewLine, $Utf8NoBom)
+            Write-JsonFile $ProvenancePath $Evidence
+            continue
+        }
+        Write-JsonFile $ProvenancePath $Evidence
+        $ModuleExitCode = Invoke-NativeLogged "lake" @("build", $Module) $ModuleLog -AllowFailure
+        if ($ModuleExitCode -ne 0) {
+            $FailedModules.Add($Module)
+            $Evidence.failed_modules = @($FailedModules.ToArray())
+            Write-JsonFile $ProvenancePath $Evidence
+        }
+    }
+    if ($FailedModules.Count -gt 0) {
+        $Evidence.build_status = "FAIL"
+        Write-JsonFile $ProvenancePath $Evidence
+        throw ("Lean module failures: " + ($FailedModules -join ", "))
     }
     $Evidence.current_build_module = "NSEMaxwell"
     Write-JsonFile $ProvenancePath $Evidence

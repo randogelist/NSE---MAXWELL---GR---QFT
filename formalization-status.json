@@ -56,7 +56,7 @@
     "DG_curl_neg"
   ],
   "optional_off_solution_lemmas": "canonical_momentum_factorization retains its own hKAdd premise; the root does not depend on it.",
-  "audit_target_count": 120,
+  "audit_target_count": 159,
   "external_evidence": {
     "source_commit": "0b793e57271073fb3b0206dcad99a2797d5f8211",
     "run_id": 43318057281,
@@ -73,7 +73,12 @@
   "continuation_candidate_modules": [
     "PeriodicIntegration",
     "Spacetime",
-    "FourierPeriodic"
+    "FourierPeriodic",
+    "DominatedWithin",
+    "LocalEvolution",
+    "TemporalMean",
+    "MeanConservation",
+    "AnalyticReduction"
   ],
   "prior_conditional_root_evidence": {
     "source_commit": "0b793e57271073fb3b0206dcad99a2797d5f8211",
@@ -88,5 +93,21 @@
     "audited_declarations": 74,
     "lean_source_hashes_matching_delivery": 16
   },
-  "additional_module_evidence": "PENDING_EXTERNAL_NATIVE_WINDOWS"
+  "additional_module_evidence": "PENDING_EXTERNAL_NATIVE_WINDOWS",
+  "prepared_reduced_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED",
+  "prepared_reduced_root_type": "NSEMaxwell.Bridge.FourierHodgeLaws -> NSEMaxwell.Classical.ExactEquivalence",
+  "reduced_root_status": "A_TIER_CANDIDATE",
+  "reduced_open_analytic_endpoints": [
+    "reconstruct_velocity",
+    "reconstruct_curl",
+    "canonical_smoothness",
+    "electric_hodge"
+  ],
+  "prepared_endpoint_discharges": [
+    "vorticity_regularity",
+    "mean_conservation",
+    "vorticity_residual",
+    "reconstruction_time",
+    "electric_time_chain"
+  ]
 }

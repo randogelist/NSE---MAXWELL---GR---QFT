@@ -1,4 +1,5 @@
 import NSEMaxwell.CurlCurl
+import NSEMaxwell.Lamb
 
 /-!
 # Periodic derivatives and exact cube integrals
@@ -73,6 +74,12 @@ private theorem piToVec_preimage_cube :
     ((∀ i : Fin 3, 0 ≤ x i) ∧ ∀ i : Fin 3, x i ≤ 1)
   exact forall_and
 
+theorem isCompact_unitCube : IsCompact unitCube := by
+  have hset : unitCube = piToVec '' Icc (0 : PiVec) 1 := by
+    rw [← piToVec_preimage_cube, Set.image_preimage_eq _ piToVec.surjective]
+  rw [hset]
+  exact isCompact_Icc.image piToVec.continuous
+
 theorem integrableOn_unitCube_of_continuous
     {E : Type*} [NormedAddCommGroup E] {f : Vec → E} (hf : Continuous f) :
     IntegrableOn f unitCube := by
@@ -82,15 +89,18 @@ theorem integrableOn_unitCube_of_continuous
   exact (hf.comp piToVec.continuous).integrableOn_Icc
 
 private theorem insertNth_front_eq_back_add (i : Fin 3) (y : Fin 2 → ℝ) :
-    i.insertNth (1 : ℝ) y = i.insertNth (0 : ℝ) y + Pi.single i 1 := by
-  have h : i.insertNth (1 : ℝ) y - i.insertNth (0 : ℝ) y = Pi.single i 1 := by
+    Fin.insertNth (α := fun _ : Fin 3 => ℝ) i 1 y =
+      Fin.insertNth (α := fun _ : Fin 3 => ℝ) i 0 y + Pi.single i 1 := by
+  have h : Fin.insertNth (α := fun _ : Fin 3 => ℝ) i 1 y -
+      Fin.insertNth (α := fun _ : Fin 3 => ℝ) i 0 y = Pi.single i 1 := by
     simpa using Fin.insertNth_sub_same (α := fun _ : Fin 3 => ℝ) i 1 0 y
   calc
-    i.insertNth (1 : ℝ) y =
-        (i.insertNth (1 : ℝ) y - i.insertNth (0 : ℝ) y) +
-          i.insertNth (0 : ℝ) y := (sub_add_cancel _ _).symm
-    _ = Pi.single i 1 + i.insertNth (0 : ℝ) y := by rw [h]
-    _ = i.insertNth (0 : ℝ) y + Pi.single i 1 := add_comm _ _
+    Fin.insertNth (α := fun _ : Fin 3 => ℝ) i 1 y =
+        (Fin.insertNth (α := fun _ : Fin 3 => ℝ) i 1 y -
+          Fin.insertNth (α := fun _ : Fin 3 => ℝ) i 0 y) +
+            Fin.insertNth (α := fun _ : Fin 3 => ℝ) i 0 y := (sub_add_cancel _ _).symm
+    _ = Pi.single i 1 + Fin.insertNth (α := fun _ : Fin 3 => ℝ) i 0 y := by rw [h]
+    _ = Fin.insertNth (α := fun _ : Fin 3 => ℝ) i 0 y + Pi.single i 1 := add_comm _ _
 
 /-- The scalar-coordinate FTC, with arbitrary complete vector-valued output. -/
 private theorem pi_integral_coordinateDerivative_zero
@@ -104,7 +114,9 @@ private theorem pi_integral_coordinateDerivative_zero
     fun j => if j = i then fderiv ℝ f else 0
   have hsum (x : PiVec) :
       (∑ j : Fin 3, F' j x (Pi.single j 1)) = fderiv ℝ f x (Pi.single i 1) := by
-    simp [F']
+    simp only [F']
+    simp_rw [ite_apply]
+    simp
   have hcont : ∀ j, ContinuousOn (F j) (Icc (0 : PiVec) 1) := by
     intro j
     by_cases hji : j = i
@@ -146,11 +158,12 @@ private theorem pi_integral_coordinateDerivative_zero
     rw [hfaces j, sub_self]
   simpa only [hsum] using hd.trans hr
 
-/-- Every smooth periodic coordinate derivative has exactly zero cube mean. -/
-theorem spatialMean_coordinateDerivative_zero {a : Field}
-    (ha : ContDiff ℝ ∞ a) (hp : SpatialPeriodic a) (i : Fin 3) :
-    spatialMean (coordinateDerivative a i) = 0 := by
-  let f : PiVec → Vec := fun x => a (piToVec x)
+/-- Exact coordinate FTC for the concrete unit cube. -/
+theorem integral_fderiv_unitVector_zero
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
+    {a : Vec → E} (ha : ContDiff ℝ ∞ a) (hp : SpatialPeriodic a) (i : Fin 3) :
+    (∫ x in unitCube, fderiv ℝ a x (unitVector i)) = 0 := by
+  let f : PiVec → E := fun x => a (piToVec x)
   have hf : ContDiff ℝ ∞ f := ha.comp piToVec.contDiff
   have hp' : ∀ (x : PiVec) (j : Fin 3), f (x + Pi.single j 1) = f x := by
     intro x j
@@ -158,17 +171,24 @@ theorem spatialMean_coordinateDerivative_zero {a : Field}
     rw [map_add]
     exact hp (piToVec x) j
   have hdf (x : PiVec) :
-      fderiv ℝ f x (Pi.single i 1) = coordinateDerivative a i (piToVec x) := by
+      fderiv ℝ f x (Pi.single i 1) = fderiv ℝ a (piToVec x) (unitVector i) := by
     have hd := ((ha.differentiable (by simp) (piToVec x)).hasFDerivAt.comp x
       piToVec.hasFDerivAt).fderiv
-    exact congrArg (fun L : PiVec →L[ℝ] Vec => L (Pi.single i 1)) hd
+    exact congrArg (fun L : PiVec →L[ℝ] E => L (Pi.single i 1)) hd
   have hzero := pi_integral_coordinateDerivative_zero f hf hp' i
   simp only [hdf] at hzero
   have hm : MeasurePreserving piToVec := PiLp.volume_preserving_toLp (Fin 3)
   have hchange := hm.setIntegral_preimage_emb
-    piToVec.toHomeomorph.measurableEmbedding (coordinateDerivative a i) unitCube
+    piToVec.toHomeomorph.measurableEmbedding
+      (fun x => fderiv ℝ a x (unitVector i)) unitCube
   rw [piToVec_preimage_cube] at hchange
   exact hchange.symm.trans hzero
+
+/-- Every smooth periodic coordinate derivative has exactly zero cube mean. -/
+theorem spatialMean_coordinateDerivative_zero {a : Field}
+    (ha : ContDiff ℝ ∞ a) (hp : SpatialPeriodic a) (i : Fin 3) :
+    spatialMean (coordinateDerivative a i) = 0 :=
+  integral_fderiv_unitVector_zero ha hp i
 
 theorem spatialMean_apply {a : Field} (ha : Continuous a) (i : Fin 3) :
     spatialMean a i = ∫ x in unitCube, a x i := by
@@ -192,16 +212,108 @@ theorem spatialMean_curl_zero {a : Field}
   ext k
   rw [spatialMean_apply (spatialCurl_smooth ha).continuous k]
   fin_cases k <;>
-    simp only [spatialCurl, PiLp.toLp_apply, Fin.reduceFinMk, ↓reduceIte]
+    simp [spatialCurl, PiLp.toLp_apply]
   · rw [integral_sub (hi 1 2) (hi 2 1),
       integral_coordinate_component_zero ha hp, integral_coordinate_component_zero ha hp]
-    rfl
+    simp
   · rw [integral_sub (hi 2 0) (hi 0 2),
       integral_coordinate_component_zero ha hp, integral_coordinate_component_zero ha hp]
-    rfl
+    simp
   · rw [integral_sub (hi 0 1) (hi 1 0),
       integral_coordinate_component_zero ha hp, integral_coordinate_component_zero ha hp]
-    rfl
+    simp
+
+theorem gradient_smooth {f : ScalarField} (hf : ContDiff ℝ ∞ f) :
+    ContDiff ℝ ∞ (NSEMaxwell.Classical.gradient f) := by
+  have hd : ContDiff ℝ ∞ (fderiv ℝ f) := hf.fderiv_right (by simp)
+  apply (contDiff_piLp 2).mpr
+  intro i
+  exact hd.clm_apply contDiff_const
+
+theorem spatialMean_gradient_zero {f : ScalarField}
+    (hf : ContDiff ℝ ∞ f) (hp : SpatialPeriodic f) :
+    spatialMean (NSEMaxwell.Classical.gradient f) = 0 := by
+  ext i
+  rw [spatialMean_apply (gradient_smooth hf).continuous i]
+  exact integral_fderiv_unitVector_zero hf hp i
+
+theorem laplacian_smooth {a : Field} (ha : ContDiff ℝ ∞ a) :
+    ContDiff ℝ ∞ (NSEMaxwell.Classical.laplacian a) := by
+  change ContDiff ℝ ∞ (fun x => ∑ i : Fin 3,
+    coordinateDerivative (coordinateDerivative a i) i x)
+  exact ContDiff.sum fun i hi =>
+    coordinateDerivative_smooth (coordinateDerivative_smooth ha i) i
+
+theorem spatialMean_laplacian_zero {a : Field}
+    (ha : ContDiff ℝ ∞ a) (hp : SpatialPeriodic a) :
+    spatialMean (NSEMaxwell.Classical.laplacian a) = 0 := by
+  change (∫ x in unitCube,
+    ∑ i : Fin 3, coordinateDerivative (coordinateDerivative a i) i x) = 0
+  rw [integral_finsetSum]
+  · apply Finset.sum_eq_zero
+    intro i hi
+    exact spatialMean_coordinateDerivative_zero
+      (coordinateDerivative_smooth ha i) (coordinateDerivative_periodic hp i) i
+  · intro i hi
+    exact integrableOn_unitCube_of_continuous
+      (coordinateDerivative_smooth (coordinateDerivative_smooth ha i) i).continuous
+
+def momentumFlux (a : Field) (i : Fin 3) : Field := fun x => a x i • a x
+
+theorem momentumFlux_smooth {a : Field} (ha : ContDiff ℝ ∞ a) (i : Fin 3) :
+    ContDiff ℝ ∞ (momentumFlux a i) :=
+  ((contDiff_piLp 2).mp ha i).smul ha
+
+theorem momentumFlux_periodic {a : Field} (hp : SpatialPeriodic a) (i : Fin 3) :
+    SpatialPeriodic (momentumFlux a i) := by
+  intro x j
+  simp only [momentumFlux, hp x j]
+
+theorem coordinateDerivative_momentumFlux {a : Field}
+    (ha : ContDiff ℝ ∞ a) (i j : Fin 3) (x : Vec) :
+    coordinateDerivative (momentumFlux a i) j x =
+      a x i • coordinateDerivative a j x + coordinateDerivative a j x i • a x := by
+  have hx := ha.differentiable (by simp) x
+  have hc := ((contDiff_piLp 2).mp ha i).differentiable (by simp) x
+  change fderiv ℝ (fun y : Vec => a y i • a y) x (unitVector j) = _
+  rw [fderiv_fun_smul hc hx]
+  simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
+    ContinuousLinearMap.smulRight_apply]
+  rw [fderiv_component_apply hx (unitVector j) i]
+  rfl
+
+/-- Divergence form of the convective term, including its compressible correction. -/
+theorem momentumFlux_divergence {a : Field} (ha : ContDiff ℝ ∞ a) (x : Vec) :
+    (∑ i : Fin 3, coordinateDerivative (momentumFlux a i) i x) =
+      convection a x + NSEMaxwell.Classical.divergence a x • a x := by
+  ext j
+  simp [coordinateDerivative_momentumFlux ha, Fin.sum_univ_succ,
+    NSEMaxwell.Lamb.convection_coordinate,
+    NSEMaxwell.Classical.divergence, smul_eq_mul]
+  ring
+
+theorem convection_smooth {a : Field} (ha : ContDiff ℝ ∞ a) :
+    ContDiff ℝ ∞ (convection a) :=
+  (ha.fderiv_right (by simp)).clm_apply ha
+
+/-- Smooth periodic divergence-free convection has zero cube integral. -/
+theorem spatialMean_convection_zero {a : Field}
+    (ha : ContDiff ℝ ∞ a) (hp : SpatialPeriodic a)
+    (hdiv : ∀ x : Vec, NSEMaxwell.Classical.divergence a x = 0) :
+    spatialMean (convection a) = 0 := by
+  have heq : convection a =
+      fun x => ∑ i : Fin 3, coordinateDerivative (momentumFlux a i) i x := by
+    funext x
+    rw [momentumFlux_divergence ha, hdiv x, zero_smul, add_zero]
+  unfold spatialMean
+  rw [heq, integral_finsetSum]
+  · apply Finset.sum_eq_zero
+    intro i hi
+    exact spatialMean_coordinateDerivative_zero
+      (momentumFlux_smooth ha i) (momentumFlux_periodic hp i) i
+  · intro i hi
+    exact integrableOn_unitCube_of_continuous
+      (coordinateDerivative_smooth (momentumFlux_smooth ha i) i).continuous
 
 end
 

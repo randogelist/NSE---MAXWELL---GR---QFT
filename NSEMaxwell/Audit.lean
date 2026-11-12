@@ -374,3 +374,124 @@ set_option pp.proofs false
 
 #check @NSEMaxwell.FourierPeriodic.canonicalPressureTrajectory_periodic
 #print axioms NSEMaxwell.FourierPeriodic.canonicalPressureTrajectory_periodic
+
+#print NSEMaxwell.Bridge.CanonicalSmoothness
+
+#print NSEMaxwell.Bridge.FourierHodgeLaws
+
+#check @NSEMaxwell.PeriodicIntegration.isCompact_unitCube
+#print axioms NSEMaxwell.PeriodicIntegration.isCompact_unitCube
+
+#check @NSEMaxwell.PeriodicIntegration.integral_fderiv_unitVector_zero
+#print axioms NSEMaxwell.PeriodicIntegration.integral_fderiv_unitVector_zero
+
+#check @NSEMaxwell.PeriodicIntegration.gradient_smooth
+#print axioms NSEMaxwell.PeriodicIntegration.gradient_smooth
+
+#check @NSEMaxwell.PeriodicIntegration.spatialMean_gradient_zero
+#print axioms NSEMaxwell.PeriodicIntegration.spatialMean_gradient_zero
+
+#check @NSEMaxwell.PeriodicIntegration.laplacian_smooth
+#print axioms NSEMaxwell.PeriodicIntegration.laplacian_smooth
+
+#check @NSEMaxwell.PeriodicIntegration.spatialMean_laplacian_zero
+#print axioms NSEMaxwell.PeriodicIntegration.spatialMean_laplacian_zero
+
+#check @NSEMaxwell.PeriodicIntegration.momentumFlux_smooth
+#print axioms NSEMaxwell.PeriodicIntegration.momentumFlux_smooth
+
+#check @NSEMaxwell.PeriodicIntegration.momentumFlux_periodic
+#print axioms NSEMaxwell.PeriodicIntegration.momentumFlux_periodic
+
+#check @NSEMaxwell.PeriodicIntegration.coordinateDerivative_momentumFlux
+#print axioms NSEMaxwell.PeriodicIntegration.coordinateDerivative_momentumFlux
+
+#check @NSEMaxwell.PeriodicIntegration.momentumFlux_divergence
+#print axioms NSEMaxwell.PeriodicIntegration.momentumFlux_divergence
+
+#check @NSEMaxwell.PeriodicIntegration.convection_smooth
+#print axioms NSEMaxwell.PeriodicIntegration.convection_smooth
+
+#check @NSEMaxwell.PeriodicIntegration.spatialMean_convection_zero
+#print axioms NSEMaxwell.PeriodicIntegration.spatialMean_convection_zero
+
+#check @NSEMaxwell.Spacetime.timeDerivative_periodic
+#print axioms NSEMaxwell.Spacetime.timeDerivative_periodic
+
+#check @NSEMaxwell.Spacetime.timeDerivative_divergence_zero
+#print axioms NSEMaxwell.Spacetime.timeDerivative_divergence_zero
+
+#check @NSEMaxwell.DominatedWithin.hasDerivWithinAt_integral_of_dominated
+#print axioms NSEMaxwell.DominatedWithin.hasDerivWithinAt_integral_of_dominated
+
+#check @NSEMaxwell.LocalEvolution.cross_smooth
+#print axioms NSEMaxwell.LocalEvolution.cross_smooth
+
+#check @NSEMaxwell.LocalEvolution.cross_trajectory_smooth
+#print axioms NSEMaxwell.LocalEvolution.cross_trajectory_smooth
+
+#check @NSEMaxwell.LocalEvolution.timeDerivative_cross
+#print axioms NSEMaxwell.LocalEvolution.timeDerivative_cross
+
+#check @NSEMaxwell.LocalEvolution.electric_time_chain_of_reconstruction
+#print axioms NSEMaxwell.LocalEvolution.electric_time_chain_of_reconstruction
+
+#check @NSEMaxwell.LocalEvolution.gradient_smooth
+#print axioms NSEMaxwell.LocalEvolution.gradient_smooth
+
+#check @NSEMaxwell.LocalEvolution.spatialCurl_add
+#print axioms NSEMaxwell.LocalEvolution.spatialCurl_add
+
+#check @NSEMaxwell.LocalEvolution.spatialCurl_gradient
+#print axioms NSEMaxwell.LocalEvolution.spatialCurl_gradient
+
+#check @NSEMaxwell.LocalEvolution.vorticity_residual
+#print axioms NSEMaxwell.LocalEvolution.vorticity_residual
+
+#check @NSEMaxwell.TemporalMean.local_uniform_time_bound
+#print axioms NSEMaxwell.TemporalMean.local_uniform_time_bound
+
+#check @NSEMaxwell.TemporalMean.mean_time_hasDerivWithinAt
+#print axioms NSEMaxwell.TemporalMean.mean_time_hasDerivWithinAt
+
+#check @NSEMaxwell.TemporalMean.mean_time_derivWithin
+#print axioms NSEMaxwell.TemporalMean.mean_time_derivWithin
+
+#check @NSEMaxwell.TemporalMean.timeDerivative_mean_zero_of_constant_mean
+#print axioms NSEMaxwell.TemporalMean.timeDerivative_mean_zero_of_constant_mean
+
+#check @NSEMaxwell.PeriodicIntegration.spatialMean_timeDerivative_zero_of_constant_mean
+#print axioms NSEMaxwell.PeriodicIntegration.spatialMean_timeDerivative_zero_of_constant_mean
+
+#check @NSEMaxwell.PeriodicIntegration.spatialMean_timeDerivative_zero_of_equation
+#print axioms NSEMaxwell.PeriodicIntegration.spatialMean_timeDerivative_zero_of_equation
+
+#check @NSEMaxwell.PeriodicIntegration.mean_conservation_of_equation
+#print axioms NSEMaxwell.PeriodicIntegration.mean_conservation_of_equation
+
+#check @NSEMaxwell.Bridge.vorticity_regularity_proved
+#print axioms NSEMaxwell.Bridge.vorticity_regularity_proved
+
+#check @NSEMaxwell.Bridge.FourierHodgeLaws.canonical_regularity
+#print axioms NSEMaxwell.Bridge.FourierHodgeLaws.canonical_regularity
+
+#check @NSEMaxwell.Bridge.FourierHodgeLaws.reconstruction_data
+#print axioms NSEMaxwell.Bridge.FourierHodgeLaws.reconstruction_data
+
+#check @NSEMaxwell.Bridge.FourierHodgeLaws.reconstruct_mean
+#print axioms NSEMaxwell.Bridge.FourierHodgeLaws.reconstruct_mean
+
+#check @NSEMaxwell.Bridge.FourierHodgeLaws.reconstruction_time
+#print axioms NSEMaxwell.Bridge.FourierHodgeLaws.reconstruction_time
+
+#check @NSEMaxwell.Bridge.mean_conservation_proved
+#print axioms NSEMaxwell.Bridge.mean_conservation_proved
+
+#check @NSEMaxwell.Bridge.FourierHodgeLaws.toPeriodicAnalyticLaws
+#print axioms NSEMaxwell.Bridge.FourierHodgeLaws.toPeriodicAnalyticLaws
+
+#check @NSEMaxwell.Bridge.exact_equivalence_of_fourierHodgeLaws
+#print axioms NSEMaxwell.Bridge.exact_equivalence_of_fourierHodgeLaws
+
+#check @NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED
+#print axioms NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED

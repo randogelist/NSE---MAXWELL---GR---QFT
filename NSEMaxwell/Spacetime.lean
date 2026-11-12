@@ -56,7 +56,7 @@ theorem time_restriction_hasDerivWithinAt
     HasDerivWithinAt (fun s : ℝ => f (s, x))
       (fderivWithin ℝ f forwardSpacetime (t, x) (1, 0)) (Ici 0) t := by
   have hd := (hf.differentiableOn (by simp) (t, x) ht).hasFDerivWithinAt
-  have he := ((hasDerivAt_id t).prodMk (hasDerivAt_const x t)).hasDerivWithinAt
+  have he := ((hasDerivAt_id t).prodMk (hasDerivAt_const t x)).hasDerivWithinAt
   exact hd.comp_hasDerivWithinAt t he (fun _ hs => hs)
 
 theorem time_restriction_derivWithin
@@ -84,7 +84,7 @@ theorem directional_fderivWithin_apply
         forwardSpacetime z w v := by
   have hd := ((hf.fderivWithin uniqueDiffOn_forwardSpacetime (by simp)).differentiableOn
     (by simp) z hz).hasFDerivWithinAt
-  have hc := hd.clm_apply (hasFDerivWithinAt_const v forwardSpacetime z)
+  have hc := hd.clm_apply (hasFDerivWithinAt_const v z forwardSpacetime)
   have he := congrArg (fun L : (ℝ × Vec) →L[ℝ] E => L w)
     (hc.fderivWithin (uniqueDiffOn_forwardSpacetime z hz))
   simpa [ContinuousLinearMap.flip_apply] using he
@@ -204,6 +204,40 @@ theorem timeDerivative_curl_commute
   · simpa [spatialCurl, PiLp.toLp_apply] using hs 1 2 2 1 x
   · simpa [spatialCurl, PiLp.toLp_apply] using hs 2 0 0 2 x
   · simpa [spatialCurl, PiLp.toLp_apply] using hs 0 1 1 0 x
+
+theorem timeDerivative_periodic
+    {u : Velocity} (hu : PeriodicVelocity u) :
+    PeriodicVelocity (fun t => timeDerivative u t) := by
+  intro t ht x i
+  apply derivWithin_congr
+  · intro s hs
+    exact hu s hs x i
+  · exact hu t ht x i
+
+/-- Incompressibility is preserved by the actual right time derivative. -/
+theorem timeDerivative_divergence_zero
+    {u : Velocity} (hu : SmoothVelocity u)
+    (hDiv : ∀ t : ℝ, 0 ≤ t → ∀ x : Vec, NSEMaxwell.Classical.divergence (u t) x = 0)
+    {t : ℝ} (ht : 0 ≤ t) (x : Vec) :
+    NSEMaxwell.Classical.divergence (timeDerivative u t) x = 0 := by
+  have hd (i : Fin 3) :
+      HasDerivWithinAt (fun s : ℝ => coordinateDerivative (u s) i x i)
+        (coordinateDerivative (timeDerivative u t) i x i) (Ici 0) t := by
+    have h := time_component_hasDerivWithinAt
+      (coordinateDerivative_trajectory_smooth hu i) ht x i
+    simpa only [timeDerivative_coordinateDerivative hu ht] using h
+  have hsum := ((hd 0).add (hd 1)).add (hd 2)
+  have hzero : HasDerivWithinAt (fun _ : ℝ => (0 : ℝ))
+      (coordinateDerivative (timeDerivative u t) 0 x 0 +
+        coordinateDerivative (timeDerivative u t) 1 x 1 +
+        coordinateDerivative (timeDerivative u t) 2 x 2) (Ici 0) t := by
+    apply hsum.congr_of_mem
+    · intro s hs
+      have h := hDiv s hs x
+      simpa [NSEMaxwell.Classical.divergence, Fin.sum_univ_succ, add_assoc] using h.symm
+    · exact ht
+  have he := hzero.derivWithin (uniqueDiffOn_Ici 0 t ht)
+  simpa [NSEMaxwell.Classical.divergence, Fin.sum_univ_succ, add_assoc] using he.symm
 
 end
 

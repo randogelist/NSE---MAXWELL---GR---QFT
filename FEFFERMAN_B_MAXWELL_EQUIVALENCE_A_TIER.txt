@@ -1,3 +1,119 @@
+CONTINUATION: CONCRETE ANALYTIC ENDPOINT REDUCTION
+================================================
+
+MODE = A_TIER_DERIVATION
+CURRENT_REDUCED_ROOT_STATUS = A_TIER_CANDIDATE
+EXACT_UNCONDITIONAL_TARGET_PROVED = FALSE
+LOCAL_LEAN_EXECUTIONS = 0
+LOCAL_LAKE_EXECUTIONS = 0
+EXTERNAL_TOOLCHAIN = leanprover/lean4:v4.34.0-rc1
+MATHLIB = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+
+Exact frozen conclusion:
+  NSEMaxwell.Classical.ExactEquivalence
+  = forall nu : R, 0 < nu -> forall c : R, 0 < c ->
+      (FeffermanB nu <-> MaxwellB nu c).
+
+New stronger entry point:
+  NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED :
+    NSEMaxwell.Bridge.FourierHodgeLaws ->
+    NSEMaxwell.Classical.ExactEquivalence.
+
+The original nine-premise theorem is retained with its original type.
+No inhabitant of FourierHodgeLaws is supplied.
+
+FOUR REMAINING NAMED ANALYTIC ENDPOINTS
+-------------------------------------
+H1 reconstruct_velocity:
+  Data(a) -> U(mean(a), curl(a)) = a.
+H2 reconstruct_curl:
+  MagneticData(B) -> curl(U(m,B)) = B.
+H3 canonical_smoothness:
+  MagneticPath(B) -> CanonicalSmoothness(nu,c,m,B).
+  Components: joint smoothness through t=0 of canonical u,p,E,rho,J;
+  divergence-free reconstructed velocity. These are still unresolved.
+H4 electric_hodge:
+  MagneticData(B) -> G(nu,m,B) + grad(scalarL(Q(nu,m,B)))
+                    = K(curl(G(nu,m,B))).
+
+The four names do not denote four discharged theorems. H3 contains the
+explicit six analytic component assertions listed above. No existence
+proposition, solution map, or the desired equivalence is a field of this
+premise structure.
+
+DERIVED ENDPOINTS
+-----------------
+D1 vorticity_regularity:
+  Actual within-Frechet calculus on [0,infinity) x R^3 gives smooth curl.
+  Coordinate-derivative periodicity gives periodic curl.
+  Symmetry of actual second derivatives gives div(curl(u)) = 0.
+  The cube divergence theorem gives mean(curl(u)) = 0.
+  No Fourier/Hodge endpoint is needed for D1.
+
+D2 mean_conservation:
+  Periodic coordinate derivatives have zero cube integrals.
+  div(u)=0 gives integral(convection(u))=0 using
+    sum_i partial_i(u_i u) = convection(u) + div(u) u.
+  Periodic grad(p) and Laplacian(u) have zero mean.
+  The NSE equation therefore gives mean(u_t)=0.
+  A proved dominated within-derivative theorem and compactness of the cube give
+    d_t mean(u) = mean(u_t), including the right derivative at t=0.
+  The one-sided zero-derivative theorem gives mean(u(t))=mean(u(0)).
+  No Fourier/Hodge endpoint is needed for D2.
+
+D3 vorticity_residual:
+  Actual time/spatial mixed derivatives commute, including t=0.
+  The proved Lamb identity, curl(grad(p))=0, and curl-curl identity give
+    curl(R_NS) = d_t curl(u)
+               + curl(curl(u) cross u + nu curl(curl(u))).
+  No Fourier/Hodge endpoint is needed for D3.
+
+D4 reconstruction_time:
+  Set u=U(m,B), w=u_t.
+  H3 and proved calculus give smooth periodic divergence-free w.
+  H1+H2 applied to u give mean(u)=m.
+  Differentiating the actual mean gives mean(w)=0.
+  Differentiating H2 gives curl(w)=B_t.
+  H1 applied to w gives U(0,B_t)=w, hence u_t=K(B_t).
+  D4 is derived from H1,H2,H3, not asserted independently.
+
+D5 electric_time_chain:
+  Product differentiation of B cross U(m,B), D4, and time/curl commutation give
+    d_t G(nu,m,B) = B_t cross U(m,B)
+                 + B cross K(B_t) + nu curl(B_t)
+                 = DG(nu,m,B)(B_t).
+  D5 is derived from the remaining endpoints and proved calculus.
+
+PERIODICITY SUBCLAUSES
+---------------------
+  cosineKernel(k,x+e_i,y)=cosineKernel(k,x,y) holds term by term.
+  Therefore total scalarL/vectorL/K/U outputs are spatially periodic without
+  a convergence premise. Derived G,Q,V,DG,J,p_B periodicity is proved.
+  CanonicalRegularity's five periodicity fields are derived, not retained in H3.
+
+DETERMINISTIC PROOF CHAIN
+-------------------------
+  FourierHodgeLaws
+  -> FourierHodgeLaws.toPeriodicAnalyticLaws
+  -> exact_equivalence_of_periodicAnalyticLaws
+  -> FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED.
+
+COMPILATION CONTRACT
+--------------------
+  Native Windows; pinned Lean and Mathlib; restored compiler/dependency/project
+  caches; sequential module builds; native theorem elaboration; complete final
+  build and theorem-level axiom audit.
+  Independent modules continue after an earlier failed module. Dependents of a
+  failed module are skipped. Any failure rejects the build before promotion.
+  Allowed axiom identities: propext, Classical.choice, Quot.sound.
+  Pending proof bodies are not promoted by prepared signatures or B-tier proofs.
+
+PRIOR CERTIFIED SNAPSHOT
+=======================
+The following historical report applies to proof commit
+0b793e57271073fb3b0206dcad99a2797d5f8211 and its 74 audited targets.
+It does not certify the new continuation declarations.
+
 THEOREM: FEFFERMAN_B_MAXWELL_EQUIVALENCE
 MODE: A_TIER_DERIVATION
 CONDITIONAL_ROOT_STATUS: A_TIER
