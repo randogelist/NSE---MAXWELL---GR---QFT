@@ -1,0 +1,93 @@
+CI_CACHE_AUDIT
+STATUS = A_TIER_CANDIDATE_FOR_CURRENT_PROOF_SOURCE
+LOCAL_LEAN_EXECUTIONS = 0
+WRITE_REPOSITORY = randogelist/NSE---MAXWELL---GR---QFT
+WRITE_BRANCH = codex/fefferman-b-maxwell
+METHLIB_MUTATIONS = 0
+
+REFERENCE_REVISION
+Methlib = e9cf90726b8544a268469ebc8fa6634e9c713e07
+Lean = leanprover/lean4:v4.34.0-rc1
+Mathlib = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+
+REFERENCE_IMPLEMENTATIONS
+https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/.github/workflows/h12-small-closure.yml
+https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/.github/workflows/h12-sigma-zero-small.yml
+https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/ci/build_critical.py
+https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/HILBERT-SUPERIORITY-PNT/serial/verify_stage.py
+https://github.com/leanprover/lean4/blob/v4.34.0-rc1/src/lake/Lake/Load/Config.lean
+https://github.com/leanprover/lean4/blob/v4.34.0-rc1/src/lake/Lake/Load/Resolve.lean
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Cache/IO.lean
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Cache/Requests.lean
+
+OBSERVED_BASELINE
+External run = 43328182628
+Source = dc2acfb2092c0a45d21d02bb5f98bfb41cdb3fc8
+Compiler-cache restore = 42.56 s
+Combined-cache restore = 74.44 s
+Native runner = 374.50 s
+Combined-cache save = 87.27 s
+Combined-cache archive = approximately 2.959 GB
+Total job = 596.45 s
+Baseline proof build = FAIL; timings are not a successful-proof comparison.
+Untracked root lockfile caused dependency resolution on every fresh runner.
+Post-update cache acquisition and explicit cache acquisition were duplicated.
+
+APPLIED_CACHE_PARTITION
+Compiler := ~/.elan
+Dependencies := .lake/packages + .lake/config + .mathlib-download-cache
+Project := .lake/build
+
+DependencyKey := H(OS, architecture, lean-toolchain, lakefile.lean,
+                   lake-manifest.json, cache-targets.txt)
+ProjectKey := (DependencyKey, H(NSEMaxwell.lean, NSEMaxwell/**/*.lean))
+DependencyRestore := exact key only
+ProjectRestore := exact key OR same-dependency prefix
+LegacyMigration := original combined-cache paths and original restore prefix
+DependencySave := after successful preparation, before project compilation
+ProjectSave := after success OR failure, preserving checked partial objects
+
+PINNING
+Root lockfile contains nine exact Git revisions.
+Root lockfile construction follows pinned Lake Resolve.writeManifest semantics:
+  eight Mathlib-manifest dependencies inherited=true;
+  direct Mathlib dependency inherited=false;
+  root fixedToolchain=false.
+Every dependency checkout revision and tracked working tree is checked.
+Lockfile SHA256 is checked before and after dependency preparation.
+Resolved lockfile bytes are included in external evidence.
+
+EXECUTION
+MATHLIB_NO_CACHE_ON_UPDATE = 1
+run.cmd                         := Dependencies ; Build ; FreshAudit
+run.cmd -Phase Dependencies     := ValidatePins ; OfficialIncrementalCacheGet
+run.cmd -Phase BuildAudit       := RevalidatePins ; ValidatePreparation ;
+                                   IncrementalBuild ; FreshAudit
+
+PreparationFingerprint := H(actual compiler version, pinned input hashes,
+                             sorted Mathlib cache targets)
+Preparation reuse authorizes dependency acquisition reuse only.
+Preparation reuse never authorizes theorem-audit reuse or proof promotion.
+Raw compiler logs and per-command timings are retained.
+
+BUILD_INVARIANTS
+Module concurrency = 1; Lean asynchronous theorem elaboration remains enabled.
+Lake dependency traces determine project-object freshness.
+Independent modules remain eligible after an unrelated module failure.
+Failed dependencies block dependent modules.
+Any module failure rejects the complete build.
+Final umbrella build and every registered theorem audit remain mandatory.
+Same-repository push/PR duplication is suppressed.
+Evidence upload precedes project-cache preservation.
+
+EXCLUDED_SHORTCUTS
+No guessed Lake -j/--jobs option.
+No native_decide, sorryAx, unapproved axioms, or proof admissions.
+No promotion from cache presence or a cached audit seal.
+No whole-dependency reupload solely because project Lean sources changed.
+No cache clean, lake clean, or cache get!.
+
+VERIFICATION
+Current optimized workflow = PENDING_EXTERNAL_NATIVE_WINDOWS
+Root theorem promotion = PENDING_MATCHING_BUILD_AND_THEOREM_AUDIT
+Unconditional exact equivalence = NOT_PROVED

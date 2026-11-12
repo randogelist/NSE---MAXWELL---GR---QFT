@@ -1,7 +1,9 @@
 [CmdletBinding()]
 param(
     [string]$ReportDirectory = "artifacts/external-windows",
-    [string]$PythonExecutable = ""
+    [string]$PythonExecutable = "",
+    [ValidateSet("All", "Dependencies", "BuildAudit")]
+    [string]$Phase = "All"
 )
 
 Set-StrictMode -Version Latest
@@ -20,9 +22,13 @@ $Utf8NoBom = [Text.UTF8Encoding]::new($false)
 [Console]::OutputEncoding = $Utf8NoBom
 $OutputEncoding = $Utf8NoBom
 $env:ELAN_TOOLCHAIN = $ExpectedToolchain
+# Cache acquisition has one explicit, logged invocation. Lake's dependency
+# post-update hook must not fetch the same Mathlib cache a second time.
+$env:MATHLIB_NO_CACHE_ON_UPDATE = "1"
 # Lake must supply the module search path for the pinned dependency graph.
 Remove-Item Env:LEAN_PATH -ErrorAction SilentlyContinue
 Remove-Item Env:LEAN_SRC_PATH -ErrorAction SilentlyContinue
+$CommandTimings = [Collections.Generic.List[object]]::new()
 
 function Write-JsonFile {
     param([string]$Path, [object]$Value)
@@ -42,6 +48,8 @@ function Invoke-NativeLogged {
     $Writer.AutoFlush = $true
     $PreviousPreference = $ErrorActionPreference
     $NativeExitCode = $null
+    $Started = [DateTime]::UtcNow
+    $Timer = [Diagnostics.Stopwatch]::StartNew()
     try {
         # Windows PowerShell represents native stderr as ErrorRecord objects.
         # Exit status, not the presence of stderr, determines command success.
@@ -56,6 +64,16 @@ function Invoke-NativeLogged {
     finally {
         $ErrorActionPreference = $PreviousPreference
         $Writer.Dispose()
+        $Timer.Stop()
+        $CommandTimings.Add([ordered]@{
+            executable = $Executable
+            arguments = $Arguments
+            log = $LogName
+            started_at_utc = $Started.ToString("o")
+            elapsed_seconds = [Math]::Round($Timer.Elapsed.TotalSeconds, 3)
+            exit_code = $NativeExitCode
+        })
+        Write-JsonFile (Join-Path $ReportRoot ("command-timings-" + $Phase + ".json")) @($CommandTimings.ToArray())
     }
     if ($null -eq $NativeExitCode) {
         throw "Native command did not supply an exit code: $Executable"
@@ -81,6 +99,7 @@ $Evidence = [ordered]@{
     github_run_attempt = $env:GITHUB_RUN_ATTEMPT
     github_repository = $env:GITHUB_REPOSITORY
     stage = "INITIALIZE"
+    phase = $Phase
     build_status = "NOT_RUN"
     audit_command_status = "NOT_RUN"
     theorem_axiom_audit_status = "NOT_RUN"
@@ -96,7 +115,7 @@ try {
     $null = Get-Command "git" -ErrorAction Stop
     foreach ($Required in @(
         "NSEMaxwell.lean", "NSEMaxwell/Audit.lean", "audit-targets.txt",
-        "formalization-status.json", "scripts/verify_audit.py"
+        "formalization-status.json", "scripts/verify_audit.py", "lake-manifest.json"
     )) {
         if (-not (Test-Path -LiteralPath $Required -PathType Leaf)) {
             throw "Required input is absent: $Required"
@@ -119,23 +138,59 @@ try {
     }
 
     $Evidence.stage = "COMPILER_VERSION"
-    $null = Invoke-NativeLogged "lake" @("env", "lean", "--version") "lean-version.log"
-    $Version = (Get-Content (Join-Path $ReportRoot "lean-version.log") -Raw).Trim()
-    if ($Version -notmatch "version 4\.34\.0-rc1(?:,|\))") {
+    $null = Invoke-NativeLogged "lean" @("--version") "lean-version.log"
+    $VersionLines = @(Get-Content (Join-Path $ReportRoot "lean-version.log") | Where-Object {
+        $_ -match '^Lean \(version 4\.34\.0-rc1(?:,|\))'
+    })
+    if ($VersionLines.Count -ne 1) {
         throw "The external compiler version is not Lean 4.34.0-rc1."
     }
+    # Elan may print installation diagnostics on a cold compiler cache. Only
+    # the actual version record participates in dependency preparation reuse.
+    $Version = $VersionLines[0].Trim()
     $Evidence.actual_lean_version = $Version
 
     $Evidence.stage = "DEPENDENCY_RESOLUTION"
-    if ((-not (Test-Path "lake-manifest.json")) -or
-        (-not (Test-Path ".lake/packages/mathlib/lakefile.lean"))) {
-        $null = Invoke-NativeLogged "lake" @("update") "dependency-resolution.log"
-    }
+    $LockfileHash = (Get-FileHash "lake-manifest.json" -Algorithm SHA256).Hash.ToLowerInvariant()
     $LakeManifest = Get-Content "lake-manifest.json" -Raw | ConvertFrom-Json
     $MathlibPackage = @($LakeManifest.packages | Where-Object { $_.name -eq "mathlib" })
     if (($MathlibPackage.Count -ne 1) -or ($MathlibPackage[0].rev -ne $ExpectedMathlib)) {
         throw "The Lake manifest does not pin the approved Mathlib commit."
     }
+    $MissingPackages = @($LakeManifest.packages | Where-Object {
+        -not (Test-Path (Join-Path (Join-Path ".lake/packages" $_.name) $_.configFile))
+    })
+    if ($MissingPackages.Count -gt 0) {
+        # `lake env` materializes the committed lockfile without `lake update`.
+        $null = Invoke-NativeLogged "lake" @("env", "lean", "--version") "dependency-resolution.log"
+    }
+    if ((Get-FileHash "lake-manifest.json" -Algorithm SHA256).Hash.ToLowerInvariant() -ne $LockfileHash) {
+        throw "Dependency resolution modified the committed lockfile."
+    }
+    $DependencyRevisions = @(
+        foreach ($Package in $LakeManifest.packages) {
+            if (($Package.type -ne "git") -or ($Package.name -notmatch '^[A-Za-z0-9_-]+$') -or
+                ($Package.rev -notmatch '^[a-f0-9]{40}$')) {
+                throw "Invalid pinned dependency manifest entry."
+            }
+            $PackagePath = Join-Path ".lake/packages" $Package.name
+            $RevisionLog = "dependency-" + $Package.name + "-revision.log"
+            $null = Invoke-NativeLogged "git" @("-C", $PackagePath, "rev-parse", "HEAD") $RevisionLog
+            $Revision = (Get-Content (Join-Path $ReportRoot $RevisionLog) -Raw).Trim()
+            if ($Revision -ne $Package.rev) { throw "Dependency revision mismatch: $($Package.name)" }
+            $StatusLog = "dependency-" + $Package.name + "-working-tree.log"
+            $null = Invoke-NativeLogged "git" @(
+                "-C", $PackagePath, "status", "--porcelain", "--untracked-files=no"
+            ) $StatusLog
+            if ((Get-Item (Join-Path $ReportRoot $StatusLog)).Length -ne 0) {
+                throw "Tracked dependency modifications: $($Package.name)"
+            }
+            [ordered]@{ name = $Package.name; revision = $Revision }
+        }
+    )
+    $Evidence.dependency_revisions = $DependencyRevisions
+    $Evidence.lockfile_sha256 = $LockfileHash
+    Copy-Item "lake-manifest.json" (Join-Path $ReportRoot "resolved-lake-manifest.json") -Force
     $null = Invoke-NativeLogged "git" @(
         "-C", ".lake/packages/mathlib", "rev-parse", "HEAD"
     ) "mathlib-revision.log"
@@ -186,8 +241,37 @@ try {
             throw "Invalid Mathlib cache target: $Target"
         }
     }
-    $CacheArguments = @("exe", "cache", "get", "--cache-from=master,legacy") + $SortedTargets
-    $null = Invoke-NativeLogged "lake" $CacheArguments "run-cache.log"
+    $DependencyInputLines = @(
+        "toolchain=" + $ExpectedToolchain
+        "compiler=" + $Version
+        foreach ($InputPath in @("lean-toolchain", "lakefile.lean", "lake-manifest.json")) {
+            $InputPath + "=" + (Get-FileHash $InputPath -Algorithm SHA256).Hash.ToLowerInvariant()
+        }
+        "targets=" + ($SortedTargets -join ",")
+    )
+    $Hasher = [Security.Cryptography.SHA256]::Create()
+    try {
+        $DependencyFingerprint = [BitConverter]::ToString(
+            $Hasher.ComputeHash($Utf8NoBom.GetBytes(($DependencyInputLines -join "`n")))
+        ).Replace("-", "").ToLowerInvariant()
+    }
+    finally { $Hasher.Dispose() }
+    $PreparationPath = Join-Path $ReportRoot "dependency-preparation.json"
+    if ($Phase -eq "BuildAudit") {
+        if (-not (Test-Path $PreparationPath -PathType Leaf)) {
+            throw "BuildAudit requires a successful Dependencies phase in this report directory."
+        }
+        $Prepared = Get-Content $PreparationPath -Raw | ConvertFrom-Json
+        if (($Prepared.status -ne "PASS") -or ($Prepared.dependency_fingerprint -ne $DependencyFingerprint)) {
+            throw "Prepared dependencies do not match the current pinned inputs and compiler."
+        }
+        $Evidence.cache_mode = "REUSE_VERIFIED_DEPENDENCY_PHASE"
+    }
+    else {
+        $CacheArguments = @("exe", "cache", "get", "--cache-from=master,legacy") + $SortedTargets
+        $null = Invoke-NativeLogged "lake" $CacheArguments "run-cache.log"
+        $Evidence.cache_mode = "OFFICIAL_INCREMENTAL_CACHE_GET"
+    }
     $Evidence.cache_targets = $SortedTargets
     foreach ($Target in $SortedTargets) {
         $RelativeOlean = $Target.Replace(".", "/") + ".olean"
@@ -195,6 +279,30 @@ try {
         if (-not (Test-Path -LiteralPath $Olean -PathType Leaf)) {
             throw "Cached Mathlib artifact is absent: $RelativeOlean"
         }
+    }
+    if ((Get-FileHash "lake-manifest.json" -Algorithm SHA256).Hash.ToLowerInvariant() -ne $LockfileHash) {
+        throw "Cache preparation modified the committed lockfile."
+    }
+    if ($Phase -ne "BuildAudit") {
+        Write-JsonFile $PreparationPath ([ordered]@{
+            schema_version = 1
+            status = "PASS"
+            dependency_fingerprint = $DependencyFingerprint
+            dependency_inputs = $DependencyInputLines
+            cache_targets = $SortedTargets
+            dependency_revisions = $DependencyRevisions
+            completed_at_utc = [DateTime]::UtcNow.ToString("o")
+            proof_or_audit_reuse = $false
+        })
+    }
+    $Evidence.dependency_cache_status = "VERIFIED"
+    $Evidence.dependency_preparation_sha256 = (Get-FileHash $PreparationPath -Algorithm SHA256).Hash.ToLowerInvariant()
+    if ($Phase -eq "Dependencies") {
+        $Evidence.stage = "DEPENDENCIES_COMPLETE"
+        $Evidence.completed_at_utc = [DateTime]::UtcNow.ToString("o")
+        Write-JsonFile $ProvenancePath $Evidence
+        Write-Host "PINNED_DEPENDENCY_CACHE=VERIFIED"
+        exit 0
     }
 
     $Evidence.stage = "SOURCE_MANIFEST"

@@ -28,7 +28,8 @@ theorem divergence_trajectory_smooth
     SmoothPressure (fun t => NSEMaxwell.Classical.divergence (u t)) := by
   have hc (i : Fin 3) :=
     (contDiffOn_piLp 2).mp (coordinateDerivative_trajectory_smooth hu i) i
-  simpa [NSEMaxwell.Classical.divergence, Fin.sum_univ_succ, add_assoc] using
+  simpa [SmoothPressure, NSEMaxwell.Classical.divergence,
+    Fin.sum_univ_succ, add_assoc] using
     ((hc 0).add (hc 1)).add (hc 2)
 
 theorem canonical_electric_smooth
@@ -97,7 +98,7 @@ theorem canonical_current_smooth_of_velocity_smoothing
   have hu := hU m B hB
   have hv := evolution_magnetic_path ν m B hB hu
   have hkv : SmoothVelocity (fun t x => K (V ν m (B t)) x) := by
-    simpa only [canonicalVelocity, U, zero_add] using
+    simpa only [SmoothVelocity, canonicalVelocity, U, zero_add] using
       hU 0 (fun t => V ν m (B t)) hv
   have hdg : SmoothVelocity (fun t => DG ν m (B t) (V ν m (B t))) := by
     exact ((cross_trajectory_smooth hv.smooth hu).add
