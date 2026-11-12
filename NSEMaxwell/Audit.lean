@@ -236,3 +236,141 @@ set_option pp.proofs false
 
 #check @NSEMaxwell.CurlCurl.reconstructed_viscosity_identity
 #print axioms NSEMaxwell.CurlCurl.reconstructed_viscosity_identity
+
+#check @NSEMaxwell.PeriodicIntegration.fderiv_periodic
+#print axioms NSEMaxwell.PeriodicIntegration.fderiv_periodic
+
+#check @NSEMaxwell.PeriodicIntegration.coordinateDerivative_periodic
+#print axioms NSEMaxwell.PeriodicIntegration.coordinateDerivative_periodic
+
+#check @NSEMaxwell.PeriodicIntegration.spatialCurl_periodic
+#print axioms NSEMaxwell.PeriodicIntegration.spatialCurl_periodic
+
+#check @NSEMaxwell.PeriodicIntegration.divergence_periodic
+#print axioms NSEMaxwell.PeriodicIntegration.divergence_periodic
+
+#check @NSEMaxwell.PeriodicIntegration.gradient_periodic
+#print axioms NSEMaxwell.PeriodicIntegration.gradient_periodic
+
+#check @NSEMaxwell.PeriodicIntegration.laplacian_periodic
+#print axioms NSEMaxwell.PeriodicIntegration.laplacian_periodic
+
+#check @NSEMaxwell.PeriodicIntegration.integrableOn_unitCube_of_continuous
+#print axioms NSEMaxwell.PeriodicIntegration.integrableOn_unitCube_of_continuous
+
+#check @NSEMaxwell.PeriodicIntegration.spatialMean_coordinateDerivative_zero
+#print axioms NSEMaxwell.PeriodicIntegration.spatialMean_coordinateDerivative_zero
+
+#check @NSEMaxwell.PeriodicIntegration.spatialMean_apply
+#print axioms NSEMaxwell.PeriodicIntegration.spatialMean_apply
+
+#check @NSEMaxwell.PeriodicIntegration.integral_coordinate_component_zero
+#print axioms NSEMaxwell.PeriodicIntegration.integral_coordinate_component_zero
+
+#check @NSEMaxwell.PeriodicIntegration.spatialMean_curl_zero
+#print axioms NSEMaxwell.PeriodicIntegration.spatialMean_curl_zero
+
+#check @NSEMaxwell.Spacetime.forwardSpacetime_eq_prod
+#print axioms NSEMaxwell.Spacetime.forwardSpacetime_eq_prod
+
+#check @NSEMaxwell.Spacetime.uniqueDiffOn_forwardSpacetime
+#print axioms NSEMaxwell.Spacetime.uniqueDiffOn_forwardSpacetime
+
+#check @NSEMaxwell.Spacetime.closure_interior_forwardSpacetime
+#print axioms NSEMaxwell.Spacetime.closure_interior_forwardSpacetime
+
+#check @NSEMaxwell.Spacetime.spatial_restriction_fderiv
+#print axioms NSEMaxwell.Spacetime.spatial_restriction_fderiv
+
+#check @NSEMaxwell.Spacetime.time_restriction_hasDerivWithinAt
+#print axioms NSEMaxwell.Spacetime.time_restriction_hasDerivWithinAt
+
+#check @NSEMaxwell.Spacetime.time_restriction_derivWithin
+#print axioms NSEMaxwell.Spacetime.time_restriction_derivWithin
+
+#check @NSEMaxwell.Spacetime.directional_smooth
+#print axioms NSEMaxwell.Spacetime.directional_smooth
+
+#check @NSEMaxwell.Spacetime.directional_fderivWithin_apply
+#print axioms NSEMaxwell.Spacetime.directional_fderivWithin_apply
+
+#check @NSEMaxwell.Spacetime.time_slice_hasDerivWithinAt
+#print axioms NSEMaxwell.Spacetime.time_slice_hasDerivWithinAt
+
+#check @NSEMaxwell.Spacetime.coordinateDerivative_eq_joint
+#print axioms NSEMaxwell.Spacetime.coordinateDerivative_eq_joint
+
+#check @NSEMaxwell.Spacetime.coordinateDerivative_trajectory_smooth
+#print axioms NSEMaxwell.Spacetime.coordinateDerivative_trajectory_smooth
+
+#check @NSEMaxwell.Spacetime.timeDerivative_smooth
+#print axioms NSEMaxwell.Spacetime.timeDerivative_smooth
+
+#check @NSEMaxwell.Spacetime.curl_trajectory_smooth
+#print axioms NSEMaxwell.Spacetime.curl_trajectory_smooth
+
+#check @NSEMaxwell.Spacetime.timeDerivative_coordinateDerivative
+#print axioms NSEMaxwell.Spacetime.timeDerivative_coordinateDerivative
+
+#check @NSEMaxwell.Spacetime.time_component_hasDerivWithinAt
+#print axioms NSEMaxwell.Spacetime.time_component_hasDerivWithinAt
+
+#check @NSEMaxwell.Spacetime.timeDerivative_component
+#print axioms NSEMaxwell.Spacetime.timeDerivative_component
+
+#check @NSEMaxwell.Spacetime.timeDerivative_curl_commute
+#print axioms NSEMaxwell.Spacetime.timeDerivative_curl_commute
+
+#check @NSEMaxwell.FourierPeriodic.cosineKernel_add_unit_left
+#print axioms NSEMaxwell.FourierPeriodic.cosineKernel_add_unit_left
+
+#check @NSEMaxwell.FourierPeriodic.cosineKernel_symm
+#print axioms NSEMaxwell.FourierPeriodic.cosineKernel_symm
+
+#check @NSEMaxwell.FourierPeriodic.cosineKernel_add_unit_right
+#print axioms NSEMaxwell.FourierPeriodic.cosineKernel_add_unit_right
+
+#check @NSEMaxwell.FourierPeriodic.vectorL_periodic
+#print axioms NSEMaxwell.FourierPeriodic.vectorL_periodic
+
+#check @NSEMaxwell.FourierPeriodic.scalarL_periodic
+#print axioms NSEMaxwell.FourierPeriodic.scalarL_periodic
+
+#check @NSEMaxwell.FourierPeriodic.K_periodic
+#print axioms NSEMaxwell.FourierPeriodic.K_periodic
+
+#check @NSEMaxwell.FourierPeriodic.U_periodic
+#print axioms NSEMaxwell.FourierPeriodic.U_periodic
+
+#check @NSEMaxwell.FourierPeriodic.G_periodic
+#print axioms NSEMaxwell.FourierPeriodic.G_periodic
+
+#check @NSEMaxwell.FourierPeriodic.V_periodic
+#print axioms NSEMaxwell.FourierPeriodic.V_periodic
+
+#check @NSEMaxwell.FourierPeriodic.Q_periodic
+#print axioms NSEMaxwell.FourierPeriodic.Q_periodic
+
+#check @NSEMaxwell.FourierPeriodic.DG_periodic
+#print axioms NSEMaxwell.FourierPeriodic.DG_periodic
+
+#check @NSEMaxwell.FourierPeriodic.current_periodic
+#print axioms NSEMaxwell.FourierPeriodic.current_periodic
+
+#check @NSEMaxwell.FourierPeriodic.canonicalPressure_periodic
+#print axioms NSEMaxwell.FourierPeriodic.canonicalPressure_periodic
+
+#check @NSEMaxwell.FourierPeriodic.canonicalVelocity_periodic
+#print axioms NSEMaxwell.FourierPeriodic.canonicalVelocity_periodic
+
+#check @NSEMaxwell.FourierPeriodic.canonicalElectric_periodic
+#print axioms NSEMaxwell.FourierPeriodic.canonicalElectric_periodic
+
+#check @NSEMaxwell.FourierPeriodic.canonicalCharge_periodic
+#print axioms NSEMaxwell.FourierPeriodic.canonicalCharge_periodic
+
+#check @NSEMaxwell.FourierPeriodic.canonicalCurrent_periodic
+#print axioms NSEMaxwell.FourierPeriodic.canonicalCurrent_periodic
+
+#check @NSEMaxwell.FourierPeriodic.canonicalPressureTrajectory_periodic
+#print axioms NSEMaxwell.FourierPeriodic.canonicalPressureTrajectory_periodic

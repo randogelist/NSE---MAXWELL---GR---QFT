@@ -11,3 +11,6 @@ import NSEMaxwell.Residual
 import NSEMaxwell.ExistenceTransport
 import NSEMaxwell.AnalyticBridge
 import NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE
+import NSEMaxwell.PeriodicIntegration
+import NSEMaxwell.Spacetime
+import NSEMaxwell.FourierPeriodic
