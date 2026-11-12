@@ -24,13 +24,14 @@ J = c² curl B − DG[B](−curl G[B])
 ## Status
 
 ```text
-SOURCE_STATUS = A_TIER_CANDIDATE
+CONDITIONAL_ROOT = A_TIER
+FORMAL_STATUS = CONDITIONAL_FORMAL_CLOSURE
 EXACT_UNCONDITIONAL_TARGET = UNPROVED
 ANALYTIC_REALIZATION = OPEN
 LOCAL_LEAN_EXECUTIONS = 0
 ```
 
-The prepared concrete root has type:
+The externally compiled and audited concrete root has type:
 
 ```lean
 NSEMaxwell.Bridge.PeriodicAnalyticLaws → NSEMaxwell.Classical.ExactEquivalence
@@ -41,6 +42,12 @@ NSEMaxwell.Bridge.PeriodicAnalyticLaws → NSEMaxwell.Classical.ExactEquivalence
 Initial-data admissibility and the reconstructed mean are derived from the retained endpoints. The root uses on-solution cancellation and requires no separate K- or DG-additivity premise. The optional off-solution factorization keeps its own explicit additivity hypothesis.
 
 The conditional proof constructs both solutions on the actual fields, with the initial-data maps `a ↦ (mean a, curl a)` and `(m, B₀) ↦ m + K B₀`, and reconstructs the explicit periodic pressure. The unconditional `ExactEquivalence` remains open.
+
+## Verified external evidence
+
+[Native Windows run 43318057281](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43318057281): complete build, Lean audit, and all 74 theorem-level checks passed. The audited source is `0b793e57271073fb3b0206dcad99a2797d5f8211`; all 16 Lean input hashes match this delivery. Original evidence is preserved under `evidence/windows-43318057281/`.
+
+The audited root depends on `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx` or additional axiom identity occurs. The nine analytic premises remain open.
 
 ## External compilation
 

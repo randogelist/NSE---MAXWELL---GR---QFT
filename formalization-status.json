@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "source_status": "A_TIER_CANDIDATE",
+  "source_status": "A_TIER_FOR_EXACT_CONDITIONAL_IMPLICATION",
   "exact_target": "NSEMaxwell.Classical.ExactEquivalence",
   "exact_target_proved": false,
   "unconditional_closure": false,
@@ -24,7 +24,7 @@
   "promotion_rule": "Matching native-Windows compiler and theorem-level axiom evidence; semantic hypotheses audited separately.",
   "prepared_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE",
   "prepared_root_type": "NSEMaxwell.Bridge.PeriodicAnalyticLaws -> NSEMaxwell.Classical.ExactEquivalence",
-  "conditional_root_status": "A_TIER_CANDIDATE",
+  "conditional_root_status": "CONDITIONAL_FORMAL_CLOSURE",
   "analytic_laws_inhabitant_provided": false,
   "open_analytic_endpoints": [
     "reconstruct_velocity",
@@ -56,5 +56,18 @@
     "DG_curl_neg"
   ],
   "optional_off_solution_lemmas": "canonical_momentum_factorization retains its own hKAdd premise; the root does not depend on it.",
-  "audit_target_count": 74
+  "audit_target_count": 74,
+  "external_evidence": {
+    "source_commit": "0b793e57271073fb3b0206dcad99a2797d5f8211",
+    "run_id": 43318057281,
+    "artifact_id": 13990185678,
+    "artifact_sha256": "e5fc7ade2aed6f22c3deeb3a83170a6c53e72c317ab04647692a436f0f1b33e5",
+    "source_manifest_sha256": "cf68016d6739febf4580ce6bec82a5955a2e274cfd0a2ce28b9ff28a94e23c52",
+    "directory": "evidence/windows-43318057281",
+    "build": "PASS",
+    "lean_audit_command": "PASS",
+    "theorem_axiom_audit": "PASS_STANDARD_ONLY",
+    "audited_declarations": 74,
+    "lean_source_hashes_matching_delivery": 16
+  }
 }
