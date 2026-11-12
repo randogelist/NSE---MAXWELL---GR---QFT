@@ -55,7 +55,12 @@ theorem coordinateDerivative_coordinateDerivative
   have hdx := (hd.differentiable (by simp) x).hasFDerivAt
   have h := hdx.clm_apply (hasFDerivAt_const (unitVector j) x)
   have he := congrArg (fun L : Vec →L[ℝ] Vec => L (unitVector i)) h.fderiv
-  simpa [coordinateDerivative, secondCoordinate, ContinuousLinearMap.flip_apply] using he
+  change (fderiv ℝ (coordinateDerivative a j) x) (unitVector i) =
+    (fderiv ℝ (fderiv ℝ a) x) (unitVector i) (unitVector j)
+  have hfunction : coordinateDerivative a j =
+      (fun y : Vec => (fderiv ℝ a y) (unitVector j)) := rfl
+  rw [hfunction]
+  simpa [ContinuousLinearMap.flip_apply] using he
 
 /-- Symmetry is a consequence of the actual smoothness hypothesis. -/
 theorem secondCoordinate_symm

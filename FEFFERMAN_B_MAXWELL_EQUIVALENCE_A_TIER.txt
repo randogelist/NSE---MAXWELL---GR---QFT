@@ -238,6 +238,9 @@ structure PeriodicAnalyticLaws : Prop where
   elaboration diagnostics. The four source corrections are prepared.
   The runner now schedules thirteen module builds sequentially, preserving
   native asynchronous theorem elaboration and all cache/audit gates.
+  Fourth external run 43314027653: Lamb compiled without memory failure.
+  One CurlCurl function-wrapper mismatch remained and is corrected by an
+  explicit function equality.
   Exact current root compilation: pending.
   Exact current root theorem-level axiom audit: pending.
   Current promotion: none.
