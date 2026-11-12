@@ -44,6 +44,8 @@ The conditional proof constructs both solutions on the actual fields, with the i
 
 ## External compilation
 
+Required: native Windows; Git; an elan-managed `lake` executable on `PATH`; Python 3.9 or later. The selected toolchain is pinned by the runner.
+
 ```cmd
 run.cmd
 ```
@@ -52,9 +54,11 @@ Compiler: native Windows Lean `4.34.0-rc1`.
 
 Mathlib: `de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11`.
 
-The runner retains dependency/build caches, obtains the official Mathlib cache, compiles the project, prints the complete signatures and axioms of the enumerated audit targets, and records source SHA-256 values. The workflow runs the same entry point on `windows-latest`.
+The runner retains dependency/build caches, obtains the official Mathlib cache, schedules individual module builds sequentially to bound concurrent memory use, compiles the complete project, prints the complete signatures and axioms of the enumerated audit targets, and records source SHA-256 values. The workflow runs the same entry point on `windows-latest`.
 
 Approved foundational axioms: `propext`, `Classical.choice`, `Quot.sound`. A matching audit excludes `sorryAx` and unapproved axioms for each audited theorem. It does not discharge theorem hypotheses.
+
+Native asynchronous elaboration is enabled by the normal Lean 4.34.0-rc1 CLI frontend. Typed signatures remain provisional until proof elaboration and kernel checking complete. See the [pinned Lean frontend](https://github.com/leanprover/lean4/blob/v4.34.0-rc1/src/Lean/Elab/Frontend.lean).
 
 ## Source map
 

@@ -252,6 +252,34 @@ try {
     $Evidence.source_manifest_sha256 = (Get-FileHash -LiteralPath $ManifestPath -Algorithm SHA256).Hash.ToLowerInvariant()
 
     $Evidence.stage = "BUILD"
+    # Bound concurrent heavy imports on native Windows without disabling Lean's
+    # asynchronous theorem elaboration. Every dependency precedes its consumer;
+    # each invocation reuses all already compiled and restored Lake artifacts.
+    $BuildModules = @(
+        "NSEMaxwell.Classical",
+        "NSEMaxwell.Kinematics",
+        "NSEMaxwell.Constitutive",
+        "NSEMaxwell.Negation",
+        "NSEMaxwell.Lamb",
+        "NSEMaxwell.Pressure",
+        "NSEMaxwell.ConstantPaths",
+        "NSEMaxwell.Ampere",
+        "NSEMaxwell.CurlCurl",
+        "NSEMaxwell.Residual",
+        "NSEMaxwell.ExistenceTransport",
+        "NSEMaxwell.AnalyticBridge",
+        "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE"
+    )
+    $Evidence.module_build_schedule = $BuildModules
+    $Evidence.module_build_concurrency = 1
+    Write-JsonFile $ProvenancePath $Evidence
+    foreach ($Module in $BuildModules) {
+        $Evidence.current_build_module = $Module
+        Write-JsonFile $ProvenancePath $Evidence
+        $ModuleLog = "run-build-" + $Module.Replace(".", "-") + ".log"
+        $null = Invoke-NativeLogged "lake" @("build", $Module) $ModuleLog
+    }
+    $Evidence.current_build_module = "NSEMaxwell"
     Write-JsonFile $ProvenancePath $Evidence
     $null = Invoke-NativeLogged "lake" @("build", "NSEMaxwell") "run-build.log"
     $Evidence.build_status = "PASS"

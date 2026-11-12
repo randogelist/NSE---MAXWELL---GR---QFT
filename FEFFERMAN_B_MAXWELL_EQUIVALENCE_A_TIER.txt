@@ -233,6 +233,11 @@ structure PeriodicAnalyticLaws : Prop where
   Second external run 43309624311: Kinematics, Constitutive, Pressure and
   Negation compiled. Lamb failed on an ambiguous gradient name; qualification
   repaired in source. Compiler caches and evidence preserved.
+  Third external run 43311126265: Ampere and ConstantPaths compiled.
+  Lamb encountered memory exhaustion; CurlCurl reported four derivative
+  elaboration diagnostics. The four source corrections are prepared.
+  The runner now schedules thirteen module builds sequentially, preserving
+  native asynchronous theorem elaboration and all cache/audit gates.
   Exact current root compilation: pending.
   Exact current root theorem-level axiom audit: pending.
   Current promotion: none.

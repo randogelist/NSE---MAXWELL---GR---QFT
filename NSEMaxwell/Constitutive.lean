@@ -13,7 +13,8 @@ The Ampere factorization requires an explicit time-chain-rule equality and the
 two displayed differential identities. These are hypotheses, not analytic
 certificates supplied by this module.
 
-Compilation status: A_TIER_CANDIDATE; no local Lean or Lake execution.
+Compilation evidence is supplied by the external native Windows runner.
+No local Lean or Lake execution is performed.
 -/
 
 set_option autoImplicit false

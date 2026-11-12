@@ -9,7 +9,8 @@ derivatives, applied to a smooth real vector field. The curl-curl identity is
 then proved from the specified coordinate definitions.
 
 No Fourier, Hodge, curl-curl, or Hessian-symmetry premise is postulated.
-Compilation status: A_TIER_CANDIDATE; no local Lean or Lake execution.
+Compilation evidence is supplied by the external native Windows runner.
+No local Lean or Lake execution is performed.
 -/
 
 set_option autoImplicit false
@@ -29,8 +30,9 @@ theorem coordinateDerivative_smooth
     {a : Field} (ha : ContDiff ℝ ∞ a) (i : Fin 3) :
     ContDiff ℝ ∞ (coordinateDerivative a i) := by
   have hd : ContDiff ℝ ∞ (fderiv ℝ a) := ha.fderiv_right (by simp)
-  simpa only [coordinateDerivative] using
-    hd.clm_apply (show ContDiff ℝ ∞ (fun _ : Vec => unitVector i) from contDiff_const)
+  change ContDiff ℝ ∞ (fun x : Vec => (fderiv ℝ a x) (unitVector i))
+  exact hd.clm_apply
+    (show ContDiff ℝ ∞ (fun _ : Vec => unitVector i) from contDiff_const)
 
 theorem coordinate_component_smooth
     {a : Field} (ha : ContDiff ℝ ∞ a) (i j : Fin 3) :
@@ -51,7 +53,7 @@ theorem coordinateDerivative_coordinateDerivative
       secondCoordinate a i j x := by
   have hd : ContDiff ℝ ∞ (fderiv ℝ a) := ha.fderiv_right (by simp)
   have hdx := (hd.differentiable (by simp) x).hasFDerivAt
-  have h := hdx.clm_apply (hasFDerivAt_const x (unitVector j))
+  have h := hdx.clm_apply (hasFDerivAt_const (unitVector j) x)
   have he := congrArg (fun L : Vec →L[ℝ] Vec => L (unitVector i)) h.fderiv
   simpa [coordinateDerivative, secondCoordinate, ContinuousLinearMap.flip_apply] using he
 
@@ -59,7 +61,9 @@ theorem coordinateDerivative_coordinateDerivative
 theorem secondCoordinate_symm
     {a : Field} (ha : ContDiff ℝ ∞ a) (i j : Fin 3) (x : Vec) :
     secondCoordinate a i j x = secondCoordinate a j i x := by
-  exact (ha.contDiffAt.isSymmSndFDerivAt (by simp)) (unitVector i) (unitVector j)
+  exact (ha.contDiffAt.isSymmSndFDerivAt (by
+    simp only [minSmoothness_of_isRCLikeNormedField]
+    decide)) (unitVector i) (unitVector j)
 
 theorem second_coordinate_component
     {a : Field} (ha : ContDiff ℝ ∞ a) (i j k : Fin 3) (x : Vec) :
@@ -167,8 +171,15 @@ theorem gradient_divergence_coordinate
   have h0 := (coordinate_component_smooth ha 0 0).differentiable (by simp) x
   have h1 := (coordinate_component_smooth ha 1 1).differentiable (by simp) x
   have h2 := (coordinate_component_smooth ha 2 2).differentiable (by simp) x
+  have hsum := (h0.hasFDerivAt.add h1.hasFDerivAt).add h2.hasFDerivAt
+  change HasFDerivAt
+      (fun y : Vec => coordinateDerivative a 0 y 0 +
+        coordinateDerivative a 1 y 1 + coordinateDerivative a 2 y 2)
+      (fderiv ℝ (fun y : Vec => coordinateDerivative a 0 y 0) x +
+        fderiv ℝ (fun y : Vec => coordinateDerivative a 1 y 1) x +
+        fderiv ℝ (fun y : Vec => coordinateDerivative a 2 y 2) x) x at hsum
   change fderiv ℝ (NSEMaxwell.Classical.divergence a) x (unitVector i) = _
-  rw [hdiv, fderiv_fun_add (h0.add h1) h2, fderiv_fun_add h0 h1]
+  rw [hdiv, hsum.fderiv]
   simp only [ContinuousLinearMap.add_apply]
   rw [second_coordinate_component ha i 0 0 x,
     second_coordinate_component ha i 1 1 x, second_coordinate_component ha i 2 2 x]

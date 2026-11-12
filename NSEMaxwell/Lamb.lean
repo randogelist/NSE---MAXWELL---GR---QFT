@@ -11,7 +11,8 @@ point. No Fourier, Hodge, incompressibility, or Lamb-identity premise is used.
 Proof spine: three-coordinate vector expansion; linearity of the Frechet
 derivative; norm-square chain rule; coordinate polynomial identities.
 
-Compilation status: A_TIER_CANDIDATE; no local Lean or Lake execution.
+Compilation evidence is supplied by the external native Windows runner.
+No local Lean or Lake execution is performed.
 -/
 
 set_option autoImplicit false
