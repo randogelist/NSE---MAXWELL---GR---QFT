@@ -4,7 +4,7 @@ import NSEMaxwell.Classical
 # Concrete Lamb identity
 
 The proof uses the actual Euclidean-space derivative, coordinate curl, cross
-product, convection, and gradient from Classical.lean. The only hypothesis of
+product, convection, and NSEMaxwell.Classical.gradient from Classical.lean. The only hypothesis of
 the pointwise identity is ordinary differentiability of the vector field at the
 point. No Fourier, Hodge, incompressibility, or Lamb-identity premise is used.
 
@@ -43,10 +43,10 @@ theorem convection_coordinate (a : Field) (x : Vec) (i : Fin 3) :
   simpa only [convection, coordinateDerivative, map_add, map_smul,
     PiLp.add_apply, PiLp.smul_apply, smul_eq_mul] using hi
 
-/-- The kinetic-energy gradient, proved by the norm-square chain rule. -/
+/-- The kinetic-energy NSEMaxwell.Classical.gradient, proved by the norm-square chain rule. -/
 theorem kinetic_gradient_coordinate
     {a : Field} {x : Vec} (ha : DifferentiableAt ℝ a x) (i : Fin 3) :
-    gradient (fun y : Vec => ‖a y‖ ^ 2 / 2) x i =
+    NSEMaxwell.Classical.gradient (fun y : Vec => ‖a y‖ ^ 2 / 2) x i =
       a x 0 * coordinateDerivative a i x 0 +
       a x 1 * coordinateDerivative a i x 1 +
       a x 2 * coordinateDerivative a i x 2 := by
@@ -78,7 +78,7 @@ theorem lamb_identity_at
     {a : Field} {x : Vec} (ha : DifferentiableAt ℝ a x) :
     convection a x =
       cross (spatialCurl a x) (a x) +
-        gradient (fun y : Vec => ‖a y‖ ^ 2 / 2) x := by
+        NSEMaxwell.Classical.gradient (fun y : Vec => ‖a y‖ ^ 2 / 2) x := by
   apply PiLp.ext
   intro i
   rw [PiLp.add_apply, convection_coordinate a x i, kinetic_gradient_coordinate ha i]
@@ -89,7 +89,7 @@ theorem lamb_identity
     {a : Field} (ha : Differentiable ℝ a) :
     convection a =
       (fun x : Vec => cross (spatialCurl a x) (a x)) +
-        gradient (fun x : Vec => ‖a x‖ ^ 2 / 2) := by
+        NSEMaxwell.Classical.gradient (fun x : Vec => ‖a x‖ ^ 2 / 2) := by
   funext x
   exact lamb_identity_at (ha x)
 
@@ -98,7 +98,7 @@ theorem lamb_identity_of_data
     {a : Field} (ha : Data a) :
     convection a =
       (fun x : Vec => cross (spatialCurl a x) (a x)) +
-        gradient (fun x : Vec => ‖a x‖ ^ 2 / 2) := by
+        NSEMaxwell.Classical.gradient (fun x : Vec => ‖a x‖ ^ 2 / 2) := by
   exact lamb_identity (ha.smooth.differentiable (by simp))
 
 /--
@@ -111,7 +111,7 @@ theorem reconstructed_lamb_identity
     (hCurl : spatialCurl (U m B) = B) :
     convection (U m B) =
       (fun x : Vec => cross (B x) (U m B x)) +
-        gradient (fun x : Vec => ‖U m B x‖ ^ 2 / 2) := by
+        NSEMaxwell.Classical.gradient (fun x : Vec => ‖U m B x‖ ^ 2 / 2) := by
   simpa only [hCurl] using lamb_identity_of_data hData
 
 end

@@ -20,27 +20,24 @@ LOCAL_LAKE_EXECUTIONS: 0
        exists B E : Velocity, exists rho : Pressure, exists J : Velocity,
          MaxwellSolution nu c m B0 B E rho J.
 
-2. CONCRETE DOMAIN AND OPERATORS
+2. CONCRETE SEMANTICS
 
   Vec = EuclideanSpace Real (Fin 3).
-  Field = Vec -> Vec.
-  Velocity = Real -> Field.
+  Field = Vec -> Vec; Velocity = Real -> Field.
   Pressure = Real -> Vec -> Real.
   Spatial domain = unit-periodic lifts on Vec.
   Time domain = [0,infinity), including t = 0.
-  Smoothness = joint ContDiffOn Real infinity on forward spacetime.
+  Joint smoothness = ContDiffOn Real infinity on forward spacetime.
   Initial smoothness = ContDiff Real infinity.
-  Spatial derivatives = Mathlib fderiv.
-  Time derivatives = Mathlib derivWithin on Ici 0.
-  Spatial means = Lebesgue integrals over the unit cube.
-  Velocity mean = arbitrary m in Vec.
+  Spatial derivatives = actual Mathlib fderiv.
+  Time derivatives = actual Mathlib derivWithin on Ici 0.
+  Means = actual Lebesgue integrals over the unit cube.
+  Initial velocity mean = arbitrary; forcing = zero.
   Pressure = periodic; spatial-constant time-dependent gauge unrestricted.
-  Forcing = zero.
 
   Lf(x) = sum_{k in Z^3} lambda(k)
             integral_[0,1]^3 cos(2*pi*k dot (x-y)) f(y) dy,
-  lambda(0)=0,
-  lambda(k)=(4*pi^2*|k|^2)^(-1), k != 0.
+  lambda(0)=0; lambda(k)=(4*pi^2*|k|^2)^(-1) for k != 0.
   K = curl L.
   U_m[B] = m + K B.
   G_nu,m[B] = B cross U_m[B] + nu curl B.
@@ -50,168 +47,192 @@ LOCAL_LAKE_EXECUTIONS: 0
   J_nu,c,m[B] = c^2 curl B - DG_nu,m[B](V_nu,m[B]).
   pB = L Q[B] - |U_m[B]|^2/2 + mean(|U_m[B]|^2)/2.
 
-  The Fourier expressions are total definitions.
-  Their analytic properties are not consequences of their declarations alone.
+  MaxwellSolution imposes div B=0, B_t+curl E=0, div E=rho,
+  E_t-c^2 curl B=-J, E=G[B], rho=Q[B], J=J[B], initial B=B0,
+  zero spatial mean of B, and the stated smoothness/periodicity of all fields.
 
-3. PREPARED ROOT DECLARATION
+  The Fourier formulas are total definitions. Their convergence, inversion,
+  regularity, and time commutation still require the explicit analytic laws.
+
+3. PREPARED CONDITIONAL ROOT
 
   theorem NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE
       (analyticLaws : NSEMaxwell.Bridge.PeriodicAnalyticLaws) :
       NSEMaxwell.Classical.ExactEquivalence
 
-  EXACT PREPARED IMPLICATION:
+  Exact implication: PeriodicAnalyticLaws -> ExactEquivalence.
+  A definition of ExactEquivalence is not a proof of ExactEquivalence.
+  No inhabitant of PeriodicAnalyticLaws is supplied.
+  The unconditional selected theorem is not established.
 
-    PeriodicAnalyticLaws -> ExactEquivalence.
+4. EXACT REMAINING ANALYTIC PREMISE REGISTER
 
-  This declaration contains an explicit unresolved analytic premise.
-  No declaration supplies an inhabitant of PeriodicAnalyticLaws.
-  The unconditional ExactEquivalence is not established.
+  Nine fields remain. All nine are OPEN as concrete analytic theorems.
+  They are theorem hypotheses, not new Lean axiom declarations.
+  Names below are in NSEMaxwell.Bridge, with Classical and Constitutive open.
+  MagneticPath means joint smoothness, periodicity, zero divergence and mean.
+  CanonicalRegularity records smoothness/periodicity of the displayed canonical
+  velocity, pressure, E, rho and J, and divergence-free canonical velocity.
 
-4. ANALYTIC PREMISE REGISTER
+structure PeriodicAnalyticLaws : Prop where
+  reconstruct_velocity : ∀ (a : Field), Data a →
+    U (spatialMean a) (spatialCurl a) = a
+  reconstruct_curl : ∀ (m : Vec) (B : Field), MagneticData B →
+    spatialCurl (U m B) = B
+  vorticity_regularity : ∀ (u : Velocity),
+    SmoothVelocity u → PeriodicVelocity u →
+    (∀ t : ℝ, 0 ≤ t → ∀ x : Vec, NSEMaxwell.Classical.divergence (u t) x = 0) →
+    MagneticPath (curlTrajectory u)
+  canonical_regularity : ∀ (ν c : ℝ) (m : Vec) (B : Velocity),
+    MagneticPath B → CanonicalRegularity ν c m B
+  mean_conservation : ∀ (ν : ℝ) (u : Velocity) (p : Pressure),
+    SmoothVelocity u → SmoothPressure p →
+    PeriodicVelocity u → PeriodicPressure p →
+    (∀ t : ℝ, 0 ≤ t → ∀ x : Vec, NSEMaxwell.Classical.divergence (u t) x = 0) →
+    (∀ t : ℝ, 0 ≤ t → momentumResidual ν u p t = 0) →
+    ∀ t : ℝ, 0 ≤ t → spatialMean (u t) = spatialMean (u 0)
+  vorticity_residual : ∀ (ν : ℝ) (u : Velocity) (p : Pressure),
+    SmoothVelocity u → SmoothPressure p →
+    PeriodicVelocity u → PeriodicPressure p →
+    (∀ t : ℝ, 0 ≤ t → ∀ x : Vec, NSEMaxwell.Classical.divergence (u t) x = 0) →
+    ∀ t : ℝ, 0 ≤ t →
+    spatialCurl (momentumResidual ν u p t) =
+      timeDerivative (curlTrajectory u) t +
+        spatialCurl (fun x => cross (spatialCurl (u t) x) (u t x) +
+          ν • spatialCurl (spatialCurl (u t)) x)
+  reconstruction_time : ∀ (m : Vec) (B : Velocity), MagneticPath B →
+    ∀ t : ℝ, 0 ≤ t →
+    timeDerivative (canonicalVelocity m B) t = K (timeDerivative B t)
+  electric_hodge : ∀ (ν : ℝ) (m : Vec) (B : Field), MagneticData B →
+    G ν m B + NSEMaxwell.Classical.gradient (headPotential ν m B) = K (spatialCurl (G ν m B))
+  electric_time_chain : ∀ (ν : ℝ) (m : Vec) (B : Velocity), MagneticPath B →
+    ∀ t : ℝ, 0 ≤ t →
+    timeDerivative (canonicalElectric ν m B) t =
+      DG ν m (B t) (timeDerivative B t)
 
-  Remaining fields: P01--P10, P13--P17 (15 analytic obligations).
-  P11, P12, P18 have concrete proof terms and have been removed from the
-  premise structure. External compilation of these new terms is pending.
+5. PREPARED CONCRETE DERIVATIONS
 
-  P01 curl_data:
-      Data a -> MagneticData(curl a).
+  Spatial slice smoothness and time-derivative congruence on [0,infinity).
+  Zero-input derivative, integral, Fourier, K and DG identities.
+  Cross-product additivity and negation.
+  Unconditional operator negation, including K(-h)=-K(h).
+  Lamb identity from the actual norm-square chain rule and coordinate algebra.
+  Pressure-gradient decomposition from smooth pB and U_m[B].
+  Curl-curl and div-curl identities from actual second-derivative symmetry.
+  Viscosity identity from curl-curl, divergence zero and curl reconstruction.
+  Constant-trajectory regularity.
 
-  P02 reconstruction_data:
-      MagneticData B -> Data(m + K B).
+  These are proof terms; matching external compiler evidence remains required.
 
-  P03 reconstruct_velocity:
-      Data a -> U_mean(a)[curl a] = a.
+6. REDUNDANT OR UNNECESSARY PREMISES
 
-  P04 reconstruct_curl:
-      MagneticData B -> curl(U_m[B]) = B.
+  Derived from remaining endpoints:
+    curl_data <- vorticity_regularity on constant trajectories.
+    reconstruction_data <- canonical_regularity on constant trajectories.
+    reconstruct_mean <- reconstruct_velocity + reconstruct_curl + cancellation.
 
-  P05 reconstruct_mean:
-      MagneticData B -> mean(U_m[B]) = m.
+  Replaced by concrete calculus proofs:
+    lamb_identity.
+    pressure_gradient.
+    viscosity_identity.
+    DG_curl_neg.
 
-  P06 vorticity_regularity:
-      Smooth periodic divergence-free u -> MagneticPath(curl u).
+  Not required by the root existence equivalence:
+    K_residual_add.
+    DG_residual_add.
+    DG_curl_neg.
 
-  P07 canonical_regularity:
-      MagneticPath B -> joint smoothness and periodicity of canonical
-      velocity, pressure, E, rho, J, and divergence-free canonical velocity.
+  The optional off-solution canonical_momentum_factorization theorem retains
+  its own hKAdd hypothesis. The exact root does not use that theorem.
+  No additivity of totalized Fourier sums on arbitrary fields is postulated.
 
-  P08 mean_conservation:
-      Smooth periodic divergence-free u, smooth periodic p, and zero
-      momentum residual -> mean(u(t)) = mean(u(0)), t >= 0.
+7. DETERMINISTIC ROOT PROOF
 
-  P09 vorticity_residual:
-      curl(R_N) = partial_t(curl u)
-        + curl((curl u) cross u + nu curl(curl u)), without assuming R_N=0.
+  A. Momentum split, from the nine explicit endpoints and concrete calculus:
 
-  P10 reconstruction_time:
-      partial_t(U_m[B]) = K(partial_t B).
+    R_N(U_m[B],pB) = K(B_t) + K(curl G[B]).
 
-  P11 lamb_identity [CONCRETE PROOF TERM PREPARED; REMOVED FROM PREMISES]:
-      convection(U_m[B]) = B cross U_m[B] + grad(|U_m[B]|^2/2).
+  B. Faraday cancellation:
 
-  P12 pressure_gradient [CONCRETE PROOF TERM PREPARED; REMOVED FROM PREMISES]:
-      grad pB = grad(L Q[B]) - grad(|U_m[B]|^2/2).
+    R_F=0 -> B_t=-curl G[B]
+          -> R_N=-K(curl G[B])+K(curl G[B])=0.
 
-  P13 viscosity_identity:
-      nu Delta(U_m[B]) = -nu curl B.
+  C. Induced-current Ampere cancellation:
 
-  P14 electric_hodge:
-      G[B] + grad(L Q[B]) = K(curl G[B]).
+    R_F=0 -> B_t=V[B]
+          -> E_t=DG[B](V[B])
+          -> E_t-c^2 curl B+J[B]=0.
 
-  P15 K_residual_add:
-      K(B_t + curl G[B]) = K(B_t) + K(curl G[B]).
-      Quantification is restricted to MagneticPath B and t >= 0.
+  D. Forward solution construction:
 
-  P16 electric_time_chain:
-      partial_t(G[B]) = DG[B](B_t).
+    a=U_m[B0], NSSolution(nu,a,u,p)
+      -> conservation of mean and Hodge reconstruction
+      -> B=curl u, E=G[B], rho=Q[B], J=J[B]
+      -> exact MaxwellSolution with B(0)=B0.
 
-  P17 DG_residual_add:
-      DG[B](B_t + curl G[B]) = DG[B](B_t) + DG[B](curl G[B]).
-      Quantification is restricted to MagneticPath B and t >= 0.
+  E. Reverse solution construction:
 
-  P18 DG_curl_neg [CONCRETE PROOF TERM PREPARED; REMOVED FROM PREMISES]:
-      DG[B](-curl G[B]) = -DG[B](curl G[B]).
-      The new concrete theorem holds for all fields without regularity premises.
+    exact MaxwellSolution(nu,c,m,B0,B,E,rho,J)
+      -> canonical Faraday equation
+      -> u=U_m[B], p=pB
+      -> exact NSSolution with u(0)=U_m[B0].
 
-  No premise is an arbitrary proposition variable standing for FB or MB.
-  No premise is a forward/backward global existence map.
-  No premise asserts global K-linearity on all arbitrary nonsmooth fields.
-  The remaining analytic obligations are P01--P10 and P13--P17.
+  F. Universal data transport:
 
-5. PREPARED DETERMINISTIC PROOF SPINE
+    a <-> (mean a,curl a)
+    (m,B0) <-> U_m[B0]
+    -> FeffermanB nu <-> MaxwellB nu c
+    -> positive-nu, positive-c selected quantifier prefix.
 
-  Concrete definitions
-    -> actual slice-smoothness and derivative-congruence lemmas
-    -> actual zero-input identities
-    -> concrete cross-product and constitutive algebra
-    -> explicit primitive analytic identities P01--P10 and P13--P17
-    -> canonical_momentum_factorization: R_N = K R_F
-    -> maxwell_of_faraday: R_F=0 -> exact canonical Maxwell solution
-    -> faraday_of_ns: exact NSE solution -> R_F=0
-    -> maxwell_of_ns: exact forward solution construction
-    -> ns_of_maxwell: exact reverse solution construction
-    -> feffermanB_iff_maxwellB_of_periodicAnalyticLaws
-    -> exact_equivalence_of_periodicAnalyticLaws
-    -> FEFFERMAN_B_MAXWELL_EQUIVALENCE.
+  The analytic premise register contains no FB/MB proposition and no global
+  solution-existence implication. Every existence implication is derived.
 
-  Mean m is retained in both data maps.
-  The reverse construction supplies the explicit periodic pressure pB.
-  The final universal-existence implication uses actual solution structures.
+8. EXTERNAL NATIVE WINDOWS CONTRACT
 
-6. EXTERNAL COMPILER CONTRACT
-
-  Platform: native Windows.
   Compiler: leanprover/lean4:v4.34.0-rc1.
   Mathlib: de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
   Entry point: run.cmd.
   Build target: NSEMaxwell.
-  Audit file: NSEMaxwell/Audit.lean.
-  Audit targets: audit-targets.txt.
+  Audit source: NSEMaxwell/Audit.lean.
+  Audit declarations: audit-targets.txt.
   Approved foundational axioms: propext, Classical.choice, Quot.sound.
 
-  Caches are restored and preserved, including after failed builds.
-  Official Mathlib cache retrieval is required.
-  Cache clean, Lake clean, and cache get! are excluded.
+  Compiler, dependency and project caches are restored and preserved,
+  including after failed compiler iterations. Official Mathlib cache retrieval
+  is required. No local Lean/Lake execution is permitted.
 
-7. EVIDENCE CONTRACT
+9. EVIDENCE AND PROMOTION
 
-  artifacts/external-windows/run-provenance.json
-  artifacts/external-windows/source-manifest.json
-  artifacts/external-windows/lean-version.log
-  artifacts/external-windows/mathlib-revision.log
-  artifacts/external-windows/run-cache.log
-  artifacts/external-windows/run-build.log
-  artifacts/external-windows/run-audit.log
-  artifacts/external-windows/audit-summary.json
+  Required evidence under artifacts/external-windows/:
+    run-provenance.json
+    source-manifest.json
+    lean-version.log
+    mathlib-revision.log
+    run-cache.log
+    run-build.log
+    run-audit.log
+    audit-summary.json
 
-  Required match: compiler version + dependency revision + source SHA-256
-  manifest + successful project compilation + exact theorem signatures +
-  exact theorem-level axiom records.
+  Required match:
+    native compiler version + dependency commit + source SHA-256 manifest
+    + successful build + exact theorem signatures + exact axiom records.
 
-  An audit of a theorem with P01--P10 and P13--P17 as hypotheses cannot certify those
-  hypotheses. A clean axiom list alone is insufficient for unconditional
-  closure of the selected equivalence.
+  Prepared code -> A_TIER_CANDIDATE only.
+  Matching external evidence -> A_TIER for the exact audited declaration.
+  Audited root with the nine open analytic premises ->
+    CONDITIONAL_FORMAL_CLOSURE of PeriodicAnalyticLaws -> ExactEquivalence.
+  Unconditional selected equivalence -> requires a proved inhabitant of the
+    analytic premise structure and matching external evidence.
 
-8. PROMOTION RULES
+  A clean axiom list does not discharge theorem hypotheses.
+  Neither global existence statement is proved by the equivalence alone.
 
-  Prepared proof source -> A_TIER_CANDIDATE only.
-  Matching external evidence for the conditional root -> A_TIER for that
-    exact conditional implication.
-  Audited conditional root with P01--P10 and P13--P17 unresolved ->
-    CONDITIONAL_FORMAL_CLOSURE of that implication only.
-  Unconditional selected theorem -> requires a proved inhabitant of
-    PeriodicAnalyticLaws, followed by matching external compiler and audit.
+10. CURRENT VALIDATION
 
-  Neither FeffermanB nor MaxwellB is proved as a global existence assertion.
-  No Navier--Stokes regularity result follows merely from the equivalence.
-
-9. CURRENT EXTERNAL EVIDENCE
-
-  Initial external Windows validation: completed; six zero-field-wrapper
-  elaboration failures identified and repaired in source.
-  Initial run: 43307765291.
-  Compiler and Mathlib caches: preserved.
-  The initial run does not certify the later conditional root.
-  Exact matching conditional-root compilation: pending.
-  Exact matching conditional-root axiom audit: pending.
+  Initial external run 43307765291: source elaboration failures; repaired.
+  Second external run 43309624311: Kinematics, Constitutive, Pressure and
+  Negation compiled. Lamb failed on an ambiguous gradient name; qualification
+  repaired in source. Compiler caches and evidence preserved.
+  Exact current root compilation: pending.
+  Exact current root theorem-level axiom audit: pending.
   Current promotion: none.

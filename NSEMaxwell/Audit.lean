@@ -179,3 +179,60 @@ set_option pp.proofs false
 
 #check @NSEMaxwell.Classical.canonicalPressure_gradient
 #print axioms NSEMaxwell.Classical.canonicalPressure_gradient
+
+#check @NSEMaxwell.Classical.smooth_constant_velocity
+#print axioms NSEMaxwell.Classical.smooth_constant_velocity
+
+#check @NSEMaxwell.Classical.smooth_constant_pressure
+#print axioms NSEMaxwell.Classical.smooth_constant_pressure
+
+#check @NSEMaxwell.Classical.periodic_constant_velocity
+#print axioms NSEMaxwell.Classical.periodic_constant_velocity
+
+#check @NSEMaxwell.Classical.periodic_constant_pressure
+#print axioms NSEMaxwell.Classical.periodic_constant_pressure
+
+#check @NSEMaxwell.Constitutive.timeDerivative_eq_evolution_of_faraday
+#print axioms NSEMaxwell.Constitutive.timeDerivative_eq_evolution_of_faraday
+
+#check @NSEMaxwell.Constitutive.ampere_zero_of_faraday_chain
+#print axioms NSEMaxwell.Constitutive.ampere_zero_of_faraday_chain
+
+#check @NSEMaxwell.Bridge.MagneticPath.constant
+#print axioms NSEMaxwell.Bridge.MagneticPath.constant
+
+#check @NSEMaxwell.Bridge.PeriodicAnalyticLaws.curl_data
+#print axioms NSEMaxwell.Bridge.PeriodicAnalyticLaws.curl_data
+
+#check @NSEMaxwell.Bridge.PeriodicAnalyticLaws.reconstruction_data
+#print axioms NSEMaxwell.Bridge.PeriodicAnalyticLaws.reconstruction_data
+
+#check @NSEMaxwell.Bridge.PeriodicAnalyticLaws.reconstruct_mean
+#print axioms NSEMaxwell.Bridge.PeriodicAnalyticLaws.reconstruct_mean
+
+#check @NSEMaxwell.Bridge.canonical_momentum_split
+#print axioms NSEMaxwell.Bridge.canonical_momentum_split
+
+#check @NSEMaxwell.Bridge.canonical_momentum_zero_of_faraday
+#print axioms NSEMaxwell.Bridge.canonical_momentum_zero_of_faraday
+
+#check @NSEMaxwell.CurlCurl.coordinateDerivative_smooth
+#print axioms NSEMaxwell.CurlCurl.coordinateDerivative_smooth
+
+#check @NSEMaxwell.CurlCurl.spatialCurl_smooth
+#print axioms NSEMaxwell.CurlCurl.spatialCurl_smooth
+
+#check @NSEMaxwell.CurlCurl.secondCoordinate_symm
+#print axioms NSEMaxwell.CurlCurl.secondCoordinate_symm
+
+#check @NSEMaxwell.CurlCurl.curl_curl
+#print axioms NSEMaxwell.CurlCurl.curl_curl
+
+#check @NSEMaxwell.CurlCurl.divergence_curl
+#print axioms NSEMaxwell.CurlCurl.divergence_curl
+
+#check @NSEMaxwell.CurlCurl.viscosity_identity_of_data
+#print axioms NSEMaxwell.CurlCurl.viscosity_identity_of_data
+
+#check @NSEMaxwell.CurlCurl.reconstructed_viscosity_identity
+#print axioms NSEMaxwell.CurlCurl.reconstructed_viscosity_identity

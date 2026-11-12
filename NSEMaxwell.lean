@@ -4,6 +4,9 @@ import NSEMaxwell.Constitutive
 import NSEMaxwell.Negation
 import NSEMaxwell.Lamb
 import NSEMaxwell.Pressure
+import NSEMaxwell.Ampere
+import NSEMaxwell.ConstantPaths
+import NSEMaxwell.CurlCurl
 import NSEMaxwell.Residual
 import NSEMaxwell.ExistenceTransport
 import NSEMaxwell.AnalyticBridge

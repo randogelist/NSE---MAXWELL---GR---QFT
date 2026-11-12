@@ -27,25 +27,34 @@
   "conditional_root_status": "A_TIER_CANDIDATE",
   "analytic_laws_inhabitant_provided": false,
   "open_analytic_endpoints": [
-    "curl_data",
-    "reconstruction_data",
     "reconstruct_velocity",
     "reconstruct_curl",
-    "reconstruct_mean",
     "vorticity_regularity",
     "canonical_regularity",
     "mean_conservation",
     "vorticity_residual",
     "reconstruction_time",
-    "viscosity_identity",
     "electric_hodge",
-    "K_residual_add",
-    "electric_time_chain",
-    "DG_residual_add"
+    "electric_time_chain"
   ],
   "prepared_discharges": [
-    "DG_curl_neg",
-    "lamb_identity",
-    "pressure_gradient"
-  ]
+    "operator_negation",
+    "Lamb_identity",
+    "pressure_gradient_decomposition",
+    "curl_curl_identity",
+    "divergence_curl_identity",
+    "viscosity_identity"
+  ],
+  "derived_from_remaining_endpoints": [
+    "curl_data",
+    "reconstruction_data",
+    "reconstruct_mean"
+  ],
+  "unnecessary_for_root": [
+    "K_residual_add",
+    "DG_residual_add",
+    "DG_curl_neg"
+  ],
+  "optional_off_solution_lemmas": "canonical_momentum_factorization retains its own hKAdd premise; the root does not depend on it.",
+  "audit_target_count": 74
 }

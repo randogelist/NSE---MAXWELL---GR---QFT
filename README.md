@@ -36,7 +36,9 @@ The prepared concrete root has type:
 NSEMaxwell.Bridge.PeriodicAnalyticLaws → NSEMaxwell.Classical.ExactEquivalence
 ```
 
-`PeriodicAnalyticLaws` contains fifteen explicit local analytic obligations. It contains neither an existence assertion nor a map between global solution-existence propositions. Its fields include periodic Hodge reconstruction, smooth Fourier realization, derivative commutation, conservation of mean, and the constitutive chain rule. No inhabitant of this structure is supplied.
+`PeriodicAnalyticLaws` contains nine explicit local analytic obligations. It contains neither an existence assertion nor a map between global solution-existence propositions. Its fields include periodic Hodge reconstruction, smooth Fourier realization, derivative commutation, conservation of mean, and the constitutive chain rule. No inhabitant of this structure is supplied.
+
+Initial-data admissibility and the reconstructed mean are derived from the retained endpoints. The root uses on-solution cancellation and requires no separate K- or DG-additivity premise. The optional off-solution factorization keeps its own explicit additivity hypothesis.
 
 The conditional proof constructs both solutions on the actual fields, with the initial-data maps `a ↦ (mean a, curl a)` and `(m, B₀) ↦ m + K B₀`, and reconstructs the explicit periodic pressure. The unconditional `ExactEquivalence` remains open.
 
@@ -64,6 +66,9 @@ Approved foundational axioms: `propext`, `Classical.choice`, `Quot.sound`. A mat
 | `NSEMaxwell/Negation.lean` | Actual negation identities without regularity premises |
 | `NSEMaxwell/Lamb.lean` | Actual Lamb identity from first derivatives |
 | `NSEMaxwell/Pressure.lean` | Actual canonical pressure-gradient identity |
+| `NSEMaxwell/CurlCurl.lean` | Actual second-derivative symmetry, curl-curl, and viscosity identities |
+| `NSEMaxwell/ConstantPaths.lean` | Actual constant-trajectory regularity |
+| `NSEMaxwell/Ampere.lean` | Ampere from Faraday and the constitutive chain rule |
 | `NSEMaxwell/Residual.lean` | Abstract additive residual proof spine |
 | `NSEMaxwell/ExistenceTransport.lean` | Logical transport across explicit data and solution maps |
 | `NSEMaxwell/AnalyticBridge.lean` | Explicit analytic premises and concrete forward/reverse solution constructions |
