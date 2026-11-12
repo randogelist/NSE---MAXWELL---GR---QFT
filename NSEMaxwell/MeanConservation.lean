@@ -50,9 +50,11 @@ theorem spatialMean_timeDerivative_zero_of_equation
   have hL := integrableOn_unitCube_of_continuous (laplacian_smooth hu).continuous
   have hC := integrableOn_unitCube_of_continuous (convection_smooth hu).continuous
   have hP := integrableOn_unitCube_of_continuous (gradient_smooth hp).continuous
+  have hsplit := integral_sub ((hL.smul ν).sub hC) hP
+  have hsplit' := integral_sub (hL.smul ν) hC
+  simp only [Pi.sub_apply, Pi.smul_apply] at hsplit hsplit'
   unfold spatialMean
-  rw [htime, integral_sub ((hL.smul ν).sub hC) hP,
-    integral_sub (hL.smul ν) hC, integral_smul]
+  rw [htime, hsplit, hsplit', integral_smul]
   change ν • spatialMean (NSEMaxwell.Classical.laplacian (u t)) -
     spatialMean (convection (u t)) -
       spatialMean (NSEMaxwell.Classical.gradient (p t)) = 0

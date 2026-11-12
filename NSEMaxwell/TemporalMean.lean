@@ -41,6 +41,8 @@ theorem local_uniform_time_bound
   filter_upwards [self_mem_nhdsWithin, hupper] with s hs hsu
   intro x hx
   exact Convex.norm_image_sub_le_of_norm_hasDerivWithin_le
+    (f := fun r : ℝ => u r x) (f' := fun r : ℝ => timeDerivative u r x)
+    (s := Icc (0 : ℝ) (t + 1)) (C := C)
     (fun r hr => (time_slice_hasDerivWithinAt hu hr.1 x).mono
       (fun q hq => hq.1))
     (fun r hr => hC (r, x) ⟨hr, hx⟩)

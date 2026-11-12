@@ -2,6 +2,7 @@ import NSEMaxwell.AnalyticBridge
 import NSEMaxwell.LocalEvolution
 import NSEMaxwell.MeanConservation
 import NSEMaxwell.FourierPeriodic
+import NSEMaxwell.CanonicalSmoothness
 
 /-!
 # Reduction to the remaining concrete Fourier and Hodge analysis
@@ -30,9 +31,6 @@ noncomputable section
 structure CanonicalSmoothness (ν c : ℝ) (m : Vec) (B : Velocity) : Prop where
   velocity_smooth : SmoothVelocity (canonicalVelocity m B)
   pressure_smooth : SmoothPressure (canonicalPressureTrajectory ν m B)
-  electric_smooth : SmoothVelocity (canonicalElectric ν m B)
-  charge_smooth : SmoothPressure (canonicalCharge ν m B)
-  current_smooth : SmoothVelocity (canonicalCurrent ν c m B)
   velocity_divergence_free : ∀ t : ℝ, 0 ≤ t → ∀ x : Vec,
     NSEMaxwell.Classical.divergence (canonicalVelocity m B t) x = 0
 
@@ -65,12 +63,18 @@ theorem FourierHodgeLaws.canonical_regularity
     (laws : FourierHodgeLaws) (ν c : ℝ) (m : Vec) (B : Velocity)
     (hB : MagneticPath B) : CanonicalRegularity ν c m B := by
   have h := laws.canonical_smoothness ν c m B hB
+  have hU : ∀ (m' : Vec) (B' : Velocity), MagneticPath B' →
+      SmoothVelocity (canonicalVelocity m' B') :=
+    fun m' B' hB' => (laws.canonical_smoothness 0 0 m' B' hB').velocity_smooth
   exact {
     velocity_smooth := h.velocity_smooth
     pressure_smooth := h.pressure_smooth
-    electric_smooth := h.electric_smooth
-    charge_smooth := h.charge_smooth
-    current_smooth := h.current_smooth
+    electric_smooth := NSEMaxwell.CanonicalSmoothness.canonical_electric_smooth
+      ν m B hB.smooth h.velocity_smooth
+    charge_smooth := NSEMaxwell.CanonicalSmoothness.canonical_charge_smooth
+      ν m B hB.smooth h.velocity_smooth
+    current_smooth := NSEMaxwell.CanonicalSmoothness.canonical_current_smooth_of_velocity_smoothing
+      hU ν c m B hB
     velocity_periodic := canonicalVelocity_periodic m B
     pressure_periodic := canonicalPressureTrajectory_periodic ν m B
     electric_periodic := canonicalElectric_periodic ν m hB.periodic

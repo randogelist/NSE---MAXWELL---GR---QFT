@@ -49,9 +49,9 @@ theorem hasDerivWithinAt_integral_of_dominated
         (∫ a, ‖r - t‖⁻¹ • (F r a - F t a - (r - t) • F' a) ∂μ) =
           ‖r - t‖⁻¹ •
             (((∫ a, F r a ∂μ) - ∫ a, F t a ∂μ) - (r - t) • (∫ a, F' a ∂μ)) := by
-      rw [integral_smul,
-        integral_sub (hr.sub hF_base) (hF'_int.smul (r - t)),
-        integral_sub hr hF_base, integral_smul]
+      have hsplit := integral_sub (hr.sub hF_base) (hF'_int.smul (r - t))
+      simp only [Pi.sub_apply, Pi.smul_apply] at hsplit
+      rw [integral_smul, hsplit, integral_sub hr hF_base, integral_smul]
     rw [hi, norm_smul_of_nonneg (nneg r)]
   rw [hasDerivWithinAt_iff_tendsto, tendsto_congr' h_remainder,
     ← tendsto_zero_iff_norm_tendsto_zero]
@@ -78,7 +78,7 @@ theorem hasDerivWithinAt_integral_of_dominated
         ring
       _ ≤ ‖r - t‖⁻¹ * (|bound a| * ‖r - t‖) +
           ‖r - t‖⁻¹ * (‖F' a‖ * ‖r - t‖) := by
-        exact add_le_add_right (mul_le_mul_of_nonneg_left ha (nneg r)) _
+        exact add_le_add (mul_le_mul_of_nonneg_left ha (nneg r)) le_rfl
       _ ≤ |bound a| + ‖F' a‖ := by
         simp only [← div_eq_inv_mul]
         apply_rules [add_le_add, div_le_of_le_mul₀] <;> first | rfl | positivity

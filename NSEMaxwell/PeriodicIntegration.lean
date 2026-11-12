@@ -114,9 +114,14 @@ private theorem pi_integral_coordinateDerivative_zero
     fun j => if j = i then fderiv ℝ f else 0
   have hsum (x : PiVec) :
       (∑ j : Fin 3, F' j x (Pi.single j 1)) = fderiv ℝ f x (Pi.single i 1) := by
-    simp only [F']
-    simp_rw [ite_apply]
-    simp
+    calc
+      (∑ j : Fin 3, F' j x (Pi.single j 1)) = F' i x (Pi.single i 1) := by
+        apply Finset.sum_eq_single i
+        · intro j hj hji
+          simp [F', hji]
+        · intro hi
+          exact False.elim (hi (Finset.mem_univ i))
+      _ = fderiv ℝ f x (Pi.single i 1) := by simp [F']
   have hcont : ∀ j, ContinuousOn (F j) (Icc (0 : PiVec) 1) := by
     intro j
     by_cases hji : j = i

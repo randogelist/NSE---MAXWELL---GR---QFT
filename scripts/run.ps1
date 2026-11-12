@@ -275,6 +275,7 @@ try {
         "NSEMaxwell.Residual",
         "NSEMaxwell.ExistenceTransport",
         "NSEMaxwell.AnalyticBridge",
+        "NSEMaxwell.CanonicalSmoothness",
         "NSEMaxwell.AnalyticReduction",
         "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE"
     )

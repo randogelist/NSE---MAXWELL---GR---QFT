@@ -56,7 +56,7 @@
     "DG_curl_neg"
   ],
   "optional_off_solution_lemmas": "canonical_momentum_factorization retains its own hKAdd premise; the root does not depend on it.",
-  "audit_target_count": 159,
+  "audit_target_count": 166,
   "external_evidence": {
     "source_commit": "0b793e57271073fb3b0206dcad99a2797d5f8211",
     "run_id": 43318057281,
@@ -78,7 +78,8 @@
     "LocalEvolution",
     "TemporalMean",
     "MeanConservation",
-    "AnalyticReduction"
+    "AnalyticReduction",
+    "CanonicalSmoothness"
   ],
   "prior_conditional_root_evidence": {
     "source_commit": "0b793e57271073fb3b0206dcad99a2797d5f8211",
@@ -109,5 +110,20 @@
     "vorticity_residual",
     "reconstruction_time",
     "electric_time_chain"
+  ],
+  "retained_canonical_smoothness_components": [
+    "velocity_smooth",
+    "pressure_smooth",
+    "velocity_divergence_free"
+  ],
+  "derived_canonical_components": [
+    "electric_smooth",
+    "charge_smooth",
+    "current_smooth",
+    "velocity_periodic",
+    "pressure_periodic",
+    "electric_periodic",
+    "charge_periodic",
+    "current_periodic"
   ]
 }

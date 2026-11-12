@@ -30,14 +30,14 @@ H2 reconstruct_curl:
   MagneticData(B) -> curl(U(m,B)) = B.
 H3 canonical_smoothness:
   MagneticPath(B) -> CanonicalSmoothness(nu,c,m,B).
-  Components: joint smoothness through t=0 of canonical u,p,E,rho,J;
+  Components: joint smoothness through t=0 of canonical u,p;
   divergence-free reconstructed velocity. These are still unresolved.
 H4 electric_hodge:
   MagneticData(B) -> G(nu,m,B) + grad(scalarL(Q(nu,m,B)))
                     = K(curl(G(nu,m,B))).
 
 The four names do not denote four discharged theorems. H3 contains the
-explicit six analytic component assertions listed above. No existence
+explicit three analytic component assertions listed above. No existence
 proposition, solution map, or the desired equivalence is a field of this
 premise structure.
 
@@ -83,6 +83,15 @@ D5 electric_time_chain:
                  + B cross K(B_t) + nu curl(B_t)
                  = DG(nu,m,B)(B_t).
   D5 is derived from the remaining endpoints and proved calculus.
+
+CANONICAL MAXWELL SMOOTHNESS
+----------------------------
+  E=B cross U+nu curl(B) is smooth by the actual product and curl calculus.
+  rho=div(E) is smooth by the actual spatial derivative calculus.
+  V=-curl(E) is a smooth periodic divergence-free mean-zero MagneticPath.
+  The retained velocity-smoothing endpoint applied to (0,V) gives smooth K(V).
+  Consequently DG[B](V) and J=c^2 curl(B)-DG[B](V) are smooth.
+  E,rho,J smoothness are derived, not retained as H3 components.
 
 PERIODICITY SUBCLAUSES
 ---------------------

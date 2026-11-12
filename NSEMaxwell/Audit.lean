@@ -495,3 +495,24 @@ set_option pp.proofs false
 
 #check @NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED
 #print axioms NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED
+
+#check @NSEMaxwell.CanonicalSmoothness.divergence_trajectory_smooth
+#print axioms NSEMaxwell.CanonicalSmoothness.divergence_trajectory_smooth
+
+#check @NSEMaxwell.CanonicalSmoothness.canonical_electric_smooth
+#print axioms NSEMaxwell.CanonicalSmoothness.canonical_electric_smooth
+
+#check @NSEMaxwell.CanonicalSmoothness.canonical_charge_smooth
+#print axioms NSEMaxwell.CanonicalSmoothness.canonical_charge_smooth
+
+#check @NSEMaxwell.CanonicalSmoothness.magnetic_curl_path
+#print axioms NSEMaxwell.CanonicalSmoothness.magnetic_curl_path
+
+#check @NSEMaxwell.CanonicalSmoothness.magnetic_neg_path
+#print axioms NSEMaxwell.CanonicalSmoothness.magnetic_neg_path
+
+#check @NSEMaxwell.CanonicalSmoothness.evolution_magnetic_path
+#print axioms NSEMaxwell.CanonicalSmoothness.evolution_magnetic_path
+
+#check @NSEMaxwell.CanonicalSmoothness.canonical_current_smooth_of_velocity_smoothing
+#print axioms NSEMaxwell.CanonicalSmoothness.canonical_current_smooth_of_velocity_smoothing

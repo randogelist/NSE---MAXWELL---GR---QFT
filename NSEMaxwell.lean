@@ -17,5 +17,6 @@ import NSEMaxwell.MeanConservation
 import NSEMaxwell.Residual
 import NSEMaxwell.ExistenceTransport
 import NSEMaxwell.AnalyticBridge
+import NSEMaxwell.CanonicalSmoothness
 import NSEMaxwell.AnalyticReduction
 import NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE

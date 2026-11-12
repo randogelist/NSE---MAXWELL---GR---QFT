@@ -44,7 +44,7 @@ theorem spatial_restriction_fderiv
     fderiv ℝ (fun y : Vec => f (t, y)) x v =
       fderivWithin ℝ f forwardSpacetime (t, x) (0, v) := by
   have hd := (hf.differentiableOn (by simp) (t, x) ht).hasFDerivWithinAt
-  have he := (hasFDerivAt_const t x).prodMk (hasFDerivAt_id x)
+  have he := (hasFDerivAt_const (𝕜 := ℝ) t x).prodMk (hasFDerivAt_id x)
   have hc := hd.comp_hasFDerivAt x he (Filter.Eventually.of_forall (fun _ => ht))
   have hv := congrArg (fun L : Vec →L[ℝ] E => L v) hc.fderiv
   simpa [Function.comp_def] using hv
@@ -56,7 +56,8 @@ theorem time_restriction_hasDerivWithinAt
     HasDerivWithinAt (fun s : ℝ => f (s, x))
       (fderivWithin ℝ f forwardSpacetime (t, x) (1, 0)) (Ici 0) t := by
   have hd := (hf.differentiableOn (by simp) (t, x) ht).hasFDerivWithinAt
-  have he := ((hasDerivAt_id t).prodMk (hasDerivAt_const t x)).hasDerivWithinAt
+  have he : HasDerivWithinAt (fun s : ℝ => (s, x)) (1, 0) (Ici 0) t :=
+    ((hasDerivAt_id t).prodMk (hasDerivAt_const t x)).hasDerivWithinAt
   exact hd.comp_hasDerivWithinAt t he (fun _ hs => hs)
 
 theorem time_restriction_derivWithin
@@ -72,7 +73,7 @@ theorem directional_smooth
     (v : ℝ × Vec) :
     ContDiffOn ℝ ∞ (fun z => fderivWithin ℝ f forwardSpacetime z v)
       forwardSpacetime := by
-  exact (hf.fderivWithin uniqueDiffOn_forwardSpacetime (by simp)).clm_apply
+  exact (hf.fderivWithin (m := ∞) uniqueDiffOn_forwardSpacetime (by simp)).clm_apply
     contDiffOn_const
 
 theorem directional_fderivWithin_apply
@@ -82,8 +83,9 @@ theorem directional_fderivWithin_apply
         forwardSpacetime z w =
       fderivWithin ℝ (fderivWithin ℝ f forwardSpacetime)
         forwardSpacetime z w v := by
-  have hd := ((hf.fderivWithin uniqueDiffOn_forwardSpacetime (by simp)).differentiableOn
-    (by simp) z hz).hasFDerivWithinAt
+  have hds : ContDiffOn ℝ ∞ (fderivWithin ℝ f forwardSpacetime) forwardSpacetime :=
+    hf.fderivWithin uniqueDiffOn_forwardSpacetime (by simp)
+  have hd := (hds.differentiableOn (by simp) z hz).hasFDerivWithinAt
   have hc := hd.clm_apply (hasFDerivWithinAt_const v z forwardSpacetime)
   have he := congrArg (fun L : (ℝ × Vec) →L[ℝ] E => L w)
     (hc.fderivWithin (uniqueDiffOn_forwardSpacetime z hz))
@@ -195,7 +197,7 @@ theorem timeDerivative_curl_commute
       coordinateDerivative (timeDerivative u t) j x k -
         coordinateDerivative (timeDerivative u t) l x r := by
     have h := ((hd j k x).sub (hd l r x)).derivWithin (uniqueDiffOn_Ici 0 t ht)
-    simpa only [timeDerivative_coordinateDerivative hu ht] using h
+    simpa only [Pi.sub_def, timeDerivative_coordinateDerivative hu ht] using h
   funext x
   apply PiLp.ext
   intro i

@@ -51,7 +51,8 @@ theorem timeDerivative_cross {u v : Velocity}
       derivWithin (fun s : ℝ => u s x i * v s x j - u s x k * v s x l) (Ici 0) t =
       (timeDerivative u t x i * v t x j + u t x i * timeDerivative v t x j) -
         (timeDerivative u t x k * v t x l + u t x k * timeDerivative v t x l) := by
-    exact (((time_component_hasDerivWithinAt hu ht x i).mul
+    simpa only [Pi.sub_def, Pi.mul_def] using
+      (((time_component_hasDerivWithinAt hu ht x i).mul
       (time_component_hasDerivWithinAt hv ht x j)).sub
       ((time_component_hasDerivWithinAt hu ht x k).mul
       (time_component_hasDerivWithinAt hv ht x l))).derivWithin
@@ -81,7 +82,8 @@ theorem electric_time_chain_of_reconstruction
   have hcross := congrFun (timeDerivative_cross hB hU ht) x
   have hcurl := congrFun (timeDerivative_curl_commute hB ht) x
   rw [hcross, hcurl, hRecon] at h
-  exact h
+  simpa only [Pi.add_def, Pi.smul_def, canonicalElectric, G,
+    timeDerivative, DG, canonicalVelocity] using h
 
 theorem gradient_smooth {f : ScalarField} (hf : ContDiff ℝ ∞ f) :
     ContDiff ℝ ∞ (NSEMaxwell.Classical.gradient f) := by
