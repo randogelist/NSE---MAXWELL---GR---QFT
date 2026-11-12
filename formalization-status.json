@@ -14,28 +14,21 @@
     "K": "curl of actual mean-zero inverse-Laplacian Fourier formula"
   },
   "open_analytic_obligations": [
-    "Fourier inverse-Laplacian convergence and smoothness",
-    "Periodic Hodge reconstruction including harmonic mean",
-    "Commutation with space/time derivatives",
-    "Vector-calculus and constitutive chain identities",
-    "Conservation of spatial velocity mean",
-    "Canonical velocity/pressure/Maxwell regularity through t=0"
+    "Concrete periodic velocity Hodge reconstruction including the harmonic mean",
+    "Concrete curl inversion on mean-zero divergence-free magnetic data",
+    "Joint canonical velocity/pressure smoothness through t=0 and velocity incompressibility",
+    "Concrete electric Hodge identity with the prescribed scalar Fourier potential"
   ],
   "promotion_rule": "Matching native-Windows compiler and theorem-level axiom evidence; semantic hypotheses audited separately.",
-  "prepared_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE",
-  "prepared_root_type": "NSEMaxwell.Bridge.PeriodicAnalyticLaws -> NSEMaxwell.Classical.ExactEquivalence",
-  "conditional_root_status": "CONDITIONAL_FORMAL_CLOSURE",
+  "prepared_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED",
+  "prepared_root_type": "NSEMaxwell.Bridge.FourierHodgeLaws -> NSEMaxwell.Classical.ExactEquivalence",
+  "conditional_root_status": "A_TIER_CANDIDATE",
   "analytic_laws_inhabitant_provided": false,
   "open_analytic_endpoints": [
     "reconstruct_velocity",
     "reconstruct_curl",
-    "vorticity_regularity",
-    "canonical_regularity",
-    "mean_conservation",
-    "vorticity_residual",
-    "reconstruction_time",
-    "electric_hodge",
-    "electric_time_chain"
+    "canonical_smoothness",
+    "electric_hodge"
   ],
   "prepared_discharges": [
     "operator_negation",
@@ -125,5 +118,21 @@
     "electric_periodic",
     "charge_periodic",
     "current_periodic"
-  ]
+  ],
+  "original_conditional_root": {
+    "name": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE",
+    "type": "NSEMaxwell.Bridge.PeriodicAnalyticLaws -> NSEMaxwell.Classical.ExactEquivalence",
+    "status": "A_TIER_FOR_EXACT_CONDITIONAL_IMPLICATION",
+    "analytic_endpoints": [
+      "reconstruct_velocity",
+      "reconstruct_curl",
+      "vorticity_regularity",
+      "canonical_regularity",
+      "mean_conservation",
+      "vorticity_residual",
+      "reconstruction_time",
+      "electric_hodge",
+      "electric_time_chain"
+    ]
+  }
 }

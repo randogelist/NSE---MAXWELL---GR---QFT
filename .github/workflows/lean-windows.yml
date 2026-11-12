@@ -74,6 +74,15 @@ jobs:
         shell: cmd
         run: run.cmd
 
+      - name: Preserve matching compiler and theorem evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: native-windows-lean-${{ github.sha }}-${{ github.run_attempt }}
+          path: artifacts/external-windows/
+          if-no-files-found: error
+          retention-days: 30
+
       - name: Identify reusable cache directories
         id: cache-directories
         if: always()
@@ -100,11 +109,3 @@ jobs:
             .mathlib-download-cache
           key: ${{ steps.lean-cache.outputs.cache-primary-key }}
 
-      - name: Preserve matching compiler and theorem evidence
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: native-windows-lean-${{ github.sha }}-${{ github.run_attempt }}
-          path: artifacts/external-windows/
-          if-no-files-found: error
-          retention-days: 30

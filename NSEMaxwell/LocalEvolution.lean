@@ -183,10 +183,15 @@ theorem vorticity_residual
       NSEMaxwell.Classical.gradient (fun x : Vec => ‖u t x‖ ^ 2 / 2)) +
       NSEMaxwell.Classical.gradient (p t)
     abel
+  have hdtA : ContDiff ℝ ∞ (timeDerivative u t + A) := by
+    simpa only [Pi.add_def] using hdt.add hA
+  have hdtAK : ContDiff ℝ ∞ ((timeDerivative u t + A) +
+      NSEMaxwell.Classical.gradient (fun x : Vec => ‖u t x‖ ^ 2 / 2)) := by
+    simpa only [Pi.add_def] using hdtA.add (gradient_smooth hK)
   rw [hsplit,
-    spatialCurl_add (((hdt.add hA).add (gradient_smooth hK)).differentiable (by simp))
+    spatialCurl_add (hdtAK.differentiable (by simp))
       ((gradient_smooth hps).differentiable (by simp)),
-    spatialCurl_add ((hdt.add hA).differentiable (by simp))
+    spatialCurl_add (hdtA.differentiable (by simp))
       ((gradient_smooth hK).differentiable (by simp)),
     spatialCurl_add (hdt.differentiable (by simp)) (hA.differentiable (by simp)),
     spatialCurl_gradient hK, spatialCurl_gradient hps, add_zero, add_zero,

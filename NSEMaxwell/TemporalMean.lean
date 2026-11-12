@@ -36,8 +36,10 @@ theorem local_uniform_time_bound
     (timeDerivative_smooth hu).continuousOn.mono hsub
   obtain ⟨C, hC⟩ := hcompact.exists_bound_of_continuousOn hcont
   refine ⟨C, integrableOn_unitCube_of_continuous continuous_const, ?_⟩
+  have hupper_nhds : ∀ᶠ s in 𝓝 t, s < t + 1 :=
+    Iio_mem_nhds (lt_add_one t)
   have hupper : ∀ᶠ s in 𝓝[Ici (0 : ℝ)] t, s < t + 1 :=
-    (Iio_mem_nhds (lt_add_one t)).filter_mono inf_le_left
+    hupper_nhds.filter_mono inf_le_left
   filter_upwards [self_mem_nhdsWithin, hupper] with s hs hsu
   intro x hx
   exact Convex.norm_image_sub_le_of_norm_hasDerivWithin_le
