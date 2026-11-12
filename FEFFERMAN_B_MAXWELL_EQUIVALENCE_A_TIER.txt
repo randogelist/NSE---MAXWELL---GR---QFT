@@ -241,6 +241,12 @@ structure PeriodicAnalyticLaws : Prop where
   Fourth external run 43314027653: Lamb compiled without memory failure.
   One CurlCurl function-wrapper mismatch remained and is corrected by an
   explicit function equality.
-  Exact current root compilation: pending.
-  Exact current root theorem-level axiom audit: pending.
-  Current promotion: none.
+  Fifth external run 43315688624: complete project compilation PASS;
+  Lean audit command PASS; source-manifest verification PASS; 74 complete
+  theorem records. Raw axiom declarations are precisely propext,
+  Classical.choice.{u}, and Quot.sound.{u}.
+  The original postprocessor rejected printed universe suffixes literally.
+  Its corrected identity parser preserves raw renderings and recognizes only
+  terminal well-formed universe instantiations; the allowlist is unchanged.
+  Final automated external verification with the corrected parser: pending.
+  Exact unconditional target: OPEN (nine analytic premises unresolved).
