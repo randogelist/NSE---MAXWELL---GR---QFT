@@ -100,34 +100,34 @@ theorem scalarTimeDerivative_congr_field {p q : Pressure}
     spatialCurl (fun _ : Vec => a) = 0 := by
   funext x
   ext i
-  simp [spatialCurl, coordinateDerivative]
+  simp [spatialCurl, coordinateDerivative, PiLp.toLp_apply]
 
 @[simp] theorem coordinateDerivative_zero (i : Fin 3) :
     coordinateDerivative (0 : Field) i = 0 := by
-  simpa using coordinateDerivative_const (0 : Vec) i
+  exact coordinateDerivative_const (0 : Vec) i
 
 @[simp] theorem divergence_zero : divergence (0 : Field) = 0 := by
-  simpa using divergence_const (0 : Vec)
+  exact divergence_const (0 : Vec)
 
 @[simp] theorem gradient_zero : gradient (0 : ScalarField) = 0 := by
-  simpa using gradient_const (0 : ℝ)
+  exact gradient_const (0 : ℝ)
 
 @[simp] theorem laplacian_zero : laplacian (0 : Field) = 0 := by
-  simpa using laplacian_const (0 : Vec)
+  exact laplacian_const (0 : Vec)
 
 @[simp] theorem convection_zero : convection (0 : Field) = 0 := by
-  simpa using convection_const (0 : Vec)
+  exact convection_const (0 : Vec)
 
 @[simp] theorem spatialCurl_zero : spatialCurl (0 : Field) = 0 := by
-  simpa using spatialCurl_const (0 : Vec)
+  exact spatialCurl_const (0 : Vec)
 
 @[simp] theorem cross_zero_left (a : Vec) : cross 0 a = 0 := by
   ext i
-  simp [cross]
+  simp [cross, PiLp.toLp_apply]
 
 @[simp] theorem cross_zero_right (a : Vec) : cross a 0 = 0 := by
   ext i
-  simp [cross]
+  simp [cross, PiLp.toLp_apply]
 
 @[simp] theorem timeDerivative_const (a : Field) (t : ℝ) :
     timeDerivative (fun _ : ℝ => a) t = 0 := by

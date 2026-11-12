@@ -1,0 +1,217 @@
+THEOREM: FEFFERMAN_B_MAXWELL_EQUIVALENCE
+MODE: A_TIER_DERIVATION
+SOURCE_STATUS: A_TIER_CANDIDATE
+EXACT_UNCONDITIONAL_TARGET_STATUS: OPEN
+LOCAL_LEAN_EXECUTIONS: 0
+LOCAL_LAKE_EXECUTIONS: 0
+
+1. EXACT ROOT PROPOSITION
+
+  NSEMaxwell.Classical.ExactEquivalence
+  := forall nu : Real, 0 < nu -> forall c : Real, 0 < c ->
+       (FeffermanB nu <-> MaxwellB nu c).
+
+  FeffermanB nu
+  := forall a : Field, Data a ->
+       exists u : Velocity, exists p : Pressure, NSSolution nu a u p.
+
+  MaxwellB nu c
+  := forall m : Vec, forall B0 : Field, MagneticData B0 ->
+       exists B E : Velocity, exists rho : Pressure, exists J : Velocity,
+         MaxwellSolution nu c m B0 B E rho J.
+
+2. CONCRETE DOMAIN AND OPERATORS
+
+  Vec = EuclideanSpace Real (Fin 3).
+  Field = Vec -> Vec.
+  Velocity = Real -> Field.
+  Pressure = Real -> Vec -> Real.
+  Spatial domain = unit-periodic lifts on Vec.
+  Time domain = [0,infinity), including t = 0.
+  Smoothness = joint ContDiffOn Real infinity on forward spacetime.
+  Initial smoothness = ContDiff Real infinity.
+  Spatial derivatives = Mathlib fderiv.
+  Time derivatives = Mathlib derivWithin on Ici 0.
+  Spatial means = Lebesgue integrals over the unit cube.
+  Velocity mean = arbitrary m in Vec.
+  Pressure = periodic; spatial-constant time-dependent gauge unrestricted.
+  Forcing = zero.
+
+  Lf(x) = sum_{k in Z^3} lambda(k)
+            integral_[0,1]^3 cos(2*pi*k dot (x-y)) f(y) dy,
+  lambda(0)=0,
+  lambda(k)=(4*pi^2*|k|^2)^(-1), k != 0.
+  K = curl L.
+  U_m[B] = m + K B.
+  G_nu,m[B] = B cross U_m[B] + nu curl B.
+  V_nu,m[B] = -curl G_nu,m[B].
+  Q_nu,m[B] = div G_nu,m[B].
+  DG_nu,m[B](h) = h cross U_m[B] + B cross K h + nu curl h.
+  J_nu,c,m[B] = c^2 curl B - DG_nu,m[B](V_nu,m[B]).
+  pB = L Q[B] - |U_m[B]|^2/2 + mean(|U_m[B]|^2)/2.
+
+  The Fourier expressions are total definitions.
+  Their analytic properties are not consequences of their declarations alone.
+
+3. PREPARED ROOT DECLARATION
+
+  theorem NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE
+      (analyticLaws : NSEMaxwell.Bridge.PeriodicAnalyticLaws) :
+      NSEMaxwell.Classical.ExactEquivalence
+
+  EXACT PREPARED IMPLICATION:
+
+    PeriodicAnalyticLaws -> ExactEquivalence.
+
+  This declaration contains an explicit unresolved analytic premise.
+  No declaration supplies an inhabitant of PeriodicAnalyticLaws.
+  The unconditional ExactEquivalence is not established.
+
+4. ANALYTIC PREMISE REGISTER
+
+  Remaining fields: P01--P10, P13--P17 (15 analytic obligations).
+  P11, P12, P18 have concrete proof terms and have been removed from the
+  premise structure. External compilation of these new terms is pending.
+
+  P01 curl_data:
+      Data a -> MagneticData(curl a).
+
+  P02 reconstruction_data:
+      MagneticData B -> Data(m + K B).
+
+  P03 reconstruct_velocity:
+      Data a -> U_mean(a)[curl a] = a.
+
+  P04 reconstruct_curl:
+      MagneticData B -> curl(U_m[B]) = B.
+
+  P05 reconstruct_mean:
+      MagneticData B -> mean(U_m[B]) = m.
+
+  P06 vorticity_regularity:
+      Smooth periodic divergence-free u -> MagneticPath(curl u).
+
+  P07 canonical_regularity:
+      MagneticPath B -> joint smoothness and periodicity of canonical
+      velocity, pressure, E, rho, J, and divergence-free canonical velocity.
+
+  P08 mean_conservation:
+      Smooth periodic divergence-free u, smooth periodic p, and zero
+      momentum residual -> mean(u(t)) = mean(u(0)), t >= 0.
+
+  P09 vorticity_residual:
+      curl(R_N) = partial_t(curl u)
+        + curl((curl u) cross u + nu curl(curl u)), without assuming R_N=0.
+
+  P10 reconstruction_time:
+      partial_t(U_m[B]) = K(partial_t B).
+
+  P11 lamb_identity [CONCRETE PROOF TERM PREPARED; REMOVED FROM PREMISES]:
+      convection(U_m[B]) = B cross U_m[B] + grad(|U_m[B]|^2/2).
+
+  P12 pressure_gradient [CONCRETE PROOF TERM PREPARED; REMOVED FROM PREMISES]:
+      grad pB = grad(L Q[B]) - grad(|U_m[B]|^2/2).
+
+  P13 viscosity_identity:
+      nu Delta(U_m[B]) = -nu curl B.
+
+  P14 electric_hodge:
+      G[B] + grad(L Q[B]) = K(curl G[B]).
+
+  P15 K_residual_add:
+      K(B_t + curl G[B]) = K(B_t) + K(curl G[B]).
+      Quantification is restricted to MagneticPath B and t >= 0.
+
+  P16 electric_time_chain:
+      partial_t(G[B]) = DG[B](B_t).
+
+  P17 DG_residual_add:
+      DG[B](B_t + curl G[B]) = DG[B](B_t) + DG[B](curl G[B]).
+      Quantification is restricted to MagneticPath B and t >= 0.
+
+  P18 DG_curl_neg [CONCRETE PROOF TERM PREPARED; REMOVED FROM PREMISES]:
+      DG[B](-curl G[B]) = -DG[B](curl G[B]).
+      The new concrete theorem holds for all fields without regularity premises.
+
+  No premise is an arbitrary proposition variable standing for FB or MB.
+  No premise is a forward/backward global existence map.
+  No premise asserts global K-linearity on all arbitrary nonsmooth fields.
+  The remaining analytic obligations are P01--P10 and P13--P17.
+
+5. PREPARED DETERMINISTIC PROOF SPINE
+
+  Concrete definitions
+    -> actual slice-smoothness and derivative-congruence lemmas
+    -> actual zero-input identities
+    -> concrete cross-product and constitutive algebra
+    -> explicit primitive analytic identities P01--P10 and P13--P17
+    -> canonical_momentum_factorization: R_N = K R_F
+    -> maxwell_of_faraday: R_F=0 -> exact canonical Maxwell solution
+    -> faraday_of_ns: exact NSE solution -> R_F=0
+    -> maxwell_of_ns: exact forward solution construction
+    -> ns_of_maxwell: exact reverse solution construction
+    -> feffermanB_iff_maxwellB_of_periodicAnalyticLaws
+    -> exact_equivalence_of_periodicAnalyticLaws
+    -> FEFFERMAN_B_MAXWELL_EQUIVALENCE.
+
+  Mean m is retained in both data maps.
+  The reverse construction supplies the explicit periodic pressure pB.
+  The final universal-existence implication uses actual solution structures.
+
+6. EXTERNAL COMPILER CONTRACT
+
+  Platform: native Windows.
+  Compiler: leanprover/lean4:v4.34.0-rc1.
+  Mathlib: de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
+  Entry point: run.cmd.
+  Build target: NSEMaxwell.
+  Audit file: NSEMaxwell/Audit.lean.
+  Audit targets: audit-targets.txt.
+  Approved foundational axioms: propext, Classical.choice, Quot.sound.
+
+  Caches are restored and preserved, including after failed builds.
+  Official Mathlib cache retrieval is required.
+  Cache clean, Lake clean, and cache get! are excluded.
+
+7. EVIDENCE CONTRACT
+
+  artifacts/external-windows/run-provenance.json
+  artifacts/external-windows/source-manifest.json
+  artifacts/external-windows/lean-version.log
+  artifacts/external-windows/mathlib-revision.log
+  artifacts/external-windows/run-cache.log
+  artifacts/external-windows/run-build.log
+  artifacts/external-windows/run-audit.log
+  artifacts/external-windows/audit-summary.json
+
+  Required match: compiler version + dependency revision + source SHA-256
+  manifest + successful project compilation + exact theorem signatures +
+  exact theorem-level axiom records.
+
+  An audit of a theorem with P01--P10 and P13--P17 as hypotheses cannot certify those
+  hypotheses. A clean axiom list alone is insufficient for unconditional
+  closure of the selected equivalence.
+
+8. PROMOTION RULES
+
+  Prepared proof source -> A_TIER_CANDIDATE only.
+  Matching external evidence for the conditional root -> A_TIER for that
+    exact conditional implication.
+  Audited conditional root with P01--P10 and P13--P17 unresolved ->
+    CONDITIONAL_FORMAL_CLOSURE of that implication only.
+  Unconditional selected theorem -> requires a proved inhabitant of
+    PeriodicAnalyticLaws, followed by matching external compiler and audit.
+
+  Neither FeffermanB nor MaxwellB is proved as a global existence assertion.
+  No Navier--Stokes regularity result follows merely from the equivalence.
+
+9. CURRENT EXTERNAL EVIDENCE
+
+  Initial external Windows validation: completed; six zero-field-wrapper
+  elaboration failures identified and repaired in source.
+  Initial run: 43307765291.
+  Compiler and Mathlib caches: preserved.
+  The initial run does not certify the later conditional root.
+  Exact matching conditional-root compilation: pending.
+  Exact matching conditional-root axiom audit: pending.
+  Current promotion: none.

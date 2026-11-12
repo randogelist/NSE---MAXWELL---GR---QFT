@@ -1,5 +1,10 @@
 import NSEMaxwell.Classical
 import NSEMaxwell.Kinematics
 import NSEMaxwell.Constitutive
+import NSEMaxwell.Negation
+import NSEMaxwell.Lamb
+import NSEMaxwell.Pressure
 import NSEMaxwell.Residual
 import NSEMaxwell.ExistenceTransport
+import NSEMaxwell.AnalyticBridge
+import NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE

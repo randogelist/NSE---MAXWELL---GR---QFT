@@ -4,6 +4,17 @@ set_option pp.universes true
 set_option pp.fullNames true
 set_option pp.proofs false
 
+#print NSEMaxwell.Classical.Data
+#print NSEMaxwell.Classical.MagneticData
+#print NSEMaxwell.Classical.NSSolution
+#print NSEMaxwell.Classical.MaxwellSolution
+#print NSEMaxwell.Classical.FeffermanB
+#print NSEMaxwell.Classical.MaxwellB
+#print NSEMaxwell.Classical.ExactEquivalence
+#print NSEMaxwell.Bridge.MagneticPath
+#print NSEMaxwell.Bridge.CanonicalRegularity
+#print NSEMaxwell.Bridge.PeriodicAnalyticLaws
+
 #check @NSEMaxwell.Classical.velocity_slice_smooth
 #print axioms NSEMaxwell.Classical.velocity_slice_smooth
 
@@ -90,3 +101,81 @@ set_option pp.proofs false
 
 #check @NSEMaxwell.ExistenceTransport.forall_nonempty_iff_of_solution_equiv
 #print axioms NSEMaxwell.ExistenceTransport.forall_nonempty_iff_of_solution_equiv
+
+#check @NSEMaxwell.Bridge.MagneticPath.slice
+#print axioms NSEMaxwell.Bridge.MagneticPath.slice
+
+#check @NSEMaxwell.Bridge.momentum_zero_of_ns
+#print axioms NSEMaxwell.Bridge.momentum_zero_of_ns
+
+#check @NSEMaxwell.Bridge.canonical_momentum_factorization
+#print axioms NSEMaxwell.Bridge.canonical_momentum_factorization
+
+#check @NSEMaxwell.Bridge.maxwell_of_faraday
+#print axioms NSEMaxwell.Bridge.maxwell_of_faraday
+
+#check @NSEMaxwell.Bridge.faraday_of_ns
+#print axioms NSEMaxwell.Bridge.faraday_of_ns
+
+#check @NSEMaxwell.Bridge.maxwell_of_ns
+#print axioms NSEMaxwell.Bridge.maxwell_of_ns
+
+#check @NSEMaxwell.Bridge.ns_of_maxwell
+#print axioms NSEMaxwell.Bridge.ns_of_maxwell
+
+#check @NSEMaxwell.Bridge.feffermanB_iff_maxwellB_of_periodicAnalyticLaws
+#print axioms NSEMaxwell.Bridge.feffermanB_iff_maxwellB_of_periodicAnalyticLaws
+
+#check @NSEMaxwell.Bridge.exact_equivalence_of_periodicAnalyticLaws
+#print axioms NSEMaxwell.Bridge.exact_equivalence_of_periodicAnalyticLaws
+
+#check @NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE
+#print axioms NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE
+
+#check @NSEMaxwell.Classical.coordinateDerivative_neg
+#print axioms NSEMaxwell.Classical.coordinateDerivative_neg
+
+#check @NSEMaxwell.Classical.spatialCurl_neg
+#print axioms NSEMaxwell.Classical.spatialCurl_neg
+
+#check @NSEMaxwell.Classical.vectorL_neg
+#print axioms NSEMaxwell.Classical.vectorL_neg
+
+#check @NSEMaxwell.Classical.scalarL_neg
+#print axioms NSEMaxwell.Classical.scalarL_neg
+
+#check @NSEMaxwell.Classical.K_neg
+#print axioms NSEMaxwell.Classical.K_neg
+
+#check @NSEMaxwell.Classical.DG_neg
+#print axioms NSEMaxwell.Classical.DG_neg
+
+#check @NSEMaxwell.Classical.DG_curl_neg
+#print axioms NSEMaxwell.Classical.DG_curl_neg
+
+#check @NSEMaxwell.Lamb.vector_coordinate_decomposition
+#print axioms NSEMaxwell.Lamb.vector_coordinate_decomposition
+
+#check @NSEMaxwell.Lamb.convection_coordinate
+#print axioms NSEMaxwell.Lamb.convection_coordinate
+
+#check @NSEMaxwell.Lamb.kinetic_gradient_coordinate
+#print axioms NSEMaxwell.Lamb.kinetic_gradient_coordinate
+
+#check @NSEMaxwell.Lamb.lamb_identity_at
+#print axioms NSEMaxwell.Lamb.lamb_identity_at
+
+#check @NSEMaxwell.Lamb.lamb_identity
+#print axioms NSEMaxwell.Lamb.lamb_identity
+
+#check @NSEMaxwell.Lamb.lamb_identity_of_data
+#print axioms NSEMaxwell.Lamb.lamb_identity_of_data
+
+#check @NSEMaxwell.Lamb.reconstructed_lamb_identity
+#print axioms NSEMaxwell.Lamb.reconstructed_lamb_identity
+
+#check @NSEMaxwell.Classical.gradient_pressure_decomposition
+#print axioms NSEMaxwell.Classical.gradient_pressure_decomposition
+
+#check @NSEMaxwell.Classical.canonicalPressure_gradient
+#print axioms NSEMaxwell.Classical.canonicalPressure_gradient

@@ -30,7 +30,15 @@ ANALYTIC_REALIZATION = OPEN
 LOCAL_LEAN_EXECUTIONS = 0
 ```
 
-The residual modules prove algebraic implications from explicit identities. Concrete differential and zero-input lemmas are separately stated. None of these declarations supplies the missing periodic Hodge and smooth Fourier realization proofs. The definition `ExactEquivalence` carries no proof.
+The prepared concrete root has type:
+
+```lean
+NSEMaxwell.Bridge.PeriodicAnalyticLaws → NSEMaxwell.Classical.ExactEquivalence
+```
+
+`PeriodicAnalyticLaws` contains fifteen explicit local analytic obligations. It contains neither an existence assertion nor a map between global solution-existence propositions. Its fields include periodic Hodge reconstruction, smooth Fourier realization, derivative commutation, conservation of mean, and the constitutive chain rule. No inhabitant of this structure is supplied.
+
+The conditional proof constructs both solutions on the actual fields, with the initial-data maps `a ↦ (mean a, curl a)` and `(m, B₀) ↦ m + K B₀`, and reconstructs the explicit periodic pressure. The unconditional `ExactEquivalence` remains open.
 
 ## External compilation
 
@@ -53,8 +61,14 @@ Approved foundational axioms: `propext`, `Classical.choice`, `Quot.sound`. A mat
 | `NSEMaxwell/Classical.lean` | Concrete PDE definitions and exact target proposition |
 | `NSEMaxwell/Kinematics.lean` | Concrete slice, derivative-congruence, and zero-input lemmas |
 | `NSEMaxwell/Constitutive.lean` | Concrete constitutive algebra and explicit residual identities |
+| `NSEMaxwell/Negation.lean` | Actual negation identities without regularity premises |
+| `NSEMaxwell/Lamb.lean` | Actual Lamb identity from first derivatives |
+| `NSEMaxwell/Pressure.lean` | Actual canonical pressure-gradient identity |
 | `NSEMaxwell/Residual.lean` | Abstract additive residual proof spine |
 | `NSEMaxwell/ExistenceTransport.lean` | Logical transport across explicit data and solution maps |
+| `NSEMaxwell/AnalyticBridge.lean` | Explicit analytic premises and concrete forward/reverse solution constructions |
+| `NSEMaxwell/FEFFERMAN_B_MAXWELL_EQUIVALENCE.lean` | Conditional root theorem with the exact concrete conclusion |
+| `FEFFERMAN_B_MAXWELL_EQUIVALENCE_A_TIER.txt` | Scope, premise register, proof spine, and evidence contract |
 | `NSEMaxwell/Audit.lean` | Enumerated theorem signatures and axiom audit |
 | `formalization-status.json` | Exact semantic status and unresolved obligations |
 | `docs/FEFFERMAN_B_MAXWELL_EQUIVALENCE_B_TIER.txt` | Mathematical derivation |

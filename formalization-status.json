@@ -21,5 +21,31 @@
     "Conservation of spatial velocity mean",
     "Canonical velocity/pressure/Maxwell regularity through t=0"
   ],
-  "promotion_rule": "Matching native-Windows compiler and theorem-level axiom evidence; semantic hypotheses audited separately."
+  "promotion_rule": "Matching native-Windows compiler and theorem-level axiom evidence; semantic hypotheses audited separately.",
+  "prepared_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE",
+  "prepared_root_type": "NSEMaxwell.Bridge.PeriodicAnalyticLaws -> NSEMaxwell.Classical.ExactEquivalence",
+  "conditional_root_status": "A_TIER_CANDIDATE",
+  "analytic_laws_inhabitant_provided": false,
+  "open_analytic_endpoints": [
+    "curl_data",
+    "reconstruction_data",
+    "reconstruct_velocity",
+    "reconstruct_curl",
+    "reconstruct_mean",
+    "vorticity_regularity",
+    "canonical_regularity",
+    "mean_conservation",
+    "vorticity_residual",
+    "reconstruction_time",
+    "viscosity_identity",
+    "electric_hodge",
+    "K_residual_add",
+    "electric_time_chain",
+    "DG_residual_add"
+  ],
+  "prepared_discharges": [
+    "DG_curl_neg",
+    "lamb_identity",
+    "pressure_gradient"
+  ]
 }
