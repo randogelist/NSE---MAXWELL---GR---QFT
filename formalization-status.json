@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "source_status": "A_TIER_CANDIDATE",
+  "exact_target": "NSEMaxwell.Classical.ExactEquivalence",
+  "exact_target_proved": false,
+  "unconditional_closure": false,
+  "local_lean_executions": 0,
+  "concrete_realization": {
+    "domain": "unit-periodic lifts on EuclideanSpace R (Fin 3)",
+    "smoothness": "joint ContDiffOn R infinity on nonnegative spacetime, including t=0",
+    "pressure": "periodic; unrestricted spatial-constant gauge",
+    "velocity_mean": "arbitrary",
+    "forcing": "zero",
+    "K": "curl of actual mean-zero inverse-Laplacian Fourier formula"
+  },
+  "open_analytic_obligations": [
+    "Fourier inverse-Laplacian convergence and smoothness",
+    "Periodic Hodge reconstruction including harmonic mean",
+    "Commutation with space/time derivatives",
+    "Vector-calculus and constitutive chain identities",
+    "Conservation of spatial velocity mean",
+    "Canonical velocity/pressure/Maxwell regularity through t=0"
+  ],
+  "promotion_rule": "Matching native-Windows compiler and theorem-level axiom evidence; semantic hypotheses audited separately."
+}

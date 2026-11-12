@@ -1,0 +1,1242 @@
+FEFFERMAN_B_MAXWELL_EQUIVALENCE_B_TIER
+========================================
+
+DATE: 2026-11-12
+MODE: B_TIER_DERIVATION
+ROOT_STATUS: ! = B_TIER
+ROOT:
+  For every nu > 0 and every c > 0,
+                 FB(nu) <=> MB(nu,c).
+
+SCOPE:
+  Original periodic, unforced Fefferman Part (B), including periodic pressure.
+  All smooth divergence-free periodic initial velocities.
+  Arbitrary conserved velocity mean.
+  Global C^infinity regularity through t = 0.
+  Maxwell equations with explicitly fixed nonlinear, nonlocal constitutive
+  and source laws.
+
+STATUS_BOUNDARY:
+  The equivalence is derived in this document.
+  Neither global existence assertion is proved by the equivalence.
+  No A_TIER, FORMAL_CLOSURE, or UNCONDITIONAL_CLOSURE status is claimed.
+  No Lean execution or compiler-evidence claim occurs.
+
+0. AUTHORITATIVE SCOPE
+---------------------
+
+Reference [F]: Charles L. Fefferman, "Existence and Smoothness of the
+Navier-Stokes Equation", Clay Mathematics Institute, Part (B), PDF page 2;
+periodic-pressure correction, PDF page 6.
+
+Domain:
+  T^3 := R^3 / Z^3, with normalized volume 1.
+  t in [0,infinity).
+  nu > 0.
+  f = 0.
+
+Regularity:
+  C^infinity(T^3 x [0,infinity))
+  means smoothness in space and time up to the initial boundary.
+  All one-sided time derivatives at t=0 extend continuously there.
+  No analyticity hypothesis is imposed.
+  No uniform-in-time bound on all derivatives is imposed.
+
+Periodicity:
+  u(t,x+e_j) = u(t,x),
+  p(t,x+e_j) = p(t,x),  j=1,2,3.
+
+Initial datum:
+  a in C^infinity(T^3;R^3), div a = 0.
+  No restriction <a> = 0 is imposed.
+
+The periodic assertion does not impose finite kinetic energy over the
+whole covering space R^3. The torus kinetic-energy identity is derived
+below from the equations.
+
+1. DEFINITIONS AND FOURIER OPERATORS
+-----------------------------------
+
+For a periodic scalar, vector, or tensor field f:
+
+  <f> := integral_{T^3} f(x) dx,
+  Delta := partial_1^2 + partial_2^2 + partial_3^2,
+  curl := nabla x,
+  div := nabla dot.
+
+All vector products use the standard orientation of R^3.
+
+Define:
+
+  U := {a in C^infinity(T^3;R^3) : div a = 0},
+
+  X := {b in C^infinity(T^3;R^3) :
+                         div b = 0 and <b> = 0}.
+
+For k in Z^3:
+
+  fhat(k) := integral_{T^3} f(x) exp(-2*pi*i*k dot x) dx.
+
+Define the mean-zero pseudoinverse L, componentwise:
+
+  (Lf)^hat(0) := 0,
+
+  (Lf)^hat(k) := fhat(k)/(4*pi^2*|k|^2),   k != 0.
+
+For arbitrary f, Lf = L(f-<f>). On mean-zero fields, L is the inverse
+(-Delta)^(-1). Thus:
+
+  -Delta Lf = f - <f>,
+  <Lf> = 0,
+  L Delta f = -f + <f>.
+
+In particular, <f>=0 implies -Delta Lf=f.
+
+Define:
+
+  K := curl L.
+
+For b in X:
+
+  (Kb)^hat(k)
+    = (2*pi*i*k x bhat(k))/(4*pi^2*|k|^2),  k != 0,
+
+  (Kb)^hat(0) = 0.
+
+Smoothness lemma.
+
+  For f in C^infinity(T^3), Fourier coefficients decay faster than every
+  inverse power of |k|. The multipliers defining L and K preserve this
+  property. Hence L and K preserve C^infinity regularity and real-valuedness.
+
+  For a jointly smooth time-dependent field on T^3 x [0,infinity), these
+  estimates hold uniformly on each compact time interval for every time
+  derivative. Thus L and K preserve joint smoothness through t=0 and
+  commute with partial_t and all spatial derivatives.
+
+2. EXACT FEFFERMAN-B PREDICATE
+----------------------------
+
+For fixed nu > 0, define FB(nu) by:
+
+  For every a in U, there exist
+
+    u in C^infinity(T^3 x [0,infinity);R^3),
+    p in C^infinity(T^3 x [0,infinity);R),
+
+  such that for every t >= 0 and x in T^3,
+
+    partial_t u + (u dot nabla)u + nabla p = nu Delta u,
+    div u = 0,
+    u(0,x) = a(x).
+
+Define:
+
+  FB := forall nu > 0, FB(nu).
+
+This is Part (B) in torus notation, with its periodic-pressure correction.
+Existence is the asserted endpoint; uniqueness need not be added to the
+definition.
+
+3. COMPLETE INITIAL-DATA COORDINATES
+-----------------------------------
+
+Lemma 3.1. For every b in X:
+
+  div Kb = 0,
+  <Kb> = 0,
+  curl Kb = b.
+
+Proof.
+
+  div curl = 0, and the integral of a periodic curl is zero.
+
+  Since div b = 0 and L commutes with spatial derivatives,
+
+    curl Kb
+      = curl curl Lb
+      = nabla div Lb - Delta Lb
+      = b.                                                   QED
+
+Lemma 3.2. For every a in U:
+
+  K curl a = a - <a>.
+
+Proof.
+
+  K curl a
+    = curl L curl a
+    = curl curl La
+    = nabla div La - Delta La
+    = a - <a>.                                               QED
+
+Corollary 3.3. The maps
+
+  a |-> (m,b0) := (<a>, curl a),
+
+  (m,b0) |-> a := m + Kb0,
+
+are inverse bijections:
+
+                  U <=> R^3 x X.
+
+In particular:
+
+  b0 = 0
+  corresponds to every constant velocity a = m.
+
+The harmonic velocity mode m is part of the initial-data coordinates.
+
+Lemma 3.4. A smooth periodic field F satisfying
+
+  curl F = 0,
+  div F = 0,
+  <F> = 0
+
+vanishes identically.
+
+Proof.
+
+  Delta F = nabla div F - curl curl F = 0.
+  Thus every nonzero Fourier coefficient vanishes.
+  The zero coefficient is <F> = 0.                            QED
+
+4. FIXED CONSTITUTIVE AND SOURCE OPERATORS
+----------------------------------------
+
+Fix:
+
+  nu > 0,  c > 0,  m in R^3.
+
+For b in X, define:
+
+  U_m[b] := m + Kb,
+
+  G_{nu,m}[b]
+    := b x U_m[b] + nu curl b,
+
+  V_{nu,m}[b]
+    := -curl G_{nu,m}[b]
+     = nu Delta b - curl(b x U_m[b]),
+
+  Q_{nu,m}[b]
+    := div G_{nu,m}[b].
+
+Since V_{nu,m}[b] is a periodic curl:
+
+  div V_{nu,m}[b] = 0,
+  <V_{nu,m}[b]> = 0.
+
+Therefore V_{nu,m}[b] belongs to X and K V_{nu,m}[b] is defined.
+
+For h in X:
+
+  DG_{nu,m}[b](h)
+    = h x U_m[b] + b x Kh + nu curl h.
+
+Define the spatial current operator:
+
+  Jcal_{nu,c,m}[b]
+    := c^2 curl b - DG_{nu,m}[b](V_{nu,m}[b])
+
+     = c^2 curl b
+       - V_{nu,m}[b] x U_m[b]
+       - b x K V_{nu,m}[b]
+       - nu curl V_{nu,m}[b].
+
+Every operator on the right is already defined.
+No independent time derivative occurs in Q or Jcal.
+No unknown external source is introduced.
+
+Lemma 4.1. For every b in X, writing U = U_m[b]:
+
+  div U = 0,
+  curl U = b,
+  Delta U = -curl b,
+
+  (U dot nabla)U
+    = nabla(|U|^2/2) + b x U.
+
+Proof.
+
+  The first three identities follow from Section 3 and
+  curl curl U = nabla div U - Delta U.
+
+  The last identity follows componentwise from the standard cross-product
+  identity for U x curl U:
+
+    U x curl U = nabla(|U|^2/2) - (U dot nabla)U.               QED
+
+Lemma 4.2. For every b in X:
+
+  <G_{nu,m}[b]> = 0.
+
+Proof.
+
+  By Lemma 4.1,
+
+    b x U = (U dot nabla)U - nabla(|U|^2/2).
+
+  For each component i, periodicity and div U = 0 give
+
+    integral U_j partial_j U_i
+      = integral partial_j(U_j U_i)
+        - integral (partial_j U_j)U_i
+      = 0,
+
+  with summation over j.
+
+  The integrals of a periodic gradient and a periodic curl are zero.
+  Therefore <b x U + nu curl b> = 0.                          QED
+
+Lemma 4.3. For every b in X:
+
+  Q_{nu,m}[b]
+    = U_m[b] dot curl b - |b|^2,
+
+  <Q_{nu,m}[b]> = 0.
+
+Proof.
+
+  div curl b = 0,
+
+  div(b x U)
+    = U dot curl b - b dot curl U
+    = U dot curl b - |b|^2.
+
+  The mean of a periodic divergence is zero.                 QED
+
+5. MAXWELL EXISTENCE PREDICATE
+----------------------------
+
+Maxwell normalization:
+
+  epsilon_M = 1,
+  mu_M = c^(-2).
+
+For fixed nu > 0 and c > 0, define MB(nu,c) by:
+
+  For every m in R^3 and every b0 in X, there exist globally smooth
+  periodic fields
+
+    B,E,J in C^infinity(T^3 x [0,infinity);R^3),
+    rho   in C^infinity(T^3 x [0,infinity);R),
+
+  satisfying all of the following:
+
+  INITIAL AND HARMONIC CONDITIONS:
+
+    B(0,x) = b0(x),
+    <B(t)> = 0                         for every t >= 0.
+
+  MAXWELL EQUATIONS:
+
+    div B = 0,                                      (M1)
+    partial_t B + curl E = 0,                        (M2)
+    div E = rho,                                    (M3)
+    partial_t E - c^2 curl B = -J.                   (M4)
+
+  CONSTITUTIVE AND SOURCE LAWS:
+
+    E   = G_{nu,m}[B],                               (C1)
+    rho = Q_{nu,m}[B],                               (C2)
+    J   = Jcal_{nu,c,m}[B].                          (C3)
+
+All identities hold on T^3 x [0,infinity).
+The parameter m is constant in time.
+The only freely quantified initial data are (m,b0).
+
+In particular, compatibility fixes:
+
+  E(0)   = G_{nu,m}[b0],
+  rho(0) = Q_{nu,m}[b0],
+  J(0)   = Jcal_{nu,c,m}[b0].
+
+No independent initial E, rho, or J is quantified.
+
+Equivalent reduced predicate:
+
+  For every m in R^3 and b0 in X, there exists
+
+    B in C^infinity(T^3 x [0,infinity);R^3)
+
+  such that
+
+    B(t) in X,
+    B(0) = b0,
+    partial_t B = V_{nu,m}[B].
+
+Proof of equivalence with the full Maxwell predicate.
+
+  Full => reduced:
+
+    By (M2) and (C1),
+      partial_t B = -curl G_{nu,m}[B] = V_{nu,m}[B].
+
+  Reduced => full:
+
+    Define E = G[B], rho = Q[B], J = Jcal[B].
+
+    (M1) follows from B(t) in X.
+    (M2) is the reduced evolution equation.
+    (M3) follows from the definition of Q.
+
+    Since m is constant,
+
+      partial_t E
+        = DG[B](partial_t B)
+        = DG[B](V[B])
+        = c^2 curl B - Jcal[B].
+
+    Hence (M4) holds.
+
+    All four fields are jointly smooth through t=0 by Section 1.
+
+Thus (C2) and (C3) add no unresolved existence premise beyond the
+constitutive Faraday evolution.                                QED
+
+6. FORWARD IMPLICATION: FB(nu) => MB(nu,c)
+-----------------------------------------
+
+Fix nu > 0 and c > 0.
+Assume FB(nu).
+Let m in R^3 and b0 in X be arbitrary.
+
+Step F1. Initial datum.
+
+  Define a := m + Kb0.
+
+  By Lemma 3.1:
+
+    a in U,
+    <a> = m,
+    curl a = b0.
+
+Step F2. Fefferman-B solution.
+
+  By FB(nu), choose globally smooth periodic u,p satisfying
+
+    partial_t u + (u dot nabla)u + nabla p = nu Delta u,
+    div u = 0,
+    u(0) = a.
+
+Step F3. Conserved mean.
+
+  Spatial integration gives
+
+    d/dt <u>
+      = -<(u dot nabla)u> - <nabla p> + nu <Delta u>
+      = 0.
+
+  The nonlinear integral vanishes by div u = 0 and periodicity.
+  The pressure integral vanishes because p is periodic.
+  The Laplacian integral vanishes by periodicity.
+
+  Therefore <u(t)> = m for all t >= 0.
+
+Step F4. Magnetic reconstruction.
+
+  Define B := curl u.
+
+  Then
+
+    B(t) in X,
+    B(0) = b0,
+    u = m + KB = U_m[B].
+
+Step F5. Electric field.
+
+  Define
+
+    Phi := p + |u|^2/2,
+    E := G_{nu,m}[B] = B x u + nu curl B.
+
+  The momentum equation and Lemma 4.1 yield
+
+    partial_t u + E + nabla Phi = 0.                         (F5)
+
+Step F6. Homogeneous Maxwell equations.
+
+  div B = div curl u = 0.
+
+  Taking curl of (F5):
+
+    partial_t B + curl E = 0.
+
+  Hence
+
+    partial_t B = V_{nu,m}[B].
+
+Step F7. Induced sources.
+
+  Define
+
+    rho := Q_{nu,m}[B],
+    J := Jcal_{nu,c,m}[B].
+
+  Then
+
+    div E = rho.
+
+  By the chain rule,
+
+    partial_t E
+      = DG_{nu,m}[B](partial_t B)
+      = DG_{nu,m}[B](V_{nu,m}[B])
+      = c^2 curl B - J.
+
+  Thus all Maxwell equations and constitutive/source laws hold.
+
+Step F8. Global smoothness and initial boundary.
+
+  B is a spatial derivative of smooth u.
+  E,Q,Jcal are fixed combinations of smooth fields, spatial derivatives,
+  products, and K.
+  Section 1 therefore gives joint smoothness on the entire closed
+  time half-line, including t=0.
+
+All clauses of MB(nu,c) are satisfied.
+Since (m,b0) was arbitrary:
+
+                      FB(nu) => MB(nu,c).                    QED
+
+7. REVERSE IMPLICATION: MB(nu,c) => FB(nu)
+-----------------------------------------
+
+Fix nu > 0 and c > 0.
+Assume MB(nu,c).
+Let a in U be arbitrary.
+
+Step R1. Complete initial coordinates.
+
+  Set
+
+    m := <a>,
+    b0 := curl a.
+
+  By Section 3,
+
+    b0 in X,
+    a = m + Kb0.
+
+Step R2. Maxwell solution.
+
+  By MB(nu,c), choose globally smooth periodic B,E,rho,J satisfying
+  (M1)-(M4), (C1)-(C3), and B(0)=b0.
+
+Step R3. Reconstructed velocity.
+
+  Set
+
+    u := m + KB.
+
+  Lemma 3.1 gives
+
+    div u = 0,
+    curl u = B,
+    <u> = m,
+    u(0) = m + Kb0 = a.
+
+  The field u is jointly smooth through t=0.
+
+Step R4. Removal of the harmonic residual.
+
+  Define
+
+    R := partial_t u + E.
+
+  Faraday's equation yields
+
+    curl R
+      = partial_t curl u + curl E
+      = partial_t B + curl E
+      = 0.
+
+  Since m is constant and <KB>=0,
+
+    <partial_t u> = 0.
+
+  By the constitutive law and Lemma 4.2,
+
+    <E> = <G_{nu,m}[B]> = 0.
+
+  Therefore
+
+    <R> = 0.                                                 (R4)
+
+Step R5. Periodic pressure potential.
+
+  Since div u = 0 and div E = rho,
+
+    div R = rho.
+
+  Since rho is a periodic divergence,
+
+    <rho> = 0.
+
+  Define
+
+    H := L rho.
+
+  Thus
+
+    -Delta H = rho,
+    <H> = 0.
+
+  The field W := R + nabla H satisfies
+
+    curl W = 0,
+    div W = rho + Delta H = 0,
+    <W> = 0.
+
+  Lemma 3.4 implies W = 0. Hence
+
+    partial_t u + E + nabla H = 0.                           (R5)
+
+Step R6. Reconstructed pressure.
+
+  Define
+
+    p := H - |u|^2/2 + (1/2)<|u|^2>.                         (R6)
+
+  This choice gives <p> = 0.
+
+  The final term depends only on t; therefore
+
+    nabla(p + |u|^2/2) = nabla H.
+
+  By Section 1 and smoothness of u,rho, the pressure is real-valued,
+  periodic, and jointly smooth through t=0.
+
+Step R7. Momentum equation.
+
+  Substitute E = B x u + nu curl B into (R5):
+
+    partial_t u
+      + B x u
+      + nu curl B
+      + nabla(p + |u|^2/2)
+      = 0.
+
+  Use
+
+    B x u + nabla(|u|^2/2) = (u dot nabla)u,
+    curl B = -Delta u.
+
+  The result is
+
+    partial_t u + (u dot nabla)u + nabla p = nu Delta u.
+
+Together with Step R3, all clauses of FB(nu) are satisfied.
+Since a was arbitrary:
+
+                      MB(nu,c) => FB(nu).                    QED
+
+8. ROOT EQUIVALENCE AND QUANTIFIERS
+---------------------------------
+
+THEOREM FEFFERMAN_B_MAXWELL_EQUIVALENCE.
+
+  For every nu > 0 and every c > 0,
+
+                      FB(nu) <=> MB(nu,c).
+
+Proof.
+
+  Forward implication: Section 6.
+  Reverse implication: Section 7.                            QED
+
+For any fixed c_* > 0:
+
+  FB
+    <=> [forall nu > 0, MB(nu,c_*)]
+    <=> [forall nu > 0, forall c > 0, MB(nu,c)].
+
+In particular, the normalization c=1 is sufficient:
+
+  FB <=> forall nu > 0, MB(nu,1).
+
+No independent global-existence assertion is assumed; each implication
+uses only its explicitly stated antecedent. In each direction, an assumed
+solution of one system is transformed into a solution of the other system.
+
+9. SOLUTION-SET BIJECTION
+------------------------
+
+Fix nu,c > 0, m in R^3, b0 in X, and a := m+Kb0.
+
+Let NS_Sol(nu,a) be the set of globally smooth periodic NSE pairs
+(u,p) with datum a.
+
+Let M_Sol(nu,c,m,b0) be the set of globally smooth Maxwell quadruples
+satisfying Section 5 with datum (m,b0).
+
+Define pressure equivalence by
+
+  (u,p1) ~ (u,p2)
+  iff p2-p1 = C(t) for some C in C^infinity([0,infinity)).
+
+Forward map:
+
+  [(u,p)] |-> (B,E,rho,J),
+
+  B = curl u,
+  E = G_{nu,m}[B],
+  rho = Q_{nu,m}[B],
+  J = Jcal_{nu,c,m}[B].
+
+Reverse map:
+
+  (B,E,rho,J) |-> [(u,p)],
+
+  u = m+KB,
+  p = Lrho - |u|^2/2 + (1/2)<|u|^2>.
+
+The reverse-after-forward composition restores u by Lemma 3.2.
+For a forward solution, rho = -Delta(p+|u|^2/2), so the reconstructed
+pressure equals p-<p>.
+
+The forward-after-reverse composition restores B by Lemma 3.1.
+It restores E,rho,J by their fixed constitutive/source definitions.
+
+Therefore:
+
+  NS_Sol(nu,a) / pressure-gauge
+                   <=> M_Sol(nu,c,m,b0)
+
+is a bijection.
+
+This bijection does not assume a global NSE solution exists and does not
+require a separate uniqueness theorem.
+
+10. SOURCE CONSERVATION AND INITIAL COMPATIBILITY
+------------------------------------------------
+
+For every constrained Maxwell solution:
+
+  rho = div E
+      = U_m[B] dot curl B - |B|^2,
+
+  <B> = <E> = <rho> = 0.
+
+Taking divergence of Ampere-Maxwell gives
+
+  partial_t rho + div J = 0.
+
+Also,
+
+  <J>
+    = c^2<curl B> - partial_t<E>
+    = 0.
+
+Compatibility of the time derivatives at t=0 is exact:
+
+  partial_t B(0) = V_{nu,m}[b0],
+
+  partial_t E(0)
+    = DG_{nu,m}[b0](V_{nu,m}[b0]),
+
+  J(0)
+    = c^2 curl b0
+      - DG_{nu,m}[b0](V_{nu,m}[b0]).
+
+All higher time derivatives follow by differentiating the same smooth
+identities. They are not additional independently chosen initial data.
+
+11. ENERGY IDENTITY IN MAXWELL COORDINATES
+-----------------------------------------
+
+For any reconstructed smooth NSE solution, take the L^2 inner product of
+the momentum equation with u.
+
+Periodicity and div u = 0 give:
+
+  integral u dot (u dot nabla)u = 0,
+  integral u dot nabla p = 0,
+  integral u dot Delta u = -||nabla u||_2^2.
+
+Also, for periodic divergence-free u:
+
+  ||nabla u||_2^2 = ||curl u||_2^2 = ||B||_2^2.
+
+Hence
+
+  (1/2) d/dt ||u(t)||_2^2 + nu ||B(t)||_2^2 = 0.
+
+Integration yields:
+
+  (1/2)||u(t)||_2^2
+    + nu integral_0^t ||B(s)||_2^2 ds
+    = (1/2)||a||_2^2.
+
+Since volume(T^3)=1 and <KB>=0,
+
+  ||u(t)||_2^2 = |m|^2 + ||KB(t)||_2^2.
+
+Therefore:
+
+  (1/2)||KB(t)||_2^2
+    + nu integral_0^t ||B(s)||_2^2 ds
+    = (1/2)||Kb0||_2^2.
+
+Equivalently, defining
+
+  ||b||_{dot H^(-1)}^2
+    := sum_{k!=0} |bhat(k)|^2/(4*pi^2*|k|^2),
+
+one has, for b in X,
+
+  ||Kb||_2^2 = ||b||_{dot H^(-1)}^2,
+
+and thus
+
+  (1/2)||B(t)||_{dot H^(-1)}^2
+    + nu integral_0^t ||B(s)||_2^2 ds
+    = (1/2)||b0||_{dot H^(-1)}^2.
+
+This identity is a consequence, not an added admissibility premise.
+
+The equivalence theorem does not impose a separate uniform bound on the
+ordinary Maxwell energy
+
+  (1/2)(||E(t)||_2^2 + c^2||B(t)||_2^2).
+
+12. MEAN-ZERO REDUCTION
+----------------------
+
+Define FB_0(nu) by restricting the initial datum in FB(nu) to <a>=0.
+
+Then:
+
+                     FB(nu) <=> FB_0(nu).
+
+Proof.
+
+  FB(nu) => FB_0(nu) is restriction.
+
+  Conversely, assume FB_0(nu), and let a in U.
+  Put m=<a> and a_*=a-m.
+
+  Obtain a mean-zero solution v,q for datum a_*.
+  Define
+
+    u(t,x) := m + v(t,x-mt),
+    p(t,x) := q(t,x-mt).
+
+  Then
+
+    partial_t u = (partial_t v - m dot nabla v)(t,x-mt),
+
+    (u dot nabla)u
+      = (m dot nabla v + v dot nabla v)(t,x-mt).
+
+  The transport terms involving m cancel.
+  The viscosity and pressure terms transform by translation.
+  Initial trace, periodicity, and smoothness through t=0 are preserved.
+
+  Thus u,p solve FB(nu) for datum a.                           QED
+
+In Maxwell coordinates:
+
+  V_{nu,m}[b] = V_{nu,0}[b] - (m dot nabla)b,
+
+because
+
+  curl(b x m) = (m dot nabla)b
+
+when div b=0 and m is constant.
+
+The full root statement retains m explicitly and therefore does not rely
+on suppressing a harmonic mode.
+
+13. INDEPENDENCE OF THE MAXWELL PARAMETER
+----------------------------------------
+
+For c1,c2 > 0:
+
+  Jcal_{nu,c2,m}[b]
+    = Jcal_{nu,c1,m}[b]
+      + (c2^2-c1^2)curl b.
+
+Therefore a constrained Maxwell solution for c1 becomes one for c2 by
+
+  B2 = B1,
+  E2 = E1,
+  rho2 = rho1,
+  J2 = J1 + (c2^2-c1^2)curl B1.
+
+Consequently:
+
+  MB(nu,c1) <=> MB(nu,c2).
+
+The velocity evolution, constitutive law E=G[B], and magnetic evolution
+partial_t B=V[B] are independent of c.
+The parameter c is a representation normalization.
+
+14. LOGICAL AND REGULARITY AUDIT
+--------------------------------
+
+ROOT PROPOSITION:
+  forall nu>0 forall c>0, FB(nu) iff MB(nu,c).
+
+PROVED OBJECT:
+  Equivalence of the two global existence assertions.
+
+NOT INFERRED:
+  FB(nu).
+  MB(nu,c).
+  Global smoothness for arbitrary initial datum.
+
+EXACT SCOPE:
+  Smooth initial data.
+  Smooth solutions through t=0.
+  Periodic velocity and pressure.
+  Arbitrary initial mean.
+  No forcing.
+  Positive viscosity.
+  Fixed nonlinear nonlocal constitutive/source laws.
+
+NO SUBSTITUTION:
+  C^infinity is not replaced by analyticity.
+  Initial smoothness is not replaced by a rough-trace class.
+  Global smoothness is not replaced by interior-only smoothness.
+  Arbitrary mean is not discarded.
+  Maxwell sources are not independently prescribed.
+  The constitutive law is not removed.
+  Vacuum Maxwell existence is not substituted for MB.
+  No external checker, certificate, witness, or admission is assumed.
+
+FINITE-TIME VERSION:
+  The same transformations give the corresponding solution-set bijection
+  on every finite interval [0,T], and on every half-open interval [0,T),
+  whenever the specified smoothness holds there.
+
+15. ENDPOINT REGISTER
+---------------------
+
+E01  !  Exact Fefferman-B scope, including periodic pressure.
+E02  !  Smooth torus inverse Laplacian and Biot-Savart operator.
+E03  !  Complete datum bijection a <=> (<a>,curl a).
+E04  !  Constitutive identities, source formulas, and zero electric mean.
+E05  !  Equivalence of the full and reduced constrained Maxwell systems.
+E06  !  FB(nu) => MB(nu,c).
+E07  !  MB(nu,c) => FB(nu).
+E08  !  Initial trace and C^infinity regularity through t=0.
+E09  !  Solution-set bijection modulo pressure gauge.
+E10  !  Full quantified root equivalence.
+E11  !  Source conservation and derived fluid-energy identity.
+E12  !  Mean-zero reduction and independence of c.
+E13  !  Exact Hodge identity and NSE residual factorization.
+E14  !  Arbitrary-pressure residual and pressure-gauge equivalence.
+E15  !  Exact Ampere and full Maxwell residual factorization.
+E16  !  Quantified equivalence from off-solution residual identities.
+
+B_TIER DERIVATION GAPS FOR THE ROOT EQUIVALENCE:
+  None.
+
+A_TIER STATUS:
+  Not established.
+  No matching external compiler and theorem-level axiom-audit evidence
+  is asserted.
+
+ROOT STATUS:
+  ! FEFFERMAN_B_MAXWELL_EQUIVALENCE = B_TIER.
+
+16. EXACT RESIDUAL FACTORIZATION
+--------------------------------
+
+HYPOTHESES:
+  nu > 0, c > 0, m in R^3 constant.
+  B in C^infinity(T^3 x [0,infinity);R^3).
+  For every t >= 0:
+    div B(t) = 0,
+    <B(t)> = 0.
+
+DYNAMICAL EQUATIONS ASSUMED:
+  None.
+
+Definitions:
+
+  u := U_m[B] = m+KB,
+  E := G_{nu,m}[B],
+  rho := Q_{nu,m}[B] = div E,
+  V := V_{nu,m}[B] = -curl E,
+  J := Jcal_{nu,c,m}[B] = c^2 curl B - DG_{nu,m}[B](V),
+
+  p_B := Lrho - |u|^2/2 + (1/2)<|u|^2>.
+
+Thus <p_B>=0, and p_B is smooth and periodic.
+
+Define the Faraday residual:
+
+  R_F[B] := partial_t B + curl E
+           = partial_t B - V.
+
+For an arbitrary smooth periodic scalar field p, define the NSE residual:
+
+  R_N[u,p]
+    := partial_t u + (u dot nabla)u + nabla p - nu Delta u.
+
+Define the Ampere-Maxwell residual:
+
+  R_A[B] := partial_t E - c^2 curl B + J.
+
+The derivative of G is the fixed spatial operator:
+
+  DG_{nu,m}[B](h)
+    = h x u + B x Kh + nu curl h.
+
+Lemma 16.1. Exact periodic Hodge identity.
+
+  For every smooth periodic vector field F:
+
+    K curl F = F - <F> + nabla L(div F).                     (H)
+
+Proof.
+
+  K curl F
+    = curl L curl F
+    = curl curl LF
+    = nabla div LF - Delta LF
+    = nabla L(div F) + F - <F>.                              QED
+
+Lemma 16.2. The Faraday residual belongs to X.
+
+  div R_F = 0,
+  <R_F> = 0.
+
+Proof.
+
+  Differentiate div B=0 and <B>=0 in time.
+  The divergence and the mean of curl E are zero.             QED
+
+Lemma 16.3. Canonical pressure identity.
+
+  R_N[u,p_B] = K R_F[B].                                    (RN)
+
+Proof.
+
+  Lemma 4.2 applies at each time without any evolution equation:
+
+    <E> = 0.
+
+  By (H):
+
+    K curl E = E + nabla Lrho.
+
+  By the kinematic identities div u=0 and curl u=B:
+
+    (u dot nabla)u = B x u + nabla(|u|^2/2),
+    -nu Delta u = nu curl B.
+
+  Therefore:
+
+    R_N[u,p_B]
+      = partial_t u
+        + B x u + nu curl B
+        + nabla(p_B+|u|^2/2)
+
+      = K partial_t B + E + nabla Lrho
+
+      = K partial_t B + K curl E
+
+      = K(partial_t B + curl E)
+
+      = K R_F[B].                                           QED
+
+Theorem 16.4. Arbitrary-pressure residual identity.
+
+  For every smooth periodic p:
+
+    R_N[u,p]
+      = K R_F[B] + nabla(p-p_B).                             (RNP)
+
+Proof.
+
+  R_N[u,p]-R_N[u,p_B] = nabla(p-p_B).
+  Apply Lemma 16.3.                                          QED
+
+Corollary 16.5. Exact curl identity.
+
+  curl R_N[u,p] = R_F[B].
+
+Proof.
+
+  Apply curl to (RNP).
+  By Lemma 16.2, R_F belongs to X.
+  Hence curl K R_F = R_F by Lemma 3.1.
+  The curl of a gradient vanishes.                           QED
+
+Corollary 16.6. Exact NSE-Faraday equivalence.
+
+  R_N[u,p] = 0
+
+    iff
+
+  [R_F[B]=0 and p=p_B+C(t)
+   for some C in C^infinity([0,infinity))].
+
+Proof.
+
+  If R_N=0, Corollary 16.5 gives R_F=0.
+  Equation (RNP) then gives nabla(p-p_B)=0.
+  Since T^3 is connected, p-p_B is a function of t only.
+
+  Conversely, R_F=0 and nabla(p-p_B)=0 give R_N=0 by (RNP).    QED
+
+In particular:
+
+  [exists smooth periodic p, R_N[u,p]=0]
+
+    iff
+
+  R_N[u,p_B]=0
+
+    iff
+
+  R_F[B]=0.                                                 (NF)
+
+Lemma 16.7. Exact Ampere-Maxwell residual identity.
+
+  R_A[B] = DG_{nu,m}[B](R_F[B]).                             (RA)
+
+Proof.
+
+  The parameter m is constant and B is smooth.
+  Therefore, without assuming an evolution equation,
+
+    partial_t E = DG_{nu,m}[B](partial_t B).
+
+  By the definition of J:
+
+    R_A
+      = DG[B](partial_t B)
+        -c^2 curl B
+        +c^2 curl B
+        -DG[B](V)
+
+      = DG[B](partial_t B-V)
+
+      = DG[B](R_F).                                         QED
+
+Define the full Maxwell residual tuple:
+
+  R_M[B] :=
+    (div B,
+     partial_t B+curl E,
+     div E-rho,
+     partial_t E-c^2 curl B+J).
+
+Theorem 16.8. Full Maxwell residual factorization.
+
+  R_M[B] = (0, R_F[B], 0, DG_{nu,m}[B](R_F[B])).             (RM)
+
+Proof.
+
+  div B=0 is a kinematic hypothesis.
+  div E-rho=0 is the definition of rho.
+  The second component is R_F.
+  The fourth component is given by Lemma 16.7.                QED
+
+Consequently:
+
+  R_M[B]=0 iff R_F[B]=0.                                    (MF)
+
+No injectivity of DG is required: R_F is itself the second component
+of R_M.
+
+Combining (NF) and (MF):
+
+  [exists smooth periodic p, R_N[U_m[B],p]=0]
+
+    iff
+
+  R_F[B]=0
+
+    iff
+
+  R_M[B]=0.                                                 (EXACT)
+
+For the normalized pressure:
+
+  R_N[U_m[B],p_B]=0 iff R_M[B]=0.
+
+Charge-continuity audit away from solutions:
+
+  partial_t rho + div J
+    = div R_A
+    = div(DG_{nu,m}[B](R_F[B])).
+
+Thus charge conservation follows when R_F=0.
+It has not been assumed for arbitrary off-solution trajectories.
+
+16.9. Quantified Fefferman-B consequence.
+
+For a fixed datum a in U, set
+
+  m=<a>, b0=curl a.
+
+Every smooth periodic NSE solution has conserved mean m by Section 6.
+Conversely, every smooth B trajectory in X with B(0)=b0 reconstructs
+
+  u=m+KB,
+  u(0)=a.
+
+The spatial operators, pressure reconstruction, and source operators
+preserve global smoothness through t=0.
+
+Therefore (EXACT) and the initial-data bijection give:
+
+  [exists global smooth periodic NSE solution with datum a]
+
+    iff
+
+  [exists global smooth constrained Maxwell solution
+   with datum (m,b0)].
+
+Quantifying over the bijection U <=> R^3 x X yields:
+
+  forall nu>0 forall c>0:
+
+                  FB(nu) iff MB(nu,c).                       QED
+
+RESIDUAL PROOF CORE:
+
+  R_N[U_m[B],p_B] = K R_F[B],
+  curl R_N[U_m[B],p_B] = R_F[B],
+  R_A[B] = DG_{nu,m}[B](R_F[B]),
+
+  R_N[U_m[B],p_B]=0 iff R_F[B]=0 iff R_M[B]=0.
+
+STATUS:
+  ! B_TIER.
+  The identities are exact for every stated smooth kinematic trajectory.
+  Neither global existence assertion follows from their equivalence.
+
+
+17. REFERENCES
+--------------
+
+[F] Charles L. Fefferman.
+    Existence and Smoothness of the Navier-Stokes Equation.
+    Clay Mathematics Institute.
+    Part (B): PDF page 2.
+    Periodic-pressure erratum: PDF page 6.
+    https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf
+    Consulted 2026-11-12.
+
+[M] Haralambos Marmanis.
+    Analogy between the Navier-Stokes equations and Maxwell's equations:
+    Application to turbulence.
+    Physics of Fluids 10 (1998), 1428-1437.
+    https://doi.org/10.1063/1.869762
+    https://academicweb.nd.edu/~powers/ame.60635/marmanis.pdf
+
+    Historical context: vorticity-Lamb-vector correspondence.
+    The exact viscous constitutive law, spatial source closure, full-mean
+    reconstruction, and global logical equivalence used here are derived
+    explicitly in Sections 1-13 and 16; no averaged turbulence closure or
+    approximation from [M] is used as a premise.
+
+END OF COMPLETE B_TIER DERIVATION.
+

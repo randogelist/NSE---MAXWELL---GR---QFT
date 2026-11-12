@@ -1,0 +1,109 @@
+name: Native Windows Lean and theorem audit
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  native-windows:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    env:
+      ELAN_TOOLCHAIN: leanprover/lean4:v4.34.0-rc1
+      MATHLIB_CACHE_DIR: ${{ github.workspace }}\.mathlib-download-cache
+    steps:
+      - name: Check out the exact source commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python for the evidence verifier
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+
+      - name: Restore pinned native compiler
+        id: elan-cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ~\.elan
+          key: windows-elan-4.2.4-lean-4.34.0-rc1
+
+      - name: Install pinned elan only when absent
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $ElanBin = Join-Path $env:USERPROFILE ".elan\bin"
+          if (-not (Test-Path (Join-Path $ElanBin "elan.exe"))) {
+            $Archive = Join-Path $env:RUNNER_TEMP "elan-4.2.4.zip"
+            $InstallerDirectory = Join-Path $env:RUNNER_TEMP "elan-4.2.4"
+            Invoke-WebRequest "https://github.com/leanprover/elan/releases/download/v4.2.4/elan-x86_64-pc-windows-msvc.zip" -OutFile $Archive
+            $Expected = "fad2e980a191c15884cc1d80d170ffc5fa84f3774541020145b66d1a644c6111"
+            if ((Get-FileHash -Algorithm SHA256 $Archive).Hash.ToLowerInvariant() -ne $Expected) {
+              throw "elan archive hash mismatch."
+            }
+            Expand-Archive -Path $Archive -DestinationPath $InstallerDirectory -Force
+            & (Join-Path $InstallerDirectory "elan-init.exe") -y --default-toolchain none
+            if ($LASTEXITCODE -ne 0) { throw "elan installation failed." }
+          }
+          Add-Content -Path $env:GITHUB_PATH -Value $ElanBin
+          git config --global core.longpaths true
+
+      - name: Restore Mathlib and project compilation cache
+        id: lean-cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: |
+            .lake
+            .mathlib-download-cache
+          key: windows-lean-4.34.0-rc1-mathlib-de5ce8a9-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lakefile.toml', 'lake-manifest.json') }}-${{ hashFiles('NSEMaxwell.lean', 'NSEMaxwell/**/*.lean') }}
+          restore-keys: |
+            windows-lean-4.34.0-rc1-mathlib-de5ce8a9-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lakefile.toml', 'lake-manifest.json') }}-
+            windows-lean-4.34.0-rc1-mathlib-de5ce8a9-
+
+      - name: Compile and audit on native Windows
+        shell: cmd
+        run: run.cmd
+
+      - name: Identify reusable cache directories
+        id: cache-directories
+        if: always()
+        shell: pwsh
+        run: |
+          $ElanExists = Test-Path (Join-Path $env:USERPROFILE ".elan\bin\elan.exe") -PathType Leaf
+          $LakeExists = Test-Path ".lake" -PathType Container
+          Add-Content $env:GITHUB_OUTPUT ("elan-exists=" + $ElanExists.ToString().ToLowerInvariant())
+          Add-Content $env:GITHUB_OUTPUT ("lake-exists=" + $LakeExists.ToString().ToLowerInvariant())
+
+      - name: Preserve native compiler cache after success or failure
+        if: always() && steps.elan-cache.outputs.cache-hit != 'true' && steps.cache-directories.outputs.elan-exists == 'true' && steps.elan-cache.outputs.cache-primary-key != ''
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ~\.elan
+          key: ${{ steps.elan-cache.outputs.cache-primary-key }}
+
+      - name: Preserve Mathlib and compilation cache after success or failure
+        if: always() && steps.lean-cache.outputs.cache-hit != 'true' && steps.cache-directories.outputs.lake-exists == 'true' && steps.lean-cache.outputs.cache-primary-key != ''
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: |
+            .lake
+            .mathlib-download-cache
+          key: ${{ steps.lean-cache.outputs.cache-primary-key }}
+
+      - name: Preserve matching compiler and theorem evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: native-windows-lean-${{ github.sha }}-${{ github.run_attempt }}
+          path: artifacts/external-windows/
+          if-no-files-found: error
+          retention-days: 30
