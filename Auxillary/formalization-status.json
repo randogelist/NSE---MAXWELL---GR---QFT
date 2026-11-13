@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "source_status": "A_TIER_CANDIDATE_FOR_INTEGRATED_UNCONDITIONAL_ROOT",
+  "source_status": "A_TIER_FOR_EXACT_UNCONDITIONAL_EQUIVALENCE",
   "exact_target": "NSEMaxwell.Classical.ExactEquivalence",
-  "exact_target_proved": false,
-  "unconditional_closure": false,
+  "exact_target_proved": true,
+  "unconditional_closure": true,
   "local_lean_executions": 0,
   "concrete_realization": {
     "domain": "unit-periodic lifts on EuclideanSpace R (Fin 3)",
@@ -28,11 +28,6 @@
     "divergence_curl_identity",
     "viscosity_identity"
   ],
-  "derived_from_remaining_endpoints": [
-    "curl_data",
-    "reconstruction_data",
-    "reconstruct_mean"
-  ],
   "unnecessary_for_root": [
     "K_residual_add",
     "DG_residual_add",
@@ -41,32 +36,29 @@
   "optional_off_solution_lemmas": "canonical_momentum_factorization retains its own hKAdd premise; the root does not depend on it.",
   "audit_target_count": 400,
   "external_evidence": {
-    "source_commit": "1de664f2ef5ddc11caef25ac2274278b4171ab6b",
-    "run_id": 43359539373,
-    "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43359539373",
-    "artifact_id": 14008727271,
-    "artifact_sha256": "e3c5b60b16610af15c6f40454698e35c81228a1b44c5bf490d41a852cf354482",
+    "source_commit": "c4c7bcdca6e652905107bb1a3102ed50d94c2e6b",
+    "run_id": 43373061238,
+    "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43373061238",
+    "artifact_id": 14013884091,
+    "artifact_sha256": "b392183a9b6ab7e842555c9af0df03399816998b2ae11364a5ae6c55ff4fc658",
     "platform": "native Linux / Ubuntu 24.04",
     "build": "PASS",
     "lean_audit_command": "PASS",
     "theorem_axiom_audit": "PASS_STANDARD_ONLY",
     "compiler": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
     "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
-    "preserved_artifact_files": 242,
-    "directory": "Auxillary/evidence/linux-43359539373",
-    "source_manifest_sha256": "df25f79a3ddc53855262333a0b3e0a92025a0e1f65b82c29992298c69c25400f",
-    "source_manifest_inputs": 20353,
-    "lean_source_hashes_matching_delivery": 19160,
-    "audited_declarations": 236,
-    "audit_summary_sha256": "277a57b35323574751d4295d7bed4fca6bdbf0613fada121258db16547c30007",
-    "source_hash_verification": "ALL_BYTE_EXACT",
-    "build_strategy": "LAKE_TRANSITIVE_TRACE_VERIFIED_WARM_REUSE",
-    "executed_module_builds": 0,
-    "freshness_check_exit_code": 0,
-    "cache_policy": "Exact compiler and dependency caches; ordinary Lake trace validation; fresh named audits. Standalone scopes have independent source checkouts, cached dependency objects and physical project-object seeds copied from the matching audited root build.",
-    "compiled_methlib_modules": 39,
-    "audited_methlib_endpoints": 10,
-    "dependency_source_downloads": 0
+    "preserved_artifact_files": 212,
+    "directory": "Auxillary/evidence/linux-43373061238",
+    "source_manifest_sha256": "9ecb58b6bc8feb3bf6ffbf4605a2a6fc7fc83a7974065d42d12ad2d243265c83",
+    "source_manifest_inputs": 20616,
+    "lean_source_hashes_matching_delivery": 19179,
+    "audited_declarations": 400,
+    "audit_summary_sha256": "ecb1cd3394280254a8302ffdd1a81c418c5a1aaa3e60840ee6e483de56ab7538",
+    "source_hash_verification": "ALL_BYTE_EXACT_AT_CERTIFIED_SOURCE; CURRENT_LEAN_INPUTS_MATCH",
+    "build_strategy": "CACHED_UPSTREAM_AGGREGATE_AND_SERIAL_INCREMENTAL_REBUILD",
+    "executed_module_builds": 20,
+    "freshness_check_exit_code": 3,
+    "cache_policy": "Pinned compiler and official dependency object caches; ordinary Lake trace checks; matching-source object seeding for independent packages; fresh named audits."
   },
   "continuation_candidate_modules": [
     "PeriodicIntegration",
@@ -120,12 +112,7 @@
   "prepared_reduced_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED",
   "prepared_reduced_root_type": "NSEMaxwell.Bridge.FourierHodgeLaws -> NSEMaxwell.Classical.ExactEquivalence",
   "reduced_root_status": "A_TIER_FOR_EXACT_CONDITIONAL_IMPLICATION",
-  "reduced_open_analytic_endpoints": [
-    "reconstruct_velocity",
-    "reconstruct_curl",
-    "canonical_smoothness",
-    "electric_hodge"
-  ],
+  "reduced_open_analytic_endpoints": [],
   "prepared_endpoint_discharges": [
     "vorticity_regularity",
     "mean_conservation",
@@ -171,9 +158,9 @@
     "ZLattice.summable_norm_pow_inv"
   ],
   "registered_methlib_port_candidates": 7,
-  "formal_status": "A_TIER_CANDIDATE_PENDING_INTEGRATION_AUDIT",
+  "formal_status": "UNCONDITIONAL_CLOSURE",
   "active_ci_platform": "native Linux / Ubuntu 24.04",
-  "active_ci_validation": "PENDING_400_INTEGRATED_400_FEFFERMAN_62_MAXWELL",
+  "active_ci_validation": "PASS_NATIVE_LINUX_400_INTEGRATED_400_FEFFERMAN_62_MAXWELL_AUDITS",
   "prior_reduced_root_windows_evidence": {
     "source_commit": "1bd2ee067d4aad3c265b32efd533ef270179e665",
     "run_id": 43333835295,
@@ -190,8 +177,8 @@
     "registered_mathlib_declarations": 4,
     "lean_source_hashes_matching_delivery": 25
   },
-  "certified_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED",
-  "certified_root_type": "NSEMaxwell.Bridge.FourierHodgeLaws -> NSEMaxwell.Classical.ExactEquivalence",
+  "certified_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_UNCONDITIONAL",
+  "certified_root_type": "NSEMaxwell.Classical.ExactEquivalence",
   "prior_layout_certification": {
     "source_commit": "d241f2b700be66ab447cb1650770271e1b364b8a",
     "status": "A_TIER_FOR_EXACT_CONDITIONAL_REDUCED_ROOT",
@@ -240,10 +227,10 @@
       "status": "A_TIER_FOR_EXACT_CONDITIONAL_IMPLICATION"
     }
   ],
-  "mathematical_hodge_derivation": "B_TIER_COMPLETE; LEAN_INHABITANT_DEFERRED",
-  "certified_source_commit": "1de664f2ef5ddc11caef25ac2274278b4171ab6b",
-  "certified_lean_source_inputs": 19160,
-  "current_layout_validation": "PASS_CACHED_NATIVE_LINUX_CONTAINED_NATIVE_PACKAGES",
+  "mathematical_hodge_derivation": "B_TIER_COMPLETE_AND_A_TIER_EXACT_INHABITANT_CERTIFIED",
+  "certified_source_commit": "c4c7bcdca6e652905107bb1a3102ed50d94c2e6b",
+  "certified_lean_source_inputs": 19179,
+  "current_layout_validation": "PASS_CACHED_NATIVE_LINUX_UNCONDITIONAL_CLOSURE",
   "auxiliary_relocation": {
     "base_commit": "5f7f8f4866f0b99ebc0bc1869df1ef9e0a25dcef",
     "lean_source_inputs_unchanged": 30,
@@ -292,32 +279,29 @@
     "exact_definition_bodies_preserved": true,
     "standalone_external_audit": "PASS_STANDARD_ONLY",
     "standalone_external_evidence": {
-      "source_commit": "1de664f2ef5ddc11caef25ac2274278b4171ab6b",
-      "run_id": 43359539373,
-      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43359539373",
-      "artifact_id": 14008727271,
-      "artifact_sha256": "e3c5b60b16610af15c6f40454698e35c81228a1b44c5bf490d41a852cf354482",
+      "source_commit": "c4c7bcdca6e652905107bb1a3102ed50d94c2e6b",
+      "run_id": 43373061238,
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43373061238",
+      "artifact_id": 14013884091,
+      "artifact_sha256": "b392183a9b6ab7e842555c9af0df03399816998b2ae11364a5ae6c55ff4fc658",
       "platform": "native Linux / Ubuntu 24.04",
       "build": "PASS",
       "lean_audit_command": "PASS",
       "theorem_axiom_audit": "PASS_STANDARD_ONLY",
       "compiler": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
       "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
-      "preserved_artifact_files": 242,
-      "directory": "Auxillary/evidence/linux-43359539373/standalone",
-      "source_manifest_sha256": "8649f96c21041e0e2450da5b509b169b783f0cdc930b471c917e263ad5f08f09",
+      "preserved_artifact_files": 212,
+      "directory": "Auxillary/evidence/linux-43373061238/standalone",
+      "source_manifest_sha256": "76a7c94e2429d0ac3c0c7f180a98f56d658c204a4cf226bcd1bd67e5f39be4ac",
       "source_manifest_inputs": 9914,
       "lean_source_hashes_matching_delivery": 9563,
       "audited_declarations": 62,
-      "audit_summary_sha256": "8e09679b05d8e7ccc3b42025a740a9ce98b8ad005a4825d5a5dcb53dd475d264",
-      "source_hash_verification": "ALL_BYTE_EXACT",
+      "audit_summary_sha256": "020e971e9595070f9067f463d12daf5b8ee202d60bd4e8e4fb3c9a0ba182659f",
+      "source_hash_verification": "ALL_BYTE_EXACT_AT_CERTIFIED_SOURCE; CURRENT_LEAN_INPUTS_MATCH",
       "build_strategy": "SERIAL_INCREMENTAL_REBUILD",
       "executed_module_builds": 44,
       "freshness_check_exit_code": 3,
-      "cache_policy": "Exact compiler and dependency caches; ordinary Lake trace validation; fresh named audits. Standalone scopes have independent source checkouts, cached dependency objects and physical project-object seeds copied from the matching audited root build.",
-      "compiled_methlib_modules": 39,
-      "audited_methlib_endpoints": 10,
-      "dependency_source_downloads": 0
+      "cache_policy": "Pinned compiler and official dependency object caches; ordinary Lake trace checks; matching-source object seeding for independent packages; fresh named audits."
     },
     "native_zero_instance": "MaxwellEndpoint.zero_solution",
     "native_zero_instance_status": "A_TIER_UNCONDITIONAL_FOR_ALL_REAL_NU_C_AND_ALL_M",
@@ -509,10 +493,50 @@
       }
     }
   },
-  "remaining_validation": [
-    "integrated_400",
-    "isolated_fefferman_400",
-    "isolated_maxwell_62"
+  "remaining_validation": [],
+  "hodge_integration_provenance": "Auxillary/HODGE_INTEGRATION_PROVENANCE.json",
+  "pre_hodge_integration_evidence": {
+    "source_commit": "1de664f2ef5ddc11caef25ac2274278b4171ab6b",
+    "run_id": 43359539373,
+    "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43359539373",
+    "artifact_id": 14008727271,
+    "artifact_sha256": "e3c5b60b16610af15c6f40454698e35c81228a1b44c5bf490d41a852cf354482",
+    "platform": "native Linux / Ubuntu 24.04",
+    "build": "PASS",
+    "lean_audit_command": "PASS",
+    "theorem_axiom_audit": "PASS_STANDARD_ONLY",
+    "compiler": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+    "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+    "preserved_artifact_files": 242,
+    "directory": "Auxillary/evidence/linux-43359539373",
+    "source_manifest_sha256": "df25f79a3ddc53855262333a0b3e0a92025a0e1f65b82c29992298c69c25400f",
+    "source_manifest_inputs": 20353,
+    "lean_source_hashes_matching_delivery": 19160,
+    "audited_declarations": 236,
+    "audit_summary_sha256": "277a57b35323574751d4295d7bed4fca6bdbf0613fada121258db16547c30007",
+    "source_hash_verification": "ALL_BYTE_EXACT",
+    "build_strategy": "LAKE_TRANSITIVE_TRACE_VERIFIED_WARM_REUSE",
+    "executed_module_builds": 0,
+    "freshness_check_exit_code": 0,
+    "cache_policy": "Exact compiler and dependency caches; ordinary Lake trace validation; fresh named audits. Standalone scopes have independent source checkouts, cached dependency objects and physical project-object seeds copied from the matching audited root build.",
+    "compiled_methlib_modules": 39,
+    "audited_methlib_endpoints": 10,
+    "dependency_source_downloads": 0
+  },
+  "unresolved_root_premises": [],
+  "canonical_root_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
   ],
-  "hodge_integration_provenance": "Auxillary/HODGE_INTEGRATION_PROVENANCE.json"
+  "separate_arbitrary_data_global_existence": "OPEN",
+  "publication_note": "Evidence/documentation publication preserves all certified Lean sources, configuration, runners and audit inventories.",
+  "retained_reduced_api_parameters": [
+    "FourierHodgeLaws"
+  ],
+  "derived_from_discharged_hodge_endpoints": [
+    "curl_data",
+    "reconstruction_data",
+    "reconstruct_mean"
+  ]
 }

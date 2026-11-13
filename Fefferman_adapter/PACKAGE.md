@@ -9,8 +9,10 @@ ENTRY_POINT_WINDOWS = run.cmd
 DEPENDENCY_POLICY = exact pinned Git checkouts; official incremental cache reuse
 SOURCE_MANIFEST = native-sources.json
 PROJECT_COPY_MANIFEST = local-project-sources.json
-AUDIT_TARGETS = 236
-STATUS = A_TIER_CANDIDATE_FOR_CURRENT_ISOLATED_PACKAGE
+AUDIT_TARGETS = 400
+STATUS = UNCONDITIONAL_CLOSURE_FOR_EXACT_EQUIVALENCE
+EXTERNAL_RUN = 43373061238
+CERTIFIED_SOURCE = c4c7bcdca6e652905107bb1a3102ed50d94c2e6b
 ```
 
 ## Package source roots
@@ -23,6 +25,8 @@ STATUS = A_TIER_CANDIDATE_FOR_CURRENT_ISOLATED_PACKAGE
 | `NSEMaxwellReverse` | `LocalDependencies/Reverse` |
 | `SingularClosure` | `NativeSources/methlib` |
 | `MethlibEndpoints` | `.` |
+| `FourierHodgeLaws` | `.` |
+| `FourierHodgeLaws_inhabitant` | `.` |
 
 All library paths are internal to this directory. The ten native Maxwell/directional copies are byte-checked against their canonical repository modules during isolation. The complete pinned native Mathlib and subordinate dependency sources are inventoried by `native-sources.json`; compilation uses the equal-byte verified dependency cache. The selected Methlib import closure is compiled as `SingularClosure` under the target compiler.
 
@@ -64,14 +68,26 @@ NativeSources/methlib = complete_39_module_import_closure_for_10_selected_endpoi
 METHLIB_UPSTREAM = randogelist/Methlib@e9cf90726b8544a268469ebc8fa6634e9c713e07
 METHLIB_ORIGINAL_COMPILER = Lean 4.33.0
 METHLIB_TARGET_COMPILER = Lean 4.34.0-rc1
-METHLIB_TARGET_AUDIT_STATUS = A_TIER_CANDIDATE
+METHLIB_TARGET_AUDIT_STATUS = PASS_10_SELECTED_ENDPOINTS_RUN_43359539373
 ```
+
+## Integrated Hodge source
+
+```text
+HODGE_UPSTREAM = randogelist/Methlib@f927f1e31196f0be71b2581dc85f6e3fd19e0746
+HODGE_SOURCE_FILES = 19
+HODGE_SOURCE_BYTE_IDENTITY = 19/19
+HODGE_THEOREM_AUDITS = 163
+CANONICAL_WRAPPER_AUDITS = 1
+AUDIT_COUNT = 236 + 163 + 1 = 400
+```
+
+The 19 Hodge files are distinct from the older 39-module `SingularClosure` closure. The original Hodge proofs retain their exact source bytes and namespace. The canonical repository wrapper imports the actual inhabitant; it does not add a law premise or replace a frozen definition.
 
 ## Exact mathematical scope
 
 ```lean
-NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED :
-  NSEMaxwell.Bridge.FourierHodgeLaws →
+NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_UNCONDITIONAL :
   NSEMaxwell.Classical.ExactEquivalence
 ```
 
@@ -86,22 +102,20 @@ FORCING = zero
 VELOCITY_MEAN = arbitrary
 PRESSURE = periodic
 REGULARITY = joint C-infinity through t = 0
+NEGATIVE_TIME_VALUES = unrestricted
 ANALYTICITY_PREMISE = absent
-
-UNRESOLVED_FOURIER_HODGE_FIELDS = {
-  reconstruct_velocity,
-  reconstruct_curl,
-  canonical_smoothness,
-  electric_hodge
-}
-
-FOURIER_HODGE_INHABITANT = NOT_SUPPLIED
-ARBITRARY_DATA_FEFFERMAN_B = NOT_PROVED
-ARBITRARY_DATA_MAXWELL_B = NOT_PROVED
-UNCONDITIONAL_EXACT_EQUIVALENCE = NOT_PROVED
+FOURIER_HODGE_INHABITANT = NSEMaxwell.HodgeProof.fourierHodgeLaws_inhabitant
+UNRESOLVED_ROOT_ANALYTIC_PREMISES = NONE
+UNCONDITIONAL_EXACT_EQUIVALENCE = PROVED
+ARBITRARY_DATA_FEFFERMAN_B = OPEN
+ARBITRARY_DATA_MAXWELL_B = OPEN
 ```
 
-The 39-module Methlib closure supports ten separately audited endpoint declarations. Their native compilation does not identify the source's adjusted mean-zero proposition with the frozen arbitrary-mean target and does not discharge the four Hodge fields.
+The original conditional APIs remain unchanged. The source's adjusted mean-zero propositions are distinct from the frozen arbitrary-mean target and are not used as substitutes. The unconditional canonical root proves an equivalence between existence statements; it does not independently establish either existence statement.
+
+## Current external certificate
+
+[Run 43373061238](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43373061238), source `c4c7bcdca6e652905107bb1a3102ed50d94c2e6b`, passed the 400 integrated, 400 isolated Fefferman, and 62 isolated Maxwell named audits with standard axioms only. [Matching evidence](../Auxillary/evidence/linux-43373061238) records the exact source hashes, compiler, and standalone verification results. The prior 236-target certificate remains scoped to run 43359539373.
 
 ## External execution
 

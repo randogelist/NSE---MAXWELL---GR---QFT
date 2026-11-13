@@ -1,88 +1,77 @@
 # Fefferman adapter
 
 ```text
-HODGE_INTEGRATION = PREPARED_FROM_CERTIFIED_METHLIB_SOURCES
 CANONICAL_ROOT = NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_UNCONDITIONAL
-CURRENT_INTEGRATED_STATUS = A_TIER_CANDIDATE
-REQUIRED_EXTERNAL_AUDITS = 400 integrated / 400 Fefferman / 62 Maxwell
-SOURCE_BYTE_IDENTITY = 19/19
+CANONICAL_ROOT_TYPE = NSEMaxwell.Classical.ExactEquivalence
+CURRENT_FORMAL_STATUS = UNCONDITIONAL_CLOSURE
+EXTERNAL_RUN = 43373061238
+CERTIFIED_SOURCE = c4c7bcdca6e652905107bb1a3102ed50d94c2e6b
+REGISTERED_PACKAGE_AUDIT_TARGETS = 400
+HODGE_SOURCE_BYTE_IDENTITY = 19/19
+HODGE_THEOREM_AUDITS = 163
+NEW_CANONICAL_WRAPPER_AUDITS = 1
+ARBITRARY_DATA_GLOBAL_EXISTENCE = OPEN
 ```
 
-The integration source and its new canonical wrapper await matching external validation.
-The existing source certificates below retain their original scope and source commits.
+## Exact Lean statement
 
+The canonical theorem in [NSEMaxwell/FEFFERMAN_B_MAXWELL_EQUIVALENCE.lean](NSEMaxwell/FEFFERMAN_B_MAXWELL_EQUIVALENCE.lean) has type:
+
+```lean
+NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_UNCONDITIONAL :
+  NSEMaxwell.Classical.ExactEquivalence
+```
+
+```text
+ExactEquivalence =
+  ∀ ν : ℝ, 0 < ν → ∀ c : ℝ, 0 < c →
+    (FeffermanB ν ↔ MaxwellB ν c)
+```
+
+The root has no `FourierHodgeLaws` or parameter-smoothing premise. Its concrete inhabitant is `NSEMaxwell.HodgeProof.fourierHodgeLaws_inhabitant`. The original conditional root and both directional APIs retain their original types.
+
+The [frozen target](NSEMaxwell/Classical.lean) remains unforced and periodic in three spatial dimensions, with arbitrary velocity mean, periodic pressure, and joint `ContDiffOn ℝ ∞` through `t = 0`. Negative-time values remain unrestricted. Exact equivalence is proved; arbitrary-data existence for `FeffermanB` and `MaxwellB` separately remains open.
 
 ## Standalone native package
 
-[PACKAGE.md](PACKAGE.md) specifies the independent package. All 35 project modules are contained here, including ten byte-identical copies under [LocalDependencies/](LocalDependencies/) of the canonical Maxwell and directional sources. Complete Mathlib and eight companion dependency snapshots reside in [NativeSources/](NativeSources/). The selected 39-module Methlib closure is native Lean source, compiled through [MethlibEndpoints.lean](MethlibEndpoints.lean) and included in the 236-target package audit.
+[PACKAGE.md](PACKAGE.md) specifies independent extraction. The package contains the NSE adapter and Hodge proof sources, ten byte-identical Maxwell/directional copies under [LocalDependencies/](LocalDependencies/), complete Mathlib and eight companion snapshots under [NativeSources/](NativeSources/), and the original selected 39-module `SingularClosure` closure.
 
 ```bash
 bash Fefferman_adapter/run.sh
 ```
 
-Package extraction requires no parent-directory source dependency. `scripts/hydrate_native_sources.py` reconstructs missing exact pinned dependency checkouts from contained sources. Existing valid dependency checkouts and object caches remain intact. `scripts/verify_native_sources.py` checks source inventory, upstream Git identities, cached source equality and import closure.
+`hydrate_native_sources.py` reconstructs missing exact pinned dependency checkouts from contained sources. Existing valid dependency checkouts and object caches are preserved. `verify_native_sources.py` checks source inventory, Git identities, compiler-source equality, and import closure. Extraction requires no parent-directory source dependency.
 
-```text
-CURRENT_PACKAGE_STATUS = A_TIER_FOR_EXACT_AUDITED_DECLARATIONS
-EXTERNAL_VALIDATION = PASS_RUN_43359539373
-REGISTERED_PACKAGE_AUDIT_TARGETS = 236
-METHLIB_NATIVE_MODULES = 39
-METHLIB_ENDPOINT_AUDITS = 10
-```
+The 19 Hodge source files under [FourierHodgeLaws/](FourierHodgeLaws/) and [FourierHodgeLaws_inhabitant.lean](FourierHodgeLaws_inhabitant.lean) are byte-identical to Methlib source `f927f1e31196f0be71b2581dc85f6e3fd19e0746`. The audit inventory is the previous 236 declarations plus 163 Hodge theorems and one canonical wrapper.
 
-## Exact Lean statement
+## Proof components
 
-Location: [NSEMaxwell/Classical.lean](NSEMaxwell/Classical.lean).
-
-```lean
-NSEMaxwell.Classical.FeffermanB (ν : ℝ) : Prop :=
-  ∀ a : Field, Data a →
-    ∃ (u : Velocity) (p : Pressure), NSSolution ν a u p
-```
-
-`NSSolution`, `FeffermanB`, and `ExactEquivalence` remain in this adapter. `Data`, actual derivatives, periodicity, cube means, joint smoothness, constitutive operators, and the constrained Maxwell statement are imported from [Maxwell_Endpoint/](../Maxwell_Endpoint/) in the integrated repository and the byte-identical [LocalDependencies/Maxwell/](LocalDependencies/Maxwell/) copies in the standalone package. Their original namespace and definition bodies are retained. A compiled proposition definition is distinct from a proof of that proposition.
-
-## Contents
-
-| Path | Content |
+| Path | Exact role |
 |---|---|
-| [NSEMaxwell/Classical.lean](NSEMaxwell/Classical.lean) | Exact NSE solution, Fefferman-B statement, and equivalence proposition |
-| [Maxwell_Endpoint/](../Maxwell_Endpoint/) | Imported native geometry, constitutive fields, and exact Maxwell statement |
-| [NSEMaxwell/AnalyticContracts.lean](NSEMaxwell/AnalyticContracts.lean) | Shared magnetic-path objects and explicit analytic contracts |
-| [NSEMaxwell/AnalyticReduction.lean](NSEMaxwell/AnalyticReduction.lean) | Four-field FourierHodgeLaws contract and reduction |
-| [NSEMaxwell/AnalyticBridge.lean](NSEMaxwell/AnalyticBridge.lean) | Compatibility assembly of the two directions |
-| [NSEMaxwell/](NSEMaxwell/) | Shared derivative, periodic integration, mean, vorticity, and constitutive calculus |
-| [Endpoints/](Endpoints/) | Selected Mathlib/Methlib source copies and index |
-| [NSEMaxwell/Audit.lean](NSEMaxwell/Audit.lean) | Exact signature and theorem-level axiom audit commands |
+| [NSEMaxwell/Classical.lean](NSEMaxwell/Classical.lean) | NSE solution, Fefferman-B proposition, exact equivalence definition |
+| [NSEMaxwell/AnalyticContracts.lean](NSEMaxwell/AnalyticContracts.lean) | Magnetic paths and reusable analytic contracts |
+| [NSEMaxwell/AnalyticReduction.lean](NSEMaxwell/AnalyticReduction.lean) | Four-field `FourierHodgeLaws` contract and reduction |
+| [FourierHodgeLaws/SpatialInhabitant.lean](FourierHodgeLaws/SpatialInhabitant.lean) | Actual H1, H2, and H4 endpoints |
+| [FourierHodgeLaws/ParameterSmoothing.lean](FourierHodgeLaws/ParameterSmoothing.lean) | Scalar/vector inverse-Laplacian smoothness on closed forward spacetime |
+| [FourierHodgeLaws/CanonicalInhabitant.lean](FourierHodgeLaws/CanonicalInhabitant.lean) | H3 canonical smoothness |
+| [FourierHodgeLaws/Inhabitant.lean](FourierHodgeLaws/Inhabitant.lean) | Concrete Hodge inhabitant and native exact equivalence |
+| [NSEMaxwell/FEFFERMAN_B_MAXWELL_EQUIVALENCE.lean](NSEMaxwell/FEFFERMAN_B_MAXWELL_EQUIVALENCE.lean) | Canonical unconditional root and retained conditional APIs |
+| [NSEMaxwell/Audit.lean](NSEMaxwell/Audit.lean) | Exact signatures and named axiom audit commands |
+| [Endpoints/](Endpoints/) | Historical source snapshots, signatures, and original endpoint provenance |
 
-The module root remains `NSEMaxwell`; both repository and standalone Lake configurations map it to this physical directory.
+[INTEGRATION_PLAN.md](../B%20%3C-%3E%20Maxwell/INTEGRATION_PLAN.md) records the completed proof chain. [FOURIER_HODGE_COMPOSITION_B_TIER.txt](../B%20%3C-%3E%20Maxwell/FOURIER_HODGE_COMPOSITION_B_TIER.txt) retains the mathematical derivation. The 14 `.lean.txt` reference snapshots remain original source records; the current proof is the native compiled Hodge construction.
 
-Repository runners and retained compiler evidence reside in [Auxillary/](../Auxillary/). Package-local runners and verification scripts support isolated builds.
+## Current external certificate
 
-## Legacy copied endpoint boundary
+[Run 43373061238](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43373061238), source `c4c7bcdca6e652905107bb1a3102ed50d94c2e6b`: 400/400 integrated, 400/400 isolated Fefferman, and 62/62 isolated Maxwell fresh named audits passed. The only axiom dependencies are `propext`, `Classical.choice`, and `Quot.sound`.
 
-```text
-PUBLIC_SOURCE_COPIES   = PRESENT
-LEGACY_TEXT_SNAPSHOTS = RETAINED
-NATIVE_METHLIB_CLOSURE = NativeSources/methlib
-TARGET_NATIVE_AUDIT = PASS_10_SELECTED_METHLIB_ENDPOINTS
-HODGE_LEAN_INHABITANT  = NOT_SUPPLIED
-```
+[Matching evidence](../Auxillary/evidence/linux-43373061238) contains the compiler, source-manifest, package-isolation, and axiom-audit records. The exact canonical root has `UNCONDITIONAL_CLOSURE`; no unresolved certificate, witness, checker, admission, or analytic premise occurs in its proof route. This status concerns the equivalence, not a separate arbitrary-data global solution theorem.
 
-Fourteen original source files are copied under `Endpoints/sources/`, with `.lean.txt` suffixes and unchanged bytes: six Mathlib files and eight Methlib files. Complete imports are recorded; the snapshots do not constitute a standalone dependency-closed package.
+## Historical certificates
 
-Mathematical composition: [FOURIER_HODGE_COMPOSITION_B_TIER.txt](../B%20%3C-%3E%20Maxwell/FOURIER_HODGE_COMPOSITION_B_TIER.txt).
+All certificate statements below refer only to their recorded runs and source commits. Their original evidence files are preserved unchanged; historical unresolved-premise statements do not describe the current canonical root.
 
-Deferred Lean contracts: [INTEGRATION_PLAN.md](../B%20%3C-%3E%20Maxwell/INTEGRATION_PLAN.md).
-
-## Directional consumers
-
-- [Fefferman B ⇒ Maxwell](../B%20%3C-%3E%20Maxwell/%3D%3E/).
-- [Maxwell ⇒ Fefferman B](../B%20%3C-%3E%20Maxwell/%3C%3D/).
-
-The directional base modules import `NSEMaxwell.AnalyticContracts`. Their separate reduced modules import `NSEMaxwell.AnalyticReduction`. The resulting module graph is acyclic.
-
-## Contained native source certificate
+## Historical contained-source certificate: run 43359539373
 
 [Native Linux run 43359539373](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43359539373), source `1de664f2ef5ddc11caef25ac2274278b4171ab6b`:
 
@@ -99,17 +88,19 @@ The integrated build restored exact compiler, dependency, and project caches and
 Artifact `14008727271` contains **242 preserved files**; ZIP SHA256:
 `e3c5b60b16610af15c6f40454698e35c81228a1b44c5bf490d41a852cf354482`.
 
-The source manifests describe the compiled source commit. Documentation/evidence publication preserves all certified Lean sources, build configuration, runners, and audit inventories. The exact reduced implication remains **CONDITIONAL_FORMAL_CLOSURE**; `FourierHodgeLaws` remains an explicit unresolved premise, and arbitrary-data `FeffermanB`/`MaxwellB` existence is not proved.
+The source manifests describe the compiled source commit. Documentation/evidence publication preserves all certified Lean sources, build configuration, runners, and audit inventories. For source `1de664f2ef5ddc11caef25ac2274278b4171ab6b`, the certified reduced implication had **CONDITIONAL_FORMAL_CLOSURE**: `FourierHodgeLaws` was an explicit unresolved premise. That historical certificate did not prove arbitrary-data `FeffermanB` or `MaxwellB` existence.
 
 [Integrated audit](../Auxillary/evidence/linux-43359539373/audit-summary.json) · [Fefferman audit](../Auxillary/evidence/linux-43359539373/fefferman-standalone/audit-summary.json) · [Retained evidence](../Auxillary/evidence/linux-43359539373/)
 
 ## Historical external certificates
 
-[Native Linux run 43345557147](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147): build PASS; 174/174 named audits PASS_STANDARD_ONLY; 30/30 Lean input hashes matched that source snapshot. [Audit summary](../Auxillary/evidence/linux-43345557147/audit-summary.json). The conditional directions are A-tier; the Hodge inhabitant remains deferred. The relocated auxiliary runner paths also passed [native Linux run 43348914489](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43348914489), source `b02425040a217a94855cfa52934e303f12fe80de`: 174/174 fresh audits, 30/30 matching Lean inputs, and zero module rebuilds after Lake trace validation. [Retained audit summary](../Auxillary/evidence/linux-43348914489/audit-summary.json).
+[Native Linux run 43345557147](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147): build PASS; 174/174 named audits PASS_STANDARD_ONLY; 30/30 Lean input hashes matched that source snapshot. [Audit summary](../Auxillary/evidence/linux-43345557147/audit-summary.json). At that source, the conditional directions were A-tier and the Hodge inhabitant was deferred. The relocated auxiliary runner paths also passed [native Linux run 43348914489](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43348914489), source `b02425040a217a94855cfa52934e303f12fe80de`: 174/174 fresh audits, 30/30 matching Lean inputs, and zero module rebuilds after Lake trace validation. [Retained audit summary](../Auxillary/evidence/linux-43348914489/audit-summary.json).
 
-## Initial native extraction certificate
+## Historical native extraction certificate: run 43351199370
 
 ```text
+CERTIFICATE_RUN = 43351199370
+CERTIFICATE_SCOPE = HISTORICAL_SOURCE_7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6
 SOURCE_STATUS = A_TIER_FOR_EXACT_CONDITIONAL_BRIDGE
 REGISTERED_ROOT_AUDIT_TARGETS = 226
 REGISTERED_MAXWELL_AUDIT_TARGETS = 52
@@ -120,7 +111,7 @@ HODGE_LEAN_INHABITANT = NOT_SUPPLIED
 
 The native Maxwell package is upstream of this adapter in the import graph. The adapter and both implication directions retain their exact explicit hypotheses. Source extraction passed both external build and theorem-audit scopes in [run 43351199370](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43351199370), source `7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6`.
 
-Native witness endpoints: `MaxwellEndpoint.zero_solution` and `MaxwellEndpoint.zero_datum_global_instance`; 23 native theorems and 29 concrete definition/type targets are registered for the isolated package audit. `MaxwellEndpoint.U_zero` preserves the arbitrary harmonic mean. All 23 native theorems passed the isolated and integrated named audits. The exact conditional bridge remains A-tier; `FourierHodgeLaws` remains explicit.
+Native witness endpoints: `MaxwellEndpoint.zero_solution` and `MaxwellEndpoint.zero_datum_global_instance`; 23 native theorems and 29 concrete definition/type targets are registered for the isolated package audit. `MaxwellEndpoint.U_zero` preserves the arbitrary harmonic mean. All 23 native theorems passed the isolated and integrated named audits. The bridge certified in run 43351199370 was A-tier with `FourierHodgeLaws` explicit.
 
 [Integrated audit](../Auxillary/evidence/linux-43351199370/audit-summary.json) · [Isolated Maxwell audit](../Auxillary/evidence/linux-43351199370/standalone/audit-summary.json)
 
