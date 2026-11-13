@@ -76,8 +76,15 @@ theorem poissonInverse_hasDerivAt_pos (f : Pressure)
     {t : ℝ} (ht : 0 < t) (x : Vec) :
     HasDerivAt (fun s => poissonInverse (f s) x)
       (poissonInverse (scalarLocalTimeDerivative f t) x) t := by
-  simpa only [poissonInverse_eq_neg_scalarL, Pi.neg_apply] using
-    (scalarL_hasDerivAt_pos f hf hp ht x).neg
+  have hfun : (fun s => poissonInverse (f s) x) =
+      -(fun s => NSEMaxwell.Classical.scalarL (f s) x) := by
+    funext s
+    exact congrFun (poissonInverse_eq_neg_scalarL (f s)) x
+  have hvalue : poissonInverse (scalarLocalTimeDerivative f t) x =
+      -NSEMaxwell.Classical.scalarL (scalarLocalTimeDerivative f t) x :=
+    congrFun (poissonInverse_eq_neg_scalarL (scalarLocalTimeDerivative f t)) x
+  rw [hfun, hvalue]
+  exact (scalarL_hasDerivAt_pos f hf hp ht x).neg
 
 theorem poissonInverse_localTimeDerivative_pos (f : Pressure)
     (hf : NSEMaxwell.Classical.SmoothPressure f)

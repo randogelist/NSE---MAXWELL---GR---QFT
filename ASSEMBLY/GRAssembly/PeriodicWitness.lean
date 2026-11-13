@@ -113,7 +113,12 @@ theorem analyticAt_of_lattice_local_germ
   have hshift : AnalyticAt ℝ
       (fun z : S × Vec => (z.1, z.2 - integerSpatialShift a.2)) (s, x) :=
     analyticAt_fst.prod (analyticAt_snd.sub analyticAt_const)
-  exact (hf.comp hshift).congr hglued.symm
+  have htranslated : AnalyticAt ℝ
+      (fun z : S × Vec => latticeLocal f a z.1 z.2) (s, x) := by
+    exact hf.comp
+      (f := fun z : S × Vec => (z.1, z.2 - integerSpatialShift a.2))
+      (x := (s, x)) hshift
+  exact htranslated.congr hglued.symm
 
 /-- A germ-local differential law is inherited by the constructed field.
 The locality premise can be proved by the first/iterated derivative congruences

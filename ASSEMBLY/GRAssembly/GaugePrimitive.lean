@@ -42,7 +42,7 @@ theorem analyticAt_gaugeCKRHS {γ : ℝ → ℝ} {J : GaugeCKJet}
       analyticAt_fst).comp
         (show AnalyticAt ℝ (fun Y : GaugeCKJet => Y.1) J from analyticAt_fst)
   have ht : AnalyticAt ℝ (fun Y : GaugeCKJet => γ Y.1.1) J :=
-    hγ.comp htime
+    AnalyticAt.comp (f := fun Y : GaugeCKJet => Y.1.1) (x := J) hγ htime
   have hall : AnalyticAt ℝ
       (fun Y : GaugeCKJet =>
         (Fin.cases (Y.2.1 1) (fun _ : Fin 1 => γ Y.1.1) : Fin 2 → ℝ)) J := by

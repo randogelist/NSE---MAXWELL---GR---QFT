@@ -65,7 +65,7 @@ theorem spatial_posDef_of_near_identity (A : Tensor3)
       apply lt_of_lt_of_le (sq_pos_of_ne_zero hi)
       exact Finset.single_le_sum (fun j hj => sq_nonneg (x j)) (Finset.mem_univ i)
     have he := (abs_le.mp (spatial_quadratic_error_bound A hA x)).1
-    have hid : star x ⬝ᵥ (A *ᵥ x) = (∑ j : Fin 3, (x j) ^ 2) +
+    have hid : dotProduct (star x) (Matrix.mulVec A x) = (∑ j : Fin 3, (x j) ^ 2) +
         ∑ i : Fin 3, ∑ j : Fin 3,
           x i * (A i j - (1 : Tensor3) i j) * x j := by
       simp [dotProduct, Matrix.mulVec, Fin.sum_univ_succ, Matrix.one_apply]

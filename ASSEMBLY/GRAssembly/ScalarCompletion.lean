@@ -37,7 +37,7 @@ theorem completedBoundary_lower_trace
     (nseSpatialSource3 ν u p t x) (scalarHessian (ψ t) x)
     (fun i => gradient (scalarLocalTimeDerivative ψ t) x i)
     (scalarLocalTimeDerivative (scalarLocalTimeDerivative ψ) t x)) = _
-  rw [scalarCompletedUpper_eq_block, lorentzTrace4_boundaryBlock,
+  erw [scalarCompletedUpper_eq_block, lorentzTrace4_boundaryBlock,
     trace3_scalarSpatialJet, nseSpatialSource3_trace ν u p t x hdiv,
     trace3_scalarHessian]
   ring
@@ -59,8 +59,11 @@ theorem completedBoundary_time_space
     (ν ρ : ℝ) (u : Velocity) (p ψ : Pressure) (t : ℝ) (x : Vec) (i : Fin 3) :
     completedBoundary ν ρ u p ψ t x 0 i.succ =
       u t x i - gradient (scalarLocalTimeDerivative ψ t) x i := by
-  simp [completedBoundary, traceReverse4, eta4, lorentzSign4,
-    lowerTensor4, conservedSourceUpper, scalarCompletionUpper]
+  have hne : (0 : Fin 4) ≠ i.succ := Ne.symm (Fin.succ_ne_zero i)
+  simp only [completedBoundary, traceReverse4, eta4, if_neg hne, mul_zero,
+    zero_sub, lowerTensor4_time_space, Matrix.add_apply,
+    conservedSourceUpper_time_space, scalarCompletionUpper_time_space]
+  ring
 
 theorem completedBoundary_space_space
     (ν ρ : ℝ) (u : Velocity) (p ψ : Pressure) (t : ℝ) (x : Vec)
@@ -97,7 +100,7 @@ theorem completedBoundary_beta
   simp only [boundaryBeta, spatialIndex4,
     completedBoundary_space_space ν ρ u p ψ t x hdiv, identity3_diag,
     mul_one, Fin.sum_univ_succ]
-  simp only [vectorSq3]
+  simp only [vectorSq3, Fin.succ_zero_eq_one, Fin.succ_one_eq_two]
   linear_combination -ν * hz + hH
 
 theorem nseSpatialSource3_divergence
@@ -114,7 +117,7 @@ theorem nseSpatialSource3_divergence
   have hs : ∀ i j, DifferentiableAt ℝ (fun y => strain (u t) y i j) x :=
     fun i j => (strain_component_smooth hu i j).differentiable (by simp) x
   have heq : nseSpatialSource3 ν u p t = fun y =>
-      (velocityOuter (u t y) + (fun i j => p t y * identity3 i j)) -
+      (velocityOuter (u t y) + ((fun i j => p t y * identity3 i j) : Tensor3)) -
         ν • strain (u t) y := by
     rfl
   rw [heq, tensorDivergence_sub _ _ x (fun i j => (ho i j).add (hi i j))
@@ -133,8 +136,11 @@ theorem velocity_coordinate_timeDerivative
     deriv (fun s => u s x i) t = localTimeDerivative u t x i := by
   let ev : Vec →L[ℝ] ℝ := EuclideanSpace.proj i
   have h := ev.hasFDerivAt.comp t hu.curry_left.differentiableAt.hasFDerivAt
-  simpa only [localTimeDerivative, ContinuousLinearMap.comp_apply,
-    Function.comp_def] using h.hasDerivAt.deriv
+  have hd := h.hasDerivAt.deriv
+  change deriv (fun s => u s x i) t =
+    (fderiv ℝ (fun s => u s x) t 1) i at hd
+  rw [fderiv_apply_one_eq_deriv] at hd
+  exact hd
 
 theorem nseSpatialSource3_symmetric
     (ν : ℝ) (u : Velocity) (p : Pressure) (t : ℝ) (x : Vec) (i j : Fin 3) :
