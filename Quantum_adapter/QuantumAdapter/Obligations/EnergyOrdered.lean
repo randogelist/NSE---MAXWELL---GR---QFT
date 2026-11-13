@@ -36,7 +36,9 @@ theorem orderedPairing_add_right (m N : ℕ) (q a b : Phase N) :
 theorem orderedPairing_smul_right (m N : ℕ) (q a : Phase N) (s : ℝ) :
     orderedPairing m N q (s • a) = s * orderedPairing m N q a := by
   induction m generalizing q a with
-  | zero => exact inner_smul_right _ _ _
+  | zero =>
+    change inner ℝ q (s • a) = s * inner ℝ q a
+    simp only [inner_smul_right]
   | succ m ih => simp only [orderedPairing, phaseDerivative_smul, ih, Finset.mul_sum]
 
 theorem h3Pairing_self (N : ℕ) (q : Phase N) :
@@ -76,6 +78,8 @@ theorem energy3_hasDerivAt (N : ℕ) {f : ℝ → Phase N}
       (fun s => energy3 N (f s)) := by
     funext s
     exact (energy3_eq_frequencyEnergy N (f s)).symm
+  change HasDerivAt (fun s => frequencyEnergy 0 N (f s) + 3 * frequencyEnergy 1 N (f s) +
+    3 * frequencyEnergy 2 N (f s) + frequencyEnergy 3 N (f s)) _ t at h
   rw [he] at h
   convert h using 1 <;> unfold h3Pairing <;> ring
 

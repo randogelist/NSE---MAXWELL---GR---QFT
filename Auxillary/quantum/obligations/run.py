@@ -36,6 +36,7 @@ def main():
     p.add_argument("--dependency-report", type=Path, default=Path("artifacts/external-linux/dependency-preparation.json"))
     p.add_argument("--source-commit", default=os.environ.get("GITHUB_SHA", ""))
     p.add_argument("--expected-platform", choices=("linux", "windows"), default="linux")
+    p.add_argument("--build-mode", choices=("batch", "serial"), default="batch")
     args = p.parse_args()
     root = args.repo_root.resolve()
     report = args.report_directory if args.report_directory.is_absolute() else root / args.report_directory
@@ -46,7 +47,7 @@ def main():
         "requested_mathlib_commit": MATHLIB, "external_platform": platform.system().lower(),
         "stage": "PREPARATION", "commands": [], "module_results": [],
         "semantic_discharge": "NOT_INFERRED_FROM_AXIOM_AUDIT",
-        "build_strategy": "SINGLE_CACHED_LAKE_BUILD_TRANSITIVE_FRESHNESS_SKIP_FAILED_DEPENDENCIES",
+        "build_strategy": "BATCH_LAKE_FRESHNESS_AND_EXACT_AUDIT" if args.build_mode == "batch" else "SERIAL_CACHED_LAKE_BUILDS",
     }
     env = dict(os.environ, ELAN_TOOLCHAIN=TOOLCHAIN, MATHLIB_NO_CACHE_ON_UPDATE="1")
     env.pop("LEAN_PATH", None)
@@ -245,72 +246,82 @@ def main():
             return visited
         failed_builds = set()
 
-        for item in modules:
-            name, decls = item["module"], item["audit_targets"]
-            stem = name.replace(".", "-")
-            result = {"module": name, "path": item["path"], "build_status": "NOT_RUN", "audit_status": "NOT_RUN", "audit_targets": decls}
-            results.append(result)
+        if args.build_mode == "batch":
+            batch_spec = importlib.util.spec_from_file_location("obligation_batch", file(HERE + "/batch.py"))
+            if batch_spec is None or batch_spec.loader is None:
+                raise RuntimeError("Batch implementation unavailable")
+            batch = importlib.util.module_from_spec(batch_spec)
+            batch_spec.loader.exec_module(batch)
+            results, declaration_results, batch_errors = batch.execute(root, report, modules, declaration_kinds, verifier, run)
+            errors.extend(batch_errors)
             prov["module_results"] = results
             save()
-            blocked = sorted(ancestors(name) & failed_builds)
-            if blocked:
-                result["build_status"] = "BLOCKED_BY_FAILED_DEPENDENCY"
-                result["audit_status"] = "SKIPPED_DEPENDENCY_FAILURE"
-                result["failed_dependencies"] = blocked
-                failed_builds.add(name)
-                errors.append(f"{name}: blocked by failed dependencies {blocked}")
-                declaration_results.extend({"name": d, "module": name,
-                    "status": "SKIPPED_DEPENDENCY_FAILURE", "kind": declaration_kinds[d]} for d in decls)
-                print(f"BLOCKED {name}: {', '.join(blocked)}", flush=True)
+        else:
+            for item in modules:
+                name, decls = item["module"], item["audit_targets"]
+                stem = name.replace(".", "-")
+                result = {"module": name, "path": item["path"], "build_status": "NOT_RUN", "audit_status": "NOT_RUN", "audit_targets": decls}
+                results.append(result)
+                prov["module_results"] = results
                 save()
-                continue
-            # Lake's build performs transitive trace validation and reuses every
-            # current cached object. A separate --no-build probe only duplicates
-            # that validation and process startup on stale modules.
-            result["cache_strategy"] = "LAKE_TRANSITIVE_TRACE_VALIDATION"
-            code, _ = run(["lake", "build", name], "build-" + stem + ".log")
-            result["build_exit_code"] = code
-            result["build_status"] = "PASS" if code == 0 else "FAIL"
-            if code:
-                failed_builds.add(name)
-                result["audit_status"] = "SKIPPED_BUILD_FAILURE"
-                errors.append(f"{name}: build failed ({code})")
-                declaration_results.extend({"name": d, "module": name, "status": "SKIPPED_BUILD_FAILURE", "kind": declaration_kinds[d]} for d in decls)
+                blocked = sorted(ancestors(name) & failed_builds)
+                if blocked:
+                    result["build_status"] = "BLOCKED_BY_FAILED_DEPENDENCY"
+                    result["audit_status"] = "SKIPPED_DEPENDENCY_FAILURE"
+                    result["failed_dependencies"] = blocked
+                    failed_builds.add(name)
+                    errors.append(f"{name}: blocked by failed dependencies {blocked}")
+                    declaration_results.extend({"name": d, "module": name,
+                        "status": "SKIPPED_DEPENDENCY_FAILURE", "kind": declaration_kinds[d]} for d in decls)
+                    print(f"BLOCKED {name}: {', '.join(blocked)}", flush=True)
+                    save()
+                    continue
+                # Lake's build performs transitive trace validation and reuses every
+                # current cached object. A separate --no-build probe only duplicates
+                # that validation and process startup on stale modules.
+                result["cache_strategy"] = "LAKE_TRANSITIVE_TRACE_VALIDATION"
+                code, _ = run(["lake", "build", name], "build-" + stem + ".log")
+                result["build_exit_code"] = code
+                result["build_status"] = "PASS" if code == 0 else "FAIL"
+                if code:
+                    failed_builds.add(name)
+                    result["audit_status"] = "SKIPPED_BUILD_FAILURE"
+                    errors.append(f"{name}: build failed ({code})")
+                    declaration_results.extend({"name": d, "module": name, "status": "SKIPPED_BUILD_FAILURE", "kind": declaration_kinds[d]} for d in decls)
+                    save()
+                    continue
+                audit = "import " + name + "\nset_option pp.universes true\nset_option pp.fullNames true\n"
+                audit += "".join(f"#check @{d}\n#print axioms {d}\n" for d in decls)
+                audit_path = report / (stem + "-Audit.lean")
+                audit_path.write_text(audit, encoding="utf-8")
+                result["audit_source_sha256"] = sha256(audit_path)
+                code, output = run(["lake", "env", "lean", str(audit_path)], "audit-" + stem + ".log")
+                result["audit_exit_code"] = code
+                module_errors = []
+                if code or "sorryAx" in output or re.search(r"(?:^|\n).*:\s*error:", output):
+                    module_errors.append("Fresh audit compiler failure or admission.")
+                try:
+                    records = verifier.parse_axioms(output)
+                    if set(records) != set(decls):
+                        module_errors.append("Fresh axiom record names differ from the explicit targets.")
+                    for declaration in decls:
+                        rows = records.get(declaration, [])
+                        if len(rows) != 1:
+                            module_errors.append(f"{declaration}: expected one record, found {len(rows)}")
+                            declaration_results.append({"name": declaration, "module": name, "status": "MISSING_OR_DUPLICATE", "kind": declaration_kinds[declaration]})
+                            continue
+                        axioms = sorted({verifier.normalize_axiom_name(a) for a in rows[0]})
+                        bad = sorted(set(axioms) - verifier.ALLOWED_AXIOMS)
+                        if bad:
+                            module_errors.append(f"{declaration}: unapproved axioms {bad}")
+                        declaration_results.append({"name": declaration, "module": name,
+                            "status": "PASS_STANDARD_ONLY" if not bad and not code else "FAIL", "kind": declaration_kinds[declaration], "axioms": axioms, "unapproved_axioms": bad})
+                except Exception as error:
+                    module_errors.append(f"Axiom parser rejected output: {error}")
+                result["audit_status"] = "FAIL" if module_errors else "PASS_STANDARD_ONLY"
+                result["errors"] = module_errors
+                errors.extend(f"{name}: {e}" for e in module_errors)
                 save()
-                continue
-            audit = "import " + name + "\nset_option pp.universes true\nset_option pp.fullNames true\n"
-            audit += "".join(f"#check @{d}\n#print axioms {d}\n" for d in decls)
-            audit_path = report / (stem + "-Audit.lean")
-            audit_path.write_text(audit, encoding="utf-8")
-            result["audit_source_sha256"] = sha256(audit_path)
-            code, output = run(["lake", "env", "lean", str(audit_path)], "audit-" + stem + ".log")
-            result["audit_exit_code"] = code
-            module_errors = []
-            if code or "sorryAx" in output or re.search(r"(?:^|\n).*:\s*error:", output):
-                module_errors.append("Fresh audit compiler failure or admission.")
-            try:
-                records = verifier.parse_axioms(output)
-                if set(records) != set(decls):
-                    module_errors.append("Fresh axiom record names differ from the explicit targets.")
-                for declaration in decls:
-                    rows = records.get(declaration, [])
-                    if len(rows) != 1:
-                        module_errors.append(f"{declaration}: expected one record, found {len(rows)}")
-                        declaration_results.append({"name": declaration, "module": name, "status": "MISSING_OR_DUPLICATE", "kind": declaration_kinds[declaration]})
-                        continue
-                    axioms = sorted({verifier.normalize_axiom_name(a) for a in rows[0]})
-                    bad = sorted(set(axioms) - verifier.ALLOWED_AXIOMS)
-                    if bad:
-                        module_errors.append(f"{declaration}: unapproved axioms {bad}")
-                    declaration_results.append({"name": declaration, "module": name,
-                        "status": "PASS_STANDARD_ONLY" if not bad and not code else "FAIL", "kind": declaration_kinds[declaration], "axioms": axioms, "unapproved_axioms": bad})
-            except Exception as error:
-                module_errors.append(f"Axiom parser rejected output: {error}")
-            result["audit_status"] = "FAIL" if module_errors else "PASS_STANDARD_ONLY"
-            result["errors"] = module_errors
-            errors.extend(f"{name}: {e}" for e in module_errors)
-            save()
-
         for item in manifest["files"]:
             if item.get("materialization") == "GIT_ONLY_WINDOWS_INVALID_PATH":
                 continue

@@ -99,7 +99,7 @@ theorem drift_eq_inviscid_sub_laplacian (ν : ℝ) (N : ℕ) (q : Phase N) :
       simp
     · rw [if_neg hzero, if_neg hzero]
       simp only [zero_mul, Complex.ofReal_zero, neg_zero,
-        Complex.ofReal_mul, smul_eq_mul]
+        Complex.ofReal_mul, Complex.real_smul]
       ring
   · rw [if_neg hk, if_neg hk, phaseCoeff_support q k hk i]
     simp
@@ -107,7 +107,7 @@ theorem drift_eq_inviscid_sub_laplacian (ν : ℝ) (N : ℕ) (q : Phase N) :
 theorem drift_fderiv_viscosity_split (ν : ℝ) (N : ℕ) (q : Phase N) :
     fderiv ℝ (drift ν N) q = fderiv ℝ (drift 0 N) q - ν • phaseLaplacianCLM N := by
   have h0 := ((contDiff_drift 0 N).differentiable (by simp) q).hasFDerivAt
-  have hA := (phaseLaplacianCLM N).hasFDerivAt.const_smul ν
+  have hA := ((phaseLaplacianCLM N).hasFDerivAt (x := q)).const_smul ν
   have hd := h0.sub hA
   have heq : (fun z : Phase N => drift 0 N z - ν • phaseLaplacianCLM N z) =
       drift ν N := by

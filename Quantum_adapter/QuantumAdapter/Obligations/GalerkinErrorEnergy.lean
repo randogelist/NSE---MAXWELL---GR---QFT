@@ -47,7 +47,7 @@ theorem weighted_bilinear_h3_rate_le (ν : ℝ) (hν : 0 < ν)
       -weightedTransportPairing 3 N e q r at hi
   have hcoef : 18 * ((2 : ℝ) ^ 3) ^ 2 * latticeSobolevConstant / (ν / 9) =
       10368 * latticeSobolevConstant / ν := by
-    field_simp
+    field_simp [hν.ne']
     ring
   have henergy : sobolevEnergy 2 N r * sobolevEnergy 3 N q +
       sobolevEnergy 2 N q * sobolevEnergy 3 N r ≤
@@ -97,6 +97,7 @@ theorem drift_reference_error_h3_rate_le (ν : ℝ) (hν : 0 < ν)
   have hD : 0 ≤ D := sobolevEnergy_nonneg 4 N e
   have hK : 0 ≤ K :=
     div_nonneg (mul_nonneg (by norm_num) latticeSobolevConstant_pos.le) hν.le
+  change Q ≤ 1 at he
   have hQ2 : Q * Q ≤ Q := by nlinarith
   have hVQ : V * Q ≤ R * Q := mul_le_mul_of_nonneg_right hv hQ
   have hself := weighted_bilinear_h3_rate_le ν hν N e e e

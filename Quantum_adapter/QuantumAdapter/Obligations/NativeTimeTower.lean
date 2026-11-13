@@ -70,7 +70,7 @@ theorem native_time_tower_exists {ν : ℝ} (hν : 0 < ν) (F : PhaseFlow ν)
     ∃ (d : ℕ → ℝ → FourierCoeff) (φ : ℕ → ℕ), StrictMono φ ∧
       FourierTimeTowerDerivative d ∧ FourierTimeTowerBounds d ∧
       (∀ n t, 0 ≤ t → SpectralReality (d n t) ∧ SpectralSolenoidal (d n t)) ∧
-      ∀ n k i H, TendstoUniformlyOn
+      ∀ (n : ℕ) (k : Frequency) (i : Fin 3) (H : ℕ), TendstoUniformlyOn
         (fun j t => phaseCoeff (phaseTimeJet F (φ j+1)
           (initialPhaseData (φ j+1) a ha) n t) k i)
         (fun t => d n t k i) atTop (Icc (0:ℝ) (H:ℝ)) := by

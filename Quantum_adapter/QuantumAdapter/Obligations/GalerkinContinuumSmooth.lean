@@ -1,6 +1,6 @@
 import QuantumAdapter.Obligations.ContinuumSeries
 import QuantumAdapter.Obligations.FourierTimeTower
-import QuantumAdapter.Obligations.GalerkinReferenceBounds
+import QuantumAdapter.Obligations.ForwardSpatial
 import QuantumAdapter.Obligations.GalerkinLimits
 
 /-!
@@ -152,8 +152,8 @@ theorem fourierJetTerm_hasFDerivWithinAt
       ContinuousLinearMap.smulRight_apply, ContinuousLinearMap.one_apply,
       ContinuousLinearMap.fst_apply, ContinuousLinearMap.snd_apply,
       Complex.ofRealCLM_apply, EuclideanSpace.coe_proj, smul_eq_mul,
-      fourierPhaseCLM, Finset.sum_mul, Finset.mul_sum]
-    ring
+      Complex.real_smul, fourierPhaseCLM, Finset.sum_mul, Finset.mul_sum]
+    simp only [mul_assoc, mul_left_comm, mul_comm] <;> ring
 
 def forwardTimeSlab (T : ℝ) : Set (ℝ × Vec) :=
   forwardSpacetime ∩ {z | z.1 < T}
@@ -209,7 +209,9 @@ theorem fourierJetSynthesis_hasFDerivWithinAt_slab
       ∑ j : Option (Fin 3), fourierJetSynthesis d (fourierJetStep j a) z •
         spacetimeCoordinate j := by
     rw [Summable.tsum_finsetSum (fun j _ => hs j)]
-    simp only [fourierJetSynthesis, tsum_smul_const]
+    apply Finset.sum_congr rfl
+    intro j hj
+    exact (hb.jet_summable_norm (fourierJetStep j a) z hz.1).of_norm.tsum_smul_const _
   rw [heq] at h
   exact h
 

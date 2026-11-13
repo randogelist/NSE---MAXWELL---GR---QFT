@@ -1,5 +1,6 @@
 import QuantumAdapter.Obligations.CompactTimeExtraction
 import Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus
+import Mathlib.MeasureTheory.Integral.DominatedConvergence
 
 /-! Passing actual derivative towers to a uniform limit, including the t=0 endpoint. -/
 set_option autoImplicit false
@@ -14,25 +15,10 @@ theorem integral_tendsto_of_uniform_on_interval
     (hf : ∀ n, ContinuousOn (f n) (Icc 0 t)) (hg : ContinuousOn g (Icc 0 t))
     (hlim : TendstoUniformlyOn f g atTop (Icc 0 t)) :
     Tendsto (fun n => ∫ s in (0:ℝ)..t, f n s) atTop (𝓝 (∫ s in (0:ℝ)..t, g s)) := by
-  apply Metric.tendsto_nhds.mpr
-  intro ε hε
-  have hden : 0 < t+1 := by linarith
-  have hη : 0 < ε/(t+1) := div_pos hε hden
-  have h := (Metric.tendstoUniformlyOn_iff.mp hlim) (ε/(t+1)) hη
-  filter_upwards [h] with n hn
-  rw [dist_eq_norm, ← intervalIntegral.integral_sub
-    ((hf n).intervalIntegrable_of_Icc ht) (hg.intervalIntegrable_of_Icc ht)]
-  have hb : ‖∫ s in (0:ℝ)..t, f n s-g s‖ ≤ (ε/(t+1))*|t-0| := by
-    apply intervalIntegral.norm_integral_le_of_norm_le_const
-    intro s hs
-    have hs' : s ∈ Icc (0:ℝ) t := by
-      have hs0 : s ∈ Ioc (0:ℝ) t := by simpa only [uIoc_of_le ht] using hs
-      exact ⟨hs0.1.le,hs0.2⟩
-    have he := (hn s hs').le
-    simpa only [dist_eq_norm, norm_sub_rev] using he
-  have heq : (ε/(t+1))*(t+1)=ε := div_mul_cancel₀ ε hden.ne'
-  rw [sub_zero, abs_of_nonneg ht] at hb
-  nlinarith
+  apply TendstoUniformlyOn.tendsto_intervalIntegral_of_continuousOn
+  · exact Filter.Eventually.of_forall (fun n => by
+      simpa only [uIcc_of_le ht] using hf n)
+  · simpa only [uIcc_of_le ht] using hlim
 
 theorem derivative_limit_integral_identity
     (f f' : ℕ → ℝ → ℂ) (g g' : ℝ → ℂ)

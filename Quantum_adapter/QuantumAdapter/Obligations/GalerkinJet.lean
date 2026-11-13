@@ -46,7 +46,7 @@ def GalerkinExpr.differentiate (ν : ℝ) : GalerkinExpr → GalerkinExpr
 theorem GalerkinExpr.eval_driftExpr (ν : ℝ) (N : ℕ) (q : Phase N) :
     (driftExpr ν).eval N q = drift ν N q := by
   simp only [driftExpr, eval, bilinearConvectionCLM_apply, bilinearConvection_self]
-  rw [drift_eq_inviscid_sub_laplacian]
+  rw [drift_eq_inviscid_sub_laplacian ν N q]
   simp only [neg_smul, sub_eq_add_neg]
   exact add_comm _ _
 

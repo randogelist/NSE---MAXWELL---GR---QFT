@@ -1,4 +1,4 @@
-import QuantumAdapter.Obligations.GalerkinReference
+import QuantumAdapter.Assembly.Galerkin
 import QuantumAdapter.Obligations.GalerkinIntegral
 import Mathlib.Analysis.Calculus.TangentCone.Prod
 

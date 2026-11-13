@@ -1,4 +1,4 @@
-import QuantumAdapter.Obligations.TensorInterpolation
+import QuantumAdapter.Assembly.Fourier
 import SingularClosure.FiniteHessian
 
 /-! Static Fourier identities for the actual smooth periodic PDE operators. -/
@@ -62,14 +62,15 @@ theorem datumFourierCoeff_finset_sum {I : Type*} (s : Finset I) (a : I → Field
 theorem datumFourierCoeff_laplacian (a : Field)
     (ha : ContDiff ℝ ∞ a) (hp : SpatialPeriodic a) :
     datumFourierCoeff (laplacian a) = laplacianCoefficient (datumFourierCoeff a) := by
-  have hd (j : Fin 3) : ContDiff ℝ ∞ (coordinateDerivative a j) := tensorDir_contDiff ha j
+  have hd (j : Fin 3) : ContDiff ℝ ∞ (coordinateDerivative a j) :=
+    iteratedCoordinateDerivative_smooth j 1 a ha
   have hdp (j : Fin 3) : SpatialPeriodic (coordinateDerivative a j) :=
-    tensorDir_periodic (ha.differentiable (by simp)) hp j
+    coordinateDerivative_spatialPeriodic j a hp
   have heq : laplacian a = ∑ j : Fin 3, coordinateDerivative (coordinateDerivative a j) j := by
     funext x
     simp only [laplacian, coordinateDerivative, Finset.sum_apply]
   rw [heq, datumFourierCoeff_finset_sum Finset.univ _ (fun j hj =>
-    (tensorDir_contDiff (hd j) j).continuous)]
+    (iteratedCoordinateDerivative_smooth j 1 (coordinateDerivative a j) (hd j)).continuous)]
   simp_rw [SingularClosure.datumFourierCoeff_coordinateDerivative _ _ (hd _) (hdp _),
     SingularClosure.datumFourierCoeff_coordinateDerivative _ _ ha hp]
   exact sum_double_derivativeMultiplier (datumFourierCoeff a)

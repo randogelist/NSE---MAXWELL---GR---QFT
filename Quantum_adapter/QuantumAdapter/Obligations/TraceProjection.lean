@@ -1,4 +1,6 @@
-import QuantumAdapter.Obligations.TraceViscous
+import QuantumAdapter.Obligations.TraceLaplacian
+import QuantumAdapter.Obligations.EnergyBilinear
+import Mathlib.LinearAlgebra.Trace
 
 /-!
 Explicit algebraic retraction from the ambient complex coefficient space

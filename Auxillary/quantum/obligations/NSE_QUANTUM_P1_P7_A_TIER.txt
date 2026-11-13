@@ -1,0 +1,131 @@
+NSE_QUANTUM_P1_P7
+STATUS = A_TIER_CANDIDATE
+PROMOTION = EXTERNAL_COMPILER_PASS AND EXACT_THEOREM_AXIOM_AUDIT_PASS
+LOCAL_LEAN_EXECUTION = NONE
+
+TOOLCHAIN = leanprover/lean4:v4.34.0-rc1
+MATHLIB = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+CI_PLATFORM = Linux x86_64
+CACHE = PINNED_MATHLIB + INCREMENTAL_NATIVE_PROJECT
+ALLOWED_AXIOMS = propext; Classical.choice; Quot.sound
+FORBIDDEN_DEPENDENCIES = sorryAx; UNAPPROVED_AXIOMS
+
+ROOT
+  QuantumAdapter.Obligations.NSE_B_IFF_CANONICAL_QUANTUM
+  forall nu : Real, 0 < nu ->
+    NSEMaxwell.Classical.FeffermanB nu <->
+      QuantumAdapter.QREG (QuantumAdapter.Obligations.closedPhaseFlow hnu)
+
+ROOT_SCOPE
+  DOMAIN = T^3
+  VELOCITY_MEAN = ARBITRARY
+  TIME_DOMAIN = [0,infinity)
+  SMOOTHNESS = ContDiffOn Real infinity ON THE CLOSED FORWARD HALFSPACE
+  TIME_ZERO_DERIVATIVE = derivWithin (Ici 0)
+  QUANTUM_STATE = ORIGINAL_CANONICAL_GAUSSIAN
+  QUANTUM_ADMISSIBILITY = EXPLICIT_NATIVE_DOMAIN_AND_INTEGRABILITY_CONDITIONS
+  CONCLUSION = EQUIVALENCE
+  NOT_A_CONCLUSION = FeffermanB nu
+  NOT_A_CONCLUSION = QREG (closedPhaseFlow hnu)
+
+P1
+  MODULE = QuantumAdapter.Obligations.TraceSpectral
+  THEOREM = QuantumAdapter.Obligations.native_drift_divergence
+  TYPE = forall nu N q, driftDivergence nu N q = -phaseDecayRate nu N
+  SPINE = translation invariance -> mean reduction -> nonlinear trace zero
+          -> positive Laplacian -> real ambient retraction -> rank-one trace
+          -> exact transverse multiplicity two
+  STATUS = A_TIER_CANDIDATE
+
+P2
+  MODULE = QuantumAdapter.Obligations.VariationalNative
+  THEOREM = QuantumAdapter.Obligations.phaseFlow_timeMap_differentiable
+  TYPE = nu >= 0 -> forall F : PhaseFlow nu, forall N t,
+           Differentiable Real (F.map N t)
+  SPINE = complete continuous linear ODE -> fundamental matrix
+          -> quadratic Taylor remainder -> Frechet derivative
+  TIME = ALL_REAL
+  STATUS = A_TIER_CANDIDATE
+
+P3
+  MODULE = QuantumAdapter.Obligations.JacobianNative
+  THEOREM = QuantumAdapter.Obligations.phaseFlow_jacobian
+  TYPE = nu >= 0 -> forall F N t q,
+           det(fderiv Real (F.map N t) q) = exp(-phaseDecayRate nu N*t)
+  SPINE = actual variational equation -> singular-safe determinant derivative
+          -> constant-trace scalar ODE
+  STATUS = A_TIER_CANDIDATE
+
+P4
+  MODULE = QuantumAdapter.Obligations.EnergyRelative
+  THEOREM = QuantumAdapter.Obligations.phaseFlow_relative_l2
+  TYPE = nu >= 0 -> forall F N q r t, t >= 0 ->
+           norm(F.map N t q-F.map N t r)
+             <= norm(q-r)*exp(orbitGradientCost F N r t)
+  SPINE = full-mode Parseval -> mixed transport cancellation
+          -> exact relative energy inequality -> scalar integrating factor
+  PREFACTOR = 1
+  STATUS = A_TIER_CANDIDATE
+
+P5
+  MODULE = QuantumAdapter.Obligations.EnergyTame
+  THEOREM = QuantumAdapter.Obligations.phaseFlow_h3_tame
+  TYPE = nu >= 0 -> forall F N q t, t >= 0 ->
+           sqrt(energy3 N (F.map N t q))
+             <= sqrt(energy3 N q)*exp(512*orbitGradientCost F N q t)
+  SPINE = periodic tensor integration by parts -> tensor interpolation
+          -> actual ordered-derivative commutators -> exact H3 polarization
+          -> viscosity sign -> scalar integrating factor
+  PREFACTOR = 1
+  UNIVERSAL_CONSTANT = 512
+  OBLIGATION = EXISTS C3 > 0, UNIFORM IN N AND INITIAL PHASE
+  B_TIER_CONSTANT_16 = SEPARATE_STRONGER_ESTIMATE; NOT_PROMOTED_BY_THIS_ENDPOINT
+  STATUS = A_TIER_CANDIDATE
+
+P6
+  MODULE = QuantumAdapter.Obligations.GalerkinForward
+  THEOREM = QuantumAdapter.Obligations.phaseFlow_smooth_stability
+  TYPE = nu > 0 -> forall F a ha u p,
+           NSSolution nu a u p -> forall T > 0, GalerkinBoundAt F a ha T
+  SPINE = closed-halfspace Fourier differentiation -> native pressure elimination
+          -> compact reference Sobolev bounds -> actual projection error equation
+          -> high-order cutoff tails -> consistency residual convergence
+          -> stopped energy bootstrap -> low-cutoff compact bounds
+  EXTRA_ANALYTIC_PREMISES = NONE
+  STATUS = A_TIER_CANDIDATE
+
+P7
+  MODULE = QuantumAdapter.Obligations.GalerkinReverse
+  THEOREM = QuantumAdapter.Obligations.phaseFlow_compactness
+  TYPE = nu > 0 -> forall F a ha,
+           (forall T > 0, GalerkinBoundAt F a ha T) ->
+             exists u p, NSSolution nu a u p
+  SPINE = actual weighted convolution -> viscous all-order energy propagation
+          -> finite differential-expression jets -> countable compact-time extraction
+          -> closed-time derivative limits -> global Fourier derivative tower
+          -> dominated nonlinear coefficient limit -> exact initial trace
+          -> closed-halfspace smooth velocity -> actual smooth pressure
+          -> Fourier uniqueness -> all seven NSSolution fields
+  INTERNAL_H3_PREMISE = ORIGINAL_P7_ANTECEDENT
+  EXTRA_ANALYTIC_PREMISES = NONE
+  STATUS = A_TIER_CANDIDATE
+
+ASSEMBLY
+  P1 -> closedPhaseFlow
+  P2 + P3 -> closedPhaseFlow_transportLaws
+  P6 + P7 -> native_GalerkinAnalyticLaws
+  P1 + P2 + P3 + P4 + P5 + P6 + P7
+    + EXISTING_NATIVE_GAUSSIAN_AND_PACKET_CHAIN
+    -> NSE_B_IFF_CANONICAL_QUANTUM
+
+EVIDENCE
+  EXACT_ROOT_COMPILER_PASS = PENDING
+  EXACT_ROOT_AXIOM_AUDIT = PENDING
+  EXACT_OBLIGATION_PROMOTIONS = PENDING
+  SOURCE_COMMIT = PENDING_FINAL_MATCHING_EXTERNAL_RUN
+  FINAL_REGRESSION = PENDING
+
+MARKER_RULE
+  !=! Pi = EXACT_Pi_EXTERNAL_COMPILER_PASS_AND_STANDARD_AXIOMS_ONLY
+  !!!! ROOT = EXACT_ROOT_EXTERNAL_PASS_AND_ALL_SEVEN_OBLIGATIONS_DISCHARGED
+  PREPARED_SOURCE != A_TIER

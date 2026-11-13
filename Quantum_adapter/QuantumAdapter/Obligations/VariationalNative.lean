@@ -97,7 +97,9 @@ theorem phaseFlow_timeMap_hasFDerivAt {ν : ℝ} (hν : 0 ≤ ν)
       calc
         ‖y‖ = ‖(y - q) + q‖ := by congr 1; abel
         _ ≤ ‖y - q‖ + ‖q‖ := norm_add_le _ _
-        _ ≤ R₀ := (add_le_add_right hdiff ‖q‖).trans_eq (add_comm 1 ‖q‖)
+        _ ≤ R₀ := by
+          change ‖y - q‖ + ‖q‖ ≤ ‖q‖ + 1
+          linarith only [hdiff]
     have htime : |σ * s| ≤ T := by
       rw [abs_mul, hσ, one_mul, abs_of_nonneg hs.1]
       exact hs.2

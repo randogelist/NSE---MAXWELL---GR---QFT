@@ -88,7 +88,7 @@ theorem tensorDir_norm_sq {f : Vec → E} (hf : Differentiable ℝ f)
     tensorDir (fun y => ‖f y‖ ^ 2) j x = 2 * inner ℝ (f x) (tensorDir f j x) := by
   unfold tensorDir
   rw [(hf x).hasFDerivAt.norm_sq.fderiv]
-  simp only [ContinuousLinearMap.smul_apply, ContinuousLinearMap.comp_apply,
+  simp only [two_smul, ContinuousLinearMap.add_apply, ContinuousLinearMap.comp_apply,
     innerSL_apply_apply, two_smul, two_mul]
 
 theorem tensorDir_gradSq {f : Vec → E} (hf : ContDiff ℝ ∞ f)
@@ -99,7 +99,7 @@ theorem tensorDir_gradSq {f : Vec → E} (hf : ContDiff ℝ ∞ f)
     (((tensorDir_contDiff hf l).differentiable (by simp)) x).hasFDerivAt.norm_sq)
   change fderiv ℝ (fun y => ∑ l : Fin 3, ‖tensorDir f l y‖ ^ 2) x (unitVector j) = _
   rw [hs.fderiv]
-  simp only [ContinuousLinearMap.sum_apply, ContinuousLinearMap.smul_apply,
+  simp only [ContinuousLinearMap.sum_apply, two_smul, ContinuousLinearMap.add_apply,
     ContinuousLinearMap.comp_apply, innerSL_apply_apply, two_smul, ← two_mul, ← Finset.mul_sum,
     tensorDir]
 
@@ -111,9 +111,11 @@ theorem integral_unitCube_tensorDir_real_eq_zero (f : Vec → ℝ)
   have hgp : SpatialPeriodic g := fun x l => congrArg Complex.ofReal (hp x l)
   have hzero := integral_unitCube_directionalDerivative_eq_zero g hg hgp j
   have hpoint (x : Vec) : fderiv ℝ g x (unitVector j) = ((tensorDir f j x : ℝ) : ℂ) := by
-    rw [(Complex.ofRealCLM.hasFDerivAt.comp x
-      ((hf.differentiable (by simp)) x).hasFDerivAt).fderiv]
-    rfl
+    have hd : HasFDerivAt g (Complex.ofRealCLM.comp (fderiv ℝ f x)) x := by
+      simpa only [g, Function.comp_def, Complex.ofRealCLM_apply] using
+        Complex.ofRealCLM.hasFDerivAt.comp x ((hf.differentiable (by simp)) x).hasFDerivAt
+    simpa only [tensorDir, ContinuousLinearMap.comp_apply, Complex.ofRealCLM_apply] using
+      congrArg (fun A : Vec →L[ℝ] ℂ => A (unitVector j)) hd.fderiv
   have hi := (tensorDir_contDiff hf j).continuous.continuousOn.integrableOn_compact
     isCompact_unitCube (μ := volume)
   have hreal := congrArg Complex.re hzero
@@ -236,6 +238,7 @@ theorem periodic_tensor_interpolation (f : Vec → E) (hf : ContDiff ℝ ∞ f)
       4 * M * Real.sqrt (∫ x in unitCube, tensorHessSq f x) := by
   let A : ℝ := ∫ x in unitCube, tensorGradSq f x ^ 2
   let B : ℝ := ∫ x in unitCube, tensorHessSq f x
+  change Real.sqrt A ≤ 4 * M * Real.sqrt B
   have hA : 0 ≤ A := integral_nonneg (fun x => sq_nonneg _)
   have hB : 0 ≤ B := integral_nonneg (tensorHessSq_nonneg f)
   have hM0 : 0 ≤ M := (norm_nonneg (f 0)).trans (hM 0)
@@ -253,11 +256,12 @@ theorem periodic_tensor_interpolation (f : Vec → E) (hf : ContDiff ℝ ∞ f)
       _ ≤ 4 * ‖f x‖ * tensorGradSq f x * Real.sqrt (tensorHessSq f x) := tensorRemainder_bound x
       _ ≤ (4 * M) * (tensorGradSq f x * Real.sqrt (tensorHessSq f x)) := by
         have h := mul_le_mul_of_nonneg_right (hM x)
-          (mul_nonneg (tensorGradSq_nonneg f x) (Real.sqrt_nonneg _))
+          (mul_nonneg (tensorGradSq_nonneg f x) (Real.sqrt_nonneg (tensorHessSq f x)))
         nlinarith
   have hfirst : A ≤ (4 * M) *
       (∫ x in unitCube, tensorGradSq f x * Real.sqrt (tensorHessSq f x)) := by
     have h := integral_mono hR.neg (hI.const_mul (4 * M)) hpoint
+    simp only [Pi.neg_apply] at h
     rw [integral_neg, integral_const_mul, ← tensor_interpolation_integral_identity hf hp] at h
     exact h
   have hcs := integral_unitCube_mul_le_sqrt (tensorGradSq f)
@@ -272,8 +276,9 @@ theorem periodic_tensor_interpolation (f : Vec → E) (hf : ContDiff ℝ ∞ f)
   by_cases hz : Real.sqrt A = 0
   · simpa only [hz] using hright
   · have hsAp : 0 < Real.sqrt A := lt_of_le_of_ne hsA0 (Ne.symm hz)
-    apply (mul_le_mul_left hsAp).mp
-    nlinarith
+    have hprod : Real.sqrt A * Real.sqrt A ≤ (4 * M * Real.sqrt B) * Real.sqrt A := by
+      nlinarith
+    exact (mul_le_mul_iff_right₀ hsAp).mp hprod
 
 end
 end QuantumAdapter.Obligations

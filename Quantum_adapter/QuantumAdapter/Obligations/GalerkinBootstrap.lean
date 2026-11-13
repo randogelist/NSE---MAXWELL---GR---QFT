@@ -33,8 +33,8 @@ theorem stopped_energy_exponential_bound
   let B : ℝ → ℝ := fun t => η * Real.exp ((A + 1) * t)
   have hK : 0 ≤ A + 1 := by linarith
   have hB (t : ℝ) : HasDerivAt B ((A + 1) * B t) t := by
-    convert (((hasDerivAt_id t).const_mul (A + 1)).exp.const_mul η) using 1 <;>
-      (try dsimp only [B]) <;> ring
+    exact (((hasDerivAt_id t).const_mul (A + 1)).exp.const_mul η).congr_deriv
+      (by dsimp only [B]; ring)
   have hinit : E 0 ≤ B 0 := by simpa [B, hzero] using hη.le
   have hfence : ∀ t ∈ Ico (0 : ℝ) T, E t = B t → E' t < (A + 1) * B t := by
     intro t ht heq

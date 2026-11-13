@@ -27,8 +27,9 @@ theorem compactTimeFunction_equicontinuous {α : Type*}
     (hL : ∀ n s t, s ∈ Icc (0:ℝ) (H:ℝ) → t ∈ Icc (0:ℝ) (H:ℝ) →
       ‖f n a s-f n a t‖ ≤ L*‖s-t‖) :
     Equicontinuous (fun n : ℕ => fun t : TimeWindow H => compactTimeFunction f hf n a H t) := by
+  have hmod : Continuous (fun x : ℝ => L*x) := by fun_prop
   apply Metric.equicontinuous_of_continuity_modulus (fun x : ℝ => L*x)
-    (by simpa using (continuous_const.mul continuous_id).tendsto (0:ℝ))
+    (by simpa only [mul_zero] using hmod.tendsto (0:ℝ))
   intro s t n
   simpa only [compactTimeFunction_apply, dist_eq_norm, Subtype.dist_eq] using
     hL n s.val t.val s.property t.property
