@@ -152,7 +152,7 @@ theorem scalarBoundaryCompletionLaws_of_literatureCK
   complete := by
     intro n
     obtain ⟨d, ψ, hd, hle, hψ, hper, h0, h1, hH⟩ :=
-      scalar_periodic_cylinder_of_literatureCK input hρ n.solution.toAnalyticPeriodicPair
+      scalar_periodic_cylinder_of_literatureCK (ν := ν) input hρ n.solution.toAnalyticPeriodicPair
     have hn := localNSE_restrict_native n.solution hd hle
     have hK := completedBoundary_admissible hn hψ hper h0 h1 hH
     exact ⟨{

@@ -205,6 +205,7 @@ theorem scalar_periodic_normal_cylinder_of_literatureCK
     have hc := (analyticAt_scalarLaplacian_joint (ha (t0, x) ht0)).continuousAt.abs
     apply hc.eventually (p := fun y : ℝ => y < |ρ| / 2)
     apply gt_mem_nhds
+    change |scalarLaplacian (ψ t0) x| < |ρ| / 2
     rw [scalarLaplacian_eq_zero_of_germ_zero (Eventually.of_forall hi), abs_zero]
     exact hnorm
   have hbound : ∀ᶠ t in 𝓝 t0, ∀ x ∈ unitCube,

@@ -154,10 +154,13 @@ theorem near_eta4_of_gaussianGerm {K : BoundaryTensor} {t0 : ℝ} {x0 : Vec}
       (bulkPoint 0 t0 x0) :=
     (((gluingMetricEntry (boundaryIndex a) (boundaryIndex b)).continuous.continuousAt.comp
       hg.analytic.continuousAt).sub continuousAt_const).abs
-  have hzero := hg.induced.self_of_nhds a b
+  have hzero : g (bulkPoint 0 t0 x0) (boundaryIndex a) (boundaryIndex b) = eta4 a b :=
+    hg.induced.self_of_nhds a b
   apply hc.eventually (p := fun y : ℝ => y < (1 / 12 : ℝ))
   apply gt_mem_nhds
-  rw [hzero]
+  change |g (bulkPoint 0 t0 x0) (boundaryIndex a) (boundaryIndex b) - eta4 a b| <
+    (1 / 12 : ℝ)
+  erw [hzero]
   norm_num
 
 end

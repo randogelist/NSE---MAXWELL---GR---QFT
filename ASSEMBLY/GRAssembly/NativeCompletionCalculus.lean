@@ -188,7 +188,9 @@ theorem completedBoundary_codazzi {ν ρ : ℝ} {u : Velocity} {p ψ : Pressure}
       (conservedSourceUpper ν ρ u p z.1 z.2 + scalarCompletionUpper ψ z.1 z.2) a c) (t,x) :=
     (analyticAt_conservedSourceUpper_entry (ν := ν) (ρ := ρ) hua hpa a c).add
       (analyticAt_scalarCompletionUpper_entry hψ a c)
-  rw [completedBoundary, traceReverse_lower_codazzi hT]
+  change boundaryCodazzi (fun s y => traceReverse4 (lowerTensor4
+    (conservedSourceUpper ν ρ u p s y + scalarCompletionUpper ψ s y))) t x b = 0
+  rw [traceReverse_lower_codazzi hT]
   have hd : upperDivergence (fun s y => conservedSourceUpper ν ρ u p s y +
       scalarCompletionUpper ψ s y) t x b =
       upperDivergence (conservedSourceUpper ν ρ u p) t x b +

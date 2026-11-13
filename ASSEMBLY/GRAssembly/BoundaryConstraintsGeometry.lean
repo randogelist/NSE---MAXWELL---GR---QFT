@@ -10,6 +10,26 @@ open Set Filter
 open scoped Topology BigOperators ContDiff Matrix.Norms.Frobenius
 noncomputable section
 
+-- Closed finite-index decisions avoid recursive extensionality normalization.
+private theorem boundary_fin4_ne_01 : (0 : Fin 4) ≠ 1 := by decide
+private theorem boundary_fin4_ne_02 : (0 : Fin 4) ≠ 2 := by decide
+private theorem boundary_fin4_ne_03 : (0 : Fin 4) ≠ 3 := by decide
+private theorem boundary_fin4_ne_10 : (1 : Fin 4) ≠ 0 := by decide
+private theorem boundary_fin4_ne_12 : (1 : Fin 4) ≠ 2 := by decide
+private theorem boundary_fin4_ne_13 : (1 : Fin 4) ≠ 3 := by decide
+private theorem boundary_fin4_ne_20 : (2 : Fin 4) ≠ 0 := by decide
+private theorem boundary_fin4_ne_21 : (2 : Fin 4) ≠ 1 := by decide
+private theorem boundary_fin4_ne_23 : (2 : Fin 4) ≠ 3 := by decide
+private theorem boundary_fin4_ne_30 : (3 : Fin 4) ≠ 0 := by decide
+private theorem boundary_fin4_ne_31 : (3 : Fin 4) ≠ 1 := by decide
+private theorem boundary_fin4_ne_32 : (3 : Fin 4) ≠ 2 := by decide
+
+attribute [local simp]
+  boundary_fin4_ne_01 boundary_fin4_ne_02 boundary_fin4_ne_03
+  boundary_fin4_ne_10 boundary_fin4_ne_12 boundary_fin4_ne_13
+  boundary_fin4_ne_20 boundary_fin4_ne_21 boundary_fin4_ne_23
+  boundary_fin4_ne_30 boundary_fin4_ne_31 boundary_fin4_ne_32
+
 theorem bulkPartial_mul {f q : Bulk → ℝ} {z : Bulk}
     (hf : AnalyticAt ℝ f z) (hq : AnalyticAt ℝ q z) (i : Fin 5) :
     bulkPartial (fun y => f y * q y) i z =
@@ -49,7 +69,7 @@ theorem bulkPartial_shape_at_flat {h : Bulk → Tensor4} {z : Bulk}
   simp_rw [hprod, bulkPartial_inverse_at_flat hh hn he]
   rw [he, eta4_inverse]
   fin_cases a <;> fin_cases b <;>
-    norm_num [eta4Matrix, eta4, lorentzSign4, Fin.sum_univ_four, Fin.ext_iff] <;> ring
+    norm_num [eta4Matrix, eta4, lorentzSign4, Fin.sum_univ_four] <;> ring
 
 theorem gaussian_normal_flat {h : Bulk → Tensor4} {z : Bulk}
     (hh : AnalyticAt ℝ h z) (hn : IsUnit (h z).det) (he : h z = eta4Matrix)
@@ -67,7 +87,7 @@ theorem gaussian_normal_flat {h : Bulk → Tensor4} {z : Bulk}
   have hs12 := hs.apply 1 2
   have hs13 := hs.apply 1 3
   have hs23 := hs.apply 2 3
-  norm_num [lorentzSquare4, Fin.sum_univ_four, lorentzSign4, Fin.ext_iff]
+  norm_num [lorentzSquare4, Fin.sum_univ_four, lorentzSign4]
   simp only [hs01, hs02, hs03, hs12, hs13, hs23]
   ring
 
@@ -91,7 +111,7 @@ theorem gaussian_tangential_flat {h : Bulk → Tensor4} {z : Bulk}
     hs.apply i j
   simp_rw [hsym b, hsym a]
   simp only [lorentzTrace4, Fin.sum_univ_four, lorentzSign4]
-  norm_num [Fin.ext_iff]
+  norm_num
   ring
 
 theorem gaussian_hamiltonian_flat {h : Bulk → Tensor4} {z : Bulk}
@@ -117,7 +137,7 @@ theorem gaussian_hamiltonian_flat {h : Bulk → Tensor4} {z : Bulk}
   have hs12 := hs.apply 1 2
   have hs13 := hs.apply 1 3
   have hs23 := hs.apply 2 3
-  norm_num [lorentzTrace4, lorentzSquare4, Fin.sum_univ_four, lorentzSign4, Fin.ext_iff]
+  norm_num [lorentzTrace4, lorentzSquare4, Fin.sum_univ_four, lorentzSign4]
     at hr ht0 ht1 ht2 ht3 ⊢
   simp only [hs01, hs02, hs03, hs12, hs13, hs23] at hr ht0 ht1 ht2 ht3 ⊢
   linear_combination ht0 - ht1 - ht2 - ht3 + hr
@@ -168,7 +188,7 @@ theorem boundaryPartial_sum {n : ℕ} {f : Fin n → Pressure} {t : ℝ} {x : Ve
 
 theorem lorentzTrace4_eq_sum (K : Tensor4) :
     lorentzTrace4 K = ∑ a : Fin 4, lorentzSign4 a * K a a := by
-  norm_num [lorentzTrace4, Fin.sum_univ_four, lorentzSign4, Fin.ext_iff] <;> ring
+  norm_num [lorentzTrace4, Fin.sum_univ_four, lorentzSign4] <;> ring
 
 theorem analyticAt_boundaryTrace {K : BoundaryTensor} {t : ℝ} {x : Vec}
     (hK : AnalyticAt ℝ (fun z : ℝ × Vec => K z.1 z.2) (t, x)) :
@@ -215,7 +235,7 @@ theorem boundaryCodazzi_expanded {K : BoundaryTensor} {t : ℝ} {x : Vec}
     exact boundaryPartial_const_mul (f := fun s y => K s y b b)
       (analyticAt_matrix_entry hK b b) (lorentzSign4 b) c
   simp_rw [htder]
-  fin_cases a <;> norm_num [eta4, lorentzSign4, Fin.sum_univ_four, Fin.ext_iff] <;> ring
+  fin_cases a <;> norm_num [eta4, lorentzSign4, Fin.sum_univ_four] <;> ring
 
 end
 end NSEGR.Assembly
