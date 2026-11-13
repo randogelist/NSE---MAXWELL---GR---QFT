@@ -170,9 +170,21 @@ def main():
             path = file(relative)
             raw = path.read_bytes()
             actual = hashlib.sha1(f"blob {len(raw)}\0".encode() + raw).hexdigest()
-            if blobs.get(relative) != actual:
+            expected = blobs.get(relative)
+            normalization = "IDENTITY"
+            canonical = actual
+            # The tracked .gitattributes explicitly checks out *.cmd as CRLF.
+            # Only this launcher presentation conversion is accepted; Lean and
+            # all other proof inputs still require exact committed bytes.
+            if actual != expected and relative.endswith(".cmd"):
+                normalized = raw.replace(b"\r\n", b"\n")
+                canonical = hashlib.sha1(f"blob {len(normalized)}\0".encode() + normalized).hexdigest()
+                normalization = "CMD_CRLF_TO_LF"
+            if expected != canonical:
                 raise RuntimeError(f"Workspace bytes differ from source commit: {relative}")
-            manifest["files"].append({"path": relative, "sha256": hashlib.sha256(raw).hexdigest(), "git_blob_sha": actual})
+            manifest["files"].append({"path": relative, "sha256": hashlib.sha256(raw).hexdigest(),
+                "git_blob_sha": canonical, "working_tree_blob_sha": actual,
+                "checkout_normalization": normalization})
         write_json(report / "source-manifest.json", manifest)
         prov["source_manifest_sha256"] = sha256(report / "source-manifest.json")
         prov["stage"] = "BUILD_AND_AUDIT"
