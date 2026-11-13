@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "status": "A_TIER",
+  "scope": "150 new exact theorem implications and 21 native definitions; all explicit Lean premises retained",
+  "source_commit": "8c72af4b7e0bdfafd305746a8a7b4b94a6801649",
+  "source_tree": "93f34943101fd21201b54c5593408f0ecf1d4691",
+  "run_id": 43389123717,
+  "run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43389123717",
+  "artifact_id": 14019772549,
+  "artifact_sha256": "d026f888942021d90f4fab6a289a15822f38fa15f5fdcb0d928dfe3702506561",
+  "compiler": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+  "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "new_theorems": 150,
+  "new_definitions": 21,
+  "baseline_declarations": 401,
+  "cutout_declarations": 85,
+  "total_named_audits": 657,
+  "source_files_verified": 308,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "local_lean_executions": 0,
+  "new_literature_axioms": 0,
+  "root_from_LI01_LI02_LI03": "OPEN",
+  "unresolved_native_inhabitants": [
+    "c",
+    "r",
+    "h",
+    "q"
+  ],
+  "evidence_directory": "Auxillary/GR/Assembly/evidence/8c72af4b7e0bdfafd305746a8a7b4b94a6801649",
+  "source_manifest_sha256": "3de1891afa2e9cd20928c84cebcd58be0b6aa4823bed51a478a766a0f811dfd4",
+  "proof_input_labels": "Frozen A_TIER_CANDIDATE source labels; this certificate records matching external promotion",
+  "source_materialization": "run.cmd CRLF bytes match GitHub checkout .gitattributes and the external manifest"
+}

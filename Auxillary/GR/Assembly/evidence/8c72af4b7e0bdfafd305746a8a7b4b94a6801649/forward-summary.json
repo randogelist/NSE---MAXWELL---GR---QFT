@@ -1,0 +1,67 @@
+{
+  "stage": "forward",
+  "module": "NSEGRForward",
+  "status": "PASS_STANDARD_ONLY",
+  "source_commit": "8c72af4b7e0bdfafd305746a8a7b4b94a6801649",
+  "target_count": 6,
+  "audit_source": "ForwardAudit.lean",
+  "audit_source_sha256": "6b43e55008eb12f9014f33a5f6096b40a96465d7d477705445ca55a4b7fe15e3",
+  "audit_log": "forward-audit.log",
+  "audit_log_sha256": "8b00926642d0d52d1c4c06db9eb51cc3521202bd7c3bfcfa16388a9a10600ad4",
+  "targets": [
+    {
+      "name": "NSEGR.forward_velocity_recovery",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.NSE_TO_GR_OF_SCALAR_AND_RADIAL_COMPLETION",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.nonempty_GRgerm_of_completion",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.forwardRepresentative",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.forward_boundary_match_eventually",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.forward_pressure_gauge_recovery",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ]
+}

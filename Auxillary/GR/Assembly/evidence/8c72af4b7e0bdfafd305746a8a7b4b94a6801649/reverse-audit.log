@@ -1,0 +1,33 @@
+NSEGR.GR_TO_NSE_OF_GEOMETRIC_RECONSTRUCTION : ∀ (ν ρ t0 : ℝ),
+  0 < ν →
+    ρ ≠ 0 →
+      NSEGR.GeometricReconstructionLaws ν ρ t0 →
+        ∀ (g : NSEGR.CanonicalRepresentative ν ρ t0),
+          NSEGR.LocalNSE ν t0 g.timeRadius (NSEGR.boundaryVelocity (NSEGR.boundaryK g.metric))
+            (NSEGR.boundaryPressure ρ (NSEGR.boundaryK g.metric))
+'NSEGR.GR_TO_NSE_OF_GEOMETRIC_RECONSTRUCTION' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.reverseGerm_forwardGerm : ∀ {ν ρ t0 : ℝ} (c : NSEGR.ScalarBoundaryCompletionLaws ν ρ t0)
+  (r : NSEGR.AnalyticRadialExtensionLaws ρ t0) (h : NSEGR.GeometricReconstructionLaws ν ρ t0)
+  (q : NSEGR.GermInverseLaws c r h) (x : NSEGR.NSEgerm ν t0), NSEGR.reverseGerm h (NSEGR.forwardGerm c r h q x) = x
+'NSEGR.reverseGerm_forwardGerm' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.forwardGerm_reverseGerm : ∀ {ν ρ t0 : ℝ} (c : NSEGR.ScalarBoundaryCompletionLaws ν ρ t0)
+  (r : NSEGR.AnalyticRadialExtensionLaws ρ t0) (h : NSEGR.GeometricReconstructionLaws ν ρ t0)
+  (q : NSEGR.GermInverseLaws c r h) (x : NSEGR.GRgerm ν ρ t0), NSEGR.forwardGerm c r h q (NSEGR.reverseGerm h x) = x
+'NSEGR.forwardGerm_reverseGerm' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS : ∀ (ν ρ t0 : ℝ),
+  0 < ν →
+    ρ ≠ 0 →
+      ∀ (c : NSEGR.ScalarBoundaryCompletionLaws ν ρ t0) (r : NSEGR.AnalyticRadialExtensionLaws ρ t0)
+        (h : NSEGR.GeometricReconstructionLaws ν ρ t0),
+        NSEGR.GermInverseLaws c r h → NSEGR.ExactSectorEquivalence ν ρ t0
+'NSEGR.NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.GermInverseLaws : {ν ρ t0 : ℝ} →
+  NSEGR.ScalarBoundaryCompletionLaws ν ρ t0 →
+    NSEGR.AnalyticRadialExtensionLaws ρ t0 → NSEGR.GeometricReconstructionLaws ν ρ t0 → Prop
+'NSEGR.GermInverseLaws' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.exactSectorEquivOfContracts : {ν ρ t0 : ℝ} →
+  (c : NSEGR.ScalarBoundaryCompletionLaws ν ρ t0) →
+    (r : NSEGR.AnalyticRadialExtensionLaws ρ t0) →
+      (h : NSEGR.GeometricReconstructionLaws ν ρ t0) →
+        NSEGR.GermInverseLaws c r h → NSEGR.NSEgerm ν t0 ≃ NSEGR.GRgerm ν ρ t0
+'NSEGR.exactSectorEquivOfContracts' depends on axioms: [propext, Classical.choice, Quot.sound]

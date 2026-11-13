@@ -1,0 +1,868 @@
+NSEGR.Assembly.coordinateExpWeight : ℝ → ℕ → ℤ → ℝ
+'NSEGR.Assembly.coordinateExpWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.coordinateExpWeight_nonneg : ∀ (r : ℝ) (d : ℕ) (n : ℤ), 0 ≤ NSEGR.Assembly.coordinateExpWeight r d n
+'NSEGR.Assembly.coordinateExpWeight_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.summable_coordinateExpWeight : ∀ (d : ℕ) {r : ℝ},
+  0 < r → Summable (NSEGR.Assembly.coordinateExpWeight r d)
+'NSEGR.Assembly.summable_coordinateExpWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.frequencyTriple : NSEGR.Frequency → ℤ × ℤ × ℤ
+'NSEGR.Assembly.frequencyTriple' depends on axioms: [propext]
+NSEGR.Assembly.frequencyTriple_injective : Function.Injective NSEGR.Assembly.frequencyTriple
+'NSEGR.Assembly.frequencyTriple_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.latticeExpMajorant : ℝ → (Fin 3 → ℕ) → NSEGR.Frequency → ℝ
+'NSEGR.Assembly.latticeExpMajorant' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.latticeExpMajorant_nonneg : ∀ (r : ℝ) (d : Fin 3 → ℕ) (k : NSEGR.Frequency),
+  0 ≤ NSEGR.Assembly.latticeExpMajorant r d k
+'NSEGR.Assembly.latticeExpMajorant_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.summable_latticeExpMajorant : ∀ (d : Fin 3 → ℕ) {r : ℝ},
+  0 < r → Summable (NSEGR.Assembly.latticeExpMajorant r d)
+'NSEGR.Assembly.summable_latticeExpMajorant' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.frequencyL1 : NSEGR.Frequency → ℝ
+'NSEGR.Assembly.frequencyL1' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.frequencyExpWeight : ℝ → NSEGR.Frequency → ℝ
+'NSEGR.Assembly.frequencyExpWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.frequencyExpWeight_eq_lattice : ∀ (r : ℝ) (k : NSEGR.Frequency),
+  NSEGR.Assembly.frequencyExpWeight r k = NSEGR.Assembly.latticeExpMajorant r (fun x => 0) k
+'NSEGR.Assembly.frequencyExpWeight_eq_lattice' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.summable_frequencyExpWeight : ∀ {r : ℝ}, 0 < r → Summable (NSEGR.Assembly.frequencyExpWeight r)
+'NSEGR.Assembly.summable_frequencyExpWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.summable_scaled_frequencyExpWeight : ∀ (C : ℝ) {r : ℝ},
+  0 < r → Summable fun k => C * NSEGR.Assembly.frequencyExpWeight r k
+'NSEGR.Assembly.summable_scaled_frequencyExpWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.complexPoissonMode : NSEGR.ScalarField → NSEGR.Frequency → NSEGR.Vec → ℂ
+'NSEGR.Assembly.complexPoissonMode' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.realPoissonMode : NSEGR.ScalarField → NSEGR.Frequency → NSEGR.Vec → ℝ
+'NSEGR.Assembly.realPoissonMode' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.complexPoissonMode_norm_le : ∀ (f : NSEGR.ScalarField) (k : NSEGR.Frequency) (x : NSEGR.Vec),
+  ‖NSEGR.Assembly.complexPoissonMode f k x‖ ≤ ‖NSEGR.LiteratureFourierCoefficient (fun y => ↑(f y)) k‖
+'NSEGR.Assembly.complexPoissonMode_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.realPoissonMode_eq_re : ∀ (f : NSEGR.ScalarField),
+  Continuous f →
+    ∀ (k : NSEGR.Frequency) (x : NSEGR.Vec),
+      NSEGR.Assembly.realPoissonMode f k x = (NSEGR.Assembly.complexPoissonMode f k x).re
+'NSEGR.Assembly.realPoissonMode_eq_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.realPoissonMode_norm_le : ∀ (f : NSEGR.ScalarField),
+  Continuous f →
+    ∀ (k : NSEGR.Frequency) (x : NSEGR.Vec),
+      ‖NSEGR.Assembly.realPoissonMode f k x‖ ≤ ‖NSEGR.LiteratureFourierCoefficient (fun y => ↑(f y)) k‖
+'NSEGR.Assembly.realPoissonMode_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.realPoissonMode_continuous : ∀ (f : NSEGR.ScalarField),
+  Continuous f → ∀ (k : NSEGR.Frequency), Continuous (NSEGR.Assembly.realPoissonMode f k)
+'NSEGR.Assembly.realPoissonMode_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.poissonInverse_uniform_of_summable_coefficients : ∀ (f : NSEGR.ScalarField),
+  Continuous f →
+    (Summable fun k => ‖NSEGR.LiteratureFourierCoefficient (fun y => ↑(f y)) k‖) →
+      TendstoUniformly (fun s x => ∑ k ∈ s, NSEGR.Assembly.realPoissonMode f k x) (NSEGR.poissonInverse f) Filter.atTop
+'NSEGR.Assembly.poissonInverse_uniform_of_summable_coefficients' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+NSEGR.Assembly.poissonInverse_continuous_of_summable_coefficients : ∀ (f : NSEGR.ScalarField),
+  Continuous f →
+    (Summable fun k => ‖NSEGR.LiteratureFourierCoefficient (fun y => ↑(f y)) k‖) → Continuous (NSEGR.poissonInverse f)
+'NSEGR.Assembly.poissonInverse_continuous_of_summable_coefficients' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+NSEGR.Assembly.poissonInverse_uniform_of_literature : NSEGR.LiteratureSmoothFourierInput →
+  ∀ (f : NSEGR.ScalarField),
+    ContDiff ℝ (↑⊤) f →
+      NSEGR.SpatialPeriodic f →
+        TendstoUniformly (fun s x => ∑ k ∈ s, NSEGR.Assembly.realPoissonMode f k x) (NSEGR.poissonInverse f)
+          Filter.atTop
+'NSEGR.Assembly.poissonInverse_uniform_of_literature' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.poissonInverse_continuous_of_literature : NSEGR.LiteratureSmoothFourierInput →
+  ∀ (f : NSEGR.ScalarField), ContDiff ℝ (↑⊤) f → NSEGR.SpatialPeriodic f → Continuous (NSEGR.poissonInverse f)
+'NSEGR.Assembly.poissonInverse_continuous_of_literature' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.poissonInverse_parameter_uniform : ∀ {T : Type u_1} (s : Set T) (f : T → NSEGR.ScalarField)
+  (M : NSEGR.Frequency → ℝ),
+  (∀ t ∈ s, Continuous (f t)) →
+    Summable M →
+      (∀ t ∈ s, ∀ (k : NSEGR.Frequency), ‖NSEGR.LiteratureFourierCoefficient (fun y => ↑(f t y)) k‖ ≤ M k) →
+        TendstoUniformlyOn (fun p z => ∑ k ∈ p, NSEGR.Assembly.realPoissonMode (f z.1) k z.2)
+          (fun z => NSEGR.poissonInverse (f z.1) z.2) Filter.atTop (s ×ˢ Set.univ)
+'NSEGR.Assembly.poissonInverse_parameter_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.realPoissonMode_parameter_continuousOn : ∀ {T : Type u_1} [inst : TopologicalSpace T] (s : Set T)
+  (f : T → NSEGR.ScalarField),
+  (∀ t ∈ s, Continuous (f t)) →
+    (∀ (k : NSEGR.Frequency), ContinuousOn (fun t => NSEGR.LiteratureFourierCoefficient (fun y => ↑(f t y)) k) s) →
+      ∀ (k : NSEGR.Frequency), ContinuousOn (fun z => NSEGR.Assembly.realPoissonMode (f z.1) k z.2) (s ×ˢ Set.univ)
+'NSEGR.Assembly.realPoissonMode_parameter_continuousOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.poissonInverse_parameter_continuousOn : ∀ {T : Type u_1} [inst : TopologicalSpace T] (s : Set T)
+  (f : T → NSEGR.ScalarField) (M : NSEGR.Frequency → ℝ),
+  (∀ t ∈ s, Continuous (f t)) →
+    (∀ (k : NSEGR.Frequency), ContinuousOn (fun t => NSEGR.LiteratureFourierCoefficient (fun y => ↑(f t y)) k) s) →
+      Summable M →
+        (∀ t ∈ s, ∀ (k : NSEGR.Frequency), ‖NSEGR.LiteratureFourierCoefficient (fun y => ↑(f t y)) k‖ ≤ M k) →
+          ContinuousOn (fun z => NSEGR.poissonInverse (f z.1) z.2) (s ×ˢ Set.univ)
+'NSEGR.Assembly.poissonInverse_parameter_continuousOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.poissonInverse_parameter_continuousOn_of_exponential_bound : ∀ {T : Type u_1}
+  [inst : TopologicalSpace T] (s : Set T) (f : T → NSEGR.ScalarField) (C r : ℝ),
+  0 < r →
+    (∀ t ∈ s, Continuous (f t)) →
+      (∀ (k : NSEGR.Frequency), ContinuousOn (fun t => NSEGR.LiteratureFourierCoefficient (fun y => ↑(f t y)) k) s) →
+        (∀ t ∈ s,
+            ∀ (k : NSEGR.Frequency),
+              ‖NSEGR.LiteratureFourierCoefficient (fun y => ↑(f t y)) k‖ ≤ C * NSEGR.Assembly.frequencyExpWeight r k) →
+          ContinuousOn (fun z => NSEGR.poissonInverse (f z.1) z.2) (s ×ˢ Set.univ)
+'NSEGR.Assembly.poissonInverse_parameter_continuousOn_of_exponential_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+NSEGR.Assembly.gaugeCKRHS : (ℝ → ℝ) → NSEGR.LiteratureCKRHS 1 2
+'NSEGR.Assembly.gaugeCKRHS' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.gaugeCKRHS_potential : ∀ (γ : ℝ → ℝ) (J : NSEGR.Assembly.GaugeCKJet),
+  (NSEGR.Assembly.gaugeCKRHS γ J).ofLp 0 = J.2.1.ofLp 1
+'NSEGR.Assembly.gaugeCKRHS_potential' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.gaugeCKRHS_velocity : ∀ (γ : ℝ → ℝ) (J : NSEGR.Assembly.GaugeCKJet),
+  (NSEGR.Assembly.gaugeCKRHS γ J).ofLp 1 = γ J.1.1
+'NSEGR.Assembly.gaugeCKRHS_velocity' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.analyticAt_gaugeCKRHS : ∀ {γ : ℝ → ℝ} {J : NSEGR.Assembly.GaugeCKJet},
+  AnalyticAt ℝ γ J.1.1 → AnalyticAt ℝ (NSEGR.Assembly.gaugeCKRHS γ) J
+'NSEGR.Assembly.analyticAt_gaugeCKRHS' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.gaugeCK_exists_unique_firstOrder : NSEGR.LiteratureAnalyticCKInput →
+  ∀ {γ : ℝ → ℝ} {t0 : ℝ},
+    AnalyticAt ℝ γ t0 →
+      ∃ W,
+        NSEGR.LiteratureCKSolution (NSEGR.Assembly.gaugeCKRHS γ) (fun x => 0) t0 0 W ∧
+          ∀ (V : ℝ × NSEGR.LiteratureSpace 1 → NSEGR.Assembly.GaugeCKState),
+            NSEGR.LiteratureCKSolution (NSEGR.Assembly.gaugeCKRHS γ) (fun x => 0) t0 0 V → W =ᶠ[nhds (t0, 0)] V
+'NSEGR.Assembly.gaugeCK_exists_unique_firstOrder' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.gaugeCK_coordinate_timeDerivative : ∀ {W : ℝ × NSEGR.LiteratureSpace 1 → NSEGR.Assembly.GaugeCKState}
+  {z : ℝ × NSEGR.LiteratureSpace 1},
+  AnalyticAt ℝ W z → ∀ (k : Fin 2), deriv (fun t => (W (t, z.2)).ofLp k) z.1 = (deriv (fun t => W (t, z.2)) z.1).ofLp k
+'NSEGR.Assembly.gaugeCK_coordinate_timeDerivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.gaugeCK_solution_transport : ∀ {γ : ℝ → ℝ} {t0 : ℝ}
+  {W : ℝ × NSEGR.LiteratureSpace 1 → NSEGR.Assembly.GaugeCKState},
+  NSEGR.LiteratureCKSolution (NSEGR.Assembly.gaugeCKRHS γ) (fun x => 0) t0 0 W →
+    ∀ᶠ (t : ℝ) in nhds t0,
+      deriv (fun s => (W (s, 0)).ofLp 0) t = (W (t, 0)).ofLp 1 ∧ deriv (fun s => (W (s, 0)).ofLp 1) t = γ t
+'NSEGR.Assembly.gaugeCK_solution_transport' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.analytic_double_primitive_of_literatureCK : NSEGR.LiteratureAnalyticCKInput →
+  ∀ {γ : ℝ → ℝ} {t0 : ℝ},
+    AnalyticAt ℝ γ t0 → ∃ a, AnalyticAt ℝ a t0 ∧ a t0 = 0 ∧ deriv a t0 = 0 ∧ deriv (deriv a) =ᶠ[nhds t0] γ
+'NSEGR.Assembly.analytic_double_primitive_of_literatureCK' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.bulkPartial_congr_of_eventuallyEq : ∀ (f g : NSEGR.Bulk → ℝ) (z : NSEGR.Bulk),
+  f =ᶠ[nhds z] g → ∀ (i : Fin 5), NSEGR.bulkPartial f i z = NSEGR.bulkPartial g i z
+'NSEGR.Assembly.bulkPartial_congr_of_eventuallyEq' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.bulkPartial_neg : ∀ (f : NSEGR.Bulk → ℝ) (i : Fin 5) (z : NSEGR.Bulk),
+  NSEGR.bulkPartial (fun y => -f y) i z = -NSEGR.bulkPartial f i z
+'NSEGR.Assembly.bulkPartial_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.christoffel_gaussian_rbr_total : ∀ (h : NSEGR.Bulk → NSEGR.Tensor4) (z : NSEGR.Bulk) (b : Fin 4),
+  NSEGR.christoffel (NSEGR.gaussianMetric h) z 0 b.succ 0 = 0
+'NSEGR.Assembly.christoffel_gaussian_rbr_total' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.christoffel_gaussian_abr_total : ∀ (h : NSEGR.Bulk → NSEGR.Tensor4) (z : NSEGR.Bulk) (a b : Fin 4),
+  NSEGR.christoffel (NSEGR.gaussianMetric h) z a.succ b.succ 0 = NSEGR.gaussianShapeOperator h z a b
+'NSEGR.Assembly.christoffel_gaussian_abr_total' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.radial_christoffel_derivative : ∀ (h : NSEGR.Bulk → NSEGR.Tensor4) (z : NSEGR.Bulk),
+  (∀ᶠ (y : NSEGR.Bulk) in nhds z, IsUnit (Matrix.det (h y))) →
+    ∀ (a b : Fin 4) (i : Fin 5),
+      NSEGR.bulkPartial (fun y => NSEGR.christoffel (NSEGR.gaussianMetric h) y 0 a.succ b.succ) i z =
+        -NSEGR.bulkPartial (fun y => NSEGR.gaussianSecondForm h y a b) i z
+'NSEGR.Assembly.radial_christoffel_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.gaussianTangentialRicciComponent : (NSEGR.Bulk → NSEGR.Tensor4) → NSEGR.Bulk → Fin 4 → Fin 4 → ℝ
+'NSEGR.Assembly.gaussianTangentialRicciComponent' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.ricci_gaussian_tangential : ∀ (h : NSEGR.Bulk → NSEGR.Tensor4) (z : NSEGR.Bulk),
+  (∀ᶠ (y : NSEGR.Bulk) in nhds z, IsUnit (Matrix.det (h y))) →
+    ∀ (a b : Fin 4),
+      NSEGR.ricci (NSEGR.gaussianMetric h) z a.succ b.succ = NSEGR.Assembly.gaussianTangentialRicciComponent h z a b
+'NSEGR.Assembly.ricci_gaussian_tangential' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.gaussianTangentialRicciComponent_zero_of_vacuum : ∀ (h : NSEGR.Bulk → NSEGR.Tensor4) (z : NSEGR.Bulk),
+  (∀ᶠ (y : NSEGR.Bulk) in nhds z, IsUnit (Matrix.det (h y))) →
+    NSEGR.ricci (NSEGR.gaussianMetric h) z = 0 →
+      ∀ (a b : Fin 4), NSEGR.Assembly.gaussianTangentialRicciComponent h z a b = 0
+'NSEGR.Assembly.gaussianTangentialRicciComponent_zero_of_vacuum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+NSEGR.Assembly.gaussian_vacuum_iff_components : ∀ (h : NSEGR.Bulk → NSEGR.Tensor4) (z : NSEGR.Bulk),
+  (∀ᶠ (y : NSEGR.Bulk) in nhds z, IsUnit (Matrix.det (h y))) →
+    (∀ (a : Fin 4), NSEGR.ricci (NSEGR.gaussianMetric h) z a.succ 0 = NSEGR.ricci (NSEGR.gaussianMetric h) z 0 a.succ) →
+      (NSEGR.ricci (NSEGR.gaussianMetric h) z = 0 ↔
+        NSEGR.gaussianNormalRicciComponent h z = 0 ∧
+          (∀ (a : Fin 4), NSEGR.gaussianCodazziComponent h z a = 0) ∧
+            ∀ (a b : Fin 4), NSEGR.Assembly.gaussianTangentialRicciComponent h z a b = 0)
+'NSEGR.Assembly.gaussian_vacuum_iff_components' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.poissonInverse_hasDerivAt_global : ∀ (f : NSEGR.Pressure),
+  (ContDiff ℝ ↑⊤ fun z => f z.1 z.2) →
+    (∀ (s : ℝ), NSEGR.SpatialPeriodic (f s)) →
+      ∀ (t : ℝ) (x : NSEGR.Vec),
+        HasDerivAt (fun s => NSEGR.poissonInverse (f s) x)
+          (NSEGR.poissonInverse (NSEGR.scalarLocalTimeDerivative f t) x) t
+'NSEGR.Assembly.poissonInverse_hasDerivAt_global' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.scalarMean_hasDerivAt_global : ∀ (f : NSEGR.Pressure),
+  (ContDiff ℝ ↑⊤ fun z => f z.1 z.2) →
+    ∀ (t : ℝ), HasDerivAt (fun s => NSEGR.scalarMean (f s)) (NSEGR.scalarMean (NSEGR.scalarLocalTimeDerivative f t)) t
+'NSEGR.Assembly.scalarMean_hasDerivAt_global' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.cutoff_mul_contDiff : ∀ (f : NSEGR.Pressure) {I : Set ℝ},
+  IsOpen I →
+    ContDiffOn ℝ (↑⊤) (fun z => f z.1 z.2) {z | z.1 ∈ I} →
+      ∀ (χ : ℝ → ℝ), ContDiff ℝ (↑⊤) χ → tsupport χ ⊆ I → ContDiff ℝ ↑⊤ fun z => χ z.1 * f z.1 z.2
+'NSEGR.Assembly.cutoff_mul_contDiff' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.exists_smooth_periodic_extension : ∀ (f : NSEGR.Pressure) {I : Set ℝ},
+  IsOpen I →
+    ContDiffOn ℝ (↑⊤) (fun z => f z.1 z.2) {z | z.1 ∈ I} →
+      (∀ s ∈ I, NSEGR.SpatialPeriodic (f s)) →
+        ∀ {t : ℝ},
+          t ∈ I → ∃ g, (ContDiff ℝ ↑⊤ fun z => g z.1 z.2) ∧ (∀ (s : ℝ), NSEGR.SpatialPeriodic (g s)) ∧ g =ᶠ[nhds t] f
+'NSEGR.Assembly.exists_smooth_periodic_extension' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.poissonInverse_hasDerivAt_local : ∀ (f : NSEGR.Pressure) {I : Set ℝ},
+  IsOpen I →
+    ContDiffOn ℝ (↑⊤) (fun z => f z.1 z.2) {z | z.1 ∈ I} →
+      (∀ s ∈ I, NSEGR.SpatialPeriodic (f s)) →
+        ∀ {t : ℝ},
+          t ∈ I →
+            ∀ (x : NSEGR.Vec),
+              HasDerivAt (fun s => NSEGR.poissonInverse (f s) x)
+                (NSEGR.poissonInverse (NSEGR.scalarLocalTimeDerivative f t) x) t
+'NSEGR.Assembly.poissonInverse_hasDerivAt_local' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.poissonInverse_localTimeDerivative : ∀ (f : NSEGR.Pressure) {I : Set ℝ},
+  IsOpen I →
+    ContDiffOn ℝ (↑⊤) (fun z => f z.1 z.2) {z | z.1 ∈ I} →
+      (∀ s ∈ I, NSEGR.SpatialPeriodic (f s)) →
+        ∀ {t : ℝ},
+          t ∈ I →
+            NSEGR.scalarLocalTimeDerivative (fun s => NSEGR.poissonInverse (f s)) t =
+              NSEGR.poissonInverse (NSEGR.scalarLocalTimeDerivative f t)
+'NSEGR.Assembly.poissonInverse_localTimeDerivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.scalarMean_hasDerivAt_local : ∀ (f : NSEGR.Pressure) {I : Set ℝ},
+  IsOpen I →
+    ContDiffOn ℝ (↑⊤) (fun z => f z.1 z.2) {z | z.1 ∈ I} →
+      (∀ s ∈ I, NSEGR.SpatialPeriodic (f s)) →
+        ∀ {t : ℝ},
+          t ∈ I →
+            HasDerivAt (fun s => NSEGR.scalarMean (f s)) (NSEGR.scalarMean (NSEGR.scalarLocalTimeDerivative f t)) t
+'NSEGR.Assembly.scalarMean_hasDerivAt_local' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.scalarTimeDerivative_eq_local : ∀ (f : NSEGR.Pressure) {t : ℝ},
+  0 < t → NSEMaxwell.Classical.scalarTimeDerivative f t = NSEGR.scalarLocalTimeDerivative f t
+'NSEGR.Assembly.scalarTimeDerivative_eq_local' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.poissonInverse_halfspace_smooth : ∀ {f : NSEGR.Pressure},
+  NSEMaxwell.Classical.SmoothPressure f →
+    NSEMaxwell.Classical.PeriodicPressure f →
+      ContDiffOn ℝ (↑⊤) (fun z => NSEGR.poissonInverse (f z.1) z.2) NSEMaxwell.Classical.forwardSpacetime
+'NSEGR.Assembly.poissonInverse_halfspace_smooth' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.scalarL_hasDerivAt_pos : ∀ (f : NSEGR.Pressure),
+  NSEMaxwell.Classical.SmoothPressure f →
+    NSEMaxwell.Classical.PeriodicPressure f →
+      ∀ {t : ℝ},
+        0 < t →
+          ∀ (x : NSEGR.Vec),
+            HasDerivAt (fun s => NSEMaxwell.Classical.scalarL (f s) x)
+              (NSEMaxwell.Classical.scalarL (NSEGR.scalarLocalTimeDerivative f t) x) t
+'NSEGR.Assembly.scalarL_hasDerivAt_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.poissonInverse_hasDerivAt_pos : ∀ (f : NSEGR.Pressure),
+  NSEMaxwell.Classical.SmoothPressure f →
+    NSEMaxwell.Classical.PeriodicPressure f →
+      ∀ {t : ℝ},
+        0 < t →
+          ∀ (x : NSEGR.Vec),
+            HasDerivAt (fun s => NSEGR.poissonInverse (f s) x)
+              (NSEGR.poissonInverse (NSEGR.scalarLocalTimeDerivative f t) x) t
+'NSEGR.Assembly.poissonInverse_hasDerivAt_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.poissonInverse_localTimeDerivative_pos : ∀ (f : NSEGR.Pressure),
+  NSEMaxwell.Classical.SmoothPressure f →
+    NSEMaxwell.Classical.PeriodicPressure f →
+      ∀ {t : ℝ},
+        0 < t →
+          NSEGR.scalarLocalTimeDerivative (fun s => NSEGR.poissonInverse (f s)) t =
+            NSEGR.poissonInverse (NSEGR.scalarLocalTimeDerivative f t)
+'NSEGR.Assembly.poissonInverse_localTimeDerivative_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.scalarMean_hasDerivAt_pos : ∀ (f : NSEGR.Pressure),
+  NSEMaxwell.Classical.SmoothPressure f →
+    ∀ {t : ℝ},
+      0 < t → HasDerivAt (fun s => NSEGR.scalarMean (f s)) (NSEGR.scalarMean (NSEGR.scalarLocalTimeDerivative f t)) t
+'NSEGR.Assembly.scalarMean_hasDerivAt_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.poissonSymbol_eq_neg_methlib : ∀ (k : NSEGR.Frequency),
+  NSEGR.poissonSymbol k = -NSEMaxwell.Classical.inverseLaplacianSymbol k
+'NSEGR.Assembly.poissonSymbol_eq_neg_methlib' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.poissonInverse_eq_neg_scalarL : ∀ (f : NSEGR.ScalarField),
+  NSEGR.poissonInverse f = -NSEMaxwell.Classical.scalarL f
+'NSEGR.Assembly.poissonInverse_eq_neg_scalarL' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.poissonInverse_smooth : ∀ (f : NSEGR.ScalarField),
+  ContDiff ℝ (↑⊤) f → NSEGR.SpatialPeriodic f → ContDiff ℝ (↑⊤) (NSEGR.poissonInverse f)
+'NSEGR.Assembly.poissonInverse_smooth' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.scalarLaplacian_component : ∀ (a : NSEGR.Field),
+  ContDiff ℝ (↑⊤) a →
+    ∀ (i : Fin 3), (NSEGR.scalarLaplacian fun x => (a x).ofLp i) = fun x => (NSEGR.laplacian a x).ofLp i
+'NSEGR.Assembly.scalarLaplacian_component' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.scalarLaplacian_neg : ∀ (f : NSEGR.ScalarField), NSEGR.scalarLaplacian (-f) = -NSEGR.scalarLaplacian f
+'NSEGR.Assembly.scalarLaplacian_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.scalarLaplacian_poissonInverse : ∀ (f : NSEGR.ScalarField),
+  ContDiff ℝ (↑⊤) f →
+    NSEGR.SpatialPeriodic f → NSEGR.scalarLaplacian (NSEGR.poissonInverse f) = f - fun x => NSEGR.scalarMean f
+'NSEGR.Assembly.scalarLaplacian_poissonInverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.scalarMean_poissonInverse_zero : ∀ (f : NSEGR.ScalarField),
+  ContDiff ℝ (↑⊤) f → NSEGR.SpatialPeriodic f → NSEGR.scalarMean (NSEGR.poissonInverse f) = 0
+'NSEGR.Assembly.scalarMean_poissonInverse_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.scalarPartial_scalarL_commute : ∀ (f : NSEGR.ScalarField),
+  ContDiff ℝ (↑⊤) f →
+    NSEGR.SpatialPeriodic f →
+      ∀ (j : Fin 3),
+        NSEGR.fourierScalarPartial (NSEMaxwell.Classical.scalarL f) j =
+          NSEMaxwell.Classical.scalarL (NSEGR.fourierScalarPartial f j)
+'NSEGR.Assembly.scalarPartial_scalarL_commute' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.scalarPartial_poissonInverse_commute : ∀ (f : NSEGR.ScalarField),
+  ContDiff ℝ (↑⊤) f →
+    NSEGR.SpatialPeriodic f →
+      ∀ (j : Fin 3),
+        NSEGR.fourierScalarPartial (NSEGR.poissonInverse f) j = NSEGR.poissonInverse (NSEGR.fourierScalarPartial f j)
+'NSEGR.Assembly.scalarPartial_poissonInverse_commute' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.poissonInverse_finset_sum : ∀ {ι : Type u_1} (s : Finset ι) (f : ι → NSEGR.ScalarField),
+  (∀ (i : ι), ContDiff ℝ (↑⊤) (f i)) →
+    (∀ (i : ι), NSEGR.SpatialPeriodic (f i)) →
+      (NSEGR.poissonInverse fun x => ∑ i ∈ s, f i x) = fun x => ∑ i ∈ s, NSEGR.poissonInverse (f i) x
+'NSEGR.Assembly.poissonInverse_finset_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.scalarLaplacian_poissonInverse_commute : ∀ (f : NSEGR.ScalarField),
+  ContDiff ℝ (↑⊤) f →
+    NSEGR.SpatialPeriodic f →
+      NSEGR.scalarLaplacian (NSEGR.poissonInverse f) = NSEGR.poissonInverse (NSEGR.scalarLaplacian f)
+'NSEGR.Assembly.scalarLaplacian_poissonInverse_commute' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.poissonInverse_scalarLaplacian : ∀ (f : NSEGR.ScalarField),
+  ContDiff ℝ (↑⊤) f →
+    NSEGR.SpatialPeriodic f → NSEGR.poissonInverse (NSEGR.scalarLaplacian f) = f - fun x => NSEGR.scalarMean f
+'NSEGR.Assembly.poissonInverse_scalarLaplacian' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.leray_gradient_zero : ∀ (f : NSEGR.ScalarField),
+  ContDiff ℝ (↑⊤) f → NSEGR.SpatialPeriodic f → NSEGR.leray (NSEGR.gradient f) = 0
+'NSEGR.Assembly.leray_gradient_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.divergence_smooth : ∀ (a : NSEGR.Field), ContDiff ℝ (↑⊤) a → ContDiff ℝ (↑⊤) (NSEGR.divergence a)
+'NSEGR.Assembly.divergence_smooth' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.divergence_sub : ∀ (a b : NSEGR.Field),
+  ContDiff ℝ (↑⊤) a → ContDiff ℝ (↑⊤) b → NSEGR.divergence (a - b) = NSEGR.divergence a - NSEGR.divergence b
+'NSEGR.Assembly.divergence_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.leray_smooth : ∀ (a : NSEGR.Field),
+  ContDiff ℝ (↑⊤) a → NSEGR.SpatialPeriodic a → ContDiff ℝ (↑⊤) (NSEGR.leray a)
+'NSEGR.Assembly.leray_smooth' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.divergence_leray_zero : ∀ (a : NSEGR.Field),
+  ContDiff ℝ (↑⊤) a → NSEGR.SpatialPeriodic a → NSEGR.divergence (NSEGR.leray a) = 0
+'NSEGR.Assembly.divergence_leray_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.leray_eq_self_of_divergence_zero : ∀ (a : NSEGR.Field), NSEGR.divergence a = 0 → NSEGR.leray a = a
+'NSEGR.Assembly.leray_eq_self_of_divergence_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.leray_idempotent : ∀ (a : NSEGR.Field),
+  ContDiff ℝ (↑⊤) a → NSEGR.SpatialPeriodic a → NSEGR.leray (NSEGR.leray a) = NSEGR.leray a
+'NSEGR.Assembly.leray_idempotent' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.spatialMean_leray : ∀ (a : NSEGR.Field),
+  ContDiff ℝ (↑⊤) a → NSEGR.SpatialPeriodic a → NSEGR.spatialMean (NSEGR.leray a) = NSEGR.spatialMean a
+'NSEGR.Assembly.spatialMean_leray' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.positive_matrix_gram_factor : ∀ {n : Type u_1} [inst : Fintype n] [inst_1 : DecidableEq n]
+  (Q : Matrix n n ℝ), Q.PosDef → ∃ R, IsUnit R.det ∧ R.transpose * R = Q
+'NSEGR.Assembly.positive_matrix_gram_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.lorentzSchur : ℝ → (Fin 3 → ℝ) → NSEGR.Tensor3 → NSEGR.Tensor3
+'NSEGR.Assembly.lorentzSchur' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.lorentzSchur_posDef : ∀ (α : ℝ) (b : Fin 3 → ℝ) (A : NSEGR.Tensor3),
+  0 < α → Matrix.PosDef A → Matrix.PosDef (NSEGR.Assembly.lorentzSchur α b A)
+'NSEGR.Assembly.lorentzSchur_posDef' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.lorentzTriangular : ℝ → (Fin 3 → ℝ) → NSEGR.Tensor3 → NSEGR.Tensor4
+'NSEGR.Assembly.lorentzTriangular' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.lorentzTriangular_00 : ∀ (s : ℝ) (b : Fin 3 → ℝ) (R : NSEGR.Tensor3),
+  NSEGR.Assembly.lorentzTriangular s b R 0 0 = s
+'NSEGR.Assembly.lorentzTriangular_00' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.lorentzTriangular_0j : ∀ (s : ℝ) (b : Fin 3 → ℝ) (R : NSEGR.Tensor3) (j : Fin 3),
+  NSEGR.Assembly.lorentzTriangular s b R 0 j.succ = -b j / s
+'NSEGR.Assembly.lorentzTriangular_0j' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.lorentzTriangular_i0 : ∀ (s : ℝ) (b : Fin 3 → ℝ) (R : NSEGR.Tensor3) (i : Fin 3),
+  NSEGR.Assembly.lorentzTriangular s b R i.succ 0 = 0
+'NSEGR.Assembly.lorentzTriangular_i0' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.lorentzTriangular_ij : ∀ (s : ℝ) (b : Fin 3 → ℝ) (R : NSEGR.Tensor3) (i j : Fin 3),
+  NSEGR.Assembly.lorentzTriangular s b R i.succ j.succ = R i j
+'NSEGR.Assembly.lorentzTriangular_ij' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.lorentzTriangular_det : ∀ (s : ℝ) (b : Fin 3 → ℝ) (R : NSEGR.Tensor3),
+  Matrix.det (NSEGR.Assembly.lorentzTriangular s b R) = s * Matrix.det R
+'NSEGR.Assembly.lorentzTriangular_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.eta4_congruence_apply : ∀ (C : NSEGR.Tensor4) (i j : Fin 4),
+  (Matrix.transpose C * NSEGR.eta4Matrix * C) i j = -C 0 i * C 0 j + ∑ k, C k.succ i * C k.succ j
+'NSEGR.Assembly.eta4_congruence_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.lorentzTriangular_congruence : ∀ (H : NSEGR.Tensor4) (s : ℝ) (R : NSEGR.Tensor3),
+  s ≠ 0 →
+    s * s = -H 0 0 →
+      (∀ (i j : Fin 4), H i j = H j i) →
+        (Matrix.transpose R * R =
+            NSEGR.Assembly.lorentzSchur (-H 0 0) (fun i => H 0 i.succ) fun i j => H i.succ j.succ) →
+          H =
+            Matrix.transpose (NSEGR.Assembly.lorentzTriangular s (fun i => H 0 i.succ) R) * NSEGR.eta4Matrix *
+              NSEGR.Assembly.lorentzTriangular s (fun i => H 0 i.succ) R
+'NSEGR.Assembly.lorentzTriangular_congruence' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.lorentz_factor_of_spatial_posDef : ∀ (H : NSEGR.Tensor4),
+  (∀ (i j : Fin 4), H i j = H j i) →
+    H 0 0 < 0 →
+      (Matrix.PosDef fun i j => H i.succ j.succ) →
+        ∃ C, IsUnit (Matrix.det C) ∧ H = Matrix.transpose C * NSEGR.eta4Matrix * C
+'NSEGR.Assembly.lorentz_factor_of_spatial_posDef' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.gaussian_lorentzian_of_spatial_posDef : ∀ (h : NSEGR.Bulk → NSEGR.Tensor4) (z : NSEGR.Bulk),
+  (∀ (i j : Fin 4), h z i j = h z j i) →
+    h z 0 0 < 0 → (Matrix.PosDef fun i j => h z i.succ j.succ) → NSEGR.LorentzianAt (NSEGR.gaussianMetric h) z
+'NSEGR.Assembly.gaussian_lorentzian_of_spatial_posDef' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.small_entry_quadratic_bound : ∀ (d x y : ℝ), |d| ≤ 1 / 12 → |x * d * y| ≤ 1 / 24 * (x ^ 2 + y ^ 2)
+'NSEGR.Assembly.small_entry_quadratic_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.spatial_quadratic_error_bound : ∀ (A : NSEGR.Tensor3),
+  (∀ (i j : Fin 3), |A i j - 1 i j| ≤ 1 / 12) →
+    ∀ (x : Fin 3 → ℝ), |∑ i, ∑ j, x i * (A i j - 1 i j) * x j| ≤ 1 / 4 * ∑ i, x i ^ 2
+'NSEGR.Assembly.spatial_quadratic_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.spatial_posDef_of_near_identity : ∀ (A : NSEGR.Tensor3),
+  (∀ (i j : Fin 3), A i j = A j i) → (∀ (i j : Fin 3), |A i j - 1 i j| ≤ 1 / 12) → Matrix.PosDef A
+'NSEGR.Assembly.spatial_posDef_of_near_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.lorentz_factor_of_near_eta4 : ∀ (H : NSEGR.Tensor4),
+  (∀ (i j : Fin 4), H i j = H j i) →
+    (∀ (i j : Fin 4), |H i j - NSEGR.eta4 i j| < 1 / 12) →
+      ∃ C, IsUnit (Matrix.det C) ∧ H = Matrix.transpose C * NSEGR.eta4Matrix * C
+'NSEGR.Assembly.lorentz_factor_of_near_eta4' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.gaussian_lorentzian_of_near_eta4 : ∀ (h : NSEGR.Bulk → NSEGR.Tensor4) (z : NSEGR.Bulk),
+  (∀ (i j : Fin 4), h z i j = h z j i) →
+    (∀ (i j : Fin 4), |h z i j - NSEGR.eta4 i j| < 1 / 12) → NSEGR.LorentzianAt (NSEGR.gaussianMetric h) z
+'NSEGR.Assembly.gaussian_lorentzian_of_near_eta4' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.finite_precompact_refinement : ∀ {X : Type u_1} [inst : TopologicalSpace X] [LocallyCompactSpace X]
+  [T2Space X] {K : Set X},
+  IsCompact K →
+    ∀ (U : ↑K → Set X),
+      (∀ (i : ↑K), IsOpen (U i)) →
+        (∀ (i : ↑K), ↑i ∈ U i) →
+          ∃ V t, (∀ (i : ↑K), IsOpen (V i) ∧ IsCompact (closure (V i)) ∧ closure (V i) ⊆ U i) ∧ K ⊆ ⋃ i ∈ t, V i
+'NSEGR.Assembly.finite_precompact_refinement' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.finite_compact_overlap_uniform : ∀ {S : Type u_1} {X : Type u_2} {Y : Type u_3} {ι : Type u_4}
+  [inst : TopologicalSpace S] [inst_1 : TopologicalSpace X] [Finite ι] {s0 : S} (C : ι → Set X),
+  (∀ (i : ι), IsCompact (C i)) →
+    ∀ (f g : ι → S → X → Y),
+      (∀ (i : ι), ∀ x ∈ C i, ∀ᶠ (z : S × X) in nhds (s0, x), f i z.1 z.2 = g i z.1 z.2) →
+        ∀ᶠ (s : S) in nhds s0, ∀ (i : ι), ∀ x ∈ C i, f i s x = g i s x
+'NSEGR.Assembly.finite_compact_overlap_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.overlapGlue : {X : Type u_1} →
+  {Y : Type u_2} →
+    {ι : Type u_3} →
+      (U : ι → Set X) →
+        (f : ι → X → Y) → (D : Set X) → D ⊆ ⋃ i, U i → (∀ (i j : ι), ∀ x ∈ U i, x ∈ U j → f i x = f j x) → Y → X → Y
+'NSEGR.Assembly.overlapGlue' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.overlapGlue_eq : ∀ {X : Type u_1} {Y : Type u_2} {ι : Type u_3} (U : ι → Set X) (f : ι → X → Y)
+  (D : Set X) (hcover : D ⊆ ⋃ i, U i) (hcompat : ∀ (i j : ι), ∀ x ∈ U i, x ∈ U j → f i x = f j x) (outside : Y) {x : X},
+  x ∈ D → ∀ {i : ι}, x ∈ U i → NSEGR.Assembly.overlapGlue U f D hcover hcompat outside x = f i x
+'NSEGR.Assembly.overlapGlue_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.overlapGlue_eventuallyEq : ∀ {X : Type u_1} {Y : Type u_2} {ι : Type u_3} [inst : TopologicalSpace X]
+  (U : ι → Set X) (f : ι → X → Y) (D : Set X) (hcover : D ⊆ ⋃ i, U i)
+  (hcompat : ∀ (i j : ι), ∀ x ∈ U i, x ∈ U j → f i x = f j x) (outside : Y),
+  IsOpen D →
+    (∀ (i : ι), IsOpen (U i)) →
+      ∀ {x : X}, x ∈ D → ∀ {i : ι}, x ∈ U i → NSEGR.Assembly.overlapGlue U f D hcover hcompat outside =ᶠ[nhds x] f i
+'NSEGR.Assembly.overlapGlue_eventuallyEq' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.overlapGlue_analyticAt : ∀ {X : Type u_1} {Y : Type u_2} {ι : Type u_3} [inst : NormedAddCommGroup X]
+  [inst_1 : NormedSpace ℝ X] [inst_2 : NormedAddCommGroup Y] [inst_3 : NormedSpace ℝ Y] (U : ι → Set X) (f : ι → X → Y)
+  (D : Set X) (hcover : D ⊆ ⋃ i, U i) (hcompat : ∀ (i j : ι), ∀ x ∈ U i, x ∈ U j → f i x = f j x) (outside : Y),
+  IsOpen D →
+    (∀ (i : ι), IsOpen (U i)) →
+      ∀ {x : X},
+        x ∈ D →
+          ∀ {i : ι},
+            x ∈ U i → AnalyticAt ℝ (f i) x → AnalyticAt ℝ (NSEGR.Assembly.overlapGlue U f D hcover hcompat outside) x
+'NSEGR.Assembly.overlapGlue_analyticAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.overlapGlue_fderiv : ∀ {X : Type u_1} {Y : Type u_2} {ι : Type u_3} [inst : NormedAddCommGroup X]
+  [inst_1 : NormedSpace ℝ X] [inst_2 : NormedAddCommGroup Y] [inst_3 : NormedSpace ℝ Y] (U : ι → Set X) (f : ι → X → Y)
+  (D : Set X) (hcover : D ⊆ ⋃ i, U i) (hcompat : ∀ (i j : ι), ∀ x ∈ U i, x ∈ U j → f i x = f j x) (outside : Y),
+  IsOpen D →
+    (∀ (i : ι), IsOpen (U i)) →
+      ∀ {x : X},
+        x ∈ D →
+          ∀ {i : ι}, x ∈ U i → fderiv ℝ (NSEGR.Assembly.overlapGlue U f D hcover hcompat outside) x = fderiv ℝ (f i) x
+'NSEGR.Assembly.overlapGlue_fderiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.overlapGlue_fderiv_eventuallyEq : ∀ {X : Type u_1} {Y : Type u_2} {ι : Type u_3}
+  [inst : NormedAddCommGroup X] [inst_1 : NormedSpace ℝ X] [inst_2 : NormedAddCommGroup Y] [inst_3 : NormedSpace ℝ Y]
+  (U : ι → Set X) (f : ι → X → Y) (D : Set X) (hcover : D ⊆ ⋃ i, U i)
+  (hcompat : ∀ (i j : ι), ∀ x ∈ U i, x ∈ U j → f i x = f j x) (outside : Y),
+  IsOpen D →
+    (∀ (i : ι), IsOpen (U i)) →
+      ∀ {x : X},
+        x ∈ D →
+          ∀ {i : ι},
+            x ∈ U i → fderiv ℝ (NSEGR.Assembly.overlapGlue U f D hcover hcompat outside) =ᶠ[nhds x] fderiv ℝ (f i)
+'NSEGR.Assembly.overlapGlue_fderiv_eventuallyEq' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.integerSpatialShift_add : ∀ (n m : NSEGR.Frequency),
+  NSEGR.integerSpatialShift (n + m) = NSEGR.integerSpatialShift n + NSEGR.integerSpatialShift m
+'NSEGR.Assembly.integerSpatialShift_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.integerSpatialShift_sub : ∀ (n m : NSEGR.Frequency),
+  NSEGR.integerSpatialShift (n - m) = NSEGR.integerSpatialShift n - NSEGR.integerSpatialShift m
+'NSEGR.Assembly.integerSpatialShift_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.integerSpatialShift_single : ∀ (i : Fin 3),
+  NSEGR.integerSpatialShift (Pi.single i 1) = NSEGR.unitVector i
+'NSEGR.Assembly.integerSpatialShift_single' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.latticePatch : {ι : Type u_1} → (ι → Set NSEGR.Vec) → ι × NSEGR.Frequency → Set NSEGR.Vec
+'NSEGR.Assembly.latticePatch' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.latticeLocal : {S : Type u_1} →
+  {Y : Type u_2} → {ι : Type u_3} → (ι → S → NSEGR.Vec → Y) → ι × NSEGR.Frequency → S → NSEGR.Vec → Y
+'NSEGR.Assembly.latticeLocal' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.latticePatch_isOpen : ∀ {ι : Type u_1} (U : ι → Set NSEGR.Vec),
+  (∀ (i : ι), IsOpen (U i)) → ∀ (a : ι × NSEGR.Frequency), IsOpen (NSEGR.Assembly.latticePatch U a)
+'NSEGR.Assembly.latticePatch_isOpen' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.latticePatch_cover : ∀ {ι : Type u_1} (U : ι → Set NSEGR.Vec),
+  NSEGR.unitCube ⊆ ⋃ i, U i → ∀ (x : NSEGR.Vec), ∃ a, x ∈ NSEGR.Assembly.latticePatch U a
+'NSEGR.Assembly.latticePatch_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.boundedShiftVector : NSEGR.Assembly.BoundedLatticeShift → NSEGR.Frequency
+'NSEGR.Assembly.boundedShiftVector' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.lattice_relative_shift_bound : ∀ {ι : Type u_1} (U : ι → Set NSEGR.Vec),
+  (∀ (i : ι), ∀ y ∈ U i, ∀ (j : Fin 3), -1 < y.ofLp j ∧ y.ofLp j < 2) →
+    ∀ {a b : ι × NSEGR.Frequency} {x : NSEGR.Vec},
+      x ∈ NSEGR.Assembly.latticePatch U a →
+        x ∈ NSEGR.Assembly.latticePatch U b → ∀ (j : Fin 3), -3 ≤ b.2 j - a.2 j ∧ b.2 j - a.2 j ≤ 3
+'NSEGR.Assembly.lattice_relative_shift_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.compactLatticeOverlap : {ι : Type u_1} →
+  (ι → Set NSEGR.Vec) → ι → ι → NSEGR.Assembly.BoundedLatticeShift → Set NSEGR.Vec
+'NSEGR.Assembly.compactLatticeOverlap' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.compactLatticeOverlap_isCompact : ∀ {ι : Type u_1} (U : ι → Set NSEGR.Vec),
+  (∀ (i : ι), IsCompact (closure (U i))) →
+    ∀ (i j : ι) (a : NSEGR.Assembly.BoundedLatticeShift), IsCompact (NSEGR.Assembly.compactLatticeOverlap U i j a)
+'NSEGR.Assembly.compactLatticeOverlap_isCompact' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.lattice_overlap_germs_uniform : ∀ {S : Type u_1} {Y : Type u_2} {ι : Type u_3}
+  [inst : TopologicalSpace S] [Finite ι] {s0 : S} (U : ι → Set NSEGR.Vec) (f : ι → S → NSEGR.Vec → Y),
+  (∀ (i : ι), IsCompact (closure (U i))) →
+    (∀ (i : ι), ∀ y ∈ U i, ∀ (j : Fin 3), -1 < y.ofLp j ∧ y.ofLp j < 2) →
+      (∀ (i j : ι) (a : NSEGR.Assembly.BoundedLatticeShift),
+          ∀ x ∈ NSEGR.Assembly.compactLatticeOverlap U i j a,
+            ∀ᶠ (z : S × NSEGR.Vec) in nhds (s0, x),
+              f i z.1 z.2 = f j z.1 (z.2 - NSEGR.integerSpatialShift (NSEGR.Assembly.boundedShiftVector a))) →
+        ∀ᶠ (s : S) in nhds s0,
+          ∀ (a b : ι × NSEGR.Frequency),
+            ∀ x ∈ NSEGR.Assembly.latticePatch U a,
+              x ∈ NSEGR.Assembly.latticePatch U b →
+                NSEGR.Assembly.latticeLocal f a s x = NSEGR.Assembly.latticeLocal f b s x
+'NSEGR.Assembly.lattice_overlap_germs_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.periodic_witness_of_compatible_atlas : ∀ {S : Type u_1} {Y : Type u_2} {ι : Type u_3}
+  [inst : TopologicalSpace S] (U : ι → Set NSEGR.Vec) (f : ι → S → NSEGR.Vec → Y) (W : Set S),
+  IsOpen W →
+    (∀ (i : ι), IsOpen (U i)) →
+      NSEGR.unitCube ⊆ ⋃ i, U i →
+        (∀ s ∈ W,
+            ∀ (a b : ι × NSEGR.Frequency),
+              ∀ x ∈ NSEGR.Assembly.latticePatch U a,
+                x ∈ NSEGR.Assembly.latticePatch U b →
+                  NSEGR.Assembly.latticeLocal f a s x = NSEGR.Assembly.latticeLocal f b s x) →
+          ∀ (outside : Y),
+            ∃ g,
+              (∀ s ∈ W, NSEGR.SpatialPeriodic (g s)) ∧
+                ∀ (a : ι × NSEGR.Frequency),
+                  ∀ s ∈ W,
+                    ∀ x ∈ NSEGR.Assembly.latticePatch U a,
+                      (fun z => g z.1 z.2) =ᶠ[nhds (s, x)] fun z => NSEGR.Assembly.latticeLocal f a z.1 z.2
+'NSEGR.Assembly.periodic_witness_of_compatible_atlas' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.periodic_witness_of_compact_overlap_germs : ∀ {S : Type u_1} {Y : Type u_2} {ι : Type u_3}
+  [inst : TopologicalSpace S] [Finite ι] {s0 : S} (U : ι → Set NSEGR.Vec) (V : ι → Set S) (f : ι → S → NSEGR.Vec → Y),
+  (∀ (i : ι), IsOpen (U i)) →
+    (∀ (i : ι), V i ∈ nhds s0) →
+      NSEGR.unitCube ⊆ ⋃ i, U i →
+        (∀ (i : ι), IsCompact (closure (U i))) →
+          (∀ (i : ι), ∀ y ∈ U i, ∀ (j : Fin 3), -1 < y.ofLp j ∧ y.ofLp j < 2) →
+            (∀ (i j : ι) (a : NSEGR.Assembly.BoundedLatticeShift),
+                ∀ x ∈ NSEGR.Assembly.compactLatticeOverlap U i j a,
+                  ∀ᶠ (z : S × NSEGR.Vec) in nhds (s0, x),
+                    f i z.1 z.2 = f j z.1 (z.2 - NSEGR.integerSpatialShift (NSEGR.Assembly.boundedShiftVector a))) →
+              ∀ (outside : Y),
+                ∃ W,
+                  IsOpen W ∧
+                    s0 ∈ W ∧
+                      (∀ (i : ι), W ⊆ V i) ∧
+                        ∃ g,
+                          (∀ s ∈ W, NSEGR.SpatialPeriodic (g s)) ∧
+                            ∀ (a : ι × NSEGR.Frequency),
+                              ∀ s ∈ W,
+                                ∀ x ∈ NSEGR.Assembly.latticePatch U a,
+                                  (fun z => g z.1 z.2) =ᶠ[nhds (s, x)] fun z => NSEGR.Assembly.latticeLocal f a z.1 z.2
+'NSEGR.Assembly.periodic_witness_of_compact_overlap_germs' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.analyticAt_of_lattice_local_germ : ∀ {S : Type u_1} {Y : Type u_2} {ι : Type u_3}
+  [inst : NormedAddCommGroup S] [inst_1 : NormedSpace ℝ S] [inst_2 : NormedAddCommGroup Y] [inst_3 : NormedSpace ℝ Y]
+  (f : ι → S → NSEGR.Vec → Y) (g : S → NSEGR.Vec → Y) (a : ι × NSEGR.Frequency) (s : S) (x : NSEGR.Vec),
+  AnalyticAt ℝ (fun z => f a.1 z.1 z.2) (s, x - NSEGR.integerSpatialShift a.2) →
+    ((fun z => g z.1 z.2) =ᶠ[nhds (s, x)] fun z => NSEGR.Assembly.latticeLocal f a z.1 z.2) →
+      AnalyticAt ℝ (fun z => g z.1 z.2) (s, x)
+'NSEGR.Assembly.analyticAt_of_lattice_local_germ' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.germ_local_law_of_lattice_local_germ : ∀ {S : Type u_1} {Y : Type u_2} {ι : Type u_3}
+  [inst : TopologicalSpace S] (f : ι → S → NSEGR.Vec → Y) (g : S → NSEGR.Vec → Y) (a : ι × NSEGR.Frequency) (s : S)
+  (x : NSEGR.Vec) (Law : (S × NSEGR.Vec → Y) → S × NSEGR.Vec → Prop),
+  (∀ (h k : S × NSEGR.Vec → Y) (z : S × NSEGR.Vec), h =ᶠ[nhds z] k → (Law h z ↔ Law k z)) →
+    Law (fun z => NSEGR.Assembly.latticeLocal f a z.1 z.2) (s, x) →
+      ((fun z => g z.1 z.2) =ᶠ[nhds (s, x)] fun z => NSEGR.Assembly.latticeLocal f a z.1 z.2) →
+        Law (fun z => g z.1 z.2) (s, x)
+'NSEGR.Assembly.germ_local_law_of_lattice_local_germ' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.periodic_analytic_witness_of_compact_overlap_germs : ∀ {S : Type u_1} {Y : Type u_2} {ι : Type u_3}
+  [inst : NormedAddCommGroup S] [inst_1 : NormedSpace ℝ S] [inst_2 : NormedAddCommGroup Y] [inst_3 : NormedSpace ℝ Y]
+  [Finite ι] {s0 : S} (U : ι → Set NSEGR.Vec) (V : ι → Set S) (f : ι → S → NSEGR.Vec → Y),
+  (∀ (i : ι), IsOpen (U i)) →
+    (∀ (i : ι), V i ∈ nhds s0) →
+      NSEGR.unitCube ⊆ ⋃ i, U i →
+        (∀ (i : ι), IsCompact (closure (U i))) →
+          (∀ (i : ι), ∀ y ∈ U i, ∀ (j : Fin 3), -1 < y.ofLp j ∧ y.ofLp j < 2) →
+            (∀ (i j : ι) (a : NSEGR.Assembly.BoundedLatticeShift),
+                ∀ x ∈ NSEGR.Assembly.compactLatticeOverlap U i j a,
+                  ∀ᶠ (z : S × NSEGR.Vec) in nhds (s0, x),
+                    f i z.1 z.2 = f j z.1 (z.2 - NSEGR.integerSpatialShift (NSEGR.Assembly.boundedShiftVector a))) →
+              (∀ (i : ι), ∀ s ∈ V i, ∀ x ∈ U i, AnalyticAt ℝ (fun z => f i z.1 z.2) (s, x)) →
+                ∀ (outside : Y),
+                  ∃ W,
+                    IsOpen W ∧
+                      s0 ∈ W ∧
+                        (∀ (i : ι), W ⊆ V i) ∧
+                          ∃ g,
+                            (∀ s ∈ W, NSEGR.SpatialPeriodic (g s)) ∧
+                              (∀ s ∈ W, ∀ (x : NSEGR.Vec), AnalyticAt ℝ (fun z => g z.1 z.2) (s, x)) ∧
+                                ∀ (a : ι × NSEGR.Frequency),
+                                  ∀ s ∈ W,
+                                    ∀ x ∈ NSEGR.Assembly.latticePatch U a,
+                                      (fun z => g z.1 z.2) =ᶠ[nhds (s, x)] fun z =>
+                                        NSEGR.Assembly.latticeLocal f a z.1 z.2
+'NSEGR.Assembly.periodic_analytic_witness_of_compact_overlap_germs' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+NSEGR.Assembly.scalarHessian_sub_constant : ∀ (f : NSEGR.ScalarField) (c : ℝ),
+  (NSEGR.scalarHessian fun x => f x - c) = NSEGR.scalarHessian f
+'NSEGR.Assembly.scalarHessian_sub_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.scalarLaplacian_sub_constant : ∀ (f : NSEGR.ScalarField) (c : ℝ),
+  (NSEGR.scalarLaplacian fun x => f x - c) = NSEGR.scalarLaplacian f
+'NSEGR.Assembly.scalarLaplacian_sub_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.analytic_second_deriv_sub : ∀ {f a : ℝ → ℝ} {t : ℝ},
+  AnalyticAt ℝ f t → AnalyticAt ℝ a t → deriv (deriv fun s => f s - a s) t = deriv (deriv f) t - deriv (deriv a) t
+'NSEGR.Assembly.analytic_second_deriv_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.scalarLocalTimeDerivative_gauge_germ : ∀ {ψ : NSEGR.Pressure} {a : ℝ → ℝ} {t : ℝ} {x : NSEGR.Vec},
+  AnalyticAt ℝ (fun z => ψ z.1 z.2) (t, x) →
+    AnalyticAt ℝ a t →
+      (fun y => NSEGR.scalarLocalTimeDerivative (fun s z => ψ s z - a s) t y) =ᶠ[nhds x] fun y =>
+        NSEGR.scalarLocalTimeDerivative ψ t y - deriv a t
+'NSEGR.Assembly.scalarLocalTimeDerivative_gauge_germ' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.gradient_scalarLocalTimeDerivative_gauge : ∀ {ψ : NSEGR.Pressure} {a : ℝ → ℝ} {t : ℝ} {x : NSEGR.Vec},
+  AnalyticAt ℝ (fun z => ψ z.1 z.2) (t, x) →
+    AnalyticAt ℝ a t →
+      NSEGR.gradient (NSEGR.scalarLocalTimeDerivative (fun s z => ψ s z - a s) t) x =
+        NSEGR.gradient (NSEGR.scalarLocalTimeDerivative ψ t) x
+'NSEGR.Assembly.gradient_scalarLocalTimeDerivative_gauge' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.scalarSecondTimeDerivative_gauge : ∀ {ψ : NSEGR.Pressure} {a : ℝ → ℝ} {t : ℝ} {x : NSEGR.Vec},
+  AnalyticAt ℝ (fun z => ψ z.1 z.2) (t, x) →
+    AnalyticAt ℝ a t →
+      NSEGR.scalarLocalTimeDerivative (NSEGR.scalarLocalTimeDerivative fun s z => ψ s z - a s) t x =
+        NSEGR.scalarLocalTimeDerivative (NSEGR.scalarLocalTimeDerivative ψ) t x - deriv (deriv a) t
+'NSEGR.Assembly.scalarSecondTimeDerivative_gauge' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.source_plus_completion_pressure_gauge : ∀ {ν ρ t : ℝ} {u : NSEGR.Velocity} {p ψ : NSEGR.Pressure}
+  {a γ : ℝ → ℝ} {x : NSEGR.Vec},
+  AnalyticAt ℝ (fun z => ψ z.1 z.2) (t, x) →
+    AnalyticAt ℝ a t →
+      deriv (deriv a) t = γ t →
+        NSEGR.conservedSourceUpper ν ρ u (fun s y => p s y + γ s) t x +
+            NSEGR.scalarCompletionUpper (fun s y => ψ s y - a s) t x =
+          NSEGR.conservedSourceUpper ν ρ u p t x + NSEGR.scalarCompletionUpper ψ t x
+'NSEGR.Assembly.source_plus_completion_pressure_gauge' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.completedBoundary_pressure_gauge : ∀ {ν ρ t : ℝ} {u : NSEGR.Velocity} {p ψ : NSEGR.Pressure}
+  {a γ : ℝ → ℝ} {x : NSEGR.Vec},
+  AnalyticAt ℝ (fun z => ψ z.1 z.2) (t, x) →
+    AnalyticAt ℝ a t →
+      deriv (deriv a) t = γ t →
+        NSEGR.completedBoundary ν ρ u (fun s y => p s y + γ s) (fun s y => ψ s y - a s) t x =
+          NSEGR.completedBoundary ν ρ u p ψ t x
+'NSEGR.Assembly.completedBoundary_pressure_gauge' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.normalized_pressure_gauge_completion : NSEGR.LiteratureAnalyticCKInput →
+  ∀ {ν ρ t0 : ℝ} {u : NSEGR.Velocity} {p ψ : NSEGR.Pressure} {γ : ℝ → ℝ} {x0 : NSEGR.Vec},
+    AnalyticAt ℝ (fun z => ψ z.1 z.2) (t0, x0) →
+      AnalyticAt ℝ γ t0 →
+        ∃ a,
+          AnalyticAt ℝ a t0 ∧
+            a t0 = 0 ∧
+              deriv a t0 = 0 ∧
+                ∀ᶠ (z : ℝ × NSEGR.Vec) in nhds (t0, x0),
+                  NSEGR.completedBoundary ν ρ u (fun s y => p s y + γ s) (fun s y => ψ s y - a s) z.1 z.2 =
+                    NSEGR.completedBoundary ν ρ u p ψ z.1 z.2
+'NSEGR.Assembly.normalized_pressure_gauge_completion' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.nseSpatialSource3_trace : ∀ (ν : ℝ) (u : NSEGR.Velocity) (p : NSEGR.Pressure) (t : ℝ) (x : NSEGR.Vec),
+  NSEGR.divergence (u t) x = 0 →
+    NSEGR.trace3 (NSEGR.nseSpatialSource3 ν u p t x) = (NSEGR.vectorSq3 fun i => (u t x).ofLp i) + 3 * p t x
+'NSEGR.Assembly.nseSpatialSource3_trace' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.completedBoundary_lower_trace : ∀ (ν ρ : ℝ) (u : NSEGR.Velocity) (p ψ : NSEGR.Pressure) (t : ℝ)
+  (x : NSEGR.Vec),
+  NSEGR.divergence (u t) x = 0 →
+    NSEGR.lorentzTrace4
+        (NSEGR.lowerTensor4 (NSEGR.conservedSourceUpper ν ρ u p t x + NSEGR.scalarCompletionUpper ψ t x)) =
+      (-ρ + NSEGR.vectorSq3 fun i => (u t x).ofLp i) + 3 * p t x +
+          3 * NSEGR.scalarLocalTimeDerivative (NSEGR.scalarLocalTimeDerivative ψ) t x -
+        3 * NSEGR.scalarLaplacian (ψ t) x
+'NSEGR.Assembly.completedBoundary_lower_trace' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.completedBoundary_time_time : ∀ (ν ρ : ℝ) (u : NSEGR.Velocity) (p ψ : NSEGR.Pressure) (t : ℝ)
+  (x : NSEGR.Vec),
+  NSEGR.divergence (u t) x = 0 →
+    NSEGR.completedBoundary ν ρ u p ψ t x 0 0 =
+      -(2 * ρ + NSEGR.vectorSq3 fun i => (u t x).ofLp i) / 3 - p t x -
+        NSEGR.scalarLocalTimeDerivative (NSEGR.scalarLocalTimeDerivative ψ) t x
+'NSEGR.Assembly.completedBoundary_time_time' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.completedBoundary_time_space : ∀ (ν ρ : ℝ) (u : NSEGR.Velocity) (p ψ : NSEGR.Pressure) (t : ℝ)
+  (x : NSEGR.Vec) (i : Fin 3),
+  NSEGR.completedBoundary ν ρ u p ψ t x 0 i.succ =
+    (u t x).ofLp i - (NSEGR.gradient (NSEGR.scalarLocalTimeDerivative ψ t) x).ofLp i
+'NSEGR.Assembly.completedBoundary_time_space' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.completedBoundary_space_space : ∀ (ν ρ : ℝ) (u : NSEGR.Velocity) (p ψ : NSEGR.Pressure) (t : ℝ)
+  (x : NSEGR.Vec),
+  NSEGR.divergence (u t) x = 0 →
+    ∀ (i j : Fin 3),
+      NSEGR.completedBoundary ν ρ u p ψ t x i.succ j.succ =
+        ((NSEGR.vectorSq3 fun l => (u t x).ofLp l) - ρ) / 3 * NSEGR.identity3 i j - (u t x).ofLp i * (u t x).ofLp j +
+            ν * NSEGR.strain (u t) x i j -
+          NSEGR.scalarHessian (ψ t) x i j
+'NSEGR.Assembly.completedBoundary_space_space' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.completedBoundary_rawVelocity : ∀ (ν ρ : ℝ) (u : NSEGR.Velocity) (p ψ : NSEGR.Pressure) (t : ℝ),
+  NSEGR.boundaryRawVelocity (NSEGR.completedBoundary ν ρ u p ψ) t = fun x =>
+    u t x - NSEGR.gradient (NSEGR.scalarLocalTimeDerivative ψ t) x
+'NSEGR.Assembly.completedBoundary_rawVelocity' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.completedBoundary_beta : ∀ (ν ρ : ℝ) (u : NSEGR.Velocity) (p ψ : NSEGR.Pressure) (t : ℝ) (x : NSEGR.Vec),
+  NSEGR.divergence (u t) x = 0 →
+    NSEGR.boundaryBeta (NSEGR.completedBoundary ν ρ u p ψ) t x = ρ + NSEGR.scalarLaplacian (ψ t) x
+'NSEGR.Assembly.completedBoundary_beta' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.nseSpatialSource3_divergence : ∀ (ν : ℝ) (u : NSEGR.Velocity) (p : NSEGR.Pressure) (t : ℝ)
+  (x : NSEGR.Vec),
+  ContDiff ℝ (↑⊤) (u t) →
+    DifferentiableAt ℝ (p t) x →
+      (∀ (y : NSEGR.Vec), NSEGR.divergence (u t) y = 0) →
+        NSEGR.tensorDivergence (NSEGR.nseSpatialSource3 ν u p t) x =
+          NSEGR.convection (u t) x + NSEGR.gradient (p t) x - ν • NSEGR.laplacian (u t) x
+'NSEGR.Assembly.nseSpatialSource3_divergence' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.upperDivergence : NSEGR.BoundaryTensor → ℝ → NSEGR.Vec → Fin 4 → ℝ
+'NSEGR.Assembly.upperDivergence' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.velocity_coordinate_timeDerivative : ∀ {u : NSEGR.Velocity} {t : ℝ} {x : NSEGR.Vec},
+  AnalyticAt ℝ (fun z => u z.1 z.2) (t, x) →
+    ∀ (i : Fin 3), deriv (fun s => (u s x).ofLp i) t = (NSEGR.localTimeDerivative u t x).ofLp i
+'NSEGR.Assembly.velocity_coordinate_timeDerivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.nseSpatialSource3_symmetric : ∀ (ν : ℝ) (u : NSEGR.Velocity) (p : NSEGR.Pressure) (t : ℝ) (x : NSEGR.Vec)
+  (i j : Fin 3), NSEGR.nseSpatialSource3 ν u p t x i j = NSEGR.nseSpatialSource3 ν u p t x j i
+'NSEGR.Assembly.nseSpatialSource3_symmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.conservedSourceUpper_divergence_time : ∀ (ν ρ : ℝ) (u : NSEGR.Velocity) (p : NSEGR.Pressure) (t : ℝ)
+  (x : NSEGR.Vec),
+  DifferentiableAt ℝ (u t) x →
+    NSEGR.Assembly.upperDivergence (NSEGR.conservedSourceUpper ν ρ u p) t x 0 = NSEGR.divergence (u t) x
+'NSEGR.Assembly.conservedSourceUpper_divergence_time' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.conservedSourceUpper_divergence_space : ∀ (ν ρ : ℝ) (u : NSEGR.Velocity) (p : NSEGR.Pressure) (t : ℝ)
+  (x : NSEGR.Vec),
+  ContDiff ℝ (↑⊤) (u t) →
+    AnalyticAt ℝ (fun z => u z.1 z.2) (t, x) →
+      DifferentiableAt ℝ (p t) x →
+        (∀ (y : NSEGR.Vec), NSEGR.divergence (u t) y = 0) →
+          ∀ (i : Fin 3),
+            NSEGR.Assembly.upperDivergence (NSEGR.conservedSourceUpper ν ρ u p) t x i.succ =
+              (NSEGR.nseResidual ν u p t x).ofLp i
+'NSEGR.Assembly.conservedSourceUpper_divergence_space' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.conservedSourceUpper_conserved : ∀ (ν ρ : ℝ) (u : NSEGR.Velocity) (p : NSEGR.Pressure) (t : ℝ)
+  (x : NSEGR.Vec),
+  ContDiff ℝ (↑⊤) (u t) →
+    AnalyticAt ℝ (fun z => u z.1 z.2) (t, x) →
+      DifferentiableAt ℝ (p t) x →
+        (∀ (y : NSEGR.Vec), NSEGR.divergence (u t) y = 0) →
+          NSEGR.nseResidual ν u p t x = 0 →
+            ∀ (b : Fin 4), NSEGR.Assembly.upperDivergence (NSEGR.conservedSourceUpper ν ρ u p) t x b = 0
+'NSEGR.Assembly.conservedSourceUpper_conserved' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.scalar_local_assembly : NSEGR.LiteratureAnalyticCKInput →
+  ∀ {ν ρ t0 δ : ℝ} {u : NSEGR.Velocity} {p : NSEGR.Pressure},
+    ρ ≠ 0 →
+      NSEGR.AnalyticPeriodicPair t0 δ u p →
+        ∀ (x0 : NSEGR.Vec),
+          ∃ ψ,
+            NSEGR.Assembly.ScalarNormalGerm ν ρ u p t0 x0 ψ ∧
+              (∀ᶠ (z : ℝ × NSEGR.Vec) in nhds (t0, x0), ρ + NSEGR.scalarLaplacian (ψ z.1) z.2 ≠ 0) ∧
+                (∀ᶠ (z : ℝ × NSEGR.Vec) in nhds (t0, x0),
+                    NSEGR.boundaryHamiltonian (NSEGR.completedBoundary ν ρ u p ψ) z.1 z.2 = 0) ∧
+                  ∀ (φ : NSEGR.Pressure),
+                    NSEGR.Assembly.ScalarNormalGerm ν ρ u p t0 x0 φ →
+                      (fun z => ψ z.1 z.2) =ᶠ[nhds (t0, x0)] fun z => φ z.1 z.2
+'NSEGR.Assembly.scalar_local_assembly' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.jointTime : (ℝ × NSEGR.Vec → ℝ) → ℝ × NSEGR.Vec → ℝ
+'NSEGR.Assembly.jointTime' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.jointSpace : (ℝ × NSEGR.Vec → ℝ) → Fin 3 → ℝ × NSEGR.Vec → ℝ
+'NSEGR.Assembly.jointSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.jointTime_congr : ∀ {f g : ℝ × NSEGR.Vec → ℝ} {z : ℝ × NSEGR.Vec},
+  f =ᶠ[nhds z] g → NSEGR.Assembly.jointTime f z = NSEGR.Assembly.jointTime g z
+'NSEGR.Assembly.jointTime_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.jointSpace_congr : ∀ {f g : ℝ × NSEGR.Vec → ℝ} {z : ℝ × NSEGR.Vec},
+  f =ᶠ[nhds z] g → ∀ (i : Fin 3), NSEGR.Assembly.jointSpace f i z = NSEGR.Assembly.jointSpace g i z
+'NSEGR.Assembly.jointSpace_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.jointTime_congr_germ : ∀ {f g : ℝ × NSEGR.Vec → ℝ} {z : ℝ × NSEGR.Vec},
+  f =ᶠ[nhds z] g → NSEGR.Assembly.jointTime f =ᶠ[nhds z] NSEGR.Assembly.jointTime g
+'NSEGR.Assembly.jointTime_congr_germ' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.jointSpace_congr_germ : ∀ {f g : ℝ × NSEGR.Vec → ℝ} {z : ℝ × NSEGR.Vec},
+  f =ᶠ[nhds z] g → ∀ (i : Fin 3), NSEGR.Assembly.jointSpace f i =ᶠ[nhds z] NSEGR.Assembly.jointSpace g i
+'NSEGR.Assembly.jointSpace_congr_germ' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.analyticAt_jointTime : ∀ {f : ℝ × NSEGR.Vec → ℝ} {z : ℝ × NSEGR.Vec},
+  AnalyticAt ℝ f z → AnalyticAt ℝ (NSEGR.Assembly.jointTime f) z
+'NSEGR.Assembly.analyticAt_jointTime' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.analyticAt_jointSpace : ∀ {f : ℝ × NSEGR.Vec → ℝ} {z : ℝ × NSEGR.Vec},
+  AnalyticAt ℝ f z → ∀ (i : Fin 3), AnalyticAt ℝ (NSEGR.Assembly.jointSpace f i) z
+'NSEGR.Assembly.analyticAt_jointSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.jointTime_jointSpace : ∀ {f : ℝ × NSEGR.Vec → ℝ} {z : ℝ × NSEGR.Vec},
+  AnalyticAt ℝ f z →
+    ∀ (i : Fin 3),
+      NSEGR.Assembly.jointTime (NSEGR.Assembly.jointSpace f i) z =
+        NSEGR.Assembly.jointSpace (NSEGR.Assembly.jointTime f) i z
+'NSEGR.Assembly.jointTime_jointSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.scalarCKPotential : (ℝ × NSEGR.Vec → NSEGR.ScalarCKState) → NSEGR.Pressure
+'NSEGR.Assembly.scalarCKPotential' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.scalarCK_coordinate_timeDerivative : ∀ {W : ℝ × NSEGR.Vec → NSEGR.ScalarCKState} {z : ℝ × NSEGR.Vec},
+  AnalyticAt ℝ W z →
+    ∀ (k : Fin 5), NSEGR.Assembly.jointTime (fun y => (W y).ofLp k) z = (deriv (fun t => W (t, z.2)) z.1).ofLp k
+'NSEGR.Assembly.scalarCK_coordinate_timeDerivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.scalarCK_coordinate_spaceDerivative : ∀ {W : ℝ × NSEGR.Vec → NSEGR.ScalarCKState} {z : ℝ × NSEGR.Vec},
+  AnalyticAt ℝ W z →
+    ∀ (k : Fin 5) (i : Fin 3),
+      ((fderiv ℝ (fun x => W (z.1, x)) z.2) (NSEGR.unitVector i)).ofLp k =
+        NSEGR.Assembly.jointSpace (fun y => (W y).ofLp k) i z
+'NSEGR.Assembly.scalarCK_coordinate_spaceDerivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.scalarCK_potential_time_germ : ∀ {ν ρ t0 : ℝ} {u : NSEGR.Velocity} {p : NSEGR.Pressure} {x0 : NSEGR.Vec}
+  {W : ℝ × NSEGR.Vec → NSEGR.ScalarCKState},
+  NSEGR.LiteratureCKSolution (NSEGR.scalarCKRHS ν ρ u p) (fun x => 0) t0 x0 W →
+    (NSEGR.Assembly.jointTime fun z => (W z).ofLp 0) =ᶠ[nhds (t0, x0)] fun z => (W z).ofLp 1
+'NSEGR.Assembly.scalarCK_potential_time_germ' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.scalarCK_potential_initial : ∀ {ν ρ t0 : ℝ} {u : NSEGR.Velocity} {p : NSEGR.Pressure} {x0 : NSEGR.Vec}
+  {W : ℝ × NSEGR.Vec → NSEGR.ScalarCKState},
+  NSEGR.LiteratureCKSolution (NSEGR.scalarCKRHS ν ρ u p) (fun x => 0) t0 x0 W →
+    ∀ᶠ (x : NSEGR.Vec) in nhds x0, NSEGR.Assembly.scalarCKPotential W t0 x = 0
+'NSEGR.Assembly.scalarCK_potential_initial' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.scalarCK_potential_time_initial : ∀ {ν ρ t0 : ℝ} {u : NSEGR.Velocity} {p : NSEGR.Pressure}
+  {x0 : NSEGR.Vec} {W : ℝ × NSEGR.Vec → NSEGR.ScalarCKState},
+  NSEGR.LiteratureCKSolution (NSEGR.scalarCKRHS ν ρ u p) (fun x => 0) t0 x0 W →
+    ∀ᶠ (x : NSEGR.Vec) in nhds x0, NSEGR.scalarLocalTimeDerivative (NSEGR.Assembly.scalarCKPotential W) t0 x = 0
+'NSEGR.Assembly.scalarCK_potential_time_initial' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.scalarCK_secondOrder_equation : ∀ {ν ρ t0 : ℝ} {u : NSEGR.Velocity} {p : NSEGR.Pressure}
+  {x0 : NSEGR.Vec} {W : ℝ × NSEGR.Vec → NSEGR.ScalarCKState},
+  NSEGR.LiteratureCKSolution (NSEGR.scalarCKRHS ν ρ u p) (fun x => 0) t0 x0 W →
+    ∀ᶠ (z : ℝ × NSEGR.Vec) in nhds (t0, x0),
+      NSEGR.scalarLocalTimeDerivative (NSEGR.scalarLocalTimeDerivative (NSEGR.Assembly.scalarCKPotential W)) z.1 z.2 =
+        NSEGR.scalarJetRHS ρ (fun i => (u z.1 z.2).ofLp i) (NSEGR.nseSpatialSource3 ν u p z.1 z.2)
+          (NSEGR.scalarHessian (NSEGR.Assembly.scalarCKPotential W z.1) z.2) fun i =>
+          (NSEGR.gradient (NSEGR.scalarLocalTimeDerivative (NSEGR.Assembly.scalarCKPotential W) z.1) z.2).ofLp i
+'NSEGR.Assembly.scalarCK_secondOrder_equation' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.scalarCK_scalarNormalGerm : ∀ {ν ρ t0 : ℝ} {u : NSEGR.Velocity} {p : NSEGR.Pressure} {x0 : NSEGR.Vec}
+  {W : ℝ × NSEGR.Vec → NSEGR.ScalarCKState},
+  NSEGR.LiteratureCKSolution (NSEGR.scalarCKRHS ν ρ u p) (fun x => 0) t0 x0 W →
+    NSEGR.Assembly.ScalarNormalGerm ν ρ u p t0 x0 (NSEGR.Assembly.scalarCKPotential W)
+'NSEGR.Assembly.scalarCK_scalarNormalGerm' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.scalarStateOfPotential : NSEGR.Pressure → ℝ × NSEGR.Vec → NSEGR.ScalarCKState
+'NSEGR.Assembly.scalarStateOfPotential' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.analyticAt_scalarStateOfPotential : ∀ {ψ : NSEGR.Pressure} {z : ℝ × NSEGR.Vec},
+  AnalyticAt ℝ (fun y => ψ y.1 y.2) z → AnalyticAt ℝ (NSEGR.Assembly.scalarStateOfPotential ψ) z
+'NSEGR.Assembly.analyticAt_scalarStateOfPotential' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.scalarStateOfPotential_solution : ∀ {ν ρ t0 : ℝ} {u : NSEGR.Velocity} {p ψ : NSEGR.Pressure}
+  {x0 : NSEGR.Vec},
+  NSEGR.Assembly.ScalarNormalGerm ν ρ u p t0 x0 ψ →
+    NSEGR.LiteratureCKSolution (NSEGR.scalarCKRHS ν ρ u p) (fun x => 0) t0 x0 (NSEGR.Assembly.scalarStateOfPotential ψ)
+'NSEGR.Assembly.scalarStateOfPotential_solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.scalar_normalized_germ_unique : NSEGR.LiteratureAnalyticCKInput →
+  ∀ {ν ρ t0 : ℝ} {u : NSEGR.Velocity} {p ψ φ : NSEGR.Pressure} {x0 : NSEGR.Vec},
+    ρ ≠ 0 →
+      AnalyticAt ℝ (fun z => u z.1 z.2) (t0, x0) →
+        AnalyticAt ℝ (fun z => p z.1 z.2) (t0, x0) →
+          NSEGR.Assembly.ScalarNormalGerm ν ρ u p t0 x0 ψ →
+            NSEGR.Assembly.ScalarNormalGerm ν ρ u p t0 x0 φ → (fun z => ψ z.1 z.2) =ᶠ[nhds (t0, x0)] fun z => φ z.1 z.2
+'NSEGR.Assembly.scalar_normalized_germ_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.Assembly.scalarNormalGerm_exists : NSEGR.LiteratureAnalyticCKInput →
+  ∀ {ν ρ t0 δ : ℝ} {u : NSEGR.Velocity} {p : NSEGR.Pressure},
+    ρ ≠ 0 →
+      NSEGR.AnalyticPeriodicPair t0 δ u p → ∀ (x0 : NSEGR.Vec), ∃ ψ, NSEGR.Assembly.ScalarNormalGerm ν ρ u p t0 x0 ψ
+'NSEGR.Assembly.scalarNormalGerm_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.scalarHessian_eq_zero_of_germ_zero : ∀ {f : NSEGR.ScalarField} {x : NSEGR.Vec},
+  (f =ᶠ[nhds x] fun x => 0) → NSEGR.scalarHessian f x = 0
+'NSEGR.Assembly.scalarHessian_eq_zero_of_germ_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.scalarLaplacian_eq_zero_of_germ_zero : ∀ {f : NSEGR.ScalarField} {x : NSEGR.Vec},
+  (f =ᶠ[nhds x] fun x => 0) → NSEGR.scalarLaplacian f x = 0
+'NSEGR.Assembly.scalarLaplacian_eq_zero_of_germ_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.analyticAt_scalarLaplacian_joint : ∀ {ψ : NSEGR.Pressure} {z : ℝ × NSEGR.Vec},
+  AnalyticAt ℝ (fun y => ψ y.1 y.2) z → AnalyticAt ℝ (fun y => NSEGR.scalarLaplacian (ψ y.1) y.2) z
+'NSEGR.Assembly.analyticAt_scalarLaplacian_joint' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.ScalarNormalGerm.noncharacteristic : ∀ {ν ρ t0 : ℝ} {u : NSEGR.Velocity} {p ψ : NSEGR.Pressure}
+  {x0 : NSEGR.Vec},
+  NSEGR.Assembly.ScalarNormalGerm ν ρ u p t0 x0 ψ →
+    ρ ≠ 0 → ∀ᶠ (z : ℝ × NSEGR.Vec) in nhds (t0, x0), ρ + NSEGR.scalarLaplacian (ψ z.1) z.2 ≠ 0
+'NSEGR.Assembly.ScalarNormalGerm.noncharacteristic' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.Assembly.ScalarNormalGerm.hamiltonian : ∀ {ν ρ t0 : ℝ} {u : NSEGR.Velocity} {p ψ : NSEGR.Pressure}
+  {x0 : NSEGR.Vec},
+  NSEGR.Assembly.ScalarNormalGerm ν ρ u p t0 x0 ψ →
+    ρ ≠ 0 →
+      ∀ᶠ (z : ℝ × NSEGR.Vec) in nhds (t0, x0), NSEGR.boundaryHamiltonian (NSEGR.completedBoundary ν ρ u p ψ) z.1 z.2 = 0
+'NSEGR.Assembly.ScalarNormalGerm.hamiltonian' depends on axioms: [propext, Classical.choice, Quot.sound]
