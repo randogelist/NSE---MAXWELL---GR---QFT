@@ -1,0 +1,14 @@
+import ClassicalMechanicsAssembly.FlowConstruction
+
+set_option pp.universes true
+
+#check @ClassicalMechanicsAssembly.constructed_inverse_continuousOn
+#print axioms ClassicalMechanicsAssembly.constructed_inverse_continuousOn
+#check @ClassicalMechanicsAssembly.constructed_materialPathOn
+#print axioms ClassicalMechanicsAssembly.constructed_materialPathOn
+#check @ClassicalMechanicsAssembly.JointFlowRegularity
+#print axioms ClassicalMechanicsAssembly.JointFlowRegularity
+#check @ClassicalMechanicsAssembly.FLOW_REALIZATION_OF_JOINT_REGULARITY
+#print axioms ClassicalMechanicsAssembly.FLOW_REALIZATION_OF_JOINT_REGULARITY
+#check @ClassicalMechanicsAssembly.MATERIAL_EQUATION_OF_JOINT_REGULARITY
+#print axioms ClassicalMechanicsAssembly.MATERIAL_EQUATION_OF_JOINT_REGULARITY

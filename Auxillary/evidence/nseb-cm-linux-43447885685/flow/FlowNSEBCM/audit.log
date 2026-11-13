@@ -1,0 +1,41 @@
+ClassicalMechanicsAssembly.CMSolution : ℝ →
+  NSEMaxwell.Classical.Field → NSEMaxwell.Classical.Velocity → NSEMaxwell.Classical.Pressure → Prop
+'ClassicalMechanicsAssembly.CMSolution' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanicsAssembly.CMB : ℝ → Prop
+'ClassicalMechanicsAssembly.CMB' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.nseSolution_to_cmSolution : ∀ {ν : ℝ} {a : NSEMaxwell.Classical.Field}
+  {u : NSEMaxwell.Classical.Velocity} {p : NSEMaxwell.Classical.Pressure},
+  NSEMaxwell.Classical.NSSolution ν a u p → ClassicalMechanicsAssembly.CMSolution ν a u p
+'ClassicalMechanicsAssembly.nseSolution_to_cmSolution' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.cmSolution_to_nseSolution : ∀ {ν : ℝ} {a : NSEMaxwell.Classical.Field}
+  {u : NSEMaxwell.Classical.Velocity} {p : NSEMaxwell.Classical.Pressure},
+  ClassicalMechanicsAssembly.CMSolution ν a u p → NSEMaxwell.Classical.NSSolution ν a u p
+'ClassicalMechanicsAssembly.cmSolution_to_nseSolution' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.nseSolution_iff_cmSolution : ∀ {ν : ℝ} {a : NSEMaxwell.Classical.Field}
+  {u : NSEMaxwell.Classical.Velocity} {p : NSEMaxwell.Classical.Pressure},
+  NSEMaxwell.Classical.NSSolution ν a u p ↔ ClassicalMechanicsAssembly.CMSolution ν a u p
+'ClassicalMechanicsAssembly.nseSolution_iff_cmSolution' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+ClassicalMechanicsAssembly.nse_cm_solution_sets_eq : ∀ (ν : ℝ) (a : NSEMaxwell.Classical.Field),
+  Eq.{1} (Set.ofPred.{0} fun s => NSEMaxwell.Classical.NSSolution ν a s.1 s.2)
+    (Set.ofPred.{0} fun s => ClassicalMechanicsAssembly.CMSolution ν a s.1 s.2)
+'ClassicalMechanicsAssembly.nse_cm_solution_sets_eq' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanicsAssembly.nseB_implies_cmB : ∀ (ν : ℝ),
+  NSEMaxwell.Classical.FeffermanB ν → ClassicalMechanicsAssembly.CMB ν
+'ClassicalMechanicsAssembly.nseB_implies_cmB' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanicsAssembly.cmB_implies_nseB : ∀ (ν : ℝ),
+  ClassicalMechanicsAssembly.CMB ν → NSEMaxwell.Classical.FeffermanB ν
+'ClassicalMechanicsAssembly.cmB_implies_nseB' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanicsAssembly.NSEB_IFF_CM : ∀ (ν : ℝ), NSEMaxwell.Classical.FeffermanB ν ↔ ClassicalMechanicsAssembly.CMB ν
+'ClassicalMechanicsAssembly.NSEB_IFF_CM' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanicsAssembly.NSEB_IFF_CM_POSITIVE : ∀ (ν : ℝ),
+  LT.lt.{0} 0 ν → (NSEMaxwell.Classical.FeffermanB ν ↔ ClassicalMechanicsAssembly.CMB ν)
+'ClassicalMechanicsAssembly.NSEB_IFF_CM_POSITIVE' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanicsAssembly.newtonianB_iff_cmB : ∀ (ν : ℝ),
+  ClassicalMechanics.NewtonianB ν ↔ ClassicalMechanicsAssembly.CMB ν
+'ClassicalMechanicsAssembly.newtonianB_iff_cmB' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]

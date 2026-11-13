@@ -1,0 +1,86 @@
+@ClassicalMechanicsAssembly.Flow.SlabODEData.continuousOn_uncurry.{u_1} : ∀ {E : Type u_1}
+  [inst : NormedAddCommGroup.{u_1} E] [NormedSpace.{0, u_1} ℝ E] [CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E}
+  {B K : NNReal},
+  ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K →
+    ContinuousOn.{u_1, u_1} (Function.uncurry.{0, u_1, u_1 + 1} u)
+      (SProd.sprod.{0, u_1, u_1} (Set.Icc.{0} 0 T) Set.univ.{u_1})
+'ClassicalMechanicsAssembly.Flow.SlabODEData.continuousOn_uncurry' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowSlabVelocity.{u_1} : {E : Type u_1} →
+  [inst : NormedAddCommGroup.{u_1} E] →
+    [NormedSpace.{0, u_1} ℝ E] →
+      [CompleteSpace.{u_1} E] →
+        {T : ℝ} →
+          {u : ℝ → E → E} →
+            {B K : NNReal} →
+              ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K →
+                ContinuousMap.{u_1, u_1} (Prod.{0, u_1} (↑(Set.Icc.{0} 0 T)) E) E
+'ClassicalMechanicsAssembly.flowSlabVelocity' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowSlabVelocity_apply.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E} {B K : NNReal}
+  (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K) (t : ↑(Set.Icc.{0} 0 T)) (x : E),
+  Eq.{u_1 + 1} ((ClassicalMechanicsAssembly.flowSlabVelocity.{u_1} h) (Prod.mk.{0, u_1} t x)) (u (↑t) x)
+'ClassicalMechanicsAssembly.flowSlabVelocity_apply' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.trajectory_eq_picard.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E} {B K : NNReal}
+  (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K) (s : ↑(Set.Icc.{0} 0 T)) (a : E) (t : ℝ),
+  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+    Eq.{u_1 + 1} (ClassicalMechanicsAssembly.Flow.trajectory.{u_1} h s a t)
+      (ODE.picard.{u_1} u (↑s) a (ClassicalMechanicsAssembly.Flow.trajectory.{u_1} h s a) t)
+'ClassicalMechanicsAssembly.trajectory_eq_picard' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.selectedFlowPath.{u_1} : {E : Type u_1} →
+  [inst : NormedAddCommGroup.{u_1} E] →
+    [NormedSpace.{0, u_1} ℝ E] →
+      [CompleteSpace.{u_1} E] →
+        {T : ℝ} →
+          {u : ℝ → E → E} →
+            {B K : NNReal} →
+              ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K →
+                LE.le.{0} 0 T → E → ContinuousMap.{0, u_1} (↑(Set.Icc.{0} 0 T)) E
+'ClassicalMechanicsAssembly.selectedFlowPath' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.selectedFlowPath_apply.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E} {B K : NNReal}
+  (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K) (hT : LE.le.{0} 0 T) (a : E) (t : ↑(Set.Icc.{0} 0 T)),
+  Eq.{u_1 + 1} ((ClassicalMechanicsAssembly.selectedFlowPath.{u_1} h hT a) t)
+    (ClassicalMechanicsAssembly.Flow.flow.{u_1} h hT (↑t) a)
+'ClassicalMechanicsAssembly.selectedFlowPath_apply' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.pathPrimitive_superposition_eq_integral.{u_1} : ∀ {E : Type u_1}
+  [inst : NormedAddCommGroup.{u_1} E] [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ}
+  {u : ℝ → E → E} {B K : NNReal} (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K) (hT : LE.le.{0} 0 T)
+  (γ : ContinuousMap.{0, u_1} (↑(Set.Icc.{0} 0 T)) E) (t : ↑(Set.Icc.{0} 0 T)),
+  Eq.{u_1 + 1}
+    (((ClassicalMechanicsAssembly.flowPathPrimitive.{u_1} hT)
+        (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{0, u_1, u_1}
+          (ClassicalMechanicsAssembly.flowSlabVelocity.{u_1} h) γ))
+      t)
+    (∫ (r : ℝ) in 0..↑t, u r (ClassicalMechanicsAssembly.flowPathExtend.{u_1} hT γ r))
+'ClassicalMechanicsAssembly.pathPrimitive_superposition_eq_integral' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.selectedFlowPath_integral_equation.{u_1} : ∀ {E : Type u_1}
+  [inst : NormedAddCommGroup.{u_1} E] [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ}
+  {u : ℝ → E → E} {B K : NNReal} (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K) (hT : LE.le.{0} 0 T)
+  (a : E),
+  Eq.{u_1 + 1} (ClassicalMechanicsAssembly.selectedFlowPath.{u_1} h hT a)
+    (HAdd.hAdd.{u_1, u_1, u_1} (ContinuousMap.const.{0, u_1} (↑(Set.Icc.{0} 0 T)) a)
+      ((ClassicalMechanicsAssembly.flowPathPrimitive.{u_1} hT)
+        (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{0, u_1, u_1}
+          (ClassicalMechanicsAssembly.flowSlabVelocity.{u_1} h)
+          (ClassicalMechanicsAssembly.selectedFlowPath.{u_1} h hT a))))
+'ClassicalMechanicsAssembly.selectedFlowPath_integral_equation' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.selectedFlowPath_integral_unique.{u_1} : ∀ {E : Type u_1}
+  [inst : NormedAddCommGroup.{u_1} E] [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ}
+  {u : ℝ → E → E} {B K : NNReal} (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K) (hT : LE.le.{0} 0 T)
+  (a : E) (γ : ContinuousMap.{0, u_1} (↑(Set.Icc.{0} 0 T)) E),
+  Eq.{u_1 + 1} γ
+      (HAdd.hAdd.{u_1, u_1, u_1} (ContinuousMap.const.{0, u_1} (↑(Set.Icc.{0} 0 T)) a)
+        ((ClassicalMechanicsAssembly.flowPathPrimitive.{u_1} hT)
+          (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{0, u_1, u_1}
+            (ClassicalMechanicsAssembly.flowSlabVelocity.{u_1} h) γ))) →
+    Eq.{u_1 + 1} γ (ClassicalMechanicsAssembly.selectedFlowPath.{u_1} h hT a)
+'ClassicalMechanicsAssembly.selectedFlowPath_integral_unique' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

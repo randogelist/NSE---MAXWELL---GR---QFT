@@ -1,0 +1,196 @@
+CURRENT_REAUDIT_SOURCE = 34b1fe1100f726d51955a7bf9ac5059d8069fb32
+CURRENT_REAUDIT_RUN = 43401581626
+CURRENT_REAUDIT = 43 + 169 + 5 PASS_STANDARD_ONLY; native source hashes unchanged.
+CURRENT_COMPATIBILITY = exact original types; zero custom axioms.
+
+CURRENT_NATIVE_L1_MATHLIB_METHLIB_USAGE_INDEX
+
+NATIVE_SOURCE_COMMIT = ff3c809f241ff14c7b9556b858bb423e1f9630d0
+EXTERNAL_RUN = 43399380498
+NATIVE_VERIFICATION = 18 modules; 169 theorem-level audits PASS_STANDARD_ONLY.
+EXACT_ROOT = ClassicalMechanicsAssembly.L1_native
+MATERIAL_ROOT = ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE
+APPROVED_AXIOMS = {propext, Classical.choice, Quot.sound}.
+MATHLIB_PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+METHLIB_PIN = e9cf90726b8544a268469ebc8fa6634e9c713e07
+COMPILER = external cached native Linux Lean 4.34.0-rc1.
+LOCAL_LEAN_EXECUTIONS = 0.
+INDEX_SCOPE = 21 selected Mathlib entries + 1 direct Methlib entry; not exhaustive.
+MATHLIB_SOURCE_PREFIX = Fefferman_adapter/NativeSources/mathlib/.
+NATIVE_SOURCE_PREFIX = ASSEMBLY/ClassicalMechanicsAssembly/.
+NATIVE_NAMESPACE = ClassicalMechanicsAssembly.
+FlowTrajectories_NAMESPACE = ClassicalMechanicsAssembly.Flow.
+LINES = 1-based; DECL names the native declaration start; USE names the call site.
+COMPATIBILITY_MIGRATION = separate five-theorem audit; not certified by this index.
+
+M01 | IsCompact.exists_bound_of_continuousOn
+MATHLIB_SOURCE = Mathlib/Analysis/Normed/Group/Bounded.lean:96
+NATIVE = FlowBounds.lean:48 | flow_periodic_uniform_bound | USE=55
+ROLE = Compact [0,T] x unitCube plus continuity gives a uniform norm bound; lattice reduction extends the bound to every spatial label.
+SOURCE_FORM = Generated additive declaration at the to_additive attribute; multiplicative source declaration begins at line 97.
+
+M02 | lipschitzWith_of_nnnorm_fderiv_le
+MATHLIB_SOURCE = Mathlib/Analysis/Calculus/MeanValue.lean:516
+NATIVE = FlowBounds.lean:78 | periodic_velocity_uniform_bounds | USE=90
+NATIVE = FlowSpatialJets.lean:46 | flow_family_uniform_lipschitz | USE=55
+ROLE = Differentiability and a uniform spatial derivative norm bound imply a uniform Lipschitz constant, for both velocity and every spatial-jet family.
+
+M03 | IsPicardLindelof.exists_eq_forall_mem_Icc_hasDerivWithinAt₀
+MATHLIB_SOURCE = Mathlib/Analysis/ODE/ExistUnique.lean:71
+NATIVE = FlowTrajectories.lean:44 | exists_trajectory | USE=49
+ROLE = Actual trajectories for every initial time and label on the entire closed slab. Native SlabODEData supplies radius B*T, zero initial-label radius, velocity bound B and Lipschitz constant K. No K*T<1 premise.
+DIRECT_REFERENCE = Subscript-zero specialization. Its body invokes IsPicardLindelof.exists_eq_forall_mem_Icc_hasDerivWithinAt at line 57.
+
+M04 | ODE_solution_unique_of_mem_Icc_left
+MATHLIB_SOURCE = Mathlib/Analysis/ODE/ExistUnique.lean:209
+NATIVE = FlowTrajectories.lean:70 | solution_unique | USE=78
+ROLE = Uniqueness on [0,s] with terminal value prescribed at s. Native restriction provides the required left-sided derivatives and retains t=0.
+
+M05 | ODE_solution_unique_of_mem_Icc_right
+MATHLIB_SOURCE = Mathlib/Analysis/ODE/ExistUnique.lean:194
+NATIVE = FlowTrajectories.lean:70 | solution_unique | USE=90
+ROLE = Uniqueness on [s,T] with initial value prescribed at s. Together with M04, gives cocycle, both inverse identities and lattice equivariance at all slab times.
+
+M06 | dist_le_of_trajectories_ODE_of_mem
+MATHLIB_SOURCE = Mathlib/Analysis/ODE/Gronwall.lean:208
+NATIVE = FlowTrajectories.lean:168 | trajectory_dist_le | USE=173,207
+ROLE = Forward Gronwall and its application to the time-reversed field give dist(X(t;s,a),X(t;s,b)) <= exp(K*T)*dist(a,b), including t<s.
+
+M07 | Real.summable_pow_div_factorial
+MATHLIB_SOURCE = Mathlib/Analysis/SpecificLimits/Normed.lean:896
+NATIVE = FlowBanach.lean:33 | summable_operator_powers_of_factorial_bound | USE=37
+ROLE = Summability of C^n/n! controls the operator series after the actual Volterra factorial estimate is proved natively.
+
+M08 | Summable.one_sub_mul_tsum_pow
+MATHLIB_SOURCE = Mathlib/Topology/Algebra/InfiniteSum/Ring.lean:284
+NATIVE = FlowBanach.lean:40 | operator_series_inverse_identities_of_factorial_bound | USE=46
+ROLE = Summable operator powers imply (1-L)*(sum_n L^n)=1 in the noncommutative operator ring.
+
+M09 | Summable.tsum_pow_mul_one_sub
+MATHLIB_SOURCE = Mathlib/Topology/Algebra/InfiniteSum/Ring.lean:279
+NATIVE = FlowBanach.lean:40 | operator_series_inverse_identities_of_factorial_bound | USE=46
+ROLE = Summable operator powers imply (sum_n L^n)*(1-L)=1, supplying the second inverse identity.
+
+M10 | ContinuousLinearMap.IsInvertible.of_inverse
+MATHLIB_SOURCE = Mathlib/Topology/Algebra/Module/Equiv.lean:1118
+NATIVE = FlowBanach.lean:49 | one_sub_operator_isInvertible_of_factorial_bound | USE=55
+ROLE = Two literal bounded-linear inverse identities establish invertibility of 1-L. Native FlowVolterra identifies L with the actual integral linearization.
+
+M11 | ContDiffAt.contDiffAt_implicitFunction
+MATHLIB_SOURCE = Mathlib/Analysis/Calculus/ImplicitContDiff.lean:90
+NATIVE = FlowBanach.lean:84 | contDiff_of_unique_implicit_branch | USE=96
+ROLE = Smooth implicit branch from a smooth residual and invertible path partial derivative on E x C([0,T],E). No open time-slab extension is required.
+
+M12 | ContDiffAt.eventually_apply_implicitFunction
+MATHLIB_SOURCE = Mathlib/Analysis/Calculus/ImplicitContDiff.lean:72
+NATIVE = FlowBanach.lean:84 | contDiff_of_unique_implicit_branch | USE=98
+ROLE = The local implicit branch satisfies the residual equation. Previously proved integral uniqueness identifies it with the selected ODE path family; continuity of that selection is not assumed.
+
+M13 | ContinuousLinearMap.iteratedFDeriv_comp_left
+MATHLIB_SOURCE = Mathlib/Analysis/Calculus/ContDiff/Basic.lean:255
+NATIVE = FlowJetIntegral.lean:55 | evaluatedFlowJet_integral_of_path_equation | USE=81,82,83
+NATIVE = FlowJetIntegral.lean:89 | flow_labelJet_eq_evaluated | USE=97
+NATIVE = FlowJointJets.lean:90 | flowLabelJet_eq_evaluatedFlowJet | USE=98
+ROLE = Fixed-time evaluation and the bounded primitive commute with actual iterated label derivatives. No operator-norm continuity of variable-time evaluation is asserted.
+
+M14 | ContinuousLinearMap.intervalIntegral_comp_comm
+MATHLIB_SOURCE = Mathlib/MeasureTheory/Integral/IntervalIntegral/Basic.lean:870
+NATIVE = FlowJetIntegral.lean:25 | flow_primitive_evaluated_jet | USE=40
+ROLE = Multilinear-coordinate evaluation commutes with the Bochner interval integral. Supplied completeness and proved integrability justify tensor-valued integral identities by extensionality.
+
+M15 | IsBoundedLinearMap.contDiff
+MATHLIB_SOURCE = Mathlib/Analysis/Calculus/ContDiff/Basic.lean:157
+NATIVE = FlowJointJets.lean:25 | flow_contDiffOn_multilinear_apply | USE=46
+ROLE = The explicitly bounded linear currying operation is C^n; this supports finite multilinear evaluation and forcing-polynomial regularity.
+
+M16 | MultilinearMap.mkContinuousLinear_norm_le
+MATHLIB_SOURCE = Mathlib/Analysis/Normed/Module/Multilinear/Basic.lean:873
+NATIVE = FlowJointJets.lean:25 | flow_contDiffOn_multilinear_apply | USE=57
+ROLE = The actual multilinear norm estimate gives ||p.curryLeft|| <= ||p||, supplying the boundedness needed by M15.
+
+M17 | iteratedFDeriv_comp
+MATHLIB_SOURCE = Mathlib/Analysis/Calculus/ContDiff/Comp.lean:271
+NATIVE = FlowJointJets.lean:133 | flowForcingJet_eq_partition_sum | USE=145
+ROLE = Actual finite ordered-partition formula for D_a^r(u(t,eta(t,a))). Fixed-time smoothness follows from the Banach path family; same-order joint regularity of all label jets closes each forcing step.
+
+M18 | contDiffOn_succ_iff_hasFDerivWithinAt_of_uniqueDiffOn
+MATHLIB_SOURCE = Mathlib/Analysis/Calculus/ContDiff/Defs.lean:875
+NATIVE = FlowSmooth.lean:134 | flowJet_tower_contDiffOn | USE=157
+NATIVE = FlowInverse.lean:51 | contDiffOn_inverse_of_contDiffOn | USE=73
+ROLE = On the unique-differentiability closed slab, an actual derivative field of class C^n gives C^(n+1). Used in simultaneous all-label-orders forward induction and in inverse regularity induction.
+
+M19 | contDiffOn_infty
+MATHLIB_SOURCE = Mathlib/Analysis/Calculus/ContDiff/Defs.lean:549
+NATIVE = FlowSmooth.lean:134 | flowJet_tower_contDiffOn | USE=162
+NATIVE = FlowInverse.lean:51 | contDiffOn_inverse_of_contDiffOn | USE=57,65
+ROLE = Every finite C^n order yields joint C-infinity; the reverse direction specializes a C-infinity derivative field. Both applications retain boundary times.
+
+M20 | ContDiffWithinAt.isSymmSndFDerivWithinAt
+MATHLIB_SOURCE = Mathlib/Analysis/Calculus/FDeriv/Symmetric.lean:559
+NATIVE = FlowVariational.lean:31 | finite_spacetime_second_derivative_symmetric | USE=36
+ROLE = Symmetry of the actual second within derivative requires C^2, UniqueDiffOn and membership in closure(interior S). Native closure_interior_finiteSpacetime supplies the endpoint condition; mixed derivatives yield the actual variational ODE.
+
+M21 | HasFDerivWithinAt.of_local_left_inverse
+MATHLIB_SOURCE = Mathlib/Analysis/Calculus/FDeriv/OfCompLeft.lean:179
+NATIVE = FlowInverse.lean:31 | hasFDerivWithinAt_inverse_of_contDiffOn | USE=45
+ROLE = Differentiates the already constructed continuous inverse within the closed slab. Backward ODE uniqueness and stability supply the inverse and continuity; native det(D_a eta)=1 supplies invertible triangular spacetime derivative geometry.
+
+H01 | SingularClosure.spatialPeriodic_integerShift
+METHLIB_SOURCE = Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicCover.lean:30
+UPSTREAM_SOURCE = regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PeriodicCover.lean
+NATIVE = FlowBounds.lean:22 | flow_integer_period | USE=25
+ROLE = Coordinate unit-periodicity implies every integer-lattice period. Native floor reduction supplies a unit-cell representative and compact-cell bounds.
+LIMIT = Periodicity only; not a smooth-flow, inverse-flow or NSE-existence theorem.
+
+NATIVE ASSEMBLY CONSEQUENCES
+FlowSpatialJets + FlowBanach: actual spatial jets -> sup-norm superposition C-infinity.
+FlowVolterra: actual Bochner Volterra operator -> factorial bounds -> two-sided inverse.
+FlowPathSolutions + FlowImplicit: actual ODE roots and uniqueness -> smooth Banach path family.
+FlowPathJets + FlowJetIntegral + FlowJointJets + FlowJoint: actual jet integral identities and same-order forcing closure -> joint closed-slab C-infinity.
+FlowVariational + FlowJacobian: mixed derivatives -> F_t=Du*F -> polynomial determinant evolution -> det F=1, without prior invertibility.
+FlowInverse + FlowConstruction: backward stability -> continuous inverse; det F=1 -> invertible spacetime derivative; within-set bootstrap -> smooth inverse and full MaterialPathOn.
+FlowRealization: exact L1 witness and native Eulerian/material equation equivalence.
+
+SCOPE INVARIANTS
+T>0; supplied jointly smooth periodic divergence-free u; every t in [0,T]; every spatial label in R^3; arbitrary velocity mean.
+No K*T smallness, off-slab smooth extension, supplied material-flow witness, abstract invertibility certificate or custom axiom remains in the exact L1 statement.
+No arbitrary-data NSE existence, global NSE regularity, full moving-region balance or full solution-set bijection is asserted.
+
+INDEX CORRECTIONS
+1. Direct Picard invocation has suffix U+2080: exists_eq_forall_mem_Icc_hasDerivWithinAt₀. The unsuffixed theorem is its immediate dependency.
+2. IsCompact.exists_bound_of_continuousOn is generated by the cited additive attribute.
+3. Current forcing construction is in FlowJointJets.lean; FlowJoint.lean contains the final assembled smooth-flow step.
+4. Listed library endpoints are selected analytic/calculus components. Concrete periodic-flow, Volterra, joint-jet, Jacobian and exact-root assembly bodies are native repository theorems.
+
+
+SOURCE IDENTITY VERIFICATION
+PINNED_MATHLIB_FILES = 15; every SHA256 matches Fefferman_adapter/native-sources.json.
+PINNED_METHLIB_FILES = 1; SHA256 matches the retained Methlib SOURCE_MANIFEST.json.
+NATIVE_REFERENCED_FILES = 9; every SHA256 matches the certified FlowRealization closure.
+DECLARATION_AND_CALL_SITE_LINE_CHECKS = PASS; 21 Mathlib entries and 1 Methlib entry.
+
+MATHLIB_SHA256 Mathlib/Analysis/Calculus/ContDiff/Basic.lean 4eb7b1ed75a57a692eb135aa44194a83bf68476245fa2add60deea976133e712
+MATHLIB_SHA256 Mathlib/Analysis/Calculus/ContDiff/Comp.lean 26495369d99d4815f99e8319623231a5fe25f0fdd1756c31162216323e27ed0f
+MATHLIB_SHA256 Mathlib/Analysis/Calculus/ContDiff/Defs.lean 5d2f01069c6265873a372d4aed746c5d3411073b8acb108a180d02a84c832dca
+MATHLIB_SHA256 Mathlib/Analysis/Calculus/FDeriv/OfCompLeft.lean 44a11b2616ec132fcf119190ef16f6154b30750aa3f9254ee5b415517ca3d627
+MATHLIB_SHA256 Mathlib/Analysis/Calculus/FDeriv/Symmetric.lean 976a6342e21ca80d37767a9149c385a42b4d3ed615cbe1ad23745943f3b6287f
+MATHLIB_SHA256 Mathlib/Analysis/Calculus/ImplicitContDiff.lean 6c104281dd0e0efc9c47236b7fed89ef35869bfba6fa2791cba9891e2c0c5209
+MATHLIB_SHA256 Mathlib/Analysis/Calculus/MeanValue.lean 5aff545ba7e780be43b7c856f683bfe41f037f372fdd6e879c5ed76880c9f02b
+MATHLIB_SHA256 Mathlib/Analysis/Normed/Group/Bounded.lean 5e93b1cc169d5d5a4c0f7361ef09b0b481c881d3f32b0067deb6c62d90c3ed78
+MATHLIB_SHA256 Mathlib/Analysis/Normed/Module/Multilinear/Basic.lean 62b0c5491f2c576dacf5913f9e04fcafd49b2901449bf57e4213df5ec0e05534
+MATHLIB_SHA256 Mathlib/Analysis/ODE/ExistUnique.lean 86023ff0e079f574daf5b2085b8130164a96bbf8aebc92528ccddd2145fdc3b8
+MATHLIB_SHA256 Mathlib/Analysis/ODE/Gronwall.lean e156392ddd75bd594590f0216c31b1cf6271d2bfbd36f7d70f3f86c4c16c6899
+MATHLIB_SHA256 Mathlib/Analysis/SpecificLimits/Normed.lean 2aac405fb521ed05f6a5e567315ffda93e1020b919001c6bf00ea4ec62855046
+MATHLIB_SHA256 Mathlib/MeasureTheory/Integral/IntervalIntegral/Basic.lean 93908eb0c771ba8edcb47537dfe1a40e98a1545be9d427c1eb9823d44decdcd5
+MATHLIB_SHA256 Mathlib/Topology/Algebra/InfiniteSum/Ring.lean 3bdb814ce6121ad34c4a8cb0ced54fe8b3ba0106be30e346c9ed3fe2e490ec6b
+MATHLIB_SHA256 Mathlib/Topology/Algebra/Module/Equiv.lean 94f90ffd8f9bea8e5dcad8934dbc4cdaf52d7104101ff593cbc023f27cb87f95
+METHLIB_SHA256 SingularClosure/PeriodicCover.lean 9d6f0d78c7a043ef7d8a7db1c3d5f647a84492ff6c3843d85527638990f7929f
+NATIVE_SHA256 ASSEMBLY/ClassicalMechanicsAssembly/FlowBanach.lean f5e70a9f1006106c42bbedcaceaa61824ee585f877d5dfd678ad6c33907d8030
+NATIVE_SHA256 ASSEMBLY/ClassicalMechanicsAssembly/FlowBounds.lean 9bf6bc79e6f81b32f876285ed3fde59a6b46871326d0670063ebbd953c65a60b
+NATIVE_SHA256 ASSEMBLY/ClassicalMechanicsAssembly/FlowInverse.lean 7b00c0a3667a28a334677c96d57a246dbc2df2fc2963eb31ee5966b24c4a4aa8
+NATIVE_SHA256 ASSEMBLY/ClassicalMechanicsAssembly/FlowJetIntegral.lean 5a4b67fbcc623eb2139f04178248e7a016543df157aa5c6c29b8ee01aa6403f8
+NATIVE_SHA256 ASSEMBLY/ClassicalMechanicsAssembly/FlowJointJets.lean 2c5ad252b4c5ddc5353ccdbf212e355a71116fd3cba6670ca94fc93b5eedafc5
+NATIVE_SHA256 ASSEMBLY/ClassicalMechanicsAssembly/FlowSmooth.lean a9802f83328aaa99b78fa123062068ee7bf791946e47a8dcdad835402ea1e9bb
+NATIVE_SHA256 ASSEMBLY/ClassicalMechanicsAssembly/FlowSpatialJets.lean af397ff6218f0ae6a9a9fbbe8534099fcf4d58bcdf01f4df89c704b6dc8ebc71
+NATIVE_SHA256 ASSEMBLY/ClassicalMechanicsAssembly/FlowTrajectories.lean 583b59df85d4c8882b67a07da3828add85a24da2b2cc26e1aafcdea198d55134
+NATIVE_SHA256 ASSEMBLY/ClassicalMechanicsAssembly/FlowVariational.lean 55d379fa1e55bbf6120b5d8d8ca7d004ab2ec4ec594713312d3494ffe738caf9

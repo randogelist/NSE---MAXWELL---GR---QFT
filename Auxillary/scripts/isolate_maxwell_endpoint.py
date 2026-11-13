@@ -76,7 +76,8 @@ def project_modules(paths: set[str], package: str) -> dict[str, str]:
     if package == "Maxwell_Endpoint":
         roots["MaxwellEndpoint"] = ""
     else:
-        roots.update({"NSEMaxwell": "", "MaxwellEndpoint": "LocalDependencies/Maxwell",
+        roots.update({"NSEMaxwell": "", "FourierHodgeLaws": "",
+                      "FourierHodgeLaws_inhabitant": "", "MaxwellEndpoint": "LocalDependencies/Maxwell",
                       "NSEMaxwellForward": "LocalDependencies/Forward",
                       "NSEMaxwellReverse": "LocalDependencies/Reverse"})
     modules: dict[str, str] = {}
@@ -161,7 +162,8 @@ def source_files(repo: Path, prefix: str) -> dict[str, Path]:
     if prefix == "Maxwell_Endpoint":
         required.update({"MaxwellEndpoint.lean", "MaxwellEndpoint/Audit.lean"})
     else:
-        required.update({"NSEMaxwell.lean", "NSEMaxwell/Audit.lean", "local-project-sources.json"})
+        required.update({"NSEMaxwell.lean", "NSEMaxwell/Audit.lean", "local-project-sources.json",
+                         "FourierHodgeLaws_inhabitant.lean", "FourierHodgeLaws/Inhabitant.lean"})
     for relative in required:
         require(relative in result, f"Missing standalone package file: {relative}")
     check_local_copies(repo, prefix, result)

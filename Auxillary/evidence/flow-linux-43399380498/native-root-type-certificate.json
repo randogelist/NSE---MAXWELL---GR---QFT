@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "status": "PASS_EXACT_L1_TYPE_AND_STANDARD_ONLY",
+  "source_commit": "ff3c809f241ff14c7b9556b858bb423e1f9630d0",
+  "external_run_id": 43399380498,
+  "external_artifact_id": 14023923567,
+  "archive_sha256": "b745ea11b56c70ac22a2fa6fc5c344cc8e5e22fd6fa0a503a49668e0cb3e66cd",
+  "native_L1_declaration": "ClassicalMechanicsAssembly.L1_native",
+  "legacy_L1_declaration": "ClassicalMechanicsAssembly.Literature.L1",
+  "comparison": "Exact same-run elaborated #check types after declaration-name removal and whitespace normalization",
+  "normalized_L1_type_sha256": "198141251a964897e24bba1db0a1c7525311b06d45cd771deb53547f9f0dc766",
+  "normalized_L1_type": "\u2200 {T : \u211d}, LT.lt.{0} 0 T \u2192 \u2200 {u : NSEMaxwell.Classical.Velocity}, ClassicalMechanics.SmoothVelocityOn T u \u2192 (\u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) \u2192 (\u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 \u2200 (x : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.divergence (u t) x) 0) \u2192 \u2203 \u03b7 \u03c1, ClassicalMechanics.MaterialPathOn T \u03b7 \u03c1 \u2227 \u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 \u2200 (a : NSEMaxwell.Classical.Vec), Eq.{1} (ClassicalMechanics.materialVelocity T \u03b7 t a) (u t (\u03b7 t a))",
+  "native_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "native_material_declaration": "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE",
+  "native_material_scope": "Constructed material path and equation iff; legacy material roots additionally retain the flow-ODE conjunct and require fresh post-migration audits.",
+  "native_material_normalized_type": "\u2200 {\u03bd T : \u211d}, LT.lt.{0} 0 T \u2192 \u2200 {u : NSEMaxwell.Classical.Velocity} {p : NSEMaxwell.Classical.Pressure}, ClassicalMechanics.SmoothVelocityOn T u \u2192 ClassicalMechanics.SmoothPressureOn T p \u2192 (\u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) \u2192 (\u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 \u2200 (x : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.divergence (u t) x) 0) \u2192 \u2203 \u03b7 \u03c1, ClassicalMechanics.MaterialPathOn T \u03b7 \u03c1 \u2227 ((\u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 \u2200 (x : NSEMaxwell.Classical.Vec), Eq.{1} (HAdd.hAdd.{0, 0, 0} (ClassicalMechanics.finiteMaterialAcceleration T u t x) (NSEMaxwell.Classical.gradient (p t) x)) (HSMul.hSMul.{0, 0, 0} \u03bd (NSEMaxwell.Classical.laplacian (u t) x))) \u2194 ClassicalMechanics.MaterialEquationOn \u03bd T \u03b7 fun t a => p t (\u03b7 t a))",
+  "native_root_imports_literature_module": false,
+  "current_native_source_closure_match": true,
+  "source_match_certificate_sha256": "c1092f66e479bfb351973ce1cbb854e24e289f09ff951b75b47a559bf945a133",
+  "compatibility_migration_status": "NOT_APPLIED_AT_THIS_EXTERNAL_SOURCE_COMMIT",
+  "local_lean_executions": 0
+}

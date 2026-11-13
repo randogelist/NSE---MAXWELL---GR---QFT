@@ -1,0 +1,68 @@
+@ClassicalMechanicsAssembly.det_hasDerivWithinAt_mul : ∀ {F : ℝ → ClassicalMechanics.StressTensor}
+  {G : ClassicalMechanics.StressTensor} {I : Set.{0} ℝ} {t : ℝ},
+  HasDerivWithinAt.{0, 0} F (HMul.hMul.{0, 0, 0} G (F t)) I t →
+    HasDerivWithinAt.{0, 0} (fun s => Matrix.det.{0, 0} (F s))
+      (HMul.hMul.{0, 0, 0} (Matrix.trace.{0, 0} G) (Matrix.det.{0, 0} (F t))) I t
+'ClassicalMechanicsAssembly.det_hasDerivWithinAt_mul' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.det_hasDerivWithinAt_zero_of_trace_zero : ∀ {F : ℝ → ClassicalMechanics.StressTensor}
+  {G : ClassicalMechanics.StressTensor} {I : Set.{0} ℝ} {t : ℝ},
+  HasDerivWithinAt.{0, 0} F (HMul.hMul.{0, 0, 0} G (F t)) I t →
+    Eq.{1} (Matrix.trace.{0, 0} G) 0 → HasDerivWithinAt.{0, 0} (fun s => Matrix.det.{0, 0} (F s)) 0 I t
+'ClassicalMechanicsAssembly.det_hasDerivWithinAt_zero_of_trace_zero' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.determinant_eq_initial_of_matrix_ode_trace_zero : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ (F G : ℝ → ClassicalMechanics.StressTensor),
+      (∀ (t : ℝ),
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+            HasDerivWithinAt.{0, 0} F (HMul.hMul.{0, 0, 0} (G t) (F t)) (Set.Icc.{0} 0 T) t) →
+        (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → Eq.{1} (Matrix.trace.{0, 0} (G t)) 0) →
+          ∀ (t : ℝ),
+            Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → Eq.{1} (Matrix.det.{0, 0} (F t)) (Matrix.det.{0, 0} (F 0))
+'ClassicalMechanicsAssembly.determinant_eq_initial_of_matrix_ode_trace_zero' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.determinant_one_of_matrix_ode : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ (F G : ℝ → ClassicalMechanics.StressTensor),
+      (∀ (t : ℝ),
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+            HasDerivWithinAt.{0, 0} F (HMul.hMul.{0, 0, 0} (G t) (F t)) (Set.Icc.{0} 0 T) t) →
+        (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → Eq.{1} (Matrix.trace.{0, 0} (G t)) 0) →
+          Eq.{1} (F 0) 1 → ∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → Eq.{1} (Matrix.det.{0, 0} (F t)) 1
+'ClassicalMechanicsAssembly.determinant_one_of_matrix_ode' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+ClassicalMechanicsAssembly.trace_materialGradientMatrix : ∀ (v : NSEMaxwell.Classical.Field)
+  (x : NSEMaxwell.Classical.Vec),
+  Eq.{1} (Matrix.trace.{0, 0} (ClassicalMechanics.materialGradientMatrix v x)) (NSEMaxwell.Classical.divergence v x)
+'ClassicalMechanicsAssembly.trace_materialGradientMatrix' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+ClassicalMechanicsAssembly.materialGradientMatrix_id : ∀ (a : NSEMaxwell.Classical.Vec),
+  Eq.{1} (ClassicalMechanics.materialGradientMatrix (fun x => x) a) 1
+'ClassicalMechanicsAssembly.materialGradientMatrix_id' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.FLOW_JACOBIAN_ONE_OF_VARIATIONAL_ODE : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u η : NSEMaxwell.Classical.Velocity},
+      (Eq.{1} (η 0) fun a => a) →
+        (∀ (t : ℝ),
+            Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+              ∀ (a : NSEMaxwell.Classical.Vec),
+                HasDerivWithinAt.{0, 0} (fun s => ClassicalMechanics.deformationGradient η s a)
+                  (HMul.hMul.{0, 0, 0} (ClassicalMechanics.materialGradientMatrix (u t) (η t a))
+                    (ClassicalMechanics.deformationGradient η t a))
+                  (Set.Icc.{0} 0 T) t) →
+          (∀ (t : ℝ),
+              Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.divergence (u t) x) 0) →
+            ∀ (t : ℝ),
+              Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                ∀ (a : NSEMaxwell.Classical.Vec),
+                  Eq.{1} (Matrix.det.{0, 0} (ClassicalMechanics.deformationGradient η t a)) 1
+'ClassicalMechanicsAssembly.FLOW_JACOBIAN_ONE_OF_VARIATIONAL_ODE' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

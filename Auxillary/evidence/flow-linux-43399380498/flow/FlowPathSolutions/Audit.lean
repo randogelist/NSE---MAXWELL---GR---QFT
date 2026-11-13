@@ -1,0 +1,22 @@
+import ClassicalMechanicsAssembly.FlowPathSolutions
+
+set_option pp.universes true
+
+#check @ClassicalMechanicsAssembly.Flow.SlabODEData.continuousOn_uncurry
+#print axioms ClassicalMechanicsAssembly.Flow.SlabODEData.continuousOn_uncurry
+#check @ClassicalMechanicsAssembly.flowSlabVelocity
+#print axioms ClassicalMechanicsAssembly.flowSlabVelocity
+#check @ClassicalMechanicsAssembly.flowSlabVelocity_apply
+#print axioms ClassicalMechanicsAssembly.flowSlabVelocity_apply
+#check @ClassicalMechanicsAssembly.trajectory_eq_picard
+#print axioms ClassicalMechanicsAssembly.trajectory_eq_picard
+#check @ClassicalMechanicsAssembly.selectedFlowPath
+#print axioms ClassicalMechanicsAssembly.selectedFlowPath
+#check @ClassicalMechanicsAssembly.selectedFlowPath_apply
+#print axioms ClassicalMechanicsAssembly.selectedFlowPath_apply
+#check @ClassicalMechanicsAssembly.pathPrimitive_superposition_eq_integral
+#print axioms ClassicalMechanicsAssembly.pathPrimitive_superposition_eq_integral
+#check @ClassicalMechanicsAssembly.selectedFlowPath_integral_equation
+#print axioms ClassicalMechanicsAssembly.selectedFlowPath_integral_equation
+#check @ClassicalMechanicsAssembly.selectedFlowPath_integral_unique
+#print axioms ClassicalMechanicsAssembly.selectedFlowPath_integral_unique

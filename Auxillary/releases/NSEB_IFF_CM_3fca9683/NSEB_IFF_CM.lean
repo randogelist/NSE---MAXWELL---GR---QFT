@@ -1,0 +1,14 @@
+import ClassicalMechanicsAssembly.FlowNSEBCM
+
+set_option pp.universes true
+
+#check @ClassicalMechanicsAssembly.nseSolution_iff_cmSolution
+#print axioms ClassicalMechanicsAssembly.nseSolution_iff_cmSolution
+#check @ClassicalMechanicsAssembly.nseB_implies_cmB
+#print axioms ClassicalMechanicsAssembly.nseB_implies_cmB
+#check @ClassicalMechanicsAssembly.cmB_implies_nseB
+#print axioms ClassicalMechanicsAssembly.cmB_implies_nseB
+#check @ClassicalMechanicsAssembly.NSEB_IFF_CM
+#print axioms ClassicalMechanicsAssembly.NSEB_IFF_CM
+#check @ClassicalMechanicsAssembly.NSEB_IFF_CM_POSITIVE
+#print axioms ClassicalMechanicsAssembly.NSEB_IFF_CM_POSITIVE

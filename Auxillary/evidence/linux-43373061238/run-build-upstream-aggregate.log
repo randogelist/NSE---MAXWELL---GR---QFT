@@ -1,0 +1,430 @@
+✔ [8707/8781] Built NSEMaxwell.ExistenceTransport (986ms)
+✔ [8708/8781] Built NSEMaxwell.Residual (1.5s)
+✔ [8709/8781] Built MaxwellEndpoint.Geometry (4.9s)
+✔ [8710/8781] Built SingularClosure.Contracts (5.3s)
+✔ [8711/8781] Built SingularClosure.SixChannels (6.5s)
+✔ [8712/8781] Built MaxwellEndpoint.Constitutive (4.7s)
+⚠ [8713/8781] Built SingularClosure.CoordinateAverage (7.6s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/CoordinateAverage.lean:146:6: `ContinuousLinearMap.zero_apply` has been deprecated: Use `zero_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.zero_apply` to `zero_apply x`).
+✔ [8714/8781] Built SingularClosure.Galerkin (6.7s)
+✔ [8715/8781] Built MaxwellEndpoint.System (6.1s)
+⚠ [8716/8781] Built SingularClosure.HilbertChannels (9.2s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/HilbertChannels.lean:92:14: This simp argument is unused:
+  hB
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hA, hAB]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8717/8781] Built SingularClosure.PhysicalChannels (6.7s)
+✔ [8718/8781] Built SingularClosure.Admission (6.0s)
+⚠ [8719/8781] Built SingularClosure.GalerkinAlgebra (9.4s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean:163:37: `if_false` has been deprecated: Use `ite_false` instead
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean:258:37: `if_false` has been deprecated: Use `ite_false` instead
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean:267:8: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Complex.mul_re, Complex.mul_im, Complex.normSq_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8720/8781] Built MaxwellEndpoint.Native (6.0s)
+⚠ [8721/8781] Built SingularClosure.PhysicalProjection (8.2s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalProjection.lean:34:48: `ContinuousLinearMap.sum_apply` has been deprecated: Use `sum_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sum_apply` to `sum_apply x`).
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalProjection.lean:35:4: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalProjection.lean:44:48: This simp argument is unused:
+  mul_ite
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [fourierPhaseCLM, unitVector, apply_ite]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalProjection.lean:114:25: `ContinuousLinearMap.sum_apply` has been deprecated: Use `sum_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sum_apply` to `sum_apply x`).
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalProjection.lean:115:4: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+✔ [8722/8781] Built SingularClosure.PhysicalEnstrophy (8.1s)
+✔ [8723/8781] Built SingularClosure.GalerkinEnergy (7.5s)
+⚠ [8724/8781] Built SingularClosure.LerayPressure (7.9s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/LerayPressure.lean:53:37: `if_false` has been deprecated: Use `ite_false` instead
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/LerayPressure.lean:102:60: `if_false` has been deprecated: Use `ite_false` instead
+✔ [8725/8781] Built MaxwellEndpoint (5.1s)
+⚠ [8727/8781] Built SingularClosure.CoordinateAverageOrthogonal (6.6s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/CoordinateAverageOrthogonal.lean:85:0: automatically included section variable(s) unused in theorem `SingularClosure.integral_unitCube_productMeasure`:
+  [CompleteSpace E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/CoordinateAverageOrthogonal.lean:104:0: automatically included section variable(s) unused in theorem `SingularClosure.continuous_integrable_unitProduct`:
+  [NormedSpace ℝ E]
+  [CompleteSpace E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedSpace ℝ E] [CompleteSpace E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8728/8781] Built SingularClosure.FourierIntegral (5.9s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierIntegral.lean:55:32: This simp argument is unused:
+  div_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [fourier_coe_apply, ← Complex.exp_sum]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierIntegral.lean:72:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+✔ [8729/8781] Built SingularClosure.PeriodicCover (6.7s)
+⚠ [8730/8781] Built SingularClosure.GalerkinEnergyIntegral (6.3s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinEnergyIntegral.lean:30:8: `continuousOn_finset_sum` has been deprecated: Use `continuousOn_finsetSum` instead
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinEnergyIntegral.lean:32:8: `continuousOn_finset_sum` has been deprecated: Use `continuousOn_finsetSum` instead
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinEnergyIntegral.lean:74:21: `if_pos` has been deprecated: Use `ite_eq_left` instead
+⚠ [8731/8781] Built SingularClosure.GalerkinReality (5.0s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinReality.lean:26:52: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [coefficientLeray, hk, neg_ne_zero.mpr hk, map_sum, mul_comm, mul_left_comm, mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinReality.lean:27:6: This simp argument is unused:
+  map_sum
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [coefficientLeray, hk, neg_ne_zero.mpr hk, Complex.star_def, mul_comm, mul_left_comm, mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinReality.lean:27:25: This simp argument is unused:
+  mul_left_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [coefficientLeray, hk, neg_ne_zero.mpr hk, Complex.star_def, map_sum, mul_comm, mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinReality.lean:27:40: This simp argument is unused:
+  mul_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [coefficientLeray, hk, neg_ne_zero.mpr hk, Complex.star_def, map_sum, mul_comm, mul_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinReality.lean:46:33: This simp argument is unused:
+  map_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.star_def, Complex.conj_ofReal, Complex.conj_I, Pi.neg_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinReality.lean:47:6: This simp argument is unused:
+  Pi.neg_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.star_def, map_mul, Complex.conj_ofReal, Complex.conj_I]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinReality.lean:72:24: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [galerkinFreqSq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8732/8781] Built SingularClosure.EnstrophyInequality (5.6s)
+✔ [8733/8781] Built NSEMaxwell.Classical (5.4s)
+⚠ [8734/8781] Built SingularClosure.TorusSobolev (13s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/TorusSobolev.lean:181:38: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/TorusSobolev.lean:188:74: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/TorusSobolev.lean:301:37: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/TorusSobolev.lean:326:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/TorusSobolev.lean:327:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/TorusSobolev.lean:366:12: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/TorusSobolev.lean:369:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/TorusSobolev.lean:422:13: `ContinuousLinearMap.sum_apply` has been deprecated: Use `sum_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sum_apply` to `sum_apply x`).
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/TorusSobolev.lean:460:23: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sub_apply` to `sub_apply x`).
+✔ [8735/8781] Built SingularClosure.PhysicalParseval (8.8s)
+⚠ [8736/8781] Built SingularClosure.InitialFourier (9.8s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialFourier.lean:200:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialFourier.lean:200:44: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+✔ [8737/8781] Built SingularClosure.PeriodicFourierRealization (8.3s)
+⚠ [8738/8781] Built SingularClosure.FourierPressure (7.4s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierPressure.lean:117:4: `ContinuousLinearMap.sum_apply` has been deprecated: Use `sum_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sum_apply` to `sum_apply x`).
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierPressure.lean:117:35: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierPressure.lean:127:57: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [pressureFromTransport, hk, neg_ne_zero.mpr hk, map_sum, Finset.sum_neg_distrib, mul_comm, mul_left_comm,
+    mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierPressure.lean:128:6: This simp argument is unused:
+  map_sum
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [pressureFromTransport, hk, neg_ne_zero.mpr hk, Complex.star_def, Finset.sum_neg_distrib, mul_comm,
+    mul_left_comm, mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierPressure.lean:128:49: This simp argument is unused:
+  mul_left_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [pressureFromTransport, hk, neg_ne_zero.mpr hk, Complex.star_def, map_sum, Finset.sum_neg_distrib,
+    mul_comm, mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8739/8781] Built NSEMaxwell.DominatedWithin (7.7s)
+warning: Fefferman_adapter/NSEMaxwell/DominatedWithin.lean:28:0: automatically included section variable(s) unused in theorem `NSEMaxwell.DominatedWithin.hasDerivWithinAt_integral_of_dominated`:
+  [CompleteSpace E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8740/8781] Built NSEMaxwell.Lamb (7.1s)
+warning: Fefferman_adapter/NSEMaxwell/Lamb.lean:33:45: This simp argument is unused:
+  PiLp.single_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [unitVector, EuclideanSpace.single, smul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NSEMaxwell/Lamb.lean:65:17: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: Fefferman_adapter/NSEMaxwell/Lamb.lean:65:49: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+⚠ [8741/8781] Built NSEMaxwell.Kinematics (6.1s)
+warning: Fefferman_adapter/NSEMaxwell/Kinematics.lean:92:19: This simp argument is unused:
+  coordinateDerivative
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [laplacian]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8742/8781] Built SingularClosure.LatticeSobolevSummability (6.0s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/LatticeSobolevSummability.lean:77:15: `if_neg` has been deprecated: Use `ite_eq_right` instead
+⚠ [8743/8781] Built SingularClosure.PeriodicFourierInjective (6.1s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicFourierInjective.lean:48:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8744/8781] Built SingularClosure.FiniteParseval (7.5s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/FiniteParseval.lean:178:26: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [derivativeSymbol]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8745/8781] Built SingularClosure.SobolevL2Realization (9.6s)
+✔ [8746/8781] Built NSEMaxwell.ConstantPaths (5.8s)
+✔ [8747/8781] Built NSEMaxwell.Pressure (6.7s)
+✔ [8748/8781] Built NSEMaxwell.Constitutive (6.9s)
+⚠ [8749/8781] Built NSEMaxwell.CurlCurl (9.3s)
+warning: Fefferman_adapter/NSEMaxwell/CurlCurl.lean:94:13: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sub_apply` to `sub_apply x`).
+warning: Fefferman_adapter/NSEMaxwell/CurlCurl.lean:188:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+✔ [8750/8781] Built SingularClosure.PhysicalEnergy (5.8s)
+⚠ [8751/8781] Built SingularClosure.FiniteHessian (5.9s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/FiniteHessian.lean:75:48: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [laplacianCoefficient, hfreq, hreal k j]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/FiniteHessian.lean:86:32: This simp argument is unused:
+  Complex.normSq_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [laplacianCoefficient, Complex.normSq_apply, pow_two]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/FiniteHessian.lean:86:74: This simp argument is unused:
+  pow_two
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [laplacianCoefficient, Complex.normSq_mul, Complex.normSq_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8752/8781] Built NSEMaxwell.Ampere (5.4s)
+✔ [8753/8781] Built SingularClosure.FourierTransport (6.6s)
+✔ [8754/8781] Built NSEMaxwell.Negation (6.0s)
+⚠ [8755/8781] Built SingularClosure.PeriodicPoincare (7.0s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicPoincare.lean:32:4: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+✔ [8756/8781] Built NSEMaxwell.Spacetime (10s)
+⚠ [8757/8781] Built NSEMaxwell.PeriodicIntegration (9.1s)
+warning: Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean:96:4: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean:129:20: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean:136:24: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean:152:20: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean:285:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean:285:44: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+⚠ [8758/8781] Built SingularClosure.PhysicalBilinear (9.0s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalBilinear.lean:81:57: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [unitVector, Fin.sum_univ_succ]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalBilinear.lean:169:14: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalBilinear.lean:169:4: Unused tactic linter: `all_goals rfl` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalBilinear.lean:285:10: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Complex.mul_re, Complex.mul_im]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalBilinear.lean:285:60: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [8759/8781] Built NSEMaxwell.AnalyticContracts (7.1s)
+✔ [8760/8781] Built NSEMaxwell.TemporalMean (7.6s)
+⚠ [8761/8781] Built NSEMaxwell.LocalEvolution (8.5s)
+warning: Fefferman_adapter/NSEMaxwell/LocalEvolution.lean:65:67: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Fefferman_adapter/NSEMaxwell/LocalEvolution.lean:66:67: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Fefferman_adapter/NSEMaxwell/LocalEvolution.lean:67:67: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Fefferman_adapter/NSEMaxwell/LocalEvolution.lean:176:4: Unused tactic linter: `change
+  timeDerivative u t +
+          ((fun x => cross (spatialCurl (u t) x) (u t x)) +
+            NSEMaxwell.Classical.gradient (fun x : Vec => ‖u t x‖ ^ 2 / 2)) +
+        NSEMaxwell.Classical.gradient (p t) -
+      -(ν • spatialCurl (spatialCurl (u t))) =
+    _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+✔ [8762/8781] Built NSEMaxwell.FourierPeriodic (6.1s)
+✔ [8763/8781] Built NSEMaxwellReverse (6.4s)
+⚠ [8765/8781] Built SingularClosure.InitialCutoffBounds (7.4s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialCutoffBounds.lean:120:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialCutoffBounds.lean:120:44: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialCutoffBounds.lean:196:21: `if_pos` has been deprecated: Use `ite_eq_left` instead
+✔ [8766/8781] Built NSEMaxwellForward (6.1s)
+✔ [8768/8781] Built NSEMaxwell.MeanConservation (6.3s)
+✔ [8769/8781] Built NSEMaxwell.AnalyticBridge (3.8s)
+⚠ [8770/8781] Built SingularClosure.FourierDecay (4.5s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierDecay.lean:92:23: Variable name `x` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _x
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [8771/8781] Built NSEMaxwell.CanonicalSmoothness (4.3s)
+⚠ [8772/8781] Built SingularClosure.SmoothDatumSobolev (7.3s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/SmoothDatumSobolev.lean:47:36: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/SmoothDatumSobolev.lean:50:47: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/SmoothDatumSobolev.lean:47:36: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/SmoothDatumSobolev.lean:50:47: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+⚠ [8773/8781] Built SingularClosure.FourierSeriesCalculus (7.6s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierSeriesCalculus.lean:108:17: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+✔ [8774/8781] Built NSEMaxwell.AnalyticReduction (5.1s)
+⚠ [8775/8781] Built SingularClosure.SobolevSmoothRealization (5.7s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean:41:52: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean:41:52: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean:194:49: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [8776/8781] Built NSEMaxwellReverse.Reduced (4.6s)
+✔ [8777/8781] Built NSEMaxwellForward.Reduced (5.1s)
+⚠ [8778/8781] Built SingularClosure.FourierProduct (4.8s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierProduct.lean:111:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierProduct.lean:111:44: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+⚠ [8779/8781] Built SingularClosure.InfiniteFourierPressure (3.9s)
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/InfiniteFourierPressure.lean:43:33: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/InfiniteFourierPressure.lean:64:40: `if_false` has been deprecated: Use `ite_false` instead
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/InfiniteFourierPressure.lean:59:51: This simp argument is unused:
+  Int.cast_abs
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [norm_mul, Complex.norm_intCast]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/InfiniteFourierPressure.lean:66:4: This simp argument is unused:
+  abs_of_pos hpi
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [pressureFromTransport, hk, if_false, norm_div, norm_mul, Complex.norm_I, one_mul, hsum,
+    Complex.norm_real, Real.norm_eq_abs, abs_of_pos Real.pi_pos, abs_of_pos (by norm_num : (0 : ℝ) < 2),
+    abs_of_nonneg (zero_le_one.trans hfreq)]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8780/8781] Built MethlibEndpoints (3.1s)
+Build completed successfully (8781 jobs).

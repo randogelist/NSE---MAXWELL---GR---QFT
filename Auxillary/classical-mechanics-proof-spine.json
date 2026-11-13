@@ -1,0 +1,476 @@
+{
+  "schema_version": 1,
+  "derivation_file": "Auxillary/derivations/NSE_CLASSICAL_MECHANICS_EQUIVALENCE_B_TIER.txt",
+  "derivation_sha256": "bf7dba5ec806fdbd414fef9977a8a46919f04c6d91d067557790f920902bc17e",
+  "derivation_version": "1.6.0",
+  "derivation_source_pins": {
+    "lean": "4.33.0",
+    "mathlib": "db584cd6d46c92f209a44c0f1c829460d327499d",
+    "methlib": "09dfe94a1ef150e21d09df3013fbe09002ef139c"
+  },
+  "active_native_pins": {
+    "lean": "4.34.0-rc1",
+    "mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+    "methlib": "e9cf90726b8544a268469ebc8fa6634e9c713e07"
+  },
+  "source_port_guard": "The historical B-tier catalog is reference-only. Active Lean imports resolve against the repository native pins. No blanket endpoint compatibility is asserted.",
+  "first_native_scope": "actual Cauchy stress divergence, global NSE/Newtonian equivalence, finite normalized NSE/local-Newtonian equivalence",
+  "full_reference_root_status": "PENDING_MATERIAL_FLOW_MOVING_REGION_AND_LAGRANGE_DALEMBERT_BODIES",
+  "identity_groups": [
+    {
+      "id": "ID01",
+      "name": "SMOOTH_PERIODIC_FLOW_AND_VARIATIONAL_EQUATION",
+      "reference_line": 11390,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID02",
+      "name": "JACOBIAN_CHANGE_OF_VARIABLES_AND_MEASURE_PULLBACK",
+      "reference_line": 11548,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID03",
+      "name": "FIN3_PIOLA_IDENTITY_AND_ROW_DIVERGENCE",
+      "reference_line": 11715,
+      "lean_status": "PARTIAL_A_TIER_COMPLETE_GROUP_PENDING",
+      "new_native_scope": "Actual cofactor-Jacobian row divergence; adjugate/cofactor equality; determinant-one inverse-transpose identity and divergence; material-path specialization.",
+      "pending_scope": "Full arbitrary-tensor Piola transform and actual transported viscosity identity.",
+      "native_premises": "ContDiff R infinity of the actual spatial field; no invertibility or Piola admission.",
+      "native_audited_theorems": [
+        "ClassicalMechanics.cofactorGradient_eq_adjugate_transpose",
+        "ClassicalMechanics.piola_identity",
+        "ClassicalMechanics.tensorDivergence_adjugate_gradient",
+        "ClassicalMechanics.cofactorGradient_eq_inverse_transpose_of_det_one",
+        "ClassicalMechanics.tensorDivergence_inverse_transpose_of_det_one",
+        "ClassicalMechanics.material_inverse_transpose_divergence_zero"
+      ],
+      "evidence_source_commit": "699ae6cac2d9ccf57d0781b64b8e7804a5f827ea"
+    },
+    {
+      "id": "ID04",
+      "name": "MATERIAL_DIFFERENTIAL_OPERATORS_AND_ACCELERATION",
+      "reference_line": 11812,
+      "lean_status": "PARTIAL_A_TIER_COMPLETE_GROUP_PENDING",
+      "new_native_scope": "Actual finite-slab derivatives, acceleration from supplied smooth flow, pressure-gradient from actual chain rule and matrix inverse, concrete material operators and conditional equation transport.",
+      "explicit_analytic_premise": "ClassicalMechanics.MaterialPullbackIdentities",
+      "conditional_native_theorems": [
+        "ClassicalMechanics.material_residual_pullback",
+        "ClassicalMechanics.eulerian_equation_to_material",
+        "ClassicalMechanics.material_equation_to_eulerian",
+        "ClassicalMechanics.eulerian_equation_iff_material",
+        "ClassicalMechanics.ns_solution_material_equation"
+      ],
+      "pending_scope": "Actual transported viscosity, construction of the smooth volume-preserving flow, transported solution constraints and full solution bijection.",
+      "chain_rule_premises": "T>0; actual joint closed-slab smoothness; supplied actual flow ODE. Smooth-flow existence is not constructed.",
+      "constructor_scope": "Legacy constructor derives acceleration; stronger material_pullback_of_flow_and_diffusion additionally derives the pressure gradient from actual geometry and scalar pullback. Smooth path/flow and diffusion remain explicit inputs.",
+      "native_chain_rule_theorems": [
+        "ClassicalMechanics.finite_material_chain_rule",
+        "ClassicalMechanics.finite_flow_acceleration"
+      ],
+      "native_package_constructor_theorem": "ClassicalMechanics.materialPullbackIdentities_of_flow",
+      "native_pressure_gradient_theorems": [
+        "ClassicalMechanics.material_pressure_gradient_of_pullback",
+        "ClassicalMechanics.material_pressure_gradient_pullback_on"
+      ],
+      "native_stronger_constructor": "ClassicalMechanics.material_pullback_of_flow_and_diffusion",
+      "native_root": "ClassicalMechanics.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW_AND_DIFFUSION",
+      "evidence_source_commit": "699ae6cac2d9ccf57d0781b64b8e7804a5f827ea"
+    },
+    {
+      "id": "ID05",
+      "name": "MOVING_REGION_TRACTION_AND_POINTWISE_LOCALIZATION",
+      "reference_line": 11922,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID06",
+      "name": "REAL_SOLENOIDAL_TESTS_AND_FULL_MEAN_FOURIER_PROJECTION",
+      "reference_line": 12095,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID07",
+      "name": "UNIFORM_PRESSURE_SYNTHESIS_AND_EXACT_ENDPOINT_COMPOSITION",
+      "reference_line": 12234,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID08",
+      "name": "RAYLEIGH_FIBRE_DERIVATIVE_AND_REDUCED_VIRTUAL_WORK",
+      "reference_line": 12437,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID09",
+      "name": "ACTUAL_VARIATIONS_AND_MATERIAL_ACTION_PULLBACK",
+      "reference_line": 12588,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID10",
+      "name": "EXPLICIT_INVERSE_MAPS_AND_DETERMINISTIC_ROOT_COMPOSITION",
+      "reference_line": 12741,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID11",
+      "name": "ENERGY_MOMENTUM_STABILITY_AND_ELLIPTICITY",
+      "reference_line": 12931,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID12",
+      "name": "EXACT_SHEAR_AND_DAMPED_COORDINATE",
+      "reference_line": 13104,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID13",
+      "name": "FINITE_REAL_COORDINATES_AND_COTANGENT_LIFT",
+      "reference_line": 13193,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID14",
+      "name": "PRECISE_HAMILTONIAN_AND_DUAL_OBSTRUCTIONS",
+      "reference_line": 13321,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID15",
+      "name": "TRANSPORTED_PROJECTION_PRESSURE_AND_RELABELING",
+      "reference_line": 13410,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID16",
+      "name": "PERIODIC_REPRESENTATION_GALILEAN_MAP_AND_NORMALIZATION",
+      "reference_line": 13547,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID17",
+      "name": "FINITE_TIME_LOCALIZATION_AND_SOURCE_DERIVATIVES",
+      "reference_line": 13677,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID18",
+      "name": "LERAY_CORE_AND_MULTIPLICATION",
+      "reference_line": 13889,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID19",
+      "name": "MOVING_PROJECTION_NORM_DERIVATIVE",
+      "reference_line": 13996,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID20",
+      "name": "NORMAL_FORM_AND_PROJECTED_CONNECTION",
+      "reference_line": 14126,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID21",
+      "name": "SOLENOIDAL_BASIS_AND_CLOSED_OPERATOR",
+      "reference_line": 14240,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID22",
+      "name": "RESOLVENT_COMPACTNESS_AND_FROZEN_SEMIGROUP",
+      "reference_line": 14402,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID23",
+      "name": "RAYLEIGH_FORM_AND_ACCELERATION_OPTIMUM",
+      "reference_line": 14540,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID24",
+      "name": "GENERAL_JACOBIAN_PRESSURE_FREE_TRANSFORMATION",
+      "reference_line": 14649,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID25",
+      "name": "HEAT_DEFECT_AND_CONSTRAINT_PROPAGATION",
+      "reference_line": 14796,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID26",
+      "name": "EXACT_TEMPORAL_GERMS",
+      "reference_line": 14932,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID27",
+      "name": "CANONICAL_UNITARY_FRAME",
+      "reference_line": 15072,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID28",
+      "name": "VISCOUS_WEBER_COVECTOR_IDENTITY_AND_CONVERSE",
+      "reference_line": 15305,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID29",
+      "name": "VISCOUS_KELVIN_TRANSPORT",
+      "reference_line": 15398,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID30",
+      "name": "PERIODIC_EXACTNESS_AND_HARMONIC_DEFECT",
+      "reference_line": 15477,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID31",
+      "name": "VISCOUS_CAUCHY_AND_VORTICITY_CONVERSE",
+      "reference_line": 15574,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID32",
+      "name": "RESIDUAL_PRESSURE_AND_MEAN_LEDGER",
+      "reference_line": 15663,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID33",
+      "name": "MEAN_CENTERED_FORCED_RELATIVE_ENERGY_AND_COMPARISON",
+      "reference_line": 15769,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID34",
+      "name": "PRESSURE_DIFFERENCE_MULTIPLIER_BOUND",
+      "reference_line": 15907,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID35",
+      "name": "MATERIAL_RESIDUAL_AND_TRAJECTORY_CERTIFICATE",
+      "reference_line": 15985,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID36",
+      "name": "FULL_MEAN_SPECTRAL_GALERKIN_REALIZATION",
+      "reference_line": 16073,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID37",
+      "name": "SMOOTH_REFERENCE_CONSISTENCY_AND_TAILS",
+      "reference_line": 16172,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID38",
+      "name": "CONDITIONAL_GALERKIN_ERROR_AND_DISSIPATION_LIMIT",
+      "reference_line": 16257,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID39",
+      "name": "PROJECTED_HAMILTONIAN_APPROXIMATION",
+      "reference_line": 16353,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID40",
+      "name": "FIRST_VARIATIONS_OF_FLOW_CONSTRAINT_AND_PRESSURE_GAUGE",
+      "reference_line": 16887,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID41",
+      "name": "DIFFERENTIATED_RESIDUAL_WITH_THE_EXACT_OFF_SHELL_TERM",
+      "reference_line": 17107,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID42",
+      "name": "LINEARIZED_BIJECTION_PRESSURE_RECOVERY_AND_MEAN_SENSITIVE_ENERGY",
+      "reference_line": 17337,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID43",
+      "name": "ACTUAL_FOURIER_HEAT_DUHAMEL",
+      "reference_line": 17771,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID44",
+      "name": "SMOOTH_CLASSICAL_PROJECTED_MILD_NSE",
+      "reference_line": 18062,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID45",
+      "name": "TWO_TIME_MATERIAL_DUHAMEL_TRANSPORT",
+      "reference_line": 18236,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID46",
+      "name": "EXACT_POLARIZED_PRESSURE_AND_NONLINEAR_REMAINDER",
+      "reference_line": 18700,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID47",
+      "name": "CONDITIONAL_SECOND_ORDER_EULERIAN_CERTIFICATE",
+      "reference_line": 18894,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID48",
+      "name": "MATERIAL_RESIDUAL_AND_INFINITESIMAL_TO_FINITE_RECONSTRUCTION",
+      "reference_line": 19129,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID49",
+      "name": "MIXED_SECOND_EULERIAN_JET_AND_NORMALIZED_PRESSURE",
+      "reference_line": 20617,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID50",
+      "name": "MIXED_MATERIAL_JET_CONJUGACY_AND_CONSTRAINTS",
+      "reference_line": 20765,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID51",
+      "name": "SECOND_ORDER_ANSATZ_AND_CUBIC_ERROR_CERTIFICATE",
+      "reference_line": 20907,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID52",
+      "name": "SMOOTH_FINITE_SLAB_ADJOINT_AND_EXACT_DUALITY",
+      "reference_line": 21200,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID53",
+      "name": "EXACT_GOAL_ERROR_WITH_QUADRATIC_REMAINDER",
+      "reference_line": 21470,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID54",
+      "name": "MATERIAL_COVARIANT_ADJOINT_AND_INVARIANT_GOAL_CERTIFICATE",
+      "reference_line": 21599,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID55",
+      "name": "COMPLETE_TEMPORAL_JETS_AND_SMOOTH_TRANSMISSION",
+      "reference_line": 21833,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID56",
+      "name": "FLOW_RESET_COCYCLE_AND_VARIATIONAL_SEAM",
+      "reference_line": 21994,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    },
+    {
+      "id": "ID57",
+      "name": "COMPATIBLE_EXHAUSTION_AND_EXACT_CONTINUATION_DOMAIN",
+      "reference_line": 22127,
+      "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
+    }
+  ],
+  "first_native_status": "A_TIER_AT_RECORDED_CURRENT_SOURCE",
+  "first_native_evidence": {
+    "source_commit": "80edf82888080953e2a7c991769f0de69fe7166e",
+    "workflow_run_id": 43363763965,
+    "workflow_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43363763965",
+    "compiler_status": "PASS",
+    "audit_status": "PASS_STANDARD_ONLY",
+    "audit_target_count": 25,
+    "source_input_verification": "PASS",
+    "source_manifest_sha256": "b09512dd396a1bd230558a4f64501c5e2986563ea6ae2143e22f553a32337319",
+    "scope_guard": "Local Cauchy stress equivalence only; global existence is an equivalence of propositions, not a proof of either existence proposition; new material modules require their own external evidence.",
+    "retained_evidence_directory": "Auxillary/evidence/classical-linux-43363763965"
+  },
+  "material_extension_status": "A_TIER_CONDITIONAL_FORMAL_CLOSURE_FOR_EXACT_ROOT",
+  "material_extension_status_file": "Auxillary/CLASSICAL_MECHANICS_MATERIAL_A_TIER.txt",
+  "first_native_current_evidence": {
+    "source_commit": "699ae6cac2d9ccf57d0781b64b8e7804a5f827ea",
+    "workflow_run_id": 43370108226,
+    "workflow_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43370108226",
+    "artifact_id": 14012451485,
+    "artifact_sha256": "7f3826cb859a04814190e0091b5997e654f8661ae88443d3b5e81728f48ec554",
+    "source_manifest_sha256": "4463096e7f84349ac90a17cb25c60d9e989ae1152360071f6d9e337e2c746a72",
+    "retained_evidence_directory": "Auxillary/evidence/classical-linux-43370108226",
+    "compiler_status": "PASS",
+    "audit_status": "PASS_STANDARD_ONLY",
+    "audit_target_count": 62,
+    "source_input_verification": "PASS",
+    "current_mechanics_lean_source_hashes": "14/14_MATCH",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "cache_mode": "REUSE_VERIFIED_DEPENDENCY_PHASE",
+    "scope": "Classical-mechanics build and theorem audits only; no whole-workflow success inferred."
+  },
+  "material_extension_evidence": {
+    "source_commit": "699ae6cac2d9ccf57d0781b64b8e7804a5f827ea",
+    "workflow_run_id": 43370108226,
+    "workflow_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43370108226",
+    "artifact_id": 14012451485,
+    "artifact_sha256": "7f3826cb859a04814190e0091b5997e654f8661ae88443d3b5e81728f48ec554",
+    "source_manifest_sha256": "4463096e7f84349ac90a17cb25c60d9e989ae1152360071f6d9e337e2c746a72",
+    "retained_evidence_directory": "Auxillary/evidence/classical-linux-43370108226",
+    "compiler_status": "PASS",
+    "audit_status": "PASS_STANDARD_ONLY",
+    "audit_target_count": 62,
+    "source_input_verification": "PASS",
+    "current_mechanics_lean_source_hashes": "14/14_MATCH",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "cache_mode": "REUSE_VERIFIED_DEPENDENCY_PHASE",
+    "scope": "Classical-mechanics build and theorem audits only; no whole-workflow success inferred."
+  },
+  "material_root": {
+    "theorem": "ClassicalMechanics.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW_AND_DIFFUSION",
+    "status": "CONDITIONAL_FORMAL_CLOSURE",
+    "quantified_scope": "Arbitrary real nu,T and concrete fields u,eta,rho,p,pi; T>0.",
+    "explicit_premises": [
+      "SmoothVelocityOn T u",
+      "SmoothPressureOn T p",
+      "MaterialPathOn T eta rho",
+      "materialVelocity T eta = u composed with eta on the slab",
+      "pi = p composed with eta on the slab",
+      "materialDiffusion T eta = laplacian u composed with eta on the slab"
+    ],
+    "derived_identities": [
+      "actual acceleration pullback",
+      "actual pressure-gradient pullback",
+      "timewise surjectivity of eta"
+    ],
+    "conclusion": "Eulerian differential equation iff MaterialEquationOn on Icc 0 T.",
+    "scope_guard": "No full MaterialSolutionOn bijection or global NSE nonemptiness is asserted."
+  }
+}

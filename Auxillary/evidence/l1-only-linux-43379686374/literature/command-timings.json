@@ -1,0 +1,98 @@
+[
+  {
+    "command": [
+      "lean",
+      "--version"
+    ],
+    "log": "lean-version.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.035
+  },
+  {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "source-commit.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.002
+  },
+  {
+    "command": [
+      "git",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "working-tree.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.022
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      ".lake/packages/mathlib",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "mathlib-revision.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.002
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "--no-build",
+      "ClassicalMechanicsAssembly.LiteratureClosure"
+    ],
+    "log": "build-freshness.log",
+    "exit_code": 3,
+    "elapsed_seconds": 3.407
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanicsAssembly.LiteratureInputs"
+    ],
+    "log": "build-ClassicalMechanicsAssembly.LiteratureInputs.log",
+    "exit_code": 0,
+    "elapsed_seconds": 7.245
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanicsAssembly.LiteratureClosure"
+    ],
+    "log": "build-ClassicalMechanicsAssembly.LiteratureClosure.log",
+    "exit_code": 0,
+    "elapsed_seconds": 7.268
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanicsAssembly.LiteratureClosure"
+    ],
+    "log": "build.log",
+    "exit_code": 0,
+    "elapsed_seconds": 3.291
+  },
+  {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-R",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/literature",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/literature/LiteratureAudit.lean"
+    ],
+    "log": "audit.log",
+    "exit_code": 0,
+    "elapsed_seconds": 4.77
+  }
+]

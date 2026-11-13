@@ -1,0 +1,107 @@
+@ClassicalMechanicsAssembly.flow_family_slice_contDiff.{u_1} : ∀ {F : Type u_1} [inst : NormedAddCommGroup.{u_1} F]
+  [inst_1 : NormedSpace.{0, u_1} ℝ F] {T : ℝ} {f : ℝ → NSEMaxwell.Classical.Vec → F},
+  ContDiffOn.{0, 0, u_1} ℝ (↑Top.top.{0}) (fun z => f z.1 z.2) (ClassicalMechanics.finiteSpacetime T) →
+    ∀ {t : ℝ}, Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → ContDiff.{0, 0, u_1} ℝ (↑Top.top.{0}) (f t)
+'ClassicalMechanicsAssembly.flow_family_slice_contDiff' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flow_family_fderiv_contDiffOn.{u_1} : ∀ {F : Type u_1} [inst : NormedAddCommGroup.{u_1} F]
+  [inst_1 : NormedSpace.{0, u_1} ℝ F] {T : ℝ} {f : ℝ → NSEMaxwell.Classical.Vec → F},
+  LT.lt.{0} 0 T →
+    ContDiffOn.{0, 0, u_1} ℝ (↑Top.top.{0}) (fun z => f z.1 z.2) (ClassicalMechanics.finiteSpacetime T) →
+      ContDiffOn.{0, 0, u_1} ℝ (↑Top.top.{0}) (fun z => fderiv.{0, 0, u_1} ℝ (f z.1) z.2)
+        (ClassicalMechanics.finiteSpacetime T)
+'ClassicalMechanicsAssembly.flow_family_fderiv_contDiffOn' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flow_family_uniform_lipschitz.{u_1} : ∀ {F : Type u_1} [inst : NormedAddCommGroup.{u_1} F]
+  [inst_1 : NormedSpace.{0, u_1} ℝ F] {T : ℝ} {f : ℝ → NSEMaxwell.Classical.Vec → F},
+  LT.lt.{0} 0 T →
+    ContDiffOn.{0, 0, u_1} ℝ (↑Top.top.{0}) (fun z => f z.1 z.2) (ClassicalMechanics.finiteSpacetime T) →
+      (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{u_1} (f t)) →
+        ∃ K, ∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → LipschitzWith.{0, u_1} K (f t)
+'ClassicalMechanicsAssembly.flow_family_uniform_lipschitz' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+ClassicalMechanicsAssembly.flowSpatialJet : NSEMaxwell.Classical.Velocity →
+  (r : ℕ) → ℝ → NSEMaxwell.Classical.Vec → NSEMaxwell.Classical.Vec [×r]→L[ℝ] NSEMaxwell.Classical.Vec
+'ClassicalMechanicsAssembly.flowSpatialJet' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowSpatialJet_contDiffOn : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ∀ (r : ℕ),
+          ContDiffOn.{0, 0, 0} ℝ (↑Top.top.{0}) (fun z => ClassicalMechanicsAssembly.flowSpatialJet u r z.1 z.2)
+            (ClassicalMechanics.finiteSpacetime T)
+'ClassicalMechanicsAssembly.flowSpatialJet_contDiffOn' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowSpatialJet_periodic : ∀ {u : NSEMaxwell.Classical.Velocity} {t : ℝ},
+  NSEMaxwell.Classical.SpatialPeriodic.{0} (u t) →
+    ∀ (r : ℕ), NSEMaxwell.Classical.SpatialPeriodic.{0} (ClassicalMechanicsAssembly.flowSpatialJet u r t)
+'ClassicalMechanicsAssembly.flowSpatialJet_periodic' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowSpatialJet_uniform_bound : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+          ∀ (r : ℕ),
+            ∃ M,
+              ∀ (t : ℝ),
+                Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                  ∀ (x : NSEMaxwell.Classical.Vec),
+                    LE.le.{0} (norm.{0} (ClassicalMechanicsAssembly.flowSpatialJet u r t x)) ↑M
+'ClassicalMechanicsAssembly.flowSpatialJet_uniform_bound' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowSpatialJet_uniform_lipschitz : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+          ∀ (r : ℕ),
+            ∃ K,
+              ∀ (t : ℝ),
+                Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                  LipschitzWith.{0, 0} K (ClassicalMechanicsAssembly.flowSpatialJet u r t)
+'ClassicalMechanicsAssembly.flowSpatialJet_uniform_lipschitz' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowSpatialJetMap : {T : ℝ} →
+  LT.lt.{0} 0 T →
+    {u : NSEMaxwell.Classical.Velocity} →
+      ClassicalMechanics.SmoothVelocityOn T u →
+        (r : ℕ) →
+          ContinuousMap.{0, 0} (Prod.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec)
+            (NSEMaxwell.Classical.Vec [×r]→L[ℝ] NSEMaxwell.Classical.Vec)
+'ClassicalMechanicsAssembly.flowSpatialJetMap' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanicsAssembly.flowSpatialCurry : (r : ℕ) →
+  ContinuousLinearMap.{0, 0, 0, 0} (RingHom.id.{0} ℝ)
+    (NSEMaxwell.Classical.Vec [×HAdd.hAdd.{0, 0, 0} r 1]→L[ℝ] NSEMaxwell.Classical.Vec)
+    (ContinuousLinearMap.{0, 0, 0, 0} (RingHom.id.{0} ℝ) NSEMaxwell.Classical.Vec
+      (NSEMaxwell.Classical.Vec [×r]→L[ℝ] NSEMaxwell.Classical.Vec))
+'ClassicalMechanicsAssembly.flowSpatialCurry' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowSpatialJet_superposition_contDiff : ∀ {T : ℝ} (hT : LT.lt.{0} 0 T)
+  {u : NSEMaxwell.Classical.Velocity} (hu : ClassicalMechanics.SmoothVelocityOn T u),
+  (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+    ∀ (r : ℕ),
+      ContDiff.{0, 0, 0} ℝ (↑Top.top.{0})
+        (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{0, 0, 0}
+          (ClassicalMechanicsAssembly.flowSpatialJetMap hT hu r))
+'ClassicalMechanicsAssembly.flowSpatialJet_superposition_contDiff' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowVelocityMap : {T : ℝ} →
+  {u : NSEMaxwell.Classical.Velocity} →
+    ClassicalMechanics.SmoothVelocityOn T u →
+      ContinuousMap.{0, 0} (Prod.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec) NSEMaxwell.Classical.Vec
+'ClassicalMechanicsAssembly.flowVelocityMap' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.periodic_velocity_superposition_contDiff : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u : NSEMaxwell.Classical.Velocity} (hu : ClassicalMechanics.SmoothVelocityOn T u),
+      (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+        ContDiff.{0, 0, 0} ℝ (↑Top.top.{0})
+          (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{0, 0, 0} (ClassicalMechanicsAssembly.flowVelocityMap hu))
+'ClassicalMechanicsAssembly.periodic_velocity_superposition_contDiff' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

@@ -1,0 +1,67 @@
+@ClassicalMechanicsAssembly.material_pressure_pullback_smooth : ∀ {T : ℝ} {η ρ : NSEMaxwell.Classical.Velocity}
+  {p : NSEMaxwell.Classical.Pressure},
+  ClassicalMechanics.MaterialPathOn T η ρ →
+    ClassicalMechanics.SmoothPressureOn T p → ClassicalMechanics.SmoothPressureOn T fun t a => p t (η t a)
+'ClassicalMechanicsAssembly.material_pressure_pullback_smooth' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.material_pressure_pullback_periodic : ∀ {T : ℝ} {η ρ : NSEMaxwell.Classical.Velocity}
+  {p : NSEMaxwell.Classical.Pressure},
+  ClassicalMechanics.MaterialPathOn T η ρ →
+    (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (p t)) →
+      ∀ (t : ℝ),
+        Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} fun a => p t (η t a)
+'ClassicalMechanicsAssembly.material_pressure_pullback_periodic' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.material_initial_velocity_of_flow : ∀ {T : ℝ},
+  LE.le.{0} 0 T →
+    ∀ {u η ρ : NSEMaxwell.Classical.Velocity} {a : NSEMaxwell.Classical.Field},
+      ClassicalMechanics.MaterialPathOn T η ρ →
+        (∀ (t : ℝ),
+            Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+              ∀ (b : NSEMaxwell.Classical.Vec), Eq.{1} (ClassicalMechanics.materialVelocity T η t b) (u t (η t b))) →
+          Eq.{1} (u 0) a → Eq.{1} (ClassicalMechanics.materialVelocity T η 0) a
+'ClassicalMechanicsAssembly.material_initial_velocity_of_flow' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.material_velocity_decode_of_flow : ∀ {T : ℝ} {u η ρ : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.MaterialPathOn T η ρ →
+    (∀ (t : ℝ),
+        Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+          ∀ (a : NSEMaxwell.Classical.Vec), Eq.{1} (ClassicalMechanics.materialVelocity T η t a) (u t (η t a))) →
+      ∀ (t : ℝ),
+        Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → Eq.{1} (ClassicalMechanics.eulerianVelocityOfMaterial T η ρ t) (u t)
+'ClassicalMechanicsAssembly.material_velocity_decode_of_flow' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.material_pressure_decode_of_pullback : ∀ {T : ℝ} {η ρ : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.MaterialPathOn T η ρ →
+    ∀ (p : NSEMaxwell.Classical.Pressure) (t : ℝ),
+      Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+        Eq.{1} (ClassicalMechanics.eulerianPressureOfMaterial ρ (fun s a => p s (η s a)) t) (p t)
+'ClassicalMechanicsAssembly.material_pressure_decode_of_pullback' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.material_velocity_smooth_of_flow : ∀ {T : ℝ} {u η ρ : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.MaterialPathOn T η ρ →
+    ClassicalMechanics.SmoothVelocityOn T u →
+      (∀ (t : ℝ),
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+            ∀ (a : NSEMaxwell.Classical.Vec), Eq.{1} (ClassicalMechanics.materialVelocity T η t a) (u t (η t a))) →
+        ClassicalMechanics.SmoothVelocityOn T (ClassicalMechanics.materialVelocity T η)
+'ClassicalMechanicsAssembly.material_velocity_smooth_of_flow' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.material_velocity_periodic_of_flow : ∀ {T : ℝ} {u η ρ : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.MaterialPathOn T η ρ →
+    (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+      (∀ (t : ℝ),
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+            ∀ (a : NSEMaxwell.Classical.Vec), Eq.{1} (ClassicalMechanics.materialVelocity T η t a) (u t (η t a))) →
+        ∀ (t : ℝ),
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+            NSEMaxwell.Classical.SpatialPeriodic.{0} (ClassicalMechanics.materialVelocity T η t)
+'ClassicalMechanicsAssembly.material_velocity_periodic_of_flow' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "stage": "COMPLETE",
+  "build_status": "PASS",
+  "audit_command_status": "PASS",
+  "theorem_axiom_audit_status": "PASS_EXACT_AUTHORIZED_AXIOMS",
+  "semantic_discharge": "L1_IS_DECLARED_ANALYTIC_INPUT_NOT_PROVED; L2_IS_NATIVE_THEOREM",
+  "started_at_utc": "2026-11-13T09:14:34.463589+00:00",
+  "external_platform": "linux",
+  "external_native_windows": false,
+  "external_native_linux": true,
+  "os": "Unix 7.0.0.1014",
+  "powershell_version": "7.6.10",
+  "processor_count": 4,
+  "requested_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "requested_mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_commit": "ff3c809f241ff14c7b9556b858bb423e1f9630d0",
+  "github_run_id": "43399380498",
+  "github_run_attempt": "1",
+  "github_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+  "phase": "LITERATURE_BUILD_AUDIT",
+  "exact_root_promotion": "NOT_AUTOMATIC",
+  "actual_lean_version": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+  "native_source_hydration": {
+    "report": "native-source-hydration.json",
+    "sha256": "4b952639efbd600c44c11f3793193b094463ddd122fdefc0d88934f4a371ed1d"
+  },
+  "dependency_revisions": [
+    {
+      "name": "plausible",
+      "revision": "38e9c3ce15cbb63c92e90bb9a92e4eb82131f669"
+    },
+    {
+      "name": "LeanSearchClient",
+      "revision": "2bc7cf064315b26bc38dac2e9612fb581be9b75f"
+    },
+    {
+      "name": "importGraph",
+      "revision": "978b7ec9fbbf9a535114f1de8fe5b3778b358870"
+    },
+    {
+      "name": "proofwidgets",
+      "revision": "99e8adeea3c3cd86b6b79ba01a1383bf2d31d055"
+    },
+    {
+      "name": "aesop",
+      "revision": "c1c4362a130f12e632d252180a6c2a31d8fd4726"
+    },
+    {
+      "name": "Qq",
+      "revision": "3b55e9d00c6b0018e5d984eb011b6f93c09bd163"
+    },
+    {
+      "name": "batteries",
+      "revision": "01bc479e7432594821ba3fb0ca465211941de86d"
+    },
+    {
+      "name": "Cli",
+      "revision": "af8bc067a4cc6c6df472a68909a3f40b1c76c43e"
+    },
+    {
+      "name": "mathlib",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11"
+    }
+  ],
+  "lockfile_sha256": "69c22ad5678fd37f874d60dd5c604bfd96a2604fcb788a054764d6f1e346a939",
+  "actual_mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "native_source_closure": [
+    {
+      "package": "Fefferman_adapter",
+      "report": "native-source-closure.json",
+      "sha256": "97b8926d1b1eb0959e7f4fa7be18fef770b8d6290d29f3f3824af22361b89ab4"
+    },
+    {
+      "package": "Maxwell_Endpoint",
+      "report": "native-source-closure-maxwell.json",
+      "sha256": "dcc363bb56f09e27da3ac577c04b0393ddab081d3cb748002683d8d546b17738"
+    }
+  ],
+  "cache_mode": "REUSE_VERIFIED_DEPENDENCY_PHASE",
+  "cache_targets": [
+    "Mathlib"
+  ],
+  "dependency_cache_status": "VERIFIED",
+  "dependency_preparation_sha256": "921e3a9aedbdf589121d9c5f5a31596c62dd89f4e3aed832cc09ebc067b66a47",
+  "local_lean_executions": 0,
+  "baseline_builds": "NOT_INVOKED_BY_ASSEMBLY_RUNNER",
+  "parent_dependency_provenance_sha256": "2ec49d037099e7a2441b59ae35b4eb57555dd854becdff64b29bf0922d08dede",
+  "native_endpoint_count": 0,
+  "additional_proof_target_count": 0,
+  "audit_target_count": 5,
+  "module_build_schedule": [
+    "ClassicalMechanicsAssembly.LiteratureInputs",
+    "ClassicalMechanicsAssembly.LiteratureClosure"
+  ],
+  "freshness_check_exit_code": 0,
+  "executed_module_builds": 0,
+  "build_strategy": "LAKE_TRANSITIVE_TRACE_VERIFIED_WARM_REUSE",
+  "authorized_axiom_declaration_count": 1,
+  "literature_theorem_count": 4,
+  "standard_43_audit_summary_sha256": "17489024aeb08e53bba6930dac1e3a7b3b9a27d5b0971e125ddb060a67a77620",
+  "standard_43_source_manifest_sha256": "c82e596aede5bdd7cc5c6bdbb153a64e58d0f469257a2625ec9ead209765835d",
+  "standard_43_provenance_sha256": "abb3edd9d2dbcb79dac4bc7d7fd1d36026d7248de49217cc3d6d153cc2d90ec3",
+  "literature_policy_path": "Auxillary/assembly/literature-targets.json",
+  "literature_policy_sha256": "ce9e8f05fa50e010efd646f2ef0ab6adb476ef2ab72a01c9809ea85f7cf9216f",
+  "shared_foundational_allowlist_unchanged": true,
+  "source_manifest_sha256": "57868be0c752ad0558643b185a0d542f467c8082d7624f89f16a22540feb9de1",
+  "generated_audit_sha256": "82046a64320b130e11b526f82d748b1994f1d86b386b79ab2f6f6eeb8fbee08c",
+  "import_closure_sha256": "485afcffa76f77f7a3f820b0458d3d2261f5218fdf796575517afdac0fc6c400",
+  "completed_at_utc": "2026-11-13T09:14:40.746696+00:00"
+}

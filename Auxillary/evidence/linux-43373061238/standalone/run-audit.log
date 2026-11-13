@@ -1,0 +1,314 @@
+structure NSEMaxwell.Classical.MaxwellSolution (ν c : ℝ) (m : NSEMaxwell.Classical.Vec)
+  (B₀ : NSEMaxwell.Classical.Field) (B E : NSEMaxwell.Classical.Velocity) (ρ : NSEMaxwell.Classical.Pressure)
+  (J : NSEMaxwell.Classical.Velocity) : Prop
+number of parameters: 8
+fields:
+  NSEMaxwell.Classical.MaxwellSolution.magnetic_smooth : NSEMaxwell.Classical.SmoothVelocity B
+  NSEMaxwell.Classical.MaxwellSolution.electric_smooth : NSEMaxwell.Classical.SmoothVelocity E
+  NSEMaxwell.Classical.MaxwellSolution.charge_smooth : NSEMaxwell.Classical.SmoothPressure ρ
+  NSEMaxwell.Classical.MaxwellSolution.current_smooth : NSEMaxwell.Classical.SmoothVelocity J
+  NSEMaxwell.Classical.MaxwellSolution.magnetic_periodic : NSEMaxwell.Classical.PeriodicVelocity B
+  NSEMaxwell.Classical.MaxwellSolution.electric_periodic : NSEMaxwell.Classical.PeriodicVelocity E
+  NSEMaxwell.Classical.MaxwellSolution.charge_periodic : NSEMaxwell.Classical.PeriodicPressure ρ
+  NSEMaxwell.Classical.MaxwellSolution.current_periodic : NSEMaxwell.Classical.PeriodicVelocity J
+  NSEMaxwell.Classical.MaxwellSolution.magnetic_mean_zero : ∀ (t : ℝ),
+      LE.le.{0} 0 t → Eq.{1} (NSEMaxwell.Classical.spatialMean (B t)) 0
+  NSEMaxwell.Classical.MaxwellSolution.magnetic_gauss : ∀ (t : ℝ),
+      LE.le.{0} 0 t → ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.divergence (B t) x) 0
+  NSEMaxwell.Classical.MaxwellSolution.faraday : ∀ (t : ℝ),
+      LE.le.{0} 0 t →
+        ∀ (x : NSEMaxwell.Classical.Vec),
+          Eq.{1}
+            (HAdd.hAdd.{0, 0, 0} (NSEMaxwell.Classical.timeDerivative B t x) (NSEMaxwell.Classical.spatialCurl (E t) x))
+            0
+  NSEMaxwell.Classical.MaxwellSolution.electric_gauss : ∀ (t : ℝ),
+      LE.le.{0} 0 t → ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.divergence (E t) x) (ρ t x)
+  NSEMaxwell.Classical.MaxwellSolution.ampere : ∀ (t : ℝ),
+      LE.le.{0} 0 t →
+        ∀ (x : NSEMaxwell.Classical.Vec),
+          Eq.{1}
+            (HSub.hSub.{0, 0, 0} (NSEMaxwell.Classical.timeDerivative E t x)
+              (HSMul.hSMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} c 2) (NSEMaxwell.Classical.spatialCurl (B t) x)))
+            (Neg.neg.{0} (J t x))
+  NSEMaxwell.Classical.MaxwellSolution.constitutive_electric : ∀ (t : ℝ),
+      LE.le.{0} 0 t → Eq.{1} (E t) (NSEMaxwell.Classical.G ν m (B t))
+  NSEMaxwell.Classical.MaxwellSolution.constitutive_charge : ∀ (t : ℝ),
+      LE.le.{0} 0 t → Eq.{1} (ρ t) (NSEMaxwell.Classical.Q ν m (B t))
+  NSEMaxwell.Classical.MaxwellSolution.constitutive_current : ∀ (t : ℝ),
+      LE.le.{0} 0 t → Eq.{1} (J t) (NSEMaxwell.Classical.current ν c m (B t))
+  NSEMaxwell.Classical.MaxwellSolution.initial : Eq.{1} (B 0) B₀
+constructor:
+  NSEMaxwell.Classical.MaxwellSolution.mk {ν c : ℝ} {m : NSEMaxwell.Classical.Vec} {B₀ : NSEMaxwell.Classical.Field}
+    {B E : NSEMaxwell.Classical.Velocity} {ρ : NSEMaxwell.Classical.Pressure} {J : NSEMaxwell.Classical.Velocity}
+    (magnetic_smooth : NSEMaxwell.Classical.SmoothVelocity B) (electric_smooth : NSEMaxwell.Classical.SmoothVelocity E)
+    (charge_smooth : NSEMaxwell.Classical.SmoothPressure ρ) (current_smooth : NSEMaxwell.Classical.SmoothVelocity J)
+    (magnetic_periodic : NSEMaxwell.Classical.PeriodicVelocity B)
+    (electric_periodic : NSEMaxwell.Classical.PeriodicVelocity E)
+    (charge_periodic : NSEMaxwell.Classical.PeriodicPressure ρ)
+    (current_periodic : NSEMaxwell.Classical.PeriodicVelocity J)
+    (magnetic_mean_zero : ∀ (t : ℝ), LE.le.{0} 0 t → Eq.{1} (NSEMaxwell.Classical.spatialMean (B t)) 0)
+    (magnetic_gauss :
+      ∀ (t : ℝ), LE.le.{0} 0 t → ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.divergence (B t) x) 0)
+    (faraday :
+      ∀ (t : ℝ),
+        LE.le.{0} 0 t →
+          ∀ (x : NSEMaxwell.Classical.Vec),
+            Eq.{1}
+              (HAdd.hAdd.{0, 0, 0} (NSEMaxwell.Classical.timeDerivative B t x)
+                (NSEMaxwell.Classical.spatialCurl (E t) x))
+              0)
+    (electric_gauss :
+      ∀ (t : ℝ),
+        LE.le.{0} 0 t → ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.divergence (E t) x) (ρ t x))
+    (ampere :
+      ∀ (t : ℝ),
+        LE.le.{0} 0 t →
+          ∀ (x : NSEMaxwell.Classical.Vec),
+            Eq.{1}
+              (HSub.hSub.{0, 0, 0} (NSEMaxwell.Classical.timeDerivative E t x)
+                (HSMul.hSMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} c 2) (NSEMaxwell.Classical.spatialCurl (B t) x)))
+              (Neg.neg.{0} (J t x)))
+    (constitutive_electric : ∀ (t : ℝ), LE.le.{0} 0 t → Eq.{1} (E t) (NSEMaxwell.Classical.G ν m (B t)))
+    (constitutive_charge : ∀ (t : ℝ), LE.le.{0} 0 t → Eq.{1} (ρ t) (NSEMaxwell.Classical.Q ν m (B t)))
+    (constitutive_current : ∀ (t : ℝ), LE.le.{0} 0 t → Eq.{1} (J t) (NSEMaxwell.Classical.current ν c m (B t)))
+    (initial : Eq.{1} (B 0) B₀) : NSEMaxwell.Classical.MaxwellSolution ν c m B₀ B E ρ J
+def NSEMaxwell.Classical.MaxwellB : ℝ → ℝ → Prop :=
+fun ν c =>
+  ∀ (m : NSEMaxwell.Classical.Vec) (B₀ : NSEMaxwell.Classical.Field),
+    NSEMaxwell.Classical.MagneticData B₀ → ∃ B E ρ J, NSEMaxwell.Classical.MaxwellSolution ν c m B₀ B E ρ J
+def MaxwellEndpoint.MaxwellEquations : ℝ →
+  NSEMaxwell.Classical.Velocity →
+    NSEMaxwell.Classical.Velocity → NSEMaxwell.Classical.Pressure → NSEMaxwell.Classical.Velocity → Prop :=
+fun c B E ρ J =>
+  (∀ (t : ℝ), LE.le.{0} 0 t → ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.divergence (B t) x) 0) ∧
+    (∀ (t : ℝ),
+        LE.le.{0} 0 t →
+          ∀ (x : NSEMaxwell.Classical.Vec),
+            Eq.{1}
+              (HAdd.hAdd.{0, 0, 0} (NSEMaxwell.Classical.timeDerivative B t x)
+                (NSEMaxwell.Classical.spatialCurl (E t) x))
+              0) ∧
+      (∀ (t : ℝ),
+          LE.le.{0} 0 t → ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.divergence (E t) x) (ρ t x)) ∧
+        ∀ (t : ℝ),
+          LE.le.{0} 0 t →
+            ∀ (x : NSEMaxwell.Classical.Vec),
+              Eq.{1}
+                (HSub.hSub.{0, 0, 0} (NSEMaxwell.Classical.timeDerivative E t x)
+                  (HSMul.hSMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} c 2) (NSEMaxwell.Classical.spatialCurl (B t) x)))
+                (Neg.neg.{0} (J t x))
+NSEMaxwell.Classical.Vec : Type
+'NSEMaxwell.Classical.Vec' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.Field : Type
+'NSEMaxwell.Classical.Field' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.Velocity : Type
+'NSEMaxwell.Classical.Velocity' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.Pressure : Type
+'NSEMaxwell.Classical.Pressure' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.unitCube : Set.{0} NSEMaxwell.Classical.Vec
+'NSEMaxwell.Classical.unitCube' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@NSEMaxwell.Classical.SpatialPeriodic.{u_1} : {E : Type u_1} → (NSEMaxwell.Classical.Vec → E) → Prop
+'NSEMaxwell.Classical.SpatialPeriodic' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.spatialMean : NSEMaxwell.Classical.Field → NSEMaxwell.Classical.Vec
+'NSEMaxwell.Classical.spatialMean' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.coordinateDerivative : NSEMaxwell.Classical.Field →
+  Fin 3 → NSEMaxwell.Classical.Vec → NSEMaxwell.Classical.Vec
+'NSEMaxwell.Classical.coordinateDerivative' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.divergence : NSEMaxwell.Classical.Field → NSEMaxwell.Classical.Vec → ℝ
+'NSEMaxwell.Classical.divergence' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.spatialCurl : NSEMaxwell.Classical.Field → NSEMaxwell.Classical.Vec → NSEMaxwell.Classical.Vec
+'NSEMaxwell.Classical.spatialCurl' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.timeDerivative : NSEMaxwell.Classical.Velocity →
+  ℝ → NSEMaxwell.Classical.Vec → NSEMaxwell.Classical.Vec
+'NSEMaxwell.Classical.timeDerivative' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.SmoothVelocity : NSEMaxwell.Classical.Velocity → Prop
+'NSEMaxwell.Classical.SmoothVelocity' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.SmoothPressure : NSEMaxwell.Classical.Pressure → Prop
+'NSEMaxwell.Classical.SmoothPressure' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.Data : NSEMaxwell.Classical.Field → Prop
+'NSEMaxwell.Classical.Data' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.MagneticData : NSEMaxwell.Classical.Field → Prop
+'NSEMaxwell.Classical.MagneticData' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.inverseLaplacianSymbol : NSEMaxwell.Classical.Frequency → ℝ
+'NSEMaxwell.Classical.inverseLaplacianSymbol' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.cosineKernel : NSEMaxwell.Classical.Frequency →
+  NSEMaxwell.Classical.Vec → NSEMaxwell.Classical.Vec → ℝ
+'NSEMaxwell.Classical.cosineKernel' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.vectorL : NSEMaxwell.Classical.Field → NSEMaxwell.Classical.Vec → NSEMaxwell.Classical.Vec
+'NSEMaxwell.Classical.vectorL' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.scalarL : NSEMaxwell.Classical.ScalarField → NSEMaxwell.Classical.Vec → ℝ
+'NSEMaxwell.Classical.scalarL' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.K : NSEMaxwell.Classical.Field → NSEMaxwell.Classical.Field
+'NSEMaxwell.Classical.K' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.U : NSEMaxwell.Classical.Vec → NSEMaxwell.Classical.Field → NSEMaxwell.Classical.Field
+'NSEMaxwell.Classical.U' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.G : ℝ → NSEMaxwell.Classical.Vec → NSEMaxwell.Classical.Field → NSEMaxwell.Classical.Field
+'NSEMaxwell.Classical.G' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.V : ℝ → NSEMaxwell.Classical.Vec → NSEMaxwell.Classical.Field → NSEMaxwell.Classical.Field
+'NSEMaxwell.Classical.V' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.Q : ℝ → NSEMaxwell.Classical.Vec → NSEMaxwell.Classical.Field → NSEMaxwell.Classical.ScalarField
+'NSEMaxwell.Classical.Q' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.DG : ℝ →
+  NSEMaxwell.Classical.Vec → NSEMaxwell.Classical.Field → NSEMaxwell.Classical.Field → NSEMaxwell.Classical.Field
+'NSEMaxwell.Classical.DG' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.current : ℝ →
+  ℝ → NSEMaxwell.Classical.Vec → NSEMaxwell.Classical.Field → NSEMaxwell.Classical.Field
+'NSEMaxwell.Classical.current' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.MaxwellSolution : ℝ →
+  ℝ →
+    NSEMaxwell.Classical.Vec →
+      NSEMaxwell.Classical.Field →
+        NSEMaxwell.Classical.Velocity →
+          NSEMaxwell.Classical.Velocity → NSEMaxwell.Classical.Pressure → NSEMaxwell.Classical.Velocity → Prop
+'NSEMaxwell.Classical.MaxwellSolution' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+NSEMaxwell.Classical.MaxwellB : ℝ → ℝ → Prop
+'NSEMaxwell.Classical.MaxwellB' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.MaxwellEquations : ℝ →
+  NSEMaxwell.Classical.Velocity →
+    NSEMaxwell.Classical.Velocity → NSEMaxwell.Classical.Pressure → NSEMaxwell.Classical.Velocity → Prop
+'MaxwellEndpoint.MaxwellEquations' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.equations_of_solution : ∀ (ν c : ℝ) (m : NSEMaxwell.Classical.Vec) (B₀ : NSEMaxwell.Classical.Field)
+  (B E : NSEMaxwell.Classical.Velocity) (ρ : NSEMaxwell.Classical.Pressure) (J : NSEMaxwell.Classical.Velocity),
+  NSEMaxwell.Classical.MaxwellSolution ν c m B₀ B E ρ J → MaxwellEndpoint.MaxwellEquations c B E ρ J
+'MaxwellEndpoint.equations_of_solution' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.constitutive_fields_of_solution : ∀ (ν c : ℝ) (m : NSEMaxwell.Classical.Vec)
+  (B₀ : NSEMaxwell.Classical.Field) (B E : NSEMaxwell.Classical.Velocity) (ρ : NSEMaxwell.Classical.Pressure)
+  (J : NSEMaxwell.Classical.Velocity),
+  NSEMaxwell.Classical.MaxwellSolution ν c m B₀ B E ρ J →
+    ∀ (t : ℝ),
+      LE.le.{0} 0 t →
+        Eq.{1} (E t) (NSEMaxwell.Classical.G ν m (B t)) ∧
+          Eq.{1} (ρ t) (NSEMaxwell.Classical.Q ν m (B t)) ∧ Eq.{1} (J t) (NSEMaxwell.Classical.current ν c m (B t))
+'MaxwellEndpoint.constitutive_fields_of_solution' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.magnetic_evolution_of_solution : ∀ (ν c : ℝ) (m : NSEMaxwell.Classical.Vec)
+  (B₀ : NSEMaxwell.Classical.Field) (B E : NSEMaxwell.Classical.Velocity) (ρ : NSEMaxwell.Classical.Pressure)
+  (J : NSEMaxwell.Classical.Velocity),
+  NSEMaxwell.Classical.MaxwellSolution ν c m B₀ B E ρ J →
+    ∀ (t : ℝ), LE.le.{0} 0 t → Eq.{1} (NSEMaxwell.Classical.timeDerivative B t) (NSEMaxwell.Classical.V ν m (B t))
+'MaxwellEndpoint.magnetic_evolution_of_solution' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.electric_evolution_of_solution : ∀ (ν c : ℝ) (m : NSEMaxwell.Classical.Vec)
+  (B₀ : NSEMaxwell.Classical.Field) (B E : NSEMaxwell.Classical.Velocity) (ρ : NSEMaxwell.Classical.Pressure)
+  (J : NSEMaxwell.Classical.Velocity),
+  NSEMaxwell.Classical.MaxwellSolution ν c m B₀ B E ρ J →
+    ∀ (t : ℝ),
+      LE.le.{0} 0 t →
+        Eq.{1} (NSEMaxwell.Classical.timeDerivative E t)
+          (NSEMaxwell.Classical.DG ν m (B t) (NSEMaxwell.Classical.V ν m (B t)))
+'MaxwellEndpoint.electric_evolution_of_solution' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.maxwellB_iff_native : ∀ (ν c : ℝ),
+  NSEMaxwell.Classical.MaxwellB ν c ↔
+    ∀ (m : NSEMaxwell.Classical.Vec) (B₀ : NSEMaxwell.Classical.Field),
+      NSEMaxwell.Classical.MagneticData B₀ → ∃ B E ρ J, NSEMaxwell.Classical.MaxwellSolution ν c m B₀ B E ρ J
+'MaxwellEndpoint.maxwellB_iff_native' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.coordinateDerivative_zero : ∀ (i : Fin 3), Eq.{1} (NSEMaxwell.Classical.coordinateDerivative 0 i) 0
+'MaxwellEndpoint.coordinateDerivative_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.divergence_zero : Eq.{1} (NSEMaxwell.Classical.divergence 0) 0
+'MaxwellEndpoint.divergence_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.spatialCurl_zero : Eq.{1} (NSEMaxwell.Classical.spatialCurl 0) 0
+'MaxwellEndpoint.spatialCurl_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.cross_zero_left : ∀ (a : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.cross 0 a) 0
+'MaxwellEndpoint.cross_zero_left' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.cross_zero_right : ∀ (a : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.cross a 0) 0
+'MaxwellEndpoint.cross_zero_right' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.vectorL_zero : Eq.{1} (NSEMaxwell.Classical.vectorL 0) 0
+'MaxwellEndpoint.vectorL_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.scalarL_zero : Eq.{1} (NSEMaxwell.Classical.scalarL 0) 0
+'MaxwellEndpoint.scalarL_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.K_zero : Eq.{1} (NSEMaxwell.Classical.K 0) 0
+'MaxwellEndpoint.K_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.U_zero : ∀ (m : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.U m 0) fun x => m
+'MaxwellEndpoint.U_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.G_zero : ∀ (ν : ℝ) (m : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.G ν m 0) 0
+'MaxwellEndpoint.G_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.V_zero : ∀ (ν : ℝ) (m : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.V ν m 0) 0
+'MaxwellEndpoint.V_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.Q_zero : ∀ (ν : ℝ) (m : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.Q ν m 0) 0
+'MaxwellEndpoint.Q_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.DG_zero : ∀ (ν : ℝ) (m : NSEMaxwell.Classical.Vec) (B : NSEMaxwell.Classical.Field),
+  Eq.{1} (NSEMaxwell.Classical.DG ν m B 0) 0
+'MaxwellEndpoint.DG_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.current_zero : ∀ (ν c : ℝ) (m : NSEMaxwell.Classical.Vec),
+  Eq.{1} (NSEMaxwell.Classical.current ν c m 0) 0
+'MaxwellEndpoint.current_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.timeDerivative_zero : Eq.{1} (NSEMaxwell.Classical.timeDerivative 0) 0
+'MaxwellEndpoint.timeDerivative_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.magneticData_zero : NSEMaxwell.Classical.MagneticData 0
+'MaxwellEndpoint.magneticData_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.zero_solution : ∀ (ν c : ℝ) (m : NSEMaxwell.Classical.Vec),
+  NSEMaxwell.Classical.MaxwellSolution ν c m 0 0 0 0 0
+'MaxwellEndpoint.zero_solution' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+MaxwellEndpoint.zero_datum_global_instance : ∀ (ν c : ℝ) (m : NSEMaxwell.Classical.Vec),
+  NSEMaxwell.Classical.MagneticData 0 ∧ ∃ B E ρ J, NSEMaxwell.Classical.MaxwellSolution ν c m 0 B E ρ J
+'MaxwellEndpoint.zero_datum_global_instance' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+SingularClosure.torusDatumComponent_fourierCoeff : ∀ (a : SingularClosure.Field) (i : Fin 3)
+  (k : SingularClosure.Frequency),
+  Eq.{1} (UnitAddTorus.mFourierCoeff.{0, 0} (SingularClosure.torusDatumComponent a i) k)
+    (SingularClosure.datumFourierCoeff a k i)
+'SingularClosure.torusDatumComponent_fourierCoeff' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+SingularClosure.datumFourierCoeff_coordinateDerivative : ∀ (j : Fin 3) (a : SingularClosure.Field),
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a →
+    SingularClosure.SpatialPeriodic.{0} a →
+      Eq.{1} (SingularClosure.datumFourierCoeff (SingularClosure.coordinateDerivative a j))
+        (SingularClosure.spectralMultiplier (SingularClosure.derivativeSymbol j) (SingularClosure.datumFourierCoeff a))
+'SingularClosure.datumFourierCoeff_coordinateDerivative' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+SingularClosure.FOURIER_POLYNOMIAL_DECAY : ∀ (m : ℕ) (a : SingularClosure.Field),
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a →
+    SingularClosure.SpatialPeriodic.{0} a →
+      ∀ (k : SingularClosure.Frequency) (i : Fin 3),
+        LE.le.{0} (Norm.norm.{0} (SingularClosure.datumFourierCoeff a k i))
+          (HDiv.hDiv.{0, 0, 0} (SingularClosure.fourierDecayConstant m a)
+            (HAdd.hAdd.{0, 0, 0} 1
+              (∑ j, HPow.hPow.{0, 0, 0} (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 Real.pi) (abs.{0} ↑(k j))) m)))
+'SingularClosure.FOURIER_POLYNOMIAL_DECAY' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@SingularClosure.scalarFourierSeries_contDiff : ∀ {b : SingularClosure.Frequency → ℂ},
+  SingularClosure.RapidScalarFourier b → ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) (SingularClosure.scalarFourierSeries b)
+'SingularClosure.scalarFourierSeries_contDiff' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@SingularClosure.scalarFourierSeries_coefficient : ∀ {b : SingularClosure.Frequency → ℂ},
+  (Summable.{0, 0} fun k => Norm.norm.{0} (b k)) →
+    ∀ (k : SingularClosure.Frequency),
+      Eq.{1}
+        (∫ (x : SingularClosure.Vec) in SingularClosure.unitCube,
+          HMul.hMul.{0, 0, 0} (Star.star.{0} (SingularClosure.fourierCharacter k x))
+            (SingularClosure.scalarFourierSeries b x))
+        (b k)
+'SingularClosure.scalarFourierSeries_coefficient' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+SingularClosure.datumFourierCoeff_injective_continuous_periodic : ∀ (a b : SingularClosure.Field),
+  Continuous.{0, 0} a →
+    Continuous.{0, 0} b →
+      SingularClosure.SpatialPeriodic.{0} a →
+        SingularClosure.SpatialPeriodic.{0} b →
+          Eq.{1} (SingularClosure.datumFourierCoeff a) (SingularClosure.datumFourierCoeff b) → Eq.{1} a b
+'SingularClosure.datumFourierCoeff_injective_continuous_periodic' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+SingularClosure.infiniteTransportPressure_recovery : ∀ (b : SingularClosure.FourierCoeff),
+  (∀ (i : Fin 3), SingularClosure.RapidScalarFourier fun k => b k i) →
+    ∀ (x : SingularClosure.Vec),
+      Eq.{1}
+        (HAdd.hAdd.{0, 0, 0} (SingularClosure.smoothFourierSynthesis b x)
+          (SingularClosure.gradient (SingularClosure.infiniteTransportPressure b) x))
+        (SingularClosure.smoothFourierSynthesis (fun k => SingularClosure.coefficientLeray k (b k)) x)
+'SingularClosure.infiniteTransportPressure_recovery' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+SingularClosure.datumFourierCoeff_smoothFourierSynthesis : ∀ (c : SingularClosure.FourierCoeff),
+  (∀ (i : Fin 3), SingularClosure.RapidScalarFourier fun k => c k i) →
+    SingularClosure.SpectralReality c →
+      Eq.{1} (SingularClosure.datumFourierCoeff (SingularClosure.smoothFourierSynthesis c)) c
+'SingularClosure.datumFourierCoeff_smoothFourierSynthesis' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+SingularClosure.smoothFourierSynthesis_coordinateDerivative : ∀ (c : SingularClosure.FourierCoeff),
+  (∀ (i : Fin 3), SingularClosure.RapidScalarFourier fun k => c k i) →
+    ∀ (j : Fin 3),
+      Eq.{1} (SingularClosure.coordinateDerivative (SingularClosure.smoothFourierSynthesis c) j)
+        (SingularClosure.smoothFourierSynthesis
+          (SingularClosure.spectralMultiplier (SingularClosure.derivativeSymbol j) c))
+'SingularClosure.smoothFourierSynthesis_coordinateDerivative' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+SingularClosure.summable_torusSobolevWeight_inv_four : Summable.{0, 0} fun k =>
+  HPow.hPow.{0, 0, 0} (Inv.inv.{0} (SingularClosure.torusSobolevWeight k)) 4
+'SingularClosure.summable_torusSobolevWeight_inv_four' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

@@ -1,0 +1,818 @@
+{
+  "schema_version": 1,
+  "status": "PASS_STANDARD_ONLY",
+  "source_commit": "f2030b012904c84d088ec2a6af407b4f81a314b5",
+  "github_run_id": "43379686374",
+  "github_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43379686374",
+  "artifact_id": 14016092956,
+  "archive_sha256": "c9361450df283e6625c1a2292168e96a3648a2b254c0d475ae2928a9364f8daf",
+  "external_compiler": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+  "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "native_endpoint_count": 25,
+  "additional_proof_count": 18,
+  "theorem_axiom_audit_count": 43,
+  "verified_source_input_count": 342,
+  "source_manifest_sha256": "6ba54a9e4e6ad68745bb6fe41bcceb5048ac23962a91190b73ce0a2a09424350",
+  "local_lean_executions": 0,
+  "scope": "CONDITIONAL_FORMAL_CLOSURE: exact equation equivalence under stated smoothness, supplied MaterialPathOn and flow ODE; diffusion derived.",
+  "unresolved": [
+    "Native construction of MaterialPathOn and the flow ODE from a smooth periodic solenoidal Eulerian field"
+  ],
+  "import_closure": [
+    {
+      "module": "MaxwellEndpoint.Geometry",
+      "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+      "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541"
+    },
+    {
+      "module": "MaxwellEndpoint.Constitutive",
+      "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+      "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616"
+    },
+    {
+      "module": "MaxwellEndpoint.System",
+      "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+      "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024"
+    },
+    {
+      "module": "MaxwellEndpoint.Native",
+      "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+      "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d"
+    },
+    {
+      "module": "MaxwellEndpoint",
+      "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+      "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68"
+    },
+    {
+      "module": "NSEMaxwell.Classical",
+      "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+      "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109"
+    },
+    {
+      "module": "NSEMaxwell.Kinematics",
+      "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+      "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505"
+    },
+    {
+      "module": "NSEMaxwell.CurlCurl",
+      "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+      "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa"
+    },
+    {
+      "module": "ClassicalMechanics.Stress",
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+      "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50"
+    },
+    {
+      "module": "ClassicalMechanics.Definitions",
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+      "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833"
+    },
+    {
+      "module": "ClassicalMechanics.FiniteSlab",
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+      "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535"
+    },
+    {
+      "module": "ClassicalMechanics.TimeCalculus",
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+      "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc"
+    },
+    {
+      "module": "ClassicalMechanics.Material",
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/Material.lean",
+      "sha256": "301e57557d36f73dc3005661c871257a3af3a71b4c138bfd42c41302490d2700"
+    },
+    {
+      "module": "NSEMaxwell.Lamb",
+      "path": "Fefferman_adapter/NSEMaxwell/Lamb.lean",
+      "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8"
+    },
+    {
+      "module": "ClassicalMechanics.MaterialGradient",
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialGradient.lean",
+      "sha256": "ce3344c164eb1135355dd7ccaeeee0be012b41fd2f6eaf9ac7c2ca4ae2e2bab1"
+    },
+    {
+      "module": "ClassicalMechanics.Piola",
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean",
+      "sha256": "7074a13438808ca77c75d104fc6b21bb2a4bd33003a49050209e2cb474278cfa"
+    },
+    {
+      "module": "ClassicalMechanics.MaterialBridge",
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialBridge.lean",
+      "sha256": "abba98bc75d21f5dd5d2f2c5c453d1ee31a03ebd3fdc30d767b9f5c20fd84c63"
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.NativeEndpoints",
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean",
+      "sha256": "9b12945b7fadbd6bc4d768250501f78e5c122bed4df84cee656eb869779b1674"
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.PiolaTransport",
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/PiolaTransport.lean",
+      "sha256": "a46f3814fd41201a7c1c4991b8130cac74607336bb1b250de07a09cab31a36e0"
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.Equation",
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/Equation.lean",
+      "sha256": "feef541ea2e1cba32eb3900786bb758f739580fea21f38ae7b69c8583e6b8ec5"
+    },
+    {
+      "module": "ClassicalMechanicsAssembly",
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly.lean",
+      "sha256": "2c496c01341ab57ec98fc78e13bb617385a5aff4e428aabd12301e516560a8c8"
+    }
+  ],
+  "theorems": [
+    {
+      "name": "NSEMaxwell.CurlCurl.coordinateDerivative_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.CurlCurl.coordinate_component_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.CurlCurl.fderiv_component_apply",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.CurlCurl.secondCoordinate_symm",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.CurlCurl.second_coordinate_component",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.CurlCurl.laplacian_coordinate",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanics.cofactorGradient_eq_adjugate_transpose",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanics.piola_identity",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanics.tensorDivergence_adjugate_gradient",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanics.cofactorGradient_eq_inverse_transpose_of_det_one",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanics.tensorDivergence_inverse_transpose_of_det_one",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanics.scalar_fderiv_coordinate_expansion",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanics.gradient_comp_coordinate",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanics.finite_velocity_slice_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanics.materialPullbackIdentities_of_flow",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanics.material_pressure_gradient_pullback_on",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanics.coordinateMinor_derivative",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanics.uniqueDiffOn_finiteSpacetime",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanics.finite_spatial_restriction_fderiv",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanics.finite_time_hasDerivWithinAt",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanics.finite_time_restriction_fderiv",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanics.finite_flow_acceleration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanics.material_inverse_transpose_divergence_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanics.material_path_surjective",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanics.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW_AND_DIFFUSION",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.coordinateMinor_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.cofactorGradient_component_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.vector_fderiv_coordinate_expansion",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.gradient_matrix_comp",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.cofactor_contraction",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.fderiv_fin3_sum",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.scalar_pullback_product_derivative",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.tensor_product_pullback_component_derivative",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.piola_finite_contraction",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.piola_product_transform",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.tensorDivergence_gradientMatrix",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.material_viscous_tensor_pullback",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.spatial_diffusion_pullback",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_DIFFUSION_REALIZATION",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.material_pullback_of_flow",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.eulerian_equation_implies_material_of_flow",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.material_equation_implies_eulerian_of_flow",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    }
+  ]
+}

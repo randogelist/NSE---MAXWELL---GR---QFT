@@ -1,0 +1,316 @@
+{
+  "schema_version": 1,
+  "audit_policy": "FOUNDATIONAL_ONLY",
+  "exact_L1_promotion": "REQUIRES_COMPLETE_NATIVE_ROOT_AND_SCOPE_REVIEW",
+  "modules": [
+    {
+      "module": "ClassicalMechanicsAssembly.FlowBounds",
+      "targets": [
+        "ClassicalMechanicsAssembly.flow_integer_period",
+        "ClassicalMechanicsAssembly.flow_periodic_cell_representative",
+        "ClassicalMechanicsAssembly.flow_periodic_uniform_bound",
+        "ClassicalMechanicsAssembly.flow_spatial_fderiv_continuousOn",
+        "ClassicalMechanicsAssembly.periodic_velocity_uniform_bounds",
+        "ClassicalMechanicsAssembly.flow_velocity_time_continuousOn"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowBanach",
+      "targets": [
+        "ClassicalMechanicsAssembly.summable_operator_powers_of_factorial_bound",
+        "ClassicalMechanicsAssembly.operator_series_inverse_identities_of_factorial_bound",
+        "ClassicalMechanicsAssembly.one_sub_operator_isInvertible_of_factorial_bound",
+        "ClassicalMechanicsAssembly.operator_inverse_eq_tsum_of_factorial_bound",
+        "ClassicalMechanicsAssembly.contDiff_of_unique_implicit_branch",
+        "ClassicalMechanicsAssembly.contDiff_of_unique_volterra_residual",
+        "ClassicalMechanicsAssembly.flowPathSuperposition",
+        "ClassicalMechanicsAssembly.flowPathSuperposition_apply",
+        "ClassicalMechanicsAssembly.flowPathSuperposition_lipschitz",
+        "ClassicalMechanicsAssembly.flow_quadratic_remainder_of_lipschitz_derivative",
+        "ClassicalMechanicsAssembly.flowPathMultiplicationLinear",
+        "ClassicalMechanicsAssembly.flowPathMultiplicationLinear_bound",
+        "ClassicalMechanicsAssembly.flowPathMultiplication",
+        "ClassicalMechanicsAssembly.flowPathMultiplication_apply",
+        "ClassicalMechanicsAssembly.flowPathMultiplication_norm_le",
+        "ClassicalMechanicsAssembly.flowPathMultiplicationLiftLinear",
+        "ClassicalMechanicsAssembly.flowPathMultiplicationLift",
+        "ClassicalMechanicsAssembly.flowPathMultiplicationLift_apply",
+        "ClassicalMechanicsAssembly.flowPathPostcomposition",
+        "ClassicalMechanicsAssembly.flowPathPostcomposition_apply",
+        "ClassicalMechanicsAssembly.flowPathSuperpositionTo",
+        "ClassicalMechanicsAssembly.flowPathSuperpositionTo_apply",
+        "ClassicalMechanicsAssembly.flowPathSuperpositionDerivative",
+        "ClassicalMechanicsAssembly.flowPathSuperpositionDerivative_apply",
+        "ClassicalMechanicsAssembly.flowPathSuperposition_remainder_bound",
+        "ClassicalMechanicsAssembly.flowPathSuperposition_hasFDerivAt",
+        "ClassicalMechanicsAssembly.flowPathSuperposition_hasFDerivAt_of_lipschitz_derivative",
+        "ClassicalMechanicsAssembly.flowPathSuperposition_contDiff_succ",
+        "ClassicalMechanicsAssembly.flowPathSuperposition_contDiff_of_taylor_tower",
+        "ClassicalMechanicsAssembly.flowPathSuperposition_contDiff_of_spatial_tower"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowSmooth",
+      "targets": [
+        "ClassicalMechanicsAssembly.flowPath_hasFDerivAt_evaluation",
+        "ClassicalMechanicsAssembly.flowPath_contDiff_evaluation",
+        "ClassicalMechanicsAssembly.flowPath_continuous_evaluation",
+        "ClassicalMechanicsAssembly.flowPath_continuousOn_representative",
+        "ClassicalMechanicsAssembly.flowJointDerivative_apply",
+        "ClassicalMechanicsAssembly.flow_hasFDerivWithinAt_of_time_remainder",
+        "ClassicalMechanicsAssembly.flowJetDerivative_contDiffOn",
+        "ClassicalMechanicsAssembly.flowJet_tower_contDiffOn",
+        "ClassicalMechanicsAssembly.smoothVelocityOn_of_flowJet_tower"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowInverse",
+      "targets": [
+        "ClassicalMechanicsAssembly.hasFDerivWithinAt_inverse_of_contDiffOn",
+        "ClassicalMechanicsAssembly.contDiffOn_inverse_of_contDiffOn",
+        "ClassicalMechanicsAssembly.spatial_fderiv_isInvertible_of_det_one",
+        "ClassicalMechanicsAssembly.triangular_spacetime_isInvertible",
+        "ClassicalMechanicsAssembly.flowSpacetimeMap_fderivWithin_isInvertible",
+        "ClassicalMechanicsAssembly.inverse_flow_dist_le",
+        "ClassicalMechanicsAssembly.continuousOn_inverse_flow_of_estimate",
+        "ClassicalMechanicsAssembly.smoothVelocityOn_inverse_of_isInvertible",
+        "ClassicalMechanicsAssembly.smoothVelocityOn_inverse",
+        "ClassicalMechanicsAssembly.materialPathOn_of_smooth_inverse_data"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowJacobian",
+      "targets": [
+        "ClassicalMechanicsAssembly.det_hasDerivWithinAt_mul",
+        "ClassicalMechanicsAssembly.det_hasDerivWithinAt_zero_of_trace_zero",
+        "ClassicalMechanicsAssembly.determinant_eq_initial_of_matrix_ode_trace_zero",
+        "ClassicalMechanicsAssembly.determinant_one_of_matrix_ode",
+        "ClassicalMechanicsAssembly.trace_materialGradientMatrix",
+        "ClassicalMechanicsAssembly.materialGradientMatrix_id",
+        "ClassicalMechanicsAssembly.FLOW_JACOBIAN_ONE_OF_VARIATIONAL_ODE"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowTrajectories",
+      "targets": [
+        "ClassicalMechanicsAssembly.Flow.SlabODEData.isPicardLindelof",
+        "ClassicalMechanicsAssembly.Flow.exists_trajectory",
+        "ClassicalMechanicsAssembly.Flow.trajectory_initial",
+        "ClassicalMechanicsAssembly.Flow.trajectory_hasDerivWithinAt",
+        "ClassicalMechanicsAssembly.Flow.trajectory_continuousOn",
+        "ClassicalMechanicsAssembly.Flow.solution_unique",
+        "ClassicalMechanicsAssembly.Flow.trajectory_cocycle",
+        "ClassicalMechanicsAssembly.Flow.trajectory_translate",
+        "ClassicalMechanicsAssembly.Flow.flow_initial",
+        "ClassicalMechanicsAssembly.Flow.flow_hasDerivWithinAt",
+        "ClassicalMechanicsAssembly.Flow.inverseFlow_flow",
+        "ClassicalMechanicsAssembly.Flow.flow_inverseFlow",
+        "ClassicalMechanicsAssembly.Flow.flow_translate",
+        "ClassicalMechanicsAssembly.Flow.trajectory_contDiffOn",
+        "ClassicalMechanicsAssembly.Flow.trajectory_dist_le",
+        "ClassicalMechanicsAssembly.Flow.trajectory_lipschitz",
+        "ClassicalMechanicsAssembly.Flow.trajectory_time_lipschitz",
+        "ClassicalMechanicsAssembly.Flow.trajectory_joint_continuousOn",
+        "ClassicalMechanicsAssembly.Flow.inverseFlow_lipschitz",
+        "ClassicalMechanicsAssembly.Flow.smooth_periodic_slabODEData",
+        "ClassicalMechanicsAssembly.Flow.flow_materialVelocity",
+        "ClassicalMechanicsAssembly.Flow.flow_lattice_equivariant",
+        "ClassicalMechanicsAssembly.Flow.exists_flow_inverse_lattice"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowJetTime",
+      "targets": [
+        "ClassicalMechanicsAssembly.flow_integral_difference",
+        "ClassicalMechanicsAssembly.flow_time_remainder_of_integral",
+        "ClassicalMechanicsAssembly.flow_hasFDerivWithinAt_of_integral",
+        "ClassicalMechanicsAssembly.flowJet_tower_contDiffOn_of_integrals",
+        "ClassicalMechanicsAssembly.smoothVelocityOn_of_flowJet_integrals"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowVariational",
+      "targets": [
+        "ClassicalMechanicsAssembly.closure_interior_finiteSpacetime",
+        "ClassicalMechanicsAssembly.finite_spacetime_second_derivative_symmetric",
+        "ClassicalMechanicsAssembly.finite_mixed_directional_hasDerivWithinAt",
+        "ClassicalMechanicsAssembly.deformationGradient_hasDerivWithinAt",
+        "ClassicalMechanicsAssembly.FLOW_VARIATIONAL_ODE",
+        "ClassicalMechanicsAssembly.FLOW_JACOBIAN_ONE"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowConstruction",
+      "targets": [
+        "ClassicalMechanicsAssembly.constructed_inverse_continuousOn",
+        "ClassicalMechanicsAssembly.constructed_materialPathOn",
+        "ClassicalMechanicsAssembly.JointFlowRegularity",
+        "ClassicalMechanicsAssembly.FLOW_REALIZATION_OF_JOINT_REGULARITY",
+        "ClassicalMechanicsAssembly.MATERIAL_EQUATION_OF_JOINT_REGULARITY"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowVolterra",
+      "targets": [
+        "ClassicalMechanicsAssembly.flowPathExtend_continuous",
+        "ClassicalMechanicsAssembly.flowPathExtend_of_mem",
+        "ClassicalMechanicsAssembly.flowPathPrimitiveMap_apply",
+        "ClassicalMechanicsAssembly.flowPathPrimitiveLinear_bound",
+        "ClassicalMechanicsAssembly.flowPathPrimitive_apply",
+        "ClassicalMechanicsAssembly.flowPathPrimitive_norm_le",
+        "ClassicalMechanicsAssembly.flowVolterra_apply",
+        "ClassicalMechanicsAssembly.flowVolterra_pow_apply_bound",
+        "ClassicalMechanicsAssembly.flowVolterra_pow_norm_bound",
+        "ClassicalMechanicsAssembly.one_sub_flowVolterra_isInvertible",
+        "ClassicalMechanicsAssembly.one_sub_flowVolterra_isInvertible_of_continuous_coefficient"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowSpatialJets",
+      "targets": [
+        "ClassicalMechanicsAssembly.flow_family_slice_contDiff",
+        "ClassicalMechanicsAssembly.flow_family_fderiv_contDiffOn",
+        "ClassicalMechanicsAssembly.flow_family_uniform_lipschitz",
+        "ClassicalMechanicsAssembly.flowSpatialJet",
+        "ClassicalMechanicsAssembly.flowSpatialJet_contDiffOn",
+        "ClassicalMechanicsAssembly.flowSpatialJet_periodic",
+        "ClassicalMechanicsAssembly.flowSpatialJet_uniform_bound",
+        "ClassicalMechanicsAssembly.flowSpatialJet_uniform_lipschitz",
+        "ClassicalMechanicsAssembly.flowSpatialJetMap",
+        "ClassicalMechanicsAssembly.flowSpatialCurry",
+        "ClassicalMechanicsAssembly.flowSpatialJet_superposition_contDiff",
+        "ClassicalMechanicsAssembly.flowVelocityMap",
+        "ClassicalMechanicsAssembly.periodic_velocity_superposition_contDiff"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowPathJets",
+      "targets": [
+        "ClassicalMechanicsAssembly.flow_multilinearPath_continuous_evaluation",
+        "ClassicalMechanicsAssembly.evaluatedFlowJet",
+        "ClassicalMechanicsAssembly.evaluatedFlowJet_continuous",
+        "ClassicalMechanicsAssembly.evaluatedFlowJet_hasFDerivAt",
+        "ClassicalMechanicsAssembly.evaluatedFlowJet_zero"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowImplicit",
+      "targets": [
+        "ClassicalMechanicsAssembly.flowIntegralResidual",
+        "ClassicalMechanicsAssembly.flowIntegralResidual_eq_zero_iff",
+        "ClassicalMechanicsAssembly.flowIntegralResidual_contDiff",
+        "ClassicalMechanicsAssembly.flowIntegralResidual_hasFDerivAt",
+        "ClassicalMechanicsAssembly.flowIntegralResidual_partial",
+        "ClassicalMechanicsAssembly.flowPath_contDiff_of_integral_equation",
+        "ClassicalMechanicsAssembly.flowVelocityDerivativeMap",
+        "ClassicalMechanicsAssembly.periodic_velocity_superposition_hasFDerivAt",
+        "ClassicalMechanicsAssembly.periodic_velocity_path_contDiff_of_integral_equation",
+        "ClassicalMechanicsAssembly.selectedFlowPath_contDiff",
+        "ClassicalMechanicsAssembly.periodic_velocity_exists_smooth_flow_path"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowPathSolutions",
+      "targets": [
+        "ClassicalMechanicsAssembly.Flow.SlabODEData.continuousOn_uncurry",
+        "ClassicalMechanicsAssembly.flowSlabVelocity",
+        "ClassicalMechanicsAssembly.flowSlabVelocity_apply",
+        "ClassicalMechanicsAssembly.trajectory_eq_picard",
+        "ClassicalMechanicsAssembly.selectedFlowPath",
+        "ClassicalMechanicsAssembly.selectedFlowPath_apply",
+        "ClassicalMechanicsAssembly.pathPrimitive_superposition_eq_integral",
+        "ClassicalMechanicsAssembly.selectedFlowPath_integral_equation",
+        "ClassicalMechanicsAssembly.selectedFlowPath_integral_unique"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowJointJets",
+      "targets": [
+        "ClassicalMechanicsAssembly.flow_contDiffOn_multilinear_apply",
+        "ClassicalMechanicsAssembly.flowLabelJet",
+        "ClassicalMechanicsAssembly.flowForcingJet",
+        "ClassicalMechanicsAssembly.flow_representative_slice_contDiff",
+        "ClassicalMechanicsAssembly.flowLabelJet_eq_evaluatedFlowJet",
+        "ClassicalMechanicsAssembly.flowLabelJet_continuousOn",
+        "ClassicalMechanicsAssembly.flowLabelJet_hasFDerivAt",
+        "ClassicalMechanicsAssembly.flowForcingJet_eq_partition_sum",
+        "ClassicalMechanicsAssembly.flowForcingJet_contDiffOn",
+        "ClassicalMechanicsAssembly.smoothVelocityOn_of_path_jet_integrals"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowJoint",
+      "targets": [
+        "ClassicalMechanicsAssembly.constructed_flow_smooth"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowJetIntegral",
+      "targets": [
+        "ClassicalMechanicsAssembly.flow_primitive_evaluated_jet",
+        "ClassicalMechanicsAssembly.evaluatedFlowJet_integral_of_path_equation",
+        "ClassicalMechanicsAssembly.flow_labelJet_eq_evaluated",
+        "ClassicalMechanicsAssembly.flow_labelJet_integral_of_path_equation",
+        "ClassicalMechanicsAssembly.selectedFlow_labelJet_integral"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowRealization",
+      "targets": [
+        "ClassicalMechanicsAssembly.jointFlowRegularity_of_smooth_periodic",
+        "ClassicalMechanicsAssembly.L1_native",
+        "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowGlobalSlab",
+      "targets": [
+        "ClassicalMechanicsAssembly.finiteSpacetime_subset_forwardSpacetime",
+        "ClassicalMechanicsAssembly.global_smoothVelocityOn",
+        "ClassicalMechanicsAssembly.global_smoothPressureOn",
+        "ClassicalMechanicsAssembly.finiteTimeDerivative_eq_timeDerivative",
+        "ClassicalMechanicsAssembly.finiteMaterialAcceleration_eq_materialAcceleration",
+        "ClassicalMechanicsAssembly.global_equation_to_finite_equation",
+        "ClassicalMechanicsAssembly.finite_equations_to_global_equation",
+        "ClassicalMechanicsAssembly.global_equation_iff_finite_equations"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowMaterialCoherence",
+      "targets": [
+        "ClassicalMechanicsAssembly.material_path_hasDerivWithinAt",
+        "ClassicalMechanicsAssembly.material_flows_eq_on_subslab",
+        "ClassicalMechanicsAssembly.material_inverses_eq_on_subslab",
+        "ClassicalMechanicsAssembly.material_paths_coherent_on_overlap"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowMaterialFields",
+      "targets": [
+        "ClassicalMechanicsAssembly.material_pressure_pullback_smooth",
+        "ClassicalMechanicsAssembly.material_pressure_pullback_periodic",
+        "ClassicalMechanicsAssembly.material_initial_velocity_of_flow",
+        "ClassicalMechanicsAssembly.material_velocity_decode_of_flow",
+        "ClassicalMechanicsAssembly.material_pressure_decode_of_pullback",
+        "ClassicalMechanicsAssembly.material_velocity_smooth_of_flow",
+        "ClassicalMechanicsAssembly.material_velocity_periodic_of_flow"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowNSEBCM",
+      "targets": [
+        "ClassicalMechanicsAssembly.CMSolution",
+        "ClassicalMechanicsAssembly.CMB",
+        "ClassicalMechanicsAssembly.nseSolution_to_cmSolution",
+        "ClassicalMechanicsAssembly.cmSolution_to_nseSolution",
+        "ClassicalMechanicsAssembly.nseSolution_iff_cmSolution",
+        "ClassicalMechanicsAssembly.nse_cm_solution_sets_eq",
+        "ClassicalMechanicsAssembly.nseB_implies_cmB",
+        "ClassicalMechanicsAssembly.cmB_implies_nseB",
+        "ClassicalMechanicsAssembly.NSEB_IFF_CM",
+        "ClassicalMechanicsAssembly.NSEB_IFF_CM_POSITIVE",
+        "ClassicalMechanicsAssembly.newtonianB_iff_cmB"
+      ]
+    }
+  ]
+}

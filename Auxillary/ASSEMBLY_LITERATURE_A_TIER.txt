@@ -1,0 +1,91 @@
+CURRENT_NATIVE_L1_STATUS = A_TIER; EXACT_SOURCE_MATCHED_STANDARD_ONLY_ROOTS
+CURRENT_NATIVE_SOURCE = 34b1fe1100f726d51955a7bf9ac5059d8069fb32
+CURRENT_NATIVE_RECORD = Auxillary/assembly/L1_FLOW_REALIZATION_A_TIER.txt
+CURRENT_COMPATIBILITY_SOURCE_STATUS = A_TIER; 5/5 PASS_STANDARD_ONLY; EXACT_ORIGINAL_TYPES_PRESERVED
+CURRENT_CLOSURE = UNCONDITIONAL_CLOSURE_WITHIN_STATED_FINITE_SLAB_SCOPE
+CURRENT_EXTERNAL_RUN = 43401581626
+CURRENT_MATHLIB_USAGE_INDEX = Auxillary/assembly/L1_NATIVE_MATHLIB_ENDPOINTS.txt
+CURRENT_CUSTOM_AXIOM_DECLARATIONS = NONE
+HISTORICAL_RECORD_FOLLOWS; ITS FORMAL-STATUS FIELDS ARE NOT CURRENT CLAIMS.
+
+CLASSICAL_MECHANICS_LITERATURE_AXIOMS
+
+STATUS = A_TIER_UNDER_L1_ONLY
+ROOT_CLOSURE = CONDITIONAL_FORMAL_CLOSURE
+EXTERNAL_COMPILATION = PASS
+THEOREM_LEVEL_AXIOM_AUDIT = PASS_EXACT_AUTHORIZED_AXIOMS
+STANDARD_ONLY_ASSEMBLY_AUDIT = 43 / 43 PASS_STANDARD_ONLY
+LITERATURE_DECLARATIONS = 1 AXIOM + 4 THEOREMS; 5 / 5 PASS
+L2_AXIOM_AUDIT = PASS_STANDARD_ONLY
+L2_NATIVE_AXIOM_AUDIT = PASS_STANDARD_ONLY
+LOCAL_LEAN_EXECUTIONS = 0
+COMPILER = external cached native Linux Lean 4.34.0-rc1
+MATHLIB_PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+
+USER_AUTHORIZATION = 2026-11-13: remove L2 from axioms; retain L1 only.
+INPUT_MODULE = ASSEMBLY/ClassicalMechanicsAssembly/LiteratureInputs.lean
+CLOSURE_MODULE = ASSEMBLY/ClassicalMechanicsAssembly/LiteratureClosure.lean
+NAMESPACE = ClassicalMechanicsAssembly.Literature
+
+L1 = O_FLOW = FlowRealization:
+  T>0; SmoothVelocityOn T u;
+  forall t in [0,T], SpatialPeriodic (u t);
+  forall t in [0,T], forall x, divergence (u t) x = 0
+  -> exists eta rho,
+       MaterialPathOn T eta rho
+       and forall t in [0,T], forall a,
+         materialVelocity T eta t a = u t (eta t a).
+L1_STATUS = AXIOM; NATIVE_DERIVATION_OPEN.
+
+L2 = O_DIFF = DiffusionRealization:
+  SmoothVelocityOn T u; MaterialPathOn T eta rho;
+  forall t in [0,T], forall a,
+    materialVelocity T eta t a = u t (eta t a)
+  -> forall t in [0,T], forall a,
+       materialDiffusion T eta t a = laplacian (u t) (eta t a).
+L2_STATUS = NATIVE_THEOREM; REMOVED_FROM_AUTHORIZED_AXIOMS.
+L2_NATIVE_STATUS = independently derived by
+  ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_DIFFUSION_REALIZATION.
+
+EXACT_ROOT_SCOPE:
+  For each smooth periodic solenoidal supplied u on [0,T], T>0,
+  and each smooth p, there exist eta,rho with MaterialPathOn and the flow ODE,
+  such that EulerianEquation(nu,T,u,p)
+    iff MaterialEquationOn(nu,T,eta,fun t a => p t (eta t a)).
+  EulerianEquation means the literal equation
+    finiteMaterialAcceleration T u t x + gradient (p t) x
+      = nu smul laplacian (u t) x
+  for every t in [0,T] and x in EuclideanSpace R (Fin 3).
+
+EXACT_NONFOUNDATIONAL_DEPENDENCIES:
+  L1                                      : {L1}
+  L2                                      : {}
+  L2_native                               : {}
+  CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2  : {L1}
+  CLASSICAL_MECHANICS_MATERIAL_FROM_L1     : {L1}
+Each name above is in namespace ClassicalMechanicsAssembly.Literature.
+Foundational whitelist = {propext, Classical.choice, Quot.sound}.
+The original 43-target standard-only audit retains its original whitelist.
+
+L1 is an analytic assumption. L2 and L2_native have native proof terms.
+The historical FROM_L1_L2 theorem name is retained for compatibility; its
+analytic axiom set is now {L1}.
+No arbitrary-data NSE existence or full solution-set equivalence is claimed.
+The updated equation roots passed matching external validation.
+Their status is CONDITIONAL_FORMAL_CLOSURE under L1.
+UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED.
+
+EXTERNAL CERTIFICATE
+AUDITED_SOURCE_COMMIT = f2030b012904c84d088ec2a6af407b4f81a314b5
+EXTERNAL_RUN = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43379686374
+ARTIFACT_ID = 14016092956
+ARTIFACT_SHA256 = c9361450df283e6625c1a2292168e96a3648a2b254c0d475ae2928a9364f8daf
+SOURCE_MATCHES = 346 / 346 before documentation/evidence retention
+RETAINED_EVIDENCE = Auxillary/evidence/l1-only-linux-43379686374
+SOURCE_CERTIFICATE = Auxillary/evidence/l1-only-linux-43379686374/l1-only-source-match-certificate.json
+SIGNATURES_AND_AXIOMS = Auxillary/evidence/l1-only-linux-43379686374/literature/audit.log
+
+L2_REMOVED_FROM_AXIOMS = TRUE
+ALL_CURRENT_EQUATION_ROOT_ANALYTIC_AXIOMS = {ClassicalMechanicsAssembly.Literature.L1}
+All 22 literature import-closure source files remain byte-identical to the
+externally audited source. Historical L1/L2-axiom evidence is retained unchanged.

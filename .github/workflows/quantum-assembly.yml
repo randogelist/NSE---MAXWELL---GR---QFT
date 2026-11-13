@@ -1,14 +1,7 @@
 name: Cached Quantum assembly and exact theorem audit
 
+# Full CI covers assembly; diagnostics are an optional, non-promoting tool.
 on:
-  push:
-    paths-ignore:
-      - 'Quantum_adapter/QuantumAdapter/Obligations/**'
-      - 'Quantum_adapter/QuantumAdapter/Obligations.lean'
-      - 'Auxillary/quantum/obligations/**'
-      - '.github/workflows/quantum-obligations.yml'
-      - '.github/workflows/quantum-obligations-diagnostics.yml'
-    branches: [codex/quantum-adapter-from-maxwell]
   workflow_dispatch:
 
 permissions:

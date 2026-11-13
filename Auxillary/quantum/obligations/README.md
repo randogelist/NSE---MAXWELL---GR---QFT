@@ -2,7 +2,8 @@
 
 Verified source: `3c2a8f5435b4e95e779222b37637f12a57d1eea9`. External run [43469332973](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43469332973) passed all 77 modules, 581 theorems, and 679 declaration audits. P1--P7 and `QuantumAdapter.Obligations.NSE_B_IFF_CANONICAL_QUANTUM` use only `propext`, `Classical.choice`, and `Quot.sound`. The root equivalence has no remaining adapter premise. P5 uses the universal constant 512; the stronger constant 16 is not certified here. The full original CI artifact and exact endpoint logs are retained under `evidence/3c2a8f5435b4e95e779222b37637f12a57d1eea9/`.
 
-Compiler: `leanprover/lean4:v4.34.0-rc1`, external native Linux CI or native Windows replay.
+Certified compiler: `leanprover/lean4:v4.34.0-rc1`, external native Linux CI.
+Native Windows replay remains source-prepared until a matching Windows run passes.
 Mathlib: `de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11`.
 
 `module-targets.json` and `audit-targets.txt` enumerate the exact registered
@@ -27,7 +28,8 @@ compiler, dependency revisions, theorem names, and permitted standard axioms.
 Audit success does not identify a conditional helper theorem with P1--P7.
 An obligation is closed only after review of its exact native signature and
 all displayed premises, with matching external compilation and axiom evidence.
-The obligation ledger remains pending until that review is recorded.
+The certified P1--P7 ledger is closed at the proof commit above. Subsequent
+source changes require that review and matching evidence for their exact commit.
 
 External user replay from an existing checkout:
 
@@ -41,15 +43,17 @@ compiler on PATH. `run.cmd` invokes `windows.py`: existing dependencies and
 project objects are reused, missing official Windows Mathlib cache objects are
 fetched, and `run.py` performs the same exact theorem/axiom checks.
 
-The repository's literal `B <-> ...` paths are invalid on Windows. Create a
-sparse checkout containing the obligation closure and its configuration:
+The repository's literal `B <-> ...` paths are invalid on Windows. Create an
+immutable sparse checkout of the certified proof source, independent of feature
+branch names or later changes to `main`:
 
 ```cmd
-git clone --no-checkout --branch codex/quantum-adapter-from-maxwell https://github.com/randogelist/NSE---MAXWELL---GR---QFT.git QuantumObligations
+git clone --no-checkout https://github.com/randogelist/NSE---MAXWELL---GR---QFT.git QuantumObligations
 cd QuantumObligations
+git fetch --depth 1 origin 3c2a8f5435b4e95e779222b37637f12a57d1eea9
 git sparse-checkout init --no-cone
 git sparse-checkout set "/lean-toolchain" "/lakefile.lean" "/lake-manifest.json" "/.gitattributes" "/.github/" "/Auxillary/" "/Quantum_adapter/" "/Fefferman_adapter/" "/Maxwell_Endpoint/"
-git checkout
+git checkout --detach 3c2a8f5435b4e95e779222b37637f12a57d1eea9
 Auxillary\quantum\obligations\run.cmd
 ```
 

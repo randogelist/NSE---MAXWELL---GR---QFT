@@ -1,0 +1,64 @@
+@ClassicalMechanicsAssembly.constructed_inverse_continuousOn : ∀ {T : ℝ} {u : NSEMaxwell.Classical.Velocity}
+  {B K : NNReal} (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{0} T u B K),
+  LE.le.{0} 0 T →
+    ContinuousOn.{0, 0} (fun z => ClassicalMechanicsAssembly.Flow.inverseFlow.{0} h z.1 z.2)
+      (ClassicalMechanics.finiteSpacetime T)
+'ClassicalMechanicsAssembly.constructed_inverse_continuousOn' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.constructed_materialPathOn : ∀ {T : ℝ} (hT : LT.lt.{0} 0 T)
+  {u : NSEMaxwell.Classical.Velocity} {B K : NNReal} (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{0} T u B K),
+  ClassicalMechanics.SmoothVelocityOn T u →
+    (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+      (∀ (t : ℝ),
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+            ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.divergence (u t) x) 0) →
+        ClassicalMechanics.SmoothVelocityOn T (ClassicalMechanicsAssembly.Flow.flow.{0} h ⋯) →
+          ClassicalMechanics.MaterialPathOn T (ClassicalMechanicsAssembly.Flow.flow.{0} h ⋯)
+            (ClassicalMechanicsAssembly.Flow.inverseFlow.{0} h)
+'ClassicalMechanicsAssembly.constructed_materialPathOn' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+ClassicalMechanicsAssembly.JointFlowRegularity : ℝ → NSEMaxwell.Classical.Velocity → Prop
+'ClassicalMechanicsAssembly.JointFlowRegularity' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.FLOW_REALIZATION_OF_JOINT_REGULARITY : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+          (∀ (t : ℝ),
+              Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.divergence (u t) x) 0) →
+            ClassicalMechanicsAssembly.JointFlowRegularity T u →
+              ∃ η ρ,
+                ClassicalMechanics.MaterialPathOn T η ρ ∧
+                  ∀ (t : ℝ),
+                    Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                      ∀ (a : NSEMaxwell.Classical.Vec),
+                        Eq.{1} (ClassicalMechanics.materialVelocity T η t a) (u t (η t a))
+'ClassicalMechanicsAssembly.FLOW_REALIZATION_OF_JOINT_REGULARITY' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.MATERIAL_EQUATION_OF_JOINT_REGULARITY : ∀ {ν T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u : NSEMaxwell.Classical.Velocity} {p : NSEMaxwell.Classical.Pressure},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ClassicalMechanics.SmoothPressureOn T p →
+          (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+            (∀ (t : ℝ),
+                Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                  ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.divergence (u t) x) 0) →
+              ClassicalMechanicsAssembly.JointFlowRegularity T u →
+                ∃ η ρ,
+                  ClassicalMechanics.MaterialPathOn T η ρ ∧
+                    ((∀ (t : ℝ),
+                        Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                          ∀ (x : NSEMaxwell.Classical.Vec),
+                            Eq.{1}
+                              (HAdd.hAdd.{0, 0, 0} (ClassicalMechanics.finiteMaterialAcceleration T u t x)
+                                (NSEMaxwell.Classical.gradient (p t) x))
+                              (HSMul.hSMul.{0, 0, 0} ν (NSEMaxwell.Classical.laplacian (u t) x))) ↔
+                      ClassicalMechanics.MaterialEquationOn ν T η fun t a => p t (η t a))
+'ClassicalMechanicsAssembly.MATERIAL_EQUATION_OF_JOINT_REGULARITY' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

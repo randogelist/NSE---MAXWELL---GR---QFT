@@ -1,0 +1,225 @@
+@ClassicalMechanicsAssembly.Flow.SlabODEData.isPicardLindelof.{u_1} : ∀ {E : Type u_1}
+  [inst : NormedAddCommGroup.{u_1} E] [NormedSpace.{0, u_1} ℝ E] [CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E}
+  {B K : NNReal},
+  ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K →
+    ∀ (s : ↑(Set.Icc.{0} 0 T)) (a : E), IsPicardLindelof.{u_1} u s a (HMul.hMul.{0, 0, 0} B T.toNNReal) 0 B K
+'ClassicalMechanicsAssembly.Flow.SlabODEData.isPicardLindelof' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.exists_trajectory.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E} {B K : NNReal},
+  ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K →
+    ∀ (s : ↑(Set.Icc.{0} 0 T)) (a : E),
+      ∃ γ,
+        Eq.{u_1 + 1} (γ ↑s) a ∧
+          ∀ (t : ℝ),
+            Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → HasDerivWithinAt.{0, u_1} γ (u t (γ t)) (Set.Icc.{0} 0 T) t
+'ClassicalMechanicsAssembly.Flow.exists_trajectory' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.trajectory_initial.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E} {B K : NNReal}
+  (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K) (s : ↑(Set.Icc.{0} 0 T)) (a : E),
+  Eq.{u_1 + 1} (ClassicalMechanicsAssembly.Flow.trajectory.{u_1} h s a ↑s) a
+'ClassicalMechanicsAssembly.Flow.trajectory_initial' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.trajectory_hasDerivWithinAt.{u_1} : ∀ {E : Type u_1}
+  [inst : NormedAddCommGroup.{u_1} E] [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ}
+  {u : ℝ → E → E} {B K : NNReal} (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K)
+  (s : ↑(Set.Icc.{0} 0 T)) (a : E) (t : ℝ),
+  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+    HasDerivWithinAt.{0, u_1} (ClassicalMechanicsAssembly.Flow.trajectory.{u_1} h s a)
+      (u t (ClassicalMechanicsAssembly.Flow.trajectory.{u_1} h s a t)) (Set.Icc.{0} 0 T) t
+'ClassicalMechanicsAssembly.Flow.trajectory_hasDerivWithinAt' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.trajectory_continuousOn.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E} {B K : NNReal}
+  (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K) (s : ↑(Set.Icc.{0} 0 T)) (a : E),
+  ContinuousOn.{0, u_1} (ClassicalMechanicsAssembly.Flow.trajectory.{u_1} h s a) (Set.Icc.{0} 0 T)
+'ClassicalMechanicsAssembly.Flow.trajectory_continuousOn' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.solution_unique.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E} {B K : NNReal},
+  ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K →
+    ∀ (s : ↑(Set.Icc.{0} 0 T)) {f g : ℝ → E},
+      (∀ (t : ℝ),
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → HasDerivWithinAt.{0, u_1} f (u t (f t)) (Set.Icc.{0} 0 T) t) →
+        (∀ (t : ℝ),
+            Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → HasDerivWithinAt.{0, u_1} g (u t (g t)) (Set.Icc.{0} 0 T) t) →
+          Eq.{u_1 + 1} (f ↑s) (g ↑s) → Set.EqOn.{0, u_1} f g (Set.Icc.{0} 0 T)
+'ClassicalMechanicsAssembly.Flow.solution_unique' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.trajectory_cocycle.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E} {B K : NNReal}
+  (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K) (s q : ↑(Set.Icc.{0} 0 T)) (a : E) (t : ℝ),
+  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+    Eq.{u_1 + 1}
+      (ClassicalMechanicsAssembly.Flow.trajectory.{u_1} h q (ClassicalMechanicsAssembly.Flow.trajectory.{u_1} h s a ↑q)
+        t)
+      (ClassicalMechanicsAssembly.Flow.trajectory.{u_1} h s a t)
+'ClassicalMechanicsAssembly.Flow.trajectory_cocycle' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.trajectory_translate.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E} {B K : NNReal}
+  (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K) (v : E),
+  (∀ (t : ℝ),
+      Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+        ∀ (x : E), Eq.{u_1 + 1} (u t (HAdd.hAdd.{u_1, u_1, u_1} x v)) (u t x)) →
+    ∀ (s : ↑(Set.Icc.{0} 0 T)) (a : E) (t : ℝ),
+      Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+        Eq.{u_1 + 1} (ClassicalMechanicsAssembly.Flow.trajectory.{u_1} h s (HAdd.hAdd.{u_1, u_1, u_1} a v) t)
+          (HAdd.hAdd.{u_1, u_1, u_1} (ClassicalMechanicsAssembly.Flow.trajectory.{u_1} h s a t) v)
+'ClassicalMechanicsAssembly.Flow.trajectory_translate' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.flow_initial.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E} {B K : NNReal}
+  (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K) (hT : LE.le.{0} 0 T) (a : E),
+  Eq.{u_1 + 1} (ClassicalMechanicsAssembly.Flow.flow.{u_1} h hT 0 a) a
+'ClassicalMechanicsAssembly.Flow.flow_initial' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.flow_hasDerivWithinAt.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E} {B K : NNReal}
+  (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K) (hT : LE.le.{0} 0 T) (a : E) (t : ℝ),
+  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+    HasDerivWithinAt.{0, u_1} (fun r => ClassicalMechanicsAssembly.Flow.flow.{u_1} h hT r a)
+      (u t (ClassicalMechanicsAssembly.Flow.flow.{u_1} h hT t a)) (Set.Icc.{0} 0 T) t
+'ClassicalMechanicsAssembly.Flow.flow_hasDerivWithinAt' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.inverseFlow_flow.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E} {B K : NNReal}
+  (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K) (hT : LE.le.{0} 0 T) (t : ℝ),
+  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+    ∀ (a : E),
+      Eq.{u_1 + 1}
+        (ClassicalMechanicsAssembly.Flow.inverseFlow.{u_1} h t (ClassicalMechanicsAssembly.Flow.flow.{u_1} h hT t a)) a
+'ClassicalMechanicsAssembly.Flow.inverseFlow_flow' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.flow_inverseFlow.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E} {B K : NNReal}
+  (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K) (hT : LE.le.{0} 0 T) (t : ℝ),
+  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+    ∀ (x : E),
+      Eq.{u_1 + 1}
+        (ClassicalMechanicsAssembly.Flow.flow.{u_1} h hT t (ClassicalMechanicsAssembly.Flow.inverseFlow.{u_1} h t x)) x
+'ClassicalMechanicsAssembly.Flow.flow_inverseFlow' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.flow_translate.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E} {B K : NNReal}
+  (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K) (hT : LE.le.{0} 0 T) (v : E),
+  (∀ (t : ℝ),
+      Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+        ∀ (x : E), Eq.{u_1 + 1} (u t (HAdd.hAdd.{u_1, u_1, u_1} x v)) (u t x)) →
+    ∀ (t : ℝ),
+      Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+        ∀ (a : E),
+          Eq.{u_1 + 1} (ClassicalMechanicsAssembly.Flow.flow.{u_1} h hT t (HAdd.hAdd.{u_1, u_1, u_1} a v))
+            (HAdd.hAdd.{u_1, u_1, u_1} (ClassicalMechanicsAssembly.Flow.flow.{u_1} h hT t a) v)
+'ClassicalMechanicsAssembly.Flow.flow_translate' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.trajectory_contDiffOn.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E} {B K : NNReal} {n : ℕ∞}
+  (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K),
+  ContDiffOn.{0, u_1, u_1} ℝ (↑n) (Function.uncurry.{0, u_1, u_1 + 1} u)
+      (SProd.sprod.{0, u_1, u_1} (Set.Icc.{0} 0 T) Set.univ.{u_1}) →
+    ∀ (s : ↑(Set.Icc.{0} 0 T)) (a : E),
+      ContDiffOn.{0, 0, u_1} ℝ (↑n) (ClassicalMechanicsAssembly.Flow.trajectory.{u_1} h s a) (Set.Icc.{0} 0 T)
+'ClassicalMechanicsAssembly.Flow.trajectory_contDiffOn' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.trajectory_dist_le.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E} {B K : NNReal}
+  (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K) (s : ↑(Set.Icc.{0} 0 T)) (a b : E) (t : ℝ),
+  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+    LE.le.{0}
+      (dist.{u_1} (ClassicalMechanicsAssembly.Flow.trajectory.{u_1} h s a t)
+        (ClassicalMechanicsAssembly.Flow.trajectory.{u_1} h s b t))
+      (HMul.hMul.{0, 0, 0} (dist.{u_1} a b) (Real.exp (HMul.hMul.{0, 0, 0} (↑K) T)))
+'ClassicalMechanicsAssembly.Flow.trajectory_dist_le' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.trajectory_lipschitz.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E} {B K : NNReal}
+  (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K) (s : ↑(Set.Icc.{0} 0 T)) (t : ℝ),
+  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+    LipschitzWith.{u_1, u_1} (Real.exp (HMul.hMul.{0, 0, 0} (↑K) T)).toNNReal fun a =>
+      ClassicalMechanicsAssembly.Flow.trajectory.{u_1} h s a t
+'ClassicalMechanicsAssembly.Flow.trajectory_lipschitz' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.trajectory_time_lipschitz.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E} {B K : NNReal}
+  (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K) (s : ↑(Set.Icc.{0} 0 T)) (a : E),
+  LipschitzOnWith.{0, u_1} B (ClassicalMechanicsAssembly.Flow.trajectory.{u_1} h s a) (Set.Icc.{0} 0 T)
+'ClassicalMechanicsAssembly.Flow.trajectory_time_lipschitz' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.trajectory_joint_continuousOn.{u_1} : ∀ {E : Type u_1}
+  [inst : NormedAddCommGroup.{u_1} E] [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ}
+  {u : ℝ → E → E} {B K : NNReal} (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K)
+  (s : ↑(Set.Icc.{0} 0 T)),
+  ContinuousOn.{u_1, u_1} (fun z => ClassicalMechanicsAssembly.Flow.trajectory.{u_1} h s z.2 z.1)
+    (SProd.sprod.{0, u_1, u_1} (Set.Icc.{0} 0 T) Set.univ.{u_1})
+'ClassicalMechanicsAssembly.Flow.trajectory_joint_continuousOn' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.inverseFlow_lipschitz.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} {u : ℝ → E → E} {B K : NNReal}
+  (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{u_1} T u B K),
+  LE.le.{0} 0 T →
+    ∀ (t : ℝ),
+      Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+        LipschitzWith.{u_1, u_1} (Real.exp (HMul.hMul.{0, 0, 0} (↑K) T)).toNNReal
+          (ClassicalMechanicsAssembly.Flow.inverseFlow.{u_1} h t)
+'ClassicalMechanicsAssembly.Flow.inverseFlow_lipschitz' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.smooth_periodic_slabODEData : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+          ∃ B K, ClassicalMechanicsAssembly.Flow.SlabODEData.{0} T u B K
+'ClassicalMechanicsAssembly.Flow.smooth_periodic_slabODEData' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.flow_materialVelocity : ∀ {T : ℝ} {u : NSEMaxwell.Classical.Velocity} {B K : NNReal}
+  (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{0} T u B K) (hT : LT.lt.{0} 0 T) (t : ℝ),
+  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+    ∀ (a : NSEMaxwell.Classical.Vec),
+      Eq.{1} (ClassicalMechanics.materialVelocity T (ClassicalMechanicsAssembly.Flow.flow.{0} h ⋯) t a)
+        (u t (ClassicalMechanicsAssembly.Flow.flow.{0} h ⋯ t a))
+'ClassicalMechanicsAssembly.Flow.flow_materialVelocity' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.flow_lattice_equivariant : ∀ {T : ℝ} {u : NSEMaxwell.Classical.Velocity} {B K : NNReal}
+  (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{0} T u B K) (hT : LE.le.{0} 0 T),
+  (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+    ∀ (t : ℝ),
+      Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+        ∀ (a : NSEMaxwell.Classical.Vec) (i : Fin 3),
+          Eq.{1}
+            (ClassicalMechanicsAssembly.Flow.flow.{0} h hT t
+              (HAdd.hAdd.{0, 0, 0} a (NSEMaxwell.Classical.unitVector i)))
+            (HAdd.hAdd.{0, 0, 0} (ClassicalMechanicsAssembly.Flow.flow.{0} h hT t a)
+              (NSEMaxwell.Classical.unitVector i))
+'ClassicalMechanicsAssembly.Flow.flow_lattice_equivariant' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.Flow.exists_flow_inverse_lattice : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+          ∃ η ρ,
+            (Eq.{1} (η 0) fun a => a) ∧
+              (∀ (t : ℝ),
+                  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                    ∀ (a : NSEMaxwell.Classical.Vec), Eq.{1} (ρ t (η t a)) a) ∧
+                (∀ (t : ℝ),
+                    Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                      ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (η t (ρ t x)) x) ∧
+                  (∀ (t : ℝ),
+                      Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                        ∀ (a : NSEMaxwell.Classical.Vec) (i : Fin 3),
+                          Eq.{1} (η t (HAdd.hAdd.{0, 0, 0} a (NSEMaxwell.Classical.unitVector i)))
+                            (HAdd.hAdd.{0, 0, 0} (η t a) (NSEMaxwell.Classical.unitVector i))) ∧
+                    ∀ (t : ℝ),
+                      Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                        ∀ (a : NSEMaxwell.Classical.Vec),
+                          Eq.{1} (ClassicalMechanics.materialVelocity T η t a) (u t (η t a))
+'ClassicalMechanicsAssembly.Flow.exists_flow_inverse_lattice' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

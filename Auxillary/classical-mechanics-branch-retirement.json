@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "purpose": "Record completed classical-mechanics integration before retiring the remaining development branch.",
+  "branch": "codex/classical-mechanics-adapter",
+  "original_branch_head": "80edf82888080953e2a7c991769f0de69fe7166e",
+  "verified_main_commit": "75eb71496e930ecca39b4203f48490bf8a94898c",
+  "verified_main_tree": "dcfb5b41f21f0dfe14253fb92ab97deb2e811228",
+  "original_head_is_ancestor_of_main": true,
+  "original_branch_commits_not_in_main": 0,
+  "original_substantive_proof_files_preserved_byte_for_byte": 7,
+  "integration_pull_request": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/pull/2",
+  "preserved_roots": [
+    "ClassicalMechanics.CLASSICAL_MECHANICS_ADAPTER",
+    "ClassicalMechanicsAssembly.NSEB_IFF_CM"
+  ],
+  "external_validation": {
+    "source_commit": "40eb0b9c850578553737b42eb443d9b8203cb2eb",
+    "source_tree_matches_verified_main": true,
+    "baseline_run": 43452404593,
+    "assembly_run": 43452404482,
+    "standard_only_audit_records": 1171,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "retirement_change_scope": "METADATA_ONLY",
+  "lean_source_changes": 0,
+  "user_post_merge_action": "Delete the codex/classical-mechanics-adapter branch reference; retain the integrated adapter source in main."
+}

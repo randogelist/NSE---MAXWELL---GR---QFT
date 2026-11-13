@@ -1,8 +1,7 @@
 name: Non-promoting quantum source diagnostics
 
+# Full CI covers assembly; diagnostics are an optional, non-promoting tool.
 on:
-  push:
-    branches: [codex/quantum-adapter-from-maxwell]
   workflow_dispatch:
 
 permissions:
