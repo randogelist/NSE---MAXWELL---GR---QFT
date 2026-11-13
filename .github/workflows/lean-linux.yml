@@ -128,10 +128,21 @@ jobs:
         uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: ${{ runner.temp }}/nse-maxwell-endpoint/.lake/build
-          key: nse-maxwell-standalone-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('Maxwell_Endpoint/lean-toolchain', 'Maxwell_Endpoint/lakefile.lean', 'Maxwell_Endpoint/lake-manifest.json', 'Maxwell_Endpoint/cache-targets.txt') }}-${{ hashFiles('Maxwell_Endpoint/MaxwellEndpoint.lean', 'Maxwell_Endpoint/MaxwellEndpoint/**/*.lean', 'Maxwell_Endpoint/MethlibEndpoints.lean', 'Maxwell_Endpoint/MethlibEndpoints/**/*.lean', 'Maxwell_Endpoint/NativeSources/methlib/SingularClosure/**/*.lean') }}
+          key: nse-maxwell-standalone-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('Maxwell_Endpoint/lean-toolchain', 'Maxwell_Endpoint/lakefile.lean', 'Maxwell_Endpoint/lake-manifest.json', 'Maxwell_Endpoint/cache-targets.txt') }}-${{ hashFiles('Maxwell_Endpoint/MaxwellEndpoint.lean', 'Maxwell_Endpoint/MaxwellEndpoint/**/*.lean', 'Maxwell_Endpoint/MethlibEndpoints.lean', 'Maxwell_Endpoint/MethlibEndpoints/**/*.lean', 'Maxwell_Endpoint/NativeSources/methlib/SingularClosure/**/*.lean') }}-seeded-v1
           restore-keys: |
             nse-maxwell-standalone-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('Maxwell_Endpoint/lean-toolchain', 'Maxwell_Endpoint/lakefile.lean', 'Maxwell_Endpoint/lake-manifest.json', 'Maxwell_Endpoint/cache-targets.txt') }}-
             nse-maxwell-standalone-v1-Linux-X64-9eeb2f7971e6c5a8e1f40433fb0d4794678971899b7110d4d6492da4bd235320-a0f932838aa1bae18b0308603ebdd32393edded04c4850de9ed65aecc5667132
+
+      - name: Seed missing Maxwell_Endpoint objects from the matching audited root build
+        shell: bash
+        run: |
+          set -euo pipefail
+          python Auxillary/scripts/seed_project_cache.py \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --destination "$RUNNER_TEMP/nse-maxwell-endpoint" \
+            --package-name Maxwell_Endpoint \
+            --report-directory "$GITHUB_WORKSPACE/artifacts/external-linux" \
+            --source-commit "$GITHUB_SHA"
 
       - name: Compile and audit the standalone Maxwell endpoint
         shell: bash
@@ -170,6 +181,17 @@ jobs:
           key: nse-fefferman-standalone-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('Fefferman_adapter/lean-toolchain', 'Fefferman_adapter/lakefile.lean', 'Fefferman_adapter/lake-manifest.json', 'Fefferman_adapter/cache-targets.txt') }}-${{ hashFiles('Fefferman_adapter/NSEMaxwell.lean', 'Fefferman_adapter/NSEMaxwell/**/*.lean', 'Fefferman_adapter/LocalDependencies/**/*.lean', 'Fefferman_adapter/MethlibEndpoints.lean', 'Fefferman_adapter/MethlibEndpoints/**/*.lean', 'Fefferman_adapter/NativeSources/methlib/SingularClosure/**/*.lean') }}
           restore-keys: |
             nse-fefferman-standalone-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('Fefferman_adapter/lean-toolchain', 'Fefferman_adapter/lakefile.lean', 'Fefferman_adapter/lake-manifest.json', 'Fefferman_adapter/cache-targets.txt') }}-
+
+      - name: Seed missing Fefferman_adapter objects from the matching audited root build
+        shell: bash
+        run: |
+          set -euo pipefail
+          python Auxillary/scripts/seed_project_cache.py \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --destination "$RUNNER_TEMP/nse-fefferman-adapter" \
+            --package-name Fefferman_adapter \
+            --report-directory "$GITHUB_WORKSPACE/artifacts/external-linux" \
+            --source-commit "$GITHUB_SHA"
 
       - name: Compile and audit the standalone Fefferman adapter
         shell: bash

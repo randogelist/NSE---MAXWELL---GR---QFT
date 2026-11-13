@@ -36,6 +36,12 @@ def write_json(path: Path, value: dict) -> None:
     path.write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")
 
 
+def copy_source(source: Path, target: Path) -> None:
+    target.write_bytes(source.read_bytes())
+    if os.name == "posix":
+        target.chmod(source.stat().st_mode & 0o777)
+
+
 def git(repo: Path, *arguments: str) -> str:
     return subprocess.run(
         ["git", "-C", str(repo), *arguments], check=True,
@@ -257,11 +263,13 @@ def main() -> int:
             for relative, source in sorted(files.items()):
                 target = stage / relative
                 target.parent.mkdir(parents=True, exist_ok=True)
-                target.write_bytes(source.read_bytes())
+                copy_source(source, target)
                 require(sha256(source) == sha256(target), f"Copy hash mismatch: {relative}")
                 entries.append({"source_path": prefix + "/" + relative,
                                 "isolated_path": relative, "sha256": sha256(source),
-                                "size_bytes": source.stat().st_size})
+                                "size_bytes": source.stat().st_size,
+                                "mode_octal": format(source.stat().st_mode & 0o777, "04o")
+                                if os.name == "posix" else None})
             hydration_path = report / (short_name + "-source-hydration.json")
             subprocess.run([
                 sys.executable, str(stage / "scripts/hydrate_native_sources.py"),
@@ -311,6 +319,11 @@ def main() -> int:
             for relative, source in files.items():
                 require(sha256(source) == sha256(stage / relative) == recorded[relative]["sha256"],
                         f"Source bytes changed during standalone validation: {relative}")
+                if os.name == "posix":
+                    source_mode = source.stat().st_mode & 0o777
+                    require((stage / relative).stat().st_mode & 0o777 == source_mode and
+                            recorded[relative].get("mode_octal") == format(source_mode, "04o"),
+                            f"Source mode changed during standalone validation: {relative}")
             evidence = report / evidence_name
             provenance, audit = read_json(evidence / "run-provenance.json"), read_json(evidence / "audit-summary.json")
             compiled = read_json(evidence / "source-manifest.json")
@@ -349,6 +362,22 @@ def main() -> int:
             compiled_files = {item["path"]: item["sha256"] for item in compiled["files"]}
             require(compiled_files == {name: item["sha256"] for name, item in recorded.items()},
                     "Standalone compiler did not verify the exact isolated source inventory.")
+            seed_record = None
+            seed_path = report / (short_name + "-project-cache-seed.json")
+            if seed_path.exists():
+                seed = read_json(seed_path)
+                require(seed.get("status") == "PASS" and
+                        seed.get("source_commit") == args.source_commit and
+                        seed.get("package_name") == prefix and
+                        seed.get("sharing_mode") == "PHYSICAL_COPIES_ONLY" and
+                        seed.get("overwrites_existing_files") is False and
+                        seed.get("shared_project_object_cache") is False and
+                        seed.get("isolation_manifest_sha256") == sha256(manifest_path),
+                        "Standalone project cache seed provenance mismatch.")
+                seed_record = {"report": seed_path.name, "sha256": sha256(seed_path),
+                               "copied_files": seed["copied_files"],
+                               "reused_existing_files": seed["reused_existing_files"],
+                               "sharing_mode": "PHYSICAL_COPIES_ONLY"}
             write_json(result_path, {"schema_version": 1, "status": "PASS",
                        "source_commit": args.source_commit, "source_files_verified": len(files),
                        "standalone_audited_declarations": len(audit["theorems"]),
@@ -356,6 +385,7 @@ def main() -> int:
                        "standalone_source_manifest_sha256": sha256(evidence / "source-manifest.json"),
                        "standalone_audit": "PASS_STANDARD_ONLY",
                        "shared_dependency_cache": "COMPILED_OBJECTS_ONLY",
+                       "project_cache_seed": seed_record,
                        "shared_dependency_source_cache": False, "shared_project_object_cache": False,
                        "source_hydration_sha256": sha256(hydration_path),
                        "dependency_source_downloads": 0,
