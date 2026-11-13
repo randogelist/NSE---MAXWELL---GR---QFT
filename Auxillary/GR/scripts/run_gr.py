@@ -194,7 +194,7 @@ def main() -> int:
             run(["lake", "build", module], stage + "-build.log")
             provenance["stages"][stage]["build"] = "PASS"
             audit = report / (stage.capitalize() + "Audit.lean")
-            source = "import " + module + "\nset_option pp.universes true\nset_option pp.width 160\n"
+            source = "import " + module + "\nset_option pp.universes false\n"
             for name in inventories[stage]:
                 source += "#check @" + name + "\n#print axioms " + name + "\n"
             audit.write_text(source, encoding="utf-8")
