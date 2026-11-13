@@ -45,3 +45,17 @@ External certification: [run 43376636262](https://github.com/randogelist/NSE---M
 Retained [source-match certificate](../Auxillary/evidence/assembly-linux-43376636262/source-match-certificate.json),
 [exact signatures and axiom log](../Auxillary/evidence/assembly-linux-43376636262/audit.log).
 The audited proof source is unchanged by the documentation/evidence retention commit.
+
+## Explicit literature inputs
+
+`ClassicalMechanicsAssembly.LiteratureInputs` declares the user-authorized
+`Literature.L1` flow-realization and `Literature.L2` diffusion-realization axioms.
+`ClassicalMechanicsAssembly.LiteratureClosure` assembles their exact finite-slab
+equation equivalence, and a second route replaces L2 with the native diffusion
+theorem. The respective nonfoundational dependencies are `{L1,L2}` and `{L1}`.
+These modules are separate from the standard-only aggregate import above.
+
+Current literature-route status: **A_TIER_CANDIDATE**.
+Exact contracts: [ASSEMBLY_LITERATURE_A_TIER.txt](../Auxillary/ASSEMBLY_LITERATURE_A_TIER.txt).
+Native construction of the flow remains open. The roots retain
+`CONDITIONAL_FORMAL_CLOSURE`; declaring an analytic input does not prove it.

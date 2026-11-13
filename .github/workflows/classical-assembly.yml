@@ -13,6 +13,7 @@ on:
       - 'Auxillary/assembly/**'
       - 'Auxillary/assembly-*'
       - 'Auxillary/run_assembly.sh'
+      - 'Auxillary/run_literature.sh'
       - 'Auxillary/scripts/verify_audit.py'
       - 'Auxillary/scripts/run.ps1'
       - '.github/workflows/classical-assembly.yml'
@@ -31,6 +32,7 @@ on:
       - 'Auxillary/assembly/**'
       - 'Auxillary/assembly-*'
       - 'Auxillary/run_assembly.sh'
+      - 'Auxillary/run_literature.sh'
       - '.github/workflows/classical-assembly.yml'
       - 'lakefile.lean'
       - 'lake-manifest.json'
@@ -141,6 +143,10 @@ jobs:
       - name: Compile assembly and freshly audit exact endpoint declarations
         shell: bash
         run: bash Auxillary/run_assembly.sh
+
+      - name: Compile the isolated literature route and audit exact authorized axioms
+        shell: bash
+        run: bash Auxillary/run_literature.sh
 
       - name: Preserve assembly source, compiler and theorem evidence
         if: always()

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "status": "A_TIER_CANDIDATE",
+  "closure_status": "CONDITIONAL_FORMAL_CLOSURE_PENDING_EXTERNAL_AUDIT",
+  "user_authorization": "2026-11-13: L1 and L2 as axioms",
+  "axiom_declarations": ["ClassicalMechanicsAssembly.Literature.L1", "ClassicalMechanicsAssembly.Literature.L2"],
+  "axiom_status": "DECLARED_ANALYTIC_INPUTS_NOT_PROVED",
+  "flow_realization": "ASSUMED_BY_L1; NATIVE_DERIVATION_OPEN",
+  "diffusion_realization": "ASSUMED_BY_L2_IN_LITERATURE_ROUTE; NATIVE_PROOF_AVAILABLE",
+  "native_proof": "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_DIFFUSION_REALIZATION",
+  "standard_only_assembly_target_count": 43,
+  "literature_audit_target_count": 5,
+  "local_lean_executions": 0,
+  "external_platform": "native Linux / Ubuntu 24.04",
+  "toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11"
+}

@@ -1,0 +1,58 @@
+CLASSICAL_MECHANICS_LITERATURE_AXIOMS
+
+STATUS = A_TIER_CANDIDATE
+EXTERNAL_COMPILATION = PENDING
+THEOREM_LEVEL_AXIOM_AUDIT = PENDING
+LOCAL_LEAN_EXECUTIONS = 0
+COMPILER = external cached native Linux Lean 4.34.0-rc1
+MATHLIB_PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+
+USER_AUTHORIZATION = 2026-11-13: L1 and L2 as axioms.
+INPUT_MODULE = ASSEMBLY/ClassicalMechanicsAssembly/LiteratureInputs.lean
+CLOSURE_MODULE = ASSEMBLY/ClassicalMechanicsAssembly/LiteratureClosure.lean
+NAMESPACE = ClassicalMechanicsAssembly.Literature
+
+L1 = O_FLOW = FlowRealization:
+  T>0; SmoothVelocityOn T u;
+  forall t in [0,T], SpatialPeriodic (u t);
+  forall t in [0,T], forall x, divergence (u t) x = 0
+  -> exists eta rho,
+       MaterialPathOn T eta rho
+       and forall t in [0,T], forall a,
+         materialVelocity T eta t a = u t (eta t a).
+L1_STATUS = AXIOM; NATIVE_DERIVATION_OPEN.
+
+L2 = O_DIFF = DiffusionRealization:
+  SmoothVelocityOn T u; MaterialPathOn T eta rho;
+  forall t in [0,T], forall a,
+    materialVelocity T eta t a = u t (eta t a)
+  -> forall t in [0,T], forall a,
+       materialDiffusion T eta t a = laplacian (u t) (eta t a).
+L2_STATUS = AXIOM in the explicit literature route.
+L2_NATIVE_STATUS = independently derived by
+  ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_DIFFUSION_REALIZATION.
+
+EXACT_ROOT_SCOPE:
+  For each smooth periodic solenoidal supplied u on [0,T], T>0,
+  and each smooth p, there exist eta,rho with MaterialPathOn and the flow ODE,
+  such that EulerianEquation(nu,T,u,p)
+    iff MaterialEquationOn(nu,T,eta,fun t a => p t (eta t a)).
+  EulerianEquation means the literal equation
+    finiteMaterialAcceleration T u t x + gradient (p t) x
+      = nu smul laplacian (u t) x
+  for every t in [0,T] and x in EuclideanSpace R (Fin 3).
+
+EXACT_NONFOUNDATIONAL_DEPENDENCIES:
+  L1                                      : {L1}
+  L2                                      : {L2}
+  L2_native                               : {}
+  CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2  : {L1,L2}
+  CLASSICAL_MECHANICS_MATERIAL_FROM_L1     : {L1}
+Each name above is in namespace ClassicalMechanicsAssembly.Literature.
+Foundational whitelist = {propext, Classical.choice, Quot.sound}.
+The original 43-target standard-only audit retains its original whitelist.
+
+L1,L2 declarations are assumptions, not proof terms for the analytic inputs.
+No arbitrary-data NSE existence or full solution-set equivalence is claimed.
+The equation roots, once compiled and audited, are CONDITIONAL_FORMAL_CLOSURE.
+UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED.
