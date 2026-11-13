@@ -1,0 +1,16 @@
+import ClassicalMechanicsAssembly.FlowVariational
+
+set_option pp.universes true
+
+#check @ClassicalMechanicsAssembly.closure_interior_finiteSpacetime
+#print axioms ClassicalMechanicsAssembly.closure_interior_finiteSpacetime
+#check @ClassicalMechanicsAssembly.finite_spacetime_second_derivative_symmetric
+#print axioms ClassicalMechanicsAssembly.finite_spacetime_second_derivative_symmetric
+#check @ClassicalMechanicsAssembly.finite_mixed_directional_hasDerivWithinAt
+#print axioms ClassicalMechanicsAssembly.finite_mixed_directional_hasDerivWithinAt
+#check @ClassicalMechanicsAssembly.deformationGradient_hasDerivWithinAt
+#print axioms ClassicalMechanicsAssembly.deformationGradient_hasDerivWithinAt
+#check @ClassicalMechanicsAssembly.FLOW_VARIATIONAL_ODE
+#print axioms ClassicalMechanicsAssembly.FLOW_VARIATIONAL_ODE
+#check @ClassicalMechanicsAssembly.FLOW_JACOBIAN_ONE
+#print axioms ClassicalMechanicsAssembly.FLOW_JACOBIAN_ONE

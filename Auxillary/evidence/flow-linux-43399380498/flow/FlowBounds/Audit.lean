@@ -1,0 +1,16 @@
+import ClassicalMechanicsAssembly.FlowBounds
+
+set_option pp.universes true
+
+#check @ClassicalMechanicsAssembly.flow_integer_period
+#print axioms ClassicalMechanicsAssembly.flow_integer_period
+#check @ClassicalMechanicsAssembly.flow_periodic_cell_representative
+#print axioms ClassicalMechanicsAssembly.flow_periodic_cell_representative
+#check @ClassicalMechanicsAssembly.flow_periodic_uniform_bound
+#print axioms ClassicalMechanicsAssembly.flow_periodic_uniform_bound
+#check @ClassicalMechanicsAssembly.flow_spatial_fderiv_continuousOn
+#print axioms ClassicalMechanicsAssembly.flow_spatial_fderiv_continuousOn
+#check @ClassicalMechanicsAssembly.periodic_velocity_uniform_bounds
+#print axioms ClassicalMechanicsAssembly.periodic_velocity_uniform_bounds
+#check @ClassicalMechanicsAssembly.flow_velocity_time_continuousOn
+#print axioms ClassicalMechanicsAssembly.flow_velocity_time_continuousOn

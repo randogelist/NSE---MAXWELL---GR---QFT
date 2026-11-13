@@ -57,8 +57,12 @@ contains the source identity and evidence.
 
 `Literature.L1` now has a theorem body invoking the native construction.
 All five historical compatibility declarations require zero custom axioms.
-Their updated source remains **A_TIER_CANDIDATE** until a fresh five-target
-external audit passes. The 43-target standard assembly audit remains separate.
+Their updated source is **A_TIER**: [cached Linux run 43401581626](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43401581626)
+passed all 43 standard assembly, 169 native flow, and five compatibility audits.
+All five original elaborated types and both legacy root proof bodies are preserved.
+The scoped native material-equation root has **UNCONDITIONAL_CLOSURE**.
+Selected Mathlib and Methlib call sites are indexed in
+[L1_NATIVE_MATHLIB_ENDPOINTS.txt](../Auxillary/assembly/L1_NATIVE_MATHLIB_ENDPOINTS.txt).
 
 The native statement supplies a smooth material path and inverse for each
 given smooth periodic divergence-free velocity on [0,T], T>0, and proves the

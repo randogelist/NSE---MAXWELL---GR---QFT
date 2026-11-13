@@ -1,0 +1,33 @@
+{
+  "local_modules": [
+    {
+      "module": "ClassicalMechanicsAssembly.FlowBanach",
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBanach.lean",
+      "sha256": "f5e70a9f1006106c42bbedcaceaa61824ee585f877d5dfd678ad6c33907d8030"
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowVolterra",
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowVolterra.lean",
+      "sha256": "6307e2c2cd0460a53534298c22b30c9f9e2b6c0322c3548b5c7119e7e9ddd146"
+    }
+  ],
+  "external_imports": [
+    "Mathlib.Analysis.Asymptotics.Lemmas",
+    "Mathlib.Analysis.Calculus.ImplicitContDiff",
+    "Mathlib.Analysis.Calculus.MeanValue",
+    "Mathlib.Analysis.SpecialFunctions.Integrals.Basic",
+    "Mathlib.Analysis.SpecificLimits.Normed",
+    "Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus",
+    "Mathlib.Tactic.Abel",
+    "Mathlib.Tactic.FieldSimp",
+    "Mathlib.Tactic.FunProp",
+    "Mathlib.Tactic.GCongr",
+    "Mathlib.Tactic.Linarith",
+    "Mathlib.Tactic.Positivity",
+    "Mathlib.Tactic.Ring",
+    "Mathlib.Topology.Algebra.InfiniteSum.Ring",
+    "Mathlib.Topology.ContinuousMap.Algebra",
+    "Mathlib.Topology.ContinuousMap.Compact",
+    "Mathlib.Topology.Order.ProjIcc"
+  ]
+}

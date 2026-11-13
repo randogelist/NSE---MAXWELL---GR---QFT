@@ -1,0 +1,24 @@
+import ClassicalMechanicsAssembly.FlowJointJets
+
+set_option pp.universes true
+
+#check @ClassicalMechanicsAssembly.flow_contDiffOn_multilinear_apply
+#print axioms ClassicalMechanicsAssembly.flow_contDiffOn_multilinear_apply
+#check @ClassicalMechanicsAssembly.flowLabelJet
+#print axioms ClassicalMechanicsAssembly.flowLabelJet
+#check @ClassicalMechanicsAssembly.flowForcingJet
+#print axioms ClassicalMechanicsAssembly.flowForcingJet
+#check @ClassicalMechanicsAssembly.flow_representative_slice_contDiff
+#print axioms ClassicalMechanicsAssembly.flow_representative_slice_contDiff
+#check @ClassicalMechanicsAssembly.flowLabelJet_eq_evaluatedFlowJet
+#print axioms ClassicalMechanicsAssembly.flowLabelJet_eq_evaluatedFlowJet
+#check @ClassicalMechanicsAssembly.flowLabelJet_continuousOn
+#print axioms ClassicalMechanicsAssembly.flowLabelJet_continuousOn
+#check @ClassicalMechanicsAssembly.flowLabelJet_hasFDerivAt
+#print axioms ClassicalMechanicsAssembly.flowLabelJet_hasFDerivAt
+#check @ClassicalMechanicsAssembly.flowForcingJet_eq_partition_sum
+#print axioms ClassicalMechanicsAssembly.flowForcingJet_eq_partition_sum
+#check @ClassicalMechanicsAssembly.flowForcingJet_contDiffOn
+#print axioms ClassicalMechanicsAssembly.flowForcingJet_contDiffOn
+#check @ClassicalMechanicsAssembly.smoothVelocityOn_of_path_jet_integrals
+#print axioms ClassicalMechanicsAssembly.smoothVelocityOn_of_path_jet_integrals

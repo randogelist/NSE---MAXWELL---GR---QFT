@@ -88,6 +88,7 @@ def export(root: Path, destination: Path, *, check_only: bool = False) -> dict:
     copy("Auxillary/scripts/verify_audit.py", "audit_parser.py")
     copy("Auxillary/scripts/l1_native_windows_run.py", "run.py")
     copy("Auxillary/assembly/L1_FLOW_REALIZATION_A_TIER.txt", "L1_native_A_TIER.txt")
+    copy("Auxillary/assembly/L1_NATIVE_MATHLIB_ENDPOINTS.txt", "L1_NATIVE_MATHLIB_ENDPOINTS.txt")
     copy("Auxillary/scripts/l1_native_run.cmd", "run.cmd")
     # Batch-file line endings are packaging metadata; Lean source bytes are never rewritten.
     command_source_hash = source_map[-1]["sha256"]

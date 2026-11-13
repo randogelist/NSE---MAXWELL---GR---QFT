@@ -1,0 +1,284 @@
+{
+  "schema_version": 1,
+  "status": "PASS_ORIGINAL_ARTIFACT_AND_EXTRACTED_REPORTS",
+  "source_commit": "34b1fe1100f726d51955a7bf9ac5059d8069fb32",
+  "external_run_id": 43401581626,
+  "external_job_id": 131805462095,
+  "external_artifact_id": 14025577567,
+  "archive_sha256": "6aa19eb4bc04edb133950e8bf754efc37948c730a2655fab29c71430c9dbfabd",
+  "archive_raw_file_count": 339,
+  "retention": "Original full ZIP plus root43, native FlowRealization, flow aggregate and complete compatibility reports; other native module reports are preserved in the original ZIP. Full external extraction remains in scratch.",
+  "native_phase_elapsed_seconds": 161.9570033,
+  "compatibility_phase_elapsed_seconds": 34.8070631,
+  "raw_retained_files": [
+    {
+      "path": "GeneratedAudit.lean",
+      "sha256": "f1cebe9f7bca90227fd37940b3de9a630f8df3bbe4759efb0730890762e9ee14"
+    },
+    {
+      "path": "audit-summary.json",
+      "sha256": "fee9c8fb31e83789cd6c6e88742c1fcd2b4ca8c084d994a7d8d2f2b92d43524a"
+    },
+    {
+      "path": "audit-targets.txt",
+      "sha256": "ab59e834aa40975b875a273e0a56e4bf877d838afda35332f696adf413ad2e1a"
+    },
+    {
+      "path": "audit-verifier.log",
+      "sha256": "e4e7eada0ab0fbd3d158802632b8019296303f181b79f5653cce2d320d86f6a5"
+    },
+    {
+      "path": "audit.log",
+      "sha256": "b8fc47d08d9f5e80a73b745aae644b4b0adc3ccb7579f64d6b4be46d49985b6b"
+    },
+    {
+      "path": "build-freshness.log",
+      "sha256": "1031244a077543f4dc43d26c9def3e67b556ed1817c1429e81410bdc6e38a8be"
+    },
+    {
+      "path": "build.log",
+      "sha256": "1031244a077543f4dc43d26c9def3e67b556ed1817c1429e81410bdc6e38a8be"
+    },
+    {
+      "path": "command-timings.json",
+      "sha256": "1f0b63327355fc142d1536d8ad6f04b49c11cd644024d0b77293b0851e9bd7fa"
+    },
+    {
+      "path": "dependency-preparation.json",
+      "sha256": "df20c30debf7bb3ffb36552392fe8bb18323657a305250ed206efabce3ec0f06"
+    },
+    {
+      "path": "flow/FlowRealization/Audit.lean",
+      "sha256": "540186b2ba235ff9eafbbc6320953331519848dee6ab28ede5792c7b0237963d"
+    },
+    {
+      "path": "flow/FlowRealization/audit-summary.json",
+      "sha256": "81f361c5bc85b9e0879b5f2be6c2209decdbca77072bd8a0a3e94b7c35911456"
+    },
+    {
+      "path": "flow/FlowRealization/audit-targets.txt",
+      "sha256": "37d08368495cb4dac041cf7e3c67d3387adb74e7c3a1f40dfa86de24d79dac70"
+    },
+    {
+      "path": "flow/FlowRealization/audit-verifier.log",
+      "sha256": "e4e7eada0ab0fbd3d158802632b8019296303f181b79f5653cce2d320d86f6a5"
+    },
+    {
+      "path": "flow/FlowRealization/audit-verifier.log.command.json",
+      "sha256": "d7dcc12219dd9ccc6b8c42460df41bddd5e6bda9ce9ed37fcc5f84d4d63357f4"
+    },
+    {
+      "path": "flow/FlowRealization/audit.log",
+      "sha256": "93367436466835e4c3e9bbfc4a607345e6bf342ec2db98ea7f9e46fa1c95ec41"
+    },
+    {
+      "path": "flow/FlowRealization/audit.log.command.json",
+      "sha256": "977740882f9e140331a2e1f1ceef75e6fe74a734bbbd0ff5b5f3ba4f593771b1"
+    },
+    {
+      "path": "flow/FlowRealization/build-freshness.log",
+      "sha256": "2ad7867b3e95994e22a016df856e040dc8a51daf01a67a03cebceca940384889"
+    },
+    {
+      "path": "flow/FlowRealization/build-freshness.log.command.json",
+      "sha256": "a2de6df35880ac1aed28420796b870b46dd2ab0b460316db8dd610cfd474ee47"
+    },
+    {
+      "path": "flow/FlowRealization/module-summary.json",
+      "sha256": "6c2c944c695028ca2c1442cfd73e69aeabec1a19fa903d862c3893d19f443785"
+    },
+    {
+      "path": "flow/FlowRealization/import-closure.json",
+      "sha256": "658eb04fed096e4a6506ccc07aa285d58d12494101a60afd42b954d3aa215c11"
+    },
+    {
+      "path": "flow/FlowRealization/native-source-closure-maxwell.json",
+      "sha256": "dcc363bb56f09e27da3ac577c04b0393ddab081d3cb748002683d8d546b17738"
+    },
+    {
+      "path": "flow/FlowRealization/native-source-closure.json",
+      "sha256": "97b8926d1b1eb0959e7f4fa7be18fef770b8d6290d29f3f3824af22361b89ab4"
+    },
+    {
+      "path": "flow/FlowRealization/native-source-hydration.json",
+      "sha256": "4b952639efbd600c44c11f3793193b094463ddd122fdefc0d88934f4a371ed1d"
+    },
+    {
+      "path": "flow/FlowRealization/run-provenance.json",
+      "sha256": "620395eea1777c08e3e054125c1358f03da47b6ff5b14964921e9ef9b1acbedf"
+    },
+    {
+      "path": "flow/FlowRealization/source-manifest.json",
+      "sha256": "e168ab16a0709eab67f44f62d868d098679b143af3efdf2223b6085026ebec9b"
+    },
+    {
+      "path": "flow/aggregate-summary.json",
+      "sha256": "1885d6092581ecc353769d7951460b4e23f185339670b40c380fe1210ac694a1"
+    },
+    {
+      "path": "flow/incremental-mathlib-cache.log",
+      "sha256": "e5976e0fa00b000bfade18543300a8db0367835e3abd6ba2ae465aa3774a3874"
+    },
+    {
+      "path": "flow/incremental-mathlib-cache.log.command.json",
+      "sha256": "10a32b779b92d15720bd4906b448d131467fd6d2ae95ee44d65ecd25e669b014"
+    },
+    {
+      "path": "flow/lean-version.log",
+      "sha256": "6cd69c5752c644291ede2418997a70e9994409d30b15fe5ef14a1be60f27f8ef"
+    },
+    {
+      "path": "flow/lean-version.log.command.json",
+      "sha256": "a060d3b5c7cdbeff5210ecd4fbbbe1f003f3b21b7ca615547f810f4adb5182f9"
+    },
+    {
+      "path": "flow/source-commit.log",
+      "sha256": "ecce2bec8271ecdab6ddf25385905d8c21d87522f259fe2e08a915b6e5ffad3b"
+    },
+    {
+      "path": "flow/source-commit.log.command.json",
+      "sha256": "caf162c316ccbb19a3bb54b392f24ac3e67c5a9e6a0facaa947e972e20fe0b8a"
+    },
+    {
+      "path": "flow/working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "flow/working-tree.log.command.json",
+      "sha256": "60923e277e24b7cdf91dd378869962f19afdca91fb9d5542b65bb97281305370"
+    },
+    {
+      "path": "import-closure.json",
+      "sha256": "65bd4b14ecf009ccddab3b8155e8d0de9c5d0e46e1eac12d7e74b911cec5b300"
+    },
+    {
+      "path": "lean-version.log",
+      "sha256": "6cd69c5752c644291ede2418997a70e9994409d30b15fe5ef14a1be60f27f8ef"
+    },
+    {
+      "path": "literature/LiteratureAudit.lean",
+      "sha256": "82046a64320b130e11b526f82d748b1994f1d86b386b79ab2f6f6eeb8fbee08c"
+    },
+    {
+      "path": "literature/audit-summary.json",
+      "sha256": "79633bd6d5d8f980ec946bfa1a6615aa00341f3d07d29a94dd4bfedced9059e7"
+    },
+    {
+      "path": "literature/audit-targets.txt",
+      "sha256": "d5becf6a47df816a3bfff58ddee8bb967b1a1e40a14ec65f086ac8e8bd26a817"
+    },
+    {
+      "path": "literature/audit.log",
+      "sha256": "233b608bc1611a9a524dfdc1fb7bb90611b542bbfef7b7aa44bb8c2428e8d73c"
+    },
+    {
+      "path": "literature/axiom-policy.json",
+      "sha256": "461afbc08bac15ae124068bde21ac4acda90c7e2a4bad8728e128a2150b623e4"
+    },
+    {
+      "path": "literature/build-ClassicalMechanicsAssembly.LiteratureClosure.log",
+      "sha256": "beed6b95c9b69224ea69811a0938419214800fe06c57a6cbcff943578d704b0c"
+    },
+    {
+      "path": "literature/build-ClassicalMechanicsAssembly.LiteratureInputs.log",
+      "sha256": "9d094dfe14bf0935310172ab191c1c60d30e03c9c88a74ccc7444e3a9fef8ff7"
+    },
+    {
+      "path": "literature/build-freshness.log",
+      "sha256": "0dfbbee763c8f9bc84ea294853905946db0cffa1ee2ad1e8c9dc45cb99cc3b7e"
+    },
+    {
+      "path": "literature/build.log",
+      "sha256": "5ccedd3e7af322941fd37061928579c604e0f53d23e8e0bd9849ebc92cd90105"
+    },
+    {
+      "path": "literature/command-timings.json",
+      "sha256": "cf0de01cfbb2d198178422693e475a42d41e5b65d808a090617ac3f7951d7783"
+    },
+    {
+      "path": "literature/import-closure.json",
+      "sha256": "a3a4e9f6f2a8de6b035d07fec25b9173805e8d167e1cc13b5be74156671263bd"
+    },
+    {
+      "path": "literature/incremental-mathlib-cache.log",
+      "sha256": "e5976e0fa00b000bfade18543300a8db0367835e3abd6ba2ae465aa3774a3874"
+    },
+    {
+      "path": "literature/lean-version.log",
+      "sha256": "6cd69c5752c644291ede2418997a70e9994409d30b15fe5ef14a1be60f27f8ef"
+    },
+    {
+      "path": "literature/mathlib-revision.log",
+      "sha256": "45319df962db10a4cdbd4747247efadca3d49e40557f5c83ec7dad63a043992a"
+    },
+    {
+      "path": "literature/native-source-closure-maxwell.json",
+      "sha256": "dcc363bb56f09e27da3ac577c04b0393ddab081d3cb748002683d8d546b17738"
+    },
+    {
+      "path": "literature/native-source-closure.json",
+      "sha256": "97b8926d1b1eb0959e7f4fa7be18fef770b8d6290d29f3f3824af22361b89ab4"
+    },
+    {
+      "path": "literature/native-source-hydration.json",
+      "sha256": "4b952639efbd600c44c11f3793193b094463ddd122fdefc0d88934f4a371ed1d"
+    },
+    {
+      "path": "literature/run-provenance.json",
+      "sha256": "246d6c0b3b31574eecfc2a7cf8abd05777b4eb63aefb3f666e6070db03f6961e"
+    },
+    {
+      "path": "literature/source-commit.log",
+      "sha256": "ecce2bec8271ecdab6ddf25385905d8c21d87522f259fe2e08a915b6e5ffad3b"
+    },
+    {
+      "path": "literature/source-manifest.json",
+      "sha256": "bec154f73f0422530f80d3bf6f913602a446bc3ced26a532edff6685c1d590bb"
+    },
+    {
+      "path": "literature/working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "mathlib-revision.log",
+      "sha256": "45319df962db10a4cdbd4747247efadca3d49e40557f5c83ec7dad63a043992a"
+    },
+    {
+      "path": "native-source-closure-maxwell.json",
+      "sha256": "dcc363bb56f09e27da3ac577c04b0393ddab081d3cb748002683d8d546b17738"
+    },
+    {
+      "path": "native-source-hydration.json",
+      "sha256": "4b952639efbd600c44c11f3793193b094463ddd122fdefc0d88934f4a371ed1d"
+    },
+    {
+      "path": "run-provenance.json",
+      "sha256": "ec266beced4f78d8a5fcf9abab407170f13db2c30573f68db1948919c3167036"
+    },
+    {
+      "path": "native-source-closure.json",
+      "sha256": "97b8926d1b1eb0959e7f4fa7be18fef770b8d6290d29f3f3824af22361b89ab4"
+    },
+    {
+      "path": "runner-disk.txt",
+      "sha256": "3862950873fa3822020d1b6061dac657f57f3800c50db9cbbcd69b87268f93c3"
+    },
+    {
+      "path": "runner-system.txt",
+      "sha256": "2437786a005300b4d25ddff7c65a91bdfe873d85b22086b4a7b863f333197732"
+    },
+    {
+      "path": "source-commit.log",
+      "sha256": "ecce2bec8271ecdab6ddf25385905d8c21d87522f259fe2e08a915b6e5ffad3b"
+    },
+    {
+      "path": "source-manifest.json",
+      "sha256": "da084eb310f62dc0ac185082b31f0a0e849e357c444bc8426a792ea8fc146cdf"
+    },
+    {
+      "path": "working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "local_lean_executions": 0
+}

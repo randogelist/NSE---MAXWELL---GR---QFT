@@ -1,0 +1,68 @@
+[
+  {
+    "command": [
+      "lean",
+      "--version"
+    ],
+    "log": "lean-version.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.031
+  },
+  {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "source-commit.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.002
+  },
+  {
+    "command": [
+      "git",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "working-tree.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.015
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      ".lake/packages/mathlib",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "mathlib-revision.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.001
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "--no-build",
+      "ClassicalMechanicsAssembly.LiteratureClosure"
+    ],
+    "log": "build-freshness.log",
+    "exit_code": 0,
+    "elapsed_seconds": 2.981
+  },
+  {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-R",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/literature",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/literature/LiteratureAudit.lean"
+    ],
+    "log": "audit.log",
+    "exit_code": 0,
+    "elapsed_seconds": 3.13
+  }
+]

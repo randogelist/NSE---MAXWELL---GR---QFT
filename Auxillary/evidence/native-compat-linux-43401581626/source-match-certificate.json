@@ -1,0 +1,3989 @@
+{
+  "schema_version": 1,
+  "status": "PASS_SOURCE_MATCH",
+  "source_commit": "34b1fe1100f726d51955a7bf9ac5059d8069fb32",
+  "external_run_id": 43401581626,
+  "external_artifact_id": 14025577567,
+  "external_artifact_sha256": "6aa19eb4bc04edb133950e8bf754efc37948c730a2655fab29c71430c9dbfabd",
+  "external_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43401581626",
+  "artifact_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43401581626/artifacts/14025577567",
+  "aggregate_status": "PASS_STANDARD_ONLY",
+  "matched_unique_tracked_inputs": 370,
+  "verified_manifests": {
+    "source-manifest.json": 373,
+    "flow/FlowBounds/source-manifest.json": 376,
+    "flow/FlowBanach/source-manifest.json": 376,
+    "flow/FlowSmooth/source-manifest.json": 376,
+    "flow/FlowInverse/source-manifest.json": 376,
+    "flow/FlowJacobian/source-manifest.json": 376,
+    "flow/FlowTrajectories/source-manifest.json": 376,
+    "flow/FlowJetTime/source-manifest.json": 376,
+    "flow/FlowVariational/source-manifest.json": 376,
+    "flow/FlowVolterra/source-manifest.json": 376,
+    "flow/FlowSpatialJets/source-manifest.json": 376,
+    "flow/FlowPathJets/source-manifest.json": 376,
+    "flow/FlowConstruction/source-manifest.json": 376,
+    "flow/FlowPathSolutions/source-manifest.json": 376,
+    "flow/FlowJointJets/source-manifest.json": 376,
+    "flow/FlowImplicit/source-manifest.json": 376,
+    "flow/FlowJetIntegral/source-manifest.json": 376,
+    "flow/FlowJoint/source-manifest.json": 376,
+    "flow/FlowRealization/source-manifest.json": 376
+  },
+  "passed_modules": [
+    {
+      "module": "ClassicalMechanicsAssembly.FlowBounds",
+      "declaration_count": 6,
+      "axiom_records": [
+        {
+          "name": "ClassicalMechanicsAssembly.flow_integer_period",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flow_periodic_cell_representative",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flow_periodic_uniform_bound",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flow_spatial_fderiv_continuousOn",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.periodic_velocity_uniform_bounds",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flow_velocity_time_continuousOn",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "source_manifest_sha256": "9ac7ab4eec74fb66493949c6cdf18808264a203ae3bba943bb89c44dcc69b0a7",
+      "import_closure": [
+        {
+          "module": "MaxwellEndpoint.Geometry",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+          "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Constitutive",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+          "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.System",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+          "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Native",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+          "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+          "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Classical",
+          "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+          "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Kinematics",
+          "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+          "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.CurlCurl",
+          "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+          "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Stress",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+          "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Definitions",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+          "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.FiniteSlab",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+          "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.TimeCalculus",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+          "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Lamb",
+          "path": "Fefferman_adapter/NSEMaxwell/Lamb.lean",
+          "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.PeriodicIntegration",
+          "path": "Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean",
+          "sha256": "1e5ab9beb9eeb11fbf595ff4fbdad263ebd4f38e17f02f3ed53e687bfb03664c",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Contracts",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Contracts.lean",
+          "sha256": "4c59cbf26fd4196529a4865ac09404d18015228c737055c2674cbcc4a5fd18f7",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.SixChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SixChannels.lean",
+          "sha256": "1c7f53956d9a766a3c8e4e781aa850a26351761ef0086c7ffd10047762854eab",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Galerkin",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Galerkin.lean",
+          "sha256": "e1ac5c944bab2667b02ae6c75b46f63605354b8c928c56298aee0e28b043a6fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Admission",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Admission.lean",
+          "sha256": "cd8e62a4f88a33b14d3a699b2431e801d590bcadf02d03b2e67ef3ebb5dc63ca",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalChannels.lean",
+          "sha256": "0d522433e0a511a1c0f41b25947a05ece9780cacbe6809d105fdbb8991dca89f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalEnstrophy",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalEnstrophy.lean",
+          "sha256": "720eaee5f18ea728c366880aeb05ced52bd9167369103cb19450991f74e08614",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PeriodicCover",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicCover.lean",
+          "sha256": "9d6f0d78c7a043ef7d8a7db1c3d5f647a84492ff6c3843d85527638990f7929f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowBounds",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBounds.lean",
+          "sha256": "9bf6bc79e6f81b32f876285ed3fde59a6b46871326d0670063ebbd953c65a60b",
+          "current_worktree_match": true
+        }
+      ],
+      "current_import_closure_match": true
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowBanach",
+      "declaration_count": 30,
+      "axiom_records": [
+        {
+          "name": "ClassicalMechanicsAssembly.summable_operator_powers_of_factorial_bound",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.operator_series_inverse_identities_of_factorial_bound",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.one_sub_operator_isInvertible_of_factorial_bound",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.operator_inverse_eq_tsum_of_factorial_bound",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.contDiff_of_unique_implicit_branch",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.contDiff_of_unique_volterra_residual",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathSuperposition",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathSuperposition_apply",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathSuperposition_lipschitz",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flow_quadratic_remainder_of_lipschitz_derivative",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathMultiplicationLinear",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathMultiplicationLinear_bound",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathMultiplication",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathMultiplication_apply",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathMultiplication_norm_le",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathMultiplicationLiftLinear",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathMultiplicationLift",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathMultiplicationLift_apply",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathPostcomposition",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathPostcomposition_apply",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathSuperpositionTo",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathSuperpositionTo_apply",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathSuperpositionDerivative",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathSuperpositionDerivative_apply",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathSuperposition_remainder_bound",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathSuperposition_hasFDerivAt",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathSuperposition_hasFDerivAt_of_lipschitz_derivative",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathSuperposition_contDiff_succ",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathSuperposition_contDiff_of_taylor_tower",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathSuperposition_contDiff_of_spatial_tower",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "source_manifest_sha256": "596439b96bf5a9d3bcdfc0609f87aae9eeeebaa5ea1ad89f1088a02caf6b44f7",
+      "import_closure": [
+        {
+          "module": "ClassicalMechanicsAssembly.FlowBanach",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBanach.lean",
+          "sha256": "f5e70a9f1006106c42bbedcaceaa61824ee585f877d5dfd678ad6c33907d8030",
+          "current_worktree_match": true
+        }
+      ],
+      "current_import_closure_match": true
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowSmooth",
+      "declaration_count": 9,
+      "axiom_records": [
+        {
+          "name": "ClassicalMechanicsAssembly.flowPath_hasFDerivAt_evaluation",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPath_contDiff_evaluation",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPath_continuous_evaluation",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPath_continuousOn_representative",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowJointDerivative_apply",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flow_hasFDerivWithinAt_of_time_remainder",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowJetDerivative_contDiffOn",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowJet_tower_contDiffOn",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.smoothVelocityOn_of_flowJet_tower",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "source_manifest_sha256": "78bd7b67d42725dbcf854e33664142f28b01a6b65055782c558682a244f81d3d",
+      "import_closure": [
+        {
+          "module": "MaxwellEndpoint.Geometry",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+          "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Constitutive",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+          "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.System",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+          "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Native",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+          "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+          "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Classical",
+          "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+          "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Kinematics",
+          "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+          "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.CurlCurl",
+          "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+          "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Stress",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+          "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Definitions",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+          "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.FiniteSlab",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+          "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.TimeCalculus",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+          "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowSmooth",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowSmooth.lean",
+          "sha256": "a9802f83328aaa99b78fa123062068ee7bf791946e47a8dcdad835402ea1e9bb",
+          "current_worktree_match": true
+        }
+      ],
+      "current_import_closure_match": true
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowInverse",
+      "declaration_count": 10,
+      "axiom_records": [
+        {
+          "name": "ClassicalMechanicsAssembly.hasFDerivWithinAt_inverse_of_contDiffOn",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.contDiffOn_inverse_of_contDiffOn",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.spatial_fderiv_isInvertible_of_det_one",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.triangular_spacetime_isInvertible",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowSpacetimeMap_fderivWithin_isInvertible",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.inverse_flow_dist_le",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.continuousOn_inverse_flow_of_estimate",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.smoothVelocityOn_inverse_of_isInvertible",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.smoothVelocityOn_inverse",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.materialPathOn_of_smooth_inverse_data",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "source_manifest_sha256": "9ec4d97db50b25a708d3e8f8fef13ebaf54cf27bc117fb1d9efca7fe263874b2",
+      "import_closure": [
+        {
+          "module": "MaxwellEndpoint.Geometry",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+          "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Constitutive",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+          "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.System",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+          "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Native",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+          "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+          "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Classical",
+          "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+          "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Kinematics",
+          "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+          "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.CurlCurl",
+          "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+          "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Stress",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+          "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Definitions",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+          "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.FiniteSlab",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+          "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.TimeCalculus",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+          "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Material",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Material.lean",
+          "sha256": "301e57557d36f73dc3005661c871257a3af3a71b4c138bfd42c41302490d2700",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Lamb",
+          "path": "Fefferman_adapter/NSEMaxwell/Lamb.lean",
+          "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.MaterialGradient",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialGradient.lean",
+          "sha256": "ce3344c164eb1135355dd7ccaeeee0be012b41fd2f6eaf9ac7c2ca4ae2e2bab1",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Piola",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean",
+          "sha256": "7074a13438808ca77c75d104fc6b21bb2a4bd33003a49050209e2cb474278cfa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.MaterialBridge",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialBridge.lean",
+          "sha256": "abba98bc75d21f5dd5d2f2c5c453d1ee31a03ebd3fdc30d767b9f5c20fd84c63",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.PiolaTransport",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/PiolaTransport.lean",
+          "sha256": "a46f3814fd41201a7c1c4991b8130cac74607336bb1b250de07a09cab31a36e0",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowInverse",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowInverse.lean",
+          "sha256": "7b00c0a3667a28a334677c96d57a246dbc2df2fc2963eb31ee5966b24c4a4aa8",
+          "current_worktree_match": true
+        }
+      ],
+      "current_import_closure_match": true
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowJacobian",
+      "declaration_count": 7,
+      "axiom_records": [
+        {
+          "name": "ClassicalMechanicsAssembly.det_hasDerivWithinAt_mul",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.det_hasDerivWithinAt_zero_of_trace_zero",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.determinant_eq_initial_of_matrix_ode_trace_zero",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.determinant_one_of_matrix_ode",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.trace_materialGradientMatrix",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.materialGradientMatrix_id",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.FLOW_JACOBIAN_ONE_OF_VARIATIONAL_ODE",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "source_manifest_sha256": "9eb75f3f25f199414437957e114cc181b904319ed9645ad3cbe5e57a40021b2b",
+      "import_closure": [
+        {
+          "module": "MaxwellEndpoint.Geometry",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+          "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Constitutive",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+          "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.System",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+          "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Native",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+          "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+          "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Classical",
+          "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+          "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Kinematics",
+          "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+          "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.CurlCurl",
+          "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+          "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Stress",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+          "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Definitions",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+          "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.FiniteSlab",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+          "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.TimeCalculus",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+          "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Material",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Material.lean",
+          "sha256": "301e57557d36f73dc3005661c871257a3af3a71b4c138bfd42c41302490d2700",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Lamb",
+          "path": "Fefferman_adapter/NSEMaxwell/Lamb.lean",
+          "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.MaterialGradient",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialGradient.lean",
+          "sha256": "ce3344c164eb1135355dd7ccaeeee0be012b41fd2f6eaf9ac7c2ca4ae2e2bab1",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Piola",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean",
+          "sha256": "7074a13438808ca77c75d104fc6b21bb2a4bd33003a49050209e2cb474278cfa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.MaterialBridge",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialBridge.lean",
+          "sha256": "abba98bc75d21f5dd5d2f2c5c453d1ee31a03ebd3fdc30d767b9f5c20fd84c63",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.PiolaTransport",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/PiolaTransport.lean",
+          "sha256": "a46f3814fd41201a7c1c4991b8130cac74607336bb1b250de07a09cab31a36e0",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowJacobian",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJacobian.lean",
+          "sha256": "0c2dd93fc561af3dddf0206888efb35b0011d4c4e04b15d848f00414cb157201",
+          "current_worktree_match": true
+        }
+      ],
+      "current_import_closure_match": true
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowTrajectories",
+      "declaration_count": 23,
+      "axiom_records": [
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.SlabODEData.isPicardLindelof",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.exists_trajectory",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.trajectory_initial",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.trajectory_hasDerivWithinAt",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.trajectory_continuousOn",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.solution_unique",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.trajectory_cocycle",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.trajectory_translate",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.flow_initial",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.flow_hasDerivWithinAt",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.inverseFlow_flow",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.flow_inverseFlow",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.flow_translate",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.trajectory_contDiffOn",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.trajectory_dist_le",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.trajectory_lipschitz",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.trajectory_time_lipschitz",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.trajectory_joint_continuousOn",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.inverseFlow_lipschitz",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.smooth_periodic_slabODEData",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.flow_materialVelocity",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.flow_lattice_equivariant",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.exists_flow_inverse_lattice",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "source_manifest_sha256": "213c07b27d97303c87010cd0d5ccd0ef3e6517530cabd2c5d2454f8cce907c6e",
+      "import_closure": [
+        {
+          "module": "MaxwellEndpoint.Geometry",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+          "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Constitutive",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+          "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.System",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+          "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Native",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+          "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+          "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Classical",
+          "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+          "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Kinematics",
+          "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+          "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.CurlCurl",
+          "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+          "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Stress",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+          "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Definitions",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+          "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.FiniteSlab",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+          "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.TimeCalculus",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+          "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Material",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Material.lean",
+          "sha256": "301e57557d36f73dc3005661c871257a3af3a71b4c138bfd42c41302490d2700",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Lamb",
+          "path": "Fefferman_adapter/NSEMaxwell/Lamb.lean",
+          "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.PeriodicIntegration",
+          "path": "Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean",
+          "sha256": "1e5ab9beb9eeb11fbf595ff4fbdad263ebd4f38e17f02f3ed53e687bfb03664c",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Contracts",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Contracts.lean",
+          "sha256": "4c59cbf26fd4196529a4865ac09404d18015228c737055c2674cbcc4a5fd18f7",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.SixChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SixChannels.lean",
+          "sha256": "1c7f53956d9a766a3c8e4e781aa850a26351761ef0086c7ffd10047762854eab",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Galerkin",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Galerkin.lean",
+          "sha256": "e1ac5c944bab2667b02ae6c75b46f63605354b8c928c56298aee0e28b043a6fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Admission",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Admission.lean",
+          "sha256": "cd8e62a4f88a33b14d3a699b2431e801d590bcadf02d03b2e67ef3ebb5dc63ca",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalChannels.lean",
+          "sha256": "0d522433e0a511a1c0f41b25947a05ece9780cacbe6809d105fdbb8991dca89f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalEnstrophy",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalEnstrophy.lean",
+          "sha256": "720eaee5f18ea728c366880aeb05ced52bd9167369103cb19450991f74e08614",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PeriodicCover",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicCover.lean",
+          "sha256": "9d6f0d78c7a043ef7d8a7db1c3d5f647a84492ff6c3843d85527638990f7929f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowBounds",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBounds.lean",
+          "sha256": "9bf6bc79e6f81b32f876285ed3fde59a6b46871326d0670063ebbd953c65a60b",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowTrajectories",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowTrajectories.lean",
+          "sha256": "583b59df85d4c8882b67a07da3828add85a24da2b2cc26e1aafcdea198d55134",
+          "current_worktree_match": true
+        }
+      ],
+      "current_import_closure_match": true
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowJetTime",
+      "declaration_count": 5,
+      "axiom_records": [
+        {
+          "name": "ClassicalMechanicsAssembly.flow_integral_difference",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flow_time_remainder_of_integral",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flow_hasFDerivWithinAt_of_integral",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowJet_tower_contDiffOn_of_integrals",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.smoothVelocityOn_of_flowJet_integrals",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "source_manifest_sha256": "eec9a1f81bb605b5cda9f16e374f6d9e841767a67a8729d0f4f5872e1ea02f0e",
+      "import_closure": [
+        {
+          "module": "MaxwellEndpoint.Geometry",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+          "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Constitutive",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+          "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.System",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+          "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Native",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+          "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+          "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Classical",
+          "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+          "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Kinematics",
+          "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+          "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.CurlCurl",
+          "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+          "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Stress",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+          "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Definitions",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+          "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.FiniteSlab",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+          "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.TimeCalculus",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+          "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowSmooth",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowSmooth.lean",
+          "sha256": "a9802f83328aaa99b78fa123062068ee7bf791946e47a8dcdad835402ea1e9bb",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowJetTime",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJetTime.lean",
+          "sha256": "c3a791863079927326981ac1ebb6a22bd3745ff832374d94cc9b82f42a1ff7e0",
+          "current_worktree_match": true
+        }
+      ],
+      "current_import_closure_match": true
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowVariational",
+      "declaration_count": 6,
+      "axiom_records": [
+        {
+          "name": "ClassicalMechanicsAssembly.closure_interior_finiteSpacetime",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.finite_spacetime_second_derivative_symmetric",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.finite_mixed_directional_hasDerivWithinAt",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.deformationGradient_hasDerivWithinAt",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.FLOW_VARIATIONAL_ODE",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.FLOW_JACOBIAN_ONE",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "source_manifest_sha256": "d5528f70b8a64236a777f2aa2cd9154512c55d89de9dbcc1e9376366cd888c6b",
+      "import_closure": [
+        {
+          "module": "MaxwellEndpoint.Geometry",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+          "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Constitutive",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+          "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.System",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+          "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Native",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+          "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+          "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Classical",
+          "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+          "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Kinematics",
+          "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+          "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.CurlCurl",
+          "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+          "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Stress",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+          "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Definitions",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+          "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.FiniteSlab",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+          "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.TimeCalculus",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+          "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Material",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Material.lean",
+          "sha256": "301e57557d36f73dc3005661c871257a3af3a71b4c138bfd42c41302490d2700",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Lamb",
+          "path": "Fefferman_adapter/NSEMaxwell/Lamb.lean",
+          "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.MaterialGradient",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialGradient.lean",
+          "sha256": "ce3344c164eb1135355dd7ccaeeee0be012b41fd2f6eaf9ac7c2ca4ae2e2bab1",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Piola",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean",
+          "sha256": "7074a13438808ca77c75d104fc6b21bb2a4bd33003a49050209e2cb474278cfa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.MaterialBridge",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialBridge.lean",
+          "sha256": "abba98bc75d21f5dd5d2f2c5c453d1ee31a03ebd3fdc30d767b9f5c20fd84c63",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.PiolaTransport",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/PiolaTransport.lean",
+          "sha256": "a46f3814fd41201a7c1c4991b8130cac74607336bb1b250de07a09cab31a36e0",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowJacobian",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJacobian.lean",
+          "sha256": "0c2dd93fc561af3dddf0206888efb35b0011d4c4e04b15d848f00414cb157201",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowVariational",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowVariational.lean",
+          "sha256": "55d379fa1e55bbf6120b5d8d8ca7d004ab2ec4ec594713312d3494ffe738caf9",
+          "current_worktree_match": true
+        }
+      ],
+      "current_import_closure_match": true
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowVolterra",
+      "declaration_count": 11,
+      "axiom_records": [
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathExtend_continuous",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathExtend_of_mem",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathPrimitiveMap_apply",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathPrimitiveLinear_bound",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathPrimitive_apply",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPathPrimitive_norm_le",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowVolterra_apply",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowVolterra_pow_apply_bound",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowVolterra_pow_norm_bound",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.one_sub_flowVolterra_isInvertible",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.one_sub_flowVolterra_isInvertible_of_continuous_coefficient",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "source_manifest_sha256": "99414efeae9c0ec24f6914e527c5ffad3782e8409744b96d3c1f1b5c3b810554",
+      "import_closure": [
+        {
+          "module": "ClassicalMechanicsAssembly.FlowBanach",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBanach.lean",
+          "sha256": "f5e70a9f1006106c42bbedcaceaa61824ee585f877d5dfd678ad6c33907d8030",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowVolterra",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowVolterra.lean",
+          "sha256": "6307e2c2cd0460a53534298c22b30c9f9e2b6c0322c3548b5c7119e7e9ddd146",
+          "current_worktree_match": true
+        }
+      ],
+      "current_import_closure_match": true
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowSpatialJets",
+      "declaration_count": 13,
+      "axiom_records": [
+        {
+          "name": "ClassicalMechanicsAssembly.flow_family_slice_contDiff",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flow_family_fderiv_contDiffOn",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flow_family_uniform_lipschitz",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowSpatialJet",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowSpatialJet_contDiffOn",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowSpatialJet_periodic",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowSpatialJet_uniform_bound",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowSpatialJet_uniform_lipschitz",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowSpatialJetMap",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowSpatialCurry",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowSpatialJet_superposition_contDiff",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowVelocityMap",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.periodic_velocity_superposition_contDiff",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "source_manifest_sha256": "fd06d870b5065faa4d718b3fefe72fdd8b95117cb26680aeb4bf08deccd4e1ec",
+      "import_closure": [
+        {
+          "module": "MaxwellEndpoint.Geometry",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+          "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Constitutive",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+          "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.System",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+          "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Native",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+          "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+          "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Classical",
+          "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+          "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Kinematics",
+          "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+          "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.CurlCurl",
+          "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+          "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Stress",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+          "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Definitions",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+          "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.FiniteSlab",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+          "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.TimeCalculus",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+          "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Lamb",
+          "path": "Fefferman_adapter/NSEMaxwell/Lamb.lean",
+          "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.PeriodicIntegration",
+          "path": "Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean",
+          "sha256": "1e5ab9beb9eeb11fbf595ff4fbdad263ebd4f38e17f02f3ed53e687bfb03664c",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Contracts",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Contracts.lean",
+          "sha256": "4c59cbf26fd4196529a4865ac09404d18015228c737055c2674cbcc4a5fd18f7",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.SixChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SixChannels.lean",
+          "sha256": "1c7f53956d9a766a3c8e4e781aa850a26351761ef0086c7ffd10047762854eab",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Galerkin",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Galerkin.lean",
+          "sha256": "e1ac5c944bab2667b02ae6c75b46f63605354b8c928c56298aee0e28b043a6fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Admission",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Admission.lean",
+          "sha256": "cd8e62a4f88a33b14d3a699b2431e801d590bcadf02d03b2e67ef3ebb5dc63ca",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalChannels.lean",
+          "sha256": "0d522433e0a511a1c0f41b25947a05ece9780cacbe6809d105fdbb8991dca89f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalEnstrophy",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalEnstrophy.lean",
+          "sha256": "720eaee5f18ea728c366880aeb05ced52bd9167369103cb19450991f74e08614",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PeriodicCover",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicCover.lean",
+          "sha256": "9d6f0d78c7a043ef7d8a7db1c3d5f647a84492ff6c3843d85527638990f7929f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowBounds",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBounds.lean",
+          "sha256": "9bf6bc79e6f81b32f876285ed3fde59a6b46871326d0670063ebbd953c65a60b",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowBanach",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBanach.lean",
+          "sha256": "f5e70a9f1006106c42bbedcaceaa61824ee585f877d5dfd678ad6c33907d8030",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowSpatialJets",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowSpatialJets.lean",
+          "sha256": "af397ff6218f0ae6a9a9fbbe8534099fcf4d58bcdf01f4df89c704b6dc8ebc71",
+          "current_worktree_match": true
+        }
+      ],
+      "current_import_closure_match": true
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowPathJets",
+      "declaration_count": 5,
+      "axiom_records": [
+        {
+          "name": "ClassicalMechanicsAssembly.flow_multilinearPath_continuous_evaluation",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.evaluatedFlowJet",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.evaluatedFlowJet_continuous",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.evaluatedFlowJet_hasFDerivAt",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.evaluatedFlowJet_zero",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "source_manifest_sha256": "af5aa3dc546dad77a4660e3f824ac8993b90a552c57277c8d2c8eba8beed52e3",
+      "import_closure": [
+        {
+          "module": "MaxwellEndpoint.Geometry",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+          "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Constitutive",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+          "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.System",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+          "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Native",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+          "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+          "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Classical",
+          "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+          "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Kinematics",
+          "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+          "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.CurlCurl",
+          "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+          "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Stress",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+          "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Definitions",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+          "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.FiniteSlab",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+          "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.TimeCalculus",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+          "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowSmooth",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowSmooth.lean",
+          "sha256": "a9802f83328aaa99b78fa123062068ee7bf791946e47a8dcdad835402ea1e9bb",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowPathJets",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowPathJets.lean",
+          "sha256": "f9821c9f61082e34b6d4515b63c1d2d66b1c960d533377501864ca42832fdb39",
+          "current_worktree_match": true
+        }
+      ],
+      "current_import_closure_match": true
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowConstruction",
+      "declaration_count": 5,
+      "axiom_records": [
+        {
+          "name": "ClassicalMechanicsAssembly.constructed_inverse_continuousOn",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.constructed_materialPathOn",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.JointFlowRegularity",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.FLOW_REALIZATION_OF_JOINT_REGULARITY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.MATERIAL_EQUATION_OF_JOINT_REGULARITY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "source_manifest_sha256": "63519ff07ae36e1fdeb9464044b6ac28aff99a5fb337ce4d34ed72a1547d4831",
+      "import_closure": [
+        {
+          "module": "MaxwellEndpoint.Geometry",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+          "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Constitutive",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+          "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.System",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+          "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Native",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+          "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+          "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Classical",
+          "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+          "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Kinematics",
+          "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+          "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.CurlCurl",
+          "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+          "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Stress",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+          "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Definitions",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+          "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.FiniteSlab",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+          "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.TimeCalculus",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+          "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Material",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Material.lean",
+          "sha256": "301e57557d36f73dc3005661c871257a3af3a71b4c138bfd42c41302490d2700",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Lamb",
+          "path": "Fefferman_adapter/NSEMaxwell/Lamb.lean",
+          "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.PeriodicIntegration",
+          "path": "Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean",
+          "sha256": "1e5ab9beb9eeb11fbf595ff4fbdad263ebd4f38e17f02f3ed53e687bfb03664c",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Contracts",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Contracts.lean",
+          "sha256": "4c59cbf26fd4196529a4865ac09404d18015228c737055c2674cbcc4a5fd18f7",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.SixChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SixChannels.lean",
+          "sha256": "1c7f53956d9a766a3c8e4e781aa850a26351761ef0086c7ffd10047762854eab",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Galerkin",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Galerkin.lean",
+          "sha256": "e1ac5c944bab2667b02ae6c75b46f63605354b8c928c56298aee0e28b043a6fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Admission",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Admission.lean",
+          "sha256": "cd8e62a4f88a33b14d3a699b2431e801d590bcadf02d03b2e67ef3ebb5dc63ca",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalChannels.lean",
+          "sha256": "0d522433e0a511a1c0f41b25947a05ece9780cacbe6809d105fdbb8991dca89f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalEnstrophy",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalEnstrophy.lean",
+          "sha256": "720eaee5f18ea728c366880aeb05ced52bd9167369103cb19450991f74e08614",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PeriodicCover",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicCover.lean",
+          "sha256": "9d6f0d78c7a043ef7d8a7db1c3d5f647a84492ff6c3843d85527638990f7929f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowBounds",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBounds.lean",
+          "sha256": "9bf6bc79e6f81b32f876285ed3fde59a6b46871326d0670063ebbd953c65a60b",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowTrajectories",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowTrajectories.lean",
+          "sha256": "583b59df85d4c8882b67a07da3828add85a24da2b2cc26e1aafcdea198d55134",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.MaterialGradient",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialGradient.lean",
+          "sha256": "ce3344c164eb1135355dd7ccaeeee0be012b41fd2f6eaf9ac7c2ca4ae2e2bab1",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Piola",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean",
+          "sha256": "7074a13438808ca77c75d104fc6b21bb2a4bd33003a49050209e2cb474278cfa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.MaterialBridge",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialBridge.lean",
+          "sha256": "abba98bc75d21f5dd5d2f2c5c453d1ee31a03ebd3fdc30d767b9f5c20fd84c63",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.PiolaTransport",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/PiolaTransport.lean",
+          "sha256": "a46f3814fd41201a7c1c4991b8130cac74607336bb1b250de07a09cab31a36e0",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowInverse",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowInverse.lean",
+          "sha256": "7b00c0a3667a28a334677c96d57a246dbc2df2fc2963eb31ee5966b24c4a4aa8",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowJacobian",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJacobian.lean",
+          "sha256": "0c2dd93fc561af3dddf0206888efb35b0011d4c4e04b15d848f00414cb157201",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowVariational",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowVariational.lean",
+          "sha256": "55d379fa1e55bbf6120b5d8d8ca7d004ab2ec4ec594713312d3494ffe738caf9",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.NativeEndpoints",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean",
+          "sha256": "9b12945b7fadbd6bc4d768250501f78e5c122bed4df84cee656eb869779b1674",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.Equation",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/Equation.lean",
+          "sha256": "feef541ea2e1cba32eb3900786bb758f739580fea21f38ae7b69c8583e6b8ec5",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowConstruction",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowConstruction.lean",
+          "sha256": "5cadc899c0c4eba81be3a6a6f0a33fff744ddb7b76cac5216d3fb3d262e9ad55",
+          "current_worktree_match": true
+        }
+      ],
+      "current_import_closure_match": true
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowPathSolutions",
+      "declaration_count": 9,
+      "axiom_records": [
+        {
+          "name": "ClassicalMechanicsAssembly.Flow.SlabODEData.continuousOn_uncurry",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowSlabVelocity",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowSlabVelocity_apply",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.trajectory_eq_picard",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.selectedFlowPath",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.selectedFlowPath_apply",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.pathPrimitive_superposition_eq_integral",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.selectedFlowPath_integral_equation",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.selectedFlowPath_integral_unique",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "source_manifest_sha256": "e0bcbf0a4cdc8075081f0c75b287bb0fabbbb0bbd94ee11271c435db086c46a4",
+      "import_closure": [
+        {
+          "module": "MaxwellEndpoint.Geometry",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+          "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Constitutive",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+          "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.System",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+          "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Native",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+          "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+          "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Classical",
+          "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+          "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Kinematics",
+          "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+          "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.CurlCurl",
+          "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+          "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Stress",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+          "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Definitions",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+          "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.FiniteSlab",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+          "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.TimeCalculus",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+          "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Material",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Material.lean",
+          "sha256": "301e57557d36f73dc3005661c871257a3af3a71b4c138bfd42c41302490d2700",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Lamb",
+          "path": "Fefferman_adapter/NSEMaxwell/Lamb.lean",
+          "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.PeriodicIntegration",
+          "path": "Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean",
+          "sha256": "1e5ab9beb9eeb11fbf595ff4fbdad263ebd4f38e17f02f3ed53e687bfb03664c",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Contracts",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Contracts.lean",
+          "sha256": "4c59cbf26fd4196529a4865ac09404d18015228c737055c2674cbcc4a5fd18f7",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.SixChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SixChannels.lean",
+          "sha256": "1c7f53956d9a766a3c8e4e781aa850a26351761ef0086c7ffd10047762854eab",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Galerkin",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Galerkin.lean",
+          "sha256": "e1ac5c944bab2667b02ae6c75b46f63605354b8c928c56298aee0e28b043a6fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Admission",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Admission.lean",
+          "sha256": "cd8e62a4f88a33b14d3a699b2431e801d590bcadf02d03b2e67ef3ebb5dc63ca",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalChannels.lean",
+          "sha256": "0d522433e0a511a1c0f41b25947a05ece9780cacbe6809d105fdbb8991dca89f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalEnstrophy",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalEnstrophy.lean",
+          "sha256": "720eaee5f18ea728c366880aeb05ced52bd9167369103cb19450991f74e08614",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PeriodicCover",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicCover.lean",
+          "sha256": "9d6f0d78c7a043ef7d8a7db1c3d5f647a84492ff6c3843d85527638990f7929f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowBounds",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBounds.lean",
+          "sha256": "9bf6bc79e6f81b32f876285ed3fde59a6b46871326d0670063ebbd953c65a60b",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowTrajectories",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowTrajectories.lean",
+          "sha256": "583b59df85d4c8882b67a07da3828add85a24da2b2cc26e1aafcdea198d55134",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowBanach",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBanach.lean",
+          "sha256": "f5e70a9f1006106c42bbedcaceaa61824ee585f877d5dfd678ad6c33907d8030",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowVolterra",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowVolterra.lean",
+          "sha256": "6307e2c2cd0460a53534298c22b30c9f9e2b6c0322c3548b5c7119e7e9ddd146",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowPathSolutions",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowPathSolutions.lean",
+          "sha256": "78f4d4e127c6944391c644fb70e5efb26574ab9ed4cd9d717bdead22a019e381",
+          "current_worktree_match": true
+        }
+      ],
+      "current_import_closure_match": true
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowJointJets",
+      "declaration_count": 10,
+      "axiom_records": [
+        {
+          "name": "ClassicalMechanicsAssembly.flow_contDiffOn_multilinear_apply",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowLabelJet",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowForcingJet",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flow_representative_slice_contDiff",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowLabelJet_eq_evaluatedFlowJet",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowLabelJet_continuousOn",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowLabelJet_hasFDerivAt",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowForcingJet_eq_partition_sum",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowForcingJet_contDiffOn",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.smoothVelocityOn_of_path_jet_integrals",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "source_manifest_sha256": "a296b4766499a4148a8b3ff0d49a703a838ca89f76c2f8534ac0199e0f6e964e",
+      "import_closure": [
+        {
+          "module": "MaxwellEndpoint.Geometry",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+          "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Constitutive",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+          "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.System",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+          "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Native",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+          "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+          "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Classical",
+          "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+          "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Kinematics",
+          "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+          "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.CurlCurl",
+          "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+          "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Stress",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+          "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Definitions",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+          "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.FiniteSlab",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+          "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.TimeCalculus",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+          "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowSmooth",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowSmooth.lean",
+          "sha256": "a9802f83328aaa99b78fa123062068ee7bf791946e47a8dcdad835402ea1e9bb",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowPathJets",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowPathJets.lean",
+          "sha256": "f9821c9f61082e34b6d4515b63c1d2d66b1c960d533377501864ca42832fdb39",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowJetTime",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJetTime.lean",
+          "sha256": "c3a791863079927326981ac1ebb6a22bd3745ff832374d94cc9b82f42a1ff7e0",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Lamb",
+          "path": "Fefferman_adapter/NSEMaxwell/Lamb.lean",
+          "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.PeriodicIntegration",
+          "path": "Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean",
+          "sha256": "1e5ab9beb9eeb11fbf595ff4fbdad263ebd4f38e17f02f3ed53e687bfb03664c",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Contracts",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Contracts.lean",
+          "sha256": "4c59cbf26fd4196529a4865ac09404d18015228c737055c2674cbcc4a5fd18f7",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.SixChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SixChannels.lean",
+          "sha256": "1c7f53956d9a766a3c8e4e781aa850a26351761ef0086c7ffd10047762854eab",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Galerkin",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Galerkin.lean",
+          "sha256": "e1ac5c944bab2667b02ae6c75b46f63605354b8c928c56298aee0e28b043a6fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Admission",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Admission.lean",
+          "sha256": "cd8e62a4f88a33b14d3a699b2431e801d590bcadf02d03b2e67ef3ebb5dc63ca",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalChannels.lean",
+          "sha256": "0d522433e0a511a1c0f41b25947a05ece9780cacbe6809d105fdbb8991dca89f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalEnstrophy",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalEnstrophy.lean",
+          "sha256": "720eaee5f18ea728c366880aeb05ced52bd9167369103cb19450991f74e08614",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PeriodicCover",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicCover.lean",
+          "sha256": "9d6f0d78c7a043ef7d8a7db1c3d5f647a84492ff6c3843d85527638990f7929f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowBounds",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBounds.lean",
+          "sha256": "9bf6bc79e6f81b32f876285ed3fde59a6b46871326d0670063ebbd953c65a60b",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowBanach",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBanach.lean",
+          "sha256": "f5e70a9f1006106c42bbedcaceaa61824ee585f877d5dfd678ad6c33907d8030",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowSpatialJets",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowSpatialJets.lean",
+          "sha256": "af397ff6218f0ae6a9a9fbbe8534099fcf4d58bcdf01f4df89c704b6dc8ebc71",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowJointJets",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJointJets.lean",
+          "sha256": "2c5ad252b4c5ddc5353ccdbf212e355a71116fd3cba6670ca94fc93b5eedafc5",
+          "current_worktree_match": true
+        }
+      ],
+      "current_import_closure_match": true
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowImplicit",
+      "declaration_count": 11,
+      "axiom_records": [
+        {
+          "name": "ClassicalMechanicsAssembly.flowIntegralResidual",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowIntegralResidual_eq_zero_iff",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowIntegralResidual_contDiff",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowIntegralResidual_hasFDerivAt",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowIntegralResidual_partial",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowPath_contDiff_of_integral_equation",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flowVelocityDerivativeMap",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.periodic_velocity_superposition_hasFDerivAt",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.periodic_velocity_path_contDiff_of_integral_equation",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.selectedFlowPath_contDiff",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.periodic_velocity_exists_smooth_flow_path",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "source_manifest_sha256": "ef0a5ad491f243d9a6d1c1238a89846844b8d0010755a7efc2513fa3f5728792",
+      "import_closure": [
+        {
+          "module": "ClassicalMechanicsAssembly.FlowBanach",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBanach.lean",
+          "sha256": "f5e70a9f1006106c42bbedcaceaa61824ee585f877d5dfd678ad6c33907d8030",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowVolterra",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowVolterra.lean",
+          "sha256": "6307e2c2cd0460a53534298c22b30c9f9e2b6c0322c3548b5c7119e7e9ddd146",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Geometry",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+          "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Constitutive",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+          "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.System",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+          "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Native",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+          "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+          "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Classical",
+          "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+          "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Kinematics",
+          "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+          "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.CurlCurl",
+          "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+          "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Stress",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+          "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Definitions",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+          "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.FiniteSlab",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+          "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.TimeCalculus",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+          "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Lamb",
+          "path": "Fefferman_adapter/NSEMaxwell/Lamb.lean",
+          "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.PeriodicIntegration",
+          "path": "Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean",
+          "sha256": "1e5ab9beb9eeb11fbf595ff4fbdad263ebd4f38e17f02f3ed53e687bfb03664c",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Contracts",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Contracts.lean",
+          "sha256": "4c59cbf26fd4196529a4865ac09404d18015228c737055c2674cbcc4a5fd18f7",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.SixChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SixChannels.lean",
+          "sha256": "1c7f53956d9a766a3c8e4e781aa850a26351761ef0086c7ffd10047762854eab",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Galerkin",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Galerkin.lean",
+          "sha256": "e1ac5c944bab2667b02ae6c75b46f63605354b8c928c56298aee0e28b043a6fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Admission",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Admission.lean",
+          "sha256": "cd8e62a4f88a33b14d3a699b2431e801d590bcadf02d03b2e67ef3ebb5dc63ca",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalChannels.lean",
+          "sha256": "0d522433e0a511a1c0f41b25947a05ece9780cacbe6809d105fdbb8991dca89f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalEnstrophy",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalEnstrophy.lean",
+          "sha256": "720eaee5f18ea728c366880aeb05ced52bd9167369103cb19450991f74e08614",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PeriodicCover",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicCover.lean",
+          "sha256": "9d6f0d78c7a043ef7d8a7db1c3d5f647a84492ff6c3843d85527638990f7929f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowBounds",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBounds.lean",
+          "sha256": "9bf6bc79e6f81b32f876285ed3fde59a6b46871326d0670063ebbd953c65a60b",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowSpatialJets",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowSpatialJets.lean",
+          "sha256": "af397ff6218f0ae6a9a9fbbe8534099fcf4d58bcdf01f4df89c704b6dc8ebc71",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Material",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Material.lean",
+          "sha256": "301e57557d36f73dc3005661c871257a3af3a71b4c138bfd42c41302490d2700",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowTrajectories",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowTrajectories.lean",
+          "sha256": "583b59df85d4c8882b67a07da3828add85a24da2b2cc26e1aafcdea198d55134",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowPathSolutions",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowPathSolutions.lean",
+          "sha256": "78f4d4e127c6944391c644fb70e5efb26574ab9ed4cd9d717bdead22a019e381",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowImplicit",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowImplicit.lean",
+          "sha256": "88293e05ba5c33b8e0b02d751e7d17254cc5f9f16c5075b58e7d5e9f53f252a4",
+          "current_worktree_match": true
+        }
+      ],
+      "current_import_closure_match": true
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowJetIntegral",
+      "declaration_count": 5,
+      "axiom_records": [
+        {
+          "name": "ClassicalMechanicsAssembly.flow_primitive_evaluated_jet",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.evaluatedFlowJet_integral_of_path_equation",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flow_labelJet_eq_evaluated",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.flow_labelJet_integral_of_path_equation",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.selectedFlow_labelJet_integral",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "source_manifest_sha256": "c239790eb3f24f2b181180bb3c351ad74174f5742cc78876776b665899698dc7",
+      "import_closure": [
+        {
+          "module": "ClassicalMechanicsAssembly.FlowBanach",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBanach.lean",
+          "sha256": "f5e70a9f1006106c42bbedcaceaa61824ee585f877d5dfd678ad6c33907d8030",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowVolterra",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowVolterra.lean",
+          "sha256": "6307e2c2cd0460a53534298c22b30c9f9e2b6c0322c3548b5c7119e7e9ddd146",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Geometry",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+          "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Constitutive",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+          "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.System",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+          "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Native",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+          "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+          "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Classical",
+          "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+          "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Kinematics",
+          "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+          "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.CurlCurl",
+          "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+          "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Stress",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+          "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Definitions",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+          "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.FiniteSlab",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+          "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.TimeCalculus",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+          "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Lamb",
+          "path": "Fefferman_adapter/NSEMaxwell/Lamb.lean",
+          "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.PeriodicIntegration",
+          "path": "Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean",
+          "sha256": "1e5ab9beb9eeb11fbf595ff4fbdad263ebd4f38e17f02f3ed53e687bfb03664c",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Contracts",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Contracts.lean",
+          "sha256": "4c59cbf26fd4196529a4865ac09404d18015228c737055c2674cbcc4a5fd18f7",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.SixChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SixChannels.lean",
+          "sha256": "1c7f53956d9a766a3c8e4e781aa850a26351761ef0086c7ffd10047762854eab",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Galerkin",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Galerkin.lean",
+          "sha256": "e1ac5c944bab2667b02ae6c75b46f63605354b8c928c56298aee0e28b043a6fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Admission",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Admission.lean",
+          "sha256": "cd8e62a4f88a33b14d3a699b2431e801d590bcadf02d03b2e67ef3ebb5dc63ca",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalChannels.lean",
+          "sha256": "0d522433e0a511a1c0f41b25947a05ece9780cacbe6809d105fdbb8991dca89f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalEnstrophy",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalEnstrophy.lean",
+          "sha256": "720eaee5f18ea728c366880aeb05ced52bd9167369103cb19450991f74e08614",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PeriodicCover",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicCover.lean",
+          "sha256": "9d6f0d78c7a043ef7d8a7db1c3d5f647a84492ff6c3843d85527638990f7929f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowBounds",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBounds.lean",
+          "sha256": "9bf6bc79e6f81b32f876285ed3fde59a6b46871326d0670063ebbd953c65a60b",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowSpatialJets",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowSpatialJets.lean",
+          "sha256": "af397ff6218f0ae6a9a9fbbe8534099fcf4d58bcdf01f4df89c704b6dc8ebc71",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Material",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Material.lean",
+          "sha256": "301e57557d36f73dc3005661c871257a3af3a71b4c138bfd42c41302490d2700",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowTrajectories",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowTrajectories.lean",
+          "sha256": "583b59df85d4c8882b67a07da3828add85a24da2b2cc26e1aafcdea198d55134",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowPathSolutions",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowPathSolutions.lean",
+          "sha256": "78f4d4e127c6944391c644fb70e5efb26574ab9ed4cd9d717bdead22a019e381",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowImplicit",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowImplicit.lean",
+          "sha256": "88293e05ba5c33b8e0b02d751e7d17254cc5f9f16c5075b58e7d5e9f53f252a4",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowSmooth",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowSmooth.lean",
+          "sha256": "a9802f83328aaa99b78fa123062068ee7bf791946e47a8dcdad835402ea1e9bb",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowPathJets",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowPathJets.lean",
+          "sha256": "f9821c9f61082e34b6d4515b63c1d2d66b1c960d533377501864ca42832fdb39",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowJetIntegral",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJetIntegral.lean",
+          "sha256": "5a4b67fbcc623eb2139f04178248e7a016543df157aa5c6c29b8ee01aa6403f8",
+          "current_worktree_match": true
+        }
+      ],
+      "current_import_closure_match": true
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowJoint",
+      "declaration_count": 1,
+      "axiom_records": [
+        {
+          "name": "ClassicalMechanicsAssembly.constructed_flow_smooth",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "source_manifest_sha256": "c3ffd421ee8773eda4398f49c80a2f2f630c602ea4dfb7ba42991e6911f66441",
+      "import_closure": [
+        {
+          "module": "MaxwellEndpoint.Geometry",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+          "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Constitutive",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+          "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.System",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+          "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Native",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+          "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+          "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Classical",
+          "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+          "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Kinematics",
+          "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+          "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.CurlCurl",
+          "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+          "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Stress",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+          "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Definitions",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+          "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.FiniteSlab",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+          "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.TimeCalculus",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+          "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowSmooth",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowSmooth.lean",
+          "sha256": "a9802f83328aaa99b78fa123062068ee7bf791946e47a8dcdad835402ea1e9bb",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowPathJets",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowPathJets.lean",
+          "sha256": "f9821c9f61082e34b6d4515b63c1d2d66b1c960d533377501864ca42832fdb39",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowJetTime",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJetTime.lean",
+          "sha256": "c3a791863079927326981ac1ebb6a22bd3745ff832374d94cc9b82f42a1ff7e0",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Lamb",
+          "path": "Fefferman_adapter/NSEMaxwell/Lamb.lean",
+          "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.PeriodicIntegration",
+          "path": "Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean",
+          "sha256": "1e5ab9beb9eeb11fbf595ff4fbdad263ebd4f38e17f02f3ed53e687bfb03664c",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Contracts",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Contracts.lean",
+          "sha256": "4c59cbf26fd4196529a4865ac09404d18015228c737055c2674cbcc4a5fd18f7",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.SixChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SixChannels.lean",
+          "sha256": "1c7f53956d9a766a3c8e4e781aa850a26351761ef0086c7ffd10047762854eab",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Galerkin",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Galerkin.lean",
+          "sha256": "e1ac5c944bab2667b02ae6c75b46f63605354b8c928c56298aee0e28b043a6fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Admission",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Admission.lean",
+          "sha256": "cd8e62a4f88a33b14d3a699b2431e801d590bcadf02d03b2e67ef3ebb5dc63ca",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalChannels.lean",
+          "sha256": "0d522433e0a511a1c0f41b25947a05ece9780cacbe6809d105fdbb8991dca89f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalEnstrophy",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalEnstrophy.lean",
+          "sha256": "720eaee5f18ea728c366880aeb05ced52bd9167369103cb19450991f74e08614",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PeriodicCover",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicCover.lean",
+          "sha256": "9d6f0d78c7a043ef7d8a7db1c3d5f647a84492ff6c3843d85527638990f7929f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowBounds",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBounds.lean",
+          "sha256": "9bf6bc79e6f81b32f876285ed3fde59a6b46871326d0670063ebbd953c65a60b",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowBanach",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBanach.lean",
+          "sha256": "f5e70a9f1006106c42bbedcaceaa61824ee585f877d5dfd678ad6c33907d8030",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowSpatialJets",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowSpatialJets.lean",
+          "sha256": "af397ff6218f0ae6a9a9fbbe8534099fcf4d58bcdf01f4df89c704b6dc8ebc71",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowJointJets",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJointJets.lean",
+          "sha256": "2c5ad252b4c5ddc5353ccdbf212e355a71116fd3cba6670ca94fc93b5eedafc5",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowVolterra",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowVolterra.lean",
+          "sha256": "6307e2c2cd0460a53534298c22b30c9f9e2b6c0322c3548b5c7119e7e9ddd146",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Material",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Material.lean",
+          "sha256": "301e57557d36f73dc3005661c871257a3af3a71b4c138bfd42c41302490d2700",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowTrajectories",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowTrajectories.lean",
+          "sha256": "583b59df85d4c8882b67a07da3828add85a24da2b2cc26e1aafcdea198d55134",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowPathSolutions",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowPathSolutions.lean",
+          "sha256": "78f4d4e127c6944391c644fb70e5efb26574ab9ed4cd9d717bdead22a019e381",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowImplicit",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowImplicit.lean",
+          "sha256": "88293e05ba5c33b8e0b02d751e7d17254cc5f9f16c5075b58e7d5e9f53f252a4",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowJetIntegral",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJetIntegral.lean",
+          "sha256": "5a4b67fbcc623eb2139f04178248e7a016543df157aa5c6c29b8ee01aa6403f8",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowJoint",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJoint.lean",
+          "sha256": "ae1fd51aea75e1fc3144e79404c0016370fe902645b78ee4dd60bf30ffb24c0d",
+          "current_worktree_match": true
+        }
+      ],
+      "current_import_closure_match": true
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowRealization",
+      "declaration_count": 3,
+      "axiom_records": [
+        {
+          "name": "ClassicalMechanicsAssembly.jointFlowRegularity_of_smooth_periodic",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.L1_native",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ],
+      "source_manifest_sha256": "e168ab16a0709eab67f44f62d868d098679b143af3efdf2223b6085026ebec9b",
+      "import_closure": [
+        {
+          "module": "MaxwellEndpoint.Geometry",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+          "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Constitutive",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+          "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.System",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+          "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint.Native",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+          "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+          "current_worktree_match": true
+        },
+        {
+          "module": "MaxwellEndpoint",
+          "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+          "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Classical",
+          "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+          "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Kinematics",
+          "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+          "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.CurlCurl",
+          "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+          "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Stress",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+          "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Definitions",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+          "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.FiniteSlab",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+          "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.TimeCalculus",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+          "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowSmooth",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowSmooth.lean",
+          "sha256": "a9802f83328aaa99b78fa123062068ee7bf791946e47a8dcdad835402ea1e9bb",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowPathJets",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowPathJets.lean",
+          "sha256": "f9821c9f61082e34b6d4515b63c1d2d66b1c960d533377501864ca42832fdb39",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowJetTime",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJetTime.lean",
+          "sha256": "c3a791863079927326981ac1ebb6a22bd3745ff832374d94cc9b82f42a1ff7e0",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.Lamb",
+          "path": "Fefferman_adapter/NSEMaxwell/Lamb.lean",
+          "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+          "current_worktree_match": true
+        },
+        {
+          "module": "NSEMaxwell.PeriodicIntegration",
+          "path": "Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean",
+          "sha256": "1e5ab9beb9eeb11fbf595ff4fbdad263ebd4f38e17f02f3ed53e687bfb03664c",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Contracts",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Contracts.lean",
+          "sha256": "4c59cbf26fd4196529a4865ac09404d18015228c737055c2674cbcc4a5fd18f7",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.SixChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SixChannels.lean",
+          "sha256": "1c7f53956d9a766a3c8e4e781aa850a26351761ef0086c7ffd10047762854eab",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Galerkin",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Galerkin.lean",
+          "sha256": "e1ac5c944bab2667b02ae6c75b46f63605354b8c928c56298aee0e28b043a6fa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.Admission",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Admission.lean",
+          "sha256": "cd8e62a4f88a33b14d3a699b2431e801d590bcadf02d03b2e67ef3ebb5dc63ca",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalChannels",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalChannels.lean",
+          "sha256": "0d522433e0a511a1c0f41b25947a05ece9780cacbe6809d105fdbb8991dca89f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PhysicalEnstrophy",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalEnstrophy.lean",
+          "sha256": "720eaee5f18ea728c366880aeb05ced52bd9167369103cb19450991f74e08614",
+          "current_worktree_match": true
+        },
+        {
+          "module": "SingularClosure.PeriodicCover",
+          "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicCover.lean",
+          "sha256": "9d6f0d78c7a043ef7d8a7db1c3d5f647a84492ff6c3843d85527638990f7929f",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowBounds",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBounds.lean",
+          "sha256": "9bf6bc79e6f81b32f876285ed3fde59a6b46871326d0670063ebbd953c65a60b",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowBanach",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBanach.lean",
+          "sha256": "f5e70a9f1006106c42bbedcaceaa61824ee585f877d5dfd678ad6c33907d8030",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowSpatialJets",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowSpatialJets.lean",
+          "sha256": "af397ff6218f0ae6a9a9fbbe8534099fcf4d58bcdf01f4df89c704b6dc8ebc71",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowJointJets",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJointJets.lean",
+          "sha256": "2c5ad252b4c5ddc5353ccdbf212e355a71116fd3cba6670ca94fc93b5eedafc5",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowVolterra",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowVolterra.lean",
+          "sha256": "6307e2c2cd0460a53534298c22b30c9f9e2b6c0322c3548b5c7119e7e9ddd146",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Material",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Material.lean",
+          "sha256": "301e57557d36f73dc3005661c871257a3af3a71b4c138bfd42c41302490d2700",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowTrajectories",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowTrajectories.lean",
+          "sha256": "583b59df85d4c8882b67a07da3828add85a24da2b2cc26e1aafcdea198d55134",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowPathSolutions",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowPathSolutions.lean",
+          "sha256": "78f4d4e127c6944391c644fb70e5efb26574ab9ed4cd9d717bdead22a019e381",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowImplicit",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowImplicit.lean",
+          "sha256": "88293e05ba5c33b8e0b02d751e7d17254cc5f9f16c5075b58e7d5e9f53f252a4",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowJetIntegral",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJetIntegral.lean",
+          "sha256": "5a4b67fbcc623eb2139f04178248e7a016543df157aa5c6c29b8ee01aa6403f8",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowJoint",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJoint.lean",
+          "sha256": "ae1fd51aea75e1fc3144e79404c0016370fe902645b78ee4dd60bf30ffb24c0d",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.MaterialGradient",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialGradient.lean",
+          "sha256": "ce3344c164eb1135355dd7ccaeeee0be012b41fd2f6eaf9ac7c2ca4ae2e2bab1",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.Piola",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean",
+          "sha256": "7074a13438808ca77c75d104fc6b21bb2a4bd33003a49050209e2cb474278cfa",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanics.MaterialBridge",
+          "path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialBridge.lean",
+          "sha256": "abba98bc75d21f5dd5d2f2c5c453d1ee31a03ebd3fdc30d767b9f5c20fd84c63",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.PiolaTransport",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/PiolaTransport.lean",
+          "sha256": "a46f3814fd41201a7c1c4991b8130cac74607336bb1b250de07a09cab31a36e0",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowInverse",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowInverse.lean",
+          "sha256": "7b00c0a3667a28a334677c96d57a246dbc2df2fc2963eb31ee5966b24c4a4aa8",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowJacobian",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJacobian.lean",
+          "sha256": "0c2dd93fc561af3dddf0206888efb35b0011d4c4e04b15d848f00414cb157201",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowVariational",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowVariational.lean",
+          "sha256": "55d379fa1e55bbf6120b5d8d8ca7d004ab2ec4ec594713312d3494ffe738caf9",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.NativeEndpoints",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean",
+          "sha256": "9b12945b7fadbd6bc4d768250501f78e5c122bed4df84cee656eb869779b1674",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.Equation",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/Equation.lean",
+          "sha256": "feef541ea2e1cba32eb3900786bb758f739580fea21f38ae7b69c8583e6b8ec5",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowConstruction",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowConstruction.lean",
+          "sha256": "5cadc899c0c4eba81be3a6a6f0a33fff744ddb7b76cac5216d3fb3d262e9ad55",
+          "current_worktree_match": true
+        },
+        {
+          "module": "ClassicalMechanicsAssembly.FlowRealization",
+          "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowRealization.lean",
+          "sha256": "823e92b6fa9532c55afc7118abc9188edaebbbf36be5cfa3352aeb68382c2c8f",
+          "current_worktree_match": true
+        }
+      ],
+      "current_import_closure_match": true
+    }
+  ],
+  "failed_or_blocked_modules": [],
+  "passed_declaration_count": 169,
+  "local_lean_executions": 0,
+  "scope": "Exact passed declarations only; every explicit premise is retained. Exact root contract identity and compatibility migration require the separate type-preservation certificate."
+}

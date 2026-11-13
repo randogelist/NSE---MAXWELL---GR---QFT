@@ -1,0 +1,442 @@
+@ClassicalMechanicsAssembly.summable_operator_powers_of_factorial_bound.{u_1} : ∀ {B : Type u_1}
+  [inst : NormedAddCommGroup.{u_1} B] [inst_1 : NormedSpace.{0, u_1} ℝ B] [CompleteSpace.{u_1} B]
+  (L : ContinuousLinearMap.{0, 0, u_1, u_1} (RingHom.id.{0} ℝ) B B) (C : ℝ),
+  (∀ (n : ℕ),
+      LE.le.{0} (norm.{u_1} (HPow.hPow.{u_1, 0, u_1} L n))
+        (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} C n) ↑n.factorial)) →
+    Summable.{u_1, 0} fun n => HPow.hPow.{u_1, 0, u_1} L n
+'ClassicalMechanicsAssembly.summable_operator_powers_of_factorial_bound' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.operator_series_inverse_identities_of_factorial_bound.{u_1} : ∀ {B : Type u_1}
+  [inst : NormedAddCommGroup.{u_1} B] [inst_1 : NormedSpace.{0, u_1} ℝ B] [CompleteSpace.{u_1} B]
+  (L : ContinuousLinearMap.{0, 0, u_1, u_1} (RingHom.id.{0} ℝ) B B) (C : ℝ),
+  (∀ (n : ℕ),
+      LE.le.{0} (norm.{u_1} (HPow.hPow.{u_1, 0, u_1} L n))
+        (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} C n) ↑n.factorial)) →
+    Eq.{u_1 + 1} (HMul.hMul.{u_1, u_1, u_1} (HSub.hSub.{u_1, u_1, u_1} 1 L) (∑' (n : ℕ), HPow.hPow.{u_1, 0, u_1} L n))
+        1 ∧
+      Eq.{u_1 + 1} (HMul.hMul.{u_1, u_1, u_1} (∑' (n : ℕ), HPow.hPow.{u_1, 0, u_1} L n) (HSub.hSub.{u_1, u_1, u_1} 1 L))
+        1
+'ClassicalMechanicsAssembly.operator_series_inverse_identities_of_factorial_bound' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.one_sub_operator_isInvertible_of_factorial_bound.{u_1} : ∀ {B : Type u_1}
+  [inst : NormedAddCommGroup.{u_1} B] [inst_1 : NormedSpace.{0, u_1} ℝ B] [CompleteSpace.{u_1} B]
+  (L : ContinuousLinearMap.{0, 0, u_1, u_1} (RingHom.id.{0} ℝ) B B) (C : ℝ),
+  (∀ (n : ℕ),
+      LE.le.{0} (norm.{u_1} (HPow.hPow.{u_1, 0, u_1} L n))
+        (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} C n) ↑n.factorial)) →
+    ContinuousLinearMap.IsInvertible.{0, u_1, u_1} (HSub.hSub.{u_1, u_1, u_1} 1 L)
+'ClassicalMechanicsAssembly.one_sub_operator_isInvertible_of_factorial_bound' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.operator_inverse_eq_tsum_of_factorial_bound.{u_1} : ∀ {B : Type u_1}
+  [inst : NormedAddCommGroup.{u_1} B] [inst_1 : NormedSpace.{0, u_1} ℝ B] [CompleteSpace.{u_1} B]
+  (L : ContinuousLinearMap.{0, 0, u_1, u_1} (RingHom.id.{0} ℝ) B B) (C : ℝ),
+  (∀ (n : ℕ),
+      LE.le.{0} (norm.{u_1} (HPow.hPow.{u_1, 0, u_1} L n))
+        (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} C n) ↑n.factorial)) →
+    Eq.{u_1 + 1} (ContinuousLinearMap.inverse.{0, u_1, u_1} (HSub.hSub.{u_1, u_1, u_1} 1 L))
+      (∑' (n : ℕ), HPow.hPow.{u_1, 0, u_1} L n)
+'ClassicalMechanicsAssembly.operator_inverse_eq_tsum_of_factorial_bound' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.contDiff_of_unique_implicit_branch.{u_1,
+    u_2} : ∀ {E : Type u_1} {B : Type u_2} [inst : NormedAddCommGroup.{u_1} E] [inst_1 : NormedSpace.{0, u_1} ℝ E]
+  [CompleteSpace.{u_1} E] [inst_3 : NormedAddCommGroup.{u_2} B] [inst_4 : NormedSpace.{0, u_2} ℝ B]
+  [CompleteSpace.{u_2} B] (Φ : Prod.{u_1, u_2} E B → B) (Γ : E → B),
+  ContDiff.{0, max u_1 u_2, u_2} ℝ (↑Top.top.{0}) Φ →
+    (∀ (a : E), Eq.{u_2 + 1} (Φ (Prod.mk.{u_1, u_2} a (Γ a))) 0) →
+      (∀ (a : E) (b : B), Eq.{u_2 + 1} (Φ (Prod.mk.{u_1, u_2} a b)) 0 → Eq.{u_2 + 1} b (Γ a)) →
+        (∀ (a : E),
+            ContinuousLinearMap.IsInvertible.{0, u_2, u_2}
+              (ContinuousLinearMap.comp.{0, 0, 0, u_2, max u_1 u_2, u_2}
+                (fderiv.{0, max u_1 u_2, u_2} ℝ Φ (Prod.mk.{u_1, u_2} a (Γ a)))
+                (ContinuousLinearMap.inr.{0, u_1, u_2} ℝ E B))) →
+          ContDiff.{0, u_1, u_2} ℝ (↑Top.top.{0}) Γ
+'ClassicalMechanicsAssembly.contDiff_of_unique_implicit_branch' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.contDiff_of_unique_volterra_residual.{u_1,
+    u_2} : ∀ {E : Type u_1} {B : Type u_2} [inst : NormedAddCommGroup.{u_1} E] [inst_1 : NormedSpace.{0, u_1} ℝ E]
+  [CompleteSpace.{u_1} E] [inst_3 : NormedAddCommGroup.{u_2} B] [inst_4 : NormedSpace.{0, u_2} ℝ B]
+  [CompleteSpace.{u_2} B] (Φ : Prod.{u_1, u_2} E B → B) (Γ : E → B)
+  (L : E → ContinuousLinearMap.{0, 0, u_2, u_2} (RingHom.id.{0} ℝ) B B) (C : E → ℝ),
+  ContDiff.{0, max u_1 u_2, u_2} ℝ (↑Top.top.{0}) Φ →
+    (∀ (a : E), Eq.{u_2 + 1} (Φ (Prod.mk.{u_1, u_2} a (Γ a))) 0) →
+      (∀ (a : E) (b : B), Eq.{u_2 + 1} (Φ (Prod.mk.{u_1, u_2} a b)) 0 → Eq.{u_2 + 1} b (Γ a)) →
+        (∀ (a : E),
+            Eq.{u_2 + 1}
+              (ContinuousLinearMap.comp.{0, 0, 0, u_2, max u_1 u_2, u_2}
+                (fderiv.{0, max u_1 u_2, u_2} ℝ Φ (Prod.mk.{u_1, u_2} a (Γ a)))
+                (ContinuousLinearMap.inr.{0, u_1, u_2} ℝ E B))
+              (HSub.hSub.{u_2, u_2, u_2} 1 (L a))) →
+          (∀ (a : E) (n : ℕ),
+              LE.le.{0} (norm.{u_2} (HPow.hPow.{u_2, 0, u_2} (L a) n))
+                (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (C a) n) ↑n.factorial)) →
+            ContDiff.{0, u_1, u_2} ℝ (↑Top.top.{0}) Γ
+'ClassicalMechanicsAssembly.contDiff_of_unique_volterra_residual' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathSuperposition.{u_1,
+    u_2} : {I : Type u_1} →
+  {E : Type u_2} →
+    [inst : TopologicalSpace.{u_1} I] →
+      [inst_1 : NormedAddCommGroup.{u_2} E] →
+        ContinuousMap.{max u_2 u_1, u_2} (Prod.{u_1, u_2} I E) E →
+          ContinuousMap.{u_1, u_2} I E → ContinuousMap.{u_1, u_2} I E
+'ClassicalMechanicsAssembly.flowPathSuperposition' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathSuperposition_apply.{u_1,
+    u_2} : ∀ {I : Type u_1} {E : Type u_2} [inst : TopologicalSpace.{u_1} I] [CompactSpace.{u_1} I]
+  [inst_2 : NormedAddCommGroup.{u_2} E] [NormedSpace.{0, u_2} ℝ E]
+  (u : ContinuousMap.{max u_2 u_1, u_2} (Prod.{u_1, u_2} I E) E) (γ : ContinuousMap.{u_1, u_2} I E) (t : I),
+  Eq.{u_2 + 1} ((ClassicalMechanicsAssembly.flowPathSuperposition.{u_1, u_2} u γ) t) (u (Prod.mk.{u_1, u_2} t (γ t)))
+'ClassicalMechanicsAssembly.flowPathSuperposition_apply' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathSuperposition_lipschitz.{u_1,
+    u_2} : ∀ {I : Type u_1} {E : Type u_2} [inst : TopologicalSpace.{u_1} I] [inst_1 : CompactSpace.{u_1} I]
+  [inst_2 : NormedAddCommGroup.{u_2} E] [NormedSpace.{0, u_2} ℝ E]
+  (u : ContinuousMap.{max u_2 u_1, u_2} (Prod.{u_1, u_2} I E) E) (K : NNReal),
+  (∀ (t : I), LipschitzWith.{u_2, u_2} K fun x => u (Prod.mk.{u_1, u_2} t x)) →
+    LipschitzWith.{max u_2 u_1, max u_2 u_1} K (ClassicalMechanicsAssembly.flowPathSuperposition.{u_1, u_2} u)
+'ClassicalMechanicsAssembly.flowPathSuperposition_lipschitz' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flow_quadratic_remainder_of_lipschitz_derivative.{u_1,
+    u_2} : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup.{u_1} E] [inst_1 : NormedSpace.{0, u_1} ℝ E]
+  [inst_2 : NormedAddCommGroup.{u_2} F] [inst_3 : NormedSpace.{0, u_2} ℝ F] (u : E → F)
+  (A : E → ContinuousLinearMap.{0, 0, u_1, u_2} (RingHom.id.{0} ℝ) E F) (K : NNReal),
+  (∀ (x : E), HasFDerivAt.{0, u_1, u_2} u (A x) x) →
+    LipschitzWith.{u_1, max u_1 u_2} K A →
+      ∀ (x h : E),
+        LE.le.{0}
+          (norm.{u_2}
+            (HSub.hSub.{u_2, u_2, u_2} (HSub.hSub.{u_2, u_2, u_2} (u (HAdd.hAdd.{u_1, u_1, u_1} x h)) (u x)) ((A x) h)))
+          (HMul.hMul.{0, 0, 0} (↑K) (HPow.hPow.{0, 0, 0} (norm.{u_1} h) 2))
+'ClassicalMechanicsAssembly.flow_quadratic_remainder_of_lipschitz_derivative' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathMultiplicationLinear.{u_1, u_2,
+    u_3} : {I : Type u_1} →
+  {E : Type u_2} →
+    {F : Type u_3} →
+      [inst : TopologicalSpace.{u_1} I] →
+        [inst_1 : NormedAddCommGroup.{u_2} E] →
+          [inst_2 : NormedSpace.{0, u_2} ℝ E] →
+            [inst_3 : NormedAddCommGroup.{u_3} F] →
+              [inst_4 : NormedSpace.{0, u_3} ℝ F] →
+                ContinuousMap.{u_1, max u_3 u_2} I (ContinuousLinearMap.{0, 0, u_2, u_3} (RingHom.id.{0} ℝ) E F) →
+                  LinearMap.{0, 0, max u_2 u_1, max u_3 u_1} (RingHom.id.{0} ℝ) (ContinuousMap.{u_1, u_2} I E)
+                    (ContinuousMap.{u_1, u_3} I F)
+'ClassicalMechanicsAssembly.flowPathMultiplicationLinear' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathMultiplicationLinear_bound.{u_1, u_2,
+    u_3} : ∀ {I : Type u_1} {E : Type u_2} {F : Type u_3} [inst : TopologicalSpace.{u_1} I]
+  [inst_1 : CompactSpace.{u_1} I] [inst_2 : NormedAddCommGroup.{u_2} E] [inst_3 : NormedSpace.{0, u_2} ℝ E]
+  [inst_4 : NormedAddCommGroup.{u_3} F] [inst_5 : NormedSpace.{0, u_3} ℝ F]
+  (A : ContinuousMap.{u_1, max u_3 u_2} I (ContinuousLinearMap.{0, 0, u_2, u_3} (RingHom.id.{0} ℝ) E F))
+  (h : ContinuousMap.{u_1, u_2} I E),
+  LE.le.{0} (norm.{max u_1 u_3} ((ClassicalMechanicsAssembly.flowPathMultiplicationLinear.{u_1, u_2, u_3} A) h))
+    (HMul.hMul.{0, 0, 0} (norm.{max (max u_1 u_2) u_3} A) (norm.{max u_1 u_2} h))
+'ClassicalMechanicsAssembly.flowPathMultiplicationLinear_bound' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathMultiplication.{u_1, u_2,
+    u_3} : {I : Type u_1} →
+  {E : Type u_2} →
+    {F : Type u_3} →
+      [inst : TopologicalSpace.{u_1} I] →
+        [CompactSpace.{u_1} I] →
+          [inst_2 : NormedAddCommGroup.{u_2} E] →
+            [inst_3 : NormedSpace.{0, u_2} ℝ E] →
+              [inst_4 : NormedAddCommGroup.{u_3} F] →
+                [inst_5 : NormedSpace.{0, u_3} ℝ F] →
+                  ContinuousMap.{u_1, max u_3 u_2} I (ContinuousLinearMap.{0, 0, u_2, u_3} (RingHom.id.{0} ℝ) E F) →
+                    ContinuousLinearMap.{0, 0, max u_2 u_1, max u_3 u_1} (RingHom.id.{0} ℝ)
+                      (ContinuousMap.{u_1, u_2} I E) (ContinuousMap.{u_1, u_3} I F)
+'ClassicalMechanicsAssembly.flowPathMultiplication' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathMultiplication_apply.{u_1, u_2,
+    u_3} : ∀ {I : Type u_1} {E : Type u_2} {F : Type u_3} [inst : TopologicalSpace.{u_1} I]
+  [inst_1 : CompactSpace.{u_1} I] [inst_2 : NormedAddCommGroup.{u_2} E] [inst_3 : NormedSpace.{0, u_2} ℝ E]
+  [inst_4 : NormedAddCommGroup.{u_3} F] [inst_5 : NormedSpace.{0, u_3} ℝ F]
+  (A : ContinuousMap.{u_1, max u_3 u_2} I (ContinuousLinearMap.{0, 0, u_2, u_3} (RingHom.id.{0} ℝ) E F))
+  (h : ContinuousMap.{u_1, u_2} I E) (t : I),
+  Eq.{u_3 + 1} (((ClassicalMechanicsAssembly.flowPathMultiplication.{u_1, u_2, u_3} A) h) t) ((A t) (h t))
+'ClassicalMechanicsAssembly.flowPathMultiplication_apply' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathMultiplication_norm_le.{u_1, u_2,
+    u_3} : ∀ {I : Type u_1} {E : Type u_2} {F : Type u_3} [inst : TopologicalSpace.{u_1} I]
+  [inst_1 : CompactSpace.{u_1} I] [inst_2 : NormedAddCommGroup.{u_2} E] [inst_3 : NormedSpace.{0, u_2} ℝ E]
+  [inst_4 : NormedAddCommGroup.{u_3} F] [inst_5 : NormedSpace.{0, u_3} ℝ F]
+  (A : ContinuousMap.{u_1, max u_3 u_2} I (ContinuousLinearMap.{0, 0, u_2, u_3} (RingHom.id.{0} ℝ) E F)),
+  LE.le.{0} (norm.{max (max u_3 u_2) u_1} (ClassicalMechanicsAssembly.flowPathMultiplication.{u_1, u_2, u_3} A))
+    (norm.{max (max u_1 u_2) u_3} A)
+'ClassicalMechanicsAssembly.flowPathMultiplication_norm_le' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathMultiplicationLiftLinear.{u_1, u_2,
+    u_3} : {I : Type u_1} →
+  {E : Type u_2} →
+    {F : Type u_3} →
+      [inst : TopologicalSpace.{u_1} I] →
+        [CompactSpace.{u_1} I] →
+          [inst_2 : NormedAddCommGroup.{u_2} E] →
+            [inst_3 : NormedSpace.{0, u_2} ℝ E] →
+              [inst_4 : NormedAddCommGroup.{u_3} F] →
+                [inst_5 : NormedSpace.{0, u_3} ℝ F] →
+                  LinearMap.{0, 0, max (max u_3 u_2) u_1, max (max u_3 u_1) u_2 u_1} (RingHom.id.{0} ℝ)
+                    (ContinuousMap.{u_1, max u_3 u_2} I (ContinuousLinearMap.{0, 0, u_2, u_3} (RingHom.id.{0} ℝ) E F))
+                    (ContinuousLinearMap.{0, 0, max u_2 u_1, max u_3 u_1} (RingHom.id.{0} ℝ)
+                      (ContinuousMap.{u_1, u_2} I E) (ContinuousMap.{u_1, u_3} I F))
+'ClassicalMechanicsAssembly.flowPathMultiplicationLiftLinear' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathMultiplicationLift.{u_1, u_2,
+    u_3} : {I : Type u_1} →
+  {E : Type u_2} →
+    {F : Type u_3} →
+      [inst : TopologicalSpace.{u_1} I] →
+        [CompactSpace.{u_1} I] →
+          [inst_2 : NormedAddCommGroup.{u_2} E] →
+            [inst_3 : NormedSpace.{0, u_2} ℝ E] →
+              [inst_4 : NormedAddCommGroup.{u_3} F] →
+                [inst_5 : NormedSpace.{0, u_3} ℝ F] →
+                  ContinuousLinearMap.{0, 0, max (max u_3 u_2) u_1, max (max u_3 u_1) u_2 u_1} (RingHom.id.{0} ℝ)
+                    (ContinuousMap.{u_1, max u_3 u_2} I (ContinuousLinearMap.{0, 0, u_2, u_3} (RingHom.id.{0} ℝ) E F))
+                    (ContinuousLinearMap.{0, 0, max u_2 u_1, max u_3 u_1} (RingHom.id.{0} ℝ)
+                      (ContinuousMap.{u_1, u_2} I E) (ContinuousMap.{u_1, u_3} I F))
+'ClassicalMechanicsAssembly.flowPathMultiplicationLift' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathMultiplicationLift_apply.{u_1, u_2,
+    u_3} : ∀ {I : Type u_1} {E : Type u_2} {F : Type u_3} [inst : TopologicalSpace.{u_1} I]
+  [inst_1 : CompactSpace.{u_1} I] [inst_2 : NormedAddCommGroup.{u_2} E] [inst_3 : NormedSpace.{0, u_2} ℝ E]
+  [inst_4 : NormedAddCommGroup.{u_3} F] [inst_5 : NormedSpace.{0, u_3} ℝ F]
+  (A : ContinuousMap.{u_1, max u_3 u_2} I (ContinuousLinearMap.{0, 0, u_2, u_3} (RingHom.id.{0} ℝ) E F)),
+  Eq.{max (max (u_1 + 1) (u_2 + 1)) (u_3 + 1)} (ClassicalMechanicsAssembly.flowPathMultiplicationLift.{u_1, u_2, u_3} A)
+    (ClassicalMechanicsAssembly.flowPathMultiplication.{u_1, u_2, u_3} A)
+'ClassicalMechanicsAssembly.flowPathMultiplicationLift_apply' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathPostcomposition.{u_1, u_2,
+    u_3} : {I : Type u_1} →
+  {E : Type u_2} →
+    {F : Type u_3} →
+      [inst : TopologicalSpace.{u_1} I] →
+        [CompactSpace.{u_1} I] →
+          [inst_2 : NormedAddCommGroup.{u_2} E] →
+            [inst_3 : NormedSpace.{0, u_2} ℝ E] →
+              [inst_4 : NormedAddCommGroup.{u_3} F] →
+                [inst_5 : NormedSpace.{0, u_3} ℝ F] →
+                  ContinuousLinearMap.{0, 0, u_2, u_3} (RingHom.id.{0} ℝ) E F →
+                    ContinuousLinearMap.{0, 0, max u_2 u_1, max u_3 u_1} (RingHom.id.{0} ℝ)
+                      (ContinuousMap.{u_1, u_2} I E) (ContinuousMap.{u_1, u_3} I F)
+'ClassicalMechanicsAssembly.flowPathPostcomposition' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathPostcomposition_apply.{u_1, u_2,
+    u_3} : ∀ {I : Type u_1} {E : Type u_2} {F : Type u_3} [inst : TopologicalSpace.{u_1} I]
+  [inst_1 : CompactSpace.{u_1} I] [inst_2 : NormedAddCommGroup.{u_2} E] [inst_3 : NormedSpace.{0, u_2} ℝ E]
+  [inst_4 : NormedAddCommGroup.{u_3} F] [inst_5 : NormedSpace.{0, u_3} ℝ F]
+  (L : ContinuousLinearMap.{0, 0, u_2, u_3} (RingHom.id.{0} ℝ) E F) (γ : ContinuousMap.{u_1, u_2} I E) (t : I),
+  Eq.{u_3 + 1} (((ClassicalMechanicsAssembly.flowPathPostcomposition.{u_1, u_2, u_3} L) γ) t) (L (γ t))
+'ClassicalMechanicsAssembly.flowPathPostcomposition_apply' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathSuperpositionTo.{u_1, u_2,
+    u_3} : {I : Type u_1} →
+  {E : Type u_2} →
+    {F : Type u_3} →
+      [inst : TopologicalSpace.{u_1} I] →
+        [inst_1 : NormedAddCommGroup.{u_2} E] →
+          [inst_2 : NormedAddCommGroup.{u_3} F] →
+            ContinuousMap.{max u_2 u_1, u_3} (Prod.{u_1, u_2} I E) F →
+              ContinuousMap.{u_1, u_2} I E → ContinuousMap.{u_1, u_3} I F
+'ClassicalMechanicsAssembly.flowPathSuperpositionTo' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathSuperpositionTo_apply.{u_1, u_2,
+    u_3} : ∀ {I : Type u_1} {E : Type u_2} {F : Type u_3} [inst : TopologicalSpace.{u_1} I] [CompactSpace.{u_1} I]
+  [inst_2 : NormedAddCommGroup.{u_2} E] [NormedSpace.{0, u_2} ℝ E] [inst_4 : NormedAddCommGroup.{u_3} F]
+  [NormedSpace.{0, u_3} ℝ F] (u : ContinuousMap.{max u_2 u_1, u_3} (Prod.{u_1, u_2} I E) F)
+  (γ : ContinuousMap.{u_1, u_2} I E) (t : I),
+  Eq.{u_3 + 1} ((ClassicalMechanicsAssembly.flowPathSuperpositionTo.{u_1, u_2, u_3} u γ) t)
+    (u (Prod.mk.{u_1, u_2} t (γ t)))
+'ClassicalMechanicsAssembly.flowPathSuperpositionTo_apply' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathSuperpositionDerivative.{u_1, u_2,
+    u_3} : {I : Type u_1} →
+  {E : Type u_2} →
+    {F : Type u_3} →
+      [inst : TopologicalSpace.{u_1} I] →
+        [CompactSpace.{u_1} I] →
+          [inst_2 : NormedAddCommGroup.{u_2} E] →
+            [inst_3 : NormedSpace.{0, u_2} ℝ E] →
+              [inst_4 : NormedAddCommGroup.{u_3} F] →
+                [inst_5 : NormedSpace.{0, u_3} ℝ F] →
+                  ContinuousMap.{max u_2 u_1, max u_3 u_2} (Prod.{u_1, u_2} I E)
+                      (ContinuousLinearMap.{0, 0, u_2, u_3} (RingHom.id.{0} ℝ) E F) →
+                    ContinuousMap.{u_1, u_2} I E →
+                      ContinuousLinearMap.{0, 0, max u_2 u_1, max u_3 u_1} (RingHom.id.{0} ℝ)
+                        (ContinuousMap.{u_1, u_2} I E) (ContinuousMap.{u_1, u_3} I F)
+'ClassicalMechanicsAssembly.flowPathSuperpositionDerivative' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathSuperpositionDerivative_apply.{u_1, u_2,
+    u_3} : ∀ {I : Type u_1} {E : Type u_2} {F : Type u_3} [inst : TopologicalSpace.{u_1} I]
+  [inst_1 : CompactSpace.{u_1} I] [inst_2 : NormedAddCommGroup.{u_2} E] [inst_3 : NormedSpace.{0, u_2} ℝ E]
+  [inst_4 : NormedAddCommGroup.{u_3} F] [inst_5 : NormedSpace.{0, u_3} ℝ F]
+  (A :
+    ContinuousMap.{max u_2 u_1, max u_3 u_2} (Prod.{u_1, u_2} I E)
+      (ContinuousLinearMap.{0, 0, u_2, u_3} (RingHom.id.{0} ℝ) E F))
+  (γ h : ContinuousMap.{u_1, u_2} I E) (t : I),
+  Eq.{u_3 + 1} (((ClassicalMechanicsAssembly.flowPathSuperpositionDerivative.{u_1, u_2, u_3} A γ) h) t)
+    ((A (Prod.mk.{u_1, u_2} t (γ t))) (h t))
+'ClassicalMechanicsAssembly.flowPathSuperpositionDerivative_apply' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathSuperposition_remainder_bound.{u_1, u_2,
+    u_3} : ∀ {I : Type u_1} {E : Type u_2} {F : Type u_3} [inst : TopologicalSpace.{u_1} I]
+  [inst_1 : CompactSpace.{u_1} I] [inst_2 : NormedAddCommGroup.{u_2} E] [inst_3 : NormedSpace.{0, u_2} ℝ E]
+  [inst_4 : NormedAddCommGroup.{u_3} F] [inst_5 : NormedSpace.{0, u_3} ℝ F]
+  (u : ContinuousMap.{max u_2 u_1, u_3} (Prod.{u_1, u_2} I E) F)
+  (A :
+    ContinuousMap.{max u_2 u_1, max u_3 u_2} (Prod.{u_1, u_2} I E)
+      (ContinuousLinearMap.{0, 0, u_2, u_3} (RingHom.id.{0} ℝ) E F))
+  (M : ℝ),
+  LE.le.{0} 0 M →
+    (∀ (t : I) (x h : E),
+        LE.le.{0}
+          (norm.{u_3}
+            (HSub.hSub.{u_3, u_3, u_3}
+              (HSub.hSub.{u_3, u_3, u_3} (u (Prod.mk.{u_1, u_2} t (HAdd.hAdd.{u_2, u_2, u_2} x h)))
+                (u (Prod.mk.{u_1, u_2} t x)))
+              ((A (Prod.mk.{u_1, u_2} t x)) h)))
+          (HMul.hMul.{0, 0, 0} M (HPow.hPow.{0, 0, 0} (norm.{u_2} h) 2))) →
+      ∀ (γ h : ContinuousMap.{u_1, u_2} I E),
+        LE.le.{0}
+          (norm.{max u_1 u_3}
+            (HSub.hSub.{max u_1 u_3, max u_1 u_3, max u_1 u_3}
+              (HSub.hSub.{max u_1 u_3, max u_1 u_3, max u_1 u_3}
+                (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{u_1, u_2, u_3} u
+                  (HAdd.hAdd.{max u_1 u_2, max u_1 u_2, max u_1 u_2} γ h))
+                (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{u_1, u_2, u_3} u γ))
+              ((ClassicalMechanicsAssembly.flowPathSuperpositionDerivative.{u_1, u_2, u_3} A γ) h)))
+          (HMul.hMul.{0, 0, 0} M (HPow.hPow.{0, 0, 0} (norm.{max u_1 u_2} h) 2))
+'ClassicalMechanicsAssembly.flowPathSuperposition_remainder_bound' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathSuperposition_hasFDerivAt.{u_1, u_2,
+    u_3} : ∀ {I : Type u_1} {E : Type u_2} {F : Type u_3} [inst : TopologicalSpace.{u_1} I]
+  [inst_1 : CompactSpace.{u_1} I] [inst_2 : NormedAddCommGroup.{u_2} E] [inst_3 : NormedSpace.{0, u_2} ℝ E]
+  [inst_4 : NormedAddCommGroup.{u_3} F] [inst_5 : NormedSpace.{0, u_3} ℝ F]
+  (u : ContinuousMap.{max u_2 u_1, u_3} (Prod.{u_1, u_2} I E) F)
+  (A :
+    ContinuousMap.{max u_2 u_1, max u_3 u_2} (Prod.{u_1, u_2} I E)
+      (ContinuousLinearMap.{0, 0, u_2, u_3} (RingHom.id.{0} ℝ) E F))
+  (M : ℝ),
+  LE.le.{0} 0 M →
+    (∀ (t : I) (x h : E),
+        LE.le.{0}
+          (norm.{u_3}
+            (HSub.hSub.{u_3, u_3, u_3}
+              (HSub.hSub.{u_3, u_3, u_3} (u (Prod.mk.{u_1, u_2} t (HAdd.hAdd.{u_2, u_2, u_2} x h)))
+                (u (Prod.mk.{u_1, u_2} t x)))
+              ((A (Prod.mk.{u_1, u_2} t x)) h)))
+          (HMul.hMul.{0, 0, 0} M (HPow.hPow.{0, 0, 0} (norm.{u_2} h) 2))) →
+      ∀ (γ : ContinuousMap.{u_1, u_2} I E),
+        HasFDerivAt.{0, max u_2 u_1, max u_3 u_1} (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{u_1, u_2, u_3} u)
+          (ClassicalMechanicsAssembly.flowPathSuperpositionDerivative.{u_1, u_2, u_3} A γ) γ
+'ClassicalMechanicsAssembly.flowPathSuperposition_hasFDerivAt' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathSuperposition_hasFDerivAt_of_lipschitz_derivative.{u_1, u_2,
+    u_3} : ∀ {I : Type u_1} {E : Type u_2} {F : Type u_3} [inst : TopologicalSpace.{u_1} I]
+  [inst_1 : CompactSpace.{u_1} I] [inst_2 : NormedAddCommGroup.{u_2} E] [inst_3 : NormedSpace.{0, u_2} ℝ E]
+  [inst_4 : NormedAddCommGroup.{u_3} F] [inst_5 : NormedSpace.{0, u_3} ℝ F]
+  (u : ContinuousMap.{max u_2 u_1, u_3} (Prod.{u_1, u_2} I E) F)
+  (A :
+    ContinuousMap.{max u_2 u_1, max u_3 u_2} (Prod.{u_1, u_2} I E)
+      (ContinuousLinearMap.{0, 0, u_2, u_3} (RingHom.id.{0} ℝ) E F))
+  (K : NNReal),
+  (∀ (t : I) (x : E), HasFDerivAt.{0, u_2, u_3} (fun y => u (Prod.mk.{u_1, u_2} t y)) (A (Prod.mk.{u_1, u_2} t x)) x) →
+    (∀ (t : I), LipschitzWith.{u_2, max u_2 u_3} K fun x => A (Prod.mk.{u_1, u_2} t x)) →
+      ∀ (γ : ContinuousMap.{u_1, u_2} I E),
+        HasFDerivAt.{0, max u_2 u_1, max u_3 u_1} (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{u_1, u_2, u_3} u)
+          (ClassicalMechanicsAssembly.flowPathSuperpositionDerivative.{u_1, u_2, u_3} A γ) γ
+'ClassicalMechanicsAssembly.flowPathSuperposition_hasFDerivAt_of_lipschitz_derivative' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathSuperposition_contDiff_succ.{u_1, u_2,
+    u_3} : ∀ {I : Type u_1} {E : Type u_2} {F : Type u_3} [inst : TopologicalSpace.{u_1} I]
+  [inst_1 : CompactSpace.{u_1} I] [inst_2 : NormedAddCommGroup.{u_2} E] [inst_3 : NormedSpace.{0, u_2} ℝ E]
+  [inst_4 : NormedAddCommGroup.{u_3} F] [inst_5 : NormedSpace.{0, u_3} ℝ F]
+  (u : ContinuousMap.{max u_2 u_1, u_3} (Prod.{u_1, u_2} I E) F)
+  (A :
+    ContinuousMap.{max u_2 u_1, max u_3 u_2} (Prod.{u_1, u_2} I E)
+      (ContinuousLinearMap.{0, 0, u_2, u_3} (RingHom.id.{0} ℝ) E F))
+  (M : ℝ),
+  LE.le.{0} 0 M →
+    (∀ (t : I) (x h : E),
+        LE.le.{0}
+          (norm.{u_3}
+            (HSub.hSub.{u_3, u_3, u_3}
+              (HSub.hSub.{u_3, u_3, u_3} (u (Prod.mk.{u_1, u_2} t (HAdd.hAdd.{u_2, u_2, u_2} x h)))
+                (u (Prod.mk.{u_1, u_2} t x)))
+              ((A (Prod.mk.{u_1, u_2} t x)) h)))
+          (HMul.hMul.{0, 0, 0} M (HPow.hPow.{0, 0, 0} (norm.{u_2} h) 2))) →
+      ∀ (n : ℕ),
+        ContDiff.{0, max u_2 u_1, max (max u_2 u_3) u_1} ℝ (↑n)
+            (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{u_1, u_2, max u_2 u_3} A) →
+          ContDiff.{0, max u_2 u_1, max u_3 u_1} ℝ (HAdd.hAdd.{0, 0, 0} (↑n) 1)
+            (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{u_1, u_2, u_3} u)
+'ClassicalMechanicsAssembly.flowPathSuperposition_contDiff_succ' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathSuperposition_contDiff_of_taylor_tower.{u_1, u_2,
+    u_3} : ∀ {I : Type u_1} {E : Type u_2} [inst : TopologicalSpace.{u_1} I] [inst_1 : CompactSpace.{u_1} I]
+  [inst_2 : NormedAddCommGroup.{u_2} E] [inst_3 : NormedSpace.{0, u_2} ℝ E] (F : ℕ → Type u_3)
+  [inst_4 : (n : ℕ) → NormedAddCommGroup.{u_3} (F n)] [inst_5 : (n : ℕ) → NormedSpace.{0, u_3} ℝ (F n)]
+  (u : (n : ℕ) → ContinuousMap.{max u_2 u_1, u_3} (Prod.{u_1, u_2} I E) (F n))
+  (curry :
+    (n : ℕ) →
+      ContinuousLinearMap.{0, 0, u_3, max u_3 u_2} (RingHom.id.{0} ℝ) (F (HAdd.hAdd.{0, 0, 0} n 1))
+        (ContinuousLinearMap.{0, 0, u_2, u_3} (RingHom.id.{0} ℝ) E (F n)))
+  (M : ℕ → NNReal),
+  (∀ (n : ℕ) (t : I) (x h : E),
+      LE.le.{0}
+        (norm.{u_3}
+          (HSub.hSub.{u_3, u_3, u_3}
+            (HSub.hSub.{u_3, u_3, u_3} ((u n) (Prod.mk.{u_1, u_2} t (HAdd.hAdd.{u_2, u_2, u_2} x h)))
+              ((u n) (Prod.mk.{u_1, u_2} t x)))
+            (((curry n) ((u (HAdd.hAdd.{0, 0, 0} n 1)) (Prod.mk.{u_1, u_2} t x))) h)))
+        (HMul.hMul.{0, 0, 0} (↑(M n)) (HPow.hPow.{0, 0, 0} (norm.{u_2} h) 2))) →
+    ∀ (n : ℕ),
+      ContDiff.{0, max u_2 u_1, max u_3 u_1} ℝ (↑Top.top.{0})
+        (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{u_1, u_2, u_3} (u n))
+'ClassicalMechanicsAssembly.flowPathSuperposition_contDiff_of_taylor_tower' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathSuperposition_contDiff_of_spatial_tower.{u_1, u_2,
+    u_3} : ∀ {I : Type u_1} {E : Type u_2} [inst : TopologicalSpace.{u_1} I] [inst_1 : CompactSpace.{u_1} I]
+  [inst_2 : NormedAddCommGroup.{u_2} E] [inst_3 : NormedSpace.{0, u_2} ℝ E] (F : ℕ → Type u_3)
+  [inst_4 : (n : ℕ) → NormedAddCommGroup.{u_3} (F n)] [inst_5 : (n : ℕ) → NormedSpace.{0, u_3} ℝ (F n)]
+  (u : (n : ℕ) → ContinuousMap.{max u_2 u_1, u_3} (Prod.{u_1, u_2} I E) (F n))
+  (curry :
+    (n : ℕ) →
+      ContinuousLinearMap.{0, 0, u_3, max u_3 u_2} (RingHom.id.{0} ℝ) (F (HAdd.hAdd.{0, 0, 0} n 1))
+        (ContinuousLinearMap.{0, 0, u_2, u_3} (RingHom.id.{0} ℝ) E (F n)))
+  (K : ℕ → NNReal),
+  (∀ (n : ℕ) (t : I) (x : E),
+      HasFDerivAt.{0, u_2, u_3} (fun y => (u n) (Prod.mk.{u_1, u_2} t y))
+        ((curry n) ((u (HAdd.hAdd.{0, 0, 0} n 1)) (Prod.mk.{u_1, u_2} t x))) x) →
+    (∀ (n : ℕ) (t : I),
+        LipschitzWith.{u_2, max u_2 u_3} (K n) fun x =>
+          (curry n) ((u (HAdd.hAdd.{0, 0, 0} n 1)) (Prod.mk.{u_1, u_2} t x))) →
+      ∀ (n : ℕ),
+        ContDiff.{0, max u_2 u_1, max u_3 u_1} ℝ (↑Top.top.{0})
+          (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{u_1, u_2, u_3} (u n))
+'ClassicalMechanicsAssembly.flowPathSuperposition_contDiff_of_spatial_tower' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

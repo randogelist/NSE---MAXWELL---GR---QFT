@@ -1,20 +1,26 @@
 {
   "schema_version": 1,
-  "status": "A_TIER_CANDIDATE",
-  "closure_status": "PENDING_FRESH_COMPATIBILITY_AUDIT",
+  "status": "A_TIER",
+  "closure_status": "UNCONDITIONAL_CLOSURE_WITHIN_STATED_FINITE_SLAB_SCOPE",
   "native_L1_status": "A_TIER",
   "native_root_evidence": {
-    "source_commit": "ff3c809f241ff14c7b9556b858bb423e1f9630d0",
-    "report_directory": "Auxillary/evidence/flow-linux-43399380498/flow/FlowRealization",
-    "audit_summary_sha256": "3ad65cc9ac7fae25afc099bdab42171f19c13aa84cf6a5946aef7597c3d40b52",
-    "source_manifest_sha256": "9f61c7606542dafc0b7b9bb011cbdcec9c65fcf3a436392cb71cbcd6f365a848",
+    "source_commit": "34b1fe1100f726d51955a7bf9ac5059d8069fb32",
+    "external_run_id": 43401581626,
+    "external_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43401581626",
+    "external_artifact_id": 14025577567,
+    "artifact_sha256": "6aa19eb4bc04edb133950e8bf754efc37948c730a2655fab29c71430c9dbfabd",
+    "report_directory": "Auxillary/evidence/native-compat-linux-43401581626/flow/FlowRealization",
+    "audit_summary_sha256": "81f361c5bc85b9e0879b5f2be6c2209decdbca77072bd8a0a3e94b7c35911456",
+    "source_manifest_sha256": "e168ab16a0709eab67f44f62d868d098679b143af3efdf2223b6085026ebec9b",
     "import_closure_sha256": "658eb04fed096e4a6506ccc07aa285d58d12494101a60afd42b954d3aa215c11",
     "native_module_count": 46,
     "exact_roots": [
-      "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE",
-      "ClassicalMechanicsAssembly.L1_native"
+      "ClassicalMechanicsAssembly.L1_native",
+      "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE"
     ],
-    "status": "PASS_STANDARD_ONLY"
+    "status": "PASS_STANDARD_ONLY",
+    "type_preservation_certificate": "Auxillary/evidence/native-compat-linux-43401581626/native-compatibility-type-certificate.json",
+    "type_preservation_certificate_sha256": "71ee30ff1eab4c8cb870a5bdaa0e37752c36f3caf2c566b9ba867bd81a773ece"
   },
   "axiom_declarations": [],
   "literature_axiom_declaration_count": 0,
@@ -22,10 +28,10 @@
   "literature_audit_target_count": 5,
   "standard_only_assembly_target_count": 43,
   "axiom_status": "NO_CUSTOM_AXIOM_DECLARATIONS",
-  "flow_realization": "NATIVE_L1; COMPATIBILITY_WRAPPER_PENDING_FRESH_AUDIT",
+  "flow_realization": "NATIVE_L1; EXACT_ORIGINAL_CONTRACT_PRESERVED",
   "diffusion_realization": "NATIVE_L2_AND_L2_NATIVE",
-  "external_compilation": "PENDING_FOR_CHANGED_COMPATIBILITY_SOURCE",
-  "literature_5_axiom_audit": "PENDING_STANDARD_ONLY",
+  "external_compilation": "PASS",
+  "literature_5_axiom_audit": "PASS_STANDARD_ONLY",
   "expected_nonfoundational_axioms": [],
   "local_lean_executions": 0,
   "prior_literature_audit_historical_only": {
@@ -67,5 +73,33 @@
     "L2_axiom_audit": "PASS_STANDARD_ONLY",
     "literature_axiom_declaration_count": 1,
     "literature_theorem_count": 4
-  }
+  },
+  "compatibility_evidence": {
+    "source_commit": "34b1fe1100f726d51955a7bf9ac5059d8069fb32",
+    "external_run_id": 43401581626,
+    "external_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43401581626",
+    "external_artifact_id": 14025577567,
+    "artifact_sha256": "6aa19eb4bc04edb133950e8bf754efc37948c730a2655fab29c71430c9dbfabd",
+    "retained_evidence": "Auxillary/evidence/native-compat-linux-43401581626",
+    "report_directory": "Auxillary/evidence/native-compat-linux-43401581626/literature",
+    "audit_summary_sha256": "79633bd6d5d8f980ec946bfa1a6615aa00341f3d07d29a94dd4bfedced9059e7",
+    "source_manifest_sha256": "bec154f73f0422530f80d3bf6f913602a446bc3ced26a532edff6685c1d590bb",
+    "type_preservation_certificate": "Auxillary/evidence/native-compat-linux-43401581626/native-compatibility-type-certificate.json",
+    "type_preservation_certificate_sha256": "71ee30ff1eab4c8cb870a5bdaa0e37752c36f3caf2c566b9ba867bd81a773ece",
+    "status": "PASS_STANDARD_ONLY",
+    "theorem_count": 5,
+    "exact_original_contracts_preserved": true
+  },
+  "standard_43_axiom_audit": "PASS_STANDARD_ONLY",
+  "native_169_axiom_audit": "PASS_STANDARD_ONLY",
+  "source_commit": "34b1fe1100f726d51955a7bf9ac5059d8069fb32",
+  "external_run_id": 43401581626,
+  "external_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43401581626",
+  "external_platform": "native Linux / Ubuntu 24.04",
+  "toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "dual_root_analytic_axioms": [],
+  "native_diffusion_root_analytic_axioms": [],
+  "unresolved_literature_inputs": [],
+  "scope": "Supplied smooth periodic divergence-free velocity on [0,T], T>0; supplied smooth pressure for equation equivalence. Explicit domain hypotheses are retained."
 }

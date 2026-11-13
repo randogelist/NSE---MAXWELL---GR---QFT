@@ -1,0 +1,152 @@
+@ClassicalMechanicsAssembly.flowIntegralResidual.{u_1,
+    u_2} : {E : Type u_1} →
+  {B : Type u_2} →
+    [inst : NormedAddCommGroup.{u_1} E] →
+      [inst_1 : NormedSpace.{0, u_1} ℝ E] →
+        [inst_2 : NormedAddCommGroup.{u_2} B] →
+          [inst_3 : NormedSpace.{0, u_2} ℝ B] →
+            ContinuousLinearMap.{0, 0, u_1, u_2} (RingHom.id.{0} ℝ) E B →
+              ContinuousLinearMap.{0, 0, u_2, u_2} (RingHom.id.{0} ℝ) B B → (B → B) → Prod.{u_1, u_2} E B → B
+'ClassicalMechanicsAssembly.flowIntegralResidual' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowIntegralResidual_eq_zero_iff.{u_1,
+    u_2} : ∀ {E : Type u_1} {B : Type u_2} [inst : NormedAddCommGroup.{u_1} E] [inst_1 : NormedSpace.{0, u_1} ℝ E]
+  [inst_2 : NormedAddCommGroup.{u_2} B] [inst_3 : NormedSpace.{0, u_2} ℝ B]
+  (c : ContinuousLinearMap.{0, 0, u_1, u_2} (RingHom.id.{0} ℝ) E B)
+  (V : ContinuousLinearMap.{0, 0, u_2, u_2} (RingHom.id.{0} ℝ) B B) (N : B → B) (a : E) (γ : B),
+  Eq.{u_2 + 1} (ClassicalMechanicsAssembly.flowIntegralResidual.{u_1, u_2} c V N (Prod.mk.{u_1, u_2} a γ)) 0 ↔
+    Eq.{u_2 + 1} γ (HAdd.hAdd.{u_2, u_2, u_2} (c a) (V (N γ)))
+'ClassicalMechanicsAssembly.flowIntegralResidual_eq_zero_iff' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowIntegralResidual_contDiff.{u_1,
+    u_2} : ∀ {E : Type u_1} {B : Type u_2} [inst : NormedAddCommGroup.{u_1} E] [inst_1 : NormedSpace.{0, u_1} ℝ E]
+  [inst_2 : NormedAddCommGroup.{u_2} B] [inst_3 : NormedSpace.{0, u_2} ℝ B]
+  (c : ContinuousLinearMap.{0, 0, u_1, u_2} (RingHom.id.{0} ℝ) E B)
+  (V : ContinuousLinearMap.{0, 0, u_2, u_2} (RingHom.id.{0} ℝ) B B) (N : B → B),
+  ContDiff.{0, u_2, u_2} ℝ (↑Top.top.{0}) N →
+    ContDiff.{0, max u_2 u_1, u_2} ℝ (↑Top.top.{0}) (ClassicalMechanicsAssembly.flowIntegralResidual.{u_1, u_2} c V N)
+'ClassicalMechanicsAssembly.flowIntegralResidual_contDiff' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowIntegralResidual_hasFDerivAt.{u_1,
+    u_2} : ∀ {E : Type u_1} {B : Type u_2} [inst : NormedAddCommGroup.{u_1} E] [inst_1 : NormedSpace.{0, u_1} ℝ E]
+  [inst_2 : NormedAddCommGroup.{u_2} B] [inst_3 : NormedSpace.{0, u_2} ℝ B]
+  (c : ContinuousLinearMap.{0, 0, u_1, u_2} (RingHom.id.{0} ℝ) E B)
+  (V : ContinuousLinearMap.{0, 0, u_2, u_2} (RingHom.id.{0} ℝ) B B) (N : B → B) (a : E) (γ : B)
+  (D : ContinuousLinearMap.{0, 0, u_2, u_2} (RingHom.id.{0} ℝ) B B),
+  HasFDerivAt.{0, u_2, u_2} N D γ →
+    HasFDerivAt.{0, max u_2 u_1, u_2} (ClassicalMechanicsAssembly.flowIntegralResidual.{u_1, u_2} c V N)
+      (HSub.hSub.{max u_1 u_2, max u_1 u_2, max u_1 u_2}
+        (HSub.hSub.{max u_1 u_2, max u_1 u_2, max u_1 u_2} (ContinuousLinearMap.snd.{0, u_1, u_2} ℝ E B)
+          (ContinuousLinearMap.comp.{0, 0, 0, max u_1 u_2, u_1, u_2} c (ContinuousLinearMap.fst.{0, u_1, u_2} ℝ E B)))
+        (ContinuousLinearMap.comp.{0, 0, 0, max u_1 u_2, u_2, u_2} V
+          (ContinuousLinearMap.comp.{0, 0, 0, max u_1 u_2, u_2, u_2} D (ContinuousLinearMap.snd.{0, u_1, u_2} ℝ E B))))
+      (Prod.mk.{u_1, u_2} a γ)
+'ClassicalMechanicsAssembly.flowIntegralResidual_hasFDerivAt' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowIntegralResidual_partial.{u_1,
+    u_2} : ∀ {E : Type u_1} {B : Type u_2} [inst : NormedAddCommGroup.{u_1} E] [inst_1 : NormedSpace.{0, u_1} ℝ E]
+  [inst_2 : NormedAddCommGroup.{u_2} B] [inst_3 : NormedSpace.{0, u_2} ℝ B]
+  (c : ContinuousLinearMap.{0, 0, u_1, u_2} (RingHom.id.{0} ℝ) E B)
+  (V : ContinuousLinearMap.{0, 0, u_2, u_2} (RingHom.id.{0} ℝ) B B) (N : B → B) (a : E) (γ : B)
+  (D : ContinuousLinearMap.{0, 0, u_2, u_2} (RingHom.id.{0} ℝ) B B),
+  HasFDerivAt.{0, u_2, u_2} N D γ →
+    Eq.{u_2 + 1}
+      (ContinuousLinearMap.comp.{0, 0, 0, u_2, max u_2 u_1, u_2}
+        (fderiv.{0, max u_2 u_1, u_2} ℝ (ClassicalMechanicsAssembly.flowIntegralResidual.{u_1, u_2} c V N)
+          (Prod.mk.{u_1, u_2} a γ))
+        (ContinuousLinearMap.inr.{0, u_1, u_2} ℝ E B))
+      (HSub.hSub.{u_2, u_2, u_2} 1 (ContinuousLinearMap.comp.{0, 0, 0, u_2, u_2, u_2} V D))
+'ClassicalMechanicsAssembly.flowIntegralResidual_partial' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPath_contDiff_of_integral_equation.{u_1} : ∀ {E : Type u_1}
+  [inst : NormedAddCommGroup.{u_1} E] [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ}
+  (hT : LE.le.{0} 0 T) (u : ContinuousMap.{u_1, u_1} (Prod.{0, u_1} (↑(Set.Icc.{0} 0 T)) E) E)
+  (A :
+    ContinuousMap.{u_1, u_1} (Prod.{0, u_1} (↑(Set.Icc.{0} 0 T)) E)
+      (ContinuousLinearMap.{0, 0, u_1, u_1} (RingHom.id.{0} ℝ) E E))
+  (K : NNReal),
+  ContDiff.{0, u_1, u_1} ℝ (↑Top.top.{0}) (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{0, u_1, u_1} u) →
+    (∀ (γ : ContinuousMap.{0, u_1} (↑(Set.Icc.{0} 0 T)) E),
+        HasFDerivAt.{0, u_1, u_1} (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{0, u_1, u_1} u)
+          (ClassicalMechanicsAssembly.flowPathSuperpositionDerivative.{0, u_1, u_1} A γ) γ) →
+      (∀ (t : ↑(Set.Icc.{0} 0 T)) (x : E), LE.le.{0} (norm.{u_1} (A (Prod.mk.{0, u_1} t x))) ↑K) →
+        ∀ (Γ : E → ContinuousMap.{0, u_1} (↑(Set.Icc.{0} 0 T)) E),
+          (∀ (a : E),
+              Eq.{u_1 + 1} (Γ a)
+                (HAdd.hAdd.{u_1, u_1, u_1} (ContinuousMap.const.{0, u_1} (↑(Set.Icc.{0} 0 T)) a)
+                  ((ClassicalMechanicsAssembly.flowPathPrimitive.{u_1} hT)
+                    (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{0, u_1, u_1} u (Γ a))))) →
+            (∀ (a : E) (γ : ContinuousMap.{0, u_1} (↑(Set.Icc.{0} 0 T)) E),
+                Eq.{u_1 + 1} γ
+                    (HAdd.hAdd.{u_1, u_1, u_1} (ContinuousMap.const.{0, u_1} (↑(Set.Icc.{0} 0 T)) a)
+                      ((ClassicalMechanicsAssembly.flowPathPrimitive.{u_1} hT)
+                        (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{0, u_1, u_1} u γ))) →
+                  Eq.{u_1 + 1} γ (Γ a)) →
+              ContDiff.{0, u_1, u_1} ℝ (↑Top.top.{0}) Γ
+'ClassicalMechanicsAssembly.flowPath_contDiff_of_integral_equation' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowVelocityDerivativeMap : {T : ℝ} →
+  LT.lt.{0} 0 T →
+    {u : NSEMaxwell.Classical.Velocity} →
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ContinuousMap.{0, 0} (Prod.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec)
+          (ContinuousLinearMap.{0, 0, 0, 0} (RingHom.id.{0} ℝ) NSEMaxwell.Classical.Vec NSEMaxwell.Classical.Vec)
+'ClassicalMechanicsAssembly.flowVelocityDerivativeMap' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.periodic_velocity_superposition_hasFDerivAt : ∀ {T : ℝ} (hT : LT.lt.{0} 0 T)
+  {u : NSEMaxwell.Classical.Velocity} (hu : ClassicalMechanics.SmoothVelocityOn T u),
+  (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+    ∀ (γ : ContinuousMap.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec),
+      HasFDerivAt.{0, 0, 0}
+        (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{0, 0, 0} (ClassicalMechanicsAssembly.flowVelocityMap hu))
+        (ClassicalMechanicsAssembly.flowPathSuperpositionDerivative.{0, 0, 0}
+          (ClassicalMechanicsAssembly.flowVelocityDerivativeMap hT hu) γ)
+        γ
+'ClassicalMechanicsAssembly.periodic_velocity_superposition_hasFDerivAt' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.periodic_velocity_path_contDiff_of_integral_equation : ∀ {T : ℝ} (hT : LT.lt.{0} 0 T)
+  {u : NSEMaxwell.Classical.Velocity} (hu : ClassicalMechanics.SmoothVelocityOn T u),
+  (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+    ∀ (Γ : NSEMaxwell.Classical.Vec → ContinuousMap.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec),
+      (∀ (a : NSEMaxwell.Classical.Vec),
+          Eq.{1} (Γ a)
+            (HAdd.hAdd.{0, 0, 0} (ContinuousMap.const.{0, 0} (↑(Set.Icc.{0} 0 T)) a)
+              ((ClassicalMechanicsAssembly.flowPathPrimitive.{0} ⋯)
+                (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{0, 0, 0}
+                  (ClassicalMechanicsAssembly.flowVelocityMap hu) (Γ a))))) →
+        (∀ (a : NSEMaxwell.Classical.Vec) (γ : ContinuousMap.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec),
+            Eq.{1} γ
+                (HAdd.hAdd.{0, 0, 0} (ContinuousMap.const.{0, 0} (↑(Set.Icc.{0} 0 T)) a)
+                  ((ClassicalMechanicsAssembly.flowPathPrimitive.{0} ⋯)
+                    (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{0, 0, 0}
+                      (ClassicalMechanicsAssembly.flowVelocityMap hu) γ))) →
+              Eq.{1} γ (Γ a)) →
+          ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) Γ
+'ClassicalMechanicsAssembly.periodic_velocity_path_contDiff_of_integral_equation' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.selectedFlowPath_contDiff : ∀ {T : ℝ} (hT : LT.lt.{0} 0 T)
+  {u : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.SmoothVelocityOn T u →
+    (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+      ∀ {B K : NNReal} (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{0} T u B K),
+        ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) (ClassicalMechanicsAssembly.selectedFlowPath.{0} h ⋯)
+'ClassicalMechanicsAssembly.selectedFlowPath_contDiff' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.periodic_velocity_exists_smooth_flow_path : ∀ {T : ℝ} (hT : LT.lt.{0} 0 T)
+  {u : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.SmoothVelocityOn T u →
+    (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+      ∃ B K,
+        ∃ (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{0} T u B K),
+          ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) (ClassicalMechanicsAssembly.selectedFlowPath.{0} h ⋯)
+'ClassicalMechanicsAssembly.periodic_velocity_exists_smooth_flow_path' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

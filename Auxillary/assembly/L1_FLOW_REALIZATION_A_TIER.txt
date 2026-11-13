@@ -2,18 +2,36 @@ L1_FLOW_REALIZATION
 ===================
 
 STATUS = A_TIER
+CLOSURE = UNCONDITIONAL_CLOSURE_WITHIN_STATED_FINITE_SLAB_SCOPE
+MARKER = !!!!
 EXACT_ROOT = ClassicalMechanicsAssembly.L1_native
+COMPATIBILITY_L1 = ClassicalMechanicsAssembly.Literature.L1; NATIVE_THEOREM
 SOURCE = ASSEMBLY/ClassicalMechanicsAssembly/FlowRealization.lean
-LOCAL_LEAN_EXECUTIONS = 0
-EXTERNAL_PLATFORM = native Linux; cached Lean 4.34.0-rc1
+EXTERNAL_SOURCE = 34b1fe1100f726d51955a7bf9ac5059d8069fb32
+EXTERNAL_RUN = 43401581626
+EXTERNAL_RUN_URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43401581626
+EXTERNAL_ARTIFACT = 14025577567
+ARTIFACT_SHA256 = 6aa19eb4bc04edb133950e8bf754efc37948c730a2655fab29c71430c9dbfabd
+EXTERNAL_PLATFORM = cached native Linux / Ubuntu 24.04
+LEAN = leanprover/lean4:v4.34.0-rc1
 MATHLIB = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
 METHLIB = e9cf90726b8544a268469ebc8fa6634e9c713e07
 APPROVED_FOUNDATIONS = propext, Classical.choice, Quot.sound
-L1_AXIOM_REMOVAL = NATIVE_THEOREM_REPLACEMENT; COMPATIBILITY_REAUDIT_PENDING
-PARTIAL_EXTERNAL_SOURCE = 82d26ef52c923f7de0707b4811928e81cf06a0ab
-PARTIAL_EXTERNAL_RUN = 43397660178
-PARTIAL_STANDARD_ONLY = FlowBounds:6; FlowBanach:30; FlowSmooth:9; FlowInverse:10; FlowJacobian:7; FlowTrajectories:23; FlowVariational:6; FlowConstruction:5; FlowVolterra:11; FlowSpatialJets:13; FlowPathJets:5; FlowPathSolutions:9; FlowImplicit:11; FlowJetTime:5; FlowJetIntegral:5
-EXACT_L1_EXTERNAL_STATUS = PASS_STANDARD_ONLY
+CUSTOM_AXIOMS = NONE
+UNRESOLVED_LITERATURE_INPUTS = NONE
+L1_AXIOM_REMOVAL = COMPLETE; EXACT_ORIGINAL_TYPE_PRESERVED
+L2 = NATIVE_THEOREM; EXACT_ORIGINAL_TYPE_PRESERVED
+STRICT_ASSEMBLY = 43/43 PASS_STANDARD_ONLY
+NATIVE_FLOW = 18/18 modules; 169/169 declarations PASS_STANDARD_ONLY
+COMPATIBILITY = 5/5 PASS_STANDARD_ONLY; ORIGINAL_TYPES_UNCHANGED
+LEGACY_ROOT_PROOF_BODIES = UNCHANGED; FLOW_ODE_CONJUNCT_PRESERVED
+TOTAL_FRESH_THEOREM_AUDITS = 217/217 PASS_STANDARD_ONLY
+LOCAL_LEAN_EXECUTIONS = 0
+MATHLIB_USAGE_INDEX = Auxillary/assembly/L1_NATIVE_MATHLIB_ENDPOINTS.txt
+MATHLIB_USAGE_SCOPE = 21 selected Mathlib + 1 direct Methlib entry; exact call sites and pinned hashes.
+RETAINED_EVIDENCE = Auxillary/evidence/native-compat-linux-43401581626
+TYPE_CERTIFICATE = Auxillary/evidence/native-compat-linux-43401581626/native-compatibility-type-certificate.json
+TYPE_CERTIFICATE_SHA256 = 71ee30ff1eab4c8cb870a5bdaa0e37752c36f3caf2c566b9ba867bd81a773ece
 
 EXACT SCOPE
 -----------
@@ -98,7 +116,7 @@ MATHLIB ENTRYPOINTS USED
 -----------------------
 IsCompact.exists_bound_of_continuousOn
 lipschitzWith_of_nnnorm_fderiv_le
-IsPicardLindelof.exists_eq_forall_mem_Icc_hasDerivWithinAt
+IsPicardLindelof.exists_eq_forall_mem_Icc_hasDerivWithinAt₀
 ODE_solution_unique_of_mem_Icc_left
 ODE_solution_unique_of_mem_Icc_right
 dist_le_of_trajectories_ODE_of_mem
@@ -136,18 +154,41 @@ Prepared source is not a kernel proof. Only matching external compilation
 and exact theorem-level standard-foundation-only audits promote a target.
 Partial module audits do not discharge L1.
 
-EXACT_NATIVE_MIGRATION_EVIDENCE
+EXACT_NATIVE_EVIDENCE
 {
-  "source_commit": "ff3c809f241ff14c7b9556b858bb423e1f9630d0",
-  "report_directory": "Auxillary/evidence/flow-linux-43399380498/flow/FlowRealization",
-  "audit_summary_sha256": "3ad65cc9ac7fae25afc099bdab42171f19c13aa84cf6a5946aef7597c3d40b52",
-  "source_manifest_sha256": "9f61c7606542dafc0b7b9bb011cbdcec9c65fcf3a436392cb71cbcd6f365a848",
+  "source_commit": "34b1fe1100f726d51955a7bf9ac5059d8069fb32",
+  "external_run_id": 43401581626,
+  "external_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43401581626",
+  "external_artifact_id": 14025577567,
+  "artifact_sha256": "6aa19eb4bc04edb133950e8bf754efc37948c730a2655fab29c71430c9dbfabd",
+  "report_directory": "Auxillary/evidence/native-compat-linux-43401581626/flow/FlowRealization",
+  "audit_summary_sha256": "81f361c5bc85b9e0879b5f2be6c2209decdbca77072bd8a0a3e94b7c35911456",
+  "source_manifest_sha256": "e168ab16a0709eab67f44f62d868d098679b143af3efdf2223b6085026ebec9b",
   "import_closure_sha256": "658eb04fed096e4a6506ccc07aa285d58d12494101a60afd42b954d3aa215c11",
   "native_module_count": 46,
   "exact_roots": [
-    "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE",
-    "ClassicalMechanicsAssembly.L1_native"
+    "ClassicalMechanicsAssembly.L1_native",
+    "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE"
   ],
-  "status": "PASS_STANDARD_ONLY"
+  "status": "PASS_STANDARD_ONLY",
+  "type_preservation_certificate": "Auxillary/evidence/native-compat-linux-43401581626/native-compatibility-type-certificate.json",
+  "type_preservation_certificate_sha256": "71ee30ff1eab4c8cb870a5bdaa0e37752c36f3caf2c566b9ba867bd81a773ece"
 }
-Changed literature compatibility wrappers remain A_TIER_CANDIDATE until their own matching audit.
+
+EXACT_COMPATIBILITY_EVIDENCE
+{
+  "source_commit": "34b1fe1100f726d51955a7bf9ac5059d8069fb32",
+  "external_run_id": 43401581626,
+  "external_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43401581626",
+  "external_artifact_id": 14025577567,
+  "artifact_sha256": "6aa19eb4bc04edb133950e8bf754efc37948c730a2655fab29c71430c9dbfabd",
+  "retained_evidence": "Auxillary/evidence/native-compat-linux-43401581626",
+  "report_directory": "Auxillary/evidence/native-compat-linux-43401581626/literature",
+  "audit_summary_sha256": "79633bd6d5d8f980ec946bfa1a6615aa00341f3d07d29a94dd4bfedced9059e7",
+  "source_manifest_sha256": "bec154f73f0422530f80d3bf6f913602a446bc3ced26a532edff6685c1d590bb",
+  "type_preservation_certificate": "Auxillary/evidence/native-compat-linux-43401581626/native-compatibility-type-certificate.json",
+  "type_preservation_certificate_sha256": "71ee30ff1eab4c8cb870a5bdaa0e37752c36f3caf2c566b9ba867bd81a773ece",
+  "status": "PASS_STANDARD_ONLY",
+  "theorem_count": 5,
+  "exact_original_contracts_preserved": true
+}

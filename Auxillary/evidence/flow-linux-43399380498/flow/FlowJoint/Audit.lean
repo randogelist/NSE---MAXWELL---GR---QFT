@@ -1,0 +1,6 @@
+import ClassicalMechanicsAssembly.FlowJoint
+
+set_option pp.universes true
+
+#check @ClassicalMechanicsAssembly.constructed_flow_smooth
+#print axioms ClassicalMechanicsAssembly.constructed_flow_smooth

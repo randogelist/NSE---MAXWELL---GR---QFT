@@ -1,0 +1,49 @@
+SOURCE_COMMIT=ff3c809f241ff14c7b9556b858bb423e1f9630d0
+
+@ClassicalMechanicsAssembly.jointFlowRegularity_of_smooth_periodic : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+          ClassicalMechanicsAssembly.JointFlowRegularity T u
+'ClassicalMechanicsAssembly.jointFlowRegularity_of_smooth_periodic' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.L1_native : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+          (∀ (t : ℝ),
+              Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.divergence (u t) x) 0) →
+            ∃ η ρ,
+              ClassicalMechanics.MaterialPathOn T η ρ ∧
+                ∀ (t : ℝ),
+                  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                    ∀ (a : NSEMaxwell.Classical.Vec), Eq.{1} (ClassicalMechanics.materialVelocity T η t a) (u t (η t a))
+'ClassicalMechanicsAssembly.L1_native' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE : ∀ {ν T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u : NSEMaxwell.Classical.Velocity} {p : NSEMaxwell.Classical.Pressure},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ClassicalMechanics.SmoothPressureOn T p →
+          (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+            (∀ (t : ℝ),
+                Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                  ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.divergence (u t) x) 0) →
+              ∃ η ρ,
+                ClassicalMechanics.MaterialPathOn T η ρ ∧
+                  ((∀ (t : ℝ),
+                      Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                        ∀ (x : NSEMaxwell.Classical.Vec),
+                          Eq.{1}
+                            (HAdd.hAdd.{0, 0, 0} (ClassicalMechanics.finiteMaterialAcceleration T u t x)
+                              (NSEMaxwell.Classical.gradient (p t) x))
+                            (HSMul.hSMul.{0, 0, 0} ν (NSEMaxwell.Classical.laplacian (u t) x))) ↔
+                    ClassicalMechanics.MaterialEquationOn ν T η fun t a => p t (η t a))
+'ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+
+LEGACY_L1_TYPE_MATCH=EXACT_AFTER_NAME_REMOVAL_AND_WHITESPACE_NORMALIZATION

@@ -1,0 +1,14 @@
+import ClassicalMechanicsAssembly.LiteratureClosure
+
+set_option pp.universes true
+
+#check @ClassicalMechanicsAssembly.Literature.L1
+#print axioms ClassicalMechanicsAssembly.Literature.L1
+#check @ClassicalMechanicsAssembly.Literature.L2
+#print axioms ClassicalMechanicsAssembly.Literature.L2
+#check @ClassicalMechanicsAssembly.Literature.L2_native
+#print axioms ClassicalMechanicsAssembly.Literature.L2_native
+#check @ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2
+#print axioms ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2
+#check @ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1
+#print axioms ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1

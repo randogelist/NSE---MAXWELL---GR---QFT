@@ -1,0 +1,77 @@
+@ClassicalMechanicsAssembly.flow_primitive_evaluated_jet : ∀ {T : ℝ} (hT : LE.le.{0} 0 T)
+  {H : NSEMaxwell.Classical.Vec → ContinuousMap.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) H →
+    ∀ (r : ℕ) (t : ↑(Set.Icc.{0} 0 T)) (a : NSEMaxwell.Classical.Vec),
+      Eq.{1}
+        (ContinuousLinearMap.compContinuousMultilinearMap.{0, 0, 0, 0, 0}
+          (ContinuousLinearMap.comp.{0, 0, 0, 0, 0, 0} (ContinuousMap.evalCLM.{0, 0, 0} ℝ t)
+            (ClassicalMechanicsAssembly.flowPathPrimitive.{0} hT))
+          (iteratedFDeriv.{0, 0, 0} ℝ r H a))
+        (∫ (s : ℝ) in 0..↑t, ClassicalMechanicsAssembly.evaluatedFlowJet H r (Set.projIcc.{0} 0 T hT s) a)
+'ClassicalMechanicsAssembly.flow_primitive_evaluated_jet' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.evaluatedFlowJet_integral_of_path_equation : ∀ {T : ℝ} (hT : LE.le.{0} 0 T)
+  {Γ H : NSEMaxwell.Classical.Vec → ContinuousMap.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) Γ →
+    ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) H →
+      (∀ (a : NSEMaxwell.Classical.Vec),
+          Eq.{1} (Γ a)
+            (HAdd.hAdd.{0, 0, 0} (ContinuousMap.const.{0, 0} (↑(Set.Icc.{0} 0 T)) a)
+              ((ClassicalMechanicsAssembly.flowPathPrimitive.{0} hT) (H a)))) →
+        ∀ (r : ℕ) (t : ↑(Set.Icc.{0} 0 T)) (a : NSEMaxwell.Classical.Vec),
+          Eq.{1} (ClassicalMechanicsAssembly.evaluatedFlowJet Γ r t a)
+            (HAdd.hAdd.{0, 0, 0} (ClassicalMechanicsAssembly.evaluatedFlowJet Γ r (Subtype.mk.{1} 0 ⋯) a)
+              (∫ (s : ℝ) in 0..↑t, ClassicalMechanicsAssembly.evaluatedFlowJet H r (Set.projIcc.{0} 0 T hT s) a))
+'ClassicalMechanicsAssembly.evaluatedFlowJet_integral_of_path_equation' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flow_labelJet_eq_evaluated : ∀ {T : ℝ}
+  {Γ : NSEMaxwell.Classical.Vec → ContinuousMap.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) Γ →
+    ∀ (η : NSEMaxwell.Classical.Velocity),
+      (∀ (t : ℝ) (ht : Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t) (a : NSEMaxwell.Classical.Vec),
+          Eq.{1} (η t a) ((Γ a) (Subtype.mk.{1} t ht))) →
+        ∀ (r : ℕ) (t : ℝ) (ht : Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t) (a : NSEMaxwell.Classical.Vec),
+          Eq.{1} (iteratedFDeriv.{0, 0, 0} ℝ r (η t) a)
+            (ClassicalMechanicsAssembly.evaluatedFlowJet Γ r (Subtype.mk.{1} t ht) a)
+'ClassicalMechanicsAssembly.flow_labelJet_eq_evaluated' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flow_labelJet_integral_of_path_equation : ∀ {T : ℝ} (hT : LT.lt.{0} 0 T)
+  {u : NSEMaxwell.Classical.Velocity} (hu : ClassicalMechanics.SmoothVelocityOn T u),
+  (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+    ∀ {Γ : NSEMaxwell.Classical.Vec → ContinuousMap.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec},
+      ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) Γ →
+        (∀ (a : NSEMaxwell.Classical.Vec),
+            Eq.{1} (Γ a)
+              (HAdd.hAdd.{0, 0, 0} (ContinuousMap.const.{0, 0} (↑(Set.Icc.{0} 0 T)) a)
+                ((ClassicalMechanicsAssembly.flowPathPrimitive.{0} ⋯)
+                  (ClassicalMechanicsAssembly.flowPathSuperpositionTo.{0, 0, 0}
+                    (ClassicalMechanicsAssembly.flowVelocityMap hu) (Γ a))))) →
+          ∀ (η : NSEMaxwell.Classical.Velocity),
+            (∀ (t : ℝ) (ht : Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t) (a : NSEMaxwell.Classical.Vec),
+                Eq.{1} (η t a) ((Γ a) (Subtype.mk.{1} t ht))) →
+              ∀ (r : ℕ) (t : ℝ),
+                Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                  ∀ (a : NSEMaxwell.Classical.Vec),
+                    Eq.{1} (iteratedFDeriv.{0, 0, 0} ℝ r (η t) a)
+                      (HAdd.hAdd.{0, 0, 0} (iteratedFDeriv.{0, 0, 0} ℝ r (η 0) a)
+                        (∫ (s : ℝ) in 0..t, iteratedFDeriv.{0, 0, 0} ℝ r (fun b => u s (η s b)) a))
+'ClassicalMechanicsAssembly.flow_labelJet_integral_of_path_equation' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.selectedFlow_labelJet_integral : ∀ {T : ℝ} (hT : LT.lt.{0} 0 T)
+  {u : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.SmoothVelocityOn T u →
+    (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+      ∀ {B K : NNReal} (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{0} T u B K) (r : ℕ) (t : ℝ),
+        Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+          ∀ (a : NSEMaxwell.Classical.Vec),
+            Eq.{1} (iteratedFDeriv.{0, 0, 0} ℝ r (ClassicalMechanicsAssembly.Flow.flow.{0} h ⋯ t) a)
+              (HAdd.hAdd.{0, 0, 0} (iteratedFDeriv.{0, 0, 0} ℝ r (ClassicalMechanicsAssembly.Flow.flow.{0} h ⋯ 0) a)
+                (∫ (s : ℝ) in 0..t,
+                  iteratedFDeriv.{0, 0, 0} ℝ r (fun b => u s (ClassicalMechanicsAssembly.Flow.flow.{0} h ⋯ s b)) a))
+'ClassicalMechanicsAssembly.selectedFlow_labelJet_integral' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

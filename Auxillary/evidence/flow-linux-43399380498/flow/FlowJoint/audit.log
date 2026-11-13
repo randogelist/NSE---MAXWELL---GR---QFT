@@ -1,0 +1,7 @@
+@ClassicalMechanicsAssembly.constructed_flow_smooth : ∀ {T : ℝ} (hT : LT.lt.{0} 0 T)
+  {u : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.SmoothVelocityOn T u →
+    (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+      ∀ {B K : NNReal} (h : ClassicalMechanicsAssembly.Flow.SlabODEData.{0} T u B K),
+        ClassicalMechanics.SmoothVelocityOn T (ClassicalMechanicsAssembly.Flow.flow.{0} h ⋯)
+'ClassicalMechanicsAssembly.constructed_flow_smooth' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]

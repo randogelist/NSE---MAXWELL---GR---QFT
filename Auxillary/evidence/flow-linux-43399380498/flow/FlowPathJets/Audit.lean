@@ -1,0 +1,14 @@
+import ClassicalMechanicsAssembly.FlowPathJets
+
+set_option pp.universes true
+
+#check @ClassicalMechanicsAssembly.flow_multilinearPath_continuous_evaluation
+#print axioms ClassicalMechanicsAssembly.flow_multilinearPath_continuous_evaluation
+#check @ClassicalMechanicsAssembly.evaluatedFlowJet
+#print axioms ClassicalMechanicsAssembly.evaluatedFlowJet
+#check @ClassicalMechanicsAssembly.evaluatedFlowJet_continuous
+#print axioms ClassicalMechanicsAssembly.evaluatedFlowJet_continuous
+#check @ClassicalMechanicsAssembly.evaluatedFlowJet_hasFDerivAt
+#print axioms ClassicalMechanicsAssembly.evaluatedFlowJet_hasFDerivAt
+#check @ClassicalMechanicsAssembly.evaluatedFlowJet_zero
+#print axioms ClassicalMechanicsAssembly.evaluatedFlowJet_zero
