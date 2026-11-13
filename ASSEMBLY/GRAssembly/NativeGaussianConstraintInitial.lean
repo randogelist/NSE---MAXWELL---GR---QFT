@@ -1,4 +1,5 @@
 import GRAssembly.NativeGaussianConstraintsPropagation
+import GRAssembly.NativeGaussianEvolution
 
 set_option autoImplicit false
 set_option Elab.async true

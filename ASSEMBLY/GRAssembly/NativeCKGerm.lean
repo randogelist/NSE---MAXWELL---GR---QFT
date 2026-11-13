@@ -36,8 +36,11 @@ theorem ckCoordinateEval_analyticAt_zero (p : CKSeries (CKTimeSpace E) V) :
 
 theorem ckCoordinate_unitBall_eventually :
     ∀ᶠ z : ℝ × E in 𝓝 0, ‖WithLp.toLp 1 z‖ < 1 := by
-  have ht := (WithLp.prodContinuousLinearEquiv 1 ℝ ℝ E).symm.continuous.norm.continuousAt
-  exact ht (by simpa using eventually_lt_nhds (by norm_num : (0 : ℝ) < 1))
+  have ht : Tendsto (fun z : ℝ × E => ‖WithLp.toLp 1 z‖) (𝓝 0) (𝓝 0) := by
+    simpa only [map_zero, norm_zero] using
+      ((WithLp.prodContinuousLinearEquiv 1 ℝ ℝ E).symm.continuous.norm.continuousAt
+        (x := (0 : ℝ × E))).tendsto
+  exact ht.eventually (eventually_lt_nhds (by norm_num : (0 : ℝ) < 1))
 
 def ckPhysicalScale (ε : ℝ) : CKTimeSpace E →L[ℝ] ℝ × E :=
   ((ε ^ 2) • WithLp.fstL 1 ℝ ℝ E).prod (ε • WithLp.sndL 1 ℝ ℝ E)
@@ -52,8 +55,8 @@ theorem ckPhysicalScale_norm_le (ε : ℝ) (hε : 0 ≤ ε) (hε₁ : ε ≤ 1) 
   rw [ckPhysicalScale_apply, Prod.norm_def]
   apply max_le
   · rw [norm_mul, Real.norm_of_nonneg (sq_nonneg ε)]
-    have hε² : ε ^ 2 ≤ ε := by nlinarith
-    exact (mul_le_mul_of_nonneg_right hε² (norm_nonneg _)).trans
+    have hε_sq : ε ^ 2 ≤ ε := by nlinarith
+    exact (mul_le_mul_of_nonneg_right hε_sq (norm_nonneg _)).trans
       (mul_le_mul_of_nonneg_left (WithLp.norm_fst_le z) hε)
   · rw [norm_smul, Real.norm_of_nonneg hε]
     exact mul_le_mul_of_nonneg_left (WithLp.norm_snd_le z) hε
@@ -77,13 +80,15 @@ theorem ckPhysicalScale_leftInverse (ε : ℝ) (hε : ε ≠ 0) (z : CKTimeSpace
   apply (WithLp.prodContinuousLinearEquiv 1 ℝ ℝ E).injective
   simp [ckPhysicalScale_apply, ckInversePhysicalScale_apply, smul_smul,
     ← mul_assoc, hε, pow_ne_zero 2 hε]
+  exact Prod.eta z.ofLp
 
 theorem ckGerm_eq_of_physicalScale {f g : ℝ × E → V}
     (ε : ℝ) (hε : ε ≠ 0)
     (h : f ∘ ckPhysicalScale ε =ᶠ[𝓝 0] g ∘ ckPhysicalScale ε) :
     f =ᶠ[𝓝 0] g := by
   have ht : Tendsto (ckInversePhysicalScale (E := E) ε) (𝓝 0) (𝓝 0) := by
-    simpa using (ckInversePhysicalScale (E := E) ε).continuous.continuousAt.tendsto
+    simpa only [map_zero] using
+      ((ckInversePhysicalScale (E := E) ε).continuous.continuousAt (x := (0 : ℝ × E))).tendsto
   filter_upwards [ht.eventually h] with z hz
   simpa only [Function.comp_apply, ckPhysicalScale_rightInverse ε hε] using hz
 
@@ -108,13 +113,15 @@ theorem ckMajorant_tendsto_zero (p : FormalMultilinearSeries ℝ E V)
     | zero => simpa [hp₀] using (tendsto_const_nhds :
         Tendsto (fun _ : ℝ => (0 : ℝ)) (𝓝 0) (𝓝 0))
     | succ n =>
+      have hc : Continuous (fun r : ℝ => ‖p (n + 1)‖ * |r| ^ (n + 1)) := by fun_prop
       simpa using
-        ((continuous_const.mul (continuous_abs.pow (n + 1))).continuousAt.tendsto :
+        (hc.continuousAt.tendsto :
           Tendsto (fun r : ℝ => ‖p (n + 1)‖ * |r| ^ (n + 1))
             (𝓝 0) (𝓝 (‖p (n + 1)‖ * |(0 : ℝ)| ^ (n + 1))))
-  have habs : ∀ᶠ r : ℝ in 𝓝 0, |r| ≤ R :=
-    (continuous_abs.continuousAt.tendsto).eventually
-      (by simpa using eventually_le_nhds hR)
+  have habs : ∀ᶠ r : ℝ in 𝓝 0, |r| ≤ R := by
+    have ht : Tendsto (abs : ℝ → ℝ) (𝓝 0) (𝓝 0) := by
+      simpa only [abs_zero] using (continuous_abs.continuousAt (x := (0 : ℝ))).tendsto
+    exact ht.eventually (eventually_le_nhds hR)
   have hbound : ∀ᶠ r : ℝ in 𝓝 0,
       ∀ n : ℕ, ‖‖p n‖ * |r| ^ n‖ ≤ ‖p n‖ * R ^ n := by
     filter_upwards [habs] with r hr n
@@ -164,13 +171,14 @@ theorem ckAnalytic_exists_small_comp_series {f : E → V}
   refine ⟨q, ?_, ?_⟩
   · calc
       ‖q‖ = ∑' n, ‖b n‖ := q.norm_eq_tsum
-      _ ≤ ∑' n, ‖p n‖ * ‖A‖ ^ n := tsum_le_tsum hb_le hb_sum hA_sum
+      _ ≤ ∑' n, ‖p n‖ * ‖A‖ ^ n := Summable.tsum_le_tsum hb_le hb_sum hA_sum
       _ < 1 := by
         have hdist : dist ‖A‖ (0 : ℝ) < η := by
           simpa using lt_of_lt_of_le hA (min_le_left _ _)
         simpa using hsmall hdist
   · filter_upwards [hb.eventually_hasSum] with z hz
-    simpa [CKSeries.eval, CKSeries.formal, q, zero_add] using hz.tsum_eq
+    change (∑' n, b n (fun _ => z)) = f (A z)
+    simpa only [zero_add, Function.comp_apply] using hz.tsum_eq
 
 theorem ckNormalizedSolution_small_timeSeries {g : CKRHS E V}
     {w : ℝ × E → V} (hw : CKNormalizedSolution g w) (hg₀ : g 0 = 0) :
@@ -201,8 +209,10 @@ theorem ckNormalizedSolution_eq_of_timeSeries {g : CKRHS E V}
 
 theorem ckInversePhysicalScale_unitBall_eventually (ε : ℝ) :
     ∀ᶠ z : ℝ × E in 𝓝 0, ‖ckInversePhysicalScale ε z‖ < 1 := by
-  have ht := (ckInversePhysicalScale (E := E) ε).continuous.norm.continuousAt.tendsto
-  exact ht.eventually (by simpa using eventually_lt_nhds (by norm_num : (0 : ℝ) < 1))
+  have ht : Tendsto (fun z : ℝ × E => ‖ckInversePhysicalScale ε z‖) (𝓝 0) (𝓝 0) := by
+    simpa only [map_zero, norm_zero] using
+      ((ckInversePhysicalScale (E := E) ε).continuous.norm.continuousAt (x := (0 : ℝ × E))).tendsto
+  exact ht.eventually (eventually_lt_nhds (by norm_num : (0 : ℝ) < 1))
 
 theorem ckLocalSolution_iff_literature {n m : ℕ}
     (F : LiteratureCKRHS n m) (u₀ : LiteratureSpace n → LiteratureSpace m)

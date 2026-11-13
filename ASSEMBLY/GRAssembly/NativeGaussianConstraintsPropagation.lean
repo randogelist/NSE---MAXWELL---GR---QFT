@@ -1,5 +1,4 @@
 import GRAssembly.NativeGaussianContraction
-import GRAssembly.NativeGaussianEvolution
 
 set_option autoImplicit false
 set_option Elab.async true

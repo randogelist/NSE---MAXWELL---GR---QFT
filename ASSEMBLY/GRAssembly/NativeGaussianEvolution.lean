@@ -102,8 +102,11 @@ def gaussianInitialState (K : BoundaryTensor) (y : GaussianBase) : GaussianState
 theorem gaussianInitialState_analyticAt {K : BoundaryTensor} {y : GaussianBase}
     (hK : AnalyticAt ℝ (fun q : GaussianBase => K q.1 q.2) y) :
     AnalyticAt ℝ (gaussianInitialState K) y := by
-  exact (analyticAt_const.prod
-    (((gaussianSymmetrize.analyticAt _).comp hK).const_smul 2)).prod analyticAt_const
+  have hs : AnalyticAt ℝ (fun q : GaussianBase => gaussianSymmetrize (K q.1 q.2)) y :=
+    (gaussianSymmetrize.analyticAt _).comp hK
+  have hd : AnalyticAt ℝ (fun q : GaussianBase => 2 • gaussianSymmetrize (K q.1 q.2)) y := by
+    simpa only [two_smul, Pi.add_apply] using hs.add hs
+  exact (analyticAt_const.prod hd).prod analyticAt_const
 
 def gaussianJetMetric (J : CKJet GaussianBase GaussianState) : Tensor4 := J.2.1.1.1
 def gaussianJetVelocity (J : CKJet GaussianBase GaussianState) : Tensor4 := J.2.1.1.2
@@ -124,17 +127,17 @@ def gaussianJetInverseDerivative (J : CKJet GaussianBase GaussianState)
 def gaussianJetConnectionDerivative (J : CKJet GaussianBase GaussianState)
     (c a b d : Fin 4) : ℝ :=
   (1 / 2 : ℝ) * ∑ e : Fin 4,
-    gaussianJetInverseDerivative J c a e *
+    (gaussianJetInverseDerivative J c a e *
       (gaussianJetSpatial J b e d + gaussianJetSpatial J d e b - gaussianJetSpatial J e b d) +
     (gaussianJetMetric J)⁻¹ a e *
-      (gaussianJetSecond J c b e d + gaussianJetSecond J c d e b - gaussianJetSecond J c e b d)
+      (gaussianJetSecond J c b e d + gaussianJetSecond J c d e b - gaussianJetSecond J c e b d))
 
 def gaussianJetRicci (J : CKJet GaussianBase GaussianState) : Tensor4 := fun a b =>
   (∑ c : Fin 4,
-    gaussianJetConnectionDerivative J c c a b - gaussianJetConnectionDerivative J b c a c) +
+    (gaussianJetConnectionDerivative J c c a b - gaussianJetConnectionDerivative J b c a c)) +
   ∑ c : Fin 4, ∑ d : Fin 4,
-    gaussianJetConnection J c c d * gaussianJetConnection J d a b -
-    gaussianJetConnection J c b d * gaussianJetConnection J d a c
+    (gaussianJetConnection J c c d * gaussianJetConnection J d a b -
+    gaussianJetConnection J c b d * gaussianJetConnection J d a c)
 
 def gaussianJetTrace (J : CKJet GaussianBase GaussianState) : ℝ :=
   (1 / 2 : ℝ) * Matrix.trace ((gaussianJetMetric J)⁻¹ * gaussianJetVelocity J)
@@ -142,22 +145,24 @@ def gaussianJetTrace (J : CKJet GaussianBase GaussianState) : ℝ :=
 theorem gaussianJetMetric_analyticAt (J : CKJet GaussianBase GaussianState) :
     AnalyticAt ℝ gaussianJetMetric J := by
   unfold gaussianJetMetric
-  fun_prop
+  exact analyticAt_fst.comp (analyticAt_fst.comp (analyticAt_fst.comp analyticAt_snd))
 
 theorem gaussianJetVelocity_analyticAt (J : CKJet GaussianBase GaussianState) :
     AnalyticAt ℝ gaussianJetVelocity J := by
   unfold gaussianJetVelocity
-  fun_prop
+  exact analyticAt_snd.comp (analyticAt_fst.comp (analyticAt_fst.comp analyticAt_snd))
 
 theorem gaussianJetSpatial_analyticAt (J : CKJet GaussianBase GaussianState) (a : Fin 4) :
     AnalyticAt ℝ (fun L => gaussianJetSpatial L a) J := by
   unfold gaussianJetSpatial
-  fun_prop
+  exact ((gaussianStateSpatial a).analyticAt _).comp (analyticAt_fst.comp analyticAt_snd)
 
 theorem gaussianJetSecond_analyticAt (J : CKJet GaussianBase GaussianState) (a b : Fin 4) :
     AnalyticAt ℝ (fun L => gaussianJetSecond L a b) J := by
   unfold gaussianJetSecond
-  fun_prop
+  exact ((gaussianStateSpatial b).analyticAt _).comp
+    (((ContinuousLinearMap.apply ℝ GaussianState (gaussianBaseBasis a)).analyticAt _).comp
+      (analyticAt_snd.comp analyticAt_snd))
 
 theorem gaussianJetInverse_analyticAt {J : CKJet GaussianBase GaussianState}
     (hJ : IsUnit (gaussianJetMetric J).det) :
@@ -244,15 +249,20 @@ def gaussianCKRHS : CKRHS GaussianBase GaussianState := fun J =>
 
 theorem gaussianCKRHS_analyticAt {J : CKJet GaussianBase GaussianState}
     (hJ : IsUnit (gaussianJetMetric J).det) : AnalyticAt ℝ gaussianCKRHS J := by
+  have hd : AnalyticAt ℝ (fun L => 2 • gaussianJetRicci L) J := by
+    simpa only [two_smul, Pi.add_apply] using
+      (gaussianJetRicci_analyticAt hJ).add (gaussianJetRicci_analyticAt hJ)
   have hacc := (gaussianSymmetrize.analyticAt _).comp
-    ((((gaussianJetRicci_analyticAt hJ).const_smul 2).sub
+    ((hd.sub
       ((gaussianJetTrace_analyticAt hJ).smul (gaussianJetVelocity_analyticAt J))).add
       (((gaussianJetVelocity_analyticAt J).mul (gaussianJetInverse_analyticAt hJ)).mul
         (gaussianJetVelocity_analyticAt J)))
   apply ((gaussianJetVelocity_analyticAt J).prod hacc).prod
   apply AnalyticAt.pi
   intro a
-  exact (gaussianStateVelocity.analyticAt _).comp (by fun_prop)
+  exact (gaussianStateVelocity.analyticAt _).comp
+    (((ContinuousLinearMap.apply ℝ GaussianState (gaussianBaseBasis a)).analyticAt _).comp
+      (analyticAt_snd.comp analyticAt_snd))
 
 theorem gaussianCKRHS_metric (J : CKJet GaussianBase GaussianState) :
     gaussianStateMetric (gaussianCKRHS J) = gaussianJetVelocity J := rfl
@@ -295,21 +305,24 @@ theorem gaussianStateSolutionMetric_analyticAt {K : BoundaryTensor} {t0 : ℝ} {
     (hU : GaussianEvolutionStateSolution K t0 x0 U) :
     AnalyticAt ℝ (gaussianStateSolutionMetric U) (bulkPoint 0 t0 x0) := by
   exact (gaussianStateMetric.analyticAt _).comp
-    (hU.analytic.comp (gaussianSplitCoordinates.analyticAt _))
+    (hU.analytic.comp_of_eq (gaussianSplitCoordinates.analyticAt (bulkPoint 0 t0 x0))
+      (gaussianSplitCoordinates_bulkPoint 0 t0 x0))
 
 theorem gaussianStateSolutionVelocity_analyticAt {K : BoundaryTensor} {t0 : ℝ} {x0 : Vec}
     {U : ℝ × GaussianBase → GaussianState}
     (hU : GaussianEvolutionStateSolution K t0 x0 U) :
     AnalyticAt ℝ (gaussianStateSolutionVelocity U) (bulkPoint 0 t0 x0) := by
   exact (gaussianStateVelocity.analyticAt _).comp
-    (hU.analytic.comp (gaussianSplitCoordinates.analyticAt _))
+    (hU.analytic.comp_of_eq (gaussianSplitCoordinates.analyticAt (bulkPoint 0 t0 x0))
+      (gaussianSplitCoordinates_bulkPoint 0 t0 x0))
 
 theorem gaussianStateSolutionSpatial_analyticAt {K : BoundaryTensor} {t0 : ℝ} {x0 : Vec}
     {U : ℝ × GaussianBase → GaussianState}
     (hU : GaussianEvolutionStateSolution K t0 x0 U) (a : Fin 4) :
     AnalyticAt ℝ (gaussianStateSolutionSpatial U a) (bulkPoint 0 t0 x0) := by
   exact ((gaussianStateSpatial a).analyticAt _).comp
-    (hU.analytic.comp (gaussianSplitCoordinates.analyticAt _))
+    (hU.analytic.comp_of_eq (gaussianSplitCoordinates.analyticAt (bulkPoint 0 t0 x0))
+      (gaussianSplitCoordinates_bulkPoint 0 t0 x0))
 
 theorem gaussianStateSolutionMetric_induced {K : BoundaryTensor} {t0 : ℝ} {x0 : Vec}
     {U : ℝ × GaussianBase → GaussianState}
@@ -337,7 +350,8 @@ theorem gaussianStateSolutionMetric_nondegenerate {K : BoundaryTensor} {t0 : ℝ
     ∀ᶠ z in 𝓝 (bulkPoint 0 t0 x0), IsUnit (gaussianStateSolutionMetric U z).det := by
   have hc : ContinuousAt (fun z => (gaussianStateSolutionMetric U z).det)
       (bulkPoint 0 t0 x0) :=
-    Matrix.continuous_det.continuousAt.comp (gaussianStateSolutionMetric_analyticAt hU).continuousAt
+    ((continuous_id : Continuous (fun A : Tensor4 => A)).matrix_det).continuousAt.comp
+      (gaussianStateSolutionMetric_analyticAt hU).continuousAt
   have he := (gaussianStateSolutionMetric_induced hU).self_of_nhds
   have hn : (gaussianStateSolutionMetric U (bulkPoint 0 t0 x0)).det ≠ 0 := by
     rw [he, gaussianEta_determinant]

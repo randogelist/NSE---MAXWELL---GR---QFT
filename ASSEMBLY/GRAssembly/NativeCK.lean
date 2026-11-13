@@ -58,8 +58,10 @@ theorem ckTimePrimitive_initial (p : CKSeries (CKTimeSpace E) V)
 
 theorem ckTimePrimitive_initial_germ (p : CKSeries (CKTimeSpace E) V) :
     ∀ᶠ x in 𝓝 (0 : E), ckCoordinateEval (timePrimitive E V p) (0, x) = 0 := by
-  have hb : ∀ᶠ x in 𝓝 (0 : E), ‖x‖ < 1 :=
-    continuous_norm.continuousAt (by simpa using eventually_lt_nhds (by norm_num : (0 : ℝ) < 1))
+  have hb : ∀ᶠ x in 𝓝 (0 : E), ‖x‖ < 1 := by
+    have ht : Tendsto (norm : E → ℝ) (𝓝 0) (𝓝 0) := by
+      simpa only [norm_zero] using (continuous_norm.continuousAt (x := (0 : E))).tendsto
+    exact ht.eventually (eventually_lt_nhds (by norm_num : (0 : ℝ) < 1))
   filter_upwards [hb] with x hx
   exact ckTimePrimitive_initial p hx
 
@@ -94,7 +96,8 @@ theorem ckSeriesSolution_analyticAt (ε : ℝ) (p : CKSeries (CKTimeSpace E) V) 
 theorem ckSeriesSolution_initial_germ (ε : ℝ) (p : CKSeries (CKTimeSpace E) V) :
     ∀ᶠ x in 𝓝 (0 : E), ckSeriesSolution ε p (0, x) = 0 := by
   have ht : Tendsto (fun x : E => ε⁻¹ • x) (𝓝 0) (𝓝 0) := by
-    simpa using ((continuous_const.smul continuous_id).continuousAt.tendsto :
+    have hc : Continuous (fun x : E => ε⁻¹ • x) := by fun_prop
+    simpa only [smul_zero] using (hc.continuousAt.tendsto :
       Tendsto (fun x : E => ε⁻¹ • x) (𝓝 0) (𝓝 (ε⁻¹ • (0 : E))))
   filter_upwards [ht.eventually (ckTimePrimitive_initial_germ p)] with x hx
   simpa [ckSeriesSolution, ckInversePhysicalScale_apply, ckCoordinateEval] using
@@ -149,15 +152,19 @@ theorem ckScaledSolution_eq_timePrimitive {g : CKRHS E V}
   apply ckGerm_eq_of_timeDerivative_eq (ckScaledSolution_analyticAt hw.analytic ε)
     (hA.const_smul (c := ε ^ 2))
   · have hx : Tendsto (fun x : E => ε • x) (𝓝 0) (𝓝 0) := by
-      simpa using ((continuous_const.smul continuous_id).continuousAt.tendsto :
+      have hc : Continuous (fun x : E => ε • x) := by fun_prop
+      simpa only [smul_zero] using (hc.continuousAt.tendsto :
         Tendsto (fun x : E => ε • x) (𝓝 0) (𝓝 (ε • (0 : E))))
     filter_upwards [hx.eventually hw.initial, ckTimePrimitive_initial_germ p] with x hx hAx
     simp only [ckScaledSolution, mul_zero, hx, hAx, smul_zero]
   · have hcoord : Tendsto (WithLp.toLp 1 : ℝ × E → CKTimeSpace E) (𝓝 0) (𝓝 0) := by
-      simpa using (WithLp.prodContinuousLinearEquiv 1 ℝ ℝ E).symm.continuous.continuousAt.tendsto
+      simpa only [map_zero] using
+        ((WithLp.prodContinuousLinearEquiv 1 ℝ ℝ E).symm.continuous.continuousAt
+          (x := (0 : ℝ × E))).tendsto
     have hscale : Tendsto (fun z : ℝ × E => (ε ^ 2 * z.1, ε • z.2)) (𝓝 0) (𝓝 0) := by
       have ht : Tendsto (ckPhysicalScale (E := E) ε) (𝓝 0) (𝓝 0) := by
-        simpa using (ckPhysicalScale (E := E) ε).continuous.continuousAt.tendsto
+        simpa only [map_zero] using
+          ((ckPhysicalScale (E := E) ε).continuous.continuousAt (x := (0 : CKTimeSpace E))).tendsto
       exact ht.comp hcoord
     filter_upwards [hscale.eventually hw.analytic.eventually_analyticAt,
       hcoord.eventually hp, ckCoordinate_unitBall_eventually (E := E)] with z hzw hzp hz
@@ -174,7 +181,9 @@ theorem ckNormalizedSolution_eq_seriesSolution {g : CKRHS E V}
     w =ᶠ[𝓝 0] ckSeriesSolution ε p := by
   have hrec := ckScaledSolution_eq_timePrimitive hw ε p hp
   have hcoord : Tendsto (WithLp.ofLp : CKTimeSpace E → ℝ × E) (𝓝 0) (𝓝 0) := by
-    simpa using (WithLp.prodContinuousLinearEquiv 1 ℝ ℝ E).continuous.continuousAt.tendsto
+    simpa only [map_zero] using
+      ((WithLp.prodContinuousLinearEquiv 1 ℝ ℝ E).continuous.continuousAt
+        (x := (0 : CKTimeSpace E))).tendsto
   apply ckGerm_eq_of_physicalScale ε hε
   filter_upwards [hcoord.eventually hrec] with z hz
   change w (ckPhysicalScale ε z) = ckSeriesSolution ε p (ckPhysicalScale ε z)
@@ -222,7 +231,8 @@ theorem ckSeriesSolution_fixedPoint [CompleteSpace E]
     ckScaledCoefficientMap c ε p = p := by
   apply CKSeries.eq_of_eval_eventuallyEq
   have ht : Tendsto (ckPhysicalScale (E := E) ε) (𝓝 0) (𝓝 0) := by
-    simpa using (ckPhysicalScale (E := E) ε).continuous.continuousAt.tendsto
+    simpa only [map_zero] using
+      ((ckPhysicalScale (E := E) ε).continuous.continuousAt (x := (0 : CKTimeSpace E))).tendsto
   have hb : ∀ᶠ z : CKTimeSpace E in 𝓝 0, ‖z‖ < 1 := by
     simpa using Metric.ball_mem_nhds (0 : CKTimeSpace E) (by norm_num : (0 : ℝ) < 1)
   filter_upwards [ht.eventually hsol.equation, hb] with z heq hz

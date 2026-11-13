@@ -69,6 +69,19 @@ def failed_assembly_modules(log: str, selected_modules: set[str]) -> set[str]:
     return {path.replace("/", ".") for path in paths} & selected_modules
 
 
+def successful_dag_modules(log: str, selected_modules: set[str]) -> set[str]:
+    """Reuse only explicit successes from this run, never inferred signatures."""
+    text = ANSI.sub("", log)
+    successes = set(re.findall(
+        r"(?m)^[✔⚠][ \t]+\[\d+/\d+\][ \t]+(?:Built|Replayed)[ \t]+"
+        r"([A-Za-z_][A-Za-z0-9_.]*)(?:[ \t]+\([0-9.]+(?:ms|s)\))?[ \t]*$", text))
+    failures = set(re.findall(
+        r"(?m)^✖\s+\[\d+/\d+\]\s+\S+\s+"
+        r"([A-Za-z_][A-Za-z0-9_.]*)(?=\s|$)", text))
+    failures |= failed_assembly_modules(text, selected_modules)
+    return (successes - failures) & selected_modules
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--package-root", type=Path, required=True)
@@ -287,6 +300,7 @@ def main() -> int:
         # graph. Exact audits remain ordered, with no signature-only promotion.
         dag_build_pass = False
         dag_failures: set[str] = set()
+        dag_successes: set[str] = set()
         if args.dag_build:
             dag_modules = list(dict.fromkeys(module for _, module, _ in stages))
             try:
@@ -299,10 +313,18 @@ def main() -> int:
                 provenance["dag_prebuild"] = "PARTIAL; CACHED_ORDERED_RECHECK"
                 provenance["dag_prebuild_error"] = str(error)
                 dag_log = report / "dag-build.log"
-                if dag_log.is_file():
-                    dag_failures = failed_assembly_modules(dag_log.read_text(encoding="utf-8"),
-                                                          set(dag_modules))
+                # A reused report directory may contain an older DAG log if
+                # the current process failed before opening/truncating it.
+                # run() records a command only after the current process exits.
+                completed = provenance["commands"][-1] if provenance["commands"] else {}
+                current_dag_completed = (completed.get("log") == "dag-build.log" and
+                                         completed.get("command") == ["lake", "build", *dag_modules])
+                if current_dag_completed and dag_log.is_file():
+                    dag_text = dag_log.read_text(encoding="utf-8")
+                    dag_failures = failed_assembly_modules(dag_text, set(dag_modules))
+                    dag_successes = successful_dag_modules(dag_text, set(dag_modules))
                 provenance["dag_explicit_compiler_failures"] = sorted(dag_failures)
+                provenance["dag_explicit_successes_reused"] = sorted(dag_successes)
             persist()
         stage_summaries = []
         failed_stages = []
@@ -332,7 +354,7 @@ def main() -> int:
                 require(args.keep_going, entry["error"])
                 continue
             try:
-                if not dag_build_pass:
+                if not dag_build_pass and module not in dag_successes:
                     run(["lake", "build", module], stage + "-build.log")
                 audit = report / (stage.replace("-", "_").title() + "Audit.lean")
                 text = "import " + module + "\nset_option pp.universes false\n"

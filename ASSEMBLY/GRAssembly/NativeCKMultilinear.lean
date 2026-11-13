@@ -6,6 +6,7 @@ import GRAssembly.NativeCKComposition
 set_option autoImplicit false
 set_option Elab.async true
 set_option maxHeartbeats 1600000
+set_option backward.isDefEq.respectTransparency false
 
 open Set Filter
 open scoped Topology BigOperators
@@ -20,33 +21,50 @@ variable {E G H : Type*}
   [NormedAddCommGroup H] [NormedSpace ℝ H]
   [CompleteSpace G] [CompleteSpace H]
 
-def ckCurryZeroCLM : CKCoeff G H 0 →L[ℝ] H :=
-  (continuousMultilinearCurryFin0 ℝ G H).toContinuousLinearEquiv.toContinuousLinearMap
+private abbrev CKBoundedLinear (A B : Type*)
+    [NormedAddCommGroup A] [NormedSpace ℝ A]
+    [NormedAddCommGroup B] [NormedSpace ℝ B] := A →L[ℝ] B
 
-def ckCurryLeftCLM (n : ℕ) : CKCoeff G H (n + 1) →L[ℝ] G →L[ℝ] CKCoeff G H n :=
-  (continuousMultilinearCurryLeftEquiv ℝ (fun _ : Fin (n + 1) => G) H).toContinuousLinearEquiv.toContinuousLinearMap
+def ckCurryZeroCLM : CKBoundedLinear (CKCoeff G H 0) H :=
+  LinearMap.mkContinuous
+    { toFun := fun a : CKCoeff G H 0 => a.curry0
+      map_add' := by intro a b; rfl
+      map_smul' := by intro t a; rfl }
+    1 (fun a : CKCoeff G H 0 => by
+      change ‖a.curry0‖ ≤ 1 * ‖a‖
+      simpa only [one_mul] using le_of_eq a.curry0_norm)
+
+def ckCurryLeftCLM (n : ℕ) :
+    CKBoundedLinear (CKCoeff G H (n + 1)) (CKBoundedLinear G (CKCoeff G H n)) :=
+  LinearMap.mkContinuous
+    { toFun := fun a : CKCoeff G H (n + 1) => a.curryLeft
+      map_add' := by intro a b; ext x v; rfl
+      map_smul' := by intro t a; ext x v; rfl }
+    1 (fun a : CKCoeff G H (n + 1) => by
+      change ‖a.curryLeft‖ ≤ 1 * ‖a‖
+      simpa only [one_mul] using le_of_eq a.curryLeft_norm)
 
 theorem ckCurryZeroCLM_norm_le : ‖ckCurryZeroCLM (G := G) (H := H)‖ ≤ 1 := by
   apply ContinuousLinearMap.opNorm_le_bound _ (by norm_num)
   intro a
-  simpa only [ckCurryZeroCLM, one_mul] using
-    le_of_eq ((continuousMultilinearCurryFin0 ℝ G H).norm_map a)
+  change ‖a.curry0‖ ≤ 1 * ‖a‖
+  simpa only [one_mul] using le_of_eq a.curry0_norm
 
 theorem ckCurryLeftCLM_norm_le (n : ℕ) : ‖ckCurryLeftCLM (G := G) (H := H) n‖ ≤ 1 := by
   apply ContinuousLinearMap.opNorm_le_bound _ (by norm_num)
   intro a
-  simpa only [ckCurryLeftCLM, one_mul] using le_of_eq
-    ((continuousMultilinearCurryLeftEquiv ℝ (fun _ : Fin (n + 1) => G) H).norm_map a)
+  change ‖a.curryLeft‖ ≤ 1 * ‖a‖
+  simpa only [one_mul] using le_of_eq a.curryLeft_norm
 
 namespace CKSeries
 
 def contractMultilinear : (n : ℕ) → CKSeries E (CKCoeff G H n) →
     (Fin n → CKSeries E G) → CKSeries E H
-  | 0, r, _ => postcompose ckCurryZeroCLM r
+  | 0, r, _ => postcompose (ckCurryZeroCLM (G := G) (H := H)) r
   | n + 1, r, p =>
       contractMultilinear n
-        (bilinear (ContinuousLinearMap.id ℝ (G →L[ℝ] CKCoeff G H n))
-          (postcompose (ckCurryLeftCLM n) r) (p 0)) (Fin.tail p)
+        (bilinear (ContinuousLinearMap.id ℝ (CKBoundedLinear G (CKCoeff G H n)))
+          (postcompose (ckCurryLeftCLM (G := G) (H := H) n) r) (p 0)) (Fin.tail p)
 
 theorem norm_contractMultilinear_le (n : ℕ) (r : CKSeries E (CKCoeff G H n))
     (p : Fin n → CKSeries E G) :
@@ -55,21 +73,23 @@ theorem norm_contractMultilinear_le (n : ℕ) (r : CKSeries E (CKCoeff G H n))
   | zero =>
       calc
         ‖contractMultilinear 0 r p‖ ≤ ‖ckCurryZeroCLM (G := G) (H := H)‖ * ‖r‖ :=
-          norm_postcompose_le _ _
+          norm_postcompose_le (ckCurryZeroCLM (G := G) (H := H)) r
         _ ≤ 1 * ‖r‖ := mul_le_mul_of_nonneg_right ckCurryZeroCLM_norm_le (norm_nonneg r)
         _ = _ := by simp
   | succ n ih =>
-      let s := bilinear (ContinuousLinearMap.id ℝ (G →L[ℝ] CKCoeff G H n))
-        (postcompose (ckCurryLeftCLM n) r) (p 0)
+      let s := bilinear (ContinuousLinearMap.id ℝ (CKBoundedLinear G (CKCoeff G H n)))
+        (postcompose (ckCurryLeftCLM (G := G) (H := H) n) r) (p 0)
       have hs : ‖s‖ ≤ ‖r‖ * ‖p 0‖ := by
         calc
-          ‖s‖ ≤ ‖ContinuousLinearMap.id ℝ (G →L[ℝ] CKCoeff G H n)‖ *
-              ‖postcompose (ckCurryLeftCLM n) r‖ * ‖p 0‖ := norm_bilinear_le _ _ _
+          ‖s‖ ≤ ‖ContinuousLinearMap.id ℝ (CKBoundedLinear G (CKCoeff G H n))‖ *
+              ‖postcompose (ckCurryLeftCLM (G := G) (H := H) n) r‖ * ‖p 0‖ :=
+                norm_bilinear_le _ _ _
           _ ≤ 1 * (1 * ‖r‖) * ‖p 0‖ := by
             gcongr
             · exact ContinuousLinearMap.norm_id_le
             · exact (norm_postcompose_le _ _).trans
-                (mul_le_mul_of_nonneg_right (ckCurryLeftCLM_norm_le n) (norm_nonneg r))
+                (mul_le_mul_of_nonneg_right
+                  (ckCurryLeftCLM_norm_le (G := G) (H := H) n) (norm_nonneg r))
           _ = _ := by ring
       calc
         ‖contractMultilinear (n + 1) r p‖ ≤ ‖s‖ * ∏ i, ‖Fin.tail p i‖ := ih s (Fin.tail p)
@@ -81,7 +101,7 @@ theorem eval_contractMultilinear (n : ℕ) (r : CKSeries E (CKCoeff G H n))
     (contractMultilinear n r p).eval x = r.eval x (fun i => (p i).eval x) := by
   induction n with
   | zero =>
-      rw [contractMultilinear, eval_postcompose _ _ hx]
+      rw [contractMultilinear, eval_postcompose (ckCurryZeroCLM (G := G) (H := H)) r hx]
       change r.eval x 0 = r.eval x (fun i => (p i).eval x)
       congr 1
       exact Subsingleton.elim _ _

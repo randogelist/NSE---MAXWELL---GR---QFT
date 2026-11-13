@@ -72,15 +72,9 @@ theorem gaussianTimeDerivative_clm (L : F →L[ℝ] G)
 theorem gaussianSpaceDerivative_eq_full {f : ℝ × E → F} {z : ℝ × E}
     (hf : DifferentiableAt ℝ f z) (v : E) :
     fderiv ℝ (fun y => f (z.1, y)) z.2 v = gaussianDirectional f (0, v) z := by
-  have hp : HasFDerivAt (fun y : E => (z.1, y))
-      (ContinuousLinearMap.inr ℝ ℝ E) z.2 :=
-    (hasFDerivAt_const z.1 z.2).prodMk (hasFDerivAt_id z.2)
-  have hc := hf.hasFDerivAt.comp z.2 hp
-  have hc' : fderiv ℝ (fun y => f (z.1, y)) z.2 =
-      (fderiv ℝ f z).comp (ContinuousLinearMap.inr ℝ ℝ E) := by
-    simpa only [Function.comp_def, Prod.eta] using hc.fderiv
-  rw [hc']
-  rfl
+  simpa only [ckSpaceDerivative, ContinuousLinearMap.comp_apply,
+    ContinuousLinearMap.inr_apply, gaussianDirectional] using
+    congrArg (fun L : E →L[ℝ] F => L v) (ckSpaceDerivative_eq_fderiv hf)
 
 /-- Local radial uniqueness uses the native one-dimensional mean-value theorem. -/
 theorem gaussianGerm_eq_of_timeDerivative_eq {f g : ℝ × E → F} {r : ℝ} {y : E}

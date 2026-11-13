@@ -57,6 +57,12 @@ def ckTransformRHS (e : E ≃L[ℝ] E') (a : V ≃L[ℝ] V')
     (ckJetEquiv e a).symm J =
       ((J.1.1, e.symm J.1.2), (a.symm J.2.1, (e.symm.arrowCongr a.symm) J.2.2)) := rfl
 
+@[simp] theorem ckArrowCongr_inverse (e : E ≃L[ℝ] E') (a : V ≃L[ℝ] V')
+    (L : E →L[ℝ] V) :
+    (e.symm.arrowCongr a.symm) ((e.arrowCongr a) L) = L := by
+  change (e.arrowCongr a).symm ((e.arrowCongr a) L) = L
+  exact (e.arrowCongr a).symm_apply_apply L
+
 theorem ckTransformInitial_fderiv (e : E ≃L[ℝ] E') (a : V ≃L[ℝ] V')
     (u₀ : E → V) (x : E') :
     fderiv ℝ (ckTransformInitial e a u₀) x =
@@ -108,7 +114,7 @@ theorem ckTransformRHS_analyticAt (e : E ≃L[ℝ] E') (a : V ≃L[ℝ] V')
   rw [ckTransformInitial_jet]
   have hJ : AnalyticAt ℝ F
       ((ckJetEquiv e a).symm (ckJetEquiv e a (ckInitialJet t₀ x₀ u₀))) := by
-    simpa using hF
+    simpa only [ContinuousLinearEquiv.symm_apply_apply] using hF
   exact (a.toContinuousLinearMap.analyticAt _).comp
     (hJ.comp ((ckJetEquiv e a).symm.toContinuousLinearMap.analyticAt _))
 
@@ -118,9 +124,14 @@ theorem ckTransformSolution_isSolution (e : E ≃L[ℝ] E') (a : V ≃L[ℝ] V')
     CKLocalSolution (ckTransformRHS e a F) (ckTransformInitial e a u₀)
       t₀ (e x₀) (ckTransformSolution e a u) := by
   have hx : Tendsto e.symm (𝓝 (e x₀)) (𝓝 x₀) := by
-    simpa using e.symm.continuous.continuousAt.tendsto
+    have h : Tendsto e.symm (𝓝 (e x₀)) (𝓝 (e.symm (e x₀))) :=
+      e.symm.continuous.continuousAt.tendsto
+    simpa only [ContinuousLinearEquiv.symm_apply_apply] using h
   have hz : Tendsto (ckTimeEquiv e).symm (𝓝 (t₀, e x₀)) (𝓝 (t₀, x₀)) := by
-    simpa using (ckTimeEquiv e).symm.continuous.continuousAt.tendsto
+    have h : Tendsto (ckTimeEquiv e).symm (𝓝 (ckTimeEquiv e (t₀, x₀)))
+        (𝓝 ((ckTimeEquiv e).symm (ckTimeEquiv e (t₀, x₀)))) :=
+      (ckTimeEquiv e).symm.continuous.continuousAt.tendsto
+    simpa only [ContinuousLinearEquiv.symm_apply_apply, ckTimeEquiv_apply] using h
   refine ⟨ckTransformSolution_analyticAt e a hu.analytic, ?_, ?_⟩
   · filter_upwards [hx.eventually hu.initial] with x hux
     exact congrArg a hux
@@ -145,16 +156,17 @@ theorem ckTransformSolution_isSolution (e : E ≃L[ℝ] E') (a : V ≃L[ℝ] V')
     (F : CKRHS E V) : ckTransformRHS e.symm a.symm (ckTransformRHS e a F) = F := by
   funext J
   simp only [ckTransformRHS, ckJetEquiv_symm_apply,
-    ContinuousLinearEquiv.symm_symm, ContinuousLinearEquiv.symm_apply_apply]
-  congr 2
-  ext x
-  simp
+    ContinuousLinearEquiv.symm_symm, ContinuousLinearEquiv.symm_apply_apply,
+    ckArrowCongr_inverse, Prod.eta]
 
 theorem ckTransformSolution_germ (e : E ≃L[ℝ] E') (a : V ≃L[ℝ] V')
     {u v : ℝ × E → V} {z : ℝ × E} (h : u =ᶠ[𝓝 z] v) :
     ckTransformSolution e a u =ᶠ[𝓝 (ckTimeEquiv e z)] ckTransformSolution e a v := by
   have ht : Tendsto (ckTimeEquiv e).symm (𝓝 (ckTimeEquiv e z)) (𝓝 z) := by
-    simpa using (ckTimeEquiv e).symm.continuous.continuousAt.tendsto
+    have h' : Tendsto (ckTimeEquiv e).symm (𝓝 (ckTimeEquiv e z))
+        (𝓝 ((ckTimeEquiv e).symm (ckTimeEquiv e z))) :=
+      (ckTimeEquiv e).symm.continuous.continuousAt.tendsto
+    simpa only [ContinuousLinearEquiv.symm_apply_apply] using h'
   filter_upwards [ht.eventually h] with y hy
   exact congrArg a hy
 

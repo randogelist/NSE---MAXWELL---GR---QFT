@@ -428,8 +428,13 @@ theorem ckSymmetric_hasFDerivAt_diagonal {n : ℕ} (a : CKCoeff E F (n + 1))
     simp only [Finset.sum_const, Finset.card_univ, Fintype.card_fin,
       ← Nat.cast_smul_eq_nsmul ℝ, Nat.cast_add, Nat.cast_one]
   rw [heq] at hd
-  simpa only [Function.comp_def, δ, ContinuousLinearMap.pi_apply,
-    ContinuousLinearMap.id_apply] using hd
+  have hf : a ∘ δ = (fun z : E => a (fun _ => z)) := by
+    funext z
+    apply congrArg a
+    funext i
+    simp only [δ, ContinuousLinearMap.pi_apply, ContinuousLinearMap.id_apply]
+  rw [hf] at hd
+  exact hd
 
 def ckPrimitiveDerivativeCoeffCLM [CompleteSpace F] (n : ℕ) :
     CKCoeff (CKTimeSpace E) F n →L[ℝ]
@@ -502,7 +507,9 @@ def timePrimitiveDerivative [CompleteSpace F] :
         intro n
         simp only [ckPrimitiveDerivativeSeries_coeff, CKSeries.coeff_smul, map_smul,
           RingHom.id_apply] }
-    1 (fun p => by simpa only [one_mul] using ckPrimitiveDerivativeSeries_norm_le E F p)
+    1 (fun p => by
+      change ‖ckPrimitiveDerivativeSeries E F p‖ ≤ 1 * ‖p‖
+      simpa only [one_mul] using ckPrimitiveDerivativeSeries_norm_le E F p)
 
 @[simp] theorem timePrimitiveDerivative_coeff [CompleteSpace F]
     (p : CKSeries (CKTimeSpace E) F) (n : ℕ) :
