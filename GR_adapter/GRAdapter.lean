@@ -22,3 +22,4 @@ import GRAdapter.ScalarCK
 import GRAdapter.StressDivergence
 import GRAdapter.FourierInversion
 import GRAdapter.GaussianCodazzi
+import GRAdapter.ScalarCompatibility
