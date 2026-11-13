@@ -1,6 +1,5 @@
 import GRAssembly.NativeGaussianContraction
 import GRAssembly.NativeGaussianEvolution
-import GRAssembly.NativeCKFiniteDimensional
 
 set_option autoImplicit false
 set_option Elab.async true

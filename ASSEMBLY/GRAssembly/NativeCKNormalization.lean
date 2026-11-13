@@ -87,7 +87,12 @@ theorem ckSpaceDerivative_eq_fderiv {w : ℝ × E → V} {z : ℝ × E}
       (fderiv ℝ w z).comp (ContinuousLinearMap.inr ℝ ℝ E) := by
   have hpath := (hasFDerivAt_const (𝕜 := ℝ) z.1 z.2).prodMk
     (hasFDerivAt_id (𝕜 := ℝ) z.2)
-  simpa only [ckSpaceDerivative, Function.comp_def, id_eq, Prod.eta] using
+  have hinr : (0 : E →L[ℝ] ℝ).prod (ContinuousLinearMap.id ℝ E) =
+      ContinuousLinearMap.inr ℝ ℝ E := by
+    apply ContinuousLinearMap.ext
+    intro x
+    rfl
+  simpa only [ckSpaceDerivative, Function.comp_def, id_eq, Prod.eta, hinr] using
     (hw.hasFDerivAt.comp z.2 hpath).fderiv
 
 theorem ckSpaceDerivative_germ_of_eq {w v : ℝ × E → V}

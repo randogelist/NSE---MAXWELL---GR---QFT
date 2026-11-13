@@ -5,6 +5,7 @@ import GRAssembly.NativeCKComposition
 
 set_option autoImplicit false
 set_option Elab.async true
+set_option maxHeartbeats 1600000
 
 open Set Filter
 open scoped Topology BigOperators
@@ -23,18 +24,18 @@ def ckCurryZeroCLM : CKCoeff G H 0 →L[ℝ] H :=
   (continuousMultilinearCurryFin0 ℝ G H).toContinuousLinearEquiv.toContinuousLinearMap
 
 def ckCurryLeftCLM (n : ℕ) : CKCoeff G H (n + 1) →L[ℝ] G →L[ℝ] CKCoeff G H n :=
-  (continuousMultilinearCurryLeftEquiv ℝ (fun _ : Fin (n + 1) => G) H)
-    .toContinuousLinearEquiv.toContinuousLinearMap
+  (continuousMultilinearCurryLeftEquiv ℝ (fun _ : Fin (n + 1) => G) H).toContinuousLinearEquiv.toContinuousLinearMap
 
 theorem ckCurryZeroCLM_norm_le : ‖ckCurryZeroCLM (G := G) (H := H)‖ ≤ 1 := by
   apply ContinuousLinearMap.opNorm_le_bound _ (by norm_num)
   intro a
-  simpa only [one_mul] using le_of_eq ((continuousMultilinearCurryFin0 ℝ G H).norm_map a)
+  simpa only [ckCurryZeroCLM, one_mul] using
+    le_of_eq ((continuousMultilinearCurryFin0 ℝ G H).norm_map a)
 
 theorem ckCurryLeftCLM_norm_le (n : ℕ) : ‖ckCurryLeftCLM (G := G) (H := H) n‖ ≤ 1 := by
   apply ContinuousLinearMap.opNorm_le_bound _ (by norm_num)
   intro a
-  simpa only [one_mul] using le_of_eq
+  simpa only [ckCurryLeftCLM, one_mul] using le_of_eq
     ((continuousMultilinearCurryLeftEquiv ℝ (fun _ : Fin (n + 1) => G) H).norm_map a)
 
 namespace CKSeries
@@ -50,7 +51,7 @@ def contractMultilinear : (n : ℕ) → CKSeries E (CKCoeff G H n) →
 theorem norm_contractMultilinear_le (n : ℕ) (r : CKSeries E (CKCoeff G H n))
     (p : Fin n → CKSeries E G) :
     ‖contractMultilinear n r p‖ ≤ ‖r‖ * ∏ i, ‖p i‖ := by
-  induction n generalizing r p with
+  induction n with
   | zero =>
       calc
         ‖contractMultilinear 0 r p‖ ≤ ‖ckCurryZeroCLM (G := G) (H := H)‖ * ‖r‖ :=
@@ -78,7 +79,7 @@ theorem norm_contractMultilinear_le (n : ℕ) (r : CKSeries E (CKCoeff G H n))
 theorem eval_contractMultilinear (n : ℕ) (r : CKSeries E (CKCoeff G H n))
     (p : Fin n → CKSeries E G) {x : E} (hx : ‖x‖ < 1) :
     (contractMultilinear n r p).eval x = r.eval x (fun i => (p i).eval x) := by
-  induction n generalizing r p with
+  induction n with
   | zero =>
       rw [contractMultilinear, eval_postcompose _ _ hx]
       change r.eval x 0 = r.eval x (fun i => (p i).eval x)
@@ -211,7 +212,8 @@ theorem eval_superposition (c : FormalMultilinearSeries ℝ G H) (hc₀ : c 0 = 
     _ = c.sum (p.eval x) := by
       symm
       change (∑' n, c n (fun _ => p.eval x)) = _
-      rw [tsum_eq_zero_add' heval, hc₀, ContinuousMultilinearMap.zero_apply, zero_add]
+      rw [tsum_eq_zero_add' (f := fun n => c n (fun _ => p.eval x)) heval,
+        hc₀, ContinuousMultilinearMap.zero_apply, zero_add]
 
 end CKSeries
 

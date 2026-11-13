@@ -415,14 +415,21 @@ theorem ckSymmetric_hasFDerivAt_diagonal {n : ℕ} (a : CKCoeff E F (n + 1))
   let δ : E →L[ℝ] (Fin (n + 1) → E) :=
     ContinuousLinearMap.pi (fun _ => ContinuousLinearMap.id ℝ E)
   have hd := (a.hasFDerivAt (δ x)).comp x δ.hasFDerivAt
-  convert! hd using 1
-  ext y
-  simp only [δ, ContinuousLinearMap.smul_apply, ContinuousMultilinearMap.curryRight_apply,
-    ContinuousLinearMap.comp_apply, ContinuousMultilinearMap.linearDeriv_apply,
-    ContinuousLinearMap.pi_apply, ContinuousLinearMap.id_apply]
-  simp_rw [ckSymmetric_update_eq_snoc E F a ha x y]
-  simp only [Finset.sum_const, Finset.card_univ, Fintype.card_fin,
-    ← Nat.cast_smul_eq_nsmul ℝ, Nat.cast_add, Nat.cast_one]
+  have heq : (a.linearDeriv (δ x)).comp δ =
+      (n + 1 : ℝ) • a.curryRight (fun _ => x) := by
+    apply ContinuousLinearMap.ext
+    intro y
+    simp only [δ, ContinuousLinearMap.smul_apply, ContinuousMultilinearMap.curryRight_apply,
+      ContinuousLinearMap.comp_apply, ContinuousMultilinearMap.linearDeriv_apply,
+      ContinuousLinearMap.pi_apply, ContinuousLinearMap.id_apply]
+    change (∑ j : Fin (n + 1), a (Function.update (fun _ => x) j y)) =
+      (n + 1 : ℝ) • a (Fin.snoc (fun _ : Fin n => x) y)
+    simp_rw [ckSymmetric_update_eq_snoc E F a ha x y]
+    simp only [Finset.sum_const, Finset.card_univ, Fintype.card_fin,
+      ← Nat.cast_smul_eq_nsmul ℝ, Nat.cast_add, Nat.cast_one]
+  rw [heq] at hd
+  simpa only [Function.comp_def, δ, ContinuousLinearMap.pi_apply,
+    ContinuousLinearMap.id_apply] using hd
 
 def ckPrimitiveDerivativeCoeffCLM [CompleteSpace F] (n : ℕ) :
     CKCoeff (CKTimeSpace E) F n →L[ℝ]
@@ -493,7 +500,8 @@ def timePrimitiveDerivative [CompleteSpace F] :
         intro c p
         apply CKSeries.ext
         intro n
-        simp only [ckPrimitiveDerivativeSeries_coeff, CKSeries.coeff_smul, map_smul] }
+        simp only [ckPrimitiveDerivativeSeries_coeff, CKSeries.coeff_smul, map_smul,
+          RingHom.id_apply] }
     1 (fun p => by simpa only [one_mul] using ckPrimitiveDerivativeSeries_norm_le E F p)
 
 @[simp] theorem timePrimitiveDerivative_coeff [CompleteSpace F]

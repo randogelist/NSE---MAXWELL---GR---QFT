@@ -1,5 +1,6 @@
 import GRAssembly.NativeGaussianConstraintInitial
 import GRAssembly.NativeGaussianEvolutionCompatibility
+import GRAssembly.NativeCKFiniteDimensional
 
 /-! The five actual Ricci constraints vanish by literal analytic CK uniqueness. -/
 set_option autoImplicit false
