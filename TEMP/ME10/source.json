@@ -1,0 +1,45 @@
+{
+  "entry_id": "ME10",
+  "member_id": null,
+  "upstream_name": "NSEMaxwell.HodgeProof.scalarL_trajectory_smooth",
+  "candidate_export": "GRTemp.ME10.endpoint",
+  "module": "ME10.Endpoint",
+  "declaration_kind": "theorem",
+  "status": "A_TIER_CANDIDATE",
+  "extraction_method": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+  "source_repository": "randogelist/Methlib",
+  "source_commit": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+  "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterSmoothing.lean",
+  "source_line_start": 273,
+  "source_line_end": 280,
+  "source_sha256": "693e24c88e42270212ba4d6053b9141fcf2d1bbb983ab04bf6bfc43dbb870b0d",
+  "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterSmoothing.lean#L273",
+  "source_declaration_sha256": "e08b1f5d19be53b57b6b887a2a05bd63c28ab7fc649f5351dc6fb0b970848a97",
+  "imports": [
+    "FourierHodgeLaws.ParameterSmoothing"
+  ],
+  "import_scope": "UPSTREAM_OWNING_MODULE; definitions and helper lemmas retained as explicit dependencies",
+  "uses": [
+    "GC02",
+    "GC04"
+  ],
+  "hypotheses": [
+    "f : Pressure",
+    "SmoothPressure f",
+    "PeriodicPressure f"
+  ],
+  "source_signature": "theorem scalarL_trajectory_smooth {f : Pressure}\n    (hf : SmoothPressure f) (hp : PeriodicPressure f) :\n    SmoothPressure (fun t => scalarL (f t))",
+  "retained_upstream_audit": {
+    "name": "NSEMaxwell.HodgeProof.scalarL_trajectory_smooth",
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "status": "PASS_STANDARD_ONLY"
+  },
+  "retained_audit_applies_to": "UPSTREAM_DECLARATION_ONLY; candidate copied export has no external audit yet",
+  "local_lean_executions": 0,
+  "new_axioms": 0,
+  "extracted_file_sha256": "e7893556874e36c2156c69f5694aada4a32180ed5ee97a16358e73a0d3f768c8"
+}

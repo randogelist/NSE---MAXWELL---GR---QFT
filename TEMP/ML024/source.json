@@ -1,0 +1,31 @@
+{
+  "id": "ML024",
+  "kind": "theorem",
+  "source_name": "FormalMultilinearSeries.le_radius_of_summable",
+  "endpoint": "GRTemp.ML024.endpoint",
+  "module": "ML024.Endpoint",
+  "source_path": "Mathlib/Analysis/Analytic/ConvergenceRadius.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "f6314e1932da1cf3b52545f51ed3c70ab5a5173850aa24d4601aa0d7f1bbfb60",
+  "source_start_line": 133,
+  "source_end_line": 136,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ConvergenceRadius.lean#L133",
+  "upstream_import": "Mathlib.Analysis.Analytic.ConvergenceRadius",
+  "retained_dependencies": [
+    "Mathlib.Analysis.Analytic.ConvergenceRadius"
+  ],
+  "extraction_kind": "COPIED_PROOF_BODY",
+  "original_declaration": "theorem le_radius_of_summable (h : Summable fun n => ‖p n‖ * (r : ℝ) ^ n) : ↑r ≤ p.radius :=\n  p.le_radius_of_summable_nnnorm <| by\n    simp only [← coe_nnnorm] at h\n    exact mod_cast h",
+  "generated_additive_declaration": null,
+  "source_context": "open Topology NNReal Filter ENNReal Set Asymptotics\nopen scoped Pointwise\nvariable {𝕜 E F : Type*} [NontriviallyNormedField 𝕜]\n  [NormedAddCommGroup E] [NormedSpace 𝕜 E]\n  [NormedAddCommGroup F] [NormedSpace 𝕜 F]\nnamespace FormalMultilinearSeries\nvariable (p : FormalMultilinearSeries 𝕜 E F) {r : ℝ≥0}\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC03"
+  ],
+  "endpoint_sha256": "d2b01f5440389e6e6354ec44a6a554516f5cf6c732707499d5dc2c07e9d05de4",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+}

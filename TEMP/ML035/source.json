@@ -1,0 +1,32 @@
+{
+  "id": "ML035",
+  "kind": "theorem",
+  "source_name": "DifferentiableOn.analyticAt",
+  "endpoint": "GRTemp.ML035.endpoint",
+  "module": "ML035.Endpoint",
+  "source_path": "Mathlib/Analysis/Complex/CauchyIntegral.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "7a2022a8a02dbef3b5466edd2ba9e4123a898f1e0b0dc5dc320104832405f14b",
+  "source_start_line": 625,
+  "source_end_line": 629,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/CauchyIntegral.lean#L625",
+  "upstream_import": "Mathlib.Analysis.Complex.CauchyIntegral",
+  "retained_dependencies": [
+    "Mathlib.Analysis.Complex.CauchyIntegral"
+  ],
+  "extraction_kind": "COPIED_PROOF_BODY",
+  "original_declaration": "protected theorem _root_.DifferentiableOn.analyticAt {s : Set ℂ} {f : ℂ → E} {z : ℂ}\n    (hd : DifferentiableOn ℂ f s) (hz : s ∈ 𝓝 z) : AnalyticAt ℂ f z := by\n  rcases nhds_basis_closedBall.mem_iff.1 hz with ⟨R, hR0, hRs⟩\n  lift R to ℝ≥0 using hR0.le\n  exact ((hd.mono hRs).hasFPowerSeriesOnBall hR0).analyticAt",
+  "generated_additive_declaration": null,
+  "source_context": "open TopologicalSpace Set MeasureTheory intervalIntegral Metric Filter Function\nopen scoped Interval Real NNReal ENNReal Topology\nvariable {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E] [CompleteSpace E]\nnamespace Complex\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC03",
+    "GC21"
+  ],
+  "endpoint_sha256": "b9c3123022fde7ec313a4858fa8cbdb869251ba9e899fe6bb9b92335d37f6b88",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+}

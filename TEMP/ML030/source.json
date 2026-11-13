@@ -1,0 +1,33 @@
+{
+  "id": "ML030",
+  "kind": "theorem",
+  "source_name": "hasDerivAt_tsum_of_isPreconnected",
+  "endpoint": "GRTemp.ML030.endpoint",
+  "module": "ML030.Endpoint",
+  "source_path": "Mathlib/Analysis/Calculus/SmoothSeries.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "5000d919737125bacacbc3df2f4e56284cd514dacc7f794c78f04d543ae47a78",
+  "source_start_line": 89,
+  "source_end_line": 97,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/SmoothSeries.lean#L89",
+  "upstream_import": "Mathlib.Analysis.Calculus.SmoothSeries",
+  "retained_dependencies": [
+    "Mathlib.Analysis.Calculus.SmoothSeries"
+  ],
+  "extraction_kind": "COPIED_PROOF_BODY",
+  "original_declaration": "theorem hasDerivAt_tsum_of_isPreconnected (hu : Summable u) (ht : IsOpen t)\n    (h't : IsPreconnected t) (hg : ∀ n y, y ∈ t → HasDerivAt (g n) (g' n y) y)\n    (hg' : ∀ n y, y ∈ t → ‖g' n y‖ ≤ u n) (hy₀ : y₀ ∈ t) (hg0 : Summable fun n => g n y₀)\n    (hy : y ∈ t) : HasDerivAt (fun z => ∑' n, g n z) (∑' n, g' n y) y := by\n  simp_rw [hasDerivAt_iff_hasFDerivAt] at hg ⊢\n  convert! hasFDerivAt_tsum_of_isPreconnected hu ht h't hg ?_ hy₀ hg0 hy\n  · exact (ContinuousLinearMap.smulRightL 𝕜 𝕜 F 1).map_tsum <|\n      .of_norm_bounded hu fun n ↦ hg' n y hy\n  · simpa",
+  "generated_additive_declaration": null,
+  "source_context": "open Set Metric TopologicalSpace Function Asymptotics Filter\nopen scoped Topology NNReal\nvariable {α 𝕜 E F : Type*} [NontriviallyNormedField 𝕜] [IsRCLikeNormedField 𝕜]\n  [NormedAddCommGroup E] [NormedSpace 𝕜 E] [NormedAddCommGroup F] [CompleteSpace F]\n  [NormedSpace 𝕜 F] {u : α → ℝ}\nvariable {f : α → E → F} {f' : α → E → E →L[𝕜] F}\n  {g : α → 𝕜 → F} {g' : α → 𝕜 → F}\n  {s : Set E} {t : Set 𝕜} {x₀ x : E} {y₀ y : 𝕜}\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC02",
+    "GC03",
+    "GC04"
+  ],
+  "endpoint_sha256": "057394ec28bd6c86ed7198b827fba34d744a7be84ee333987b9269ec1d0140d0",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+}

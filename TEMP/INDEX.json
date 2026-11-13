@@ -1,0 +1,2104 @@
+{
+  "schema_version": 1,
+  "mode": "A_TIER_DERIVATION",
+  "status": "A_TIER_CANDIDATE",
+  "local_lean_executions": 0,
+  "entry_folders": 82,
+  "endpoint_modules": 85,
+  "mathlib_entries": 65,
+  "methlib_entries": 17,
+  "methlib_named_endpoints": 20,
+  "copied_non_mathlib_dependency_modules": 72,
+  "mathlib_pin": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "source_index": "GR_adapter/Derivation/NSE_GR_AXIOM_GLUING_INDEX.json",
+  "source_index_sha256": "de9f69ee182fec8af40eb2bbab7fa206d1d4a7f2e643b6dce8dae9b90c231df6",
+  "endpoint_contract": "Exactly one selected exported declaration per Endpoint.lean; copied body, explicit imported upstream definitions/helpers.",
+  "not_claimed": [
+    "dependency-free Lean",
+    "GR namespace/sign/time-domain adapters",
+    "LI01-LI03 discharge",
+    "GR root closure"
+  ],
+  "external_evidence_status": "See TEMP_ENDPOINT_EXTRACTION_A_TIER.txt; this catalog records candidate source provenance.",
+  "records": [
+    {
+      "entry_id": "ME01",
+      "member_id": null,
+      "module": "ME01.Endpoint",
+      "export": "GRTemp.ME01.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.scalarL_eq_realFourierSeries",
+      "path": "TEMP/ME01/Endpoint.lean",
+      "metadata": "TEMP/ME01/source.json",
+      "sha256": "d521bbcc877543f04d017349f46a0655a4c6f4728863c1ac2ef15f6d7a87b188",
+      "source_sha256": "d12c8efdffdbf21e98aed74ed436032e314343f7aa80df61d4ad3e6ee4accc42",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean#L72",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.CosineMultiplier"
+      ],
+      "uses": [
+        "GC01",
+        "GC03"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ME02",
+      "member_id": null,
+      "module": "ME02.Endpoint",
+      "export": "GRTemp.ME02.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.scalarL_smooth",
+      "path": "TEMP/ME02/Endpoint.lean",
+      "metadata": "TEMP/ME02/source.json",
+      "sha256": "7f5fcbefe91d332329db76090e1e0a4e3afc2835d1403260b8c9254a41206e0b",
+      "source_sha256": "d12c8efdffdbf21e98aed74ed436032e314343f7aa80df61d4ad3e6ee4accc42",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean#L157",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.CosineMultiplier"
+      ],
+      "uses": [
+        "GC02"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ME03",
+      "member_id": null,
+      "module": "ME03.Endpoint",
+      "export": "GRTemp.ME03.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.vectorL_smooth",
+      "path": "TEMP/ME03/Endpoint.lean",
+      "metadata": "TEMP/ME03/source.json",
+      "sha256": "2f9e7998af09dfca24f44b0ba1133b97f61dc5ca48c498e6b948f08b4800e602",
+      "source_sha256": "d12c8efdffdbf21e98aed74ed436032e314343f7aa80df61d4ad3e6ee4accc42",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean#L144",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.CosineMultiplier"
+      ],
+      "uses": [
+        "GC02"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ME04",
+      "member_id": null,
+      "module": "ME04.Endpoint",
+      "export": "GRTemp.ME04.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.vectorL_component",
+      "path": "TEMP/ME04/Endpoint.lean",
+      "metadata": "TEMP/ME04/source.json",
+      "sha256": "32a06a690f14ea63aa7ab731228b6f7023f34848fb198b7b77417bc2bdfe9df3",
+      "source_sha256": "d12c8efdffdbf21e98aed74ed436032e314343f7aa80df61d4ad3e6ee4accc42",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean#L162",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.CosineMultiplier"
+      ],
+      "uses": [
+        "GC02"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ME05",
+      "member_id": null,
+      "module": "ME05.Endpoint",
+      "export": "GRTemp.ME05.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.coordinateDerivative_vectorL_commute",
+      "path": "TEMP/ME05/Endpoint.lean",
+      "metadata": "TEMP/ME05/source.json",
+      "sha256": "b9e8c169e13061bf1e81045b82b55df4c32bf9ee7f482f82a38ecd4b724c7cbf",
+      "source_sha256": "9385b39dbebac0062302f458c2e4d6e0b3f072330bc81e896f2907b463de3d9f",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialMultiplier.lean#L95",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.SpatialMultiplier"
+      ],
+      "uses": [
+        "GC02"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ME06",
+      "member_id": null,
+      "module": "ME06.Endpoint",
+      "export": "GRTemp.ME06.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.divergence_vectorL_commute",
+      "path": "TEMP/ME06/Endpoint.lean",
+      "metadata": "TEMP/ME06/source.json",
+      "sha256": "4465c5e07e5d06e5d6656941cdec2d704ce734971ce689ed49a1fb2319646939",
+      "source_sha256": "9385b39dbebac0062302f458c2e4d6e0b3f072330bc81e896f2907b463de3d9f",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialMultiplier.lean#L127",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.SpatialMultiplier"
+      ],
+      "uses": [
+        "GC02"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ME07",
+      "member_id": null,
+      "module": "ME07.Endpoint",
+      "export": "GRTemp.ME07.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.neg_laplacian_vectorL",
+      "path": "TEMP/ME07/Endpoint.lean",
+      "metadata": "TEMP/ME07/source.json",
+      "sha256": "b52d614920b4dc33f269b6071a583183a1412b4e05ec01c40b4564a96b52bd31",
+      "source_sha256": "23cf86397aa7029712671127bbdf7fc28abcd0eafb182d7c4ca48e7afb44fd06",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/PoissonFromCoefficients.lean#L106",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.PoissonFromCoefficients"
+      ],
+      "uses": [
+        "GC02"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ME08",
+      "member_id": null,
+      "module": "ME08.Endpoint",
+      "export": "GRTemp.ME08.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.spatialInverseLaplacianLaws",
+      "path": "TEMP/ME08/Endpoint.lean",
+      "metadata": "TEMP/ME08/source.json",
+      "sha256": "39cde666c70db8ef9761a49d234bc71e06f0481229ea79cdc57270b030fe3ff5",
+      "source_sha256": "4a414a1125fffa62e0e4f760186fc1597cb116052c138ec3a486a0cb7c6b693f",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialInhabitant.lean#L15",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.SpatialInhabitant"
+      ],
+      "uses": [
+        "GC02",
+        "GC04"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ME09",
+      "member_id": null,
+      "module": "ME09.Endpoint",
+      "export": "GRTemp.ME09.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.K_curl",
+      "path": "TEMP/ME09/Endpoint.lean",
+      "metadata": "TEMP/ME09/source.json",
+      "sha256": "e44ff4d2203c64bbd2d9bfeeccd29820bf80718801dd0fe1f7351c3edab241ce",
+      "source_sha256": "96492e65f07cc825eb9e5ae2f43de61ee3b6f4ba2c96ac85dbf44290be228df4",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialHodge.lean#L79",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.SpatialHodge"
+      ],
+      "uses": [
+        "GC02"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ME10",
+      "member_id": null,
+      "module": "ME10.Endpoint",
+      "export": "GRTemp.ME10.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.scalarL_trajectory_smooth",
+      "path": "TEMP/ME10/Endpoint.lean",
+      "metadata": "TEMP/ME10/source.json",
+      "sha256": "e7893556874e36c2156c69f5694aada4a32180ed5ee97a16358e73a0d3f768c8",
+      "source_sha256": "693e24c88e42270212ba4d6053b9141fcf2d1bbb983ab04bf6bfc43dbb870b0d",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterSmoothing.lean#L273",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.ParameterSmoothing"
+      ],
+      "uses": [
+        "GC02",
+        "GC04"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ME11",
+      "member_id": null,
+      "module": "ME11.Endpoint",
+      "export": "GRTemp.ME11.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.inverseScalarSeries_hasFDerivAt_pos",
+      "path": "TEMP/ME11/Endpoint.lean",
+      "metadata": "TEMP/ME11/source.json",
+      "sha256": "0510788dac906e166b3a55f7c5b1a4f97413707a232b60e8fdaa84c60a4a734c",
+      "source_sha256": "693e24c88e42270212ba4d6053b9141fcf2d1bbb983ab04bf6bfc43dbb870b0d",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterSmoothing.lean#L195",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.ParameterSmoothing"
+      ],
+      "uses": [
+        "GC02",
+        "GC04",
+        "GC17"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ME12",
+      "member_id": null,
+      "module": "ME12.Endpoint",
+      "export": "GRTemp.ME12.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.cubeIntegral_hasDerivWithinAt",
+      "path": "TEMP/ME12/Endpoint.lean",
+      "metadata": "TEMP/ME12/source.json",
+      "sha256": "3b045d1eba6e1e83fdf4a693bc94c90fc3dccee1f84a4b3689c57a4d3bb6d5e4",
+      "source_sha256": "016d9cf0c1deda75770d39f66c2e5c684435448bc7c9785cbc5d28612db54eee",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterCoefficients.lean#L81",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.ParameterCoefficients"
+      ],
+      "uses": [
+        "GC02",
+        "GC04",
+        "GC17"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ME13",
+      "member_id": null,
+      "module": "ME13.Endpoint",
+      "export": "GRTemp.ME13.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.scalarCoeff_hasDerivAt_pos",
+      "path": "TEMP/ME13/Endpoint.lean",
+      "metadata": "TEMP/ME13/source.json",
+      "sha256": "42f754dd3a54090f5af50be5ba4edac3c6fb4c6a3b858bf774fe197d50ad3261",
+      "source_sha256": "016d9cf0c1deda75770d39f66c2e5c684435448bc7c9785cbc5d28612db54eee",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterCoefficients.lean#L206",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.ParameterCoefficients"
+      ],
+      "uses": [
+        "GC02"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ME14",
+      "member_id": null,
+      "module": "ME14.Endpoint",
+      "export": "GRTemp.ME14.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.uniform_inverseScalarCoeff_moment_bound",
+      "path": "TEMP/ME14/Endpoint.lean",
+      "metadata": "TEMP/ME14/source.json",
+      "sha256": "27d8460e4c80d1549bb11fadaa7506673514d71474c390839466ff36a03810a1",
+      "source_sha256": "ee3d428ae138b05907a15bd3cc68d0a9afcd041b5ea400888bfaa75e1fb1402e",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/UniformCoefficientBounds.lean#L155",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.UniformCoefficientBounds"
+      ],
+      "uses": [
+        "GC02",
+        "GC03"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ME15",
+      "member_id": null,
+      "module": "ME15.Endpoint",
+      "export": "GRTemp.ME15.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.scalarMean_contDiffOn",
+      "path": "TEMP/ME15/Endpoint.lean",
+      "metadata": "TEMP/ME15/source.json",
+      "sha256": "3df2ebc2b50f9ac013b4050504dde3efcb7715ac249452f2ab2369da38a2ab04",
+      "source_sha256": "e057005dbf269c7fd797241224651d9f145272f9674f50faa24e2e3dba2e7fe7",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterIntegral.lean#L50",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.ParameterIntegral"
+      ],
+      "uses": [
+        "GC02",
+        "GC04",
+        "GC17"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ME16",
+      "member_id": "E01",
+      "module": "ME16.E01.Endpoint",
+      "export": "GRTemp.ME16.E01.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.scalarLift_component",
+      "path": "TEMP/ME16/E01/Endpoint.lean",
+      "metadata": "TEMP/ME16/E01/source.json",
+      "sha256": "d11af0b1a8900fdabc27e12968adb3f305ffb9a47397445b4efe7a106ec0f75f",
+      "source_sha256": "4fffe11365b4b539a063320719565a4e220983ed9113229c9613e87c58f02158",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/TargetPrimitives.lean#L54",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.TargetPrimitives"
+      ],
+      "uses": [
+        "GC02"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ME16",
+      "member_id": "E02",
+      "module": "ME16.E02.Endpoint",
+      "export": "GRTemp.ME16.E02.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.scalarLift_contDiff",
+      "path": "TEMP/ME16/E02/Endpoint.lean",
+      "metadata": "TEMP/ME16/E02/source.json",
+      "sha256": "df791d8edd8e70e9f3db04a1461268d1f383e1066548a0b358da58bbfdae8346",
+      "source_sha256": "4fffe11365b4b539a063320719565a4e220983ed9113229c9613e87c58f02158",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/TargetPrimitives.lean#L57",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.TargetPrimitives"
+      ],
+      "uses": [
+        "GC02"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ME16",
+      "member_id": "E03",
+      "module": "ME16.E03.Endpoint",
+      "export": "GRTemp.ME16.E03.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.scalarLift_periodic",
+      "path": "TEMP/ME16/E03/Endpoint.lean",
+      "metadata": "TEMP/ME16/E03/source.json",
+      "sha256": "86207df2ab118bb490166cc1ca665f1567cde0b6aeec3472c111586d4056725a",
+      "source_sha256": "4fffe11365b4b539a063320719565a4e220983ed9113229c9613e87c58f02158",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/TargetPrimitives.lean#L63",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.TargetPrimitives"
+      ],
+      "uses": [
+        "GC02"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ME17",
+      "member_id": "E01",
+      "module": "ME17.E01.Endpoint",
+      "export": "GRTemp.ME17.E01.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.scalarTimeDerivative_smooth",
+      "path": "TEMP/ME17/E01/Endpoint.lean",
+      "metadata": "TEMP/ME17/E01/source.json",
+      "sha256": "ce3ad9ffd1a5e2e901a31a7c5cb6b20d57978b271363904b5e26168085134d79",
+      "source_sha256": "016d9cf0c1deda75770d39f66c2e5c684435448bc7c9785cbc5d28612db54eee",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterCoefficients.lean#L138",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.ParameterCoefficients"
+      ],
+      "uses": [
+        "GC02",
+        "GC04"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ME17",
+      "member_id": "E02",
+      "module": "ME17.E02.Endpoint",
+      "export": "GRTemp.ME17.E02.endpoint",
+      "source_name": "NSEMaxwell.HodgeProof.scalarTimeDerivative_periodic",
+      "path": "TEMP/ME17/E02/Endpoint.lean",
+      "metadata": "TEMP/ME17/E02/source.json",
+      "sha256": "7670923e64eea069c564cb3ec2a639ea069749254a6ce2c983f80e8e0ba6337b",
+      "source_sha256": "016d9cf0c1deda75770d39f66c2e5c684435448bc7c9785cbc5d28612db54eee",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterCoefficients.lean#L142",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "imports": [
+        "FourierHodgeLaws.ParameterCoefficients"
+      ],
+      "uses": [
+        "GC02",
+        "GC04"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML001",
+      "member_id": null,
+      "module": "ML001.Endpoint",
+      "export": "GRTemp.ML001.endpoint",
+      "source_name": "mem_nhds_prod_iff'",
+      "path": "TEMP/ML001/Endpoint.lean",
+      "metadata": "TEMP/ML001/source.json",
+      "sha256": "f6e9125dfad7c4cd7397df6876a674b9ef242b2a9fb357e163b9135879372296",
+      "source_sha256": "35d6365bebe8c5d331fe01289e857ccc81e6f6392b1f01835d834a35a6931666",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Constructions/SumProd.lean#L290",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Topology.Constructions.SumProd"
+      ],
+      "uses": [
+        "GC07",
+        "GC08",
+        "GC13",
+        "GC14"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML002",
+      "member_id": null,
+      "module": "ML002.Endpoint",
+      "export": "GRTemp.ML002.endpoint",
+      "source_name": "exists_compact_subset",
+      "path": "TEMP/ML002/Endpoint.lean",
+      "metadata": "TEMP/ML002/source.json",
+      "sha256": "8c8d99b6a3f6771d05412a5523ea4d402dea994b0975878c6d714b5d1afcfadf",
+      "source_sha256": "4b6595bb61a6c53eee398a96f7fb2301cf24f400f82ce9fdfe4ee1d5dd3e64ce",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Compactness/LocallyCompact.lean#L148",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Topology.Compactness.LocallyCompact"
+      ],
+      "uses": [
+        "GC07"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML003",
+      "member_id": null,
+      "module": "ML003.Endpoint",
+      "export": "GRTemp.ML003.endpoint",
+      "source_name": "IsCompact.elim_finite_subcover",
+      "path": "TEMP/ML003/Endpoint.lean",
+      "metadata": "TEMP/ML003/source.json",
+      "sha256": "17c5d23b97c5091d3c4705427d76943a82b7022372490115070fa6f0838cf673",
+      "source_sha256": "670d9e0723f9b803fd68e21c02b735475cafb7a4612aa0dac16733c5dedb49aa",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Compactness/Compact.lean#L202",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Topology.Compactness.Compact"
+      ],
+      "uses": [
+        "GC03",
+        "GC07",
+        "GC14"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML004",
+      "member_id": null,
+      "module": "ML004.Endpoint",
+      "export": "GRTemp.ML004.endpoint",
+      "source_name": "IsCompact.eventually_forall_of_forall_eventually",
+      "path": "TEMP/ML004/Endpoint.lean",
+      "metadata": "TEMP/ML004/source.json",
+      "sha256": "af9852ff9d59d6e7472d03cc49f594d81d3c7953a1b958d90692fd9be0104142",
+      "source_sha256": "670d9e0723f9b803fd68e21c02b735475cafb7a4612aa0dac16733c5dedb49aa",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Compactness/Compact.lean#L464",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Topology.Compactness.Compact"
+      ],
+      "uses": [
+        "GC08",
+        "GC10",
+        "GC14",
+        "GC15",
+        "GC20",
+        "GC21",
+        "GC22"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML005",
+      "member_id": null,
+      "module": "ML005.Endpoint",
+      "export": "GRTemp.ML005.endpoint",
+      "source_name": "IsCompact.mem_prod_nhdsSet_of_forall",
+      "path": "TEMP/ML005/Endpoint.lean",
+      "metadata": "TEMP/ML005/source.json",
+      "sha256": "bef2d452ae4075f6d83c0967596560655b131aa8401c1337b42de5757f63ea23",
+      "source_sha256": "670d9e0723f9b803fd68e21c02b735475cafb7a4612aa0dac16733c5dedb49aa",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Compactness/Compact.lean#L427",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Topology.Compactness.Compact"
+      ],
+      "uses": [
+        "GC08"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML006",
+      "member_id": null,
+      "module": "ML006.Endpoint",
+      "export": "GRTemp.ML006.endpoint",
+      "source_name": "Set.iUnionLift",
+      "path": "TEMP/ML006/Endpoint.lean",
+      "metadata": "TEMP/ML006/source.json",
+      "sha256": "c043b75e57d0359d0677b4ffc10ee9377c9e7b7c39073a72b386b5e82f779f22",
+      "source_sha256": "68789ff65258003813dda6ad16ff2723fa720a1bea0921fc069296f01b29bc02",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Data/Set/UnionLift.lean#L56",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Data.Set.UnionLift"
+      ],
+      "uses": [
+        "GC03",
+        "GC09"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML007",
+      "member_id": null,
+      "module": "ML007.Endpoint",
+      "export": "GRTemp.ML007.endpoint",
+      "source_name": "Set.iUnionLift_of_mem",
+      "path": "TEMP/ML007/Endpoint.lean",
+      "metadata": "TEMP/ML007/source.json",
+      "sha256": "f7d7f5975d73e72da7d720f5c62353c614f05a8917e47ba3c9039fa5d002f68c",
+      "source_sha256": "68789ff65258003813dda6ad16ff2723fa720a1bea0921fc069296f01b29bc02",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Data/Set/UnionLift.lean#L74",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Data.Set.UnionLift"
+      ],
+      "uses": [
+        "GC03",
+        "GC09"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML008",
+      "member_id": null,
+      "module": "ML008.Endpoint",
+      "export": "GRTemp.ML008.endpoint",
+      "source_name": "Set.liftCover",
+      "path": "TEMP/ML008/Endpoint.lean",
+      "metadata": "TEMP/ML008/source.json",
+      "sha256": "3af403a4dc695d760db01ba3667284e1c3b6e66562e651e6f4a97caabd81414c",
+      "source_sha256": "68789ff65258003813dda6ad16ff2723fa720a1bea0921fc069296f01b29bc02",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Data/Set/UnionLift.lean#L155",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Data.Set.UnionLift"
+      ],
+      "uses": [
+        "GC09"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML009",
+      "member_id": null,
+      "module": "ML009.Endpoint",
+      "export": "GRTemp.ML009.endpoint",
+      "source_name": "Set.liftCover_of_mem",
+      "path": "TEMP/ML009/Endpoint.lean",
+      "metadata": "TEMP/ML009/source.json",
+      "sha256": "75d2fc7d44a71adf00ccd2eb2b21abeadf724240f36b7a1a400cab86da78edd9",
+      "source_sha256": "68789ff65258003813dda6ad16ff2723fa720a1bea0921fc069296f01b29bc02",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Data/Set/UnionLift.lean#L164",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Data.Set.UnionLift"
+      ],
+      "uses": [
+        "GC09"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML010",
+      "member_id": null,
+      "module": "ML010.Endpoint",
+      "export": "GRTemp.ML010.endpoint",
+      "source_name": "AnalyticAt.congr",
+      "path": "TEMP/ML010/Endpoint.lean",
+      "metadata": "TEMP/ML010/source.json",
+      "sha256": "17910d26e65b82694b6918a012e91c927b20b573806a8a44cf661f4aeaf74058",
+      "source_sha256": "af3ee71ee027f74ea4bf2254978f841722b90b75dabd1452ec98ca65857d38ec",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean#L491",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Analytic.Basic"
+      ],
+      "uses": [
+        "GC09",
+        "GC15"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML011",
+      "member_id": null,
+      "module": "ML011.Endpoint",
+      "export": "GRTemp.ML011.endpoint",
+      "source_name": "AnalyticOnNhd.congr",
+      "path": "TEMP/ML011/Endpoint.lean",
+      "metadata": "TEMP/ML011/source.json",
+      "sha256": "911a6bfa523c5d8f1eaca2c844af83791f13a4c47304c76062011f7d857814a2",
+      "source_sha256": "af3ee71ee027f74ea4bf2254978f841722b90b75dabd1452ec98ca65857d38ec",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean#L509",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Analytic.Basic"
+      ],
+      "uses": [
+        "GC09"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML012",
+      "member_id": null,
+      "module": "ML012.Endpoint",
+      "export": "GRTemp.ML012.endpoint",
+      "source_name": "Filter.EventuallyEq.fderiv_eq",
+      "path": "TEMP/ML012/Endpoint.lean",
+      "metadata": "TEMP/ML012/source.json",
+      "sha256": "4bc30ce373dde72a6f3d0e32fa790753c1a421bba32059c88cf8c19a4e96b6c0",
+      "source_sha256": "5cad1d8c7480eac00c7004b6ec5ee9dd64ac80a833f10ad92936cdac4abe9673",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Congr.lean#L258",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Calculus.FDeriv.Congr"
+      ],
+      "uses": [
+        "GC02",
+        "GC06",
+        "GC08",
+        "GC09",
+        "GC15",
+        "GC16",
+        "GC20",
+        "GC22"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML013",
+      "member_id": null,
+      "module": "ML013.Endpoint",
+      "export": "GRTemp.ML013.endpoint",
+      "source_name": "Filter.EventuallyEq.fderiv",
+      "path": "TEMP/ML013/Endpoint.lean",
+      "metadata": "TEMP/ML013/source.json",
+      "sha256": "154a9689e08814dd202b6589e22308f08c99edc82e3091db339fe728367a5aab",
+      "source_sha256": "5cad1d8c7480eac00c7004b6ec5ee9dd64ac80a833f10ad92936cdac4abe9673",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Congr.lean#L261",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Calculus.FDeriv.Congr"
+      ],
+      "uses": [
+        "GC02",
+        "GC06",
+        "GC08",
+        "GC09",
+        "GC15",
+        "GC16",
+        "GC20",
+        "GC22"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML014",
+      "member_id": null,
+      "module": "ML014.Endpoint",
+      "export": "GRTemp.ML014.endpoint",
+      "source_name": "Set.piecewise_eqOn",
+      "path": "TEMP/ML014/Endpoint.lean",
+      "metadata": "TEMP/ML014/source.json",
+      "sha256": "cbff49bc0e238d8e7f8366f79d433a85517e9a62529dca6b1b0b3b64aac8ed3b",
+      "source_sha256": "cc1bd27199541d99cc175f5c214fa9e0a4ab78e6507ad121b55dac33840fa360",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Data/Set/Piecewise.lean#L67",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Data.Set.Piecewise"
+      ],
+      "uses": [
+        "GC09",
+        "GC15"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML015",
+      "member_id": null,
+      "module": "ML015.Endpoint",
+      "export": "GRTemp.ML015.endpoint",
+      "source_name": "Function.Periodic.zsmul",
+      "path": "TEMP/ML015/Endpoint.lean",
+      "metadata": "TEMP/ML015/source.json",
+      "sha256": "d5786e848ff11cb3ca7c361b8021ab2c17fcd19acaa823215589734bbd958564",
+      "source_sha256": "595ced3c0277252f889fa6f8c2f448c388e0a3f1dc83756fc29ab1290c2566b1",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Algebra/Ring/Periodic.lean#L155",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Algebra.Ring.Periodic"
+      ],
+      "uses": [
+        "GC08",
+        "GC09"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML016",
+      "member_id": null,
+      "module": "ML016.Endpoint",
+      "export": "GRTemp.ML016.endpoint",
+      "source_name": "Function.Periodic.add_period",
+      "path": "TEMP/ML016/Endpoint.lean",
+      "metadata": "TEMP/ML016/source.json",
+      "sha256": "b67d9f7b5ba9db6c819b53342b8a73e8a5d58d215284435455d96b47b4e53bb6",
+      "source_sha256": "595ced3c0277252f889fa6f8c2f448c388e0a3f1dc83756fc29ab1290c2566b1",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Algebra/Ring/Periodic.lean#L97",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Algebra.Ring.Periodic"
+      ],
+      "uses": [
+        "GC08",
+        "GC09"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML017",
+      "member_id": null,
+      "module": "ML017.Endpoint",
+      "export": "GRTemp.ML017.endpoint",
+      "source_name": "AnalyticAt.eventually_analyticAt",
+      "path": "TEMP/ML017/Endpoint.lean",
+      "metadata": "TEMP/ML017/source.json",
+      "sha256": "1a929a6e00763cffef22bd2dc98fa1fbb45cf08e17b3db758eb7ca21a8082148",
+      "source_sha256": "acda4eb054df857f353197ec8c9d8722c425fa0bd206198e9b04868dc3291663",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ChangeOrigin.lean#L378",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Analytic.ChangeOrigin"
+      ],
+      "uses": [
+        "GC07",
+        "GC13"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML018",
+      "member_id": null,
+      "module": "ML018.Endpoint",
+      "export": "GRTemp.ML018.endpoint",
+      "source_name": "mem_nhds_iff_exists_Ioo_subset",
+      "path": "TEMP/ML018/Endpoint.lean",
+      "metadata": "TEMP/ML018/source.json",
+      "sha256": "9b72185531e838b7e95e86d542fa15f79e436c6082985aa399bec59099edd9aa",
+      "source_sha256": "3a847f1d21ae37df97ac9e7b1d9d6f36fa4db474e4d2dc5b692114882c4d3561",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Order/Basic.lean#L513",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Topology.Order.Basic"
+      ],
+      "uses": [
+        "GC08",
+        "GC10",
+        "GC14"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML019",
+      "member_id": null,
+      "module": "ML019.Endpoint",
+      "export": "GRTemp.ML019.endpoint",
+      "source_name": "ContDiffBump.contDiff",
+      "path": "TEMP/ML019/Endpoint.lean",
+      "metadata": "TEMP/ML019/source.json",
+      "sha256": "6ddf77763e141bfb6fc9ea4cbf2c93a09306ece2fffad9f02c448c455d8a1bed",
+      "source_sha256": "b1abfd5f8861ac0fde77577d6fbe1207b2bdc8f4410b07764a2a781d2b63726b",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/BumpFunction/Basic.lean#L203",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Calculus.BumpFunction.Basic"
+      ],
+      "uses": [
+        "GC02"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML020",
+      "member_id": null,
+      "module": "ML020.Endpoint",
+      "export": "GRTemp.ML020.endpoint",
+      "source_name": "ContDiffBump.one_of_mem_closedBall",
+      "path": "TEMP/ML020/Endpoint.lean",
+      "metadata": "TEMP/ML020/source.json",
+      "sha256": "f6f4490adc655c64d02b553b12ef0ef7f5ca898ffedb0fe7607675fc48c8e751",
+      "source_sha256": "b1abfd5f8861ac0fde77577d6fbe1207b2bdc8f4410b07764a2a781d2b63726b",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/BumpFunction/Basic.lean#L137",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Calculus.BumpFunction.Basic"
+      ],
+      "uses": [
+        "GC02"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML021",
+      "member_id": null,
+      "module": "ML021.Endpoint",
+      "export": "GRTemp.ML021.endpoint",
+      "source_name": "ContDiffBump.tsupport_eq",
+      "path": "TEMP/ML021/Endpoint.lean",
+      "metadata": "TEMP/ML021/source.json",
+      "sha256": "90955866a749d264052fbf8a4ea27aa1529847b1e0e4b46124b0e4fca1f3f176",
+      "source_sha256": "b1abfd5f8861ac0fde77577d6fbe1207b2bdc8f4410b07764a2a781d2b63726b",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/BumpFunction/Basic.lean#L157",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Calculus.BumpFunction.Basic"
+      ],
+      "uses": [
+        "GC02"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML022",
+      "member_id": null,
+      "module": "ML022.Endpoint",
+      "export": "GRTemp.ML022.endpoint",
+      "source_name": "derivWithin_of_mem_nhds",
+      "path": "TEMP/ML022/Endpoint.lean",
+      "metadata": "TEMP/ML022/source.json",
+      "sha256": "22cab3887e9534b4b0c55e04f5f5937c7d6d1b72381b12e12081dbbb3c7ff951",
+      "source_sha256": "da1d29570f45bd14f5a37aa5b024d46b3076a47f04e9315bf72cd65f6505d55b",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/Deriv/Basic.lean#L507",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Calculus.Deriv.Basic"
+      ],
+      "uses": [
+        "GC02"
+      ],
+      "extraction_kind": "COPIED_SOURCE_BODY_WITH_EXPLICIT_CONTEXT_AND_RENAMED_EXPORT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML023",
+      "member_id": null,
+      "module": "ML023.Endpoint",
+      "export": "GRTemp.ML023.endpoint",
+      "source_name": "FormalMultilinearSeries.summable_norm_mul_pow",
+      "path": "TEMP/ML023/Endpoint.lean",
+      "metadata": "TEMP/ML023/source.json",
+      "sha256": "7e3267988599b3cb8ce32c99cf75d3c4ccebd73433183d62738b408076ee1595",
+      "source_sha256": "f6314e1932da1cf3b52545f51ed3c70ab5a5173850aa24d4601aa0d7f1bbfb60",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ConvergenceRadius.lean#L241",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Analytic.ConvergenceRadius"
+      ],
+      "uses": [
+        "GC03"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML024",
+      "member_id": null,
+      "module": "ML024.Endpoint",
+      "export": "GRTemp.ML024.endpoint",
+      "source_name": "FormalMultilinearSeries.le_radius_of_summable",
+      "path": "TEMP/ML024/Endpoint.lean",
+      "metadata": "TEMP/ML024/source.json",
+      "sha256": "d2b01f5440389e6e6354ec44a6a554516f5cf6c732707499d5dc2c07e9d05de4",
+      "source_sha256": "f6314e1932da1cf3b52545f51ed3c70ab5a5173850aa24d4601aa0d7f1bbfb60",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ConvergenceRadius.lean#L133",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Analytic.ConvergenceRadius"
+      ],
+      "uses": [
+        "GC03"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML025",
+      "member_id": null,
+      "module": "ML025.Endpoint",
+      "export": "GRTemp.ML025.endpoint",
+      "source_name": "FormalMultilinearSeries.hasFPowerSeriesOnBall",
+      "path": "TEMP/ML025/Endpoint.lean",
+      "metadata": "TEMP/ML025/source.json",
+      "sha256": "58134d681cfb5c180b0e9730938fd7be2d48cb1b2cf05896e4acffa47438fc1a",
+      "source_sha256": "af3ee71ee027f74ea4bf2254978f841722b90b75dabd1452ec98ca65857d38ec",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean#L1072",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Analytic.Basic"
+      ],
+      "uses": [
+        "GC03"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML026",
+      "member_id": null,
+      "module": "ML026.Endpoint",
+      "export": "GRTemp.ML026.endpoint",
+      "source_name": "HasFPowerSeriesOnBall.analyticAt",
+      "path": "TEMP/ML026/Endpoint.lean",
+      "metadata": "TEMP/ML026/source.json",
+      "sha256": "e440111e011d13dfdf8c031b6ab0f9c7da764a0f50e808e749d2242ea491dd99",
+      "source_sha256": "af3ee71ee027f74ea4bf2254978f841722b90b75dabd1452ec98ca65857d38ec",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean#L139",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Analytic.Basic"
+      ],
+      "uses": [
+        "GC03"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML027",
+      "member_id": null,
+      "module": "ML027.Endpoint",
+      "export": "GRTemp.ML027.endpoint",
+      "source_name": "tendstoUniformlyOn_tsum",
+      "path": "TEMP/ML027/Endpoint.lean",
+      "metadata": "TEMP/ML027/source.json",
+      "sha256": "ae9e9c9d9abb48d01ed61fb8e87463a5d91884b39ace744194a04a451b2ad6e1",
+      "source_sha256": "7852e142cb21d54b365d84ed4e1e2607a041242981cb96510b10f61b30aab5ac",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Group/FunctionSeries.lean#L33",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Normed.Group.FunctionSeries"
+      ],
+      "uses": [
+        "GC03"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML028",
+      "member_id": null,
+      "module": "ML028.Endpoint",
+      "export": "GRTemp.ML028.endpoint",
+      "source_name": "continuousOn_tsum",
+      "path": "TEMP/ML028/Endpoint.lean",
+      "metadata": "TEMP/ML028/source.json",
+      "sha256": "f3e65edf28524cee031397d5ee760af94c01490b55e4de36a346c118b50e9c0c",
+      "source_sha256": "7852e142cb21d54b365d84ed4e1e2607a041242981cb96510b10f61b30aab5ac",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Group/FunctionSeries.lean#L116",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Normed.Group.FunctionSeries"
+      ],
+      "uses": [
+        "GC03"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML029",
+      "member_id": null,
+      "module": "ML029.Endpoint",
+      "export": "GRTemp.ML029.endpoint",
+      "source_name": "hasFDerivAt_tsum_of_isPreconnected",
+      "path": "TEMP/ML029/Endpoint.lean",
+      "metadata": "TEMP/ML029/source.json",
+      "sha256": "6aaf80e4e61e705df68a460889d6102e1a7435fed22f7dd59745390dd9b06ea2",
+      "source_sha256": "5000d919737125bacacbc3df2f4e56284cd514dacc7f794c78f04d543ae47a78",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/SmoothSeries.lean#L72",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Calculus.SmoothSeries"
+      ],
+      "uses": [
+        "GC02",
+        "GC03",
+        "GC04"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML030",
+      "member_id": null,
+      "module": "ML030.Endpoint",
+      "export": "GRTemp.ML030.endpoint",
+      "source_name": "hasDerivAt_tsum_of_isPreconnected",
+      "path": "TEMP/ML030/Endpoint.lean",
+      "metadata": "TEMP/ML030/source.json",
+      "sha256": "057394ec28bd6c86ed7198b827fba34d744a7be84ee333987b9269ec1d0140d0",
+      "source_sha256": "5000d919737125bacacbc3df2f4e56284cd514dacc7f794c78f04d543ae47a78",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/SmoothSeries.lean#L89",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Calculus.SmoothSeries"
+      ],
+      "uses": [
+        "GC02",
+        "GC03",
+        "GC04"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML031",
+      "member_id": null,
+      "module": "ML031.Endpoint",
+      "export": "GRTemp.ML031.endpoint",
+      "source_name": "hasFDerivAt_integral_of_dominated_of_fderiv_le",
+      "path": "TEMP/ML031/Endpoint.lean",
+      "metadata": "TEMP/ML031/source.json",
+      "sha256": "3d37d337a565eb0d05dabb3ae97026fa40c47895d800f361d9f0f5591360c851",
+      "source_sha256": "495f1a89774b147de1528e0213f519817d50fc3602724c9cbea633e9617c3375",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ParametricIntegral.lean#L210",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Calculus.ParametricIntegral"
+      ],
+      "uses": [
+        "GC02",
+        "GC03",
+        "GC04",
+        "GC12",
+        "GC17"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML032",
+      "member_id": null,
+      "module": "ML032.Endpoint",
+      "export": "GRTemp.ML032.endpoint",
+      "source_name": "Complex.integral_boundary_rect_eq_zero_of_differentiableOn",
+      "path": "TEMP/ML032/Endpoint.lean",
+      "metadata": "TEMP/ML032/source.json",
+      "sha256": "66f95ed117caad6657ecf7041e6d16771acf1a743cd5ac2ec51019fcdb16817d",
+      "source_sha256": "7a2022a8a02dbef3b5466edd2ba9e4123a898f1e0b0dc5dc320104832405f14b",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/CauchyIntegral.lean#L295",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Complex.CauchyIntegral"
+      ],
+      "uses": [
+        "GC03"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML033",
+      "member_id": null,
+      "module": "ML033.Endpoint",
+      "export": "GRTemp.ML033.endpoint",
+      "source_name": "Complex.norm_iteratedDeriv_le_of_forall_mem_sphere_norm_le",
+      "path": "TEMP/ML033/Endpoint.lean",
+      "metadata": "TEMP/ML033/source.json",
+      "sha256": "f92bf5a464faa1c9bf8d9abda4988fe31bb8d2fb41cf9c8a09611be8c2f70741",
+      "source_sha256": "9f4bd4ef66951f410189d2f27f1de049d588411d9b0c174c8d7c5e56da18be31",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/Liouville.lean#L44",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Complex.Liouville"
+      ],
+      "uses": [
+        "GC03"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML034",
+      "member_id": null,
+      "module": "ML034.Endpoint",
+      "export": "GRTemp.ML034.endpoint",
+      "source_name": "SummableLocallyUniformlyOn.differentiableOn",
+      "path": "TEMP/ML034/Endpoint.lean",
+      "metadata": "TEMP/ML034/source.json",
+      "sha256": "cb00e5479887d8b9a31ec109f84ae8474a1bab854d850676317110950cce7c40",
+      "source_sha256": "7eb8497cb24836cd6ef4f9dd0c312aa09659573db3cac1d87720828a3ebe4f4b",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/SummableUniformlyOn.lean#L21",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Complex.SummableUniformlyOn"
+      ],
+      "uses": [
+        "GC03"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML035",
+      "member_id": null,
+      "module": "ML035.Endpoint",
+      "export": "GRTemp.ML035.endpoint",
+      "source_name": "DifferentiableOn.analyticAt",
+      "path": "TEMP/ML035/Endpoint.lean",
+      "metadata": "TEMP/ML035/source.json",
+      "sha256": "b9c3123022fde7ec313a4858fa8cbdb869251ba9e899fe6bb9b92335d37f6b88",
+      "source_sha256": "7a2022a8a02dbef3b5466edd2ba9e4123a898f1e0b0dc5dc320104832405f14b",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/CauchyIntegral.lean#L625",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Complex.CauchyIntegral"
+      ],
+      "uses": [
+        "GC03",
+        "GC21"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML036",
+      "member_id": null,
+      "module": "ML036.Endpoint",
+      "export": "GRTemp.ML036.endpoint",
+      "source_name": "AnalyticAt.restrictScalars",
+      "path": "TEMP/ML036/Endpoint.lean",
+      "metadata": "TEMP/ML036/source.json",
+      "sha256": "6d0fc027a6fa83e96d0d829629059142e9f34a99ef5dddb8ff5c5111e4216626",
+      "source_sha256": "3bc1dd7547f45cee8ee3a341f0762deb56f42a155cce60757e14055b6f304964",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean#L818",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Analytic.Constructions"
+      ],
+      "uses": [
+        "GC03"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML037",
+      "member_id": null,
+      "module": "ML037.Endpoint",
+      "export": "GRTemp.ML037.endpoint",
+      "source_name": "AnalyticAt.re_ofReal",
+      "path": "TEMP/ML037/Endpoint.lean",
+      "metadata": "TEMP/ML037/source.json",
+      "sha256": "e3ebd025e70693805a148540deea7fe83fb9f24cd15d02ac43fcbc4a88cb50d2",
+      "source_sha256": "83fb8eba294cc5546aa3ff694213475d6779c30334a73809c788729460579a96",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/Complex/Analytic.lean#L86",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Complex.Analytic"
+      ],
+      "uses": [
+        "GC21"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML038",
+      "member_id": null,
+      "module": "ML038.Endpoint",
+      "export": "GRTemp.ML038.endpoint",
+      "source_name": "DifferentiableOn.isExactOn_ball",
+      "path": "TEMP/ML038/Endpoint.lean",
+      "metadata": "TEMP/ML038/source.json",
+      "sha256": "4d4348498937b68bfde794212ad248a6ad98ce9b0a82f679928936ac50e68807",
+      "source_sha256": "6cf381a10ed0a913dd7bec999e88ab183d2579fc4445c4e795994e16e4be874f",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/HasPrimitives.lean#L290",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Complex.HasPrimitives"
+      ],
+      "uses": [
+        "GC21"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML039",
+      "member_id": null,
+      "module": "ML039.Endpoint",
+      "export": "GRTemp.ML039.endpoint",
+      "source_name": "Complex.IsExactOn.with_val_at",
+      "path": "TEMP/ML039/Endpoint.lean",
+      "metadata": "TEMP/ML039/source.json",
+      "sha256": "0852ab4623448bf5db99f3dc423b3541059c3a38ad6b0a983976fa712271a364",
+      "source_sha256": "6cf381a10ed0a913dd7bec999e88ab183d2579fc4445c4e795994e16e4be874f",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/HasPrimitives.lean#L118",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Complex.HasPrimitives"
+      ],
+      "uses": [
+        "GC21"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML040",
+      "member_id": null,
+      "module": "ML040.Endpoint",
+      "export": "GRTemp.ML040.endpoint",
+      "source_name": "intervalIntegral.integral_hasDerivAt_right",
+      "path": "TEMP/ML040/Endpoint.lean",
+      "metadata": "TEMP/ML040/source.json",
+      "sha256": "ee14f502f084174f40c87439e5930503bc3a447ec3a6ef6564c6a3c37365b3ba",
+      "source_sha256": "5fd64054d9ae8bfce585ff809933a756bcf2d224ef144ae24c8fe8870c68050c",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/IntervalIntegral/FundThmCalculus.lean#L725",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus"
+      ],
+      "uses": [
+        "GC21"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML041",
+      "member_id": null,
+      "module": "ML041.Endpoint",
+      "export": "GRTemp.ML041.endpoint",
+      "source_name": "intervalIntegral.integral_deriv_eq_sub",
+      "path": "TEMP/ML041/Endpoint.lean",
+      "metadata": "TEMP/ML041/source.json",
+      "sha256": "96bfddee7271a890e355f6473dbe02cfdf81444767ab990c3272808711ecda76",
+      "source_sha256": "5fd64054d9ae8bfce585ff809933a756bcf2d224ef144ae24c8fe8870c68050c",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/IntervalIntegral/FundThmCalculus.lean#L1176",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus"
+      ],
+      "uses": [
+        "GC21"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML042",
+      "member_id": null,
+      "module": "ML042.Endpoint",
+      "export": "GRTemp.ML042.endpoint",
+      "source_name": "MeasureTheory.integral_tsum_of_summable_integral_norm",
+      "path": "TEMP/ML042/Endpoint.lean",
+      "metadata": "TEMP/ML042/source.json",
+      "sha256": "68c299d36380d1aa4b005ffbe9fb9069a6624d150dc8bf47bf031a6860b71904",
+      "source_sha256": "18b709ea5c9ef9136e3e75ded82a6135641e6e19688e0ca3abcb0af45648ab84",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/DominatedConvergence.lean#L111",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.MeasureTheory.Integral.DominatedConvergence"
+      ],
+      "uses": [
+        "GC02",
+        "GC04",
+        "GC12",
+        "GC17"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML043",
+      "member_id": null,
+      "module": "ML043.Endpoint",
+      "export": "GRTemp.ML043.endpoint",
+      "source_name": "AnalyticOnNhd.eqOn_of_preconnected_of_eventuallyEq",
+      "path": "TEMP/ML043/Endpoint.lean",
+      "metadata": "TEMP/ML043/source.json",
+      "sha256": "4f345e0237749eaa5ac7f6b5ea4ab9cdd60fdc9b26fd509a03cde22daf2b2d1d",
+      "source_sha256": "3c095cfff0c66f30905355dfe8918c74148cf462427b0b59f5322a495e002424",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Uniqueness.lean#L223",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Analytic.Uniqueness"
+      ],
+      "uses": [
+        "GC03"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML044",
+      "member_id": null,
+      "module": "ML044.Endpoint",
+      "export": "GRTemp.ML044.endpoint",
+      "source_name": "AnalyticOnNhd.eqOn_of_preconnected_of_frequently_eq",
+      "path": "TEMP/ML044/Endpoint.lean",
+      "metadata": "TEMP/ML044/source.json",
+      "sha256": "74b087ac1648290d0ede60dd11b8b970f900649d68afcec97a4ab23dea793af5",
+      "source_sha256": "23bb70a1bad8b88c338b504532e784a33bec653fe550442925672ff7e891b2f1",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/IsolatedZeros.lean#L238",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Analytic.IsolatedZeros"
+      ],
+      "uses": [
+        "GC03"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML045",
+      "member_id": null,
+      "module": "ML045.Endpoint",
+      "export": "GRTemp.ML045.endpoint",
+      "source_name": "Real.summable_exp_nat_mul_iff",
+      "path": "TEMP/ML045/Endpoint.lean",
+      "metadata": "TEMP/ML045/source.json",
+      "sha256": "ae1aafb06eed5d77f9558a559c1b38894e0b7df00519e1dc83f991daa1ae7f6a",
+      "source_sha256": "df9c7572f9816cccc1a7f8f6b03c2e11200654c18251fc7869c69ae63c20b9a6",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/Exp.lean#L460",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Exp"
+      ],
+      "uses": [
+        "GC03"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML046",
+      "member_id": null,
+      "module": "ML046.Endpoint",
+      "export": "GRTemp.ML046.endpoint",
+      "source_name": "Real.summable_pow_mul_exp_neg_nat_mul",
+      "path": "TEMP/ML046/Endpoint.lean",
+      "metadata": "TEMP/ML046/source.json",
+      "sha256": "f8f560b5018c63e680f887590c1d44d281113ebe433a2f7781a6ce99bd3c024a",
+      "source_sha256": "df9c7572f9816cccc1a7f8f6b03c2e11200654c18251fc7869c69ae63c20b9a6",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/Exp.lean#L475",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Exp"
+      ],
+      "uses": [
+        "GC03"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML047",
+      "member_id": null,
+      "module": "ML047.Endpoint",
+      "export": "GRTemp.ML047.endpoint",
+      "source_name": "summable_int_iff_summable_nat_and_neg",
+      "path": "TEMP/ML047/Endpoint.lean",
+      "metadata": "TEMP/ML047/source.json",
+      "sha256": "2a30d0e71abe41490f148457ca74487c62df41d036c498447785786266b4cda2",
+      "source_sha256": "008105deef888ea388644102337cf897571ef49acb594e25bf45b274916d58f8",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Algebra/InfiniteSum/NatInt.lean#L508",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Topology.Algebra.InfiniteSum.NatInt"
+      ],
+      "uses": [
+        "GC03"
+      ],
+      "extraction_kind": "ADAPTED_TO_ADDITIVE_GENERATOR_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML048",
+      "member_id": null,
+      "module": "ML048.Endpoint",
+      "export": "GRTemp.ML048.endpoint",
+      "source_name": "Summable.mul_of_nonneg",
+      "path": "TEMP/ML048/Endpoint.lean",
+      "metadata": "TEMP/ML048/source.json",
+      "sha256": "4307a7d678e473d48b8abc8dd1fb1a4fcd8d96ed8a632a78c5fc869e18b83d32",
+      "source_sha256": "d197a22a8073f6dfe1def4f755919629fdbbecdc4e72f82325eaff2759c4d62c",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Ring/InfiniteSum.lean#L34",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Normed.Ring.InfiniteSum"
+      ],
+      "uses": [
+        "GC03"
+      ],
+      "extraction_kind": "COPIED_PROOF_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML049",
+      "member_id": null,
+      "module": "ML049.Endpoint",
+      "export": "GRTemp.ML049.endpoint",
+      "source_name": "tsum_neg",
+      "path": "TEMP/ML049/Endpoint.lean",
+      "metadata": "TEMP/ML049/source.json",
+      "sha256": "65abfad7ef9566adcddb9944bb8e0f5887be3d753988a2ba074ee6ab1b23b513",
+      "source_sha256": "f076038e732fb9432224fbac1f8ad6435cbc175b9211090a5e3b32081c96694f",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Algebra/InfiniteSum/Group.lean#L169",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Topology.Algebra.InfiniteSum.Group"
+      ],
+      "uses": [
+        "GC01"
+      ],
+      "extraction_kind": "ADAPTED_TO_ADDITIVE_GENERATOR_BODY",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML050",
+      "member_id": null,
+      "module": "ML050.Endpoint",
+      "export": "GRTemp.ML050.endpoint",
+      "source_name": "Filter.EventuallyEq.deriv",
+      "path": "TEMP/ML050/Endpoint.lean",
+      "metadata": "TEMP/ML050/source.json",
+      "sha256": "fdf8a92213bfa429af766b9258337e9d26f3b4c9733c9ff6710eea0982cb3a26",
+      "source_sha256": "da1d29570f45bd14f5a37aa5b024d46b3076a47f04e9315bf72cd65f6505d55b",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/Deriv/Basic.lean#L653",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Calculus.Deriv.Basic"
+      ],
+      "uses": [
+        "GC02",
+        "GC06",
+        "GC21"
+      ],
+      "extraction_kind": "COPIED_BODY_WITH_RENAMED_DECLARATION_AND_EXPLICIT_SOURCE_CONTEXT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML051",
+      "member_id": null,
+      "module": "ML051.Endpoint",
+      "export": "GRTemp.ML051.endpoint",
+      "source_name": "AnalyticAt.fderiv",
+      "path": "TEMP/ML051/Endpoint.lean",
+      "metadata": "TEMP/ML051/source.json",
+      "sha256": "4e4a20677bc1638ec79f6f2e82c16dd287692da06b7e22dc3ae7cfc72d16ecba",
+      "source_sha256": "9aba8c2c2b20b545331182e56325445f33f0a0851e9558e97595995e10045365",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Analytic.lean#L263",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Calculus.FDeriv.Analytic"
+      ],
+      "uses": [
+        "GC04",
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC11",
+        "GC12",
+        "GC16",
+        "GC17",
+        "GC18",
+        "GC19",
+        "GC21"
+      ],
+      "extraction_kind": "COPIED_BODY_WITH_RENAMED_DECLARATION_AND_EXPLICIT_SOURCE_CONTEXT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML052",
+      "member_id": null,
+      "module": "ML052.Endpoint",
+      "export": "GRTemp.ML052.endpoint",
+      "source_name": "AnalyticAt.contDiffAt",
+      "path": "TEMP/ML052/Endpoint.lean",
+      "metadata": "TEMP/ML052/source.json",
+      "sha256": "47717868eb97fe472e697ee9e081e708d46fa2722d106ae082dc3e6ec4a7ea4c",
+      "source_sha256": "5d2f01069c6265873a372d4aed746c5d3411073b8acb108a180d02a84c832dca",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Defs.lean#L986",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Calculus.ContDiff.Defs"
+      ],
+      "uses": [
+        "GC05",
+        "GC11",
+        "GC16",
+        "GC18"
+      ],
+      "extraction_kind": "COPIED_BODY_WITH_RENAMED_DECLARATION_AND_EXPLICIT_SOURCE_CONTEXT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML053",
+      "member_id": null,
+      "module": "ML053.Endpoint",
+      "export": "GRTemp.ML053.endpoint",
+      "source_name": "ContDiffAt.isSymmSndFDerivAt_of_omega",
+      "path": "TEMP/ML053/Endpoint.lean",
+      "metadata": "TEMP/ML053/source.json",
+      "sha256": "b5ac86e965825a51c11662082e0d1cad96730ef9d5395d40b7a373fbf699f755",
+      "source_sha256": "976a6342e21ca80d37767a9149c385a42b4d3ed615cbe1ad23745943f3b6287f",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Symmetric.lean#L198",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Calculus.FDeriv.Symmetric"
+      ],
+      "uses": [
+        "GC06",
+        "GC11",
+        "GC16",
+        "GC17",
+        "GC18",
+        "GC19",
+        "GC21"
+      ],
+      "extraction_kind": "COPIED_BODY_WITH_RENAMED_DECLARATION_AND_EXPLICIT_SOURCE_CONTEXT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML054",
+      "member_id": null,
+      "module": "ML054.Endpoint",
+      "export": "GRTemp.ML054.endpoint",
+      "source_name": "AnalyticAt.curry_left",
+      "path": "TEMP/ML054/Endpoint.lean",
+      "metadata": "TEMP/ML054/source.json",
+      "sha256": "9002288ee8c24b05050662048af465b625a6b7976a5027349778341f5e424a0f",
+      "source_sha256": "3bc1dd7547f45cee8ee3a341f0762deb56f42a155cce60757e14055b6f304964",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean#L395",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Analytic.Constructions"
+      ],
+      "uses": [
+        "GC04",
+        "GC17"
+      ],
+      "extraction_kind": "COPIED_BODY_WITH_RENAMED_DECLARATION_AND_EXPLICIT_SOURCE_CONTEXT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML055",
+      "member_id": null,
+      "module": "ML055.Endpoint",
+      "export": "GRTemp.ML055.endpoint",
+      "source_name": "Matrix.PosDef.of_dotProduct_mulVec_pos",
+      "path": "TEMP/ML055/Endpoint.lean",
+      "metadata": "TEMP/ML055/source.json",
+      "sha256": "4dc29f00e9a417fe9825067c8b3725bda87fdc0b1dcc5e14e536fe37c76264fb",
+      "source_sha256": "09290b5923e167fcf959df64d00b039c7b99c4b236755728219bf5b5feaac24a",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/PosDef.lean#L441",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.LinearAlgebra.Matrix.PosDef"
+      ],
+      "uses": [
+        "GC15"
+      ],
+      "extraction_kind": "COPIED_BODY_WITH_RENAMED_DECLARATION_AND_EXPLICIT_SOURCE_CONTEXT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML056",
+      "member_id": null,
+      "module": "ML056.Endpoint",
+      "export": "GRTemp.ML056.endpoint",
+      "source_name": "Matrix.PosDef.add_posSemidef",
+      "path": "TEMP/ML056/Endpoint.lean",
+      "metadata": "TEMP/ML056/source.json",
+      "sha256": "d8441ea330c2ed6fac254adc69fde5da85f5a3e4ed51a505ee4604a7a7082e54",
+      "source_sha256": "09290b5923e167fcf959df64d00b039c7b99c4b236755728219bf5b5feaac24a",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/PosDef.lean#L245",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.LinearAlgebra.Matrix.PosDef"
+      ],
+      "uses": [
+        "GC15"
+      ],
+      "extraction_kind": "COPIED_BODY_WITH_RENAMED_DECLARATION_AND_EXPLICIT_SOURCE_CONTEXT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML057",
+      "member_id": null,
+      "module": "ML057.Endpoint",
+      "export": "GRTemp.ML057.endpoint",
+      "source_name": "Matrix.PosDef.isUnit",
+      "path": "TEMP/ML057/Endpoint.lean",
+      "metadata": "TEMP/ML057/source.json",
+      "sha256": "6af6ed253161c706cd3cbe9b86f1420fcae0a4b5b01600c184d4fc54614556bd",
+      "source_sha256": "09290b5923e167fcf959df64d00b039c7b99c4b236755728219bf5b5feaac24a",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/PosDef.lean#L507",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.LinearAlgebra.Matrix.PosDef"
+      ],
+      "uses": [
+        "GC15"
+      ],
+      "extraction_kind": "COPIED_BODY_WITH_RENAMED_DECLARATION_AND_EXPLICIT_SOURCE_CONTEXT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML058",
+      "member_id": null,
+      "module": "ML058.Endpoint",
+      "export": "GRTemp.ML058.endpoint",
+      "source_name": "Matrix.nonneg_iff_posSemidef",
+      "path": "TEMP/ML058/Endpoint.lean",
+      "metadata": "TEMP/ML058/source.json",
+      "sha256": "8247d14b426031b253b0d58c5809a8180d811906e5596ca2ce9940381e9cfcdf",
+      "source_sha256": "fa8e30827d200098c48581a13b9147db22716074d68d7cdfe137a6c810661dd9",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Matrix/Order.lean#L60",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Matrix.Order"
+      ],
+      "uses": [
+        "GC15"
+      ],
+      "extraction_kind": "COPIED_BODY_WITH_RENAMED_DECLARATION_AND_EXPLICIT_SOURCE_CONTEXT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML059",
+      "member_id": null,
+      "module": "ML059.Endpoint",
+      "export": "GRTemp.ML059.endpoint",
+      "source_name": "CFC.sqrt_nonneg",
+      "path": "TEMP/ML059/Endpoint.lean",
+      "metadata": "TEMP/ML059/source.json",
+      "sha256": "8b1886024d097525ae1b9f973cb87c64530dc8af5a78ffe7d8dfeb8f1d219e84",
+      "source_sha256": "5c87ec96e95be9c21e52857acc4892f9a6b7e69d7358f8d6fbbef93b0d249ef7",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Basic.lean#L239",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.ContinuousFunctionalCalculus.Rpow.Basic"
+      ],
+      "uses": [
+        "GC15"
+      ],
+      "extraction_kind": "COPIED_BODY_WITH_RENAMED_DECLARATION_AND_EXPLICIT_SOURCE_CONTEXT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML060",
+      "member_id": null,
+      "module": "ML060.Endpoint",
+      "export": "GRTemp.ML060.endpoint",
+      "source_name": "CFC.sqrt_mul_sqrt_self",
+      "path": "TEMP/ML060/Endpoint.lean",
+      "metadata": "TEMP/ML060/source.json",
+      "sha256": "45fbffe4184de2598f0c5932fc9e2d41787b12ddbf61c1a1b8671aaf81939ca3",
+      "source_sha256": "5c87ec96e95be9c21e52857acc4892f9a6b7e69d7358f8d6fbbef93b0d249ef7",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Basic.lean#L265",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.ContinuousFunctionalCalculus.Rpow.Basic"
+      ],
+      "uses": [
+        "GC15"
+      ],
+      "extraction_kind": "COPIED_BODY_WITH_RENAMED_DECLARATION_AND_EXPLICIT_SOURCE_CONTEXT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML061",
+      "member_id": null,
+      "module": "ML061.Endpoint",
+      "export": "GRTemp.ML061.endpoint",
+      "source_name": "CFC.isUnit_sqrt_iff",
+      "path": "TEMP/ML061/Endpoint.lean",
+      "metadata": "TEMP/ML061/source.json",
+      "sha256": "970793f92d806bba4eba30dd33583cbb8d6e3aecd9798bcd516d5860f249eff6",
+      "source_sha256": "5c87ec96e95be9c21e52857acc4892f9a6b7e69d7358f8d6fbbef93b0d249ef7",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Basic.lean#L722",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.ContinuousFunctionalCalculus.Rpow.Basic"
+      ],
+      "uses": [
+        "GC15"
+      ],
+      "extraction_kind": "COPIED_BODY_WITH_RENAMED_DECLARATION_AND_EXPLICIT_SOURCE_CONTEXT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML062",
+      "member_id": null,
+      "module": "ML062.Endpoint",
+      "export": "GRTemp.ML062.endpoint",
+      "source_name": "Matrix.det_fromBlocks_zero₂₁",
+      "path": "TEMP/ML062/Endpoint.lean",
+      "metadata": "TEMP/ML062/source.json",
+      "sha256": "d0205e069212791100096bb213d086863d5234576e1cd17feda6b030dbee001d",
+      "source_sha256": "8d744de386397a71349f271d027a974c7251f230220bfdb2e973af2ef8ef634b",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/Determinant/Basic.lean#L675",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.LinearAlgebra.Matrix.Determinant.Basic"
+      ],
+      "uses": [
+        "GC15"
+      ],
+      "extraction_kind": "COPIED_BODY_WITH_RENAMED_DECLARATION_AND_EXPLICIT_SOURCE_CONTEXT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML063",
+      "member_id": null,
+      "module": "ML063.Endpoint",
+      "export": "GRTemp.ML063.endpoint",
+      "source_name": "Matrix.isUnit_iff_isUnit_det",
+      "path": "TEMP/ML063/Endpoint.lean",
+      "metadata": "TEMP/ML063/source.json",
+      "sha256": "30ce544d8a32e0bbaea000c8b947b92a76976f09f380a2beece9f3aae1452956",
+      "source_sha256": "1ee785b6ebd213ad2ed971bf3c804afee8cc6ce52be69e63572b4cf1bdb5e880",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean#L127",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.LinearAlgebra.Matrix.NonsingularInverse"
+      ],
+      "uses": [
+        "GC15"
+      ],
+      "extraction_kind": "COPIED_BODY_WITH_RENAMED_DECLARATION_AND_EXPLICIT_SOURCE_CONTEXT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML064",
+      "member_id": null,
+      "module": "ML064.Endpoint",
+      "export": "GRTemp.ML064.endpoint",
+      "source_name": "Matrix.IsHermitian.instContinuousFunctionalCalculus",
+      "path": "TEMP/ML064/Endpoint.lean",
+      "metadata": "TEMP/ML064/source.json",
+      "sha256": "5e13fe6bb1cbbdf51403f6a50c8b4fd4ebb9200b4e01151d48e03e8d48040540",
+      "source_sha256": "3d324fcdf3d667b6aca6cf59d81f63d8a6f42b15c2e7e5819b6a09cbd4325308",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Matrix/HermitianFunctionalCalculus.lean#L97",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.Matrix.HermitianFunctionalCalculus"
+      ],
+      "uses": [
+        "GC15"
+      ],
+      "extraction_kind": "COPIED_BODY_WITH_RENAMED_DECLARATION_AND_EXPLICIT_SOURCE_CONTEXT",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "entry_id": "ML065",
+      "member_id": null,
+      "module": "ML065.Endpoint",
+      "export": "GRTemp.ML065.endpoint",
+      "source_name": "Matrix.instCStarRing",
+      "path": "TEMP/ML065/Endpoint.lean",
+      "metadata": "TEMP/ML065/source.json",
+      "sha256": "094554eb054efefcb12ad429ee2123bec5e003ff3069c0f932c4aff906c79708",
+      "source_sha256": "79518c9e51c4d0cf4083ab69a9ac7a2817305b48db1fe6f25ae1d678e12ce223",
+      "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/CStarAlgebra/Matrix.lean#L288",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "imports": [
+        "Mathlib.Analysis.CStarAlgebra.Matrix"
+      ],
+      "uses": [
+        "GC15"
+      ],
+      "extraction_kind": "COPIED_BODY_WITH_RENAMED_DECLARATION_AND_EXPLICIT_SOURCE_CONTEXT",
+      "status": "A_TIER_CANDIDATE"
+    }
+  ],
+  "chain_nodes": {
+    "GC00": [],
+    "GC01": [
+      "GRTemp.ME01.endpoint",
+      "GRTemp.ML049.endpoint"
+    ],
+    "GC02": [
+      "GRTemp.ME02.endpoint",
+      "GRTemp.ME03.endpoint",
+      "GRTemp.ME04.endpoint",
+      "GRTemp.ME05.endpoint",
+      "GRTemp.ME06.endpoint",
+      "GRTemp.ME07.endpoint",
+      "GRTemp.ME08.endpoint",
+      "GRTemp.ME09.endpoint",
+      "GRTemp.ME10.endpoint",
+      "GRTemp.ME11.endpoint",
+      "GRTemp.ME12.endpoint",
+      "GRTemp.ME13.endpoint",
+      "GRTemp.ME14.endpoint",
+      "GRTemp.ME15.endpoint",
+      "GRTemp.ME16.E01.endpoint",
+      "GRTemp.ME16.E02.endpoint",
+      "GRTemp.ME16.E03.endpoint",
+      "GRTemp.ME17.E01.endpoint",
+      "GRTemp.ME17.E02.endpoint",
+      "GRTemp.ML012.endpoint",
+      "GRTemp.ML013.endpoint",
+      "GRTemp.ML019.endpoint",
+      "GRTemp.ML020.endpoint",
+      "GRTemp.ML021.endpoint",
+      "GRTemp.ML022.endpoint",
+      "GRTemp.ML029.endpoint",
+      "GRTemp.ML030.endpoint",
+      "GRTemp.ML031.endpoint",
+      "GRTemp.ML042.endpoint",
+      "GRTemp.ML050.endpoint"
+    ],
+    "GC03": [
+      "GRTemp.ME01.endpoint",
+      "GRTemp.ME14.endpoint",
+      "GRTemp.ML003.endpoint",
+      "GRTemp.ML006.endpoint",
+      "GRTemp.ML007.endpoint",
+      "GRTemp.ML023.endpoint",
+      "GRTemp.ML024.endpoint",
+      "GRTemp.ML025.endpoint",
+      "GRTemp.ML026.endpoint",
+      "GRTemp.ML027.endpoint",
+      "GRTemp.ML028.endpoint",
+      "GRTemp.ML029.endpoint",
+      "GRTemp.ML030.endpoint",
+      "GRTemp.ML031.endpoint",
+      "GRTemp.ML032.endpoint",
+      "GRTemp.ML033.endpoint",
+      "GRTemp.ML034.endpoint",
+      "GRTemp.ML035.endpoint",
+      "GRTemp.ML036.endpoint",
+      "GRTemp.ML043.endpoint",
+      "GRTemp.ML044.endpoint",
+      "GRTemp.ML045.endpoint",
+      "GRTemp.ML046.endpoint",
+      "GRTemp.ML047.endpoint",
+      "GRTemp.ML048.endpoint"
+    ],
+    "GC04": [
+      "GRTemp.ME08.endpoint",
+      "GRTemp.ME10.endpoint",
+      "GRTemp.ME11.endpoint",
+      "GRTemp.ME12.endpoint",
+      "GRTemp.ME15.endpoint",
+      "GRTemp.ME17.E01.endpoint",
+      "GRTemp.ME17.E02.endpoint",
+      "GRTemp.ML029.endpoint",
+      "GRTemp.ML030.endpoint",
+      "GRTemp.ML031.endpoint",
+      "GRTemp.ML042.endpoint",
+      "GRTemp.ML051.endpoint",
+      "GRTemp.ML054.endpoint"
+    ],
+    "GC05": [
+      "GRTemp.ML051.endpoint",
+      "GRTemp.ML052.endpoint"
+    ],
+    "GC06": [
+      "GRTemp.ML012.endpoint",
+      "GRTemp.ML013.endpoint",
+      "GRTemp.ML050.endpoint",
+      "GRTemp.ML051.endpoint",
+      "GRTemp.ML053.endpoint"
+    ],
+    "GC07": [
+      "GRTemp.ML001.endpoint",
+      "GRTemp.ML002.endpoint",
+      "GRTemp.ML003.endpoint",
+      "GRTemp.ML017.endpoint"
+    ],
+    "GC08": [
+      "GRTemp.ML001.endpoint",
+      "GRTemp.ML004.endpoint",
+      "GRTemp.ML005.endpoint",
+      "GRTemp.ML012.endpoint",
+      "GRTemp.ML013.endpoint",
+      "GRTemp.ML015.endpoint",
+      "GRTemp.ML016.endpoint",
+      "GRTemp.ML018.endpoint"
+    ],
+    "GC09": [
+      "GRTemp.ML006.endpoint",
+      "GRTemp.ML007.endpoint",
+      "GRTemp.ML008.endpoint",
+      "GRTemp.ML009.endpoint",
+      "GRTemp.ML010.endpoint",
+      "GRTemp.ML011.endpoint",
+      "GRTemp.ML012.endpoint",
+      "GRTemp.ML013.endpoint",
+      "GRTemp.ML014.endpoint",
+      "GRTemp.ML015.endpoint",
+      "GRTemp.ML016.endpoint"
+    ],
+    "GC10": [
+      "GRTemp.ML004.endpoint",
+      "GRTemp.ML018.endpoint",
+      "GRTemp.ML051.endpoint"
+    ],
+    "GC11": [
+      "GRTemp.ML051.endpoint",
+      "GRTemp.ML052.endpoint",
+      "GRTemp.ML053.endpoint"
+    ],
+    "GC12": [
+      "GRTemp.ML031.endpoint",
+      "GRTemp.ML042.endpoint",
+      "GRTemp.ML051.endpoint"
+    ],
+    "GC13": [
+      "GRTemp.ML001.endpoint",
+      "GRTemp.ML017.endpoint"
+    ],
+    "GC14": [
+      "GRTemp.ML001.endpoint",
+      "GRTemp.ML003.endpoint",
+      "GRTemp.ML004.endpoint",
+      "GRTemp.ML018.endpoint"
+    ],
+    "GC15": [
+      "GRTemp.ML004.endpoint",
+      "GRTemp.ML010.endpoint",
+      "GRTemp.ML012.endpoint",
+      "GRTemp.ML013.endpoint",
+      "GRTemp.ML014.endpoint",
+      "GRTemp.ML055.endpoint",
+      "GRTemp.ML056.endpoint",
+      "GRTemp.ML057.endpoint",
+      "GRTemp.ML058.endpoint",
+      "GRTemp.ML059.endpoint",
+      "GRTemp.ML060.endpoint",
+      "GRTemp.ML061.endpoint",
+      "GRTemp.ML062.endpoint",
+      "GRTemp.ML063.endpoint",
+      "GRTemp.ML064.endpoint",
+      "GRTemp.ML065.endpoint"
+    ],
+    "GC16": [
+      "GRTemp.ML012.endpoint",
+      "GRTemp.ML013.endpoint",
+      "GRTemp.ML051.endpoint",
+      "GRTemp.ML052.endpoint",
+      "GRTemp.ML053.endpoint"
+    ],
+    "GC17": [
+      "GRTemp.ME11.endpoint",
+      "GRTemp.ME12.endpoint",
+      "GRTemp.ME15.endpoint",
+      "GRTemp.ML031.endpoint",
+      "GRTemp.ML042.endpoint",
+      "GRTemp.ML051.endpoint",
+      "GRTemp.ML053.endpoint",
+      "GRTemp.ML054.endpoint"
+    ],
+    "GC18": [
+      "GRTemp.ML051.endpoint",
+      "GRTemp.ML052.endpoint",
+      "GRTemp.ML053.endpoint"
+    ],
+    "GC19": [
+      "GRTemp.ML051.endpoint",
+      "GRTemp.ML053.endpoint"
+    ],
+    "GC20": [
+      "GRTemp.ML004.endpoint",
+      "GRTemp.ML012.endpoint",
+      "GRTemp.ML013.endpoint"
+    ],
+    "GC21": [
+      "GRTemp.ML004.endpoint",
+      "GRTemp.ML035.endpoint",
+      "GRTemp.ML037.endpoint",
+      "GRTemp.ML038.endpoint",
+      "GRTemp.ML039.endpoint",
+      "GRTemp.ML040.endpoint",
+      "GRTemp.ML041.endpoint",
+      "GRTemp.ML050.endpoint",
+      "GRTemp.ML051.endpoint",
+      "GRTemp.ML053.endpoint"
+    ],
+    "GC22": [
+      "GRTemp.ML004.endpoint",
+      "GRTemp.ML012.endpoint",
+      "GRTemp.ML013.endpoint"
+    ],
+    "GC23": []
+  }
+}

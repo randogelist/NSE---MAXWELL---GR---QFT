@@ -1,0 +1,31 @@
+{
+  "id": "ML047",
+  "kind": "theorem",
+  "source_name": "summable_int_iff_summable_nat_and_neg",
+  "endpoint": "GRTemp.ML047.endpoint",
+  "module": "ML047.Endpoint",
+  "source_path": "Mathlib/Topology/Algebra/InfiniteSum/NatInt.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "008105deef888ea388644102337cf897571ef49acb594e25bf45b274916d58f8",
+  "source_start_line": 508,
+  "source_end_line": 512,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Algebra/InfiniteSum/NatInt.lean#L508",
+  "upstream_import": "Mathlib.Topology.Algebra.InfiniteSum.NatInt",
+  "retained_dependencies": [
+    "Mathlib.Topology.Algebra.InfiniteSum.NatInt"
+  ],
+  "extraction_kind": "ADAPTED_TO_ADDITIVE_GENERATOR_BODY",
+  "original_declaration": "lemma multipliable_int_iff_multipliable_nat_and_neg {f : ℤ → G} :\n    Multipliable f ↔ (Multipliable fun n : ℕ ↦ f n) ∧ (Multipliable fun n : ℕ ↦ f (-n)) := by\n  refine ⟨fun p ↦ ⟨?_, ?_⟩, fun ⟨hf₁, hf₂⟩ ↦ Multipliable.of_nat_of_neg hf₁ hf₂⟩ <;>\n  apply p.comp_injective\n  exacts [Nat.cast_injective, neg_injective.comp Nat.cast_injective]",
+  "generated_additive_declaration": "lemma _root_.GRTemp.ML047.endpoint {f : ℤ → G} :\n    Summable f ↔ (Summable fun n : ℕ ↦ f n) ∧ (Summable fun n : ℕ ↦ f (-n)) := by\n  refine ⟨fun p ↦ ⟨?_, ?_⟩, fun ⟨hf₁, hf₂⟩ ↦ Summable.of_nat_of_neg hf₁ hf₂⟩ <;>\n  apply p.comp_injective\n  exacts [Nat.cast_injective, neg_injective.comp Nat.cast_injective]",
+  "source_context": "open Filter Finset Function Encodable\nopen scoped Topology\nvariable {G : Type*} [AddCommGroup G]\n  [UniformSpace G] [IsUniformAddGroup G] [CompleteSpace G]\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC03"
+  ],
+  "endpoint_sha256": "2a30d0e71abe41490f148457ca74487c62df41d036c498447785786266b4cda2",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+}

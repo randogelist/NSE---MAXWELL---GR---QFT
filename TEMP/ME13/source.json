@@ -1,0 +1,46 @@
+{
+  "entry_id": "ME13",
+  "member_id": null,
+  "upstream_name": "NSEMaxwell.HodgeProof.scalarCoeff_hasDerivAt_pos",
+  "candidate_export": "GRTemp.ME13.endpoint",
+  "module": "ME13.Endpoint",
+  "declaration_kind": "theorem",
+  "status": "A_TIER_CANDIDATE",
+  "extraction_method": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+  "source_repository": "randogelist/Methlib",
+  "source_commit": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+  "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterCoefficients.lean",
+  "source_line_start": 206,
+  "source_line_end": 210,
+  "source_sha256": "016d9cf0c1deda75770d39f66c2e5c684435448bc7c9785cbc5d28612db54eee",
+  "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterCoefficients.lean#L206",
+  "source_declaration_sha256": "2e22700a2de847c43df6931124d994602ddd37cbf972ca06da9eaa259b615751",
+  "imports": [
+    "FourierHodgeLaws.ParameterCoefficients"
+  ],
+  "import_scope": "UPSTREAM_OWNING_MODULE; definitions and helper lemmas retained as explicit dependencies",
+  "uses": [
+    "GC02"
+  ],
+  "hypotheses": [
+    "f : Pressure",
+    "SmoothPressure f",
+    "k : Frequency",
+    "t : ℝ",
+    "0 < t"
+  ],
+  "source_signature": "theorem scalarCoeff_hasDerivAt_pos (f : Pressure) (hf : SmoothPressure f)\n    (k : Frequency) {t : ℝ} (ht : 0 < t) :\n    HasDerivAt (fun s : ℝ => scalarCoeff (f s) k)\n      (scalarCoeff (scalarTimeDerivative f t) k) t",
+  "retained_upstream_audit": {
+    "name": "NSEMaxwell.HodgeProof.scalarCoeff_hasDerivAt_pos",
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "status": "PASS_STANDARD_ONLY"
+  },
+  "retained_audit_applies_to": "UPSTREAM_DECLARATION_ONLY; candidate copied export has no external audit yet",
+  "local_lean_executions": 0,
+  "new_axioms": 0,
+  "extracted_file_sha256": "42f754dd3a54090f5af50be5ba4edac3c6fb4c6a3b858bf774fe197d50ad3261"
+}

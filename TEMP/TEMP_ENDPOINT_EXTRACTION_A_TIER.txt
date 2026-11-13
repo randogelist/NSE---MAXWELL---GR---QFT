@@ -1,0 +1,55 @@
+TEMP_ENDPOINT_EXTRACTION
+MODE = A_TIER_DERIVATION
+STATUS = A_TIER_CANDIDATE
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+NEW_GLOBAL_AXIOMS = 0
+
+SCOPE
+  82 source-entry folders: ML001-ML065 and ME01-ME17.
+  85 single-export Endpoint.lean modules.
+  ME16 has E01-E03; ME17 has E01-E02; every other entry has one endpoint.
+  Exports: GRTemp.<entry>[.<member>].endpoint.
+  Exact source declaration names, signatures, immutable pins and chain-node
+  backlinks: INDEX.json and each leaf source.json.
+
+EXTRACTION
+  Actual theorem proof bodies are copied with renamed exports and explicit
+  source context. ML047 and ML049 are explicit additive adaptations of the
+  upstream to_additive generator bodies.
+  ML006 and ML008 retain definition-valued outputs.
+  ML064 and ML065 retain structure-valued outputs as named definitions,
+  without registering new global instances.
+
+DEPENDENCY_BOUNDARY
+  Owning Mathlib/source modules remain explicit imports for definitions,
+  notation, instances and helper theorems.
+  Non-Mathlib dependency closure: 72 byte-identical source modules.
+  Mathlib pin: de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
+  Compiler: Lean 4.34.0-rc1.
+  Compiler commit: 3447a668783dbce1a8fdb97101dd067687b2b418.
+  This is not a dependency-free extraction of the entire transitive Mathlib
+  foundation into 85 files.
+
+VALIDATION
+  STATIC_SOURCE_RANGE_AND_HASH_CHECKS = PASS
+  ENTRY_AND_EXPORT_BIJECTION = PASS (82 folders / 85 exports)
+  NON_MATHLIB_IMPORT_CLOSURE = PASS
+  EXTERNAL_BUILD = PENDING
+  EXACT_SOURCE_TYPE_EQUALITY = PENDING
+  NAMED_AXIOM_AUDIT = PENDING
+  Allowed foundational axioms: propext, Classical.choice, Quot.sound.
+  Existing upstream audits do not certify these renamed cutout exports.
+
+RUNNERS
+  Native Windows: run.cmd.
+  Native Linux: bash run.sh.
+  Cached CI: .github/workflows/lean-temp.yml.
+  Single entry: run.cmd --entry ML001.
+  All entries: run.cmd.
+  Exact source-type comparisons and named audits cover every selected export.
+  Compatible compiler, dependency and project caches are preserved.
+
+GR_SCOPE
+  GR namespace/sign/time-domain adapters are not implemented by extraction.
+  LI01, LI02, LI03 are not discharged.
+  The GR c/r/h/q inhabitants and exact native root remain OPEN.

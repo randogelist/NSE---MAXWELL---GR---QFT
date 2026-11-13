@@ -1,0 +1,31 @@
+{
+  "id": "ML036",
+  "kind": "theorem",
+  "source_name": "AnalyticAt.restrictScalars",
+  "endpoint": "GRTemp.ML036.endpoint",
+  "module": "ML036.Endpoint",
+  "source_path": "Mathlib/Analysis/Analytic/Constructions.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "3bc1dd7547f45cee8ee3a341f0762deb56f42a155cce60757e14055b6f304964",
+  "source_start_line": 818,
+  "source_end_line": 821,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean#L818",
+  "upstream_import": "Mathlib.Analysis.Analytic.Constructions",
+  "retained_dependencies": [
+    "Mathlib.Analysis.Analytic.Constructions"
+  ],
+  "extraction_kind": "COPIED_PROOF_BODY",
+  "original_declaration": "lemma AnalyticAt.restrictScalars (hf : AnalyticAt 𝕜' f x) :\n    AnalyticAt 𝕜 f x := by\n  rcases hf with ⟨p, hp⟩\n  exact ⟨p.restrictScalars 𝕜, hp.restrictScalars⟩",
+  "generated_additive_declaration": null,
+  "source_context": "open scoped Topology Ring\nopen Filter Asymptotics ENNReal NNReal\nvariable {𝕜 : Type*} [NontriviallyNormedField 𝕜]\nvariable {E F : Type*} [NormedAddCommGroup E] [NormedSpace 𝕜 E]\n  [NormedAddCommGroup F] [NormedSpace 𝕜 F]\nvariable {𝕜' : Type*} [NontriviallyNormedField 𝕜'] [NormedAlgebra 𝕜 𝕜']\n  [NormedSpace 𝕜' E] [IsScalarTower 𝕜 𝕜' E]\n  [NormedSpace 𝕜' F] [IsScalarTower 𝕜 𝕜' F]\n  {f : E → F} {x : E}\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC03"
+  ],
+  "endpoint_sha256": "6d0fc027a6fa83e96d0d829629059142e9f34a99ef5dddb8ff5c5111e4216626",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+}

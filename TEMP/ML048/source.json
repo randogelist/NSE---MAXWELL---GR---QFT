@@ -1,0 +1,31 @@
+{
+  "id": "ML048",
+  "kind": "theorem",
+  "source_name": "Summable.mul_of_nonneg",
+  "endpoint": "GRTemp.ML048.endpoint",
+  "module": "ML048.Endpoint",
+  "source_path": "Mathlib/Analysis/Normed/Ring/InfiniteSum.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "d197a22a8073f6dfe1def4f755919629fdbbecdc4e72f82325eaff2759c4d62c",
+  "source_start_line": 34,
+  "source_end_line": 37,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Ring/InfiniteSum.lean#L34",
+  "upstream_import": "Mathlib.Analysis.Normed.Ring.InfiniteSum",
+  "retained_dependencies": [
+    "Mathlib.Analysis.Normed.Ring.InfiniteSum"
+  ],
+  "extraction_kind": "COPIED_PROOF_BODY",
+  "original_declaration": "theorem Summable.mul_of_nonneg {f : ι → ℝ} {g : ι' → ℝ} (hf : Summable f) (hg : Summable g)\n    (hf' : 0 ≤ f) (hg' : 0 ≤ g) : Summable fun x : ι × ι' => f x.1 * g x.2 :=\n  (summable_prod_of_nonneg fun _ ↦ mul_nonneg (hf' _) (hg' _)).2 ⟨fun x ↦ hg.mul_left (f x),\n    by simpa only [hg.tsum_mul_left _] using hf.mul_right (∑' x, g x)⟩",
+  "generated_additive_declaration": null,
+  "source_context": "open scoped Topology\nopen Finset Filter\nvariable {ι ι' : Type*}\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC03"
+  ],
+  "endpoint_sha256": "4307a7d678e473d48b8abc8dd1fb1a4fcd8d96ed8a632a78c5fc869e18b83d32",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+}

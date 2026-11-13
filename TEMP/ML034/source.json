@@ -1,0 +1,31 @@
+{
+  "id": "ML034",
+  "kind": "theorem",
+  "source_name": "SummableLocallyUniformlyOn.differentiableOn",
+  "endpoint": "GRTemp.ML034.endpoint",
+  "module": "ML034.Endpoint",
+  "source_path": "Mathlib/Analysis/Complex/SummableUniformlyOn.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "7eb8497cb24836cd6ef4f9dd0c312aa09659573db3cac1d87720828a3ebe4f4b",
+  "source_start_line": 21,
+  "source_end_line": 31,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/SummableUniformlyOn.lean#L21",
+  "upstream_import": "Mathlib.Analysis.Complex.SummableUniformlyOn",
+  "retained_dependencies": [
+    "Mathlib.Analysis.Complex.SummableUniformlyOn"
+  ],
+  "extraction_kind": "COPIED_PROOF_BODY",
+  "original_declaration": "lemma SummableLocallyUniformlyOn.differentiableOn {ι E : Type*} [NormedAddCommGroup E]\n    [NormedSpace ℂ E] [CompleteSpace E] {f : ι → ℂ → E} {s : Set ℂ}\n    (hs : IsOpen s) (h : SummableLocallyUniformlyOn f s)\n    (hf2 : ∀ n r, r ∈ s → DifferentiableAt ℂ (f n) r) :\n    DifferentiableOn ℂ (fun z ↦ ∑' n, f n z) s := by\n  obtain ⟨g, hg⟩ := h\n  have hc := (hasSumLocallyUniformlyOn_iff_tendstoLocallyUniformlyOn.mp hg).differentiableOn ?_ hs\n  · apply hc.congr\n    apply hg.tsum_eqOn\n  · filter_upwards with t r hr using\n      DifferentiableWithinAt.fun_sum fun a ha ↦ (hf2 a r hr).differentiableWithinAt",
+  "generated_additive_declaration": null,
+  "source_context": "",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC03"
+  ],
+  "endpoint_sha256": "cb00e5479887d8b9a31ec109f84ae8474a1bab854d850676317110950cce7c40",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+}

@@ -1,0 +1,31 @@
+{
+  "id": "ML039",
+  "kind": "theorem",
+  "source_name": "Complex.IsExactOn.with_val_at",
+  "endpoint": "GRTemp.ML039.endpoint",
+  "module": "ML039.Endpoint",
+  "source_path": "Mathlib/Analysis/Complex/HasPrimitives.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "6cf381a10ed0a913dd7bec999e88ab183d2579fc4445c4e795994e16e4be874f",
+  "source_start_line": 118,
+  "source_end_line": 121,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/HasPrimitives.lean#L118",
+  "upstream_import": "Mathlib.Analysis.Complex.HasPrimitives",
+  "retained_dependencies": [
+    "Mathlib.Analysis.Complex.HasPrimitives"
+  ],
+  "extraction_kind": "COPIED_PROOF_BODY",
+  "original_declaration": "lemma IsExactOn.with_val_at {f : ℂ → E} {s : Set ℂ} (h : IsExactOn f s) (x₀ : ℂ) (y : E) :\n    ∃ g, g x₀ = y ∧ ∀ x ∈ s, HasDerivAt g (f x) x := by\n  obtain ⟨η, hη⟩ := h\n  use fun z ↦ η z - η x₀ + y, by simp, by simpa using hη",
+  "generated_additive_declaration": null,
+  "source_context": "open Complex MeasureTheory Metric Set Topology\nopen scoped Interval\nvariable {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]\nnamespace Complex\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC21"
+  ],
+  "endpoint_sha256": "0852ab4623448bf5db99f3dc423b3541059c3a38ad6b0a983976fa712271a364",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+}

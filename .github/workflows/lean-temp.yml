@@ -1,0 +1,150 @@
+name: Cached native TEMP isolated endpoint bodies
+
+on:
+  push:
+    branches:
+      - codex/gr-adapter
+    paths:
+      - 'TEMP/**'
+      - 'Auxillary/TEMP/**'
+      - '.github/workflows/lean-temp.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: temp-native-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  temp-native-linux:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      ELAN_TOOLCHAIN: leanprover/lean4:v4.34.0-rc1
+      MATHLIB_CACHE_DIR: ${{ github.workspace }}/.mathlib-download-cache
+      MATHLIB_NO_CACHE_ON_UPDATE: '1'
+      LEAN_NUM_THREADS: '4'
+    steps:
+      - name: Check out the exact TEMP source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Set up Python for the external evidence runner
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+
+      - name: Restore compatible native compiler
+        id: compiler
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: ~/.elan
+          key: nse-compiler-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('TEMP/lean-toolchain') }}
+
+      - name: Activate compiler path
+        shell: bash
+        run: echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Install exact toolchain only on compiler-cache miss
+        if: steps.compiler.outputs.cache-hit != 'true'
+        uses: leanprover/lean-action@fe408643ea7367d8c0404a8be3975bb145f5fb64
+        with:
+          auto-config: 'false'
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'false'
+          use-github-cache: 'false'
+
+      - name: Restore pinned dependency and download caches
+        id: dependencies-cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            .lake/packages
+            .mathlib-download-cache
+          key: nse-temp-deps-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('TEMP/lean-toolchain', 'TEMP/lake-manifest.json') }}
+          restore-keys: |
+            nse-temp-deps-v1-${{ runner.os }}-${{ runner.arch }}-
+            nse-gr-deps-v1-${{ runner.os }}-${{ runner.arch }}-
+            nse-deps-v2-Linux-X64-1e0a11bbe2f771dc625218fed552a5e8c9ad571990c5e9674d1e2921162b35c5
+            nse-deps-v2-Linux-X64-9b51ac59a9bf389c36d0ee08f81eebfa504c2a733df8c25b1187266979e41203
+            nse-deps-v2-Linux-X64-78b8e6dd5376bcb08d2c5af93549e74beae76ba7d0f24dc089ab851faa254f79
+            nse-deps-v2-Linux-X64-61a962499c8eb2ab9217aea818efc9c8df3fc4c21642b7007e74a1a069a24416
+
+      - name: Restore exact contained dependency sources and link the verified cache
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p Auxillary/TEMP/evidence-current TEMP/.lake
+          python Fefferman_adapter/scripts/hydrate_native_sources.py \
+            --package-root "$GITHUB_WORKSPACE/Fefferman_adapter" \
+            --dependency-root "$GITHUB_WORKSPACE/.lake/packages" \
+            --report "$GITHUB_WORKSPACE/Auxillary/TEMP/evidence-current/native-source-hydration.json"
+          if test ! -e TEMP/.lake/packages; then
+            ln -s ../../.lake/packages TEMP/.lake/packages
+          fi
+          test "$(realpath TEMP/.lake/packages)" = "$GITHUB_WORKSPACE/.lake/packages"
+
+      - name: Verify all pins and acquire only missing official cached objects
+        id: dependencies
+        shell: bash
+        run: bash TEMP/run.sh --phase dependencies --source-commit "$GITHUB_SHA"
+
+      - name: Preserve verified dependency cache before compiling isolated endpoint bodies
+        if: steps.dependencies.outcome == 'success' && steps.dependencies-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            .lake/packages
+            .mathlib-download-cache
+          key: ${{ steps.dependencies-cache.outputs.cache-primary-key }}
+
+      - name: Restore incremental TEMP project objects
+        id: project-cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: TEMP/.lake/build
+          key: nse-temp-project-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('TEMP/lean-toolchain', 'TEMP/lakefile.lean', 'TEMP/lake-manifest.json') }}-${{ hashFiles('TEMP/**/*.lean', 'Auxillary/TEMP/audit-targets.json', 'Auxillary/TEMP/scripts/run_temp.py') }}
+          restore-keys: |
+            nse-temp-project-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('TEMP/lean-toolchain', 'TEMP/lakefile.lean', 'TEMP/lake-manifest.json') }}-
+
+      - name: Compile all isolated bodies and audit all exact named endpoints
+        id: build
+        shell: bash
+        run: bash TEMP/run.sh --phase build --source-commit "$GITHUB_SHA"
+
+      - name: Retain matching compiler source and theorem evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: temp-native-linux-${{ github.sha }}-${{ github.run_attempt }}
+          path: Auxillary/TEMP/evidence-current/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Identify cache directories without deleting objects
+        id: cache-state
+        if: always()
+        shell: bash
+        run: |
+          if test -d TEMP/.lake/build; then echo "project=true" >> "$GITHUB_OUTPUT"; fi
+          if test -x "$HOME/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/lean"; then echo "compiler=true" >> "$GITHUB_OUTPUT"; fi
+
+      - name: Preserve compiler after either proof outcome
+        if: always() && steps.compiler.outputs.cache-hit != 'true' && steps.cache-state.outputs.compiler == 'true' && steps.compiler.outputs.cache-primary-key != ''
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: ~/.elan
+          key: ${{ steps.compiler.outputs.cache-primary-key }}
+
+      - name: Preserve incremental TEMP objects after either proof outcome
+        if: always() && steps.project-cache.outputs.cache-hit != 'true' && steps.cache-state.outputs.project == 'true' && steps.project-cache.outputs.cache-primary-key != ''
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: TEMP/.lake/build
+          key: ${{ steps.project-cache.outputs.cache-primary-key }}

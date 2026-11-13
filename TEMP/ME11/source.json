@@ -1,0 +1,48 @@
+{
+  "entry_id": "ME11",
+  "member_id": null,
+  "upstream_name": "NSEMaxwell.HodgeProof.inverseScalarSeries_hasFDerivAt_pos",
+  "candidate_export": "GRTemp.ME11.endpoint",
+  "module": "ME11.Endpoint",
+  "declaration_kind": "theorem",
+  "status": "A_TIER_CANDIDATE",
+  "extraction_method": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+  "source_repository": "randogelist/Methlib",
+  "source_commit": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+  "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterSmoothing.lean",
+  "source_line_start": 195,
+  "source_line_end": 228,
+  "source_sha256": "693e24c88e42270212ba4d6053b9141fcf2d1bbb983ab04bf6bfc43dbb870b0d",
+  "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterSmoothing.lean#L195",
+  "source_declaration_sha256": "0eab4c7332723775b5c9d81fe1e0c587bd0f567cb62cdb0dce0b07207c0f09a5",
+  "imports": [
+    "FourierHodgeLaws.ParameterSmoothing"
+  ],
+  "import_scope": "UPSTREAM_OWNING_MODULE; definitions and helper lemmas retained as explicit dependencies",
+  "uses": [
+    "GC02",
+    "GC04",
+    "GC17"
+  ],
+  "hypotheses": [
+    "f : Pressure",
+    "SmoothPressure f",
+    "PeriodicPressure f",
+    "z : ℝ × Vec",
+    "0 < z.1"
+  ],
+  "source_signature": "theorem inverseScalarSeries_hasFDerivAt_pos (f : Pressure)\n    (hf : SmoothPressure f) (hp : PeriodicPressure f)\n    {z : ℝ × Vec} (hz : 0 < z.1) :\n    HasFDerivAt (inverseScalarSeries f) (inverseScalarSeriesDerivative f z) z",
+  "retained_upstream_audit": {
+    "name": "NSEMaxwell.HodgeProof.inverseScalarSeries_hasFDerivAt_pos",
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "status": "PASS_STANDARD_ONLY"
+  },
+  "retained_audit_applies_to": "UPSTREAM_DECLARATION_ONLY; candidate copied export has no external audit yet",
+  "local_lean_executions": 0,
+  "new_axioms": 0,
+  "extracted_file_sha256": "0510788dac906e166b3a55f7c5b1a4f97413707a232b60e8fdaa84c60a4a734c"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "ML049",
+  "kind": "theorem",
+  "source_name": "tsum_neg",
+  "endpoint": "GRTemp.ML049.endpoint",
+  "module": "ML049.Endpoint",
+  "source_path": "Mathlib/Topology/Algebra/InfiniteSum/Group.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "f076038e732fb9432224fbac1f8ad6435cbc175b9211090a5e3b32081c96694f",
+  "source_start_line": 169,
+  "source_end_line": 170,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Algebra/InfiniteSum/Group.lean#L169",
+  "upstream_import": "Mathlib.Topology.Algebra.InfiniteSum.Group",
+  "retained_dependencies": [
+    "Mathlib.Topology.Algebra.InfiniteSum.Group"
+  ],
+  "extraction_kind": "ADAPTED_TO_ADDITIVE_GENERATOR_BODY",
+  "original_declaration": "theorem tprod_inv : ∏'[L] b, (f b)⁻¹ = (∏'[L] b, f b)⁻¹ :=\n  ((Homeomorph.inv α).isClosedEmbedding.map_tprod f (g := MulEquiv.inv α)).symm",
+  "generated_additive_declaration": "theorem _root_.GRTemp.ML049.endpoint : ∑'[L] b, -(f b) = -(∑'[L] b, f b) :=\n  ((Homeomorph.neg α).isClosedEmbedding.map_tsum f (g := AddEquiv.neg α)).symm",
+  "source_context": "open Filter Finset Function\nopen scoped Topology\nvariable {α β : Type*} {L : SummationFilter β}\n  [AddCommGroup α] [TopologicalSpace α] [IsTopologicalAddGroup α] [T2Space α]\n  {f : β → α}\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC01"
+  ],
+  "endpoint_sha256": "65abfad7ef9566adcddb9944bb8e0f5887be3d753988a2ba074ee6ab1b23b513",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+}

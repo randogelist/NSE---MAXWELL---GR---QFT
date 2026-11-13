@@ -1,0 +1,31 @@
+{
+  "id": "ML041",
+  "kind": "theorem",
+  "source_name": "intervalIntegral.integral_deriv_eq_sub",
+  "endpoint": "GRTemp.ML041.endpoint",
+  "module": "ML041.Endpoint",
+  "source_path": "Mathlib/MeasureTheory/Integral/IntervalIntegral/FundThmCalculus.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "5fd64054d9ae8bfce585ff809933a756bcf2d224ef144ae24c8fe8870c68050c",
+  "source_start_line": 1176,
+  "source_end_line": 1178,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/IntervalIntegral/FundThmCalculus.lean#L1176",
+  "upstream_import": "Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus",
+  "retained_dependencies": [
+    "Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus"
+  ],
+  "extraction_kind": "COPIED_PROOF_BODY",
+  "original_declaration": "theorem integral_deriv_eq_sub (hderiv : ∀ x ∈ [[a, b]], DifferentiableAt ℝ f x)\n    (hint : IntervalIntegrable (deriv f) volume a b) : ∫ y in a..b, deriv f y = f b - f a :=\n  integral_eq_sub_of_hasDerivAt (fun x hx => (hderiv x hx).hasDerivAt) hint",
+  "generated_additive_declaration": null,
+  "source_context": "open MeasureTheory Set Filter Function Asymptotics\nopen scoped Topology ENNReal Interval NNReal\nvariable {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]\nnamespace intervalIntegral\nvariable {f : ℝ → E} {a b : ℝ}\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC21"
+  ],
+  "endpoint_sha256": "96bfddee7271a890e355f6473dbe02cfdf81444767ab990c3272808711ecda76",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+}
