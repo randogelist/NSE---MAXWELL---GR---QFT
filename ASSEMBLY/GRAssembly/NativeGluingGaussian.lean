@@ -213,8 +213,14 @@ theorem radialExtensionResult_of_literatureGaussian
     intro x
     filter_upwards [timeInterval_mem_nhds t0 d hd] with t ht
     exact congrFun (boundaryBeta_congr_slice _ _ t (hmatch t ht)) x
-  refine ⟨{ timeRadius := d, time_radius_le := hdδ, radialRadius := e,
-    metric := metricOfJoint f, boundary_match := hmatch, geometry := ?_ }⟩
+  refine ⟨{
+    timeRadius := d
+    time_radius_le := hdδ
+    radialRadius := e
+    metric := metricOfJoint f
+    boundary_match := hmatch
+    geometry := ?_
+  }⟩
   refine ⟨hd, he, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
   · intro z hz
     simpa only [bulkFromJoint_jointFromBulk] using (hcollar hz).analytic

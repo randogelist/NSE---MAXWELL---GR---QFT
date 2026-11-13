@@ -3123,112 +3123,7 @@
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.boundaryAdmissible_velocity_analytic",
-    "module": "GRAssembly.NativeReconstruction",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.boundaryAdmissible_solenoidal",
-    "module": "GRAssembly.NativeReconstruction",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.boundaryAdmissible_potential_eq",
-    "module": "GRAssembly.NativeReconstruction",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.boundaryAdmissible_potential_eq_eventually",
-    "module": "GRAssembly.NativeReconstruction",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.boundaryAdmissible_potential_analytic",
-    "module": "GRAssembly.NativeReconstruction",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.boundaryAdmissible_potential_laplacian",
-    "module": "GRAssembly.NativeReconstruction",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.boundaryAdmissible_potential_time",
-    "module": "GRAssembly.NativeReconstruction",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.boundaryAdmissible_potential_initial",
-    "module": "GRAssembly.NativeReconstruction",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.boundaryAdmissible_potential_time_initial",
-    "module": "GRAssembly.NativeReconstruction",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.boundaryAdmissible_raw_recovery",
-    "module": "GRAssembly.NativeReconstruction",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
     "name": "NSEGR.Assembly.canonical_boundary_exact_completion",
-    "module": "GRAssembly.NativeReconstruction",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.boundaryAdmissible_hodge_time",
-    "module": "GRAssembly.NativeReconstruction",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.scalarLocalTimeDerivative_periodic_native",
-    "module": "GRAssembly.NativeReconstruction",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.boundaryAdmissible_pressure_analytic",
-    "module": "GRAssembly.NativeReconstruction",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.boundaryAdmissible_decoded_pair",
-    "module": "GRAssembly.NativeReconstruction",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.boundaryAdmissible_residual",
     "module": "GRAssembly.NativeReconstruction",
     "kind": "theorem",
     "gc": [],
@@ -3237,6 +3132,111 @@
   {
     "name": "NSEGR.Assembly.geometricReconstructionLaws_native",
     "module": "GRAssembly.NativeReconstruction",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_velocity_analytic",
+    "module": "GRAssembly.NativeReconstructionCore",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_solenoidal",
+    "module": "GRAssembly.NativeReconstructionCore",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_potential_eq",
+    "module": "GRAssembly.NativeReconstructionCore",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_potential_eq_eventually",
+    "module": "GRAssembly.NativeReconstructionCore",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_potential_analytic",
+    "module": "GRAssembly.NativeReconstructionCore",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_potential_laplacian",
+    "module": "GRAssembly.NativeReconstructionCore",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_potential_time",
+    "module": "GRAssembly.NativeReconstructionCore",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_potential_initial",
+    "module": "GRAssembly.NativeReconstructionCore",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_potential_time_initial",
+    "module": "GRAssembly.NativeReconstructionCore",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_raw_recovery",
+    "module": "GRAssembly.NativeReconstructionCore",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_hodge_time",
+    "module": "GRAssembly.NativeReconstructionCore",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.scalarLocalTimeDerivative_periodic_native",
+    "module": "GRAssembly.NativeReconstructionCore",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_pressure_analytic",
+    "module": "GRAssembly.NativeReconstructionCore",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_decoded_pair",
+    "module": "GRAssembly.NativeReconstructionCore",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_residual",
+    "module": "GRAssembly.NativeReconstructionCore",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"

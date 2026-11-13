@@ -69,7 +69,7 @@ theorem bulkPartial_shape_at_flat {h : Bulk → Tensor4} {z : Bulk}
   simp_rw [hprod, bulkPartial_inverse_at_flat hh hn he]
   rw [he, eta4_inverse]
   fin_cases a <;> fin_cases b <;>
-    norm_num [eta4Matrix, eta4, lorentzSign4, Fin.sum_univ_four] <;> ring
+    norm_num [eta4Matrix, eta4, lorentzSign4, Fin.sum_univ_succ] <;> ring
 
 theorem gaussian_normal_flat {h : Bulk → Tensor4} {z : Bulk}
     (hh : AnalyticAt ℝ h z) (hn : IsUnit (h z).det) (he : h z = eta4Matrix)
