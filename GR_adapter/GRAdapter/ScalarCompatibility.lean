@@ -72,14 +72,15 @@ theorem analytic_zero_transport_germ {f : ℝ × Vec → ℝ} {t0 : ℝ} {x0 : V
   obtain ⟨U, hU, V, hV, hUV⟩ :=
     mem_nhds_prod_iff.mp (hf.eventually_analyticAt.and hdt)
   obtain ⟨a, b, ht0, hab⟩ := mem_nhds_iff_exists_Ioo_subset.mp hU
-  have ht : Ioo a b ∈ 𝓝 t0 := Ioo_mem_nhds ht0.1 ht0.2
-  filter_upwards [ht.prodMk_nhds (hV.and h0)] with z hz
+  have ht : ∀ᶠ t in 𝓝 t0, t ∈ Ioo a b := Ioo_mem_nhds ht0.1 ht0.2
+  have hv : ∀ᶠ x in 𝓝 x0, x ∈ V := hV
+  filter_upwards [ht.prodMk_nhds (hv.and h0)] with z hz
   have hdiff : DifferentiableOn ℝ (fun t : ℝ => f (t, z.2)) (Ioo a b) := by
     intro t ht'
-    exact (hUV ⟨hab ht', hz.2.1⟩).1.curry_left.differentiableAt.differentiableWithinAt
+    exact (hUV (show (t, z.2) ∈ U ×ˢ V from ⟨hab ht', hz.2.1⟩)).1.curry_left.differentiableAt.differentiableWithinAt
   have hzero : (Ioo a b).EqOn (deriv (fun t : ℝ => f (t, z.2))) 0 := by
     intro t ht'
-    exact (hUV ⟨hab ht', hz.2.1⟩).2
+    exact (hUV (show (t, z.2) ∈ U ×ˢ V from ⟨hab ht', hz.2.1⟩)).2
   exact (isOpen_Ioo.is_const_of_deriv_eq_zero isPreconnected_Ioo hdiff hzero hz.1 ht0).trans
     hz.2.2
 
@@ -156,7 +157,7 @@ theorem scalarCK_gradient_compatibility
   have hdt : ∀ᶠ z in 𝓝 (t0, x0),
       deriv (fun t : ℝ => g (t, z.2) - scalarJointPartial f d (t, z.2)) z.1 = 0 := by
     filter_upwards [hf.eventually_analyticAt, hg.eventually_analyticAt,
-      hdf.eventually_analyticAt, heq, hfv.fderiv] with z hfa hga hdfa hz hd
+      hdf.eventually_analyticAt, heq, hfv.fderiv (𝕜 := ℝ)] with z hfa hga hdfa hz hd
     rw [deriv_sub hga.curry_left.differentiableAt hdfa.curry_left.differentiableAt]
     rw [scalar_timeDerivative_eq_joint hga, scalar_timeDerivative_eq_joint hdfa]
     rw [scalarJointPartial_commute hfa d (1, 0)]
@@ -172,7 +173,7 @@ theorem scalarCK_gradient_compatibility
     (continuous_const.prodMk continuous_id).continuousAt.tendsto.eventually
       hf.eventually_analyticAt
   have h0 : ∀ᶠ x in 𝓝 x0, g (t0, x) - scalarJointPartial f d (t0, x) = 0 := by
-    filter_upwards [hW.initial, h0f.fderiv, hslice] with x hx hdx hax
+    filter_upwards [hW.initial, h0f.fderiv (𝕜 := ℝ), hslice] with x hx hdx hax
     have hgv : g (t0, x) = 0 := congrArg
       (fun a : ScalarCKState => a (scalarCKGradientIndex i)) hx
     have hdv : scalarJointPartial f d (t0, x) = 0 := by
