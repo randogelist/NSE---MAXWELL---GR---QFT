@@ -33,8 +33,7 @@ def spatialIndex4 (i : Fin 3) : Fin 4 := i.succ
 
 @[simp] theorem bulkPoint_time (r t : ℝ) (x : Vec) :
     bulkPoint r t x 1 = t := by
-  change bulkPoint r t x (0 : Fin 4).succ = t
-  simp [bulkPoint, PiLp.toLp_apply]
+  rfl
 
 @[simp] theorem bulkPoint_spatial (r t : ℝ) (x : Vec) (i : Fin 3) :
     bulkPoint r t x i.succ.succ = x i := by
