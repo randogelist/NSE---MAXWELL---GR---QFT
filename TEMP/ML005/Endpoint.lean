@@ -23,7 +23,7 @@ noncomputable section
 open Set Filter Topology TopologicalSpace Function
 variable {Y : Type*} [TopologicalSpace Y]
 
-theorem _root_.GRTemp.ML005.endpoint {K : Set Y} {X} {l : Filter X} {s : Set (X × Y)}
+theorem _root_.GRTemp.ML005.endpoint {K : Set Y} {X : Type*} {l : Filter X} {s : Set (X × Y)}
     (hK : IsCompact K) (hs : ∀ y ∈ K, s ∈ l ×ˢ 𝓝 y) : s ∈ l ×ˢ 𝓝ˢ K :=
   (hK.prod_nhdsSet_eq_biSup l).symm ▸ by simpa using hs
 

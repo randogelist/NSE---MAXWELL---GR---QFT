@@ -12,7 +12,7 @@
   "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Compactness/Compact.lean#L427",
   "source_sha256": "670d9e0723f9b803fd68e21c02b735475cafb7a4612aa0dac16733c5dedb49aa",
   "source_command_sha256": "1e4686f62ddae584d388b633210272c174cde59fb53da587ca3044e3718257b2",
-  "candidate_sha256": "bef2d452ae4075f6d83c0967596560655b131aa8401c1337b42de5757f63ea23",
+  "candidate_sha256": "9f99c90645a0e56e22bd3d5015c2aa2b7923d5011097ff8598a96a6915094a24",
   "upstream_imports": [
     "Mathlib.Topology.Compactness.Compact"
   ],
@@ -25,5 +25,8 @@
   "local_lean_executions": 0,
   "new_compiler_evidence": null,
   "is_dependency_free": false,
-  "retained_dependency_note": "Owning source module supplies original definitions, notation, instances and helper lemmas; copied body is independently elaborated only by a later external compiler."
+  "retained_dependency_note": "Owning source module supplies original definitions, notation, instances and helper lemmas; copied body is independently elaborated only by a later external compiler.",
+  "header_context_rewrites": [
+    "Explicitly type the shadowing binder X as Type*; the original source inferred its type from the ambient section variable X : Type u. Proof body unchanged."
+  ]
 }
