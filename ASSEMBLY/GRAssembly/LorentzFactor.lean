@@ -120,7 +120,7 @@ theorem lorentzTriangular_congruence (H : Tensor4) (s : ℝ)
 /-- ML056--064 -> C4: negative time entry and positive spatial block suffice. -/
 theorem lorentz_factor_of_spatial_posDef (H : Tensor4)
     (hH : ∀ i j, H i j = H j i) (ht : H 0 0 < 0)
-    (hA : (fun i j : Fin 3 => H i.succ j.succ : Tensor3).PosDef) :
+    (hA : Matrix.PosDef ((fun i j : Fin 3 => H i.succ j.succ) : Tensor3)) :
     ∃ C : Tensor4, IsUnit C.det ∧ H = C.transpose * eta4Matrix * C := by
   let α := -H 0 0
   have hα : 0 < α := neg_pos.mpr ht
@@ -139,7 +139,7 @@ theorem lorentz_factor_of_spatial_posDef (H : Tensor4)
 /-- C4 -> diag(1,C4): the actual native five-dimensional Lorentzian predicate. -/
 theorem gaussian_lorentzian_of_spatial_posDef (h : Bulk → Tensor4) (z : Bulk)
     (hs : ∀ i j, h z i j = h z j i) (ht : h z 0 0 < 0)
-    (hA : (fun i j : Fin 3 => h z i.succ j.succ : Tensor3).PosDef) :
+    (hA : Matrix.PosDef ((fun i j : Fin 3 => h z i.succ j.succ) : Tensor3)) :
     LorentzianAt (gaussianMetric h) z := by
   obtain ⟨C, hC, hh⟩ := lorentz_factor_of_spatial_posDef (h z) hs ht hA
   exact gaussianMetric_lorentzian_of_congruence h z C hC hh

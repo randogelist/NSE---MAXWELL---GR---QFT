@@ -11,4 +11,5 @@ import GRAssembly.PeriodicGluing
 import GRAssembly.PeriodicWitness
 import GRAssembly.PressureGauge
 import GRAssembly.ScalarCompletion
+import GRAssembly.ScalarCore
 import GRAssembly.ScalarJet

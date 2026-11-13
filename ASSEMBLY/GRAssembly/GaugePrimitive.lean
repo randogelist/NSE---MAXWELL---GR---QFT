@@ -34,10 +34,15 @@ theorem analyticAt_gaugeCKRHS {γ : ℝ → ℝ} {J : GaugeCKJet}
     AnalyticAt ℝ (gaugeCKRHS γ) J := by
   have hs : AnalyticAt ℝ (fun Y : GaugeCKJet => Y.2.1) J :=
     analyticAt_fst.comp analyticAt_snd
+  let e1 : GaugeCKState →L[ℝ] ℝ := EuclideanSpace.proj (1 : Fin 2)
   have hv : AnalyticAt ℝ (fun Y : GaugeCKJet => Y.2.1 1) J :=
-    ((EuclideanSpace.proj (1 : Fin 2)).analyticAt _).comp hs
+    (e1.analyticAt _).comp hs
+  have htime : AnalyticAt ℝ (fun Y : GaugeCKJet => Y.1.1) J :=
+    (show AnalyticAt ℝ (fun z : ℝ × LiteratureSpace 1 => z.1) J.1 from
+      analyticAt_fst).comp
+        (show AnalyticAt ℝ (fun Y : GaugeCKJet => Y.1) J from analyticAt_fst)
   have ht : AnalyticAt ℝ (fun Y : GaugeCKJet => γ Y.1.1) J :=
-    hγ.comp (analyticAt_fst.comp analyticAt_fst)
+    hγ.comp htime
   have hall : AnalyticAt ℝ
       (fun Y : GaugeCKJet =>
         (Fin.cases (Y.2.1 1) (fun _ : Fin 1 => γ Y.1.1) : Fin 2 → ℝ)) J := by
@@ -105,8 +110,9 @@ theorem analytic_double_primitive_of_literatureCK
   obtain ⟨W, hW, _⟩ := gaugeCK_exists_unique_firstOrder input hγ
   let a : ℝ → ℝ := fun t => W (t, 0) 0
   let b : ℝ → ℝ := fun t => W (t, 0) 1
+  let e0 : GaugeCKState →L[ℝ] ℝ := EuclideanSpace.proj (0 : Fin 2)
   have ha : AnalyticAt ℝ a t0 :=
-    ((EuclideanSpace.proj (0 : Fin 2)).analyticAt _).comp hW.analytic.curry_left
+    (e0.analyticAt _).comp hW.analytic.curry_left
   have h0 : W (t0, (0 : LiteratureSpace 1)) = 0 :=
     Filter.EventuallyEq.eq_of_nhds hW.initial
   have htrans := gaugeCK_solution_transport hW

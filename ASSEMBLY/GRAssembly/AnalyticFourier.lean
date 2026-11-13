@@ -78,7 +78,7 @@ theorem summable_latticeExpMajorant (d : Fin 3 → ℕ) {r : ℝ} (hr : 0 < r) :
     (fun z : ℤ × ℤ => mul_nonneg
       (coordinateExpWeight_nonneg r (d 1) z.1)
       (coordinateExpWeight_nonneg r (d 2) z.2))
-  simpa only [latticeExpMajorant, frequencyTriple] using
+  simpa only [Function.comp_def, latticeExpMajorant, frequencyTriple] using
     h012.comp_injective frequencyTriple_injective
 
 def frequencyL1 (k : Frequency) : ℝ :=

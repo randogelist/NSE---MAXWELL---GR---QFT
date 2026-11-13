@@ -112,7 +112,7 @@ theorem analyticAt_of_lattice_local_germ
     AnalyticAt ℝ (fun z : S × Vec => g z.1 z.2) (s, x) := by
   have hshift : AnalyticAt ℝ
       (fun z : S × Vec => (z.1, z.2 - integerSpatialShift a.2)) (s, x) :=
-    analyticAt_fst.prodMk (analyticAt_snd.sub analyticAt_const)
+    analyticAt_fst.prod (analyticAt_snd.sub analyticAt_const)
   exact (hf.comp hshift).congr hglued.symm
 
 /-- A germ-local differential law is inherited by the constructed field.

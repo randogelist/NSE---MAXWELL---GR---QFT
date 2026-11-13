@@ -1,0 +1,96 @@
+NSE_GR_NATIVE_ASSEMBLY
+MODE = A_TIER_CANDIDATE
+ROOT_FROM_LI01_LI02_LI03 = OPEN
+LOCAL_LEAN_EXECUTIONS = 0
+
+PINNED_ENVIRONMENT
+Lean = leanprover/lean4:v4.34.0-rc1
+Compiler = 3447a668783dbce1a8fdb97101dd067687b2b418
+Mathlib = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+External validation = cached native Linux; Windows entrypoint = run.cmd
+Allowed foundational axioms = {propext, Classical.choice, Quot.sound}
+New literature/analytic axioms = 0
+Literature inputs remain explicit theorem parameters.
+
+SCOPE
+Exact carriers = NSEGR.Vec, Pressure, Velocity, BoundaryTensor, Bulk.
+Operators = actual integrals, total Fourier sums, ordinary derivatives,
+Frechet derivatives, matrix inverse, Christoffel symbols and Ricci tensor.
+Source = GRAssembly/*.lean; singular import endpoint = GRAssembly.lean.
+Declaration inventory = ../Auxillary/GR/Assembly/endpoint-index.json.
+Named audits = ../Auxillary/GR/Assembly/audit-targets.json.
+
+GC01--GC02 / HodgeTransport, HodgeTime, HodgeLocal
+G = -L; Delta(G f) = G(Delta f) = f - mean(f).
+mean(G f) = 0; D_i G f = G D_i f.
+P(grad f)=0; div(P a)=0; P(P a)=P a; mean(P a)=mean(a).
+Smooth periodic hypotheses occur explicitly in the theorem signatures.
+An actual smooth time cutoff transports halfspace time derivatives to an
+arbitrary open time slab. No full-halfspace extension premise remains in
+local derivative endpoints.
+
+GC03--GC04 / AnalyticFourier
+Summable polynomial-exponential lattice majorants.
+Actual native Poisson Fourier modes and multiplier estimates.
+Uniform convergence and continuity from summable weighted coefficients.
+LI03 supplies the fixed-slice smooth Fourier summability specialization.
+Parameter-domain continuity requires the displayed uniform coefficient bound.
+OPEN: real-to-complex extension, common periodic tube, contour-shift bounds,
+analytic parameter integration and Taylor identification.
+Continuity is not identified with joint real analyticity.
+
+GC05--GC06, local GC10, GC20 / ScalarJet, ScalarCore
+LI01 + rho != 0 + AnalyticPeriodicPair -> scalar_local_assembly:
+exists psi, ScalarNormalGerm psi AND noncharacteristic germ AND
+boundaryHamiltonian(completedBoundary nu rho u p psi)=0 as joint germ AND
+uniqueness among actual normalized ScalarNormalGerm witnesses.
+The transported CK coordinates equal actual derivatives of psi.
+The actual second-order scalar equation and its converse CK lift are proved.
+This is a local germ endpoint at a specified spatial point.
+OPEN: translated/recentered scalar-germ covariance, specialized compact atlas,
+common periodic cylinder and its uniform noncharacteristic bound.
+
+GC07--GC09, generic GC14 / PeriodicGluing, PeriodicWitness
+Finite precompact refinement; finite relative lattice shifts; uniform compact
+overlap agreement; actual iUnionLift function; periodicity and local equality;
+actual derivative and joint analyticity transfer from the local functions.
+Local atlas and overlap compatibility hypotheses are explicit.
+OPEN: instantiate those hypotheses from LI01 scalar uniqueness and LI02
+Gaussian prescribed-jet uniqueness in the actual native coordinates.
+
+GC11, parts of GC19 / ScalarCompletion
+Exact completed K00,K0i,Kij, raw velocity and beta formulas.
+Actual conserved NSE source divergence identity.
+OPEN: scalar-correction conservation, native boundary admissibility,
+complete velocity/pressure recovery and ScalarBoundaryCompletionLaws c.
+
+GC15 / LorentzFactor, LorentzNeighborhood
+Positive real matrix -> invertible Gram factor by CFC square root.
+Schur complement -> exact H = transpose(C4) * eta4 * C4.
+Entrywise |H-eta4| < 1/12 -> spatial positivity -> native LorentzianAt.
+OPEN: uniform collar and RadialExtensionResult construction; inhabitant r.
+
+GC16 / GaussianConstraints
+Actual tangential Ricci decomposition via derivative locality.
+Actual vacuum component statements with displayed determinant/symmetry inputs.
+OPEN: flat-boundary jet transport, inverse/trace differentiation cancellation,
+Hamiltonian/Codazzi boundary extraction and reconstruction inhabitant h.
+
+GC21 / GaugePrimitive, PressureGauge
+LI01 + AnalyticAt gamma t0 -> exists a, AnalyticAt a t0,
+a(t0)=a'(t0)=0 AND a''=gamma as time germ.
+K[u,p+gamma,psi-a] = K[u,p,psi] as actual full tensor germ.
+OPEN: specialized Gaussian uniqueness and full forward descent.
+
+ROOT_BOUNDARY
+c = ScalarBoundaryCompletionLaws                         OPEN
+r = AnalyticRadialExtensionLaws                          OPEN
+h = GeometricReconstructionLaws                          OPEN
+q = GermInverseLaws c r h                                OPEN
+Existing named-contract equivalence retains all four premises.
+LI01 + LI02 + LI03 -> root exact-sector equivalence        OPEN
+No FORMAL_CLOSURE or UNCONDITIONAL_CLOSURE promotion for that root.
+
+VALIDATION
+Matching external compilation and theorem-level axiom audits pending.
+Prepared code does not establish A_TIER.

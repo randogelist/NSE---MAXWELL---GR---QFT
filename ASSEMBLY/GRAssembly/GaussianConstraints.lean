@@ -91,7 +91,7 @@ theorem ricci_gaussian_tangential (h : Bulk → Tensor4) (z : Bulk)
     christoffel_gaussian_rab h z hz,
     bulkPartial_const, zero_mul, mul_zero, zero_sub, neg_zero, sub_zero,
     sub_self, zero_add, add_zero, Finset.sum_const_zero, neg_mul, mul_neg,
-    sub_neg, neg_neg, gaussianTangentialRicciComponent]
+    sub_neg_eq_add, neg_neg, gaussianTangentialRicciComponent]
 
 /-- Vacuum annihilates the actual full tangential expression. -/
 theorem gaussianTangentialRicciComponent_zero_of_vacuum

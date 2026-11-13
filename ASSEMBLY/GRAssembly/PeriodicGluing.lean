@@ -74,6 +74,7 @@ theorem overlapGlue_eq {X Y ι : Type*} (U : ι → Set X) (f : ι → X → Y)
   classical
   rw [overlapGlue, dif_pos hxD]
   exact GRTemp.ML007.endpoint
+    (S := U) (f := fun i z => f i z)
     (hf := fun i j y hi hj => hcompat i j y hi hj) (hT := hcover) ⟨x, hxD⟩ hxU
 
 theorem overlapGlue_eventuallyEq
@@ -127,14 +128,14 @@ theorem overlapGlue_fderiv_eventuallyEq
 theorem integerSpatialShift_add (n m : Frequency) :
     integerSpatialShift (n + m) = integerSpatialShift n + integerSpatialShift m := by
   ext i
+  change integerSpatialShift (n + m) i = integerSpatialShift n i + integerSpatialShift m i
   simp only [integerSpatialShift_apply, Pi.add_apply, Int.cast_add]
-  rfl
 
 theorem integerSpatialShift_sub (n m : Frequency) :
     integerSpatialShift (n - m) = integerSpatialShift n - integerSpatialShift m := by
   ext i
+  change integerSpatialShift (n - m) i = integerSpatialShift n i - integerSpatialShift m i
   simp only [integerSpatialShift_apply, Pi.sub_apply, Int.cast_sub]
-  rfl
 
 theorem integerSpatialShift_single (i : Fin 3) :
     integerSpatialShift (Pi.single i (1 : ℤ)) = unitVector i := by

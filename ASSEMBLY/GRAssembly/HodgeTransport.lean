@@ -216,7 +216,8 @@ theorem leray_gradient_zero (f : ScalarField)
     intro i
     change fderiv ℝ (fun y => f y - scalarMean f) x (unitVector i) =
       fderiv ℝ f x (unitVector i)
-    rw [fderiv_fun_sub (hf.differentiable (by simp) x) differentiableAt_const]
+    rw [fderiv_fun_sub (hf.differentiable (by simp) x)
+      (differentiableAt_const (scalarMean f))]
     simp
   unfold leray
   rw [divergence_gradient hf, poissonInverse_scalarLaplacian f hf hp, hG]

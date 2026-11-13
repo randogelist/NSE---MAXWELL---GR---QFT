@@ -196,7 +196,9 @@ theorem scalarCK_scalarNormalGerm
     (hW : LiteratureCKSolution (scalarCKRHS ν ρ u p)
       (fun _ : Vec => (0 : ScalarCKState)) t0 x0 W) :
     ScalarNormalGerm ν ρ u p t0 x0 (scalarCKPotential W) where
-  analytic := ((EuclideanSpace.proj (0 : Fin 5)).analyticAt _).comp hW.analytic
+  analytic := by
+    let ev : ScalarCKState →L[ℝ] ℝ := EuclideanSpace.proj (0 : Fin 5)
+    exact (ev.analyticAt _).comp hW.analytic
   initial := scalarCK_potential_initial hW
   time_initial := scalarCK_potential_time_initial hW
   equation := scalarCK_secondOrder_equation hW
@@ -228,7 +230,8 @@ theorem scalarStateOfPotential_solution
     LiteratureCKSolution (scalarCKRHS ν ρ u p)
       (fun _ : Vec => (0 : ScalarCKState)) t0 x0 (scalarStateOfPotential ψ) := by
   refine ⟨analyticAt_scalarStateOfPotential hψ.analytic, ?_, ?_⟩
-  · have hd := hψ.initial.fderiv (𝕜 := ℝ)
+  · have hi : (ψ t0) =ᶠ[𝓝 x0] (fun _ : Vec => (0 : ℝ)) := hψ.initial
+    have hd := hi.fderiv (𝕜 := ℝ)
     filter_upwards [hψ.initial, hψ.time_initial, hd] with x h0 h1 hdx
     ext k
     refine Fin.cases ?_ (fun j => ?_) k
@@ -262,9 +265,17 @@ theorem scalarStateOfPotential_solution
     refine Fin.cases ?_ (fun j => ?_) k
     · rfl
     · refine Fin.cases ?_ (fun i => ?_) j
-      · rw [scalarCKRHS_time, hsp, hmi]
+      · change scalarLocalTimeDerivative (scalarLocalTimeDerivative ψ) z.1 z.2 =
+          scalarJetRHS ρ (fun i => u z.1 z.2 i) (nseSpatialSource3 ν u p z.1 z.2)
+            (scalarCKSpatialJet (z, (scalarStateOfPotential ψ z,
+              fderiv ℝ (fun x => scalarStateOfPotential ψ (z.1, x)) z.2)))
+            (scalarCKMixedJet (z, (scalarStateOfPotential ψ z,
+              fderiv ℝ (fun x => scalarStateOfPotential ψ (z.1, x)) z.2)))
+        rw [hsp, hmi]
         exact he
-      · rw [scalarCKRHS_gradient, scalarCK_coordinate_spaceDerivative hstate]
+      · change jointTime (jointSpace (fun y : ℝ × Vec => ψ y.1 y.2) i) z =
+          fderiv ℝ (fun x => scalarStateOfPotential ψ (z.1, x)) z.2 (unitVector i) 1
+        rw [scalarCK_coordinate_spaceDerivative hstate]
         exact jointTime_jointSpace ha i
 
 theorem scalar_normalized_germ_unique
@@ -303,7 +314,7 @@ theorem scalarHessian_eq_zero_of_germ_zero {f : ScalarField} {x : Vec}
     rw [hy]
     simp
   have hdd := congrArg (fun L : Vec →L[ℝ] ℝ => L (unitVector i)) hd.fderiv_eq
-  simpa only [scalarHessian, fderiv_const, ContinuousLinearMap.zero_apply,
+  simpa only [scalarHessian, fderiv_const_apply, ContinuousLinearMap.zero_apply,
     Matrix.zero_apply] using hdd
 
 theorem scalarLaplacian_eq_zero_of_germ_zero {f : ScalarField} {x : Vec}
