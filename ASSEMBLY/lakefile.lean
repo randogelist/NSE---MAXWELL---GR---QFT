@@ -15,11 +15,9 @@ lean_lib GRAdapter where
 
 lean_lib NSEGRForward where
   srcDir := "../GR_adapter"
-  globs := #[.andSubmodules `NSEGRForward]
 
 lean_lib NSEGRReverse where
   srcDir := "../GR_adapter"
-  globs := #[.andSubmodules `NSEGRReverse]
 
 lean_lib ML001 where
   srcDir := "../TEMP"
@@ -363,11 +361,9 @@ lean_lib NSEMaxwell where
 
 lean_lib NSEMaxwellForward where
   srcDir := "../TEMP"
-  globs := #[.andSubmodules `NSEMaxwellForward]
 
 lean_lib NSEMaxwellReverse where
   srcDir := "../TEMP"
-  globs := #[.andSubmodules `NSEMaxwellReverse]
 
 lean_lib MaxwellEndpoint where
   srcDir := "../TEMP"
@@ -375,7 +371,6 @@ lean_lib MaxwellEndpoint where
 
 lean_lib TempEndpoints where
   srcDir := "../TEMP"
-  globs := #[.andSubmodules `TempEndpoints]
 
 @[default_target]
 lean_lib GRAssembly where

@@ -59,8 +59,9 @@ theorem finite_compact_overlap_uniform
 def overlapGlue {X Y ι : Type*} (U : ι → Set X) (f : ι → X → Y)
     (D : Set X) (hcover : D ⊆ ⋃ i, U i)
     (hcompat : ∀ i j x, x ∈ U i → x ∈ U j → f i x = f j x)
-    (outside : Y) (x : X) : Y :=
-  if hx : x ∈ D then
+    (outside : Y) (x : X) : Y := by
+  classical
+  exact if hx : x ∈ D then
     GRTemp.ML006.endpoint U (fun i z => f i z)
       (fun i j y hi hj => hcompat i j y hi hj) D hcover ⟨x, hx⟩
   else outside
@@ -70,6 +71,7 @@ theorem overlapGlue_eq {X Y ι : Type*} (U : ι → Set X) (f : ι → X → Y)
     (hcompat : ∀ i j x, x ∈ U i → x ∈ U j → f i x = f j x)
     (outside : Y) {x : X} (hxD : x ∈ D) {i : ι} (hxU : x ∈ U i) :
     overlapGlue U f D hcover hcompat outside x = f i x := by
+  classical
   rw [overlapGlue, dif_pos hxD]
   exact GRTemp.ML007.endpoint
     (hf := fun i j y hi hj => hcompat i j y hi hj) (hT := hcover) ⟨x, hxD⟩ hxU

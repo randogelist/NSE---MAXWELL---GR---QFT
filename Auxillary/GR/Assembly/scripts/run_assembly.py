@@ -69,7 +69,7 @@ def main() -> int:
     parser.add_argument("--phase", choices=("all", "dependencies", "build"), default="all")
     parser.add_argument("--report-directory", type=Path)
     parser.add_argument("--source-commit", default=os.environ.get("GITHUB_SHA", ""))
-    parser.add_argument("--module", action="append", help="Select new assembly modules; baseline GR stages still run")
+    parser.add_argument("--module", action="append", help="Select new assembly modules; baseline GR and TEMP stages still run")
     args = parser.parse_args()
     package = args.package_root.resolve()
     repo = package.parent
@@ -165,6 +165,15 @@ def main() -> int:
         baseline = json.loads((repo / "Auxillary/GR/audit-targets.json").read_text())
         require(set(baseline) == {"adapter", "forward", "reverse"}, "Wrong baseline stage inventory")
         require(sum(len(v) for v in baseline.values()) == 401, "Expected the frozen 401 baseline GR audits")
+        cutouts = json.loads((repo / "Auxillary/TEMP/audit-targets.json").read_text())
+        require(isinstance(cutouts, list) and len(cutouts) == 85, "Expected the frozen 85 cutout endpoint audits")
+        require(len({x["name"] for x in cutouts}) == len(cutouts), "Duplicate cutout target")
+        require(all(SOURCE_NAME.fullmatch(x["name"]) and NAME.fullmatch(x["module"]) for x in cutouts),
+                "Invalid cutout declaration/module name")
+        cutout_imports = set(re.findall(r"^import\s+(\S+)\s*$",
+            (repo / "TEMP/TempEndpoints.lean").read_text(), re.MULTILINE))
+        require({x["module"] for x in cutouts} <= cutout_imports,
+                "TempEndpoints is missing selected cutout imports")
         inventory = json.loads((support / "audit-targets.json").read_text())
         require(isinstance(inventory, list) and bool(inventory), "New assembly audit inventory must be nonempty")
         require(len({x["name"] for x in inventory}) == len(inventory), "Duplicate new assembly target")
@@ -173,6 +182,9 @@ def main() -> int:
         require(all(x["module"].startswith("GRAssembly") for x in inventory), "Unexpected assembly module prefix")
         all_baseline = {name for values in baseline.values() for name in values}
         require(not all_baseline.intersection(x["name"] for x in inventory), "New target duplicates baseline declaration")
+        cutout_names = {x["name"] for x in cutouts}
+        require(not all_baseline.intersection(cutout_names), "Cutout target duplicates baseline declaration")
+        require(not cutout_names.intersection(x["name"] for x in inventory), "New target duplicates cutout declaration")
         selected = inventory
         if args.module:
             requested = set(args.module)
@@ -181,7 +193,9 @@ def main() -> int:
         scope = json.loads((support / "formalization-status.json").read_text())
         scope.update({"selected_modules": sorted({x["module"] for x in selected}),
                       "selected_new_target_count": len(selected), "full_new_target_count": len(inventory),
-                      "baseline_target_count": 401, "selection_mode": "selected_modules" if args.module else "full"})
+                      "baseline_target_count": 401, "cutout_target_count": len(cutouts),
+                      "cutout_validation": "FRESH_NAMED_AXIOM_AUDITS; SOURCE_TYPE_EQUALITY_RETAINS_PRIOR_CERTIFICATE",
+                      "selection_mode": "selected_modules" if args.module else "full"})
         write_json(report / "declared-scope.json", scope)
         inputs = set()
         for source_root in [package, repo / "GR_adapter", repo / "TEMP"]:
@@ -192,7 +206,7 @@ def main() -> int:
             inputs.add(source_root / "lean-toolchain")
         inputs.update([package / "run.cmd", package / "run.sh", Path(__file__).resolve(),
                        support / "audit-targets.json", support / "formalization-status.json",
-                       repo / "Auxillary/GR/audit-targets.json"])
+                       repo / "Auxillary/GR/audit-targets.json", repo / "Auxillary/TEMP/audit-targets.json"])
         manifest = {"source_commit": args.source_commit,
                     "source_roots": ["ASSEMBLY", "GR_adapter", "TEMP"],
                     "files": [{"path": p.relative_to(repo).as_posix(), "sha256": digest(p)} for p in sorted(inputs)]}
@@ -200,7 +214,8 @@ def main() -> int:
         provenance["source_manifest_sha256"] = digest(report / "source-manifest.json")
         stages = [("adapter", "GRAdapter", baseline["adapter"]),
                   ("forward", "NSEGRForward", baseline["forward"]),
-                  ("reverse", "NSEGRReverse", baseline["reverse"])]
+                  ("reverse", "NSEGRReverse", baseline["reverse"]),
+                  ("cutouts", "TempEndpoints", [x["name"] for x in cutouts])]
         if args.module:
             for number, module in enumerate(sorted({x["module"] for x in selected}), 1):
                 stages.append((f"assembly-{number:03d}", module,
@@ -234,14 +249,16 @@ def main() -> int:
         summary = {"schema_version": 1, "status": "PASS_STANDARD_ONLY", "source_commit": args.source_commit,
                    "actual_lean_version": version.strip(), "actual_mathlib_commit": MATHLIB,
                    "source_manifest_sha256": provenance["source_manifest_sha256"], "source_input_verification": "PASS",
-                   "baseline_target_count": 401, "new_target_count": len(selected),
+                   "baseline_target_count": 401, "cutout_target_count": len(cutouts),
+                   "new_target_count": len(selected),
                    "target_count": sum(x["target_count"] for x in stage_summaries),
                    "allowed_axioms": sorted(ALLOWED), "stages": stage_summaries, "declared_scope": scope,
                    "semantic_discharge": "NOT_INFERRED_FROM_AXIOM_AUDIT"}
         write_json(report / "audit-summary.json", summary)
         provenance["status"] = "PASS_STANDARD_ONLY"
         persist()
-        print(f"BASELINE_GR_AUDITS=401; NEW_ASSEMBLY_AUDITS={len(selected)}; STATUS=PASS_STANDARD_ONLY", flush=True)
+        print(f"BASELINE_GR_AUDITS=401; CUTOUT_AUDITS={len(cutouts)}; "
+              f"NEW_ASSEMBLY_AUDITS={len(selected)}; STATUS=PASS_STANDARD_ONLY", flush=True)
         return 0
     except (OSError, ValueError, KeyError, TypeError) as error:
         provenance["status"] = "FAIL"

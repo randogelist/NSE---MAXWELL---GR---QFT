@@ -30,11 +30,11 @@ theorem poissonInverse_halfspace_smooth {f : Pressure}
     (hf : NSEMaxwell.Classical.SmoothPressure f)
     (hp : NSEMaxwell.Classical.PeriodicPressure f) :
     ContDiffOn ℝ ∞ (fun z : ℝ × Vec => poissonInverse (f z.1) z.2)
-      NSEMaxwell.Spacetime.forwardSpacetime := by
+      NSEMaxwell.Classical.forwardSpacetime := by
   have h := (GRTemp.ME10.endpoint hf hp).neg
   change ContDiffOn ℝ ∞
     (fun z : ℝ × Vec => -NSEMaxwell.Classical.scalarL (f z.1) z.2)
-    NSEMaxwell.Spacetime.forwardSpacetime at h
+    NSEMaxwell.Classical.forwardSpacetime at h
   simpa only [poissonInverse_eq_neg_scalarL, Pi.neg_apply] using h
 
 /-- Actual ordinary-time scalar multiplier differentiation from ME11. -/

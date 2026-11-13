@@ -1,5 +1,6 @@
 import GRAdapter.ScalarCompatibility
 import GRAdapter.FourierInversion
+import GRAssembly.GaugePrimitive
 
 /-!
 GC21. Actual cancellation of a time-only pressure gauge against a double
@@ -97,6 +98,26 @@ theorem completedBoundary_pressure_gauge {ν ρ t : ℝ} {u : Velocity}
       (fun s y => ψ s y - a s) t x = completedBoundary ν ρ u p ψ t x := by
   unfold completedBoundary
   rw [source_plus_completion_pressure_gauge hψ ha ha2]
+
+/-- The pressure-gauge correction exists from LI01 and preserves the actual
+completed four-tensor as a joint germ. -/
+theorem normalized_pressure_gauge_completion
+    (input : LiteratureAnalyticCKInput) {ν ρ t0 : ℝ} {u : Velocity}
+    {p ψ : Pressure} {γ : ℝ → ℝ} {x0 : Vec}
+    (hψ : AnalyticAt ℝ (fun z : ℝ × Vec => ψ z.1 z.2) (t0, x0))
+    (hγ : AnalyticAt ℝ γ t0) :
+    ∃ a : ℝ → ℝ, AnalyticAt ℝ a t0 ∧ a t0 = 0 ∧ deriv a t0 = 0 ∧
+      ∀ᶠ z in 𝓝 (t0, x0),
+        completedBoundary ν ρ u (fun s y => p s y + γ s)
+          (fun s y => ψ s y - a s) z.1 z.2 =
+            completedBoundary ν ρ u p ψ z.1 z.2 := by
+  obtain ⟨a, ha, ha0, ha1, ha2⟩ := analytic_double_primitive_of_literatureCK input hγ
+  refine ⟨a, ha, ha0, ha1, ?_⟩
+  have ht : ∀ᶠ z : ℝ × Vec in 𝓝 (t0, x0),
+      AnalyticAt ℝ a z.1 ∧ deriv (deriv a) z.1 = γ z.1 :=
+    continuous_fst.continuousAt.tendsto.eventually (ha.eventually_analyticAt.and ha2)
+  filter_upwards [hψ.eventually_analyticAt, ht] with z hz hzt
+  exact completedBoundary_pressure_gauge hz hzt.1 hzt.2
 
 end
 end NSEGR.Assembly

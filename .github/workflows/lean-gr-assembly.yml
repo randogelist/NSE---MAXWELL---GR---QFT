@@ -5,10 +5,16 @@ on:
     branches:
       - codex/gr-adapter
     paths:
-      - 'ASSEMBLY/**'
+      - 'ASSEMBLY/**/*.lean'
+      - 'ASSEMBLY/lake-manifest.json'
+      - 'ASSEMBLY/lean-toolchain'
+      - 'ASSEMBLY/run.cmd'
+      - 'ASSEMBLY/run.sh'
       - 'GR_adapter/**/*.lean'
       - 'TEMP/**/*.lean'
-      - 'Auxillary/GR/Assembly/**'
+      - 'Auxillary/GR/Assembly/scripts/**'
+      - 'Auxillary/GR/Assembly/audit-targets.json'
+      - 'Auxillary/GR/Assembly/formalization-status.json'
       - '.github/workflows/lean-gr-assembly.yml'
   workflow_dispatch:
 
