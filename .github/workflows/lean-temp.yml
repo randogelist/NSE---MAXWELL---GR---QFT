@@ -112,6 +112,7 @@ jobs:
           key: nse-temp-project-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('TEMP/lean-toolchain', 'TEMP/lakefile.lean', 'TEMP/lake-manifest.json') }}-${{ hashFiles('TEMP/**/*.lean', 'Auxillary/TEMP/audit-targets.json', 'Auxillary/TEMP/scripts/run_temp.py') }}
           restore-keys: |
             nse-temp-project-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('TEMP/lean-toolchain', 'TEMP/lakefile.lean', 'TEMP/lake-manifest.json') }}-
+            nse-temp-project-v1-${{ runner.os }}-${{ runner.arch }}-
 
       - name: Compile all isolated bodies and audit all exact named endpoints
         id: build

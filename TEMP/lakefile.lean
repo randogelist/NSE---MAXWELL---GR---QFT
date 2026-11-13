@@ -269,7 +269,7 @@ lean_lib NSEMaxwellForward
 lean_lib NSEMaxwellReverse
 
 lean_lib MaxwellEndpoint where
-  globs := #[.submodules `MaxwellEndpoint]
+  globs := #[.andSubmodules `MaxwellEndpoint]
 
 @[default_target]
 lean_lib TempEndpoints
