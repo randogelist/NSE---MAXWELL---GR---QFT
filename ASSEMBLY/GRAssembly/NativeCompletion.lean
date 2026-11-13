@@ -95,13 +95,14 @@ theorem completedBoundary_stress_zero {ν ρ t0 δ : ℝ} {u : Velocity} {p ψ :
     ext i j
     change K t x i.succ j.succ + u t x i * u t x j +
       scalarHessian (ψ t) x i j - ν * strain (u t) x i j = _
-    rw [completedBoundary_space_space ν ρ u p ψ t x (hn.divergence_free t ht x)]
+    erw [completedBoundary_space_space ν ρ u p ψ t x (hn.divergence_free t ht x) i j]
     ring
   change tf3 _ = 0
   rw [hT]
-  ext i j
-  simp [tf3, trace3, identity3]
-  <;> ring
+  apply (tf3_eq_zero_iff _).mpr
+  intro i j
+  simp only [trace3, identity3_diag, mul_one]
+  ring
 
 theorem completedBoundary_pressure_recovery {ν ρ t0 δ : ℝ} {u : Velocity} {p ψ : Pressure}
     (hn : LocalNSE ν t0 δ u p)
@@ -135,8 +136,8 @@ theorem completedBoundary_pressure_recovery {ν ρ t0 δ : ℝ} {u : Velocity} {
   change -K t x 0 0 - (2 * ρ + vectorSq3 (fun i => boundaryVelocity K t x i))/3 -
     scalarLocalTimeDerivative (scalarLocalTimeDerivative (boundaryPotential K)) t x =
       p t x + deriv (deriv a) t
-  rw [completedBoundary_time_time ν ρ u p ψ t x (hn.divergence_free t ht x),
-    completedBoundary_velocity_recovery hn hψ hper ht, hdd]
+  erw [completedBoundary_time_time ν ρ u p ψ t x (hn.divergence_free t ht x),
+    completedBoundary_velocity_recovery (ρ := ρ) hn hψ hper ht, hdd]
   ring
 
 theorem localNSE_restrict_native {ν t0 δ d : ℝ} {u : Velocity} {p : Pressure}
