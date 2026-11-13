@@ -330,12 +330,12 @@ theorem literatureFourier_hasSum_of_summable_norm {n : ℕ}
       UnitAddTorus.mFourierCoeff fT k = LiteratureFourierCoefficient f k :=
     literatureTorusFunction_fourierCoeff f k
   have hsc : Summable (UnitAddTorus.mFourierCoeff fT) := by
-    simpa only [hc] using hs.of_norm
+    exact hs.of_norm.congr (fun k => (hc k).symm)
   have h := UnitAddTorus.hasSum_mFourier_series_apply_of_summable hsc
     (fun i => (x i : UnitAddCircle))
   simpa only [hc, smul_eq_mul, ← literatureCharacter_eq_mFourier,
     fT, literatureTorusContinuous, ContinuousMap.coe_mk,
-    literatureTorusFunction_mk f hp x] using h
+    literatureTorusFunction_mk f hp x, literatureTorusFunction_fourierCoeff] using h
 
 theorem literatureFourier_hasSumUniformly_of_summable_norm {n : ℕ}
     (f : LiteratureSpace n → ℂ) (hf : Continuous f) (hp : LiteraturePeriodic f)
@@ -348,7 +348,7 @@ theorem literatureFourier_hasSumUniformly_of_summable_norm {n : ℕ}
       (fun x => ∑' k : LiteratureFrequency n,
         LiteratureFourierCoefficient f k * LiteratureCharacter k x) Set.univ :=
     HasSumUniformlyOn.of_norm_le_summable hs (fun k x _ => by
-      rw [norm_mul, literatureCharacter_norm_eq_one, mul_one])
+      simp only [norm_mul, literatureCharacter_norm_eq_one, mul_one, le_refl])
   have he : (fun x : LiteratureSpace n => ∑' k : LiteratureFrequency n,
       LiteratureFourierCoefficient f k * LiteratureCharacter k x) = f := by
     funext x

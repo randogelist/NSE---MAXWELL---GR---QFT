@@ -10,7 +10,7 @@ set_option autoImplicit false
 set_option Elab.async true
 
 open Set
-open scoped Topology
+open scoped Topology NNReal
 
 namespace NSEGR.NativeLiterature
 

@@ -11,6 +11,7 @@ will use the literal native Christoffel symbols and metric compatibility.
 set_option autoImplicit false
 set_option Elab.async true
 set_option maxHeartbeats 3200000
+set_option backward.isDefEq.respectTransparency false
 
 namespace NSEGR.NativeLiterature
 
@@ -30,6 +31,10 @@ def coordDeriv (f : Bulk → F) (i : Fin 5) (z : Bulk) : F :=
 theorem coordDeriv_scalar (f : Bulk → ℝ) (i : Fin 5) (z : Bulk) :
     coordDeriv f i z = bulkPartial f i z := rfl
 
+@[simp] theorem coordDeriv_const (v : F) (i : Fin 5) (z : Bulk) :
+    coordDeriv (fun _ : Bulk => v) i z = 0 := by
+  simp [coordDeriv]
+
 theorem coordDeriv_add {f q : Bulk → F} {z : Bulk}
     (hf : AnalyticAt ℝ f z) (hq : AnalyticAt ℝ q z) (i : Fin 5) :
     coordDeriv (fun y => f y + q y) i z = coordDeriv f i z + coordDeriv q i z := by
@@ -43,6 +48,13 @@ theorem coordDeriv_sub {f q : Bulk → F} {z : Bulk}
   unfold coordDeriv
   rw [fderiv_fun_sub hf.differentiableAt hq.differentiableAt]
   rfl
+
+theorem coordDeriv_sum {n : ℕ} {f : Fin n → Bulk → F} {z : Bulk}
+    (hf : ∀ a, AnalyticAt ℝ (f a) z) (i : Fin 5) :
+    coordDeriv (fun y => ∑ a, f a y) i z = ∑ a, coordDeriv (f a) i z := by
+  unfold coordDeriv
+  rw [fderiv_fun_sum (fun a _ => (hf a).differentiableAt)]
+  simp only [ContinuousLinearMap.sum_apply]
 
 variable [CompleteSpace F]
 
@@ -59,7 +71,10 @@ theorem coordDeriv_coordDeriv {f : Bulk → F} {z : Bulk}
   have he : coordDeriv f i = fun y => A (fderiv ℝ f y) := rfl
   rw [he]
   unfold coordDeriv
-  rw [hd.fderiv]
+  have hd' : fderiv ℝ (fun y => A (fderiv ℝ f y)) z =
+      A.comp (fderiv ℝ (fderiv ℝ f) z) := by
+    simpa only [Function.comp_def] using hd.fderiv
+  rw [hd']
   rfl
 
 theorem coordDeriv_commute {f : Bulk → F} {z : Bulk}
@@ -112,7 +127,8 @@ theorem coordDeriv_matrixCommutator {f q : Bulk → BulkMatrix} {z : Bulk}
       matrixCommutator (coordDeriv f i z) (q z) +
       matrixCommutator (f z) (coordDeriv q i z) := by
   change coordDeriv (fun y => f y * q y - q y * f y) i z = _
-  rw [coordDeriv_sub (hf.mul hq) (hq.mul hf),
+  rw [coordDeriv_sub (f := fun y => f y * q y) (q := fun y => q y * f y)
+      (hf.mul hq) (hq.mul hf),
     coordDeriv_matrix_mul hf hq, coordDeriv_matrix_mul hq hf]
   unfold matrixCommutator
   noncomm_ring
@@ -140,6 +156,8 @@ theorem coordDeriv_connectionCurvature {Γ : Fin 5 → Bulk → BulkMatrix} {z :
     (fun y => (coordDeriv (Γ d) c y - coordDeriv (Γ c) d y) +
       matrixCommutator (Γ c y) (Γ d y)) e z = _
   rw [coordDeriv_add
+    (f := fun y => coordDeriv (Γ d) c y - coordDeriv (Γ c) d y)
+    (q := fun y => matrixCommutator (Γ c y) (Γ d y))
     ((analyticAt_coordDeriv (hΓ d) c).sub (analyticAt_coordDeriv (hΓ c) d))
     (analyticAt_matrixCommutator (hΓ c) (hΓ d))]
   rw [coordDeriv_sub (analyticAt_coordDeriv (hΓ d) c)

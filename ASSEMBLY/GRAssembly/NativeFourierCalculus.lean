@@ -260,6 +260,8 @@ theorem fourierIntegrand_periodic {f : LiteratureSpace n → ℂ}
     (hp : LiteraturePeriodic f) (k : LiteratureFrequency n) :
     LiteraturePeriodic (fun x => f x * LiteratureCharacter (-k) x) := by
   intro x j
+  change f (x + LiteratureUnitVector j) * LiteratureCharacter (-k) (x + LiteratureUnitVector j) =
+    f x * LiteratureCharacter (-k) x
   rw [hp x j, character_periodic (-k) x j]
 
 theorem fourierIntegrand_integrableOn {f : LiteratureSpace n → ℂ}
@@ -277,7 +279,11 @@ theorem fourierIntegrand_coordinateDerivative {f : LiteratureSpace n → ℂ}
       coordinateDerivative f j x * LiteratureCharacter (-k) x -
         derivativeSymbol j k * (f x * LiteratureCharacter (-k) x) := by
   have hd := (hf x).hasFDerivAt.mul (character_hasFDerivAt (-k) x)
-  rw [coordinateDerivative, hd.fderiv]
+  have hd' : HasFDerivAt (fun y => f y * LiteratureCharacter (-k) y)
+      (f x • (LiteratureCharacter (-k) x • characterPhaseCLM (-k)) +
+        LiteratureCharacter (-k) x • fderiv ℝ f x) x := by
+    simpa only [Pi.mul_def] using hd
+  rw [coordinateDerivative, hd'.fderiv]
   simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
     characterPhaseCLM_unitVector, smul_eq_mul, coordinateDerivative]
   unfold derivativeSymbol

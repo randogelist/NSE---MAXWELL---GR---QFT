@@ -3361,6 +3361,41 @@
     "status": "A_TIER_CANDIDATE"
   },
   {
+    "name": "NSEGR.NativeLiterature.ckTimeDerivative",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKNormalization",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimeDerivative_eq_fderiv",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKNormalization",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimeDerivative_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKNormalization",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckNormalizedSolution_timeDerivative_zero",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKNormalization",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckGerm_eq_of_timeDerivative_eq",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKNormalization",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
     "name": "NSEGR.NativeLiterature.ckNormalizeJet_zero",
     "kind": "theorem",
     "module": "GRAssembly.NativeCKNormalization",
@@ -3431,289 +3466,58 @@
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.NativeLiterature.coordinateDerivative",
-    "kind": "def",
-    "module": "GRAssembly.NativeFourierCalculus",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.derivativeSymbol",
-    "kind": "def",
-    "module": "GRAssembly.NativeFourierCalculus",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.characterPhaseCLM",
-    "kind": "def",
-    "module": "GRAssembly.NativeFourierCalculus",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.characterPhaseCLM_apply",
+    "name": "NSEGR.NativeLiterature.ckDenormalizeSolution_timeDerivative",
     "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
+    "module": "GRAssembly.NativeCKNormalization",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.NativeLiterature.characterPhaseCLM_unitVector",
+    "name": "NSEGR.NativeLiterature.ckDenormalizeSolution_spaceDerivative",
     "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
+    "module": "GRAssembly.NativeCKNormalization",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.NativeLiterature.character_eq_exp_phase",
+    "name": "NSEGR.NativeLiterature.ckNormalizeSolution_jet",
     "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
+    "module": "GRAssembly.NativeCKNormalization",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.NativeLiterature.character_contDiff",
+    "name": "NSEGR.NativeLiterature.ckDenormalizeSolution_jet",
     "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
+    "module": "GRAssembly.NativeCKNormalization",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.NativeLiterature.character_hasFDerivAt",
+    "name": "NSEGR.NativeLiterature.ckNormalizeSolution_isSolution",
     "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
+    "module": "GRAssembly.NativeCKNormalization",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.NativeLiterature.character_periodic",
+    "name": "NSEGR.NativeLiterature.ckDenormalizeSolution_isSolution",
     "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
+    "module": "GRAssembly.NativeCKNormalization",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.NativeLiterature.character_norm",
+    "name": "NSEGR.NativeLiterature.ckDenormalizeSolution_germ",
     "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
+    "module": "GRAssembly.NativeCKNormalization",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.NativeLiterature.coordinateDerivative_contDiff",
+    "name": "NSEGR.NativeLiterature.ckLocal_exists_unique_of_normalized",
     "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.coordinateDerivative_periodic",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.partialWord_contDiff",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.partialWord_periodic",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.cube_isCompact",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.integral_cube_coordinateDerivative_eq_zero",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.fourierIntegrand_contDiff",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.fourierIntegrand_periodic",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.fourierIntegrand_integrableOn",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.fourierIntegrand_coordinateDerivative",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.fourierCoefficient_coordinateDerivative",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.fourierCoefficient_partialWord",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.fourierCoefficient_norm_le_integral_norm",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeFourierCalculus",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.coordDeriv",
-    "kind": "def",
-    "module": "GRAssembly.NativeGaussianBianchi",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.coordDeriv_scalar",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeGaussianBianchi",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.coordDeriv_add",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeGaussianBianchi",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.coordDeriv_sub",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeGaussianBianchi",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.analyticAt_coordDeriv",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeGaussianBianchi",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.coordDeriv_coordDeriv",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeGaussianBianchi",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.coordDeriv_commute",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeGaussianBianchi",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.coordDeriv_congr_germ",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeGaussianBianchi",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.matrixCommutator",
-    "kind": "def",
-    "module": "GRAssembly.NativeGaussianBianchi",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.matrixCommutator_skew",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeGaussianBianchi",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.matrixCommutator_jacobi",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeGaussianBianchi",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.coordDeriv_matrix_mul",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeGaussianBianchi",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.analyticAt_matrixCommutator",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeGaussianBianchi",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.coordDeriv_matrixCommutator",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeGaussianBianchi",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.connectionCurvature",
-    "kind": "def",
-    "module": "GRAssembly.NativeGaussianBianchi",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.analyticAt_connectionCurvature",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeGaussianBianchi",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.coordDeriv_connectionCurvature",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeGaussianBianchi",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.NativeLiterature.connection_differential_bianchi",
-    "kind": "theorem",
-    "module": "GRAssembly.NativeGaussianBianchi",
+    "module": "GRAssembly.NativeCKNormalization",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
@@ -3755,6 +3559,55 @@
   {
     "name": "NSEGR.NativeLiterature.ckSeries_completeSpace",
     "kind": "instance",
+    "module": "GRAssembly.NativeCKSeries",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckSymmetrize",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKSeries",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckSymmetrize_symmetric",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKSeries",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckSymmetrize_diagonal",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKSeries",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckSymmetrize_norm_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKSeries",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckSymmetrizeCLM",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKSeries",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckSymmetrizeCLM_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKSeries",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckSymmetrizeCLM_norm_le",
+    "kind": "theorem",
     "module": "GRAssembly.NativeCKSeries",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
@@ -3924,6 +3777,1140 @@
     "name": "NSEGR.NativeLiterature.CKSeries.norm_eval_le",
     "kind": "theorem",
     "module": "GRAssembly.NativeCKSeries",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.iteratedFDeriv_eval_zero",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKSeries",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.eq_of_eval_eventuallyEq",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKSeries",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimeProj",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckSpaceProj",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimeInclude",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckSpaceInclude",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimeScale",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimeProj_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckSpaceProj_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimeScale_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimeScale_continuous",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimeScale_norm",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ck_prod_erase_eq_succAbove",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ck_hasDerivAt_product",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ck_integral_product_derivative",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckInsertTimeCLM",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckInsertTimeCLM_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPrimitiveKernelCLM",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPrimitiveKernelCLM_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPrimitiveKernelCLM_continuous",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPrimitiveKernelCLM_eval_norm_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPrimitiveCoeffCLM",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPrimitiveIntegral_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPrimitiveIntegral_norm_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPrimitiveCoeffCLM_norm_apply_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPrimitiveCoeffCLM_norm_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPrimitiveCoeffCLM_symmetric",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimePrimitiveFormal",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimePrimitiveFormal_norm_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimePrimitiveFormal_summable",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimePrimitiveSeries",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimePrimitiveSeries_coeff_succ",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimePrimitiveSeries_norm_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.timePrimitive",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.timePrimitive_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.timePrimitive_norm_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ck_multilinear_diagonal_difference_bound",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKComposition",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ck_multilinear_diagonal_norm_bound",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKComposition",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPositiveMultilinearSum",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKComposition",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPositiveMajorant",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKComposition",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPositiveMajorant_nonneg",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKComposition",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPositiveMultilinearSum_summable",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKComposition",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPositiveMultilinearSum_norm_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKComposition",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPositiveMultilinearSum_difference_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKComposition",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ck_summable_derivative_majorant_halfRadius",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKComposition",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.coeffCLM",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.coeffCLM_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.coeff_tsum",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.postcompose",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.postcompose_coeff",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.norm_postcompose_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.postcompose_add",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.postcompose_smul",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.postcomposeCLM",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.postcomposeCLM_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.norm_postcomposeCLM_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.single",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.single_coeff_self",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.single_coeff_ne",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.norm_single",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.eval_add",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.eval_smul",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.evalCLM",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.evalCLM_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.eval_tsum",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.eval_postcompose",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.eval_single",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKLift",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckBilinearCoeff",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKBilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckBilinearCoeff_diagonal",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKBilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckBilinearCoeff_norm_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKBilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.bilinearTerm",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKBilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.norm_bilinearTerm_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKBilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.bilinearTerm_summable",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKBilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.bilinear",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKBilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.norm_bilinear_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKBilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.eval_bilinearTerm",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKBilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.eval_bilinear",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKBilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.bilinear_add_left",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKBilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.bilinear_smul_left",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKBilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.bilinear_add_right",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKBilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.bilinear_smul_right",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKBilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.bilinearCLM",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKBilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.bilinearCLM_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKBilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.norm_bilinearCLM_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKBilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckCurryZeroCLM",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckCurryLeftCLM",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckCurryZeroCLM_norm_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckCurryLeftCLM_norm_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.contractMultilinear",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.norm_contractMultilinear_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.eval_contractMultilinear",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.multilinearApply",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.norm_multilinearApply_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.eval_multilinearApply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.multilinearLift",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.multilinearLift_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.norm_multilinearLift_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.superposition",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.superposition_majorant_summable",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.superposition_majorant_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.norm_superposition_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.superposition_difference_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.eval_superposition",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPhysicalScale",
+    "kind": "def",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPhysicalScale_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPhysicalScale_norm_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckInversePhysicalScale",
+    "kind": "def",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckInversePhysicalScale_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPhysicalScale_rightInverse",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckGerm_eq_of_physicalScale",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckSymmetrize_hasFPowerSeriesAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckMajorant_tendsto_zero",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckAnalytic_exists_small_comp_series",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckNormalizedSolution_small_timeSeries",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckNormalizedSolution_eq_of_timeSeries",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckLocalSolution_iff_literature",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.literatureAnalyticCKInput_of_normalized",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimeEquiv",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckJetEquiv",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTransformInitial",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTransformSolution",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTransformRHS",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimeEquiv_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimeEquiv_symm_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckJetEquiv_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckJetEquiv_symm_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTransformInitial_fderiv",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTransformSolution_spaceDerivative",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTransformSolution_timeDerivative",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTransformInitial_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTransformSolution_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTransformInitial_jet",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTransformRHS_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTransformSolution_isSolution",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTransformInitial_inverse",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTransformSolution_inverse",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTransformRHS_inverse",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTransformSolution_germ",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckLocal_exists_unique_of_literatureCK",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKFiniteDimensional",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordinateDerivative",
+    "kind": "def",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.derivativeSymbol",
+    "kind": "def",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.characterPhaseCLM",
+    "kind": "def",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.characterPhaseCLM_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.characterPhaseCLM_unitVector",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.character_eq_exp_phase",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.character_contDiff",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.character_hasFDerivAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.character_periodic",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.character_norm",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordinateDerivative_contDiff",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordinateDerivative_periodic",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.partialWord_contDiff",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.partialWord_periodic",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.cube_isCompact",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.integral_cube_coordinateDerivative_eq_zero",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.fourierIntegrand_contDiff",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.fourierIntegrand_periodic",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.fourierIntegrand_integrableOn",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.fourierIntegrand_coordinateDerivative",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.fourierCoefficient_coordinateDerivative",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.fourierCoefficient_partialWord",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.fourierCoefficient_norm_le_integral_norm",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierCalculus",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
@@ -4169,6 +5156,1000 @@
     "name": "NSEGR.NativeLiterature.literatureFourier_hasSumUniformly_of_summable_norm",
     "kind": "theorem",
     "module": "GRAssembly.NativeFourierTorus",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.frequencyWeight",
+    "kind": "def",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.productWeight",
+    "kind": "def",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.frequencyWeight_pos",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.productWeight_nonneg",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.summable_inverse_frequencyWeight",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.summable_productWeight",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordinateHelmholtz",
+    "kind": "def",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.productHelmholtz",
+    "kind": "def",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordinateHelmholtz_contDiff",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordinateHelmholtz_periodic",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.productHelmholtz_contDiff",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.productHelmholtz_periodic",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.fourierCoefficient_sub",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.one_sub_derivativeSymbol_sq",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.fourierCoefficient_coordinateHelmholtz",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.fourierCoefficient_productHelmholtz",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.productDecayConstant",
+    "kind": "def",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.productDecayConstant_nonneg",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.fourierCoefficient_product_decay",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.summable_norm_fourierCoefficient",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.summable_norm_fourierCoefficient_partialWord",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourierDecay",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.fourier_partialWord_hasSumUniformly",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourier",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.literatureSmoothFourierInput_native",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeFourier",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordDeriv",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordDeriv_scalar",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordDeriv_const",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordDeriv_add",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordDeriv_sub",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordDeriv_sum",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.analyticAt_coordDeriv",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordDeriv_coordDeriv",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordDeriv_commute",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordDeriv_congr_germ",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.matrixCommutator",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.matrixCommutator_skew",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.matrixCommutator_jacobi",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordDeriv_matrix_mul",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.analyticAt_matrixCommutator",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordDeriv_matrixCommutator",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.connectionCurvature",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.analyticAt_connectionCurvature",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordDeriv_connectionCurvature",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.connection_differential_bianchi",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianBianchi",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.metricConnection",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.loweredConnection",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.metricConnection_eq_inverse_mul",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordDeriv_matrix_entry",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.bulkPartial_entry_symm",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.loweredConnection_add_transpose",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.metric_mul_connection",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.metric_connection_compatible",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.analyticAt_bulkMatrix_inverse",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.analyticAt_nativeChristoffel",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.analyticAt_metricConnection",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.analyticAt_nativeRicci",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.metricConnection_torsion",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.metricCurvature",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.analyticAt_metricCurvature",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.metricCurvature_skew_last",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.metricCurvature_differential_bianchi",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.connectionCurvature_entry",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.connection_curvature_first_bianchi",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.metric_curvature_first_bianchi",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.bulkTransposeCLM",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.analyticAt_bulkTranspose",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordDeriv_bulkTranspose",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordDeriv_metric_compatibility",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.metric_curvature_skew_lower",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.loweredCurvature",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.loweredCurvature_skew_first",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.loweredCurvature_skew_last",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.loweredCurvature_first_bianchi",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.loweredCurvature_pair_symmetry",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.nativeRicci_eq_curvature_trace",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.nativeRicci_eq_lowered_contraction",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.nativeRicci_symmetric",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianMetricCurvature",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.MetricSkew",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.MetricSkew.zero",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.MetricSkew.add",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.MetricSkew.neg",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.MetricSkew.sub",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.MetricSkew.smul",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.MetricSkew.sum",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.MetricSkew.connectionDerivative",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.covariantCurvature",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.covariantCurvature_metricSkew",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.covariantCurvature_first_form_skew",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.covariantCurvature_bianchi",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.covariantRicci",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.curvature_trace_algebra",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordDeriv_nativeRicci_entry",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.covariantRicci_eq_curvature_trace",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.covariantRicci_first_contracted_bianchi",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordDeriv_bulkInverse",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.coordDeriv_inverse_compatible",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.scalar_contraction_derivative_algebra",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.bulkPartial_scalarCurvature",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.MetricSkew.inverse_pairing",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.metricSkew_double_contraction",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.native_contracted_bianchi",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianContraction",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.GaussianBase",
+    "kind": "abbrev",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.GaussianState",
+    "kind": "abbrev",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianBaseBasis",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianBulkCoordinates",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianSplitCoordinates",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianBulkCoordinates_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianSplitCoordinates_bulkPoint",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianBulkCoordinates_split",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianSymmetrize",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianSymmetrize_apply",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianSymmetrize_isSymm",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianSymmetrize_eq_of_isSymm",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianStateMetric",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianStateVelocity",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianStateSpatial",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianInitialState",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianInitialState_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianJetMetric",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianJetVelocity",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianJetSpatial",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianJetSecond",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianJetConnection",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianJetInverseDerivative",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianJetConnectionDerivative",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianJetRicci",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianJetTrace",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianJetMetric_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianJetVelocity_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianJetSpatial_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianJetSecond_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianJetInverse_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianJetConnection_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianJetInverseDerivative_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianJetConnectionDerivative_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianJetRicci_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianJetTrace_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianCKRHS",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianCKRHS_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianCKRHS_metric",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianCKRHS_velocity_symmetric",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianCKRHS_spatial",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.GaussianEvolutionGerm",
+    "kind": "structure",
+    "module": "GRAssembly.NativeGaussianEvolution",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   }

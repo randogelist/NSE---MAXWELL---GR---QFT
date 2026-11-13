@@ -1,4 +1,5 @@
 import GRAdapter.LiteratureInputs
+import Mathlib.Analysis.Calculus.MeanValue
 
 /-!
 Affine normalization of the literal finite-dimensional analytic CK problem.
@@ -73,6 +74,67 @@ abbrev CKNormalizedSolution (g : CKRHS E V)
     (w : ℝ × E → V) : Prop :=
   CKLocalSolution g (fun _ => 0) 0 0 w
 
+def ckTimeDerivative (w : ℝ × E → V) (z : ℝ × E) : V :=
+  deriv (fun t => w (t, z.2)) z.1
+
+theorem ckTimeDerivative_eq_fderiv {w : ℝ × E → V} {z : ℝ × E}
+    (hw : DifferentiableAt ℝ w z) :
+    ckTimeDerivative w z = fderiv ℝ w z (1, 0) := by
+  have hpath := (hasDerivAt_id z.1).prodMk (hasDerivAt_const z.1 z.2)
+  simpa only [ckTimeDerivative, Function.comp_apply, Prod.eta] using
+    (hw.hasFDerivAt.comp_hasDerivAt z.1 hpath).deriv
+
+theorem ckTimeDerivative_analyticAt {w : ℝ × E → V} {z : ℝ × E}
+    (hw : AnalyticAt ℝ w z) : AnalyticAt ℝ (ckTimeDerivative w) z := by
+  have h : AnalyticAt ℝ (fun y => fderiv ℝ w y (1, 0)) z :=
+    ((ContinuousLinearMap.apply ℝ V (1, 0)).analyticAt _).comp hw.fderiv
+  apply h.congr
+  filter_upwards [hw.eventually_analyticAt] with y hy
+  exact (ckTimeDerivative_eq_fderiv hy.differentiableAt).symm
+
+theorem ckNormalizedSolution_timeDerivative_zero {g : CKRHS E V}
+    {w : ℝ × E → V} (hw : CKNormalizedSolution g w) (hg₀ : g 0 = 0) :
+    ckTimeDerivative w 0 = 0 := by
+  have hw₀ : w (0, 0) = 0 := hw.initial.eq_of_nhds
+  have hdx : fderiv ℝ (fun x => w (0, x)) 0 = 0 := by
+    simpa using hw.initial.fderiv_eq
+  have heq := hw.equation.eq_of_nhds
+  simpa [ckTimeDerivative, hw₀, hdx, hg₀] using heq
+
+/-- Equality of analytic time derivatives and initial germs determines the
+whole germ. This is the one-dimensional mean-value theorem on a common rectangle. -/
+theorem ckGerm_eq_of_timeDerivative_eq {w v : ℝ × E → V}
+    (hw : AnalyticAt ℝ w 0) (hv : AnalyticAt ℝ v 0)
+    (hinitial : ∀ᶠ x in 𝓝 (0 : E), w (0, x) = v (0, x))
+    (hderiv : ckTimeDerivative w =ᶠ[𝓝 0] ckTimeDerivative v) :
+    w =ᶠ[𝓝 0] v := by
+  have hp : ∀ᶠ z in 𝓝 (0 : ℝ × E),
+      AnalyticAt ℝ w z ∧ AnalyticAt ℝ v z ∧
+        ckTimeDerivative w z = ckTimeDerivative v z :=
+    hw.eventually_analyticAt.and (hv.eventually_analyticAt.and hderiv)
+  have hp' : ∀ᶠ z in 𝓝 (0 : ℝ) ×ˢ 𝓝 (0 : E),
+      AnalyticAt ℝ w z ∧ AnalyticAt ℝ v z ∧
+        ckTimeDerivative w z = ckTimeDerivative v z := by
+    simpa only [nhds_prod_eq] using hp
+  obtain ⟨ε, hε, p, hpx, hrect⟩ := Metric.eventually_nhds_prod_iff.mp hp'
+  change ∀ᶠ z in 𝓝 ((0 : ℝ), (0 : E)), w z = v z
+  rw [nhds_prod_eq]
+  apply Metric.eventually_nhds_prod_iff.mpr
+  refine ⟨ε, hε, (fun x => p x ∧ w (0, x) = v (0, x)), hpx.and hinitial, ?_⟩
+  intro t ht x hx
+  have hwd : DifferentiableOn ℝ (fun s : ℝ => w (s, x)) (Metric.ball 0 ε) := by
+    intro s hs
+    exact (hrect hs hx.1).1.curry_left.differentiableAt.differentiableWithinAt
+  have hvd : DifferentiableOn ℝ (fun s : ℝ => v (s, x)) (Metric.ball 0 ε) := by
+    intro s hs
+    exact (hrect hs hx.1).2.1.curry_left.differentiableAt.differentiableWithinAt
+  have hdeq : (Metric.ball (0 : ℝ) ε).EqOn
+      (deriv (fun s => w (s, x))) (deriv (fun s => v (s, x))) := by
+    intro s hs
+    exact (hrect hs hx.1).2.2
+  exact (isOpen_ball.eqOn_of_deriv_eq (convex_ball (0 : ℝ) ε).isPreconnected
+    hwd hvd hdeq (by simpa using hε) hx.2) ht
+
 @[simp] theorem ckNormalizeJet_zero (F : CKRHS E V)
     (u₀ : E → V) (t₀ : ℝ)
     (x₀ : E) :
@@ -99,10 +161,11 @@ theorem ckNormalizeJet_analyticAt (F : CKRHS E V)
   have hxs : AnalyticAt ℝ (fun J : CKJet E V => x₀ + J.1.2) 0 :=
     analyticAt_const.add hx
   have hu : AnalyticAt ℝ (fun J : CKJet E V => u₀ (x₀ + J.1.2)) 0 :=
-    (by simpa using hu₀).comp hxs
+    (show AnalyticAt ℝ u₀ (x₀ + (0 : CKJet E V).1.2) by simpa using hu₀).comp hxs
   have hdu : AnalyticAt ℝ
       (fun J : CKJet E V => fderiv ℝ u₀ (x₀ + J.1.2)) 0 :=
-    (by simpa using hu₀.fderiv).comp hxs
+    (show AnalyticAt ℝ (fderiv ℝ u₀) (x₀ + (0 : CKJet E V).1.2) by
+      simpa using hu₀.fderiv).comp hxs
   exact ((analyticAt_const.add ht).prod hxs).prod
     (((hu.add (ht.smul analyticAt_const)).add hy).prod (hdu.add hz))
 
@@ -143,9 +206,10 @@ theorem ckNormalizeSolution_analyticAt (F : CKRHS E V)
     analyticAt_const.add analyticAt_fst
   have hua : AnalyticAt ℝ (fun z : ℝ × E =>
       u (t₀ + z.1, x₀ + z.2)) 0 :=
-    (by simpa using hu).comp (hts.prod hxs)
+    (show AnalyticAt ℝ u (t₀ + (0 : ℝ × E).1, x₀ + (0 : ℝ × E).2) by
+      simpa using hu).comp (hts.prod hxs)
   have hu₀a : AnalyticAt ℝ (fun z : ℝ × E => u₀ (x₀ + z.2)) 0 :=
-    (by simpa using hu₀).comp hxs
+    (show AnalyticAt ℝ u₀ (x₀ + (0 : ℝ × E).2) by simpa using hu₀).comp hxs
   exact (hua.sub hu₀a).sub (analyticAt_fst.smul analyticAt_const)
 
 theorem ckDenormalizeSolution_analyticAt (F : CKRHS E V)
@@ -159,7 +223,7 @@ theorem ckDenormalizeSolution_analyticAt (F : CKRHS E V)
     analyticAt_snd.sub analyticAt_const
   have hwa : AnalyticAt ℝ (fun z : ℝ × E =>
       w (z.1 - t₀, z.2 - x₀)) (t₀, x₀) :=
-    (by simpa using hw).comp (hts.prod hxs)
+    (show AnalyticAt ℝ w (t₀ - t₀, x₀ - x₀) by simpa using hw).comp (hts.prod hxs)
   exact ((hu₀.comp analyticAt_snd).add (hts.smul analyticAt_const)).add hwa
 
 theorem ckNormalizeSolution_timeDerivative (F : CKRHS E V)
@@ -172,7 +236,7 @@ theorem ckNormalizeSolution_timeDerivative (F : CKRHS E V)
         ckInitialVelocity F u₀ t₀ x₀ := by
   have ht := hu.hasDerivAt.comp_const_add t₀ z.1
   have hc := (hasDerivAt_id z.1).smul_const (ckInitialVelocity F u₀ t₀ x₀)
-  simpa only [ckNormalizeSolution, one_smul] using
+  simpa only [ckNormalizeSolution, one_smul, Pi.sub_apply, id_eq] using
     ((ht.sub_const (u₀ (x₀ + z.2))).sub hc).deriv
 
 theorem ckNormalizeSolution_spaceDerivative (F : CKRHS E V)
@@ -187,6 +251,166 @@ theorem ckNormalizeSolution_spaceDerivative (F : CKRHS E V)
   have hu' := (hasFDerivAt_comp_add_left x₀).mpr hu.hasFDerivAt
   have hu₀' := (hasFDerivAt_comp_add_left x₀).mpr hu₀.hasFDerivAt
   exact ((hu'.sub hu₀').sub_const (z.1 • ckInitialVelocity F u₀ t₀ x₀)).fderiv
+
+
+theorem ckDenormalizeSolution_timeDerivative (F : CKRHS E V)
+    (u₀ : E → V) (t₀ : ℝ) (x₀ : E) {w : ℝ × E → V}
+    (z : ℝ × E)
+    (hw : DifferentiableAt ℝ (fun t => w (t, z.2 - x₀)) (z.1 - t₀)) :
+    deriv (fun t => ckDenormalizeSolution F u₀ t₀ x₀ w (t, z.2)) z.1 =
+      ckInitialVelocity F u₀ t₀ x₀ +
+        deriv (fun t => w (t, z.2 - x₀)) (z.1 - t₀) := by
+  have ht := hw.hasDerivAt.comp_sub_const z.1 t₀
+  have hc := ((hasDerivAt_id z.1).sub_const t₀).smul_const
+    (ckInitialVelocity F u₀ t₀ x₀)
+  simpa only [ckDenormalizeSolution, one_smul, zero_add, Pi.add_apply, id_eq] using
+    (((hasDerivAt_const z.1 (u₀ z.2)).add hc).add ht).deriv
+
+theorem ckDenormalizeSolution_spaceDerivative (F : CKRHS E V)
+    (u₀ : E → V) (t₀ : ℝ) (x₀ : E) {w : ℝ × E → V}
+    (z : ℝ × E)
+    (hw : DifferentiableAt ℝ (fun x => w (z.1 - t₀, x)) (z.2 - x₀))
+    (hu₀ : DifferentiableAt ℝ u₀ z.2) :
+    fderiv ℝ (fun x => ckDenormalizeSolution F u₀ t₀ x₀ w (z.1, x)) z.2 =
+      fderiv ℝ u₀ z.2 + fderiv ℝ (fun x => w (z.1 - t₀, x)) (z.2 - x₀) := by
+  have hw' := (hasFDerivAt_comp_sub x₀).mpr hw.hasFDerivAt
+  exact ((hu₀.hasFDerivAt.add_const
+    ((z.1 - t₀) • ckInitialVelocity F u₀ t₀ x₀)).add hw').fderiv
+
+theorem ckNormalizeSolution_jet (F : CKRHS E V)
+    (u₀ : E → V) (t₀ : ℝ) (x₀ : E) {u : ℝ × E → V}
+    (z : ℝ × E)
+    (hu : DifferentiableAt ℝ (fun x => u (t₀ + z.1, x)) (x₀ + z.2))
+    (hu₀ : DifferentiableAt ℝ u₀ (x₀ + z.2)) :
+    ckNormalizeJet F u₀ t₀ x₀
+      (z, (ckNormalizeSolution F u₀ t₀ x₀ u z,
+        fderiv ℝ (fun x => ckNormalizeSolution F u₀ t₀ x₀ u (z.1, x)) z.2)) =
+      ((t₀ + z.1, x₀ + z.2),
+        (u (t₀ + z.1, x₀ + z.2),
+          fderiv ℝ (fun x => u (t₀ + z.1, x)) (x₀ + z.2))) := by
+  rw [ckNormalizeSolution_spaceDerivative F u₀ t₀ x₀ z hu hu₀]
+  apply Prod.ext rfl
+  apply Prod.ext
+  · dsimp only [ckNormalizeJet, ckNormalizeSolution]
+    abel
+  · dsimp only [ckNormalizeJet]
+    abel
+
+theorem ckDenormalizeSolution_jet (F : CKRHS E V)
+    (u₀ : E → V) (t₀ : ℝ) (x₀ : E) {w : ℝ × E → V}
+    (z : ℝ × E)
+    (hw : DifferentiableAt ℝ (fun x => w (z.1 - t₀, x)) (z.2 - x₀))
+    (hu₀ : DifferentiableAt ℝ u₀ z.2) :
+    ckNormalizeJet F u₀ t₀ x₀
+      ((z.1 - t₀, z.2 - x₀),
+        (w (z.1 - t₀, z.2 - x₀),
+          fderiv ℝ (fun x => w (z.1 - t₀, x)) (z.2 - x₀))) =
+      (z, (ckDenormalizeSolution F u₀ t₀ x₀ w z,
+        fderiv ℝ (fun x => ckDenormalizeSolution F u₀ t₀ x₀ w (z.1, x)) z.2)) := by
+  rw [ckDenormalizeSolution_spaceDerivative F u₀ t₀ x₀ z hw hu₀]
+  have ht : t₀ + (z.1 - t₀) = z.1 := by abel
+  have hx : x₀ + (z.2 - x₀) = z.2 := by abel
+  simp only [ckNormalizeJet, ckDenormalizeSolution, ht, hx, Prod.eta]
+
+theorem ckNormalizeSolution_isSolution (F : CKRHS E V)
+    (u₀ : E → V) (t₀ : ℝ) (x₀ : E) {u : ℝ × E → V}
+    (hu₀ : AnalyticAt ℝ u₀ x₀) (hu : CKLocalSolution F u₀ t₀ x₀ u) :
+    CKNormalizedSolution (ckNormalizeRHS F u₀ t₀ x₀)
+      (ckNormalizeSolution F u₀ t₀ x₀ u) := by
+  have hshift : Tendsto (fun z : ℝ × E => (t₀ + z.1, x₀ + z.2))
+      (𝓝 0) (𝓝 (t₀, x₀)) := by
+    simpa using
+      (((continuous_const.add continuous_fst).prodMk
+        (continuous_const.add continuous_snd)).continuousAt.tendsto
+        : Tendsto (fun z : ℝ × E => (t₀ + z.1, x₀ + z.2))
+            (𝓝 0) (𝓝 (t₀ + (0 : ℝ × E).1, x₀ + (0 : ℝ × E).2)))
+  have hxshift : Tendsto (fun x : E => x₀ + x) (𝓝 0) (𝓝 x₀) := by
+    simpa only [add_zero] using
+      ((continuous_const.add continuous_id).continuousAt.tendsto
+        : Tendsto (fun x : E => x₀ + x) (𝓝 0) (𝓝 (x₀ + 0)))
+  have hspace : Tendsto (fun z : ℝ × E => x₀ + z.2) (𝓝 0) (𝓝 x₀) := by
+    simpa using
+      ((continuous_const.add continuous_snd).continuousAt.tendsto
+        : Tendsto (fun z : ℝ × E => x₀ + z.2) (𝓝 0) (𝓝 (x₀ + (0 : ℝ × E).2)))
+  refine ⟨ckNormalizeSolution_analyticAt F u₀ t₀ x₀ hu₀ hu.analytic, ?_, ?_⟩
+  · filter_upwards [hxshift.eventually hu.initial] with x hx
+    simpa only [ckNormalizeSolution, zero_add, add_zero, zero_smul, sub_zero,
+      sub_self] using congrArg (fun v => v - u₀ (x₀ + x)) hx
+  · filter_upwards [hshift.eventually hu.equation,
+      hshift.eventually hu.analytic.eventually_analyticAt,
+      hspace.eventually hu₀.eventually_analyticAt] with z hz hzu hz₀
+    rw [ckNormalizeSolution_timeDerivative F u₀ t₀ x₀ z
+      hzu.curry_left.differentiableAt]
+    change _ = F (ckNormalizeJet F u₀ t₀ x₀ _) - ckInitialVelocity F u₀ t₀ x₀
+    rw [ckNormalizeSolution_jet F u₀ t₀ x₀ z
+      hzu.curry_right.differentiableAt hz₀.differentiableAt]
+    exact congrArg (fun v => v - ckInitialVelocity F u₀ t₀ x₀) hz
+
+theorem ckDenormalizeSolution_isSolution (F : CKRHS E V)
+    (u₀ : E → V) (t₀ : ℝ) (x₀ : E) {w : ℝ × E → V}
+    (hu₀ : AnalyticAt ℝ u₀ x₀)
+    (hw : CKNormalizedSolution (ckNormalizeRHS F u₀ t₀ x₀) w) :
+    CKLocalSolution F u₀ t₀ x₀ (ckDenormalizeSolution F u₀ t₀ x₀ w) := by
+  have hshift : Tendsto (fun z : ℝ × E => (z.1 - t₀, z.2 - x₀))
+      (𝓝 (t₀, x₀)) (𝓝 0) := by
+    simpa using
+      (((continuous_fst.sub continuous_const).prodMk
+        (continuous_snd.sub continuous_const)).continuousAt.tendsto
+        : Tendsto (fun z : ℝ × E => (z.1 - t₀, z.2 - x₀))
+            (𝓝 (t₀, x₀)) (𝓝 (t₀ - t₀, x₀ - x₀)))
+  have hxshift : Tendsto (fun x : E => x - x₀) (𝓝 x₀) (𝓝 0) := by
+    simpa only [sub_self] using
+      ((continuous_id.sub continuous_const).continuousAt.tendsto
+        : Tendsto (fun x : E => x - x₀) (𝓝 x₀) (𝓝 (x₀ - x₀)))
+  have hspace : Tendsto (fun z : ℝ × E => z.2) (𝓝 (t₀, x₀)) (𝓝 x₀) :=
+    continuous_snd.continuousAt.tendsto
+  refine ⟨ckDenormalizeSolution_analyticAt F u₀ t₀ x₀ hu₀ hw.analytic, ?_, ?_⟩
+  · filter_upwards [hxshift.eventually hw.initial] with x hx
+    simp only [ckDenormalizeSolution, sub_self, zero_smul, add_zero, hx]
+  · filter_upwards [hshift.eventually hw.equation,
+      hshift.eventually hw.analytic.eventually_analyticAt,
+      hspace.eventually hu₀.eventually_analyticAt] with z hz hzw hz₀
+    rw [ckDenormalizeSolution_timeDerivative F u₀ t₀ x₀ z
+      hzw.curry_left.differentiableAt]
+    change deriv (fun t => w (t, z.2 - x₀)) (z.1 - t₀) =
+      F (ckNormalizeJet F u₀ t₀ x₀ _) - ckInitialVelocity F u₀ t₀ x₀ at hz
+    rw [ckDenormalizeSolution_jet F u₀ t₀ x₀ z
+      hzw.curry_right.differentiableAt hz₀.differentiableAt] at hz
+    rw [hz]
+    abel
+
+theorem ckDenormalizeSolution_germ (F : CKRHS E V)
+    (u₀ : E → V) (t₀ : ℝ) (x₀ : E) {w v : ℝ × E → V}
+    (h : w =ᶠ[𝓝 (0 : ℝ × E)] v) :
+    ckDenormalizeSolution F u₀ t₀ x₀ w =ᶠ[𝓝 (t₀, x₀)]
+      ckDenormalizeSolution F u₀ t₀ x₀ v := by
+  have hshift : Tendsto (fun z : ℝ × E => (z.1 - t₀, z.2 - x₀))
+      (𝓝 (t₀, x₀)) (𝓝 0) := by
+    simpa using
+      (((continuous_fst.sub continuous_const).prodMk
+        (continuous_snd.sub continuous_const)).continuousAt.tendsto
+        : Tendsto (fun z : ℝ × E => (z.1 - t₀, z.2 - x₀))
+            (𝓝 (t₀, x₀)) (𝓝 (t₀ - t₀, x₀ - x₀)))
+  filter_upwards [hshift.eventually h] with z hz
+  exact congrArg (fun a => u₀ z.2 + (z.1 - t₀) • ckInitialVelocity F u₀ t₀ x₀ + a) hz
+
+/-- Affine transport only; the normalized existence/uniqueness premise remains explicit. -/
+theorem ckLocal_exists_unique_of_normalized
+    (hnormalized : ∀ (g : CKRHS E V), AnalyticAt ℝ g 0 → g 0 = 0 →
+      ∃ w : ℝ × E → V, CKNormalizedSolution g w ∧
+        ∀ v : ℝ × E → V, CKNormalizedSolution g v → w =ᶠ[𝓝 0] v)
+    (F : CKRHS E V) (u₀ : E → V) (t₀ : ℝ) (x₀ : E)
+    (hu₀ : AnalyticAt ℝ u₀ x₀) (hF : AnalyticAt ℝ F (ckInitialJet t₀ x₀ u₀)) :
+    ∃ u : ℝ × E → V, CKLocalSolution F u₀ t₀ x₀ u ∧
+      ∀ v : ℝ × E → V, CKLocalSolution F u₀ t₀ x₀ v → u =ᶠ[𝓝 (t₀, x₀)] v := by
+  obtain ⟨w, hw, huniq⟩ := hnormalized (ckNormalizeRHS F u₀ t₀ x₀)
+    (ckNormalizeRHS_analyticAt F u₀ t₀ x₀ hu₀ hF) (ckNormalizeRHS_zero F u₀ t₀ x₀)
+  refine ⟨ckDenormalizeSolution F u₀ t₀ x₀ w,
+    ckDenormalizeSolution_isSolution F u₀ t₀ x₀ hu₀ hw, ?_⟩
+  intro v hv
+  have hnorm := ckNormalizeSolution_isSolution F u₀ t₀ x₀ hu₀ hv
+  have he := ckDenormalizeSolution_germ F u₀ t₀ x₀ (huniq _ hnorm)
+  simpa only [ckDenormalize_normalize] using he
 
 end
 

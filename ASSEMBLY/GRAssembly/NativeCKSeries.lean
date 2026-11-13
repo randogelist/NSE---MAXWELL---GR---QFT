@@ -46,7 +46,7 @@ def CKSeriesSpace : Submodule ℝ (lp (CKCoeff E F) 1) where
       change c • p n (v ∘ σ) = c • p n v
       rw [hp.2 n v σ]
 
-abbrev CKSeries := CKSeriesSpace E F
+abbrev CKSeries : Type _ := ↥(CKSeriesSpace E F)
 
 theorem ckSeriesSpace_isClosed : IsClosed (CKSeriesSpace E F : Set (lp (CKCoeff E F) 1)) := by
   have hc (n : ℕ) (v : Fin n → E) :
@@ -61,6 +61,57 @@ theorem ckSeriesSpace_isClosed : IsClosed (CKSeriesSpace E F : Set (lp (CKCoeff 
 
 instance ckSeries_completeSpace [CompleteSpace F] : CompleteSpace (CKSeries E F) :=
   (ckSeriesSpace_isClosed E F).isComplete.completeSpace_coe
+
+def ckSymmetrize {n : ℕ} (a : CKCoeff E F n) : CKCoeff E F n :=
+  ((n.factorial : ℝ)⁻¹) • ∑ σ : Equiv.Perm (Fin n), a.domDomCongr σ
+
+theorem ckSymmetrize_symmetric {n : ℕ} (a : CKCoeff E F n) (v : Fin n → E)
+    (σ : Equiv.Perm (Fin n)) :
+    ckSymmetrize E F a (v ∘ σ) = ckSymmetrize E F a v := by
+  simp only [ckSymmetrize, ContinuousMultilinearMap.smul_apply,
+    ContinuousMultilinearMap.sum_apply, ContinuousMultilinearMap.domDomCongr_apply]
+  congr 1
+  conv_rhs => rw [← Equiv.sum_comp (Equiv.mulLeft σ)]
+  simp only [Equiv.coe_mulLeft, Equiv.Perm.coe_mul, Function.comp_apply]
+
+theorem ckSymmetrize_diagonal {n : ℕ} (a : CKCoeff E F n) (x : E) :
+    ckSymmetrize E F a (fun _ => x) = a (fun _ => x) := by
+  simp only [ckSymmetrize, ContinuousMultilinearMap.smul_apply,
+    ContinuousMultilinearMap.sum_apply, ContinuousMultilinearMap.domDomCongr_apply,
+    Function.comp_def]
+  rw [Finset.sum_const, Finset.card_univ, Fintype.card_perm, Fintype.card_fin,
+    ← Nat.cast_smul_eq_nsmul ℝ, smul_smul]
+  have hn : (n.factorial : ℝ) ≠ 0 := by exact_mod_cast Nat.factorial_ne_zero n
+  rw [inv_mul_cancel₀ hn, one_smul]
+
+theorem ckSymmetrize_norm_le {n : ℕ} (a : CKCoeff E F n) :
+    ‖ckSymmetrize E F a‖ ≤ ‖a‖ := by
+  have hn : (n.factorial : ℝ) ≠ 0 := by exact_mod_cast Nat.factorial_ne_zero n
+  have hn0 : 0 ≤ (n.factorial : ℝ)⁻¹ := inv_nonneg.mpr (by positivity)
+  calc
+    ‖ckSymmetrize E F a‖ = (n.factorial : ℝ)⁻¹ *
+        ‖∑ σ : Equiv.Perm (Fin n), a.domDomCongr σ‖ := by
+      rw [ckSymmetrize, norm_smul, Real.norm_of_nonneg hn0]
+    _ ≤ (n.factorial : ℝ)⁻¹ *
+        ∑ σ : Equiv.Perm (Fin n), ‖a.domDomCongr σ‖ :=
+      mul_le_mul_of_nonneg_left (norm_sum_le _ _) hn0
+    _ = ‖a‖ := by
+      simp only [ContinuousMultilinearMap.norm_domDomCongr, Finset.sum_const,
+        Finset.card_univ, Fintype.card_perm, Fintype.card_fin, nsmul_eq_mul]
+      rw [← mul_assoc, inv_mul_cancel₀ hn, one_mul]
+
+def ckSymmetrizeCLM (n : ℕ) : CKCoeff E F n →L[ℝ] CKCoeff E F n :=
+  ((n.factorial : ℝ)⁻¹) • ∑ σ : Equiv.Perm (Fin n),
+    (ContinuousMultilinearMap.domDomCongrₗᵢ ℝ E F σ).toContinuousLinearEquiv.toContinuousLinearMap
+
+@[simp] theorem ckSymmetrizeCLM_apply (n : ℕ) (a : CKCoeff E F n) :
+    ckSymmetrizeCLM E F n a = ckSymmetrize E F a := by
+  simp [ckSymmetrizeCLM, ckSymmetrize, ContinuousMultilinearMap.domDomCongrₗᵢ]
+
+theorem ckSymmetrizeCLM_norm_le (n : ℕ) : ‖ckSymmetrizeCLM E F n‖ ≤ 1 := by
+  apply ContinuousLinearMap.opNorm_le_bound (by norm_num)
+  intro a
+  simpa using ckSymmetrize_norm_le E F a
 
 namespace CKSeries
 
@@ -107,7 +158,9 @@ def ofCoeffs (q : FormalMultilinearSeries ℝ E F)
     (hq : Summable (fun n => ‖q n‖)) (hzero : q 0 = 0)
     (hsym : ∀ (n : ℕ) (v : Fin n → E) (σ : Equiv.Perm (Fin n)), q n (v ∘ σ) = q n v) :
     CKSeries E F :=
-  ⟨⟨q, by simpa [Memℓp] using hq⟩, hzero, hsym⟩
+  ⟨⟨q, by
+    change Memℓp q 1
+    exact memℓp_gen (by simpa using hq)⟩, hzero, hsym⟩
 
 @[simp] theorem ofCoeffs_coeff (q : FormalMultilinearSeries ℝ E F)
     (hq : Summable (fun n => ‖q n‖)) (hzero : q 0 = 0)
@@ -155,6 +208,31 @@ theorem norm_eval_le [CompleteSpace F] (p : CKSeries E F) {x : E} (hx : ‖x‖ 
   apply (p.hasSum_eval hx).norm_le_of_bounded p.hasSum_norm
   intro n
   exact (p.coeff n).unit_le_opNorm ((pi_norm_le_iff_of_nonneg (by norm_num)).2 fun _ => hx.le)
+
+theorem iteratedFDeriv_eval_zero [CompleteSpace F] (p : CKSeries E F)
+    (n : ℕ) (v : Fin n → E) :
+    iteratedFDeriv ℝ n p.eval 0 v = (n.factorial : ℝ) • p.coeff n v := by
+  calc
+    iteratedFDeriv ℝ n p.eval 0 v =
+        ∑ σ : Equiv.Perm (Fin n), p.coeff n (fun i => v (σ i)) :=
+      p.hasFPowerSeriesOnBall.iteratedFDeriv_eq_sum_of_completeSpace v
+    _ = ∑ _σ : Equiv.Perm (Fin n), p.coeff n v := by
+      apply Finset.sum_congr rfl
+      intro σ _
+      exact p.coeff_symm n v σ
+    _ = (n.factorial : ℝ) • p.coeff n v := by
+      simp only [Finset.sum_const, Finset.card_univ, Fintype.card_perm,
+        Fintype.card_fin, Nat.cast_smul_eq_nsmul]
+
+theorem eq_of_eval_eventuallyEq [CompleteSpace F] {p q : CKSeries E F}
+    (h : p.eval =ᶠ[𝓝 (0 : E)] q.eval) : p = q := by
+  apply CKSeries.ext
+  intro n
+  apply ContinuousMultilinearMap.ext
+  intro v
+  have hd := congrArg (fun a : CKCoeff E F n => a v) ((h.iteratedFDeriv ℝ n).eq_of_nhds)
+  rw [p.iteratedFDeriv_eval_zero, q.iteratedFDeriv_eval_zero] at hd
+  exact (smul_right_injective F (by exact_mod_cast Nat.factorial_ne_zero n)) hd
 
 end CKSeries
 
