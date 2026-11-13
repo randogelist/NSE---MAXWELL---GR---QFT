@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "export_source_commit": "3fca9683db24d649e535aab4f866b678f675ff04",
+  "root_certificate": "NSEB_IFF_CM_A_TIER.txt",
+  "dependency_certificate": "L1_FLOW_REALIZATION_A_TIER.txt",
+  "root_certificate_metadata": {
+    "STATUS": "A_TIER",
+    "EXACT_ROOT": "ClassicalMechanicsAssembly.NSEB_IFF_CM",
+    "POSITIVE_ROOT": "ClassicalMechanicsAssembly.NSEB_IFF_CM_POSITIVE",
+    "SOURCE": "ASSEMBLY/ClassicalMechanicsAssembly/FlowNSEBCM.lean",
+    "TOOLCHAIN": "leanprover/lean4:v4.34.0-rc1",
+    "EXTERNAL_COMPILER_AND_AXIOM_AUDIT": "PASS_STANDARD_ONLY",
+    "EXTERNAL_SOURCE": "adb4dcdc31c211add64946b817e9edba2c1b9146",
+    "EXTERNAL_RUN": "43447885685",
+    "EXTERNAL_RUN_URL": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43447885685",
+    "EXTERNAL_ARTIFACT": "14049487046",
+    "ARTIFACT_SHA256": "186e44d64b7a038b32dcdf57df43f036f5ffe56dd357751b9e0c5671d4bad8a8",
+    "RETAINED_EVIDENCE": "Auxillary/evidence/nseb-cm-linux-43447885685"
+  },
+  "dependency_certificate_metadata": {
+    "STATUS": "A_TIER",
+    "EXACT_ROOT": "ClassicalMechanicsAssembly.L1_native",
+    "SOURCE": "ASSEMBLY/ClassicalMechanicsAssembly/FlowRealization.lean",
+    "EXTERNAL_SOURCE": "34b1fe1100f726d51955a7bf9ac5059d8069fb32",
+    "EXTERNAL_RUN": "43401581626",
+    "EXTERNAL_RUN_URL": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43401581626",
+    "EXTERNAL_ARTIFACT": "14025577567",
+    "ARTIFACT_SHA256": "6aa19eb4bc04edb133950e8bf754efc37948c730a2655fab29c71430c9dbfabd",
+    "EXTERNAL_PLATFORM": "cached native Linux / Ubuntu 24.04",
+    "LEAN": "leanprover/lean4:v4.34.0-rc1",
+    "MATHLIB": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+    "RETAINED_EVIDENCE": "Auxillary/evidence/native-compat-linux-43401581626",
+    "TYPE_CERTIFICATE": "Auxillary/evidence/native-compat-linux-43401581626/native-compatibility-type-certificate.json",
+    "TYPE_CERTIFICATE_SHA256": "71ee30ff1eab4c8cb870a5bdaa0e37752c36f3caf2c566b9ba867bd81a773ece"
+  },
+  "source_identity": "source-map.json",
+  "complete_export_hashes": "source-manifest.json",
+  "portable_windows_validation": "REQUIRES_MATCHING_EXTERNAL_RUN"
+}
