@@ -1,0 +1,272 @@
+NSE_GR_NATIVE_LITERATURE_CLOSURE_A_TIER
+=====================================
+
+MODE = A_TIER_DERIVATION
+DATE = 2026-11-13
+STATUS = !!!! UNCONDITIONAL_CLOSURE
+SCOPE = EXACT_LOCAL_ANALYTIC_MARKED_FIVE_DIMENSIONAL_GAUSSIAN_SECTOR
+REPOSITORY = randogelist/NSE---MAXWELL---GR---QFT
+CERTIFIED_SOURCE_COMMIT = d5231111cbdbe8a9c686b52ae4224554d4fba48a
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+
+1. EXACT ROOT
+
+NSEGR.NativeLiterature.NSE_GR_NATIVE_LITERATURE_CLOSURE :
+  forall (nu rho t0 : R),
+    0 < nu -> rho != 0 -> NSEGR.ExactSectorEquivalence nu rho t0.
+
+NSEGR.ExactSectorEquivalence nu rho t0 :=
+  Nonempty (NSEGR.NSEgerm nu t0 ~= NSEGR.GRgerm nu rho t0).
+
+PARAMETERS = {nu : R, rho : R, t0 : R}.
+EXPLICIT_DOMAIN_HYPOTHESES = {0 < nu, rho != 0}.
+UNRESOLVED_LITERATURE_INPUTS = empty.
+UNRESOLVED_ANALYTIC_INPUTS = empty.
+UNRESOLVED_CERTIFICATE_OR_WITNESS_INPUTS = empty.
+UNRESOLVED_NATIVE_LAW_RECORD_INPUTS = empty.
+
+ROOT_SOURCE = ASSEMBLY/GRAssembly/NSE_GR_NATIVE_LITERATURE_CLOSURE.lean
+ROOT_SOURCE_SHA256 =
+  21b4cb769ff9a471f8195d92fb97c634b47f4d43320e42874eb73b3ff938ea3e
+
+EXACT_EXTERNAL_AXIOM_RECORD:
+  'NSEGR.NativeLiterature.NSE_GR_NATIVE_LITERATURE_CLOSURE'
+    depends on axioms: [propext, Classical.choice, Quot.sound]
+
+ROOT_PROOF_BODY =
+  NSEGR.Assembly.NSE_GR_THREE_OBLIGATION_CLOSURE
+    nu rho t0 hnu hrho literatureInputs_native.
+
+!! A_TIER: EXACT_ROOT.
+!!! FORMAL_CLOSURE: EXACT_ROOT.
+!!!! UNCONDITIONAL_CLOSURE: EXACT_ROOT_WITH_DISPLAYED_DOMAIN_HYPOTHESES.
+
+2. EXACT CARRIERS / SCOPE
+
+NSE_CARRIER:
+  spatial dimension = 3;
+  spatial coordinates = R^3 with unit-periodic velocity and pressure;
+  time domain = an actual open neighborhood of t0;
+  regularity = jointly real analytic in (t,x);
+  equations = actual unforced incompressible periodic NSE, viscosity nu;
+  velocity mean = unrestricted;
+  representative equality = equality of velocity on a common time
+    neighborhood for every spatial point, with pressure difference c(t).
+
+GR_CARRIER:
+  bulk dimension = 5;
+  fixed marked coordinates = (r,t,x1,x2,x3);
+  domain = an actual common radial/time collar for every spatial point;
+  regularity = jointly real analytic;
+  spatial periodicity = period one;
+  metric = symmetric Lorentzian;
+  vacuum = actual coordinate Ricci tensor equal to zero;
+  Gaussian gauge = g_rr = 1, g_ra = 0;
+  boundary metric = eta = diag(-1,1,1,1);
+  normal orientation = fixed;
+  second form = K = +(1/2) partial_r h;
+  beta(t0,x) = rho;
+  partial_t beta(t0,x) = 0;
+  constitutive sector = boundaryStress nu (boundaryK metric) = 0;
+  representative equality = equality of marked metrics on a common
+    radial/time neighborhood for every spatial point.
+
+CARRIER_DEFINITIONS = independent of the construction maps.
+GEOMETRY = actual derivatives, matrix inverses, Christoffel and Ricci tensors.
+LOCAL_POINT_GERMS -> FULL_SPATIAL_SLICE_GERMS = native periodic gluing.
+DOMAIN_PREDICATES = retained exactly; no mean-zero or small-data substitution.
+
+OUTSIDE_ROOT_SCOPE =
+  global-in-time NSE regularity;
+  arbitrary smooth initial-data regularity;
+  inherited global FeffermanB proposition;
+  unrestricted four-dimensional Einstein solution space;
+  unrestricted five-dimensional vacuum solution space;
+  equivalence modulo arbitrary diffeomorphisms.
+
+3. DISCHARGED LITERAL INPUTS
+
+LI01 := NSEGR.LiteratureAnalyticCKInput.
+LI02 := NSEGR.LiteratureGaussianJetInput.
+LI03 := NSEGR.LiteratureSmoothFourierInput.
+
+!! A_TIER:
+  NSEGR.NativeLiterature.literatureAnalyticCKInput_native : LI01.
+  NSEGR.NativeLiterature.literatureGaussianJetInput_of_analyticCK : LI01 -> LI02.
+  NSEGR.NativeLiterature.literatureGaussianJetInput_native : LI02.
+  NSEGR.NativeLiterature.literatureSmoothFourierInput_native : LI03.
+  NSEGR.NativeLiterature.literatureInputs_native : NSEGR.LiteratureInputs.
+
+AXIOMS_OF_EACH_DISPLAYED_ENDPOINT =
+  {propext, Classical.choice, Quot.sound}.
+
+LI01_CONSTRUCTION:
+  analytic affine normalization
+  -> complete symmetric coefficient l1 space over taxicab time-space
+  -> bounded time primitive J, norm(J) <= 1/2
+  -> bounded spatial derivative after primitive, norm(D_x J) <= 1
+  -> actual analytic coefficient superposition and finite derivative majorant
+  -> scaled coefficient contraction and actual fixed point
+  -> coordinate FTC, physical reconstruction and exact initial/PDE germs
+  -> common-scale comparison of arbitrary analytic competitors
+  -> germ uniqueness and literal LI01 inhabitant.
+
+LI01_EXACT_DATA:
+  n,m : N; 0 < n; 0 < m;
+  E = EuclideanSpace R (Fin n);
+  V = EuclideanSpace R (Fin m);
+  analytic u0 at x0;
+  analytic F at ((t0,x0),(u0(x0),D u0(x0)));
+  conclusion = existence and uniqueness, as analytic germs, of
+    partial_t u = F((t,x),(u,D_x u)), u(t0,x) = u0(x).
+
+LI02_CONSTRUCTION:
+  analytic 96-component Gaussian CK evolution
+  -> metric/velocity symmetry and spatial-jet compatibility
+  -> actual tangential vacuum
+  -> boundary Hamiltonian and Codazzi constraints
+  -> actual contracted Bianchi evolution of five Ricci constraints
+  -> LI01 uniqueness against the zero constraint field
+  -> full vacuum and marked-coordinate uniqueness
+  -> literal LI02 inhabitant.
+
+LI02_SUBSTITUTION =
+  literatureGaussianJetInput_of_analyticCK literatureAnalyticCKInput_native.
+
+LI03_CONSTRUCTION = native smooth periodic Fourier calculus,
+  coefficient decay, summability and differentiated reconstruction.
+
+BUNDLE =
+  <literatureAnalyticCKInput_native,
+   literatureGaussianJetInput_native,
+   literatureSmoothFourierInput_native>.
+
+LITERATURE_SIGNATURES = retained as exact formal interfaces.
+LITERATURE_SIGNATURE_INHABITANTS = proved natively; external literature
+  existence assumptions are absent from the displayed root type.
+
+4. DETERMINISTIC ROOT COMPOSITION
+
+ck := literatureAnalyticCKInput_native.
+gj := literatureGaussianJetInput_native.
+
+c := NSEGR.Assembly.scalarBoundaryCompletionLaws_of_literatureCK
+       ck nu rho t0 hrho.
+r := NSEGR.Assembly.analyticRadialExtensionLaws_of_literatureGaussian
+       gj rho t0.
+h := NSEGR.Assembly.geometricReconstructionLaws_native nu rho t0.
+q := NSEGR.Assembly.germInverseLaws_of_literature ck gj hrho c r h.
+
+NSEGR.NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS
+  nu rho t0 hnu hrho c r h q : NSEGR.ExactSectorEquivalence nu rho t0.
+
+NATIVE_BUNDLE_ROUTE =
+  literatureInputs_native
+  -> nativeLawPackages_of_literatureInputs
+  -> NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_LITERATURE_INPUTS
+  -> NSE_GR_THREE_OBLIGATION_CLOSURE
+  -> NSE_GR_NATIVE_LITERATURE_CLOSURE.
+
+LI03 = independently inhabited and audited;
+  retained in LiteratureInputs; the native law-package body projects ck
+  and gaussianJet. No additional Fourier premise remains at the root.
+
+5. EXTERNAL COMPILATION / AXIOM EVIDENCE
+
+RUN_ID = 43509144981
+RUN_ATTEMPT = 1
+ARTIFACT_ID = 14077334443
+ARTIFACT_SHA256 =
+  b480c72c8325fc452ec18bb9544042c2f5cb0ea415f352cf77c107eb8f00c53e
+EXTERNAL_STATUS = PASS_STANDARD_ONLY
+EXTERNAL_PLATFORM = native x86_64 Linux
+COMPILER = Lean 4.34.0-rc1
+COMPILER_COMMIT = 3447a668783dbce1a8fdb97101dd067687b2b418
+MATHLIB_COMMIT = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+CACHE_POLICY = PRESERVE_AND_REUSE_COMPATIBLE_OBJECTS
+RESTORED_CHECKPOINT_SOURCE = ba0e1f3910ec1dec005c28211a3ed9434159c75b
+RESTORED_CHECKPOINT_RUN = 43508400688, attempt 1
+CURRENT_SOURCE_BUILD = PASS; ALL_SELECTED_TARGETS_FRESH
+CURRENT_SOURCE_BUILD_EXIT_CODE = 0
+FRESH_BATCH_AUDIT_EXIT_CODE = 0
+FRESH_BATCH_AUDIT_PROCESS_COUNT = 1
+AUDITED_STAGES = 65/65
+NAMED_DECLARATIONS_AUDITED = 1549/1549
+SOURCE_MANIFEST_FILES_VERIFIED = 373/373
+FAILED_STAGES = 0
+UNRESOLVED_NAMED_DECLARATIONS = 0
+SOURCE_HASH_MISMATCHES = 0
+UNAPPROVED_AUDITED_AXIOMS = empty
+sorryAx_IN_DISPLAYED_ROOT_DEPENDENCIES = absent
+
+AUDIT_SOURCE = BatchAudit.lean
+AUDIT_SOURCE_SHA256 =
+  aa5aa20993b6264986673e7f59428e69814d0feac9119ce696bc45078ddfe05d
+AUDIT_LOG = batch-audit.log
+AUDIT_LOG_SHA256 =
+  ed7b7bb2a76aba0f4d25adfc2c676d466c742105d3c5ad4fa405d00a9ebe7c6d
+SOURCE_MANIFEST_SHA256 =
+  555bccdb3b8db857077fdd41f409e1c8135933bb1f4bdd6e1366a0c48b747734
+AUDIT_SUMMARY_SHA256 =
+  1153da0b95d8e317c97eb696b8c7548ebdd43bd7afb130392954cc202f7e1e4f
+DAG_BUILD_LOG_SHA256 =
+  6bef0218c11532f4aa33ddbd6a2f2af46989e47fa3f9e75acbbfad605e757915
+
+EVIDENCE_URL =
+  https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43509144981/artifacts/14077334443
+CERTIFIED_ROOT_SOURCE_URL =
+  https://raw.githubusercontent.com/randogelist/NSE---MAXWELL---GR---QFT/d5231111cbdbe8a9c686b52ae4224554d4fba48a/ASSEMBLY/GRAssembly/NSE_GR_NATIVE_LITERATURE_CLOSURE.lean
+
+PROMOTION_BASIS =
+  matching source bytes
+  AND successful external compilation
+  AND fresh exact theorem-level axiom audit
+  AND exact root type inspection
+  AND native inhabitants for every formerly unresolved analytic input.
+
+CACHE_OBJECTS_ALONE => NO_PROMOTION.
+AXIOM_INVENTORY_ALONE => NO_PREMISE_DISCHARGE.
+CURRENT_PROMOTION = exact root plus native endpoint/type/body review.
+
+6. ANTECEDENT / COMPLETION DELTA
+
+ANTECEDENT = NSE_GR_LI01_COMPOSED_CLOSURE_B_TIER(1).txt
+ANTECEDENT_REVISION = LI01_SELECTED_ANCHORINGS_4
+ANTECEDENT_SHA256 =
+  f75db53c0bfccbfe0230e1d51a170a80f47d989b96b0f78138b4f62be3fafa51
+ANTECEDENT_SOURCE_COMMIT = 3b36c412d7a882fd279cc0d3a9bc32d015e19588
+ANTECEDENT_RUN = 43498495006, attempt 2
+ANTECEDENT_ARTIFACT_ID = 14072533553
+ANTECEDENT_ARTIFACT_SHA256 =
+  5a79078177bc6e1645161cbe75f11e8a7e0e3837d8409b2d91cf670e6508a7eb
+
+ANTECEDENT_NATIVE_STATUS = PARTIAL_STANDARD_ONLY; 1415/1549 audits;
+  4 failed modules; 9 downstream blocked modules; 134 unresolved declarations.
+CURRENT_NATIVE_STATUS = PASS_STANDARD_ONLY; 1549/1549 audits;
+  0 failed modules; 0 blocked modules; 0 unresolved declarations.
+NEWLY_RESOLVED_REGISTERED_DECLARATIONS = 134.
+
+COMPLETED_FRONTIER =
+  NativeCKSemantics;
+  NativeCK;
+  NativeGaussianConstraintInitial;
+  NativeGaussianConstraintZero;
+  NativeGaussianEvolutionCompatibility;
+  NativeGaussianEvolutionJet;
+  NativeGaussianEvolutionCompatibilityJet;
+  NativeGaussianEvolutionRicci;
+  NativeGaussianEvolutionRecovery;
+  NativeGaussianEvolutionAssembly;
+  NativeGaussianJet;
+  NativeGaussianInput;
+  NSE_GR_NATIVE_LITERATURE_CLOSURE.
+
+THEOREM_SCOPE_CHANGE = 0.
+NEW_UNAPPROVED_AXIOMS = 0.
+ADDED_ANALYTIC_PREMISES = 0.
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0.
+
+!!!! UNCONDITIONAL_CLOSURE:
+  forall nu rho t0 : R,
+    0 < nu -> rho != 0 ->
+      Nonempty (NSEGR.NSEgerm nu t0 ~= NSEGR.GRgerm nu rho t0).

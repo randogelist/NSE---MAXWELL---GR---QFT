@@ -1,4 +1,27 @@
-[GR adapter branch: native geometry and sequential local analytic implications](GR_adapter/README.md)
+## Native NSE / marked Gaussian vacuum-sector closure
+
+```text
+ROOT_STATUS = !!!! UNCONDITIONAL_CLOSURE
+ROOT = NSEGR.NativeLiterature.NSE_GR_NATIVE_LITERATURE_CLOSURE
+TYPE = forall nu rho t0 : Real, 0 < nu -> rho != 0 ->
+       Nonempty (NSEGR.NSEgerm nu t0 ≃ NSEGR.GRgerm nu rho t0)
+SCOPE = local jointly analytic periodic NSE / normalized marked five-dimensional Gaussian vacuum sector
+SOURCE = d5231111cbdbe8a9c686b52ae4224554d4fba48a
+EXTERNAL_RUN = 43509144981
+EXACT_AUDITS = 1549 / 1549 PASS_STANDARD_ONLY
+SOURCE_HASHES = 373 / 373 PASS
+UNRESOLVED_ANALYTIC_INPUTS = empty
+FOUNDATIONAL_AXIOMS = {propext, Classical.choice, Quot.sound}
+LOCAL_LEAN_EXECUTIONS = 0
+```
+
+[Exact theorem](ASSEMBLY/GRAssembly/NSE_GR_NATIVE_LITERATURE_CLOSURE.lean) ·
+[A-tier report](Auxillary/GR/Closure/Native/NSE_GR_NATIVE_LITERATURE_CLOSURE_A_TIER.txt) ·
+[Certificate](Auxillary/GR/Closure/Native/EXTERNAL_CERTIFICATE.json) ·
+[Scoped GR adapter](GR_adapter/README.md) ·
+[External PASS](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43509144981)
+
+## Inherited Fefferman / Maxwell records
 
 # Fefferman B ↔ constrained Maxwell
 

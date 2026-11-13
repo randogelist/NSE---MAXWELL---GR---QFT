@@ -1,120 +1,128 @@
-# NSE ↔ normalized marked GR sector
+# NSE ↔ normalized marked five-dimensional GR sector
 
 ```text
-BASE_BRANCH = codex/fefferman-b-maxwell
-BASE_COMMIT = 1de664f2ef5ddc11caef25ac2274278b4171ab6b
-BRANCH = codex/gr-adapter
 MODE = A_TIER_DERIVATION
-STATUS = CONDITIONAL_FORMAL_CLOSURE
-NATIVE_DECLARATIONS = A_TIER
+STATUS = UNCONDITIONAL_CLOSURE
+MARKER = !!!!
+BRANCH = codex/gr-adapter
+AUDITED_SOURCE_COMMIT = d5231111cbdbe8a9c686b52ae4224554d4fba48a
+EXTERNAL_RUN = 43509144981
+NAMED_AXIOM_AUDITS = 1549/1549 PASS_STANDARD_ONLY
+MATCHING_SOURCE_HASHES = 373/373
+FAILED_STAGES = 0
+UNRESOLVED_NATIVE_TARGETS = 0
+UNRESOLVED_LITERATURE_INPUTS = empty
+UNRESOLVED_PROJECT_LAWS = empty
 LOCAL_LEAN_EXECUTIONS = 0
 ```
 
-For `ν>0`, `ρ≠0`, `t0 : ℝ`, the exact target is
+## Exact root
 
 ```lean
-NSEGR.ExactSectorEquivalence ν ρ t0
--- Nonempty (NSEGR.NSEgerm ν t0 ≃ NSEGR.GRgerm ν ρ t0)
+NSEGR.NativeLiterature.NSE_GR_NATIVE_LITERATURE_CLOSURE :
+  ∀ (ν ρ t0 : ℝ),
+    0 < ν → ρ ≠ 0 → NSEGR.ExactSectorEquivalence ν ρ t0
+
+-- ExactSectorEquivalence ν ρ t0
+-- = Nonempty (NSEGR.NSEgerm ν t0 ≃ NSEGR.GRgerm ν ρ t0)
 ```
 
-The source carrier consists of actual local jointly analytic periodic NSE representatives modulo full-spatial-slice time-germ equality and time-only pressure gauge. The target carrier consists of actual analytic five-dimensional Lorentzian vacuum metrics in the fixed Gaussian marking, with flat timelike induced metric, fixed boundary normalization, and the independently computed STF constitutive tensor equal to zero. Neither carrier is defined as the image of a lift.
+\[
+\boxed{\forall\nu>0\;\forall\rho\ne0\;\forall t_0\in\mathbb R,\quad
+\operatorname{Nonempty}\!\left(
+\mathrm{NSEgerm}_{\nu,t_0}\simeq\mathrm{GRgerm}_{\nu,\rho,t_0}\right).}
+\]
 
-This statement is local in time and radius. The inherited `FeffermanB` is a global smooth arbitrary-data existence proposition. No equivalence between those distinct scopes is asserted.
+[Root source](../ASSEMBLY/GRAssembly/NSE_GR_NATIVE_LITERATURE_CLOSURE.lean) ·
+[A-tier report](../Auxillary/GR/Closure/Native/NSE_GR_NATIVE_LITERATURE_CLOSURE_A_TIER.txt) ·
+[External certificate](../Auxillary/GR/Closure/Native/EXTERNAL_CERTIFICATE.json)
 
-| Stage | Source | Exact content |
-|---|---|---|
-| 1 | `GRAdapter/Geometry.lean` | Actual derivatives, inverse metric, Christoffel, Ricci, Einstein tensor; native analytic Lorentzian flat vacuum |
-| 1 | `GRAdapter/Algebra.lean` | STF projection, signed trace reversal, Hamiltonian identity, normalized initial `K00`, viscosity difference |
-| 1 | `GRAdapter/Fields.lean` | Ordinary-time local analytic NSE, concrete Poisson/Leray series, actual constant solutions |
-| 1 | `GRAdapter/Boundary.lean` | Actual `K`, beta, velocity, pressure, STF stress, Codazzi and Hamiltonian expressions |
-| 1 | `GRAdapter/Sector.lean` | Independent constrained-boundary, normalized vacuum and canonical metric predicates |
-| 1 | `GRAdapter/NativeBoundary.lean` | Actual constant constrained boundary for every rho; no bulk realization asserted |
-| 1 | `GRAdapter/Germs.lean` | Independent pressure-gauge and marked metric germ quotients |
-| 1 | `GRAdapter/CompletionSource.lean` | Actual source, scalar correction, lowering and completed boundary tensor |
-| 1 | `GRAdapter/Locality.lean` | Actual metric-jet and decoded-field germ locality; analytic pressure gauge; second time derivative locality |
-| 1 | `GRAdapter/Contracts.lean` | Explicit scalar/radial/reconstruction obligations and exact zero-stress deduction |
-| 2 | `NSEGRForward.lean` | Scalar completion → constrained boundary → actual radial vacuum → canonical sector; velocity recovery |
-| 3 | `NSEGRReverse.lean` | Actual metric → reconstructed analytic NSE; separate germ descent/inverse assembly |
+## Carrier definitions
 
-The conditional root is `NSEGR.NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS`.
-
-| Unresolved premise | Exact remaining content |
+| Component | Exact scope |
 |---|---|
-| `ScalarBoundaryCompletionLaws` | Actual analytic normalized scalar completion, constraints and boundary recovery for every supplied analytic NSE representative |
-| `AnalyticRadialExtensionLaws` | Actual analytic radial extension and vacuum constraint propagation, with allowed time-collar shrink |
-| `GeometricReconstructionLaws` | Analytic Poisson/Leray mapping, geometric constraints and exact reconstructed residual identity |
-| `GermInverseLaws` | Forward gauge descent and the lift-after-decode identity for the chosen completions |
+| `NSEgerm ν t0` | Local jointly real-analytic unforced incompressible three-dimensional NSE; unit spatial periodicity; ordinary time near `t0` |
+| `SameFlowAt` | Full-spatial-slice velocity equality; spatially constant pressure difference; equality eventually in time |
+| `GRgerm ν ρ t0` | Local jointly real-analytic five-dimensional Lorentzian vacuum metrics; fixed Gaussian marking; unit spatial periodicity; positive time and radial collar widths |
+| Gaussian marking | `g_rr = 1`; `g_ra = 0`; induced boundary metric `eta4`; fixed positive radial orientation |
+| Boundary normalization | `boundaryBeta (boundaryK g) t0 x = ρ`; `∂t boundaryBeta (boundaryK g) t0 x = 0`; `ρ ≠ 0` |
+| Constitutive sector | `∀ t ∈ timeInterval t0 δ, ∀ x, boundaryStress ν (boundaryK g) t x = 0` |
+| `SameMetricAt` | Metric equality on a common radial/time neighborhood, uniformly over every spatial point, in the fixed marking |
+| Geometric operators | Actual coordinate derivatives, metric inverse, Christoffel symbols, Ricci tensor and metric boundary jet |
 
-All four premises remain visible. No inhabitants are supplied. Native tensor proofs and flat-vacuum semantics do not discharge them. The flat metric is explicitly proved to fail the nonzero-rho normalization.
+\[
+K=\operatorname{boundaryK}(g),\qquad
+\operatorname{Ric}(g)=0,\qquad
+\operatorname{boundaryStress}_{\nu}(K)=0.
+\]
 
-The full [B-tier derivation](Derivation/NSE_GR_EXACT_SECTOR_EQUIVALENCE_B_TIER.txt), version 1.6.0, contains 153 proof contracts and 62 Mathlib / 24 Methlib source indices. Its older 4.33.0 source pins are retained as provenance. The active package inherits Lean 4.34.0-rc1 and the newer pinned Mathlib source; this package's exact declarations require their own external audits. No old source index is presented as a new compiler certificate.
-
-External cached execution:
-
-```bash
-bash GR_adapter/run.sh
+```text
+SOURCE_CARRIER = GRAdapter/Germs.lean : NSEgerm
+TARGET_CARRIER = GRAdapter/Germs.lean : GRgerm
+TARGET_SECTOR = GRAdapter/Sector.lean : CanonicalRepresentative
+CARRIER_DEFINITIONS = INDEPENDENT
+THEOREM_SCOPE = LOCAL_ANALYTIC_GERM_EQUIVALENCE
+GLOBAL_FEFFERMAN_B_CLAIM = NONE
+GENERAL_FOUR_DIMENSIONAL_GR_CLAIM = NONE
 ```
 
-`run.cmd` is the native Windows entry point for the Windows-safe standalone export containing the sibling `GR_adapter/` and `Auxillary/GR/` directories. The full inherited repository contains POSIX-only names and is not a native Windows checkout target.
+[NSE fields](GRAdapter/Fields.lean) · [Metric sector](GRAdapter/Sector.lean) ·
+[Germ quotients](GRAdapter/Germs.lean) · [Boundary operators](GRAdapter/Boundary.lean)
 
-Source inventory, explicit hypotheses and matching evidence are recorded in [GR_ADAPTER_A_TIER.txt](GR_ADAPTER_A_TIER.txt), [audit targets](../Auxillary/GR/audit-targets.json), and [scope status](../Auxillary/GR/formalization-status.json). Existing compiler/dependency/project caches are retained. Each stage must pass compilation and a fresh named axiom audit before the next stage runs.
+## Discharged literature inputs
 
-Detailed source-to-obligation map: [ENDPOINT_PLAN.md](ENDPOINT_PLAN.md).
+| Input | Native inhabitant | Status |
+|---|---|---|
+| `LiteratureAnalyticCKInput` (`LI01`) | `NSEGR.NativeLiterature.literatureAnalyticCKInput_native` | `A_TIER; PASS_STANDARD_ONLY` |
+| `LiteratureGaussianJetInput` (`LI02`) | `NSEGR.NativeLiterature.literatureGaussianJetInput_native` | `A_TIER; PASS_STANDARD_ONLY` |
+| `LiteratureSmoothFourierInput` (`LI03`) | `NSEGR.NativeLiterature.literatureSmoothFourierInput_native` | `A_TIER; PASS_STANDARD_ONLY` |
+| `LiteratureInputs` | `NSEGR.NativeLiterature.literatureInputs_native` | `A_TIER; PASS_STANDARD_ONLY` |
 
-## AX-relative gluing index
+\[
+\mathrm{native\ CK}\Longrightarrow\mathrm{native\ Gaussian\ jet},\qquad
+(\mathrm{LI01}_{\rm native},\mathrm{LI02}_{\rm native},\mathrm{LI03}_{\rm native})
+\Longrightarrow\mathrm{ExactSectorEquivalence}.
+\]
 
-[NSE_GR_AXIOM_GLUING_CHAIN_B_TIER.txt](Derivation/NSE_GR_AXIOM_GLUING_CHAIN_B_TIER.txt)
-contains the scoped mathematical derivation from `LI01`, `LI02`, `LI03`,
-with 24 dependency nodes, 65 verified Mathlib entries (including two instance
-supports), 20 Methlib theorems, and 58 selected audited native endpoints.
-The [machine index](Derivation/NSE_GR_AXIOM_GLUING_INDEX.json) records the same
-predecessors, exact signatures, hypotheses, immutable source pins, source
-hashes and endpoint-to-node backlinks.
+```text
+ROOT_LITERATURE_INPUT_ARGUMENTS = 0
+ROOT_PROJECT_LAW_ARGUMENTS = 0
+ROOT_PARAMETER_HYPOTHESES = {0 < ν, ρ ≠ 0}
+ROOT_AXIOMS = {propext, Classical.choice, Quot.sound}
+sorryAx = absent
+NEW_AXIOMS = 0
+```
 
-The selected Methlib Fourier/Hodge package matches the active compiler and
-Mathlib pin. Its actual inverse has the opposite sign: `G_GR = -scalarL`.
-Namespace/sign transport, local ordinary-time transport, joint analyticity,
-construction gluing and the resulting `c/r/h/q` inhabitants remain native
-implementation targets. This B-tier index supplies no new compiler evidence
-and introduces no Lean axiom declarations.
+## Matching external evidence
 
-## External certificate
+| Field | Value |
+|---|---|
+| External execution | [GitHub Actions 43509144981](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43509144981) |
+| Audited source | `d5231111cbdbe8a9c686b52ae4224554d4fba48a` |
+| Compiler | Lean `4.34.0-rc1`; native `x86_64-unknown-linux-gnu` |
+| Compiler commit | `3447a668783dbce1a8fdb97101dd067687b2b418` |
+| Mathlib commit | `de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11` |
+| Audit mode | `FRESH_BATCH`; exact theorem types and named axiom records |
+| Audit inventory | `1549/1549`; `PASS_STANDARD_ONLY` |
+| Source inventory | `373/373`; matching bytes |
+| Source-manifest SHA-256 | `555bccdb3b8db857077fdd41f409e1c8135933bb1f4bdd6e1366a0c48b747734` |
 
-Cached native Lean 4.34.0-rc1 [run 43365946484](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43365946484) passed at `3dc98a61115f8d2e79d115d70b8c3478c504d82e`: adapter 190/190, forward 6/6, reverse 6/6 named standard-only audits. All input hashes were verified. The [immutable original artifact](../Auxillary/GR/evidence/3dc98a61115f8d2e79d115d70b8c3478c504d82e/external-artifact.zip) and its original logs, types and manifests are retained. The [source-equivalence record](../Auxillary/GR/source-equivalence.json) identifies the subsequent status-only changes to audited inputs.
+[Original external artifact](../Auxillary/GR/Closure/Native/evidence/d5231111cbdbe8a9c686b52ae4224554d4fba48a/original-artifact.zip)
 
-[Windows-safe standalone package](../Auxillary/GR/exports/GR_adapter_4.34.0-rc1.zip): extract both sibling folders and run `GR_adapter/run.cmd`. The package contains all project Lean files, pinned dependency configuration, the B-tier derivation and retained evidence. Dependency objects are restored by the cache runner; external compiler/dependency installation is required.
+```text
+BUILD_POLICY = CACHED_EXTERNAL_NATIVE_ONLY
+CACHE_DELETION = forbidden
+AUDIT_PROMOTION = MATCHING_COMPILER + EXACT_ROOT_TYPE + NAMED_AXIOMS + PREMISE_DISCHARGE
+POST_CERTIFICATE_README_CHANGE = DOCUMENTATION_ONLY
+AUDITED_PROOF_INPUT_CHANGE = 0
+```
 
-The root is **CONDITIONAL_FORMAL_CLOSURE**. Scalar completion, radial extension, reconstruction, and the two remaining forward germ laws have no supplied inhabitants. `UNCONDITIONAL_CLOSURE` remains open.
+## Historical provenance
 
-## Literature-chain construction
+[Previous GR README — exact preserved bytes](../Auxillary/GR/Closure/Native/HISTORICAL_GR_README.md)
 
-`LI01 ∧ LI02 ∧ LI03 → ExactSectorEquivalence` remains **OPEN in Lean**.
-The three literal source signatures in `GRAdapter/LiteratureInputs.lean`
-contain no project-law fields; no literature-input inhabitants are supplied.
-
-Cached native Lean 4.34.0-rc1 [run 43375199321](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43375199321)
-passed at `4e9638abfa0556ee74ddbce8441973993091271d`: **199 new theorem endpoints**, **401/401 standard-only declaration audits**.
-All audited source hashes and requested theorem records were verified.
-
-Native edges now include the concrete five-component scalar CK germ from LI01
-and actual gradient compatibility,
-full-spatial Gaussian uniqueness from LI02, `G(Delta f)=f-mean(f)` and
-`P(gradient f)=0` from LI03, actual Gaussian Ricci contractions, and native
-stress-divergence calculus. Their exact hypotheses remain visible.
-
-Remaining: scalar completion/gluing; uniform Lorentzian collar assembly;
-joint analytic Fourier/right-inverse calculus; flat-boundary constraints;
-gauge/inverse composition. The four project-law inhabitants remain open.
-
-[Formal status](GR_LITERATURE_CHAIN_A_TIER.txt) ·
-[Exact endpoint index](NATIVE_LITERATURE_ENDPOINTS.json) ·
-[Literature derivation](Derivation/NSE_GR_MISSING_PIECES_LITERATURE_CHAIN_B_TIER.txt).
-
-[Windows-safe literature-chain package](../Auxillary/GR/exports/GR_LITERATURE_CHAIN_4.34.0-rc1.zip)
-contains the native sources, TXT reports, `run.cmd`, endpoint index and original
-external certificate. The source-equivalence record distinguishes later status
-metadata from the byte-identical audited proof and runner inputs.
-
-## Isolated source endpoints
-
-[TEMP](../TEMP/README.md): 82 source-entry folders, 85 isolated copied Lean endpoint bodies. Cached native Linux [run 43383376659](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43383376659) passed all 85 source-type comparisons and named standard-only axiom audits at `ceed85075fde80dfea7f3e54568e634f6f38ab12`. Upstream helper/type imports remain explicit. This certifies the cutout exports; GR namespace/sign/time-domain bridges and the exact GR root remain open.
+```text
+HISTORICAL_README_STATUS = PRIOR_CONDITIONAL_MILESTONES
+CURRENT_ROOT_STATUS = UNCONDITIONAL_CLOSURE
+CURRENT_ROOT_EVIDENCE = d5231111cbdbe8a9c686b52ae4224554d4fba48a / 43509144981
+```
