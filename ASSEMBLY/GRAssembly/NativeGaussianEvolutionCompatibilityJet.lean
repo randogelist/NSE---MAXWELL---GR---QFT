@@ -28,13 +28,12 @@ theorem gaussianStateSolutionVelocity_radial
         gaussianStateVelocity (gaussianCKRHS (gaussianStateSolutionJet U z)) := by
   filter_upwards [(gaussianSplit_tendsto t0 x0).eventually
       hU.analytic.eventually_analyticAt,
-    (gaussianSplit_tendsto t0 x0).eventually hU.equation] with z hz he
+    (gaussianSplit_tendsto t0 x0).eventually
+      (gaussianVelocityComponent_analyticAt hU).eventually_analyticAt,
+    (gaussianSplit_tendsto t0 x0).eventually hU.equation] with z hz hv he
   change gaussianDirectional
       (fun q => gaussianVelocityComponent U (gaussianSplitCoordinates q)) (bulkBasis 0) z = _
-  have hv : DifferentiableAt ℝ (gaussianVelocityComponent U) (gaussianSplitCoordinates z) := by
-    simpa only [gaussianVelocityComponent, Function.comp_def] using
-      gaussianStateVelocity.differentiableAt.comp _ hz.differentiableAt
-  rw [gaussianDirectional_comp_linear gaussianSplitCoordinates hv,
+  rw [gaussianDirectional_comp_linear gaussianSplitCoordinates hv.differentiableAt,
     gaussianSplitCoordinates_radial]
   change gaussianDirectional (fun q => gaussianStateVelocity (U q))
     (1, 0) (gaussianSplitCoordinates z) = _
@@ -67,7 +66,9 @@ theorem gaussianStateSolutionJet_second_derivative
       gaussianJetSecond (gaussianStateSolutionJet U z) a b =
         coordDeriv (gaussianStateSolutionSpatial U b) a.succ z := by
   filter_upwards [(gaussianSplit_tendsto t0 x0).eventually
-    hU.analytic.eventually_analyticAt] with z hz
+      hU.analytic.eventually_analyticAt,
+    (gaussianSplit_tendsto t0 x0).eventually
+      (gaussianSpatialComponent_analyticAt hU b).eventually_analyticAt] with z hz hs
   change gaussianStateSpatial b
       (fderiv ℝ (fun y => U ((gaussianSplitCoordinates z).1, y))
         (gaussianSplitCoordinates z).2 (gaussianBaseBasis a)) =
@@ -75,11 +76,7 @@ theorem gaussianStateSolutionJet_second_derivative
       (fun q => gaussianSpatialComponent U b (gaussianSplitCoordinates q))
       (bulkBasis a.succ) z
   rw [gaussianSpaceDerivative_eq_full hz.differentiableAt]
-  have hs : DifferentiableAt ℝ (gaussianSpatialComponent U b)
-      (gaussianSplitCoordinates z) := by
-    simpa only [gaussianSpatialComponent, Function.comp_def] using
-      (gaussianStateSpatial b).differentiableAt.comp _ hz.differentiableAt
-  rw [gaussianDirectional_comp_linear gaussianSplitCoordinates hs,
+  rw [gaussianDirectional_comp_linear gaussianSplitCoordinates hs.differentiableAt,
     gaussianSplitCoordinates_tangent]
   exact (gaussianDirectional_clm (gaussianStateSpatial b)
     hz.differentiableAt (0, gaussianBaseBasis a)).symm
@@ -94,14 +91,16 @@ theorem gaussianStateSolutionJet_compatible
       gaussianJetSpatial (gaussianStateSolutionJet U z) a =
         coordDeriv (gaussianStateSolutionMetric U) a.succ z := by
     intro a
-    exact (gaussianStateSolutionMetric_spatial hU a).symm
+    filter_upwards [gaussianStateSolutionMetric_spatial hU a] with z hz
+    exact hz.symm
   have hsecond : ∀ a b : Fin 4, ∀ᶠ z in 𝓝 (bulkPoint 0 t0 x0),
       gaussianJetSecond (gaussianStateSolutionJet U z) a b =
         coordDeriv (coordDeriv (gaussianStateSolutionMetric U) b.succ) a.succ z := by
     intro a b
     have hp : gaussianStateSolutionSpatial U b =ᶠ[𝓝 (bulkPoint 0 t0 x0)]
-        coordDeriv (gaussianStateSolutionMetric U) b.succ :=
-      (gaussianStateSolutionMetric_spatial hU b).symm
+        coordDeriv (gaussianStateSolutionMetric U) b.succ := by
+      filter_upwards [gaussianStateSolutionMetric_spatial hU b] with z hz
+      exact hz.symm
     filter_upwards [gaussianStateSolutionJet_second_derivative hU a b,
       gaussianDirectional_germ hp (bulkBasis a.succ)] with z hz hd
     exact hz.trans hd

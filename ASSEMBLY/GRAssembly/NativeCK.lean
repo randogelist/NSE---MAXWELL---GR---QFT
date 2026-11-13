@@ -63,7 +63,9 @@ theorem ckSeriesSolution_fixedPoint [CompleteSpace E]
     simpa only [map_zero] using
       ((ckPhysicalScale (E := E) ε).continuous.continuousAt (x := (0 : CKTimeSpace E))).tendsto
   have hb : ∀ᶠ z : CKTimeSpace E in 𝓝 0, ‖z‖ < 1 := by
-    simpa using Metric.ball_mem_nhds (0 : CKTimeSpace E) (by norm_num : (0 : ℝ) < 1)
+    filter_upwards [Metric.ball_mem_nhds (0 : CKTimeSpace E)
+      (by norm_num : (0 : ℝ) < 1)] with z hz
+    simpa only [Metric.mem_ball, dist_zero_right] using hz
   filter_upwards [ht.eventually hsol.equation, hb] with z heq hz
   have hiz : ‖ckInversePhysicalScale ε (ckPhysicalScale ε z)‖ < 1 := by
     simpa only [ckPhysicalScale_leftInverse ε hε.ne'] using hz
@@ -75,7 +77,10 @@ theorem ckSeriesSolution_fixedPoint [CompleteSpace E]
     ckPhysicalScale_leftInverse ε hε.ne'] at heq
   rw [ckScaledCoefficientMap_eval g c hc₀ hs hc hactual hε.le hε₁ hεs hp hz]
   symm
-  simpa only [ckSeriesSolution, ckPhysicalScale_leftInverse ε hε.ne'] using heq
+  simp only [ckSeriesSolution, ckPhysicalScale_leftInverse ε hε.ne'] at heq
+  have hscale : ckPhysicalScale (E := E) ε = ckCoefficientScale ε := rfl
+  rw [hscale] at heq
+  exact heq
 
 theorem ckTimeSeries_fixedPoint [CompleteSpace E]
     (g : CKRHS E V) (c : FormalMultilinearSeries ℝ (CKJet E V) V)

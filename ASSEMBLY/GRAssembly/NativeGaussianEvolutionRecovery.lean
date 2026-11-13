@@ -103,24 +103,26 @@ theorem gaussianRecoveredState_initial {K : BoundaryTensor} {t0 : ℝ} {x0 : Vec
   filter_upwards [hE.induced, hE.boundary_match, hi.fderiv (𝕜 := ℝ),
     hb.eventually hE.analytic.eventually_analyticAt,
     hb.eventually (eventually_eventually_nhds.2 hE.symmetric)] with y hym hyk hyd hya hys
+  have hykCoordinates : gaussianSecondForm h (gaussianBulkCoordinates (0, y)) = K y.1 y.2 := by
+    simpa only [gaussianBulkCoordinates_apply] using hyk
   apply gaussianState_eq_of_components
   · exact hym
   · change coordDeriv h 0 (gaussianBulkCoordinates (0, y)) =
       2 • gaussianSymmetrize (K y.1 y.2)
     have hk : (K y.1 y.2).IsSymm := by
-      rw [← hyk, gaussianSecondForm_eq_half_radial hya]
+      rw [← hykCoordinates, gaussianSecondForm_eq_half_radial hya]
       apply Matrix.IsSymm.ext
       intro a b
       simp only [Matrix.smul_apply, smul_eq_mul, nsmul_eq_mul,
         (coordDeriv_tensor_symmetric hya hys 0).apply a b]
-    rw [gaussianSymmetrize_eq_of_isSymm hk, ← hyk, gaussianSecondForm_eq_half_radial hya]
+    rw [gaussianSymmetrize_eq_of_isSymm hk, ← hykCoordinates, gaussianSecondForm_eq_half_radial hya]
     ext a b
     simp only [two_smul, Matrix.add_apply, Matrix.smul_apply, smul_eq_mul]
     ring
   · intro a
     have hd0 : fderiv ℝ (fun q : GaussianBase => h (gaussianBulkCoordinates (0, q))) y = 0 := by
       simpa using hyd
-    change coordDeriv h a.succ (gaussianBulkCoordinates (0, y)) = 0
+    change fderiv ℝ h (gaussianBulkCoordinates (0, y)) (bulkBasis a.succ) = 0
     rw [← gaussianBulk_spaceDerivative hya.differentiableAt a, hd0]
     rfl
 

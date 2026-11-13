@@ -63,22 +63,25 @@ theorem gaussianConstraintRHS_analyticAt {h : Bulk → Tensor4}
   have hi a b : AnalyticAt ℝ
       (fun q : CKJet GaussianBase GaussianConstraintState =>
         (h (gaussianBulkCoordinates q.1))⁻¹ a b) J :=
-    (Assembly.analyticAt_matrix_entry (Assembly.analyticAt_matrix_inverse hh hN) a b).comp hz
+    (Assembly.analyticAt_matrix_entry (Assembly.analyticAt_matrix_inverse hh hN) a b).comp_of_eq hz rfl
   have hg c a b : AnalyticAt ℝ
       (fun q : CKJet GaussianBase GaussianConstraintState =>
         gaussianTangentialChristoffel h (gaussianBulkCoordinates q.1) c a b) J :=
-    (Assembly.analyticAt_gaussianTangentialChristoffel hh hN c a b).comp hz
+    (Assembly.analyticAt_gaussianTangentialChristoffel hh hN c a b).comp_of_eq hz rfl
   have hk : AnalyticAt ℝ
       (fun q : CKJet GaussianBase GaussianConstraintState =>
         gaussianKappa h (gaussianBulkCoordinates q.1)) J :=
-    (analyticAt_gaussianKappa hh hN).comp hz
+    (analyticAt_gaussianKappa hh hN).comp_of_eq hz rfl
   have hA : AnalyticAt ℝ
       (fun q : CKJet GaussianBase GaussianConstraintState => q.2.1.1) J :=
     analyticAt_fst.comp (analyticAt_fst.comp analyticAt_snd)
   have hC (c : Fin 4) : AnalyticAt ℝ
       (fun q : CKJet GaussianBase GaussianConstraintState => q.2.1.2 c) J :=
-    ((ContinuousLinearMap.proj c).analyticAt _).comp
-      (analyticAt_snd.comp (analyticAt_fst.comp analyticAt_snd))
+    ((ContinuousLinearMap.proj c : (Fin 4 → ℝ) →L[ℝ] ℝ).analyticAt
+      J.2.1.2).comp_of_eq
+      (show AnalyticAt ℝ
+        (fun q : CKJet GaussianBase GaussianConstraintState => q.2.1.2) J from
+        analyticAt_snd.comp (analyticAt_fst.comp analyticAt_snd)) rfl
   have hD (a : Fin 4) : AnalyticAt ℝ
       (fun q : CKJet GaussianBase GaussianConstraintState =>
         q.2.2 (gaussianBaseBasis a)) J :=
@@ -93,7 +96,8 @@ theorem gaussianConstraintRHS_analyticAt {h : Bulk → Tensor4}
       intro b hb
       apply (hi a b).mul
       apply AnalyticAt.sub
-      · exact ((ContinuousLinearMap.proj b).analyticAt _).comp (analyticAt_snd.comp (hD a))
+      · exact ((ContinuousLinearMap.proj b : (Fin 4 → ℝ) →L[ℝ] ℝ).analyticAt _).comp
+          (analyticAt_snd.comp (hD a))
       · apply Finset.analyticAt_fun_sum
         intro c hc
         exact (hg c a b).mul (hC c)
@@ -126,7 +130,8 @@ theorem gaussianConstraint_zero_solution (h : Bulk → Tensor4) (y : GaussianBas
   · exact analyticAt_const
   · exact Filter.Eventually.of_forall (fun _ => rfl)
   · exact Filter.Eventually.of_forall (fun z => by
-      simpa only [deriv_const, fderiv_const] using (gaussianConstraintRHS_zero h z).symm)
+      simpa only [deriv_const, fderiv_const_apply]
+        using (gaussianConstraintRHS_zero h z).symm)
 
 theorem gaussianConstraintSolution_isSolution
     {K : BoundaryTensor} {t0 : ℝ} {x0 : Vec} {h : Bulk → Tensor4}
@@ -135,8 +140,8 @@ theorem gaussianConstraintSolution_isSolution
     CKLocalSolution (gaussianConstraintRHS h) (fun _ => 0) 0 (t0, x0)
       (gaussianConstraintSolution h) := by
   constructor
-  · exact (analyticAt_gaussianResidualState hE.analytic hE.nondegenerate.self_of_nhds).comp
-      (gaussianBulkCoordinates.analyticAt _)
+  · exact (analyticAt_gaussianResidualState hE.analytic hE.nondegenerate.self_of_nhds).comp_of_eq
+      (gaussianBulkCoordinates.analyticAt (0, (t0, x0))) rfl
   · filter_upwards [gaussian_constraints_initial_zero_germ hE hK] with y hy
     exact Prod.ext hy.1 (funext hy.2)
   · have hp : ∀ᶠ z in 𝓝 (bulkPoint 0 t0 x0),
@@ -165,17 +170,18 @@ theorem gaussianConstraintSolution_isSolution
       gaussianBulk_spaceDerivative ha.differentiableAt a
     rw [ht]
     apply Prod.ext
-    · simp only [gaussianConstraintRHS, hs,
+    · simp only [gaussianConstraintRHS]
+      simp only [hs,
         gaussianResidualState_derivative_snd hz.1 hz.2.2.1.self_of_nhds,
-        gaussianResidualState_derivative_fst hz.1 hz.2.2.1.self_of_nhds,
-        gaussianConstraintSolution, gaussianResidualState]
-      exact he.1
+        gaussianResidualState_derivative_fst hz.1 hz.2.2.1.self_of_nhds]
+      simpa only [gaussianConstraintSolution, gaussianResidualState,
+        gaussianResidualDivergence] using he.1
     · funext i
-      simp only [gaussianConstraintRHS, hs,
+      simp only [gaussianConstraintRHS]
+      simp only [hs,
         gaussianResidualState_derivative_snd hz.1 hz.2.2.1.self_of_nhds,
-        gaussianResidualState_derivative_fst hz.1 hz.2.2.1.self_of_nhds,
-        gaussianConstraintSolution, gaussianResidualState]
-      exact he.2 i
+        gaussianResidualState_derivative_fst hz.1 hz.2.2.1.self_of_nhds]
+      simpa only [gaussianConstraintSolution, gaussianResidualState] using he.2 i
 
 /-- Only the literal analytic CK input is used to discharge the residual system. -/
 theorem gaussian_constraints_zero_germ (input : LiteratureAnalyticCKInput)
@@ -196,7 +202,7 @@ theorem gaussian_constraints_zero_germ (input : LiteratureAnalyticCKInput)
   have hmap : Tendsto gaussianSplitCoordinates (𝓝 (bulkPoint 0 t0 x0))
       (𝓝 (0, (t0, x0))) := by
     simpa only [gaussianSplitCoordinates_bulkPoint] using
-      (gaussianSplitCoordinates.continuous.continuousAt (x := bulkPoint 0 t0 x0))
+      (gaussianSplitCoordinates.continuous.continuousAt (x := bulkPoint 0 t0 x0)).tendsto
   have hp := hmap.eventually he
   filter_upwards [hp] with z hz
   have hz' : gaussianResidualState h z = 0 := by
