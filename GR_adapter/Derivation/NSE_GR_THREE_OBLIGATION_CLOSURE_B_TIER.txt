@@ -1,0 +1,3806 @@
+NSE_GR_THREE_OBLIGATION_CLOSURE_B_TIER
+MODE = B_TIER_DERIVATION
+DATE = 2026-11-13
+MARKER = !
+MATHEMATICAL_STATUS = COMPLETE_DERIVATION_RELATIVE_TO_LI01_LI02_LI03
+NATIVE_ROOT_FROM_LITERATURE_INPUTS = OPEN / NOT_FORMALIZED
+NEW_COMPILER_EVIDENCE = NONE
+LOCAL_LEAN_EXECUTIONS = 0
+NEW_REPOSITORY_AXIOM_DECLARATIONS = 0
+
+0. EXACT COMPOSED ROOT
+
+For all nu,rho,t0 in R,
+  nu>0 -> rho!=0 -> NSEGR.LiteratureInputs ->
+    exists c : NSEGR.ScalarBoundaryCompletionLaws nu rho t0,
+    exists r : NSEGR.AnalyticRadialExtensionLaws rho t0,
+    exists h : NSEGR.GeometricReconstructionLaws nu rho t0,
+      NSEGR.GermInverseLaws c r h.
+Consequently,
+  nu>0 -> rho!=0 -> NSEGR.LiteratureInputs ->
+    NSEGR.ExactSectorEquivalence nu rho t0.
+
+Here ExactSectorEquivalence nu rho t0 is exactly
+  Nonempty (NSEGR.NSEgerm nu t0 equiv NSEGR.GRgerm nu rho t0).
+The equivalence maps are the existing forwardGerm and reverseGerm with
+the law records supplied by this mathematical derivation.
+
+U1 = joint analytic preservation by the actual periodic Poisson inverse
+     G and Leray projection P, on the entire supplied open time interval.
+U2 = specialization of point-local scalar/Gaussian existence and uniqueness
+     to actual periodic fields on one scalar cylinder / Gaussian collar.
+U3 = actual Gaussian boundary constraints, scalar completion conservation,
+     full-interval decoder, exact constitutive residual and both inverse laws.
+
+PROOF DEPENDENCY:
+  existing smooth Methlib Hodge + fixed derivative-loss estimate
+    + uniform local real-analytic factorial bounds -> U1;
+  LI01 + LI02 + finite compact-overlap construction -> U2;
+  U1 + U2 + actual coordinate curvature/trace algebra -> U3;
+  U1 + U2 + U3 -> c,r,h;
+  LI01 + LI02 + canonical completion identity -> forall c,r,h, GermInverseLaws c r h;
+  c,r,h,q + existing native quotient assembly -> ExactSectorEquivalence.
+
+U1/U2/U3 are derived intermediate statements, not three added axioms.
+The retained assumption set is LI01,LI02,LI03. Its minimality is not claimed:
+the selected U1 route can reuse already-audited smooth Methlib results,
+so no new instance of the full dimension-parametric LI03 is needed there.
+This does not prove or formalize the general LI03 proposition itself.
+
+1. LITERAL INPUT BOUNDARY
+
+LI01 = NSEGR.LiteratureAnalyticCKInput.
+For every positive finite spatial/unknown dimension, analytic initial data
+and analytic first-order RHS at the actual initial jet give an actual
+analytic solution germ with initial/equation germs and unique solution germ.
+The time derivative is ordinary two-sided deriv. No uniform spatial radius,
+periodicity, global interval, scalar completion or quotient inverse is input.
+
+LI02 = NSEGR.LiteratureGaussianJetInput.
+Every actual analytic symmetric flat-boundary tensor germ satisfying the
+native Hamiltonian and Codazzi constraints has an actual nondegenerate
+symmetric analytic metric germ with g_rr=1, g_ra=0, induced eta4,
+boundaryK=K and Ricci=0. Uniqueness is in the same marked coordinates and
+normal orientation. No periodic collar or native Lorentz factor is input.
+The source extrinsic-curvature convention is minus the native K=+h_r/2.
+
+LI03 = NSEGR.LiteratureSmoothFourierInput.
+For every positive finite dimension, a smooth period-one complex function
+has the actual Fourier derivative multiplier identities, absolute derivative
+coefficient summability and uniform differentiated reconstruction for every
+finite coordinate-derivative word. Joint analytic parameter estimates,
+Poisson/Leray reconstruction and metric identities are not input fields.
+
+The complete literal signatures, including actual Fourier definitions and
+germ predicates, are reproduced in Appendix L from the pinned source.
+These inputs are assumed mathematical propositions. This TXT neither adds
+Lean axiom declarations nor verifies the cited literature translations anew.
+
+2. EXACT SCOPE AND QUANTIFIER LOCK
+
+Space = period-one R^3 / Z^3; bulk = 5-dimensional (r,t,x1,x2,x3).
+eta4=diag(-1,1,1,1); eta5=diag(1,-1,1,1,1).
+Canonical target = marked analytic periodic Gaussian vacuum germs,
+induced eta4, beta(t0)=rho, beta_t(t0)=0, and F_nu(K)=0.
+F_nu(K)=tf3(A+u tensor u+Hess q-nu strain(u)) is an independent
+constitutive sector condition, not a definition by the image of the lift.
+The source quotient identifies equal velocity germs and time-only pressure
+gauges. The target quotient identifies the actual complete metric slices
+as a joint (r,t) germ, with all x simultaneous.
+
+Allowed time shrinking:
+  scalar completion c: yes, positive radius <= source radius;
+  radial extension r: yes, positive time radius <= supplied radius;
+  geometric reconstruction h: NO; every point of the original supplied I;
+  quotient comparison q: neighborhood intersection allowed by germ equality.
+No zero-mean velocity condition. No global-in-time NSE regularity assertion.
+No equivalence with arbitrary four-dimensional Einstein solutions.
+The mathematical root remains conditional on the exact literal LI inputs.
+The native root remains OPEN pending matching external compilation/audit.
+
+3. FROZEN ENDPOINT/EVIDENCE LAYER
+
+Mathlib = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
+Methlib source = eac159c5f7bf5a99a00d994da34c4760ea8335d0.
+Methlib retained external proof = f927f1e31196f0be71b2581dc85f6e3fd19e0746;
+  cached run 43370286685.
+GR retained external source = 8c72af4b7e0bdfafd305746a8a7b4b94a6801649;
+  cached run 43389123717; 657 named audits; 308 verified source files.
+Lean = 4.34.0-rc1, compiler 3447a668783dbce1a8fdb97101dd067687b2b418.
+Existing certificate = Auxillary/GR/Assembly/EXTERNAL_CERTIFICATE.json.
+Allowed standard axioms in retained audits = propext, Classical.choice,
+Quot.sound. The existing 150 assembly theorem bodies and 21 definitions
+retain exactly their displayed premises.
+
+ML001--ML065 and ME01--ME17 preserve the prior global identifiers and TEMP
+entry correspondence. Additional source-verified endpoints receive ML066+
+and ME18+. Their existence is not a new application-level Lean proof.
+Section-local U1-ML/GML aliases are mapped in Appendix E and the JSON index.
+Native source names, paths, hashes and cached evidence are separately indexed.
+Proposed D01--D22 native exports below are mathematical targets only.
+
+4. DETERMINISTIC COMPOSITION INDEX
+
+D01 | U1.1 | GC01/GC02
+  predecessors=none
+  endpoints=U1-N01; U1-N03; U1-N04; U1-N05; U1-N06; ML052
+  output=Joint smoothness and every mixed coordinate derivative commute with G on the original open interval.
+
+D02 | U1.2 | GC03
+  predecessors=none
+  endpoints=U1-ME01; U1-ME02; U1-ML10
+  output=Actual cosine summands satisfy ||Gg||inf <= C0 ||Delta g||inf; C0 <= 13/(4*pi^4).
+
+D03 | U1.3 | GC03
+  predecessors=none
+  endpoints=ML003; ML023; U1-ML02; U1-ML03; U1-ML04
+  output=Compact periodic analytic input has simultaneous local bounds M R^(-n)n! for all mixed derivatives.
+
+D04 | U1.4--U1.7 | GC04
+  predecessors=D01,D02,D03
+  endpoints=U1-ML05; U1-ML06; ML026; ML051
+  output=Actual G, spatial mean and P preserve joint analyticity on the entire supplied interval.
+
+D05 | U2 sections 1/6 | GC05/GC06
+  predecessors=none
+  endpoints=ScalarNormalGerm; scalar_normalized_germ_unique
+  output=LI01, rho!=0 give actual second-order normalized scalar germs, including converse uniqueness.
+
+D06 | U2 section 2 | GC07
+  predecessors=D05
+  endpoints=ML001; ML002; ML003; finite_precompact_refinement
+  output=Finite source atlas has compact patch closures strictly inside valid larger source domains.
+
+D07 | U2 section 3 | GC08
+  predecessors=none
+  endpoints=ML015; ML016; ML012; ML013
+  output=Constant spatial translations preserve literal scalar equations, metric derivatives, boundary jets and Ricci.
+
+D08 | U2 sections 4/5 | GC08/GC09
+  predecessors=D06,D07
+  endpoints=ML004; ML005; ML006; ML007; periodic_analytic_witness_of_compact_overlap_germs
+  output=Finite relative shifts and compact closed overlaps produce one parameter neighborhood and an actual periodic analytic witness.
+
+D09 | U2 section 6 | GC10
+  predecessors=D05,D08
+  endpoints=completedBoundary_hamiltonian_zero_iff_scalar_normal
+  output=Normalized scalar witness on a common cylinder with |rho+Delta psi|>|rho|/2 and Hamiltonian zero.
+
+D10 | U2 section 7 | GC13/GC14/GC15
+  predecessors=D07,D08
+  endpoints=gaussian_lorentzian_of_near_eta4; ML055; ML056; ML059; ML060; ML061; ML062
+  output=LI02 yields r: actual periodic Gaussian vacuum collar with boundary match and explicit Lorentz congruence.
+
+D11 | U3b C01/C02 | GC11
+  predecessors=D09
+  endpoints=ML051; ML052; ML053; traceRecover4_traceReverse4
+  output=Actual scalar correction is conserved; completed K satisfies every BoundaryAdmissible field.
+
+D12 | U3b C03 | GC12
+  predecessors=D04,D11
+  endpoints=poissonInverse_scalarLaplacian; leray_gradient_zero
+  output=Every CompletedBoundary field holds: decoded velocity u, pressure p+(mean psi)tt, stress zero; construct c.
+
+D13 | U3a G01--G05 | GC16
+  predecessors=none
+  endpoints=ricci_gaussian_normal; ricci_gaussian_mixed; ricci_gaussian_tangential
+  output=Differentiate actual inverse and contract actual Ricci at flat boundary; Hamiltonian and Codazzi vanish.
+
+D14 | U3a G06--G08 | GC16/GC17
+  predecessors=D13
+  endpoints=scalarMean_hasDerivAt_local; scalarMean_divergence_zero; GML06
+  output=Full-interval BoundaryAdmissible; mean beta=rho and mean w constant, with native index/sign conventions.
+
+D15 | U3a G09; U3b R02 | GC17
+  predecessors=D04,D14
+  endpoints=poissonInverse_localTimeDerivative; scalarLaplacian_poissonInverse; divergence_leray_zero
+  output=q=G(beta-rho), Delta q=beta-rho, u=w+grad q_t, div u=0; q and q_t initially zero.
+
+D16 | U3a G10/G11; U3b R03 | GC18
+  predecessors=D14,D15
+  endpoints=reconstruction_residual_of_codazzi_hodge; boundaryStress_tensorDivergence
+  output=Actual residual equals div F on the original interval; construct h.
+
+D17 | U3b I01 | GC19
+  predecessors=D15,D16
+  endpoints=boundary_slice_eq_completedBoundary_of_zero_stress
+  output=For independent canonical F=0 sector, recover entire K=completedBoundary(u,p,q).
+
+D18 | U2 section 8; U3b I04 | GC21
+  predecessors=none
+  endpoints=sameFlowAt_iff_analytic_pressure_gauge; analytic_double_primitive_of_literatureCK; normalized_pressure_gauge_completion
+  output=An analytic pressure gauge gamma has normalized a with a_tt=gamma; K[u,p+gamma,psi-a]=K[u,p,psi].
+
+D19 | U2 section 8; U3b I02/I04 | GC20/GC21
+  predecessors=D05,D08,D12,D18
+  endpoints=scalar_normalized_germ_unique; gaussianVacuum_sameMetricAt_of_literatureJet
+  output=For arbitrary c,r,h, same-flow germs yield same selected forward metric germ: forward_respects.
+
+D20 | U3b I02/I03 | GC20/GC22
+  predecessors=D05,D08,D17,D19
+  endpoints=scalar_normalized_germ_unique; gaussianVacuum_sameMetricAt_of_literatureJet
+  output=For arbitrary c,r,h, normalize and identify canonical q before Gaussian uniqueness: lift_decode; together with D19 construct GermInverseLaws.
+
+D21 | U3b I05 | GC23
+  predecessors=D10,D12,D16,D19,D20
+  endpoints=sameMetricAt_boundaryFields; forward_pressure_gauge_recovery; reverseGerm_forwardGerm; forwardGerm_reverseGerm
+  output=Quotient maps are well-defined and inverse on the exact source and target carriers.
+
+D22 | Composed root | GC23
+  predecessors=D10,D12,D16,D19,D20,D21
+  endpoints=NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS
+  output=nu>0, rho!=0, LiteratureInputs imply ExactSectorEquivalence; all c/r/h/q supplied mathematically.
+
+5. COMPLETE DERIVATIONS
+
+
+PART U1
+NSE_GR_JOINT_ANALYTIC_HODGE_PRESERVATION_B_TIER
+MODE = B_TIER_DERIVATION
+MARKER = !
+SCOPE = U1; GC01--GC04; actual periodic Poisson/Leray operators.
+MATHEMATICAL_STATUS = COMPLETE_DERIVATION
+NEW_LEAN_STATUS = NOT_FORMALIZED
+LOCAL_LEAN_EXECUTIONS = 0
+NEW_COMPILER_RUNS = 0
+NEW_AXIOMS = 0
+
+0. EXACT THEOREM
+
+Let V = EuclideanSpace R (Fin 3), E = R x V, Q = [0,1]^3,
+I subset R open, f : R -> V -> R, w : R -> V -> V.
+Assume F(t,x)=f(t)(x) is jointly real analytic at every (t,x) in I x V,
+and f(t) is Z^3-periodic for every t in I. Define exactly
+
+  m(0)=0,
+  m(k)=-(4*pi^2*sum_j k_j^2)^(-1)                 (k != 0),
+  Gg(x)=sum'_{k in Z^3} m(k)*integral_Q cos(2*pi*k.(x-y))*g(y) dy,
+  mean(g)=integral_Q g(y) dy,
+  Pa=a-grad(G(div a)).
+
+CONCLUSION U1-SCALAR:
+  (t,x) |-> G(f(t))(x) is jointly real analytic on the entire I x V;
+  t |-> mean(f(t)) is real analytic on the entire I;
+  each G(f(t)) is periodic;
+  Delta G(f(t))=G(Delta f(t))=f(t)-mean(f(t));
+  mean(G(f(t)))=0;
+  D^alpha(GF)=G(D^alpha F), for every mixed time/spatial multi-index alpha,
+  with G acting only on the complete spatial slice.
+
+CONCLUSION U1-VECTOR:
+  If W(t,x)=w(t)(x) is jointly real analytic on I x V with periodic slices,
+  then (t,x) |-> P(w(t))(x) is jointly real analytic on the entire I x V;
+  div(Pw)=0, P(Pw)=Pw, mean(Pw)=mean(w), P(grad f)=0;
+  D_t(Pw)=P(D_t w), and the analogous finite-order smooth commutations.
+
+QUANTIFIERS:
+  No replacement I' subsetneq I occurs in any conclusion.
+  Neighborhood radii and derivative-bound constants may depend on t_* in I.
+  No positive radius uniform over all t in I is asserted or required.
+  No spatial mean-zero premise occurs on f or w.
+  This theorem requires no new analytic premise beyond joint analyticity.
+  LI01 and LI02 are unused in U1. LI03 supplies a permissible Fourier
+  derivative route, but audited Methlib coefficient lemmas suffice already.
+
+1. FROZEN SOURCE AND EVIDENCE
+
+MATHLIB_PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
+METHLIB_SOURCE_PIN = eac159c5f7bf5a99a00d994da34c4760ea8335d0.
+METHLIB_AUDITED_PROOF_PIN = f927f1e31196f0be71b2581dc85f6e3fd19e0746.
+METHLIB_CACHED_EXTERNAL_RUN = 43370286685.
+GR_AUDITED_SOURCE_PIN = 8c72af4b7e0bdfafd305746a8a7b4b94a6801649.
+GR_CACHED_EXTERNAL_RUN = 43389123717.
+LEAN = 4.34.0-rc1; compiler 3447a668783dbce1a8fdb97101dd067687b2b418.
+EXISTING_GR_CERTIFICATE = Auxillary/GR/Assembly/EXTERNAL_CERTIFICATE.json.
+EXISTING_GR_SCOPE = 657/657 named standard-only audits; 308/308 input hashes.
+ALLOWED_FOUNDATIONAL_AXIOMS = {propext, Classical.choice, Quot.sound}.
+
+All source references below are pinned, not branch-tip declarations.
+Mathlib path prefix: Mathlib/.
+Methlib Fourier path prefix: FourierHodgeLaws_inhabitant/FourierHodgeLaws/.
+Native GR path prefix: ASSEMBLY/GRAssembly/.
+Exact frozen GR definitions: GR_adapter/GRAdapter/Fields.lean.
+
+2. ENDPOINT INDEX
+
+[U1-N01] NSEGR.Assembly.poissonInverse_eq_neg_scalarL
+  HodgeTransport.lean:35; existing audited GR theorem.
+  Output: G=-NSEMaxwell.Classical.scalarL, for every total scalar field.
+  Scope: actual negative multiplier, including k=0 and total tsum semantics.
+
+[U1-N02] NSEGR.Assembly.poissonInverse_smooth
+  HodgeTransport.lean:47; existing audited GR theorem.
+  Scope: spatial C-infinity; does not assert analytic preservation.
+
+[U1-N03] NSEGR.Assembly.scalarPartial_poissonInverse_commute
+  HodgeTransport.lean:162; existing audited GR theorem.
+  Scope: D_j Gg=G D_j g for smooth periodic g.
+
+[U1-N04] NSEGR.Assembly.poissonInverse_halfspace_smooth
+  HodgeTime.lean:29; existing audited GR theorem; consumes ME10.
+  Scope: joint smoothness on the source forward halfspace.
+
+[U1-N05] NSEGR.Assembly.exists_smooth_periodic_extension
+  HodgeLocal.lean:89; existing audited GR theorem.
+  Scope: at t_* in open I, a global jointly smooth periodic extension g
+  with g(s)=f(s) as complete functions V->R for all s near t_*.
+
+[U1-N06] NSEGR.Assembly.poissonInverse_hasDerivAt_local
+  HodgeLocal.lean:119; existing audited GR theorem.
+  NSEGR.Assembly.poissonInverse_localTimeDerivative
+  HodgeLocal.lean:136; existing audited GR theorem.
+  Scope: ordinary two-sided time derivative on the original open I.
+
+[U1-N07] NSEGR.Assembly.scalarMean_hasDerivAt_local
+  HodgeLocal.lean:146; existing audited GR theorem.
+  Scope: ordinary derivative commutes with actual cube integration.
+
+[U1-N08] Existing audited native Hodge identities, HodgeTransport.lean:
+  scalarLaplacian_poissonInverse:74;
+  scalarMean_poissonInverse_zero:101;
+  poissonInverse_scalarLaplacian:203;
+  leray_gradient_zero:210;
+  divergence_leray_zero:248;
+  leray_idempotent:266;
+  spatialMean_leray:271.
+
+[U1-ME01 / existing ME01]
+  NSEMaxwell.HodgeProof.scalarL_eq_realFourierSeries
+  CosineMultiplier.lean:72.
+  Support: actual cosine sum = real part of actual complex Fourier synthesis.
+  Adjacent supporting declaration:
+  NSEMaxwell.HodgeProof.scalar_cosine_integral, same path:38.
+
+[U1-ME02]
+  NSEMaxwell.HodgeProof.scalarCoeff_coordinateDerivative
+  FourierCoefficients.lean:42.
+  Support: coeff(D_j g)(k)=(2*pi*i*k_j)*coeff(g)(k).
+  Repetition and finite addition give the exact Laplacian multiplier used
+  in U1.2. Coefficients are the actual integrals in TargetPrimitives.lean.
+
+[U1-ME03 / existing ME10]
+  NSEMaxwell.HodgeProof.scalarL_trajectory_smooth
+  ParameterSmoothing.lean:273.
+  Support: joint C-infinity only; source temporal domain [0,infinity).
+
+[U1-ME04 / existing ME11]
+  NSEMaxwell.HodgeProof.inverseScalarSeries_hasFDerivAt_pos
+  ParameterSmoothing.lean:195.
+  Support: differentiated actual multiplier series at positive source time.
+
+[U1-ME05 / existing ME12]
+  NSEMaxwell.HodgeProof.cubeIntegral_hasDerivWithinAt
+  ParameterCoefficients.lean:81.
+  Support: Bochner cube-integral differentiation on source halfspace.
+
+[U1-ME06 / existing ME15]
+  NSEMaxwell.HodgeProof.scalarMean_contDiffOn
+  ParameterIntegral.lean:50.
+  Support: smooth scalar mean, source halfspace; local transfer via U1-N05.
+
+[U1-ML01 / existing ML023]
+  FormalMultilinearSeries.summable_norm_mul_pow
+  Analysis/Analytic/ConvergenceRadius.lean:241.
+  Support: normal convergence strictly below the formal series radius.
+
+[U1-ML02]
+  FormalMultilinearSeries.norm_mul_pow_le_of_lt_radius
+  Analysis/Analytic/ConvergenceRadius.lean:212.
+  Support: exists C>0, forall n, ||p_n|| r^n <= C when r<radius(p).
+
+[U1-ML03]
+  HasFPowerSeriesOnBall.changeOrigin
+  Analysis/Analytic/ChangeOrigin.lean:338;
+  FormalMultilinearSeries.nnnorm_changeOrigin_le, same path:203.
+  Support: recentered coefficients and the binomial insertion norm bound.
+
+[U1-ML04]
+  HasFPowerSeriesOnBall.iteratedFDeriv_eq_sum_of_completeSpace
+  Analysis/Analytic/IteratedFDeriv.lean:228.
+  Support: n-th derivative = permutation sum of n-th Taylor coefficient;
+  therefore ||D^n f|| <= n! times the recentered coefficient norm.
+
+[U1-ML05]
+  map_add_eq_sum_add_integral_iteratedFDeriv
+  Analysis/Calculus/TaylorIntegral.lean:69; global namespace.
+  Support: exact multivariate Taylor formula with integral remainder.
+  Applies on every segment lying inside the smooth neighborhood.
+
+[U1-ML06]
+  FormalMultilinearSeries.le_radius_of_bound
+  Analysis/Analytic/ConvergenceRadius.lean:111.
+  Support: ||p_n|| r^n <= C implies r <= radius(p).
+
+[U1-ML07 / existing ML026]
+  HasFPowerSeriesOnBall.analyticAt
+  Analysis/Analytic/Basic.lean:139.
+  Support: the constructed and identified Taylor series gives AnalyticAt.
+
+[U1-ML08 / existing ML051]
+  AnalyticAt.fderiv, Analysis/Calculus/FDeriv/Analytic.lean:263.
+  AnalyticOnNhd.fderiv, same path:271.
+  AnalyticOnNhd.iteratedFDeriv, same path:278.
+  Support: derivative closure of real analytic functions into complete spaces.
+
+[U1-ML09]
+  AnalyticOnNhd.contDiffOn_of_completeSpace
+  Analysis/Calculus/ContDiff/Defs.lean:727.
+  Support: analytic input supplies the joint C-infinity premises of U1-N05.
+
+[U1-ML10]
+  ZLattice.summable_norm_pow_inv
+  Algebra/Module/ZLattice/Summable.lean:273.
+  Support: n>rank supplies lattice inverse-norm summability.
+  Source-native instance: SingularClosure.summable_frequencyLatticePoint_inv_four,
+  TEMP/SingularClosure/LatticeSobolevSummability.lean:40 in frozen GR source.
+  Its Pi norm is the sup norm. Euclidean inverse fourth powers are smaller.
+  The explicit shell computation below independently supplies the bound.
+
+INDEX_LIMITATION:
+  U1-ML01--10 are genuine existing Mathlib declarations, not the new U1 theorem.
+  U1-ME01--06 supply genuine smooth Fourier endpoints, not analytic preservation.
+  U1.1--U1.8 below are the complete new mathematical composition.
+  No new theorem-level Lean audit exists for that composition.
+
+3. DERIVATION
+
+U1.1  JOINT SMOOTHNESS AND ALL MIXED COMMUTATIONS
+
+Fix t_* in I. Apply U1-ML09 and U1-N05 to obtain a globally smooth periodic
+g with g(s)=f(s) as complete spatial slices on an open J containing t_*.
+Set g_*(s,x)=g(t_*+s-1,x). This is globally smooth and periodic, so U1-N04
+applies on s>=0; near s=1 its conclusion is ordinary joint smoothness.
+Undo the translation. Since G acts on a complete spatial slice,
+G(g(s))=G(f(s)) for every s in J, including all spatial points at once.
+Thus H(t,x)=G(f(t))(x) is jointly smooth near every (t_*,x).
+
+Periodicity of every mixed derivative of F follows by differentiating
+F(t,x+e_j)=F(t,x) on the open slab. Each derivative is jointly smooth.
+Apply U1-N03 to spatial derivatives and U1-N06 to time derivatives.
+Induction on the length of an ordered coordinate-derivative word gives
+
+  D^alpha H(t,x) = G((D^alpha F)(t,.))(x)                (U1.1.1)
+
+for all alpha, t in I, x in V. Smoothness permits arbitrary coordinate
+order. The same localization using U1-ME06 and U1-N07 gives
+
+  d_t^n mean(f(t)) = integral_Q d_t^n F(t,y) dy.         (U1.1.2)
+
+No derivative is moved through a conditionally convergent series.
+Every derivative passage is supplied by the stated smooth endpoints.
+
+U1.2  AN ORDER-INDEPENDENT TWO-DERIVATIVE ESTIMATE
+
+Let g:V->R be smooth and periodic; lambda_k=4*pi^2*|k|_2^2.
+For k!=0 and fixed x, write C_k(y)=cos(2*pi*k.(x-y)).
+In each coordinate j, periodicity of g, D_j g, C_k and D_j C_k cancels
+both endpoint terms in two integrations by parts over [0,1]. Fubini is
+valid because the functions and derivatives are continuous on compact Q.
+Hence
+
+  integral_Q C_k Delta g = integral_Q (Delta C_k)g
+                        = -lambda_k integral_Q C_k g. (U1.2.1)
+
+Equivalently U1-ME02 twice, finite summation, and U1-ME01 give U1.2.1.
+For the actual native summand, using m(k)=-lambda_k^(-1),
+
+  m(k) integral_Q C_k g
+       = lambda_k^(-2) integral_Q C_k Delta g,          (U1.2.2)
+  |m(k) integral_Q C_k g|
+       <= (16*pi^4)^(-1)|k|_2^(-4)||Delta g||_infty.   (U1.2.3)
+
+The k=0 summand is exactly zero. The cube volume is 1. Define
+
+  S4 = sum_{k != 0}|k|_2^(-4), C0=S4/(16*pi^4).
+
+For N>=1, the sup-norm shell contains
+  (2N+1)^3-(2N-1)^3 = 24N^2+2
+lattice points; each satisfies |k|_2>=N. Therefore
+
+  S4 <= sum_{N>=1}(24/N^2+2/N^4)
+     <= 26 sum_{N>=1} N^(-2) <= 52,
+  0 < C0 <= 13/(4*pi^4).                              (U1.2.4)
+
+The final inequality follows from
+sum_{N>=1}N^(-2) <= 1+integral_1^infinity r^(-2)dr=2.
+Thus U1.2.3 is an absolutely summable majorant uniform in x, and
+
+  ||Gg||_infty <= C0 ||Delta g||_infty.                (U1.2.5)
+
+The constant C0 is independent of g and of every derivative order.
+There is no sum/integral exchange in this derivation: integration by parts
+is modewise, and only the resulting absolutely summable bounds are summed.
+
+U1.3  UNIFORM LOCAL FACTORIAL BOUNDS FOR THE INPUT
+
+Fix t_* in I. Choose eta>0 with J=[t_*-2eta,t_*+2eta] subset I.
+K=J x Q is compact. At each a in K, joint real analyticity supplies
+
+  F(a+h)=sum_{m>=0} p_{a,m}(h,...,h)
+
+on a native product-norm ball. Choose r_a>0 strictly below the represented
+ball radius and formal series radius, and choose C_a>0 with
+
+  ||p_{a,m}|| r_a^m <= C_a                            (U1.3.1)
+
+for all m, by U1-ML02. Shrink r_a so the ball lies inside I x V.
+For ||h||<=r_a/2, differentiating an m-linear diagonal monomial n times
+produces m!/(m-n)! insertion terms, each bounded by
+||p_{a,m}|| ||h||^(m-n). Consequently
+
+  ||D^n F(a+h)||
+  <= C_a r_a^(-n) n! sum_{l>=0} binom(n+l,n)(||h||/r_a)^l
+  =  C_a r_a^(-n) n! (1-||h||/r_a)^(-n-1)
+  <= 2 C_a (2/r_a)^n n!.                             (U1.3.2)
+
+Justification of termwise differentiation: for each fixed n the displayed
+nonnegative series is finite uniformly on the closed half-radius ball;
+the derivative series converges normally there. Alternatively U1-ML03
+constructs the recentered coefficients with exactly this insertion bound,
+and U1-ML04 identifies their permutation sum with D^n F. The binomial
+identity follows by n differentiations of sum_{l>=0}q^l=(1-q)^(-1),
+valid for |q|<1 by uniform geometric convergence on every smaller disk.
+
+The balls B(a,r_a/2) cover K. Choose a finite subcover a_1,...,a_L and set
+
+  M=max(1,2C_{a_1},...,2C_{a_L}),
+  R=min(r_{a_1}/2,...,r_{a_L}/2)>0.
+
+Then all mixed coordinate derivatives satisfy
+
+  |D^alpha F(t,x)| <= M R^(-|alpha|)|alpha|!
+       for (t,x) in J x Q.                           (U1.3.3)
+
+Every coordinate basis vector has native product norm 1, so the operator
+norm estimate implies the coordinate estimate. Differentiated spatial
+periodicity extends U1.3.3 from Q to every x in V, with the same M,R.
+The constants control all derivative orders simultaneously.
+
+U1.4  FACTORIAL BOUNDS FOR THE ACTUAL POISSON INVERSE
+
+Let n=|alpha|. Combine U1.1.1, U1.2.5 and U1.3.3:
+
+  |D^alpha H(t,x)|
+  <= C0 ||Delta_x D^alpha F(t,.)||_infty
+  <= 3 C0 M R^(-n-2)(n+2)!                            (U1.4.1)
+
+for all (t,x) in J x V. For every n>=0,
+
+  (n+1)(n+2) <= 2*3^n.                                (U1.4.2)
+
+Proof: equality at n=0; the ratio of successive left sides is
+(n+3)/(n+1)<=3. Hence, with B=6 C0 M R^(-2),
+
+  |D^alpha H(t,x)| <= B (3/R)^n n!.                   (U1.4.3)
+
+For v=(v_0,v_sp) in the native product norm,
+
+  |v_0|+sum_{j=1}^3|v_j|
+       <=(1+sqrt(3))||v||_prod <=3||v||_prod.
+
+Multilinearity of D^n H and expansion in the four coordinate basis vectors
+therefore imply
+
+  ||D^n H(t,x)||_op <= B (9/R)^n n!.                 (U1.4.4)
+
+This factor 9 uses the actual max product norm on R x EuclideanSpace R 3.
+The Euclidean R^4 estimate 6/R requires an explicit norm identification;
+no such identification is silently used here.
+
+U1.5  TAYLOR IDENTIFICATION: JOINT REAL ANALYTICITY
+
+Fix z_*=(t_*,x_*). Let A=9/R and define continuous n-linear maps
+
+  q_n=(1/n!)D^n H(z_*).
+
+Then ||q_n||<=B A^n. Choose 0<r<min(eta,A^(-1)).
+U1-ML06 gives radius(q)>=A^(-1)>r. For ||h||<r, the segment
+z_*+s h (0<=s<=1) lies inside J x V. U1-ML05 gives
+
+  H(z_*+h) = sum_{n=0}^N q_n(h,...,h) + E_N(h),
+  E_N(h) = (1/N!) integral_0^1 (1-s)^N
+                   D^(N+1)H(z_*+s h)[h,...,h] ds.
+
+Applying U1.4.4 and integral_0^1(1-s)^N ds=1/(N+1),
+
+  |E_N(h)| <= B(A||h||)^(N+1) -> 0.                  (U1.5.1)
+
+Thus the native multivariate formal multilinear series q represents H on
+B(z_*,r); U1-ML07 gives AnalyticAt R H z_*.
+This is a four-variable Taylor identification, not separate analyticity.
+Since t_* in I and x_* in V were arbitrary, H is AnalyticOnNhd R on I x V.
+The auxiliary choice of J does not restrict the theorem's time domain.
+
+U1.6  ACTUAL MEAN PRESERVES ANALYTICITY
+
+Let mu(t)=integral_Q F(t,y)dy. U1.1.2 and U1.3.3 imply
+
+  |mu^(n)(t)| <= M R^(-n)n!, for t in J.
+
+The one-dimensional instance of U1.5 gives AnalyticAt R mu t_*.
+The map (t,x)|->mu(t) is jointly analytic by composition with projection.
+Vector means follow componentwise. All integrals are actual cube integrals;
+compact spatial domination and smoothness justify their differentiated forms.
+
+U1.7  ANALYTIC LERAY CALCULUS AND MEAN MODES
+
+For jointly analytic periodic W, div_x W is jointly analytic and periodic
+by U1-ML08, linear evaluation and finite addition. U1.5 applies to it.
+Its spatial gradient is jointly analytic by U1-ML08. Subtraction gives
+joint analyticity of PW=W-grad G(div W).
+
+Periodic FTC gives mean(div W)=0 and mean(grad v)=0 for every smooth
+periodic v. The actual smooth identities U1-N08 yield
+
+  div(PW)=div W-Delta G(div W)=0;
+  mean(PW)=mean(W);
+  P(PW)=PW;
+  P(grad f)=grad f-grad G(Delta f)=0.
+
+The last equality uses GDelta f=f-mean(f), whose spatial gradient is
+grad f. U1.1 and commutation of mixed smooth derivatives give
+D_t(PW)=P(D_t W). Zero frequency is retained in PW and removed in Gf.
+No replacement by a mean-zero velocity field occurs.
+
+U1.8  CHAIN ENDPOINT
+
+  exact native sign bridge
+  -> joint smooth localization + all mixed commutations
+  -> fixed two-derivative Green estimate
+  -> uniform local factorial input bounds
+  -> uniform local factorial output bounds
+  -> native joint Taylor-series identification
+  -> analytic G / analytic mean / analytic P on the same open slab.
+
+PROPOSED_NEW_NATIVE_EXPORTS (signatures only; not existing Lean theorems):
+  U1.A01 poissonInverse_norm_le_laplacian;
+  U1.A02 analytic_periodic_local_uniform_factorial_bound;
+  U1.A03 poissonInverse_joint_smooth_on_open_slab;
+  U1.A04 poissonInverse_mixed_derivative_commute;
+  U1.A05 poissonInverse_joint_analytic_on_open_slab;
+  U1.A06 scalarMean_analytic_on_open_slab;
+  U1.A07 leray_joint_analytic_on_open_slab.
+
+DEPENDENCIES:
+  A01 <- U1-ME01, U1-ME02, U1-ML10; proof U1.2.
+  A02 <- U1-ML01--04, compactness, periodicity; proof U1.3.
+  A03 <- U1-N01, U1-N04, U1-N05, U1-ML09; proof U1.1.
+  A04 <- A03, U1-N03, U1-N06; proof U1.1.
+  A05 <- A01, A02, A03, A04, U1-ML05--07; proofs U1.4--5.
+  A06 <- A02, U1-N07, U1-ME06, U1-ML05--07; proof U1.6.
+  A07 <- A05, U1-ML08, U1-N08; proof U1.7.
+
+4. AUDIT AND BOUNDARY
+
+MATHEMATICAL_GAPS_IN_EXACT_U1 = NONE.
+UNSTATED_COMPLEX_EXTENSION_PREMISE = NONE.
+CONTOUR_SHIFT_PREMISE = NONE.
+SEPARATE_ANALYTICITY_SUBSTITUTION = NONE.
+UNIFORM_TIME_RADIUS_PREMISE = NONE.
+GLOBAL_HALFSPACE_EXTENSION_PREMISE = NONE.
+UNJUSTIFIED_TSUM_INTEGRAL_INTERCHANGE = NONE.
+MEAN_ZERO_INPUT_RESTRICTION = NONE.
+
+The complex-tube/contour path previously proposed for GC03 is unnecessary
+for the analytic mapping conclusion GC04. The existing polynomial-
+exponential summability results remain valid auxiliary endpoints.
+
+U1_B_TIER = COMPLETE.
+U1_NEW_A_TIER = OPEN; no external compilation or theorem audit for A01--07.
+ROOT_NSE_EINSTEIN = NOT_ESTABLISHED_BY_U1_ALONE.
+No inference from this TXT to FORMAL_CLOSURE or UNCONDITIONAL_CLOSURE.
+
+
+
+PART U2
+U2_NATIVE_PERIODIC_GLUING_B_TIER
+MODE = B_TIER_DERIVATION
+SCOPE = literal source-facing LI01/LI02 -> actual periodic scalar cylinder,
+        actual periodic Gaussian collar, native r, and uniqueness adapters.
+ASSUMPTION_SET = {LiteratureAnalyticCKInput, LiteratureGaussianJetInput}.
+LOCAL_LEAN_EXECUTIONS = 0.
+PROMOTION = none; mathematical derivation only.
+
+0. EXACT STATEMENTS
+
+U2.SCALAR. Let rho != 0 and let AnalyticPeriodicPair t0 delta u p hold.
+Assume LI01. Then there exist d, psi such that 0<d<=delta and, on
+I_d x R^3, psi is jointly real analytic, spatially unit-periodic, and
+  psi(t0,x)=0, partial_t psi(t0,x)=0,
+  partial_tt psi = scalarJetRHS(rho,u,nseSpatialSource3(nu,u,p),
+                               Hess_x psi,grad_x partial_t psi),
+  |rho+Delta_x psi|>|rho|/2,
+  boundaryHamiltonian(completedBoundary(nu,rho,u,p,psi))=0.
+Every two such normalized local solutions have the same full-spatial time
+germ. This statement does not require the NSE equations. NSE is required
+later for Codazzi and the complete CompletedBoundary record.
+
+U2.RADIAL. Assume LI02. For every rho,t0,delta,K with
+BoundaryAdmissible rho t0 delta K, there exist 0<d<=delta, e>0 and a total
+Metric g with GaussianVacuum rho t0 d e g and
+  forall t in I_d, boundaryK g t = K t.
+Consequently LI02 -> AnalyticRadialExtensionLaws rho t0.
+Neither rho!=0 nor an NSE/stress-free premise is required for this theorem.
+
+U2.UNIQUENESS. Under LI02, actual periodic Gaussian vacua with the same
+admissible boundary tensor as a full-spatial time germ have SameMetricAt.
+Under LI01/LI02 and rho!=0, normalized scalar uniqueness and analytic
+pressure-gauge cancellation imply GermInverseLaws.forward_respects for
+arbitrary inhabitants c,r. Once U3 supplies the actual normalized canonical
+completion identity, the same argument implies GermInverseLaws.lift_decode
+for arbitrary c,r,h. This final use of U3 is explicit; it is not an additional
+literature axiom.
+
+Notation: I_d=(t0-d,t0+d), Q=[0,1]^3, B=(-1,2)^3; integer vectors are
+identified with their Euclidean embeddings. All derivatives below are the
+native ordinary-time derivatives and Frechet spatial derivatives.
+
+1. SOURCE SIGNATURES AND THE RECENTERING REQUIREMENT
+
+LI01 gives, for n,m>0, analytic first-order CK data and RHS at the initial
+jet, an analytic solution germ at (t0,x0), its initial-value germ and its
+equation germ, unique among exactly these solution germs. For scalar
+completion use n=3,m=5 and W=(psi,v,z_1,z_2,z_3):
+  psi_t=v, v_t=F(t,x,D_x z,D_x v), (z_i)_t=partial_i v,
+  W(t0,x)=0.
+The existing scalarCK_gradient_compatibility gives z=grad psi as a germ.
+Differentiate the germ identities, not merely the values at (t0,x0):
+  psi_tt=v_t; partial_i z_j=partial_i partial_j psi;
+  partial_i v=partial_i partial_t psi.
+Therefore the literal second-order scalar equation holds as a joint germ.
+Conversely an analytic psi satisfying that equation and both zero initial
+jets produces W=(psi,psi_t,grad psi); commutation of analytic mixed partials
+gives the first-order system. LI01 therefore gives uniqueness of scalar
+germs, not just uniqueness of an auxiliary state. Existing endpoints:
+  ScalarJet.scalarCK_scalarNormalGerm;
+  ScalarJet.scalarStateOfPotential_solution;
+  ScalarJet.scalar_normalized_germ_unique;
+  ScalarJet.scalarNormalGerm_exists.
+Namespace for these declarations: NSEGR.Assembly.
+
+At zero initial data Hess psi=0. Hence the denominator of the scalar RHS is
+2*rho and is nonzero. Analyticity of the RHS is thus exactly the hypothesis
+needed by LI01. This is scalarCK_zero_initial_noncharacteristic together
+with analyticAt_scalarCKRHS. ScalarNormalGerm.noncharacteristic gives local
+persistence; ScalarNormalGerm.hamiltonian uses the already proved exact
+normal-form equivalence.
+
+LI02 supplies an actual metric germ with analytic coefficients, symmetry,
+nonzero determinant, g_rr=1, g_ra=0, Ricci=0, induced eta4 and boundaryK=K,
+unique among precisely those marked Gaussian germs. The boundary source
+requires analytic K, symmetry, Hamiltonian=0 and Codazzi=0 as joint germs.
+BoundaryAdmissible supplies these through
+  NSEGR.boundaryAdmissible_literatureFlatBoundaryGerm.
+It does not insert a stress-free or NSE assumption.
+
+RECENTERING LEMMA. If all analytic/PDE laws of a local witness hold on an
+open product V x O, its initial-data laws hold throughout O, and s0 in V,
+then the same total witness satisfies the source germ specification at
+every center y in O. Proof: V x O is a neighborhood of (s0,y); initial-data
+equalities hold on the open neighborhood O of y. Restrict each equality to
+these neighborhoods. For a Gaussian witness the same argument uses bulk
+laws on (-e,e) x I_d x O and boundary laws on I_d x O. A finite-dimensional
+coordinate identification sends (r,t,x) to bulkPoint r t x, preserving open
+sets and analyticity. No uniqueness hypothesis is assumed at a point not
+contained in the larger witness domain.
+
+2. PRECOMPACT SOURCE ATLAS
+
+At each y in Q choose the LI01 scalar witness, or LI02 metric witness.
+AnalyticAt.eventually_analyticAt gives an open neighborhood of analytic
+points. Intersect it with the finitely many equation, symmetry, determinant,
+gauge and prescribed-jet neighborhoods. Finite indices (matrix entries,
+coordinate derivatives) allow finite intersection. Extract an open product
+V_y x O_y about (s0,y). Also intersect O_y with B. For Gaussian data first
+intersect the boundary-law neighborhood with I_delta x R^3, then choose
+the bulk product so its r=0 trace lies in that boundary neighborhood.
+Here scalar S=R,s0=t0; Gaussian S=R^2,s0=(0,t0).
+
+Choose an open U_y with compact closure C_y and
+  y in U_y, C_y=closure(U_y) subset O_y subset B.
+This follows from local compactness of R^3: choose compact C subset O_y
+with y in interior(C), set U_y=interior(C), and use closure(U_y) subset C.
+Extract finitely many y_i covering Q. Retain every larger O_i, every V_i,
+and every actual total witness f_i. Thus
+  Q subset union_i U_i,
+  closure(U_i) compact and contained in O_i,
+  every y in closure(U_i) is a legitimate recentering point for f_i.
+Endpoint: finite_precompact_refinement, with ML002 and ML003.
+The final inclusion is essential. Compact closures alone do not suffice.
+
+3. TRANSLATION COVARIANCE, WITH THE ACTUAL COORDINATES
+
+For l in Z^3 set tau_l(x)=x-l and T_l(r,t,x)=(r,t,x-l).
+The derivative of tau_l and T_l is the identity linear map, and every
+derivative of order >=2 is zero. The chain rule gives, componentwise,
+  D(f o tau_l)(x)=Df(x-l),
+  partial_a(F o T_l)(z)=(partial_a F)(T_l z).
+Induct on derivative order for repeated partials. For time-space fields,
+time derivatives commute with spatial translation; spatial derivatives
+commute with it at each fixed time. The identities are needed only where
+the local witness is analytic, so all displayed derivatives exist there.
+
+The source fields u,p,K are periodic in the three marked unit directions
+on the source interval. Function.Periodic.zsmul and add_period extend this
+to every integer translation. Their derivatives are periodic by the chain
+rule applied to the full spatial function equality at nearby times.
+Consequently nseSpatialSource3 and scalarJetRHS transform correctly; zero
+initial scalar jets are unchanged. Therefore f_j(t,x-l) is a scalar normal
+germ for the same u,p at every y with y-l in O_j.
+
+For metric coefficients, inverse and determinant commute with composition
+pointwise. The coordinate formula
+  Gamma^a_bc = (1/2) sum_d g^{ad}
+                 (partial_b g_dc+partial_c g_db-partial_d g_bc)
+therefore commutes with T_l. Differentiate again, and insert into the
+coordinate definition of Ricci: Ric(g o T_l)=Ric(g) o T_l. Gaussian radial
+rows, symmetry and determinant are preserved. At r=0 the induced metric
+is eta4, and
+  boundaryK(g o T_l)(t,x)=boundaryK(g)(t,x-l)=K(t,x-l)=K(t,x).
+The fixed radial orientation and component marking are unchanged. Thus
+g_j o T_l is a literal LiteratureFlatGaussianGerm for K, not merely an
+isometric or diffeomorphic representative. This discharges the same-data
+hypothesis of LI02 on translated overlaps.
+
+The native derivative-congruence endpoints ML012/ML013 transfer every
+finite-order local differential identity after the construction. They do
+not by themselves prove the chain-rule translation formulas; those are
+the preceding explicit affine-chain-rule calculation. This distinction
+must be retained in a future Lean specialization.
+
+4. FINITELY MANY COMPACT OVERLAPS; EXPLICIT UNIFORMIZATION
+
+Translated patches are U_i+n, n in Z^3. If x belongs to U_i+n and U_j+m,
+then y=x-n and y-(m-n) both lie in B. Hence each coordinate of l=m-n lies
+strictly between -3 and 3; in particular l belongs to {-3,...,3}^3.
+Using the larger closed range gives the existing 7^3-element index type
+BoundedLatticeShift. Define
+  C_ijl = closure(U_i) intersect (closure(U_j)+l).
+It is compact: the first set is compact and the second set is closed.
+Every y in C_ijl lies in O_i and y-l lies in O_j. Thus section 1 recentering
+and section 3 covariance supply two legitimate source germs at y.
+Scalar: scalar_normalized_germ_unique gives f_i=f_j o tau_l near (t0,y).
+Gaussian: literatureGaussianJet_unique gives g_i=g_j o T_l near (0,t0,y).
+Both statements are joint neighborhood equalities, with the parameter and
+spatial variables varying together.
+
+For completeness, the compact-uniformization argument is as follows. Let
+C be compact and suppose F=G near (s0,y) for every y in C. For each y choose
+open A_y containing s0 and open D_y containing y with
+  A_y x D_y subset {F=G}.
+Take y_1,...,y_N such that C subset union_k D_yk and set A=intersection_k A_yk.
+For every s in A and y in C, choose k with y in D_yk. Then (s,y) belongs to
+A_yk x D_yk, so F(s,y)=G(s,y). If C is empty take A=S. Thus A is a neighborhood
+of s0 with equality for all spatial points of C. No uniform positive radius
+has been assumed. It is a consequence of compactness and joint germ equality.
+
+Apply this to every finite triple (i,j,l), intersect the resulting parameter
+neighborhoods, and intersect every original V_i. Obtain an open W containing
+s0. This is the exact content of lattice_overlap_germs_uniform followed by
+periodic_witness_of_compact_overlap_germs. At any actual translated overlap,
+l=m-n is one of the finite types and x-n in C_ijl, hence
+  f_i(s,x-n)=f_j(s,x-m)  (s in W).
+There is no minimum over the infinitely many absolute translations n,m.
+There is no assertion that distinct local analytic continuations agree
+throughout an arbitrary connected overlap. Neither statement is needed.
+
+5. ACTUAL GLUING AND LOCALITY
+
+For any x, x-floor(x) belongs to Q, hence some U_i; therefore all U_i+n
+cover R^3. For s in W define F(s,x) to be f_i(s,x-n) for any containing patch.
+Section 4 proves independence of (i,n). This is Set.iUnionLift, implemented
+by overlapGlue and periodic_witness_of_compatible_atlas. Totalize outside
+W x R^3 by 0 for scalars and eta5 for metrics; no derivative claim is made
+at the boundary of the chosen open domain.
+
+At every interior point (s,x), choose a containing open patch U_i+n. On the
+open neighborhood W x (U_i+n), F equals f_i(s,x-n). Consequently:
+  (i) F is analytic by AnalyticAt.congr and affine composition;
+  (ii) all first and repeated derivatives agree by derivative locality;
+  (iii) the scalar PDE or actual Ricci formula holds for F;
+  (iv) the initial scalar data, induced metric and boundary normal jets hold.
+For a spatial integer k, choose the shifted patch (i,n+k) at x+k. Then
+  F(s,x+k)=f_i(s,x+k-(n+k))=f_i(s,x-n)=F(s,x).
+This proves actual periodicity, including unit periods.
+
+For Gaussian fields, use the finite-dimensional linear coordinate bijection
+E:((r,t),x)->bulkPoint r t x and its inverse
+z->((z_0,z_1),bulkSpatialCoordinates z). Transporting the constructed field
+by E^{-1} gives an actual Metric; interior local equality is equality in
+bulk neighborhoods. Actual boundaryK uses a radial derivative; its equality
+with K follows from bulk neighborhood equality, not only from r=0 values.
+
+Endpoint already combining existence, periodicity and analyticity:
+  NSEGR.Assembly.periodic_analytic_witness_of_compact_overlap_germs.
+Its hlocal premise is discharged by sections 1-4, not admitted as output.
+
+6. SCALAR RADIUS, DENOMINATOR AND UNIQUENESS
+
+An open neighborhood W of t0 contains some I_a with a>0. Choose
+d_0=min(a,delta)/2>0, hence d_0<=delta and I_d0 subset W. The constructed psi
+has the scalar PDE and both zero initial jets on this full cylinder.
+The equality psi(t0,.)=0 is an equality of spatial functions; differentiating
+twice in x gives Delta psi(t0,x)=0 for every x. Analytic derivative closure
+gives joint continuity of Delta psi on the cylinder.
+
+For each x in Q, continuity at (t0,x) yields a joint neighborhood where
+|Delta psi|<|rho|/2. Apply the compact argument in section 4 to this open
+inequality, rather than to equality. Intersect its time neighborhood with
+I_d0, and choose d>0 with d<=d0. The inequality holds for all x in Q and all
+t in I_d. Spatial periodicity of derivatives extends it to every x. Thus
+  |rho+Delta psi| >= |rho|-|Delta psi| > |rho|/2 > 0.
+The exact native equivalence
+  completedBoundary_hamiltonian_zero_iff_scalar_normal
+therefore yields Hamiltonian=0 throughout I_d x R^3.
+
+For two actual periodic normalized scalar solutions, apply scalar normalized
+germ uniqueness at every x in Q. The native periodic_slice_germs_uniform
+with S=R produces a single time neighborhood on which equality holds for
+every x. Differentiating this joint full-slice equality gives all required
+completion tensor equalities. The neighborhood can be intersected with the
+two supplied cylinder domains. This proves independence of all local atlas
+choices and of all normalized CompletedBoundary choices.
+
+An arbitrary CompletedBoundary record need not explicitly contain the
+scalar PDE. It contains Hamiltonian=0, joint analyticity and both zero scalar
+initial jets. The last two imply Delta psi(t0)=0 and hence noncharacteristic
+persistence near each (t0,x). The native normal-form iff then recovers the
+scalar PDE as a germ. Therefore the preceding uniqueness applies to every
+such record, including those selected by Classical.choice.
+
+7. GAUSSIAN RADII AND THE ACTUAL LORENTZIAN CERTIFICATE
+
+From W containing (0,t0), choose e0>0,d0>0 with
+(-e0,e0) x I_d0 subset W and d0<=delta. This is product-neighborhood
+extraction followed by positive interval extraction. Sections 1-5 give
+joint analyticity, symmetry, Gaussian rows, actual Ricci=0, periodicity,
+induced eta4 and boundaryK g=K on that collar.
+
+Let H(r,t,x) be the tangential 4x4 block. At (0,t0,x), H=eta4. By continuity
+and finite intersection over all 16 entries, each x in Q has a neighborhood
+where |H_ab-eta4_ab|<1/12 for every a,b. Apply compact uniformization with
+S=R^2 to obtain one neighborhood of (0,t0) for all x in Q. Intersect the
+collar parameters and extract e>0,0<d<=d0. Periodicity extends the entry
+bounds to all x. This is a permitted time shrink in RadialExtensionResult;
+it makes no claim about GeometricReconstructionLaws on a smaller interval.
+
+At any collar point write H=[-alpha,b^T;b,A]. The entry bounds imply
+alpha>11/12 and A symmetric. For v in R^3,
+  |v^T(A-I)v| <= (sum_i |v_i|)^2/12 <= |v|^2/4,
+so v^T A v >= 3|v|^2/4 and A is positive definite. Put
+  Qm=A+alpha^{-1}bb^T.
+The added term is positive semidefinite, hence Qm is positive definite.
+Use the real finite-matrix continuous functional calculus: R=sqrt(Qm).
+Then R is symmetric, invertible and R^T R=Qm. Let s=sqrt(alpha)>0 and
+  C4=[s,-b^T/s;0,R].
+Direct multiplication gives
+  C4^T eta4 C4
+   =[-s^2,b^T;b,R^TR-bb^T/s^2]
+   =[-alpha,b^T;b,A]=H,
+and det(C4)=s det(R)!=0. Thus C5=diag(1,C4) is invertible and
+  g=C5^T eta5 C5.
+The Gaussian rows and symmetry identify g with diag(1,H). This supplies
+the literal existential LorentzianAt witness at every point. Continuity
+of C4 or C5 is not required by that predicate.
+Existing endpoints: positive_matrix_gram_factor,
+lorentz_factor_of_near_eta4, gaussian_lorentzian_of_near_eta4,
+NSEGR.gaussianMetric_lorentzian_of_congruence. The latter applied pointwise,
+or the expanded block equality above, handles the actual glued g.
+
+Finally boundaryK g=K throughout I_d as full spatial functions. Therefore
+boundaryBeta(boundaryK g)=boundaryBeta K on that time interval, and ordinary
+time-derivative germ congruence transfers its derivative at t0. The supplied
+BoundaryAdmissible normalization gives beta(t0,x)=rho and beta_t(t0,x)=0.
+Every GaussianVacuum field is now supplied. The actual metric, positive
+radii, d<=delta and boundary_match give RadialExtensionResult. Since delta
+and K were arbitrary, this constructs the complete extend field of r.
+
+8. ARBITRARY-CHOICE PRESSURE GAUGE AND METRIC IDENTIFICATION
+
+Let c:ScalarBoundaryCompletionLaws, r:AnalyticRadialExtensionLaws and
+SameFlowAt t0 u_A p_A u_B p_B. The actual analytic-carrier theorem
+sameFlowAt_iff_analytic_pressure_gauge supplies an analytic gamma near t0
+and a full-spatial time germ
+  u_A=u_B, p_A=p_B+gamma(t).
+Apply LI01 to n=1,m=2 and the dummy-spatial-independent system
+  a_t=b, b_t=gamma(t), (a,b)(t0,y)=(0,0).
+Slice at y=0. Analyticity and the equation give an analytic a with
+  a(t0)=a'(t0)=0, a''=gamma
+on one time neighborhood. Existing endpoint:
+  analytic_double_primitive_of_literatureCK.
+The same a is used at every physical x; it is not chosen pointwise in x.
+
+Let psi_B be the potential in c's completion of B, and put phi=psi_B-a(t).
+It is jointly analytic, spatially periodic and normalized. Direct actual
+component calculation gives
+  completedBoundary(nu,rho,u_B,p_B+gamma,phi)
+    = completedBoundary(nu,rho,u_B,p_B,psi_B).
+The spatial Hessian and gradient of psi_t are unchanged; the temporal block
+contains -p-psi_tt, so the added gamma cancels a''=gamma. This is precisely
+completedBoundary_pressure_gauge; no scalar PDE covariance is assumed.
+Replace u_B,p_B+gamma by u_A,p_A on the full time germ; derivative locality
+justifies replacement of all source derivatives. The right-hand tensor is
+Hamiltonian-zero. Since phi has zero initial jets, its denominator is locally
+nonzero; the normal-form iff makes phi a scalar normal germ for A. The
+arbitrary selected completion psi_A is also such a germ. Scalar uniqueness
+and periodic compact uniformity imply psi_A=phi as a full-spatial time germ.
+Hence the two chosen completed boundary tensors coincide as such a germ.
+
+The forward metrics are actual Gaussian vacua and each has boundaryK equal
+to its chosen tensor on a time neighborhood. Use either chosen admissible
+tensor as common K and apply
+  NSEGR.gaussianVacuum_sameMetricAt_of_literatureJet.
+Its hypotheses are satisfied by the full-slice equalities just obtained.
+The conclusion is exactly GermInverseLaws.forward_respects, for arbitrary
+c,r, without a compatibility restriction on their choice functions.
+
+For lift_decode let a be an arbitrary CanonicalRepresentative with metric g,
+K_g=boundaryK g, and decoded u_g,p_g. The additional U3 output required here
+is the proved mathematical identity
+  K_g=completedBoundary(nu,rho,u_g,p_g,q_g),
+  q_g(t0,.)=0, partial_t q_g(t0,.)=0,
+with q_g jointly analytic/periodic and K_g admissible. The original vacuum
+gives Hamiltonian(K_g)=0. Hence q_g is a scalar normal germ by the same
+noncharacteristic argument. Compare it with c's completion of the reverse
+representative supplied by h. Scalar uniqueness plus compact uniformity
+gives equality of the complete boundary tensors as a full-spatial time germ.
+The original metric and the selected forward metric now satisfy the exact
+common-K hypotheses of the Gaussian uniqueness endpoint. Its conclusion is
+  SameMetricAt t0
+    (forwardRepresentative c r (reverseRepresentative h a)).metric
+    a.metric.
+This is the second q field. U2 introduces no additional analytic premise
+in either inverse argument; the displayed U3 canonical identity must first
+be derived, not replaced by a new assumption in the final root theorem.
+
+9. NATIVE AND LIBRARY ENDPOINT INDEX
+
+NAMESPACE DEFAULT = NSEGR.Assembly for ASSEMBLY entries;
+                    NSEGR for GR_adapter entries.
+
+U2.N01 | ASSEMBLY/GRAssembly/ScalarJet.lean
+scalarCK_scalarNormalGerm; scalarStateOfPotential_solution;
+scalar_normalized_germ_unique; scalarNormalGerm_exists;
+ScalarNormalGerm.noncharacteristic; ScalarNormalGerm.hamiltonian.
+Uses: sections 1,4,6,8. Required premises: LI01, rho!=0, actual analytic u,p
+and normalized scalar germs, as indicated by each literal signature.
+
+U2.N02 | ASSEMBLY/GRAssembly/PeriodicGluing.lean
+finite_precompact_refinement; finite_compact_overlap_uniform;
+latticePatch_cover; lattice_relative_shift_bound;
+compactLatticeOverlap_isCompact; lattice_overlap_germs_uniform;
+overlapGlue; overlapGlue_eq; overlapGlue_eventuallyEq;
+overlapGlue_analyticAt; overlapGlue_fderiv; overlapGlue_fderiv_eventuallyEq.
+Uses: sections 2,4,5. Margin and overlap-germ premises are discharged above.
+
+U2.N03 | ASSEMBLY/GRAssembly/PeriodicWitness.lean
+periodic_witness_of_compatible_atlas;
+periodic_witness_of_compact_overlap_germs;
+analyticAt_of_lattice_local_germ;
+germ_local_law_of_lattice_local_germ;
+periodic_analytic_witness_of_compact_overlap_germs.
+Uses: sections 4,5. Source witnesses are constructed from LI01/LI02.
+
+U2.N04 | GR_adapter/GRAdapter/GermUniformity.lean
+compact_slice_eventually_eq; spatialPeriodic_integerSpatialShift;
+spatialPeriodic_eq_of_eqOn_unitCube; periodic_slice_germs_uniform;
+sameMetricAt_of_boundary_germs;
+gaussianVacuum_sameMetricAt_of_boundary_germs.
+Uses: sections 3,6,8. These compare actual fields; section 5 supplies their
+existence when they are needed for construction.
+
+U2.N05 | GR_adapter/GRAdapter/GaussianUniqueness.lean
+boundaryAdmissible_literatureFlatBoundaryGerm;
+gaussianVacuum_literatureFlatGaussianGerm;
+literatureGaussianJet_unique;
+gaussianVacuum_sameMetricAt_of_literatureJet.
+Uses: sections 1,4,8. The precise source theorem is LI02; full-slice matching
+and actual periodic Gaussian vacua are proved before final application.
+
+U2.N06 | ASSEMBLY/GRAssembly/LorentzFactor.lean
+positive_matrix_gram_factor; lorentzSchur_posDef;
+lorentzTriangular_det; lorentzTriangular_congruence;
+lorentz_factor_of_spatial_posDef.
+U2.N07 | ASSEMBLY/GRAssembly/LorentzNeighborhood.lean
+spatial_quadratic_error_bound; spatial_posDef_of_near_identity;
+lorentz_factor_of_near_eta4; gaussian_lorentzian_of_near_eta4.
+U2.N08 | GR_adapter/GRAdapter/GaussianMetric.lean
+gaussianMatrix_isUnit_det; gaussianMatrix_eta4;
+gaussianMetric_lorentzian_of_congruence.
+Uses: section 7. Matrix size 3/4/5 and radial/time marking are fixed.
+
+U2.N09 | ASSEMBLY/GRAssembly/GaugePrimitive.lean
+analytic_double_primitive_of_literatureCK.
+U2.N10 | ASSEMBLY/GRAssembly/PressureGauge.lean
+completedBoundary_pressure_gauge; normalized_pressure_gauge_completion.
+U2.N11 | GR_adapter/GRAdapter/Locality.lean
+sameFlowAt_iff_analytic_pressure_gauge; sameMetricAt_boundaryK.
+Uses: section 8. One time-only primitive is selected once and reused.
+
+METHLIB_DIRECT_ENDPOINTS = none for U2's finite-dimensional CK, compact
+gluing and matrix signature steps. Methlib Hodge endpoints belong to U1
+and to U3's canonical reconstruction. Their results enter U2 section 8 only
+through the explicitly derived canonical completion identity. No Hodge
+endpoint is treated as a Gaussian existence or analytic gluing theorem.
+
+10. REMAINING LEAN SPECIALIZATION WORK; MATHEMATICAL STATUS
+
+The generic atlas endpoints already exist, but the following concrete Lean
+assemblies remain to be written/audited: source-domain extraction preserving
+all laws; affine translation covariance for the scalar and Ricci formulas;
+recentered source germs on retained compact closure margins; specialization
+to S=R and S=R^2; entrywise Lorentzian uniformization; filling the exact native
+scalar/radial records; arbitrary-choice q fields after U1/U3 integration.
+These are implementation obligations. Sections 1-8 discharge their
+mathematical content under the stated literature inputs and U3 dependency.
+
+U2.SCALAR = B_TIER relative to LI01 and rho!=0.
+U2.RADIAL = B_TIER relative to LI02.
+U2.FORWARD_RESPECTS = B_TIER relative to LI01/LI02,rho!=0 and arbitrary c,r.
+U2.LIFT_DECODE = derived after U3's explicitly stated canonical identity;
+                no claim that U2 alone proves that identity.
+NO_NEW_LITERATURE_INPUT = true.
+NO_A_TIER_PROMOTION = true.
+NO_GLOBAL_NSE_REGULARITY_CLAIM = true.
+NO_GLOBAL_EINSTEIN_EXTENSION_CLAIM = true.
+
+11. EXACT MATHLIB DECLARATION INDEX
+
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
+All selected cutouts reside in TEMP/<ID>/Endpoint.lean and export
+GRTemp.<ID>.endpoint; source.json records the exact source body and hash.
+The URLs below identify the original declarations at the pinned revision.
+
+ML001 | mem_nhds_prod_iff'
+  Mathlib/Topology/Constructions/SumProd.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Constructions/SumProd.lean#L290
+ML002 | exists_compact_subset
+  Mathlib/Topology/Compactness/LocallyCompact.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Compactness/LocallyCompact.lean#L148
+ML003 | IsCompact.elim_finite_subcover
+  Mathlib/Topology/Compactness/Compact.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Compactness/Compact.lean#L202
+ML004 | IsCompact.eventually_forall_of_forall_eventually
+  Mathlib/Topology/Compactness/Compact.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Compactness/Compact.lean#L464
+ML005 | IsCompact.mem_prod_nhdsSet_of_forall
+  Mathlib/Topology/Compactness/Compact.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Compactness/Compact.lean#L427
+ML006 | Set.iUnionLift
+  Mathlib/Data/Set/UnionLift.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Data/Set/UnionLift.lean#L56
+ML007 | Set.iUnionLift_of_mem
+  Mathlib/Data/Set/UnionLift.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Data/Set/UnionLift.lean#L74
+ML010 | AnalyticAt.congr
+  Mathlib/Analysis/Analytic/Basic.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean#L491
+ML012 | Filter.EventuallyEq.fderiv_eq
+  Mathlib/Analysis/Calculus/FDeriv/Congr.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Congr.lean#L258
+ML013 | Filter.EventuallyEq.fderiv
+  Mathlib/Analysis/Calculus/FDeriv/Congr.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Congr.lean#L261
+ML014 | Set.piecewise_eqOn
+  Mathlib/Data/Set/Piecewise.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Data/Set/Piecewise.lean#L67
+ML015 | Function.Periodic.zsmul
+  Mathlib/Algebra/Ring/Periodic.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Algebra/Ring/Periodic.lean#L155
+ML016 | Function.Periodic.add_period
+  Mathlib/Algebra/Ring/Periodic.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Algebra/Ring/Periodic.lean#L97
+ML017 | AnalyticAt.eventually_analyticAt
+  Mathlib/Analysis/Analytic/ChangeOrigin.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ChangeOrigin.lean#L378
+ML018 | mem_nhds_iff_exists_Ioo_subset
+  Mathlib/Topology/Order/Basic.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Order/Basic.lean#L513
+ML050 | Filter.EventuallyEq.deriv
+  Mathlib/Analysis/Calculus/Deriv/Basic.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/Deriv/Basic.lean#L653
+ML051 | AnalyticAt.fderiv
+  Mathlib/Analysis/Calculus/FDeriv/Analytic.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Analytic.lean#L263
+ML052 | AnalyticAt.contDiffAt
+  Mathlib/Analysis/Calculus/ContDiff/Defs.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Defs.lean#L986
+ML053 | ContDiffAt.isSymmSndFDerivAt_of_omega
+  Mathlib/Analysis/Calculus/FDeriv/Symmetric.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Symmetric.lean#L198
+ML055 | Matrix.PosDef.of_dotProduct_mulVec_pos
+  Mathlib/LinearAlgebra/Matrix/PosDef.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/PosDef.lean#L441
+ML056 | Matrix.PosDef.add_posSemidef
+  Mathlib/LinearAlgebra/Matrix/PosDef.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/PosDef.lean#L245
+ML057 | Matrix.PosDef.isUnit
+  Mathlib/LinearAlgebra/Matrix/PosDef.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/PosDef.lean#L507
+ML058 | Matrix.nonneg_iff_posSemidef
+  Mathlib/Analysis/Matrix/Order.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Matrix/Order.lean#L60
+ML059 | CFC.sqrt_nonneg
+  Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Basic.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Basic.lean#L239
+ML060 | CFC.sqrt_mul_sqrt_self
+  Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Basic.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Basic.lean#L265
+ML061 | CFC.isUnit_sqrt_iff
+  Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Basic.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Basic.lean#L722
+ML063 | Matrix.isUnit_iff_isUnit_det
+  Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean#L127
+ML064 | Matrix.IsHermitian.instContinuousFunctionalCalculus
+  Mathlib/Analysis/Matrix/HermitianFunctionalCalculus.lean
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Matrix/HermitianFunctionalCalculus.lean#L97
+
+USE MAP: 1->ML050-053; 2->ML001-003,017; 3->ML015-016,050-053;
+4->ML001,004-005; 5->ML006-007,010,012-014; 6->ML004,018,051;
+7->ML001,004,018,055-061,063-064; 8->ML004,012-013,050-053.
+ML005 is an alternative stronger tube formulation; the selected construction
+uses ML004. ML014 is optional when totalization is already incorporated by
+overlapGlue. ML062/065 are alternative matrix routes and are not required
+by the chosen LorentzFactor proof. No additional source name is inferred.
+
+
+
+PART U3a
+U3A_GAUSSIAN_BOUNDARY_CONSTRAINTS_B_TIER
+MODE = B_TIER_DERIVATION
+STATUS = ! mathematical derivation; no new Lean execution or promotion.
+SCOPE = GaussianVacuum rho t0 delta epsilon g ->
+        BoundaryAdmissible rho t0 delta (boundaryK g), followed by the
+        whole-interval conserved means and exact decoded residual.
+LITERATURE_DEPENDENCE = none for G01--G08; analytic Hodge U1 for G09--G11.
+ROOT_LIMITATION = no global NSE existence; no assertion that every vacuum
+                 metric satisfies the independent zero-stress condition.
+
+FROZEN_CARRIERS
+  Bulk = EuclideanSpace R (Fin 5), coordinates (r,t,x1,x2,x3).
+  Tangential indices a,b,c,d range over {0,1,2,3}; spatial indices i,j
+  range over {1,2,3} in formulas below. Lean spatial i:Fin 3 corresponds
+  to tangential i.succ. Tangential 0 is physical time.
+  s_0=-1; s_i=1. eta_ab=s_a delta_ab, eta^{-1}=eta.
+  d_r=bulkPartial index 0; d_a=bulkPartial index a.succ.
+  D_0=ordinary two-sided time derivative; D_i=spatial coordinate derivative.
+  I=(t0-delta,t0+delta), C=(-epsilon,epsilon) x I x R^3.
+  Qcell=[0,1]^3, volume(Qcell)=1; <f>=integral_Qcell f.
+  g is the actual total native Metric with GaussianVacuum on C.
+  K_ab(t,x)=boundaryK g t x a b=(1/2)d_r g_(a+1)(b+1)(0,t,x).
+  k=K_00, w_i=K_0i, A_ij=K_ij, beta=-sum_i A_ii,
+  kappa=tr_eta K=-k-beta.
+  All claims in G01--G11 hold for every t in the ORIGINAL supplied I.
+
+G01 | LOCAL GAUSSIAN REDUCTION; NO GLOBAL GAUGE SUBSTITUTION
+INPUT = GaussianVacuum rho t0 delta epsilon g.
+Define h(z)_ab=g(z)_(a+1)(b+1) on the native total domain.
+For each z in C, Gaussian_rr, Gaussian_rboundary, and symmetry give
+  g(z)=diag(1,h(z))=gaussianMetric h z.
+Because C is open, equality holds as a full Bulk germ at every z in C.
+Consequently every finite derivative entering Christoffel and Ricci agrees
+there with the corresponding derivative of gaussianMetric h. For nested
+derivatives, first obtain eventual equality of derivative fields, then
+differentiate that equality. Point equality alone is not used.
+
+LorentzianAt gives det(g(z)) != 0; det(diag(1,h))=det(h), hence det(h(z))!=0
+throughout C. Thus the total native inverse equals the ordinary matrix
+inverse on C. Every boundary point has a Bulk neighborhood with this
+nonsingularity. The singular branch of total inverse is irrelevant locally.
+
+NATIVE = gaussianMatrix_det; inverseMetric_gaussian;
+         gaussianVacuum_nondegenerate;
+         Assembly.bulkPartial_congr_of_eventuallyEq.
+ML = GML01, GML02.
+
+G02 | DIFFERENTIATION OF THE ACTUAL MATRIX INVERSE
+Fix z in C. Analytic h is differentiable. Each entry of h^{-1} is an
+adjugate polynomial divided by det(h); det(h)!=0 on a neighborhood.
+Therefore h^{-1} is analytic on that neighborhood. This proves existence
+of the derivatives used below, rather than assuming a differentiable
+inverse field without justification.
+
+For any coordinate direction mu, put L^{ab}=d_mu(h^{-1})^{ab}.
+Differentiate, for each a,b, the finite identity
+  sum_c h_ac (h^{-1})^{cb}=delta_ab.
+The product rule gives
+  sum_c [(d_mu h_ac)(h^{-1})^{cb}+h_ac L^{cb}]=0.
+Multiply by (h^{-1})^{da}, sum a, and use
+sum_a(h^{-1})^{da}h_ac=delta_dc. Thus
+  L^{db}=-sum_(a,c)(h^{-1})^{da}(d_mu h_ac)(h^{-1})^{cb}.      (G02.1)
+Define K_ab(z)=(1/2)d_r h_ab(z), S^a_b=sum_c(h^{-1})^{ac}K_cb.
+For mu=r:
+  d_r(h^{-1})^{ab}=-2 sum_(c,d)(h^{-1})^{ac}K_cd(h^{-1})^{db}. (G02.2)
+At r=0, this becomes
+  d_r(h^{-1})^{ab}=-2 s_a s_b K_ab.                           (G02.3)
+
+No matrix commutativity is used. Both order and factor 2 are fixed by the
+native K=+h_r/2 convention. An equivalent Lean route is
+hasFDerivAt_ringInverse -> Matrix.nonsing_inv_eq_ringInverse -> coordinate
+evaluation. A scalar reciprocal derivative lemma alone is insufficient as
+a matrix inverse derivative theorem; the adjugate route supplies the bridge.
+
+ML = GML02, GML03, GML04.
+
+G03 | ACTUAL CHRISTOFFEL COMPONENTS AND FLAT TANGENTIAL JETS
+The native Christoffel formula, expanded over Fin 5={r}+Fin 4, gives
+  Gamma^r_rr=0, Gamma^a_rr=0,
+  Gamma^r_ra=Gamma^r_ar=0,
+  Gamma^r_ab=-K_ab,
+  Gamma^a_rb=Gamma^a_br=S^a_b,
+  Gamma^a_bc=C^a_bc,
+where
+  C^a_bc=(1/2)sum_d(h^{-1})^{ad}
+                   (d_b h_dc+d_c h_db-d_d h_bc).
+For example Gamma^r_ab=(1/2)(0+0-d_r h_ab)=-K_ab;
+Gamma^a_rb=(1/2)sum_c(h^{-1})^{ac}d_r h_cb=S^a_b.
+All remaining radial summands vanish because g_rr=1 and g_ra=0 locally.
+
+Induced metric equality states h_ab(0,t,x)=eta_ab for every (t,x) in I x R^3.
+Restriction to r=0 is an analytic map on the OPEN boundary slab. Its first
+and second tangential derivatives are therefore zero. Coordinate chain
+rules identify these with d_a h_ab and d_a d_b h_cd at r=0. Hence
+  C^a_bc(0,t,x)=0, d_d C^a_bc(0,t,x)=0,
+  d_a(h^{-1})^{bc}(0,t,x)=0.                                (G03.1)
+Only tangential derivatives are asserted to vanish. No conclusion
+d_r h=0 or d_r C=0 is made.
+
+NATIVE = inverseMetric_gaussian; christoffel_gaussian_rr;
+         christoffel_gaussian_rab; christoffel_gaussian_shape;
+         christoffel_gaussian_abc_total;
+         Assembly.christoffel_gaussian_rbr_total;
+         Assembly.christoffel_gaussian_abr_total.
+ML = GML01, GML04, GML05.
+
+G04 | FINITE-INDEX RICCI CONTRACTIONS
+All expressions in this paragraph are evaluated at a fixed (0,t,x).
+Write
+  P_ab=d_r K_ab,
+  H=sum_a s_a P_aa,
+  Q=sum_(a,b) s_a s_b (K_ab)^2,
+  kappa=sum_a s_a K_aa.
+K is symmetric, because h is symmetric on a full Bulk neighborhood.
+Then S^a_b=s_a K_ab and
+  sum_(a,b) S^a_b S^b_a=Q.                                  (G04.1)
+For the radial derivative of tr(h^{-1}K), G02.3 and the finite product rule
+give
+  d_r tr(h^{-1}K)
+    =sum_(a,b)[-2 s_a s_b K_ab K_ba+eta^{ab}P_ba]
+    =H-2Q.                                                   (G04.2)
+
+Use the native Ricci convention
+  Ric_AB=sum_C[d_C Gamma^C_AB-d_B Gamma^C_AC]
+    +sum_(C,D)[Gamma^C_CD Gamma^D_AB-Gamma^C_BD Gamma^D_AC].
+The normal component has first derivative sum 0, second derivative sum
+-d_r tr(S), first product sum 0, second product sum -tr(S^2). Therefore
+  Ric_rr=-d_r tr(S)-tr(S^2)=-H+Q.                             (G04.3)
+
+For Ric_ab the radial part of its first derivative sum is -P_ab.
+The purely tangential derivative sums vanish by G03.1. The first product
+sum with D=r is -sum_c S^c_c K_ab=-kappa K_ab. The negative second product
+sum has exactly two nonzero radial placements:
+  C=r,D=d : +sum_d K_bd S^d_a;
+  C=c,D=r : +sum_c S^c_b K_ac.
+The purely tangential products vanish by C=0. Symmetry of K yields
+  Ric_ab=-P_ab-kappa K_ab+2 sum_c s_c K_ac K_cb.               (G04.4)
+Contract with eta^{ab}=s_a delta_ab:
+  T:=sum_a s_a Ric_aa
+    =-H-kappa^2+2 sum_(a,c)s_a s_c K_ac K_ca
+    =-H-kappa^2+2Q.                                          (G04.5)
+Subtract G04.3 from G04.5:
+  T-Ric_rr=Q-kappa^2.                                        (G04.6)
+Vacuum supplies Ric_rr=0 and each Ric_aa=0. Thus Q-kappa^2=0.
+By the native definitions Q=lorentzSquare4 K and
+kappa=lorentzTrace4 K. Consequently boundaryHamiltonian K t x=0.
+
+Equivalent Einstein check:
+  scalarCurvature=Ric_rr+T;
+  Einstein_rr=(Ric_rr-T)/2=(kappa^2-Q)/2.
+Away from a flat slice the same calculation retains intrinsic R[h] and
+gives Einstein_rr=(kappa^2-Q-R[h])/2. The flat-boundary calculation above
+does not invoke this general identity as an independent premise.
+
+NATIVE = ricci_gaussian_normal;
+         Assembly.ricci_gaussian_tangential;
+         gaussianNormalRicciComponent_zero_of_vacuum;
+         Assembly.gaussianTangentialRicciComponent_zero_of_vacuum.
+No Ricci symmetry premise is required for vacuum -> constraints. The extra
+mixed-symmetry premise of Assembly.gaussian_vacuum_iff_components belongs
+to its converse and must not enter this implication.
+
+G05 | ACTUAL MIXED COMPONENT AND NATIVE CODAZZI
+In the native expansion for Ric_ra, the radial summands vanish. The
+remaining derivative terms are
+  sum_b d_b S^b_a - d_a(sum_b S^b_b).
+The remaining products are
+  sum_(b,c)[C^b_bc S^c_a-C^b_ac S^c_b],
+which vanish at r=0 by G03.1. Tangential derivatives of h^{-1} vanish there,
+so, after boundary coordinate chain-rule transport,
+  Ric_ra=sum_b s_b D_b K_ba-D_a kappa.
+Since eta_ba=s_b delta_ba and s_b^2=1,
+  sum_b s_b D_b(kappa eta_ba)=D_a kappa.
+Therefore
+  Ric_ra=sum_b s_b D_b(K_ba-kappa eta_ba)
+        =boundaryCodazzi K t x a.
+Vacuum gives boundaryCodazzi K t x a=0 for every a.
+
+NATIVE = ricci_gaussian_mixed;
+         gaussianCodazziComponent_zero_of_vacuum.
+This is equality with the actual Boundary.lean expression, including its
+time sign and trace term, not merely a covariant abstract Codazzi equation.
+
+G06 | BOUNDARYADMISSIBLE WITHOUT TIME SHRINK
+The radial derivative of an analytic field is analytic; evaluation at the
+constant radial basis vector and restriction along (t,x)->(0,t,x) preserve
+analyticity. Thus K is jointly analytic on I x R^3.
+For each integer unit spatial shift e_i, periodicity of g gives equality
+of the two radial curves for all r near 0. Their derivatives at r=0 agree,
+so K(t,x+e_i)=K(t,x). Symmetry follows by differentiating g_ab=g_ba on C.
+G04 and G05 give the Hamiltonian and momentum constraints at every t in I.
+GaussianVacuum directly supplies delta>0, beta(t0,x)=rho, beta_t(t0,x)=0.
+Every field of BoundaryAdmissible rho t0 delta K is therefore obtained.
+
+The quantifier order is: for every t in I and every x, choose a sufficiently
+small local neighborhood about (0,t,x), prove the identities there, and
+evaluate at that point. No common smaller time radius is necessary.
+
+G07 | TRACE RECOVERY AND CONSERVATION COMPONENTS
+Let B=traceRecover4 K=kappa eta-K. Its actual covariant components are
+  B_00=-kappa-k=beta, B_0i=-w_i, B_ij=kappa delta_ij-A_ij.
+Raising both indices gives
+  B^{00}=beta, B^{0i}=B^{i0}=w_i,
+  B^{ij}=kappa delta_ij-A_ij.
+G05 is equivalent to sum_a D_a B^{ab}=0 for each b. Expanding:
+  beta_t+sum_i D_i w_i=0,                                   (G07.1)
+  (w_j)_t+ D_j kappa-sum_i D_i A_ij=0.                       (G07.2)
+Since kappa=-k-beta and A is symmetric,
+  localTimeDerivative w= tensorDivergence A+gradient k+gradient beta.
+The use of symmetry is essential: native tensorDivergence has components
+sum_i D_i A_ji, whereas the unrewritten Codazzi expansion has A_ij.
+
+Native trace identities, fixing dimension-dependent factors:
+  lorentzTrace4(traceRecover4 K)=3 kappa;
+  traceReverse4(traceRecover4 K)=K;
+  traceRecover4(traceReverse4 B)=B.
+For this inverse convention traceReverse4 B=(tr_eta B/3)eta-B.
+It is not the four-dimensional Einstein trace-reversal map B-(tr B/2)eta.
+
+NATIVE = lorentzTrace4_traceRecover4;
+         traceReverse4_traceRecover4; traceRecover4_traceReverse4;
+         reconstruction_lorentzTrace_boundary.
+
+G08 | ACTUAL CONSERVED MEANS ON THE WHOLE INTERVAL
+For each fixed t in I choose a closed time segment J contained in I with
+t in its interior. Smoothness on J x Qcell and compactness give a uniform
+bound for the continuous time derivative. Difference quotients are
+dominated by that bound by the one-dimensional fundamental theorem of
+calculus. Thus differentiation under the actual cube integral is justified:
+  d_t <beta>=<beta_t>, d_t <w_j>=<(w_j)_t>.
+For any smooth periodic scalar f, Fubini and the one-dimensional fundamental
+theorem give
+  integral_Qcell D_i f = integral_[0,1]^2[f|_(x_i=1)-f|_(x_i=0)]=0.
+Apply this to w_i, kappa and every A_ij in G07:
+  d_t<beta>=0, d_t<w_j>=0.
+An ordinary differentiable function with zero derivative on connected I is
+constant there. Since t0 belongs to I and beta(t0,x)=rho,
+  <beta(t)>=rho, <w(t)>=<w(t0)> for ALL t in I.                (G08.1)
+In particular <tr A>=-rho and <kappa>=-<k>-rho. There is no derivation that
+<kappa> itself, or each component <A_ij>, is constant; no such conservation
+law is required. G07.1 and beta_t(t0)=0 also imply div w(t0)=0.
+
+MEAN ENDPOINT TRANSPORT:
+ME12 is a halfspace within-derivative theorem. It does not directly apply
+to arbitrary t in a finite, two-sided I. To use it, select a smooth temporal
+cutoff chi supported inside I, equal to 1 near t. Extend chi*f by zero
+outside I; this is globally smooth and spatially periodic. Translate time
+so the target time corresponds to s=1>0. Apply ME12 at 1, convert the
+within derivative to the ordinary derivative using Ici_mem_nhds, and
+transport equality back through the local slice equality. This gives
+precisely the differentiation identity above. Repeat for each t in I.
+This entire scalar localization is already packaged in the retained
+Assembly.scalarMean_hasDerivAt_local. Apply it to beta and to each scalar
+component w_j; spatialMean_apply identifies the resulting component means
+with the native vector mean. Thus no new vector-valued cutoff theorem is
+required. Assembly.exists_smooth_periodic_extension and
+Assembly.scalarMean_hasDerivAt_pos expose the underlying transport.
+
+NATIVE = Assembly.scalarMean_hasDerivAt_local;
+         scalarMean_divergence_zero; spatialMean_gradient_zero;
+         integral_fderiv_unitVector_zero;
+         spatialMean_spatialPartial_zero; spatialMean_apply.
+ML = GML06. METHLIB = GME01.
+
+G09 | DECODED HODGE IDENTITIES; INPUT FROM U1
+INPUT = U1 for the actual native G=poissonInverse and P=leray:
+  Delta G f=f-<f>; G0=0; linearity; P w=w-grad G(div w);
+  div P w=0; <P w>=<w>; ordinary time and spatial commutation;
+  preservation of joint analyticity and periodicity on the original I.
+U1 is the separate derived analytic-Hodge obligation, not a new premise
+to hide inside the geometry proof.
+
+The native q=boundaryPotential K=G(beta-<beta>) satisfies, by G08,
+  q=G(beta-rho), Delta q=beta-rho,
+  q_t=G(beta_t)=-G(div w),
+  u=boundaryVelocity K=P w=w+grad q_t,
+  u_t=w_t+grad q_tt,
+  div u=0, <u>=<w>=<w(t0)>.
+Initial normalization gives
+  q(t0)=G0=0, q_t(t0)=G0=0.
+The second equality uses the native beta_time_initial and ordinary-time
+commutation, not a forward-time derivative at an endpoint.
+All decoded scalar/vector/tensor fields are jointly analytic and periodic
+by U1 and closure under analytic derivatives, sums and products.
+
+G10 | EXPLICIT STRESS AND RESIDUAL
+Let Z_ij=D_i u_j+D_j u_i and
+  M=A+u tensor u+Hess q-nu Z, F=tf3 M.
+Since tr A=-beta, tr(Hess q)=Delta q=beta-rho, tr Z=2 div u=0,
+  tr M=|u|^2-rho,
+  F_ij=A_ij+u_i u_j+D_i D_j q-nu Z_ij
+       -delta_ij(|u|^2-rho)/3.                              (G10.1)
+Product and mixed-derivative rules give, componentwise,
+  sum_j D_j(u_i u_j)=sum_j u_j D_j u_i+u_i div u,
+  sum_j D_j D_i D_j q=D_i Delta q,
+  sum_j D_j Z_ij=D_i div u+Delta u_i.
+The mixed-derivative swaps are valid because all fields are analytic.
+Thus
+  div F=div A+(u.grad)u+grad beta-nu Delta u-grad(|u|^2)/3.
+By G07 and G09,
+  u_t=div A+grad k+grad beta+grad q_tt.
+The actual native decoded pressure is
+  p_*=-k-(2rho+|u|^2)/3-q_tt,
+so
+  grad p_*=-grad k-grad(|u|^2)/3-grad q_tt.
+Substitution cancels grad k and grad q_tt and yields exactly
+  nseResidual nu u p_*=tensorDivergence(boundaryStress nu K).
+
+NATIVE = boundaryStress_tensorDivergence;
+         reconstruction_residual_of_codazzi_hodge;
+         boundaryPressure_gradient;
+         tensorDivergence_velocityOuter_of_divergence_zero;
+         tensorDivergence_scalarHessian;
+         tensorDivergence_strain_of_divergence_zero.
+These source endpoints remain applied only after their displayed smoothness,
+Poisson, Codazzi and differentiated-Hodge hypotheses have been derived.
+
+G11 | EXACT GEOMETRIC RECONSTRUCTION RECORD
+For arbitrary delta,epsilon,g and hg:GaussianVacuum rho t0 delta epsilon g:
+  regularity := G06 + U1 + G09;
+  solenoidal := G09;
+  residual := G10.
+These have the exact quantifiers of GeometricReconstructionLaws nu rho t0,
+including the original time radius delta. Therefore G01--G10 construct that
+record mathematically. No nonzero-rho premise is needed for this backward
+geometric reconstruction; rho!=0 is required elsewhere for scalar CK.
+If the independent admission F=0 holds for every x at each t in I, the
+actual stress field at that t is identically zero, so its divergence is
+zero. The native localNSE_of_reconstruction_and_zero_stress then yields
+LocalNSE nu t0 delta u p_*.
+
+ENDPOINT INDEX | PINNED SOURCE-VERIFIED IDENTIFIERS
+Mathlib pin = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
+All Mathlib paths below are relative to Mathlib/ at that pin. Retained
+source root = Fefferman_adapter/NativeSources/mathlib/Mathlib/.
+The derivatives and contractions proved above are B-tier applications;
+availability of an indexed theorem does not promote a new application.
+
+GML01 | Analysis/Calculus/FDeriv/Congr.lean:258,261
+  Filter.EventuallyEq.fderiv_eq; Filter.EventuallyEq.fderiv.
+  Role = G01/G03 local equality -> actual derivative equality and derivative
+         germ equality, iterated for curvature.
+  URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Congr.lean#L258
+
+GML02 | LinearAlgebra/Matrix/NonsingularInverse.lean:172,195,211,217
+  Matrix.inv_def; Matrix.nonsing_inv_eq_ringInverse;
+  Matrix.mul_nonsing_inv; Matrix.nonsing_inv_mul;
+  Matrix.transpose_nonsing_inv; Matrix.isUnit_iff_isUnit_det.
+  Role = actual total inverse, inverse products on det!=0, symmetric inverse,
+         adjugate formula for local analytic regularity, G01/G02.
+  URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean#L195
+
+GML03 | Analysis/Calculus/FDeriv/Mul.lean:661,681
+  hasFDerivAt_ringInverse; fderiv_inverse; DifferentiableAt.inverse.
+  Signature = at x:R^x, derivative of Ring.inverse is
+              -ContinuousLinearMap.mulLeftRight R x^{-1} x^{-1}.
+  Requirements = NormedRing R, HasSummableGeomSeries R, NormedAlgebra real R.
+  Role = G02 matrix-inverse derivative after nonsing_inv_eq_ringInverse and
+         a compatible finite matrix algebra norm. Alternatively G02's
+         adjugate/finite-product proof avoids norm-instance transport.
+  URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Mul.lean#L661
+  Analytic companion = analyticAt_inverse
+    [Analysis/Analytic/Constructions.lean:942], at a unit in a normed algebra
+    with HasSummableGeomSeries. It gives the local inverse regularity used
+    before differentiation; the scalar adjugate argument is equivalent.
+
+GML04 | Analysis/Calculus/FDeriv/Mul.lean; Analysis/Calculus/FDeriv/Add.lean
+  fderiv_fun_mul; fderiv_fun_add; fderiv_fun_sum;
+  HasFDerivAt.mul; HasFDerivAt.comp.
+  Role = finite component product/sum and coordinate chain rules G02--G10.
+  No infinite sum occurs in the geometry calculation.
+
+GML05 | existing ML051/ML052/ML053
+  AnalyticAt.fderiv [FDeriv/Analytic.lean:263];
+  AnalyticAt.contDiffAt [ContDiff/Defs.lean:986];
+  ContDiffAt.isSymmSndFDerivAt_of_omega [FDeriv/Symmetric.lean:198].
+  Role = analytic derivative fields, smoothness, mixed-derivative symmetry.
+  Higher swaps apply the second-derivative result to analytic derivative
+  fields; one second-derivative theorem is not an arbitrary-order shortcut.
+
+GML06 | Analysis/Calculus/MeanValue.lean:768
+  IsOpen.is_const_of_deriv_eq_zero.
+  Requirements = open preconnected set, differentiable on that set, ordinary
+                 derivative zero there, both comparison points in that set.
+  Role = G08 whole-I conservation from pointwise local differentiation.
+  URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/MeanValue.lean#L768
+
+GME01 | existing ME12; Methlib pin eac159c5f7bf5a99a00d994da34c4760ea8335d0
+  NSEMaxwell.HodgeProof.cubeIntegral_hasDerivWithinAt.
+  Path = FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterCoefficients.lean:81.
+  Signature = for complete real normed E and F:R->Vec->E smooth on forward
+              spacetime, t>=0: HasDerivWithinAt (integral_Qcell F(s,x))
+              (integral_Qcell cubeTimeDerivative F(t,x)) (Ici 0) t.
+  Role = G08 mean differentiation after explicit local-slab transport.
+  Retained audit = run-43370286685; PASS_STANDARD_ONLY;
+                   Classical.choice, Quot.sound, propext.
+  URL = https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterCoefficients.lean#L81
+
+NATIVE LOCATION INDEX
+  GR_adapter/GRAdapter/Geometry.lean:
+    actual Metric, inverseMetric, christoffel, ricci, einstein;
+    lorentzianAt_nondegenerate; vacuumOn_implies_einsteinVacuumOn.
+  GR_adapter/GRAdapter/GaussianMetric.lean:
+    gaussianMatrix_inverse; inverseMetric_gaussian; boundaryK_gaussian;
+    christoffel_gaussian_rr; christoffel_gaussian_rab.
+  GR_adapter/GRAdapter/GaussianCodazzi.lean:
+    gaussianMatrix_det; christoffel_gaussian_shape;
+    christoffel_gaussian_abc_total; ricci_gaussian_mixed;
+    ricci_gaussian_normal; the two corresponding vacuum-zero theorems.
+  ASSEMBLY/GRAssembly/GaussianConstraints.lean:
+    bulkPartial_congr_of_eventuallyEq; radial_christoffel_derivative;
+    ricci_gaussian_tangential; gaussianTangentialRicciComponent_zero_of_vacuum.
+  GR_adapter/GRAdapter/Algebra.lean:
+    lorentzTrace4_traceRecover4; traceReverse4_traceRecover4;
+    traceRecover4_traceReverse4.
+  GR_adapter/GRAdapter/UnitTorus.lean:
+    integral_fderiv_unitVector_zero; spatialMean_spatialPartial_zero;
+    spatialMean_apply; scalarMean_divergence_zero; spatialMean_gradient_zero.
+  ASSEMBLY/GRAssembly/HodgeLocal.lean:
+    exists_smooth_periodic_extension; scalarMean_hasDerivAt_local;
+    poissonInverse_hasDerivAt_local; poissonInverse_localTimeDerivative.
+  ASSEMBLY/GRAssembly/HodgeTime.lean:
+    scalarMean_hasDerivAt_pos; poissonInverse_localTimeDerivative_pos.
+  GR_adapter/GRAdapter/StressDivergence.lean:
+    boundaryStress_tensorDivergence; reconstruction_residual_of_codazzi_hodge.
+  GR_adapter/GRAdapter/Contracts.lean:
+    GeometricReconstructionLaws; localNSE_of_reconstruction_and_zero_stress.
+
+AUDIT BOUNDARY
+Existing native endpoints are eligible for reuse under the parent task's
+retained exact-source/external audit ledger. This file does not claim any
+new theorem body passed the external compiler. G01--G11 are a B-tier
+derivation of the actual source-carrier statements; an external theorem-
+level audit is still necessary to promote their future Lean versions.
+No local Lean process was invoked.
+
+EXACT UNCERTAINTIES / NON-IMPLICATIONS
+  1. No mathematical sign inconsistency was found in the native definitions.
+  2. Joint analyticity of G and P is supplied by U1, not by the smooth-only
+     Methlib Hodge theorem. Smoothness alone cannot fill regularity in h.
+  3. A finite-slab function is not globally smooth on the Methlib halfspace;
+     the G08 localization must be retained in the Lean adapter.
+  4. Boundary flatness is equality on an open tangential slab; it does not
+     imply equality with eta on a Bulk neighborhood or zero radial jets.
+  5. Geometry constrains div F via the residual. F=0 is still the actual
+     independent canonical-sector admission used to conclude NSE.
+  6. No conservation of mean(kappa) or individual mean(A_ij) is asserted.
+
+
+
+PART U3b
+NSE_GR_COMPLETION_RECONSTRUCTION_INVERSE_B_TIER
+MODE = B_TIER_DERIVATION
+SCOPE = U3b; GC11-GC12, GC17-GC23.
+LOCAL_LEAN_EXECUTIONS = 0.
+NEW_EXTERNAL_COMPILER_EVIDENCE = none.
+STATUS = mathematical implication derived below; no new A_TIER promotion.
+
+0. EXACT DEPENDENCY BOUNDARY
+
+Parameters: nu,rho,t0 in R; nu>0; rho!=0.
+The positivity of nu is retained from the root; the identities below require
+no division by nu. The only nonzero parameter used here is rho.
+
+LI01 = NSEGR.LiteratureAnalyticCKInput.
+LI02 = NSEGR.LiteratureGaussianJetInput.
+LI03 = NSEGR.LiteratureSmoothFourierInput (retained literature axiom basis;
+the U1 route may instead reuse the already-audited Methlib Fourier proof).
+
+U1 = the native joint analytic periodic Poisson/Leray theorem, derived in the
+separate U1 part: on every given open time interval I, G maps jointly analytic
+periodic scalars to jointly analytic periodic scalars on the SAME I. The
+smooth periodic identities are Delta G=G Delta=Id-mean, mean G=0, spatial and
+ordinary local-time commutation, and their linearity consequences. The
+already-audited HodgeTransport/HodgeLocal endpoints supply the smooth part.
+
+U2 = the scalar/Gaussian periodic gluing part: LI01 supplies a normalized
+analytic periodic scalar solution on one common cylinder, with a permitted
+time shrink; LI02 supplies an actual periodic Gaussian vacuum extension of
+any BoundaryAdmissible K, on one common time/radial collar. Compact germ
+uniformization also applies to equality of already given periodic functions.
+
+U3a = the actual flat-boundary vacuum identity part: every native
+GaussianVacuum has a jointly analytic periodic symmetric boundaryK, with
+boundaryCodazzi=0 and boundaryHamiltonian=0 on the ENTIRE supplied interval.
+
+THEOREM U3b:
+  U1 + U2 + U3a + LI01 + LI02
+  -> exists c : ScalarBoundaryCompletionLaws nu rho t0,
+     exists r : AnalyticRadialExtensionLaws rho t0,
+     exists h : GeometricReconstructionLaws nu rho t0,
+     GermInverseLaws c r h.
+In fact, after U1/U3a, LI01 and LI02 yield GermInverseLaws c r h for ANY c,r,h
+inhabiting those exact native records. No selection-function compatibility
+is required. The supplied records remain explicit premises until the U1,
+U2, U3a constructions are substituted in the composed root.
+
+1. FROZEN SIGNS AND OPERATORS
+
+Q=[0,1]^3, volume(Q)=1. Spatial coordinates have period 1. All functions and
+derivatives below are the native Fields/Boundary/CompletionSource operators.
+eta=diag(-1,1,1,1). Indices a,b range over 0,1,2,3; i,j over 1,2,3.
+The chosen normal is +partial_r and K=(1/2)partial_r g_boundary at r=0.
+G has symbol 0 at k=0 and -1/(4*pi^2*|k|^2) otherwise.
+G=-Methlib.scalarL; P=Id-grad G div. No mean-zero velocity restriction occurs.
+
+For a symmetric boundary tensor K, set
+  A_ij=K_ij; k=K_00; w_i=K_0i;
+  beta=-tr(A); kappa=tr_eta(K)=-k-beta;
+  u=P w; q=G(beta-mean(beta));
+  p_*=-k-(2rho+|u|^2)/3-q_tt;
+  Z_ij=partial_i u_j+partial_j u_i;
+  F=tf3(A+u tensor u+Hess(q)-nu Z).
+These are, respectively, native boundarySpatialTensor, boundaryRawVelocity,
+boundaryBeta, boundaryVelocity, boundaryPotential, boundaryPressure and
+boundaryStress. tf3(B)=B-tr(B)I/3.
+
+Define the upper source and scalar correction by
+  S00=rho, S0i=Si0=u_i,
+  Sij=u_i u_j+p delta_ij-nu Z_ij;
+  C00=Delta psi, C0i=Ci0=-partial_i psi_t,
+  Cij=partial_i partial_j psi+(psi_tt-Delta psi)delta_ij.
+For T=S+C, lower both indices: B_ab=eta_aa eta_bb T^ab.
+Then completedBoundary = K=(tr_eta B)eta/3-B, and
+  traceRecover4(K)=kappa eta-K=B.
+
+2. C01: ACTUAL SCALAR CORRECTION CONSERVATION
+
+Hypothesis: psi is jointly analytic near the point in question. Analytic
+derivatives are analytic; their second Frechet derivatives are symmetric.
+Applying this to psi and to its first partials permits all third-order
+commutations below. No formal-symbol differentiation is substituted for a
+derivative of the actual function.
+
+For b=0,
+  partial_a C^(a0)
+    = partial_t Delta psi - sum_i partial_i partial_i psi_t
+    = sum_i partial_t partial_i partial_i psi
+      -sum_i partial_i partial_i partial_t psi
+    = 0.
+For b=j,
+  partial_a C^(aj)
+    = -partial_t partial_j psi_t
+      +sum_i partial_i partial_i partial_j psi
+      +partial_j(psi_tt-Delta psi)
+    = -partial_j psi_tt+partial_j Delta psi
+      +partial_j psi_tt-partial_j Delta psi
+    = 0.
+Thus upperDivergence(scalarCompletionUpper psi)=0.
+
+For an actual LocalNSE pair, div u=0 and
+  partial_a S^(a0)=div u=0,
+  partial_a S^(aj)=u_tj+((u.grad)u)_j+partial_j p-nu Delta u_j=0.
+The source identities already have native compiled endpoints. Consequently
+partial_a T^(ab)=0. Since K_ab-kappa eta_ab=-B_ab,
+  boundaryCodazzi(K)_b
+    =-sum_a eta_aa partial_a(eta_aa eta_bb T^(ab))
+    =-eta_bb sum_a partial_a T^(ab)=0.
+The factor -eta_bb is retained; it equals +1 for b=0 and -1 spatially.
+
+Dependencies: ML051,ML052,ML053; native ScalarCompletion source divergence,
+native analytic partial commutation, traceRecover4_traceReverse4.
+
+3. C02: COMPONENTS AND ALL FIELDS OF BoundaryAdmissible
+
+Let n be any NSERepresentative. U2 scalar gluing supplies delta>0,
+delta<=n.radius, a jointly analytic periodic psi on I_delta x R^3, normalized
+by psi(t0,x)=psi_t(t0,x)=0, solving the native scalar normal equation, with
+|rho+Delta psi|>|rho|/2 on that cylinder. Put
+  K=completedBoundary(nu,rho,n.velocity,n.pressure,psi).
+
+Since tr Z=2 div u=0, actual trace reversal gives
+  k=-(2rho+|u|^2)/3-p-psi_tt,
+  w=u-grad psi_t,
+  A=((|u|^2-rho)/3)I-u tensor u+nu Z-Hess psi.             (C02.1)
+Taking the spatial trace yields beta=rho+Delta psi. All expressions are
+jointly analytic and periodic by finite sums/products and analytic derivative
+closure. Hess psi is symmetric by actual mixed-partial commutation; thus K
+is symmetric. C01 gives Codazzi.
+
+Native completedBoundary_hamiltonian_zero_iff_scalar_normal applies because
+rho+Delta psi!=0; the scalar equation gives boundaryHamiltonian K=0.
+The identity psi(t0,.)=0 is an equality of full spatial functions, so
+Hess psi(t0,.)=0 and Delta psi(t0,.)=0. Similarly psi_t(t0,.)=0 implies
+Delta psi_t(t0,.)=0. Ordinary time/spatial commutation therefore gives
+  beta(t0,x)=rho,
+  beta_t(t0,x)=Delta psi_t(t0,x)=0.
+Together with delta>0 these are EVERY BoundaryAdmissible field. No separate
+constraint-propagation assumption occurs at this boundary stage.
+
+Dependencies: U2 scalar; C01; ScalarCompletion completedBoundary component
+theorems; ScalarNormalForm equivalence; ML051-ML053.
+
+4. C03: EXACT DECODING OF THE COMPLETED BOUNDARY
+
+On every t in I_delta, periodic integration gives mean(Delta psi)=0, since
+Delta psi=div grad psi and mean(div a)=0 for smooth periodic a. Thus
+  mean beta=rho,
+  q_K=G(beta-mean beta)=G Delta psi=psi-a(t),
+  a(t)=mean(psi(t,.)),
+  mean q_K=0.                                               (C03.1)
+
+U1 applies to the analytic periodic function Delta psi. Hence q_K is jointly
+analytic on the supplied cylinder. To establish analyticity of a without
+an additional analytic-parametric-integral theorem, use the actual identity
+  a(t)=psi(t,0)-q_K(t,0).
+Both terms are analytic in t. It follows that a,a',a'' exist and that
+  (q_K)_tt=psi_tt-a''
+on the same open interval. At t0, a(t0)=a'(t0)=0 follows from normalized
+scalar data and the corresponding q_K identities, or directly from smooth
+mean/time commutation.
+
+Because P is linear on smooth periodic fields, P fixes solenoidal u and
+P grad psi_t=0,
+  boundaryVelocity(K)=P(u-grad psi_t)=u.                    (C03.2)
+Constant velocity modes are retained: mean(Pw)=mean(w), not 0.
+
+Hess(q_K)=Hess(psi), since a(t) is independent of x. Substituting C02.1,
+  A+u tensor u+Hess q_K-nu Z=((|u|^2-rho)/3)I.
+Its trace-free part vanishes, so boundaryStress(nu,K)=0 pointwise on every
+supplied full spatial slice. Finally,
+  boundaryPressure(rho,K)
+    =-k-(2rho+|u|^2)/3-(q_K)_tt
+    =p+a''(t).                                             (C03.3)
+Thus the exact native SameFlowAt relation holds with time-only gauge a''.
+
+C02 and C03 supply EVERY field of CompletedBoundary, and hence
+  c : ScalarBoundaryCompletionLaws nu rho t0.
+This construction does not normalize away the physical velocity mean, and
+does not incorrectly identify the canonical q_K with psi before removing
+the scalar zero frequency.
+
+Dependencies: U1; native UnitTorus scalarMean_divergence_zero; HodgeTransport
+poissonInverse_scalarLaplacian, leray_gradient_zero,
+leray_eq_self_of_divergence_zero; C02; ML054.
+
+5. R01: CODAZZI EXPANSION AND CONSERVED ZERO FREQUENCIES
+
+Let g be any GaussianVacuum with supplied radii delta,epsilon>0. U3a gives
+analytic periodic symmetric K=boundaryK g and Codazzi=0 on I_delta. In this
+section no constitutive condition F=0 is assumed.
+
+For b=0, K00-kappa eta00=k+kappa=-beta. Hence
+  0=boundaryCodazzi(K)_0=beta_t+div w,
+  beta_t=-div w.                                            (R01.1)
+For b=j,
+  0=boundaryCodazzi(K)_j
+    =-w_tj+sum_i partial_i A_ij-partial_j kappa,
+  w_t=div A+grad k+grad beta.                                (R01.2)
+The native component j of tensorDivergence is sum_i partial_i A_ji.
+Symmetry A_ji=A_ij, as a neighborhood identity, identifies that expression
+with the sum_i partial_i A_ij produced by the Codazzi expansion.
+
+The native local smooth mean derivative theorem applies at arbitrary t in
+I_delta, not only t>=0. Periodic integration gives
+  (mean beta)'=mean beta_t=-mean(div w)=0.
+The interval I_delta is connected and contains t0. The native initial
+condition beta(t0,.)=rho and volume(Q)=1 give
+  mean beta(t)=rho for every t in I_delta.                   (R01.3)
+Each component of div A has zero integral by the same periodic divergence
+identity, and mean gradients vanish, so also
+  (mean w)'=0.
+The latter constant is arbitrary. Its vanishing is neither used nor inferred.
+
+Dependencies: U3a; native UnitTorus periodic integration; HodgeLocal
+scalarMean_hasDerivAt_local; derivative-zero constancy on a real interval.
+
+6. R02: DIFFERENTIATED HODGE RECONSTRUCTION ON THE ENTIRE INTERVAL
+
+By R01.3 the actual native decoder satisfies
+  q=G(beta-rho),
+  Delta q=beta-rho,
+  mean q=0.                                                (R02.1)
+The right-inverse identity uses mean(beta-rho)=0. With ordinary time
+commutation of G on the local open slab and R01.1,
+  q_t=G beta_t=-G div w,
+  u=P w=w-grad G div w=w+grad q_t,
+  w=u-grad q_t.                                            (R02.2)
+The spatial Hodge theorem gives div u=0. Differentiating the actual joint
+equality R02.2, with analytic mixed-partial commutation,
+  u_t=w_t+grad q_tt.                                        (R02.3)
+
+Initial beta=rho gives q(t0,.)=G0=0. Initial beta_t=0, together with mean beta
+constant and local time commutation, gives q_t(t0,.)=G0=0. U1 applied at each
+time point supplies joint analyticity and periodicity of q,u and then
+  p_*=-k-(2rho+|u|^2)/3-q_tt
+through analytic derivative closure. Every statement holds on the original
+I_delta; no uniform analytic radius over all of I_delta is required, and
+no time-radius shrink is used to fill GeometricReconstructionLaws.
+
+Dependencies: U1; R01; HodgeTransport scalarLaplacian_poissonInverse,
+scalarMean_poissonInverse_zero, divergence_leray_zero; HodgeLocal
+poissonInverse_localTimeDerivative; ML051-ML054.
+
+7. R03: EXACT NSE RESIDUAL; CONSTRUCTION OF h
+
+Let T=A+u tensor u+Hess q-nu Z. R02 gives
+  tr T=-beta+|u|^2+(beta-rho)-2nu div u=|u|^2-rho,
+  F=T-((|u|^2-rho)/3)I.
+Actual smooth spatial differentiation gives
+  div(u tensor u)=(u.grad)u        [because div u=0],
+  div Hess q=grad Delta q=grad beta,
+  div Z=Delta u+grad div u=Delta u,
+  div F=div A+(u.grad)u+grad beta-nu Delta u-grad|u|^2/3.
+The last identity is the existing native boundaryStress_tensorDivergence.
+
+R01.2 and R02.3 give
+  u_t=div A+grad k+grad beta+grad q_tt.
+The pressure definition gives
+  grad p_*=-grad k-grad|u|^2/3-grad q_tt.
+Adding the actual NSE terms and cancelling yields
+  nseResidual nu u p_*=div F.                               (R03.1)
+This is precisely native reconstruction_residual_of_codazzi_hodge after
+its two remaining input equalities are supplied by R01/R02.
+
+R02 joint analyticity/periodicity fills regularity, R02 div u=0 fills
+solenoidal, and R03.1 fills residual, on every supplied I_delta. Therefore
+  h : GeometricReconstructionLaws nu rho t0.
+If g is CanonicalRepresentative, F=0 as a full spatial tensor function.
+Therefore div F=0 and the decoded pair is LocalNSE by the existing theorem
+localNSE_of_reconstruction_and_zero_stress. F=0 is stronger than div F=0 and
+is retained as part of the independently defined target sector.
+
+Dependencies: R01,R02; native StressDivergence,
+ReconstructionCalculus, Contracts.localNSE_of_reconstruction_and_zero_stress.
+
+8. I01: EXACT CANONICAL JET; NO INFORMATION LOST TO STF
+
+Let g be CanonicalRepresentative and use its actual decoded u,p_*,q. Since
+F=0, tf3(T)=0, and tr T=|u|^2-rho,
+  A=((|u|^2-rho)/3)I-u tensor u+nu Z-Hess q.
+R02 gives w=u-grad q_t; the pressure definition gives
+  k=-(2rho+|u|^2)/3-p_*-q_tt.
+K is symmetric, so these determine both mixed blocks and all other entries.
+Comparison with C02.1 yields the ACTUAL full-tensor equality
+  K=completedBoundary(nu,rho,u,p_*,q)                       (I01.1)
+on all of I_delta x R^3. This is the existing
+boundary_slice_eq_completedBoundary_of_zero_stress endpoint with its
+solenoidality, Poisson and raw-velocity hypotheses discharged by R02.
+
+No conclusion of metric uniqueness is used in deriving I01.1. No scalar
+completion choice is used to define the target CanonicalRepresentative.
+
+9. I02: NORMALIZED SCALAR IDENTIFICATION FOR ARBITRARY c
+
+For arbitrary c : ScalarBoundaryCompletionLaws, choose its completion of
+the actual decoded representative. Write its scalar as psi_c and tensor
+as K_c. CompletedBoundary gives analyticity, periodicity, zero initial psi_c
+and psi_c,t, tensor_eq, and Hamiltonian=0.
+
+At any x0, normalized psi_c(t0,.)=0 implies Delta psi_c(t0,x0)=0. Since
+rho!=0 and rho+Delta psi_c is continuous, its denominator is nonzero on
+a neighborhood of (t0,x0). The native Hamiltonian-normal-form equivalence
+then gives the exact ScalarNormalGerm equation for psi_c on that neighborhood.
+Thus EVERY CompletedBoundary witness, not just the chosen U2 construction,
+defines a normalized scalar solution germ for its supplied u,p.
+
+For the canonical q, I01.1 and U3a Hamiltonian=0 give the same conclusion:
+q is jointly analytic, q(t0,.)=q_t(t0,.)=0 by R02, and rho+Delta q=rho at
+the initial slice. Local nonvanishing and the same equivalence show that
+q is ScalarNormalGerm for the exact decoded u,p_*.
+
+The already-audited scalar_normalized_germ_unique, using only LI01 and
+rho!=0, gives psi_c=q near (t0,x0) for EVERY x0. Compactness of Q yields a
+single time neighborhood on which equality holds for every x in Q. Both
+functions are periodic, so it holds on all of R^3. This is equality of full
+spatial functions as a time germ, not merely pointwise equality at t0.
+
+Locality of derivatives transfers this equality through completedBoundary;
+therefore K_c=K as a full-spatial-slice time germ.
+
+Dependencies: I01; scalar_normalized_germ_unique; native
+completedBoundary_hamiltonian_zero_iff_scalar_normal; ML004,ML012,ML013.
+
+10. I03: lift_decode WITHOUT CIRCULARITY
+
+Fix arbitrary c,r,h of the exact native record types and canonical g.
+reverseRepresentative h g uses the actual decoded u,p_*, independent of
+which proof h inhabits the reconstruction record. I02 identifies the chosen
+completion tensor K_c with K_g as a full-slice time germ. By the exact
+RadialExtensionResult boundary_match field, the chosen forward metric has
+boundary jet K_c on its supplied cylinder. The original g has boundary jet
+K_g by definition. Both metrics are actual GaussianVacuum, with induced eta,
+normal half-derivative K_c, and fixed coordinate marking.
+
+Use K_c as the independently admissible common data. Then
+  boundaryK(forwardRepresentative c r (reverseRepresentative h g))
+      = K_c                         as a full-slice time germ,
+  boundaryK(g)=K_c                   as a full-slice time germ.
+The compiled gaussianVacuum_sameMetricAt_of_literatureJet invokes LI02
+prescribed-data uniqueness and compact periodic uniformization, yielding
+  SameMetricAt t0
+    (forwardRepresentative c r (reverseRepresentative h g)).metric g.metric.
+This proves exactly GermInverseLaws.lift_decode.
+
+The argument invokes LI01 scalar uniqueness before LI02 Gaussian uniqueness.
+It assumes neither lift_decode, forward_respects nor the final equivalence.
+
+11. I04: forward_respects; EXACT PRESSURE-GAUGE SIGN
+
+Let a,b be arbitrary NSERepresentatives with SameFlowAt. Native
+sameFlowAt_iff_analytic_pressure_gauge fixes an analytic time gauge gamma on
+a common interval; choose the orientation
+  u_b=u_a=u,  p_b=p_a+gamma(t).
+If the relation is initially written p_a=p_b+gamma_0, replace gamma by
+-gamma_0. No differentiability of an arbitrary existential gauge is assumed:
+the native witness is an actual difference of pressures at spatial origin.
+
+LI01 yields a normalized analytic double primitive A with
+  A''=gamma, A(t0)=A'(t0)=0.
+The already-audited GaugePrimitive theorem constructs it by the first-order
+analytic system A_t=B, B_t=gamma with one dummy spatial variable and two
+unknowns. No fourth literature input is required.
+
+Let psi_a be ANY chosen completion scalar for a. Define
+  psi_tilde=psi_a-A(t).
+Its spatial Hessian and Laplacian are unchanged, and
+  grad(psi_tilde,t)=grad(psi_a,t),
+  psi_tilde,tt=psi_a,tt-gamma.
+The source S gains gamma I in its spatial block, while C loses gamma I in
+its spatial block. All other entries are unchanged. Hence
+  completedBoundary(u,p_a+gamma,psi_a-A)
+    =completedBoundary(u,p_a,psi_a)                         (I04.1)
+as a joint germ, with the full four-tensor exactly equal. This is the native
+completedBoundary_pressure_gauge theorem; the sign of -A is essential.
+
+The transformed scalar is normalized, analytic and periodic. Its completed
+tensor has Hamiltonian=0 by I04.1 and the admissibility of the a completion.
+Local nonvanishing at the initial slice and the Hamiltonian-normal-form
+equivalence therefore show it is ScalarNormalGerm for u_b,p_b. The chosen
+psi_b has the same property by I02's arbitrary-witness argument.
+LI01 uniqueness gives psi_b=psi_tilde near every (t0,x0). Compactness and
+periodicity upgrade this to one full-spatial time germ. Consequently K_b=K_a
+as full tensors on that time germ. Both chosen forward metrics match the
+same independently admissible K_a and are GaussianVacuum. The compiled LI02
+Gaussian uniqueness theorem gives
+  SameMetricAt t0 (forwardRepresentative c r a).metric
+                  (forwardRepresentative c r b).metric.
+This proves exactly GermInverseLaws.forward_respects for arbitrary c,r.
+
+No statement that pressure gauges leave scalar potentials unchanged is
+asserted. Scalar potentials change by the normalized negative double
+primitive; the actual completed K is invariant.
+
+12. I05: DETERMINISTIC ROOT COMPOSITION
+
+C03 supplies c; U2 radial gluing supplies r; R03 supplies h. I03 and I04
+supply the two fields of q : GermInverseLaws c r h.
+
+Native reverse descent: sameMetricAt_boundaryFields.
+Native decode-after-lift: forward_pressure_gauge_recovery.
+Native quotient inverse equations: reverseGerm_forwardGerm and
+forwardGerm_reverseGerm. Native final assembly:
+  NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS
+      nu rho t0 hnu hrho c r h q
+  : ExactSectorEquivalence nu rho t0.
+The root means Nonempty(NSEgerm nu t0 equiv GRgerm nu rho t0), with the
+independently defined analytic normalized Gaussian vacuum sector. It is
+local in time and radial coordinate. It is not global NSE regularity and
+not a correspondence with every Einstein metric.
+
+This file closes its exact mathematical implications at B_TIER. U1, U2 and
+U3a must be substituted with their separate derivations in the parent file.
+New native theorem bodies for C01-C03,R01-R03,I02-I04 remain unimplemented
+in this subtask. Prepared code would be A_TIER_CANDIDATE until a matching
+external compiler run and theorem-level axiom audit exist.
+No A_TIER, FORMAL_CLOSURE or UNCONDITIONAL_CLOSURE promotion is made here.
+
+13. ENDPOINT INDEX
+
+Each line below is an exact existing source endpoint or a named proposed
+adapter. Existing native endpoints carry their original hypotheses; the
+derivation above explicitly supplies those hypotheses. Original ML and ME
+numbers match NSE_GR_AXIOM_GLUING_INDEX.json and TEMP entry folders.
+
+E01 | native GR_adapter/GRAdapter/UnitTorus.lean
+  scalarMean_divergence_zero; spatialMean_gradient_zero.
+  USES=C03,R01. Ordinary periodic FTC; arbitrary means retained.
+
+E02 | native ASSEMBLY/GRAssembly/HodgeTransport.lean
+  poissonInverse_eq_neg_scalarL;
+  scalarLaplacian_poissonInverse; poissonInverse_scalarLaplacian;
+  scalarMean_poissonInverse_zero; scalarPartial_poissonInverse_commute;
+  leray_gradient_zero; divergence_leray_zero;
+  leray_eq_self_of_divergence_zero; spatialMean_leray.
+  USES=C03,R02. Smooth/periodic native identities, sign already transported.
+
+E03 | native ASSEMBLY/GRAssembly/HodgeLocal.lean
+  poissonInverse_localTimeDerivative; scalarMean_hasDerivAt_local.
+  USES=R01,R02. Arbitrary open time interval and ordinary deriv; the
+  positive-halfspace Methlib convention is already localized by cutoff.
+
+E04 | native ASSEMBLY/GRAssembly/ScalarCompletion.lean
+  completedBoundary_time_time; completedBoundary_time_space;
+  completedBoundary_space_space; completedBoundary_rawVelocity;
+  completedBoundary_beta; conservedSourceUpper_divergence_time;
+  conservedSourceUpper_divergence_space; conservedSourceUpper_conserved.
+  USES=C01-C03. Actual coordinate operators; C conservation remains a new
+  native adapter even though the source S conservation is already proved.
+
+E05 | native GR_adapter/GRAdapter/ScalarNormalForm.lean
+  completedBoundary_hamiltonian_zero_iff_scalar_normal.
+  USES=C02,I02,I04. Requires rho+Delta psi!=0. Never apply division at a
+  potentially characteristic point merely because the initial rho!=0.
+
+E06 | native GR_adapter/GRAdapter/StressDivergence.lean
+  tensorDivergence_velocityOuter_of_divergence_zero;
+  tensorDivergence_strain_of_divergence_zero;
+  tensorDivergence_scalarHessian; boundaryStress_tensorDivergence;
+  reconstruction_residual_of_codazzi_hodge.
+  USES=R03. Differential identity, with explicit smoothness and equations.
+
+E07 | native GR_adapter/GRAdapter/ReconstructionAlgebra.lean
+  boundaryPreStress_trace;
+  boundarySpatial_eq_of_stress_zero;
+  boundary_eq_completedBoundary_of_zero_stress;
+  boundary_slice_eq_completedBoundary_of_zero_stress.
+  USES=R03,I01. Full tensor reconstructed, not only stress projection.
+
+E08 | native ASSEMBLY/GRAssembly/ScalarJet.lean
+  analyticAt_jointTime; analyticAt_jointSpace; jointTime_jointSpace;
+  scalarStateOfPotential_solution; scalar_normalized_germ_unique;
+  ScalarNormalGerm.noncharacteristic; ScalarNormalGerm.hamiltonian.
+  USES=C01,I02,I04. LI01 remains explicit in uniqueness; arbitrary
+  admissible completion -> ScalarNormalGerm is the new reverse adapter.
+
+E09 | native GR_adapter/GRAdapter/Locality.lean
+  origin_pressure_gauge_analytic;
+  sameFlowAt_iff_analytic_pressure_gauge;
+  boundaryFields_sameFlow_of_eventually_eq;
+  sameMetricAt_boundaryFields.
+  USES=I04,I05. Whole spatial-slice equality precedes nonlocal G/P use.
+
+E10 | native ASSEMBLY/GRAssembly/GaugePrimitive.lean
+  analytic_double_primitive_of_literatureCK.
+  USES=I04. LI01, two scalar unknowns; normalized analytic A''=gamma.
+
+E11 | native ASSEMBLY/GRAssembly/PressureGauge.lean
+  source_plus_completion_pressure_gauge;
+  completedBoundary_pressure_gauge;
+  normalized_pressure_gauge_completion.
+  USES=I04. K[u,p+gamma,psi-A]=K[u,p,psi], A''=gamma.
+
+E12 | native GR_adapter/GRAdapter/GaussianUniqueness.lean
+  boundaryAdmissible_literatureFlatBoundaryGerm;
+  gaussianVacuum_literatureFlatGaussianGerm;
+  literatureGaussianJet_unique;
+  gaussianVacuum_sameMetricAt_of_literatureJet.
+  USES=I03,I04. Requires independently admissible common K and actual
+  GaussianVacuum witnesses; neither constructed metric membership nor
+  the eventual equality of K can be omitted.
+
+E13 | native GR_adapter/NSEGRForward.lean and NSEGRReverse.lean
+  forward_boundary_match_eventually; forward_pressure_gauge_recovery;
+  reverseGerm_forwardGerm; forwardGerm_reverseGerm;
+  NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS.
+  USES=I03-I05. Contract inhabitants remain separate from audited assembly.
+
+ML004 | IsCompact.eventually_forall_of_forall_eventually
+  USES=I02,I04: point-local scalar equality -> one common time germ on Q.
+ML012 | Filter.EventuallyEq.fderiv_eq
+ML013 | Filter.EventuallyEq.fderiv
+ML050 | Filter.EventuallyEq.deriv
+  USES=I02-I04: equality of germs -> equality of actual derivatives.
+ML051 | AnalyticAt.fderiv
+ML052 | AnalyticAt.contDiffAt
+ML053 | ContDiffAt.isSymmSndFDerivAt_of_omega
+ML054 | AnalyticAt.curry_left
+  USES=C01-C03,R01-R03,I02-I04: analytic derivative closure, mixed partials,
+  and analytic spatial-origin time slices.
+ML031 | hasFDerivAt_integral_of_dominated_of_fderiv_le
+  USES=R01 through cached native HodgeLocal; compact local smooth bounds
+  supply the domination. It does not alone prove analytic preservation.
+
+ME02 | scalarL_smooth; ME03 | vectorL_smooth; ME04 | vectorL_component;
+ME05 | coordinateDerivative_vectorL_commute; ME07 | neg_laplacian_vectorL;
+ME16 | scalarLift_component/scalarLift_contDiff/scalarLift_periodic.
+  USES=E02 via retained singular TEMP endpoints. Exact scalar target G has
+  negative source sign, and scalar lift/projection are explicit in E02.
+ME11 | NSEMaxwell.HodgeProof.inverseScalarSeries_hasFDerivAt_pos.
+ME12 | NSEMaxwell.HodgeProof.cubeIntegral_hasDerivWithinAt.
+ME15 | NSEMaxwell.HodgeProof.scalarMean_contDiffOn.
+  USES=E03. These source statements concern the forward halfspace. E03,
+  not a silent time translation of the source statement, supplies the
+  arbitrary native open interval. They supply smoothness, not U1 analyticity.
+
+Proposed new adapter sequence, each with preceding source endpoints:
+  C01 -> scalarCompletionUpper_conserved;
+  C02 -> completedBoundary_admissible;
+  C03 -> completedBoundary_decoder_recovery;
+  R01 -> boundary_codazzi_components_and_means;
+  R02 -> boundary_codazzi_hodge_decomposition;
+  R03 -> geometricReconstructionLaws_of_native_hodge_gaussCodazzi;
+  I02 -> completedBoundary_scalarNormalGerm,
+         canonical_scalar_completion_unique;
+  I03 -> lift_decode_of_literature;
+  I04 -> forward_respects_of_literature;
+  I05 -> germInverseLaws_of_literature.
+These names denote proposed endpoints; no declaration or compiler evidence
+for them is asserted by this document.
+
+14. AUDIT CONDITIONS
+
+AC01: All time derivatives are ordinary native deriv, evaluated inside open
+      intervals. No t>=0 boundary derivative convention is silently reused.
+AC02: Every G/P identity compares full spatial functions; scalar local germs
+      are first made uniform using compactness and periodicity.
+AC03: Scalar mean removal is q=psi-mean psi; pressure shift is +mean(psi)''.
+AC04: The inverse-law scalar gauge has opposite sign: p->p+gamma requires
+      psi->psi-A, A''=gamma.
+AC05: Hamiltonian=0 -> scalar normal equation uses local nonvanishing of
+      rho+Delta psi. Initial normalization supplies that neighborhood.
+AC06: R03 fills h without shrinking the supplied interval; c/r/germ
+      constructions may shrink exactly where their native records permit.
+AC07: U3a is required for arbitrary GaussianVacuum, not merely constructed
+      metrics. CanonicalSector is not redefined as the image of forward.
+AC08: Gaussian uniqueness is fixed-coordinate LI02 uniqueness of actual
+      analytic metrics with common induced eta and half-normal derivative K.
+AC09: Formal standard-axiom audits of implication/assembly theorems do not
+      discharge analytic or witness premises. No local Lean execution occurs.
+
+15. IMMUTABLE SOURCE LINKS
+
+Mathlib pin = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
+Native source endpoints above are paths within the supplied repository.
+ML/ME numbers refer to the retained exact-source endpoint folders in TEMP.
+
+ML004 | IsCompact.eventually_forall_of_forall_eventually
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Compactness/Compact.lean#L464
+
+ML012 | Filter.EventuallyEq.fderiv_eq
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Congr.lean#L258
+
+ML013 | Filter.EventuallyEq.fderiv
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Congr.lean#L261
+
+ML031 | hasFDerivAt_integral_of_dominated_of_fderiv_le
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ParametricIntegral.lean#L210
+
+ML050 | Filter.EventuallyEq.deriv
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/Deriv/Basic.lean#L653
+
+ML051 | AnalyticAt.fderiv
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Analytic.lean#L263
+
+ML052 | AnalyticAt.contDiffAt
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Defs.lean#L986
+
+ML053 | ContDiffAt.isSymmSndFDerivAt_of_omega
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Symmetric.lean#L198
+
+ML054 | AnalyticAt.curry_left
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean#L395
+
+ME02 | NSEMaxwell.HodgeProof.scalarL_smooth
+https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean#L157
+
+ME03 | NSEMaxwell.HodgeProof.vectorL_smooth
+https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean#L144
+
+ME04 | NSEMaxwell.HodgeProof.vectorL_component
+https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean#L162
+
+ME05 | NSEMaxwell.HodgeProof.coordinateDerivative_vectorL_commute
+https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialMultiplier.lean#L95
+
+ME07 | NSEMaxwell.HodgeProof.neg_laplacian_vectorL
+https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/PoissonFromCoefficients.lean#L106
+
+ME11 | NSEMaxwell.HodgeProof.inverseScalarSeries_hasFDerivAt_pos
+https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterSmoothing.lean#L195
+
+ME12 | NSEMaxwell.HodgeProof.cubeIntegral_hasDerivWithinAt
+https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterCoefficients.lean#L81
+
+ME15 | NSEMaxwell.HodgeProof.scalarMean_contDiffOn
+https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterIntegral.lean#L50
+
+ME16 | NSEMaxwell.HodgeProof.scalarLift_component
+https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/TargetPrimitives.lean#L54
+
+ME16 | NSEMaxwell.HodgeProof.scalarLift_contDiff
+https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/TargetPrimitives.lean#L57
+
+ME16 | NSEMaxwell.HodgeProof.scalarLift_periodic
+https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/TargetPrimitives.lean#L63
+
+
+
+APPENDIX E. GLOBAL ENDPOINT IDENTIFIERS
+Existing full signatures/provenance are preserved in the companion JSON.
+Complex-contour entries ML032--ML039 remain optional; U1.2--U1.5 use the real factorial route.
+
+MATHLIB
+ML001 | mem_nhds_prod_iff' | Mathlib/Topology/Constructions/SumProd.lean:290
+ML002 | exists_compact_subset | Mathlib/Topology/Compactness/LocallyCompact.lean:148
+ML003 | IsCompact.elim_finite_subcover | Mathlib/Topology/Compactness/Compact.lean:202
+ML004 | IsCompact.eventually_forall_of_forall_eventually | Mathlib/Topology/Compactness/Compact.lean:464
+ML005 | IsCompact.mem_prod_nhdsSet_of_forall | Mathlib/Topology/Compactness/Compact.lean:427
+ML006 | Set.iUnionLift | Mathlib/Data/Set/UnionLift.lean:56
+ML007 | Set.iUnionLift_of_mem | Mathlib/Data/Set/UnionLift.lean:74
+ML008 | Set.liftCover | Mathlib/Data/Set/UnionLift.lean:155
+ML009 | Set.liftCover_of_mem | Mathlib/Data/Set/UnionLift.lean:164
+ML010 | AnalyticAt.congr | Mathlib/Analysis/Analytic/Basic.lean:491
+ML011 | AnalyticOnNhd.congr | Mathlib/Analysis/Analytic/Basic.lean:509
+ML012 | Filter.EventuallyEq.fderiv_eq | Mathlib/Analysis/Calculus/FDeriv/Congr.lean:258
+ML013 | Filter.EventuallyEq.fderiv | Mathlib/Analysis/Calculus/FDeriv/Congr.lean:261
+ML014 | Set.piecewise_eqOn | Mathlib/Data/Set/Piecewise.lean:67
+ML015 | Function.Periodic.zsmul | Mathlib/Algebra/Ring/Periodic.lean:155
+ML016 | Function.Periodic.add_period | Mathlib/Algebra/Ring/Periodic.lean:97
+ML017 | AnalyticAt.eventually_analyticAt | Mathlib/Analysis/Analytic/ChangeOrigin.lean:378
+ML018 | mem_nhds_iff_exists_Ioo_subset | Mathlib/Topology/Order/Basic.lean:513
+ML019 | ContDiffBump.contDiff | Mathlib/Analysis/Calculus/BumpFunction/Basic.lean:203
+ML020 | ContDiffBump.one_of_mem_closedBall | Mathlib/Analysis/Calculus/BumpFunction/Basic.lean:137
+ML021 | ContDiffBump.tsupport_eq | Mathlib/Analysis/Calculus/BumpFunction/Basic.lean:157
+ML022 | derivWithin_of_mem_nhds | Mathlib/Analysis/Calculus/Deriv/Basic.lean:507
+ML023 | FormalMultilinearSeries.summable_norm_mul_pow | Mathlib/Analysis/Analytic/ConvergenceRadius.lean:241
+ML024 | FormalMultilinearSeries.le_radius_of_summable | Mathlib/Analysis/Analytic/ConvergenceRadius.lean:133
+ML025 | FormalMultilinearSeries.hasFPowerSeriesOnBall | Mathlib/Analysis/Analytic/Basic.lean:1072
+ML026 | HasFPowerSeriesOnBall.analyticAt | Mathlib/Analysis/Analytic/Basic.lean:139
+ML027 | tendstoUniformlyOn_tsum | Mathlib/Analysis/Normed/Group/FunctionSeries.lean:33
+ML028 | continuousOn_tsum | Mathlib/Analysis/Normed/Group/FunctionSeries.lean:116
+ML029 | hasFDerivAt_tsum_of_isPreconnected | Mathlib/Analysis/Calculus/SmoothSeries.lean:72
+ML030 | hasDerivAt_tsum_of_isPreconnected | Mathlib/Analysis/Calculus/SmoothSeries.lean:89
+ML031 | hasFDerivAt_integral_of_dominated_of_fderiv_le | Mathlib/Analysis/Calculus/ParametricIntegral.lean:210
+ML032 | Complex.integral_boundary_rect_eq_zero_of_differentiableOn | Mathlib/Analysis/Complex/CauchyIntegral.lean:295
+ML033 | Complex.norm_iteratedDeriv_le_of_forall_mem_sphere_norm_le | Mathlib/Analysis/Complex/Liouville.lean:44
+ML034 | SummableLocallyUniformlyOn.differentiableOn | Mathlib/Analysis/Complex/SummableUniformlyOn.lean:21
+ML035 | DifferentiableOn.analyticAt | Mathlib/Analysis/Complex/CauchyIntegral.lean:625
+ML036 | AnalyticAt.restrictScalars | Mathlib/Analysis/Analytic/Constructions.lean:818
+ML037 | AnalyticAt.re_ofReal | Mathlib/Analysis/SpecialFunctions/Complex/Analytic.lean:86
+ML038 | DifferentiableOn.isExactOn_ball | Mathlib/Analysis/Complex/HasPrimitives.lean:290
+ML039 | Complex.IsExactOn.with_val_at | Mathlib/Analysis/Complex/HasPrimitives.lean:118
+ML040 | intervalIntegral.integral_hasDerivAt_right | Mathlib/MeasureTheory/Integral/IntervalIntegral/FundThmCalculus.lean:725
+ML041 | intervalIntegral.integral_deriv_eq_sub | Mathlib/MeasureTheory/Integral/IntervalIntegral/FundThmCalculus.lean:1176
+ML042 | MeasureTheory.integral_tsum_of_summable_integral_norm | Mathlib/MeasureTheory/Integral/DominatedConvergence.lean:111
+ML043 | AnalyticOnNhd.eqOn_of_preconnected_of_eventuallyEq | Mathlib/Analysis/Analytic/Uniqueness.lean:223
+ML044 | AnalyticOnNhd.eqOn_of_preconnected_of_frequently_eq | Mathlib/Analysis/Analytic/IsolatedZeros.lean:238
+ML045 | Real.summable_exp_nat_mul_iff | Mathlib/Analysis/SpecialFunctions/Exp.lean:460
+ML046 | Real.summable_pow_mul_exp_neg_nat_mul | Mathlib/Analysis/SpecialFunctions/Exp.lean:475
+ML047 | summable_int_iff_summable_nat_and_neg | Mathlib/Topology/Algebra/InfiniteSum/NatInt.lean:508
+ML048 | Summable.mul_of_nonneg | Mathlib/Analysis/Normed/Ring/InfiniteSum.lean:34
+ML049 | tsum_neg | Mathlib/Topology/Algebra/InfiniteSum/Group.lean:169
+ML050 | Filter.EventuallyEq.deriv | Mathlib/Analysis/Calculus/Deriv/Basic.lean:653
+ML051 | AnalyticAt.fderiv | Mathlib/Analysis/Calculus/FDeriv/Analytic.lean:263
+ML052 | AnalyticAt.contDiffAt | Mathlib/Analysis/Calculus/ContDiff/Defs.lean:986
+ML053 | ContDiffAt.isSymmSndFDerivAt_of_omega | Mathlib/Analysis/Calculus/FDeriv/Symmetric.lean:198
+ML054 | AnalyticAt.curry_left | Mathlib/Analysis/Analytic/Constructions.lean:395
+ML055 | Matrix.PosDef.of_dotProduct_mulVec_pos | Mathlib/LinearAlgebra/Matrix/PosDef.lean:441
+ML056 | Matrix.PosDef.add_posSemidef | Mathlib/LinearAlgebra/Matrix/PosDef.lean:245
+ML057 | Matrix.PosDef.isUnit | Mathlib/LinearAlgebra/Matrix/PosDef.lean:507
+ML058 | Matrix.nonneg_iff_posSemidef | Mathlib/Analysis/Matrix/Order.lean:60
+ML059 | CFC.sqrt_nonneg | Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Basic.lean:239
+ML060 | CFC.sqrt_mul_sqrt_self | Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Basic.lean:265
+ML061 | CFC.isUnit_sqrt_iff | Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Basic.lean:722
+ML062 | Matrix.det_fromBlocks_zero₂₁ | Mathlib/LinearAlgebra/Matrix/Determinant/Basic.lean:675
+ML063 | Matrix.isUnit_iff_isUnit_det | Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean:127
+ML064 | Matrix.IsHermitian.instContinuousFunctionalCalculus | Mathlib/Analysis/Matrix/HermitianFunctionalCalculus.lean:97
+ML065 | Matrix.instCStarRing | Mathlib/Analysis/CStarAlgebra/Matrix.lean:288
+ML066 | FormalMultilinearSeries.norm_mul_pow_le_of_lt_radius | Mathlib/Analysis/Analytic/ConvergenceRadius.lean:212
+ML067 | HasFPowerSeriesOnBall.changeOrigin | Mathlib/Analysis/Analytic/ChangeOrigin.lean:338
+ML068 | FormalMultilinearSeries.nnnorm_changeOrigin_le | Mathlib/Analysis/Analytic/ChangeOrigin.lean:203
+ML069 | HasFPowerSeriesOnBall.iteratedFDeriv_eq_sum_of_completeSpace | Mathlib/Analysis/Analytic/IteratedFDeriv.lean:228
+ML070 | map_add_eq_sum_add_integral_iteratedFDeriv | Mathlib/Analysis/Calculus/TaylorIntegral.lean:69
+ML071 | FormalMultilinearSeries.le_radius_of_bound | Mathlib/Analysis/Analytic/ConvergenceRadius.lean:111
+ML072 | AnalyticOnNhd.fderiv | Mathlib/Analysis/Calculus/FDeriv/Analytic.lean:271
+ML073 | AnalyticOnNhd.iteratedFDeriv | Mathlib/Analysis/Calculus/FDeriv/Analytic.lean:278
+ML074 | AnalyticOnNhd.contDiffOn_of_completeSpace | Mathlib/Analysis/Calculus/ContDiff/Defs.lean:727
+ML075 | ZLattice.summable_norm_pow_inv | Mathlib/Algebra/Module/ZLattice/Summable.lean:273
+ML076 | Matrix.inv_def | Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean:172
+ML077 | Matrix.nonsing_inv_eq_ringInverse | Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean:195
+ML078 | Matrix.mul_nonsing_inv | Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean:211
+ML079 | Matrix.nonsing_inv_mul | Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean:217
+ML080 | Matrix.transpose_nonsing_inv | Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean:202
+ML081 | hasFDerivAt_ringInverse | Mathlib/Analysis/Calculus/FDeriv/Mul.lean:661
+ML082 | fderiv_inverse | Mathlib/Analysis/Calculus/FDeriv/Mul.lean:681
+ML083 | DifferentiableAt.inverse | Mathlib/Analysis/Calculus/FDeriv/Mul.lean:697
+ML084 | analyticAt_inverse | Mathlib/Analysis/Analytic/Constructions.lean:942
+ML085 | fderiv_fun_mul | Mathlib/Analysis/Calculus/FDeriv/Mul.lean:261
+ML086 | fderiv_fun_add | Mathlib/Analysis/Calculus/FDeriv/Add.lean:246
+ML087 | fderiv_fun_sum | Mathlib/Analysis/Calculus/FDeriv/Add.lean:494
+ML088 | HasFDerivAt.mul | Mathlib/Analysis/Calculus/FDeriv/Mul.lean:205
+ML089 | HasFDerivAt.comp | Mathlib/Analysis/Calculus/FDeriv/Comp.lean:105
+ML090 | IsOpen.is_const_of_deriv_eq_zero | Mathlib/Analysis/Calculus/MeanValue.lean:768
+
+ML066 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML066",
+  "name": "FormalMultilinearSeries.norm_mul_pow_le_of_lt_radius",
+  "full_name": "FormalMultilinearSeries.norm_mul_pow_le_of_lt_radius",
+  "kind": "declaration",
+  "path": "Mathlib/Analysis/Analytic/ConvergenceRadius.lean",
+  "line": 212,
+  "end_line": 213,
+  "signature": "theorem norm_mul_pow_le_of_lt_radius (p : FormalMultilinearSeries 𝕜 E F) {r : ℝ≥0}\n    (h : (r : ℝ≥0∞) < p.radius) : ∃ C > 0, ∀ n, ‖p n‖ * (r : ℝ) ^ n ≤ C :=",
+  "source_sha256": "f6314e1932da1cf3b52545f51ed3c70ab5a5173850aa24d4601aa0d7f1bbfb60",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ConvergenceRadius.lean#L212",
+  "role": "Uniform coefficient norm bound strictly below the radius.",
+  "uses": [
+    "U1.3"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/ConvergenceRadius.lean"
+}
+
+ML067 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML067",
+  "name": "HasFPowerSeriesOnBall.changeOrigin",
+  "full_name": "HasFPowerSeriesOnBall.changeOrigin",
+  "kind": "declaration",
+  "path": "Mathlib/Analysis/Analytic/ChangeOrigin.lean",
+  "line": 338,
+  "end_line": 339,
+  "signature": "theorem HasFPowerSeriesOnBall.changeOrigin (hf : HasFPowerSeriesOnBall f p x r)\n    (h : (‖y‖₊ : ℝ≥0∞) < r) : HasFPowerSeriesOnBall f (p.changeOrigin y) (x + y) (r - ‖y‖₊) := by",
+  "source_sha256": "acda4eb054df857f353197ec8c9d8722c425fa0bd206198e9b04868dc3291663",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ChangeOrigin.lean#L338",
+  "role": "Recenter a real multilinear power series at an interior point.",
+  "uses": [
+    "U1.3"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/ChangeOrigin.lean"
+}
+
+ML068 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML068",
+  "name": "FormalMultilinearSeries.nnnorm_changeOrigin_le",
+  "full_name": "FormalMultilinearSeries.nnnorm_changeOrigin_le",
+  "kind": "declaration",
+  "path": "Mathlib/Analysis/Analytic/ChangeOrigin.lean",
+  "line": 203,
+  "end_line": 205,
+  "signature": "theorem nnnorm_changeOrigin_le (k : ℕ) (h : (‖x‖₊ : ℝ≥0∞) < p.radius) :\n    ‖p.changeOrigin x k‖₊ ≤\n      ∑' s : Σ l : ℕ, { s : Finset (Fin (k + l)) // s.card = l }, ‖p (k + s.1)‖₊ * ‖x‖₊ ^ s.1 := by",
+  "source_sha256": "acda4eb054df857f353197ec8c9d8722c425fa0bd206198e9b04868dc3291663",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ChangeOrigin.lean#L203",
+  "role": "Binomial insertion bound for recentered coefficients.",
+  "uses": [
+    "U1.3"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/ChangeOrigin.lean"
+}
+
+ML069 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML069",
+  "name": "HasFPowerSeriesOnBall.iteratedFDeriv_eq_sum_of_completeSpace",
+  "full_name": "HasFPowerSeriesOnBall.iteratedFDeriv_eq_sum_of_completeSpace",
+  "kind": "declaration",
+  "path": "Mathlib/Analysis/Analytic/IteratedFDeriv.lean",
+  "line": 228,
+  "end_line": 230,
+  "signature": "theorem HasFPowerSeriesOnBall.iteratedFDeriv_eq_sum_of_completeSpace [CompleteSpace F]\n    (h : HasFPowerSeriesOnBall f p x r) {n : ℕ} (v : Fin n → E) :\n    iteratedFDeriv 𝕜 n f x v = ∑ σ : Perm (Fin n), p n (fun i ↦ v (σ i)) := by",
+  "source_sha256": "130f3735dcefdb6d087aac9722f31cab2e2e17828b548a2d2d6c66b88b83021f",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/IteratedFDeriv.lean#L228",
+  "role": "Identify n-th derivatives as permutation sums of coefficients.",
+  "uses": [
+    "U1.3"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/IteratedFDeriv.lean"
+}
+
+ML070 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML070",
+  "name": "map_add_eq_sum_add_integral_iteratedFDeriv",
+  "full_name": "map_add_eq_sum_add_integral_iteratedFDeriv",
+  "kind": "declaration",
+  "path": "Mathlib/Analysis/Calculus/TaylorIntegral.lean",
+  "line": 69,
+  "end_line": 72,
+  "signature": "theorem map_add_eq_sum_add_integral_iteratedFDeriv (hf : ∀ (t : ℝ) (_ht : t ∈ Set.Icc 0 1),\n    ContDiffAt ℝ (n + 1) f (x + t • y)) :\n    f (x + y) = ∑ k ∈ Finset.range (n + 1), (k ! : ℝ)⁻¹ • (iteratedFDeriv ℝ k f x (fun _ ↦ y)) +\n    (n ! : ℝ)⁻¹ • ∫ t in 0..1, (1 - t)^n • iteratedFDeriv ℝ (n + 1) f (x + t • y) (fun _ ↦ y) := by",
+  "source_sha256": "bf75027e584ea602f9f82e3e349f7269e16e7164e3c034c45401fdac942b5322",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/TaylorIntegral.lean#L69",
+  "role": "Exact multivariate Taylor formula and integral remainder.",
+  "uses": [
+    "U1.5",
+    "U1.6"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/TaylorIntegral.lean"
+}
+
+ML071 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML071",
+  "name": "FormalMultilinearSeries.le_radius_of_bound",
+  "full_name": "FormalMultilinearSeries.le_radius_of_bound",
+  "kind": "declaration",
+  "path": "Mathlib/Analysis/Analytic/ConvergenceRadius.lean",
+  "line": 111,
+  "end_line": 112,
+  "signature": "theorem le_radius_of_bound (C : ℝ) {r : ℝ≥0} (h : ∀ n : ℕ, ‖p n‖ * (r : ℝ) ^ n ≤ C) :\n    (r : ℝ≥0∞) ≤ p.radius :=",
+  "source_sha256": "f6314e1932da1cf3b52545f51ed3c70ab5a5173850aa24d4601aa0d7f1bbfb60",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ConvergenceRadius.lean#L111",
+  "role": "Coefficient geometric norm bound supplies positive formal radius.",
+  "uses": [
+    "U1.5"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/ConvergenceRadius.lean"
+}
+
+ML072 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML072",
+  "name": "AnalyticOnNhd.fderiv",
+  "full_name": "AnalyticOnNhd.fderiv",
+  "kind": "declaration",
+  "path": "Mathlib/Analysis/Calculus/FDeriv/Analytic.lean",
+  "line": 271,
+  "end_line": 272,
+  "signature": "protected theorem AnalyticOnNhd.fderiv [CompleteSpace F] (h : AnalyticOnNhd 𝕜 f s) :\n    AnalyticOnNhd 𝕜 (fderiv 𝕜 f) s :=",
+  "source_sha256": "9aba8c2c2b20b545331182e56325445f33f0a0851e9558e97595995e10045365",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Analytic.lean#L271",
+  "role": "Analytic derivative field on the same set.",
+  "uses": [
+    "U1.7"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/FDeriv/Analytic.lean"
+}
+
+ML073 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML073",
+  "name": "AnalyticOnNhd.iteratedFDeriv",
+  "full_name": "AnalyticOnNhd.iteratedFDeriv",
+  "kind": "declaration",
+  "path": "Mathlib/Analysis/Calculus/FDeriv/Analytic.lean",
+  "line": 278,
+  "end_line": 279,
+  "signature": "protected theorem AnalyticOnNhd.iteratedFDeriv [CompleteSpace F] (h : AnalyticOnNhd 𝕜 f s) (n : ℕ) :\n    AnalyticOnNhd 𝕜 (iteratedFDeriv 𝕜 n f) s := by",
+  "source_sha256": "9aba8c2c2b20b545331182e56325445f33f0a0851e9558e97595995e10045365",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Analytic.lean#L278",
+  "role": "Iterated analytic derivative field on the same set.",
+  "uses": [
+    "U1.7"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/FDeriv/Analytic.lean"
+}
+
+ML074 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML074",
+  "name": "AnalyticOnNhd.contDiffOn_of_completeSpace",
+  "full_name": "AnalyticOnNhd.contDiffOn_of_completeSpace",
+  "kind": "declaration",
+  "path": "Mathlib/Analysis/Calculus/ContDiff/Defs.lean",
+  "line": 727,
+  "end_line": 728,
+  "signature": "theorem AnalyticOnNhd.contDiffOn_of_completeSpace [CompleteSpace F] (h : AnalyticOnNhd 𝕜 f s) :\n    ContDiffOn 𝕜 n f s :=",
+  "source_sha256": "5d2f01069c6265873a372d4aed746c5d3411073b8acb108a180d02a84c832dca",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Defs.lean#L727",
+  "role": "Joint analytic input supplies joint smoothness for localization.",
+  "uses": [
+    "U1.1"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/ContDiff/Defs.lean"
+}
+
+ML075 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML075",
+  "name": "ZLattice.summable_norm_pow_inv",
+  "full_name": "ZLattice.summable_norm_pow_inv",
+  "kind": "declaration",
+  "path": "Mathlib/Algebra/Module/ZLattice/Summable.lean",
+  "line": 273,
+  "end_line": 274,
+  "signature": "lemma summable_norm_pow_inv (n : ℕ) (hn : Module.finrank ℤ L < n) :\n    Summable fun z : L ↦ ‖z‖⁻¹ ^ n := by",
+  "source_sha256": "8ab2738314a22bc7ab4b425161a59f5a29be86fa6a98b06db64155bff1bf8705",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Algebra/Module/ZLattice/Summable.lean#L273",
+  "role": "Rank-three lattice inverse fourth-power summability.",
+  "uses": [
+    "U1.2"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Algebra/Module/ZLattice/Summable.lean"
+}
+
+ML076 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML076",
+  "name": "Matrix.inv_def",
+  "full_name": "Matrix.inv_def",
+  "kind": "declaration",
+  "path": "Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean",
+  "line": 172,
+  "end_line": 172,
+  "signature": "theorem inv_def (A : Matrix n n α) : A⁻¹ = A.det⁻¹ʳ • A.adjugate :=",
+  "source_sha256": "1ee785b6ebd213ad2ed971bf3c804afee8cc6ce52be69e63572b4cf1bdb5e880",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean#L172",
+  "role": "Actual total matrix inverse equals scalar ring-inverse determinant times adjugate.",
+  "uses": [
+    "G01",
+    "G02"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean"
+}
+
+ML077 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML077",
+  "name": "Matrix.nonsing_inv_eq_ringInverse",
+  "full_name": "Matrix.nonsing_inv_eq_ringInverse",
+  "kind": "declaration",
+  "path": "Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean",
+  "line": 195,
+  "end_line": 195,
+  "signature": "theorem nonsing_inv_eq_ringInverse : A⁻¹ = A⁻¹ʳ := by",
+  "source_sha256": "1ee785b6ebd213ad2ed971bf3c804afee8cc6ce52be69e63572b4cf1bdb5e880",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean#L195",
+  "role": "Identify the native nonsingular inverse with Ring.inverse.",
+  "uses": [
+    "G01",
+    "G02"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean"
+}
+
+ML078 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML078",
+  "name": "Matrix.mul_nonsing_inv",
+  "full_name": "Matrix.mul_nonsing_inv",
+  "kind": "declaration",
+  "path": "Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean",
+  "line": 211,
+  "end_line": 211,
+  "signature": "theorem mul_nonsing_inv (h : IsUnit A.det) : A * A⁻¹ = 1 := by",
+  "source_sha256": "1ee785b6ebd213ad2ed971bf3c804afee8cc6ce52be69e63572b4cf1bdb5e880",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean#L211",
+  "role": "Right inverse product under IsUnit determinant.",
+  "uses": [
+    "G02"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean"
+}
+
+ML079 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML079",
+  "name": "Matrix.nonsing_inv_mul",
+  "full_name": "Matrix.nonsing_inv_mul",
+  "kind": "declaration",
+  "path": "Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean",
+  "line": 217,
+  "end_line": 217,
+  "signature": "theorem nonsing_inv_mul (h : IsUnit A.det) : A⁻¹ * A = 1 := by",
+  "source_sha256": "1ee785b6ebd213ad2ed971bf3c804afee8cc6ce52be69e63572b4cf1bdb5e880",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean#L217",
+  "role": "Left inverse product under IsUnit determinant.",
+  "uses": [
+    "G02"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean"
+}
+
+ML080 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML080",
+  "name": "Matrix.transpose_nonsing_inv",
+  "full_name": "Matrix.transpose_nonsing_inv",
+  "kind": "declaration",
+  "path": "Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean",
+  "line": 202,
+  "end_line": 202,
+  "signature": "theorem transpose_nonsing_inv : A⁻¹ᵀ = Aᵀ⁻¹ := by",
+  "source_sha256": "1ee785b6ebd213ad2ed971bf3c804afee8cc6ce52be69e63572b4cf1bdb5e880",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean#L202",
+  "role": "Transpose commutes with actual total inverse; symmetric inverse.",
+  "uses": [
+    "G02"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean"
+}
+
+ML081 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML081",
+  "name": "hasFDerivAt_ringInverse",
+  "full_name": "hasFDerivAt_ringInverse",
+  "kind": "declaration",
+  "path": "Mathlib/Analysis/Calculus/FDeriv/Mul.lean",
+  "line": 661,
+  "end_line": 662,
+  "signature": "theorem hasFDerivAt_ringInverse (x : Rˣ) :\n    HasFDerivAt Ring.inverse (-mulLeftRight 𝕜 R ↑x⁻¹ ↑x⁻¹) x := by",
+  "source_sha256": "cb6b129e2bc9f0e946445da29c072eff747cbe4477e8f90aecc6145eb69fea6a",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Mul.lean#L661",
+  "role": "Optional normed-algebra inverse derivative route; adjugate route also available.",
+  "uses": [
+    "G02"
+  ],
+  "optional": true,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/FDeriv/Mul.lean"
+}
+
+ML082 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML082",
+  "name": "fderiv_inverse",
+  "full_name": "fderiv_inverse",
+  "kind": "declaration",
+  "path": "Mathlib/Analysis/Calculus/FDeriv/Mul.lean",
+  "line": 681,
+  "end_line": 681,
+  "signature": "theorem fderiv_inverse (x : Rˣ) : fderiv 𝕜 (@Ring.inverse R _) x = -mulLeftRight 𝕜 R ↑x⁻¹ ↑x⁻¹ :=",
+  "source_sha256": "cb6b129e2bc9f0e946445da29c072eff747cbe4477e8f90aecc6145eb69fea6a",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Mul.lean#L681",
+  "role": "Optional total Frechet inverse derivative at a unit.",
+  "uses": [
+    "G02"
+  ],
+  "optional": true,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/FDeriv/Mul.lean"
+}
+
+ML083 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML083",
+  "name": "DifferentiableAt.inverse",
+  "full_name": "DifferentiableAt.inverse",
+  "kind": "declaration",
+  "path": "Mathlib/Analysis/Calculus/FDeriv/Mul.lean",
+  "line": 697,
+  "end_line": 698,
+  "signature": "theorem DifferentiableAt.inverse (hf : DifferentiableAt 𝕜 h z) (hz : IsUnit (h z)) :\n    DifferentiableAt 𝕜 (fun x => (h x)⁻¹ʳ) z :=",
+  "source_sha256": "cb6b129e2bc9f0e946445da29c072eff747cbe4477e8f90aecc6145eb69fea6a",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Mul.lean#L697",
+  "role": "Optional inverse-map differentiability under unit hypothesis.",
+  "uses": [
+    "G02"
+  ],
+  "optional": true,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/FDeriv/Mul.lean"
+}
+
+ML084 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML084",
+  "name": "analyticAt_inverse",
+  "full_name": "analyticAt_inverse",
+  "kind": "declaration",
+  "path": "Mathlib/Analysis/Analytic/Constructions.lean",
+  "line": 942,
+  "end_line": 943,
+  "signature": "lemma analyticAt_inverse [HasSummableGeomSeries A] (z : Aˣ) :\n    AnalyticAt 𝕜 Ring.inverse (z : A) := by",
+  "source_sha256": "3bc1dd7547f45cee8ee3a341f0762deb56f42a155cce60757e14055b6f304964",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean#L942",
+  "role": "Local analytic ring inverse at a unit; scalar adjugate route avoids matrix norm-instance transport.",
+  "uses": [
+    "G02"
+  ],
+  "optional": true,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/Constructions.lean"
+}
+
+ML085 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML085",
+  "name": "fderiv_fun_mul",
+  "full_name": "fderiv_fun_mul",
+  "kind": "declaration",
+  "path": "Mathlib/Analysis/Calculus/FDeriv/Mul.lean",
+  "line": 261,
+  "end_line": 262,
+  "signature": "theorem fderiv_fun_mul (hc : DifferentiableAt 𝕜 c x) (hd : DifferentiableAt 𝕜 d x) :\n    fderiv 𝕜 (fun y => c y * d y) x = c x • fderiv 𝕜 d x + d x • fderiv 𝕜 c x :=",
+  "source_sha256": "cb6b129e2bc9f0e946445da29c072eff747cbe4477e8f90aecc6145eb69fea6a",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Mul.lean#L261",
+  "role": "Finite component product derivative.",
+  "uses": [
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09",
+    "G10"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/FDeriv/Mul.lean"
+}
+
+ML086 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML086",
+  "name": "fderiv_fun_add",
+  "full_name": "fderiv_fun_add",
+  "kind": "declaration",
+  "path": "Mathlib/Analysis/Calculus/FDeriv/Add.lean",
+  "line": 246,
+  "end_line": 247,
+  "signature": "theorem fderiv_fun_add (hf : DifferentiableAt 𝕜 f x) (hg : DifferentiableAt 𝕜 g x) :\n    fderiv 𝕜 (fun y => f y + g y) x = fderiv 𝕜 f x + fderiv 𝕜 g x :=",
+  "source_sha256": "51930d73c6e80a0dbb3db0fcb6b09e4d72363266c2493aec136ed40311474c13",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Add.lean#L246",
+  "role": "Finite component addition derivative.",
+  "uses": [
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09",
+    "G10"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/FDeriv/Add.lean"
+}
+
+ML087 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML087",
+  "name": "fderiv_fun_sum",
+  "full_name": "fderiv_fun_sum",
+  "kind": "declaration",
+  "path": "Mathlib/Analysis/Calculus/FDeriv/Add.lean",
+  "line": 494,
+  "end_line": 495,
+  "signature": "theorem fderiv_fun_sum (h : ∀ i ∈ u, DifferentiableAt 𝕜 (A i) x) :\n    fderiv 𝕜 (fun y => ∑ i ∈ u, A i y) x = ∑ i ∈ u, fderiv 𝕜 (A i) x :=",
+  "source_sha256": "51930d73c6e80a0dbb3db0fcb6b09e4d72363266c2493aec136ed40311474c13",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Add.lean#L494",
+  "role": "Finite component sum derivative.",
+  "uses": [
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09",
+    "G10"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/FDeriv/Add.lean"
+}
+
+ML088 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML088",
+  "name": "HasFDerivAt.mul",
+  "full_name": "HasFDerivAt.mul",
+  "kind": "declaration",
+  "path": "Mathlib/Analysis/Calculus/FDeriv/Mul.lean",
+  "line": 205,
+  "end_line": 206,
+  "signature": "theorem HasFDerivAt.mul (hc : HasFDerivAt c c' x) (hd : HasFDerivAt d d' x) :\n    HasFDerivAt (c * d) (c x • d' + d x • c') x := by",
+  "source_sha256": "cb6b129e2bc9f0e946445da29c072eff747cbe4477e8f90aecc6145eb69fea6a",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Mul.lean#L205",
+  "role": "Actual product derivative with identified derivative value.",
+  "uses": [
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09",
+    "G10"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/FDeriv/Mul.lean"
+}
+
+ML089 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML089",
+  "name": "HasFDerivAt.comp",
+  "full_name": "HasFDerivAt.comp",
+  "kind": "declaration",
+  "path": "Mathlib/Analysis/Calculus/FDeriv/Comp.lean",
+  "line": 105,
+  "end_line": 106,
+  "signature": "theorem HasFDerivAt.comp {g : F → G} {g' : F →L[𝕜] G} (hg : HasFDerivAt g g' (f x))\n    (hf : HasFDerivAt f f' x) : HasFDerivAt (g ∘ f) (g'.comp f') x :=",
+  "source_sha256": "22b49670dfaa646c560b62e60674ac86288f32b09e920c00cf2d867c60f36a80",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Comp.lean#L105",
+  "role": "Coordinate restriction and composition chain rule.",
+  "uses": [
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09",
+    "G10"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/FDeriv/Comp.lean"
+}
+
+ML090 SOURCE-VERIFIED ADDITION
+{
+  "id": "ML090",
+  "name": "IsOpen.is_const_of_deriv_eq_zero",
+  "full_name": "IsOpen.is_const_of_deriv_eq_zero",
+  "kind": "declaration",
+  "path": "Mathlib/Analysis/Calculus/MeanValue.lean",
+  "line": 768,
+  "end_line": 770,
+  "signature": "theorem _root_.IsOpen.is_const_of_deriv_eq_zero\n    (hs : IsOpen s) (hs' : IsPreconnected s) (hf : DifferentiableOn 𝕜 f s)\n    (hf' : s.EqOn (deriv f) 0) {x y : 𝕜} (hx : x ∈ s) (hy : y ∈ s) : f x = f y :=",
+  "source_sha256": "5aff545ba7e780be43b7c856f683bfe41f037f372fdd6e879c5ed76880c9f02b",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/MeanValue.lean#L768",
+  "role": "Whole-interval conservation from ordinary derivative zero on an open preconnected set.",
+  "uses": [
+    "G08"
+  ],
+  "optional": false,
+  "status": "SOURCE_VERIFIED_AT_PIN; NEW_APPLICATION_B_TIER_ONLY",
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/MeanValue.lean"
+}
+
+METHLIB
+ME01 | NSEMaxwell.HodgeProof.scalarL_eq_realFourierSeries | FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean
+ME02 | NSEMaxwell.HodgeProof.scalarL_smooth | FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean
+ME03 | NSEMaxwell.HodgeProof.vectorL_smooth | FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean
+ME04 | NSEMaxwell.HodgeProof.vectorL_component | FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean
+ME05 | NSEMaxwell.HodgeProof.coordinateDerivative_vectorL_commute | FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialMultiplier.lean
+ME06 | NSEMaxwell.HodgeProof.divergence_vectorL_commute | FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialMultiplier.lean
+ME07 | NSEMaxwell.HodgeProof.neg_laplacian_vectorL | FourierHodgeLaws_inhabitant/FourierHodgeLaws/PoissonFromCoefficients.lean
+ME08 | NSEMaxwell.HodgeProof.spatialInverseLaplacianLaws | FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialInhabitant.lean
+ME09 | NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.K_curl | FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialHodge.lean
+ME10 | NSEMaxwell.HodgeProof.scalarL_trajectory_smooth | FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterSmoothing.lean
+ME11 | NSEMaxwell.HodgeProof.inverseScalarSeries_hasFDerivAt_pos | FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterSmoothing.lean
+ME12 | NSEMaxwell.HodgeProof.cubeIntegral_hasDerivWithinAt | FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterCoefficients.lean
+ME13 | NSEMaxwell.HodgeProof.scalarCoeff_hasDerivAt_pos | FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterCoefficients.lean
+ME14 | NSEMaxwell.HodgeProof.uniform_inverseScalarCoeff_moment_bound | FourierHodgeLaws_inhabitant/FourierHodgeLaws/UniformCoefficientBounds.lean
+ME15 | NSEMaxwell.HodgeProof.scalarMean_contDiffOn | FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterIntegral.lean
+ME16 | NSEMaxwell.HodgeProof.scalarLift_component; NSEMaxwell.HodgeProof.scalarLift_contDiff; NSEMaxwell.HodgeProof.scalarLift_periodic | FourierHodgeLaws_inhabitant/FourierHodgeLaws/TargetPrimitives.lean
+ME17 | NSEMaxwell.HodgeProof.scalarTimeDerivative_smooth; NSEMaxwell.HodgeProof.scalarTimeDerivative_periodic | FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterCoefficients.lean
+ME18 | NSEMaxwell.HodgeProof.scalar_cosine_integral | FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean
+ME19 | NSEMaxwell.HodgeProof.scalarCoeff_coordinateDerivative | FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean
+
+ME18 SOURCE-VERIFIED ADDITION
+{
+  "id": "ME18",
+  "name": "NSEMaxwell.HodgeProof.scalar_cosine_integral",
+  "full_name": "NSEMaxwell.HodgeProof.scalar_cosine_integral",
+  "namespace": "NSEMaxwell.HodgeProof",
+  "kind": "theorem",
+  "module": "FourierHodgeLaws.CosineMultiplier",
+  "path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean",
+  "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean",
+  "line": 38,
+  "end_line": 41,
+  "signature": "theorem scalar_cosine_integral (f : ScalarField) (hf : Continuous f)\n    (k : Frequency) (x : Vec) :\n    (∫ y in unitCube, cosineKernel k x y * f y) =\n      (SingularClosure.fourierCharacter k x * scalarCoeff f k).re := by",
+  "source_sha256": "d12c8efdffdbf21e98aed74ed436032e314343f7aa80df61d4ad3e6ee4accc42",
+  "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+  "source_repository": "randogelist/Methlib",
+  "url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean#L38",
+  "role": "Actual cosine integral equals the real part of character times actual scalar Fourier coefficient.",
+  "uses": [
+    "U1.2"
+  ],
+  "optional": false,
+  "status": "EXISTING_UPSTREAM_THEOREM_SOURCE_VERIFIED; NEW_GR_APPLICATION_B_TIER_ONLY",
+  "extraction_method": "NONE; REFERENCE_TO_EXISTING_UPSTREAM_DECLARATION",
+  "candidate_export": null,
+  "copied_temp_endpoint_created": false,
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/TEMP/FourierHodgeLaws/CosineMultiplier.lean",
+  "declarations": [
+    {
+      "full_name": "NSEMaxwell.HodgeProof.scalar_cosine_integral",
+      "line": 38,
+      "signature": "theorem scalar_cosine_integral (f : ScalarField) (hf : Continuous f)\n    (k : Frequency) (x : Vec) :\n    (∫ y in unitCube, cosineKernel k x y * f y) =\n      (SingularClosure.fourierCharacter k x * scalarCoeff f k).re := by",
+      "immutable_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean#L38"
+    }
+  ]
+}
+
+ME19 SOURCE-VERIFIED ADDITION
+{
+  "id": "ME19",
+  "name": "NSEMaxwell.HodgeProof.scalarCoeff_coordinateDerivative",
+  "full_name": "NSEMaxwell.HodgeProof.scalarCoeff_coordinateDerivative",
+  "namespace": "NSEMaxwell.HodgeProof",
+  "kind": "theorem",
+  "module": "FourierHodgeLaws.FourierCoefficients",
+  "path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean",
+  "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean",
+  "line": 42,
+  "end_line": 45,
+  "signature": "theorem scalarCoeff_coordinateDerivative (f : ScalarField)\n    (hf : ContDiff ℝ ∞ f) (hp : SpatialPeriodic f) (j : Fin 3) (k : Frequency) :\n    scalarCoeff (fun x => fderiv ℝ f x (unitVector j)) k =\n      SingularClosure.derivativeSymbol j k * scalarCoeff f k := by",
+  "source_sha256": "280e00740d779c6c592a6a9a6ce650355297050e7a75f18affbe8348aa8c3212",
+  "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+  "source_repository": "randogelist/Methlib",
+  "url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean#L42",
+  "role": "Actual scalar Fourier coefficient derivative multiplier; iterate twice and sum for Laplacian.",
+  "uses": [
+    "U1.2"
+  ],
+  "optional": false,
+  "status": "EXISTING_UPSTREAM_THEOREM_SOURCE_VERIFIED; NEW_GR_APPLICATION_B_TIER_ONLY",
+  "extraction_method": "NONE; REFERENCE_TO_EXISTING_UPSTREAM_DECLARATION",
+  "candidate_export": null,
+  "copied_temp_endpoint_created": false,
+  "signature_scope": "Exact declaration header; ambient section parameters remain those of the pinned module.",
+  "source_verified_local_path": "/workspace/scratch/9f4665db7b24/gr-repo/TEMP/FourierHodgeLaws/FourierCoefficients.lean",
+  "declarations": [
+    {
+      "full_name": "NSEMaxwell.HodgeProof.scalarCoeff_coordinateDerivative",
+      "line": 42,
+      "signature": "theorem scalarCoeff_coordinateDerivative (f : ScalarField)\n    (hf : ContDiff ℝ ∞ f) (hp : SpatialPeriodic f) (j : Fin 3) (k : Frequency) :\n    scalarCoeff (fun x => fderiv ℝ f x (unitVector j)) k =\n      SingularClosure.derivativeSymbol j k * scalarCoeff f k := by",
+      "immutable_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean#L42"
+    }
+  ]
+}
+
+ASSEMBLY ENDPOINTS REFERENCED BY THIS DERIVATION
+AS001 | NSEGR.Assembly.analytic_double_primitive_of_literatureCK | ASSEMBLY/GRAssembly/GaugePrimitive.lean:105 | GC=GC21
+AS002 | NSEGR.Assembly.bulkPartial_congr_of_eventuallyEq | ASSEMBLY/GRAssembly/GaussianConstraints.lean:18 | GC=GC16
+AS003 | NSEGR.Assembly.christoffel_gaussian_rbr_total | ASSEMBLY/GRAssembly/GaussianConstraints.lean:28 | GC=GC16
+AS004 | NSEGR.Assembly.christoffel_gaussian_abr_total | ASSEMBLY/GRAssembly/GaussianConstraints.lean:38 | GC=GC16
+AS005 | NSEGR.Assembly.radial_christoffel_derivative | ASSEMBLY/GRAssembly/GaussianConstraints.lean:53 | GC=GC16
+AS006 | NSEGR.Assembly.ricci_gaussian_tangential | ASSEMBLY/GRAssembly/GaussianConstraints.lean:81 | GC=GC16
+AS007 | NSEGR.Assembly.gaussianTangentialRicciComponent_zero_of_vacuum | ASSEMBLY/GRAssembly/GaussianConstraints.lean:97 | GC=GC16
+AS008 | NSEGR.Assembly.gaussian_vacuum_iff_components | ASSEMBLY/GRAssembly/GaussianConstraints.lean:107 | GC=GC16
+AS009 | NSEGR.Assembly.exists_smooth_periodic_extension | ASSEMBLY/GRAssembly/HodgeLocal.lean:89 | GC=GC02,GC17
+AS010 | NSEGR.Assembly.poissonInverse_hasDerivAt_local | ASSEMBLY/GRAssembly/HodgeLocal.lean:119 | GC=GC02,GC17
+AS011 | NSEGR.Assembly.poissonInverse_localTimeDerivative | ASSEMBLY/GRAssembly/HodgeLocal.lean:136 | GC=GC02,GC17
+AS012 | NSEGR.Assembly.scalarMean_hasDerivAt_local | ASSEMBLY/GRAssembly/HodgeLocal.lean:146 | GC=GC02,GC17
+AS013 | NSEGR.Assembly.poissonInverse_halfspace_smooth | ASSEMBLY/GRAssembly/HodgeTime.lean:29 | GC=GC02,GC17
+AS014 | NSEGR.Assembly.poissonInverse_localTimeDerivative_pos | ASSEMBLY/GRAssembly/HodgeTime.lean:89 | GC=GC02,GC17
+AS015 | NSEGR.Assembly.scalarMean_hasDerivAt_pos | ASSEMBLY/GRAssembly/HodgeTime.lean:99 | GC=GC02,GC17
+AS016 | NSEGR.Assembly.poissonInverse_eq_neg_scalarL | ASSEMBLY/GRAssembly/HodgeTransport.lean:35 | GC=GC01,GC02,GC04
+AS017 | NSEGR.Assembly.poissonInverse_smooth | ASSEMBLY/GRAssembly/HodgeTransport.lean:47 | GC=GC01,GC02,GC04
+AS018 | NSEGR.Assembly.scalarLaplacian_poissonInverse | ASSEMBLY/GRAssembly/HodgeTransport.lean:74 | GC=GC01,GC02,GC04
+AS019 | NSEGR.Assembly.scalarMean_poissonInverse_zero | ASSEMBLY/GRAssembly/HodgeTransport.lean:101 | GC=GC01,GC02,GC04
+AS020 | NSEGR.Assembly.scalarPartial_poissonInverse_commute | ASSEMBLY/GRAssembly/HodgeTransport.lean:162 | GC=GC01,GC02,GC04
+AS021 | NSEGR.Assembly.poissonInverse_scalarLaplacian | ASSEMBLY/GRAssembly/HodgeTransport.lean:203 | GC=GC01,GC02,GC04
+AS022 | NSEGR.Assembly.leray_gradient_zero | ASSEMBLY/GRAssembly/HodgeTransport.lean:210 | GC=GC01,GC02,GC04
+AS023 | NSEGR.Assembly.divergence_leray_zero | ASSEMBLY/GRAssembly/HodgeTransport.lean:248 | GC=GC01,GC02,GC04
+AS024 | NSEGR.Assembly.leray_eq_self_of_divergence_zero | ASSEMBLY/GRAssembly/HodgeTransport.lean:260 | GC=GC01,GC02,GC04
+AS025 | NSEGR.Assembly.leray_idempotent | ASSEMBLY/GRAssembly/HodgeTransport.lean:266 | GC=GC01,GC02,GC04
+AS026 | NSEGR.Assembly.spatialMean_leray | ASSEMBLY/GRAssembly/HodgeTransport.lean:271 | GC=GC01,GC02,GC04
+AS027 | NSEGR.Assembly.positive_matrix_gram_factor | ASSEMBLY/GRAssembly/LorentzFactor.lean:26 | GC=GC15
+AS028 | NSEGR.Assembly.lorentzSchur_posDef | ASSEMBLY/GRAssembly/LorentzFactor.lean:46 | GC=GC15
+AS029 | NSEGR.Assembly.lorentzTriangular_det | ASSEMBLY/GRAssembly/LorentzFactor.lean:71 | GC=GC15
+AS030 | NSEGR.Assembly.lorentzTriangular_congruence | ASSEMBLY/GRAssembly/LorentzFactor.lean:88 | GC=GC15
+AS031 | NSEGR.Assembly.lorentz_factor_of_spatial_posDef | ASSEMBLY/GRAssembly/LorentzFactor.lean:121 | GC=GC15
+AS032 | NSEGR.Assembly.spatial_quadratic_error_bound | ASSEMBLY/GRAssembly/LorentzNeighborhood.lean:22 | GC=GC15
+AS033 | NSEGR.Assembly.spatial_posDef_of_near_identity | ASSEMBLY/GRAssembly/LorentzNeighborhood.lean:48 | GC=GC15
+AS034 | NSEGR.Assembly.lorentz_factor_of_near_eta4 | ASSEMBLY/GRAssembly/LorentzNeighborhood.lean:77 | GC=GC15
+AS035 | NSEGR.Assembly.gaussian_lorentzian_of_near_eta4 | ASSEMBLY/GRAssembly/LorentzNeighborhood.lean:91 | GC=GC15
+AS036 | NSEGR.Assembly.finite_precompact_refinement | ASSEMBLY/GRAssembly/PeriodicGluing.lean:28 | GC=GC07,GC08,GC09
+AS037 | NSEGR.Assembly.finite_compact_overlap_uniform | ASSEMBLY/GRAssembly/PeriodicGluing.lean:49 | GC=GC07,GC08,GC09
+AS038 | NSEGR.Assembly.overlapGlue | ASSEMBLY/GRAssembly/PeriodicGluing.lean:59 | GC=GC07,GC08,GC09
+AS039 | NSEGR.Assembly.overlapGlue_eq | ASSEMBLY/GRAssembly/PeriodicGluing.lean:69 | GC=GC07,GC08,GC09
+AS040 | NSEGR.Assembly.overlapGlue_eventuallyEq | ASSEMBLY/GRAssembly/PeriodicGluing.lean:80 | GC=GC07,GC08,GC09
+AS041 | NSEGR.Assembly.overlapGlue_analyticAt | ASSEMBLY/GRAssembly/PeriodicGluing.lean:91 | GC=GC07,GC08,GC09
+AS042 | NSEGR.Assembly.overlapGlue_fderiv | ASSEMBLY/GRAssembly/PeriodicGluing.lean:104 | GC=GC07,GC08,GC09
+AS043 | NSEGR.Assembly.overlapGlue_fderiv_eventuallyEq | ASSEMBLY/GRAssembly/PeriodicGluing.lean:116 | GC=GC07,GC08,GC09
+AS044 | NSEGR.Assembly.latticePatch_cover | ASSEMBLY/GRAssembly/PeriodicGluing.lean:155 | GC=GC07,GC08,GC09
+AS045 | NSEGR.Assembly.lattice_relative_shift_bound | ASSEMBLY/GRAssembly/PeriodicGluing.lean:171 | GC=GC07,GC08,GC09
+AS046 | NSEGR.Assembly.compactLatticeOverlap_isCompact | ASSEMBLY/GRAssembly/PeriodicGluing.lean:193 | GC=GC07,GC08,GC09
+AS047 | NSEGR.Assembly.lattice_overlap_germs_uniform | ASSEMBLY/GRAssembly/PeriodicGluing.lean:201 | GC=GC07,GC08,GC09
+AS048 | NSEGR.Assembly.periodic_witness_of_compatible_atlas | ASSEMBLY/GRAssembly/PeriodicWitness.lean:21 | GC=GC08,GC09,GC14
+AS049 | NSEGR.Assembly.periodic_witness_of_compact_overlap_germs | ASSEMBLY/GRAssembly/PeriodicWitness.lean:72 | GC=GC08,GC09,GC14
+AS050 | NSEGR.Assembly.analyticAt_of_lattice_local_germ | ASSEMBLY/GRAssembly/PeriodicWitness.lean:103 | GC=GC08,GC09,GC14
+AS051 | NSEGR.Assembly.germ_local_law_of_lattice_local_germ | ASSEMBLY/GRAssembly/PeriodicWitness.lean:126 | GC=GC08,GC09,GC14
+AS052 | NSEGR.Assembly.periodic_analytic_witness_of_compact_overlap_germs | ASSEMBLY/GRAssembly/PeriodicWitness.lean:139 | GC=GC08,GC09,GC14
+AS053 | NSEGR.Assembly.source_plus_completion_pressure_gauge | ASSEMBLY/GRAssembly/PressureGauge.lean:72 | GC=GC21
+AS054 | NSEGR.Assembly.completedBoundary_pressure_gauge | ASSEMBLY/GRAssembly/PressureGauge.lean:93 | GC=GC21
+AS055 | NSEGR.Assembly.normalized_pressure_gauge_completion | ASSEMBLY/GRAssembly/PressureGauge.lean:104 | GC=GC21
+AS056 | NSEGR.Assembly.completedBoundary_time_time | ASSEMBLY/GRAssembly/ScalarCompletion.lean:45 | GC=GC11,GC19
+AS057 | NSEGR.Assembly.completedBoundary_time_space | ASSEMBLY/GRAssembly/ScalarCompletion.lean:58 | GC=GC11,GC19
+AS058 | NSEGR.Assembly.completedBoundary_space_space | ASSEMBLY/GRAssembly/ScalarCompletion.lean:68 | GC=GC11,GC19
+AS059 | NSEGR.Assembly.completedBoundary_rawVelocity | ASSEMBLY/GRAssembly/ScalarCompletion.lean:80 | GC=GC11,GC19
+AS060 | NSEGR.Assembly.completedBoundary_beta | ASSEMBLY/GRAssembly/ScalarCompletion.lean:89 | GC=GC11,GC19
+AS061 | NSEGR.Assembly.upperDivergence | ASSEMBLY/GRAssembly/ScalarCompletion.lean:135 | GC=GC11,GC19
+AS062 | NSEGR.Assembly.conservedSourceUpper_divergence_time | ASSEMBLY/GRAssembly/ScalarCompletion.lean:158 | GC=GC11,GC19
+AS063 | NSEGR.Assembly.conservedSourceUpper_divergence_space | ASSEMBLY/GRAssembly/ScalarCompletion.lean:168 | GC=GC11,GC19
+AS064 | NSEGR.Assembly.conservedSourceUpper_conserved | ASSEMBLY/GRAssembly/ScalarCompletion.lean:191 | GC=GC11,GC19
+AS065 | NSEGR.Assembly.analyticAt_jointTime | ASSEMBLY/GRAssembly/ScalarJet.lean:49 | GC=GC05,GC06,GC10,GC20
+AS066 | NSEGR.Assembly.analyticAt_jointSpace | ASSEMBLY/GRAssembly/ScalarJet.lean:55 | GC=GC05,GC06,GC10,GC20
+AS067 | NSEGR.Assembly.jointTime_jointSpace | ASSEMBLY/GRAssembly/ScalarJet.lean:61 | GC=GC05,GC06,GC10,GC20
+AS068 | NSEGR.Assembly.scalarCK_scalarNormalGerm | ASSEMBLY/GRAssembly/ScalarJet.lean:193 | GC=GC05,GC06,GC10,GC20
+AS069 | NSEGR.Assembly.scalarStateOfPotential_solution | ASSEMBLY/GRAssembly/ScalarJet.lean:227 | GC=GC05,GC06,GC10,GC20
+AS070 | NSEGR.Assembly.scalar_normalized_germ_unique | ASSEMBLY/GRAssembly/ScalarJet.lean:281 | GC=GC05,GC06,GC10,GC20
+AS071 | NSEGR.Assembly.scalarNormalGerm_exists | ASSEMBLY/GRAssembly/ScalarJet.lean:300 | GC=GC05,GC06,GC10,GC20
+AS072 | NSEGR.Assembly.ScalarNormalGerm.noncharacteristic | ASSEMBLY/GRAssembly/ScalarJet.lean:330 | GC=GC05,GC06,GC10,GC20
+AS073 | NSEGR.Assembly.ScalarNormalGerm.hamiltonian | ASSEMBLY/GRAssembly/ScalarJet.lean:340 | GC=GC05,GC06,GC10,GC20
+
+SECTION-LOCAL ALIAS MAPPING
+{
+  "U1-ML01": [
+    {
+      "name": "FormalMultilinearSeries.summable_norm_mul_pow",
+      "id": "ML023",
+      "new_entry": false,
+      "path": "Mathlib/Analysis/Analytic/ConvergenceRadius.lean",
+      "line": 241
+    }
+  ],
+  "U1-ML02": [
+    {
+      "name": "FormalMultilinearSeries.norm_mul_pow_le_of_lt_radius",
+      "id": "ML066",
+      "new_entry": true,
+      "path": "Mathlib/Analysis/Analytic/ConvergenceRadius.lean",
+      "line": 212
+    }
+  ],
+  "U1-ML03": [
+    {
+      "name": "HasFPowerSeriesOnBall.changeOrigin",
+      "id": "ML067",
+      "new_entry": true,
+      "path": "Mathlib/Analysis/Analytic/ChangeOrigin.lean",
+      "line": 338
+    },
+    {
+      "name": "FormalMultilinearSeries.nnnorm_changeOrigin_le",
+      "id": "ML068",
+      "new_entry": true,
+      "path": "Mathlib/Analysis/Analytic/ChangeOrigin.lean",
+      "line": 203
+    }
+  ],
+  "U1-ML04": [
+    {
+      "name": "HasFPowerSeriesOnBall.iteratedFDeriv_eq_sum_of_completeSpace",
+      "id": "ML069",
+      "new_entry": true,
+      "path": "Mathlib/Analysis/Analytic/IteratedFDeriv.lean",
+      "line": 228
+    }
+  ],
+  "U1-ML05": [
+    {
+      "name": "map_add_eq_sum_add_integral_iteratedFDeriv",
+      "id": "ML070",
+      "new_entry": true,
+      "path": "Mathlib/Analysis/Calculus/TaylorIntegral.lean",
+      "line": 69
+    }
+  ],
+  "U1-ML06": [
+    {
+      "name": "FormalMultilinearSeries.le_radius_of_bound",
+      "id": "ML071",
+      "new_entry": true,
+      "path": "Mathlib/Analysis/Analytic/ConvergenceRadius.lean",
+      "line": 111
+    }
+  ],
+  "U1-ML07": [
+    {
+      "name": "HasFPowerSeriesOnBall.analyticAt",
+      "id": "ML026",
+      "new_entry": false,
+      "path": "Mathlib/Analysis/Analytic/Basic.lean",
+      "line": 139
+    }
+  ],
+  "U1-ML08": [
+    {
+      "name": "AnalyticAt.fderiv",
+      "id": "ML051",
+      "new_entry": false,
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Analytic.lean",
+      "line": 263
+    },
+    {
+      "name": "AnalyticOnNhd.fderiv",
+      "id": "ML072",
+      "new_entry": true,
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Analytic.lean",
+      "line": 271
+    },
+    {
+      "name": "AnalyticOnNhd.iteratedFDeriv",
+      "id": "ML073",
+      "new_entry": true,
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Analytic.lean",
+      "line": 278
+    }
+  ],
+  "U1-ML09": [
+    {
+      "name": "AnalyticOnNhd.contDiffOn_of_completeSpace",
+      "id": "ML074",
+      "new_entry": true,
+      "path": "Mathlib/Analysis/Calculus/ContDiff/Defs.lean",
+      "line": 727
+    }
+  ],
+  "U1-ML10": [
+    {
+      "name": "ZLattice.summable_norm_pow_inv",
+      "id": "ML075",
+      "new_entry": true,
+      "path": "Mathlib/Algebra/Module/ZLattice/Summable.lean",
+      "line": 273
+    }
+  ],
+  "GML01": [
+    {
+      "name": "Filter.EventuallyEq.fderiv_eq",
+      "id": "ML012",
+      "new_entry": false,
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Congr.lean",
+      "line": 258
+    },
+    {
+      "name": "Filter.EventuallyEq.fderiv",
+      "id": "ML013",
+      "new_entry": false,
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Congr.lean",
+      "line": 261
+    }
+  ],
+  "GML02": [
+    {
+      "name": "Matrix.inv_def",
+      "id": "ML076",
+      "new_entry": true,
+      "path": "Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean",
+      "line": 172
+    },
+    {
+      "name": "Matrix.nonsing_inv_eq_ringInverse",
+      "id": "ML077",
+      "new_entry": true,
+      "path": "Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean",
+      "line": 195
+    },
+    {
+      "name": "Matrix.mul_nonsing_inv",
+      "id": "ML078",
+      "new_entry": true,
+      "path": "Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean",
+      "line": 211
+    },
+    {
+      "name": "Matrix.nonsing_inv_mul",
+      "id": "ML079",
+      "new_entry": true,
+      "path": "Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean",
+      "line": 217
+    },
+    {
+      "name": "Matrix.transpose_nonsing_inv",
+      "id": "ML080",
+      "new_entry": true,
+      "path": "Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean",
+      "line": 202
+    },
+    {
+      "name": "Matrix.isUnit_iff_isUnit_det",
+      "id": "ML063",
+      "new_entry": false,
+      "path": "Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean",
+      "line": 127
+    }
+  ],
+  "GML03": [
+    {
+      "name": "hasFDerivAt_ringInverse",
+      "id": "ML081",
+      "new_entry": true,
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Mul.lean",
+      "line": 661
+    },
+    {
+      "name": "fderiv_inverse",
+      "id": "ML082",
+      "new_entry": true,
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Mul.lean",
+      "line": 681
+    },
+    {
+      "name": "DifferentiableAt.inverse",
+      "id": "ML083",
+      "new_entry": true,
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Mul.lean",
+      "line": 697
+    },
+    {
+      "name": "analyticAt_inverse",
+      "id": "ML084",
+      "new_entry": true,
+      "path": "Mathlib/Analysis/Analytic/Constructions.lean",
+      "line": 942
+    }
+  ],
+  "GML04": [
+    {
+      "name": "fderiv_fun_mul",
+      "id": "ML085",
+      "new_entry": true,
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Mul.lean",
+      "line": 261
+    },
+    {
+      "name": "fderiv_fun_add",
+      "id": "ML086",
+      "new_entry": true,
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Add.lean",
+      "line": 246
+    },
+    {
+      "name": "fderiv_fun_sum",
+      "id": "ML087",
+      "new_entry": true,
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Add.lean",
+      "line": 494
+    },
+    {
+      "name": "HasFDerivAt.mul",
+      "id": "ML088",
+      "new_entry": true,
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Mul.lean",
+      "line": 205
+    },
+    {
+      "name": "HasFDerivAt.comp",
+      "id": "ML089",
+      "new_entry": true,
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Comp.lean",
+      "line": 105
+    }
+  ],
+  "GML05": [
+    {
+      "name": "AnalyticAt.fderiv",
+      "id": "ML051",
+      "new_entry": false,
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Analytic.lean",
+      "line": 263
+    },
+    {
+      "name": "AnalyticAt.contDiffAt",
+      "id": "ML052",
+      "new_entry": false,
+      "path": "Mathlib/Analysis/Calculus/ContDiff/Defs.lean",
+      "line": 986
+    },
+    {
+      "name": "ContDiffAt.isSymmSndFDerivAt_of_omega",
+      "id": "ML053",
+      "new_entry": false,
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Symmetric.lean",
+      "line": 198
+    }
+  ],
+  "GML06": [
+    {
+      "name": "IsOpen.is_const_of_deriv_eq_zero",
+      "id": "ML090",
+      "new_entry": true,
+      "path": "Mathlib/Analysis/Calculus/MeanValue.lean",
+      "line": 768
+    }
+  ],
+  "U1-ME01": [
+    {
+      "name": "NSEMaxwell.HodgeProof.scalar_cosine_integral",
+      "id": "ME18",
+      "new_entry": true,
+      "path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean",
+      "line": 38
+    }
+  ],
+  "U1-ME02": [
+    {
+      "name": "NSEMaxwell.HodgeProof.scalarCoeff_coordinateDerivative",
+      "id": "ME19",
+      "new_entry": true,
+      "path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean",
+      "line": 42
+    }
+  ]
+}
+
+
+APPENDIX L. LITERAL SOURCE INPUT SIGNATURES
+SOURCE=GR_adapter/GRAdapter/LiteratureInputs.lean @ 8c72af4b7e0bdfafd305746a8a7b4b94a6801649
+This is source transcription, not a new compiler run.
+import GRAdapter.Boundary
+
+/-!
+# Explicit source-facing literature signatures
+
+LI01: Chaperon, On the Cauchy-Kowalevski theorem, Section 2, equation (2).
+LI02: Dahia--Romero, gr-qc/0109076, Lemmas 1 and 2, Theorem 2 sufficient
+direction; fixed lapse 1, extra sign +1, zero cosmological constant.
+LI03: Guillemin, Notes for 18.117 (2005), Section 4, Propositions 4.1/4.3,
+Corollary 4.2 and equation (4.5), after the period-one normalization.
+
+These are concrete mathematical propositions, not new axioms and not
+inhabitants of the propositions. All four project adapter contracts remain
+separate obligations. In particular no periodic collar, scalar completion,
+constitutive residual, or inverse-germ theorem occurs in the input fields.
+
+The germ formulation uses globally typed functions whose behavior is
+constrained only on neighborhoods. It is equivalent to the usual source
+formulation on open neighborhoods by restriction and arbitrary extension.
+-/
+
+set_option autoImplicit false
+
+open Set Filter MeasureTheory
+open scoped Topology BigOperators ContDiff Matrix.Norms.Frobenius
+
+namespace NSEGR
+
+noncomputable section
+
+abbrev LiteratureSpace (n : ℕ) := EuclideanSpace ℝ (Fin n)
+
+abbrev LiteratureCKJet (n m : ℕ) :=
+  (ℝ × LiteratureSpace n) ×
+    (LiteratureSpace m × (LiteratureSpace n →L[ℝ] LiteratureSpace m))
+
+abbrev LiteratureCKRHS (n m : ℕ) := LiteratureCKJet n m → LiteratureSpace m
+
+def LiteratureCKInitialJet {n m : ℕ} (t0 : ℝ) (x0 : LiteratureSpace n)
+    (u0 : LiteratureSpace n → LiteratureSpace m) : LiteratureCKJet n m :=
+  ((t0, x0), (u0 x0, fderiv ℝ u0 x0))
+
+/-- Actual analytic Cauchy solution near one base point; all equality data are
+germs on neighborhoods, not just equality of values at the base point. -/
+structure LiteratureCKSolution {n m : ℕ} (F : LiteratureCKRHS n m)
+    (u0 : LiteratureSpace n → LiteratureSpace m) (t0 : ℝ)
+    (x0 : LiteratureSpace n)
+    (u : ℝ × LiteratureSpace n → LiteratureSpace m) : Prop where
+  analytic : AnalyticAt ℝ u (t0, x0)
+  initial : ∀ᶠ x in 𝓝 x0, u (t0, x) = u0 x
+  equation : ∀ᶠ z in 𝓝 (t0, x0),
+    deriv (fun t : ℝ => u (t, z.2)) z.1 =
+      F (z, (u z, fderiv ℝ (fun x => u (z.1, x)) z.2))
+
+/-- LI01. The finite-dimensional first-order analytic CK theorem, including
+analytic solution-germ uniqueness. No radius uniformity is assumed. -/
+structure LiteratureAnalyticCKInput : Prop where
+  exists_unique : ∀ (n m : ℕ), 0 < n → 0 < m →
+    ∀ (F : LiteratureCKRHS n m)
+      (u0 : LiteratureSpace n → LiteratureSpace m)
+      (t0 : ℝ) (x0 : LiteratureSpace n),
+      AnalyticAt ℝ u0 x0 →
+      AnalyticAt ℝ F (LiteratureCKInitialJet t0 x0 u0) →
+      ∃ u : ℝ × LiteratureSpace n → LiteratureSpace m,
+        LiteratureCKSolution F u0 t0 x0 u ∧
+        ∀ v : ℝ × LiteratureSpace n → LiteratureSpace m,
+          LiteratureCKSolution F u0 t0 x0 v → u =ᶠ[𝓝 (t0, x0)] v
+
+/-- Flat constrained analytic boundary data near a single boundary point.
+No periodicity, rho normalization, or constitutive condition is present. -/
+structure LiteratureFlatBoundaryGerm (K : BoundaryTensor) (t0 : ℝ)
+    (x0 : Vec) : Prop where
+  analytic : AnalyticAt ℝ (fun z : ℝ × Vec => K z.1 z.2) (t0, x0)
+  symmetric : ∀ᶠ z in 𝓝 (t0, x0), (K z.1 z.2).IsSymm
+  hamiltonian : ∀ᶠ z in 𝓝 (t0, x0), boundaryHamiltonian K z.1 z.2 = 0
+  codazzi : ∀ᶠ z in 𝓝 (t0, x0), ∀ b : Fin 4, boundaryCodazzi K z.1 z.2 b = 0
+
+/-- Actual Gaussian metric germ with both prescribed boundary data germs.
+The native Lorentzian change-of-basis witness is not inserted as an input;
+it remains a consequence to derive from the induced eta metric. -/
+structure LiteratureFlatGaussianGerm (K : BoundaryTensor) (t0 : ℝ)
+    (x0 : Vec) (g : Metric) : Prop where
+  analytic : AnalyticAt ℝ g (bulkPoint 0 t0 x0)
+  symmetric : ∀ᶠ z in 𝓝 (bulkPoint 0 t0 x0), (g z).IsSymm
+  nondegenerate : ∀ᶠ z in 𝓝 (bulkPoint 0 t0 x0), (g z).det ≠ 0
+  gaussian_rr : ∀ᶠ z in 𝓝 (bulkPoint 0 t0 x0), g z 0 0 = 1
+  gaussian_rboundary : ∀ᶠ z in 𝓝 (bulkPoint 0 t0 x0),
+    ∀ a : Fin 4, g z 0 (boundaryIndex a) = 0
+  induced : ∀ᶠ z in 𝓝 (t0, x0), ∀ a b : Fin 4,
+    g (bulkPoint 0 z.1 z.2) (boundaryIndex a) (boundaryIndex b) = eta4 a b
+  boundary_match : ∀ᶠ z in 𝓝 (t0, x0), boundaryK g z.1 z.2 = K z.1 z.2
+  vacuum : ∀ᶠ z in 𝓝 (bulkPoint 0 t0 x0), ricci g z = 0
+
+/-- LI02. Point-local prescribed-data Gaussian vacuum existence and uniqueness.
+The source extrinsic-curvature sign is the negative of `boundaryK`.
+Uniqueness is in the same coordinates and normal orientation. -/
+structure LiteratureGaussianJetInput : Prop where
+  exists_unique : ∀ (K : BoundaryTensor) (t0 : ℝ) (x0 : Vec),
+    LiteratureFlatBoundaryGerm K t0 x0 →
+      ∃ g : Metric, LiteratureFlatGaussianGerm K t0 x0 g ∧
+        ∀ h : Metric, LiteratureFlatGaussianGerm K t0 x0 h →
+          g =ᶠ[𝓝 (bulkPoint 0 t0 x0)] h
+
+abbrev LiteratureFrequency (n : ℕ) := Fin n → ℤ
+
+def LiteratureUnitVector {n : ℕ} (i : Fin n) : LiteratureSpace n :=
+  EuclideanSpace.single i (1 : ℝ)
+
+def LiteratureUnitCube (n : ℕ) : Set (LiteratureSpace n) :=
+  {x | ∀ i : Fin n, 0 ≤ x i ∧ x i ≤ 1}
+
+def LiteraturePeriodic {n : ℕ} (f : LiteratureSpace n → ℂ) : Prop :=
+  ∀ (x : LiteratureSpace n) (i : Fin n), f (x + LiteratureUnitVector i) = f x
+
+/-- The actual unit-period character; no Fourier data are supplied abstractly. -/
+def LiteratureCharacter {n : ℕ} (k : LiteratureFrequency n)
+    (x : LiteratureSpace n) : ℂ :=
+  Complex.exp ((2 * (Real.pi : ℂ) * Complex.I) *
+    ((∑ i : Fin n, (k i : ℝ) * x i : ℝ) : ℂ))
+
+def LiteratureFourierCoefficient {n : ℕ} (f : LiteratureSpace n → ℂ)
+    (k : LiteratureFrequency n) : ℂ :=
+  ∫ x in LiteratureUnitCube n, f x * LiteratureCharacter (-k) x
+
+/-- A finite coordinate derivative word, expressed using actual Frechet
+derivatives. Smoothness identifies these with the usual multiindex partials. -/
+def LiteraturePartialWord {n : ℕ} :
+    List (Fin n) → (LiteratureSpace n → ℂ) → LiteratureSpace n → ℂ
+  | [], f => f
+  | i :: w, f => fun x =>
+      fderiv ℝ (LiteraturePartialWord w f) x (LiteratureUnitVector i)
+
+def LiteratureFourierWordMultiplier {n : ℕ} (w : List (Fin n))
+    (k : LiteratureFrequency n) : ℂ :=
+  (w.map (fun i => 2 * (Real.pi : ℂ) * Complex.I * (k i : ℂ))).prod
+
+/-- LI03. Smooth periodic Fourier inversion, derivative multipliers, absolute
+coefficient summability, and uniform differentiated convergence. The native
+Poisson/Leray identities and time-analytic estimates are not input fields. -/
+structure LiteratureSmoothFourierInput : Prop where
+  reconstruct : ∀ (n : ℕ), 0 < n → ∀ (f : LiteratureSpace n → ℂ),
+    ContDiff ℝ ∞ f → LiteraturePeriodic f → ∀ w : List (Fin n),
+      (∀ k : LiteratureFrequency n,
+        LiteratureFourierCoefficient (LiteraturePartialWord w f) k =
+          LiteratureFourierWordMultiplier w k * LiteratureFourierCoefficient f k) ∧
+      Summable (fun k : LiteratureFrequency n =>
+        ‖LiteratureFourierWordMultiplier w k * LiteratureFourierCoefficient f k‖) ∧
+      HasSumUniformly
+        (fun (k : LiteratureFrequency n) (x : LiteratureSpace n) =>
+          (LiteratureFourierWordMultiplier w k * LiteratureFourierCoefficient f k) *
+            LiteratureCharacter k x)
+        (LiteraturePartialWord w f)
+
+/-- Three explicit source signatures. This structure does not contain any
+of the four project law packages, nor does its declaration inhabit it. -/
+structure LiteratureInputs : Prop where
+  ck : LiteratureAnalyticCKInput
+  gaussianJet : LiteratureGaussianJetInput
+  smoothFourier : LiteratureSmoothFourierInput
+
+/-- Exact source field extraction. This does not discharge LI01. -/
+theorem LiteratureInputs_ck (h : LiteratureInputs) : LiteratureAnalyticCKInput := h.ck
+
+/-- Exact source field extraction. This does not discharge LI02. -/
+theorem LiteratureInputs_gaussianJet (h : LiteratureInputs) :
+    LiteratureGaussianJetInput := h.gaussianJet
+
+/-- Exact source field extraction. This does not discharge LI03. -/
+theorem LiteratureInputs_smoothFourier (h : LiteratureInputs) :
+    LiteratureSmoothFourierInput := h.smoothFourier
+
+end
+
+end NSEGR
+
+
+APPENDIX A. MATHEMATICAL AUDIT
+NSE_GR_COMPOSED_CHAIN_INDEPENDENT_AUDIT
+MODE = B_TIER_DERIVATION
+AUDIT_SCOPE = exact native definitions; U1, U2, U3a, U3b derivations.
+LOCAL_LEAN_EXECUTIONS = 0.
+NEW_EXTERNAL_COMPILER_RUNS = 0.
+RESULT = mathematical composition accepted subject to the explicit scope below.
+
+A01 | EXACT CONDITIONAL ROOT
+For nu>0, rho!=0 and arbitrary t0, the literal literature inputs
+  LI01 = NSEGR.LiteratureAnalyticCKInput,
+  LI02 = NSEGR.LiteratureGaussianJetInput,
+  LI03 = NSEGR.LiteratureSmoothFourierInput
+support the derived constructions c,r,h and the two inverse fields q,
+and hence ExactSectorEquivalence nu rho t0. No fourth analytic, gluing,
+constraint, reconstruction or uniqueness axiom is introduced. The root is
+the fixed marked five-dimensional normalized Gaussian vacuum sector with
+boundaryStress=0, equivalent to local analytic periodic NSE pressure-gauge
+germs. It asserts neither global NSE regularity nor arbitrary-metric GR.
+
+A02 | U1 FACTORIAL ESTIMATE
+Two periodic integrations by parts give the native multiplier estimate
+  |m(k) integral_Q C_k g| <= (16*pi^4)^(-1)|k|_2^(-4)||Delta g||_infty.
+The exact sup-norm shell count is 24N^2+2, giving S4<=52. Uniform local
+analytic bounds M R^(-n)n! and the fixed two-derivative estimate imply
+  |D^alpha Gf| <= 3 C0 M R^(-n-2)(n+2)!.
+Since (n+1)(n+2)<=2*3^n, the coordinate bound is B(3/R)^n n!.
+For the native max product norm on R x EuclideanSpace R 3,
+  |v_0|+sum_i|v_i| <= (1+sqrt(3))||v|| <= 3||v||.
+Thus ||D^n Gf||<=B(9/R)^n n!. The Taylor remainder tends to zero for
+||h||<R/9. This proves joint analyticity, with no separate-analyticity or
+complexification premise. Localization at each t in the original interval
+fills the full-interval contract without a common time-radius shrink.
+
+A03 | U2 COMPACT OVERLAPS
+Each retained patch closure lies inside its larger source witness domain.
+Recentered source laws and affine translation covariance therefore apply
+at every compact-overlap point. Spatial patch bounds in (-1,2)^3 reduce
+relative lattice translations to the finite set {-3,...,3}^3. Finite compact
+uniformization gives one common parameter neighborhood; no infinite minimum
+of positive radii or uncontrolled analytic continuation is used. Local
+equality of the glued witness transfers its actual PDE and every needed jet.
+
+A04 | TOTALIZATION AND SIGNATURE
+Totalizing scalar or metric witnesses outside the constructed open domain
+does not affect interior jets. Define the completed tensor globally by
+completedBoundary of the totalized scalar, so the global tensor_eq field is
+literal. Metric periodicity is required only inside its collar. The stated
+entrywise margin, positive spatial block and triangular congruence provide
+the actual LorentzianAt witness. Continuity of that auxiliary change of
+basis is unnecessary.
+
+A05 | ACTUAL GEOMETRY
+The inverse derivative is -h^(-1)(d h)h^(-1), with d_r h=2K. On the flat
+boundary the native contractions give
+  Ric_rr=-H+Q,
+  sum_a s_a Ric_aa=-H-kappa^2+2Q,
+and hence boundaryHamiltonian=Q-kappa^2=0 in vacuum. The actual mixed
+component equals native boundaryCodazzi. Boundary flatness annihilates
+tangential jets only. All statements hold on the original supplied slab.
+
+A06 | RECONSTRUCTION SIGNS AND MEANS
+Codazzi gives beta_t+div w=0 and w_t=div A+grad(k+beta). Symmetry of A is
+required to identify the Codazzi column sum with native tensorDivergence's
+row convention. Periodic integration gives mean beta=rho and constant,
+unrestricted mean w. Thus
+  q_t=-G div w; u=w+grad q_t; w=u-grad q_t.
+The completed scalar satisfies q=psi-mean psi and
+  p_reconstructed=p+(mean psi)''.
+Substitution yields exactly nseResidual=div(boundaryStress), with no sign
+change and no zero-mean velocity restriction. The h record retains its
+supplied time radius.
+
+A07 | CHOICE INDEPENDENCE AND GAUGE
+Every CompletedBoundary supplies Hamiltonian=0 and zero scalar Cauchy data.
+These imply local nonvanishing of rho+Delta psi and recover the scalar
+normal equation. LI01 uniqueness therefore applies to arbitrary completion
+choices. For p' = p+gamma, take analytic gamma(t)=p'(t,0)-p(t,0), choose
+A''=gamma with A(t0)=A'(t0)=0, and transform psi'=psi-A. The complete K is
+unchanged. Canonical zero stress reconstructs all entries of K, not merely
+its trace-free projection. Scalar uniqueness followed by LI02 uniqueness
+therefore proves q for arbitrary supplied c,r,h. No inverse law is used
+to prove itself.
+
+A08 | STATUS BOUNDARY
+The exact mathematical composition is B_TIER relative to LI01--LI03.
+Existing cached compiler/audit evidence applies only to its recorded source
+and theorem targets. Proposed new native exports without prepared Lean
+bodies have status NOT_FORMALIZED / OPEN. No new A_TIER,
+FORMAL_CLOSURE or UNCONDITIONAL_CLOSURE promotion follows from this audit.
+
+FINAL_MATHEMATICAL_OBSTRUCTION = none identified within the stated scope.
+EXTRA_UNRESOLVED_MATHEMATICAL_PREMISE_BEYOND_LI01_LI02_LI03 = none.
+NATIVE_ROOT_FORMALIZATION = OPEN.
+
+COMPOSITION-INDEX AUDIT CORRECTIONS: APPLIED
+  D12 constructs c without invoking forward_pressure_gauge_recovery.
+  That existing theorem consumes c,r and appears only at the quotient stage D21.
+  D20 depends on D19 before packaging both fields of GermInverseLaws.
+  D21 depends on D10, where the radial-extension record r is constructed.
+
+FINAL STATUS
+  U1 = B_TIER; U2 = B_TIER; U3 = B_TIER.
+  c,r,h,q = mathematically constructed from the displayed assumptions.
+  Root = B_TIER relative to LI01,LI02,LI03, nu>0, rho!=0.
+  Existing native contract-to-root implication = retained A_TIER evidence.
+  New native LI-to-c/r/h/q-to-root theorem = OPEN / NOT_FORMALIZED.
+  FORMAL_CLOSURE of the new composed root = NOT_CLAIMED.
+  UNCONDITIONAL_CLOSURE = NOT_CLAIMED.
+  Local Lean runs = 0; new external Lean runs = 0.
