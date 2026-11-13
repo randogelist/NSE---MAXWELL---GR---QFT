@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "verification_kind": "STATIC_PACKAGING_AND_MATHEMATICAL_REVIEW_ONLY",
+  "compiler_certificate": false,
+  "integration": "DEFERRED",
+  "new_a_tier_promotion": false,
+  "new_root_lean_inhabitant_supplied": false,
+  "scope": "Frozen FourierHodgeLaws and ExactEquivalence, arbitrary mean, periodic pressure, joint ContDiffOn infinity through t=0",
+  "main_derivation_sha256": "1f8d11f8454ffb1cc33a9dafff1b09f0638281eedbf213386eea5d129044f0c4",
+  "main_derivation_words": 4416,
+  "mathematical_reviews": [
+    {
+      "scope": "C01-C07, C11-C13, cosine normalization, harmonic mode, pressure gauge, both root implications",
+      "result": "APPROVED_B_TIER",
+      "substantive_defects_identified": []
+    },
+    {
+      "scope": "C08-C10, C12-C13, exact within-boundary jets, time integral, pressure mean, both root implications",
+      "result": "APPROVED_B_TIER",
+      "substantive_defects_identified": []
+    },
+    {
+      "scope": "Public endpoint signatures, exact pins, retained named audits, source-toolchain boundary",
+      "result": "PASS",
+      "minor_corrections_applied": [
+        "T05 has absolute-summability premise, weaker than RapidScalarFourier",
+        "T10 lattice uses the coordinate Pi maximum norm",
+        "Scalar use of vector T03 made explicit by a one-component embedding"
+      ]
+    }
+  ],
+  "static_checks": {
+    "selected_endpoint_signatures_matched_in_pinned_sources": 22,
+    "source_snapshots_sha256_and_git_blob_matches": 14,
+    "source_snapshots_total": 14,
+    "source_snapshot_bytes_modified": 0,
+    "mathlib_license_matches_pinned_upstream": true,
+    "active_lean_files_added": 0,
+    "unchanged_existing_local_files": 189,
+    "existing_lean_sources_matching_retained_external_source_manifest": 25,
+    "target_build_or_workflow_modified": false,
+    "upstream_mathlib_or_methlib_modified": false,
+    "admission_scan_after_comments_and_strings_removed": [
+      {
+        "path": "sources/mathlib/Mathlib/Analysis/Fourier/AddCircleMulti.lean.txt",
+        "tokens": []
+      },
+      {
+        "path": "sources/mathlib/Mathlib/MeasureTheory/Function/LpSpace/ContinuousFunctions.lean.txt",
+        "tokens": []
+      },
+      {
+        "path": "sources/mathlib/Mathlib/Algebra/Module/ZLattice/Summable.lean.txt",
+        "tokens": []
+      },
+      {
+        "path": "sources/mathlib/Mathlib/Analysis/Calculus/SmoothSeries.lean.txt",
+        "tokens": []
+      },
+      {
+        "path": "sources/mathlib/Mathlib/Analysis/Calculus/FDeriv/Extend.lean.txt",
+        "tokens": []
+      },
+      {
+        "path": "sources/mathlib/Mathlib/Analysis/Calculus/ContDiff/Defs.lean.txt",
+        "tokens": []
+      },
+      {
+        "path": "sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PeriodicFourierRealization.lean.txt",
+        "tokens": []
+      },
+      {
+        "path": "sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InitialCutoffBounds.lean.txt",
+        "tokens": []
+      },
+      {
+        "path": "sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierDecay.lean.txt",
+        "tokens": []
+      },
+      {
+        "path": "sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSeriesCalculus.lean.txt",
+        "tokens": []
+      },
+      {
+        "path": "sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevSmoothRealization.lean.txt",
+        "tokens": []
+      },
+      {
+        "path": "sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PeriodicFourierInjective.lean.txt",
+        "tokens": []
+      },
+      {
+        "path": "sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InfiniteFourierPressure.lean.txt",
+        "tokens": []
+      },
+      {
+        "path": "sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/LatticeSobolevSummability.lean.txt",
+        "tokens": []
+      }
+    ],
+    "admission_scan_is_transitive_axiom_audit": false
+  },
+  "execution": {
+    "local_lean": 0,
+    "local_lake": 0,
+    "local_elan": 0,
+    "external_compiler_runs_for_this_staging": 0,
+    "ci_dispatches_for_this_staging": 0
+  },
+  "prior_external_certificate": {
+    "source_commit": "d241f2b700be66ab447cb1650770271e1b364b8a",
+    "run_id": 43336709607,
+    "preserved_directory": "../../evidence/linux-43336709607",
+    "named_mathlib_endpoints": [
+      "M01",
+      "M02",
+      "M05",
+      "M07"
+    ],
+    "root_claim": "FourierHodgeLaws -> ExactEquivalence"
+  },
+  "next_required_evidence": "Later cached external native Linux compilation and theorem-level axiom audit of the new adapters, concrete FourierHodgeLaws inhabitant, and exact root."
+}
