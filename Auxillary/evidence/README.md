@@ -5,12 +5,35 @@ ARTIFACT_RELOCATION          = BYTE_EXACT
 LEAN_INPUTS_UNCHANGED        = 30 / 30
 PRIOR_CERTIFIED_SOURCE       = be8376a08573a7789e36b68c2bc48178aa6f53c3
 PRIOR_CERTIFIED_RUN          = 43345557147
-AUXILLARY_LAYOUT_VALIDATION = PENDING_CACHED_EXTERNAL_LINUX_RUN
+CURRENT_CERTIFIED_SOURCE     = b02425040a217a94855cfa52934e303f12fe80de
+CURRENT_CERTIFIED_RUN        = 43348914489
+AUXILLARY_LAYOUT_VALIDATION = PASS_CACHED_NATIVE_LINUX_BUILD_AND174_FRESH_AUDITS
 ```
 
-Certificate subdirectories preserve their original artifact bytes and embedded source paths. The `Auxillary/` runner relocation has a separate pending external validation; the unchanged Lean proof sources retain the certificate below.
+## Current Auxillary layout certificate
 
-# Matching unchanged proof-source certificate
+[linux-43348914489/](linux-43348914489/) preserves all 38 original files from [native Linux run 43348914489](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43348914489).
+
+```text
+SOURCE_COMMIT = b02425040a217a94855cfa52934e303f12fe80de
+BUILD = PASS
+FRESH_THEOREM_AXIOM_AUDIT = 174 / 174 PASS_STANDARD_ONLY
+LEAN_SOURCE_HASHES_MATCHING_DELIVERY = 30 / 30
+VERIFIED_SOURCE_INPUTS = 289
+COMPILER_DEPENDENCY_PROJECT_CACHES = EXACT_HITS
+LAKE_FRESHNESS_EXIT = 0
+BUILD_STRATEGY = LAKE_TRANSITIVE_TRACE_VERIFIED_WARM_REUSE
+EXECUTED_MODULE_BUILDS = 0
+ARTIFACT_ID = 14003036770
+ARTIFACT_SHA256 = 4d1bfce16808246fe1190bea523358dc0d150efafa0c7b59f338670b85df86df
+SOURCE_MANIFEST_SHA256 = 1d230d04d0796b21b806b552b4bb9ca14debd25c00e65a75ef670cdf0477d6cd
+FORMAL_STATUS = CONDITIONAL_FORMAL_CLOSURE
+HODGE_INHABITANT = NOT_SUPPLIED
+```
+
+Certificate subdirectories preserve their original artifact bytes and embedded source paths. `Auxillary/run.cmd` has the expected CRLF checkout normalization. All Lean input hashes match directly. The prior certificates below identify their original source commits and runner layouts.
+
+# Prior matching proof-source certificate
 
 [linux-43345557147/](linux-43345557147/) contains all 65 original artifact files from [native Linux run 43345557147](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147).
 

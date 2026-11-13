@@ -7,7 +7,7 @@ FORMAL_STATUS = CONDITIONAL_FORMAL_CLOSURE
 PRIOR_CONDITIONAL_ROOT = A_TIER_AT_ITS_RECORDED_SOURCE_COMMIT
 UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED
 LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
-AUXILLARY_LAYOUT_VALIDATION = PENDING_CACHED_EXTERNAL_LINUX_RUN
+AUXILLARY_LAYOUT_VALIDATION = PASS_CACHED_NATIVE_LINUX_BUILD_AND174_FRESH_AUDITS
 
 EXACT ROOT
 ----------
@@ -134,4 +134,16 @@ External runner: ../Auxillary/run.sh
 Status registry: ../Auxillary/formalization-status.json
 All 30 Lean inputs remain byte-identical to the certified source above.
 Original evidence artifacts retain their bytes and embedded historical paths.
-The relocated runner paths require the pending cached external Linux validation.
+The relocated runner paths passed cached native Linux run43348914489.
+Source commit: b02425040a217a94855cfa52934e303f12fe80de
+Evidence directory: ../Auxillary/evidence/linux-43348914489/
+Build: PASS; fresh named audits: 174/174 PASS_STANDARD_ONLY.
+Matching Lean input hashes: 30/30; verified recorded source inputs: 289.
+Compiler/dependency/project caches: exact hits.
+Lake transitive trace freshness exit: 0; executed module rebuilds: 0.
+Build strategy: LAKE_TRANSITIVE_TRACE_VERIFIED_WARM_REUSE.
+Original artifact files: 38.
+Artifact SHA256: 4d1bfce16808246fe1190bea523358dc0d150efafa0c7b59f338670b85df86df
+Source-manifest SHA256: 1d230d04d0796b21b806b552b4bb9ca14debd25c00e65a75ef670cdf0477d6cd
+Auxillary/run.cmd uses the expected CRLF checkout normalization.
+The exact conditional theorem and unresolved Hodge premise are unchanged.

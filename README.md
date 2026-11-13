@@ -15,7 +15,7 @@ The three top-level content folders have the literal requested names. `.github/`
 ```text
 LAYOUT_PLATFORM             = LINUX / POSIX
 PROOF_SOURCE_VALIDATION     = PASS_CACHED_NATIVE_LINUX_BUILD_AND174_AUDITS
-AUXILLARY_LAYOUT_VALIDATION = PENDING_CACHED_EXTERNAL_LINUX_RUN
+AUXILLARY_LAYOUT_VALIDATION = PASS_CACHED_NATIVE_LINUX_BUILD_AND174_FRESH_AUDITS
 REGISTERED_AUDIT_TARGETS     = 174
 LOCAL_LEAN_EXECUTIONS        = 0
 HODGE_LEAN_INHABITANT        = NOT_SUPPLIED
@@ -104,10 +104,14 @@ The freshness check and final build explicitly include both reduced direction mo
 
 [formalization-status.json](Auxillary/formalization-status.json) records scope and evidence. [Retained evidence](Auxillary/evidence/) preserves prior compiler artifacts byte-for-byte; each certificate identifies its original source commit and layout.
 
-## Matching proof-source certificate
+## Prior matching proof-source certificate
 
 [Native Linux run 43345557147](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147) passed the reorganized build and all **174/174** named theorem audits. Certified proof-source commit: `be8376a08573a7789e36b68c2bc48178aa6f53c3`. All **30/30** Lean input hashes match the delivered sources. All four new directional declarations and the exact reduced root have only `propext`, `Classical.choice`, and `Quot.sound` in their axiom dependencies.
 
 [Permanent evidence](Auxillary/evidence/linux-43345557147/) preserves all 65 artifact files. Compiler, dependency, and project cache restorations are recorded in the run. Formal status: **CONDITIONAL_FORMAL_CLOSURE**; the `FourierHodgeLaws` premise remains explicit.
 
-The `Auxillary/` relocation preserves all 30 Lean source inputs byte-for-byte. Validation of the relocated runner paths is pending a cached external native Linux run; the certificate above identifies the unchanged proof sources and its original runner layout.
+## Current Auxillary layout certificate
+
+[Native Linux run 43348914489](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43348914489) passed the relocated runner, build validation, and all **174/174 fresh** named theorem audits. Source commit: `b02425040a217a94855cfa52934e303f12fe80de`. All **30/30** Lean source hashes match; compiler, dependency, and project caches were exact hits. Lake's transitive trace freshness check returned `0`, yielding **zero module rebuilds** and a fresh theorem audit.
+
+[Current evidence](Auxillary/evidence/linux-43348914489/) preserves all **38 original artifact files**. [Audit summary](Auxillary/evidence/linux-43348914489/audit-summary.json) records `PASS_STANDARD_ONLY`; the explicit `FourierHodgeLaws` premise remains unresolved. The certificate covers 289 source inputs, with the recorded CRLF checkout normalization for `Auxillary/run.cmd`.

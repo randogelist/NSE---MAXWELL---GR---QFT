@@ -15,8 +15,22 @@ Lake/compiler configuration: repository root, unchanged.
 LEAN_INPUTS_UNCHANGED = 30 / 30
 PRIOR_CERTIFIED_SOURCE = be8376a08573a7789e36b68c2bc48178aa6f53c3
 PRIOR_CERTIFIED_RUN = 43345557147
-AUXILLARY_LAYOUT_VALIDATION = PENDING_CACHED_EXTERNAL_LINUX_RUN
+AUXILLARY_LAYOUT_VALIDATION = PASS_CACHED_NATIVE_LINUX_BUILD_AND174_FRESH_AUDITS
 LOCAL_LEAN_EXECUTIONS = 0
+
+CURRENT AUXILLARY LAYOUT CERTIFICATE
+Source: b02425040a217a94855cfa52934e303f12fe80de
+Run: 43348914489; job: 131634937490
+Native Linux Lean 4.34.0-rc1; pinned Mathlib unchanged.
+Build validation: PASS; fresh named audits: 174/174 PASS_STANDARD_ONLY.
+Lean inputs: 30/30 byte-matching; recorded source inputs: 289 verified.
+Compiler/dependency/project cache restores: exact hits.
+Lake transitive trace freshness exit: 0.
+Build strategy: LAKE_TRANSITIVE_TRACE_VERIFIED_WARM_REUSE.
+Executed module builds: 0; theorem audit executed fresh.
+Evidence: Auxillary/evidence/linux-43348914489/; 38 original artifact files.
+The exit-zero warm reuse path is now externally observed. Earlier observations
+below remain scoped to their original runs.
 
 Latest verified dependency fallback:
   nse-deps-v2-Linux-X64-78b8e6dd5376bcb08d2c5af93549e74beae76ba7d0f24dc089ab851faa254f79

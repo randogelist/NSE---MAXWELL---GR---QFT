@@ -5,7 +5,7 @@
     "repository": "randogelist/NSE---MAXWELL---GR---QFT",
     "lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
     "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
-    "theorem_scope": "Frozen FB(ν) ↔ MB(ν,c), with remaining FourierHodgeLaws endpoints unchanged.",
+    "theorem_scope": "Frozen FB(\u03bd) \u2194 MB(\u03bd,c), with remaining FourierHodgeLaws endpoints unchanged.",
     "branch": "codex/fefferman-b-maxwell",
     "active_ci_platform": "native Linux / Ubuntu 24.04"
   },
@@ -26,23 +26,23 @@
   },
   "definition_context": {
     "source_contracts": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/Contracts.lean",
-    "Vec": "EuclideanSpace ℝ (Fin 3)",
-    "Field": "Vec → Vec",
-    "Frequency": "Fin 3 → ℤ",
-    "FourierCoeff": "Frequency → Fin 3 → ℂ",
-    "SpatialPeriodic": "∀ (x : Vec) (i : Fin 3), f (x + EuclideanSpace.single i 1) = f x",
-    "unitCube": "{x | ∀ i : Fin 3, 0 ≤ x i ∧ x i ≤ 1}",
-    "datumFourierCoeff": "fun k i => ∫ x in unitCube, star (fourierCharacter k x) * (a x i : ℂ)",
-    "fourierCharacter": "Complex.exp ((((2 * Real.pi * (∑ i : Fin 3, (k i : ℝ) * x i)) : ℝ) : ℂ) * Complex.I)",
-    "derivativeSymbol": "((2 * Real.pi * (k j : ℝ) : ℝ) : ℂ) * Complex.I",
+    "Vec": "EuclideanSpace \u211d (Fin 3)",
+    "Field": "Vec \u2192 Vec",
+    "Frequency": "Fin 3 \u2192 \u2124",
+    "FourierCoeff": "Frequency \u2192 Fin 3 \u2192 \u2102",
+    "SpatialPeriodic": "\u2200 (x : Vec) (i : Fin 3), f (x + EuclideanSpace.single i 1) = f x",
+    "unitCube": "{x | \u2200 i : Fin 3, 0 \u2264 x i \u2227 x i \u2264 1}",
+    "datumFourierCoeff": "fun k i => \u222b x in unitCube, star (fourierCharacter k x) * (a x i : \u2102)",
+    "fourierCharacter": "Complex.exp ((((2 * Real.pi * (\u2211 i : Fin 3, (k i : \u211d) * x i)) : \u211d) : \u2102) * Complex.I)",
+    "derivativeSymbol": "((2 * Real.pi * (k j : \u211d) : \u211d) : \u2102) * Complex.I",
     "spectralMultiplier": "fun k i => m k * a k i",
-    "RapidScalarFourier": "∀ m : ℕ, Summable (fun k => ‖b k‖ * ‖fourierPhaseCLM k‖ ^ m)",
-    "scalarFourierSeries": "fun x => ∑' k : Frequency, fourierCharacter k x * b k",
+    "RapidScalarFourier": "\u2200 m : \u2115, Summable (fun k => \u2016b k\u2016 * \u2016fourierPhaseCLM k\u2016 ^ m)",
+    "scalarFourierSeries": "fun x => \u2211' k : Frequency, fourierCharacter k x * b k",
     "smoothFourierSynthesis": "fun x => WithLp.toLp 2 (fun i : Fin 3 => (scalarFourierSeries (fun k => c k i) x).re)",
-    "SpectralReality": "∀ k i, c (-k) i = star (c k i)",
-    "coefficientLeray": "if k = 0 then v else fun i => v i - (k i : ℂ) * (∑ j : Fin 3, (k j : ℂ) * v j) / (∑ j : Fin 3, (k j : ℂ) ^ 2)",
-    "fourierDecayConstant": "∑ i : Fin 3, ((∫ x in unitCube, ‖a x i‖) + ∑ j : Fin 3, coordinateDerivativeL1 j m a i)",
-    "coordinateDerivativeL1": "∫ x in unitCube, ‖iteratedCoordinateDerivative j m a x i‖",
+    "SpectralReality": "\u2200 k i, c (-k) i = star (c k i)",
+    "coefficientLeray": "if k = 0 then v else fun i => v i - (k i : \u2102) * (\u2211 j : Fin 3, (k j : \u2102) * v j) / (\u2211 j : Fin 3, (k j : \u2102) ^ 2)",
+    "fourierDecayConstant": "\u2211 i : Fin 3, ((\u222b x in unitCube, \u2016a x i\u2016) + \u2211 j : Fin 3, coordinateDerivativeL1 j m a i)",
+    "coordinateDerivativeL1": "\u222b x in unitCube, \u2016iteratedCoordinateDerivative j m a x i\u2016",
     "supporting_sources": [
       "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/Galerkin.lean",
       "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SixChannels.lean",
@@ -63,13 +63,13 @@
         "line_start": 251,
         "line_end": 254,
         "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Fourier/AddCircleMulti.lean#L251",
-        "signature_source": "theorem mFourierCoeff_eq_integral (f : UnitAddTorus d → E) (n : d → ℤ) (a : d → ℝ) :\n    mFourierCoeff f n =\n    ∫ (x : d → ℝ) in {x : d → ℝ | ∀ i, x i ∈ Ioc (a i) (a i + 1)},\n    mFourier (-n) (fun i => x i) • f (fun i => x i)",
+        "signature_source": "theorem mFourierCoeff_eq_integral (f : UnitAddTorus d \u2192 E) (n : d \u2192 \u2124) (a : d \u2192 \u211d) :\n    mFourierCoeff f n =\n    \u222b (x : d \u2192 \u211d) in {x : d \u2192 \u211d | \u2200 i, x i \u2208 Ioc (a i) (a i + 1)},\n    mFourier (-n) (fun i => x i) \u2022 f (fun i => x i)",
         "direct_imports": [
           "public import Mathlib.Analysis.Fourier.AddCircle",
           "public import Mathlib.MeasureTheory.Integral.Pi"
         ]
       },
-      "implicit_context": "namespace UnitAddTorus; variable {d : Type*} [Fintype d]; local normalized Haar probability measure on UnitAddCircle. mFourierCoeff_eq_integral additionally has {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]; convergence theorem has {f : C(UnitAddTorus d, ℂ)}.",
+      "implicit_context": "namespace UnitAddTorus; variable {d : Type*} [Fintype d]; local normalized Haar probability measure on UnitAddCircle. mFourierCoeff_eq_integral additionally has {E : Type*} [NormedAddCommGroup E] [NormedSpace \u2102 E]; convergence theorem has {f : C(UnitAddTorus d, \u2102)}.",
       "target_status": "UPSTREAM_DECLARATION_AVAILABLE_ON_EXACT_TARGET_PIN",
       "port_required": false,
       "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: external native Linux run43336709607, exact target compiler and Mathlib pin.",
@@ -77,7 +77,7 @@
         "Cube-to-torus Fourier coefficient identification."
       ],
       "remaining_alignment": [
-        "Transport EuclideanSpace ℝ (Fin 3) volume to Pi volume, and Icc cube to Ioc cube up to null boundary.",
+        "Transport EuclideanSpace \u211d (Fin 3) volume to Pi volume, and Icc cube to Ioc cube up to null boundary.",
         "Identify the complex exponential coefficient with the real cosine integrals of the frozen vectorL/scalarL definitions."
       ]
     },
@@ -91,13 +91,13 @@
         "line_start": 329,
         "line_end": 330,
         "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Fourier/AddCircleMulti.lean#L329",
-        "signature_source": "theorem hasSum_mFourier_series_apply_of_summable (h : Summable (mFourierCoeff f))\n    (x : UnitAddTorus d) : HasSum (fun i ↦ mFourierCoeff f i • mFourier i x) (f x)",
+        "signature_source": "theorem hasSum_mFourier_series_apply_of_summable (h : Summable (mFourierCoeff f))\n    (x : UnitAddTorus d) : HasSum (fun i \u21a6 mFourierCoeff f i \u2022 mFourier i x) (f x)",
         "direct_imports": [
           "public import Mathlib.Analysis.Fourier.AddCircle",
           "public import Mathlib.MeasureTheory.Integral.Pi"
         ]
       },
-      "implicit_context": "namespace UnitAddTorus; variable {d : Type*} [Fintype d]; local normalized Haar probability measure on UnitAddCircle. mFourierCoeff_eq_integral additionally has {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]; convergence theorem has {f : C(UnitAddTorus d, ℂ)}.",
+      "implicit_context": "namespace UnitAddTorus; variable {d : Type*} [Fintype d]; local normalized Haar probability measure on UnitAddCircle. mFourierCoeff_eq_integral additionally has {E : Type*} [NormedAddCommGroup E] [NormedSpace \u2102 E]; convergence theorem has {f : C(UnitAddTorus d, \u2102)}.",
       "target_status": "UPSTREAM_DECLARATION_AVAILABLE_ON_EXACT_TARGET_PIN",
       "port_required": false,
       "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: external native Linux run43336709607, exact target compiler and Mathlib pin.",
@@ -119,7 +119,7 @@
         "line_start": 225,
         "line_end": 227,
         "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/SmoothSeries.lean#L225",
-        "signature_source": "theorem contDiff_tsum (hf : ∀ i, ContDiff 𝕜 N (f i)) (hv : ∀ k : ℕ, (k : ℕ∞) ≤ N → Summable (v k))\n    (h'f : ∀ (k : ℕ) (i : α) (x : E), k ≤ N → ‖iteratedFDeriv 𝕜 k (f i) x‖ ≤ v k i) :\n    ContDiff 𝕜 N fun x => ∑' i, f i x",
+        "signature_source": "theorem contDiff_tsum (hf : \u2200 i, ContDiff \ud835\udd5c N (f i)) (hv : \u2200 k : \u2115, (k : \u2115\u221e) \u2264 N \u2192 Summable (v k))\n    (h'f : \u2200 (k : \u2115) (i : \u03b1) (x : E), k \u2264 N \u2192 \u2016iteratedFDeriv \ud835\udd5c k (f i) x\u2016 \u2264 v k i) :\n    ContDiff \ud835\udd5c N fun x => \u2211' i, f i x",
         "direct_imports": [
           "public import Mathlib.Analysis.Calculus.ContDiff.Operations",
           "public import Mathlib.Analysis.Calculus.UniformLimitsDeriv",
@@ -127,7 +127,7 @@
           "public import Mathlib.Analysis.Normed.Group.FunctionSeries"
         ]
       },
-      "implicit_context": "{α 𝕜 E F : Type*} [NontriviallyNormedField 𝕜] [IsRCLikeNormedField 𝕜] [NormedAddCommGroup E] [NormedSpace 𝕜 E] [NormedAddCommGroup F] [CompleteSpace F] [NormedSpace 𝕜 F] {f : α → E → F} {v : ℕ → α → ℝ} {N : ℕ∞}.",
+      "implicit_context": "{\u03b1 \ud835\udd5c E F : Type*} [NontriviallyNormedField \ud835\udd5c] [IsRCLikeNormedField \ud835\udd5c] [NormedAddCommGroup E] [NormedSpace \ud835\udd5c E] [NormedAddCommGroup F] [CompleteSpace F] [NormedSpace \ud835\udd5c F] {f : \u03b1 \u2192 E \u2192 F} {v : \u2115 \u2192 \u03b1 \u2192 \u211d} {N : \u2115\u221e}.",
       "target_status": "UPSTREAM_DECLARATION_AVAILABLE_ON_EXACT_TARGET_PIN",
       "port_required": false,
       "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: external native Linux run43336709607, exact target compiler and Mathlib pin.",
@@ -137,7 +137,7 @@
       ],
       "remaining_alignment": [
         "Supply summable uniform bounds for every iterated derivative.",
-        "The root smoothness predicate is ContDiffOn on [0,∞) × ℝ³; global ContDiff_tsum alone does not establish the boundary-sensitive local statement."
+        "The root smoothness predicate is ContDiffOn on [0,\u221e) \u00d7 \u211d\u00b3; global ContDiff_tsum alone does not establish the boundary-sensitive local statement."
       ]
     },
     {
@@ -150,14 +150,14 @@
         "line_start": 273,
         "line_end": 274,
         "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Algebra/Module/ZLattice/Summable.lean#L273",
-        "signature_source": "lemma summable_norm_pow_inv (n : ℕ) (hn : Module.finrank ℤ L < n) :\n    Summable fun z : L ↦ ‖z‖⁻¹ ^ n",
+        "signature_source": "lemma summable_norm_pow_inv (n : \u2115) (hn : Module.finrank \u2124 L < n) :\n    Summable fun z : L \u21a6 \u2016z\u2016\u207b\u00b9 ^ n",
         "direct_imports": [
           "public import Mathlib.Algebra.Module.ZLattice.Basic",
           "public import Mathlib.Algebra.Order.BigOperators.Group.LocallyFinite",
           "public import Mathlib.Analysis.PSeries"
         ]
       },
-      "implicit_context": "namespace ZLattice; {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [FiniteDimensional ℝ E] (L : Submodule ℤ E) [DiscreteTopology L].",
+      "implicit_context": "namespace ZLattice; {E : Type*} [NormedAddCommGroup E] [NormedSpace \u211d E] [FiniteDimensional \u211d E] (L : Submodule \u2124 E) [DiscreteTopology L].",
       "target_status": "UPSTREAM_DECLARATION_AVAILABLE_ON_EXACT_TARGET_PIN",
       "port_required": false,
       "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: external native Linux run43336709607, exact target compiler and Mathlib pin.",
@@ -165,7 +165,7 @@
         "Summable three-dimensional lattice majorant once decay exponent exceeds three."
       ],
       "remaining_alignment": [
-        "Embed Frequency = Fin 3 → ℤ as a discrete integer lattice and prove the rank comparison.",
+        "Embed Frequency = Fin 3 \u2192 \u2124 as a discrete integer lattice and prove the rank comparison.",
         "Handle zero frequency separately; this lemma uses totalized inverse."
       ]
     },
@@ -192,7 +192,7 @@
       "port_required": true,
       "matching_project_endpoint_audit": "NONE; no certification transferred from Methlib",
       "helps": [
-        "Concrete Euclidean cube integral ↔ Mathlib torus Fourier coefficient bridge."
+        "Concrete Euclidean cube integral \u2194 Mathlib torus Fourier coefficient bridge."
       ],
       "remaining_alignment": [
         "Port the representative, measurability and cube-measure lemmas onto NSEMaxwell.Classical aliases.",
@@ -209,7 +209,7 @@
         "line_start": 130,
         "line_end": 133,
         "url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InitialCutoffBounds.lean#L130",
-        "signature_source": "theorem datumFourierCoeff_coordinateDerivative (j : Fin 3) (a : Field)\n    (ha : ContDiff ℝ ∞ a) (hp : SpatialPeriodic a) :\n    datumFourierCoeff (coordinateDerivative a j) =\n      spectralMultiplier (derivativeSymbol j) (datumFourierCoeff a)",
+        "signature_source": "theorem datumFourierCoeff_coordinateDerivative (j : Fin 3) (a : Field)\n    (ha : ContDiff \u211d \u221e a) (hp : SpatialPeriodic a) :\n    datumFourierCoeff (coordinateDerivative a j) =\n      spectralMultiplier (derivativeSymbol j) (datumFourierCoeff a)",
         "direct_imports": [
           "import SingularClosure.PhysicalBilinear",
           "import SingularClosure.InitialFourier"
@@ -237,7 +237,7 @@
         "line_start": 162,
         "line_end": 165,
         "url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierDecay.lean#L162",
-        "signature_source": "theorem FOURIER_POLYNOMIAL_DECAY (m : ℕ) (a : Field)\n    (ha : ContDiff ℝ ∞ a) (hp : SpatialPeriodic a) (k : Frequency) (i : Fin 3) :\n    ‖datumFourierCoeff a k i‖ ≤ fourierDecayConstant m a /\n      (1 + ∑ j : Fin 3, ((2 * Real.pi) * |(k j : ℝ)|) ^ m)",
+        "signature_source": "theorem FOURIER_POLYNOMIAL_DECAY (m : \u2115) (a : Field)\n    (ha : ContDiff \u211d \u221e a) (hp : SpatialPeriodic a) (k : Frequency) (i : Fin 3) :\n    \u2016datumFourierCoeff a k i\u2016 \u2264 fourierDecayConstant m a /\n      (1 + \u2211 j : Fin 3, ((2 * Real.pi) * |(k j : \u211d)|) ^ m)",
         "direct_imports": [
           "import SingularClosure.InitialCutoffBounds"
         ]
@@ -279,7 +279,7 @@
         "Identify reconstructed fields by matching all literal cube Fourier coefficients."
       ],
       "remaining_alignment": [
-        "Port quotient continuity and L² realization lemmas.",
+        "Port quotient continuity and L\u00b2 realization lemmas.",
         "Prove coefficient formulas for frozen U, K, vectorL and scalarL before invoking injectivity."
       ]
     },
@@ -293,7 +293,7 @@
         "line_start": 149,
         "line_end": 150,
         "url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSeriesCalculus.lean#L149",
-        "signature_source": "theorem scalarFourierSeries_contDiff {b : Frequency → ℂ}\n    (hb : RapidScalarFourier b) : ContDiff ℝ ∞ (scalarFourierSeries b)",
+        "signature_source": "theorem scalarFourierSeries_contDiff {b : Frequency \u2192 \u2102}\n    (hb : RapidScalarFourier b) : ContDiff \u211d \u221e (scalarFourierSeries b)",
         "direct_imports": [
           "import SingularClosure.FourierPressure",
           "import SingularClosure.FourierDecay",
@@ -325,7 +325,7 @@
         "line_start": 246,
         "line_end": 249,
         "url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevSmoothRealization.lean#L246",
-        "signature_source": "theorem datumFourierCoeff_smoothFourierSynthesis (c : FourierCoeff)\n    (hc : ∀ i : Fin 3, RapidScalarFourier (fun k => c k i))\n    (hreal : SpectralReality c) :\n    datumFourierCoeff (smoothFourierSynthesis c) = c",
+        "signature_source": "theorem datumFourierCoeff_smoothFourierSynthesis (c : FourierCoeff)\n    (hc : \u2200 i : Fin 3, RapidScalarFourier (fun k => c k i))\n    (hreal : SpectralReality c) :\n    datumFourierCoeff (smoothFourierSynthesis c) = c",
         "direct_imports": [
           "import SingularClosure.FourierSeriesCalculus",
           "import SingularClosure.LatticeSobolevSummability"
@@ -353,7 +353,7 @@
         "line_start": 158,
         "line_end": 161,
         "url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InfiniteFourierPressure.lean#L158",
-        "signature_source": "theorem infiniteTransportPressure_recovery (b : FourierCoeff)\n    (hb : ∀ i : Fin 3, RapidScalarFourier (fun k => b k i)) (x : Vec) :\n    smoothFourierSynthesis b x + gradient (infiniteTransportPressure b) x =\n      smoothFourierSynthesis (fun k => coefficientLeray k (b k)) x",
+        "signature_source": "theorem infiniteTransportPressure_recovery (b : FourierCoeff)\n    (hb : \u2200 i : Fin 3, RapidScalarFourier (fun k => b k i)) (x : Vec) :\n    smoothFourierSynthesis b x + gradient (infiniteTransportPressure b) x =\n      smoothFourierSynthesis (fun k => coefficientLeray k (b k)) x",
         "direct_imports": [
           "import SingularClosure.SobolevSmoothRealization",
           "import SingularClosure.PeriodicPoincare",
@@ -422,25 +422,29 @@
     "methlib_source_port_candidates": 7
   },
   "external_upstream_endpoint_audit": {
-    "source_commit": "be8376a08573a7789e36b68c2bc48178aa6f53c3",
-    "run_id": 43345557147,
-    "artifact_id": 14001701854,
-    "artifact_sha256": "d33c336a8cef9758cdbf87f5b96ed9ad2dd6e5fdad84caf231b7b13e677b36ca",
-    "directory": "Auxillary/evidence/linux-43345557147",
+    "source_commit": "b02425040a217a94855cfa52934e303f12fe80de",
+    "run_id": 43348914489,
+    "artifact_id": 14003036770,
+    "artifact_sha256": "4d1bfce16808246fe1190bea523358dc0d150efafa0c7b59f338670b85df86df",
+    "directory": "Auxillary/evidence/linux-43348914489",
     "platform": "native Linux / Ubuntu 24.04",
-    "source_manifest_sha256": "60017409175d8b7570f39e8e0890ca38b76f99cddde5cde4db958233db464d0f",
+    "source_manifest_sha256": "1d230d04d0796b21b806b552b4bb9ca14debd25c00e65a75ef670cdf0477d6cd",
     "build": "PASS",
     "theorem_axiom_audit": "PASS_STANDARD_ONLY",
     "audited_declarations": 174,
     "project_declarations": 170,
     "registered_mathlib_declarations": 4,
     "lean_source_hashes_matching_delivery": 30,
-    "preserved_artifact_files": 65,
+    "preserved_artifact_files": 38,
     "lean_audit_command": "PASS",
     "compiler": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
     "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
-    "cache_policy": "Compiler/dependency/project caches restored; verified exact predecessor keys used for dependency/project migration.",
-    "line_ending_note": "run.cmd is stored with LF in the Git blob and checked out with CRLF under .gitattributes; that normalization matches the recorded compiler-run manifest. All 30 Lean input hashes match byte-for-byte."
+    "cache_policy": "Exact compiler, dependency, and project cache hits; ordinary Lake transitive traces verified warm reuse; fresh theorem audit executed.",
+    "line_ending_note": "Auxillary/run.cmd is stored with LF in the Git blob and checked out with CRLF under .gitattributes; that normalization matches the compiler-run manifest. All 30 Lean input hashes match byte-for-byte.",
+    "build_strategy": "LAKE_TRANSITIVE_TRACE_VERIFIED_WARM_REUSE",
+    "executed_module_builds": 0,
+    "freshness_check_exit_code": 0,
+    "source_manifest_inputs": 289
   },
   "prior_upstream_windows_audit": {
     "source_commit": "1bd2ee067d4aad3c265b32efd533ef270179e665",
@@ -475,5 +479,26 @@
     "registered_mathlib_declarations": 4,
     "lean_source_hashes_matching_delivery": 25,
     "preserved_artifact_files": 60
+  },
+  "prior_domain_layout_upstream_endpoint_audit": {
+    "source_commit": "be8376a08573a7789e36b68c2bc48178aa6f53c3",
+    "run_id": 43345557147,
+    "artifact_id": 14001701854,
+    "artifact_sha256": "d33c336a8cef9758cdbf87f5b96ed9ad2dd6e5fdad84caf231b7b13e677b36ca",
+    "directory": "Auxillary/evidence/linux-43345557147",
+    "platform": "native Linux / Ubuntu 24.04",
+    "source_manifest_sha256": "60017409175d8b7570f39e8e0890ca38b76f99cddde5cde4db958233db464d0f",
+    "build": "PASS",
+    "theorem_axiom_audit": "PASS_STANDARD_ONLY",
+    "audited_declarations": 174,
+    "project_declarations": 170,
+    "registered_mathlib_declarations": 4,
+    "lean_source_hashes_matching_delivery": 30,
+    "preserved_artifact_files": 65,
+    "lean_audit_command": "PASS",
+    "compiler": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+    "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+    "cache_policy": "Compiler/dependency/project caches restored; verified exact predecessor keys used for dependency/project migration.",
+    "line_ending_note": "run.cmd is stored with LF in the Git blob and checked out with CRLF under .gitattributes; that normalization matches the recorded compiler-run manifest. All 30 Lean input hashes match byte-for-byte."
   }
 }

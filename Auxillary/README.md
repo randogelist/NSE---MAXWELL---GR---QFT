@@ -30,10 +30,19 @@ LOCAL_LEAN_EXECUTIONS        = 0
 LEAN_INPUTS_UNCHANGED        = 30 / 30
 PRIOR_CERTIFIED_SOURCE       = be8376a08573a7789e36b68c2bc48178aa6f53c3
 PRIOR_CERTIFIED_RUN          = 43345557147
-AUXILLARY_LAYOUT_VALIDATION = PENDING_CACHED_EXTERNAL_LINUX_RUN
+CURRENT_CERTIFIED_SOURCE     = b02425040a217a94855cfa52934e303f12fe80de
+CURRENT_CERTIFIED_RUN        = 43348914489
+FRESH_NAMED_AUDITS           = 174 / 174 PASS_STANDARD_ONLY
+LAKE_FRESHNESS_EXIT          = 0
+EXECUTED_MODULE_BUILDS       = 0
+AUXILLARY_LAYOUT_VALIDATION = PASS_CACHED_NATIVE_LINUX_BUILD_AND174_FRESH_AUDITS
 FORMAL_STATUS               = CONDITIONAL_FORMAL_CLOSURE
 HODGE_LEAN_INHABITANT        = NOT_SUPPLIED
 ```
+
+[Current native Linux run](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43348914489) · [Audit summary](evidence/linux-43348914489/audit-summary.json) · [Original evidence](evidence/linux-43348914489/).
+
+Compiler, dependency, and project caches were exact hits. Lake transitive traces validated reuse; all 174 named theorem audits executed fresh. The 38 original artifact files retain their source-manifest and provenance bytes.
 
 ## Root discovery boundary
 
