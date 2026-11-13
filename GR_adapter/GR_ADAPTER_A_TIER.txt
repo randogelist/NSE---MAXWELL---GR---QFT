@@ -1,0 +1,66 @@
+GR_ADAPTER_NATIVE_AND_SEQUENTIAL_NSE_GR_IMPLICATIONS
+VERSION = 0.1.0
+MODE = A_TIER_DERIVATION
+STATUS = A_TIER_CANDIDATE
+LOCAL_LEAN_EXECUTION = 0
+
+BASE = randogelist/NSE---MAXWELL---GR---QFT
+BASE_BRANCH = codex/fefferman-b-maxwell
+BASE_COMMIT = 1de664f2ef5ddc11caef25ac2274278b4171ab6b
+BRANCH = codex/gr-adapter
+
+COMPILER = Lean 4.34.0-rc1
+MATHLIB = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+EXTERNAL_RUNNER = GR_adapter/run.sh; native Windows safe-export GR_adapter/run.cmd
+CACHE_POLICY = RESTORE_COMPATIBLE_COMPILER_DEPENDENCY_AND_PROJECT_OBJECTS
+
+ORDER
+1. GRAdapter: actual geometry, finite tensor algebra, fields, boundary, sectors,
+   germ equivalence relations, scalar source formulas and explicit contracts.
+2. NSEGRForward: scalar completion -> actual constrained boundary -> radial
+   vacuum extension -> independent canonical sector; actual velocity recovery.
+3. NSEGRReverse: exact zero-stress reconstruction -> actual local analytic NSE;
+   explicit pressure-gauge/marked-germ inverse-law composition.
+
+EXACT_ROOT
+forall nu>0, rho!=0, t0:
+  ScalarBoundaryCompletionLaws nu rho t0 ->
+  AnalyticRadialExtensionLaws rho t0 ->
+  GeometricReconstructionLaws nu rho t0 ->
+  GermInverseLaws (the supplied three laws) ->
+  Nonempty (NSEgerm nu t0 equiv GRgerm nu rho t0).
+
+SOURCE_CARRIERS
+NSEgerm: jointly analytic, two-sided local periodic 3D NSE modulo actual
+full-slice time-germ equality and pressure gauge.
+GRgerm: independent marked analytic 5D Lorentzian vacuum metric germ,
+Gaussian gauge, induced eta4, beta(t0)=rho, beta_t(t0)=0, actual STF stress=0.
+No image-defined metric sector; no replacement of the global smooth
+FeffermanB proposition by this distinct local analytic carrier.
+
+UNRESOLVED
+Scalar CK existence/uniqueness and its concrete constraints/recovery.
+Radial CK existence/uniqueness and geometric constraint propagation.
+Analytic torus operators, actual geometric residual reconstruction.
+Pressure-gauge descent, marked germ locality and both inverse identities.
+Named premises have no supplied inhabitants.
+
+NATIVE_SAFETY_BOUNDARIES
+Actual flat Lorentzian vacuum proved at the native formula level.
+Flat metric with rho!=0 is not in the normalized Gaussian vacuum sector.
+Actual constant local NSE fields establish nonemptiness of the NSE carrier.
+Neither example proves arbitrary-data global NSE regularity.
+Theorem-level axiom audit does not discharge ordinary hypotheses.
+
+EVIDENCE
+MATCHING_EXTERNAL_COMPILATION = PENDING
+MATCHING_THEOREM_LEVEL_AXIOM_AUDIT = PENDING
+APPROVED_AXIOMS = propext, Classical.choice, Quot.sound
+A_TIER = NOT_YET_ESTABLISHED
+CONDITIONAL_FORMAL_CLOSURE = NOT_YET_ESTABLISHED
+UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED
+
+The original complete B-tier v1.6.0 derivation is preserved in Derivation/.
+Its old source pins are source provenance, not compilation evidence for the
+current 4.34.0-rc1 adapter. The external source manifest and named type/axiom
+logs must match the exact commit before any promotion.

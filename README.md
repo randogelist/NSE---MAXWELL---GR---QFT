@@ -1,3 +1,5 @@
+[GR adapter branch: native geometry and sequential local analytic implications](GR_adapter/README.md)
+
 # Fefferman B ↔ constrained Maxwell
 
 ## Repository structure

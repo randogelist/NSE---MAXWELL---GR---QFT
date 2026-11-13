@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "status": "A_TIER_CANDIDATE",
+  "source_base": "1de664f2ef5ddc11caef25ac2274278b4171ab6b",
+  "branch": "codex/gr-adapter",
+  "compiler": "4.34.0-rc1",
+  "mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "root": "NSEGR.NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS",
+  "scope": {
+    "space": "unit periodic T^3",
+    "time": "two-sided local analytic germs at t0",
+    "bulk": "marked Gaussian analytic five-dimensional vacuum with fixed flat timelike boundary",
+    "pressure": "analytic germs modulo time-only gauge",
+    "parameters": "nu>0, rho!=0",
+    "global_smooth_FeffermanB_equivalence": "NOT_ASSERTED"
+  },
+  "unresolved_premises": [
+    "ScalarBoundaryCompletionLaws",
+    "AnalyticRadialExtensionLaws",
+    "GeometricReconstructionLaws",
+    "GermInverseLaws"
+  ],
+  "premise_inhabitants": "NOT_SUPPLIED",
+  "native_flat_witness": "actual Lorentzian Ricci-flat metric; nonzero-rho normalization excluded",
+  "validation": {
+    "local_lean_executions": 0,
+    "external_compilation": "PENDING",
+    "theorem_axiom_audit": "PENDING",
+    "counts": {
+      "adapter": 157,
+      "forward": 4,
+      "reverse": 6
+    }
+  },
+  "derivation": {
+    "version": "1.6.0",
+    "sha256": "8a9b3720f7f60499c04cf2b79eb873ce2c34100b30d512914dd33b14b41e9284",
+    "older_source_pins": "Mathlib db584cd6d46c92f209a44c0f1c829460d327499d; Methlib 09dfe94a1ef150e21d09df3013fbe09002ef139c; source-only support; not compilation at active pins"
+  }
+}
