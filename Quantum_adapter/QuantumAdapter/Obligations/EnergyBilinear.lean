@@ -245,6 +245,7 @@ theorem inner_self_drift_zero (N : ℕ) (q : Phase N) :
   simp only [← Finset.mul_sum] at h
   rw [phase_inner_eq_sum]
   simp only [phaseCoeff, drift_eq_rawRhs]
+  simp only [phaseCoeff] at h
   linarith
 
 theorem inner_mean_drift_zero (ν : ℝ) (N : ℕ) (m : Vec) (q : Phase N) :

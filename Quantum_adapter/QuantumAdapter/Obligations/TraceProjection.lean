@@ -116,7 +116,8 @@ theorem phaseRetraction_subtype (N : ℕ) (q : Phase N) :
 
 theorem phaseRetraction_comp_subtype (N : ℕ) :
     (phaseRetraction N).comp (phaseSubmodule N).subtype = LinearMap.id := by
-  ext q
+  apply LinearMap.ext
+  intro q
   exact phaseRetraction_subtype N q
 
 theorem phaseLaplacian_trace_eq_ambient (N : ℕ) :
@@ -127,7 +128,8 @@ theorem phaseLaplacian_trace_eq_ambient (N : ℕ) :
     (phaseSubmodule N).subtype ((phaseLaplacian N).comp (phaseRetraction N))
   have heq : ((phaseLaplacian N).comp (phaseRetraction N)).comp
       (phaseSubmodule N).subtype = phaseLaplacian N := by
-    ext q
+    apply LinearMap.ext
+    intro q
     simp only [LinearMap.comp_apply, Submodule.subtype_apply, phaseRetraction_subtype]
   rw [heq] at hc
   exact hc

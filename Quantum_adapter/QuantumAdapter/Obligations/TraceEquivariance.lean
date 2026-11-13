@@ -120,7 +120,8 @@ theorem driftDivergence_phaseTranslation (ν : ℝ) (N : ℕ) (x : Vec) (q : Pha
   have hd := drift_fderiv_phaseTranslation ν N x q
   have hconj : (fderiv ℝ (drift ν N) (phaseTranslation N x q)).toLinearMap =
       T.toLinearEquiv.conj (fderiv ℝ (drift ν N) q).toLinearMap := by
-    ext r
+    apply LinearMap.ext
+    intro r
     have hh := congrArg (fun A : Phase N →L[ℝ] Phase N => A (T.symm r)) hd
     simpa only [ContinuousLinearMap.comp_apply, T,
       ContinuousLinearEquiv.coe_coe, ContinuousLinearEquiv.apply_symm_apply,

@@ -21,9 +21,11 @@ open SingularClosure
 theorem continuous_phaseTranslation_space (N : ℕ) (q : Phase N) :
     Continuous (fun x : Vec => phaseTranslation N x q) := by
   apply Continuous.subtype_mk
-  apply (continuous_piLp 2).2
-  intro ki
-  exact (fourierCharacter_contDiff ki.1.val).continuous.mul continuous_const
+  have h : ContDiff ℝ ∞ (fun x : Vec => translatedAmbient N x q) := by
+    apply (contDiff_piLp 2).2
+    intro ki
+    exact (fourierCharacter_contDiff ki.1.val).mul contDiff_const
+  exact h.continuous
 
 theorem integrableOn_phaseTranslation_space (N : ℕ) (q : Phase N) :
     IntegrableOn (fun x : Vec => phaseTranslation N x q) unitCube volume :=
@@ -54,9 +56,7 @@ theorem integral_phaseTranslation_space (N : ℕ) (q : Phase N) :
   rw [← hc, integral_mul_const, integral_fourierCharacter, meanPhase_coeff]
   by_cases hk : k = 0
   · subst k
-    simp only [if_pos rfl, one_mul]
-    change phaseCoeff q 0 i = ((phaseCoeff q 0 i).re : ℂ)
-    exact (phaseCoeff_zero_real N q i).symm
+    simpa [meanVector] using (phaseCoeff_zero_real N q i).symm
   · simp [hk]
 
 theorem integral_unitCube_real_one :

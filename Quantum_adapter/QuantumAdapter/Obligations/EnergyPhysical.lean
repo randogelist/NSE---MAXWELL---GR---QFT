@@ -173,5 +173,42 @@ theorem synthesis_relative_transport_integral (N : ℕ) (q r : Phase N) :
   rw [integral_neg, integral_const_mul, integral_synthesis_norm_sq] at h
   exact h
 
+theorem synthesis_gradientSquare_continuous (N : ℕ) (q : Phase N) :
+    Continuous (gradientSquare q) := by
+  unfold gradientSquare
+  exact continuous_finsetSum _ (fun j hj =>
+    ((coordinateDerivative_continuous (synthesis_contDiff N q) j).norm.pow 2))
+
+theorem synthesis_directionalDerivative_norm_le_pointwise (N : ℕ) (q : Phase N)
+    (x v : Vec) :
+    ‖fderiv ℝ (synthesis q) x v‖ ≤ Real.sqrt (gradientSquare q x) * ‖v‖ := by
+  let d : Fin 3 → Vec := fun j => coordinateDerivative (synthesis q) j x
+  let S : ℝ := ∑ j : Fin 3, |v j| * ‖d j‖
+  have hv : (∑ j : Fin 3, v j • unitVector j) = v := by
+    ext i
+    fin_cases i <;> simp [unitVector, Fin.sum_univ_succ, Pi.single_apply]
+  have he : fderiv ℝ (synthesis q) x v = ∑ j : Fin 3, v j • d j := by
+    rw [← hv, map_sum]
+    simp only [map_smul, d, coordinateDerivative]
+  have hS : 0 ≤ S := Finset.sum_nonneg (fun j hj =>
+    mul_nonneg (abs_nonneg _) (norm_nonneg _))
+  have hn : ‖fderiv ℝ (synthesis q) x v‖ ≤ S := by
+    rw [he]
+    calc
+      _ ≤ ∑ j : Fin 3, ‖v j • d j‖ := norm_sum_le _ _
+      _ = S := by simp only [S, norm_smul, Real.norm_eq_abs]
+  have hCS := Finset.sum_mul_sq_le_sq_mul_sq Finset.univ
+    (fun j : Fin 3 => |v j|) (fun j => ‖d j‖)
+  have hvs : (∑ j : Fin 3, |v j|^2) = ‖v‖^2 := by
+    simp only [sq_abs, EuclideanSpace.real_norm_sq_eq]
+  have hds : (∑ j : Fin 3, ‖d j‖^2) = gradientSquare q x := rfl
+  change S^2 ≤ (∑ j : Fin 3, |v j|^2) * (∑ j : Fin 3, ‖d j‖^2) at hCS
+  rw [hvs, hds] at hCS
+  have hs : S^2 ≤ (Real.sqrt (gradientSquare q x) * ‖v‖)^2 := by
+    rw [mul_pow, Real.sq_sqrt (Assembly.gradientSquare_nonneg N q x)]
+    simpa only [mul_comm] using hCS
+  exact hn.trans ((sq_le_sq₀ hS
+    (mul_nonneg (Real.sqrt_nonneg _) (norm_nonneg _))).mp hs)
+
 end
 end QuantumAdapter.Obligations

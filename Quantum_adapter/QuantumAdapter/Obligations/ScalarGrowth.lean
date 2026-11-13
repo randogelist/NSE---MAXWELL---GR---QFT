@@ -32,6 +32,7 @@ theorem scalar_growth_bound
       (fun r => Real.exp (-K r) * y r)
       (Real.exp (-K s) * (y' s - g s * y s)) s := by
     have h := ((hK s).neg.exp).fun_mul (hy s)
+    simp only [Pi.neg_apply] at h
     have he : (Real.exp (-K s) * (-g s)) * y s +
         Real.exp (-K s) * y' s =
         Real.exp (-K s) * (y' s - g s * y s) := by ring

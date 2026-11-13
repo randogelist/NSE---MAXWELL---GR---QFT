@@ -6,7 +6,7 @@ set_option autoImplicit false
 set_option Elab.async true
 
 open Set Filter Metric
-open scoped Topology ContDiff
+open scoped Topology ContDiff NNReal
 
 namespace QuantumAdapter.Obligations
 

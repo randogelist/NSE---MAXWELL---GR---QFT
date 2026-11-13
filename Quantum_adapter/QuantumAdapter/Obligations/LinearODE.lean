@@ -125,8 +125,10 @@ theorem exists_uniform_local_linear_ode
     dsimp [ε]
     field_simp [show (K : ℝ) + 1 ≠ 0 by positivity]
   have hε1 : ε ≤ 1 := by
-    have hp := mul_nonneg K.property hε.le
-    nlinarith
+    dsimp [ε]
+    apply (div_le_one (by positivity : 0 < 2 * ((K : ℝ) + 1))).2
+    have hnonneg : 0 ≤ (K : ℝ) := K.property
+    linarith
   have hKε : (K : ℝ) * ε ≤ 1 / 2 := by nlinarith
   refine ⟨ε, hε, ?_⟩
   intro t₀ ht₀ x
@@ -136,7 +138,9 @@ theorem exists_uniform_local_linear_ode
   have htime (t : ℝ) (ht : t ∈ Icc (t₀ - ε) (t₀ + ε)) :
       t ∈ Icc (-B - 1) (B + 1) := by
     have habs := abs_le.mp ht₀
-    constructor <;> linarith
+    constructor
+    · linarith [habs.1, ht.1]
+    · linarith [habs.2, ht.2]
   have hPL : IsPicardLindelof (fun t z => A t z)
       (tmin := t₀ - ε) (tmax := t₀ + ε)
       ⟨t₀, by constructor <;> linarith⟩ (0 : E) a r L K := by

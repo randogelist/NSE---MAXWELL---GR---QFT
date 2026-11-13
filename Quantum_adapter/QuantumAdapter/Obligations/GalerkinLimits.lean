@@ -40,7 +40,8 @@ theorem weightedCoeff_eq_zero_of_not_mem_support (s N : ℕ) (q : Phase N)
 theorem sum_phaseFourierSupport_eq_sobolevEnergy (s N : ℕ) (q : Phase N) :
     (∑ ki ∈ phaseFourierSupport N,
       ‖sobolevWeightedCoeff s (phaseCoeff q) ki‖ ^ 2) = sobolevEnergy s N q := by
-  simp only [phaseFourierSupport, Finset.sum_product, sobolevEnergy, sobolevEnergyDensity]
+  exact Finset.sum_product (fullModes N) Finset.univ
+    (fun ki : FourierIndex => ‖sobolevWeightedCoeff s (phaseCoeff q) ki‖ ^ 2)
 
 theorem finite_sum_weightedCoeff_sq_le_energy (s N : ℕ) (q : Phase N)
     (t : Finset FourierIndex) :

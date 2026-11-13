@@ -38,7 +38,7 @@ theorem laplaceAmbient_mem (N : ℕ) (q : Phase N) :
   · intro k i
     rw [laplaceAmbient_coeff, laplaceAmbient_coeff,
       laplaceSymbol_neg_native, phaseCoeff_reality q k i, star_mul]
-    simp
+    simp [mul_comm]
   · intro k
     simp_rw [laplaceAmbient_coeff]
     calc

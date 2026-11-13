@@ -154,12 +154,14 @@ theorem fullSynthesis_eq_finite_of_mean_zero (N : ℕ) (c : FourierCoeff)
 theorem fullSynthesis_periodic (N : ℕ) (c : FourierCoeff) :
     SpatialPeriodic (fullSynthesis N c) := by
   intro x j
-  rw [fullSynthesis_eq_mean_add_source, finiteSynthesis_periodic N c x j]
+  simp only [fullSynthesis_eq_mean_add_source]
+  exact congrArg (fun v : Vec => fullMean c + v) (finiteSynthesis_periodic N c x j)
 
 theorem fullSynthesis_coordinateDerivative (N : ℕ) (c : FourierCoeff) (j : Fin 3) :
     coordinateDerivative (fullSynthesis N c) j =
       fullSynthesis N (spectralMultiplier (derivativeSymbol j) c) := by
-  rw [fullSynthesis_eq_finite_of_mean_zero N _
+  rw [fullSynthesis_eq_finite_of_mean_zero N
+    (spectralMultiplier (derivativeSymbol j) c)
     (by intro i; simp [spectralMultiplier, derivativeSymbol])]
   rw [← finiteSynthesis_coordinateDerivative]
   funext x

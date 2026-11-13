@@ -1,5 +1,6 @@
 import QuantumAdapter.Obligations.EnergyPhysical
 import QuantumAdapter.Obligations.ScalarGrowth
+import QuantumAdapter.Assembly.PacketEstimates
 
 /-! The exact reference-gradient relative L2 estimate for actual native orbits. -/
 set_option autoImplicit false

@@ -35,6 +35,7 @@ def main():
     p.add_argument("--report-directory", type=Path, default=Path("artifacts/external-linux/quantum-obligations"))
     p.add_argument("--dependency-report", type=Path, default=Path("artifacts/external-linux/dependency-preparation.json"))
     p.add_argument("--source-commit", default=os.environ.get("GITHUB_SHA", ""))
+    p.add_argument("--expected-platform", choices=("linux", "windows"), default="linux")
     args = p.parse_args()
     root = args.repo_root.resolve()
     report = args.report_directory if args.report_directory.is_absolute() else root / args.report_directory
@@ -82,32 +83,32 @@ def main():
 
     try:
         save()
-        if platform.system() != "Linux":
-            raise RuntimeError("EXTERNAL_NATIVE_LINUX_REQUIRED")
+        if platform.system().lower() != args.expected_platform:
+            raise RuntimeError("EXTERNAL_NATIVE_" + args.expected_platform.upper() + "_REQUIRED")
         if os.environ.get("GITHUB_ACTIONS") != "true" and os.environ.get("NSE_QUANTUM_OBLIGATIONS_EXTERNAL_NATIVE") != "1":
             raise RuntimeError("External opt-in required: NSE_QUANTUM_OBLIGATIONS_EXTERNAL_NATIVE=1")
-        if file("lean-toolchain").read_text().strip() != TOOLCHAIN:
+        if file("lean-toolchain").read_text(encoding="utf-8").strip() != TOOLCHAIN:
             raise RuntimeError("Committed compiler pin differs.")
         head = require_command(["git", "rev-parse", "HEAD"], "source-commit.log")
         if args.source_commit and args.source_commit != head:
             raise RuntimeError("Requested and checked-out source commits differ.")
         prov["source_commit"] = head
         version = require_command(["lean", "--version"], "lean-version.txt")
-        if not re.search(r"version 4\.34\.0-rc1,\s*[^,\s]*-linux-", version):
-            raise RuntimeError("Matching native Linux compiler required.")
+        if not re.search(r"version 4\.34\.0-rc1,\s*[^,\s]*-" + args.expected_platform + "-", version):
+            raise RuntimeError("Matching native " + args.expected_platform + " compiler required.")
         prov["actual_lean_version"] = version
         prep_path = args.dependency_report if args.dependency_report.is_absolute() else root / args.dependency_report
-        prep = json.loads(prep_path.read_text())
+        prep = json.loads(prep_path.read_text(encoding="utf-8"))
         targets = sorted(prep.get("cache_targets", []))
         if not targets or any(not re.fullmatch(r"Mathlib(?:\.[A-Za-z0-9_]+)*", t) for t in targets):
             raise RuntimeError("Verified Mathlib cache targets required.")
-        dep_inputs = ["platform=linux", "toolchain=" + TOOLCHAIN, "compiler=" + version]
+        dep_inputs = ["platform=" + args.expected_platform, "toolchain=" + TOOLCHAIN, "compiler=" + version]
         dep_inputs += [n + "=" + sha256(file(n)) for n in ("lean-toolchain", "lakefile.lean", "lake-manifest.json")]
         dep_inputs.append("targets=" + ",".join(targets))
         fingerprint = hashlib.sha256("\n".join(dep_inputs).encode()).hexdigest()
-        if prep.get("status") != "PASS" or prep.get("external_platform") != "linux" or prep.get("dependency_fingerprint") != fingerprint:
+        if prep.get("status") != "PASS" or prep.get("external_platform") != args.expected_platform or prep.get("dependency_fingerprint") != fingerprint:
             raise RuntimeError("Dependency preparation does not match current pins/compiler/configuration.")
-        lock = json.loads(file("lake-manifest.json").read_text())
+        lock = json.loads(file("lake-manifest.json").read_text(encoding="utf-8"))
         expected_deps = {x["name"]: x["rev"] for x in lock["packages"]}
         prepared_deps = {x["name"]: x["revision"] for x in prep["dependency_revisions"]}
         if expected_deps != prepared_deps or expected_deps.get("mathlib") != MATHLIB:
@@ -128,7 +129,7 @@ def main():
         verifier = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(verifier)
         audit_targets = verifier.parse_targets(file(HERE + "/audit-targets.txt"))
-        modules = json.loads(file(HERE + "/module-targets.json").read_text())
+        modules = json.loads(file(HERE + "/module-targets.json").read_text(encoding="utf-8"))
         flat, seen = [], set()
         if not isinstance(modules, list) or not modules:
             raise ValueError("Nonempty explicit module targets required.")
@@ -145,7 +146,32 @@ def main():
             flat.extend(decls)
         if flat != audit_targets or len(flat) != len(set(flat)):
             raise ValueError("module-targets.json and audit-targets.txt must have the same exact ordered unique declarations.")
-        scope = json.loads(file(HERE + "/formalization-status.json").read_text())
+        scope = json.loads(file(HERE + "/formalization-status.json").read_text(encoding="utf-8"))
+        if args.expected_platform == "windows":
+            header_spec = importlib.util.spec_from_file_location("native_source_headers",
+                file("Fefferman_adapter/scripts/verify_native_sources.py"))
+            if header_spec is None or header_spec.loader is None:
+                raise RuntimeError("Native source import parser unavailable")
+            header_parser = importlib.util.module_from_spec(header_spec)
+            header_spec.loader.exec_module(header_parser)
+            roots = {"QuantumAdapter": "Quantum_adapter", "NSEQuantumBridge": "Quantum_adapter",
+                     "NSEMaxwell": "Fefferman_adapter", "MethlibEndpoints": "Fefferman_adapter",
+                     "SingularClosure": "Fefferman_adapter/NativeSources/methlib",
+                     "MaxwellEndpoint": "Maxwell_Endpoint"}
+            forbidden = {"NSEQuantumForward", "NSEQuantumReverse", "NSEMaxwellForward", "NSEMaxwellReverse"}
+            pending, checked = list(seen), set()
+            while pending:
+                module = pending.pop()
+                if module in checked:
+                    continue
+                checked.add(module)
+                prefix = module.split(".")[0]
+                if prefix in forbidden:
+                    raise RuntimeError("Selected source closure requires a Linux-only arrow path: " + module)
+                if prefix in roots:
+                    source = file(roots[prefix] + "/" + module.replace(".", "/") + ".lean")
+                    pending.extend(header_parser.lean_imports(source.read_text(encoding="utf-8")))
+            prov["windows_project_import_closure"] = sorted(checked)
 
         # One Git inventory; verify every project proof input against its exact committed blob.
         inventory = subprocess.check_output(["git", "ls-tree", "-rz", "--full-tree", head], cwd=root)
@@ -167,8 +193,16 @@ def main():
         manifest = {"schema_version": 1, "source_commit": head,
                     "scope": "ALL_TRACKED_PROJECT_PROOFS_PLUS_CONFIG; VENDORED_DEPENDENCIES_VERIFIED_BY_PREPARATION_AND_LOCK", "files": []}
         for relative in sorted(inputs):
-            path = file(relative)
-            raw = path.read_bytes()
+            # Native Windows uses a sparse checkout: literal arrow paths cannot
+            # be materialized. They are not imported by the obligation chain.
+            # Preserve their exact Git identity; any attempted Lake import still
+            # fails rather than substituting a source or an object file.
+            git_only = (args.expected_platform == "windows" and
+                        relative.startswith(("B <-> Maxwell/", "B <-> Quantum/")))
+            if git_only:
+                raw = subprocess.check_output(["git", "cat-file", "blob", blobs[relative]], cwd=root)
+            else:
+                raw = file(relative).read_bytes()
             actual = hashlib.sha1(f"blob {len(raw)}\0".encode() + raw).hexdigest()
             expected = blobs.get(relative)
             normalization = "IDENTITY"
@@ -184,7 +218,8 @@ def main():
                 raise RuntimeError(f"Workspace bytes differ from source commit: {relative}")
             manifest["files"].append({"path": relative, "sha256": hashlib.sha256(raw).hexdigest(),
                 "git_blob_sha": canonical, "working_tree_blob_sha": actual,
-                "checkout_normalization": normalization})
+                "checkout_normalization": normalization,
+                "materialization": "GIT_ONLY_WINDOWS_INVALID_PATH" if git_only else "WORKTREE"})
         write_json(report / "source-manifest.json", manifest)
         prov["source_manifest_sha256"] = sha256(report / "source-manifest.json")
         prov["stage"] = "BUILD_AND_AUDIT"
@@ -193,7 +228,7 @@ def main():
         dependencies = {}
         for item in modules:
             imported = set()
-            for line in file(item["path"]).read_text().splitlines():
+            for line in file(item["path"]).read_text(encoding="utf-8").splitlines():
                 if line.startswith("import "):
                     imported.update(line.split("--", 1)[0].split()[1:])
             dependencies[item["module"]] = imported & module_names
@@ -272,6 +307,8 @@ def main():
             save()
 
         for item in manifest["files"]:
+            if item.get("materialization") == "GIT_ONLY_WINDOWS_INVALID_PATH":
+                continue
             if sha256(file(item["path"])) != item["sha256"]:
                 errors.append("Source changed during external run: " + item["path"])
         status = "FAIL" if errors else "PASS_STANDARD_ONLY"
