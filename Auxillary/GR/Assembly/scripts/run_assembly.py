@@ -70,6 +70,10 @@ def main() -> int:
     parser.add_argument("--report-directory", type=Path)
     parser.add_argument("--source-commit", default=os.environ.get("GITHUB_SHA", ""))
     parser.add_argument("--module", action="append", help="Select new assembly modules; baseline GR and TEMP stages still run")
+    parser.add_argument("--individual-modules", action="store_true",
+                        help="Compile and audit every selected module independently")
+    parser.add_argument("--keep-going", action="store_true",
+                        help="Retain successful exact audits after independent module failures")
     args = parser.parse_args()
     package = args.package_root.resolve()
     repo = package.parent
@@ -216,50 +220,62 @@ def main() -> int:
                   ("forward", "NSEGRForward", baseline["forward"]),
                   ("reverse", "NSEGRReverse", baseline["reverse"]),
                   ("cutouts", "TempEndpoints", [x["name"] for x in cutouts])]
-        if args.module:
+        if args.module or args.individual_modules:
             for number, module in enumerate(sorted({x["module"] for x in selected}), 1):
                 stages.append((f"assembly-{number:03d}", module,
                                [x["name"] for x in selected if x["module"] == module]))
         else:
             stages.append(("assembly", "GRAssembly", [x["name"] for x in selected]))
         stage_summaries = []
+        failed_stages = []
         for stage, module, names in stages:
             require(bool(names), "Empty named stage: " + stage)
             require(len(set(names)) == len(names) and all(SOURCE_NAME.fullmatch(n) for n in names),
                     "Invalid named stage: " + stage)
-            run(["lake", "build", module], stage + "-build.log")
-            audit = report / (stage.replace("-", "_").title() + "Audit.lean")
-            text = "import " + module + "\nset_option pp.universes false\n"
-            text += "\n".join("#check @" + name + "\n#print axioms " + name for name in names) + "\n"
-            audit.write_text(text, encoding="utf-8")
-            log_name = stage + "-audit.log"
-            log = run(["lake", "env", "lean", "-R", str(report), str(audit)], log_name)
-            records = audit_records(log, names)
-            entry = {"stage": stage, "module": module, "status": "PASS_STANDARD_ONLY",
-                     "source_commit": args.source_commit, "target_count": len(records),
-                     "audit_source": audit.name, "audit_source_sha256": digest(audit),
-                     "audit_log": log_name, "audit_log_sha256": digest(report / log_name), "targets": records}
-            write_json(report / (stage + "-summary.json"), entry)
-            stage_summaries.append(entry)
+            try:
+                run(["lake", "build", module], stage + "-build.log")
+                audit = report / (stage.replace("-", "_").title() + "Audit.lean")
+                text = "import " + module + "\nset_option pp.universes false\n"
+                text += "\n".join("#check @" + name + "\n#print axioms " + name for name in names) + "\n"
+                audit.write_text(text, encoding="utf-8")
+                log_name = stage + "-audit.log"
+                log = run(["lake", "env", "lean", "-R", str(report), str(audit)], log_name)
+                records = audit_records(log, names)
+                entry = {"stage": stage, "module": module, "status": "PASS_STANDARD_ONLY",
+                         "source_commit": args.source_commit, "target_count": len(records),
+                         "audit_source": audit.name, "audit_source_sha256": digest(audit),
+                         "audit_log": log_name, "audit_log_sha256": digest(report / log_name), "targets": records}
+                write_json(report / (stage + "-summary.json"), entry)
+                stage_summaries.append(entry)
+            except (OSError, ValueError) as error:
+                failed_stages.append({"stage": stage, "module": module, "status": "FAIL",
+                                      "error": str(error)})
+                write_json(report / (stage + "-summary.json"), failed_stages[-1])
+                if not args.keep_going or not stage.startswith("assembly"):
+                    raise
             provenance["stages"] = stage_summaries
+            provenance["failed_stages"] = failed_stages
             persist()
         require(digest(lock_path) == lock_hash, "Compilation changed committed dependency lock")
         for item in manifest["files"]:
             require(digest(repo / item["path"]) == item["sha256"], "Source changed during run: " + item["path"])
-        summary = {"schema_version": 1, "status": "PASS_STANDARD_ONLY", "source_commit": args.source_commit,
+        final_status = "PARTIAL_STANDARD_ONLY" if failed_stages else "PASS_STANDARD_ONLY"
+        summary = {"schema_version": 1, "status": final_status, "source_commit": args.source_commit,
                    "actual_lean_version": version.strip(), "actual_mathlib_commit": MATHLIB,
                    "source_manifest_sha256": provenance["source_manifest_sha256"], "source_input_verification": "PASS",
                    "baseline_target_count": 401, "cutout_target_count": len(cutouts),
                    "new_target_count": len(selected),
                    "target_count": sum(x["target_count"] for x in stage_summaries),
-                   "allowed_axioms": sorted(ALLOWED), "stages": stage_summaries, "declared_scope": scope,
+                   "allowed_axioms": sorted(ALLOWED), "stages": stage_summaries,
+                   "failed_stages": failed_stages, "declared_scope": scope,
                    "semantic_discharge": "NOT_INFERRED_FROM_AXIOM_AUDIT"}
         write_json(report / "audit-summary.json", summary)
-        provenance["status"] = "PASS_STANDARD_ONLY"
+        provenance["status"] = final_status
         persist()
         print(f"BASELINE_GR_AUDITS=401; CUTOUT_AUDITS={len(cutouts)}; "
-              f"NEW_ASSEMBLY_AUDITS={len(selected)}; STATUS=PASS_STANDARD_ONLY", flush=True)
-        return 0
+              f"NEW_ASSEMBLY_TARGETS={len(selected)}; FAILED_STAGES={len(failed_stages)}; "
+              f"STATUS={final_status}", flush=True)
+        return 1 if failed_stages else 0
     except (OSError, ValueError, KeyError, TypeError) as error:
         provenance["status"] = "FAIL"
         provenance["error"] = str(error)
