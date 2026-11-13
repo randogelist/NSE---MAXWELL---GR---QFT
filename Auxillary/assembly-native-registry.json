@@ -2,7 +2,7 @@
   "schema_version": 1,
   "register": "N01--N17; NX01--NX08",
   "endpoint_count": 25,
-  "status": "A_TIER_CANDIDATE for this assembly until matching external compilation and theorem-level axiom audit",
+  "status": "A_TIER: 25 canonical declarations and 25 assembly export/type checks externally validated",
   "source_reference_commit": "391d6a2f8f856be3f43cb208254b7fa4a56fe95f",
   "source_register_filename": "CLASSICAL_MECHANICS_FLOW_PIOLA_INPUTS_B_TIER.txt",
   "source_register_sha256": "1099738d0f44b756ff2836166298aec71c91f9585888c9439be46991ebe51e1b",
@@ -560,5 +560,8 @@
         "direct_registered_source_references": []
       }
     }
-  ]
+  ],
+  "assembly_audited_source_commit": "d04698bae290672d5c0b0238ff4fa0d6c2ca9b6a",
+  "external_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43376636262",
+  "external_audit_evidence": "Auxillary/evidence/assembly-linux-43376636262/audit-summary.json"
 }

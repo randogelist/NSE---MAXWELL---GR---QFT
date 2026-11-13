@@ -1,0 +1,476 @@
+@NSEMaxwell.CurlCurl.coordinateDerivative_smooth : ∀ {a : NSEMaxwell.Classical.Field},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a →
+    ∀ (i : Fin 3), ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) (NSEMaxwell.Classical.coordinateDerivative a i)
+'NSEMaxwell.CurlCurl.coordinateDerivative_smooth' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@NSEMaxwell.CurlCurl.coordinate_component_smooth : ∀ {a : NSEMaxwell.Classical.Field},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a →
+    ∀ (i j : Fin 3),
+      ContDiff.{0, 0, 0} ℝ ↑Top.top.{0} fun x => WithLp.ofLp.{0} (NSEMaxwell.Classical.coordinateDerivative a i x) j
+'NSEMaxwell.CurlCurl.coordinate_component_smooth' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@NSEMaxwell.CurlCurl.fderiv_component_apply : ∀ {a : NSEMaxwell.Classical.Field} {x : NSEMaxwell.Classical.Vec},
+  DifferentiableAt.{0, 0, 0} ℝ a x →
+    ∀ (v : NSEMaxwell.Classical.Vec) (j : Fin 3),
+      Eq.{1} ((fderiv.{0, 0, 0} ℝ (fun y => WithLp.ofLp.{0} (a y) j) x) v)
+        (WithLp.ofLp.{0} ((fderiv.{0, 0, 0} ℝ a x) v) j)
+'NSEMaxwell.CurlCurl.fderiv_component_apply' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@NSEMaxwell.CurlCurl.secondCoordinate_symm : ∀ {a : NSEMaxwell.Classical.Field},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a →
+    ∀ (i j : Fin 3) (x : NSEMaxwell.Classical.Vec),
+      Eq.{1} (NSEMaxwell.CurlCurl.secondCoordinate a i j x) (NSEMaxwell.CurlCurl.secondCoordinate a j i x)
+'NSEMaxwell.CurlCurl.secondCoordinate_symm' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@NSEMaxwell.CurlCurl.second_coordinate_component : ∀ {a : NSEMaxwell.Classical.Field},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a →
+    ∀ (i j k : Fin 3) (x : NSEMaxwell.Classical.Vec),
+      Eq.{1}
+        ((fderiv.{0, 0, 0} ℝ (fun y => WithLp.ofLp.{0} (NSEMaxwell.Classical.coordinateDerivative a j y) k) x)
+          (NSEMaxwell.Classical.unitVector i))
+        (WithLp.ofLp.{0} (NSEMaxwell.CurlCurl.secondCoordinate a i j x) k)
+'NSEMaxwell.CurlCurl.second_coordinate_component' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@NSEMaxwell.CurlCurl.laplacian_coordinate : ∀ {a : NSEMaxwell.Classical.Field},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a →
+    ∀ (x : NSEMaxwell.Classical.Vec) (i : Fin 3),
+      Eq.{1} (WithLp.ofLp.{0} (NSEMaxwell.Classical.laplacian a x) i)
+        (HAdd.hAdd.{0, 0, 0}
+          (HAdd.hAdd.{0, 0, 0} (WithLp.ofLp.{0} (NSEMaxwell.CurlCurl.secondCoordinate a 0 0 x) i)
+            (WithLp.ofLp.{0} (NSEMaxwell.CurlCurl.secondCoordinate a 1 1 x) i))
+          (WithLp.ofLp.{0} (NSEMaxwell.CurlCurl.secondCoordinate a 2 2 x) i))
+'NSEMaxwell.CurlCurl.laplacian_coordinate' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanics.cofactorGradient_eq_adjugate_transpose : ∀ (a : NSEMaxwell.Classical.Field)
+  (x : NSEMaxwell.Classical.Vec),
+  Eq.{1} (ClassicalMechanics.cofactorGradient a x)
+    (Matrix.transpose.{0, 0, 0} (Matrix.adjugate.{0, 0} (ClassicalMechanics.spatialGradientMatrix a x)))
+'ClassicalMechanics.cofactorGradient_eq_adjugate_transpose' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanics.piola_identity : ∀ {a : NSEMaxwell.Classical.Field},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a →
+    Eq.{1} (ClassicalMechanics.tensorDivergence (ClassicalMechanics.cofactorGradient a)) 0
+'ClassicalMechanics.piola_identity' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanics.tensorDivergence_adjugate_gradient : ∀ {a : NSEMaxwell.Classical.Field},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a →
+    Eq.{1}
+      (ClassicalMechanics.tensorDivergence fun x =>
+        Matrix.transpose.{0, 0, 0} (Matrix.adjugate.{0, 0} (ClassicalMechanics.spatialGradientMatrix a x)))
+      0
+'ClassicalMechanics.tensorDivergence_adjugate_gradient' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+ClassicalMechanics.cofactorGradient_eq_inverse_transpose_of_det_one : ∀ (a : NSEMaxwell.Classical.Field)
+  (x : NSEMaxwell.Classical.Vec),
+  Eq.{1} (Matrix.det.{0, 0} (ClassicalMechanics.spatialGradientMatrix a x)) 1 →
+    Eq.{1} (ClassicalMechanics.cofactorGradient a x)
+      (Matrix.transpose.{0, 0, 0} (Inv.inv.{0} (ClassicalMechanics.spatialGradientMatrix a x)))
+'ClassicalMechanics.cofactorGradient_eq_inverse_transpose_of_det_one' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanics.tensorDivergence_inverse_transpose_of_det_one : ∀ {a : NSEMaxwell.Classical.Field},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a →
+    (∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (Matrix.det.{0, 0} (ClassicalMechanics.spatialGradientMatrix a x)) 1) →
+      Eq.{1}
+        (ClassicalMechanics.tensorDivergence fun x =>
+          Matrix.transpose.{0, 0, 0} (Inv.inv.{0} (ClassicalMechanics.spatialGradientMatrix a x)))
+        0
+'ClassicalMechanics.tensorDivergence_inverse_transpose_of_det_one' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+ClassicalMechanics.scalar_fderiv_coordinate_expansion : ∀ (p : NSEMaxwell.Classical.ScalarField)
+  (x v : NSEMaxwell.Classical.Vec),
+  Eq.{1} ((fderiv.{0, 0, 0} ℝ p x) v)
+    (∑ j, HMul.hMul.{0, 0, 0} (WithLp.ofLp.{0} v j) (WithLp.ofLp.{0} (NSEMaxwell.Classical.gradient p x) j))
+'ClassicalMechanics.scalar_fderiv_coordinate_expansion' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanics.gradient_comp_coordinate : ∀ {η : NSEMaxwell.Classical.Field} {p : NSEMaxwell.Classical.ScalarField}
+  {a : NSEMaxwell.Classical.Vec},
+  DifferentiableAt.{0, 0, 0} ℝ η a →
+    DifferentiableAt.{0, 0, 0} ℝ p (η a) →
+      ∀ (i : Fin 3),
+        Eq.{1} (WithLp.ofLp.{0} (NSEMaxwell.Classical.gradient (fun y => p (η y)) a) i)
+          (∑ j,
+            HMul.hMul.{0, 0, 0} (ClassicalMechanics.materialGradientMatrix η a j i)
+              (WithLp.ofLp.{0} (NSEMaxwell.Classical.gradient p (η a)) j))
+'ClassicalMechanics.gradient_comp_coordinate' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanics.finite_velocity_slice_smooth : ∀ {T : ℝ} {u : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.SmoothVelocityOn T u →
+    ∀ {t : ℝ}, Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) (u t)
+'ClassicalMechanics.finite_velocity_slice_smooth' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanics.materialPullbackIdentities_of_flow : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u η : NSEMaxwell.Classical.Velocity} {p π : NSEMaxwell.Classical.Pressure},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ClassicalMechanics.SmoothVelocityOn T η →
+          (∀ (t : ℝ),
+              Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                ∀ (a : NSEMaxwell.Classical.Vec), Eq.{1} (ClassicalMechanics.materialVelocity T η t a) (u t (η t a))) →
+            (∀ (t : ℝ),
+                Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                  ∀ (a : NSEMaxwell.Classical.Vec), Eq.{1} (π t a) (p t (η t a))) →
+              (∀ (t : ℝ),
+                  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                    ∀ (a : NSEMaxwell.Classical.Vec),
+                      Eq.{1} (ClassicalMechanics.materialPressureGradient η π t a)
+                        (NSEMaxwell.Classical.gradient (p t) (η t a))) →
+                (∀ (t : ℝ),
+                    Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                      ∀ (a : NSEMaxwell.Classical.Vec),
+                        Eq.{1} (ClassicalMechanics.materialDiffusion T η t a)
+                          (NSEMaxwell.Classical.laplacian (u t) (η t a))) →
+                  ClassicalMechanics.MaterialPullbackIdentities T u p η π
+'ClassicalMechanics.materialPullbackIdentities_of_flow' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanics.material_pressure_gradient_pullback_on : ∀ {T : ℝ} {η ρ : NSEMaxwell.Classical.Velocity}
+  {p π : NSEMaxwell.Classical.Pressure},
+  ClassicalMechanics.MaterialPathOn T η ρ →
+    ClassicalMechanics.SmoothPressureOn T p →
+      (∀ (t : ℝ),
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → ∀ (a : NSEMaxwell.Classical.Vec), Eq.{1} (π t a) (p t (η t a))) →
+        ∀ (t : ℝ),
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+            ∀ (a : NSEMaxwell.Classical.Vec),
+              Eq.{1} (ClassicalMechanics.materialPressureGradient η π t a) (NSEMaxwell.Classical.gradient (p t) (η t a))
+'ClassicalMechanics.material_pressure_gradient_pullback_on' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanics.coordinateMinor_derivative : ∀ {a : NSEMaxwell.Classical.Field},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a →
+    ∀ (i j k r s : Fin 3) (x : NSEMaxwell.Classical.Vec),
+      Eq.{1} ((fderiv.{0, 0, 0} ℝ (ClassicalMechanics.coordinateMinor a j k r s) x) (NSEMaxwell.Classical.unitVector i))
+        (HSub.hSub.{0, 0, 0}
+          (HAdd.hAdd.{0, 0, 0}
+            (HMul.hMul.{0, 0, 0} (WithLp.ofLp.{0} (NSEMaxwell.CurlCurl.secondCoordinate a i j x) r)
+              (WithLp.ofLp.{0} (NSEMaxwell.Classical.coordinateDerivative a k x) s))
+            (HMul.hMul.{0, 0, 0} (WithLp.ofLp.{0} (NSEMaxwell.Classical.coordinateDerivative a j x) r)
+              (WithLp.ofLp.{0} (NSEMaxwell.CurlCurl.secondCoordinate a i k x) s)))
+          (HAdd.hAdd.{0, 0, 0}
+            (HMul.hMul.{0, 0, 0} (WithLp.ofLp.{0} (NSEMaxwell.CurlCurl.secondCoordinate a i k x) r)
+              (WithLp.ofLp.{0} (NSEMaxwell.Classical.coordinateDerivative a j x) s))
+            (HMul.hMul.{0, 0, 0} (WithLp.ofLp.{0} (NSEMaxwell.Classical.coordinateDerivative a k x) r)
+              (WithLp.ofLp.{0} (NSEMaxwell.CurlCurl.secondCoordinate a i j x) s))))
+'ClassicalMechanics.coordinateMinor_derivative' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanics.uniqueDiffOn_finiteSpacetime : ∀ {T : ℝ},
+  LT.lt.{0} 0 T → UniqueDiffOn.{0, 0} ℝ (ClassicalMechanics.finiteSpacetime T)
+'ClassicalMechanics.uniqueDiffOn_finiteSpacetime' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanics.finite_spatial_restriction_fderiv : ∀ {T : ℝ} {u : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.SmoothVelocityOn T u →
+    ∀ {t : ℝ},
+      Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+        ∀ (x v : NSEMaxwell.Classical.Vec),
+          Eq.{1} ((fderiv.{0, 0, 0} ℝ (u t) x) v)
+            ((fderivWithin.{0, 0, 0} ℝ (fun z => u z.1 z.2) (ClassicalMechanics.finiteSpacetime T) (Prod.mk.{0, 0} t x))
+              (Prod.mk.{0, 0} 0 v))
+'ClassicalMechanics.finite_spatial_restriction_fderiv' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanics.finite_time_hasDerivWithinAt : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ∀ {t : ℝ},
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+            ∀ (x : NSEMaxwell.Classical.Vec),
+              HasDerivWithinAt.{0, 0} (fun s => u s x) (ClassicalMechanics.finiteTimeDerivative T u t x)
+                (Set.Icc.{0} 0 T) t
+'ClassicalMechanics.finite_time_hasDerivWithinAt' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanics.finite_time_restriction_fderiv : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ∀ {t : ℝ},
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+            ∀ (x : NSEMaxwell.Classical.Vec),
+              Eq.{1} (ClassicalMechanics.finiteTimeDerivative T u t x)
+                ((fderivWithin.{0, 0, 0} ℝ (fun z => u z.1 z.2) (ClassicalMechanics.finiteSpacetime T)
+                    (Prod.mk.{0, 0} t x))
+                  (Prod.mk.{0, 0} 1 0))
+'ClassicalMechanics.finite_time_restriction_fderiv' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanics.finite_flow_acceleration : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u eta : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ClassicalMechanics.SmoothVelocityOn T eta →
+          (∀ (s : ℝ),
+              Membership.mem.{0, 0} (Set.Icc.{0} 0 T) s →
+                ∀ (a : NSEMaxwell.Classical.Vec),
+                  Eq.{1} (ClassicalMechanics.finiteTimeDerivative T eta s a) (u s (eta s a))) →
+            ∀ {t : ℝ},
+              Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                ∀ (a : NSEMaxwell.Classical.Vec),
+                  Eq.{1} (ClassicalMechanics.finiteTimeDerivative T (ClassicalMechanics.finiteTimeDerivative T eta) t a)
+                    (ClassicalMechanics.finiteMaterialAcceleration T u t (eta t a))
+'ClassicalMechanics.finite_flow_acceleration' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanics.material_inverse_transpose_divergence_zero : ∀ {T : ℝ} {η ρ : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.MaterialPathOn T η ρ →
+    ∀ {t : ℝ},
+      Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+        Eq.{1}
+          (ClassicalMechanics.tensorDivergence fun a =>
+            Matrix.transpose.{0, 0, 0} (ClassicalMechanics.inverseDeformationGradient η t a))
+          0
+'ClassicalMechanics.material_inverse_transpose_divergence_zero' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanics.material_path_surjective : ∀ {T : ℝ} {η ρ : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.MaterialPathOn T η ρ →
+    ∀ {t : ℝ}, Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → Function.Surjective.{1, 1} (η t)
+'ClassicalMechanics.material_path_surjective' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanics.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW_AND_DIFFUSION : ∀ {ν T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u η ρ : NSEMaxwell.Classical.Velocity} {p π : NSEMaxwell.Classical.Pressure},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ClassicalMechanics.SmoothPressureOn T p →
+          ClassicalMechanics.MaterialPathOn T η ρ →
+            (∀ (t : ℝ),
+                Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                  ∀ (a : NSEMaxwell.Classical.Vec),
+                    Eq.{1} (ClassicalMechanics.materialVelocity T η t a) (u t (η t a))) →
+              (∀ (t : ℝ),
+                  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                    ∀ (a : NSEMaxwell.Classical.Vec), Eq.{1} (π t a) (p t (η t a))) →
+                (∀ (t : ℝ),
+                    Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                      ∀ (a : NSEMaxwell.Classical.Vec),
+                        Eq.{1} (ClassicalMechanics.materialDiffusion T η t a)
+                          (NSEMaxwell.Classical.laplacian (u t) (η t a))) →
+                  ((∀ (t : ℝ),
+                      Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                        ∀ (x : NSEMaxwell.Classical.Vec),
+                          Eq.{1}
+                            (HAdd.hAdd.{0, 0, 0} (ClassicalMechanics.finiteMaterialAcceleration T u t x)
+                              (NSEMaxwell.Classical.gradient (p t) x))
+                            (HSMul.hSMul.{0, 0, 0} ν (NSEMaxwell.Classical.laplacian (u t) x))) ↔
+                    ClassicalMechanics.MaterialEquationOn ν T η π)
+'ClassicalMechanics.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW_AND_DIFFUSION' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.coordinateMinor_smooth : ∀ {e : NSEMaxwell.Classical.Field},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) e →
+    ∀ (j k r s : Fin 3), ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) (ClassicalMechanics.coordinateMinor e j k r s)
+'ClassicalMechanicsAssembly.coordinateMinor_smooth' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.cofactorGradient_component_smooth : ∀ {e : NSEMaxwell.Classical.Field},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) e →
+    ∀ (i j : Fin 3), ContDiff.{0, 0, 0} ℝ ↑Top.top.{0} fun a => ClassicalMechanics.cofactorGradient e a i j
+'ClassicalMechanicsAssembly.cofactorGradient_component_smooth' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+ClassicalMechanicsAssembly.vector_fderiv_coordinate_expansion : ∀ (v : NSEMaxwell.Classical.Field)
+  (x w : NSEMaxwell.Classical.Vec) (i : Fin 3),
+  Eq.{1} (WithLp.ofLp.{0} ((fderiv.{0, 0, 0} ℝ v x) w) i)
+    (∑ k,
+      HMul.hMul.{0, 0, 0} (WithLp.ofLp.{0} w k) (WithLp.ofLp.{0} (NSEMaxwell.Classical.coordinateDerivative v k x) i))
+'ClassicalMechanicsAssembly.vector_fderiv_coordinate_expansion' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.gradient_matrix_comp : ∀ {v e : NSEMaxwell.Classical.Field},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) v →
+    ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) e →
+      ∀ (a : NSEMaxwell.Classical.Vec),
+        Eq.{1} (ClassicalMechanics.materialGradientMatrix (fun y => v (e y)) a)
+          (HMul.hMul.{0, 0, 0} (ClassicalMechanics.materialGradientMatrix v (e a))
+            (ClassicalMechanics.materialGradientMatrix e a))
+'ClassicalMechanicsAssembly.gradient_matrix_comp' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanicsAssembly.cofactor_contraction : ∀ (e : NSEMaxwell.Classical.Field) (a : NSEMaxwell.Classical.Vec),
+  Eq.{1}
+    (HMul.hMul.{0, 0, 0} (ClassicalMechanics.spatialGradientMatrix e a)
+      (Matrix.transpose.{0, 0, 0} (ClassicalMechanics.cofactorGradient e a)))
+    (HSMul.hSMul.{0, 0, 0} (Matrix.det.{0, 0} (ClassicalMechanics.spatialGradientMatrix e a)) 1)
+'ClassicalMechanicsAssembly.cofactor_contraction' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanicsAssembly.fderiv_fin3_sum : ∀ (f : Fin 3 → NSEMaxwell.Classical.ScalarField)
+  (a w : NSEMaxwell.Classical.Vec),
+  (∀ (j : Fin 3), DifferentiableAt.{0, 0, 0} ℝ (f j) a) →
+    Eq.{1} ((fderiv.{0, 0, 0} ℝ (fun y => ∑ j, f j y) a) w) (∑ j, (fderiv.{0, 0, 0} ℝ (f j) a) w)
+'ClassicalMechanicsAssembly.fderiv_fin3_sum' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.scalar_pullback_product_derivative : ∀ {e : NSEMaxwell.Classical.Field}
+  {q c : NSEMaxwell.Classical.ScalarField} {a : NSEMaxwell.Classical.Vec},
+  DifferentiableAt.{0, 0, 0} ℝ e a →
+    DifferentiableAt.{0, 0, 0} ℝ q (e a) →
+      DifferentiableAt.{0, 0, 0} ℝ c a →
+        ∀ (α : Fin 3),
+          Eq.{1}
+            ((fderiv.{0, 0, 0} ℝ (fun y => HMul.hMul.{0, 0, 0} (q (e y)) (c y)) a) (NSEMaxwell.Classical.unitVector α))
+            (HAdd.hAdd.{0, 0, 0}
+              (HMul.hMul.{0, 0, 0}
+                (∑ k,
+                  HMul.hMul.{0, 0, 0} ((fderiv.{0, 0, 0} ℝ q (e a)) (NSEMaxwell.Classical.unitVector k))
+                    (ClassicalMechanics.materialGradientMatrix e a k α))
+                (c a))
+              (HMul.hMul.{0, 0, 0} (q (e a)) ((fderiv.{0, 0, 0} ℝ c a) (NSEMaxwell.Classical.unitVector α))))
+'ClassicalMechanicsAssembly.scalar_pullback_product_derivative' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.tensor_product_pullback_component_derivative : ∀ {e : NSEMaxwell.Classical.Field}
+  {Q : ClassicalMechanics.StressField},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) e →
+    (∀ (i j : Fin 3), Differentiable.{0, 0, 0} ℝ fun x => Q x i j) →
+      ∀ (a : NSEMaxwell.Classical.Vec) (i α : Fin 3),
+        Eq.{1}
+          ((fderiv.{0, 0, 0} ℝ (fun y => HMul.hMul.{0, 0, 0} (Q (e y)) (ClassicalMechanics.cofactorGradient e y) i α) a)
+            (NSEMaxwell.Classical.unitVector α))
+          (∑ j,
+            HAdd.hAdd.{0, 0, 0}
+              (HMul.hMul.{0, 0, 0}
+                (∑ k,
+                  HMul.hMul.{0, 0, 0}
+                    ((fderiv.{0, 0, 0} ℝ (fun x => Q x i j) (e a)) (NSEMaxwell.Classical.unitVector k))
+                    (ClassicalMechanics.materialGradientMatrix e a k α))
+                (ClassicalMechanics.cofactorGradient e a j α))
+              (HMul.hMul.{0, 0, 0} (Q (e a) i j)
+                ((fderiv.{0, 0, 0} ℝ (fun y => ClassicalMechanics.cofactorGradient e y j α) a)
+                  (NSEMaxwell.Classical.unitVector α))))
+'ClassicalMechanicsAssembly.tensor_product_pullback_component_derivative' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+ClassicalMechanicsAssembly.piola_finite_contraction : ∀ (d F C : Fin 3 → Fin 3 → ℝ) (q : Fin 3 → ℝ)
+  (dc : Fin 3 → Fin 3 → ℝ) (J : ℝ),
+  (∀ (k j : Fin 3),
+      Eq.{1} (∑ α, HMul.hMul.{0, 0, 0} (F k α) (C j α)) (HMul.hMul.{0, 0, 0} J (ite.{1} (Eq.{1} k j) 1 0))) →
+    (∀ (j : Fin 3), Eq.{1} (∑ α, dc j α) 0) →
+      Eq.{1}
+        (∑ α,
+          ∑ j,
+            HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} (∑ k, HMul.hMul.{0, 0, 0} (d j k) (F k α)) (C j α))
+              (HMul.hMul.{0, 0, 0} (q j) (dc j α)))
+        (HMul.hMul.{0, 0, 0} J (∑ j, d j j))
+'ClassicalMechanicsAssembly.piola_finite_contraction' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.piola_product_transform : ∀ {e : NSEMaxwell.Classical.Field}
+  {Q : ClassicalMechanics.StressField},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) e →
+    (∀ (i j : Fin 3), Differentiable.{0, 0, 0} ℝ fun x => Q x i j) →
+      Eq.{1}
+        (ClassicalMechanics.tensorDivergence fun a =>
+          HMul.hMul.{0, 0, 0} (Q (e a)) (ClassicalMechanics.cofactorGradient e a))
+        fun a =>
+        HSMul.hSMul.{0, 0, 0} (Matrix.det.{0, 0} (ClassicalMechanics.spatialGradientMatrix e a))
+          (ClassicalMechanics.tensorDivergence Q (e a))
+'ClassicalMechanicsAssembly.piola_product_transform' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.tensorDivergence_gradientMatrix : ∀ {v : NSEMaxwell.Classical.Field},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) v →
+    Eq.{1} (ClassicalMechanics.tensorDivergence (ClassicalMechanics.materialGradientMatrix v))
+      (NSEMaxwell.Classical.laplacian v)
+'ClassicalMechanicsAssembly.tensorDivergence_gradientMatrix' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.material_viscous_tensor_pullback : ∀ {v e V : NSEMaxwell.Classical.Field},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) v →
+    ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) e →
+      (Eq.{1} V fun a => v (e a)) →
+        (∀ (a : NSEMaxwell.Classical.Vec),
+            Eq.{1} (Matrix.det.{0, 0} (ClassicalMechanics.materialGradientMatrix e a)) 1) →
+          ∀ (a : NSEMaxwell.Classical.Vec),
+            Eq.{1}
+              (HMul.hMul.{0, 0, 0}
+                (HMul.hMul.{0, 0, 0} (ClassicalMechanics.materialGradientMatrix V a)
+                  (Inv.inv.{0} (ClassicalMechanics.materialGradientMatrix e a)))
+                (Matrix.transpose.{0, 0, 0} (Inv.inv.{0} (ClassicalMechanics.materialGradientMatrix e a))))
+              (HMul.hMul.{0, 0, 0} (ClassicalMechanics.materialGradientMatrix v (e a))
+                (ClassicalMechanics.cofactorGradient e a))
+'ClassicalMechanicsAssembly.material_viscous_tensor_pullback' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.spatial_diffusion_pullback : ∀ {v e V : NSEMaxwell.Classical.Field},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) v →
+    ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) e →
+      (Eq.{1} V fun a => v (e a)) →
+        (∀ (a : NSEMaxwell.Classical.Vec),
+            Eq.{1} (Matrix.det.{0, 0} (ClassicalMechanics.materialGradientMatrix e a)) 1) →
+          Eq.{1}
+            (ClassicalMechanics.tensorDivergence fun a =>
+              HMul.hMul.{0, 0, 0}
+                (HMul.hMul.{0, 0, 0} (ClassicalMechanics.materialGradientMatrix V a)
+                  (Inv.inv.{0} (ClassicalMechanics.materialGradientMatrix e a)))
+                (Matrix.transpose.{0, 0, 0} (Inv.inv.{0} (ClassicalMechanics.materialGradientMatrix e a))))
+            fun a => NSEMaxwell.Classical.laplacian v (e a)
+'ClassicalMechanicsAssembly.spatial_diffusion_pullback' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_DIFFUSION_REALIZATION : ∀ {T : ℝ}
+  {u η ρ : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.SmoothVelocityOn T u →
+    ClassicalMechanics.MaterialPathOn T η ρ →
+      (∀ (t : ℝ),
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+            ∀ (a : NSEMaxwell.Classical.Vec), Eq.{1} (ClassicalMechanics.materialVelocity T η t a) (u t (η t a))) →
+        ∀ (t : ℝ),
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+            ∀ (a : NSEMaxwell.Classical.Vec),
+              Eq.{1} (ClassicalMechanics.materialDiffusion T η t a) (NSEMaxwell.Classical.laplacian (u t) (η t a))
+'ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_DIFFUSION_REALIZATION' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.material_pullback_of_flow : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u η ρ : NSEMaxwell.Classical.Velocity} {p : NSEMaxwell.Classical.Pressure},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ClassicalMechanics.SmoothPressureOn T p →
+          ClassicalMechanics.MaterialPathOn T η ρ →
+            (∀ (t : ℝ),
+                Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                  ∀ (a : NSEMaxwell.Classical.Vec),
+                    Eq.{1} (ClassicalMechanics.materialVelocity T η t a) (u t (η t a))) →
+              ClassicalMechanics.MaterialPullbackIdentities T u p η fun t a => p t (η t a)
+'ClassicalMechanicsAssembly.material_pullback_of_flow' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.eulerian_equation_implies_material_of_flow : ∀ {ν T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u η ρ : NSEMaxwell.Classical.Velocity} {p : NSEMaxwell.Classical.Pressure},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ClassicalMechanics.SmoothPressureOn T p →
+          ClassicalMechanics.MaterialPathOn T η ρ →
+            (∀ (t : ℝ),
+                Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                  ∀ (a : NSEMaxwell.Classical.Vec),
+                    Eq.{1} (ClassicalMechanics.materialVelocity T η t a) (u t (η t a))) →
+              (∀ (t : ℝ),
+                  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                    ∀ (x : NSEMaxwell.Classical.Vec),
+                      Eq.{1}
+                        (HAdd.hAdd.{0, 0, 0} (ClassicalMechanics.finiteMaterialAcceleration T u t x)
+                          (NSEMaxwell.Classical.gradient (p t) x))
+                        (HSMul.hSMul.{0, 0, 0} ν (NSEMaxwell.Classical.laplacian (u t) x))) →
+                ClassicalMechanics.MaterialEquationOn ν T η fun t a => p t (η t a)
+'ClassicalMechanicsAssembly.eulerian_equation_implies_material_of_flow' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.material_equation_implies_eulerian_of_flow : ∀ {ν T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u η ρ : NSEMaxwell.Classical.Velocity} {p : NSEMaxwell.Classical.Pressure},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ClassicalMechanics.SmoothPressureOn T p →
+          ClassicalMechanics.MaterialPathOn T η ρ →
+            (∀ (t : ℝ),
+                Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                  ∀ (a : NSEMaxwell.Classical.Vec),
+                    Eq.{1} (ClassicalMechanics.materialVelocity T η t a) (u t (η t a))) →
+              (ClassicalMechanics.MaterialEquationOn ν T η fun t a => p t (η t a)) →
+                ∀ (t : ℝ),
+                  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                    ∀ (x : NSEMaxwell.Classical.Vec),
+                      Eq.{1}
+                        (HAdd.hAdd.{0, 0, 0} (ClassicalMechanics.finiteMaterialAcceleration T u t x)
+                          (NSEMaxwell.Classical.gradient (p t) x))
+                        (HSMul.hSMul.{0, 0, 0} ν (NSEMaxwell.Classical.laplacian (u t) x))
+'ClassicalMechanicsAssembly.material_equation_implies_eulerian_of_flow' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW : ∀ {ν T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u η ρ : NSEMaxwell.Classical.Velocity} {p : NSEMaxwell.Classical.Pressure},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ClassicalMechanics.SmoothPressureOn T p →
+          ClassicalMechanics.MaterialPathOn T η ρ →
+            (∀ (t : ℝ),
+                Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                  ∀ (a : NSEMaxwell.Classical.Vec),
+                    Eq.{1} (ClassicalMechanics.materialVelocity T η t a) (u t (η t a))) →
+              ((∀ (t : ℝ),
+                  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                    ∀ (x : NSEMaxwell.Classical.Vec),
+                      Eq.{1}
+                        (HAdd.hAdd.{0, 0, 0} (ClassicalMechanics.finiteMaterialAcceleration T u t x)
+                          (NSEMaxwell.Classical.gradient (p t) x))
+                        (HSMul.hSMul.{0, 0, 0} ν (NSEMaxwell.Classical.laplacian (u t) x))) ↔
+                ClassicalMechanics.MaterialEquationOn ν T η fun t a => p t (η t a))
+'ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

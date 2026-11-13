@@ -1,16 +1,32 @@
 {
   "schema_version": 1,
-  "status": "A_TIER_CANDIDATE_UNTIL_MATCHING_EXTERNAL_EVIDENCE",
+  "status": "A_TIER",
   "assembly_library": "ClassicalMechanicsAssembly",
   "native_endpoint_count": 25,
   "native_target_list": "Auxillary/assembly-native-targets.txt",
   "additional_proof_target_list": "Auxillary/assembly-proof-targets.txt",
-  "native_alias_semantics": "Lean export aliases; native module checks definitional identity against original declarations. Each original receives one fresh theorem-level audit.",
+  "native_alias_semantics": "Lean export aliases preserve canonical name resolution; 25 elaborated examples verify full reference/type compatibility. Each original receives one fresh theorem-level audit.",
   "audit_scope": "Exactly the canonical declarations in the two committed target lists; generated audit file records their full signatures and transitive axioms.",
   "root_semantics": "Preserve every explicit theorem hypothesis; no analytic or semantic premise is discharged by an axiom audit.",
   "full_reference_root": "NOT_PROMOTED_BY_ASSEMBLY_INFRASTRUCTURE",
   "external_platform": "native Linux / Ubuntu 24.04",
   "toolchain": "leanprover/lean4:v4.34.0-rc1",
   "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
-  "local_lean_executions": 0
+  "local_lean_executions": 0,
+  "root_closure": "CONDITIONAL_FORMAL_CLOSURE",
+  "source_commit": "d04698bae290672d5c0b0238ff4fa0d6c2ca9b6a",
+  "external_run_id": 43376636262,
+  "external_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43376636262",
+  "external_artifact_id": 14014388642,
+  "retained_evidence": "Auxillary/evidence/assembly-linux-43376636262",
+  "additional_proof_count": 18,
+  "theorem_axiom_audit_count": 43,
+  "axiom_audit_status": "PASS_STANDARD_ONLY",
+  "approved_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "diffusion_obligation": "DISCHARGED_FROM_SUPPLIED_SMOOTH_UNIT_JACOBIAN_FLOW",
+  "flow_existence_obligation": "OPEN"
 }

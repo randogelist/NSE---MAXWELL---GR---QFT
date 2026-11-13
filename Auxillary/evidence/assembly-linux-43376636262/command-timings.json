@@ -1,0 +1,145 @@
+[
+  {
+    "command": [
+      "lean",
+      "--version"
+    ],
+    "log": "lean-version.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.035
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      ".lake/packages/mathlib",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "mathlib-revision.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.001
+  },
+  {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "source-commit.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.001
+  },
+  {
+    "command": [
+      "git",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "working-tree.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.33
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "--no-build",
+      "ClassicalMechanicsAssembly"
+    ],
+    "log": "build-freshness.log",
+    "exit_code": 3,
+    "elapsed_seconds": 4.222
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanicsAssembly.NativeEndpoints"
+    ],
+    "log": "build-ClassicalMechanicsAssembly.NativeEndpoints.log",
+    "exit_code": 0,
+    "elapsed_seconds": 3.608
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanicsAssembly.PiolaTransport"
+    ],
+    "log": "build-ClassicalMechanicsAssembly.PiolaTransport.log",
+    "exit_code": 0,
+    "elapsed_seconds": 8.423
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanicsAssembly.Equation"
+    ],
+    "log": "build-ClassicalMechanicsAssembly.Equation.log",
+    "exit_code": 0,
+    "elapsed_seconds": 6.617
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanicsAssembly"
+    ],
+    "log": "build-ClassicalMechanicsAssembly.log",
+    "exit_code": 0,
+    "elapsed_seconds": 6.31
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanicsAssembly"
+    ],
+    "log": "build.log",
+    "exit_code": 0,
+    "elapsed_seconds": 3.516
+  },
+  {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-R",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/GeneratedAudit.lean"
+    ],
+    "log": "audit.log",
+    "exit_code": 0,
+    "elapsed_seconds": 3.51
+  },
+  {
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python3",
+      "Auxillary/scripts/verify_audit.py",
+      "--expected-platform",
+      "linux",
+      "--root",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT",
+      "--targets",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/audit-targets.txt",
+      "--audit-source",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/GeneratedAudit.lean",
+      "--log",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/audit.log",
+      "--manifest",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/source-manifest.json",
+      "--provenance",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/run-provenance.json",
+      "--scope",
+      "Auxillary/assembly/formalization-status.json",
+      "--output",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/audit-summary.json"
+    ],
+    "log": "audit-verifier.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.075
+  }
+]
