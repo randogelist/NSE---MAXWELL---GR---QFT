@@ -1,0 +1,23 @@
+QUANTUM_ADAPTER
+MODE=A_TIER_DERIVATION
+STATUS=A_TIER_CANDIDATE
+LOCAL_LEAN_EXECUTIONS=0
+EXTERNAL_COMPILER=Lean 4.34.0-rc1 native Linux
+BASE_COMMIT=1de664f2ef5ddc11caef25ac2274278b4171ab6b
+
+Exact implemented source: Phase, FiniteModel, Tangency, Born, Transport, Dynamics, RegularityContracts; forward/reverse implication modules; deterministic NSEQuantumBridge assembly.
+
+Root: forall nu>0,F:PhaseFlow nu,Cemb,C3,
+ GalerkinAnalyticLaws F -> PacketBounds F Cemb C3 -> InitialProjectionBounds ->
+ (NSEMaxwell.Classical.FeffermanB nu <-> QuantumAdapter.QREG F).
+
+Every quantified analytic structure remains unresolved until its actual inhabitant passes the matching external kernel. Structural definition, exact-type printing and axiom audit do not discharge hypotheses.
+
+The quantum function expressions and L2 representatives do not by themselves establish a selfadjoint generator. The full B-tier R1-R24 root is not claimed formalized.
+
+Matching source/hash/compiler/theorem axiom evidence: PENDING.
+Allowed axioms: propext, Classical.choice, Quot.sound.
+No sorry/admit/unsafe/native_decide/custom axiom is authorized.
+
+External Linux: bash Auxillary/run.sh, then bash Auxillary/quantum/run.sh.
+The repository contains literal angle-bracket directories; native Windows checkout is not asserted. Auxillary/quantum/run.cmd is an explicit WSL/Linux launcher, not a Windows Lean evidence claim.

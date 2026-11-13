@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "status": "A_TIER_CANDIDATE",
+  "base_branch": "codex/fefferman-b-maxwell",
+  "base_commit": "1de664f2ef5ddc11caef25ac2274278b4171ab6b",
+  "branch": "codex/quantum-adapter-from-maxwell",
+  "compiler": "leanprover/lean4:v4.34.0-rc1",
+  "execution": "cached external native Linux",
+  "local_lean_executions": 0,
+  "exact_root": "QuantumAdapter.exact_quantum_conditional_root",
+  "root_statement": "forall nu>0, forall F:PhaseFlow nu,Cemb,C3, GalerkinAnalyticLaws F -> PacketBounds F Cemb C3 -> InitialProjectionBounds -> (NSEMaxwell.Classical.FeffermanB nu <-> QuantumAdapter.QREG F)",
+  "root_premises": [
+    "PhaseFlow nu",
+    "GalerkinAnalyticLaws F",
+    "PacketBounds F Cemb C3",
+    "InitialProjectionBounds"
+  ],
+  "additional_unresolved_realization": [
+    "complete actual finite flow and drift divergence inhabitant",
+    "Gaussian normalization and full multiplier domains for all evolved packets",
+    "actual integral and MemLp pullback laws",
+    "selfadjoint closed Hamiltonian and its exact L2 unitary realization",
+    "concrete physical Sobolev/analytic estimates instantiating all four root hypotheses"
+  ],
+  "universal_regularity": "NOT_PROVED",
+  "full_txt_root_R1_R24": "NOT_FORMALIZED",
+  "target_count": 158,
+  "modules": 10
+}

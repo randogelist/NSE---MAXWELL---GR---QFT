@@ -101,7 +101,7 @@ jobs:
         uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: .lake/build
-          key: nse-project-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-${{ hashFiles('Fefferman_adapter/NSEMaxwell.lean', 'Fefferman_adapter/NSEMaxwell/**/*.lean', 'Fefferman_adapter/MethlibEndpoints.lean', 'Fefferman_adapter/MethlibEndpoints/**/*.lean', 'Fefferman_adapter/NativeSources/methlib/SingularClosure/**/*.lean', 'B <-> Maxwell/**/*.lean', 'Maxwell_Endpoint/MaxwellEndpoint.lean', 'Maxwell_Endpoint/MaxwellEndpoint/**/*.lean') }}
+          key: nse-project-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-${{ hashFiles('Fefferman_adapter/NSEMaxwell.lean', 'Fefferman_adapter/NSEMaxwell/**/*.lean', 'Fefferman_adapter/MethlibEndpoints.lean', 'Fefferman_adapter/MethlibEndpoints/**/*.lean', 'Fefferman_adapter/NativeSources/methlib/SingularClosure/**/*.lean', 'B <-> Maxwell/**/*.lean', 'Maxwell_Endpoint/MaxwellEndpoint.lean', 'Maxwell_Endpoint/MaxwellEndpoint/**/*.lean', 'Quantum_adapter/**/*.lean', 'B <-> Quantum/**/*.lean', 'Auxillary/quantum/module-order.json') }}
           restore-keys: |
             nse-project-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-
             nse-project-v2-Linux-X64-1e0a11bbe2f771dc625218fed552a5e8c9ad571990c5e9674d1e2921162b35c5-5a1aca4898000db4f1f98f887cf1a5b2548ed4bc4bf43edc34b73fdff48fd97f
@@ -112,6 +112,10 @@ jobs:
       - name: Compile and audit on native Linux
         shell: bash
         run: bash Auxillary/run.sh -Phase BuildAudit
+
+      - name: Compile the Quantum adapter before its ordered implications and audit every selected theorem
+        shell: bash
+        run: bash Auxillary/quantum/run.sh --source-commit "$GITHUB_SHA"
 
       - name: Prepare the independent Maxwell package from tracked sources
         shell: bash
@@ -274,3 +278,4 @@ jobs:
         with:
           path: ${{ runner.temp }}/nse-fefferman-adapter/.lake/build
           key: ${{ steps.fefferman-project-cache.outputs.cache-primary-key }}
+

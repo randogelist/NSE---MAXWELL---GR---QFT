@@ -1,0 +1,60 @@
+# Quantum external validation
+
+```text
+Compiler                  = leanprover/lean4:v4.34.0-rc1
+Platform                  = external native Linux
+Mathlib                   = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+Local Lean executions     = prohibited
+Dependency cache          = verified inherited repository preparation
+Project cache             = Lake transitive trace verification
+Audit output reuse        = prohibited
+Allowed axioms            = propext, Classical.choice, Quot.sound
+Promotion                 = exact scope and premise review after matching evidence
+```
+
+```bash
+bash Auxillary/run.sh -Phase Dependencies
+bash Auxillary/run.sh -Phase BuildAudit
+NSE_QUANTUM_EXTERNAL_NATIVE=1 bash Auxillary/quantum/run.sh
+```
+
+GitHub Actions supplies the external-runner context automatically. The runner
+rejects other local invocations before Lean, Lake, or Git subprocess execution.
+
+`module-order.json` is an ordered array of objects:
+
+```json
+{
+  "module": "QuantumAdapter.Phase",
+  "path": "Quantum_adapter/QuantumAdapter/Phase.lean",
+  "stage": "adapter"
+}
+```
+
+Stage order is `adapter → forward → reverse → assembly`. Every listed module
+must have an actual source file and a registered Lake library. Names are unique.
+The runner uses the ordinary incremental Lake build; no cleaning operation occurs.
+
+`audit-targets.txt` lists exact existing declarations, one per line.
+`formalization-status.json` records the exact implemented scope and all remaining
+analytic, semantic, witness, certificate and admission premises.
+
+The generated `QuantumAudit.lean` imports every scheduled module and executes
+`#check @declaration` and `#print axioms declaration` once per selected target.
+The inherited exact axiom parser rejects missing, duplicated, malformed or
+unapproved axiom records. Matching input bytes are checked against the current
+Git commit and SHA-256 hashes before and after compilation.
+
+Outputs reside in `artifacts/external-linux/quantum/`: compiler identity,
+dependency identity, source manifest, per-module logs, fresh type/axiom output,
+provenance, and audit summary. The parent artifact also retains the matching
+inherited integrated audit and source closure.
+
+```text
+PASS_STANDARD_ONLY
+  => selected declarations compiled with approved foundational axioms
+  != discharge of displayed theorem hypotheses
+  != construction of the unresolved full quantum generator
+  != universal Navier–Stokes regularity
+```
+

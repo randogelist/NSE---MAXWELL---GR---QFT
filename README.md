@@ -1,3 +1,16 @@
+# Quantum adapter branch
+
+```text
+BASE_BRANCH = codex/fefferman-b-maxwell
+BASE_COMMIT = 1de664f2ef5ddc11caef25ac2274278b4171ab6b
+QUANTUM_STATUS = A_TIER_CANDIDATE
+LOCAL_LEAN_EXECUTIONS = 0
+```
+
+[Quantum_adapter](Quantum_adapter/) contains the concrete full-mean phase, Born/L2/transport definitions and explicit analytic contracts. [B <-> Quantum](B%20%3C-%3E%20Quantum/) contains the ordered forward and reverse proof bodies. [Quantum audit](Auxillary/quantum/) preserves all unresolved premises and requires matching external cached compilation and theorem-level axiom evidence.
+
+The original Maxwell package and its evidence remain unchanged below.
+
 # Fefferman B ↔ constrained Maxwell
 
 ## Repository structure
@@ -187,3 +200,4 @@ RENAME_VALIDATION = PASS_CACHED_EXTERNAL_LINUX
 [Run 43353327242](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43353327242), source `8fd783b4d977fdb1a31cf4716023148ddfa26af9`: 226/226 integrated and 52/52 isolated audits passed; 37/37 integrated and 7/7 standalone Lean input hashes match. Both scopes reused trace-validated cached objects with zero module rebuilds. The 35 proof-module files remain byte-identical under the directory rename.
 
 [Rename evidence](Auxillary/evidence/linux-43353327242/).
+
