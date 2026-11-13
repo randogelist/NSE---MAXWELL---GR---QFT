@@ -11,6 +11,8 @@ reference H3 bound, independently of the Galerkin cutoff.
 
 set_option autoImplicit false
 set_option Elab.async true
+set_option maxHeartbeats 2000000
+set_option synthInstance.maxHeartbeats 2000000
 set_option backward.isDefEq.respectTransparency false
 
 open scoped BigOperators
@@ -118,8 +120,10 @@ theorem drift_reference_error_h3_rate_le (ν : ℝ) (hν : 0 < ν)
     change _ ≤ (ν / 3) * D + K * (V * Q + Q * V) at hleft
     change _ ≤ (ν / 3) * D + K * (Q * V + V * Q) at hright
     nlinarith
+  have hsmul (x y : Phase N) : inner ℝ x (ν • y) = ν * inner ℝ x y :=
+    real_inner_smul_right x y ν
   rw [drift_reference_error_expansion, map_sub, map_add, map_add, map_smul,
-    inner_sub_right, inner_add_right, inner_add_right, real_inner_smul_right,
+    inner_sub_right, inner_add_right, inner_add_right, hsmul,
     sobolevWeighted_inner_laplacian, sobolevDissipation_eq_energy_succ_sub]
   change 2 * (_ + _ + _ - ν * (D - Q)) ≤ referenceErrorGrowth ν R * Q
   unfold referenceErrorGrowth

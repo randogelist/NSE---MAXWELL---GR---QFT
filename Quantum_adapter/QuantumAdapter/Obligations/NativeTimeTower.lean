@@ -25,7 +25,7 @@ theorem nativeJetCoefficient_hasDerivAt {ν : ℝ} (F : PhaseFlow ν)
     HasDerivAt (nativeJetCoefficient F a ha N α)
       (nativeJetCoefficient F a ha N (α.1+1,α.2) t) t := by
   dsimp only [nativeJetCoefficient]
-  simpa only [nativeJetCoefficient, Function.comp_def, phaseCoordinate_apply] using
+  simpa only [nativeJetCoefficient, Function.comp_def, phaseCoordinate_apply] using!
     (phaseCoordinate (N+1) α.2.1 α.2.2).hasFDerivAt.comp_hasDerivAt t
       (phaseTimeJet_hasDerivAt F (N+1) (initialPhaseData (N+1) a ha) α.1 t)
 

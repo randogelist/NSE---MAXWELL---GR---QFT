@@ -119,10 +119,15 @@ theorem referenceResidual_h3_le_h0_tail (h : NSSolution ν a u p)
     _ = 432 * (‖phaseSobolev 0 N (referenceProjection h N t)‖ +
         ‖referenceSobolevAt h 0 t ht‖) ^ 2 *
       ‖phaseSobolev 0 N (referenceProjection h N t) - referenceSobolevAt h 0 t ht‖ ^ 2 *
-        ∑ k ∈ fullModes N, torusSobolevWeight k ^ 10 := by norm_num; ring
+        ∑ k ∈ fullModes N, torusSobolevWeight k ^ 10 := by
+      change 432 * ((‖phaseSobolev 0 N (referenceProjection h N t)‖ +
+        ‖referenceSobolevAt h 0 t ht‖) *
+        ‖phaseSobolev 0 N (referenceProjection h N t) - referenceSobolevAt h 0 t ht‖) ^ 2 *
+        (∑ k ∈ fullModes N, torusSobolevWeight k ^ 10) = _
+      ring
     _ ≤ _ := by
       have hd := mul_le_mul_of_nonneg_right
-        (mul_le_mul_of_nonneg_right (mul_le_mul_of_nonneg_left hD (by norm_num))
+        (mul_le_mul_of_nonneg_right (mul_le_mul_of_nonneg_left hD (show (0 : ℝ) ≤ 432 by norm_num))
           (sq_nonneg ‖phaseSobolev 0 N (referenceProjection h N t) - referenceSobolevAt h 0 t ht‖)) hsum
       convert hd using 1 <;> ring
 

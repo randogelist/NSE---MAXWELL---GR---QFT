@@ -37,8 +37,8 @@ theorem smoothDatumSobolev_norm_sq_le (s : ℕ) (a : Field)
   calc
     _ ≤ ∑' k : Frequency, 3 * smoothDatumDecayConstant s a ^ 2 *
         (torusSobolevWeight k)⁻¹ ^ 4 :=
-      tsum_le_tsum (fun k => initialSobolevEnergyDensity_le s a ha hp k)
-        (smooth_datum_sobolevEnergyDensity_summable s a ha hp)
+      (smooth_datum_sobolevEnergyDensity_summable s a ha hp).tsum_le_tsum
+        (fun k => initialSobolevEnergyDensity_le s a ha hp k)
         (summable_torusSobolevWeight_inv_four.mul_left _)
     _ = _ := by rw [tsum_mul_left]; rfl
 

@@ -145,16 +145,15 @@ theorem fourierJetTerm_hasFDerivWithinAt
       (s := forwardSpacetime))
   have h := hx.mul (ht.const_mul (fourierWordSymbol a.spatial k))
   convert! h using 1
-  · rfl
-  · ext v
-    simp only [Fintype.sum_option, fourierJetTerm, fourierJetStep, spacetimeCoordinate,
-      fourierWordSymbol_cons, ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
-      ContinuousLinearMap.sum_apply, ContinuousLinearMap.comp_apply,
-      ContinuousLinearMap.smulRight_apply, ContinuousLinearMap.one_apply,
-      ContinuousLinearMap.fst_apply, ContinuousLinearMap.snd_apply,
-      Complex.ofRealCLM_apply, EuclideanSpace.coe_proj, smul_eq_mul,
-      Complex.real_smul, fourierPhaseCLM, Finset.sum_mul, Finset.mul_sum]
-    simp only [mul_assoc, mul_left_comm, mul_comm] <;> ring
+  ext v
+  simp only [Fintype.sum_option, fourierJetTerm, fourierJetStep, spacetimeCoordinate,
+    fourierWordSymbol_cons, ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
+    ContinuousLinearMap.sum_apply, ContinuousLinearMap.comp_apply,
+    ContinuousLinearMap.smulRight_apply, ContinuousLinearMap.one_apply,
+    ContinuousLinearMap.fst_apply, ContinuousLinearMap.snd_apply,
+    Complex.ofRealCLM_apply, EuclideanSpace.coe_proj, smul_eq_mul,
+    Complex.real_smul, fourierPhaseCLM, Finset.sum_mul, Finset.mul_sum]
+  simp only [mul_assoc, mul_left_comm, mul_comm] <;> ring
 
 def forwardTimeSlab (T : ℝ) : Set (ℝ × Vec) :=
   forwardSpacetime ∩ {z | z.1 < T}
@@ -273,7 +272,8 @@ theorem fourierJetSynthesis_hasDerivWithinAt_time
   have hj := fourierJetSynthesis_hasFDerivWithinAt hd hb a (t, x) ht
   have hi : HasDerivAt (fun s : ℝ => (s, x)) (1, 0) t :=
     (hasDerivAt_id t).prodMk (hasDerivAt_const t x)
-  have hc := hj.comp_hasDerivWithinAt t hi.hasDerivWithinAt (fun s hs => hs)
+  have hc := hj.comp_hasDerivWithinAt t (hi.hasDerivWithinAt (s := Ici (0 : ℝ)))
+    (fun s hs => hs)
   simpa [Function.comp_def, Fintype.sum_option, spacetimeCoordinate] using! hc
 
 /-- The literal right-time derivative of the synthesized field is the next tower level. -/

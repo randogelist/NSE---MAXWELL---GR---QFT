@@ -163,8 +163,10 @@ theorem phaseFlow_sobolevEnergy_dissipation_identity {ν : ℝ} (F : PhaseFlow �
         (sobolevWeightedPhaseCLM s N (drift 0 N (F.map N t q))) -
           2 * ν * sobolevDissipation s N (F.map N t q)) t := by
   have h := phaseFlow_sobolevEnergy_hasDerivAt F s N q t
+  have hsmul (x y : Phase N) : inner ℝ x (ν • y) = ν * inner ℝ x y :=
+    real_inner_smul_right x y ν
   rw [drift_eq_inviscid_sub_laplacian, map_sub, map_smul,
-    inner_sub_right, real_inner_smul_right, sobolevWeighted_inner_laplacian] at h
+    inner_sub_right, hsmul, sobolevWeighted_inner_laplacian] at h
   convert h using 1 <;> ring
 
 end

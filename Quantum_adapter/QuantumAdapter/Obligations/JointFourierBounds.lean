@@ -1,5 +1,6 @@
 import QuantumAdapter.Obligations.ForwardSpatial
 import QuantumAdapter.Obligations.GalerkinSmoothTime
+import SingularClosure.SmoothDatumSobolev
 
 /-! Uniform Fourier decay of any actual jointly smooth forward periodic field. -/
 set_option autoImplicit false

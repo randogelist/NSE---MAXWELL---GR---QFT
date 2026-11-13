@@ -89,7 +89,6 @@ theorem referenceResidual_h3_inverse_square_bound (h : NSSolution ν a u p)
         (mul_nonneg (mul_nonneg (by norm_num) hC0) (mul_nonneg (by positivity) hC8))
     _ = _ := by
       field_simp [hNr.ne']
-      ring
 
 /-- NSSolution itself supplies a vanishing sequence dominating every literal H3 residual. -/
 theorem NSSolution.referenceResidual_vanishes_uniformly (h : NSSolution ν a u p) (T : ℝ) :
