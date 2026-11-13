@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""External native GR assembly and sequential named endpoint audits; caches preserved.
+"""External native GR assembly, parallel DAG build and exact ordered audits.
 
 Invoke only on an external native compiler / GitHub Actions. Python syntax or
 manifest checks in an authoring environment do not execute Lean.
@@ -74,6 +74,8 @@ def main() -> int:
                         help="Compile and audit every selected module independently")
     parser.add_argument("--keep-going", action="store_true",
                         help="Retain successful exact audits after independent module failures")
+    parser.add_argument("--dag-build", action="store_true",
+                        help="Prebuild all selected targets in one Lake dependency-graph invocation")
     args = parser.parse_args()
     package = args.package_root.resolve()
     repo = package.parent
@@ -274,6 +276,21 @@ def main() -> int:
                     stages.append((f"assembly-{number:03d}", module, module_names))
         else:
             stages.append(("assembly", "GRAssembly", [x["name"] for x in selected]))
+        # One Lake process owns the build directory and schedules its dependency
+        # graph. Exact audits remain ordered, with no signature-only promotion.
+        dag_build_pass = False
+        if args.dag_build:
+            dag_modules = list(dict.fromkeys(module for _, module, _ in stages))
+            try:
+                run(["lake", "build", *dag_modules], "dag-build.log")
+                dag_build_pass = True
+                provenance["dag_prebuild"] = "PASS; ALL_SELECTED_TARGETS_FRESH"
+            except (OSError, ValueError) as error:
+                # Successful independent objects remain cached. Recheck named
+                # stages to distinguish actual failures from blocked imports.
+                provenance["dag_prebuild"] = "PARTIAL; CACHED_ORDERED_RECHECK"
+                provenance["dag_prebuild_error"] = str(error)
+            persist()
         stage_summaries = []
         failed_stages = []
         for stage, module, names in stages:
@@ -292,7 +309,8 @@ def main() -> int:
                 print("BLOCKED_MODULE=" + module + "; DEPENDENCIES=" + ",".join(blocked), flush=True)
                 continue
             try:
-                run(["lake", "build", module], stage + "-build.log")
+                if not dag_build_pass:
+                    run(["lake", "build", module], stage + "-build.log")
                 audit = report / (stage.replace("-", "_").title() + "Audit.lean")
                 text = "import " + module + "\nset_option pp.universes false\n"
                 text += "\n".join("#check @" + name + "\n#print axioms " + name for name in names) + "\n"

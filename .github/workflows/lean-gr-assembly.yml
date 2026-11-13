@@ -1,4 +1,4 @@
-name: Cached native GR assembly and sequential exact audits
+name: Cached accelerated GR dependency build and exact audits
 
 on:
   push:
@@ -151,10 +151,10 @@ jobs:
             rsync -a --ignore-existing TEMP/.lake/build/ ASSEMBLY/.lake/build/
           fi
 
-      - name: Compile and audit GR adapter, forward, reverse, then assembly
+      - name: Build the parallel dependency graph and audit exact endpoints
         id: build
         shell: bash
-        run: bash ASSEMBLY/run.sh --phase build --individual-modules --keep-going --source-commit "$GITHUB_SHA"
+        run: bash ASSEMBLY/run.sh --phase build --dag-build --individual-modules --keep-going --source-commit "$GITHUB_SHA"
 
       - name: Retain matching compiler source and theorem evidence
         if: always()

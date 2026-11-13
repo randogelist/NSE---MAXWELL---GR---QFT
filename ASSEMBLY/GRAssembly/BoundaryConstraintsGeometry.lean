@@ -68,8 +68,30 @@ theorem bulkPartial_shape_at_flat {h : Bulk → Tensor4} {z : Bulk}
     bulkPartial_mul (analyticAt_matrix_entry hi a c) (analyticAt_matrix_entry hk c b) 0
   simp_rw [hprod, bulkPartial_inverse_at_flat hh hn he]
   rw [he, eta4_inverse]
-  fin_cases a <;> fin_cases b <;>
-    norm_num [eta4Matrix, eta4, lorentzSign4, Fin.sum_univ_succ] <;> ring
+  rw [Finset.sum_add_distrib]
+  have heval :
+      (∑ c : Fin 4, eta4Matrix a c *
+        bulkPartial (fun y => gaussianSecondForm h y c b) 0 z) =
+      lorentzSign4 a * bulkPartial (fun y => gaussianSecondForm h y a b) 0 z := by
+    classical
+    rw [Finset.sum_eq_single a]
+    · simp only [eta4Matrix, eta4, if_pos rfl]
+    · intro c hc hca
+      simp only [eta4Matrix, eta4, if_neg (Ne.symm hca), zero_mul]
+    · intro ha
+      exact False.elim (ha (Finset.mem_univ a))
+  rw [heval]
+  have hquad :
+      (∑ c : Fin 4, (-2 * lorentzSign4 a * lorentzSign4 c *
+        gaussianSecondForm h z a c) * gaussianSecondForm h z c b) =
+      -2 * ∑ c : Fin 4, lorentzSign4 a * lorentzSign4 c *
+        gaussianSecondForm h z a c * gaussianSecondForm h z c b := by
+    rw [Finset.mul_sum]
+    apply Finset.sum_congr rfl
+    intro c hc
+    ring
+  rw [hquad]
+  ring
 
 theorem gaussian_normal_flat {h : Bulk → Tensor4} {z : Bulk}
     (hh : AnalyticAt ℝ h z) (hn : IsUnit (h z).det) (he : h z = eta4Matrix)

@@ -49,7 +49,7 @@ theorem boundaryAdmissible_potential_analytic {ρ t0 δ : ℝ} {K : BoundaryTens
   have hper (t : ℝ) (ht : t ∈ timeInterval t0 δ) :
       SpatialPeriodic (fun x => boundaryBeta K t x - ρ) := by
     intro x i
-    rw [boundaryAdmissible_beta_periodic hK ht x i]
+    exact congrArg (fun q : ℝ => q - ρ) (boundaryAdmissible_beta_periodic hK ht x i)
   have ha := poissonInverse_joint_analytic_on_open_slab
     (fun t x => boundaryBeta K t x - ρ) isOpen_Ioo hinput hper
   intro z hz
@@ -65,7 +65,7 @@ theorem boundaryAdmissible_potential_laplacian {ρ t0 δ : ℝ} {K : BoundaryTen
   have hb := analyticOnNhd_slab_slice_smooth (boundaryAdmissible_beta_analytic hK) ht
   have hp : SpatialPeriodic (fun y => boundaryBeta K t y - ρ) := by
     intro y i
-    rw [boundaryAdmissible_beta_periodic hK ht y i]
+    exact congrArg (fun q : ℝ => q - ρ) (boundaryAdmissible_beta_periodic hK ht y i)
   rw [boundaryAdmissible_potential_eq hK ht]
   have h := congrFun (scalarLaplacian_poissonInverse
     (fun y => boundaryBeta K t y - ρ) (hb.sub contDiff_const) hp) x
@@ -83,7 +83,7 @@ theorem boundaryAdmissible_potential_time {ρ t0 δ : ℝ} {K : BoundaryTensor}
   have hp (s : ℝ) (hs : s ∈ timeInterval t0 δ) :
       SpatialPeriodic (fun x => boundaryBeta K s x - ρ) := by
     intro y i
-    rw [boundaryAdmissible_beta_periodic hK hs y i]
+    exact congrArg (fun q : ℝ => q - ρ) (boundaryAdmissible_beta_periodic hK hs y i)
   have hd := poissonInverse_localTimeDerivative (fun s y => boundaryBeta K s y - ρ)
     isOpen_Ioo (analyticOnNhd_slab_contDiffOn ha) hp ht
   have heq : scalarLocalTimeDerivative (fun s y => boundaryBeta K s y - ρ) t =
@@ -93,8 +93,10 @@ theorem boundaryAdmissible_potential_time {ρ t0 δ : ℝ} {K : BoundaryTensor}
   rw [heq] at hd
   rw [← hd]
   funext y
-  exact ((boundaryAdmissible_potential_eq_eventually hK ht).mono
-    (fun s hs => congrFun hs y)).deriv_eq
+  have he : (fun s => boundaryPotential K s y) =ᶠ[𝓝 t]
+      (fun s => poissonInverse (fun x => boundaryBeta K s x - ρ) y) :=
+    (boundaryAdmissible_potential_eq_eventually hK ht).mono (fun s hs => congrFun hs y)
+  exact he.deriv_eq
 
 theorem boundaryAdmissible_potential_initial {ρ t0 δ : ℝ} {K : BoundaryTensor}
     (hK : BoundaryAdmissible ρ t0 δ K) : ∀ x, boundaryPotential K t0 x = 0 := by
@@ -136,7 +138,9 @@ theorem boundaryAdmissible_hodge_time {ρ t0 δ : ℝ} {K : BoundaryTensor}
       localTimeDerivative (boundaryRawVelocity K) t x +
         gradient (scalarLocalTimeDerivative (scalarLocalTimeDerivative (boundaryPotential K)) t) x := by
   have hq := boundaryAdmissible_potential_analytic hK (t, x) ht
-  have hqt := analyticAt_jointTime hq
+  have hqt : AnalyticAt ℝ (fun z : ℝ × Vec =>
+      scalarLocalTimeDerivative (boundaryPotential K) z.1 z.2) (t,x) :=
+    analyticAt_jointTime hq
   have hgrad := analyticAt_gradient_joint hqt
   have hw := boundaryAdmissible_raw_analytic hK (t, x) ht
   have he : (fun s => boundaryVelocity K s x) =ᶠ[𝓝 t]
@@ -168,13 +172,19 @@ theorem boundaryAdmissible_pressure_analytic {ρ t0 δ : ℝ} {K : BoundaryTenso
   have hk := boundaryAdmissible_entry_analytic hK 0 0 z hz
   have hu := boundaryAdmissible_velocity_analytic hK z hz
   have hq := boundaryAdmissible_potential_analytic hK z hz
-  have hs := analyticAt_vectorSq3_components (fun i =>
-    ((EuclideanSpace.proj i).analyticAt _).comp hu)
+  have hs : AnalyticAt ℝ (fun y : ℝ × Vec =>
+      vectorSq3 (fun i => boundaryVelocity K y.1 y.2 i)) z := by
+    apply analyticAt_vectorSq3_components
+    intro i
+    exact ((EuclideanSpace.proj i).analyticAt _).comp hu
+  have hqtt : AnalyticAt ℝ (fun y : ℝ × Vec =>
+      scalarLocalTimeDerivative (scalarLocalTimeDerivative (boundaryPotential K)) y.1 y.2) z :=
+    analyticAt_jointTime (analyticAt_jointTime hq)
   have hc : AnalyticAt ℝ (fun _ : ℝ × Vec => 2 * ρ) z := analyticAt_const
   have hi : AnalyticAt ℝ (fun _ : ℝ × Vec => (3 : ℝ)⁻¹) z := analyticAt_const
   simpa only [boundaryPressure, div_eq_mul_inv, Pi.neg_def, Pi.sub_def,
     Pi.add_def, Pi.mul_def] using
-    (hk.neg.sub ((hc.add hs).mul hi)).sub (analyticAt_jointTime (analyticAt_jointTime hq))
+    (hk.neg.sub ((hc.add hs).mul hi)).sub hqtt
 
 theorem boundaryAdmissible_decoded_pair {ρ t0 δ : ℝ} {K : BoundaryTensor}
     (hK : BoundaryAdmissible ρ t0 δ K) :
@@ -185,7 +195,8 @@ theorem boundaryAdmissible_decoded_pair {ρ t0 δ : ℝ} {K : BoundaryTensor}
   periodic_velocity := fun t ht => leray_periodic (boundaryAdmissible_raw_periodic hK ht)
   periodic_pressure := by
     intro t ht x i
-    have hu := leray_periodic (boundaryAdmissible_raw_periodic hK ht) x i
+    have hu : boundaryVelocity K t (x + unitVector i) = boundaryVelocity K t x :=
+      leray_periodic (boundaryAdmissible_raw_periodic hK ht) x i
     have hq : ∀ s, SpatialPeriodic (boundaryPotential K s) :=
       fun s => poissonInverse_periodic _
     have htt := scalarLocalTimeDerivative_periodic_native _
