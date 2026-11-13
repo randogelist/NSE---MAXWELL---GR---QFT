@@ -1,0 +1,12 @@
+⚠ [8710/8711] Replayed SingularClosure.GalerkinAlgebra
+warning: NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean:163:37: `if_false` has been deprecated: Use `ite_false` instead
+warning: NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean:258:37: `if_false` has been deprecated: Use `ite_false` instead
+warning: NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean:267:8: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Complex.mul_re, Complex.mul_im, Complex.normSq_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8711/8711] Built SingularClosure.GalerkinEnergy (4.8s)
+Build completed successfully (8711 jobs).

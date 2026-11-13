@@ -1,0 +1,34 @@
+⚠ [8710/8713] Replayed SingularClosure.GalerkinAlgebra
+warning: NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean:163:37: `if_false` has been deprecated: Use `ite_false` instead
+warning: NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean:258:37: `if_false` has been deprecated: Use `ite_false` instead
+warning: NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean:267:8: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Complex.mul_re, Complex.mul_im, Complex.normSq_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8712/8713] Replayed SingularClosure.LerayPressure
+warning: NativeSources/methlib/SingularClosure/LerayPressure.lean:53:37: `if_false` has been deprecated: Use `ite_false` instead
+warning: NativeSources/methlib/SingularClosure/LerayPressure.lean:102:60: `if_false` has been deprecated: Use `ite_false` instead
+⚠ [8713/8713] Built SingularClosure.TorusSobolev (9.2s)
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:181:38: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:188:74: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:301:37: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:326:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:327:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:366:12: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:369:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:422:13: `ContinuousLinearMap.sum_apply` has been deprecated: Use `sum_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sum_apply` to `sum_apply x`).
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:460:23: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sub_apply` to `sub_apply x`).
+Build completed successfully (8713 jobs).

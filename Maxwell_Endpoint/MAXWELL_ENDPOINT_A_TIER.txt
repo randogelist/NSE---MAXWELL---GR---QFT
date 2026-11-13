@@ -3,14 +3,14 @@ MAXWELL_ENDPOINT
 
 MODE = A_TIER_DERIVATION
 STATUS = A_TIER_FOR_EXACT_NATIVE_THEOREMS
-ROOT_EXTERNAL_VALIDATION = PASS_BUILD_AND226_FRESH_STANDARD_ONLY_AUDITS
-ISOLATED_EXTERNAL_VALIDATION = PASS_BUILD_AND52_FRESH_STANDARD_ONLY_AUDITS
+ROOT_EXTERNAL_VALIDATION = PASS_BUILD_AND236_FRESH_STANDARD_ONLY_AUDITS
+ISOLATED_EXTERNAL_VALIDATION = PASS_BUILD_AND62_FRESH_STANDARD_ONLY_AUDITS
 LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
 PROMOTION = MATCHING_EXTERNAL_COMPILER_AND_NAMED_AXIOM_AUDIT_REQUIRED
-STANDALONE_AUDIT_TARGETS = 52
+STANDALONE_AUDIT_TARGETS = 62
 NATIVE_THEOREMS = 23
 NATIVE_DEFINITION_TYPE_TARGETS = 29
-INTEGRATED_AUDIT_TARGETS = 226
+INTEGRATED_AUDIT_TARGETS = 236
 
 1. EXACT NATIVE OBJECTS
 ----------------------
@@ -148,8 +148,9 @@ Geometry.lean -> Constitutive.lean -> System.lean -> Native.lean.
 MaxwellEndpoint.lean imports the native implementation.
 Audit.lean imports the aggregate and names the registered declarations.
 
-Project imports are restricted to MaxwellEndpoint.*.
-External mathematical imports are restricted to the pinned Mathlib package.
+The Maxwell implementation imports MaxwellEndpoint.* and pinned Mathlib.
+The additional MethlibEndpoints aggregate imports the contained selected
+SingularClosure closure; its ten endpoints are separately audited.
 No Fefferman_adapter or directional proof source is required by the isolated
 Maxwell endpoint package.
 
@@ -364,7 +365,7 @@ theorem zero_datum_global_instance (ν c : ℝ) (m : Vec) :
 10. NATIVE AUDIT REGISTRATION
 -----------------------------
 
-All 52 registered names:
+The 52 Maxwell-native names (plus ten Methlib names below):
 
 NSEMaxwell.Classical.Vec
 NSEMaxwell.Classical.Field
@@ -429,3 +430,73 @@ Both scopes: LAKE_TRANSITIVE_TRACE_VERIFIED_WARM_REUSE; zero module rebuilds.
 All35 proof-module file bytes, declarations and premises preserved.
 Evidence: ../Auxillary/evidence/linux-43353327242/.
 Previous certificates above retain their original source-commit scope.
+
+ADDITIONAL NATIVE METHLIB AUDIT REGISTRATION
+------------------------------------------
+SingularClosure.torusDatumComponent_fourierCoeff
+SingularClosure.datumFourierCoeff_coordinateDerivative
+SingularClosure.FOURIER_POLYNOMIAL_DECAY
+SingularClosure.scalarFourierSeries_contDiff
+SingularClosure.scalarFourierSeries_coefficient
+SingularClosure.datumFourierCoeff_injective_continuous_periodic
+SingularClosure.infiniteTransportPressure_recovery
+SingularClosure.datumFourierCoeff_smoothFourierSynthesis
+SingularClosure.smoothFourierSynthesis_coordinateDerivative
+SingularClosure.summable_torusSobolevWeight_inv_four
+
+CONTAINED NATIVE SOURCE CERTIFICATE
+----------------------------------
+SOURCE_COMMIT = 1de664f2ef5ddc11caef25ac2274278b4171ab6b
+EXTERNAL_RUN = 43359539373
+EXTERNAL_JOB = 131669505081
+ARTIFACT_ID = 14008727271
+ARTIFACT_FILES = 242
+ARTIFACT_SHA256 = e3c5b60b16610af15c6f40454698e35c81228a1b44c5bf490d41a852cf354482
+COMPILER = Lean 4.34.0-rc1, x86_64-unknown-linux-gnu
+COMPILER_COMMIT = 3447a668783dbce1a8fdb97101dd067687b2b418
+INTEGRATED_AUDIT = 236 / 236 PASS_STANDARD_ONLY
+ISOLATED_FEFFERMAN_AUDIT = 236 / 236 PASS_STANDARD_ONLY
+ISOLATED_MAXWELL_AUDIT = 62 / 62 PASS_STANDARD_ONLY
+MATCHING_INTEGRATED_SOURCE_FILES = 20353 / 20353
+MATCHING_FEFFERMAN_SOURCE_FILES = 9968 / 9968
+MATCHING_MAXWELL_SOURCE_FILES = 9914 / 9914
+MATCHING_INTEGRATED_LEAN_INPUTS = 19160 / 19160
+MATCHING_FEFFERMAN_LEAN_INPUTS = 9592 / 9592
+MATCHING_MAXWELL_LEAN_INPUTS = 9563 / 9563
+COMPLETE_UPSTREAM_SNAPSHOTS_PER_PACKAGE = 9
+UPSTREAM_FILES_PER_PACKAGE = 9842
+UPSTREAM_LEAN_FILES_PER_PACKAGE = 9515
+MATHLIB_LEAN_FILES_PER_PACKAGE = 8853
+NATIVE_METHLIB_MODULES_PER_PACKAGE = 39
+TARGET_COMPILER_METHLIB_ENDPOINT_AUDITS = 10 / 10 PASS_STANDARD_ONLY
+MISSING_REACHABLE_IMPORTS = 0
+AMBIGUOUS_REACHABLE_IMPORTS = 0
+COMPILER_PROVIDED_LIBRARIES = Init, Lean, Std, Lake
+ROOT_COMPILER_DEPENDENCY_PROJECT_CACHES = EXACT_HITS
+ROOT_MODULE_BUILD_INVOCATIONS = 0
+FEFFERMAN_MODULE_BUILD_INVOCATIONS = 72
+MAXWELL_MODULE_BUILD_INVOCATIONS = 44
+MODULE_BUILD_INVOCATION_COUNTS != recompilation_counts
+ISOLATED_DEPENDENCY_SOURCE_CHECKOUTS = independently reconstructed
+ISOLATED_DEPENDENCY_SOURCE_DOWNLOADS = 0
+ISOLATED_DEPENDENCY_COMPILED_OBJECTS = reused
+ISOLATED_PROJECT_CACHE_SEED = physical copies of matching audited root objects
+SUBSEQUENT_STANDALONE_VALIDATION = ordinary Lake traces + fresh named audits
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+ALLOWED_AXIOMS = propext, Classical.choice, Quot.sound
+FORMAL_STATUS = CONDITIONAL_FORMAL_CLOSURE
+FOURIER_HODGE_LAWS_INHABITANT = NOT_SUPPLIED
+ARBITRARY_DATA_FEFFERMANB = NOT_PROVED
+ARBITRARY_DATA_MAXWELLB = NOT_PROVED
+UNCONDITIONAL_EQUIVALENCE = NOT_PROVED
+
+RUN_URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43359539373
+EVIDENCE_DIRECTORY = ../Auxillary/evidence/linux-43359539373/
+INTEGRATED_AUDIT_FILE = ../Auxillary/evidence/linux-43359539373/audit-summary.json
+FEFFERMAN_AUDIT_FILE = ../Auxillary/evidence/linux-43359539373/fefferman-standalone/audit-summary.json
+MAXWELL_AUDIT_FILE = ../Auxillary/evidence/linux-43359539373/standalone/audit-summary.json
+
+SOURCE_MANIFEST_SCOPE = compiled source commit above
+SUBSEQUENT_DOCUMENTATION_EVIDENCE_PUBLICATION = certified Lean/build/audit inputs preserved
+SOURCE_PRESENCE != certification_of_every_upstream_test_or_declaration
+METHLIB_ENDPOINT_CERTIFICATION != discharge_of_exact_Hodge_alignment

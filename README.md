@@ -15,11 +15,11 @@ The four top-level content folders have the requested domain roles. `.github/` r
 
 ```text
 LAYOUT_PLATFORM              = LINUX / POSIX
-CURRENT_PACKAGE_STATUS       = A_TIER_CANDIDATE
+CURRENT_PACKAGE_STATUS       = A_TIER_FOR_EXACT_AUDITED_DECLARATIONS
 INTEGRATED_AUDIT_TARGETS      = 236
 ISOLATED_FEFFERMAN_TARGETS    = 236
 ISOLATED_MAXWELL_TARGETS      = 62
-CURRENT_EXTERNAL_VALIDATION  = PENDING
+CURRENT_EXTERNAL_VALIDATION  = PASS_THREE_SCOPES_RUN_43359539373
 LOCAL_LEAN_EXECUTIONS        = 0
 HODGE_LEAN_INHABITANT         = NOT_SUPPLIED
 HODGE_B_TIER_DERIVATION       = COMPLETE
@@ -48,7 +48,7 @@ bash Fefferman_adapter/run.sh
 bash Maxwell_Endpoint/run.sh
 ```
 
-The native source inventories are `native-sources.json` in each package. Snapshot bytes are checked against upstream Git blob/tree identities and the actual compiler dependency sources. Existing verified dependency checkouts and compilation caches are preserved. Isolated package builds use contained source files and share only verified dependency compilation objects.
+The native source inventories are `native-sources.json` in each package. Snapshot bytes are checked against upstream Git blob/tree identities and the actual compiler dependency sources. Existing verified dependency checkouts and compilation caches are preserved. Isolated package builds use contained source files and separate dependency source checkouts. Verified dependency compilation objects are reused; standalone project caches are seeded with physical copies of matching audited root objects and then validated by ordinary Lake traces and fresh audits.
 
 Original Methlib declarations retain their `SingularClosure` names. The source's `Fefferman_B_0_adjust` and `AX6Statement` remain distinct from the exact arbitrary-mean target. Neither inclusion nor compilation supplies an inhabitant of `FourierHodgeLaws`.
 
@@ -84,13 +84,14 @@ J = c² curl B − DG[B](−curl G[B])
 [Maxwell_Endpoint/](Maxwell_Endpoint/) contains the actual `MaxwellSolution` and `MaxwellB` definitions, their complete local source dependencies, and an independent pinned Lake package. The namespace `NSEMaxwell.Classical` and the frozen definition bodies are retained. The adapter imports this endpoint.
 
 ```text
-NATIVE_SOURCE_CLOSURE = Mathlib + MaxwellEndpoint.*
+NATIVE_IMPLEMENTATION_IMPORTS = Mathlib + MaxwellEndpoint.*
+ADDITIONAL_AUDITED_SOURCE_CLOSURE = MethlibEndpoints + SingularClosure
 NATIVE_ZERO_INSTANCE = MaxwellEndpoint.zero_solution
 NATIVE_ZERO_EXISTENCE = MaxwellEndpoint.zero_datum_global_instance
 NATIVE_THEOREM_COUNT = 23
 NATIVE_DEFINITION_TYPE_TARGET_COUNT = 29
-ROOT_BUILD_AND_AUDIT = PASS_NATIVE_LINUX_AND226_STANDARD_ONLY_AUDITS
-ISOLATED_BUILD_AND_AUDIT = PASS_NATIVE_LINUX_AND52_STANDARD_ONLY_AUDITS
+ROOT_BUILD_AND_AUDIT = PASS_NATIVE_LINUX_AND236_STANDARD_ONLY_AUDITS
+ISOLATED_BUILD_AND_AUDIT = PASS_NATIVE_LINUX_AND62_STANDARD_ONLY_AUDITS
 ```
 
 [Native scope and certification contract](Maxwell_Endpoint/MAXWELL_ENDPOINT_A_TIER.txt). The externally certified `zero_solution` theorem constructs the actual zero fields for every real `ν`, `c`, and arbitrary harmonic mean `m`. `zero_datum_global_instance` combines admissibility with that global witness. These endpoints do not prove the arbitrary-data existence proposition `MaxwellB`.
@@ -126,7 +127,7 @@ Methlib pin = e9cf90726b8544a268469ebc8fa6634e9c713e07
 Selection   = 16 core + 4 optional + 1 auxiliary + 1 reference
 ```
 
-The `.lean.txt` copies are reference sources. The active Mathlib implementation remains the pinned cached dependency. Methlib source ports and the Hodge inhabitant require the later integration specified in [INTEGRATION_PLAN.md](B%20%3C-%3E%20Maxwell/INTEGRATION_PLAN.md).
+The `.lean.txt` copies remain reference sources. Native Mathlib sources and the selected 39-module Methlib closure are contained in both packages and validated against the compiler inputs. Ten selected Methlib endpoints now pass target-compiler audits. Their semantic alignment with the frozen operators and the concrete Hodge inhabitant remain the integration obligations recorded in [INTEGRATION_PLAN.md](B%20%3C-%3E%20Maxwell/INTEGRATION_PLAN.md).
 
 ## Cached external validation
 
@@ -140,13 +141,34 @@ Dependency pins   = unchanged
 Compiler cache    = retained
 Dependency cache  = exact verified predecessor fallback + current key
 Project cache     = exact verified predecessor fallback + current key
-Theorem audit     = fresh; 226 integrated targets + 52 standalone targets
+Theorem audit     = fresh; 236 integrated + 236 isolated Fefferman + 62 isolated Maxwell
 Allowed axioms    = propext, Classical.choice, Quot.sound
 ```
 
-The freshness check and final build include both reduced direction modules and the native Maxwell endpoint. Source manifests include the Maxwell, adapter, and two directional roots. Isolated package validation uses the Maxwell folder without other project source. No cache cleaning is performed.
+The freshness check and final build include both reduced direction modules and the native Maxwell endpoint. Source manifests include the Maxwell, adapter, and two directional roots. Each isolated package is validated using only its contained source files; the Fefferman folder includes byte-checked copies of the canonical Maxwell and directional modules. No cache cleaning is performed.
 
 [formalization-status.json](Auxillary/formalization-status.json) records scope and evidence. [Retained evidence](Auxillary/evidence/) preserves prior compiler artifacts byte-for-byte; each certificate identifies its original source commit and layout.
+
+## Contained native source certificate
+
+[Native Linux run 43359539373](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43359539373), source `1de664f2ef5ddc11caef25ac2274278b4171ab6b`:
+
+| Scope | Fresh named audits | Matching source files | Matching Lean inputs |
+|---|---:|---:|---:|
+| Integrated repository | 236/236 | 20,353/20,353 | 19,160/19,160 |
+| Isolated Fefferman | 236/236 | 9,968/9,968 | 9,592/9,592 |
+| Isolated Maxwell | 62/62 | 9,914/9,914 | 9,563/9,563 |
+
+All three builds and named axiom audits passed with only `propext`, `Classical.choice`, and `Quot.sound`. Each package contains **9,515 native Lean files** across nine complete pinned dependency snapshots, including **8,853 Mathlib Lean files**, plus the selected **39 Methlib modules**. The ten selected `SingularClosure` endpoints passed the target Lean `4.34.0-rc1` compiler and named audits. Every reachable non-compiler import is contained; missing and ambiguous modules are both zero. `Init`, `Lean`, `Std`, and `Lake` remain supplied by the pinned compiler distribution.
+
+The integrated build restored exact compiler, dependency, and project caches and passed ordinary Lake trace validation with zero module-build invocations. Standalone source checkouts were reconstructed from contained files with zero dependency-source downloads. Their separate project caches received physical copies of matching audited root objects; subsequent native build validation and fresh audits passed. Incremental module-build invocations: **72 Fefferman**, **44 Maxwell**; these counts do not assert recompilation counts. Dependency compilation objects were shared; dependency source checkouts and standalone project object directories were separate.
+
+Artifact `14008727271` contains **242 preserved files**; ZIP SHA256:
+`e3c5b60b16610af15c6f40454698e35c81228a1b44c5bf490d41a852cf354482`.
+
+The source manifests describe the compiled source commit. Documentation/evidence publication preserves all certified Lean sources, build configuration, runners, and audit inventories. The exact reduced implication remains **CONDITIONAL_FORMAL_CLOSURE**; `FourierHodgeLaws` remains an explicit unresolved premise, and arbitrary-data `FeffermanB`/`MaxwellB` existence is not proved.
+
+[Integrated audit](Auxillary/evidence/linux-43359539373/audit-summary.json) · [Fefferman audit](Auxillary/evidence/linux-43359539373/fefferman-standalone/audit-summary.json) · [Maxwell audit](Auxillary/evidence/linux-43359539373/standalone/audit-summary.json) · [Retained evidence](Auxillary/evidence/linux-43359539373/)
 
 ## Prior matching proof-source certificate
 

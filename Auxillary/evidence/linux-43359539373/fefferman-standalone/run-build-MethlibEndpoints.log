@@ -1,0 +1,323 @@
+⚠ [8708/8747] Replayed SingularClosure.HilbertChannels
+warning: NativeSources/methlib/SingularClosure/HilbertChannels.lean:92:14: This simp argument is unused:
+  hB
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hA, hAB]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8710/8747] Replayed SingularClosure.CoordinateAverage
+warning: NativeSources/methlib/SingularClosure/CoordinateAverage.lean:146:6: `ContinuousLinearMap.zero_apply` has been deprecated: Use `zero_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.zero_apply` to `zero_apply x`).
+⚠ [8715/8747] Replayed SingularClosure.CoordinateAverageOrthogonal
+warning: NativeSources/methlib/SingularClosure/CoordinateAverageOrthogonal.lean:85:0: automatically included section variable(s) unused in theorem `SingularClosure.integral_unitCube_productMeasure`:
+  [CompleteSpace E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: NativeSources/methlib/SingularClosure/CoordinateAverageOrthogonal.lean:104:0: automatically included section variable(s) unused in theorem `SingularClosure.continuous_integrable_unitProduct`:
+  [NormedSpace ℝ E]
+  [CompleteSpace E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedSpace ℝ E] [CompleteSpace E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8716/8747] Replayed SingularClosure.FourierIntegral
+warning: NativeSources/methlib/SingularClosure/FourierIntegral.lean:55:32: This simp argument is unused:
+  div_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [fourier_coe_apply, ← Complex.exp_sum]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: NativeSources/methlib/SingularClosure/FourierIntegral.lean:72:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+⚠ [8719/8747] Replayed SingularClosure.PhysicalProjection
+warning: NativeSources/methlib/SingularClosure/PhysicalProjection.lean:34:48: `ContinuousLinearMap.sum_apply` has been deprecated: Use `sum_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sum_apply` to `sum_apply x`).
+warning: NativeSources/methlib/SingularClosure/PhysicalProjection.lean:35:4: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: NativeSources/methlib/SingularClosure/PhysicalProjection.lean:44:48: This simp argument is unused:
+  mul_ite
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [fourierPhaseCLM, unitVector, apply_ite]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: NativeSources/methlib/SingularClosure/PhysicalProjection.lean:114:25: `ContinuousLinearMap.sum_apply` has been deprecated: Use `sum_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sum_apply` to `sum_apply x`).
+warning: NativeSources/methlib/SingularClosure/PhysicalProjection.lean:115:4: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+⚠ [8721/8747] Replayed SingularClosure.GalerkinAlgebra
+warning: NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean:163:37: `if_false` has been deprecated: Use `ite_false` instead
+warning: NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean:258:37: `if_false` has been deprecated: Use `ite_false` instead
+warning: NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean:267:8: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Complex.mul_re, Complex.mul_im, Complex.normSq_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8723/8747] Replayed SingularClosure.FiniteParseval
+warning: NativeSources/methlib/SingularClosure/FiniteParseval.lean:178:26: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [derivativeSymbol]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8724/8747] Replayed SingularClosure.FiniteHessian
+warning: NativeSources/methlib/SingularClosure/FiniteHessian.lean:75:48: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [laplacianCoefficient, hfreq, hreal k j]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: NativeSources/methlib/SingularClosure/FiniteHessian.lean:86:32: This simp argument is unused:
+  Complex.normSq_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [laplacianCoefficient, Complex.normSq_apply, pow_two]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: NativeSources/methlib/SingularClosure/FiniteHessian.lean:86:74: This simp argument is unused:
+  pow_two
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [laplacianCoefficient, Complex.normSq_mul, Complex.normSq_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8726/8747] Replayed SingularClosure.PhysicalBilinear
+warning: NativeSources/methlib/SingularClosure/PhysicalBilinear.lean:81:57: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [unitVector, Fin.sum_univ_succ]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: NativeSources/methlib/SingularClosure/PhysicalBilinear.lean:169:14: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: NativeSources/methlib/SingularClosure/PhysicalBilinear.lean:169:4: Unused tactic linter: `all_goals rfl` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: NativeSources/methlib/SingularClosure/PhysicalBilinear.lean:285:10: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Complex.mul_re, Complex.mul_im]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: NativeSources/methlib/SingularClosure/PhysicalBilinear.lean:285:60: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [8727/8747] Replayed SingularClosure.InitialFourier
+warning: NativeSources/methlib/SingularClosure/InitialFourier.lean:200:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: NativeSources/methlib/SingularClosure/InitialFourier.lean:200:44: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+⚠ [8728/8747] Replayed SingularClosure.InitialCutoffBounds
+warning: NativeSources/methlib/SingularClosure/InitialCutoffBounds.lean:120:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: NativeSources/methlib/SingularClosure/InitialCutoffBounds.lean:120:44: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: NativeSources/methlib/SingularClosure/InitialCutoffBounds.lean:196:21: `if_pos` has been deprecated: Use `ite_eq_left` instead
+⚠ [8729/8747] Replayed SingularClosure.FourierDecay
+warning: NativeSources/methlib/SingularClosure/FourierDecay.lean:92:23: Variable name `x` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _x
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [8730/8747] Replayed SingularClosure.GalerkinReality
+warning: NativeSources/methlib/SingularClosure/GalerkinReality.lean:26:52: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [coefficientLeray, hk, neg_ne_zero.mpr hk, map_sum, mul_comm, mul_left_comm, mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: NativeSources/methlib/SingularClosure/GalerkinReality.lean:27:6: This simp argument is unused:
+  map_sum
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [coefficientLeray, hk, neg_ne_zero.mpr hk, Complex.star_def, mul_comm, mul_left_comm, mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: NativeSources/methlib/SingularClosure/GalerkinReality.lean:27:25: This simp argument is unused:
+  mul_left_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [coefficientLeray, hk, neg_ne_zero.mpr hk, Complex.star_def, map_sum, mul_comm, mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: NativeSources/methlib/SingularClosure/GalerkinReality.lean:27:40: This simp argument is unused:
+  mul_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [coefficientLeray, hk, neg_ne_zero.mpr hk, Complex.star_def, map_sum, mul_comm, mul_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: NativeSources/methlib/SingularClosure/GalerkinReality.lean:46:33: This simp argument is unused:
+  map_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.star_def, Complex.conj_ofReal, Complex.conj_I, Pi.neg_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: NativeSources/methlib/SingularClosure/GalerkinReality.lean:47:6: This simp argument is unused:
+  Pi.neg_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.star_def, map_mul, Complex.conj_ofReal, Complex.conj_I]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: NativeSources/methlib/SingularClosure/GalerkinReality.lean:72:24: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [galerkinFreqSq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8731/8747] Replayed SingularClosure.LerayPressure
+warning: NativeSources/methlib/SingularClosure/LerayPressure.lean:53:37: `if_false` has been deprecated: Use `ite_false` instead
+warning: NativeSources/methlib/SingularClosure/LerayPressure.lean:102:60: `if_false` has been deprecated: Use `ite_false` instead
+⚠ [8732/8747] Replayed SingularClosure.FourierPressure
+warning: NativeSources/methlib/SingularClosure/FourierPressure.lean:117:4: `ContinuousLinearMap.sum_apply` has been deprecated: Use `sum_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sum_apply` to `sum_apply x`).
+warning: NativeSources/methlib/SingularClosure/FourierPressure.lean:117:35: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: NativeSources/methlib/SingularClosure/FourierPressure.lean:127:57: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [pressureFromTransport, hk, neg_ne_zero.mpr hk, map_sum, Finset.sum_neg_distrib, mul_comm, mul_left_comm,
+    mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: NativeSources/methlib/SingularClosure/FourierPressure.lean:128:6: This simp argument is unused:
+  map_sum
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [pressureFromTransport, hk, neg_ne_zero.mpr hk, Complex.star_def, Finset.sum_neg_distrib, mul_comm,
+    mul_left_comm, mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: NativeSources/methlib/SingularClosure/FourierPressure.lean:128:49: This simp argument is unused:
+  mul_left_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [pressureFromTransport, hk, neg_ne_zero.mpr hk, Complex.star_def, map_sum, Finset.sum_neg_distrib,
+    mul_comm, mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8733/8747] Replayed SingularClosure.FourierSeriesCalculus
+warning: NativeSources/methlib/SingularClosure/FourierSeriesCalculus.lean:108:17: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+⚠ [8734/8747] Replayed SingularClosure.TorusSobolev
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:181:38: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:188:74: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:301:37: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:326:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:327:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:366:12: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:369:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:422:13: `ContinuousLinearMap.sum_apply` has been deprecated: Use `sum_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sum_apply` to `sum_apply x`).
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:460:23: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sub_apply` to `sub_apply x`).
+⚠ [8735/8747] Replayed SingularClosure.LatticeSobolevSummability
+warning: NativeSources/methlib/SingularClosure/LatticeSobolevSummability.lean:77:15: `if_neg` has been deprecated: Use `ite_eq_right` instead
+⚠ [8736/8747] Replayed SingularClosure.SobolevSmoothRealization
+warning: NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean:41:52: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean:41:52: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean:194:49: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [8737/8747] Replayed SingularClosure.PeriodicFourierInjective
+warning: NativeSources/methlib/SingularClosure/PeriodicFourierInjective.lean:48:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8738/8747] Replayed SingularClosure.GalerkinEnergyIntegral
+warning: NativeSources/methlib/SingularClosure/GalerkinEnergyIntegral.lean:30:8: `continuousOn_finset_sum` has been deprecated: Use `continuousOn_finsetSum` instead
+warning: NativeSources/methlib/SingularClosure/GalerkinEnergyIntegral.lean:32:8: `continuousOn_finset_sum` has been deprecated: Use `continuousOn_finsetSum` instead
+warning: NativeSources/methlib/SingularClosure/GalerkinEnergyIntegral.lean:74:21: `if_pos` has been deprecated: Use `ite_eq_left` instead
+⚠ [8740/8747] Replayed SingularClosure.PeriodicPoincare
+warning: NativeSources/methlib/SingularClosure/PeriodicPoincare.lean:32:4: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+⚠ [8743/8747] Replayed SingularClosure.SmoothDatumSobolev
+warning: NativeSources/methlib/SingularClosure/SmoothDatumSobolev.lean:47:36: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: NativeSources/methlib/SingularClosure/SmoothDatumSobolev.lean:50:47: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: NativeSources/methlib/SingularClosure/SmoothDatumSobolev.lean:47:36: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: NativeSources/methlib/SingularClosure/SmoothDatumSobolev.lean:50:47: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+⚠ [8744/8747] Replayed SingularClosure.FourierProduct
+warning: NativeSources/methlib/SingularClosure/FourierProduct.lean:111:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: NativeSources/methlib/SingularClosure/FourierProduct.lean:111:44: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+⚠ [8745/8747] Replayed SingularClosure.InfiniteFourierPressure
+warning: NativeSources/methlib/SingularClosure/InfiniteFourierPressure.lean:43:33: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: NativeSources/methlib/SingularClosure/InfiniteFourierPressure.lean:64:40: `if_false` has been deprecated: Use `ite_false` instead
+warning: NativeSources/methlib/SingularClosure/InfiniteFourierPressure.lean:59:51: This simp argument is unused:
+  Int.cast_abs
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [norm_mul, Complex.norm_intCast]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: NativeSources/methlib/SingularClosure/InfiniteFourierPressure.lean:66:4: This simp argument is unused:
+  abs_of_pos hpi
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [pressureFromTransport, hk, if_false, norm_div, norm_mul, Complex.norm_I, one_mul, hsum,
+    Complex.norm_real, Real.norm_eq_abs, abs_of_pos Real.pi_pos, abs_of_pos (by norm_num : (0 : ℝ) < 2),
+    abs_of_nonneg (zero_le_one.trans hfreq)]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8746/8747] Built MethlibEndpoints (3.7s)
+Build completed successfully (8747 jobs).

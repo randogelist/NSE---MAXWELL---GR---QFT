@@ -11,8 +11,8 @@ bash Fefferman_adapter/run.sh
 Package extraction requires no parent-directory source dependency. `scripts/hydrate_native_sources.py` reconstructs missing exact pinned dependency checkouts from contained sources. Existing valid dependency checkouts and object caches remain intact. `scripts/verify_native_sources.py` checks source inventory, upstream Git identities, cached source equality and import closure.
 
 ```text
-CURRENT_PACKAGE_STATUS = A_TIER_CANDIDATE
-EXTERNAL_VALIDATION = PENDING
+CURRENT_PACKAGE_STATUS = A_TIER_FOR_EXACT_AUDITED_DECLARATIONS
+EXTERNAL_VALIDATION = PASS_RUN_43359539373
 REGISTERED_PACKAGE_AUDIT_TARGETS = 236
 METHLIB_NATIVE_MODULES = 39
 METHLIB_ENDPOINT_AUDITS = 10
@@ -28,7 +28,7 @@ NSEMaxwell.Classical.FeffermanB (ν : ℝ) : Prop :=
     ∃ (u : Velocity) (p : Pressure), NSSolution ν a u p
 ```
 
-`NSSolution`, `FeffermanB`, and `ExactEquivalence` remain in this adapter. `Data`, actual derivatives, periodicity, cube means, joint smoothness, constitutive operators, and the constrained Maxwell statement are imported from [Maxwell_Endpoint/](../Maxwell_Endpoint/). Their original namespace and definition bodies are retained. A compiled proposition definition is distinct from a proof of that proposition.
+`NSSolution`, `FeffermanB`, and `ExactEquivalence` remain in this adapter. `Data`, actual derivatives, periodicity, cube means, joint smoothness, constitutive operators, and the constrained Maxwell statement are imported from [Maxwell_Endpoint/](../Maxwell_Endpoint/) in the integrated repository and the byte-identical [LocalDependencies/Maxwell/](LocalDependencies/Maxwell/) copies in the standalone package. Their original namespace and definition bodies are retained. A compiled proposition definition is distinct from a proof of that proposition.
 
 ## Contents
 
@@ -45,7 +45,7 @@ NSEMaxwell.Classical.FeffermanB (ν : ℝ) : Prop :=
 
 The module root remains `NSEMaxwell`; both repository and standalone Lake configurations map it to this physical directory.
 
-External runners, verification infrastructure, and retained compiler evidence reside in [Auxillary/](../Auxillary/).
+Repository runners and retained compiler evidence reside in [Auxillary/](../Auxillary/). Package-local runners and verification scripts support isolated builds.
 
 ## Legacy copied endpoint boundary
 
@@ -53,7 +53,7 @@ External runners, verification infrastructure, and retained compiler evidence re
 PUBLIC_SOURCE_COPIES   = PRESENT
 LEGACY_TEXT_SNAPSHOTS = RETAINED
 NATIVE_METHLIB_CLOSURE = NativeSources/methlib
-TARGET_NATIVE_AUDIT = PENDING
+TARGET_NATIVE_AUDIT = PASS_10_SELECTED_METHLIB_ENDPOINTS
 HODGE_LEAN_INHABITANT  = NOT_SUPPLIED
 ```
 
@@ -69,6 +69,27 @@ Deferred Lean contracts: [INTEGRATION_PLAN.md](../B%20%3C-%3E%20Maxwell/INTEGRAT
 - [Maxwell ⇒ Fefferman B](../B%20%3C-%3E%20Maxwell/%3C%3D/).
 
 The directional base modules import `NSEMaxwell.AnalyticContracts`. Their separate reduced modules import `NSEMaxwell.AnalyticReduction`. The resulting module graph is acyclic.
+
+## Contained native source certificate
+
+[Native Linux run 43359539373](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43359539373), source `1de664f2ef5ddc11caef25ac2274278b4171ab6b`:
+
+| Scope | Fresh named audits | Matching source files | Matching Lean inputs |
+|---|---:|---:|---:|
+| Integrated repository | 236/236 | 20,353/20,353 | 19,160/19,160 |
+| Isolated Fefferman | 236/236 | 9,968/9,968 | 9,592/9,592 |
+| Isolated Maxwell | 62/62 | 9,914/9,914 | 9,563/9,563 |
+
+All three builds and named axiom audits passed with only `propext`, `Classical.choice`, and `Quot.sound`. Each package contains **9,515 native Lean files** across nine complete pinned dependency snapshots, including **8,853 Mathlib Lean files**, plus the selected **39 Methlib modules**. The ten selected `SingularClosure` endpoints passed the target Lean `4.34.0-rc1` compiler and named audits. Every reachable non-compiler import is contained; missing and ambiguous modules are both zero. `Init`, `Lean`, `Std`, and `Lake` remain supplied by the pinned compiler distribution.
+
+The integrated build restored exact compiler, dependency, and project caches and passed ordinary Lake trace validation with zero module-build invocations. Standalone source checkouts were reconstructed from contained files with zero dependency-source downloads. Their separate project caches received physical copies of matching audited root objects; subsequent native build validation and fresh audits passed. Incremental module-build invocations: **72 Fefferman**, **44 Maxwell**; these counts do not assert recompilation counts. Dependency compilation objects were shared; dependency source checkouts and standalone project object directories were separate.
+
+Artifact `14008727271` contains **242 preserved files**; ZIP SHA256:
+`e3c5b60b16610af15c6f40454698e35c81228a1b44c5bf490d41a852cf354482`.
+
+The source manifests describe the compiled source commit. Documentation/evidence publication preserves all certified Lean sources, build configuration, runners, and audit inventories. The exact reduced implication remains **CONDITIONAL_FORMAL_CLOSURE**; `FourierHodgeLaws` remains an explicit unresolved premise, and arbitrary-data `FeffermanB`/`MaxwellB` existence is not proved.
+
+[Integrated audit](../Auxillary/evidence/linux-43359539373/audit-summary.json) · [Fefferman audit](../Auxillary/evidence/linux-43359539373/fefferman-standalone/audit-summary.json) · [Retained evidence](../Auxillary/evidence/linux-43359539373/)
 
 ## Historical external certificates
 
