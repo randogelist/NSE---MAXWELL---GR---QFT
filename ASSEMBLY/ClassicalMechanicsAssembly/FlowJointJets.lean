@@ -40,12 +40,20 @@ theorem flow_contDiffOn_multilinear_apply
       exact (ContinuousMultilinearMap.apply ℝ M F (fun i => Fin.elim0 i)).contDiff.comp_contDiffOn hf
   | succ r ih =>
       intro M _ _ f g hf hg
+      let e : ContinuousMultilinearMap ℝ M F ≃ₗᵢ[ℝ]
+          M 0 →L[ℝ] ContinuousMultilinearMap ℝ (fun i : Fin r => M i.succ) F :=
+        continuousMultilinearCurryLeftEquiv ℝ M F
+      have he : ContDiffOn ℝ n (fun z => e (f z)) s :=
+        e.contDiff.comp_contDiffOn hf
       have hc : ContDiffOn ℝ n (fun z => (f z).curryLeft (g z 0)) s :=
-        ((continuousMultilinearCurryLeftEquiv ℝ M F).contDiff.comp_contDiffOn hf).clm_apply (hg 0)
+        he.clm_apply (hg 0)
       have ht := ih (fun i => M i.succ)
         (fun z => (f z).curryLeft (g z 0)) (fun z i => g z i.succ)
         hc (fun i => hg i.succ)
-      simpa only [ContinuousMultilinearMap.curryLeft_apply, Fin.cons_self_tail] using ht
+      apply ht.congr
+      intro z _
+      change (f z) (g z) = (f z) (Fin.cons (g z 0) (Fin.tail (g z)))
+      exact congrArg (f z) (Fin.cons_self_tail (g z)).symm
 
 /-- Literal ordinary label derivatives of the total trajectory representative. -/
 def flowLabelJet (η : Velocity) (r : ℕ) (z : ℝ × Vec) : FlowJet r :=
@@ -75,7 +83,7 @@ theorem flowLabelJet_eq_evaluatedFlowJet {T : ℝ}
   change iteratedFDeriv ℝ r (η t) a = _
   rw [show η t = fun b => Γ b ⟨t, ht⟩ from funext (hrep t ht)]
   exact (ContinuousMap.evalCLM ℝ ⟨t, ht⟩).iteratedFDeriv_comp_left
-    hΓ.contDiffAt (by simp)
+    hΓ.contDiffAt (i := r) (ENat.natCast_le_of_coe_top_le_withTop le_rfl r)
 
 /-- Actual label jets are jointly continuous on the closed time slab. -/
 theorem flowLabelJet_continuousOn {T : ℝ}
@@ -85,7 +93,7 @@ theorem flowLabelJet_continuousOn {T : ℝ}
     (r : ℕ) : ContinuousOn (flowLabelJet η r) (finiteSpacetime T) := by
   rw [continuousOn_iff_continuous_restrict]
   have hmap : Continuous (fun z : finiteSpacetime T =>
-      (⟨z.1.1, z.2⟩ : Icc (0 : ℝ) T, z.1.2)) :=
+      ((⟨z.1.1, z.2⟩ : Icc (0 : ℝ) T), z.1.2)) :=
     (continuous_subtype_val.fst.subtype_mk (fun z => z.2)).prodMk
       continuous_subtype_val.snd
   have he := (evaluatedFlowJet_continuous hΓ r).comp hmap
@@ -122,7 +130,8 @@ theorem flowForcingJet_eq_partition_sum {T : ℝ}
     FormalMultilinearSeries.compAlongOrderedFinpartition, ftaylorSeries,
     Function.comp_def] using
     iteratedFDeriv_comp (finite_velocity_slice_smooth hu hz).contDiffAt
-      (hη z.1 hz).contDiffAt (i := r) (by simp)
+      (hη z.1 hz).contDiffAt (i := r)
+      (ENat.natCast_le_of_coe_top_le_withTop le_rfl r)
 
 /-- Concrete Faà di Bruno forcing closes every finite-order simultaneous induction. -/
 theorem flowForcingJet_contDiffOn {T : ℝ} (hT : 0 < T)
@@ -142,7 +151,7 @@ theorem flowForcingJet_contDiffOn {T : ℝ} (hT : 0 < T)
           (fun i => flowLabelJet η (c.partSize i) z)) (finiteSpacetime T) := by
     intro c
     have houter := ((flowSpatialJet_contDiffOn hT hu c.length).of_le
-      (show (n : ℕ∞ω) ≤ ∞ by simp)).comp hinner (fun _ hz => hz)
+      (ENat.natCast_le_of_coe_top_le_withTop le_rfl n)).comp hinner (fun _ hz => hz)
     exact flow_contDiffOn_multilinear_apply c.length
       (fun i => FlowJet (c.partSize i))
       (fun z => c.compAlongOrderedFinpartitionL ℝ Vec Vec Vec
