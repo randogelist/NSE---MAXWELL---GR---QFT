@@ -105,7 +105,7 @@ theorem gaussianInitialState_analyticAt {K : BoundaryTensor} {y : GaussianBase}
   have hs : AnalyticAt ℝ (fun q : GaussianBase => gaussianSymmetrize (K q.1 q.2)) y :=
     (gaussianSymmetrize.analyticAt _).comp hK
   have hd : AnalyticAt ℝ (fun q : GaussianBase => 2 • gaussianSymmetrize (K q.1 q.2)) y := by
-    simpa only [two_smul, Pi.add_apply] using hs.add hs
+    simpa only [two_smul] using hs.fun_add hs
   exact (analyticAt_const.prod hd).prod analyticAt_const
 
 def gaussianJetMetric (J : CKJet GaussianBase GaussianState) : Tensor4 := J.2.1.1.1
@@ -250,8 +250,8 @@ def gaussianCKRHS : CKRHS GaussianBase GaussianState := fun J =>
 theorem gaussianCKRHS_analyticAt {J : CKJet GaussianBase GaussianState}
     (hJ : IsUnit (gaussianJetMetric J).det) : AnalyticAt ℝ gaussianCKRHS J := by
   have hd : AnalyticAt ℝ (fun L => 2 • gaussianJetRicci L) J := by
-    simpa only [two_smul, Pi.add_apply] using
-      (gaussianJetRicci_analyticAt hJ).add (gaussianJetRicci_analyticAt hJ)
+    simpa only [two_smul] using
+      (gaussianJetRicci_analyticAt hJ).fun_add (gaussianJetRicci_analyticAt hJ)
   have hacc := (gaussianSymmetrize.analyticAt _).comp
     ((hd.sub
       ((gaussianJetTrace_analyticAt hJ).smul (gaussianJetVelocity_analyticAt J))).add

@@ -37,7 +37,7 @@ theorem ckCoordinateEval_analyticAt_zero (p : CKSeries (CKTimeSpace E) V) :
 theorem ckCoordinate_unitBall_eventually :
     ∀ᶠ z : ℝ × E in 𝓝 0, ‖WithLp.toLp 1 z‖ < 1 := by
   have ht : Tendsto (fun z : ℝ × E => ‖WithLp.toLp 1 z‖) (𝓝 0) (𝓝 0) := by
-    simpa only [map_zero, norm_zero] using
+    simpa only [map_zero, norm_zero, WithLp.prodContinuousLinearEquiv_symm_apply] using
       ((WithLp.prodContinuousLinearEquiv 1 ℝ ℝ E).symm.continuous.norm.continuousAt
         (x := (0 : ℝ × E))).tendsto
   exact ht.eventually (eventually_lt_nhds (by norm_num : (0 : ℝ) < 1))
@@ -57,9 +57,9 @@ theorem ckPhysicalScale_norm_le (ε : ℝ) (hε : 0 ≤ ε) (hε₁ : ε ≤ 1) 
   · rw [norm_mul, Real.norm_of_nonneg (sq_nonneg ε)]
     have hε_sq : ε ^ 2 ≤ ε := by nlinarith
     exact (mul_le_mul_of_nonneg_right hε_sq (norm_nonneg _)).trans
-      (mul_le_mul_of_nonneg_left (WithLp.norm_fst_le z) hε)
+      (mul_le_mul_of_nonneg_left (WithLp.norm_fst_le ℝ z) hε)
   · rw [norm_smul, Real.norm_of_nonneg hε]
-    exact mul_le_mul_of_nonneg_left (WithLp.norm_snd_le z) hε
+    exact mul_le_mul_of_nonneg_left (WithLp.norm_snd_le ℝ z) hε
 
 def ckInversePhysicalScale (ε : ℝ) : ℝ × E →L[ℝ] CKTimeSpace E :=
   (WithLp.prodContinuousLinearEquiv 1 ℝ ℝ E).symm.toContinuousLinearMap.comp

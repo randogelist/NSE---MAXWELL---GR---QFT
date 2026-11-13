@@ -131,7 +131,8 @@ theorem ckTransformSolution_isSolution (e : E ≃L[ℝ] E') (a : V ≃L[ℝ] V')
     have h : Tendsto (ckTimeEquiv e).symm (𝓝 (ckTimeEquiv e (t₀, x₀)))
         (𝓝 ((ckTimeEquiv e).symm (ckTimeEquiv e (t₀, x₀)))) :=
       (ckTimeEquiv e).symm.continuous.continuousAt.tendsto
-    simpa only [ContinuousLinearEquiv.symm_apply_apply, ckTimeEquiv_apply] using h
+    simpa only [ContinuousLinearEquiv.symm_apply_apply,
+      ckTimeEquiv_apply, ckTimeEquiv_symm_apply] using h
   refine ⟨ckTransformSolution_analyticAt e a hu.analytic, ?_, ?_⟩
   · filter_upwards [hx.eventually hu.initial] with x hux
     exact congrArg a hux

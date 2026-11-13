@@ -227,7 +227,8 @@ theorem gaussianRicciDivergence_normal {h : Bulk → Tensor4} {z : Bulk}
     intro b hb
     ring
   rw [ht]
-  rfl
+  exact (add_assoc (bulkPartial (gaussianResidualA h) 0 z)
+    (gaussianResidualDivergence h z) (gaussianKappa h z * gaussianResidualA h z)).symm
 
 theorem gaussianRicciDivergence_tangential {h : Bulk → Tensor4} {z : Bulk}
     (hh : AnalyticAt ℝ h z) (hS : ∀ᶠ y in 𝓝 z, (h y).IsSymm)

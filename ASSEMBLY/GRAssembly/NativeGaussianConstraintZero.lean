@@ -73,9 +73,12 @@ theorem gaussianConstraintRHS_analyticAt {h : Bulk → Tensor4}
         gaussianKappa h (gaussianBulkCoordinates q.1)) J :=
     (analyticAt_gaussianKappa hh hN).comp hz
   have hA : AnalyticAt ℝ
-      (fun q : CKJet GaussianBase GaussianConstraintState => q.2.1.1) J := by fun_prop
+      (fun q : CKJet GaussianBase GaussianConstraintState => q.2.1.1) J :=
+    analyticAt_fst.comp (analyticAt_fst.comp analyticAt_snd)
   have hC (c : Fin 4) : AnalyticAt ℝ
-      (fun q : CKJet GaussianBase GaussianConstraintState => q.2.1.2 c) J := by fun_prop
+      (fun q : CKJet GaussianBase GaussianConstraintState => q.2.1.2 c) J :=
+    ((ContinuousLinearMap.proj c).analyticAt _).comp
+      (analyticAt_snd.comp (analyticAt_fst.comp analyticAt_snd))
   have hD (a : Fin 4) : AnalyticAt ℝ
       (fun q : CKJet GaussianBase GaussianConstraintState =>
         q.2.2 (gaussianBaseBasis a)) J :=

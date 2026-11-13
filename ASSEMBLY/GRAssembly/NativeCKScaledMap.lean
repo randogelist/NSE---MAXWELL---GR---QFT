@@ -6,6 +6,8 @@ import GRAssembly.NativeCKNormalization
 
 set_option autoImplicit false
 set_option Elab.async true
+set_option maxHeartbeats 1600000
+set_option backward.isDefEq.respectTransparency false
 
 open Set Filter
 open scoped Topology BigOperators NNReal ENNReal
@@ -26,10 +28,11 @@ def linear (L : E →L[ℝ] F) : CKSeries E F :=
     (by intro h; omega)
     (by
       intro v σ
-      congr 1
-      funext i
-      congr 1
-      exact Subsingleton.elim _ _)
+      have hv : v ∘ σ = v := by
+        funext i
+        exact congrArg v (Subsingleton.elim (σ i) i)
+      exact congrArg (fun w : Fin 1 → E =>
+        (continuousMultilinearCurryFin1 ℝ E F).symm L w) hv)
 
 @[simp] theorem norm_linear (L : E →L[ℝ] F) : ‖linear L‖ = ‖L‖ := by
   rw [linear, norm_single]
@@ -86,11 +89,11 @@ theorem ckCoefficientScale_norm_le {ε : ℝ} (hε : 0 ≤ ε) (hε₁ : ε ≤ 
   rw [Prod.norm_def]
   apply max_le
   · rw [norm_mul, Real.norm_of_nonneg (sq_nonneg ε)]
-    have hε² : ε ^ 2 ≤ ε := by nlinarith
-    exact (mul_le_mul_of_nonneg_right hε² (norm_nonneg _)).trans
-      (mul_le_mul_of_nonneg_left (WithLp.norm_fst_le z) hε)
+    have hεsq : ε ^ 2 ≤ ε := by nlinarith
+    exact (mul_le_mul_of_nonneg_right hεsq (norm_nonneg _)).trans
+      (mul_le_mul_of_nonneg_left (WithLp.norm_fst_le ℝ z) hε)
   · rw [norm_smul, Real.norm_of_nonneg hε]
-    exact mul_le_mul_of_nonneg_left (WithLp.norm_snd_le z) hε
+    exact mul_le_mul_of_nonneg_left (WithLp.norm_snd_le ℝ z) hε
 
 def ckScaledJetUsing
     (A : CKSeries (CKTimeSpace E) V →L[ℝ] CKSeries (CKTimeSpace E) V)
@@ -118,14 +121,16 @@ theorem ckScaledJetUsing_norm_le
       _ = _ := by ring
   calc
     ‖ckScaledJetUsing A B ε p‖ ≤
-        ‖CKSeries.linear (ckCoefficientScale ε)‖ + ‖ε ^ 2 • A p‖ + ‖ε • B p‖ := by
-      exact (CKSeries.norm_pair_le _ _).trans
+        ‖CKSeries.linear (ckCoefficientScale (E := E) ε)‖ + ‖ε ^ 2 • A p‖ + ‖ε • B p‖ := by
+      exact (CKSeries.norm_pair_le
+        (CKSeries.linear (ckCoefficientScale (E := E) ε))
+        (CKSeries.pair (ε ^ 2 • A p) (ε • B p))).trans
         (by linarith [CKSeries.norm_pair_le (ε ^ 2 • A p) (ε • B p)])
     _ ≤ ε + ε ^ 2 * (1 / 2) + ε * 1 := by
       rw [CKSeries.norm_linear, norm_smul, norm_smul,
         Real.norm_of_nonneg (sq_nonneg ε), Real.norm_of_nonneg hε]
       gcongr
-      exact ckCoefficientScale_norm_le hε hε₁
+      exact ckCoefficientScale_norm_le (E := E) hε hε₁
     _ ≤ 4 * ε := by
       have hb := (ck_scaled_tuple_budget hε hε₁).1
       nlinarith [sq_nonneg ε]
@@ -145,11 +150,13 @@ theorem ckScaledJetUsing_difference_le
   rw [ckScaledJetUsing, ckScaledJetUsing, CKSeries.pair_sub, sub_self,
     CKSeries.pair_sub, ← smul_sub, ← smul_sub, ← map_sub, ← map_sub]
   calc
-    ‖CKSeries.pair 0 (CKSeries.pair (ε ^ 2 • A (p - q)) (ε • B (p - q)))‖ ≤
+    ‖CKSeries.pair (0 : CKSeries (CKTimeSpace E) (ℝ × E))
+        (CKSeries.pair (ε ^ 2 • A (p - q)) (ε • B (p - q)))‖ ≤
         ‖ε ^ 2 • A (p - q)‖ + ‖ε • B (p - q)‖ := by
-      exact (CKSeries.norm_pair_le _ _).trans
-        (by simpa only [norm_zero, zero_add] using CKSeries.norm_pair_le
-          (ε ^ 2 • A (p - q)) (ε • B (p - q)))
+      exact (CKSeries.norm_pair_le (0 : CKSeries (CKTimeSpace E) (ℝ × E))
+        (CKSeries.pair (ε ^ 2 • A (p - q)) (ε • B (p - q)))).trans
+        (by simpa only [norm_zero, zero_add] using
+          (CKSeries.norm_pair_le (ε ^ 2 • A (p - q)) (ε • B (p - q))))
     _ ≤ ε ^ 2 * ((1 / 2) * ‖p - q‖) + ε * ‖p - q‖ := by
       rw [norm_smul, norm_smul, Real.norm_of_nonneg (sq_nonneg ε), Real.norm_of_nonneg hε]
       gcongr
@@ -247,7 +254,7 @@ theorem ckAnalytic_superposition_data {g : CKRHS E V}
     c.summable_norm_mul_pow (hR.trans_le hr.r_le)
   refine ⟨c, (R : ℝ) / 2, half_pos hRpos, hc₀,
     ck_summable_derivative_majorant_halfRadius (fun n => ‖c n‖)
-      (fun n => norm_nonneg _) hRpos hsum, ?_⟩
+      (fun n => (c n).opNorm_nonneg) hRpos hsum, ?_⟩
   intro y hy
   have hyR : y ∈ Metric.eball (0 : CKJet E V) (R : ℝ≥0∞) := by
     rw [Metric.eball_coe]

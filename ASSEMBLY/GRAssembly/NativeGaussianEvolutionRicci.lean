@@ -16,7 +16,7 @@ noncomputable section
 theorem gaussianExtrinsicRicci_algebra (H K : Tensor4)
     (hH : H.IsSymm) (hK : K.IsSymm) (a b : Fin 4) :
     (∑ d : Fin 4, K b d * (H * K) d a) +
-      (∑ c : Fin 4, -((H * K) c c * K a b) + (H * K) c b * K a c) =
+      (∑ c : Fin 4, (-((H * K) c c * K a b) + (H * K) c b * K a c)) =
       -(Matrix.trace (H * K) * K a b) + 2 * (K * H * K) a b := by
   have hQ : (K * H * K).IsSymm := by
     change (K * H * K).transpose = K * H * K

@@ -119,11 +119,11 @@ theorem gaussianJetConnectionDerivative_eq_native {h : Bulk → Tensor4} {z : Bu
 
 def gaussianIntrinsicRicci (h : Bulk → Tensor4) (z : Bulk) : Tensor4 := fun a b =>
   (∑ c : Fin 4,
-    bulkPartial (fun y => gaussianTangentialChristoffel h y c a b) c.succ z -
-      bulkPartial (fun y => gaussianTangentialChristoffel h y c a c) b.succ z) +
+    (bulkPartial (fun y => gaussianTangentialChristoffel h y c a b) c.succ z -
+      bulkPartial (fun y => gaussianTangentialChristoffel h y c a c) b.succ z)) +
   ∑ c : Fin 4, ∑ d : Fin 4,
-    gaussianTangentialChristoffel h z c c d * gaussianTangentialChristoffel h z d a b -
-      gaussianTangentialChristoffel h z c b d * gaussianTangentialChristoffel h z d a c
+    (gaussianTangentialChristoffel h z c c d * gaussianTangentialChristoffel h z d a b -
+      gaussianTangentialChristoffel h z c b d * gaussianTangentialChristoffel h z d a c)
 
 theorem gaussianJetRicci_eq_native {h : Bulk → Tensor4} {z : Bulk}
     {J : CKJet GaussianBase GaussianState} (hh : AnalyticAt ℝ h z)
