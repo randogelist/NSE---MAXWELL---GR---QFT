@@ -86,11 +86,8 @@ theorem source_plus_completion_pressure_gauge {ν ρ t : ℝ} {u : Velocity}
   refine Fin.cases ?_ (fun i => ?_) i <;>
     refine Fin.cases ?_ (fun j => ?_) j
   all_goals
-    simp only [conservedSourceUpper, scalarCompletionUpper,
-      boundaryBlock_time_time, boundaryBlock_time_space, boundaryBlock_space_time,
-      boundaryBlock_space_space, scalarLaplacian_sub_constant,
-      scalarHessian_sub_constant, hg, ht]
-  all_goals ring
+    simp [conservedSourceUpper, scalarCompletionUpper, boundaryBlock,
+      scalarLaplacian_sub_constant, scalarHessian_sub_constant, hg, ht] <;> ring
 
 /-- GC21: the native completed boundary tensor is invariant under the gauge. -/
 theorem completedBoundary_pressure_gauge {ν ρ t : ℝ} {u : Velocity}

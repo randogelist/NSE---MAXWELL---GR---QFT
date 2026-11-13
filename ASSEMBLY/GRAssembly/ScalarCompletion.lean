@@ -121,8 +121,12 @@ theorem nseSpatialSource3_divergence
       (velocityOuter (u t y) + I y) -
         ν • strain (u t) y := by
     rfl
-  rw [heq, tensorDivergence_sub _ _ x (fun i j => (ho i j).add (hi i j))
-    (fun i j => (hs i j).const_smul ν), tensorDivergence_add _ _ x ho hi,
+  rw [heq]
+  erw [tensorDivergence_sub
+    (fun y => velocityOuter (u t y) + I y) (fun y => ν • strain (u t) y) x
+    (fun i j => (ho i j).add (hi i j))
+    (fun i j => (hs i j).const_smul ν),
+    tensorDivergence_add (fun y => velocityOuter (u t y)) I x ho hi,
     tensorDivergence_velocityOuter_of_divergence_zero (hu' x) (hdiv x),
     tensorDivergence_isotropic _ _ hp, tensorDivergence_smul ν _ x hs,
     tensorDivergence_strain_of_divergence_zero hu (funext hdiv) x]
