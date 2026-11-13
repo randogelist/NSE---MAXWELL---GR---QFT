@@ -43,8 +43,9 @@ theorem ckTimePrimitive_hasDerivAt (p : CKSeries (CKTimeSpace E) V)
         WithLp.toLp_snd, Real.norm_eq_abs] using hz
     change ‖WithLp.toLp 1 (t, z.2)‖ < 1
     rw [WithLp.prod_norm_eq_of_L1]
+    have ht' : |t| + ‖z.2‖ < 1 := by linarith
     simpa only [WithLp.toLp_fst, WithLp.toLp_snd, Real.norm_eq_abs] using
-      lt_of_le_of_lt (add_le_add_right habs ‖z.2‖) hz'
+      ht'
   have hi : IntervalIntegrable f volume 0 z.1 :=
     (continuousOn_of_forall_continuousAt (fun t ht => hcont t (hseg t ht))).intervalIntegrable
   have hm : StronglyMeasurableAtFilter f (𝓝 z.1) volume :=
@@ -117,9 +118,9 @@ theorem ckSeriesSolution_timeDerivative (ε : ℝ) (hε : ε ≠ 0)
   have hA := ckTimePrimitive_hasDerivAt p hpoint
   have hscaled := hA.scomp z.1 ((hasDerivAt_id z.1).const_mul ((ε ^ 2)⁻¹))
   have hfinal := hscaled.const_smul (ε ^ 2)
-  simpa [ckTimeDerivative, ckSeriesSolution, ckInversePhysicalScale_apply,
-    ckCoordinateEval, Pi.smul_def, Function.comp_def, smul_smul,
-    ← mul_assoc, hε, pow_ne_zero 2 hε]
+  simpa only [ckTimeDerivative, ckSeriesSolution, ckInversePhysicalScale_apply,
+    ckCoordinateEval, Pi.smul_def, Function.comp_def, id_eq, mul_one,
+    smul_smul, mul_inv_cancel₀ (pow_ne_zero 2 hε), one_smul]
       using hfinal.deriv
 
 theorem ckSeriesSolution_spaceDerivative (ε : ℝ)
@@ -132,8 +133,8 @@ theorem ckSeriesSolution_spaceDerivative (ε : ℝ)
   have hA := (ckCoordinateEval_analyticAt (timePrimitive E V p) hpoint).curry_right.differentiableAt
   have hx := (hasFDerivAt_id (𝕜 := ℝ) z.2).const_smul ε⁻¹
   have hscaled := hA.hasFDerivAt.comp z.2 hx
-  simpa [ckSpaceDerivative, ckSeriesSolution, ckInversePhysicalScale_apply,
-    ckCoordinateEval, Pi.smul_def, Function.comp_def]
+  simpa only [ckSpaceDerivative, ckSeriesSolution, ckInversePhysicalScale_apply,
+    ckCoordinateEval, Pi.smul_def, Function.comp_def, id_eq]
       using (hscaled.const_smul (ε ^ 2)).fderiv
 
 theorem ckSeriesSolution_spaceDerivative_eq (ε : ℝ) (hε : ε ≠ 0)

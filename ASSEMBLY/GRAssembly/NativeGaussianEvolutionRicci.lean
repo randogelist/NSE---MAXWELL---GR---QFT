@@ -144,8 +144,8 @@ theorem gaussianJet_rawAcceleration_eq_native {h : Bulk → Tensor4} {z : Bulk}
   have hr := gaussianTangentialRicci_eq_intrinsic_extrinsic hh hS hN a b
   simp only [gaussianSecondForm_eq_half_radial hh,
     Matrix.mul_smul, Matrix.smul_mul, Matrix.trace_smul,
-    Matrix.smul_apply, smul_eq_mul, nsmul_eq_mul] at hr
-  simp only [Matrix.add_apply, Matrix.sub_apply, Matrix.smul_apply, smul_eq_mul, nsmul_eq_mul,
+    Matrix.smul_apply, smul_eq_mul] at hr
+  simp only [two_smul, Matrix.add_apply, Matrix.sub_apply, Matrix.smul_apply, smul_eq_mul,
     gaussianJetRicci_eq_native hh hN.self_of_nhds hC,
     gaussianJetTrace, hC.metric, hC.velocity]
   linear_combination -2 * hr
@@ -161,7 +161,7 @@ theorem gaussianCKRHS_velocity_eq_native {h : Bulk → Tensor4} {z : Bulk}
   apply gaussianSymmetrize_eq_of_isSymm
   apply Matrix.IsSymm.ext
   intro a b
-  simp only [Matrix.add_apply, Matrix.smul_apply, smul_eq_mul, nsmul_eq_mul,
+  simp only [two_smul, Matrix.add_apply,
     (coordDeriv_tensor_second_symmetric hh hS 0 0).apply a b,
     (gaussianTangentialNativeRicci_symmetric hh hS hN).apply a b]
 
@@ -180,7 +180,7 @@ theorem gaussianTangentialVacuum_iff_CKRHS {h : Bulk → Tensor4} {z : Bulk}
     rw [ht, smul_zero, add_zero]
   · intro he a b
     have hab := congrArg (fun A : Tensor4 => A a b) he
-    simp only [Matrix.add_apply, Matrix.smul_apply, smul_eq_mul, nsmul_eq_mul,
+    simp only [two_smul, Matrix.add_apply,
       gaussianTangentialNativeRicci] at hab
     linarith
 
