@@ -128,14 +128,22 @@ theorem gaussianBulkCoordinates_tangent (a : Fin 4) :
       · simp [gaussianBulkCoordinates_apply, gaussianBaseBasis, bulkPoint_time,
           bulkBasis, EuclideanSpace.single]
       · simp [gaussianBulkCoordinates_apply, gaussianBaseBasis, bulkPoint_spatial,
-          bulkBasis, EuclideanSpace.single] <;> omega
+          bulkBasis, EuclideanSpace.single]
+        intro he
+        have hv := congrArg (fun n : Fin 5 => n.val) he
+        change j.val + 1 + 1 = 1 at hv
+        omega
   · ext i
     refine Fin.cases ?_ (fun j => ?_) i
     · simp [gaussianBulkCoordinates_apply, gaussianBaseBasis, bulkPoint_radial,
         bulkBasis, EuclideanSpace.single]
     · refine Fin.cases ?_ (fun j => ?_) j
       · simp [gaussianBulkCoordinates_apply, gaussianBaseBasis, bulkPoint_time,
-          bulkBasis, EuclideanSpace.single] <;> omega
+          bulkBasis, EuclideanSpace.single]
+        intro he
+        have hv := congrArg (fun n : Fin 5 => n.val) he
+        change 1 = a.val + 1 + 1 at hv
+        omega
       · simp [gaussianBulkCoordinates_apply, gaussianBaseBasis, bulkPoint_spatial,
           bulkBasis, unitVector, EuclideanSpace.single]
 

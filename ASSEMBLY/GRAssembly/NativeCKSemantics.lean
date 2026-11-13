@@ -116,12 +116,16 @@ theorem ckSeriesSolution_timeDerivative (ε : ℝ) (hε : ε ≠ 0)
     ckTimeDerivative (ckSeriesSolution ε p) z = p.eval (ckInversePhysicalScale ε z) := by
   have hpoint : ‖WithLp.toLp 1 ((ε ^ 2)⁻¹ * z.1, ε⁻¹ • z.2)‖ < 1 := hz
   have hA := ckTimePrimitive_hasDerivAt p hpoint
-  have hscaled := hA.scomp z.1 ((hasDerivAt_id z.1).const_mul ((ε ^ 2)⁻¹))
+  have hscaled := hA.scomp (h := fun t : ℝ => (ε ^ 2)⁻¹ * t) z.1
+    (hasDerivAt_const_mul (x := z.1) ((ε ^ 2)⁻¹))
   have hfinal := hscaled.const_smul (ε ^ 2)
-  simpa only [ckTimeDerivative, ckSeriesSolution, ckInversePhysicalScale_apply,
-    ckCoordinateEval, Pi.smul_def, Function.comp_def, id_eq, mul_one,
+  have hphysical := hfinal.congr_of_eventuallyEq
+    (f₁ := fun t : ℝ => ckSeriesSolution ε p (t, z.2))
+    (Filter.Eventually.of_forall fun t => by rfl)
+  simpa only [ckTimeDerivative, ckInversePhysicalScale_apply,
+    ckCoordinateEval, id_eq, mul_one,
     smul_smul, mul_inv_cancel₀ (pow_ne_zero 2 hε), one_smul]
-      using hfinal.deriv
+      using hphysical.deriv
 
 theorem ckSeriesSolution_spaceDerivative (ε : ℝ)
     (p : CKSeries (CKTimeSpace E) V) {z : ℝ × E}
@@ -131,11 +135,16 @@ theorem ckSeriesSolution_spaceDerivative (ε : ℝ)
         ((ε ^ 2)⁻¹ * z.1, ε⁻¹ • z.2)).comp (ε⁻¹ • ContinuousLinearMap.id ℝ E) := by
   have hpoint : ‖WithLp.toLp 1 ((ε ^ 2)⁻¹ * z.1, ε⁻¹ • z.2)‖ < 1 := hz
   have hA := (ckCoordinateEval_analyticAt (timePrimitive E V p) hpoint).curry_right.differentiableAt
-  have hx := (hasFDerivAt_id (𝕜 := ℝ) z.2).const_smul ε⁻¹
-  have hscaled := hA.hasFDerivAt.comp z.2 hx
-  simpa only [ckSpaceDerivative, ckSeriesSolution, ckInversePhysicalScale_apply,
-    ckCoordinateEval, Pi.smul_def, Function.comp_def, id_eq]
-      using (hscaled.const_smul (ε ^ 2)).fderiv
+  have hx : HasFDerivAt (fun x : E => ε⁻¹ • x)
+      (ε⁻¹ • ContinuousLinearMap.id ℝ E) z.2 := by
+    simpa only [Pi.smul_def, id_eq] using
+      (hasFDerivAt_id (𝕜 := ℝ) z.2).const_smul ε⁻¹
+  have hscaled := hA.hasFDerivAt.comp (f := fun x : E => ε⁻¹ • x) z.2 hx
+  have hfinal := hscaled.const_smul (ε ^ 2)
+  have hphysical := hfinal.congr_of_eventuallyEq
+    (f₁ := fun x : E => ckSeriesSolution ε p (z.1, x))
+    (Filter.Eventually.of_forall fun x => by rfl)
+  simpa only [ckSpaceDerivative] using hphysical.fderiv
 
 theorem ckSeriesSolution_spaceDerivative_eq (ε : ℝ) (hε : ε ≠ 0)
     (p : CKSeries (CKTimeSpace E) V) {z : ℝ × E}
