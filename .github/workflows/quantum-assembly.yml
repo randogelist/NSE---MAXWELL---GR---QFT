@@ -2,6 +2,11 @@ name: Cached Quantum assembly and exact theorem audit
 
 on:
   push:
+    paths-ignore:
+      - 'Quantum_adapter/QuantumAdapter/Obligations/**'
+      - 'Quantum_adapter/QuantumAdapter/Obligations.lean'
+      - 'Auxillary/quantum/obligations/**'
+      - '.github/workflows/quantum-obligations.yml'
     branches: [codex/quantum-adapter-from-maxwell]
   workflow_dispatch:
 

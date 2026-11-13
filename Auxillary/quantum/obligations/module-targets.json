@@ -1,0 +1,139 @@
+[
+  {
+    "module": "QuantumAdapter.Obligations.EnergyBilinear",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/EnergyBilinear.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.fullBilinearTransport_self",
+      "QuantumAdapter.Obligations.fullBilinearTransport_add_left",
+      "QuantumAdapter.Obligations.fullBilinearTransport_add_right",
+      "QuantumAdapter.Obligations.fullBilinearTransport_smul_left",
+      "QuantumAdapter.Obligations.fullBilinearTransport_smul_right",
+      "QuantumAdapter.Obligations.coefficientLeray_add_native",
+      "QuantumAdapter.Obligations.coefficientLeray_real_smul_native",
+      "QuantumAdapter.Obligations.bilinearAmbient_add_left",
+      "QuantumAdapter.Obligations.bilinearAmbient_add_right",
+      "QuantumAdapter.Obligations.bilinearAmbient_smul_left",
+      "QuantumAdapter.Obligations.bilinearAmbient_smul_right",
+      "QuantumAdapter.Obligations.bilinearConvection_add_left",
+      "QuantumAdapter.Obligations.bilinearConvection_add_right",
+      "QuantumAdapter.Obligations.bilinearConvection_smul_left",
+      "QuantumAdapter.Obligations.bilinearConvection_smul_right",
+      "QuantumAdapter.Obligations.bilinearConvectionCLM_apply",
+      "QuantumAdapter.Obligations.bilinearAmbient_self",
+      "QuantumAdapter.Obligations.bilinearConvection_self"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Obligations.GalerkinSobolev",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/GalerkinSobolev.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.sobolevEnergyDensity_nonneg",
+      "QuantumAdapter.Obligations.sobolevEnergy_nonneg",
+      "QuantumAdapter.Obligations.sobolevEnergy_zero",
+      "QuantumAdapter.Obligations.sobolevEnergy_three",
+      "QuantumAdapter.Obligations.sobolevEnergy_zero_order",
+      "QuantumAdapter.Obligations.sobolevEnergyDensity_mono",
+      "QuantumAdapter.Obligations.sobolevEnergy_mono",
+      "QuantumAdapter.Obligations.energy3_le_sobolevEnergy",
+      "QuantumAdapter.Obligations.weighted_coordinate_sq_le_sobolevEnergy",
+      "QuantumAdapter.Obligations.weighted_coordinate_sq_le_sobolevEnergy_all",
+      "QuantumAdapter.Obligations.weighted_coordinate_le_sqrt_sobolevEnergy",
+      "QuantumAdapter.Obligations.initialSobolevMajorant_nonneg",
+      "QuantumAdapter.Obligations.initialSobolevMajorant_three",
+      "QuantumAdapter.Obligations.initialSobolevEnergyDensity_le",
+      "QuantumAdapter.Obligations.initialPhaseData_sobolevEnergy_eq_sum",
+      "QuantumAdapter.Obligations.initialPhaseData_sobolevEnergy_le_majorant",
+      "QuantumAdapter.Obligations.initial_all_sobolev_bounds",
+      "QuantumAdapter.Obligations.sobolevEnergyDensity_summable",
+      "QuantumAdapter.Obligations.smooth_datum_sobolevEnergyDensity_summable",
+      "QuantumAdapter.Obligations.initialPhaseData_sobolevEnergy_le_tsum"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Obligations.JacobianMatrix",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/JacobianMatrix.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.matrix_det_differentiable",
+      "QuantumAdapter.Obligations.matrix_det_one_add_smul_hasDerivAt",
+      "QuantumAdapter.Obligations.matrix_det_affine_left_hasDerivAt",
+      "QuantumAdapter.Obligations.matrix_det_fderiv_left_mul",
+      "QuantumAdapter.Obligations.matrix_det_hasDerivAt_of_left_mul",
+      "QuantumAdapter.Obligations.endomorphismMatrixCLM_apply",
+      "QuantumAdapter.Obligations.endomorphismMatrixCLM_comp",
+      "QuantumAdapter.Obligations.endomorphismMatrixCLM_det",
+      "QuantumAdapter.Obligations.endomorphismMatrixCLM_trace",
+      "QuantumAdapter.Obligations.clm_det_hasDerivAt_of_comp",
+      "QuantumAdapter.Obligations.clm_det_eq_exp_of_constant_trace"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Obligations.ScalarGrowth",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/ScalarGrowth.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.scalar_growth_bound",
+      "QuantumAdapter.Obligations.sqrt_energy_growth_bound"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Obligations.TraceTranslation",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/TraceTranslation.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.translatedAmbient_coeff",
+      "QuantumAdapter.Obligations.translatedAmbient_mem",
+      "QuantumAdapter.Obligations.phaseTranslation_coeff",
+      "QuantumAdapter.Obligations.fourierCharacter_zero_space",
+      "QuantumAdapter.Obligations.fourierCharacter_add_space",
+      "QuantumAdapter.Obligations.fourierCharacter_neg_space",
+      "QuantumAdapter.Obligations.phaseTranslation_zero",
+      "QuantumAdapter.Obligations.phaseTranslation_add",
+      "QuantumAdapter.Obligations.phaseTranslation_mean",
+      "QuantumAdapter.Obligations.phaseTranslation_meanPhase",
+      "QuantumAdapter.Obligations.driftDivergence_eq_linearTrace"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Obligations.Variational",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/Variational.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.hasFDerivAt_of_quadratic_remainder",
+      "QuantumAdapter.Obligations.gronwallBound_zero_source_mul",
+      "QuantumAdapter.Obligations.hasDerivAt_variational_apply",
+      "QuantumAdapter.Obligations.hasDerivAt_flow_variational_remainder",
+      "QuantumAdapter.Obligations.flow_variational_remainder_bound",
+      "QuantumAdapter.Obligations.flow_hasFDerivAt_of_variational_remainder",
+      "QuantumAdapter.Obligations.continuous_native_variational_coefficient",
+      "QuantumAdapter.Obligations.native_variational_coefficient_bounded",
+      "QuantumAdapter.Obligations.phaseFlow_zero_hasFDerivAt"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Obligations.GalerkinLimits",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/GalerkinLimits.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.weightedCoeff_eq_zero_of_not_mem_support",
+      "QuantumAdapter.Obligations.sum_phaseFourierSupport_eq_sobolevEnergy",
+      "QuantumAdapter.Obligations.finite_sum_weightedCoeff_sq_le_energy",
+      "QuantumAdapter.Obligations.phaseCoeff_mem_sobolev",
+      "QuantumAdapter.Obligations.phaseSobolev_coeff",
+      "QuantumAdapter.Obligations.phaseSobolev_norm_sq",
+      "QuantumAdapter.Obligations.coefficient_limit_mem_sobolev",
+      "QuantumAdapter.Obligations.coefficient_limit_reality",
+      "QuantumAdapter.Obligations.coefficient_limit_solenoidal",
+      "QuantumAdapter.Obligations.all_order_coefficient_limit_nativeData",
+      "QuantumAdapter.Obligations.smoothFourierSynthesis_eq_original"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Obligations.TraceEquivariance",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/TraceEquivariance.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.fourierCharacter_convolution_split",
+      "QuantumAdapter.Obligations.fullTransport_phaseTranslation",
+      "QuantumAdapter.Obligations.coefficientLeray_complex_mul",
+      "QuantumAdapter.Obligations.drift_coeff_formula",
+      "QuantumAdapter.Obligations.drift_phaseTranslation",
+      "QuantumAdapter.Obligations.drift_fderiv_phaseTranslation",
+      "QuantumAdapter.Obligations.driftDivergence_phaseTranslation"
+    ]
+  }
+]
