@@ -48,3 +48,7 @@ Deferred Lean contracts: [INTEGRATION_PLAN.md](../B%20%3C-%3E%20Maxwell/INTEGRAT
 - [Maxwell ⇒ Fefferman B](../B%20%3C-%3E%20Maxwell/%3C%3D/).
 
 The directional base modules import `NSEMaxwell.AnalyticContracts`. Their separate reduced modules import `NSEMaxwell.AnalyticReduction`. The resulting module graph is acyclic.
+
+## Matching external certificate
+
+[Native Linux run 43345557147](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147): build PASS; 174/174 named audits PASS_STANDARD_ONLY; 30/30 Lean input hashes match the delivered source. [Audit summary](evidence/linux-43345557147/audit-summary.json). The conditional directions are A-tier; the Hodge inhabitant remains deferred.

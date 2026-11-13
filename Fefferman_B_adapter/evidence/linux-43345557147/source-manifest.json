@@ -1,0 +1,1122 @@
+{
+  "schema_version": 1,
+  "algorithm": "SHA256",
+  "source_commit": "be8376a08573a7789e36b68c2bc48178aa6f53c3",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "800573cc27b0415a0cfe4790aa615a8eea7dbddda0ae8c9d384841cf6479409d",
+      "size_bytes": 260
+    },
+    {
+      "path": ".github/workflows/lean-linux.yml",
+      "sha256": "ec182b0fd2a3e53ee269c1eb79e6b09d8923074df8de42cce1aa895021ee3fbf",
+      "size_bytes": 6244
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "a4e2f18d0c0309e3f88d3c1ebcec58c786c1ea1bc64d7dd3408fb825bf43ae30",
+      "size_bytes": 62
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "6e3d7eb1d3d1e92002c28cea415f3918143372e9a63bb1ac4eb2a8c0ebfb939a",
+      "size_bytes": 1943
+    },
+    {
+      "path": "audit-targets.txt",
+      "sha256": "fe7ce59756d7690fc1cd6b7d81cefb230906b917d7b42c4f8ff9a2bfaf6a1796",
+      "size_bytes": 8470
+    },
+    {
+      "path": "B <-> Maxwell/<=/MAXWELL_TO_B_B_TIER.txt",
+      "sha256": "81dd643d1b86d868f0d872e7ab60981e6d101e3799c8f05d0d2710f17b808f1f",
+      "size_bytes": 9905
+    },
+    {
+      "path": "B <-> Maxwell/<=/NSEMaxwellReverse.lean",
+      "sha256": "b6cb2beb70264b98d23a8143def620121112077e3326125b4e51833990e9de04",
+      "size_bytes": 5717
+    },
+    {
+      "path": "B <-> Maxwell/<=/NSEMaxwellReverse/Reduced.lean",
+      "sha256": "8c7e2bfd5dece9032b2335d73db50fd55bc34c9a66c11fe3ab6580b3e1b40635",
+      "size_bytes": 637
+    },
+    {
+      "path": "B <-> Maxwell/<=/README.md",
+      "sha256": "dcfc27c3da73ea1243c30d6ed5cb536f5d7e647779e1379ced49f51979255b5b",
+      "size_bytes": 2736
+    },
+    {
+      "path": "B <-> Maxwell/=>/B_TO_MAXWELL_B_TIER.txt",
+      "sha256": "c17b67f29f3c7440a17feb0df03d7abec636d493cd28ba55abcaf60363c0470a",
+      "size_bytes": 9667
+    },
+    {
+      "path": "B <-> Maxwell/=>/NSEMaxwellForward.lean",
+      "sha256": "d2a74b2268c54de3593996480d18429aa11060ce72396c7d2cea8071cfb57845",
+      "size_bytes": 5190
+    },
+    {
+      "path": "B <-> Maxwell/=>/NSEMaxwellForward/Reduced.lean",
+      "sha256": "3393dba7f320674f92f1067b623564e8bf239d00511d65305027b620ae65098a",
+      "size_bytes": 637
+    },
+    {
+      "path": "B <-> Maxwell/=>/README.md",
+      "sha256": "0b556e6a77a4b98242341d20d7eea837477c27674519ab17358765e32482ef7e",
+      "size_bytes": 2732
+    },
+    {
+      "path": "B <-> Maxwell/FEFFERMAN_B_MAXWELL_EQUIVALENCE_A_TIER.txt",
+      "sha256": "7033a88390417f645ab014aab4cd4cb03bfb84ffe937a01d89fa23810280f241",
+      "size_bytes": 4092
+    },
+    {
+      "path": "B <-> Maxwell/FEFFERMAN_B_MAXWELL_EQUIVALENCE_B_TIER.txt",
+      "sha256": "4630e965bc8da4aeac96bcb4c4a5b917dbd835573cd7d2c075639427ee2aff54",
+      "size_bytes": 27806
+    },
+    {
+      "path": "B <-> Maxwell/FOURIER_HODGE_COMPOSITION_B_TIER.txt",
+      "sha256": "2fae184cc79d3735b76e2ffe77a876be6c96e455c1605c740adf5f2a16c30429",
+      "size_bytes": 36338
+    },
+    {
+      "path": "B <-> Maxwell/INTEGRATION_PLAN.md",
+      "sha256": "8b8b944005881d2ba9976e82d3ce4f14b42edcce734f4ee4d5d7e2207024900d",
+      "size_bytes": 8351
+    },
+    {
+      "path": "B <-> Maxwell/README.md",
+      "sha256": "4a478f0f0e1c79d939bd098dda2d076da5c2eda0146e5556566e717285ef4988",
+      "size_bytes": 2022
+    },
+    {
+      "path": "cache-targets.txt",
+      "sha256": "6534bc4fa124679c91833cded1886eceb5f8b55ce4217c7e2748c8430b37d5f2",
+      "size_bytes": 78
+    },
+    {
+      "path": "Fefferman_B_adapter/CI_CACHE_AUDIT.txt",
+      "sha256": "46380d46f79549cc087a3aceecdc4442a76cd5bbfbb8a1f1b8e8f8cfbde59b01",
+      "size_bytes": 9677
+    },
+    {
+      "path": "Fefferman_B_adapter/ENDPOINT_REGISTRY.json",
+      "sha256": "b03b7c723f906fbcdfda4d9f20b4e22533eae3f6b6265f1876331718da719c18",
+      "size_bytes": 28481
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/ENDPOINT_INDEX.md",
+      "sha256": "5a6642095e5d03606f8cec02321f0478f5656033155a851a8ae09cfb1c429a54",
+      "size_bytes": 17342
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/ENDPOINTS.json",
+      "sha256": "65f7696add0add6555c1887b4d793149437e8b9779d1727755a965654f84e95f",
+      "size_bytes": 80324
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/licenses/MATHLIB-LICENSE.txt",
+      "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+      "size_bytes": 11357
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/PRIOR_STAGING_CHECKS.json",
+      "sha256": "abd03ff15acaf9f6dda7ffc77d7f0bf71cd83d9968e97a271c32c94955726a59",
+      "size_bytes": 4806
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/PRIOR_STAGING_SHA256SUMS",
+      "sha256": "e87e6e3c851ea9983bd56a439bb70ead11331226affeb6a1f797f79a99e91e47",
+      "size_bytes": 2915
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/README.md",
+      "sha256": "66b81571fb8634e2cec01aefb4962ef2bd4fc6f9f485b161e85cc5499c167ae4",
+      "size_bytes": 2217
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/SHA256SUMS",
+      "sha256": "85cb330f3031bffdd1ed839dfc79dd62b578272b7ffff7e0173248be4c58610c",
+      "size_bytes": 2831
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/SOURCES.md",
+      "sha256": "13a4eb52ce228c1c5abf4efc14eeff4aa01da667acd43b05e3dbe6cbbc2197f4",
+      "size_bytes": 7456
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/sources/mathlib/Mathlib/Algebra/Module/ZLattice/Summable.lean.txt",
+      "sha256": "8ab2738314a22bc7ab4b425161a59f5a29be86fa6a98b06db64155bff1bf8705",
+      "size_bytes": 13779
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/sources/mathlib/Mathlib/Analysis/Calculus/ContDiff/Defs.lean.txt",
+      "sha256": "5d2f01069c6265873a372d4aed746c5d3411073b8acb108a180d02a84c832dca",
+      "size_bytes": 64863
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/sources/mathlib/Mathlib/Analysis/Calculus/FDeriv/Extend.lean.txt",
+      "sha256": "1d665dafc00e148c660327f60480385d7133d2d3903988e9bba929e469cc253e",
+      "size_bytes": 11495
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/sources/mathlib/Mathlib/Analysis/Calculus/SmoothSeries.lean.txt",
+      "sha256": "5000d919737125bacacbc3df2f4e56284cd514dacc7f794c78f04d543ae47a78",
+      "size_bytes": 16275
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/sources/mathlib/Mathlib/Analysis/Fourier/AddCircleMulti.lean.txt",
+      "sha256": "6684531a5f300174571a95237e40b39363ff5339bba5e78c7c66dfd6f53e6a2b",
+      "size_bytes": 15695
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/sources/mathlib/Mathlib/MeasureTheory/Function/LpSpace/ContinuousFunctions.lean.txt",
+      "sha256": "9288796d597f70973f01424714259c5dca95b9f8f45db02808cfbe2f97856342",
+      "size_bytes": 9207
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierDecay.lean.txt",
+      "sha256": "8e9ccc5d7f43105c19eb4726dc6de30a97edfdad52945e96551ad20559526c45",
+      "size_bytes": 8503
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSeriesCalculus.lean.txt",
+      "sha256": "074ce0aa9a379ac5f378b57a0da44d95b54769e53689057337f9262f0579b846",
+      "size_bytes": 9867
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InfiniteFourierPressure.lean.txt",
+      "sha256": "8afcd5d69497cfc1c782b0f9809051938675f61b03b13bc4591ade6761f95a15",
+      "size_bytes": 13771
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InitialCutoffBounds.lean.txt",
+      "sha256": "f9f7eec7c6f8fa46f45ce4bc5942ff9627fe532e377780d5701f144ffd833c30",
+      "size_bytes": 9827
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/LatticeSobolevSummability.lean.txt",
+      "sha256": "34634888f8a8601ebb6a5c40f57d2b4a19b0f77295a0c37aeb59fbbd6ea09203",
+      "size_bytes": 5521
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PeriodicFourierInjective.lean.txt",
+      "sha256": "2da981fc1a5db3b5b796fa11a687fe6e993a54938d83bc74513e0220c4f80e81",
+      "size_bytes": 4441
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PeriodicFourierRealization.lean.txt",
+      "sha256": "f4118fd9507488f5bf8cd3df2c1f174f245a32928b118eeb967017865edd2871",
+      "size_bytes": 7948
+    },
+    {
+      "path": "Fefferman_B_adapter/Endpoints/sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevSmoothRealization.lean.txt",
+      "sha256": "9cc5097590bede10a43dcb711b869cd2c65ad955cf1636bc41ca5f4f29bf6ead",
+      "size_bytes": 12785
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/audit-summary.json",
+      "sha256": "9e25e941079718a462f4517b88a4e560bfce8753a8066bff3ff1e1d9a9b05c6e",
+      "size_bytes": 71079
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/audit-verifier.log",
+      "sha256": "e4e7eada0ab0fbd3d158802632b8019296303f181b79f5653cce2d320d86f6a5",
+      "size_bytes": 152
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/command-timings-BuildAudit.json",
+      "sha256": "404cb606a08178bcb21085cde389bf71199af7ce3ce7b9e558aa01a99e5bfb54",
+      "size_bytes": 14618
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/command-timings-Dependencies.json",
+      "sha256": "122dbfcd998dbd4c524b866c7cae915f92ea98a6bc1d8354b08b3249e71d3d17",
+      "size_bytes": 6602
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/dependency-aesop-revision.log",
+      "sha256": "99c37a88bb37e2a2bcf14c815fe3566049d4b248abe38f14a90f7f5f937f2ed3",
+      "size_bytes": 41
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/dependency-aesop-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/dependency-batteries-revision.log",
+      "sha256": "94443aefcbcf3594e3549caa35b2c61e295222bf1c8e2e2a90fa6d134dcb6a86",
+      "size_bytes": 41
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/dependency-batteries-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/dependency-Cli-revision.log",
+      "sha256": "dbd038f701a70f6857c1e65b0492b56a7fb4d398d3ffa349d53fa118c733fde1",
+      "size_bytes": 41
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/dependency-Cli-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/dependency-importGraph-revision.log",
+      "sha256": "beee196d376cbcc10e3140bf4c47078bed2563375b0a6189d0e29be32bb44bd0",
+      "size_bytes": 41
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/dependency-importGraph-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/dependency-LeanSearchClient-revision.log",
+      "sha256": "22be59d23249e41039127a66d78b70b68a754ca8d4aa08f3930e39594601d1dd",
+      "size_bytes": 41
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/dependency-LeanSearchClient-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/dependency-mathlib-revision.log",
+      "sha256": "45319df962db10a4cdbd4747247efadca3d49e40557f5c83ec7dad63a043992a",
+      "size_bytes": 41
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/dependency-mathlib-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/dependency-plausible-revision.log",
+      "sha256": "5853b0b16747940f4a3cc79f5ae35475a93032aaaf6ae6b140b23dc03451bb90",
+      "size_bytes": 41
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/dependency-plausible-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/dependency-preparation.json",
+      "sha256": "4e94967e41b8c4c4a46be25e4c2ef4ae38f10164393260980832a60608fff5c3",
+      "size_bytes": 1745
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/dependency-proofwidgets-revision.log",
+      "sha256": "e8c71765893c5d59b72bc776fb1fe597ef9d309bcb24fa71a2a996a32e9d1ba9",
+      "size_bytes": 41
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/dependency-proofwidgets-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/dependency-Qq-revision.log",
+      "sha256": "17868872911131a3923b8d7cdb904ec5d68862fdcec312261d60431cc0d46ee9",
+      "size_bytes": 41
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/dependency-Qq-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/lean-version.log",
+      "sha256": "6cd69c5752c644291ede2418997a70e9994409d30b15fe5ef14a1be60f27f8ef",
+      "size_bytes": 110
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/mathlib-revision.log",
+      "sha256": "45319df962db10a4cdbd4747247efadca3d49e40557f5c83ec7dad63a043992a",
+      "size_bytes": 41
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/mathlib-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/resolved-lake-manifest.json",
+      "sha256": "69c22ad5678fd37f874d60dd5c604bfd96a2604fcb788a054764d6f1e346a939",
+      "size_bytes": 3549
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-audit.log",
+      "sha256": "e6bdde4511e6a3310ead7c58e4e8610274146075ed551cac53313f0958aa1852",
+      "size_bytes": 110900
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-freshness.log",
+      "sha256": "ee9005c19c0c0b23a5db6b2041b0f7bb7031106c53b84dd7169a79ce067c0c58",
+      "size_bytes": 421
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-Ampere.log",
+      "sha256": "827bc8ec214d47aaec85bd63207404c915eea8a24c3f09e27e17b21dea85cc2a",
+      "size_bytes": 384
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-AnalyticBridge.log",
+      "sha256": "cf768ce4b85fc8d8b3ffc24021bac2e30114e68bdb482b6613d312bfc722258e",
+      "size_bytes": 1775
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-AnalyticReduction.log",
+      "sha256": "d313a6cc24b6d4e01c31f96420671376955b919ae139290bd36d3551b4bf69ba",
+      "size_bytes": 4411
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-CanonicalSmoothness.log",
+      "sha256": "4466a7709c7599013aeb3516d05bfa19f8e1935fd84d0083ba51908ca40b5779",
+      "size_bytes": 3924
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-Classical.log",
+      "sha256": "4951bbddd8447aa802c6d1ed1614f9105df5acb49f4b5009aa0867937ca0073f",
+      "size_bytes": 92
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-ConstantPaths.log",
+      "sha256": "a35efe32eb6c7c9c1bd1a93740532aae0e9171b3b461fe2f2050d4b0171ee6ea",
+      "size_bytes": 391
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-Constitutive.log",
+      "sha256": "9f5c731b277d86c7af6d8d8616e5018b6cf948a5fda1d88ce3171d1fb25fce96",
+      "size_bytes": 390
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-CurlCurl.log",
+      "sha256": "f50627219285249436cc02dad90c2f114e5da795ceb0ca4cd1f35b66a9c766c7",
+      "size_bytes": 899
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-DominatedWithin.log",
+      "sha256": "ea4d5d864ba089b511527728a991858b5fce33e07fe5ae60c3931145910d58d2",
+      "size_bytes": 535
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-ExistenceTransport.log",
+      "sha256": "22f1807a41fe1c0840bfc5ac1b8495b80bccc4903664fb178ada6f3602e3e6bf",
+      "size_bytes": 99
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-FEFFERMAN_B_MAXWELL_EQUIVALENCE.log",
+      "sha256": "4475fc79e4d7bf5ad57d2dab77ba5b1b5bc097298fd814ea2b34b46cb0264c30",
+      "size_bytes": 4425
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-FourierPeriodic.log",
+      "sha256": "5bc39959fcb948e34c3b5f2b49f78f6e543218f04c01374389be56956a7123bb",
+      "size_bytes": 2865
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-Kinematics.log",
+      "sha256": "55d00ac93a39dbbfc3f9d4df79e64636703bc379021525de941dbbcd6852831d",
+      "size_bytes": 341
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-Lamb.log",
+      "sha256": "cdf874d04dfc30c95294415267989c4c88f837ac4b17c13eac8e845872f628c2",
+      "size_bytes": 871
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-LocalEvolution.log",
+      "sha256": "b708cd2dcefe4ef0e873b7cbc9623a39847e30a975269c3c108c83e61875739c",
+      "size_bytes": 2779
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-MeanConservation.log",
+      "sha256": "c75a08abc4b102e8a17ca50b6db527c33ed48743a1db2cbb43635aac92ce663c",
+      "size_bytes": 3355
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-Negation.log",
+      "sha256": "bc44ec539710e8acd9d5392d44cdedc92be6185d152c9ff0fbe1cc258a4dbeda",
+      "size_bytes": 386
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-PeriodicIntegration.log",
+      "sha256": "ea703de8facb356fff2291e29cc33f4c18838c9c44bbca775e89176179e843c9",
+      "size_bytes": 2813
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-Pressure.log",
+      "sha256": "3860d557dbed2189a96fc43a7dfafe9df7d77fa77120956f2025cd069c71fdb9",
+      "size_bytes": 386
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-Residual.log",
+      "sha256": "cd1827d114301217c6a2751e5e68d53c6cccb73803f35109583a7c29fc8f4945",
+      "size_bytes": 88
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-Spacetime.log",
+      "sha256": "5f0693ad98d91c174be7485cf46a198ff62673813a7452cf81dde67137205061",
+      "size_bytes": 945
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build-NSEMaxwell-TemporalMean.log",
+      "sha256": "2eb2cf1e2890c03bb9cae98ae57223c7e48861e4128e85993bd604745d891bd5",
+      "size_bytes": 3351
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-build.log",
+      "sha256": "633baab298f1fe38c77599531f261318a7abad5d80458d4972928fce5cbdc79c",
+      "size_bytes": 4393
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-cache.log",
+      "sha256": "9f749ef419949d40aecf47b2078aafd3a1a692b8340e6b45179c78c78d2e7d13",
+      "size_bytes": 138
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/run-provenance.json",
+      "sha256": "e02709eebfc2fc329e9fdfff853ad17453cc33c53abc7220aa27f99a72599fc0",
+      "size_bytes": 3380
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/runner-disk.txt",
+      "sha256": "c55ac4956756574b86dd3f6d9046bd914e7c8b2524aa2a1681a272e68b725b67",
+      "size_bytes": 89
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/runner-system.txt",
+      "sha256": "4be565484e5d2351365ea25322c384b18705d10640b1e9268089424c40cb766b",
+      "size_bytes": 128
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/source-commit.log",
+      "sha256": "7262058ee702fd92e3f70fb8ede40b317081d1dc590ddbae79bbd944c73ae7be",
+      "size_bytes": 41
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/source-manifest.json",
+      "sha256": "2e170563a63e264960afcc7cfc9e4aed952ff209e029ca696f9b034687d597a5",
+      "size_bytes": 23955
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/tracked-files.log",
+      "sha256": "aba91bc60834f442647438eefd83c1df827cb091b81cd1cfbb4bf9993b6440fc",
+      "size_bytes": 6127
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/linux-43336709607/working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/README.md",
+      "sha256": "f2f935270f774fc1c021f024f038a45d7d3f0bdb9dc7566726f63a77cc3493f2",
+      "size_bytes": 4321
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/audit-summary.json",
+      "sha256": "facde3f42a6962662774a254fa16ec8512e6b973bfaba2c70ffe2dc6019e922a",
+      "size_bytes": 30931
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/audit-verifier.log",
+      "sha256": "4108b8229efa37f82de441954895c1aef41bd6d25774580526c504a3a76f6b1b",
+      "size_bytes": 155
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/lean-version.log",
+      "sha256": "f96616d5b54be3c2598eaa3296d48791639e986ee064645831a0c04b041349fd",
+      "size_bytes": 410
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/mathlib-revision.log",
+      "sha256": "b25c7fd9616e57ff6e958e4cb1fa6b289acd53256669e2793bbc2eaa2dbc18d7",
+      "size_bytes": 42
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/mathlib-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/run-audit.log",
+      "sha256": "4a967d9ee67a8ac29289079696ff3150950f66efcbde7b5f1d0b7880ce7bd7f5",
+      "size_bytes": 60806
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/run-build-NSEMaxwell-Ampere.log",
+      "sha256": "3ac9208dac77d705c065078f8129f43e6ff8ca3f808c56c86316d8b1f6455d76",
+      "size_bytes": 346
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/run-build-NSEMaxwell-AnalyticBridge.log",
+      "sha256": "de06378f7e7a4259a4fd3f6defb0142453b1a6155a68fd226dd0a4f75e1d5dd5",
+      "size_bytes": 1750
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/run-build-NSEMaxwell-Classical.log",
+      "sha256": "23628f317e4af6298f3bc11d015ecdf1f54bbb403d1c41907faf7e31493636af",
+      "size_bytes": 43
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/run-build-NSEMaxwell-ConstantPaths.log",
+      "sha256": "c0e0d3112f59239414d132e7d64a866d467495faf0e47bb370e996d90cc19c58",
+      "size_bytes": 346
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/run-build-NSEMaxwell-Constitutive.log",
+      "sha256": "c0e0d3112f59239414d132e7d64a866d467495faf0e47bb370e996d90cc19c58",
+      "size_bytes": 346
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/run-build-NSEMaxwell-CurlCurl.log",
+      "sha256": "195bb1abfa254c80fcc220ea46c02cb73d289b6f0db7251a28db7a8192dd11b8",
+      "size_bytes": 911
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/run-build-NSEMaxwell-ExistenceTransport.log",
+      "sha256": "4a40bdd508d603ba488038db104c5d1cedea53118f76bce554946aeafc494827",
+      "size_bytes": 42
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/run-build-NSEMaxwell-FEFFERMAN_B_MAXWELL_EQUIVALENCE.log",
+      "sha256": "6966b153fe5a9a9b7c4f1c129f88615ad5096449970fba600193769f27abc0c0",
+      "size_bytes": 1750
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/run-build-NSEMaxwell-Kinematics.log",
+      "sha256": "02be17f549ad8acc5ad6b059e9676ffe1fe33efd22d43da4661ab30a3111552e",
+      "size_bytes": 346
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/run-build-NSEMaxwell-Lamb.log",
+      "sha256": "86c23ae0b5617b41b0a70c9c9f7df78c5bdff6036935780b4e8dbfa32d2c88f9",
+      "size_bytes": 882
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/run-build-NSEMaxwell-Negation.log",
+      "sha256": "3ac9208dac77d705c065078f8129f43e6ff8ca3f808c56c86316d8b1f6455d76",
+      "size_bytes": 346
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/run-build-NSEMaxwell-Pressure.log",
+      "sha256": "c0e0d3112f59239414d132e7d64a866d467495faf0e47bb370e996d90cc19c58",
+      "size_bytes": 346
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/run-build-NSEMaxwell-Residual.log",
+      "sha256": "f9a66620165d74318d1caf0df853e9415a032603c4957677ee9f6434c186b918",
+      "size_bytes": 42
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/run-build.log",
+      "sha256": "fb9dce45c020e148faaab4b7b78283c8468b6b89cc7c56de69d6a90229b1de88",
+      "size_bytes": 1750
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/run-cache.log",
+      "sha256": "ac433e8063ecba2d68437c467637729641f40975f05a15f2fc2ba72b7f94e9b6",
+      "size_bytes": 142
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/run-provenance.json",
+      "sha256": "38cce2a95814904979ad73df7ff5e8c815443ee47dd5b74fc7a6c357e13bbb4a",
+      "size_bytes": 2685
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/source-commit.log",
+      "sha256": "38a5a08690ed0d88bdbad1ffa4c2157643df0abda93f509f220df1074cd1d884",
+      "size_bytes": 42
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/source-manifest.json",
+      "sha256": "cf68016d6739febf4580ce6bec82a5955a2e274cfd0a2ce28b9ff28a94e23c52",
+      "size_bytes": 7569
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/tracked-files.log",
+      "sha256": "3ef5d7da52913d9ad9ab4fc8396f27bce349748fbf1f585ff7874b9c7158ae67",
+      "size_bytes": 730
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43318057281/working-tree.log",
+      "sha256": "553892eca1ad99396d2572885666c86bfcc0f0e33dc32e6fef07f763fa4b6705",
+      "size_bytes": 23
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/audit-summary.json",
+      "sha256": "de008222e6f7db247e4394ababfe830526095e31c0cb526bf789a141f90dce8a",
+      "size_bytes": 72914
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/audit-verifier.log",
+      "sha256": "4108b8229efa37f82de441954895c1aef41bd6d25774580526c504a3a76f6b1b",
+      "size_bytes": 155
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/command-timings-BuildAudit.json",
+      "sha256": "91e7b6f088a204332b0070cb197848230939c73575cd85203526b3c78185e626",
+      "size_bytes": 21101
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/command-timings-Dependencies.json",
+      "sha256": "161d04460b3885230b74eebf20e7dca425de440ea87070b8f2f389c57e15a60d",
+      "size_bytes": 9992
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/dependency-aesop-revision.log",
+      "sha256": "bffd4a0c82331582d34b017704ea734b831915e0c8d3823a7f8836fb7be84125",
+      "size_bytes": 42
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/dependency-aesop-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/dependency-batteries-revision.log",
+      "sha256": "7e3475f3fab39bd0544eb684169eaf2a9a4bf8f78708aef58ed4e24bbb6fef8c",
+      "size_bytes": 42
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/dependency-batteries-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/dependency-Cli-revision.log",
+      "sha256": "d8197562373507cedeec47a7b8a40f55f97dae94ff72fe1d682bc18ce3417cd5",
+      "size_bytes": 42
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/dependency-Cli-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/dependency-importGraph-revision.log",
+      "sha256": "a2868dc1537016231bdd0a4608fac5b5cf95180d93a2cef86199c719ab8067b3",
+      "size_bytes": 42
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/dependency-importGraph-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/dependency-LeanSearchClient-revision.log",
+      "sha256": "39223ce870e9c46f87cb8d0b10d1b07aff41f89cd47f88301c0738b505960652",
+      "size_bytes": 42
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/dependency-LeanSearchClient-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/dependency-mathlib-revision.log",
+      "sha256": "b25c7fd9616e57ff6e958e4cb1fa6b289acd53256669e2793bbc2eaa2dbc18d7",
+      "size_bytes": 42
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/dependency-mathlib-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/dependency-plausible-revision.log",
+      "sha256": "18c81ed595728ed0ee0e85cb446c9f5d24ecd252dc0f9fe270871aba3bd7dff5",
+      "size_bytes": 42
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/dependency-plausible-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/dependency-preparation.json",
+      "sha256": "1d7c91461176201877008080ec3f95d488cda46e78595b4f8b8f65fb1472d545",
+      "size_bytes": 3116
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/dependency-proofwidgets-revision.log",
+      "sha256": "c6dbfcac29f33bcd8f246f92ce4b66f3f850c5b78e48d8bb19c39665948c4974",
+      "size_bytes": 42
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/dependency-proofwidgets-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/dependency-Qq-revision.log",
+      "sha256": "5b8b73b9c9995a0f283c35aef34bcfc13c29dd4a90c2d22058f79fee2b240c08",
+      "size_bytes": 42
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/dependency-Qq-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/lean-version.log",
+      "sha256": "6a098116fece853fba3315aeef75b58076105609df2625ea7c30d762579b8eff",
+      "size_bytes": 109
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/mathlib-revision.log",
+      "sha256": "b25c7fd9616e57ff6e958e4cb1fa6b289acd53256669e2793bbc2eaa2dbc18d7",
+      "size_bytes": 42
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/mathlib-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/resolved-lake-manifest.json",
+      "sha256": "69c22ad5678fd37f874d60dd5c604bfd96a2604fcb788a054764d6f1e346a939",
+      "size_bytes": 3549
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-audit.log",
+      "sha256": "bc6d813a5ac9cd9917ac5b90ee38a7736fbcf67787ab7799983c180c172fb68d",
+      "size_bytes": 112466
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-freshness.log",
+      "sha256": "37f8c0a74fe4b5d40931c459f9dbd6475da7fbd5f68eb074e2a5bbeaac2639b4",
+      "size_bytes": 4560
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-Ampere.log",
+      "sha256": "3ac9208dac77d705c065078f8129f43e6ff8ca3f808c56c86316d8b1f6455d76",
+      "size_bytes": 346
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-AnalyticBridge.log",
+      "sha256": "de06378f7e7a4259a4fd3f6defb0142453b1a6155a68fd226dd0a4f75e1d5dd5",
+      "size_bytes": 1750
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-AnalyticReduction.log",
+      "sha256": "b6439f7a4191dc0d4b4250ba52e6b321238d5727f5830a64cc568620c48d56d3",
+      "size_bytes": 4480
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-CanonicalSmoothness.log",
+      "sha256": "3d94f53f66e1da54156ead64b4d7f25c77efd807a08b7cc51319454b0a911def",
+      "size_bytes": 3926
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-Classical.log",
+      "sha256": "23628f317e4af6298f3bc11d015ecdf1f54bbb403d1c41907faf7e31493636af",
+      "size_bytes": 43
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-ConstantPaths.log",
+      "sha256": "c0e0d3112f59239414d132e7d64a866d467495faf0e47bb370e996d90cc19c58",
+      "size_bytes": 346
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-Constitutive.log",
+      "sha256": "c0e0d3112f59239414d132e7d64a866d467495faf0e47bb370e996d90cc19c58",
+      "size_bytes": 346
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-CurlCurl.log",
+      "sha256": "195bb1abfa254c80fcc220ea46c02cb73d289b6f0db7251a28db7a8192dd11b8",
+      "size_bytes": 911
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-DominatedWithin.log",
+      "sha256": "f3492db10bd029719e58e2d14e7b98eafb5e5cdae0f97d90ab45de5340daf298",
+      "size_bytes": 539
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-ExistenceTransport.log",
+      "sha256": "4a40bdd508d603ba488038db104c5d1cedea53118f76bce554946aeafc494827",
+      "size_bytes": 42
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-FEFFERMAN_B_MAXWELL_EQUIVALENCE.log",
+      "sha256": "eb99be58ab4c374eea4afdc35f7cbcf128ca16184089341a24ee5b2703446456",
+      "size_bytes": 4494
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-FourierPeriodic.log",
+      "sha256": "fdda2e026fd852a3f804e9df8a4886fcdb14a57e6bb49304a1c06f09e1f4978b",
+      "size_bytes": 2852
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-Kinematics.log",
+      "sha256": "02be17f549ad8acc5ad6b059e9676ffe1fe33efd22d43da4661ab30a3111552e",
+      "size_bytes": 346
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-Lamb.log",
+      "sha256": "86c23ae0b5617b41b0a70c9c9f7df78c5bdff6036935780b4e8dbfa32d2c88f9",
+      "size_bytes": 882
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-LocalEvolution.log",
+      "sha256": "be0b9ed832d831d798ed4acd7891314bb0e2a25e64c74aff26a0cf655ef91956",
+      "size_bytes": 2824
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-MeanConservation.log",
+      "sha256": "66c8ad4e59dd007e8bc6def7b713727c105771f4f2d86e74059588d22832a1f2",
+      "size_bytes": 3348
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-Negation.log",
+      "sha256": "3ac9208dac77d705c065078f8129f43e6ff8ca3f808c56c86316d8b1f6455d76",
+      "size_bytes": 346
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-PeriodicIntegration.log",
+      "sha256": "5094ee4f824bdd223bd778f17b84a3ec83170d333c3ae7fe0338a0aa3a39db8b",
+      "size_bytes": 2852
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-Pressure.log",
+      "sha256": "c0e0d3112f59239414d132e7d64a866d467495faf0e47bb370e996d90cc19c58",
+      "size_bytes": 346
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-Residual.log",
+      "sha256": "f9a66620165d74318d1caf0df853e9415a032603c4957677ee9f6434c186b918",
+      "size_bytes": 42
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-Spacetime.log",
+      "sha256": "45f8a9edf258edf208ae5cef124dbeeb72d130ec9e31d11ed1b001620f10005c",
+      "size_bytes": 911
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build-NSEMaxwell-TemporalMean.log",
+      "sha256": "a5c11f295f1cfae6fec252648ed921b77764c3250fbed8d3f6b3d520afe6c80a",
+      "size_bytes": 3348
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-build.log",
+      "sha256": "f13629a2310e036fabb925377a53c4212230f7915714971fa039fdde89c7e387",
+      "size_bytes": 4462
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-cache.log",
+      "sha256": "ac433e8063ecba2d68437c467637729641f40975f05a15f2fc2ba72b7f94e9b6",
+      "size_bytes": 142
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/run-provenance.json",
+      "sha256": "371887e5c029ed28f52a8ce2920fee0d8ac39a4f6de56e6a5706cae4c5daef40",
+      "size_bytes": 5457
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/source-commit.log",
+      "sha256": "ccfaec4aa023df980fcdb95e57c1327f28cc7053c15d319da0e5e4332004393a",
+      "size_bytes": 42
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/source-manifest.json",
+      "sha256": "b3be4cfb54f92124268b4241625b8f60a3c66d9276179777223a388a46781628",
+      "size_bytes": 18089
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/tracked-files.log",
+      "sha256": "1ffe0a76df1e9b6367a85ce5b6502684eb789ad2b904d7fcefe58356c8e33545",
+      "size_bytes": 2635
+    },
+    {
+      "path": "Fefferman_B_adapter/evidence/windows-43333835295/working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell.lean",
+      "sha256": "3be1cf79c390b8e769d235f08cc5884bbc8ef17d8b541a141629c697f0429617",
+      "size_bytes": 769
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/Ampere.lean",
+      "sha256": "e1ee9e880e2c50360fea276a49fe3ca4c05c8104fa7b29740877cde3d30bc648",
+      "size_bytes": 1637
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/AnalyticBridge.lean",
+      "sha256": "d1e5a1439d01599cacea35a0c45f6c2e3842011130b8645681f02cff817b5402",
+      "size_bytes": 1059
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/AnalyticContracts.lean",
+      "sha256": "7664e157e5ebe3c8ffc24a3eba714b180b248bb950e8b8c4ab5c2c3190b49f3e",
+      "size_bytes": 7054
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/AnalyticReduction.lean",
+      "sha256": "2813f7dd8035681265656a3b6bb2476dbd30e928dc8a737bcb7e3277a8ae77ba",
+      "size_bytes": 7983
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/Audit.lean",
+      "sha256": "1c488230a1f8d9ef1b1e4725e2eb096b70da1a2fbf651e5ea1dce2621f5e343d",
+      "size_bytes": 21696
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/CanonicalSmoothness.lean",
+      "sha256": "d63f7555c73d78141e53d86b463848e2594d01a6dcf8a0b3c026ac8de79dd021",
+      "size_bytes": 4535
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/Classical.lean",
+      "sha256": "00f6b60fd1f6f30bad57c80644579ca404babf5af4edcce06c4edc0ce8b91925",
+      "size_bytes": 9187
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/ConstantPaths.lean",
+      "sha256": "14ddfa21be65dcb38ec3f9b2a5c62463de3846fd44c23b32a27ac0f083c206cf",
+      "size_bytes": 1025
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/Constitutive.lean",
+      "sha256": "d7f1d613a094b2d7679d27d621286ac98e4998a67529f74c4614dcff4f1b4d81",
+      "size_bytes": 6932
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/CurlCurl.lean",
+      "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+      "size_bytes": 12995
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/DominatedWithin.lean",
+      "sha256": "d42ff10c78decd35907a1574e37a86de5fe87b32ad0c5e4ed4ed83997ea7766b",
+      "size_bytes": 4522
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/ExistenceTransport.lean",
+      "sha256": "998d18cb2914c1613c8a484b9d2df2e499480abde6caee09592e3e5db6ba4156",
+      "size_bytes": 2178
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/FEFFERMAN_B_MAXWELL_EQUIVALENCE.lean",
+      "sha256": "61c84e691c54d61bdfb0526858b519381014156eef99d9f66b7d6c0fcc982501",
+      "size_bytes": 828
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/FourierPeriodic.lean",
+      "sha256": "1d49a7d1ead33dd2eb0ab6dd2d90d1dddeefe032d0bd1773f305c85c974591ef",
+      "size_bytes": 5329
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/Kinematics.lean",
+      "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+      "size_bytes": 6563
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/Lamb.lean",
+      "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+      "size_bytes": 4681
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/LocalEvolution.lean",
+      "sha256": "6ada4c7209bfcf163490fdd13d4ebb2381feed274b5ccec447025cac75f3a680",
+      "size_bytes": 9639
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/MeanConservation.lean",
+      "sha256": "3bf93c76cfd27a1644c2a1f760b28a1710e62aa607202c1ddc81188a2f922da6",
+      "size_bytes": 4089
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/Negation.lean",
+      "sha256": "4763b648a80780e3e8694b8953b249823a5349cfd52d3dbb7e0695781a1f531d",
+      "size_bytes": 1966
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/PeriodicIntegration.lean",
+      "sha256": "1e5ab9beb9eeb11fbf595ff4fbdad263ebd4f38e17f02f3ed53e687bfb03664c",
+      "size_bytes": 14200
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/Pressure.lean",
+      "sha256": "c46ba912d016697050c20c7effbe82d463d233469641c886dbb5a89cb1503677",
+      "size_bytes": 2128
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/Residual.lean",
+      "sha256": "4c88782f4ced9cc84a9584a235adad8fba69f1d24e318e49238f884484ae7754",
+      "size_bytes": 7753
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/Spacetime.lean",
+      "sha256": "ebea01c7422186aaa0ec4c72c26774ee32f96291756be7775ba40f569eb89c57",
+      "size_bytes": 10914
+    },
+    {
+      "path": "Fefferman_B_adapter/NSEMaxwell/TemporalMean.lean",
+      "sha256": "cf6a9d1afa1303db16e882cf52fc4e4db26842cf128a0a6fc050ac80735f5de6",
+      "size_bytes": 4515
+    },
+    {
+      "path": "Fefferman_B_adapter/README.md",
+      "sha256": "828a1f30da9bc1dc294812388283635951640610f07f9f903bd2980e3c74ef7d",
+      "size_bytes": 2525
+    },
+    {
+      "path": "Fefferman_B_adapter/scripts/run.ps1",
+      "sha256": "ad83d3fff575aa22480fbec66f0f25ba2ae51057b424553dc57505aeb5836f27",
+      "size_bytes": 25419
+    },
+    {
+      "path": "Fefferman_B_adapter/scripts/verify_audit.py",
+      "sha256": "a4bd1ddc0c837b01acc3403097d3df21e3ee776febf5cbfdaf72af808aa361fc",
+      "size_bytes": 15665
+    },
+    {
+      "path": "formalization-status.json",
+      "sha256": "26150f0eadf3aadaedbd7997f0b220db29c895ffccca771964c5f2537e744c97",
+      "size_bytes": 9025
+    },
+    {
+      "path": "lake-manifest.json",
+      "sha256": "69c22ad5678fd37f874d60dd5c604bfd96a2604fcb788a054764d6f1e346a939",
+      "size_bytes": 3549
+    },
+    {
+      "path": "lakefile.lean",
+      "sha256": "6c74c7dcece6ee6add773d60f3ba79ac7e2eb6ebe222635bea21e004e20d7f07",
+      "size_bytes": 442
+    },
+    {
+      "path": "lean-toolchain",
+      "sha256": "cdbc6c372a2b37ad94430a6cec69cedfa4d36f255bfd968773fd91bf7a1746bf",
+      "size_bytes": 29
+    },
+    {
+      "path": "README.md",
+      "sha256": "5ef60708861ffc0d86bb71c163cbe4b3bcef011a587bb397dfa97ca1e6ebd78b",
+      "size_bytes": 4851
+    },
+    {
+      "path": "run.cmd",
+      "sha256": "fca5f7b94eb5e4e835984c6153f692337992bdb5f63b7de6772eccfe14324163",
+      "size_bytes": 289
+    },
+    {
+      "path": "run.sh",
+      "sha256": "431d995e5d33d428c951ea7b0bada8e6b6230c59f138c121a4190be8f94b6664",
+      "size_bytes": 226
+    }
+  ]
+}

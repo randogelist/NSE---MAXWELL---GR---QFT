@@ -3,8 +3,8 @@
 ```text
 DIRECTION                       = MaxwellB → FeffermanB
 MATHEMATICAL_STATUS             = B_TIER
-RESTRUCTURED_LEAN_SOURCE_STATUS = A_TIER_CANDIDATE
-MATCHING_LAYOUT_COMPILER_AUDIT  = PENDING
+RESTRUCTURED_LEAN_SOURCE_STATUS = A_TIER_FOR_EXACT_CONDITIONAL_ENDPOINTS
+MATCHING_LAYOUT_COMPILER_AUDIT  = PASS_STANDARD_ONLY
 LEAN_HODGE_PREMISE              = EXPLICIT
 ```
 
@@ -78,8 +78,23 @@ The initial reconstruction gives \(u(0)=a\), with arbitrary \(\langle a\rangle\)
 - [Concrete statement adapter](../../Fefferman_B_adapter/NSEMaxwell/Classical.lean): exact predicates and cosine-integral definitions.
 - [Common analytic contracts](../../Fefferman_B_adapter/NSEMaxwell/AnalyticContracts.lean): explicit local premises shared by the two directions.
 
+## External certificate
+
+```text
+AUDITED_SOURCE_COMMIT  = be8376a08573a7789e36b68c2bc48178aa6f53c3
+EXTERNAL_RUN          = 43345557147
+ARTIFACT              = 14001701854
+COMPILER              = NATIVE_LINUX_LEAN_4.34.0-rc1
+NAMED_AUDIT_RESULTS   = 174 / 174 PASS_STANDARD_ONLY
+ACTIVE_LEAN_HASH_MATCH = 30 / 30
+```
+
+Both reverse endpoints passed matching external compilation and named theorem-level axiom audits. Their axiom sets are contained in `{propext, Classical.choice, Quot.sound}`. The `PeriodicAnalyticLaws` and `FourierHodgeLaws` parameters remain explicit.
+
+[Audit summary](../../Fefferman_B_adapter/evidence/linux-43345557147/audit-summary.json) · [Source manifest](../../Fefferman_B_adapter/evidence/linux-43345557147/source-manifest.json) · [External run](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147)
+
 ```text
 UNCONDITIONAL_LEAN_H_INHABITANT = NOT_SUPPLIED
-RELOCATION_PROOF_PROMOTION     = NONE
+PROMOTION_BASIS                = FRESH_EXTERNAL_COMPILER_AND_AXIOM_AUDIT
 EXTERNAL_VALIDATION_TARGET    = CACHED_NATIVE_LINUX_LEAN_4.34.0-rc1
 ```

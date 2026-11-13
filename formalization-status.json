@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "source_status": "A_TIER_CANDIDATE_REORGANIZED_LAYOUT",
+  "source_status": "A_TIER_FOR_EXACT_CONDITIONAL_DIRECTIONAL_AND_REDUCED_ROOT",
   "exact_target": "NSEMaxwell.Classical.ExactEquivalence",
   "exact_target_proved": false,
   "unconditional_closure": false,
@@ -22,7 +22,7 @@
   "promotion_rule": "Matching external compiler and theorem-level axiom evidence; semantic hypotheses audited separately.",
   "prepared_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED",
   "prepared_root_type": "NSEMaxwell.Bridge.FourierHodgeLaws -> NSEMaxwell.Classical.ExactEquivalence",
-  "conditional_root_status": "A_TIER_CANDIDATE_PENDING_MATCHING_EXTERNAL_RUN",
+  "conditional_root_status": "A_TIER",
   "analytic_laws_inhabitant_provided": false,
   "open_analytic_endpoints": [
     "reconstruct_velocity",
@@ -51,21 +51,25 @@
   "optional_off_solution_lemmas": "canonical_momentum_factorization retains its own hKAdd premise; the root does not depend on it.",
   "audit_target_count": 174,
   "external_evidence": {
-    "source_commit": "d241f2b700be66ab447cb1650770271e1b364b8a",
-    "run_id": 43336709607,
-    "artifact_id": 13998740266,
-    "artifact_sha256": "76c772bea8d3a9879bcb3ced03e6c60e128c5fac8601df0b0e94ae58dce46b6d",
-    "source_manifest_sha256": "2e170563a63e264960afcc7cfc9e4aed952ff209e029ca696f9b034687d597a5",
-    "directory": "Fefferman_B_adapter/evidence/linux-43336709607",
+    "source_commit": "be8376a08573a7789e36b68c2bc48178aa6f53c3",
+    "run_id": 43345557147,
+    "artifact_id": 14001701854,
+    "artifact_sha256": "d33c336a8cef9758cdbf87f5b96ed9ad2dd6e5fdad84caf231b7b13e677b36ca",
+    "directory": "Fefferman_B_adapter/evidence/linux-43345557147",
     "platform": "native Linux / Ubuntu 24.04",
+    "source_manifest_sha256": "60017409175d8b7570f39e8e0890ca38b76f99cddde5cde4db958233db464d0f",
     "build": "PASS",
-    "lean_audit_command": "PASS",
     "theorem_axiom_audit": "PASS_STANDARD_ONLY",
-    "audited_declarations": 170,
-    "project_declarations": 166,
+    "audited_declarations": 174,
+    "project_declarations": 170,
     "registered_mathlib_declarations": 4,
-    "lean_source_hashes_matching_delivery": 25,
-    "preserved_artifact_files": 60
+    "lean_source_hashes_matching_delivery": 30,
+    "preserved_artifact_files": 65,
+    "lean_audit_command": "PASS",
+    "compiler": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+    "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+    "cache_policy": "Compiler/dependency/project caches restored; verified exact predecessor keys used for dependency/project migration.",
+    "line_ending_note": "run.cmd is stored with LF in the Git blob and checked out with CRLF under .gitattributes; that normalization matches the recorded compiler-run manifest. All 30 Lean input hashes match byte-for-byte."
   },
   "continuation_candidate_modules": [
     "PeriodicIntegration",
@@ -92,25 +96,29 @@
     "lean_source_hashes_matching_delivery": 16
   },
   "additional_module_evidence": {
-    "source_commit": "d241f2b700be66ab447cb1650770271e1b364b8a",
-    "run_id": 43336709607,
-    "artifact_id": 13998740266,
-    "artifact_sha256": "76c772bea8d3a9879bcb3ced03e6c60e128c5fac8601df0b0e94ae58dce46b6d",
-    "source_manifest_sha256": "2e170563a63e264960afcc7cfc9e4aed952ff209e029ca696f9b034687d597a5",
-    "directory": "Fefferman_B_adapter/evidence/linux-43336709607",
+    "source_commit": "be8376a08573a7789e36b68c2bc48178aa6f53c3",
+    "run_id": 43345557147,
+    "artifact_id": 14001701854,
+    "artifact_sha256": "d33c336a8cef9758cdbf87f5b96ed9ad2dd6e5fdad84caf231b7b13e677b36ca",
+    "directory": "Fefferman_B_adapter/evidence/linux-43345557147",
     "platform": "native Linux / Ubuntu 24.04",
+    "source_manifest_sha256": "60017409175d8b7570f39e8e0890ca38b76f99cddde5cde4db958233db464d0f",
     "build": "PASS",
-    "lean_audit_command": "PASS",
     "theorem_axiom_audit": "PASS_STANDARD_ONLY",
-    "audited_declarations": 170,
-    "project_declarations": 166,
+    "audited_declarations": 174,
+    "project_declarations": 170,
     "registered_mathlib_declarations": 4,
-    "lean_source_hashes_matching_delivery": 25,
-    "preserved_artifact_files": 60
+    "lean_source_hashes_matching_delivery": 30,
+    "preserved_artifact_files": 65,
+    "lean_audit_command": "PASS",
+    "compiler": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+    "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+    "cache_policy": "Compiler/dependency/project caches restored; verified exact predecessor keys used for dependency/project migration.",
+    "line_ending_note": "run.cmd is stored with LF in the Git blob and checked out with CRLF under .gitattributes; that normalization matches the recorded compiler-run manifest. All 30 Lean input hashes match byte-for-byte."
   },
   "prepared_reduced_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED",
   "prepared_reduced_root_type": "NSEMaxwell.Bridge.FourierHodgeLaws -> NSEMaxwell.Classical.ExactEquivalence",
-  "reduced_root_status": "A_TIER_CANDIDATE_PENDING_MATCHING_EXTERNAL_RUN",
+  "reduced_root_status": "A_TIER_FOR_EXACT_CONDITIONAL_IMPLICATION",
   "reduced_open_analytic_endpoints": [
     "reconstruct_velocity",
     "reconstruct_curl",
@@ -142,7 +150,7 @@
   "original_conditional_root": {
     "name": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE",
     "type": "NSEMaxwell.Bridge.PeriodicAnalyticLaws -> NSEMaxwell.Classical.ExactEquivalence",
-    "status": "A_TIER_CANDIDATE_CURRENT_LAYOUT; PRIOR_A_TIER_EVIDENCE_RETAINED",
+    "status": "A_TIER_FOR_EXACT_CONDITIONAL_IMPLICATION",
     "analytic_endpoints": [
       "reconstruct_velocity",
       "reconstruct_curl",
@@ -162,9 +170,9 @@
     "ZLattice.summable_norm_pow_inv"
   ],
   "registered_methlib_port_candidates": 7,
-  "formal_status": "A_TIER_CANDIDATE_CURRENT_LAYOUT; PRIOR_CONDITIONAL_FORMAL_CLOSURE_RETAINED",
+  "formal_status": "CONDITIONAL_FORMAL_CLOSURE",
   "active_ci_platform": "native Linux / Ubuntu 24.04",
-  "active_ci_validation": "PENDING_CACHED_NATIVE_LINUX_BUILD_AND174_FRESH_AUDITS",
+  "active_ci_validation": "PASS_NATIVE_LINUX_BUILD_AND174_FRESH_AUDITS",
   "prior_reduced_root_windows_evidence": {
     "source_commit": "1bd2ee067d4aad3c265b32efd533ef270179e665",
     "run_id": 43333835295,
@@ -203,26 +211,29 @@
       "name": "NSEMaxwell.Bridge.feffermanB_implies_maxwellB_of_periodicAnalyticLaws",
       "premise": "PeriodicAnalyticLaws",
       "direction": "FeffermanB -> MaxwellB",
-      "status": "A_TIER_CANDIDATE"
+      "status": "A_TIER_FOR_EXACT_CONDITIONAL_IMPLICATION"
     },
     {
       "name": "NSEMaxwell.Bridge.maxwellB_implies_feffermanB_of_periodicAnalyticLaws",
       "premise": "PeriodicAnalyticLaws",
       "direction": "MaxwellB -> FeffermanB",
-      "status": "A_TIER_CANDIDATE"
+      "status": "A_TIER_FOR_EXACT_CONDITIONAL_IMPLICATION"
     },
     {
       "name": "NSEMaxwell.Bridge.feffermanB_implies_maxwellB_of_fourierHodgeLaws",
       "premise": "FourierHodgeLaws",
       "direction": "FeffermanB -> MaxwellB",
-      "status": "A_TIER_CANDIDATE"
+      "status": "A_TIER_FOR_EXACT_CONDITIONAL_IMPLICATION"
     },
     {
       "name": "NSEMaxwell.Bridge.maxwellB_implies_feffermanB_of_fourierHodgeLaws",
       "premise": "FourierHodgeLaws",
       "direction": "MaxwellB -> FeffermanB",
-      "status": "A_TIER_CANDIDATE"
+      "status": "A_TIER_FOR_EXACT_CONDITIONAL_IMPLICATION"
     }
   ],
-  "mathematical_hodge_derivation": "B_TIER_COMPLETE; LEAN_INHABITANT_DEFERRED"
+  "mathematical_hodge_derivation": "B_TIER_COMPLETE; LEAN_INHABITANT_DEFERRED",
+  "certified_source_commit": "be8376a08573a7789e36b68c2bc48178aa6f53c3",
+  "certified_lean_source_inputs": 30,
+  "current_layout_validation": "PASS_CACHED_NATIVE_LINUX"
 }

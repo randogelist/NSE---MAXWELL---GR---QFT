@@ -4,8 +4,8 @@ MAXWELL_TO_B_B_TIER
 MODE = B_TIER_DERIVATION
 DIRECTION = MaxwellB -> FeffermanB
 MATHEMATICAL_STATUS = B_TIER
-RESTRUCTURED_LEAN_SOURCE_STATUS = A_TIER_CANDIDATE
-MATCHING_LAYOUT_EXTERNAL_COMPILER_AND_AXIOM_AUDIT = PENDING
+RESTRUCTURED_LEAN_SOURCE_STATUS = A_TIER_FOR_EXACT_CONDITIONAL_ENDPOINTS
+MATCHING_LAYOUT_EXTERNAL_COMPILER_AND_AXIOM_AUDIT = PASS_STANDARD_ONLY
 LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
 
 THEOREM:
@@ -273,8 +273,19 @@ That hypothesis is absent from the directional existence theorem.
 
 The mathematical Hodge realization is recorded in the shared B-tier
 derivation. Its Lean inhabitant is not supplied by this reorganization.
-The new layout is A_TIER_CANDIDATE until matching external cached native
-Linux Lean 4.34.0-rc1 compilation and theorem-level axiom audit succeed.
+Both exact conditional reverse endpoints passed matching external cached
+native Linux Lean 4.34.0-rc1 compilation and named theorem-level axiom audits:
+
+  AUDITED_SOURCE_COMMIT = be8376a08573a7789e36b68c2bc48178aa6f53c3
+  EXTERNAL_RUN = 43345557147
+  ARTIFACT = 14001701854
+  NAMED_AUDIT_RESULTS = 174/174 PASS_STANDARD_ONLY
+  ACTIVE_LEAN_SOURCE_HASH_MATCHES = 30/30
+  EVIDENCE_DIRECTORY = ../../Fefferman_B_adapter/evidence/linux-43345557147
+
+The resulting A_TIER status applies to the implications with their explicit
+PeriodicAnalyticLaws or FourierHodgeLaws parameters. It does not supply an
+unconditional Lean inhabitant of FourierHodgeLaws.
 
 Approved foundational axioms are propext, Classical.choice, Quot.sound.
 An axiom audit does not discharge an explicit FourierHodgeLaws hypothesis.

@@ -183,7 +183,7 @@
         "Identify complex characters with the frozen real cosine inverse-Laplacian definition."
       ],
       "target_status": "UPSTREAM_DECLARATION_AVAILABLE_ON_EXACT_TARGET_PIN",
-      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: external native Linux run43336709607, exact target compiler and Mathlib pin.",
+      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: external native Linux run43345557147, exact target compiler and Mathlib pin.",
       "port_required": false,
       "proof_status_promotion_by_this_selection": false
     },
@@ -216,7 +216,7 @@
         "Summable actual Fourier coefficients, supplied by T03 plus M05."
       ],
       "target_status": "UPSTREAM_DECLARATION_AVAILABLE_ON_EXACT_TARGET_PIN",
-      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: external native Linux run43336709607, exact target compiler and Mathlib pin.",
+      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: external native Linux run43345557147, exact target compiler and Mathlib pin.",
       "port_required": false,
       "proof_status_promotion_by_this_selection": false
     },
@@ -316,7 +316,7 @@
         "Compare the chosen frequency norm/weight with the derivative-symbol norm."
       ],
       "target_status": "UPSTREAM_DECLARATION_AVAILABLE_ON_EXACT_TARGET_PIN",
-      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: external native Linux run43336709607, exact target compiler and Mathlib pin.",
+      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: external native Linux run43345557147, exact target compiler and Mathlib pin.",
       "port_required": false,
       "proof_status_promotion_by_this_selection": false
     },
@@ -387,7 +387,7 @@
         "This ambient theorem alone does not handle the time-zero boundary."
       ],
       "target_status": "UPSTREAM_DECLARATION_AVAILABLE_ON_EXACT_TARGET_PIN",
-      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: external native Linux run43336709607, exact target compiler and Mathlib pin.",
+      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: external native Linux run43345557147, exact target compiler and Mathlib pin.",
       "port_required": false,
       "proof_status_promotion_by_this_selection": false
     },
@@ -1223,21 +1223,25 @@
     }
   ],
   "upstream_reference_audit": {
-    "source_commit": "d241f2b700be66ab447cb1650770271e1b364b8a",
-    "run_id": 43336709607,
-    "artifact_id": 13998740266,
-    "artifact_sha256": "76c772bea8d3a9879bcb3ced03e6c60e128c5fac8601df0b0e94ae58dce46b6d",
-    "source_manifest_sha256": "2e170563a63e264960afcc7cfc9e4aed952ff209e029ca696f9b034687d597a5",
-    "directory": "Fefferman_B_adapter/evidence/linux-43336709607",
+    "source_commit": "be8376a08573a7789e36b68c2bc48178aa6f53c3",
+    "run_id": 43345557147,
+    "artifact_id": 14001701854,
+    "artifact_sha256": "d33c336a8cef9758cdbf87f5b96ed9ad2dd6e5fdad84caf231b7b13e677b36ca",
+    "directory": "Fefferman_B_adapter/evidence/linux-43345557147",
     "platform": "native Linux / Ubuntu 24.04",
+    "source_manifest_sha256": "60017409175d8b7570f39e8e0890ca38b76f99cddde5cde4db958233db464d0f",
     "build": "PASS",
-    "lean_audit_command": "PASS",
     "theorem_axiom_audit": "PASS_STANDARD_ONLY",
-    "audited_declarations": 170,
-    "project_declarations": 166,
+    "audited_declarations": 174,
+    "project_declarations": 170,
     "registered_mathlib_declarations": 4,
-    "lean_source_hashes_matching_delivery": 25,
-    "preserved_artifact_files": 60
+    "lean_source_hashes_matching_delivery": 30,
+    "preserved_artifact_files": 65,
+    "lean_audit_command": "PASS",
+    "compiler": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+    "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+    "cache_policy": "Compiler/dependency/project caches restored; verified exact predecessor keys used for dependency/project migration.",
+    "line_ending_note": "run.cmd is stored with LF in the Git blob and checked out with CRLF under .gitattributes; that normalization matches the recorded compiler-run manifest. All 30 Lean input hashes match byte-for-byte."
   },
   "selection_notes": [
     "Core identifiers M01–M10 and T01–T06 follow the parent derivation.",
@@ -1254,6 +1258,28 @@
     "new_a_tier_promotion": false,
     "b_tier_derivation": "../../B <-> Maxwell/FOURIER_HODGE_COMPOSITION_B_TIER.txt",
     "integration_contracts": "../../B <-> Maxwell/INTEGRATION_PLAN.md",
-    "prior_staging_commit": "2373ce37659fa2f84920da0e5a26652a124623b7"
+    "prior_staging_commit": "2373ce37659fa2f84920da0e5a26652a124623b7",
+    "directional_layout_certificate": {
+      "source_commit": "be8376a08573a7789e36b68c2bc48178aa6f53c3",
+      "run_id": 43345557147,
+      "status": "PASS_STANDARD_ONLY_FOR_CONDITIONAL_DIRECTIONS; HODGE_SOURCE_PORTS_DEFERRED"
+    }
+  },
+  "prior_layout_reference_audit": {
+    "source_commit": "d241f2b700be66ab447cb1650770271e1b364b8a",
+    "run_id": 43336709607,
+    "artifact_id": 13998740266,
+    "artifact_sha256": "76c772bea8d3a9879bcb3ced03e6c60e128c5fac8601df0b0e94ae58dce46b6d",
+    "source_manifest_sha256": "2e170563a63e264960afcc7cfc9e4aed952ff209e029ca696f9b034687d597a5",
+    "directory": "Fefferman_B_adapter/evidence/linux-43336709607",
+    "platform": "native Linux / Ubuntu 24.04",
+    "build": "PASS",
+    "lean_audit_command": "PASS",
+    "theorem_axiom_audit": "PASS_STANDARD_ONLY",
+    "audited_declarations": 170,
+    "project_declarations": 166,
+    "registered_mathlib_declarations": 4,
+    "lean_source_hashes_matching_delivery": 25,
+    "preserved_artifact_files": 60
   }
 }

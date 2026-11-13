@@ -1,3 +1,19 @@
+# Current matching layout certificate
+
+[linux-43345557147/](linux-43345557147/) contains all 65 original artifact files from [native Linux run 43345557147](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147).
+
+```text
+SOURCE_COMMIT = be8376a08573a7789e36b68c2bc48178aa6f53c3
+BUILD = PASS
+THEOREM_AXIOM_AUDIT = 174 / 174 PASS_STANDARD_ONLY
+LEAN_SOURCE_HASHES_MATCHING_DELIVERY = 30 / 30
+ARTIFACT_SHA256 = d33c336a8cef9758cdbf87f5b96ed9ad2dd6e5fdad84caf231b7b13e677b36ca
+FORMAL_STATUS = CONDITIONAL_FORMAL_CLOSURE
+HODGE_INHABITANT = NOT_SUPPLIED
+```
+
+All new directional endpoints and the reduced root have only the approved foundational axioms. Historical manifests retain their original paths. The current source manifest records the new adapter and directional paths. The runner's CRLF checkout normalization for `run.cmd` is governed by `.gitattributes`; all Lean source matches are byte-exact.
+
 # External evidence after directory reorganization
 
 The certificate subdirectories below retain their original artifact bytes.
@@ -5,8 +21,8 @@ Their embedded source-manifest paths describe the original source commit.
 The active library now resides under `Fefferman_B_adapter/`; directional
 proof bodies reside under `B <-> Maxwell/=>/` and `B <-> Maxwell/<=/`.
 
-A matching fresh cached native Linux build and 174-target audit is required
-for the reorganized source layout. Historical source-manifest paths are not
+The matching cached native Linux build and 174-target audit passed in run
+43345557147 for source commit be8376a08573a7789e36b68c2bc48178aa6f53c3. Historical source-manifest paths are not
 rewritten inside certificate artifacts.
 
 ## Historical evidence inventory

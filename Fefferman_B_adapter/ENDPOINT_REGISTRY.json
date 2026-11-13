@@ -422,21 +422,25 @@
     "methlib_source_port_candidates": 7
   },
   "external_upstream_endpoint_audit": {
-    "source_commit": "d241f2b700be66ab447cb1650770271e1b364b8a",
-    "run_id": 43336709607,
-    "artifact_id": 13998740266,
-    "artifact_sha256": "76c772bea8d3a9879bcb3ced03e6c60e128c5fac8601df0b0e94ae58dce46b6d",
-    "source_manifest_sha256": "2e170563a63e264960afcc7cfc9e4aed952ff209e029ca696f9b034687d597a5",
-    "directory": "Fefferman_B_adapter/evidence/linux-43336709607",
+    "source_commit": "be8376a08573a7789e36b68c2bc48178aa6f53c3",
+    "run_id": 43345557147,
+    "artifact_id": 14001701854,
+    "artifact_sha256": "d33c336a8cef9758cdbf87f5b96ed9ad2dd6e5fdad84caf231b7b13e677b36ca",
+    "directory": "Fefferman_B_adapter/evidence/linux-43345557147",
     "platform": "native Linux / Ubuntu 24.04",
+    "source_manifest_sha256": "60017409175d8b7570f39e8e0890ca38b76f99cddde5cde4db958233db464d0f",
     "build": "PASS",
-    "lean_audit_command": "PASS",
     "theorem_axiom_audit": "PASS_STANDARD_ONLY",
-    "audited_declarations": 170,
-    "project_declarations": 166,
+    "audited_declarations": 174,
+    "project_declarations": 170,
     "registered_mathlib_declarations": 4,
-    "lean_source_hashes_matching_delivery": 25,
-    "preserved_artifact_files": 60
+    "lean_source_hashes_matching_delivery": 30,
+    "preserved_artifact_files": 65,
+    "lean_audit_command": "PASS",
+    "compiler": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+    "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+    "cache_policy": "Compiler/dependency/project caches restored; verified exact predecessor keys used for dependency/project migration.",
+    "line_ending_note": "run.cmd is stored with LF in the Git blob and checked out with CRLF under .gitattributes; that normalization matches the recorded compiler-run manifest. All 30 Lean input hashes match byte-for-byte."
   },
   "prior_upstream_windows_audit": {
     "source_commit": "1bd2ee067d4aad3c265b32efd533ef270179e665",
@@ -454,5 +458,22 @@
     "registered_mathlib_declarations": 4,
     "lean_source_hashes_matching_delivery": 25
   },
-  "registration_role": "Previously registered subset; full selected endpoint inventory is Fefferman_B_adapter/Endpoints/ENDPOINTS.json."
+  "registration_role": "Previously registered subset; full selected endpoint inventory is Fefferman_B_adapter/Endpoints/ENDPOINTS.json.",
+  "prior_layout_upstream_endpoint_audit": {
+    "source_commit": "d241f2b700be66ab447cb1650770271e1b364b8a",
+    "run_id": 43336709607,
+    "artifact_id": 13998740266,
+    "artifact_sha256": "76c772bea8d3a9879bcb3ced03e6c60e128c5fac8601df0b0e94ae58dce46b6d",
+    "source_manifest_sha256": "2e170563a63e264960afcc7cfc9e4aed952ff209e029ca696f9b034687d597a5",
+    "directory": "Fefferman_B_adapter/evidence/linux-43336709607",
+    "platform": "native Linux / Ubuntu 24.04",
+    "build": "PASS",
+    "lean_audit_command": "PASS",
+    "theorem_axiom_audit": "PASS_STANDARD_ONLY",
+    "audited_declarations": 170,
+    "project_declarations": 166,
+    "registered_mathlib_declarations": 4,
+    "lean_source_hashes_matching_delivery": 25,
+    "preserved_artifact_files": 60
+  }
 }

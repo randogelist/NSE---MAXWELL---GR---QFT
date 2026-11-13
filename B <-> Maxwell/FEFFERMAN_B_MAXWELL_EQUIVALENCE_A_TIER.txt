@@ -1,8 +1,9 @@
 FEFFERMAN_B_MAXWELL_EQUIVALENCE_A_TIER
 ====================================
 
-CURRENT_SOURCE_STATUS = A_TIER_CANDIDATE_REORGANIZED_LAYOUT
-MATCHING_EXTERNAL_COMPILER_AUDIT = PENDING_CACHED_NATIVE_LINUX
+CURRENT_SOURCE_STATUS = A_TIER_FOR_EXACT_CONDITIONAL_DIRECTIONS_AND_ROOT
+MATCHING_EXTERNAL_COMPILER_AUDIT = PASS_STANDARD_ONLY
+FORMAL_STATUS = CONDITIONAL_FORMAL_CLOSURE
 PRIOR_CONDITIONAL_ROOT = A_TIER_AT_ITS_RECORDED_SOURCE_COMMIT
 UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED
 LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
@@ -88,7 +89,7 @@ Native Linux run 43336709607, source d241f2b700be66ab447cb1650770271e1b364b8a:
 170/170 named audits passed; original proof source and artifact hashes remain
 recorded in ../Fefferman_B_adapter/evidence/linux-43336709607/.
 Those artifacts retain their original bytes and original source-layout paths.
-They are historical evidence, not a fresh certificate for the changed layout.
+They are historical evidence. A matching new-layout certificate is recorded below.
 
 PROMOTION
 ---------
@@ -97,3 +98,31 @@ are necessary for the current source layout. Audit success does not discharge
 FourierHodgeLaws. CONDITIONAL_FORMAL_CLOSURE applies only to the exact audited
 implication. UNCONDITIONAL_CLOSURE requires the remaining H inhabitant and all
 other analytic/certificate/semantic premises to be discharged.
+
+MATCHING REORGANIZED-LAYOUT CERTIFICATE
+--------------------------------------
+Source commit: be8376a08573a7789e36b68c2bc48178aa6f53c3
+Native Linux run: 43345557147
+Artifact: 14001701854
+Artifact SHA256: d33c336a8cef9758cdbf87f5b96ed9ad2dd6e5fdad84caf231b7b13e677b36ca
+Source-manifest SHA256: 60017409175d8b7570f39e8e0890ca38b76f99cddde5cde4db958233db464d0f
+Directory: ../Fefferman_B_adapter/evidence/linux-43345557147/
+Build: PASS
+Named theorem audits: 174/174 PASS_STANDARD_ONLY
+Project declarations: 170
+Registered Mathlib declarations: 4
+Matching Lean source inputs: 30/30
+Preserved original artifact files: 65
+
+All four directional endpoints and the exact reduced root depend only on
+propext, Classical.choice and Quot.sound. The certified type retains its
+PeriodicAnalyticLaws or FourierHodgeLaws argument. No Hodge inhabitant is
+supplied; unconditional Lean closure is not established.
+
+Compiler, dependency and project cache restorations succeeded. The exact
+verified predecessor cache keys supplied the dependency/project migration;
+normal pinned-revision checks and Lake traces validated reuse.
+
+The run.cmd Git blob uses LF; its .gitattributes checkout uses CRLF. That
+normalization matches the recorded run manifest. All 30 Lean source hashes
+match directly, without normalization.

@@ -13,7 +13,7 @@ The two mathematical top-level folders have the literal requested names. `.githu
 
 ```text
 LAYOUT_PLATFORM             = LINUX / POSIX
-CURRENT_LAYOUT_VALIDATION   = PENDING_CACHED_NATIVE_LINUX
+CURRENT_LAYOUT_VALIDATION   = PASS_CACHED_NATIVE_LINUX_BUILD_AND174_AUDITS
 REGISTERED_AUDIT_TARGETS     = 174
 LOCAL_LEAN_EXECUTIONS        = 0
 HODGE_LEAN_INHABITANT        = NOT_SUPPLIED
@@ -101,3 +101,9 @@ Allowed axioms    = propext, Classical.choice, Quot.sound
 The freshness check and final build explicitly include both reduced direction modules. Source manifests cover all three source roots. No cache cleaning is performed.
 
 [formalization-status.json](formalization-status.json) records scope and evidence. [Retained evidence](Fefferman_B_adapter/evidence/) preserves prior compiler artifacts byte-for-byte; each certificate identifies its original source commit and layout.
+
+## Matching layout certificate
+
+[Native Linux run 43345557147](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147) passed the reorganized build and all **174/174** named theorem audits. Certified proof-source commit: `be8376a08573a7789e36b68c2bc48178aa6f53c3`. All **30/30** Lean input hashes match the delivered sources. All four new directional declarations and the exact reduced root have only `propext`, `Classical.choice`, and `Quot.sound` in their axiom dependencies.
+
+[Permanent evidence](Fefferman_B_adapter/evidence/linux-43345557147/) preserves all 65 artifact files. Compiler, dependency, and project cache restorations are recorded in the run. Formal status: **CONDITIONAL_FORMAL_CLOSURE**; the `FourierHodgeLaws` premise remains explicit.
