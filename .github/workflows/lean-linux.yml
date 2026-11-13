@@ -74,8 +74,9 @@ jobs:
             .mathlib-download-cache
           key: nse-deps-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}
           # Verified predecessor caches; dependency commits are unchanged.
-          # The latest contained-source certificate is run 43359539373.
+          # Source-certified predecessor caches; preserve both branch histories.
           restore-keys: |
+            nse-deps-v2-Linux-X64-0fcb7bcc7e55bc5e79e91e2cad12ccc5de76f8b2a18f51c798bbe2107711efee
             nse-deps-v2-Linux-X64-6c235d0bb687ec9b22a0bceed8952795ab0e10605ca31480e6e5b47df0c1ec84
             nse-deps-v2-Linux-X64-1e0a11bbe2f771dc625218fed552a5e8c9ad571990c5e9674d1e2921162b35c5
             nse-deps-v2-Linux-X64-9b51ac59a9bf389c36d0ee08f81eebfa504c2a733df8c25b1187266979e41203
@@ -102,14 +103,33 @@ jobs:
         uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: .lake/build
-          key: nse-project-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-${{ hashFiles('Fefferman_adapter/NSEMaxwell.lean', 'Fefferman_adapter/NSEMaxwell/**/*.lean', 'Fefferman_adapter/FourierHodgeLaws/**/*.lean', 'Fefferman_adapter/FourierHodgeLaws_inhabitant.lean', 'Fefferman_adapter/MethlibEndpoints.lean', 'Fefferman_adapter/MethlibEndpoints/**/*.lean', 'Fefferman_adapter/NativeSources/methlib/SingularClosure/**/*.lean', 'B <-> Maxwell/**/*.lean', 'Maxwell_Endpoint/MaxwellEndpoint.lean', 'Maxwell_Endpoint/MaxwellEndpoint/**/*.lean') }}
+          key: nse-project-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-${{ hashFiles('Fefferman_adapter/NSEMaxwell.lean', 'Fefferman_adapter/NSEMaxwell/**/*.lean', 'Fefferman_adapter/FourierHodgeLaws/**/*.lean', 'Fefferman_adapter/FourierHodgeLaws_inhabitant.lean', 'Fefferman_adapter/MethlibEndpoints.lean', 'Fefferman_adapter/MethlibEndpoints/**/*.lean', 'Fefferman_adapter/NativeSources/methlib/SingularClosure/**/*.lean', 'B <-> Maxwell/**/*.lean', 'Maxwell_Endpoint/MaxwellEndpoint.lean', 'Maxwell_Endpoint/MaxwellEndpoint/**/*.lean', 'Classical_Mechanics_adapter/**/*.lean', 'B <-> ClassicalMechanics/**/*.lean') }}
           restore-keys: |
             nse-project-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-
+            nse-project-v2-Linux-X64-0fcb7bcc7e55bc5e79e91e2cad12ccc5de76f8b2a18f51c798bbe2107711efee-0b8f2b86bf8f8296b278f85f0446651358ce45f89eebb24d5d4230760f17c88a
             nse-project-v2-Linux-X64-6c235d0bb687ec9b22a0bceed8952795ab0e10605ca31480e6e5b47df0c1ec84-f9922a3403f151477521a5235dbd74fbf5fb6d8279e557e20209bf8af14d2a59
             nse-project-v2-Linux-X64-1e0a11bbe2f771dc625218fed552a5e8c9ad571990c5e9674d1e2921162b35c5-5a1aca4898000db4f1f98f887cf1a5b2548ed4bc4bf43edc34b73fdff48fd97f
             nse-project-v2-Linux-X64-9b51ac59a9bf389c36d0ee08f81eebfa504c2a733df8c25b1187266979e41203-5a1aca4898000db4f1f98f887cf1a5b2548ed4bc4bf43edc34b73fdff48fd97f
             nse-project-v2-Linux-X64-78b8e6dd5376bcb08d2c5af93549e74beae76ba7d0f24dc089ab851faa254f79-f3c64b586dd589b35fbe9757b9e8e727d108313c48994542910f87312b72be76
             nse-project-v2-Linux-X64-61a962499c8eb2ab9217aea818efc9c8df3fc4c21642b7007e74a1a069a24416-fc4dca293fc153a8f267633a5b81c65f4a9fe682d0c7c79f3abe80d4a3b6c323
+
+      - name: Compile and freshly audit the Classical Mechanics chain first
+        shell: bash
+        run: |
+          set -euo pipefail
+          python Auxillary/scripts/run_classical_mechanics.py \
+            --external-native-linux \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --report-directory "$GITHUB_WORKSPACE/artifacts/external-linux/classical-mechanics"
+
+      - name: Preserve the completed Classical Mechanics audit independently
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: classical-mechanics-lean-${{ github.sha }}-${{ github.run_attempt }}
+          path: artifacts/external-linux/classical-mechanics/
+          if-no-files-found: warn
+          retention-days: 30
 
       - name: Compile and audit on native Linux
         shell: bash

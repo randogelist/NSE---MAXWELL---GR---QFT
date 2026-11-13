@@ -1,0 +1,19 @@
+{
+  "local_modules": [
+    {
+      "module": "ClassicalMechanicsAssembly.FlowBanach",
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBanach.lean",
+      "sha256": "f5e70a9f1006106c42bbedcaceaa61824ee585f877d5dfd678ad6c33907d8030"
+    }
+  ],
+  "external_imports": [
+    "Mathlib.Analysis.Asymptotics.Lemmas",
+    "Mathlib.Analysis.Calculus.ImplicitContDiff",
+    "Mathlib.Analysis.Calculus.MeanValue",
+    "Mathlib.Analysis.SpecificLimits.Normed",
+    "Mathlib.Tactic.Abel",
+    "Mathlib.Topology.Algebra.InfiniteSum.Ring",
+    "Mathlib.Topology.ContinuousMap.Algebra",
+    "Mathlib.Topology.ContinuousMap.Compact"
+  ]
+}

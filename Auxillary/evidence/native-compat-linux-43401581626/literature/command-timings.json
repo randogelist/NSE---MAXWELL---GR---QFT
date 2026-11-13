@@ -1,0 +1,141 @@
+[
+  {
+    "command": [
+      "lean",
+      "--version"
+    ],
+    "log": "lean-version.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.048
+  },
+  {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "source-commit.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.002
+  },
+  {
+    "command": [
+      "git",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "working-tree.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.023
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      ".lake/packages/mathlib",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "mathlib-revision.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.002
+  },
+  {
+    "command": [
+      "lake",
+      "exe",
+      "cache",
+      "get",
+      "--cache-from=master,legacy",
+      "Mathlib",
+      "Mathlib.Analysis.Asymptotics.Lemmas",
+      "Mathlib.Analysis.Calculus.ContDiff.FTaylorSeries",
+      "Mathlib.Analysis.Calculus.ContDiff.Operations",
+      "Mathlib.Analysis.Calculus.FDeriv.OfCompLeft",
+      "Mathlib.Analysis.Calculus.FDeriv.Symmetric",
+      "Mathlib.Analysis.Calculus.FDeriv.WithLp",
+      "Mathlib.Analysis.Calculus.ImplicitContDiff",
+      "Mathlib.Analysis.Calculus.MeanValue",
+      "Mathlib.Analysis.Normed.Group.Bounded",
+      "Mathlib.Analysis.Normed.Module.FiniteDimension",
+      "Mathlib.Analysis.Normed.Module.Multilinear.Curry",
+      "Mathlib.Analysis.ODE.ExistUnique",
+      "Mathlib.Analysis.SpecialFunctions.Integrals.Basic",
+      "Mathlib.Analysis.SpecificLimits.Normed",
+      "Mathlib.LinearAlgebra.Determinant",
+      "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic",
+      "Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus",
+      "Mathlib.Tactic.Abel",
+      "Mathlib.Tactic.FieldSimp",
+      "Mathlib.Tactic.FunProp",
+      "Mathlib.Tactic.GCongr",
+      "Mathlib.Tactic.Linarith",
+      "Mathlib.Tactic.Positivity",
+      "Mathlib.Tactic.Ring",
+      "Mathlib.Topology.Algebra.InfiniteSum.Ring",
+      "Mathlib.Topology.Algebra.Module.FiniteDimension",
+      "Mathlib.Topology.ContinuousMap.Algebra",
+      "Mathlib.Topology.ContinuousMap.Compact",
+      "Mathlib.Topology.MetricSpace.Pseudo.Real",
+      "Mathlib.Topology.Order.ProjIcc"
+    ],
+    "log": "incremental-mathlib-cache.log",
+    "exit_code": 0,
+    "elapsed_seconds": 4.7
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "--no-build",
+      "ClassicalMechanicsAssembly.LiteratureClosure"
+    ],
+    "log": "build-freshness.log",
+    "exit_code": 3,
+    "elapsed_seconds": 4.077
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanicsAssembly.LiteratureInputs"
+    ],
+    "log": "build-ClassicalMechanicsAssembly.LiteratureInputs.log",
+    "exit_code": 0,
+    "elapsed_seconds": 8.205
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanicsAssembly.LiteratureClosure"
+    ],
+    "log": "build-ClassicalMechanicsAssembly.LiteratureClosure.log",
+    "exit_code": 0,
+    "elapsed_seconds": 8.39
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanicsAssembly.LiteratureClosure"
+    ],
+    "log": "build.log",
+    "exit_code": 0,
+    "elapsed_seconds": 4.111
+  },
+  {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-R",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/literature",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/literature/LiteratureAudit.lean"
+    ],
+    "log": "audit.log",
+    "exit_code": 0,
+    "elapsed_seconds": 5.072
+  }
+]

@@ -1,0 +1,112 @@
+@ClassicalMechanicsAssembly.flow_contDiffOn_multilinear_apply.{u_1, u_2,
+    u_3} : ∀ {D : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup.{u_1} D] [inst_1 : NormedSpace.{0, u_1} ℝ D]
+  [inst_2 : NormedAddCommGroup.{u_2} F] [inst_3 : NormedSpace.{0, u_2} ℝ F] {n : WithTop.{0} ℕ∞} {s : Set.{u_1} D}
+  (r : ℕ) (M : Fin r → Type u_3) [inst_4 : (i : Fin r) → NormedAddCommGroup.{u_3} (M i)]
+  [inst_5 : (i : Fin r) → NormedSpace.{0, u_3} ℝ (M i)] (f : D → ContinuousMultilinearMap.{0, 0, u_3, u_2} ℝ M F)
+  (g : D → (i : Fin r) → M i),
+  ContDiffOn.{0, u_1, max u_2 u_3} ℝ n f s →
+    (∀ (i : Fin r), ContDiffOn.{0, u_1, u_3} ℝ n (fun z => g z i) s) →
+      ContDiffOn.{0, u_1, u_2} ℝ n (fun z => (f z) (g z)) s
+'ClassicalMechanicsAssembly.flow_contDiffOn_multilinear_apply' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+ClassicalMechanicsAssembly.flowLabelJet : NSEMaxwell.Classical.Velocity →
+  (r : ℕ) → Prod.{0, 0} ℝ NSEMaxwell.Classical.Vec → ClassicalMechanicsAssembly.FlowJet r
+'ClassicalMechanicsAssembly.flowLabelJet' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanicsAssembly.flowForcingJet : NSEMaxwell.Classical.Velocity →
+  NSEMaxwell.Classical.Velocity →
+    (r : ℕ) → Prod.{0, 0} ℝ NSEMaxwell.Classical.Vec → ClassicalMechanicsAssembly.FlowJet r
+'ClassicalMechanicsAssembly.flowForcingJet' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flow_representative_slice_contDiff : ∀ {T : ℝ}
+  {Γ : NSEMaxwell.Classical.Vec → ContinuousMap.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) Γ →
+    ∀ {η : NSEMaxwell.Classical.Velocity},
+      (∀ (t : ℝ) (ht : Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t) (a : NSEMaxwell.Classical.Vec),
+          Eq.{1} (η t a) ((Γ a) (Subtype.mk.{1} t ht))) →
+        ∀ {t : ℝ}, Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) (η t)
+'ClassicalMechanicsAssembly.flow_representative_slice_contDiff' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowLabelJet_eq_evaluatedFlowJet : ∀ {T : ℝ}
+  {Γ : NSEMaxwell.Classical.Vec → ContinuousMap.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) Γ →
+    ∀ {η : NSEMaxwell.Classical.Velocity},
+      (∀ (t : ℝ) (ht : Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t) (a : NSEMaxwell.Classical.Vec),
+          Eq.{1} (η t a) ((Γ a) (Subtype.mk.{1} t ht))) →
+        ∀ (r : ℕ) {t : ℝ} (ht : Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t) (a : NSEMaxwell.Classical.Vec),
+          Eq.{1} (ClassicalMechanicsAssembly.flowLabelJet η r (Prod.mk.{0, 0} t a))
+            (ClassicalMechanicsAssembly.evaluatedFlowJet Γ r (Subtype.mk.{1} t ht) a)
+'ClassicalMechanicsAssembly.flowLabelJet_eq_evaluatedFlowJet' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowLabelJet_continuousOn : ∀ {T : ℝ}
+  {Γ : NSEMaxwell.Classical.Vec → ContinuousMap.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) Γ →
+    ∀ {η : NSEMaxwell.Classical.Velocity},
+      (∀ (t : ℝ) (ht : Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t) (a : NSEMaxwell.Classical.Vec),
+          Eq.{1} (η t a) ((Γ a) (Subtype.mk.{1} t ht))) →
+        ∀ (r : ℕ),
+          ContinuousOn.{0, 0} (ClassicalMechanicsAssembly.flowLabelJet η r) (ClassicalMechanics.finiteSpacetime T)
+'ClassicalMechanicsAssembly.flowLabelJet_continuousOn' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowLabelJet_hasFDerivAt : ∀ {T : ℝ}
+  {Γ : NSEMaxwell.Classical.Vec → ContinuousMap.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) Γ →
+    ∀ {η : NSEMaxwell.Classical.Velocity},
+      (∀ (t : ℝ) (ht : Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t) (a : NSEMaxwell.Classical.Vec),
+          Eq.{1} (η t a) ((Γ a) (Subtype.mk.{1} t ht))) →
+        ∀ (r : ℕ) {t : ℝ},
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+            ∀ (a : NSEMaxwell.Classical.Vec),
+              HasFDerivAt.{0, 0, 0} (fun b => ClassicalMechanicsAssembly.flowLabelJet η r (Prod.mk.{0, 0} t b))
+                (ContinuousMultilinearMap.curryLeft.{0, 0, 0}
+                  (ClassicalMechanicsAssembly.flowLabelJet η (HAdd.hAdd.{0, 0, 0} r 1) (Prod.mk.{0, 0} t a)))
+                a
+'ClassicalMechanicsAssembly.flowLabelJet_hasFDerivAt' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowForcingJet_eq_partition_sum : ∀ {T : ℝ} {u η : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.SmoothVelocityOn T u →
+    (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) (η t)) →
+      ∀ (r : ℕ) (z : Prod.{0, 0} ℝ NSEMaxwell.Classical.Vec),
+        Membership.mem.{0, 0} (ClassicalMechanics.finiteSpacetime T) z →
+          Eq.{1} (ClassicalMechanicsAssembly.flowForcingJet u η r z)
+            (∑ c,
+              OrderedFinpartition.compAlongOrderedFinpartition.{0, 0, 0, 0} c
+                (ClassicalMechanicsAssembly.flowSpatialJet u c.length z.1 (η z.1 z.2)) fun i =>
+                ClassicalMechanicsAssembly.flowLabelJet η (c.partSize i) z)
+'ClassicalMechanicsAssembly.flowForcingJet_eq_partition_sum' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowForcingJet_contDiffOn : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u η : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) (η t)) →
+          ∀ (n : ℕ),
+            (∀ (r : ℕ),
+                ContDiffOn.{0, 0, 0} ℝ (↑n) (ClassicalMechanicsAssembly.flowLabelJet η r)
+                  (ClassicalMechanics.finiteSpacetime T)) →
+              ∀ (r : ℕ),
+                ContDiffOn.{0, 0, 0} ℝ (↑n) (ClassicalMechanicsAssembly.flowForcingJet u η r)
+                  (ClassicalMechanics.finiteSpacetime T)
+'ClassicalMechanicsAssembly.flowForcingJet_contDiffOn' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.smoothVelocityOn_of_path_jet_integrals : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u η : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ∀ {Γ : NSEMaxwell.Classical.Vec → ContinuousMap.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec},
+          ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) Γ →
+            (∀ (t : ℝ) (ht : Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t) (a : NSEMaxwell.Classical.Vec),
+                Eq.{1} (η t a) ((Γ a) (Subtype.mk.{1} t ht))) →
+              (∀ (r : ℕ) (s : ℝ),
+                  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) s →
+                    ∀ (b : NSEMaxwell.Classical.Vec),
+                      Eq.{1} (ClassicalMechanicsAssembly.flowLabelJet η r (Prod.mk.{0, 0} s b))
+                        (HAdd.hAdd.{0, 0, 0} (ClassicalMechanicsAssembly.flowLabelJet η r (Prod.mk.{0, 0} 0 b))
+                          (∫ (q : ℝ) in 0..s, ClassicalMechanicsAssembly.flowForcingJet u η r (Prod.mk.{0, 0} q b)))) →
+                ClassicalMechanics.SmoothVelocityOn T η
+'ClassicalMechanicsAssembly.smoothVelocityOn_of_path_jet_integrals' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

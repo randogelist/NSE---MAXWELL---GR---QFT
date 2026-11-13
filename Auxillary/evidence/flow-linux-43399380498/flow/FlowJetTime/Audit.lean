@@ -1,0 +1,14 @@
+import ClassicalMechanicsAssembly.FlowJetTime
+
+set_option pp.universes true
+
+#check @ClassicalMechanicsAssembly.flow_integral_difference
+#print axioms ClassicalMechanicsAssembly.flow_integral_difference
+#check @ClassicalMechanicsAssembly.flow_time_remainder_of_integral
+#print axioms ClassicalMechanicsAssembly.flow_time_remainder_of_integral
+#check @ClassicalMechanicsAssembly.flow_hasFDerivWithinAt_of_integral
+#print axioms ClassicalMechanicsAssembly.flow_hasFDerivWithinAt_of_integral
+#check @ClassicalMechanicsAssembly.flowJet_tower_contDiffOn_of_integrals
+#print axioms ClassicalMechanicsAssembly.flowJet_tower_contDiffOn_of_integrals
+#check @ClassicalMechanicsAssembly.smoothVelocityOn_of_flowJet_integrals
+#print axioms ClassicalMechanicsAssembly.smoothVelocityOn_of_flowJet_integrals

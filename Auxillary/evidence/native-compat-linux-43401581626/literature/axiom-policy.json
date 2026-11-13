@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "authorization": "Native exact L1 root passed; retire the historical L1 axiom exception.",
+  "foundational_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "authorized_axiom_declarations": [],
+  "exact_nonfoundational_policy": true,
+  "targets": [
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.L1",
+      "kind": "theorem",
+      "expected_nonfoundational_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.L2",
+      "kind": "theorem",
+      "expected_nonfoundational_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.L2_native",
+      "kind": "theorem",
+      "expected_nonfoundational_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2",
+      "kind": "theorem",
+      "expected_nonfoundational_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1",
+      "kind": "theorem",
+      "expected_nonfoundational_axioms": []
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+ClassicalMechanicsAssembly.finiteSpacetime_subset_forwardSpacetime : ∀ (T : ℝ),
+  ClassicalMechanics.finiteSpacetime T ⊆ NSEMaxwell.Classical.forwardSpacetime
+'ClassicalMechanicsAssembly.finiteSpacetime_subset_forwardSpacetime' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.global_smoothVelocityOn : ∀ {u : NSEMaxwell.Classical.Velocity},
+  NSEMaxwell.Classical.SmoothVelocity u → ∀ (T : ℝ), ClassicalMechanics.SmoothVelocityOn T u
+'ClassicalMechanicsAssembly.global_smoothVelocityOn' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.global_smoothPressureOn : ∀ {p : NSEMaxwell.Classical.Pressure},
+  NSEMaxwell.Classical.SmoothPressure p → ∀ (T : ℝ), ClassicalMechanics.SmoothPressureOn T p
+'ClassicalMechanicsAssembly.global_smoothPressureOn' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.finiteTimeDerivative_eq_timeDerivative : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u : NSEMaxwell.Classical.Velocity},
+      NSEMaxwell.Classical.SmoothVelocity u →
+        ∀ {t : ℝ},
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+            ∀ (x : NSEMaxwell.Classical.Vec),
+              Eq.{1} (ClassicalMechanics.finiteTimeDerivative T u t x) (NSEMaxwell.Classical.timeDerivative u t x)
+'ClassicalMechanicsAssembly.finiteTimeDerivative_eq_timeDerivative' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.finiteMaterialAcceleration_eq_materialAcceleration : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u : NSEMaxwell.Classical.Velocity},
+      NSEMaxwell.Classical.SmoothVelocity u →
+        ∀ {t : ℝ},
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+            ∀ (x : NSEMaxwell.Classical.Vec),
+              Eq.{1} (ClassicalMechanics.finiteMaterialAcceleration T u t x)
+                (ClassicalMechanics.materialAcceleration u t x)
+'ClassicalMechanicsAssembly.finiteMaterialAcceleration_eq_materialAcceleration' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.global_equation_to_finite_equation : ∀ {ν T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u : NSEMaxwell.Classical.Velocity} {p : NSEMaxwell.Classical.Pressure},
+      NSEMaxwell.Classical.SmoothVelocity u →
+        (∀ (t : ℝ),
+            LE.le.{0} 0 t →
+              ∀ (x : NSEMaxwell.Classical.Vec),
+                Eq.{1}
+                  (HAdd.hAdd.{0, 0, 0}
+                    (HAdd.hAdd.{0, 0, 0} (NSEMaxwell.Classical.timeDerivative u t x)
+                      (NSEMaxwell.Classical.convection (u t) x))
+                    (NSEMaxwell.Classical.gradient (p t) x))
+                  (HSMul.hSMul.{0, 0, 0} ν (NSEMaxwell.Classical.laplacian (u t) x))) →
+          ∀ (t : ℝ),
+            Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+              ∀ (x : NSEMaxwell.Classical.Vec),
+                Eq.{1}
+                  (HAdd.hAdd.{0, 0, 0} (ClassicalMechanics.finiteMaterialAcceleration T u t x)
+                    (NSEMaxwell.Classical.gradient (p t) x))
+                  (HSMul.hSMul.{0, 0, 0} ν (NSEMaxwell.Classical.laplacian (u t) x))
+'ClassicalMechanicsAssembly.global_equation_to_finite_equation' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.finite_equations_to_global_equation : ∀ {ν : ℝ} {u : NSEMaxwell.Classical.Velocity}
+  {p : NSEMaxwell.Classical.Pressure},
+  NSEMaxwell.Classical.SmoothVelocity u →
+    (∀ (T : ℝ),
+        LT.lt.{0} 0 T →
+          ∀ (t : ℝ),
+            Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+              ∀ (x : NSEMaxwell.Classical.Vec),
+                Eq.{1}
+                  (HAdd.hAdd.{0, 0, 0} (ClassicalMechanics.finiteMaterialAcceleration T u t x)
+                    (NSEMaxwell.Classical.gradient (p t) x))
+                  (HSMul.hSMul.{0, 0, 0} ν (NSEMaxwell.Classical.laplacian (u t) x))) →
+      ∀ (t : ℝ),
+        LE.le.{0} 0 t →
+          ∀ (x : NSEMaxwell.Classical.Vec),
+            Eq.{1}
+              (HAdd.hAdd.{0, 0, 0}
+                (HAdd.hAdd.{0, 0, 0} (NSEMaxwell.Classical.timeDerivative u t x)
+                  (NSEMaxwell.Classical.convection (u t) x))
+                (NSEMaxwell.Classical.gradient (p t) x))
+              (HSMul.hSMul.{0, 0, 0} ν (NSEMaxwell.Classical.laplacian (u t) x))
+'ClassicalMechanicsAssembly.finite_equations_to_global_equation' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.global_equation_iff_finite_equations : ∀ {ν : ℝ} {u : NSEMaxwell.Classical.Velocity}
+  {p : NSEMaxwell.Classical.Pressure},
+  NSEMaxwell.Classical.SmoothVelocity u →
+    ((∀ (t : ℝ),
+        LE.le.{0} 0 t →
+          ∀ (x : NSEMaxwell.Classical.Vec),
+            Eq.{1}
+              (HAdd.hAdd.{0, 0, 0}
+                (HAdd.hAdd.{0, 0, 0} (NSEMaxwell.Classical.timeDerivative u t x)
+                  (NSEMaxwell.Classical.convection (u t) x))
+                (NSEMaxwell.Classical.gradient (p t) x))
+              (HSMul.hSMul.{0, 0, 0} ν (NSEMaxwell.Classical.laplacian (u t) x))) ↔
+      ∀ (T : ℝ),
+        LT.lt.{0} 0 T →
+          ∀ (t : ℝ),
+            Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+              ∀ (x : NSEMaxwell.Classical.Vec),
+                Eq.{1}
+                  (HAdd.hAdd.{0, 0, 0} (ClassicalMechanics.finiteMaterialAcceleration T u t x)
+                    (NSEMaxwell.Classical.gradient (p t) x))
+                  (HSMul.hSMul.{0, 0, 0} ν (NSEMaxwell.Classical.laplacian (u t) x)))
+'ClassicalMechanicsAssembly.global_equation_iff_finite_equations' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

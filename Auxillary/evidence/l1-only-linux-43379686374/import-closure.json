@@ -1,0 +1,118 @@
+{
+  "local_modules": [
+    {
+      "module": "MaxwellEndpoint.Geometry",
+      "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+      "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541"
+    },
+    {
+      "module": "MaxwellEndpoint.Constitutive",
+      "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+      "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616"
+    },
+    {
+      "module": "MaxwellEndpoint.System",
+      "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+      "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024"
+    },
+    {
+      "module": "MaxwellEndpoint.Native",
+      "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+      "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d"
+    },
+    {
+      "module": "MaxwellEndpoint",
+      "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+      "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68"
+    },
+    {
+      "module": "NSEMaxwell.Classical",
+      "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+      "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109"
+    },
+    {
+      "module": "NSEMaxwell.Kinematics",
+      "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+      "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505"
+    },
+    {
+      "module": "NSEMaxwell.CurlCurl",
+      "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+      "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa"
+    },
+    {
+      "module": "ClassicalMechanics.Stress",
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+      "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50"
+    },
+    {
+      "module": "ClassicalMechanics.Definitions",
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+      "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833"
+    },
+    {
+      "module": "ClassicalMechanics.FiniteSlab",
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+      "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535"
+    },
+    {
+      "module": "ClassicalMechanics.TimeCalculus",
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+      "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc"
+    },
+    {
+      "module": "ClassicalMechanics.Material",
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/Material.lean",
+      "sha256": "301e57557d36f73dc3005661c871257a3af3a71b4c138bfd42c41302490d2700"
+    },
+    {
+      "module": "NSEMaxwell.Lamb",
+      "path": "Fefferman_adapter/NSEMaxwell/Lamb.lean",
+      "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8"
+    },
+    {
+      "module": "ClassicalMechanics.MaterialGradient",
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialGradient.lean",
+      "sha256": "ce3344c164eb1135355dd7ccaeeee0be012b41fd2f6eaf9ac7c2ca4ae2e2bab1"
+    },
+    {
+      "module": "ClassicalMechanics.Piola",
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean",
+      "sha256": "7074a13438808ca77c75d104fc6b21bb2a4bd33003a49050209e2cb474278cfa"
+    },
+    {
+      "module": "ClassicalMechanics.MaterialBridge",
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialBridge.lean",
+      "sha256": "abba98bc75d21f5dd5d2f2c5c453d1ee31a03ebd3fdc30d767b9f5c20fd84c63"
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.NativeEndpoints",
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean",
+      "sha256": "9b12945b7fadbd6bc4d768250501f78e5c122bed4df84cee656eb869779b1674"
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.PiolaTransport",
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/PiolaTransport.lean",
+      "sha256": "a46f3814fd41201a7c1c4991b8130cac74607336bb1b250de07a09cab31a36e0"
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.Equation",
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/Equation.lean",
+      "sha256": "feef541ea2e1cba32eb3900786bb758f739580fea21f38ae7b69c8583e6b8ec5"
+    },
+    {
+      "module": "ClassicalMechanicsAssembly",
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly.lean",
+      "sha256": "2c496c01341ab57ec98fc78e13bb617385a5aff4e428aabd12301e516560a8c8"
+    }
+  ],
+  "external_imports": [
+    "Mathlib"
+  ],
+  "assembly_build_schedule": [
+    "ClassicalMechanicsAssembly.NativeEndpoints",
+    "ClassicalMechanicsAssembly.PiolaTransport",
+    "ClassicalMechanicsAssembly.Equation",
+    "ClassicalMechanicsAssembly"
+  ]
+}

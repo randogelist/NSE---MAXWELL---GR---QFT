@@ -1,0 +1,14 @@
+import ClassicalMechanicsAssembly.FlowJetIntegral
+
+set_option pp.universes true
+
+#check @ClassicalMechanicsAssembly.flow_primitive_evaluated_jet
+#print axioms ClassicalMechanicsAssembly.flow_primitive_evaluated_jet
+#check @ClassicalMechanicsAssembly.evaluatedFlowJet_integral_of_path_equation
+#print axioms ClassicalMechanicsAssembly.evaluatedFlowJet_integral_of_path_equation
+#check @ClassicalMechanicsAssembly.flow_labelJet_eq_evaluated
+#print axioms ClassicalMechanicsAssembly.flow_labelJet_eq_evaluated
+#check @ClassicalMechanicsAssembly.flow_labelJet_integral_of_path_equation
+#print axioms ClassicalMechanicsAssembly.flow_labelJet_integral_of_path_equation
+#check @ClassicalMechanicsAssembly.selectedFlow_labelJet_integral
+#print axioms ClassicalMechanicsAssembly.selectedFlow_labelJet_integral

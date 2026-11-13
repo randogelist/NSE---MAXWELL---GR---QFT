@@ -1,0 +1,2242 @@
+{
+  "schema_version": 1,
+  "source_commit": "adb4dcdc31c211add64946b817e9edba2c1b9146",
+  "scope": "all unchanged standard assembly source inputs plus isolated literature audit and exact per-target policy",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "250b0ec4c2452e87ffa6eb9f76dc667206a7e2af5876e4dbbec99111de92bcef",
+      "size_bytes": 329
+    },
+    {
+      "path": ".github/workflows/classical-assembly.yml",
+      "sha256": "0fbd7ced8170306a841d682ec808eefc69e5f1ea16b57517be79535b37a4a90b",
+      "size_bytes": 9530
+    },
+    {
+      "path": ".github/workflows/lean-linux.yml",
+      "sha256": "9965eef4de11b52298b3b1c5f8c7fece77ff0af700e0a4cb3a09d7b10504a4d0",
+      "size_bytes": 16103
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "a4e2f18d0c0309e3f88d3c1ebcec58c786c1ea1bc64d7dd3408fb825bf43ae30",
+      "size_bytes": 62
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "a1bccfe3527c8ab8001d25ce1f7277d4421661b1c57b53454ae85305ff092d4a",
+      "size_bytes": 6280
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly.lean",
+      "sha256": "2c496c01341ab57ec98fc78e13bb617385a5aff4e428aabd12301e516560a8c8",
+      "size_bytes": 142
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/Equation.lean",
+      "sha256": "feef541ea2e1cba32eb3900786bb758f739580fea21f38ae7b69c8583e6b8ec5",
+      "size_bytes": 3277
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBanach.lean",
+      "sha256": "f5e70a9f1006106c42bbedcaceaa61824ee585f877d5dfd678ad6c33907d8030",
+      "size_bytes": 17153
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowBounds.lean",
+      "sha256": "9bf6bc79e6f81b32f876285ed3fde59a6b46871326d0670063ebbd953c65a60b",
+      "size_bytes": 4302
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowConstruction.lean",
+      "sha256": "5cadc899c0c4eba81be3a6a6f0a33fff744ddb7b76cac5216d3fb3d262e9ad55",
+      "size_bytes": 4394
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowGlobalSlab.lean",
+      "sha256": "a33a61be244fdab629308997732e351983b68f20ce441926733e75f28d75f9b2",
+      "size_bytes": 4515
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowImplicit.lean",
+      "sha256": "88293e05ba5c33b8e0b02d751e7d17254cc5f9f16c5075b58e7d5e9f53f252a4",
+      "size_bytes": 8759
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowInverse.lean",
+      "sha256": "7b00c0a3667a28a334677c96d57a246dbc2df2fc2963eb31ee5966b24c4a4aa8",
+      "size_bytes": 12772
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJacobian.lean",
+      "sha256": "0c2dd93fc561af3dddf0206888efb35b0011d4c4e04b15d848f00414cb157201",
+      "size_bytes": 5105
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJetIntegral.lean",
+      "sha256": "5a4b67fbcc623eb2139f04178248e7a016543df157aa5c6c29b8ee01aa6403f8",
+      "size_bytes": 7740
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJetTime.lean",
+      "sha256": "c3a791863079927326981ac1ebb6a22bd3745ff832374d94cc9b82f42a1ff7e0",
+      "size_bytes": 7168
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJoint.lean",
+      "sha256": "ae1fd51aea75e1fc3144e79404c0016370fe902645b78ee4dd60bf30ffb24c0d",
+      "size_bytes": 1114
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowJointJets.lean",
+      "sha256": "2c5ad252b4c5ddc5353ccdbf212e355a71116fd3cba6670ca94fc93b5eedafc5",
+      "size_bytes": 9444
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowMaterialCoherence.lean",
+      "sha256": "58cd95010b0efbd24a3d173886a37b946619b21edfcba42cb61b8ef477858339",
+      "size_bytes": 4054
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowMaterialFields.lean",
+      "sha256": "4150786556ecaa7a87a351511c857b6feff1ec59e78cdb4fdef1cf1cf697732d",
+      "size_bytes": 4110
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowNSEBCM.lean",
+      "sha256": "0c7893920d665757b1baa2575956a66197d9efb3501888852c73e4bf567e95da",
+      "size_bytes": 4891
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowPathJets.lean",
+      "sha256": "f9821c9f61082e34b6d4515b63c1d2d66b1c960d533377501864ca42832fdb39",
+      "size_bytes": 4399
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowPathSolutions.lean",
+      "sha256": "78f4d4e127c6944391c644fb70e5efb26574ab9ed4cd9d717bdead22a019e381",
+      "size_bytes": 5599
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowRealization.lean",
+      "sha256": "823e92b6fa9532c55afc7118abc9188edaebbbf36be5cfa3352aeb68382c2c8f",
+      "size_bytes": 3015
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowSmooth.lean",
+      "sha256": "a9802f83328aaa99b78fa123062068ee7bf791946e47a8dcdad835402ea1e9bb",
+      "size_bytes": 8225
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowSpatialJets.lean",
+      "sha256": "af397ff6218f0ae6a9a9fbbe8534099fcf4d58bcdf01f4df89c704b6dc8ebc71",
+      "size_bytes": 7370
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowTrajectories.lean",
+      "sha256": "583b59df85d4c8882b67a07da3828add85a24da2b2cc26e1aafcdea198d55134",
+      "size_bytes": 15394
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowVariational.lean",
+      "sha256": "55d379fa1e55bbf6120b5d8d8ca7d004ab2ec4ec594713312d3494ffe738caf9",
+      "size_bytes": 6193
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/FlowVolterra.lean",
+      "sha256": "6307e2c2cd0460a53534298c22b30c9f9e2b6c0322c3548b5c7119e7e9ddd146",
+      "size_bytes": 8413
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/LiteratureClosure.lean",
+      "sha256": "f30f7f59bccc3b0270358a807cfc4fde148bca72651d0b563f250c06cbece7c7",
+      "size_bytes": 2789
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/LiteratureInputs.lean",
+      "sha256": "a7e9b5df1ef35339f4ed1e5eb0345cb03b0d9be3988be787e7bbb2a60413e338",
+      "size_bytes": 2180
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean",
+      "sha256": "9b12945b7fadbd6bc4d768250501f78e5c122bed4df84cee656eb869779b1674",
+      "size_bytes": 9226
+    },
+    {
+      "path": "ASSEMBLY/ClassicalMechanicsAssembly/PiolaTransport.lean",
+      "sha256": "a46f3814fd41201a7c1c4991b8130cac74607336bb1b250de07a09cab31a36e0",
+      "size_bytes": 12240
+    },
+    {
+      "path": "ASSEMBLY/README.md",
+      "sha256": "b47789d237aca28b6684d15072d705a703e51fb355a410a5490871224780975a",
+      "size_bytes": 4137
+    },
+    {
+      "path": "Auxillary/ASSEMBLY_A_TIER.txt",
+      "sha256": "0153a0759f9df9de0c2c25fde30af62bb90d99eb5da4914b17e350644a2edce5",
+      "size_bytes": 3529
+    },
+    {
+      "path": "Auxillary/ASSEMBLY_LITERATURE_A_TIER.txt",
+      "sha256": "cad5fcf5ecb7fb1e8b46bdf65466b991655fff53129e02c0becde5e651dbf515",
+      "size_bytes": 4469
+    },
+    {
+      "path": "Auxillary/CI_CACHE_AUDIT.txt",
+      "sha256": "aa28ea31fbf055d28dfd037502a0fc290ede62acef394ba92dda39a28475033b",
+      "size_bytes": 14723
+    },
+    {
+      "path": "Auxillary/CLASSICAL_MATERIAL_SOURCE_CERTIFICATE.json",
+      "sha256": "9b94eec781e29ce494c8d5b8e6e0f492be8ea042f9c5e0f9e2b0ec19778ee288",
+      "size_bytes": 101727
+    },
+    {
+      "path": "Auxillary/CLASSICAL_MECHANICS_ADAPTER_A_TIER.txt",
+      "sha256": "7b38a441eca5c60425fedc7362a2aea93936f9b231d4c5e918fcec7d9549f233",
+      "size_bytes": 3415
+    },
+    {
+      "path": "Auxillary/CLASSICAL_MECHANICS_MATERIAL_A_TIER.txt",
+      "sha256": "673212395914646ce87bed6bc58a2335a8fb3e3a0bb966facd9c279659c5e8b4",
+      "size_bytes": 8848
+    },
+    {
+      "path": "Auxillary/NATIVE_SOURCE_CERTIFICATE.json",
+      "sha256": "86a04830b219471f83bdafbee1655e26bd853234e0184c75dfb76853f75c45a3",
+      "size_bytes": 44888
+    },
+    {
+      "path": "Auxillary/README.md",
+      "sha256": "3fc3b522ffedb2c01f04952d25f5295350a0e9bf19cc36d730466acffaa89ff8",
+      "size_bytes": 3749
+    },
+    {
+      "path": "Auxillary/assembly-native-registry.json",
+      "sha256": "3eaf8c1d0963648fd82bf58b8f7a4ce961abcb26a6761ced4219dc8f51054443",
+      "size_bytes": 36949
+    },
+    {
+      "path": "Auxillary/assembly-native-targets.txt",
+      "sha256": "d2e08e2be717da3e0e5d11ff08ca290384a31d728e79237716245ab024c44a1b",
+      "size_bytes": 1358
+    },
+    {
+      "path": "Auxillary/assembly-proof-targets.txt",
+      "sha256": "d540b39c6b0fcdb2397a2c073b24c17a12d9d27af84c801a77eb259349ee2f14",
+      "size_bytes": 1120
+    },
+    {
+      "path": "Auxillary/assembly/L1_FLOW_REALIZATION_A_TIER.txt",
+      "sha256": "786557288a267bb66af6569061955f0fc37493598fe5ba9fc4be52d35c444fc4",
+      "size_bytes": 8095
+    },
+    {
+      "path": "Auxillary/assembly/L1_FLOW_REALIZATION_ENDPOINT_CHAIN_B_TIER.txt",
+      "sha256": "50498c6af999b03b28b049eb2a50fc15d103d988da21a8ba86e8a7340e0db42a",
+      "size_bytes": 33439
+    },
+    {
+      "path": "Auxillary/assembly/L1_FLOW_REALIZATION_ENTRYPOINTS.txt",
+      "sha256": "a26f97a101f78d1df9b9143bdbeb1a4d93ef93be92b5c6f8e8b0073d82a7b49d",
+      "size_bytes": 14591
+    },
+    {
+      "path": "Auxillary/assembly/L1_NATIVE_MATHLIB_ENDPOINTS.txt",
+      "sha256": "9e165e63f7315de3a017f0cd97821fedf54154d650b009247d7628cc9329b844",
+      "size_bytes": 15344
+    },
+    {
+      "path": "Auxillary/assembly/NSEB_IFF_CM_A_TIER.txt",
+      "sha256": "a0243c6e59faf852ac7c78dbc90922ea9f07e8171f6b9fc8db51973d5e757917",
+      "size_bytes": 2706
+    },
+    {
+      "path": "Auxillary/assembly/flow-status.json",
+      "sha256": "215a3a5ec4b4d77af8b00defde9751d3fde4a74ffea783b1d561539907215bdd",
+      "size_bytes": 4505
+    },
+    {
+      "path": "Auxillary/assembly/flow-targets.json",
+      "sha256": "0714eae62d89a9500dc31fed8fff5b8390c541c50ee42cc1bf8ed5a5dfeb916a",
+      "size_bytes": 16012
+    },
+    {
+      "path": "Auxillary/assembly/formalization-status.json",
+      "sha256": "6a78e32e790d67aa83b03728b96252c0910256a82e74572e855cd4f77868bec3",
+      "size_bytes": 4681
+    },
+    {
+      "path": "Auxillary/assembly/l1-research/ClosedSlabGeometry.txt",
+      "sha256": "ab2a7b151eafc072724a902bdad0a1354462e101883c04baa8ea4aae6817fc95",
+      "size_bytes": 25124
+    },
+    {
+      "path": "Auxillary/assembly/l1-research/MathlibODE.txt",
+      "sha256": "0768b08217e1dd8939b9a2ea7261d7b0df050acff9090a159ae7da7c9a7e62dd",
+      "size_bytes": 49856
+    },
+    {
+      "path": "Auxillary/assembly/l1-research/Methlib.txt",
+      "sha256": "b81316d6c33462d41f9e7e459343fa113f1009710a350bb76ef83ef332bbb465",
+      "size_bytes": 14886
+    },
+    {
+      "path": "Auxillary/assembly/literature-status.json",
+      "sha256": "459c33d146656e7337f6282d664fb2bb00726ddfb2cbcfbd6f6a9232ef4dea12",
+      "size_bytes": 5668
+    },
+    {
+      "path": "Auxillary/assembly/literature-targets.json",
+      "sha256": "461afbc08bac15ae124068bde21ac4acda90c7e2a4bad8728e128a2150b623e4",
+      "size_bytes": 1083
+    },
+    {
+      "path": "Auxillary/assembly/run.py",
+      "sha256": "610a211478495d0217e22576cc77da307025c240f6151a1320903eb1bbe2db78",
+      "size_bytes": 16572
+    },
+    {
+      "path": "Auxillary/assembly/run_flow.py",
+      "sha256": "066271e75b318111b803c5c4f3067ca9a33c04be9ebe5721daa6f07e74f4ff2d",
+      "size_bytes": 18986
+    },
+    {
+      "path": "Auxillary/assembly/run_literature.py",
+      "sha256": "def0355b53bfcb57ef5b1ffa23ee999b1c186bdd9f57bc5420b85998f65c6261",
+      "size_bytes": 21008
+    },
+    {
+      "path": "Auxillary/audit-targets.txt",
+      "sha256": "7c6b9343edd2bec814b53b20f66b1c658cd8dc690842f510717f726f854b2d4b",
+      "size_bytes": 10711
+    },
+    {
+      "path": "Auxillary/cache-targets.txt",
+      "sha256": "6534bc4fa124679c91833cded1886eceb5f8b55ce4217c7e2748c8430b37d5f2",
+      "size_bytes": 78
+    },
+    {
+      "path": "Auxillary/classical-mechanics-audit-targets.txt",
+      "sha256": "8fbf98225b67d642f553d87beda6fb68d31d2a174c70989910dccc9ec70cd02f",
+      "size_bytes": 3191
+    },
+    {
+      "path": "Auxillary/classical-mechanics-proof-spine.json",
+      "sha256": "56577b53680e6dcb602227b2e656d0808d4e5348793cce5edb19f0a3ed93d796",
+      "size_bytes": 18948
+    },
+    {
+      "path": "Auxillary/classical-mechanics-status.json",
+      "sha256": "fb3d9dee6f3f7028dd479a16a04dc89be62b5b212152bcdbfdf106e00b0bab01",
+      "size_bytes": 3121
+    },
+    {
+      "path": "Auxillary/derivations/NSE_CLASSICAL_MECHANICS_EQUIVALENCE_B_TIER.txt",
+      "sha256": "bf7dba5ec806fdbd414fef9977a8a46919f04c6d91d067557790f920902bc17e",
+      "size_bytes": 1047601
+    },
+    {
+      "path": "Auxillary/formalization-status.json",
+      "sha256": "3a16aa23bff76b547ec8cb88213995414cff354e017ff31517e46f270073b66a",
+      "size_bytes": 26206
+    },
+    {
+      "path": "Auxillary/native-source-snapshot-request.json",
+      "sha256": "1529637bf57d73042f70382f3e41bea8bdbdd9b3acc3fe2b083de35d539a2b10",
+      "size_bytes": 940
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS.zip",
+      "sha256": "f6d85ea94dc01312ae49ea0991c2186861e69bab23bf6989461166302eb2ade2",
+      "size_bytes": 465940
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/.gitattributes",
+      "sha256": "6ad408573c645b9cee1d198583f101ceb74788edb8a583db5e2453111e00150a",
+      "size_bytes": 15
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/CLASSICAL_MATERIAL_SOURCE_CERTIFICATE.json",
+      "sha256": "9b94eec781e29ce494c8d5b8e6e0f492be8ea042f9c5e0f9e2b0ec19778ee288",
+      "size_bytes": 101727
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/CLASSICAL_MECHANICS_ADAPTER_A_TIER.txt",
+      "sha256": "7b38a441eca5c60425fedc7362a2aea93936f9b231d4c5e918fcec7d9549f233",
+      "size_bytes": 3415
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/CLASSICAL_MECHANICS_MATERIAL_A_TIER.txt",
+      "sha256": "673212395914646ce87bed6bc58a2335a8fb3e3a0bb966facd9c279659c5e8b4",
+      "size_bytes": 8848
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/ClassicalMechanics.lean",
+      "sha256": "38a0799940096363597dfd7915d4403673f55537630d27a1243ba1694d207f47",
+      "size_bytes": 406
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/ClassicalMechanics/Audit.lean",
+      "sha256": "05dfc68bec60c11b69bad868ac45da3ea07ba310c75b84b4f55c466babe1edf2",
+      "size_bytes": 7889
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/ClassicalMechanics/Definitions.lean",
+      "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833",
+      "size_bytes": 1886
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/ClassicalMechanics/Equivalence.lean",
+      "sha256": "c2b16d4b2f3d992af7494a7e583ae6586899cffd6508a052e732fe19a4c4f394",
+      "size_bytes": 2075
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/ClassicalMechanics/FiniteSlab.lean",
+      "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+      "size_bytes": 4051
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/ClassicalMechanics/Material.lean",
+      "sha256": "301e57557d36f73dc3005661c871257a3af3a71b4c138bfd42c41302490d2700",
+      "size_bytes": 12124
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/ClassicalMechanics/MaterialBridge.lean",
+      "sha256": "abba98bc75d21f5dd5d2f2c5c453d1ee31a03ebd3fdc30d767b9f5c20fd84c63",
+      "size_bytes": 2506
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/ClassicalMechanics/MaterialGradient.lean",
+      "sha256": "ce3344c164eb1135355dd7ccaeeee0be012b41fd2f6eaf9ac7c2ca4ae2e2bab1",
+      "size_bytes": 3839
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/ClassicalMechanics/MaxwellBridge.lean",
+      "sha256": "7641a670bbab40ce9140f9be86ed3ab4bd4af2752c3cd2860f550f0959ba262c",
+      "size_bytes": 1342
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/ClassicalMechanics/Piola.lean",
+      "sha256": "7074a13438808ca77c75d104fc6b21bb2a4bd33003a49050209e2cb474278cfa",
+      "size_bytes": 5144
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/ClassicalMechanics/Stress.lean",
+      "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50",
+      "size_bytes": 5085
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/ClassicalMechanics/TimeCalculus.lean",
+      "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+      "size_bytes": 4972
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/ClassicalMechanicsForward.lean",
+      "sha256": "10b93fba8ccad982ebb5155229c213f160df832eed6c655485010efaab963419",
+      "size_bytes": 3433
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/ClassicalMechanicsReverse.lean",
+      "sha256": "77edf4f48978a511f438d69c12b914c9226756a39a2474b69ca40a6081c6cee4",
+      "size_bytes": 3093
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/MaxwellEndpoint.lean",
+      "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+      "size_bytes": 128
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/MaxwellEndpoint/Constitutive.lean",
+      "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+      "size_bytes": 2685
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/MaxwellEndpoint/Geometry.lean",
+      "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+      "size_bytes": 3646
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/MaxwellEndpoint/Native.lean",
+      "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+      "size_bytes": 7121
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/MaxwellEndpoint/System.lean",
+      "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+      "size_bytes": 1928
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/Ampere.lean",
+      "sha256": "e1ee9e880e2c50360fea276a49fe3ca4c05c8104fa7b29740877cde3d30bc648",
+      "size_bytes": 1637
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/AnalyticBridge.lean",
+      "sha256": "d1e5a1439d01599cacea35a0c45f6c2e3842011130b8645681f02cff817b5402",
+      "size_bytes": 1059
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/AnalyticContracts.lean",
+      "sha256": "7664e157e5ebe3c8ffc24a3eba714b180b248bb950e8b8c4ab5c2c3190b49f3e",
+      "size_bytes": 7054
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/AnalyticReduction.lean",
+      "sha256": "2813f7dd8035681265656a3b6bb2476dbd30e928dc8a737bcb7e3277a8ae77ba",
+      "size_bytes": 7983
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/CanonicalSmoothness.lean",
+      "sha256": "d63f7555c73d78141e53d86b463848e2594d01a6dcf8a0b3c026ac8de79dd021",
+      "size_bytes": 4535
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/Classical.lean",
+      "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+      "size_bytes": 1507
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/ConstantPaths.lean",
+      "sha256": "14ddfa21be65dcb38ec3f9b2a5c62463de3846fd44c23b32a27ac0f083c206cf",
+      "size_bytes": 1025
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/Constitutive.lean",
+      "sha256": "d7f1d613a094b2d7679d27d621286ac98e4998a67529f74c4614dcff4f1b4d81",
+      "size_bytes": 6932
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/CurlCurl.lean",
+      "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+      "size_bytes": 12995
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/DominatedWithin.lean",
+      "sha256": "d42ff10c78decd35907a1574e37a86de5fe87b32ad0c5e4ed4ed83997ea7766b",
+      "size_bytes": 4522
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/FourierPeriodic.lean",
+      "sha256": "1d49a7d1ead33dd2eb0ab6dd2d90d1dddeefe032d0bd1773f305c85c974591ef",
+      "size_bytes": 5329
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/Kinematics.lean",
+      "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+      "size_bytes": 6563
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/Lamb.lean",
+      "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+      "size_bytes": 4681
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/LocalEvolution.lean",
+      "sha256": "6ada4c7209bfcf163490fdd13d4ebb2381feed274b5ccec447025cac75f3a680",
+      "size_bytes": 9639
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/MeanConservation.lean",
+      "sha256": "3bf93c76cfd27a1644c2a1f760b28a1710e62aa607202c1ddc81188a2f922da6",
+      "size_bytes": 4089
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/Negation.lean",
+      "sha256": "4763b648a80780e3e8694b8953b249823a5349cfd52d3dbb7e0695781a1f531d",
+      "size_bytes": 1966
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/PeriodicIntegration.lean",
+      "sha256": "1e5ab9beb9eeb11fbf595ff4fbdad263ebd4f38e17f02f3ed53e687bfb03664c",
+      "size_bytes": 14200
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/Pressure.lean",
+      "sha256": "c46ba912d016697050c20c7effbe82d463d233469641c886dbb5a89cb1503677",
+      "size_bytes": 2128
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/Spacetime.lean",
+      "sha256": "ebea01c7422186aaa0ec4c72c26774ee32f96291756be7775ba40f569eb89c57",
+      "size_bytes": 10914
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwell/TemporalMean.lean",
+      "sha256": "cf6a9d1afa1303db16e882cf52fc4e4db26842cf128a0a6fc050ac80735f5de6",
+      "size_bytes": 4515
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwellForward.lean",
+      "sha256": "d2a74b2268c54de3593996480d18429aa11060ce72396c7d2cea8071cfb57845",
+      "size_bytes": 5190
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSEMaxwellReverse.lean",
+      "sha256": "b6cb2beb70264b98d23a8143def620121112077e3326125b4e51833990e9de04",
+      "size_bytes": 5717
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/NSE_CLASSICAL_MECHANICS_EQUIVALENCE_B_TIER.txt",
+      "sha256": "bf7dba5ec806fdbd414fef9977a8a46919f04c6d91d067557790f920902bc17e",
+      "size_bytes": 1047601
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/README.txt",
+      "sha256": "22b241690e797eded69b1c221f11e204853f026381099bf14fd410db53175cc4",
+      "size_bytes": 1145
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/audit-targets.txt",
+      "sha256": "8fbf98225b67d642f553d87beda6fb68d31d2a174c70989910dccc9ec70cd02f",
+      "size_bytes": 3191
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/audit_parser.py",
+      "sha256": "c9b3f83e86920a296c2ccb35325b49b7c2fa6fa8ed3c870cfbe10effb413868c",
+      "size_bytes": 19591
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/build-targets.json",
+      "sha256": "115e35b88fb7f7e08c8ac01639420c959272ad17ad8196ef90a34c1a77322699",
+      "size_bytes": 1217
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/formalization-status.json",
+      "sha256": "fb3d9dee6f3f7028dd479a16a04dc89be62b5b212152bcdbfdf106e00b0bab01",
+      "size_bytes": 3121
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/lake-manifest.json",
+      "sha256": "69c22ad5678fd37f874d60dd5c604bfd96a2604fcb788a054764d6f1e346a939",
+      "size_bytes": 3549
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/lakefile.lean",
+      "sha256": "1173bb7205a4de64dc8b3fc0547944bf994068922a5b5d051a25c3233e68516e",
+      "size_bytes": 427
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/lean-toolchain",
+      "sha256": "cdbc6c372a2b37ad94430a6cec69cedfa4d36f255bfd968773fd91bf7a1746bf",
+      "size_bytes": 29
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/package-manifest.json",
+      "sha256": "5bdc2c1ea8f13580b023d4f229f674c8eb22cdee6c2803f3381b659c54e0023e",
+      "size_bytes": 13380
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/run.cmd",
+      "sha256": "972c2199d8b8eef458b903f6c10b19398c51410555bb6de11dfe6396d110fd6b",
+      "size_bytes": 202
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/run.py",
+      "sha256": "b72f593c98a45ab9966e1a114122793a755f145c1171921f9a6a2d906cec8ae2",
+      "size_bytes": 8362
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/source-manifest.json",
+      "sha256": "0d703319386904e4c51bfed0e2d11acb7eb618aec9589610bea59f314b552ab0",
+      "size_bytes": 7395
+    },
+    {
+      "path": "Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS/source-map.json",
+      "sha256": "8d1677303d4a92afa619aec88e2afe6596620c593610ff79fc9a33a823e85983",
+      "size_bytes": 10045
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569.export.json",
+      "sha256": "ba2c5cdb9554306d3d0e9af51c581c08e78f0cd93229481b8215c541cebd2ad9",
+      "size_bytes": 712
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569.zip",
+      "sha256": "74db7cd2db0e08fc4f0e073e1285e5ea98617544489a192d06b007b2fbacac43",
+      "size_bytes": 126370
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanics/Definitions.lean",
+      "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833",
+      "size_bytes": 1886
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanics/FiniteSlab.lean",
+      "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+      "size_bytes": 4051
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanics/Material.lean",
+      "sha256": "301e57557d36f73dc3005661c871257a3af3a71b4c138bfd42c41302490d2700",
+      "size_bytes": 12124
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanics/MaterialBridge.lean",
+      "sha256": "abba98bc75d21f5dd5d2f2c5c453d1ee31a03ebd3fdc30d767b9f5c20fd84c63",
+      "size_bytes": 2506
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanics/MaterialGradient.lean",
+      "sha256": "ce3344c164eb1135355dd7ccaeeee0be012b41fd2f6eaf9ac7c2ca4ae2e2bab1",
+      "size_bytes": 3839
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanics/Piola.lean",
+      "sha256": "7074a13438808ca77c75d104fc6b21bb2a4bd33003a49050209e2cb474278cfa",
+      "size_bytes": 5144
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanics/Stress.lean",
+      "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50",
+      "size_bytes": 5085
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanics/TimeCalculus.lean",
+      "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+      "size_bytes": 4972
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/Equation.lean",
+      "sha256": "feef541ea2e1cba32eb3900786bb758f739580fea21f38ae7b69c8583e6b8ec5",
+      "size_bytes": 3277
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/FlowBanach.lean",
+      "sha256": "f5e70a9f1006106c42bbedcaceaa61824ee585f877d5dfd678ad6c33907d8030",
+      "size_bytes": 17153
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/FlowBounds.lean",
+      "sha256": "9bf6bc79e6f81b32f876285ed3fde59a6b46871326d0670063ebbd953c65a60b",
+      "size_bytes": 4302
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/FlowConstruction.lean",
+      "sha256": "5cadc899c0c4eba81be3a6a6f0a33fff744ddb7b76cac5216d3fb3d262e9ad55",
+      "size_bytes": 4394
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/FlowImplicit.lean",
+      "sha256": "88293e05ba5c33b8e0b02d751e7d17254cc5f9f16c5075b58e7d5e9f53f252a4",
+      "size_bytes": 8759
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/FlowInverse.lean",
+      "sha256": "7b00c0a3667a28a334677c96d57a246dbc2df2fc2963eb31ee5966b24c4a4aa8",
+      "size_bytes": 12772
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/FlowJacobian.lean",
+      "sha256": "0c2dd93fc561af3dddf0206888efb35b0011d4c4e04b15d848f00414cb157201",
+      "size_bytes": 5105
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/FlowJetIntegral.lean",
+      "sha256": "5a4b67fbcc623eb2139f04178248e7a016543df157aa5c6c29b8ee01aa6403f8",
+      "size_bytes": 7740
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/FlowJetTime.lean",
+      "sha256": "c3a791863079927326981ac1ebb6a22bd3745ff832374d94cc9b82f42a1ff7e0",
+      "size_bytes": 7168
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/FlowJoint.lean",
+      "sha256": "ae1fd51aea75e1fc3144e79404c0016370fe902645b78ee4dd60bf30ffb24c0d",
+      "size_bytes": 1114
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/FlowJointJets.lean",
+      "sha256": "2c5ad252b4c5ddc5353ccdbf212e355a71116fd3cba6670ca94fc93b5eedafc5",
+      "size_bytes": 9444
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/FlowPathJets.lean",
+      "sha256": "f9821c9f61082e34b6d4515b63c1d2d66b1c960d533377501864ca42832fdb39",
+      "size_bytes": 4399
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/FlowPathSolutions.lean",
+      "sha256": "78f4d4e127c6944391c644fb70e5efb26574ab9ed4cd9d717bdead22a019e381",
+      "size_bytes": 5599
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/FlowRealization.lean",
+      "sha256": "823e92b6fa9532c55afc7118abc9188edaebbbf36be5cfa3352aeb68382c2c8f",
+      "size_bytes": 3015
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/FlowSmooth.lean",
+      "sha256": "a9802f83328aaa99b78fa123062068ee7bf791946e47a8dcdad835402ea1e9bb",
+      "size_bytes": 8225
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/FlowSpatialJets.lean",
+      "sha256": "af397ff6218f0ae6a9a9fbbe8534099fcf4d58bcdf01f4df89c704b6dc8ebc71",
+      "size_bytes": 7370
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/FlowTrajectories.lean",
+      "sha256": "583b59df85d4c8882b67a07da3828add85a24da2b2cc26e1aafcdea198d55134",
+      "size_bytes": 15394
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/FlowVariational.lean",
+      "sha256": "55d379fa1e55bbf6120b5d8d8ca7d004ab2ec4ec594713312d3494ffe738caf9",
+      "size_bytes": 6193
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/FlowVolterra.lean",
+      "sha256": "6307e2c2cd0460a53534298c22b30c9f9e2b6c0322c3548b5c7119e7e9ddd146",
+      "size_bytes": 8413
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/NativeEndpoints.lean",
+      "sha256": "9b12945b7fadbd6bc4d768250501f78e5c122bed4df84cee656eb869779b1674",
+      "size_bytes": 9226
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/ClassicalMechanicsAssembly/PiolaTransport.lean",
+      "sha256": "a46f3814fd41201a7c1c4991b8130cac74607336bb1b250de07a09cab31a36e0",
+      "size_bytes": 12240
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/L1_NATIVE_MATHLIB_ENDPOINTS.txt",
+      "sha256": "9e165e63f7315de3a017f0cd97821fedf54154d650b009247d7628cc9329b844",
+      "size_bytes": 15344
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/L1_native.lean",
+      "sha256": "540186b2ba235ff9eafbbc6320953331519848dee6ab28ede5792c7b0237963d",
+      "size_bytes": 479
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/L1_native_A_TIER.txt",
+      "sha256": "786557288a267bb66af6569061955f0fc37493598fe5ba9fc4be52d35c444fc4",
+      "size_bytes": 8095
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/MaxwellEndpoint.lean",
+      "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+      "size_bytes": 128
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/MaxwellEndpoint/Constitutive.lean",
+      "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+      "size_bytes": 2685
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/MaxwellEndpoint/Geometry.lean",
+      "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+      "size_bytes": 3646
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/MaxwellEndpoint/Native.lean",
+      "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+      "size_bytes": 7121
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/MaxwellEndpoint/System.lean",
+      "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+      "size_bytes": 1928
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/NSEMaxwell/Classical.lean",
+      "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+      "size_bytes": 1507
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/NSEMaxwell/CurlCurl.lean",
+      "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+      "size_bytes": 12995
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/NSEMaxwell/Kinematics.lean",
+      "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+      "size_bytes": 6563
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/NSEMaxwell/Lamb.lean",
+      "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+      "size_bytes": 4681
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/NSEMaxwell/PeriodicIntegration.lean",
+      "sha256": "1e5ab9beb9eeb11fbf595ff4fbdad263ebd4f38e17f02f3ed53e687bfb03664c",
+      "size_bytes": 14200
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/README.txt",
+      "sha256": "9514517e8b5542105350d5262af762aa11f27a7e615486fbe2a6ca9ef0068711",
+      "size_bytes": 877
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/SingularClosure/Admission.lean",
+      "sha256": "cd8e62a4f88a33b14d3a699b2431e801d590bcadf02d03b2e67ef3ebb5dc63ca",
+      "size_bytes": 2934
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/SingularClosure/Contracts.lean",
+      "sha256": "4c59cbf26fd4196529a4865ac09404d18015228c737055c2674cbcc4a5fd18f7",
+      "size_bytes": 6043
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/SingularClosure/Galerkin.lean",
+      "sha256": "e1ac5c944bab2667b02ae6c75b46f63605354b8c928c56298aee0e28b043a6fa",
+      "size_bytes": 6444
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/SingularClosure/PeriodicCover.lean",
+      "sha256": "9d6f0d78c7a043ef7d8a7db1c3d5f647a84492ff6c3843d85527638990f7929f",
+      "size_bytes": 6432
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/SingularClosure/PhysicalChannels.lean",
+      "sha256": "0d522433e0a511a1c0f41b25947a05ece9780cacbe6809d105fdbb8991dca89f",
+      "size_bytes": 6166
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/SingularClosure/PhysicalEnstrophy.lean",
+      "sha256": "720eaee5f18ea728c366880aeb05ced52bd9167369103cb19450991f74e08614",
+      "size_bytes": 11413
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/SingularClosure/SixChannels.lean",
+      "sha256": "1c7f53956d9a766a3c8e4e781aa850a26351761ef0086c7ffd10047762854eab",
+      "size_bytes": 5991
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/audit-targets.txt",
+      "sha256": "37d08368495cb4dac041cf7e3c67d3387adb74e7c3a1f40dfa86de24d79dac70",
+      "size_bytes": 166
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/audit_parser.py",
+      "sha256": "c9b3f83e86920a296c2ccb35325b49b7c2fa6fa8ed3c870cfbe10effb413868c",
+      "size_bytes": 19591
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/build-targets.json",
+      "sha256": "c760db6f0eb334cca8477aaddebf9813b80f940e38a28c21a0f8cbc21415c940",
+      "size_bytes": 1759
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/cache-targets.json",
+      "sha256": "936b7475a9e700119cc39401f0dcac8169decfb97e951304ab00ef9c21c1b515",
+      "size_bytes": 1311
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/formalization-scope.json",
+      "sha256": "a9a38cd70a194bd28aa817f9529896f8982b750c17813c0ee4531d3845e3825c",
+      "size_bytes": 1094
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/lake-manifest.json",
+      "sha256": "69c22ad5678fd37f874d60dd5c604bfd96a2604fcb788a054764d6f1e346a939",
+      "size_bytes": 3549
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/lakefile.lean",
+      "sha256": "b1fe08c540c6b661dc2f97f7dab0dd2c121e939f434c5b0c9ad708326ddcead1",
+      "size_bytes": 362
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/lean-toolchain",
+      "sha256": "cdbc6c372a2b37ad94430a6cec69cedfa4d36f255bfd968773fd91bf7a1746bf",
+      "size_bytes": 29
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/run.cmd",
+      "sha256": "972c2199d8b8eef458b903f6c10b19398c51410555bb6de11dfe6396d110fd6b",
+      "size_bytes": 202
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/run.py",
+      "sha256": "21c5a4d54a01b7a6bf49c2b44a48ef591b63547c1c2a484fcbc65e914d99d41a",
+      "size_bytes": 10945
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/source-manifest.json",
+      "sha256": "0c77dee32c53620223c927e46f0891c07451c46b9a53d299379469661ed42f88",
+      "size_bytes": 9010
+    },
+    {
+      "path": "Auxillary/releases/L1_native_a9011569/source-map.json",
+      "sha256": "835077172db080de7649a8cc766d0cf24f907b0e5ba4071191f73f230541ab23",
+      "size_bytes": 12114
+    },
+    {
+      "path": "Auxillary/run.cmd",
+      "sha256": "e6a93fcb3040928474b6f0a245db2b3e90e989c5b8ba5d1229ead3b643a57b1f",
+      "size_bytes": 269
+    },
+    {
+      "path": "Auxillary/run.sh",
+      "sha256": "0f5df37c1ad7c1495eb494cfc35cc1f547199485ad5703efd6b2e1ac6851e5e8",
+      "size_bytes": 219
+    },
+    {
+      "path": "Auxillary/run_assembly.sh",
+      "sha256": "c9a9830b65852c57f771e3122fce6ca42e9131a3e1f556ea44f212420c996af2",
+      "size_bytes": 293
+    },
+    {
+      "path": "Auxillary/run_flow.sh",
+      "sha256": "08deb2b9f7f2013b9154f32db30b558dc36f979e3845f016381e150304649f02",
+      "size_bytes": 295
+    },
+    {
+      "path": "Auxillary/run_literature.sh",
+      "sha256": "28118b1a2be5464f3981f434cc05d8dadab932334477a945bb931fe5efe999a3",
+      "size_bytes": 307
+    },
+    {
+      "path": "Auxillary/scripts/classical_windows_run.py",
+      "sha256": "b72f593c98a45ab9966e1a114122793a755f145c1171921f9a6a2d906cec8ae2",
+      "size_bytes": 8362
+    },
+    {
+      "path": "Auxillary/scripts/export_classical_windows.py",
+      "sha256": "7cb7db756f15328482339f6e3c281dcbcca82c389cb85ee50abe1add46c61488",
+      "size_bytes": 6557
+    },
+    {
+      "path": "Auxillary/scripts/export_l1_native.py",
+      "sha256": "0479bea7fbee0181337d02f5d6c9b09f01a7d9b52efb146151474d07307e6c34",
+      "size_bytes": 8807
+    },
+    {
+      "path": "Auxillary/scripts/isolate_maxwell_endpoint.py",
+      "sha256": "571daba1d503ad91dd176c486170f06bd64f0d3997bbd1316382b6765c3276ea",
+      "size_bytes": 23466
+    },
+    {
+      "path": "Auxillary/scripts/l1_native_run.cmd",
+      "sha256": "972c2199d8b8eef458b903f6c10b19398c51410555bb6de11dfe6396d110fd6b",
+      "size_bytes": 202
+    },
+    {
+      "path": "Auxillary/scripts/l1_native_windows_run.py",
+      "sha256": "21c5a4d54a01b7a6bf49c2b44a48ef591b63547c1c2a484fcbc65e914d99d41a",
+      "size_bytes": 10945
+    },
+    {
+      "path": "Auxillary/scripts/run.ps1",
+      "sha256": "dd0b88ed8b2bf50f73b9558876cc5f41d7b9d559e5d6de60e19b2bbb5c5c8aee",
+      "size_bytes": 30747
+    },
+    {
+      "path": "Auxillary/scripts/run_classical_mechanics.py",
+      "sha256": "7cc50403a2640837c1714772157961600c827fdf522cbf6d77cc2ad8d4cd3d82",
+      "size_bytes": 14150
+    },
+    {
+      "path": "Auxillary/scripts/seed_project_cache.py",
+      "sha256": "6d24769caa6f34f6c8f1689327493028bcfdc2562d4d528e14efc16f63a90522",
+      "size_bytes": 13792
+    },
+    {
+      "path": "Auxillary/scripts/vendor_native_sources.py",
+      "sha256": "597f9bb67ee154154d3d426f6ae4d45140e55013c32948557fc4a3a2f5520378",
+      "size_bytes": 9685
+    },
+    {
+      "path": "Auxillary/scripts/verify_audit.py",
+      "sha256": "c9b3f83e86920a296c2ccb35325b49b7c2fa6fa8ed3c870cfbe10effb413868c",
+      "size_bytes": 19591
+    },
+    {
+      "path": "B <-> ClassicalMechanics/<=/ClassicalMechanicsReverse.lean",
+      "sha256": "77edf4f48978a511f438d69c12b914c9226756a39a2474b69ca40a6081c6cee4",
+      "size_bytes": 3093
+    },
+    {
+      "path": "B <-> ClassicalMechanics/=>/ClassicalMechanicsForward.lean",
+      "sha256": "10b93fba8ccad982ebb5155229c213f160df832eed6c655485010efaab963419",
+      "size_bytes": 3433
+    },
+    {
+      "path": "B <-> ClassicalMechanics/README.md",
+      "sha256": "f60988c9679c29edc14b3765835c8f471de4e3b26bae6898671172421cc9e41a",
+      "size_bytes": 1101
+    },
+    {
+      "path": "B <-> Maxwell/<=/MAXWELL_TO_B_B_TIER.txt",
+      "sha256": "86252203f666d883c757aba42eb02acde8a6aacad1d30556e7bd84783107e0d9",
+      "size_bytes": 10426
+    },
+    {
+      "path": "B <-> Maxwell/<=/NSEMaxwellReverse.lean",
+      "sha256": "b6cb2beb70264b98d23a8143def620121112077e3326125b4e51833990e9de04",
+      "size_bytes": 5717
+    },
+    {
+      "path": "B <-> Maxwell/<=/NSEMaxwellReverse/Reduced.lean",
+      "sha256": "8c7e2bfd5dece9032b2335d73db50fd55bc34c9a66c11fe3ab6580b3e1b40635",
+      "size_bytes": 637
+    },
+    {
+      "path": "B <-> Maxwell/<=/README.md",
+      "sha256": "243ea6d27681ddb68f9111379149850722bed9263ec2b19f9315c6f7c047e851",
+      "size_bytes": 3815
+    },
+    {
+      "path": "B <-> Maxwell/=>/B_TO_MAXWELL_B_TIER.txt",
+      "sha256": "cfd412677ed4b0bc99be8653563dca227d98ec1d4a70f0486467fffa43064e35",
+      "size_bytes": 10176
+    },
+    {
+      "path": "B <-> Maxwell/=>/NSEMaxwellForward.lean",
+      "sha256": "d2a74b2268c54de3593996480d18429aa11060ce72396c7d2cea8071cfb57845",
+      "size_bytes": 5190
+    },
+    {
+      "path": "B <-> Maxwell/=>/NSEMaxwellForward/Reduced.lean",
+      "sha256": "3393dba7f320674f92f1067b623564e8bf239d00511d65305027b620ae65098a",
+      "size_bytes": 637
+    },
+    {
+      "path": "B <-> Maxwell/=>/README.md",
+      "sha256": "652220b452fffb954af8dffe673afaaa980810f23226d70afe9d096f70f5333e",
+      "size_bytes": 3784
+    },
+    {
+      "path": "B <-> Maxwell/FEFFERMAN_B_MAXWELL_EQUIVALENCE_A_TIER.txt",
+      "sha256": "f49418c705dcb2fa71c6c7219e33252299cfb93aceed4efdd8c89d75080b6bf3",
+      "size_bytes": 8183
+    },
+    {
+      "path": "B <-> Maxwell/FEFFERMAN_B_MAXWELL_EQUIVALENCE_B_TIER.txt",
+      "sha256": "4630e965bc8da4aeac96bcb4c4a5b917dbd835573cd7d2c075639427ee2aff54",
+      "size_bytes": 27806
+    },
+    {
+      "path": "B <-> Maxwell/FOURIER_HODGE_COMPOSITION_B_TIER.txt",
+      "sha256": "fd83257640f9b67797af0b73e1987cb523a8ec8764cee6582afb2114437ca2f1",
+      "size_bytes": 36332
+    },
+    {
+      "path": "B <-> Maxwell/INTEGRATION_PLAN.md",
+      "sha256": "eaeb7c74c6d58d04ac1a256d84565a9336491c2a812174f5f1662c7877203739",
+      "size_bytes": 8347
+    },
+    {
+      "path": "B <-> Maxwell/README.md",
+      "sha256": "88981f74014e79f2b5de26b180d35c6cb7171bcd4eb6ee1336577770bca07404",
+      "size_bytes": 4188
+    },
+    {
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics.lean",
+      "sha256": "38a0799940096363597dfd7915d4403673f55537630d27a1243ba1694d207f47",
+      "size_bytes": 406
+    },
+    {
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/Audit.lean",
+      "sha256": "05dfc68bec60c11b69bad868ac45da3ea07ba310c75b84b4f55c466babe1edf2",
+      "size_bytes": 7889
+    },
+    {
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+      "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833",
+      "size_bytes": 1886
+    },
+    {
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/Equivalence.lean",
+      "sha256": "c2b16d4b2f3d992af7494a7e583ae6586899cffd6508a052e732fe19a4c4f394",
+      "size_bytes": 2075
+    },
+    {
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+      "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+      "size_bytes": 4051
+    },
+    {
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/Material.lean",
+      "sha256": "301e57557d36f73dc3005661c871257a3af3a71b4c138bfd42c41302490d2700",
+      "size_bytes": 12124
+    },
+    {
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialBridge.lean",
+      "sha256": "abba98bc75d21f5dd5d2f2c5c453d1ee31a03ebd3fdc30d767b9f5c20fd84c63",
+      "size_bytes": 2506
+    },
+    {
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialGradient.lean",
+      "sha256": "ce3344c164eb1135355dd7ccaeeee0be012b41fd2f6eaf9ac7c2ca4ae2e2bab1",
+      "size_bytes": 3839
+    },
+    {
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/MaxwellBridge.lean",
+      "sha256": "7641a670bbab40ce9140f9be86ed3ab4bd4af2752c3cd2860f550f0959ba262c",
+      "size_bytes": 1342
+    },
+    {
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean",
+      "sha256": "7074a13438808ca77c75d104fc6b21bb2a4bd33003a49050209e2cb474278cfa",
+      "size_bytes": 5144
+    },
+    {
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+      "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50",
+      "size_bytes": 5085
+    },
+    {
+      "path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+      "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+      "size_bytes": 4972
+    },
+    {
+      "path": "Classical_Mechanics_adapter/README.md",
+      "sha256": "7d4458f7bd7a2c2226eb4559b3cae8c6639b57264a8517f51a36e7bcd227a957",
+      "size_bytes": 4543
+    },
+    {
+      "path": "Fefferman_adapter/ENDPOINT_REGISTRY.json",
+      "sha256": "aaef1b5265157b1d832a9111649b41bb9a86270082291fa3d1e7ecf47907d627",
+      "size_bytes": 34904
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/ENDPOINTS.json",
+      "sha256": "d5fe6a71646cffa40be125369f313083dd270dbdee9233fe790074579107ed34",
+      "size_bytes": 87483
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/ENDPOINT_INDEX.md",
+      "sha256": "5a6642095e5d03606f8cec02321f0478f5656033155a851a8ae09cfb1c429a54",
+      "size_bytes": 17342
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/PRIOR_STAGING_CHECKS.json",
+      "sha256": "abd03ff15acaf9f6dda7ffc77d7f0bf71cd83d9968e97a271c32c94955726a59",
+      "size_bytes": 4806
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/PRIOR_STAGING_SHA256SUMS",
+      "sha256": "e87e6e3c851ea9983bd56a439bb70ead11331226affeb6a1f797f79a99e91e47",
+      "size_bytes": 2915
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/README.md",
+      "sha256": "66b81571fb8634e2cec01aefb4962ef2bd4fc6f9f485b161e85cc5499c167ae4",
+      "size_bytes": 2217
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/SHA256SUMS",
+      "sha256": "0d236a27a929753a7a7919b076f13b90daf18dde05cbbba74aa32259943cf1fa",
+      "size_bytes": 2831
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/SOURCES.md",
+      "sha256": "13a4eb52ce228c1c5abf4efc14eeff4aa01da667acd43b05e3dbe6cbbc2197f4",
+      "size_bytes": 7456
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/licenses/MATHLIB-LICENSE.txt",
+      "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+      "size_bytes": 11357
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/sources/mathlib/Mathlib/Algebra/Module/ZLattice/Summable.lean.txt",
+      "sha256": "8ab2738314a22bc7ab4b425161a59f5a29be86fa6a98b06db64155bff1bf8705",
+      "size_bytes": 13779
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/sources/mathlib/Mathlib/Analysis/Calculus/ContDiff/Defs.lean.txt",
+      "sha256": "5d2f01069c6265873a372d4aed746c5d3411073b8acb108a180d02a84c832dca",
+      "size_bytes": 64863
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/sources/mathlib/Mathlib/Analysis/Calculus/FDeriv/Extend.lean.txt",
+      "sha256": "1d665dafc00e148c660327f60480385d7133d2d3903988e9bba929e469cc253e",
+      "size_bytes": 11495
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/sources/mathlib/Mathlib/Analysis/Calculus/SmoothSeries.lean.txt",
+      "sha256": "5000d919737125bacacbc3df2f4e56284cd514dacc7f794c78f04d543ae47a78",
+      "size_bytes": 16275
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/sources/mathlib/Mathlib/Analysis/Fourier/AddCircleMulti.lean.txt",
+      "sha256": "6684531a5f300174571a95237e40b39363ff5339bba5e78c7c66dfd6f53e6a2b",
+      "size_bytes": 15695
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/sources/mathlib/Mathlib/MeasureTheory/Function/LpSpace/ContinuousFunctions.lean.txt",
+      "sha256": "9288796d597f70973f01424714259c5dca95b9f8f45db02808cfbe2f97856342",
+      "size_bytes": 9207
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierDecay.lean.txt",
+      "sha256": "8e9ccc5d7f43105c19eb4726dc6de30a97edfdad52945e96551ad20559526c45",
+      "size_bytes": 8503
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSeriesCalculus.lean.txt",
+      "sha256": "074ce0aa9a379ac5f378b57a0da44d95b54769e53689057337f9262f0579b846",
+      "size_bytes": 9867
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InfiniteFourierPressure.lean.txt",
+      "sha256": "8afcd5d69497cfc1c782b0f9809051938675f61b03b13bc4591ade6761f95a15",
+      "size_bytes": 13771
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InitialCutoffBounds.lean.txt",
+      "sha256": "f9f7eec7c6f8fa46f45ce4bc5942ff9627fe532e377780d5701f144ffd833c30",
+      "size_bytes": 9827
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/LatticeSobolevSummability.lean.txt",
+      "sha256": "34634888f8a8601ebb6a5c40f57d2b4a19b0f77295a0c37aeb59fbbd6ea09203",
+      "size_bytes": 5521
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PeriodicFourierInjective.lean.txt",
+      "sha256": "2da981fc1a5db3b5b796fa11a687fe6e993a54938d83bc74513e0220c4f80e81",
+      "size_bytes": 4441
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PeriodicFourierRealization.lean.txt",
+      "sha256": "f4118fd9507488f5bf8cd3df2c1f174f245a32928b118eeb967017865edd2871",
+      "size_bytes": 7948
+    },
+    {
+      "path": "Fefferman_adapter/Endpoints/sources/methlib/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevSmoothRealization.lean.txt",
+      "sha256": "9cc5097590bede10a43dcb711b869cd2c65ad955cf1636bc41ca5f4f29bf6ead",
+      "size_bytes": 12785
+    },
+    {
+      "path": "Fefferman_adapter/FEFFERMAN_ADAPTER_A_TIER.txt",
+      "sha256": "f64531b794808091eaa45021575229aa52c8bb88addebf2c1041188561432cff",
+      "size_bytes": 6248
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Forward/NSEMaxwellForward.lean",
+      "sha256": "d2a74b2268c54de3593996480d18429aa11060ce72396c7d2cea8071cfb57845",
+      "size_bytes": 5190
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Forward/NSEMaxwellForward/Reduced.lean",
+      "sha256": "3393dba7f320674f92f1067b623564e8bf239d00511d65305027b620ae65098a",
+      "size_bytes": 637
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint.lean",
+      "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+      "size_bytes": 128
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint/Audit.lean",
+      "sha256": "4da3e7d03be3f97497d11943d65ab1d70efa93382ec60e807b08934af06a1b83",
+      "size_bytes": 6099
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint/Constitutive.lean",
+      "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+      "size_bytes": 2685
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint/Geometry.lean",
+      "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+      "size_bytes": 3646
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint/Native.lean",
+      "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+      "size_bytes": 7121
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint/System.lean",
+      "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+      "size_bytes": 1928
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Reverse/NSEMaxwellReverse.lean",
+      "sha256": "b6cb2beb70264b98d23a8143def620121112077e3326125b4e51833990e9de04",
+      "size_bytes": 5717
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Reverse/NSEMaxwellReverse/Reduced.lean",
+      "sha256": "8c7e2bfd5dece9032b2335d73db50fd55bc34c9a66c11fe3ab6580b3e1b40635",
+      "size_bytes": 637
+    },
+    {
+      "path": "Fefferman_adapter/MethlibEndpoints.lean",
+      "sha256": "07e56315bc06718af426ffcff8f771a08422d6962d0e6c1774ef25f06b6e5985",
+      "size_bytes": 829
+    },
+    {
+      "path": "Fefferman_adapter/MethlibEndpoints/Audit.lean",
+      "sha256": "c44a433383aeeb47265644e36ac99acde821d60f1a9b3ac00e80ba440d45d4fb",
+      "size_bytes": 1386
+    },
+    {
+      "path": "Fefferman_adapter/NATIVE_SOURCES.md",
+      "sha256": "17cc5a01fdc6a58c02d8355ffa8a8c776a7933da9b55442c7178f775033636fd",
+      "size_bytes": 1600
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell.lean",
+      "sha256": "3be1cf79c390b8e769d235f08cc5884bbc8ef17d8b541a141629c697f0429617",
+      "size_bytes": 769
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Ampere.lean",
+      "sha256": "e1ee9e880e2c50360fea276a49fe3ca4c05c8104fa7b29740877cde3d30bc648",
+      "size_bytes": 1637
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/AnalyticBridge.lean",
+      "sha256": "d1e5a1439d01599cacea35a0c45f6c2e3842011130b8645681f02cff817b5402",
+      "size_bytes": 1059
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/AnalyticContracts.lean",
+      "sha256": "7664e157e5ebe3c8ffc24a3eba714b180b248bb950e8b8c4ab5c2c3190b49f3e",
+      "size_bytes": 7054
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/AnalyticReduction.lean",
+      "sha256": "2813f7dd8035681265656a3b6bb2476dbd30e928dc8a737bcb7e3277a8ae77ba",
+      "size_bytes": 7983
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Audit.lean",
+      "sha256": "a33ebc24740c596b02b1e6ef9c74a658a147045ea3087dbf1d16cf6e5c604331",
+      "size_bytes": 27647
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/CanonicalSmoothness.lean",
+      "sha256": "d63f7555c73d78141e53d86b463848e2594d01a6dcf8a0b3c026ac8de79dd021",
+      "size_bytes": 4535
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+      "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+      "size_bytes": 1507
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/ConstantPaths.lean",
+      "sha256": "14ddfa21be65dcb38ec3f9b2a5c62463de3846fd44c23b32a27ac0f083c206cf",
+      "size_bytes": 1025
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Constitutive.lean",
+      "sha256": "d7f1d613a094b2d7679d27d621286ac98e4998a67529f74c4614dcff4f1b4d81",
+      "size_bytes": 6932
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+      "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+      "size_bytes": 12995
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/DominatedWithin.lean",
+      "sha256": "d42ff10c78decd35907a1574e37a86de5fe87b32ad0c5e4ed4ed83997ea7766b",
+      "size_bytes": 4522
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/ExistenceTransport.lean",
+      "sha256": "998d18cb2914c1613c8a484b9d2df2e499480abde6caee09592e3e5db6ba4156",
+      "size_bytes": 2178
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/FEFFERMAN_B_MAXWELL_EQUIVALENCE.lean",
+      "sha256": "61c84e691c54d61bdfb0526858b519381014156eef99d9f66b7d6c0fcc982501",
+      "size_bytes": 828
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/FourierPeriodic.lean",
+      "sha256": "1d49a7d1ead33dd2eb0ab6dd2d90d1dddeefe032d0bd1773f305c85c974591ef",
+      "size_bytes": 5329
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+      "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+      "size_bytes": 6563
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Lamb.lean",
+      "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+      "size_bytes": 4681
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/LocalEvolution.lean",
+      "sha256": "6ada4c7209bfcf163490fdd13d4ebb2381feed274b5ccec447025cac75f3a680",
+      "size_bytes": 9639
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/MeanConservation.lean",
+      "sha256": "3bf93c76cfd27a1644c2a1f760b28a1710e62aa607202c1ddc81188a2f922da6",
+      "size_bytes": 4089
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Negation.lean",
+      "sha256": "4763b648a80780e3e8694b8953b249823a5349cfd52d3dbb7e0695781a1f531d",
+      "size_bytes": 1966
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean",
+      "sha256": "1e5ab9beb9eeb11fbf595ff4fbdad263ebd4f38e17f02f3ed53e687bfb03664c",
+      "size_bytes": 14200
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Pressure.lean",
+      "sha256": "c46ba912d016697050c20c7effbe82d463d233469641c886dbb5a89cb1503677",
+      "size_bytes": 2128
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Residual.lean",
+      "sha256": "4c88782f4ced9cc84a9584a235adad8fba69f1d24e318e49238f884484ae7754",
+      "size_bytes": 7753
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Spacetime.lean",
+      "sha256": "ebea01c7422186aaa0ec4c72c26774ee32f96291756be7775ba40f569eb89c57",
+      "size_bytes": 10914
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/TemporalMean.lean",
+      "sha256": "cf6a9d1afa1303db16e882cf52fc4e4db26842cf128a0a6fc050ac80735f5de6",
+      "size_bytes": 4515
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/LICENSE_STATUS.md",
+      "sha256": "29ccf54442604bcce750523f0d2f56c19404943d556404a2ed4ee8239fde15f6",
+      "size_bytes": 645
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/README.md",
+      "sha256": "868370911074a846896ebdab9b5e9236d1b9db654001d6563c337e57dc39d16a",
+      "size_bytes": 1840
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SOURCE_MANIFEST.json",
+      "sha256": "f4336314d058f0d5b53635e84ba1e9a4c359ba513bc71371ec3ed5fed1df8da4",
+      "size_bytes": 30453
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Admission.lean",
+      "sha256": "cd8e62a4f88a33b14d3a699b2431e801d590bcadf02d03b2e67ef3ebb5dc63ca",
+      "size_bytes": 2934
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Contracts.lean",
+      "sha256": "4c59cbf26fd4196529a4865ac09404d18015228c737055c2674cbcc4a5fd18f7",
+      "size_bytes": 6043
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/CoordinateAverage.lean",
+      "sha256": "3cdfd38ab7cc38805c04dfcba99bdbea711753c00cb2215d030d622514685076",
+      "size_bytes": 6071
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/CoordinateAverageOrthogonal.lean",
+      "sha256": "0021524a73fb9c7d0ff4a9b9efe359f6479f649202c8d573c59d5e2718996ab9",
+      "size_bytes": 9554
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/EnstrophyInequality.lean",
+      "sha256": "903678f104e8f312e0c7b2ed5f7846109931cea773b8a989df7ab14de2a93c17",
+      "size_bytes": 4633
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FiniteHessian.lean",
+      "sha256": "1c2cc4c469bf1ccd75c3842ce9d17b72aba34866dd926c10d3ba98446fcd8b7d",
+      "size_bytes": 5552
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FiniteParseval.lean",
+      "sha256": "63c51f81c008bf435d39b92710860dded6a9e09537a8056aeb425bd5769f5997",
+      "size_bytes": 10498
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierDecay.lean",
+      "sha256": "8e9ccc5d7f43105c19eb4726dc6de30a97edfdad52945e96551ad20559526c45",
+      "size_bytes": 8503
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierIntegral.lean",
+      "sha256": "8ecd56d311006a4db14bbe41a9d920d1760412f2ead5f3684239b85f0ad5290e",
+      "size_bytes": 3944
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierPressure.lean",
+      "sha256": "841c510c2133581789aa99c747d1315849abadabb7a2df019648a1ae5cd4b2fb",
+      "size_bytes": 8589
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierProduct.lean",
+      "sha256": "3b8ff49814d3496cdd6abb2b77d2ccf222c2d0ba93d0a225fb4bd2704aa1c9a4",
+      "size_bytes": 11306
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierSeriesCalculus.lean",
+      "sha256": "074ce0aa9a379ac5f378b57a0da44d95b54769e53689057337f9262f0579b846",
+      "size_bytes": 9867
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierTransport.lean",
+      "sha256": "bcfbb39cc4f0c44819a304d329a2506b0392f569ec3e6c30b16af69445af5f46",
+      "size_bytes": 11490
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Galerkin.lean",
+      "sha256": "e1ac5c944bab2667b02ae6c75b46f63605354b8c928c56298aee0e28b043a6fa",
+      "size_bytes": 6444
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean",
+      "sha256": "f361277b03794598be46b2c5faaee641d3d0772a4c75eab543fd86aa0ea088a8",
+      "size_bytes": 12133
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinEnergy.lean",
+      "sha256": "1f0e5b8a62e9d65bd7161efdfe539793157e8edbe94434d0c43b7af4644d5c02",
+      "size_bytes": 10885
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinEnergyIntegral.lean",
+      "sha256": "49b7de259b4a30dd3975e120ad2766917c6de5b3722bd54eff5100f123d7d8a9",
+      "size_bytes": 3779
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinReality.lean",
+      "sha256": "48dcb88fd3b82c93a8227432d4e909f4834434b51e24dfd9f2bdcc6f6d03cbe4",
+      "size_bytes": 2520
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/HilbertChannels.lean",
+      "sha256": "363e4a068a835c2d67c13ad9eed8cf313ea9b402959aab343d40e379238c4f09",
+      "size_bytes": 12035
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/InfiniteFourierPressure.lean",
+      "sha256": "8afcd5d69497cfc1c782b0f9809051938675f61b03b13bc4591ade6761f95a15",
+      "size_bytes": 13771
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialCutoffBounds.lean",
+      "sha256": "f9f7eec7c6f8fa46f45ce4bc5942ff9627fe532e377780d5701f144ffd833c30",
+      "size_bytes": 9827
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialFourier.lean",
+      "sha256": "acc40e4e4acd8ffa46fdd6ea1a46ac38fa4196bb329cc2856be04c183aaa4b6e",
+      "size_bytes": 11225
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/LatticeSobolevSummability.lean",
+      "sha256": "34634888f8a8601ebb6a5c40f57d2b4a19b0f77295a0c37aeb59fbbd6ea09203",
+      "size_bytes": 5521
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/LerayPressure.lean",
+      "sha256": "fb20ecd6a63415920817de69141c2b6ce23ce1967c2d52c4c9415ceaaf744a27",
+      "size_bytes": 4327
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicCover.lean",
+      "sha256": "9d6f0d78c7a043ef7d8a7db1c3d5f647a84492ff6c3843d85527638990f7929f",
+      "size_bytes": 6432
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicFourierInjective.lean",
+      "sha256": "2da981fc1a5db3b5b796fa11a687fe6e993a54938d83bc74513e0220c4f80e81",
+      "size_bytes": 4441
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicFourierRealization.lean",
+      "sha256": "f4118fd9507488f5bf8cd3df2c1f174f245a32928b118eeb967017865edd2871",
+      "size_bytes": 7948
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicPoincare.lean",
+      "sha256": "f296d6b876aee593424a7d78c524a7afc42824e9efb8bafa29e90bcaaa7e3202",
+      "size_bytes": 4751
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalBilinear.lean",
+      "sha256": "6062c88611b7b2d8885d62272d2be88a95cbec37335a1129a636e84b564b3262",
+      "size_bytes": 13097
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalChannels.lean",
+      "sha256": "0d522433e0a511a1c0f41b25947a05ece9780cacbe6809d105fdbb8991dca89f",
+      "size_bytes": 6166
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalEnergy.lean",
+      "sha256": "79652e7198f23154071200893e97111c232bd4581f8544c50fbb6f7f0671ae73",
+      "size_bytes": 2779
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalEnstrophy.lean",
+      "sha256": "720eaee5f18ea728c366880aeb05ced52bd9167369103cb19450991f74e08614",
+      "size_bytes": 11413
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalParseval.lean",
+      "sha256": "5785d4892b4d869c19532547247eea3848d670f23b3f93a7c7288233b6cd9338",
+      "size_bytes": 12070
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalProjection.lean",
+      "sha256": "8ad95865c4dcec61caae216aa8fd09043f2e0e760a128752d00aee5aa82c4287",
+      "size_bytes": 8251
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SixChannels.lean",
+      "sha256": "1c7f53956d9a766a3c8e4e781aa850a26351761ef0086c7ffd10047762854eab",
+      "size_bytes": 5991
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SmoothDatumSobolev.lean",
+      "sha256": "533948ef73136fc1fe995e073063860044bd3e4d63081f2ba0c49383c51e4466",
+      "size_bytes": 7380
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SobolevL2Realization.lean",
+      "sha256": "e6d03d9d4fb08d7f1e5fb0ba38b64c309c62b8656c67b8d66c9ba8ffee2f6b69",
+      "size_bytes": 7522
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean",
+      "sha256": "9cc5097590bede10a43dcb711b869cd2c65ad955cf1636bc41ca5f4f29bf6ead",
+      "size_bytes": 12785
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/TorusSobolev.lean",
+      "sha256": "7e30008b592ff6124d10d0e6306e96f3528395bcee13fd11df3d1a6497834389",
+      "size_bytes": 22413
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/third_party/leray-hopf-LICENSE",
+      "sha256": "9818ec66553209eebf329d4bf4bc6c992e1ac340bd3314c25ee478b8ce2a7bac",
+      "size_bytes": 11360
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/upstream/lake-manifest.json",
+      "sha256": "adcdf38e0e6317c5e0deca9a62706acf9f7a4cacbb704399a80a4e35fdceeece",
+      "size_bytes": 3575
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/upstream/lakefile.toml",
+      "sha256": "d4a4061cf9e1c3a049cac853d66e03e3a651440d3736ac6a149953233b10c3eb",
+      "size_bytes": 347
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/upstream/lean-toolchain",
+      "sha256": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "size_bytes": 25
+    },
+    {
+      "path": "Fefferman_adapter/PACKAGE.md",
+      "sha256": "a14443ca422b69e797a957182321266afc8058d2f2ff79b305a584626620e224",
+      "size_bytes": 5413
+    },
+    {
+      "path": "Fefferman_adapter/README.md",
+      "sha256": "93291da293e6bad2e80cdb67298258a79fd237fa7aa3d1402e7d01e3e9a17ab1",
+      "size_bytes": 9730
+    },
+    {
+      "path": "Fefferman_adapter/audit-targets.txt",
+      "sha256": "7c6b9343edd2bec814b53b20f66b1c658cd8dc690842f510717f726f854b2d4b",
+      "size_bytes": 10711
+    },
+    {
+      "path": "Fefferman_adapter/cache-targets.txt",
+      "sha256": "6534bc4fa124679c91833cded1886eceb5f8b55ce4217c7e2748c8430b37d5f2",
+      "size_bytes": 78
+    },
+    {
+      "path": "Fefferman_adapter/formalization-status.json",
+      "sha256": "ea107fbec5e3ebe749c857364641c2aa650e47f6b78fc2bb6fb5fe873ee8da77",
+      "size_bytes": 5996
+    },
+    {
+      "path": "Fefferman_adapter/lake-manifest.json",
+      "sha256": "c65f87be5261198f37bc78390759f5a4afa745696ee2e53e8c83e2705609f37d",
+      "size_bytes": 3555
+    },
+    {
+      "path": "Fefferman_adapter/lakefile.lean",
+      "sha256": "131e2be875e076c44147cbabca1b6c2b2cb633a9176c7ef72d94e347af876165",
+      "size_bytes": 593
+    },
+    {
+      "path": "Fefferman_adapter/lean-toolchain",
+      "sha256": "cdbc6c372a2b37ad94430a6cec69cedfa4d36f255bfd968773fd91bf7a1746bf",
+      "size_bytes": 29
+    },
+    {
+      "path": "Fefferman_adapter/local-project-sources.json",
+      "sha256": "4bbc8cbbe515400b8746eadc76090bdc566d8756895fe79cbf5442f29c1ad43d",
+      "size_bytes": 2869
+    },
+    {
+      "path": "Fefferman_adapter/methlib-audit-targets.txt",
+      "sha256": "e09726793e7953aea4d09def86cfeb9739973ca91c5af80b2a5ff4cf9e1b6308",
+      "size_bytes": 604
+    },
+    {
+      "path": "Fefferman_adapter/methlib-module-order.json",
+      "sha256": "ab833ba2315b9bb7b75d6d3e57f289b4999e57118f133fae5e2e895362ed0f13",
+      "size_bytes": 1506
+    },
+    {
+      "path": "Fefferman_adapter/native-sources.json",
+      "sha256": "ebf397468acdc80dc5615c2aca027182dc3b01d12741f966b8a1df6dbd9f23bf",
+      "size_bytes": 3937299
+    },
+    {
+      "path": "Fefferman_adapter/run.cmd",
+      "sha256": "0237cef9ea7f27542a8b5ee394ee4c5251625e9d4bbb9b83c3806cca33e99fba",
+      "size_bytes": 215
+    },
+    {
+      "path": "Fefferman_adapter/run.sh",
+      "sha256": "c9a3da21146365fc640461d9d78525655e431aba013aed9a02a8d36a8dc03077",
+      "size_bytes": 160
+    },
+    {
+      "path": "Fefferman_adapter/scripts/hydrate_native_sources.py",
+      "sha256": "fd76d0c1d528bf11db2a21e893ec3ed888ddf9837fcf7f371205c323b92367c4",
+      "size_bytes": 14230
+    },
+    {
+      "path": "Fefferman_adapter/scripts/run.ps1",
+      "sha256": "af9c58c8a902b76958b8dadfad555455b465020f9aea2208439c6fd213157626",
+      "size_bytes": 31083
+    },
+    {
+      "path": "Fefferman_adapter/scripts/verify_audit.py",
+      "sha256": "9b5bb453cedc48b5cdf36fe0324379296f352676538c20ce850313294b4e9749",
+      "size_bytes": 19169
+    },
+    {
+      "path": "Fefferman_adapter/scripts/verify_native_sources.py",
+      "sha256": "864e3636b6e3ce9c46460c7ba9814fb4302bc194c46a97c4207117a369adf0b8",
+      "size_bytes": 27598
+    },
+    {
+      "path": "Maxwell_Endpoint/MAXWELL_ENDPOINT_A_TIER.txt",
+      "sha256": "87402e1200ca74ce7b060049aa28425d542dfee35bf458389d5e5c302917c471",
+      "size_bytes": 19346
+    },
+    {
+      "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+      "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+      "size_bytes": 128
+    },
+    {
+      "path": "Maxwell_Endpoint/MaxwellEndpoint/Audit.lean",
+      "sha256": "4da3e7d03be3f97497d11943d65ab1d70efa93382ec60e807b08934af06a1b83",
+      "size_bytes": 6099
+    },
+    {
+      "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+      "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+      "size_bytes": 2685
+    },
+    {
+      "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+      "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+      "size_bytes": 3646
+    },
+    {
+      "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+      "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+      "size_bytes": 7121
+    },
+    {
+      "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+      "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+      "size_bytes": 1928
+    },
+    {
+      "path": "Maxwell_Endpoint/MethlibEndpoints.lean",
+      "sha256": "07e56315bc06718af426ffcff8f771a08422d6962d0e6c1774ef25f06b6e5985",
+      "size_bytes": 829
+    },
+    {
+      "path": "Maxwell_Endpoint/MethlibEndpoints/Audit.lean",
+      "sha256": "c44a433383aeeb47265644e36ac99acde821d60f1a9b3ac00e80ba440d45d4fb",
+      "size_bytes": 1386
+    },
+    {
+      "path": "Maxwell_Endpoint/NATIVE_SOURCES.md",
+      "sha256": "17cc5a01fdc6a58c02d8355ffa8a8c776a7933da9b55442c7178f775033636fd",
+      "size_bytes": 1600
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/LICENSE_STATUS.md",
+      "sha256": "29ccf54442604bcce750523f0d2f56c19404943d556404a2ed4ee8239fde15f6",
+      "size_bytes": 645
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/README.md",
+      "sha256": "868370911074a846896ebdab9b5e9236d1b9db654001d6563c337e57dc39d16a",
+      "size_bytes": 1840
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SOURCE_MANIFEST.json",
+      "sha256": "f4336314d058f0d5b53635e84ba1e9a4c359ba513bc71371ec3ed5fed1df8da4",
+      "size_bytes": 30453
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/Admission.lean",
+      "sha256": "cd8e62a4f88a33b14d3a699b2431e801d590bcadf02d03b2e67ef3ebb5dc63ca",
+      "size_bytes": 2934
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/Contracts.lean",
+      "sha256": "4c59cbf26fd4196529a4865ac09404d18015228c737055c2674cbcc4a5fd18f7",
+      "size_bytes": 6043
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/CoordinateAverage.lean",
+      "sha256": "3cdfd38ab7cc38805c04dfcba99bdbea711753c00cb2215d030d622514685076",
+      "size_bytes": 6071
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/CoordinateAverageOrthogonal.lean",
+      "sha256": "0021524a73fb9c7d0ff4a9b9efe359f6479f649202c8d573c59d5e2718996ab9",
+      "size_bytes": 9554
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/EnstrophyInequality.lean",
+      "sha256": "903678f104e8f312e0c7b2ed5f7846109931cea773b8a989df7ab14de2a93c17",
+      "size_bytes": 4633
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/FiniteHessian.lean",
+      "sha256": "1c2cc4c469bf1ccd75c3842ce9d17b72aba34866dd926c10d3ba98446fcd8b7d",
+      "size_bytes": 5552
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/FiniteParseval.lean",
+      "sha256": "63c51f81c008bf435d39b92710860dded6a9e09537a8056aeb425bd5769f5997",
+      "size_bytes": 10498
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/FourierDecay.lean",
+      "sha256": "8e9ccc5d7f43105c19eb4726dc6de30a97edfdad52945e96551ad20559526c45",
+      "size_bytes": 8503
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/FourierIntegral.lean",
+      "sha256": "8ecd56d311006a4db14bbe41a9d920d1760412f2ead5f3684239b85f0ad5290e",
+      "size_bytes": 3944
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/FourierPressure.lean",
+      "sha256": "841c510c2133581789aa99c747d1315849abadabb7a2df019648a1ae5cd4b2fb",
+      "size_bytes": 8589
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/FourierProduct.lean",
+      "sha256": "3b8ff49814d3496cdd6abb2b77d2ccf222c2d0ba93d0a225fb4bd2704aa1c9a4",
+      "size_bytes": 11306
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/FourierSeriesCalculus.lean",
+      "sha256": "074ce0aa9a379ac5f378b57a0da44d95b54769e53689057337f9262f0579b846",
+      "size_bytes": 9867
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/FourierTransport.lean",
+      "sha256": "bcfbb39cc4f0c44819a304d329a2506b0392f569ec3e6c30b16af69445af5f46",
+      "size_bytes": 11490
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/Galerkin.lean",
+      "sha256": "e1ac5c944bab2667b02ae6c75b46f63605354b8c928c56298aee0e28b043a6fa",
+      "size_bytes": 6444
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean",
+      "sha256": "f361277b03794598be46b2c5faaee641d3d0772a4c75eab543fd86aa0ea088a8",
+      "size_bytes": 12133
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/GalerkinEnergy.lean",
+      "sha256": "1f0e5b8a62e9d65bd7161efdfe539793157e8edbe94434d0c43b7af4644d5c02",
+      "size_bytes": 10885
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/GalerkinEnergyIntegral.lean",
+      "sha256": "49b7de259b4a30dd3975e120ad2766917c6de5b3722bd54eff5100f123d7d8a9",
+      "size_bytes": 3779
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/GalerkinReality.lean",
+      "sha256": "48dcb88fd3b82c93a8227432d4e909f4834434b51e24dfd9f2bdcc6f6d03cbe4",
+      "size_bytes": 2520
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/HilbertChannels.lean",
+      "sha256": "363e4a068a835c2d67c13ad9eed8cf313ea9b402959aab343d40e379238c4f09",
+      "size_bytes": 12035
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/InfiniteFourierPressure.lean",
+      "sha256": "8afcd5d69497cfc1c782b0f9809051938675f61b03b13bc4591ade6761f95a15",
+      "size_bytes": 13771
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/InitialCutoffBounds.lean",
+      "sha256": "f9f7eec7c6f8fa46f45ce4bc5942ff9627fe532e377780d5701f144ffd833c30",
+      "size_bytes": 9827
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/InitialFourier.lean",
+      "sha256": "acc40e4e4acd8ffa46fdd6ea1a46ac38fa4196bb329cc2856be04c183aaa4b6e",
+      "size_bytes": 11225
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/LatticeSobolevSummability.lean",
+      "sha256": "34634888f8a8601ebb6a5c40f57d2b4a19b0f77295a0c37aeb59fbbd6ea09203",
+      "size_bytes": 5521
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/LerayPressure.lean",
+      "sha256": "fb20ecd6a63415920817de69141c2b6ce23ce1967c2d52c4c9415ceaaf744a27",
+      "size_bytes": 4327
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PeriodicCover.lean",
+      "sha256": "9d6f0d78c7a043ef7d8a7db1c3d5f647a84492ff6c3843d85527638990f7929f",
+      "size_bytes": 6432
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PeriodicFourierInjective.lean",
+      "sha256": "2da981fc1a5db3b5b796fa11a687fe6e993a54938d83bc74513e0220c4f80e81",
+      "size_bytes": 4441
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PeriodicFourierRealization.lean",
+      "sha256": "f4118fd9507488f5bf8cd3df2c1f174f245a32928b118eeb967017865edd2871",
+      "size_bytes": 7948
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PeriodicPoincare.lean",
+      "sha256": "f296d6b876aee593424a7d78c524a7afc42824e9efb8bafa29e90bcaaa7e3202",
+      "size_bytes": 4751
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PhysicalBilinear.lean",
+      "sha256": "6062c88611b7b2d8885d62272d2be88a95cbec37335a1129a636e84b564b3262",
+      "size_bytes": 13097
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PhysicalChannels.lean",
+      "sha256": "0d522433e0a511a1c0f41b25947a05ece9780cacbe6809d105fdbb8991dca89f",
+      "size_bytes": 6166
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PhysicalEnergy.lean",
+      "sha256": "79652e7198f23154071200893e97111c232bd4581f8544c50fbb6f7f0671ae73",
+      "size_bytes": 2779
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PhysicalEnstrophy.lean",
+      "sha256": "720eaee5f18ea728c366880aeb05ced52bd9167369103cb19450991f74e08614",
+      "size_bytes": 11413
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PhysicalParseval.lean",
+      "sha256": "5785d4892b4d869c19532547247eea3848d670f23b3f93a7c7288233b6cd9338",
+      "size_bytes": 12070
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PhysicalProjection.lean",
+      "sha256": "8ad95865c4dcec61caae216aa8fd09043f2e0e760a128752d00aee5aa82c4287",
+      "size_bytes": 8251
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/SixChannels.lean",
+      "sha256": "1c7f53956d9a766a3c8e4e781aa850a26351761ef0086c7ffd10047762854eab",
+      "size_bytes": 5991
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/SmoothDatumSobolev.lean",
+      "sha256": "533948ef73136fc1fe995e073063860044bd3e4d63081f2ba0c49383c51e4466",
+      "size_bytes": 7380
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/SobolevL2Realization.lean",
+      "sha256": "e6d03d9d4fb08d7f1e5fb0ba38b64c309c62b8656c67b8d66c9ba8ffee2f6b69",
+      "size_bytes": 7522
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean",
+      "sha256": "9cc5097590bede10a43dcb711b869cd2c65ad955cf1636bc41ca5f4f29bf6ead",
+      "size_bytes": 12785
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/TorusSobolev.lean",
+      "sha256": "7e30008b592ff6124d10d0e6306e96f3528395bcee13fd11df3d1a6497834389",
+      "size_bytes": 22413
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/third_party/leray-hopf-LICENSE",
+      "sha256": "9818ec66553209eebf329d4bf4bc6c992e1ac340bd3314c25ee478b8ce2a7bac",
+      "size_bytes": 11360
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/upstream/lake-manifest.json",
+      "sha256": "adcdf38e0e6317c5e0deca9a62706acf9f7a4cacbb704399a80a4e35fdceeece",
+      "size_bytes": 3575
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/upstream/lakefile.toml",
+      "sha256": "d4a4061cf9e1c3a049cac853d66e03e3a651440d3736ac6a149953233b10c3eb",
+      "size_bytes": 347
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/upstream/lean-toolchain",
+      "sha256": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "size_bytes": 25
+    },
+    {
+      "path": "Maxwell_Endpoint/README.md",
+      "sha256": "975a0d2a45ae932c5952606cdb933354db31179050042ba03400651d20e94b6e",
+      "size_bytes": 12035
+    },
+    {
+      "path": "Maxwell_Endpoint/audit-targets.txt",
+      "sha256": "65c5d957b6c8b352031d06f811f7da6dca9055b338079ad4dfcbc08c343b3e5f",
+      "size_bytes": 2270
+    },
+    {
+      "path": "Maxwell_Endpoint/cache-targets.txt",
+      "sha256": "6534bc4fa124679c91833cded1886eceb5f8b55ce4217c7e2748c8430b37d5f2",
+      "size_bytes": 78
+    },
+    {
+      "path": "Maxwell_Endpoint/formalization-status.json",
+      "sha256": "582ab2bdb281190a34ad088c989ca04e4ff74dcb7c4a74ce45d2c5c248c47ea2",
+      "size_bytes": 9566
+    },
+    {
+      "path": "Maxwell_Endpoint/lake-manifest.json",
+      "sha256": "1e0b1b6869c16f1abca2c92625896ac4f747b3f7a34c72c4199d60de1f9ab94f",
+      "size_bytes": 3554
+    },
+    {
+      "path": "Maxwell_Endpoint/lakefile.lean",
+      "sha256": "29701c82ad4d7845aac29a1c84880f043b973deca5e62919f4e88d93f8d582e7",
+      "size_bytes": 377
+    },
+    {
+      "path": "Maxwell_Endpoint/lean-toolchain",
+      "sha256": "cdbc6c372a2b37ad94430a6cec69cedfa4d36f255bfd968773fd91bf7a1746bf",
+      "size_bytes": 29
+    },
+    {
+      "path": "Maxwell_Endpoint/methlib-audit-targets.txt",
+      "sha256": "e09726793e7953aea4d09def86cfeb9739973ca91c5af80b2a5ff4cf9e1b6308",
+      "size_bytes": 604
+    },
+    {
+      "path": "Maxwell_Endpoint/methlib-module-order.json",
+      "sha256": "ab833ba2315b9bb7b75d6d3e57f289b4999e57118f133fae5e2e895362ed0f13",
+      "size_bytes": 1506
+    },
+    {
+      "path": "Maxwell_Endpoint/native-sources.json",
+      "sha256": "ebf397468acdc80dc5615c2aca027182dc3b01d12741f966b8a1df6dbd9f23bf",
+      "size_bytes": 3937299
+    },
+    {
+      "path": "Maxwell_Endpoint/run.cmd",
+      "sha256": "e81fa196776fe023ebfc96703e774f7be8fd75f93700afa2553c040c242ebc6c",
+      "size_bytes": 213
+    },
+    {
+      "path": "Maxwell_Endpoint/run.sh",
+      "sha256": "c9a3da21146365fc640461d9d78525655e431aba013aed9a02a8d36a8dc03077",
+      "size_bytes": 160
+    },
+    {
+      "path": "Maxwell_Endpoint/scripts/hydrate_native_sources.py",
+      "sha256": "fd76d0c1d528bf11db2a21e893ec3ed888ddf9837fcf7f371205c323b92367c4",
+      "size_bytes": 14230
+    },
+    {
+      "path": "Maxwell_Endpoint/scripts/run.ps1",
+      "sha256": "5eb5474e6e0163fba7e0d01edf3fcb8b06d81a30cc89c49fb95d623455b7878f",
+      "size_bytes": 28879
+    },
+    {
+      "path": "Maxwell_Endpoint/scripts/verify_audit.py",
+      "sha256": "ebd94491f861e4620edc915d05aa1c35a118a68cfbc8b3128631e797e91a8fbf",
+      "size_bytes": 18702
+    },
+    {
+      "path": "Maxwell_Endpoint/scripts/verify_native_sources.py",
+      "sha256": "864e3636b6e3ce9c46460c7ba9814fb4302bc194c46a97c4207117a369adf0b8",
+      "size_bytes": 27598
+    },
+    {
+      "path": "README.md",
+      "sha256": "6750a12eda5ac41e902336739b892094cb4a5a878f7a4e3b83e51edd21ddb333",
+      "size_bytes": 17852
+    },
+    {
+      "path": "artifacts/assembly/GeneratedAudit.lean",
+      "sha256": "f1cebe9f7bca90227fd37940b3de9a630f8df3bbe4759efb0730890762e9ee14",
+      "size_bytes": 5651
+    },
+    {
+      "path": "artifacts/assembly/audit-targets.txt",
+      "sha256": "ab59e834aa40975b875a273e0a56e4bf877d838afda35332f696adf413ad2e1a",
+      "size_bytes": 2320
+    },
+    {
+      "path": "artifacts/assembly/import-closure.json",
+      "sha256": "65bd4b14ecf009ccddab3b8155e8d0de9c5d0e46e1eac12d7e74b911cec5b300",
+      "size_bytes": 4746
+    },
+    {
+      "path": "artifacts/assembly/literature/LiteratureAudit.lean",
+      "sha256": "82046a64320b130e11b526f82d748b1994f1d86b386b79ab2f6f6eeb8fbee08c",
+      "size_bytes": 759
+    },
+    {
+      "path": "artifacts/assembly/literature/audit-targets.txt",
+      "sha256": "d5becf6a47df816a3bfff58ddee8bb967b1a1e40a14ec65f086ac8e8bd26a817",
+      "size_bytes": 283
+    },
+    {
+      "path": "artifacts/assembly/literature/axiom-policy.json",
+      "sha256": "461afbc08bac15ae124068bde21ac4acda90c7e2a4bad8728e128a2150b623e4",
+      "size_bytes": 1083
+    },
+    {
+      "path": "artifacts/assembly/literature/import-closure.json",
+      "sha256": "a3a4e9f6f2a8de6b035d07fec25b9173805e8d167e1cc13b5be74156671263bd",
+      "size_bytes": 10856
+    },
+    {
+      "path": "lake-manifest.json",
+      "sha256": "69c22ad5678fd37f874d60dd5c604bfd96a2604fcb788a054764d6f1e346a939",
+      "size_bytes": 3549
+    },
+    {
+      "path": "lakefile.lean",
+      "sha256": "b27964dabc4ac2c9dff83d46d7b45e8be52123370c8fd7d5ca241e66fb8ada34",
+      "size_bytes": 965
+    },
+    {
+      "path": "lean-toolchain",
+      "sha256": "cdbc6c372a2b37ad94430a6cec69cedfa4d36f255bfd968773fd91bf7a1746bf",
+      "size_bytes": 29
+    }
+  ]
+}

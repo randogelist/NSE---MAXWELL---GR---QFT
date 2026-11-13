@@ -1,0 +1,355 @@
+L1_METHLIB_RESEARCH
+DATE=2026-11-13
+MODE=READ_ONLY_SOURCE_AND_RETAINED_EXTERNAL_EVIDENCE
+LOCAL_LEAN_EXECUTIONS=0
+REPOSITORY_MUTATIONS=0
+
+1. EXACT TARGET
+
+File: ASSEMBLY/ClassicalMechanicsAssembly/LiteratureInputs.lean, lines 24-32.
+
+axiom ClassicalMechanicsAssembly.Literature.L1
+    {T : ℝ} (hT : 0 < T) {u : Velocity}
+    (hu : SmoothVelocityOn T u)
+    (hperiodic : ∀ t ∈ Icc (0 : ℝ) T, SpatialPeriodic (u t))
+    (hdiv : ∀ t ∈ Icc (0 : ℝ) T, ∀ x : Vec,
+      NSEMaxwell.Classical.divergence (u t) x = 0) :
+    ∃ η ρ : Velocity,
+      MaterialPathOn T η ρ ∧
+      ∀ t ∈ Icc (0 : ℝ) T, ∀ a : Vec,
+        materialVelocity T η t a = u t (η t a)
+
+SmoothVelocityOn T u :=
+  ContDiffOn ℝ ∞ (fun z : ℝ × Vec => u z.1 z.2) (finiteSpacetime T)
+finiteSpacetime T := {z | z.1 ∈ Icc (0 : ℝ) T}
+materialVelocity T η t a :=
+  derivWithin (fun s : ℝ => η s a) (Icc (0 : ℝ) T) t
+
+MaterialPathOn T η ρ fields:
+  smooth : SmoothVelocityOn T η
+  inverse_smooth : SmoothVelocityOn T ρ
+  left_inverse : ∀ t ∈ Icc 0 T, ∀ a, ρ t (η t a) = a
+  right_inverse : ∀ t ∈ Icc 0 T, ∀ x, η t (ρ t x) = x
+  lattice_equivariant : ∀ t ∈ Icc 0 T, ∀ a i,
+    η t (a + unitVector i) = η t a + unitVector i
+  initial_configuration : η 0 = fun a => a
+  determinant_one : ∀ t ∈ Icc 0 T, ∀ a,
+    (deformationGradient η t a).det = 1
+
+2. SOURCE PINS AND SEARCH SCOPE
+
+Contained manifest:
+  Fefferman_adapter/NativeSources/methlib/SOURCE_MANIFEST.json
+  Maxwell_Endpoint/NativeSources/methlib/SOURCE_MANIFEST.json
+upstream_repository=randogelist/Methlib
+upstream_commit=e9cf90726b8544a268469ebc8fa6634e9c713e07
+upstream_package=regularity-B-assembly/Singular-Axiomatic-closure
+upstream_toolchain=Lean 4.33.0
+upstream_mathlib=db584cd6d46c92f209a44c0f1c829460d327499d
+contained_native_module_count=39
+target_toolchain=Lean 4.34.0-rc1
+target_mathlib=de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+
+Connected GitHub main resolved to the same e9cf907... pin.
+Recursive tree(main): 4568 entries; truncated=false.
+
+Additional branch trees inspected by filename/path and relevant blob identity:
+  FourierHodgeLaws_inhabitant
+    eac159c5f7bf5a99a00d994da34c4760ea8335d0
+    4691 entries; truncated=false
+  SINGULARITY_DISPROVEMENT
+    3b4b56130549ab21a11df9ab03410b68373437dd
+    4540 entries; truncated=false
+  QUASI-FEFFERMAN-B
+    e6d7a34aba1549d098b0f8bd0caefd9dbdc85b0c
+    4548 entries; truncated=false
+
+DissipativeODE.lean, GalerkinExistence.lean, PeriodicCover.lean,
+CriticalPositiveFlow.lean have identical blobs across these four inspected trees.
+Branch inventory returned 19 names with a continuation cursor.
+No exhaustive all-branch search claim is made.
+GitHub code searches flow, Picard, ContDiff, Lipschitz returned no indexed hits;
+these empty index results are not treated as proofs of absence.
+The main tree path inventory and targeted source reads are the substantive evidence.
+
+3. USEFUL GENERIC ODE SOURCE
+
+Pinned source:
+https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/DissipativeODE.lean
+Direct source:
+https://raw.githubusercontent.com/randogelist/Methlib/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/DissipativeODE.lean
+blob=8f95c8e11a98951def0e9126a7d180288fbe32e0
+bytes=17513
+sha256=310387334a08bbfb13033b578b0c569a38e3eb4b5a48c58cce5842d0aebad106
+
+Provenance header:
+  adapted from uda-lab/leray-hopf
+  commit=e704400f2fb2f26b2ee7f4372c3e1ecbbc82f3dc
+  path=LerayHopf/Galerkin/DissipativeODE.lean
+  source_blob=b8bce6170ff68fd8034b25acad1066bedc41b5cb
+  Apache-2.0; namespace changed to SingularClosure.
+
+Ambient variables:
+  {V : Type*}
+  [NormedAddCommGroup V]
+  [InnerProductSpace ℝ V]
+  [FiniteDimensional ℝ V]
+
+3.1 SingularClosure.uniform_local_time, line 79
+
+theorem uniform_local_time (g : V → V) (hg : ContDiff ℝ 1 g) (R : ℝ) :
+    ∃ δ : ℝ, 0 < δ ∧ ∀ x₀ ∈ Metric.closedBall (0 : V) R, ∀ t₀ : ℝ,
+      ∃ α : ℝ → V, α t₀ = x₀ ∧
+        ∀ t ∈ Set.Ioo (t₀ - δ) (t₀ + δ),
+          HasDerivAt α (g (α t)) t
+
+ROLE:
+  uniform local time for an autonomous C1 field on a bounded ball.
+  Finite compact-cover pattern is reusable.
+GAP:
+  no dependence on time in g;
+  no jointly smooth dependence on initial point;
+  no inverse, periodicity, determinant, or full finite-slab continuation.
+STATUS:
+  source body in upstream externally compiled DissipativeODE module;
+  no independent named audit entry for this helper was observed.
+  Not in the project's selected 39-module Methlib snapshot.
+
+3.2 SingularClosure.solution_agree, line 206
+
+theorem solution_agree (g : V → V) (hg : ContDiff ℝ 1 g)
+    (α β : ℝ → V) {a b t₀ : ℝ} (_hab : a ≤ b)
+    (ht₀ : t₀ ∈ Set.Icc a b)
+    (hαβ : α t₀ = β t₀)
+    (hα : ∀ t ∈ Set.Icc a b, HasDerivAt α (g (α t)) t)
+    (hβ : ∀ t ∈ Set.Icc a b, HasDerivAt β (g (β t)) t) :
+    ∀ t ∈ Set.Icc a b, α t = β t
+
+ROLE:
+  autonomous compact-interval trajectory uniqueness.
+  Proof derives a common bounded ball and Lipschitz constant.
+  Uses Mathlib ODE_solution_unique_of_mem_Icc_left and
+  ODE_solution_unique_of_mem_Icc_right.
+GAP:
+  target velocity u is nonautonomous;
+  target endpoint derivatives are within-slab;
+  joint smoothness and inverse construction are absent.
+STATUS:
+  compiled source helper; no independent named audit entry observed.
+  Not in current selected 39-module snapshot.
+
+3.3 SingularClosure.forwardGlobalSolution_exists, line 259
+
+theorem forwardGlobalSolution_exists (g : V → V)
+    (hg : ContDiff ℝ 1 g)
+    (hdiss : ∀ v : V, inner (𝕜 := ℝ) v (g v) ≤ (0 : ℝ))
+    (x₀ : V) :
+    ∃ c : ℝ → V, c 0 = x₀ ∧
+      ∀ t, 0 ≤ t → HasDerivAt c (g (c t)) t
+
+ROLE:
+  rigorous forward-global trajectory existence for autonomous dissipative C1 ODE.
+GAP:
+  arbitrary periodic solenoidal u need not satisfy
+    inner x (u t x) ≤ 0.
+  Autonomization g(t,x)=(1,u t x) does not supply dissipativity.
+  No jointly smooth initial-data dependence, inverse flow, Jacobian identity.
+  Therefore this endpoint cannot be directly instantiated to discharge L1.
+STATUS:
+  upstream exact-type check and theorem-level axiom audit verified;
+  evidence uses Lean 4.33.0, not the target 4.34.0-rc1 integration.
+  No new native target import/build was performed.
+
+4. RETAINED UPSTREAM COMPILER AND AXIOM EVIDENCE
+
+Directory at current pin:
+  regularity-B-assembly/Singular-Axiomatic-closure/verification/2d899390_full/
+
+commit.txt:
+  2d899390d23db5134d38ebabd1bb5b8f03cf963e
+lean-version.txt:
+  Lean (version 4.33.0, x86_64-unknown-linux-gnu,
+    commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)
+mathlib-revision.txt:
+  db584cd6d46c92f209a44c0f1c829460d327499d
+build.log:
+  Replayed SingularClosure.DissipativeODE
+  Build completed successfully (8822 jobs).
+audit.json:
+  status=PASS; declaration_count=171
+  scope="Only the explicit compiled declarations and exact-type checks in this audit."
+axioms.log:
+  EXACT_TYPE_PASS:SingularClosure.forwardGlobalSolution_exists
+  axioms=[propext, Classical.choice, Quot.sound]
+sources.json:
+  DissipativeODE.lean SHA256 matches current pinned source exactly:
+    310387334a08bbfb13033b578b0c569a38e3eb4b5a48c58cce5842d0aebad106
+  GalerkinExistence.lean SHA256 matches current pinned source exactly:
+    b06de730475c44c518c24246911d771e883dac8123cae8e25915ca69631e08c5
+
+Evidence URLs:
+https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/verification/2d899390_full/audit.json
+https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/verification/2d899390_full/axioms.log
+https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/verification/2d899390_full/sources.json
+https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/verification/2d899390_full/build.log
+
+5. CONCRETE GALERKIN ODE SOURCE
+
+Path:
+  regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/GalerkinExistence.lean
+blob=99a1d77891985e082e015e055cef7c3980c2e5fc
+sha256=b06de730475c44c518c24246911d771e883dac8123cae8e25915ca69631e08c5
+bytes=8329
+
+5.1 SingularClosure.finiteGalerkinRhs_local_exists, line 27
+
+theorem finiteGalerkinRhs_local_exists (ν : ℝ) (N : ℕ)
+    (z₀ : FiniteGalerkinState N) (t₀ : ℝ) :
+    ∃ z : ℝ → FiniteGalerkinState N, z t₀ = z₀ ∧
+      ∃ ε > (0 : ℝ), ∀ t ∈ Ioo (t₀ - ε) (t₀ + ε),
+        HasDerivAt z (finiteGalerkinRhs ν N (z t)) t
+
+5.2 SingularClosure.finiteGalerkinRhs_uniform_local_time, line 39
+
+theorem finiteGalerkinRhs_uniform_local_time (ν : ℝ) (N : ℕ) (R : ℝ) :
+    ∃ δ > (0 : ℝ),
+      ∀ z₀ ∈ closedBall (0 : FiniteGalerkinState N) R, ∀ t₀ : ℝ,
+        ∃ z : ℝ → FiniteGalerkinState N, z t₀ = z₀ ∧
+          ∀ t ∈ Ioo (t₀ - δ) (t₀ + δ),
+            HasDerivAt z (finiteGalerkinRhs ν N (z t)) t
+
+5.3 SingularClosure.finiteGalerkinRhs_unique_on_Icc, line 109
+
+theorem finiteGalerkinRhs_unique_on_Icc (ν : ℝ) (N : ℕ)
+    (f g : ℝ → FiniteGalerkinState N) (T : ℝ)
+    (hf : ContinuousOn f (Ici 0)) (hg : ContinuousOn g (Ici 0))
+    (hf' : ∀ t : ℝ, 0 ≤ t →
+      HasDerivWithinAt f (finiteGalerkinRhs ν N (f t)) (Ici 0) t)
+    (hg' : ∀ t : ℝ, 0 ≤ t →
+      HasDerivWithinAt g (finiteGalerkinRhs ν N (g t)) (Ici 0) t)
+    (h0 : f 0 = g 0) : EqOn f g (Icc 0 T)
+
+ROLE:
+  checked examples of local existence, compact uniformization,
+  and uniqueness for within-domain derivatives.
+  The first two have retained exact-type audit entries with only foundational axioms.
+GAP:
+  states are Fourier coefficients, not material particle positions;
+  polynomial autonomous finiteGalerkinRhs is not arbitrary u(t,x);
+  no material diffeomorphism theorem follows.
+  finiteGalerkinRhs_unique_on_Icc has no separate audit entry in inspected audit.
+  These modules are outside current selected 39-module closure.
+
+6. CONTAINED PERIODIC HELPER
+
+SingularClosure.spatialPeriodic_integerShift
+File:
+  Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicCover.lean
+Line=30
+Upstream path:
+  regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PeriodicCover.lean
+Upstream blob=a9425368b5a17e56bb469401b2fbae106e0ad1b1
+SHA256=9d6f0d78c7a043ef7d8a7db1c3d5f647a84492ff6c3843d85527638990f7929f
+
+theorem spatialPeriodic_integerShift {E : Type*} {f : Vec → E}
+    (hp : SpatialPeriodic f) (z : Fin 3 → ℤ) :
+    Function.Periodic f (integerShift z)
+
+integerShift z := ∑ i : Fin 3, z i • unitVector i
+SingularClosure.Vec := EuclideanSpace ℝ (Fin 3)
+SingularClosure.SpatialPeriodic f :=
+  ∀ x i, f (x + unitVector i) = f x
+
+ROLE:
+  converts the three coordinate periods into arbitrary integer periods.
+  Useful in compact-cell reduction when deriving global spatial bounds.
+GAP:
+  does not itself establish a uniform-in-time bound for u or D_xu;
+  does not establish LipschitzOnWith, flow existence, or lattice equivariance
+  of a constructed path.
+  Need bridge to NSEMaxwell.Classical namespace definitions;
+  same displayed Euclidean and coordinate definitions are not a checked bridge theorem.
+STATUS:
+  already contained and compiled in selected native dependency closure;
+  not one of the ten independently selected theorem-level audits.
+
+Related contained theorem:
+  SingularClosure.periodic_closedBall_three_integral_le
+  PeriodicCover.lean line 106
+  ∀ f continuous periodic nonnegative,
+    (∫ x in closedBall 0 3, f x) ≤ 343 * ∫ x in unitCube, f x
+ROLE FOR L1=not a uniform pointwise velocity/derivative bound.
+
+7. TEN EXISTING NATIVE IMPORTED ENDPOINTS
+
+The existing ten targets concern Fourier coefficients, rapid decay,
+Fourier synthesis regularity, coefficient injectivity, pressure recovery,
+coordinate differentiation, and lattice summability.
+Relevant regularity example:
+
+SingularClosure.scalarFourierSeries_contDiff
+  FourierSeriesCalculus.lean, line 149
+  {b : Frequency → ℂ}
+  (hb : RapidScalarFourier b) :
+  ContDiff ℝ ∞ (scalarFourierSeries b)
+
+STATUS:
+  native target Lean 4.34.0-rc1 exact theorem audit PASS_STANDARD_ONLY,
+  Auxillary/evidence/linux-43359539373/audit-summary.json.
+  Source matched by contained manifest.
+ROLE FOR L1:
+  only smoothness of a particular scalar Fourier synthesis.
+  L1 already assumes SmoothVelocityOn for arbitrary supplied u;
+  no initial-data-dependent material flow is produced.
+
+Contained smoothFourierSynthesis_contDiff and smoothFourierSynthesis_periodic
+likewise concern spatial Fourier synthesis, not η(t,a) or inverse flow.
+
+8. A MISLEADING NAME EXCLUDED
+
+SingularClosure.CriticalPositiveSobolevFlow
+  SingularClosure/CriticalPositiveFlow.lean
+  blob=86610a36f504f0deb9aead60bfe36eb635bf6766
+
+This structure consists of Sobolev coefficient curves satisfying the NSE RHS,
+spectral reality, solenoidality, and mean zero for t>0.
+Its velocity_spacetime_smooth theorem proves smoothness on positiveSpacetime
+of a supplied spectral solution curve.
+It is not a material flow map, does not construct η or ρ, and excludes t=0.
+It does not discharge L1.
+
+9. MATHLIB NAMES OBSERVED INSIDE METHLIB PROOFS
+
+ContDiffAt.exists_forall_mem_closedBall_exists_eq_forall_mem_Ioo_hasDerivAt
+ContDiffAt.exists_forall_mem_closedBall_exists_eq_forall_mem_Ioo_hasDerivAt₀
+ContDiffOn.exists_lipschitzOnWith
+ODE_solution_unique_of_mem_Icc_left
+ODE_solution_unique_of_mem_Icc_right
+isCompact_Icc.exists_bound_of_continuousOn
+IsCompact.elim_finite_subcover
+
+These names are observed call sites. Their complete upstream Mathlib signatures
+must be inspected at the target Mathlib pin before implementation.
+
+10. REMAINING EXACT L1 CONSTRUCTION
+
+Required unresolved chain:
+  finite-slab smooth periodic u
+  -> uniform-in-time spatial bounds and spatial Lipschitz control
+  -> all-start-time/all-start-point nonautonomous trajectories on [0,T]
+  -> uniqueness and coherent two-time flow
+  -> joint C∞ dependence on time and initial point, including closed-slab endpoints
+  -> smooth inverse family
+  -> identity normalization and lattice equivariance by uniqueness
+  -> spatial variational equation
+  -> determinant evolution J' = ((div u) ∘ η) J
+  -> J = 1
+  -> exact MaterialPathOn + derivWithin ODE.
+
+The autonomous helper theorem is a useful implementation reference.
+A checked direct inhabitant of the exact L1 contract was not located in the
+contained 39 modules or the targeted inspected Methlib sources.
+No exhaustive absence assertion is made for all Methlib files or branches.
+
+L1_DISCHARGED_BY_THIS_RESEARCH=FALSE
+NEW_FORMAL_PROMOTION=NONE

@@ -1,0 +1,119 @@
+⚠ [8713/8740] Replayed NSEMaxwell.Kinematics
+warning: Fefferman_adapter/NSEMaxwell/Kinematics.lean:92:19: This simp argument is unused:
+  coordinateDerivative
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [laplacian]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8714/8740] Replayed NSEMaxwell.Lamb
+warning: Fefferman_adapter/NSEMaxwell/Lamb.lean:33:45: This simp argument is unused:
+  PiLp.single_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [unitVector, EuclideanSpace.single, smul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NSEMaxwell/Lamb.lean:65:17: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: Fefferman_adapter/NSEMaxwell/Lamb.lean:65:49: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+⚠ [8715/8740] Replayed NSEMaxwell.CurlCurl
+warning: Fefferman_adapter/NSEMaxwell/CurlCurl.lean:94:13: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sub_apply` to `sub_apply x`).
+warning: Fefferman_adapter/NSEMaxwell/CurlCurl.lean:188:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+✔ [8716/8740] Built NSEMaxwell.ConstantPaths (6.4s)
+✔ [8717/8740] Built NSEMaxwell.Pressure (7.0s)
+⚠ [8718/8740] Replayed ClassicalMechanics.Stress
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:68:32: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:72:6: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:72:37: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:73:6: `ContinuousLinearMap.neg_apply` has been deprecated: Use `neg_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.neg_apply` to `neg_apply x`).
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:74:32: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:77:6: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:77:37: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:76:15: This simp argument is unused:
+  NSEMaxwell.Classical.gradient
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [PiLp.toLp_apply, ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply, smul_eq_mul,
+    second_coordinate_component ha]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:76:46: This simp argument is unused:
+  PiLp.toLp_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [NSEMaxwell.Classical.gradient, ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
+    smul_eq_mul, second_coordinate_component ha]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8719/8740] Built NSEMaxwell.Constitutive (7.6s)
+⚠ [8720/8740] Built NSEMaxwell.DominatedWithin (8.1s)
+warning: Fefferman_adapter/NSEMaxwell/DominatedWithin.lean:28:0: automatically included section variable(s) unused in theorem `NSEMaxwell.DominatedWithin.hasDerivWithinAt_integral_of_dominated`:
+  [CompleteSpace E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8726/8740] Built NSEMaxwell.Ampere (7.9s)
+✔ [8727/8740] Built NSEMaxwell.Negation (9.1s)
+⚠ [8728/8740] Built NSEMaxwell.PeriodicIntegration (11s)
+warning: Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean:96:4: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean:129:20: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean:136:24: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean:152:20: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean:285:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean:285:44: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+✔ [8729/8740] Built NSEMaxwell.Spacetime (13s)
+✔ [8730/8740] Built NSEMaxwell.FourierPeriodic (5.8s)
+✔ [8731/8740] Built NSEMaxwell.AnalyticContracts (6.0s)
+✔ [8732/8740] Built NSEMaxwell.TemporalMean (8.4s)
+⚠ [8733/8740] Built NSEMaxwell.LocalEvolution (9.6s)
+warning: Fefferman_adapter/NSEMaxwell/LocalEvolution.lean:65:67: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Fefferman_adapter/NSEMaxwell/LocalEvolution.lean:66:67: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Fefferman_adapter/NSEMaxwell/LocalEvolution.lean:67:67: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Fefferman_adapter/NSEMaxwell/LocalEvolution.lean:176:4: Unused tactic linter: `change
+  timeDerivative u t +
+          ((fun x => cross (spatialCurl (u t) x) (u t x)) +
+            NSEMaxwell.Classical.gradient (fun x : Vec => ‖u t x‖ ^ 2 / 2)) +
+        NSEMaxwell.Classical.gradient (p t) -
+      -(ν • spatialCurl (spatialCurl (u t))) =
+    _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+✔ [8734/8740] Built NSEMaxwellForward (6.8s)
+✔ [8735/8740] Built NSEMaxwellReverse (7.2s)
+✔ [8736/8740] Built NSEMaxwell.MeanConservation (5.7s)
+✔ [8737/8740] Built NSEMaxwell.AnalyticBridge (4.2s)
+✔ [8738/8740] Built NSEMaxwell.CanonicalSmoothness (4.1s)
+✔ [8739/8740] Built NSEMaxwell.AnalyticReduction (4.1s)
+✔ [8740/8740] Built ClassicalMechanics.MaxwellBridge (3.8s)
+Build completed successfully (8740 jobs).

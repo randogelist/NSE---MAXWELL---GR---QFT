@@ -1,4 +1,66 @@
-# Fefferman B ↔ constrained Maxwell
+# Fefferman B ↔ constrained Maxwell ↔ material classical mechanics
+
+## Classical mechanics branch
+
+`Classical_Mechanics_adapter/` contains the actual Newtonian Cauchy stress
+adapter. `B <-> ClassicalMechanics/=>` and `B <-> ClassicalMechanics/<=`
+contain its two directional proofs. The first root combines the global
+arbitrary-pressure-gauge equivalence and a separate finite normalized-pressure
+equivalence. Both Maxwell compositions retain `FourierHodgeLaws` explicitly.
+
+```text
+CLASSICAL_MECHANICS_STATUS = A_TIER (local Cauchy root: UNCONDITIONAL_CLOSURE)
+CLASSICAL_MECHANICS_THEOREM_AUDITS = 62 / PASS_STANDARD_ONLY
+FULL_MOVING_REGION_AND_LDA_REFERENCE_ROOT = PENDING
+LOCAL_LEAN_EXECUTIONS = 0
+```
+
+[Native adapter](Classical_Mechanics_adapter/) ·
+[Directional structure](B%20%3C-%3E%20ClassicalMechanics/) ·
+[Exact status](Auxillary/CLASSICAL_MECHANICS_ADAPTER_A_TIER.txt) ·
+[Complete B-tier chain](Auxillary/derivations/NSE_CLASSICAL_MECHANICS_EQUIVALENCE_B_TIER.txt)
+
+## Material equation extension
+
+The native Piola identity, closed-slab acceleration chain rule, pressure-gradient pullback, and material equation transport have matching external Lean 4.34.0-rc1 evidence: [run 43370108226](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43370108226), 62/62 named theorem audits, approved foundational axioms only.
+
+`ClassicalMechanics.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW_AND_DIFFUSION` retains a supplied smooth volume-preserving flow, literal pressure pullback, and transformed diffusion identity. Acceleration and pressure-gradient identities are derived. This is conditional equation equivalence; the full moving-region/Lagrange-d'Alembert reference root remains open. The certified material solution-proposition root below constructs its own flow on every finite slab.
+
+[Exact material scope](Auxillary/CLASSICAL_MECHANICS_MATERIAL_A_TIER.txt) · [Material proof](Classical_Mechanics_adapter/ClassicalMechanics/MaterialBridge.lean)
+
+## Material solution equivalence
+
+```text
+CANONICAL_CM_ROOT = ClassicalMechanicsAssembly.NSEB_IFF_CM
+CANONICAL_CM_ROOT_TYPE = forall nu : Real, FeffermanB nu <-> CMB nu
+CM_ROOT_STATUS = UNCONDITIONAL_CLOSURE
+CM_THEOREM_AUDITS = 247 / PASS_STANDARD_ONLY
+```
+
+`CMB` quantifies one global smooth periodic incompressible velocity and pressure,
+then an actual normalized volume-preserving material flow on each finite slab,
+with literal pressure pullback and the material momentum equation. The root
+proves equivalence of the two existence propositions; it does not prove either
+existence proposition for arbitrary data.
+
+[Root proof](ASSEMBLY/ClassicalMechanicsAssembly/FlowNSEBCM.lean) ·
+[Exact certificate](Auxillary/assembly/NSEB_IFF_CM_A_TIER.txt) ·
+[Cached Linux verification](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43447885685) ·
+[Native source package](Auxillary/releases/NSEB_IFF_CM_3fca9683.zip)
+
+## Repository structure
+
+| Directory | Scope |
+|---|---|
+| [ASSEMBLY/](ASSEMBLY/) | The 25 selected native declarations, tensor Piola assembly, and supplied-flow equation transport; [exact status](Auxillary/ASSEMBLY_A_TIER.txt) |
+| [Fefferman_adapter/](Fefferman_adapter/) | Independent Fefferman package, exact statement, bridge proofs, complete pinned dependency sources, native Methlib endpoints |
+| [Maxwell_Endpoint/](Maxwell_Endpoint/) | Independent Maxwell package, native constructions, complete pinned dependency sources, native Methlib endpoints |
+| [B <-> Maxwell/](B%20%3C-%3E%20Maxwell/) | Equivalence derivations and the two directional proof directories |
+| [Auxillary/](Auxillary/) | External runners, audit/cache targets, status, cache documentation, retained compiler evidence |
+| [B <-> Maxwell/=>/](B%20%3C-%3E%20Maxwell/%3D%3E/) | Fefferman B ⇒ constrained Maxwell: actual forward proof bodies |
+| [B <-> Maxwell/<=/](B%20%3C-%3E%20Maxwell/%3C%3D/) | Constrained Maxwell ⇒ Fefferman B: actual reverse proof bodies |
+
+The top-level content folders have the requested domain roles. `.github/` retains GitHub Actions discovery. Root files retain Lake configuration, compiler selection, repository instructions, and Git metadata. Auxiliary entry points, target lists, status, and evidence reside in `Auxillary/`.
 
 ```text
 CANONICAL_ROOT = NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_UNCONDITIONAL
@@ -166,3 +228,7 @@ RENAME_VALIDATION = PASS_CACHED_EXTERNAL_LINUX
 [Run 43353327242](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43353327242), source `8fd783b4d977fdb1a31cf4716023148ddfa26af9`: 226/226 integrated and 52/52 isolated audits passed; 37/37 integrated and 7/7 standalone Lean input hashes match. Both scopes reused trace-validated cached objects with zero module rebuilds. The 35 proof-module files remain byte-identical under the directory rename.
 
 [Rename evidence](Auxillary/evidence/linux-43353327242/).
+
+## Native Windows download
+
+[CLASSICAL_MECHANICS_WINDOWS.zip](Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS.zip) contains the exact native source closure, both A-tier scope records, the B-tier reference, the 62-theorem Linux certificate, and `run.cmd` for cached external Windows Lean 4.34.0-rc1 validation. All 47 mapped source files are byte-identical to the source snapshot; Windows compiler execution is not inferred from the Linux evidence.

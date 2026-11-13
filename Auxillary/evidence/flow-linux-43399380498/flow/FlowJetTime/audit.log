@@ -1,0 +1,105 @@
+@ClassicalMechanicsAssembly.flow_integral_difference.{u_1} : ∀ {F : Type u_1} [inst : NormedAddCommGroup.{u_1} F]
+  [inst_1 : NormedSpace.{0, u_1} ℝ F] [CompleteSpace.{u_1} F] {T : ℝ}
+  {J P : Prod.{0, 0} ℝ NSEMaxwell.Classical.Vec → F},
+  ContinuousOn.{0, u_1} P (ClassicalMechanics.finiteSpacetime T) →
+    (∀ (s : ℝ),
+        Membership.mem.{0, 0} (Set.Icc.{0} 0 T) s →
+          ∀ (b : NSEMaxwell.Classical.Vec),
+            Eq.{u_1 + 1} (J (Prod.mk.{0, 0} s b))
+              (HAdd.hAdd.{u_1, u_1, u_1} (J (Prod.mk.{0, 0} 0 b)) (∫ (r : ℝ) in 0..s, P (Prod.mk.{0, 0} r b)))) →
+      ∀ {s t : ℝ},
+        Membership.mem.{0, 0} (Set.Icc.{0} 0 T) s →
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+            ∀ (b : NSEMaxwell.Classical.Vec),
+              Eq.{u_1 + 1} (HSub.hSub.{u_1, u_1, u_1} (J (Prod.mk.{0, 0} s b)) (J (Prod.mk.{0, 0} t b)))
+                (∫ (r : ℝ) in t..s, P (Prod.mk.{0, 0} r b))
+'ClassicalMechanicsAssembly.flow_integral_difference' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flow_time_remainder_of_integral.{u_1} : ∀ {F : Type u_1} [inst : NormedAddCommGroup.{u_1} F]
+  [inst_1 : NormedSpace.{0, u_1} ℝ F] [CompleteSpace.{u_1} F] {T : ℝ}
+  {J P : Prod.{0, 0} ℝ NSEMaxwell.Classical.Vec → F},
+  ContinuousOn.{0, u_1} P (ClassicalMechanics.finiteSpacetime T) →
+    (∀ (s : ℝ),
+        Membership.mem.{0, 0} (Set.Icc.{0} 0 T) s →
+          ∀ (b : NSEMaxwell.Classical.Vec),
+            Eq.{u_1 + 1} (J (Prod.mk.{0, 0} s b))
+              (HAdd.hAdd.{u_1, u_1, u_1} (J (Prod.mk.{0, 0} 0 b)) (∫ (r : ℝ) in 0..s, P (Prod.mk.{0, 0} r b)))) →
+      ∀ {t : ℝ},
+        Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+          ∀ (a : NSEMaxwell.Classical.Vec),
+            Asymptotics.IsLittleO.{0, u_1, 0}
+              (nhdsWithin.{0} (Prod.mk.{0, 0} t a) (ClassicalMechanics.finiteSpacetime T))
+              (fun z =>
+                HSub.hSub.{u_1, u_1, u_1} (HSub.hSub.{u_1, u_1, u_1} (J z) (J (Prod.mk.{0, 0} t z.2)))
+                  (HSMul.hSMul.{0, u_1, u_1} (HSub.hSub.{0, 0, 0} z.1 t) (P (Prod.mk.{0, 0} t a))))
+              fun z => HSub.hSub.{0, 0, 0} z (Prod.mk.{0, 0} t a)
+'ClassicalMechanicsAssembly.flow_time_remainder_of_integral' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flow_hasFDerivWithinAt_of_integral.{u_1} : ∀ {F : Type u_1}
+  [inst : NormedAddCommGroup.{u_1} F] [inst_1 : NormedSpace.{0, u_1} ℝ F] [CompleteSpace.{u_1} F] {T : ℝ}
+  {J P : Prod.{0, 0} ℝ NSEMaxwell.Classical.Vec → F},
+  ContinuousOn.{0, u_1} P (ClassicalMechanics.finiteSpacetime T) →
+    (∀ (s : ℝ),
+        Membership.mem.{0, 0} (Set.Icc.{0} 0 T) s →
+          ∀ (b : NSEMaxwell.Classical.Vec),
+            Eq.{u_1 + 1} (J (Prod.mk.{0, 0} s b))
+              (HAdd.hAdd.{u_1, u_1, u_1} (J (Prod.mk.{0, 0} 0 b)) (∫ (r : ℝ) in 0..s, P (Prod.mk.{0, 0} r b)))) →
+      ∀ {t : ℝ},
+        Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+          ∀ {a : NSEMaxwell.Classical.Vec}
+            {A : ContinuousLinearMap.{0, 0, 0, u_1} (RingHom.id.{0} ℝ) NSEMaxwell.Classical.Vec F},
+            HasFDerivAt.{0, 0, u_1} (fun b => J (Prod.mk.{0, 0} t b)) A a →
+              HasFDerivWithinAt.{0, 0, u_1} J
+                (ClassicalMechanicsAssembly.flowJointDerivative.{u_1} (P (Prod.mk.{0, 0} t a)) A)
+                (ClassicalMechanics.finiteSpacetime T) (Prod.mk.{0, 0} t a)
+'ClassicalMechanicsAssembly.flow_hasFDerivWithinAt_of_integral' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowJet_tower_contDiffOn_of_integrals : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ (J P : (r : ℕ) → Prod.{0, 0} ℝ NSEMaxwell.Classical.Vec → ClassicalMechanicsAssembly.FlowJet r),
+      (∀ (r : ℕ), ContinuousOn.{0, 0} (J r) (ClassicalMechanics.finiteSpacetime T)) →
+        (∀ (r : ℕ) (t : ℝ),
+            Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+              ∀ (a : NSEMaxwell.Classical.Vec),
+                HasFDerivAt.{0, 0, 0} (fun b => J r (Prod.mk.{0, 0} t b))
+                  (ContinuousMultilinearMap.curryLeft.{0, 0, 0} (J (HAdd.hAdd.{0, 0, 0} r 1) (Prod.mk.{0, 0} t a))) a) →
+          (∀ (r : ℕ) (s : ℝ),
+              Membership.mem.{0, 0} (Set.Icc.{0} 0 T) s →
+                ∀ (b : NSEMaxwell.Classical.Vec),
+                  Eq.{1} (J r (Prod.mk.{0, 0} s b))
+                    (HAdd.hAdd.{0, 0, 0} (J r (Prod.mk.{0, 0} 0 b)) (∫ (q : ℝ) in 0..s, P r (Prod.mk.{0, 0} q b)))) →
+            (∀ (n : ℕ),
+                (∀ (r : ℕ), ContDiffOn.{0, 0, 0} ℝ (↑n) (J r) (ClassicalMechanics.finiteSpacetime T)) →
+                  ∀ (r : ℕ), ContDiffOn.{0, 0, 0} ℝ (↑n) (P r) (ClassicalMechanics.finiteSpacetime T)) →
+              ∀ (r : ℕ), ContDiffOn.{0, 0, 0} ℝ (↑Top.top.{0}) (J r) (ClassicalMechanics.finiteSpacetime T)
+'ClassicalMechanicsAssembly.flowJet_tower_contDiffOn_of_integrals' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.smoothVelocityOn_of_flowJet_integrals : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {η : NSEMaxwell.Classical.Velocity}
+      (J P : (r : ℕ) → Prod.{0, 0} ℝ NSEMaxwell.Classical.Vec → ClassicalMechanicsAssembly.FlowJet r),
+      (∀ (r : ℕ), ContinuousOn.{0, 0} (J r) (ClassicalMechanics.finiteSpacetime T)) →
+        (∀ (r : ℕ) (t : ℝ),
+            Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+              ∀ (a : NSEMaxwell.Classical.Vec),
+                HasFDerivAt.{0, 0, 0} (fun b => J r (Prod.mk.{0, 0} t b))
+                  (ContinuousMultilinearMap.curryLeft.{0, 0, 0} (J (HAdd.hAdd.{0, 0, 0} r 1) (Prod.mk.{0, 0} t a))) a) →
+          (∀ (r : ℕ) (s : ℝ),
+              Membership.mem.{0, 0} (Set.Icc.{0} 0 T) s →
+                ∀ (b : NSEMaxwell.Classical.Vec),
+                  Eq.{1} (J r (Prod.mk.{0, 0} s b))
+                    (HAdd.hAdd.{0, 0, 0} (J r (Prod.mk.{0, 0} 0 b)) (∫ (q : ℝ) in 0..s, P r (Prod.mk.{0, 0} q b)))) →
+            (∀ (n : ℕ),
+                (∀ (r : ℕ), ContDiffOn.{0, 0, 0} ℝ (↑n) (J r) (ClassicalMechanics.finiteSpacetime T)) →
+                  ∀ (r : ℕ), ContDiffOn.{0, 0, 0} ℝ (↑n) (P r) (ClassicalMechanics.finiteSpacetime T)) →
+              (∀ (z : Prod.{0, 0} ℝ NSEMaxwell.Classical.Vec),
+                  Membership.mem.{0, 0} (ClassicalMechanics.finiteSpacetime T) z →
+                    Eq.{1} (η z.1 z.2)
+                      ((continuousMultilinearCurryFin0.{0, 0, 0} ℝ NSEMaxwell.Classical.Vec NSEMaxwell.Classical.Vec)
+                        (J 0 z))) →
+                ClassicalMechanics.SmoothVelocityOn T η
+'ClassicalMechanicsAssembly.smoothVelocityOn_of_flowJet_integrals' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

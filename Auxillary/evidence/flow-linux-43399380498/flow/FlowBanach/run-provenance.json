@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-11-13T09:14:27.449110+00:00",
+  "stage": "PASS_STANDARD_ONLY",
+  "build_status": "PASS",
+  "audit_command_status": "PASS",
+  "theorem_axiom_audit_status": "PASS_STANDARD_ONLY",
+  "semantic_discharge": "NOT_INFERRED_FROM_AXIOM_AUDIT",
+  "external_platform": "linux",
+  "external_native_windows": false,
+  "external_native_linux": true,
+  "os": "Unix 7.0.0.1014",
+  "powershell_version": "7.6.10",
+  "processor_count": 4,
+  "requested_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "requested_mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_commit": "ff3c809f241ff14c7b9556b858bb423e1f9630d0",
+  "github_run_id": "43399380498",
+  "github_run_attempt": "1",
+  "github_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+  "phase": "NATIVE_FLOW_MODULE_BUILD_AUDIT",
+  "exact_root_promotion": "NOT_AUTOMATIC",
+  "actual_lean_version": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+  "native_source_hydration": {
+    "report": "native-source-hydration.json",
+    "sha256": "4b952639efbd600c44c11f3793193b094463ddd122fdefc0d88934f4a371ed1d"
+  },
+  "dependency_revisions": [
+    {
+      "name": "plausible",
+      "revision": "38e9c3ce15cbb63c92e90bb9a92e4eb82131f669"
+    },
+    {
+      "name": "LeanSearchClient",
+      "revision": "2bc7cf064315b26bc38dac2e9612fb581be9b75f"
+    },
+    {
+      "name": "importGraph",
+      "revision": "978b7ec9fbbf9a535114f1de8fe5b3778b358870"
+    },
+    {
+      "name": "proofwidgets",
+      "revision": "99e8adeea3c3cd86b6b79ba01a1383bf2d31d055"
+    },
+    {
+      "name": "aesop",
+      "revision": "c1c4362a130f12e632d252180a6c2a31d8fd4726"
+    },
+    {
+      "name": "Qq",
+      "revision": "3b55e9d00c6b0018e5d984eb011b6f93c09bd163"
+    },
+    {
+      "name": "batteries",
+      "revision": "01bc479e7432594821ba3fb0ca465211941de86d"
+    },
+    {
+      "name": "Cli",
+      "revision": "af8bc067a4cc6c6df472a68909a3f40b1c76c43e"
+    },
+    {
+      "name": "mathlib",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11"
+    }
+  ],
+  "lockfile_sha256": "69c22ad5678fd37f874d60dd5c604bfd96a2604fcb788a054764d6f1e346a939",
+  "actual_mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "native_source_closure": [
+    {
+      "package": "Fefferman_adapter",
+      "report": "native-source-closure.json",
+      "sha256": "97b8926d1b1eb0959e7f4fa7be18fef770b8d6290d29f3f3824af22361b89ab4"
+    },
+    {
+      "package": "Maxwell_Endpoint",
+      "report": "native-source-closure-maxwell.json",
+      "sha256": "dcc363bb56f09e27da3ac577c04b0393ddab081d3cb748002683d8d546b17738"
+    }
+  ],
+  "cache_mode": "REUSE_VERIFIED_DEPENDENCY_PHASE",
+  "cache_targets": [
+    "Mathlib"
+  ],
+  "dependency_cache_status": "VERIFIED",
+  "dependency_preparation_sha256": "921e3a9aedbdf589121d9c5f5a31596c62dd89f4e3aed832cc09ebc067b66a47",
+  "local_lean_executions": 0,
+  "baseline_builds": "NOT_INVOKED_BY_ASSEMBLY_RUNNER",
+  "parent_dependency_provenance_sha256": "2ec49d037099e7a2441b59ae35b4eb57555dd854becdff64b29bf0922d08dede",
+  "native_endpoint_count": 25,
+  "additional_proof_target_count": 18,
+  "audit_target_count": 30,
+  "module_build_schedule": [
+    "ClassicalMechanicsAssembly.NativeEndpoints",
+    "ClassicalMechanicsAssembly.PiolaTransport",
+    "ClassicalMechanicsAssembly.Equation",
+    "ClassicalMechanicsAssembly"
+  ],
+  "import_closure_sha256": "d81252b7c48ed9d1c97053c2a399d3a13ce672a27c152738fd11d574a3cea206",
+  "generated_audit_sha256": "f9f198f28ce7ab67764821f37cb68386bb80ed9dfd31f3870a6e49aaf90ee084",
+  "generated_targets_sha256": "ab59e834aa40975b875a273e0a56e4bf877d838afda35332f696adf413ad2e1a",
+  "native_target_list_sha256": "d2e08e2be717da3e0e5d11ff08ca290384a31d728e79237716245ab024c44a1b",
+  "proof_target_list_sha256": "d540b39c6b0fcdb2397a2c073b24c17a12d9d27af84c801a77eb259349ee2f14",
+  "source_manifest_sha256": "f5a1e7cdf496e92b797d54bff8c8d435e2e6ff83d442709853224f67ff1af536",
+  "freshness_check_exit_code": 0,
+  "executed_module_builds": 0,
+  "build_strategy": "LAKE_TRANSITIVE_TRACE_VERIFIED_WARM_REUSE",
+  "module": "ClassicalMechanicsAssembly.FlowBanach",
+  "flow_registry_sha256": "8c38b079346bfd6352fad7c3799f658c26757a407f57f4879c44758683c6433b",
+  "completed_at_utc": "2026-11-13T09:15:53.111314+00:00"
+}

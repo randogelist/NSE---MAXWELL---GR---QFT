@@ -1,0 +1,78 @@
+NSEB_IFF_CM
+===========
+
+STATUS = A_TIER
+CLOSURE = UNCONDITIONAL_CLOSURE_OF_EXACT_EQUIVALENCE
+MARKER = !!!!
+EXACT_ROOT = ClassicalMechanicsAssembly.NSEB_IFF_CM
+POSITIVE_ROOT = ClassicalMechanicsAssembly.NSEB_IFF_CM_POSITIVE
+SOURCE = ASSEMBLY/ClassicalMechanicsAssembly/FlowNSEBCM.lean
+TOOLCHAIN = leanprover/lean4:v4.34.0-rc1
+PLATFORM = cached native Linux / Ubuntu 24.04
+LOCAL_LEAN_EXECUTIONS = 0
+EXTERNAL_COMPILER_AND_AXIOM_AUDIT = PASS_STANDARD_ONLY
+EXTERNAL_SOURCE = adb4dcdc31c211add64946b817e9edba2c1b9146
+EXTERNAL_RUN = 43447885685
+EXTERNAL_RUN_URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43447885685
+EXTERNAL_ARTIFACT = 14049487046
+ARTIFACT_SHA256 = 186e44d64b7a038b32dcdf57df43f036f5ffe56dd357751b9e0c5671d4bad8a8
+RETAINED_EVIDENCE = Auxillary/evidence/nseb-cm-linux-43447885685
+FRESH_AUDIT_RECORDS = 247/247 PASS_STANDARD_ONLY
+NEW_AUDIT_RECORDS = 30/30 PASS_STANDARD_ONLY
+NATIVE_IMPORT_CLOSURE = 54/54 SOURCE_MATCH
+NATIVE_MODULES = 22/22 PASS
+MANIFESTS = 24/24; 10702 entries; 440 unique committed + 73 generated inputs
+CMD_CHECKOUT_NORMALIZATION = committed *.cmd eol=crlf; five paths
+LEAN_SOURCE_TRANSFORMATION = NONE
+UNRESOLVED_ANALYTIC_INPUTS = NONE
+APPROVED_FOUNDATIONS = propext, Classical.choice, Quot.sound
+NEW_AXIOMS = NONE
+
+EXACT STATEMENT
+---------------
+forall nu : R, FeffermanB nu iff CMB nu.
+Hence forall nu>0, FeffermanB nu iff CMB nu.
+
+FeffermanB is the original NSEMaxwell.Classical.FeffermanB, unchanged.
+CMB nu := forall a, Data a -> exists u p, CMSolution nu a u p.
+
+CMSolution retains global jointly smooth velocity and pressure on t>=0,
+spatial periodicity, divergence-free velocity, arbitrary velocity mean,
+arbitrary periodic pressure gauge, and u(0)=a.
+Its momentum condition is exactly:
+forall T>0, exists eta rho,
+  MaterialPathOn T eta rho
+  and materialVelocity T eta = u composed with eta on [0,T]
+  and MaterialEquationOn nu T eta (p composed with eta).
+
+The same global u,p are chosen before the universal T quantifier.
+No Eulerian NSE momentum equation occurs in CMSolution's hypotheses.
+The literal deformation, inverse matrix, material acceleration, pressure
+gradient and Piola diffusion expressions remain unchanged.
+
+PROOF SPINE
+-----------
+FlowGlobalSlab: restrict actual global derivative on Ici 0 to Icc 0 T;
+uniqueDiffOn_Icc identifies the finite derivative including both endpoints.
+L1_native: construct normalized smooth volume-preserving flow and inverse.
+Native Piola transport: Eulerian equation iff actual material equation.
+FlowNSEBCM: both solution-predicate directions; lift through unchanged
+universal initial data and existential global fields.
+FlowMaterialCoherence: any two material charts agree on the closed overlap
+by actual ODE uniqueness; their inverses agree as well.
+FlowMaterialFields: actual pressure/velocity regularity and periodicity,
+initial velocity, and exact decoding, without pressure normalization.
+
+SCOPE
+-----
+Existence-proposition equivalence and equality of solution sets in the common
+global (u,p) fields. Local Newtonian Cauchy balance is equivalent as well.
+No proof of either existence proposition by itself.
+No full moving-region momentum theorem or Lagrange-d'Alembert theorem.
+No bijection of raw material total-function witness tuples is asserted.
+
+PROMOTION
+---------
+Prepared code does not establish A_TIER. Matching external compilation,
+exact root signature, source hashes, and theorem-level standard-only audit
+are required. Unresolved evidence must not be replaced by a status label.

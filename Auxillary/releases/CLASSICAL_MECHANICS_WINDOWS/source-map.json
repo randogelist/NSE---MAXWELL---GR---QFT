@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "source_commit": "e96e33c4114312c8a1b83b2df60aaddb2090bb18",
+  "proof_bodies_byte_identical": true,
+  "local_lean_executions": 0,
+  "source_map": [
+    {
+      "source": "Classical_Mechanics_adapter/ClassicalMechanics.lean",
+      "path": "ClassicalMechanics.lean",
+      "sha256": "38a0799940096363597dfd7915d4403673f55537630d27a1243ba1694d207f47"
+    },
+    {
+      "source": "Classical_Mechanics_adapter/ClassicalMechanics/Audit.lean",
+      "path": "ClassicalMechanics/Audit.lean",
+      "sha256": "05dfc68bec60c11b69bad868ac45da3ea07ba310c75b84b4f55c466babe1edf2"
+    },
+    {
+      "source": "Classical_Mechanics_adapter/ClassicalMechanics/Definitions.lean",
+      "path": "ClassicalMechanics/Definitions.lean",
+      "sha256": "0afb20a76d22fc562a819d506f2fcff3eb8550511ed5ea7d83d72405cc4f8833"
+    },
+    {
+      "source": "Classical_Mechanics_adapter/ClassicalMechanics/Equivalence.lean",
+      "path": "ClassicalMechanics/Equivalence.lean",
+      "sha256": "c2b16d4b2f3d992af7494a7e583ae6586899cffd6508a052e732fe19a4c4f394"
+    },
+    {
+      "source": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+      "path": "ClassicalMechanics/FiniteSlab.lean",
+      "sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535"
+    },
+    {
+      "source": "Classical_Mechanics_adapter/ClassicalMechanics/Material.lean",
+      "path": "ClassicalMechanics/Material.lean",
+      "sha256": "301e57557d36f73dc3005661c871257a3af3a71b4c138bfd42c41302490d2700"
+    },
+    {
+      "source": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialBridge.lean",
+      "path": "ClassicalMechanics/MaterialBridge.lean",
+      "sha256": "abba98bc75d21f5dd5d2f2c5c453d1ee31a03ebd3fdc30d767b9f5c20fd84c63"
+    },
+    {
+      "source": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialGradient.lean",
+      "path": "ClassicalMechanics/MaterialGradient.lean",
+      "sha256": "ce3344c164eb1135355dd7ccaeeee0be012b41fd2f6eaf9ac7c2ca4ae2e2bab1"
+    },
+    {
+      "source": "Classical_Mechanics_adapter/ClassicalMechanics/MaxwellBridge.lean",
+      "path": "ClassicalMechanics/MaxwellBridge.lean",
+      "sha256": "7641a670bbab40ce9140f9be86ed3ab4bd4af2752c3cd2860f550f0959ba262c"
+    },
+    {
+      "source": "Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean",
+      "path": "ClassicalMechanics/Piola.lean",
+      "sha256": "7074a13438808ca77c75d104fc6b21bb2a4bd33003a49050209e2cb474278cfa"
+    },
+    {
+      "source": "Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean",
+      "path": "ClassicalMechanics/Stress.lean",
+      "sha256": "40961da5ed73004417badcad645f46ad4fc3d4d1b7e6b76825642eb7c6d6dd50"
+    },
+    {
+      "source": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+      "path": "ClassicalMechanics/TimeCalculus.lean",
+      "sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc"
+    },
+    {
+      "source": "B <-> ClassicalMechanics/=>/ClassicalMechanicsForward.lean",
+      "path": "ClassicalMechanicsForward.lean",
+      "sha256": "10b93fba8ccad982ebb5155229c213f160df832eed6c655485010efaab963419"
+    },
+    {
+      "source": "B <-> ClassicalMechanics/<=/ClassicalMechanicsReverse.lean",
+      "path": "ClassicalMechanicsReverse.lean",
+      "sha256": "77edf4f48978a511f438d69c12b914c9226756a39a2474b69ca40a6081c6cee4"
+    },
+    {
+      "source": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+      "path": "MaxwellEndpoint.lean",
+      "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68"
+    },
+    {
+      "source": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+      "path": "MaxwellEndpoint/Constitutive.lean",
+      "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616"
+    },
+    {
+      "source": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+      "path": "MaxwellEndpoint/Geometry.lean",
+      "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541"
+    },
+    {
+      "source": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+      "path": "MaxwellEndpoint/Native.lean",
+      "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d"
+    },
+    {
+      "source": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+      "path": "MaxwellEndpoint/System.lean",
+      "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/Ampere.lean",
+      "path": "NSEMaxwell/Ampere.lean",
+      "sha256": "e1ee9e880e2c50360fea276a49fe3ca4c05c8104fa7b29740877cde3d30bc648"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/AnalyticBridge.lean",
+      "path": "NSEMaxwell/AnalyticBridge.lean",
+      "sha256": "d1e5a1439d01599cacea35a0c45f6c2e3842011130b8645681f02cff817b5402"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/AnalyticContracts.lean",
+      "path": "NSEMaxwell/AnalyticContracts.lean",
+      "sha256": "7664e157e5ebe3c8ffc24a3eba714b180b248bb950e8b8c4ab5c2c3190b49f3e"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/AnalyticReduction.lean",
+      "path": "NSEMaxwell/AnalyticReduction.lean",
+      "sha256": "2813f7dd8035681265656a3b6bb2476dbd30e928dc8a737bcb7e3277a8ae77ba"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/CanonicalSmoothness.lean",
+      "path": "NSEMaxwell/CanonicalSmoothness.lean",
+      "sha256": "d63f7555c73d78141e53d86b463848e2594d01a6dcf8a0b3c026ac8de79dd021"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+      "path": "NSEMaxwell/Classical.lean",
+      "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/ConstantPaths.lean",
+      "path": "NSEMaxwell/ConstantPaths.lean",
+      "sha256": "14ddfa21be65dcb38ec3f9b2a5c62463de3846fd44c23b32a27ac0f083c206cf"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/Constitutive.lean",
+      "path": "NSEMaxwell/Constitutive.lean",
+      "sha256": "d7f1d613a094b2d7679d27d621286ac98e4998a67529f74c4614dcff4f1b4d81"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+      "path": "NSEMaxwell/CurlCurl.lean",
+      "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/DominatedWithin.lean",
+      "path": "NSEMaxwell/DominatedWithin.lean",
+      "sha256": "d42ff10c78decd35907a1574e37a86de5fe87b32ad0c5e4ed4ed83997ea7766b"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/FourierPeriodic.lean",
+      "path": "NSEMaxwell/FourierPeriodic.lean",
+      "sha256": "1d49a7d1ead33dd2eb0ab6dd2d90d1dddeefe032d0bd1773f305c85c974591ef"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+      "path": "NSEMaxwell/Kinematics.lean",
+      "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/Lamb.lean",
+      "path": "NSEMaxwell/Lamb.lean",
+      "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/LocalEvolution.lean",
+      "path": "NSEMaxwell/LocalEvolution.lean",
+      "sha256": "6ada4c7209bfcf163490fdd13d4ebb2381feed274b5ccec447025cac75f3a680"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/MeanConservation.lean",
+      "path": "NSEMaxwell/MeanConservation.lean",
+      "sha256": "3bf93c76cfd27a1644c2a1f760b28a1710e62aa607202c1ddc81188a2f922da6"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/Negation.lean",
+      "path": "NSEMaxwell/Negation.lean",
+      "sha256": "4763b648a80780e3e8694b8953b249823a5349cfd52d3dbb7e0695781a1f531d"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean",
+      "path": "NSEMaxwell/PeriodicIntegration.lean",
+      "sha256": "1e5ab9beb9eeb11fbf595ff4fbdad263ebd4f38e17f02f3ed53e687bfb03664c"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/Pressure.lean",
+      "path": "NSEMaxwell/Pressure.lean",
+      "sha256": "c46ba912d016697050c20c7effbe82d463d233469641c886dbb5a89cb1503677"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/Spacetime.lean",
+      "path": "NSEMaxwell/Spacetime.lean",
+      "sha256": "ebea01c7422186aaa0ec4c72c26774ee32f96291756be7775ba40f569eb89c57"
+    },
+    {
+      "source": "Fefferman_adapter/NSEMaxwell/TemporalMean.lean",
+      "path": "NSEMaxwell/TemporalMean.lean",
+      "sha256": "cf6a9d1afa1303db16e882cf52fc4e4db26842cf128a0a6fc050ac80735f5de6"
+    },
+    {
+      "source": "B <-> Maxwell/=>/NSEMaxwellForward.lean",
+      "path": "NSEMaxwellForward.lean",
+      "sha256": "d2a74b2268c54de3593996480d18429aa11060ce72396c7d2cea8071cfb57845"
+    },
+    {
+      "source": "B <-> Maxwell/<=/NSEMaxwellReverse.lean",
+      "path": "NSEMaxwellReverse.lean",
+      "sha256": "b6cb2beb70264b98d23a8143def620121112077e3326125b4e51833990e9de04"
+    },
+    {
+      "source": "Auxillary/classical-mechanics-audit-targets.txt",
+      "path": "audit-targets.txt",
+      "sha256": "8fbf98225b67d642f553d87beda6fb68d31d2a174c70989910dccc9ec70cd02f"
+    },
+    {
+      "source": "Auxillary/scripts/verify_audit.py",
+      "path": "audit_parser.py",
+      "sha256": "c9b3f83e86920a296c2ccb35325b49b7c2fa6fa8ed3c870cfbe10effb413868c"
+    },
+    {
+      "source": "Auxillary/classical-mechanics-status.json",
+      "path": "formalization-status.json",
+      "sha256": "fb3d9dee6f3f7028dd479a16a04dc89be62b5b212152bcdbfdf106e00b0bab01"
+    },
+    {
+      "source": "lake-manifest.json",
+      "path": "lake-manifest.json",
+      "sha256": "69c22ad5678fd37f874d60dd5c604bfd96a2604fcb788a054764d6f1e346a939"
+    },
+    {
+      "source": "lean-toolchain",
+      "path": "lean-toolchain",
+      "sha256": "cdbc6c372a2b37ad94430a6cec69cedfa4d36f255bfd968773fd91bf7a1746bf"
+    },
+    {
+      "source": "Auxillary/scripts/classical_windows_run.py",
+      "path": "run.py",
+      "sha256": "b72f593c98a45ab9966e1a114122793a755f145c1171921f9a6a2d906cec8ae2"
+    }
+  ]
+}

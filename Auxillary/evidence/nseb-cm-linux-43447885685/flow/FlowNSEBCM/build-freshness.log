@@ -1,0 +1,380 @@
+⚠ [8706/8760] Replayed ClassicalMechanicsAssembly.FlowBanach
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowBanach.lean:129:0: automatically included section variable(s) unused in theorem `ClassicalMechanicsAssembly.flowPathSuperposition_apply`:
+  [CompactSpace I]
+  [NormedSpace ℝ E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompactSpace I] [NormedSpace ℝ E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowBanach.lean:133:0: automatically included section variable(s) unused in theorem `ClassicalMechanicsAssembly.flowPathSuperposition_lipschitz`:
+  [NormedSpace ℝ E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedSpace ℝ E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowBanach.lean:250:0: automatically included section variable(s) unused in theorem `ClassicalMechanicsAssembly.flowPathSuperpositionTo_apply`:
+  [CompactSpace I]
+  [NormedSpace ℝ E]
+  [NormedSpace ℝ F]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompactSpace I] [NormedSpace ℝ E] [NormedSpace ℝ F] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8707/8760] Replayed ClassicalMechanicsAssembly.FlowVolterra
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowVolterra.lean:37:0: automatically included section variable(s) unused in theorem `ClassicalMechanicsAssembly.flowPathExtend_continuous`:
+  [NormedSpace ℝ E]
+  [CompleteSpace E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedSpace ℝ E] [CompleteSpace E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowVolterra.lean:42:0: automatically included section variable(s) unused in theorem `ClassicalMechanicsAssembly.flowPathExtend_of_mem`:
+  [NormedSpace ℝ E]
+  [CompleteSpace E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedSpace ℝ E] [CompleteSpace E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowVolterra.lean:122:19: `ContinuousLinearMap.mul_apply` has been deprecated: Use `mul_apply_eq_comp` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.mul_apply` to `mul_apply_eq_comp x`).
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowVolterra.lean:151:8: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowVolterra.lean:151:8: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+⚠ [8715/8760] Replayed NSEMaxwell.Kinematics
+warning: Fefferman_adapter/NSEMaxwell/Kinematics.lean:92:19: This simp argument is unused:
+  coordinateDerivative
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [laplacian]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8716/8760] Replayed NSEMaxwell.CurlCurl
+warning: Fefferman_adapter/NSEMaxwell/CurlCurl.lean:94:13: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sub_apply` to `sub_apply x`).
+warning: Fefferman_adapter/NSEMaxwell/CurlCurl.lean:188:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+⚠ [8717/8760] Replayed ClassicalMechanics.Stress
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:68:32: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:72:6: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:72:37: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:73:6: `ContinuousLinearMap.neg_apply` has been deprecated: Use `neg_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.neg_apply` to `neg_apply x`).
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:74:32: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:77:6: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:77:37: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:76:15: This simp argument is unused:
+  NSEMaxwell.Classical.gradient
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [PiLp.toLp_apply, ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply, smul_eq_mul,
+    second_coordinate_component ha]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:76:46: This simp argument is unused:
+  PiLp.toLp_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [NSEMaxwell.Classical.gradient, ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
+    smul_eq_mul, second_coordinate_component ha]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8721/8760] Replayed ClassicalMechanicsAssembly.FlowSmooth
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowSmooth.lean:43:0: automatically included section variable(s) unused in theorem `ClassicalMechanicsAssembly.flowPath_continuous_evaluation`:
+  [NormedSpace ℝ F]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedSpace ℝ F] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowSmooth.lean:54:6: `continuousOn_iff_continuous_restrict` has been deprecated: Use `continuousOn_iff_continuous_domRestrict` instead
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowSmooth.lean:49:0: automatically included section variable(s) unused in theorem `ClassicalMechanicsAssembly.flowPath_continuousOn_representative`:
+  [NormedSpace ℝ F]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedSpace ℝ F] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8723/8760] Replayed ClassicalMechanicsAssembly.FlowJetTime
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowJetTime.lean:25:0: automatically included section variable(s) unused in theorem `ClassicalMechanicsAssembly.flow_integral_difference`:
+  [CompleteSpace F]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace F] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8724/8760] Replayed NSEMaxwell.Lamb
+warning: Fefferman_adapter/NSEMaxwell/Lamb.lean:33:45: This simp argument is unused:
+  PiLp.single_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [unitVector, EuclideanSpace.single, smul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NSEMaxwell/Lamb.lean:65:17: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: Fefferman_adapter/NSEMaxwell/Lamb.lean:65:49: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+⚠ [8725/8760] Replayed NSEMaxwell.PeriodicIntegration
+warning: Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean:96:4: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean:129:20: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean:136:24: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean:152:20: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean:285:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean:285:44: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+⚠ [8735/8760] Replayed ClassicalMechanicsAssembly.FlowJointJets
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowJointJets.lean:107:6: `continuousOn_iff_continuous_restrict` has been deprecated: Use `continuousOn_iff_continuous_domRestrict` instead
+⚠ [8737/8760] Replayed ClassicalMechanicsAssembly.FlowTrajectories
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowTrajectories.lean:33:0: automatically included section variable(s) unused in theorem `ClassicalMechanicsAssembly.Flow.SlabODEData.isPicardLindelof`:
+  [NormedSpace ℝ E]
+  [CompleteSpace E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedSpace ℝ E] [CompleteSpace E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowTrajectories.lean:70:0: automatically included section variable(s) unused in theorem `ClassicalMechanicsAssembly.Flow.solution_unique`:
+  [CompleteSpace E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowTrajectories.lean:144:26: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowTrajectories.lean:150:26: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowTrajectories.lean:258:28: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+⚠ [8738/8760] Replayed ClassicalMechanicsAssembly.FlowPathSolutions
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowPathSolutions.lean:14:9: Ambiguous namespace `Flow`: it is interpreted as `_root_.ClassicalMechanicsAssembly.Flow` because this `open` occurs inside `namespace ClassicalMechanicsAssembly`, while `_root_.Flow` is silently not opened. Specify the namespace unambiguously, e.g. `_root_.ClassicalMechanicsAssembly.Flow`. The warning can sometimes also be addressed by moving the `open` outside of the surrounding `namespace`.
+
+Note: This linter can be disabled with `set_option linter.ambiguousOpen false`
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowPathSolutions.lean:22:0: automatically included section variable(s) unused in theorem `ClassicalMechanicsAssembly.Flow.SlabODEData.continuousOn_uncurry`:
+  [NormedSpace ℝ E]
+  [CompleteSpace E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedSpace ℝ E] [CompleteSpace E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8743/8760] Replayed ClassicalMechanics.Piola
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean:49:13: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sub_apply` to `sub_apply x`).
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean:49:44: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean:50:4: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+⚠ [8745/8760] Replayed ClassicalMechanicsAssembly.PiolaTransport
+warning: ASSEMBLY/ClassicalMechanicsAssembly/PiolaTransport.lean:80:34: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: ASSEMBLY/ClassicalMechanicsAssembly/PiolaTransport.lean:97:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: ASSEMBLY/ClassicalMechanicsAssembly/PiolaTransport.lean:97:44: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: ASSEMBLY/ClassicalMechanicsAssembly/PiolaTransport.lean:149:32: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [8746/8760] Replayed ClassicalMechanicsAssembly.FlowInverse
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowInverse.lean:31:0: automatically included section variable(s) unused in theorem `ClassicalMechanicsAssembly.hasFDerivWithinAt_inverse_of_contDiffOn`:
+  [CompleteSpace E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8747/8760] Replayed ClassicalMechanicsAssembly.FlowJacobian
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowJacobian.lean:89:64: This simp argument is unused:
+  eq_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [materialGradientMatrix, coordinateDerivative, unitVector, Matrix.one_apply, EuclideanSpace.single,
+    PiLp.single_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ℹ [8749/8760] Replayed ClassicalMechanicsAssembly.NativeEndpoints
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:60:0: @NSEMaxwell.CurlCurl.coordinateDerivative_smooth : ∀ {a : NSEMaxwell.Classical.Field},
+  ContDiff ℝ (↑⊤) a → ∀ (i : Fin 3), ContDiff ℝ (↑⊤) (NSEMaxwell.Classical.coordinateDerivative a i)
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:65:0: @NSEMaxwell.CurlCurl.coordinate_component_smooth : ∀ {a : NSEMaxwell.Classical.Field},
+  ContDiff ℝ (↑⊤) a → ∀ (i j : Fin 3), ContDiff ℝ ↑⊤ fun x => (NSEMaxwell.Classical.coordinateDerivative a i x).ofLp j
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:70:0: @NSEMaxwell.CurlCurl.fderiv_component_apply : ∀ {a : NSEMaxwell.Classical.Field} {x : NSEMaxwell.Classical.Vec},
+  DifferentiableAt ℝ a x →
+    ∀ (v : NSEMaxwell.Classical.Vec) (j : Fin 3), (fderiv ℝ (fun y => (a y).ofLp j) x) v = ((fderiv ℝ a x) v).ofLp j
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:75:0: @NSEMaxwell.CurlCurl.secondCoordinate_symm : ∀ {a : NSEMaxwell.Classical.Field},
+  ContDiff ℝ (↑⊤) a →
+    ∀ (i j : Fin 3) (x : NSEMaxwell.Classical.Vec),
+      NSEMaxwell.CurlCurl.secondCoordinate a i j x = NSEMaxwell.CurlCurl.secondCoordinate a j i x
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:80:0: @NSEMaxwell.CurlCurl.second_coordinate_component : ∀ {a : NSEMaxwell.Classical.Field},
+  ContDiff ℝ (↑⊤) a →
+    ∀ (i j k : Fin 3) (x : NSEMaxwell.Classical.Vec),
+      (fderiv ℝ (fun y => (NSEMaxwell.Classical.coordinateDerivative a j y).ofLp k) x)
+          (NSEMaxwell.Classical.unitVector i) =
+        (NSEMaxwell.CurlCurl.secondCoordinate a i j x).ofLp k
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:85:0: @NSEMaxwell.CurlCurl.laplacian_coordinate : ∀ {a : NSEMaxwell.Classical.Field},
+  ContDiff ℝ (↑⊤) a →
+    ∀ (x : NSEMaxwell.Classical.Vec) (i : Fin 3),
+      (NSEMaxwell.Classical.laplacian a x).ofLp i =
+        (NSEMaxwell.CurlCurl.secondCoordinate a 0 0 x).ofLp i + (NSEMaxwell.CurlCurl.secondCoordinate a 1 1 x).ofLp i +
+          (NSEMaxwell.CurlCurl.secondCoordinate a 2 2 x).ofLp i
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:90:0: ClassicalMechanics.cofactorGradient_eq_adjugate_transpose : ∀ (a : NSEMaxwell.Classical.Field)
+  (x : NSEMaxwell.Classical.Vec),
+  ClassicalMechanics.cofactorGradient a x = (Matrix.adjugate (ClassicalMechanics.spatialGradientMatrix a x)).transpose
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:95:0: @ClassicalMechanics.piola_identity : ∀ {a : NSEMaxwell.Classical.Field},
+  ContDiff ℝ (↑⊤) a → ClassicalMechanics.tensorDivergence (ClassicalMechanics.cofactorGradient a) = 0
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:100:0: @ClassicalMechanics.tensorDivergence_adjugate_gradient : ∀ {a : NSEMaxwell.Classical.Field},
+  ContDiff ℝ (↑⊤) a →
+    (ClassicalMechanics.tensorDivergence fun x =>
+        (Matrix.adjugate (ClassicalMechanics.spatialGradientMatrix a x)).transpose) =
+      0
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:105:0: ClassicalMechanics.cofactorGradient_eq_inverse_transpose_of_det_one : ∀ (a : NSEMaxwell.Classical.Field)
+  (x : NSEMaxwell.Classical.Vec),
+  Matrix.det (ClassicalMechanics.spatialGradientMatrix a x) = 1 →
+    ClassicalMechanics.cofactorGradient a x = Matrix.transpose (ClassicalMechanics.spatialGradientMatrix a x)⁻¹
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:110:0: @ClassicalMechanics.tensorDivergence_inverse_transpose_of_det_one : ∀ {a : NSEMaxwell.Classical.Field},
+  ContDiff ℝ (↑⊤) a →
+    (∀ (x : NSEMaxwell.Classical.Vec), Matrix.det (ClassicalMechanics.spatialGradientMatrix a x) = 1) →
+      (ClassicalMechanics.tensorDivergence fun x => Matrix.transpose (ClassicalMechanics.spatialGradientMatrix a x)⁻¹) =
+        0
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:115:0: ClassicalMechanics.scalar_fderiv_coordinate_expansion : ∀ (p : NSEMaxwell.Classical.ScalarField)
+  (x v : NSEMaxwell.Classical.Vec), (fderiv ℝ p x) v = ∑ j, v.ofLp j * (NSEMaxwell.Classical.gradient p x).ofLp j
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:120:0: @ClassicalMechanics.gradient_comp_coordinate : ∀ {η : NSEMaxwell.Classical.Field} {p : NSEMaxwell.Classical.ScalarField}
+  {a : NSEMaxwell.Classical.Vec},
+  DifferentiableAt ℝ η a →
+    DifferentiableAt ℝ p (η a) →
+      ∀ (i : Fin 3),
+        (NSEMaxwell.Classical.gradient (fun y => p (η y)) a).ofLp i =
+          ∑ j, ClassicalMechanics.materialGradientMatrix η a j i * (NSEMaxwell.Classical.gradient p (η a)).ofLp j
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:125:0: @ClassicalMechanics.finite_velocity_slice_smooth : ∀ {T : ℝ} {u : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.SmoothVelocityOn T u → ∀ {t : ℝ}, t ∈ Set.Icc 0 T → ContDiff ℝ (↑⊤) (u t)
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:130:0: @ClassicalMechanics.materialPullbackIdentities_of_flow : ∀ {T : ℝ},
+  0 < T →
+    ∀ {u η : NSEMaxwell.Classical.Velocity} {p π : NSEMaxwell.Classical.Pressure},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ClassicalMechanics.SmoothVelocityOn T η →
+          (∀ t ∈ Set.Icc 0 T,
+              ∀ (a : NSEMaxwell.Classical.Vec), ClassicalMechanics.materialVelocity T η t a = u t (η t a)) →
+            (∀ t ∈ Set.Icc 0 T, ∀ (a : NSEMaxwell.Classical.Vec), π t a = p t (η t a)) →
+              (∀ t ∈ Set.Icc 0 T,
+                  ∀ (a : NSEMaxwell.Classical.Vec),
+                    ClassicalMechanics.materialPressureGradient η π t a = NSEMaxwell.Classical.gradient (p t) (η t a)) →
+                (∀ t ∈ Set.Icc 0 T,
+                    ∀ (a : NSEMaxwell.Classical.Vec),
+                      ClassicalMechanics.materialDiffusion T η t a = NSEMaxwell.Classical.laplacian (u t) (η t a)) →
+                  ClassicalMechanics.MaterialPullbackIdentities T u p η π
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:135:0: @ClassicalMechanics.material_pressure_gradient_pullback_on : ∀ {T : ℝ} {η ρ : NSEMaxwell.Classical.Velocity}
+  {p π : NSEMaxwell.Classical.Pressure},
+  ClassicalMechanics.MaterialPathOn T η ρ →
+    ClassicalMechanics.SmoothPressureOn T p →
+      (∀ t ∈ Set.Icc 0 T, ∀ (a : NSEMaxwell.Classical.Vec), π t a = p t (η t a)) →
+        ∀ t ∈ Set.Icc 0 T,
+          ∀ (a : NSEMaxwell.Classical.Vec),
+            ClassicalMechanics.materialPressureGradient η π t a = NSEMaxwell.Classical.gradient (p t) (η t a)
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:140:0: @ClassicalMechanics.coordinateMinor_derivative : ∀ {a : NSEMaxwell.Classical.Field},
+  ContDiff ℝ (↑⊤) a →
+    ∀ (i j k r s : Fin 3) (x : NSEMaxwell.Classical.Vec),
+      (fderiv ℝ (ClassicalMechanics.coordinateMinor a j k r s) x) (NSEMaxwell.Classical.unitVector i) =
+        (NSEMaxwell.CurlCurl.secondCoordinate a i j x).ofLp r *
+              (NSEMaxwell.Classical.coordinateDerivative a k x).ofLp s +
+            (NSEMaxwell.Classical.coordinateDerivative a j x).ofLp r *
+              (NSEMaxwell.CurlCurl.secondCoordinate a i k x).ofLp s -
+          ((NSEMaxwell.CurlCurl.secondCoordinate a i k x).ofLp r *
+              (NSEMaxwell.Classical.coordinateDerivative a j x).ofLp s +
+            (NSEMaxwell.Classical.coordinateDerivative a k x).ofLp r *
+              (NSEMaxwell.CurlCurl.secondCoordinate a i j x).ofLp s)
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:145:0: @ClassicalMechanics.uniqueDiffOn_finiteSpacetime : ∀ {T : ℝ},
+  0 < T → UniqueDiffOn ℝ (ClassicalMechanics.finiteSpacetime T)
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:150:0: @ClassicalMechanics.finite_spatial_restriction_fderiv : ∀ {T : ℝ} {u : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.SmoothVelocityOn T u →
+    ∀ {t : ℝ},
+      t ∈ Set.Icc 0 T →
+        ∀ (x v : NSEMaxwell.Classical.Vec),
+          (fderiv ℝ (u t) x) v =
+            (fderivWithin ℝ (fun z => u z.1 z.2) (ClassicalMechanics.finiteSpacetime T) (t, x)) (0, v)
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:155:0: @ClassicalMechanics.finite_time_hasDerivWithinAt : ∀ {T : ℝ},
+  0 < T →
+    ∀ {u : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ∀ {t : ℝ},
+          t ∈ Set.Icc 0 T →
+            ∀ (x : NSEMaxwell.Classical.Vec),
+              HasDerivWithinAt (fun s => u s x) (ClassicalMechanics.finiteTimeDerivative T u t x) (Set.Icc 0 T) t
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:160:0: @ClassicalMechanics.finite_time_restriction_fderiv : ∀ {T : ℝ},
+  0 < T →
+    ∀ {u : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ∀ {t : ℝ},
+          t ∈ Set.Icc 0 T →
+            ∀ (x : NSEMaxwell.Classical.Vec),
+              ClassicalMechanics.finiteTimeDerivative T u t x =
+                (fderivWithin ℝ (fun z => u z.1 z.2) (ClassicalMechanics.finiteSpacetime T) (t, x)) (1, 0)
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:165:0: @ClassicalMechanics.finite_flow_acceleration : ∀ {T : ℝ},
+  0 < T →
+    ∀ {u eta : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ClassicalMechanics.SmoothVelocityOn T eta →
+          (∀ s ∈ Set.Icc 0 T,
+              ∀ (a : NSEMaxwell.Classical.Vec), ClassicalMechanics.finiteTimeDerivative T eta s a = u s (eta s a)) →
+            ∀ {t : ℝ},
+              t ∈ Set.Icc 0 T →
+                ∀ (a : NSEMaxwell.Classical.Vec),
+                  ClassicalMechanics.finiteTimeDerivative T (ClassicalMechanics.finiteTimeDerivative T eta) t a =
+                    ClassicalMechanics.finiteMaterialAcceleration T u t (eta t a)
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:170:0: @ClassicalMechanics.material_inverse_transpose_divergence_zero : ∀ {T : ℝ} {η ρ : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.MaterialPathOn T η ρ →
+    ∀ {t : ℝ},
+      t ∈ Set.Icc 0 T →
+        (ClassicalMechanics.tensorDivergence fun a =>
+            Matrix.transpose (ClassicalMechanics.inverseDeformationGradient η t a)) =
+          0
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:175:0: @ClassicalMechanics.material_path_surjective : ∀ {T : ℝ} {η ρ : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.MaterialPathOn T η ρ → ∀ {t : ℝ}, t ∈ Set.Icc 0 T → Function.Surjective (η t)
+info: ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean:180:0: @ClassicalMechanics.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW_AND_DIFFUSION : ∀ {ν T : ℝ},
+  0 < T →
+    ∀ {u η ρ : NSEMaxwell.Classical.Velocity} {p π : NSEMaxwell.Classical.Pressure},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ClassicalMechanics.SmoothPressureOn T p →
+          ClassicalMechanics.MaterialPathOn T η ρ →
+            (∀ t ∈ Set.Icc 0 T,
+                ∀ (a : NSEMaxwell.Classical.Vec), ClassicalMechanics.materialVelocity T η t a = u t (η t a)) →
+              (∀ t ∈ Set.Icc 0 T, ∀ (a : NSEMaxwell.Classical.Vec), π t a = p t (η t a)) →
+                (∀ t ∈ Set.Icc 0 T,
+                    ∀ (a : NSEMaxwell.Classical.Vec),
+                      ClassicalMechanics.materialDiffusion T η t a = NSEMaxwell.Classical.laplacian (u t) (η t a)) →
+                  ((∀ t ∈ Set.Icc 0 T,
+                      ∀ (x : NSEMaxwell.Classical.Vec),
+                        ClassicalMechanics.finiteMaterialAcceleration T u t x + NSEMaxwell.Classical.gradient (p t) x =
+                          ν • NSEMaxwell.Classical.laplacian (u t) x) ↔
+                    ClassicalMechanics.MaterialEquationOn ν T η π)
+⚠ [8751/8760] Replayed ClassicalMechanicsAssembly.FlowConstruction
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowConstruction.lean:17:49: Ambiguous namespace `Flow`: it is interpreted as `_root_.ClassicalMechanicsAssembly.Flow` because this `open` occurs inside `namespace ClassicalMechanicsAssembly`, while `_root_.Flow` is silently not opened. Specify the namespace unambiguously, e.g. `_root_.ClassicalMechanicsAssembly.Flow`. The warning can sometimes also be addressed by moving the `open` outside of the surrounding `namespace`.
+
+Note: This linter can be disabled with `set_option linter.ambiguousOpen false`
+⚠ [8752/8760] Replayed ClassicalMechanicsAssembly.FlowRealization
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowRealization.lean:18:49: Ambiguous namespace `Flow`: it is interpreted as `_root_.ClassicalMechanicsAssembly.Flow` because this `open` occurs inside `namespace ClassicalMechanicsAssembly`, while `_root_.Flow` is silently not opened. Specify the namespace unambiguously, e.g. `_root_.ClassicalMechanicsAssembly.Flow`. The warning can sometimes also be addressed by moving the `open` outside of the surrounding `namespace`.
+
+Note: This linter can be disabled with `set_option linter.ambiguousOpen false`
+✖ [8757/8760] Building ClassicalMechanicsForward
+error: target is out-of-date and needs to be rebuilt
+✖ [8758/8760] Building ClassicalMechanicsReverse
+error: target is out-of-date and needs to be rebuilt
+Some required targets logged failures:
+- ClassicalMechanicsForward
+- ClassicalMechanicsReverse

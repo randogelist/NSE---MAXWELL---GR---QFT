@@ -1,0 +1,320 @@
+CURRENT_NATIVE_L1_STATUS = A_TIER; EXACT_SOURCE_MATCHED_STANDARD_ONLY_ROOTS
+CURRENT_NATIVE_SOURCE = 34b1fe1100f726d51955a7bf9ac5059d8069fb32
+CURRENT_NATIVE_RECORD = Auxillary/assembly/L1_FLOW_REALIZATION_A_TIER.txt
+CURRENT_COMPATIBILITY_SOURCE_STATUS = A_TIER; 5/5 PASS_STANDARD_ONLY; EXACT_ORIGINAL_TYPES_PRESERVED
+CURRENT_CLOSURE = UNCONDITIONAL_CLOSURE_WITHIN_STATED_FINITE_SLAB_SCOPE
+CURRENT_EXTERNAL_RUN = 43401581626
+CURRENT_MATHLIB_USAGE_INDEX = Auxillary/assembly/L1_NATIVE_MATHLIB_ENDPOINTS.txt
+CURRENT_CUSTOM_AXIOM_DECLARATIONS = NONE
+HISTORICAL_RECORD_FOLLOWS; ITS FORMAL-STATUS FIELDS ARE NOT CURRENT CLAIMS.
+
+L1_FLOW_REALIZATION_ENTRYPOINTS
+==============================
+
+DATE = 2026-11-13
+STATUS = SOURCE_VERIFIED_NATIVE_IMPLEMENTATION_ROUTE
+L1_NATIVE_PROOF = OPEN
+NEW_L1_THEOREMS_COMPILED = 0
+LOCAL_LEAN_EXECUTIONS = 0
+
+CURRENT_AXIOM_CHANGE:
+  ClassicalMechanicsAssembly.Literature.L1 = AXIOM.
+  ClassicalMechanicsAssembly.Literature.L2 = NATIVE_THEOREM.
+  ClassicalMechanicsAssembly.Literature.L2_native = NATIVE_THEOREM.
+  Both equation closure roots have analytic axiom set {L1}.
+  External Linux run 43379686374: 43 standard-only + 5 exact-policy audits PASS.
+  Audited source = f2030b012904c84d088ec2a6af407b4f81a314b5.
+  Retained evidence = Auxillary/evidence/l1-only-linux-43379686374/.
+  Research endpoints below do not discharge L1 or change this axiom set.
+
+SOURCE PINS:
+  Mathlib = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
+  Methlib = e9cf90726b8544a268469ebc8fa6634e9c713e07.
+  Current compiler = Lean 4.34.0-rc1, native Linux.
+  Upstream Methlib ODE evidence = Lean 4.33.0, Mathlib
+    db584cd6d46c92f209a44c0f1c829460d327499d.
+  Upstream evidence is not a new target-toolchain compilation.
+
+INDEX CONVENTION:
+  ODE.MF01--MF33 and ODE.R01--R14:
+    l1-research/MathlibODE.txt, exact signatures, source lines and file hashes.
+  GEO.Pxx/Jxx/Gxx/Dxx/Ixx:
+    l1-research/ClosedSlabGeometry.txt, exact hypotheses and proof roles.
+  METH.3.1/3.2/3.3/5/6/7:
+    l1-research/Methlib.txt, source signatures, audited scopes and exclusions.
+  P01--P10 below = PROPOSED native declarations, not existing constants.
+
+1. EXACT TARGET
+---------------
+
+I := Set.Icc (0 : R) T; S := I x EuclideanSpace R (Fin 3).
+
+L1:
+  T>0;
+  SmoothVelocityOn T u;
+  forall t in I, SpatialPeriodic (u t);
+  forall t in I, forall x, divergence (u t) x = 0
+  -> exists eta rho,
+       MaterialPathOn T eta rho
+       and forall t in I, forall a,
+         materialVelocity T eta t a = u t (eta t a).
+
+MaterialPathOn = jointly C-infinity eta and rho on S;
+                 rho_t o eta_t = id; eta_t o rho_t = id;
+                 eta_t(a+e_i)=eta_t(a)+e_i;
+                 eta_0=id; det(D_a eta_t)=1.
+materialVelocity = actual derivWithin I, including t=0 and t=T.
+
+Retain arbitrary mean, arbitrary finite T>0 and the exact closed-slab domain.
+No NSE existence, pressure, viscosity, smallness or off-slab extension premise.
+For nonautonomous u: rho(t,x)=X(0;t,x), not eta(-t,x).
+
+2. ENDPOINTS WITH DIRECT ROLES
+-----------------------------
+
+STEP A: periodic uniform bounds
+
+  METH.6 SingularClosure.spatialPeriodic_integerShift
+    contained SingularClosure/PeriodicCover.lean:30.
+    Three coordinate periods -> every integer lattice period.
+    Adapter obligation: align SingularClosure and NSEMaxwell coordinate objects.
+
+  GEO.P05--P12 Int.fract_nonneg; Int.fract_lt_one; Int.fract_add_floor;
+    isCompact_univ_pi; PiLp.continuous_toLp; IsCompact.prod;
+    IsCompact.exists_bound_of_continuousOn.
+    Compact I x [0,1]^3 -> a finite bound for continuous jets on that cell.
+
+  GEO.J03/J07/J08 ContDiffOn.continuousOn_iteratedFDerivWithin;
+    iteratedFDerivWithin_comp_add_right; iteratedFDerivWithin_congr.
+    Shift invariance of actual within-slab jets -> global spatial bounds.
+    Periodicity only on S requires EqOn; no equality of off-slab extensions.
+
+  ODE.MF12 lipschitzWith_of_nnnorm_fderiv_le
+    Analysis/Calculus/MeanValue.lean:516.
+    Uniform spatial derivative bound -> global spatial Lipschitz constant K.
+
+  TARGET:
+    exists B K>=0, forall t in I, forall x,
+      ||u(t,x)||<=B and ||D_xu(t,x)||<=K;
+    forall t in I, LipschitzWith K (u t).
+
+STEP B: whole-slab trajectories, without K*T<1
+
+  ODE.MF01 IsPicardLindelof
+    Analysis/ODE/PicardLindelof.lean:79.
+    For each s in I and x0, use:
+      tmin=0, tmax=T, t0=s, initial radius r=1,
+      ambient radius a=B*T+1, norm bound L=B, spatial Lipschitz bound K.
+    Required radius condition:
+      B*max(T-s,s) <= B*T = a-r.
+
+  ODE.MF02 IsPicardLindelof.exists_eq_forall_mem_Icc_hasDerivWithinAt
+    Analysis/ODE/ExistUnique.lean:57.
+    Supplies the actual closed-interval ODE trajectory from every label.
+
+  ODE.MF03 IsPicardLindelof.exists_forall_mem_closedBall_eq_hasDerivWithinAt_lipschitzOnWith
+    Same file:79.
+    Supplies a local label family with uniform-in-time label Lipschitz bound.
+
+  ODE.MF04 IsPicardLindelof.exists_forall_mem_closedBall_eq_hasDerivWithinAt_continuousOn
+    Same file:114.
+    Supplies joint label/time continuity, with argument order E x R.
+
+  These conclusions do not supply joint C-infinity label/time dependence.
+
+STEP C: uniqueness, coherence, inverse laws and lattice equivariance
+
+  ODE.MF08 ODE_solution_unique_of_mem_Icc_right, ExistUnique.lean:194.
+  ODE.MF09 ODE_solution_unique_of_mem_Icc_left, ExistUnique.lean:209.
+  ODE.R04 ODE_solution_unique_of_mem_Icc, ExistUnique.lean:252.
+  ODE.MF10 norm_le_gronwallBound_of_norm_deriv_right_le, Gronwall.lean:134.
+  ODE.MF11 dist_le_of_trajectories_ODE_of_mem, Gronwall.lean:208.
+
+  X(r;t,X(t;s,a))=X(r;s,a); X(s;s,a)=a.
+  ||X(t;s,a)-a|| <= B|t-s|.
+  ||X(t;s,a)-X(t;s,b)|| <= exp(K|t-s|)||a-b||.
+  eta(t,a):=X(t;0,a); rho(t,x):=X(0;t,x).
+  Mutual inverse laws and eta(0)=id follow before rho is differentiated.
+  Compare eta(t,a+e_i) with eta(t,a)+e_i to obtain lattice equivariance.
+
+STEP D: principal missing native bridge -- joint forward smoothness
+
+  ODE.MF07 ODE.contDiffOn_enat_Icc_of_hasDerivWithinAt
+    Analysis/ODE/PicardLindelof.lean:560.
+    CONCLUSION = ContDiffOn of one curve alpha:R->E.
+    NOT CONCLUSION = ContDiffOn of the whole family (t,a)->eta(t,a).
+
+  Let A(t,a)=D_xu(t,eta(t,a)). Construct F by the linear Volterra equation
+    F(t,a)=Id + integral_0^t A(s,a)F(s,a) ds.
+  Establish existence, parameter continuity and ||F(t,a)||<=exp(Kt).
+  For delta_h=eta(t,a+h)-eta(t,a), let R_h=delta_h-F(t,a)h.
+  Uniform Taylor remainder + Gronwall -> sup_I ||R_h||/||h|| -> 0.
+  This proves the label derivative; differentiating an unproved flow would
+  be circular. A linear-growth auxiliary ODE needs its own Volterra/patching
+  construction; the bounded-field radius argument is not automatic for A*F.
+
+  Establish actual joint within derivative on S:
+    D eta(t,a)(tau,h)=tau*u(t,eta(t,a))+F(t,a)h.
+  Higher variational equations and mixed derivatives then support induction.
+
+  ODE.MF33 contDiffOn_succ_iff_hasFDerivWithinAt_of_uniqueDiffOn
+    Analysis/Calculus/ContDiff/Defs.lean:875.
+  ODE.MF16 contDiffOn_infty, same file:549.
+    Explicit continuous derivative fields at each finite order -> joint C-infinity.
+
+  ODE.MF29 intervalIntegral.hasFDerivAt_integral_of_dominated_of_fderiv_le
+    Analysis/Calculus/ParametricIntervalIntegral.lean:56.
+    SUPPORT ONLY: requires the parameter derivative and domination as inputs.
+    It does not prove the missing label differentiability by itself.
+
+STEP E: determinant evolution, without circular invertibility
+
+  Establish actual F'=G F, where G=D_xu(t,eta(t,a)), F(0)=Id.
+  GEO.D01 Matrix.det_fin_three, Matrix/Determinant/Basic.lean:818.
+  GEO.D02 HasDerivWithinAt.mul, Calculus/Deriv/Mul.lean:261.
+  GEO.D04 Matrix.adjugate_fin_three, Matrix/Adjugate.lean:383.
+  GEO.D06 Matrix.trace_mul_cycle, Matrix/Trace.lean:161.
+  GEO.D08 Matrix.mul_adjugate, Matrix/Adjugate.lean:264.
+  GEO.D09 eq_of_derivWithin_eq, Calculus/MeanValue.lean:386.
+
+  Product rule on six determinant monomials ->
+    J'=trace(adj(F)F')=J*trace(G)=J*(div u)(t,eta)=0.
+  J(0)=1 -> J=1 on I.
+  This polynomial calculation is valid even before F is known invertible.
+  A determinant derivative theorem must be built; det_fin_three is algebra only.
+
+STEP F: smooth inverse entirely within the slab
+
+  From Step C, without differentiating the initial-time parameter:
+    ||rho(t,x)-rho(s,y)||
+      <= exp(KT)(||x-y||+B|t-s|).
+  Thus rho is jointly continuous on S.
+
+  H(t,a)=(t,eta(t,a)); Q(t,x)=(t,rho(t,x)); H o Q=id on S.
+  D H(t,a)(tau,h)=(tau,tau*u(t,eta(t,a))+F(t,a)h).
+  J=1 -> invertible block derivative, with explicit inverse
+    (tau,z) |-> (tau,F(t,a)^(-1)(z-tau*u(t,eta(t,a)))).
+
+  ODE.R09 HasFDerivWithinAt.of_local_left_inverse
+    Analysis/Calculus/FDeriv/OfCompLeft.lean:179.
+    Inputs: continuity as Tendsto between within-neighborhood filters,
+    actual within derivative of H as a continuous linear equivalence,
+    point membership and H o Q=id near that point within S.
+    Output: actual within derivative of Q is (D H o Q)^(-1).
+
+  ODE.R10 ContinuousLinearMap.IsInvertible.contDiffAt_map_inverse
+    Analysis/Calculus/ContDiff/Operations.lean:869.
+    Operator inversion is C^n at each invertible continuous linear map.
+
+  ODE.MF15 ContDiffOn.fderivWithin, ContDiff/Defs.lean:904.
+  ODE.MF33 + ODE.MF16: finite induction -> ContDiffOn infinity Q S.
+  The spatial projection yields SmoothVelocityOn T rho.
+
+  No open inverse-function theorem or off-slab reflection is required for
+  this inverse bootstrap once forward joint smoothness has been established.
+  This is a proposed native adapter, not an already compiled L1 theorem.
+
+STEP G: exact material record
+
+  ODE.MF21 HasDerivWithinAt.derivWithin;
+  ODE.MF22 uniqueDiffOn_Icc;
+  ODE.MF23 UniqueDiffOn.prod.
+  Convert the proved within ODE to the literal materialVelocity expression.
+  Assemble all seven MaterialPathOn fields and the actual flow equation.
+  The terminal theorem must have exactly the current L1 type and no L1 axiom.
+
+3. METHLIB -- USEFUL INPUTS AND EXACT LIMITATIONS
+------------------------------------------------
+
+MT01 SingularClosure.spatialPeriodic_integerShift
+  METH.6; PeriodicCover.lean:30; already in the contained 39-module closure.
+  ROLE = compact-cell periodicity adapter.
+  LIMIT = no uniform time bound, smooth flow or determinant theorem.
+  No independently selected theorem-level audit for this helper is claimed.
+
+MT02 SingularClosure.uniform_local_time
+  METH.3.1; DissipativeODE.lean:79.
+  Autonomous C1 g:V->V, finite-dimensional real inner-product space;
+  uniform local existence time for initial points in a bounded ball.
+  ROLE = reusable compactness/proof pattern.
+  LIMIT = no nonautonomous u(t,x), parameter smoothness or inverse flow.
+
+MT03 SingularClosure.solution_agree
+  METH.3.2; DissipativeODE.lean:206.
+  Autonomous C1 ODE uniqueness on a closed interval.
+  ROLE = implementation reference for bounding trajectories and using uniqueness.
+  LIMIT = Mathlib already has the nonautonomous uniqueness endpoints needed here.
+
+MT04 SingularClosure.forwardGlobalSolution_exists
+  METH.3.3; DissipativeODE.lean:259.
+  HYPOTHESES = autonomous C1 g and forall v, inner v (g v)<=0.
+  CONCLUSION = a forward-global trajectory from each x0.
+  EVIDENCE = upstream exact-type/compiler/axiom audit, standard axioms only;
+    source bytes match retained upstream verification/2d899390_full/sources.json.
+  LIMIT = arbitrary periodic solenoidal u is not assumed dissipative.
+    Autonomization g(t,x)=(1,u(t,x)) does not establish dissipativity.
+    Therefore this endpoint cannot directly discharge L1.
+  STATUS = outside the selected native 39-module closure; no new 4.34-rc1 import.
+
+Excluded shortcuts:
+  Fourier/Galerkin smoothness != smooth particle-flow parameter dependence.
+  CriticalPositiveSobolevFlow != material eta/rho; its time domain excludes zero.
+  A continuous Dynamics.Flow bundle assumes action laws and continuity;
+    nonautonomous eta generally is not a one-parameter group action.
+
+4. NATIVE PROOF ORDER -- NO NEW ANALYTIC AXIOMS
+------------------------------------------------
+
+P01 periodic_velocity_uniform_bounds
+  STEP A; METH.6 + GEO.P/J + ODE.MF12.
+P02 periodic_velocity_isPicardLindelof
+  P01 + ODE.MF01; exact whole-slab radius arithmetic.
+P03 exists_closedSlab_trajectory_family
+  P02 + ODE.MF02--MF04; all start times and labels.
+P04 closedSlab_trajectory_unique_and_estimates
+  P01/P03 + ODE.MF08--MF11/R04; coherence, inverse laws, periods.
+P05 hasFDerivAt_closedSlab_flow_initialLabel
+  STEP D first variation, Volterra construction and uniform remainder.
+P06 smoothVelocityOn_of_periodic_flow
+  P05 + higher variations + actual joint within derivative induction.
+P07 closedSlab_flow_determinant_one
+  P05/P06 + STEP E + div u=0.
+P08 smoothWithin_inverse_of_continuous_inverse
+  STEP F; independent general inverse-regularity adapter.
+P09 periodic_solenoidal_flow_materialPath
+  P03--P08 + lattice uniqueness + actual derivWithin identification.
+P10 L1_native
+  Exact current L1 type; deterministic assembly of P09.
+
+PRIORITY = P01--P04 and P08; then the principal P05/P06 analytic bridge.
+P07 can be developed independently from an exact supplied variation equation.
+Prepared signatures do not count as proofs; every body needs the external
+cached compiler and a theorem-level audit before A-tier promotion.
+
+5. ALTERNATIVE ROUTES, NOT HIDDEN HYPOTHESES
+-------------------------------------------
+
+ALT-A: ODE.R05--R08, especially ContDiffAt.contDiffAt_implicitFunction
+  Analysis/Calculus/ImplicitContDiff.lean:90.
+  Use an implicit equation on a Banach space of continuous paths:
+    Psi(a,X)(t)=X(t)-a-integral_0^t u(s,X(s)) ds.
+  Still required: C^n smoothness of this path-space map, actual derivative,
+  invertibility of Id-Volterra and identification with the chosen flow.
+  This is a possible replacement for direct variation induction, not a
+  completed Mathlib smooth-flow theorem.
+
+ALT-B: finite-order reflection and seam gluing (GEO.G01--G08).
+  Valid fallback for open-neighborhood parameter-flow theorems.
+  Not mandatory if forward joint regularity is proved directly on S and
+  the within-inverse route is used. A common global C-infinity extension
+  of the supplied velocity is not an extra L1 premise.
+
+SOURCE_SCOPE:
+  Pinned Mathlib ODE/manifold-flow/implicit/inverse/calculus sources;
+  contained Methlib closure plus targeted main and three branch trees.
+  No matching complete L1 theorem was located in this inspected scope.
+  This is not an exhaustive absence claim over every Methlib branch.
+
+L1_ANALYTIC_AXIOM = REMAINING.
+L2_ANALYTIC_AXIOM = REMOVED.
+FULL_ROOT_STATUS = CONDITIONAL_FORMAL_CLOSURE_UNDER_L1.

@@ -1,0 +1,96 @@
+⚠ [8713/8726] Replayed NSEMaxwell.Kinematics
+warning: Fefferman_adapter/NSEMaxwell/Kinematics.lean:92:19: This simp argument is unused:
+  coordinateDerivative
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [laplacian]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8714/8726] Replayed NSEMaxwell.CurlCurl
+warning: Fefferman_adapter/NSEMaxwell/CurlCurl.lean:94:13: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sub_apply` to `sub_apply x`).
+warning: Fefferman_adapter/NSEMaxwell/CurlCurl.lean:188:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+⚠ [8715/8726] Replayed ClassicalMechanics.Stress
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:68:32: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:72:6: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:72:37: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:73:6: `ContinuousLinearMap.neg_apply` has been deprecated: Use `neg_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.neg_apply` to `neg_apply x`).
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:74:32: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:77:6: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:77:37: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:76:15: This simp argument is unused:
+  NSEMaxwell.Classical.gradient
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [PiLp.toLp_apply, ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply, smul_eq_mul,
+    second_coordinate_component ha]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Stress.lean:76:46: This simp argument is unused:
+  PiLp.toLp_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [NSEMaxwell.Classical.gradient, ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
+    smul_eq_mul, second_coordinate_component ha]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8720/8726] Replayed NSEMaxwell.Lamb
+warning: Fefferman_adapter/NSEMaxwell/Lamb.lean:33:45: This simp argument is unused:
+  PiLp.single_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [unitVector, EuclideanSpace.single, smul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NSEMaxwell/Lamb.lean:65:17: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: Fefferman_adapter/NSEMaxwell/Lamb.lean:65:49: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+⚠ [8722/8726] Replayed ClassicalMechanics.Piola
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean:49:13: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sub_apply` to `sub_apply x`).
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean:49:44: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean:50:4: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+⚠ [8724/8726] Replayed ClassicalMechanicsAssembly.PiolaTransport
+warning: ASSEMBLY/ClassicalMechanicsAssembly/PiolaTransport.lean:80:34: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: ASSEMBLY/ClassicalMechanicsAssembly/PiolaTransport.lean:97:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: ASSEMBLY/ClassicalMechanicsAssembly/PiolaTransport.lean:97:44: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: ASSEMBLY/ClassicalMechanicsAssembly/PiolaTransport.lean:149:32: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [8725/8726] Replayed ClassicalMechanicsAssembly.FlowJacobian
+warning: ASSEMBLY/ClassicalMechanicsAssembly/FlowJacobian.lean:89:64: This simp argument is unused:
+  eq_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [materialGradientMatrix, coordinateDerivative, unitVector, Matrix.one_apply, EuclideanSpace.single,
+    PiLp.single_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+All targets up-to-date (8726 jobs).

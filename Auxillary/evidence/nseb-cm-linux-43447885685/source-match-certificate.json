@@ -1,0 +1,271 @@
+{
+  "schema_version": 1,
+  "status": "PASS_SOURCE_MATCH_AND_STANDARD_ONLY_AUDIT",
+  "source_commit": "adb4dcdc31c211add64946b817e9edba2c1b9146",
+  "external_run_id": 43447885685,
+  "external_artifact_id": 14049487046,
+  "external_artifact_sha256": "186e44d64b7a038b32dcdf57df43f036f5ffe56dd357751b9e0c5671d4bad8a8",
+  "local_native_source_count": 54,
+  "local_native_sources_match": true,
+  "total_audit_records": 247,
+  "new_audit_records": 30,
+  "exact_root": "ClassicalMechanicsAssembly.NSEB_IFF_CM",
+  "positive_root": "ClassicalMechanicsAssembly.NSEB_IFF_CM_POSITIVE",
+  "root_audit_sha256": "0b298cbeac6622dd8838ad7d07093da9fc3aef6da35f4aff7186510838d6fe95",
+  "root_source_manifest_sha256": "9b8815eeca3e0bb11eb4be32d7887f63cace1983a415c3adf4260d2444d6b72b",
+  "root_import_closure_sha256": "047645748b5d2e62a16898e522651cf274e57525e6970f97a501874e430212d4",
+  "foundations": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "analytic_admissions": [],
+  "semantic_review": "Auxillary/assembly/NSEB_CM_SEMANTIC_REVIEW.json",
+  "retained_files": [
+    {
+      "path": "audit-summary.json",
+      "sha256": "84373cdbe954ad0e2157a34ea64e4b05a83f2c8454b2a70a6c482e1c90035a1c"
+    },
+    {
+      "path": "flow/FlowBanach/audit-summary.json",
+      "sha256": "e44c7990711b1d767dcf0971058faa5ff03b70321bc593d3f229c55c07bc4f89"
+    },
+    {
+      "path": "flow/FlowBounds/audit-summary.json",
+      "sha256": "b98af83bfd00cd8afc7eac62c15acbf9d71ed6d864e96f150fb0f7effdd04fb8"
+    },
+    {
+      "path": "flow/FlowConstruction/audit-summary.json",
+      "sha256": "4aff62c235235fac94b24c0b8a09bc198f2b9f8c4031ca2a3dcf8b60af21b4f7"
+    },
+    {
+      "path": "flow/FlowGlobalSlab/audit-summary.json",
+      "sha256": "714a543740ec65b7fe98162b774d6c5e0f3c0509380cd6691277f067dea25826"
+    },
+    {
+      "path": "flow/FlowGlobalSlab/audit.log",
+      "sha256": "60360090511acbc6b37d8fa836f1a30346e7f2380e92c6bf14e89a674a01a846"
+    },
+    {
+      "path": "flow/FlowGlobalSlab/build-freshness.log",
+      "sha256": "a7182e1c46e8b06f71fbc3800ca5279657b87a099c3a72b0e1c3d04aee2cba89"
+    },
+    {
+      "path": "flow/FlowGlobalSlab/build-freshness.log.command.json",
+      "sha256": "44b40ff2a481a6da42510881dec50ae6683c3b68083ee7898e72986cc000ef5b"
+    },
+    {
+      "path": "flow/FlowGlobalSlab/import-closure.json",
+      "sha256": "1b552cc0b011489f2726d710d334db897645e662cc2fc3c7c8f3585db5a99c27"
+    },
+    {
+      "path": "flow/FlowGlobalSlab/module-summary.json",
+      "sha256": "9a264602eb3da67845371039aefd75904ddbcf029bf97d9645d81c1d93fa0ee6"
+    },
+    {
+      "path": "flow/FlowGlobalSlab/run-provenance.json",
+      "sha256": "9fbf0b6e9d8946739ca068980a2e36ed4e43f0b136a8b010a796dfb60b88693f"
+    },
+    {
+      "path": "flow/FlowGlobalSlab/source-manifest.json",
+      "sha256": "6f334b796c9cd8f2afa8dcba191d35a1d60d10fef060152dab74c453316a67c1"
+    },
+    {
+      "path": "flow/FlowImplicit/audit-summary.json",
+      "sha256": "d5354925379035a99fe20e7ca16c815ac3d609837d118960b81a7a1bef2702a4"
+    },
+    {
+      "path": "flow/FlowInverse/audit-summary.json",
+      "sha256": "a7749da5fa3b5be03503fc366a570128e7d017dbb99b60705771f7aa28863475"
+    },
+    {
+      "path": "flow/FlowJacobian/audit-summary.json",
+      "sha256": "9635fe94cbc0a87d42d34bf23b347055c523ff8fdb29ea70cf64feb5ffb1f3c0"
+    },
+    {
+      "path": "flow/FlowJetIntegral/audit-summary.json",
+      "sha256": "f890e0b317db41dd1571a6af6fda566394705242fbf10eb2c536fe9f10c7cb2c"
+    },
+    {
+      "path": "flow/FlowJetTime/audit-summary.json",
+      "sha256": "02185032db3bfd93d64ecfdd9ebd26cbbfe327fa3880eb4f5ccc9277d21571e2"
+    },
+    {
+      "path": "flow/FlowJoint/audit-summary.json",
+      "sha256": "bdfbd2d605a55abecd440e41ddd8d1d3b4438d6393586d7e3b222238876a7d06"
+    },
+    {
+      "path": "flow/FlowJointJets/audit-summary.json",
+      "sha256": "c44f66bc300e7731b6af2ea992e71c024944cef185d6e5a2f4448e77f6aa4054"
+    },
+    {
+      "path": "flow/FlowMaterialCoherence/audit-summary.json",
+      "sha256": "895501e8cdc54037a053a197be3a4841f5a4f084fb157c1abe16ace26223b001"
+    },
+    {
+      "path": "flow/FlowMaterialCoherence/audit.log",
+      "sha256": "2570ee2dd10c5eed619f0d0de9bb476a0041185d948aac2e623bf3ca7f7f3d04"
+    },
+    {
+      "path": "flow/FlowMaterialCoherence/build-freshness.log",
+      "sha256": "25ec927d57db9c83f01300be217fde92c19ce28a97aafbd38d6b13fd509fb0d3"
+    },
+    {
+      "path": "flow/FlowMaterialCoherence/build-freshness.log.command.json",
+      "sha256": "59627e730aef441636751fa277fb801ba465b9254ec9603d4a3c9008b781a0f8"
+    },
+    {
+      "path": "flow/FlowMaterialCoherence/import-closure.json",
+      "sha256": "3a9cc99d9889939951e34a833b9cf894ec9d422a80622f7fbfab468169787cc8"
+    },
+    {
+      "path": "flow/FlowMaterialCoherence/module-summary.json",
+      "sha256": "a6218c6df7ff8c4afd6ddcb4b2b059aacaa2c17154dbbdff4f8c999be2f98864"
+    },
+    {
+      "path": "flow/FlowMaterialCoherence/run-provenance.json",
+      "sha256": "639c70f084c9a0c9f3cdefdb1e2c76692b3914aa7e822aab9869a510407fc70e"
+    },
+    {
+      "path": "flow/FlowMaterialCoherence/source-manifest.json",
+      "sha256": "1906eb9414f54f81e7d9a52e6591478f32ba7a949e7b0c6e94d56edfb13ce57f"
+    },
+    {
+      "path": "flow/FlowMaterialFields/audit-summary.json",
+      "sha256": "e3060585904143af2c3b43aef0c92ac61f46619cad8647b01a634b74ef9f484e"
+    },
+    {
+      "path": "flow/FlowMaterialFields/audit.log",
+      "sha256": "3ec780ba4609e97a377a16ddf0d3724ccf027d554eec7998a4dcd5b5d167b691"
+    },
+    {
+      "path": "flow/FlowMaterialFields/build-freshness.log",
+      "sha256": "6714ffb51031b6e629c96708f15fe560b3191edeaaaf0c4c74e1df144f4ef53e"
+    },
+    {
+      "path": "flow/FlowMaterialFields/build-freshness.log.command.json",
+      "sha256": "541d121086c7267ecb6e75f0bf9c10f21e7c34b589e5b1d4b877afe8342d0217"
+    },
+    {
+      "path": "flow/FlowMaterialFields/import-closure.json",
+      "sha256": "3857632589ee828b498e161f49158a67aa1411a1b5d95667777c935b5c217e3c"
+    },
+    {
+      "path": "flow/FlowMaterialFields/module-summary.json",
+      "sha256": "7e66c3c810cafaeb620c7da6cf491aa4169e4a5919c9fb3a4d7c1a91e050059e"
+    },
+    {
+      "path": "flow/FlowMaterialFields/run-provenance.json",
+      "sha256": "ab699f39b7dc10aeba1c3d80f89c73d2eea01cc7237e138e85596b76af61f06b"
+    },
+    {
+      "path": "flow/FlowMaterialFields/source-manifest.json",
+      "sha256": "7a89c6b5019fdaa47f3ebf809f0cd5679ae9814471aeda26d216c651748c88dd"
+    },
+    {
+      "path": "flow/FlowNSEBCM/audit-summary.json",
+      "sha256": "0b298cbeac6622dd8838ad7d07093da9fc3aef6da35f4aff7186510838d6fe95"
+    },
+    {
+      "path": "flow/FlowNSEBCM/audit.log",
+      "sha256": "b884e4f3b61b3e23be5924ac86f370ca34ef01890d73dc8b52fdeb99a62d0923"
+    },
+    {
+      "path": "flow/FlowNSEBCM/build-freshness.log",
+      "sha256": "af76696ef791885ffbf92e3ce305d13d9ce117cbd0712ece6adde6089614b55e"
+    },
+    {
+      "path": "flow/FlowNSEBCM/build-freshness.log.command.json",
+      "sha256": "387a4cc9d28fa3c73125f287ae9ec14fa0656ee2f236a27f479951ca6941f755"
+    },
+    {
+      "path": "flow/FlowNSEBCM/import-closure.json",
+      "sha256": "047645748b5d2e62a16898e522651cf274e57525e6970f97a501874e430212d4"
+    },
+    {
+      "path": "flow/FlowNSEBCM/module-summary.json",
+      "sha256": "a7f609524e94fefaa28f7c49fef490d64d7f7ec1e2bf0203e097840e95929c7a"
+    },
+    {
+      "path": "flow/FlowNSEBCM/run-provenance.json",
+      "sha256": "fc1de2944504bb76c675d7ab1cd1cbcd00457c02bdcc7d9dcee2b82b8db8de93"
+    },
+    {
+      "path": "flow/FlowNSEBCM/source-manifest.json",
+      "sha256": "9b8815eeca3e0bb11eb4be32d7887f63cace1983a415c3adf4260d2444d6b72b"
+    },
+    {
+      "path": "flow/FlowPathJets/audit-summary.json",
+      "sha256": "57f4f1ab5658462021ef81239fc1b096136babeedee0ace22b1fc64f65beaa64"
+    },
+    {
+      "path": "flow/FlowPathSolutions/audit-summary.json",
+      "sha256": "24587257e734dd02ff60e2271c168c8fc53bba189972000763bccf0aee098427"
+    },
+    {
+      "path": "flow/FlowRealization/audit-summary.json",
+      "sha256": "2bfd2dfe758fe2e402ef22f23138d65f26f342c2d0f6d6328c5ee67f0c9b6697"
+    },
+    {
+      "path": "flow/FlowSmooth/audit-summary.json",
+      "sha256": "47a3a3f10e8e60e9ebe9953e69e6d5b6e28c3051bfe46b7f03445f75c7edf19b"
+    },
+    {
+      "path": "flow/FlowSpatialJets/audit-summary.json",
+      "sha256": "5397135105ad97e3eace6d964b4825f657df84d38b8949604f7c4d1eb4410e85"
+    },
+    {
+      "path": "flow/FlowTrajectories/audit-summary.json",
+      "sha256": "a1806d6a25eacc81d1f8b1d9de3086e88e947e241adafd1c058661d670d27d1a"
+    },
+    {
+      "path": "flow/FlowVariational/audit-summary.json",
+      "sha256": "449eb11f6801870bfd9d3c3b4b700abe73d16a17864d429eed623cda67f0dd68"
+    },
+    {
+      "path": "flow/FlowVolterra/audit-summary.json",
+      "sha256": "6e8d23bd13c0b0a0ec3f8ec7e1124bedd6926d4449746d2cb163f66875e990e2"
+    },
+    {
+      "path": "flow/aggregate-summary.json",
+      "sha256": "8859991995ef4ae9127fc77291db449a31f11392b8a489ae9f884c306bedf3f4"
+    },
+    {
+      "path": "flow/lean-version.log",
+      "sha256": "6cd69c5752c644291ede2418997a70e9994409d30b15fe5ef14a1be60f27f8ef"
+    },
+    {
+      "path": "literature/audit-summary.json",
+      "sha256": "299b25567bc1e3f7785adbf6b010fc9d114df00399d41396f2af4a647f70a3a5"
+    },
+    {
+      "path": "literature/audit.log",
+      "sha256": "233b608bc1611a9a524dfdc1fb7bb90611b542bbfef7b7aa44bb8c2428e8d73c"
+    },
+    {
+      "path": "literature/source-manifest.json",
+      "sha256": "6777ac3e7aab0741b14f506a950080287d9566bd4c55c1800ae5b3ceedb75048"
+    },
+    {
+      "path": "original-artifact.zip",
+      "sha256": "186e44d64b7a038b32dcdf57df43f036f5ffe56dd357751b9e0c5671d4bad8a8"
+    },
+    {
+      "path": "run-provenance.json",
+      "sha256": "7cbefa705efad029923c663cbcffc46ba794eeba662cb742cd1b0ecdd023626e"
+    },
+    {
+      "path": "source-manifest.json",
+      "sha256": "ae9b24584daa86b2d0d5cf785d95b48b24f7737c2b344f18ee830b2f4c979137"
+    }
+  ],
+  "independent_complete_manifest_review": {
+    "manifests": 24,
+    "entries": 10702,
+    "unique_committed_inputs": 440,
+    "unique_generated_evidence_inputs": 73,
+    "status": "PASS",
+    "declared_checkout_transform": "*.cmd eol=crlf; five paths",
+    "lean_source_transformations": []
+  }
+}
