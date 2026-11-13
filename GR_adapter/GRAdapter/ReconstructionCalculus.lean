@@ -34,7 +34,6 @@ theorem boundaryPressure_hasFDerivAt (ρ : ℝ) (K : BoundaryTensor) (t : ℝ) (
         scalarLocalTimeDerivative (scalarLocalTimeDerivative (boundaryPotential K)) t y := by
     funext y
     dsimp [boundaryPressure]
-    simp only [smul_eq_mul]
     ring
   rw [hp]
   exact (hk.hasFDerivAt.neg.sub

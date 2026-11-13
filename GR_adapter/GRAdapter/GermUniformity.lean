@@ -33,7 +33,7 @@ theorem integerSpatialShift_apply (n : Fin 3 → ℤ) (j : Fin 3) :
     integerSpatialShift n j = (n j : ℝ) := by
   change (WithLp.ofLp (∑ i : Fin 3, n i • unitVector i)) j = (n j : ℝ)
   simp [WithLp.ofLp_sum, Finset.sum_apply, WithLp.ofLp_smul,
-    unitVector, PiLp.single_apply, zsmul_eq_mul, mul_ite]
+    unitVector, PiLp.single_apply, Pi.single_apply, zsmul_eq_mul, mul_ite]
 
 /-- The actual fractional-coordinate representative of a spatial point. -/
 def spatialCellRepresentative (x : Vec) : Vec :=
@@ -108,7 +108,7 @@ theorem continuous_bulkPoint_product :
   · exact continuous_fst.fst
   · refine Fin.cases ?_ (fun j => ?_) a
     · exact continuous_fst.snd
-    · exact (PiLp.continuous_apply j).comp continuous_snd
+    · exact (PiLp.continuous_apply 2 (fun _ : Fin 3 => ℝ) j).comp continuous_snd
 
 /-- The full-slice metric germ follows from actual bulk neighborhood equality over the unit cell. -/
 theorem sameMetricAt_of_boundary_germs {t0 : ℝ} {g h : Metric}
@@ -119,7 +119,10 @@ theorem sameMetricAt_of_boundary_germs {t0 : ℝ} {g h : Metric}
     SameMetricAt t0 g h := by
   apply periodic_slice_germs_uniform hperiodic
   intro x hx
-  exact continuous_bulkPoint_product.continuousAt.tendsto.eventually (hlocal x hx)
+  have hc : ContinuousAt
+      (fun z : (ℝ × ℝ) × Vec => bulkPoint z.1.1 z.1.2 z.2) (((0 : ℝ), t0), x) :=
+    continuous_bulkPoint_product.continuousAt
+  exact hc.tendsto.eventually (hlocal x hx)
 
 theorem gaussianVacuum_eventually_periodic {ρ t0 δ ε : ℝ} {g : Metric}
     (hg : GaussianVacuum ρ t0 δ ε g) :
