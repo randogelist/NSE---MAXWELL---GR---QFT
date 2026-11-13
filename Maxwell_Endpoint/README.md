@@ -4,9 +4,9 @@
 PACKAGE                       = Maxwell_Endpoint
 NATIVE_MODULE_ROOT            = MaxwellEndpoint
 EXISTING_DEFINITION_NAMESPACE = NSEMaxwell.Classical
-STATUS                        = A_TIER_CANDIDATE
-ROOT_EXTERNAL_VALIDATION      = PENDING_CACHED_NATIVE_LINUX
-ISOLATED_EXTERNAL_VALIDATION  = PENDING_CACHED_NATIVE_LINUX
+STATUS                        = A_TIER_FOR_EXACT_NATIVE_THEOREMS
+ROOT_EXTERNAL_VALIDATION      = PASS_CACHED_NATIVE_LINUX_AND226_FRESH_AUDITS
+ISOLATED_EXTERNAL_VALIDATION  = PASS_CACHED_NATIVE_LINUX_AND52_FRESH_AUDITS
 LOCAL_LEAN_EXECUTIONS          = 0
 STANDALONE_AUDIT_TARGETS       = 52
 NATIVE_THEOREMS                = 23
@@ -77,7 +77,7 @@ The Maxwell equations are
 \operatorname{MaxwellSolution}(\nu,c,m,0;0,0,0,0).
 \]
 
-The zero-field instance retains arbitrary `m`, with reconstructed velocity `U m 0 = fun _ => m`. `MaxwellEndpoint.zero_solution` contains the complete candidate proof using constant derivatives, zero integrals, zero series, and the actual constitutive formulas. `MaxwellEndpoint.zero_datum_global_instance` combines admissibility with the explicit global witness. A-tier status requires the pending matching external compiler and named axiom audit.
+The zero-field instance retains arbitrary `m`, with reconstructed velocity `U m 0 = fun _ => m`. `MaxwellEndpoint.zero_solution` contains the complete externally certified proof using constant derivatives, zero integrals, zero series, and the actual constitutive formulas. `MaxwellEndpoint.zero_datum_global_instance` combines admissibility with the explicit global witness. Both declarations passed the matching native Linux compiler and named axiom audit in [run 43351199370](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43351199370).
 
 ## Named native endpoints
 
@@ -111,13 +111,37 @@ CACHE_POLICY = PRESERVE_COMPILER_DEPENDENCY_PROJECT_CACHES
 AUDIT_POLICY = FRESH_NAMED_DECLARATION_AUDIT
 ```
 
-The independent build uses this folder as its project source closure. Root integration and isolated-package compilation require separate validation. The isolated build reuses the verified dependency cache and keeps its own build objects.
+The independent build uses this folder as its project source closure. Root integration and isolated-package compilation passed their separate validations. The isolated build reuses the verified dependency cache and keeps its own build objects.
+
+## Matching external certificate
+
+[Native Linux run 43351199370](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43351199370) certified source commit `7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6`.
+
+| Scope | Fresh named audits | Matching Lean inputs | Result |
+|---|---:|---:|---|
+| Integrated repository | 226/226 | 37/37 | `PASS_STANDARD_ONLY` |
+| Isolated Maxwell package | 52/52 | 7/7 | `PASS_STANDARD_ONLY` |
+
+The isolated package verified all **18 source files** at the recorded source commit. It shared the verified dependency cache and used separate project build objects. Its initial independent project cache was absent; four native modules compiled and the resulting project cache was retained. The integrated runner used incremental build validation with 32 scheduled module-build invocations; this count does not assert 32 recompilations.
+
+[Integrated audit](../Auxillary/evidence/linux-43351199370/audit-summary.json) · [Isolated audit](../Auxillary/evidence/linux-43351199370/standalone/audit-summary.json) · [Retained evidence](../Auxillary/evidence/linux-43351199370/)
+
+```text
+ARTIFACT_ID = 14003922945
+PRESERVED_ORIGINAL_ARTIFACT_FILES = 109
+ARTIFACT_SHA256 = 4da8e2720886ff08fd905a6e3b94ec579dcf0027411bd07e2c275dc7d282a2fb
+ISOLATION = PASS
+SHARED_DEPENDENCY_CACHE = TRUE
+SHARED_PROJECT_OBJECT_CACHE = FALSE
+```
+
+The certificate identifies its compiled source snapshot. Subsequent documentation and evidence publication preserve the certified Lean/build inputs.
 
 ## Proof boundary
 
 ```text
 CONCRETE_MODEL_DEFINITIONS = PRESENT
-NATIVE_THEOREM_CERTIFICATION = PENDING_EXTERNAL_EVIDENCE
+NATIVE_THEOREM_CERTIFICATION = A_TIER_STANDARD_AXIOMS_ONLY
 ARBITRARY_DATA_MAXWELLB = NOT_PROVED
 FOURIER_HODGE_LAWS_INHABITANT = NOT_SUPPLIED
 UNCONDITIONAL_NSE_MAXWELL_EQUIVALENCE = NOT_PROVED

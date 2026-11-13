@@ -15,9 +15,9 @@ The four top-level content folders have the requested domain roles. `.github/` r
 
 ```text
 LAYOUT_PLATFORM             = LINUX / POSIX
-CURRENT_SOURCE_STATUS      = A_TIER_CANDIDATE_PENDING_EXTERNAL_VALIDATION
-ROOT_EXTERNAL_VALIDATION    = PENDING_CACHED_NATIVE_LINUX
-ISOLATED_MAXWELL_VALIDATION  = PENDING_CACHED_NATIVE_LINUX
+CURRENT_SOURCE_STATUS      = A_TIER_FOR_EXACT_NATIVE_AND_CONDITIONAL_BRIDGE_THEOREMS
+ROOT_EXTERNAL_VALIDATION    = PASS_BUILD_AND226_FRESH_AUDITS
+ISOLATED_MAXWELL_VALIDATION  = PASS_BUILD_AND52_FRESH_AUDITS
 PRIOR_CERTIFIED_RUN         = 43348914489
 REGISTERED_ROOT_TARGETS     = 226
 REGISTERED_MAXWELL_TARGETS  = 52
@@ -65,11 +65,11 @@ NATIVE_ZERO_INSTANCE = MaxwellEndpoint.zero_solution
 NATIVE_ZERO_EXISTENCE = MaxwellEndpoint.zero_datum_global_instance
 NATIVE_THEOREM_COUNT = 23
 NATIVE_DEFINITION_TYPE_TARGET_COUNT = 29
-ROOT_BUILD_AND_AUDIT = PENDING_CACHED_EXTERNAL_LINUX
-ISOLATED_BUILD_AND_AUDIT = PENDING_CACHED_EXTERNAL_LINUX
+ROOT_BUILD_AND_AUDIT = PASS_NATIVE_LINUX_AND226_STANDARD_ONLY_AUDITS
+ISOLATED_BUILD_AND_AUDIT = PASS_NATIVE_LINUX_AND52_STANDARD_ONLY_AUDITS
 ```
 
-[Native scope and certification contract](Maxwell_Endpoint/MAXWELL_ENDPOINT_A_TIER.txt). The candidate `zero_solution` theorem constructs the actual zero fields for every real `ν`, `c`, and arbitrary harmonic mean `m`. `zero_datum_global_instance` combines admissibility with that global witness. These endpoints do not prove the arbitrary-data existence proposition `MaxwellB`.
+[Native scope and certification contract](Maxwell_Endpoint/MAXWELL_ENDPOINT_A_TIER.txt). The externally certified `zero_solution` theorem constructs the actual zero fields for every real `ν`, `c`, and arbitrary harmonic mean `m`. `zero_datum_global_instance` combines admissibility with that global witness. These endpoints do not prove the arbitrary-data existence proposition `MaxwellB`.
 
 ## Directional Lean endpoints
 
@@ -136,4 +136,17 @@ The freshness check and final build include both reduced direction modules and t
 
 [Retained evidence](Auxillary/evidence/linux-43348914489/) preserves all **38 original artifact files**. [Audit summary](Auxillary/evidence/linux-43348914489/audit-summary.json) records `PASS_STANDARD_ONLY`; the explicit `FourierHodgeLaws` premise remains unresolved. The certificate covers 289 source inputs, with the recorded CRLF checkout normalization for `Auxillary/run.cmd`.
 
-The Maxwell source extraction requires the pending root and isolated-package compiler/audit certificates. Historical evidence remains scoped to its original source commit.
+## Current native Maxwell certificate
+
+[Native Linux run 43351199370](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43351199370) passed both build scopes at source commit `7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6`:
+
+| Scope | Fresh named audits | Matching Lean input hashes |
+|---|---:|---:|
+| Integrated repository | **226/226** | **37/37** |
+| Isolated Maxwell endpoint | **52/52** | **7/7** |
+
+All registered axiom dependencies belong to `propext`, `Classical.choice`, and `Quot.sound`. The isolated package verified 18 source files, reused only the shared dependency cache, and compiled with independent project build objects. Its first project cache was populated after four module builds. The root used 32 incremental module-build invocations; this number is not a recompilation count.
+
+[Integrated audit](Auxillary/evidence/linux-43351199370/audit-summary.json) · [Isolated audit](Auxillary/evidence/linux-43351199370/standalone/audit-summary.json) · [109 retained original artifact files](Auxillary/evidence/linux-43351199370/)
+
+The 23 native theorem endpoints are A-tier. The reduced bridge remains `FourierHodgeLaws → ExactEquivalence`, with **CONDITIONAL_FORMAL_CLOSURE**. Historical evidence remains scoped to its recorded source commit; the Hodge inhabitant and arbitrary-data global Maxwell existence remain unresolved.

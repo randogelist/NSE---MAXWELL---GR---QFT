@@ -56,7 +56,9 @@ Prior auxiliary-layout certificate: [native Linux run 43348914489](https://githu
 The exact Maxwell definitions and common physical operators reside in [Maxwell_Endpoint/](../Maxwell_Endpoint/). The adapter imports this independent native library. Declaration names, original definition bodies, and both directional proof bodies are preserved.
 
 ```text
-CURRENT_NATIVE_EXTRACTION_VALIDATION = PENDING_CACHED_NATIVE_LINUX_ROOT_AND_ISOLATED_MAXWELL
+CURRENT_NATIVE_EXTRACTION_VALIDATION = PASS_226_INTEGRATED_AND52_ISOLATED_AUDITS
 INTEGRATED_AUDIT_TARGETS = 226
 ISOLATED_MAXWELL_AUDIT_TARGETS = 52
 ```
+
+Matching native extraction: [run 43351199370](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43351199370), source `7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6`; [integrated audit](../Auxillary/evidence/linux-43351199370/audit-summary.json). The exact implication `FourierHodgeLaws → ExactEquivalence` remains A-tier with the same explicit analytic premise.

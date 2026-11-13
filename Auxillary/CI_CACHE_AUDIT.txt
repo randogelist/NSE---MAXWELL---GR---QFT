@@ -1,3 +1,36 @@
+NATIVE MAXWELL PACKAGE CACHE CERTIFICATE (2026-11-13)
+====================================================
+
+Source = 7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6.
+External native Linux run = 43351199370; job = 131642414974.
+Integrated build/audit = PASS; 226/226 fresh exact targets.
+Isolated package build/audit = PASS; 52/52 fresh exact targets.
+Matched Lean source inputs = 37 integrated, 7 standalone.
+Original artifact files preserved = 109.
+Native Maxwell theorem endpoints = 23; standard axioms only.
+
+Compiler cache = exact hit.
+Root dependency/project caches = verified previous pinned caches restored.
+Root incremental schedule = 32 module build invocations; no recompilation-count inference.
+Independent package sources = 18; source hashes and import closure verified.
+Shared package cache = verified root .lake/packages only.
+Standalone project cache = initial miss; four native module build invocations.
+Standalone project objects = separate .lake/build; preserved after PASS.
+Every theorem audit executed fresh. No local Lean/Lake/elan invocation.
+
+Saved root dependency cache:
+ nse-deps-v2-Linux-X64-9b51ac59a9bf389c36d0ee08f81eebfa504c2a733df8c25b1187266979e41203
+Saved root project cache:
+ nse-project-v2-Linux-X64-9b51ac59a9bf389c36d0ee08f81eebfa504c2a733df8c25b1187266979e41203-5a1aca4898000db4f1f98f887cf1a5b2548ed4bc4bf43edc34b73fdff48fd97f
+Saved independent Maxwell project cache:
+ nse-maxwell-standalone-v1-Linux-X64-9eeb2f7971e6c5a8e1f40433fb0d4794678971899b7110d4d6492da4bd235320-a0f932838aa1bae18b0308603ebdd32393edded04c4850de9ed65aecc5667132
+
+Native instantiation does not discharge the four FourierHodgeLaws fields.
+Exact equivalence remains conditional on their explicit inhabitant.
+
+HISTORICAL CACHE RECORDS FOLLOW
+==============================
+
 AUXILLARY INFRASTRUCTURE RELOCATION (2026-11-13)
 ===============================================
 

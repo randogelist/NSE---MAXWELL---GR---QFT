@@ -57,14 +57,24 @@ The directional base modules import `NSEMaxwell.AnalyticContracts`. Their separa
 ## Current extraction status
 
 ```text
-SOURCE_STATUS = A_TIER_CANDIDATE
+SOURCE_STATUS = A_TIER_FOR_EXACT_CONDITIONAL_BRIDGE
 REGISTERED_ROOT_AUDIT_TARGETS = 226
 REGISTERED_MAXWELL_AUDIT_TARGETS = 52
-ROOT_EXTERNAL_VALIDATION = PENDING_CACHED_NATIVE_LINUX
-ISOLATED_MAXWELL_VALIDATION = PENDING_CACHED_NATIVE_LINUX
+ROOT_EXTERNAL_VALIDATION = PASS_BUILD_AND226_FRESH_AUDITS
+ISOLATED_MAXWELL_VALIDATION = PASS_BUILD_AND52_FRESH_AUDITS
 HODGE_LEAN_INHABITANT = NOT_SUPPLIED
 ```
 
-The native Maxwell package is upstream of this adapter in the import graph. The adapter and both implication directions retain their exact explicit hypotheses. Source extraction requires new matching external build and theorem-audit evidence.
+The native Maxwell package is upstream of this adapter in the import graph. The adapter and both implication directions retain their exact explicit hypotheses. Source extraction passed both external build and theorem-audit scopes in [run 43351199370](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43351199370), source `7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6`.
 
-Native witness endpoints: `MaxwellEndpoint.zero_solution` and `MaxwellEndpoint.zero_datum_global_instance`; 23 native theorems and 29 concrete definition/type targets are registered for the isolated package audit. `MaxwellEndpoint.U_zero` preserves the arbitrary harmonic mean. External certification remains pending.
+Native witness endpoints: `MaxwellEndpoint.zero_solution` and `MaxwellEndpoint.zero_datum_global_instance`; 23 native theorems and 29 concrete definition/type targets are registered for the isolated package audit. `MaxwellEndpoint.U_zero` preserves the arbitrary harmonic mean. All 23 native theorems passed the isolated and integrated named audits. The exact conditional bridge remains A-tier; `FourierHodgeLaws` remains explicit.
+
+[Integrated audit](../Auxillary/evidence/linux-43351199370/audit-summary.json) · [Isolated Maxwell audit](../Auxillary/evidence/linux-43351199370/standalone/audit-summary.json)
+
+```text
+INTEGRATED_LEAN_INPUT_HASHES = 37 / 37 MATCH
+ISOLATED_LEAN_INPUT_HASHES = 7 / 7 MATCH
+ISOLATED_SOURCE_FILES_VERIFIED = 18
+ISOLATED_PROJECT_OBJECTS = INDEPENDENT
+FORMAL_STATUS = CONDITIONAL_FORMAL_CLOSURE
+```

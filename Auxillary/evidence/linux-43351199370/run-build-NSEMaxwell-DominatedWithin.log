@@ -1,0 +1,8 @@
+⚠ [8713/8713] Built NSEMaxwell.DominatedWithin (4.0s)
+warning: Fefferman_B_adapter/NSEMaxwell/DominatedWithin.lean:28:0: automatically included section variable(s) unused in theorem `NSEMaxwell.DominatedWithin.hasDerivWithinAt_integral_of_dominated`:
+  [CompleteSpace E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Build completed successfully (8713 jobs).

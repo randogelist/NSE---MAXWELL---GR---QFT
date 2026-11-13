@@ -1,3 +1,28 @@
+# Native Maxwell package and integrated bridge certificate
+
+[Run 43351199370](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43351199370) compiled the native package and the complete repository using external native Linux Lean 4.34.0-rc1. Source commit: `7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6`.
+
+| Scope | Fresh named audits | Matching Lean inputs |
+|---|---:|---:|
+| Integrated repository | 226/226 PASS_STANDARD_ONLY | 37/37 |
+| Isolated Maxwell package | 52/52 PASS_STANDARD_ONLY | 7/7 |
+
+[linux-43351199370/](linux-43351199370/) preserves all 109 original artifact files. The isolated build verifies all 18 package sources, permits only Mathlib/MaxwellEndpoint imports, shares the pinned dependency cache, and keeps project objects separate. [Isolation result](linux-43351199370/maxwell-isolation-result.json).
+
+```text
+ARTIFACT_SHA256 = 4da8e2720886ff08fd905a6e3b94ec579dcf0027411bd07e2c275dc7d282a2fb
+INTEGRATED_MANIFEST_SHA256 = 69abcd877f16956cce0b5fe0fc323465aded436bc8369aa674e86cee31a9445e
+STANDALONE_MANIFEST_SHA256 = 489e25cd64350c06ca232223ceda96205194b071c72134fe0f8eb58f22eef322
+NATIVE_THEOREMS = 23 A_TIER
+EXACT_BRIDGE = CONDITIONAL_FORMAL_CLOSURE
+HODGE_LEAN_INHABITANT = NOT_SUPPLIED
+LOCAL_LEAN_EXECUTIONS = 0
+```
+
+Every certificate below retains its original source commit and historical input paths. Promotion records remain separate from original artifact bytes.
+
+## Prior certificate indexes
+
 # Auxillary evidence location
 
 ```text

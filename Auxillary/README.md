@@ -28,7 +28,7 @@ COMPILER = LEAN_4.34.0-rc1_NATIVE_LINUX
 INTEGRATED_AUDIT_TARGETS = 226
 ISOLATED_MAXWELL_AUDIT_TARGETS = 52
 NATIVE_MAXWELL_THEOREMS = 23
-CURRENT_VALIDATION = PENDING_CACHED_NATIVE_LINUX_ROOT_AND_ISOLATED_MAXWELL
+CURRENT_VALIDATION = PASS_226_INTEGRATED_AND52_ISOLATED_AUDITS
 LOCAL_LEAN_EXECUTIONS = 0
 HODGE_LEAN_INHABITANT = NOT_SUPPLIED
 ```
@@ -37,8 +37,14 @@ HODGE_LEAN_INHABITANT = NOT_SUPPLIED
 
 [Run 43348914489](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43348914489), source `b02425040a217a94855cfa52934e303f12fe80de`: 174/174 fresh audits; 30/30 matching Lean inputs; compiler, dependency and project cache exact hits; zero module rebuilds after Lake trace validation.
 
-[Original evidence](evidence/linux-43348914489/) preserves all 38 artifact files and their historical source paths. Current Maxwell extraction requires the separate matching certificate recorded above.
+[Original evidence](evidence/linux-43348914489/) preserves all 38 artifact files and their historical source paths. The native Maxwell extraction has the separate matching certificate below.
 
 ## Root discovery boundary
 
 `lakefile.lean`, `lake-manifest.json`, and `lean-toolchain` remain at the repository root. GitHub Actions discovery and repository-wide instructions/configuration retain their functional locations. Standalone Maxwell configuration and runners reside inside `Maxwell_Endpoint/` to permit independent extraction.
+
+## Native Maxwell extraction certificate
+
+[Run 43351199370](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43351199370), source `7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6`: 226/226 integrated audits and 52/52 isolated Maxwell audits passed with approved foundational axioms only. All 37 integrated and seven standalone Lean input hashes match. The isolated compiler verified all 18 package files and shared only the pinned mathematical dependency cache.
+
+[Original evidence](evidence/linux-43351199370/) preserves 109 artifact files. [Standalone audit](evidence/linux-43351199370/standalone/audit-summary.json) and [isolation result](evidence/linux-43351199370/maxwell-isolation-result.json) certify the native package independently of the NSE adapter.

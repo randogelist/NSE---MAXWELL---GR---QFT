@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "source_commit": "7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6",
+  "isolated_root": "/home/runner/work/_temp/nse-maxwell-endpoint",
+  "dependency_cache": "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/.lake/packages",
+  "files": [
+    {
+      "source_path": "Maxwell_Endpoint/MAXWELL_ENDPOINT_A_TIER.txt",
+      "isolated_path": "MAXWELL_ENDPOINT_A_TIER.txt",
+      "sha256": "90a8972de6145e12777447b6c939efdb84e5772b11a7898cc5d9e0ff6ed41ff9",
+      "size_bytes": 12544
+    },
+    {
+      "source_path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+      "isolated_path": "MaxwellEndpoint.lean",
+      "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+      "size_bytes": 128
+    },
+    {
+      "source_path": "Maxwell_Endpoint/MaxwellEndpoint/Audit.lean",
+      "isolated_path": "MaxwellEndpoint/Audit.lean",
+      "sha256": "edb8ea96f6098cfadbcc2c8f64c2dd5621d9051def0b2869cbdb77c063428db6",
+      "size_bytes": 4723
+    },
+    {
+      "source_path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+      "isolated_path": "MaxwellEndpoint/Constitutive.lean",
+      "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+      "size_bytes": 2685
+    },
+    {
+      "source_path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+      "isolated_path": "MaxwellEndpoint/Geometry.lean",
+      "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+      "size_bytes": 3646
+    },
+    {
+      "source_path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+      "isolated_path": "MaxwellEndpoint/Native.lean",
+      "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+      "size_bytes": 7121
+    },
+    {
+      "source_path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+      "isolated_path": "MaxwellEndpoint/System.lean",
+      "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+      "size_bytes": 1928
+    },
+    {
+      "source_path": "Maxwell_Endpoint/README.md",
+      "isolated_path": "README.md",
+      "sha256": "c065cd0cb5a7c49441f642e6e1f0e7b59599655e43742c87a97cda0da76a2549",
+      "size_bytes": 6217
+    },
+    {
+      "source_path": "Maxwell_Endpoint/audit-targets.txt",
+      "isolated_path": "audit-targets.txt",
+      "sha256": "f948a75356e3ee6b5f2f450eb21f49670c8e0860ab0f02a11f9beb488fe8e9ab",
+      "size_bytes": 1719
+    },
+    {
+      "source_path": "Maxwell_Endpoint/cache-targets.txt",
+      "isolated_path": "cache-targets.txt",
+      "sha256": "6534bc4fa124679c91833cded1886eceb5f8b55ce4217c7e2748c8430b37d5f2",
+      "size_bytes": 78
+    },
+    {
+      "source_path": "Maxwell_Endpoint/formalization-status.json",
+      "isolated_path": "formalization-status.json",
+      "sha256": "10d4c39749775f6f9772af277ee19bd8ad0484ea2af6f0871cd161c51b4c5113",
+      "size_bytes": 2622
+    },
+    {
+      "source_path": "Maxwell_Endpoint/lake-manifest.json",
+      "isolated_path": "lake-manifest.json",
+      "sha256": "1e0b1b6869c16f1abca2c92625896ac4f747b3f7a34c72c4199d60de1f9ab94f",
+      "size_bytes": 3554
+    },
+    {
+      "source_path": "Maxwell_Endpoint/lakefile.lean",
+      "isolated_path": "lakefile.lean",
+      "sha256": "eb4bd07a18245ed386c71724d61bf051aecb05ceefb031482bef7dcb4480b0f5",
+      "size_bytes": 282
+    },
+    {
+      "source_path": "Maxwell_Endpoint/lean-toolchain",
+      "isolated_path": "lean-toolchain",
+      "sha256": "cdbc6c372a2b37ad94430a6cec69cedfa4d36f255bfd968773fd91bf7a1746bf",
+      "size_bytes": 29
+    },
+    {
+      "source_path": "Maxwell_Endpoint/run.cmd",
+      "isolated_path": "run.cmd",
+      "sha256": "e81fa196776fe023ebfc96703e774f7be8fd75f93700afa2553c040c242ebc6c",
+      "size_bytes": 213
+    },
+    {
+      "source_path": "Maxwell_Endpoint/run.sh",
+      "isolated_path": "run.sh",
+      "sha256": "c9a3da21146365fc640461d9d78525655e431aba013aed9a02a8d36a8dc03077",
+      "size_bytes": 160
+    },
+    {
+      "source_path": "Maxwell_Endpoint/scripts/run.ps1",
+      "isolated_path": "scripts/run.ps1",
+      "sha256": "3827708cd5a6d2675d9cb0c77223789dc934d4c13222b10bf3e4ff235e49a2a6",
+      "size_bytes": 26256
+    },
+    {
+      "source_path": "Maxwell_Endpoint/scripts/verify_audit.py",
+      "isolated_path": "scripts/verify_audit.py",
+      "sha256": "d183ba6e378dd39a904c93e9e09421c9052c56ae7f3159f198c355600b3901d6",
+      "size_bytes": 15420
+    }
+  ],
+  "imports": {
+    "MaxwellEndpoint.lean": [
+      "MaxwellEndpoint.Geometry",
+      "MaxwellEndpoint.Constitutive",
+      "MaxwellEndpoint.System",
+      "MaxwellEndpoint.Native"
+    ],
+    "MaxwellEndpoint/Audit.lean": [
+      "MaxwellEndpoint"
+    ],
+    "MaxwellEndpoint/Constitutive.lean": [
+      "MaxwellEndpoint.Geometry"
+    ],
+    "MaxwellEndpoint/Geometry.lean": [
+      "Mathlib"
+    ],
+    "MaxwellEndpoint/Native.lean": [
+      "MaxwellEndpoint.System"
+    ],
+    "MaxwellEndpoint/System.lean": [
+      "MaxwellEndpoint.Constitutive"
+    ]
+  },
+  "status": "PREPARED"
+}
