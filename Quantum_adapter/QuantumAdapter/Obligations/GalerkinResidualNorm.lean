@@ -129,7 +129,7 @@ theorem referenceResidual_h3_le_h0_tail (h : NSSolution ν a u p)
       have hd := mul_le_mul_of_nonneg_right
         (mul_le_mul_of_nonneg_right (mul_le_mul_of_nonneg_left hD (show (0 : ℝ) ≤ 432 by norm_num))
           (sq_nonneg ‖phaseSobolev 0 N (referenceProjection h N t) - referenceSobolevAt h 0 t ht‖)) hsum
-      convert hd using 1 <;> ring
+      simpa only [← mul_assoc, show (432 : ℝ) * 4 = 1728 by norm_num] using hd
 
 end
 end QuantumAdapter.Obligations

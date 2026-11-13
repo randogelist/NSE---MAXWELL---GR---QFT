@@ -113,6 +113,12 @@ theorem phase_drift_coefficient_tendsto (ν : ℝ) (K : ℕ → ℕ)
 
 theorem eventually_frequency_mem_fullModes (φ : ℕ → ℕ) (hφ : StrictMono φ) (k : Frequency) :
     ∀ᶠ n in atTop, k ∈ fullModes (φ n+1) := by
+  have hφgrow : ∀ n : ℕ, n ≤ φ n := by
+    intro n
+    induction n with
+    | zero => exact Nat.zero_le _
+    | succ n ih =>
+      exact Nat.succ_le_of_lt (lt_of_le_of_lt ih (hφ (Nat.lt_succ_self n)))
   obtain ⟨M,hM⟩ := exists_nat_ge (galerkinFreqSq k)
   apply Filter.eventually_atTop.mpr
   refine ⟨M+1,?_⟩
@@ -122,11 +128,7 @@ theorem eventually_frequency_mem_fullModes (φ : ℕ → ℕ) (hφ : StrictMono 
     exact zero_mem_fullModes _
   · apply Finset.mem_insert_of_mem
     apply mem_cutoffModes_of_freqSq_le hk
-    have hφn : n ≤ φ n := by
-      induction n with
-      | zero => exact Nat.zero_le _
-      | succ n ih =>
-        exact Nat.succ_le_of_lt (lt_of_le_of_lt ih (hφ (Nat.lt_succ_self n)))
+    have hφn : n ≤ φ n := hφgrow n
     have hMN : M ≤ φ n+1 := by omega
     have hc : (M:ℤ) ≤ ((φ n+1:ℕ):ℤ) := by exact_mod_cast hMN
     have hz : (1:ℤ) ≤ ((φ n+1:ℕ):ℤ) := by exact_mod_cast (show 1≤φ n+1 by omega)

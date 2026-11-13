@@ -145,15 +145,12 @@ theorem fourierJetTerm_hasFDerivWithinAt
       (s := forwardSpacetime))
   have h := hx.mul (ht.const_mul (fourierWordSymbol a.spatial k))
   convert! h using 1
-  ext v
-  simp only [Fintype.sum_option, fourierJetTerm, fourierJetStep, spacetimeCoordinate,
-    fourierWordSymbol_cons, ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
-    ContinuousLinearMap.sum_apply, ContinuousLinearMap.comp_apply,
-    ContinuousLinearMap.smulRight_apply, ContinuousLinearMap.one_apply,
-    ContinuousLinearMap.fst_apply, ContinuousLinearMap.snd_apply,
-    Complex.ofRealCLM_apply, EuclideanSpace.coe_proj, smul_eq_mul,
-    Complex.real_smul, fourierPhaseCLM, Finset.sum_mul, Finset.mul_sum]
-  simp only [mul_assoc, mul_left_comm, mul_comm] <;> ring
+  apply ContinuousLinearMap.ext
+  intro v
+  simp [Fintype.sum_option, fourierJetTerm, fourierJetStep, spacetimeCoordinate,
+    ContinuousLinearMap.toSpanSingleton, Function.comp_def, fourierPhaseCLM,
+    Finset.sum_mul, Finset.mul_sum, smul_eq_mul, Complex.real_smul,
+    mul_assoc, mul_left_comm, mul_comm]
 
 def forwardTimeSlab (T : ℝ) : Set (ℝ × Vec) :=
   forwardSpacetime ∩ {z | z.1 < T}
