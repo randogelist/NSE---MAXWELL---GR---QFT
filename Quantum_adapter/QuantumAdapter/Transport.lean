@@ -78,10 +78,10 @@ theorem WaveAdmissible.halfDensityPullback {E : Type*} [MeasurableSpace E]
     {μ : Measure E} {κ : ℝ} {Φ : ℝ → E → E}
     (hI : IntegralPullbackLaw μ κ Φ) (hLp : MemLpPullbackLaw μ κ Φ)
     {ψ : Wave E} (hψ : WaveAdmissible μ ψ) (t : ℝ) :
-    WaveAdmissible μ (halfDensityPullback κ Φ t ψ) := by
+    WaveAdmissible μ (QuantumAdapter.halfDensityPullback κ Φ t ψ) := by
   refine ⟨hLp t ψ hψ.memLp, ?_⟩
   calc
-    (∫ q, bornDensity (halfDensityPullback κ Φ t ψ) q ∂μ) =
+    (∫ q, bornDensity (QuantumAdapter.halfDensityPullback κ Φ t ψ) q ∂μ) =
         ∫ q, Real.exp (κ * t) * bornDensity ψ (Φ (-t) q) ∂μ := by
       apply integral_congr_ae
       filter_upwards [] with q
