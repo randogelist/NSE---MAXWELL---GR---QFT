@@ -54,7 +54,7 @@ theorem flowPath_continuousOn_representative {T : ℝ}
   rw [continuousOn_iff_continuous_restrict]
   have he : Continuous (fun z : finiteSpacetime T => Γ z.1.2 ⟨z.1.1, z.2⟩) := by
     exact (hΓ.comp continuous_subtype_val.snd).eval
-      (continuous_subtype_mk _ continuous_subtype_val.fst)
+      (continuous_subtype_val.fst.subtype_mk (fun z => z.2))
   convert he using 1
   funext z
   exact hJ z.1.1 z.2 z.1.2
@@ -91,8 +91,11 @@ theorem flow_hasFDerivWithinAt_of_time_remainder {T : ℝ}
     apply HasFDerivWithinAt.of_isLittleO
     simpa using htime
   have hl : HasFDerivAt (fun z : ℝ × Vec => J (t, z.2))
-      (A.comp (ContinuousLinearMap.snd ℝ ℝ Vec)) (t, a) :=
-    hlabel.comp (t, a) hasFDerivAt_snd
+      (A.comp (ContinuousLinearMap.snd ℝ ℝ Vec)) (t, a) := by
+    have hs : HasFDerivAt (fun z : ℝ × Vec => z.2)
+        (ContinuousLinearMap.snd ℝ ℝ Vec) (t, a) :=
+      (ContinuousLinearMap.snd ℝ ℝ Vec).hasFDerivAt
+    simpa only [Function.comp_def] using hlabel.comp (t, a) hs
   simpa only [sub_add_cancel] using hg.add hl.hasFDerivWithinAt
 
 end JointDerivative
@@ -148,7 +151,7 @@ theorem flowJet_tower_contDiffOn {T : ℝ} (hT : 0 < T)
           (contDiffOn_succ_iff_hasFDerivWithinAt_of_uniqueDiffOn
             (uniqueDiffOn_finiteSpacetime hT)).mpr
               ⟨by simp, _, hd, hderiv r⟩
-        simpa only [Nat.cast_add, Nat.cast_one] using hs
+        simpa only [Nat.cast_add, Nat.cast_one, Nat.cast_succ] using hs
   intro r
   exact contDiffOn_infty.mpr (fun n => hall n r)
 

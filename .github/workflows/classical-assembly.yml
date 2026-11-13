@@ -134,10 +134,7 @@ jobs:
         id: project-cache
         uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
-          path: |
-            .lake/build
-            .lake/packages/mathlib/.lake/build
-            .mathlib-download-cache
+          path: .lake/build
           key: nse-assembly-project-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-${{ hashFiles('ASSEMBLY/**/*.lean', 'Classical_Mechanics_adapter/**/*.lean', 'B <-> ClassicalMechanics/**/*.lean', 'Fefferman_adapter/NSEMaxwell.lean', 'Fefferman_adapter/NSEMaxwell/**/*.lean', 'B <-> Maxwell/**/*.lean', 'Maxwell_Endpoint/MaxwellEndpoint.lean', 'Maxwell_Endpoint/MaxwellEndpoint/**/*.lean') }}
           restore-keys: |
             nse-assembly-project-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-
@@ -153,7 +150,17 @@ jobs:
         shell: bash
         run: bash Auxillary/run_literature.sh
 
+      - name: Restore reusable native flow dependency objects
+        id: flow-deps-cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: |
+            .lake/packages/mathlib/.lake/build
+            .mathlib-download-cache
+          key: nse-flow-dependencies-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}
+
       - name: Compile independent native flow edges and freshly audit each module
+        id: flow-audit
         shell: bash
         run: bash Auxillary/run_flow.sh
 
@@ -193,8 +200,14 @@ jobs:
         if: always() && steps.project-cache.outcome == 'success' && steps.project-cache.outputs.cache-hit != 'true' && steps.cache-directories.outputs.project-exists == 'true' && steps.project-cache.outputs.cache-primary-key != ''
         uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
+          path: .lake/build
+          key: ${{ steps.project-cache.outputs.cache-primary-key }}
+
+      - name: Preserve reusable flow dependencies after success or failure
+        if: always() && steps.flow-deps-cache.outcome == 'success' && steps.flow-deps-cache.outputs.cache-hit != 'true' && steps.flow-audit.outcome != 'skipped' && steps.flow-deps-cache.outputs.cache-primary-key != ''
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
           path: |
-            .lake/build
             .lake/packages/mathlib/.lake/build
             .mathlib-download-cache
-          key: ${{ steps.project-cache.outputs.cache-primary-key }}
+          key: ${{ steps.flow-deps-cache.outputs.cache-primary-key }}

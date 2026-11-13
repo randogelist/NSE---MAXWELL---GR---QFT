@@ -14,7 +14,7 @@ set_option autoImplicit false
 namespace ClassicalMechanicsAssembly
 
 open ClassicalMechanics NSEMaxwell.Classical Set
-open scoped ContDiff
+open scoped ContDiff NNReal
 
 noncomputable section
 
@@ -70,7 +70,8 @@ theorem flow_spatial_fderiv_continuousOn {T : ℝ} (hT : 0 < T)
     (continuousOn_const (c := ContinuousLinearMap.inr ℝ ℝ Vec))
   apply hc.congr
   intro z hz
-  ext v
+  apply ContinuousLinearMap.ext
+  intro v
   exact finite_spatial_restriction_fderiv hu hz z.2 v
 
 /-- The full uniform field and Lipschitz bounds required by Picard--Lindelof. -/

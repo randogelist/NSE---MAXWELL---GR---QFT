@@ -33,12 +33,12 @@ theorem det_hasDerivWithinAt_mul
   have h5 := ((hc 0 2).mul (hc 1 0)).mul (hc 2 1)
   have h6 := ((hc 0 2).mul (hc 1 1)).mul (hc 2 0)
   have hdet := ((((h1.sub h2).sub h3).add h4).add h5).sub h6
-  convert hdet using 1
-  · funext s
-    simp [Matrix.det_fin_three]
-  · simp only [Matrix.trace, Matrix.diag, Matrix.mul_apply,
-      Matrix.det_fin_three, Fin.sum_univ_three]
-    ring
+  have hdet' := hdet.congr (f₁ := fun s => (F s).det)
+    (fun s _ => Matrix.det_fin_three (F s)) (Matrix.det_fin_three (F t))
+  apply hdet'.congr_deriv
+  simp only [Pi.mul_apply, Matrix.trace, Matrix.diag, Matrix.mul_apply,
+    Matrix.det_fin_three, Fin.sum_univ_three]
+  ring
 
 /-- Traceless matrix evolution gives the actual zero derivative of its determinant. -/
 theorem det_hasDerivWithinAt_zero_of_trace_zero

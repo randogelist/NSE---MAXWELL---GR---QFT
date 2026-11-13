@@ -16,7 +16,7 @@ set_option autoImplicit false
 namespace ClassicalMechanicsAssembly
 
 open Set Filter ClassicalMechanics NSEMaxwell.Classical
-open scoped Topology ContDiff NNReal
+open scoped Topology ContDiff NNReal BigOperators
 
 noncomputable section
 
@@ -59,8 +59,10 @@ theorem contDiffOn_inverse_of_contDiffOn
   induction n with
   | zero => exact contDiffOn_zero.mpr hg
   | succ n ih =>
-      have hdf : ContDiffOn ℝ (n : ℕ∞ω) (fderivWithin ℝ f s) s :=
+      have hdf_infty : ContDiffOn ℝ ∞ (fderivWithin ℝ f s) s :=
         hf.fderivWithin hs (by simp)
+      have hdf : ContDiffOn ℝ (n : ℕ∞ω) (fderivWithin ℝ f s) s :=
+        (contDiffOn_infty.mp hdf_infty) n
       have hcomp := hdf.comp ih hmap
       have hderiv : ContDiffOn ℝ (n : ℕ∞ω)
           (fun y => ContinuousLinearMap.inverse (fderivWithin ℝ f s (g y))) t := by
@@ -72,7 +74,7 @@ theorem contDiffOn_inverse_of_contDiffOn
         refine ⟨by simp, _, hderiv, ?_⟩
         intro y hy
         exact hasFDerivWithinAt_inverse_of_contDiffOn hf hg hmap hfg hinv hy
-      simpa only [Nat.cast_add, Nat.cast_one] using hsucc
+      simpa only [Nat.cast_add, Nat.cast_one, Nat.cast_succ] using hsucc
 
 end GeneralInverse
 
@@ -118,7 +120,9 @@ theorem triangular_spacetime_isInvertible
         congr 1
         simp
       _ = r • D (1, 0) + D (0, v) := by rw [map_add, map_smul]
-      _ = r • D (1, 0) + e v := by rw [hD, ← he]
+      _ = r • D (1, 0) + e v := by
+        rw [hD, ← he]
+        rfl
   let L : (ℝ × Vec) →L[ℝ] (ℝ × Vec) :=
     (ContinuousLinearMap.fst ℝ ℝ Vec).prod D
   have hbij : Function.Bijective L := by
@@ -134,12 +138,13 @@ theorem triangular_spacetime_isInvertible
       exact add_left_cancel hx
     · intro z
       refine ⟨(z.1, e.symm (z.2 - z.1 • D (1, 0))), ?_⟩
+      change (z.1, D (z.1, e.symm (z.2 - z.1 • D (1, 0)))) = z
       apply Prod.ext rfl
-      change D (z.1, e.symm (z.2 - z.1 • D (1, 0))) = z.2
       rw [hsum, e.apply_symm_apply]
       abel
   refine ⟨(LinearEquiv.ofBijective L.toLinearMap hbij).toContinuousLinearEquiv, ?_⟩
-  ext z
+  apply ContinuousLinearMap.ext
+  intro z
   rfl
 
 /-- Unit spatial Jacobian discharges invertibility of the actual spacetime within derivative. -/
@@ -155,7 +160,7 @@ theorem flowSpacetimeMap_fderivWithin_isInvertible {T : ℝ} (hT : 0 < T)
     exact (finite_spatial_restriction_fderiv hη hz z.2 h).symm
   have hF := spatial_fderiv_isInvertible_of_det_one (η z.1) z.2 (hdet z.1 hz z.2)
   have hdη := (hη.differentiableOn (by simp) z hz).hasFDerivWithinAt
-  have hdH := (hasFDerivWithinAt_fst (𝕜 := ℝ) (x := z)).prodMk hdη
+  have hdH := (hasFDerivWithinAt_fst (𝕜 := ℝ) (p := z)).prodMk hdη
   have heq : fderivWithin ℝ (flowSpacetimeMap η) (finiteSpacetime T) z =
       (ContinuousLinearMap.fst ℝ ℝ Vec).prod D :=
     hdH.fderivWithin (uniqueDiffOn_finiteSpacetime hT z hz)
@@ -186,7 +191,7 @@ theorem inverse_flow_dist_le {T : ℝ} {η ρ : Velocity} {B C : ℝ≥0}
     _ ≤ (C : ℝ) * (dist x y + dist y (η t (ρ s y))) :=
       mul_le_mul_of_nonneg_left (dist_triangle x y (η t (ρ s y))) C.coe_nonneg
     _ ≤ (C : ℝ) * (dist x y + (B : ℝ) * dist t s) :=
-      mul_le_mul_of_nonneg_left (add_le_add_left hmotion _) C.coe_nonneg
+      mul_le_mul_of_nonneg_left (add_le_add (le_refl (dist x y)) hmotion) C.coe_nonneg
 
 /-- The quantitative inverse estimate supplies joint continuity on the closed slab. -/
 theorem continuousOn_inverse_flow_of_estimate {T : ℝ} {ρ : Velocity} {B C : ℝ≥0}
