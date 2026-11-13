@@ -53,18 +53,21 @@ def main():
     env.pop("LEAN_PATH", None)
     env.pop("LEAN_SRC_PATH", None)
     errors, results, declaration_results = [], [], []
+    source_overrides, lake_arguments, extra_inputs = {}, [], {}
 
     def save():
         write_json(report / "provenance.json", prov)
         write_json(report / "module-status.json", {"schema_version": 1, "source_commit": prov["source_commit"], "modules": results})
 
     def file(relative):
-        path = (root / relative).resolve()
+        path = (root / source_overrides.get(relative, relative)).resolve()
         if not path.is_relative_to(root) or not path.is_file():
             raise ValueError(f"Invalid or missing source: {relative}")
         return path
 
     def run(argv, log):
+        if argv[0] == "lake" and lake_arguments:
+            argv = ["lake", *lake_arguments, *argv[1:]]
         start = time.monotonic()
         print("+ " + " ".join(argv), flush=True)
         r = subprocess.run(argv, cwd=root, env=env, stdout=subprocess.PIPE,
@@ -94,6 +97,19 @@ def main():
         if args.source_commit and args.source_commit != head:
             raise RuntimeError("Requested and checked-out source commits differ.")
         prov["source_commit"] = head
+        if args.expected_platform == "windows":
+            layout_spec = importlib.util.spec_from_file_location("windows_source_layout", file(HERE + "/windows_layout.py"))
+            if layout_spec is None or layout_spec.loader is None:
+                raise RuntimeError("Windows layout verifier unavailable")
+            layout_module = importlib.util.module_from_spec(layout_spec)
+            layout_spec.loader.exec_module(layout_module)
+            mapped = layout_module.layout(root, head, create=False)
+            source_overrides.update({f["original_path"]: f["mapped_path"] for f in mapped["files"]})
+            lake_arguments = ["--file", mapped["effective_config_path"]]
+            extra_inputs = {mapped["effective_config_path"]: mapped["effective_config_sha256"],
+                            "artifacts/external-windows/source-layout.json": sha256(file("artifacts/external-windows/source-layout.json"))}
+            prov["windows_source_layout"] = mapped
+            prov["effective_lake_configuration_sha256"] = mapped["effective_config_sha256"]
         version = require_command(["lean", "--version"], "lean-version.txt")
         if not re.search(r"version 4\.34\.0-rc1,\s*[^,\s]*-" + args.expected_platform + "-", version):
             raise RuntimeError("Matching native " + args.expected_platform + " compiler required.")
@@ -106,6 +122,9 @@ def main():
         dep_inputs = ["platform=" + args.expected_platform, "toolchain=" + TOOLCHAIN, "compiler=" + version]
         dep_inputs += [n + "=" + sha256(file(n)) for n in ("lean-toolchain", "lakefile.lean", "lake-manifest.json")]
         dep_inputs.append("targets=" + ",".join(targets))
+        if args.expected_platform == "windows":
+            dep_inputs += ["windows_effective_config=" + mapped["effective_config_sha256"],
+                           "windows_layout=" + extra_inputs["artifacts/external-windows/source-layout.json"]]
         fingerprint = hashlib.sha256("\n".join(dep_inputs).encode()).hexdigest()
         if prep.get("status") != "PASS" or prep.get("external_platform") != args.expected_platform or prep.get("dependency_fingerprint") != fingerprint:
             raise RuntimeError("Dependency preparation does not match current pins/compiler/configuration.")
@@ -152,31 +171,6 @@ def main():
         if flat != audit_targets or len(flat) != len(set(flat)):
             raise ValueError("module-targets.json and audit-targets.txt must have the same exact ordered unique declarations.")
         scope = json.loads(file(HERE + "/formalization-status.json").read_text(encoding="utf-8"))
-        if args.expected_platform == "windows":
-            header_spec = importlib.util.spec_from_file_location("native_source_headers",
-                file("Fefferman_adapter/scripts/verify_native_sources.py"))
-            if header_spec is None or header_spec.loader is None:
-                raise RuntimeError("Native source import parser unavailable")
-            header_parser = importlib.util.module_from_spec(header_spec)
-            header_spec.loader.exec_module(header_parser)
-            roots = {"QuantumAdapter": "Quantum_adapter", "NSEQuantumBridge": "Quantum_adapter",
-                     "NSEMaxwell": "Fefferman_adapter", "MethlibEndpoints": "Fefferman_adapter",
-                     "SingularClosure": "Fefferman_adapter/NativeSources/methlib",
-                     "MaxwellEndpoint": "Maxwell_Endpoint"}
-            forbidden = {"NSEQuantumForward", "NSEQuantumReverse", "NSEMaxwellForward", "NSEMaxwellReverse"}
-            pending, checked = list(seen), set()
-            while pending:
-                module = pending.pop()
-                if module in checked:
-                    continue
-                checked.add(module)
-                prefix = module.split(".")[0]
-                if prefix in forbidden:
-                    raise RuntimeError("Selected source closure requires a Linux-only arrow path: " + module)
-                if prefix in roots:
-                    source = file(roots[prefix] + "/" + module.replace(".", "/") + ".lean")
-                    pending.extend(header_parser.lean_imports(source.read_text(encoding="utf-8")))
-            prov["windows_project_import_closure"] = sorted(checked)
 
         # One Git inventory; verify every project proof input against its exact committed blob.
         inventory = subprocess.check_output(["git", "ls-tree", "-rz", "--full-tree", head], cwd=root)
@@ -198,16 +192,7 @@ def main():
         manifest = {"schema_version": 1, "source_commit": head,
                     "scope": "ALL_TRACKED_PROJECT_PROOFS_PLUS_CONFIG; VENDORED_DEPENDENCIES_VERIFIED_BY_PREPARATION_AND_LOCK", "files": []}
         for relative in sorted(inputs):
-            # Native Windows uses a sparse checkout: literal arrow paths cannot
-            # be materialized. They are not imported by the obligation chain.
-            # Preserve their exact Git identity; any attempted Lake import still
-            # fails rather than substituting a source or an object file.
-            git_only = (args.expected_platform == "windows" and
-                        relative.startswith(("B <-> Maxwell/", "B <-> Quantum/")))
-            if git_only:
-                raw = subprocess.check_output(["git", "cat-file", "blob", blobs[relative]], cwd=root)
-            else:
-                raw = file(relative).read_bytes()
+            raw = file(relative).read_bytes()
             actual = hashlib.sha1(f"blob {len(raw)}\0".encode() + raw).hexdigest()
             expected = blobs.get(relative)
             normalization = "IDENTITY"
@@ -224,7 +209,9 @@ def main():
             manifest["files"].append({"path": relative, "sha256": hashlib.sha256(raw).hexdigest(),
                 "git_blob_sha": canonical, "working_tree_blob_sha": actual,
                 "checkout_normalization": normalization,
-                "materialization": "GIT_ONLY_WINDOWS_INVALID_PATH" if git_only else "WORKTREE"})
+                "materialization": "WINDOWS_SAFE_PATH" if relative in source_overrides else "WORKTREE",
+                "physical_path": source_overrides.get(relative, relative)})
+        manifest["generated_configuration_inputs"] = extra_inputs
         write_json(report / "source-manifest.json", manifest)
         prov["source_manifest_sha256"] = sha256(report / "source-manifest.json")
         prov["stage"] = "BUILD_AND_AUDIT"
@@ -323,10 +310,11 @@ def main():
                 errors.extend(f"{name}: {e}" for e in module_errors)
                 save()
         for item in manifest["files"]:
-            if item.get("materialization") == "GIT_ONLY_WINDOWS_INVALID_PATH":
-                continue
             if sha256(file(item["path"])) != item["sha256"]:
                 errors.append("Source changed during external run: " + item["path"])
+        for relative, expected in extra_inputs.items():
+            if sha256(file(relative)) != expected:
+                errors.append("Windows layout/configuration changed during run: " + relative)
         status = "FAIL" if errors else "PASS_STANDARD_ONLY"
         summary = {"schema_version": 1, "status": status, "source_commit": head,
             "compiler": version, "mathlib_commit": MATHLIB,

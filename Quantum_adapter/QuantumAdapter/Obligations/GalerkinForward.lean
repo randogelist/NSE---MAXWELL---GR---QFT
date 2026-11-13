@@ -12,7 +12,7 @@ theorem phaseFlow_smooth_stability {ν : ℝ} (hν : 0 < ν) (F : PhaseFlow ν)
     (a : Field) (ha : Data a) (u : Velocity) (p : Pressure)
     (h : NSSolution ν a u p) (T : ℝ) (hT : 0 < T) :
     GalerkinBoundAt F a ha T := by
-  obtain ⟨δ, hδ, hres⟩ := h.referenceResidual_vanishes_uniformly T
+  obtain ⟨δ, hδ, hres⟩ := NSSolution.referenceResidual_vanishes_uniformly h T
   exact galerkinBoundAt_of_reference_residual_bound hν F h ha T hT δ hδ hres
 
 end

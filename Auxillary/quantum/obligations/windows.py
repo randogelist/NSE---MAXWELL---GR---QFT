@@ -11,6 +11,7 @@ import re
 import subprocess
 import sys
 import time
+from windows_layout import checkout_for_bundle, git, layout
 
 TOOLCHAIN = "leanprover/lean4:v4.34.0-rc1"
 MATHLIB = "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11"
@@ -22,6 +23,10 @@ def main():
     if platform.system() != "Windows":
         raise RuntimeError("EXTERNAL_NATIVE_WINDOWS_REQUIRED")
     root = args.repo_root.resolve()
+    if not (root / ".git").exists():
+        root = checkout_for_bundle(root)
+    commit = git(root, "rev-parse", "HEAD").decode().strip()
+    mapped = layout(root, commit, create=True)
     report = root / "artifacts/external-windows"
     report.mkdir(parents=True, exist_ok=True)
     env = dict(os.environ, ELAN_TOOLCHAIN=TOOLCHAIN, MATHLIB_NO_CACHE_ON_UPDATE="1",
@@ -31,6 +36,8 @@ def main():
     timings = []
 
     def run(argv, filename):
+        if argv[0] == "lake":
+            argv = ["lake", "--file", mapped["effective_config_path"], *argv[1:]]
         print("+ " + " ".join(map(str, argv)), flush=True)
         start = time.monotonic()
         r = subprocess.run(list(map(str, argv)), cwd=root, env=env, capture_output=True,
@@ -92,6 +99,8 @@ def main():
     inputs = ["platform=windows", "toolchain=" + TOOLCHAIN, "compiler=" + version]
     inputs += [n + "=" + sha(n) for n in ("lean-toolchain", "lakefile.lean", "lake-manifest.json")]
     inputs.append("targets=" + ",".join(targets))
+    inputs += ["windows_effective_config=" + mapped["effective_config_sha256"],
+               "windows_layout=" + sha("artifacts/external-windows/source-layout.json")]
     prep = {"schema_version": 1, "status": "PASS", "external_platform": "windows",
             "dependency_fingerprint": hashlib.sha256("\n".join(inputs).encode()).hexdigest(),
             "dependency_inputs": inputs, "cache_targets": targets, "dependency_revisions": revisions,
@@ -99,7 +108,7 @@ def main():
     preparation = report / "dependency-preparation.json"
     preparation.write_text(json.dumps(prep, indent=2) + "\n", encoding="utf-8")
     return subprocess.run([sys.executable, str(root / "Auxillary/quantum/obligations/run.py"),
-                           "--repo-root", str(root), "--expected-platform", "windows",
+                           "--repo-root", str(root), "--expected-platform", "windows", "--source-commit", commit,
                            "--dependency-report", str(preparation),
                            "--report-directory", str(report / "quantum-obligations")],
                           cwd=root, env=env).returncode

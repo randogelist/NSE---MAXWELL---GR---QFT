@@ -51,10 +51,36 @@ git checkout
 Auxillary\quantum\obligations\run.cmd
 ```
 
-Windows evidence records the omitted arrow files by their exact Git blobs.
-The selected project import closure must avoid those files; an attempted
-arrow-module import fails explicitly. No theorem source is rewritten.
+Windows replay materializes the original arrow-directory Git blobs under
+commit-specific safe paths. The original `lakefile.lean` stays unchanged;
+`lake --file` selects a separately generated configuration containing exactly
+four `srcDir` replacements. Each mapped source retains its original module
+name and exact Git blob/SHA256. `source-layout.json` records the mapping, and
+the audit independently recomputes it before compilation. Thus the complete
+Closure import graph is supported without theorem-source changes.
+
+For a standalone archive preserving this directory layout, place
+`replay-source.json` beside `run.cmd`, `windows.py`, and `windows_layout.py`:
+
+```json
+{"repository":"https://github.com/randogelist/NSE---MAXWELL---GR---QFT.git",
+ "source_commit":"<40-character immutable proof commit>"}
+```
+
+If the archive has no Git checkout, the launcher creates `replay-checkout`
+under the archive root, fetches precisely that commit, and performs the sparse
+checkout above before staging the safe source layout. An existing checkout
+at a different commit is rejected. Repeated runs reuse its native caches.
+The command `--repo-root PATH` selects an existing exact Git checkout.
+
 Reports are separate under `artifacts/external-windows`; Linux evidence is
 never relabeled as Windows evidence. The Windows launcher is source-prepared;
 its runtime status requires an external native Windows replay.
+
+The separate diagnostic workflow elaborates a temporary concatenation of
+original candidate bodies with explicit per-file scopes and a source-line
+map. Internal imports are removed; no admissions, axioms, or stub bodies are
+inserted. Ordinary Lean error recovery may produce cascading diagnostics.
+These results never establish A_TIER and never emit project object files.
+Its timeout applies only to the independent diagnostic process group.
 No local Lean execution is part of the preparation workflow.

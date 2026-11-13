@@ -28,7 +28,7 @@ theorem SmoothVelocity.exists_uniform_coordinateDerivativeL1
     ∃ C : ℝ, 0 ≤ C ∧ ∀ t : ℝ, 0 ≤ t → t ≤ T →
       coordinateDerivativeL1 j m (u t) i ≤ C := by
   have hcont := (EuclideanSpace.proj i : Vec →L[ℝ] ℝ).continuous.comp_continuousOn
-    (h.iteratedCoordinateDerivative_continuousOn j m)
+    (SmoothVelocity.iteratedCoordinateDerivative_continuousOn h j m)
   obtain ⟨C, hC⟩ := (isCompact_Icc.prod isCompact_unitCube).exists_bound_of_continuousOn
     (hcont.mono (show (Icc (0 : ℝ) T) ×ˢ unitCube ⊆ forwardSpacetime from
       fun z hz => hz.1.1))
@@ -36,7 +36,7 @@ theorem SmoothVelocity.exists_uniform_coordinateDerivativeL1
   refine ⟨volume.real unitCube * D, by positivity, ?_⟩
   intro t ht hT
   have hint := iteratedCoordinateDerivative_component_integrable j m (u t)
-    (h.spatial_contDiff t ht) i
+    (SmoothVelocity.spatial_contDiff h t ht) i
   have hconst : IntegrableOn (fun _ : Vec => D) unitCube volume :=
     continuousOn_const.integrableOn_compact isCompact_unitCube
   have hpoint : ∀ᵐ x ∂volume.restrict unitCube,
@@ -50,8 +50,8 @@ theorem SmoothVelocity.exists_uniform_fourierDecayConstant
     (h : SmoothVelocity u) (m : ℕ) (T : ℝ) :
     ∃ C : ℝ, 0 ≤ C ∧ ∀ t : ℝ, 0 ≤ t → t ≤ T → fourierDecayConstant m (u t) ≤ C := by
   choose C₀ hC₀ hb₀ using (fun i : Fin 3 =>
-    h.exists_uniform_coordinateDerivativeL1 (0 : Fin 3) 0 i T)
-  choose C hC hb using (fun j i : Fin 3 => h.exists_uniform_coordinateDerivativeL1 j m i T)
+    SmoothVelocity.exists_uniform_coordinateDerivativeL1 h (0 : Fin 3) 0 i T)
+  choose C hC hb using (fun j i : Fin 3 => SmoothVelocity.exists_uniform_coordinateDerivativeL1 h j m i T)
   refine ⟨∑ i : Fin 3, (C₀ i + ∑ j : Fin 3, C j i), ?_, ?_⟩
   · exact Finset.sum_nonneg (fun i _ => add_nonneg (hC₀ i)
       (Finset.sum_nonneg (fun j _ => hC j i)))
@@ -66,7 +66,7 @@ theorem SmoothVelocity.exists_uniform_smoothDatumDecayConstant
     (h : SmoothVelocity u) (s : ℕ) (T : ℝ) :
     ∃ C : ℝ, 0 ≤ C ∧ ∀ t : ℝ, 0 ≤ t → t ≤ T →
       smoothDatumDecayConstant s (u t) ≤ C := by
-  obtain ⟨C, hC, hb⟩ := h.exists_uniform_fourierDecayConstant (2 * (s + 2)) T
+  obtain ⟨C, hC, hb⟩ := SmoothVelocity.exists_uniform_fourierDecayConstant h (2 * (s + 2)) T
   refine ⟨(4 : ℝ) ^ (s + 2) * C, mul_nonneg (by positivity) hC, ?_⟩
   intro t ht hT
   exact mul_le_mul_of_nonneg_left (hb t ht hT) (by positivity)

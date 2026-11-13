@@ -86,7 +86,7 @@ theorem galerkinBoundAt_of_reference_residual_bound
     (hres : ∀ N : ℕ, ∀ t : ℝ, ∀ ht : 0 ≤ t, t ≤ T →
       sobolevEnergy 3 N (referenceResidualPhase h N t ht) ≤ δ N) :
     GalerkinBoundAt F a ha T := by
-  obtain ⟨R, hR, href⟩ := h.exists_uniform_referenceProjection_sobolevEnergy 3 T
+  obtain ⟨R, hR, href⟩ := NSSolution.exists_uniform_referenceProjection_sobolevEnergy h 3 T
   let E : ℕ → ℝ → ℝ := fun N t => sobolevEnergy 3 N (referenceError F h ha N t)
   let A : ℝ := referenceErrorGrowth ν R + 1
   have hA : 0 ≤ A := add_nonneg (referenceErrorGrowth_nonneg ν R hν hR) zero_le_one

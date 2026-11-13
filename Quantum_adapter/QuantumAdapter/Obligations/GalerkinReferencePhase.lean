@@ -56,7 +56,7 @@ theorem initialAmbient_mem_of_spectral (N : ℕ) (a : Field)
 def referenceDerivativePhase (h : NSSolution ν a u p) (N : ℕ)
     (t : ℝ) (ht : 0 ≤ t) : Phase N :=
   ⟨initialAmbient N (timeDerivative u t),
-    initialAmbient_mem_of_spectral N _ (h.timeDerivative_fourier_solenoidal t ht)⟩
+    initialAmbient_mem_of_spectral N _ (NSSolution.timeDerivative_fourier_solenoidal h t ht)⟩
 
 @[simp]
 theorem referenceDerivativePhase_coeff (h : NSSolution ν a u p) (N : ℕ)
@@ -74,7 +74,7 @@ theorem NSSolution.initialAmbient_hasDerivWithinAt (h : NSSolution ν a u p)
       (fun r => fun ki : PhaseIndex N => datumFourierCoeff (u r) ki.1.val ki.2)
       (fun ki : PhaseIndex N => datumFourierCoeff (timeDerivative u t) ki.1.val ki.2)
       (Ici 0) t :=
-    hasDerivWithinAt_pi.mpr (fun ki => h.fourierCoeff_hasDerivWithinAt t ht ki.1.val ki.2)
+    hasDerivWithinAt_pi.mpr (fun ki => NSSolution.fourierCoeff_hasDerivWithinAt h t ht ki.1.val ki.2)
   have hto := (PiLp.hasFDerivAt_toLp (𝕜 := ℝ) 2
     (fun ki : PhaseIndex N => datumFourierCoeff (u t) ki.1.val ki.2)).comp_hasDerivWithinAt t hc
   exact hto
@@ -84,7 +84,7 @@ theorem referenceProjection_hasDerivWithinAt (h : NSSolution ν a u p)
     (N : ℕ) (t : ℝ) (ht : 0 ≤ t) :
     HasDerivWithinAt (referenceProjection h N) (referenceDerivativePhase h N t ht) (Ici 0) t := by
   have hd := (referencePhaseRetractionCLM N).hasFDerivAt.comp_hasDerivWithinAt t
-    (h.initialAmbient_hasDerivWithinAt N t ht)
+    (NSSolution.initialAmbient_hasDerivWithinAt h N t ht)
   have hr : referencePhaseRetractionCLM N (initialAmbient N (timeDerivative u t)) =
       referenceDerivativePhase h N t ht :=
     phaseRetraction_subtype N (referenceDerivativePhase h N t ht)
@@ -92,8 +92,8 @@ theorem referenceProjection_hasDerivWithinAt (h : NSSolution ν a u p)
   apply hd.congr_of_mem _ ht
   intro r hr
   rw [referenceProjection_eq h N r hr]
-  change initialPhaseData N (u r) (h.spatial_data r hr) =
-    phaseRetraction N (initialPhaseData N (u r) (h.spatial_data r hr)).val
+  change initialPhaseData N (u r) (NSSolution.spatial_data h r hr) =
+    phaseRetraction N (initialPhaseData N (u r) (NSSolution.spatial_data h r hr)).val
   exact (phaseRetraction_subtype N _).symm
 
 /-- The consistency residual is the projected actual derivative minus its finite drift. -/
@@ -116,7 +116,7 @@ theorem referenceResidualPhase_coeff (h : NSSolution ν a u p) (N : ℕ)
   by_cases hk : k ∈ fullModes N
   · rw [if_pos hk, if_pos hk, if_pos hk,
       referenceProjection_coeff h N t ht, if_pos hk,
-      h.projected_fourier_equation t ht k i]
+      NSSolution.projected_fourier_equation h t ht k i]
     ring
   · simp [hk]
 

@@ -37,7 +37,7 @@ theorem ambientSingle_resolution (N : ℕ) (q : AmbientPhase N) :
     q = ∑ ki : PhaseIndex N,
       ((q ki).re • ambientSingle N ki 1 + (q ki).im • ambientSingle N ki Complex.I) := by
   ext li
-  simp [ambientSingle_apply, Complex.re_add_im]
+  simp [ambientSingle_apply, Finset.sum_add_distrib, eq_comm, Complex.re_add_im]
 
 theorem ambientEndomorphism_resolution (N : ℕ)
     (f : AmbientPhase N →ₗ[ℝ] AmbientPhase N) :
@@ -61,8 +61,8 @@ theorem ambient_real_trace_formula (N : ℕ)
       ∑ ki : PhaseIndex N,
         ((f (ambientSingle N ki 1) ki).re + (f (ambientSingle N ki Complex.I) ki).im) := by
   conv_lhs => rw [ambientEndomorphism_resolution N f]
-  simp only [map_sum, map_add, LinearMap.trace_smulRight,
-    ambientRealCoordinate, ambientImagCoordinate]
+  simp only [map_sum, map_add, LinearMap.trace_smulRight]
+  rfl
 
 end
 end QuantumAdapter.Obligations

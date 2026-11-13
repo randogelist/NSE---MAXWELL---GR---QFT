@@ -34,7 +34,7 @@ theorem forwardSpatialDerivative_slice {F : (ℝ × Vec) → Vec}
     forwardSpatialDerivative F j (t, x) =
       coordinateDerivative (fun y : Vec => F (t, y)) j x := by
   have hd := (hF.differentiableOn (by simp) (t, x) ht).hasFDerivWithinAt
-  have hi := (hasFDerivAt_const x t).prodMk (hasFDerivAt_id x)
+  have hi := (hasFDerivAt_const t x).prodMk (hasFDerivAt_id x)
   have hc := hd.comp_hasFDerivAt x hi (Eventually.of_forall (fun _ => ht))
   have he := congrArg (fun L : Vec →L[ℝ] Vec => L (unitVector j)) hc.fderiv
   simpa only [forwardSpatialDerivative, coordinateDerivative, Function.comp_def,

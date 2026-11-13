@@ -9,6 +9,9 @@ energy differentiation and the exact next-order dissipation difference.
 
 set_option autoImplicit false
 set_option Elab.async true
+set_option maxHeartbeats 2000000
+set_option synthInstance.maxHeartbeats 200000
+set_option backward.isDefEq.respectTransparency false
 
 open scoped BigOperators ContDiff
 
@@ -82,8 +85,9 @@ theorem sobolevWeightedPhase_coeff (s N : ℕ) (q : Phase N)
 theorem sobolevWeightedPhase_norm_sq (s N : ℕ) (q : Phase N) :
     ‖sobolevWeightedPhaseCLM s N q‖ ^ 2 = sobolevEnergy s N q := by
   rw [← energy0_eq_norm_sq]
+  change energy0 N (sobolevWeightedPhase s N q) = sobolevEnergy s N q
   unfold energy0 sobolevEnergy sobolevEnergyDensity
-  simp only [sobolevWeightedPhaseCLM, sobolevWeightedPhase_coeff,
+  simp only [sobolevWeightedPhase_coeff,
     Complex.normSq_eq_norm_sq]
 
 theorem sobolevWeightedPhase_laplacian_commute (s N : ℕ) (q : Phase N) :
@@ -148,8 +152,8 @@ theorem phaseFlow_sobolevEnergy_hasDerivAt {ν : ℝ} (F : PhaseFlow ν)
     HasDerivAt (fun r => sobolevEnergy s N (F.map N r q))
       (2 * inner ℝ (sobolevWeightedPhaseCLM s N (F.map N t q))
         (sobolevWeightedPhaseCLM s N (drift ν N (F.map N t q)))) t := by
-  have h := ((sobolevWeightedPhaseCLM s N).hasFDerivAt.comp_hasDerivAt t
-    (F.orbit_derivative N q t)).norm_sq
+  have h := HasDerivAt.norm_sq (F := Phase N)
+    ((sobolevWeightedPhaseCLM s N).hasFDerivAt.comp_hasDerivAt t (F.orbit_derivative N q t))
   simpa only [Function.comp_def, sobolevWeightedPhase_norm_sq] using h
 
 theorem phaseFlow_sobolevEnergy_dissipation_identity {ν : ℝ} (F : PhaseFlow ν)
@@ -160,7 +164,7 @@ theorem phaseFlow_sobolevEnergy_dissipation_identity {ν : ℝ} (F : PhaseFlow �
           2 * ν * sobolevDissipation s N (F.map N t q)) t := by
   have h := phaseFlow_sobolevEnergy_hasDerivAt F s N q t
   rw [drift_eq_inviscid_sub_laplacian, map_sub, map_smul,
-    inner_sub_right, inner_smul_right, sobolevWeighted_inner_laplacian] at h
+    inner_sub_right, real_inner_smul_right, sobolevWeighted_inner_laplacian] at h
   convert h using 1 <;> ring
 
 end

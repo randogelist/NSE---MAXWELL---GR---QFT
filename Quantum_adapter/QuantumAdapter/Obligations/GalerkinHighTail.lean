@@ -126,13 +126,13 @@ theorem NSSolution.exists_uniform_referenceSobolev_norm_sq
     (h : NSSolution ν a u p) (m : ℕ) (T : ℝ) :
     ∃ C : ℝ, 0 ≤ C ∧ ∀ t : ℝ, ∀ ht : 0 ≤ t, t ≤ T →
       ‖referenceSobolevAt h m t ht‖ ^ 2 ≤ C := by
-  obtain ⟨C, hC, hb⟩ := h.exists_uniform_smoothDatumDecayConstant m T
+  obtain ⟨C, hC, hb⟩ := NSSolution.exists_uniform_smoothDatumDecayConstant h m T
   let W : ℝ := ∑' k : Frequency, (torusSobolevWeight k)⁻¹ ^ 4
   have hW : 0 ≤ W := tsum_nonneg (fun _ => by positivity)
   refine ⟨3 * C ^ 2 * W, by positivity, ?_⟩
   intro t ht htT
   have hnorm := smoothDatumSobolev_norm_sq_le m (u t)
-    (h.spatial_data t ht).smooth (h.spatial_data t ht).periodic
+    (NSSolution.spatial_data h t ht).smooth (NSSolution.spatial_data h t ht).periodic
   apply hnorm.trans
   apply mul_le_mul_of_nonneg_right _ hW
   apply mul_le_mul_of_nonneg_left _ (by norm_num : (0 : ℝ) ≤ 3)

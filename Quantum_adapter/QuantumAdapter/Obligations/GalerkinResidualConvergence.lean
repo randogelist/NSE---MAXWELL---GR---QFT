@@ -87,8 +87,8 @@ theorem NSSolution.referenceResidual_vanishes_uniformly (h : NSSolution ν a u p
     ∃ δ : ℕ → ℝ, Tendsto δ atTop (𝓝 0) ∧
       ∀ N : ℕ, ∀ t : ℝ, ∀ ht : 0 ≤ t, t ≤ T →
         sobolevEnergy 3 N (referenceResidualPhase h N t ht) ≤ δ N := by
-  obtain ⟨C0, hC0, hb0⟩ := h.exists_uniform_referenceSobolev_norm_sq 0 T
-  obtain ⟨C8, hC8, hb8⟩ := h.exists_uniform_referenceSobolev_norm_sq 8 T
+  obtain ⟨C0, hC0, hb0⟩ := NSSolution.exists_uniform_referenceSobolev_norm_sq h 0 T
+  obtain ⟨C8, hC8, hb8⟩ := NSSolution.exists_uniform_referenceSobolev_norm_sq h 8 T
   let C : ℝ := 1728 * C0 * C8 * (1 + 4 * Real.pi ^ 2) ^ 7 * latticeSobolevConstant
   let δ : ℕ → ℝ := fun N => C * ((N : ℝ)⁻¹) ^ 2
   have hδ : Tendsto δ atTop (𝓝 0) := by

@@ -39,7 +39,7 @@ theorem NSSolution.exists_uniform_coordinateDerivativeL1
     ∃ C : ℝ, 0 ≤ C ∧ ∀ t : ℝ, 0 ≤ t → t ≤ T →
       coordinateDerivativeL1 j m (u t) i ≤ C := by
   have hcont := (EuclideanSpace.proj i : Vec →L[ℝ] ℝ).continuous.comp_continuousOn
-    (h.iteratedCoordinateDerivative_continuousOn j m)
+    (NSSolution.iteratedCoordinateDerivative_continuousOn h j m)
   have hcompact : IsCompact ((Icc (0 : ℝ) T) ×ˢ unitCube) :=
     isCompact_Icc.prod isCompact_unitCube
   obtain ⟨C, hC⟩ := hcompact.exists_bound_of_continuousOn
@@ -48,7 +48,7 @@ theorem NSSolution.exists_uniform_coordinateDerivativeL1
   refine ⟨volume.real unitCube * D, mul_nonneg (measureReal_nonneg) (le_max_right _ _), ?_⟩
   intro t ht hT
   have hint := iteratedCoordinateDerivative_component_integrable j m (u t)
-    (h.spatial_data t ht).smooth i
+    (NSSolution.spatial_data h t ht).smooth i
   have hconst : IntegrableOn (fun _ : Vec => D) unitCube volume :=
     continuousOn_const.integrableOn_compact isCompact_unitCube
   have hpoint : ∀ᵐ x ∂volume.restrict unitCube,
@@ -63,8 +63,8 @@ theorem NSSolution.exists_uniform_fourierDecayConstant
     (h : NSSolution ν a u p) (m : ℕ) (T : ℝ) :
     ∃ C : ℝ, 0 ≤ C ∧ ∀ t : ℝ, 0 ≤ t → t ≤ T → fourierDecayConstant m (u t) ≤ C := by
   choose C₀ hC₀ hb₀ using (fun i : Fin 3 =>
-    h.exists_uniform_coordinateDerivativeL1 (0 : Fin 3) 0 i T)
-  choose C hC hb using (fun j i : Fin 3 => h.exists_uniform_coordinateDerivativeL1 j m i T)
+    NSSolution.exists_uniform_coordinateDerivativeL1 h (0 : Fin 3) 0 i T)
+  choose C hC hb using (fun j i : Fin 3 => NSSolution.exists_uniform_coordinateDerivativeL1 h j m i T)
   refine ⟨∑ i : Fin 3, (C₀ i + ∑ j : Fin 3, C j i), ?_, ?_⟩
   · exact Finset.sum_nonneg (fun i _ => add_nonneg (hC₀ i)
       (Finset.sum_nonneg (fun j _ => hC j i)))
@@ -79,7 +79,7 @@ theorem NSSolution.exists_uniform_smoothDatumDecayConstant
     (h : NSSolution ν a u p) (s : ℕ) (T : ℝ) :
     ∃ C : ℝ, 0 ≤ C ∧ ∀ t : ℝ, 0 ≤ t → t ≤ T →
       smoothDatumDecayConstant s (u t) ≤ C := by
-  obtain ⟨C, hC, hb⟩ := h.exists_uniform_fourierDecayConstant (2 * (s + 2)) T
+  obtain ⟨C, hC, hb⟩ := NSSolution.exists_uniform_fourierDecayConstant h (2 * (s + 2)) T
   refine ⟨(4 : ℝ) ^ (s + 2) * C, mul_nonneg (by positivity) hC, ?_⟩
   intro t ht hT
   exact mul_le_mul_of_nonneg_left (hb t ht hT) (by positivity)
@@ -89,7 +89,7 @@ theorem NSSolution.exists_uniform_referenceProjection_sobolevEnergy
     (h : NSSolution ν a u p) (s : ℕ) (T : ℝ) :
     ∃ C : ℝ, 0 ≤ C ∧ ∀ N : ℕ, ∀ t : ℝ, 0 ≤ t → t ≤ T →
       sobolevEnergy s N (referenceProjection h N t) ≤ C := by
-  obtain ⟨C, hC, hb⟩ := h.exists_uniform_smoothDatumDecayConstant s T
+  obtain ⟨C, hC, hb⟩ := NSSolution.exists_uniform_smoothDatumDecayConstant h s T
   let W : ℝ := ∑' k : Frequency, (torusSobolevWeight k)⁻¹ ^ 4
   have hW : 0 ≤ W := tsum_nonneg (fun _ => by positivity)
   refine ⟨3 * C ^ 2 * W, by positivity, ?_⟩

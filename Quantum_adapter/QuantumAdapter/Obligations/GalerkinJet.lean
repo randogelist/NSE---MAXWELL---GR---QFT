@@ -11,6 +11,9 @@ no time-regularity or jet-existence premise is introduced.
 
 set_option autoImplicit false
 set_option Elab.async true
+set_option maxHeartbeats 4000000
+set_option synthInstance.maxHeartbeats 400000
+set_option backward.isDefEq.respectTransparency false
 
 open scoped ContDiff
 
@@ -74,7 +77,8 @@ theorem GalerkinExpr.hasDerivAt_eval_flow {ν : ℝ} (F : PhaseFlow ν)
   | laplace e he =>
     exact (phaseLaplacianCLM N).hasFDerivAt.comp_hasDerivAt t he
   | bilinear e f he hf =>
-    exact ((bilinearConvectionCLM N).hasFDerivAt.comp_hasDerivAt t he).clm_apply hf
+    exact HasDerivAt.clm_apply (F := Phase N) (G := Phase N)
+      ((bilinearConvectionCLM N).hasFDerivAt.comp_hasDerivAt t he) hf
 
 def GalerkinExpr.jetExpr (ν : ℝ) : ℕ → GalerkinExpr
   | 0 => .id

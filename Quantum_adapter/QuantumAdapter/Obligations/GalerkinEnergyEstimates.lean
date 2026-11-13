@@ -92,7 +92,7 @@ theorem weightedTransportPairing_abs_le_sum (m N : ℕ) (e q r : Phase N) :
       apply Finset.sum_le_sum
       intro k hk
       rw [abs_mul, abs_of_nonneg (pow_nonneg (torusSobolevWeight_pos k).le _)]
-      rw [← Finset.mul_sum]
+      simp_rw [← Finset.mul_sum]
       apply mul_le_mul_of_nonneg_left _ (pow_nonneg (torusSobolevWeight_pos k).le _)
       calc
         _ ≤ ∑ i : Fin 3, |(star (phaseCoeff e k i) *

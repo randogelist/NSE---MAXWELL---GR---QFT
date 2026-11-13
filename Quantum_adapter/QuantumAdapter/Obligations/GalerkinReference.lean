@@ -39,16 +39,16 @@ theorem NSSolution.spatial_all_sobolev (h : NSSolution ν a u p)
     (t : ℝ) (ht : 0 ≤ t) (s : ℕ) :
     Memℓp (sobolevWeightedCoeff s (datumFourierCoeff (u t))) 2 :=
   SMOOTH_DATUM_MEM_TORUS_SOBOLEV s (u t)
-    (h.spatial_data t ht).smooth (h.spatial_data t ht).periodic
+    (NSSolution.spatial_data h t ht).smooth (NSSolution.spatial_data h t ht).periodic
 
 /-- Full-mode Fourier projection of the actual reference solution.
 The arbitrary negative-time branch is immaterial for all stated predicates. -/
 def referenceProjection (h : NSSolution ν a u p) (N : ℕ) (t : ℝ) : Phase N :=
-  if ht : 0 ≤ t then initialPhaseData N (u t) (h.spatial_data t ht) else 0
+  if ht : 0 ≤ t then initialPhaseData N (u t) (NSSolution.spatial_data h t ht) else 0
 
 theorem referenceProjection_eq (h : NSSolution ν a u p) (N : ℕ)
     (t : ℝ) (ht : 0 ≤ t) :
-    referenceProjection h N t = initialPhaseData N (u t) (h.spatial_data t ht) := by
+    referenceProjection h N t = initialPhaseData N (u t) (NSSolution.spatial_data h t ht) := by
   simp only [referenceProjection, dif_pos ht]
 
 theorem referenceProjection_coeff (h : NSSolution ν a u p) (N : ℕ)
@@ -56,23 +56,24 @@ theorem referenceProjection_coeff (h : NSSolution ν a u p) (N : ℕ)
     phaseCoeff (referenceProjection h N t) k i =
       if k ∈ fullModes N then datumFourierCoeff (u t) k i else 0 := by
   rw [referenceProjection_eq h N t ht]
-  exact initialPhase_coeff N (u t) (h.spatial_data t ht).smooth
-    (h.spatial_data t ht).periodic (h.spatial_data t ht).divergence_free k i
+  exact initialPhase_coeff N (u t) (NSSolution.spatial_data h t ht).smooth
+    (NSSolution.spatial_data h t ht).periodic (NSSolution.spatial_data h t ht).divergence_free k i
 
 /-- The projected reference inherits the exact initial data, including its mean. -/
 theorem referenceProjection_initial (h : NSSolution ν a u p)
     (ha : Data a) (N : ℕ) :
     referenceProjection h N 0 = initialPhaseData N a ha := by
   rw [referenceProjection_eq h N 0 le_rfl]
-  cases h.initial
-  rfl
+  apply Subtype.ext
+  change initialAmbient N (u 0) = initialAmbient N a
+  exact congrArg (initialAmbient N) h.initial
 
 /-- Each reference projection has a constructed all-order smooth-data bound. -/
 theorem referenceProjection_sobolevEnergy_le (h : NSSolution ν a u p)
     (s N : ℕ) (t : ℝ) (ht : 0 ≤ t) :
     sobolevEnergy s N (referenceProjection h N t) ≤ initialSobolevMajorant s (u t) := by
   rw [referenceProjection_eq h N t ht]
-  exact initialPhaseData_sobolevEnergy_le_majorant s N (u t) (h.spatial_data t ht)
+  exact initialPhaseData_sobolevEnergy_le_majorant s N (u t) (NSSolution.spatial_data h t ht)
 
 /-- The exact phase error between the actual Galerkin orbit and projected reference. -/
 def referenceError (F : PhaseFlow ν) (h : NSSolution ν a u p)
@@ -119,7 +120,7 @@ theorem galerkinBoundAt_of_reference_error_tail (F : PhaseFlow ν)
   have hn := Real.sqrt_nonneg (centralEnergy F N a ha t)
   have hs : Real.sqrt (centralEnergy F N a ha t) ≤ A + B := by linarith
   have hsq := pow_le_pow_left₀ hn hs 2
-  rwa [Real.sq_sqrt (energy3_nonneg N _)] at hsq
+  rwa [Real.sq_sqrt (show 0 ≤ centralEnergy F N a ha t from energy3_nonneg N _)] at hsq
 
 end
 end QuantumAdapter.Obligations

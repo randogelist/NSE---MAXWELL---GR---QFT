@@ -269,7 +269,7 @@ theorem fourierJetSynthesis_hasDerivWithinAt_time
     HasDerivWithinAt (fun s => fourierJetSynthesis d a (s, x))
       (fourierJetSynthesis d (fourierJetStep none a) (t, x)) (Ici (0 : ℝ)) t := by
   have hj := fourierJetSynthesis_hasFDerivWithinAt hd hb a (t, x) ht
-  have hi := (hasFDerivAt_id t).prodMk (hasFDerivAt_const t x)
+  have hi := (hasFDerivAt_id t).prodMk (hasFDerivAt_const x t)
   have hc := hj.comp t hi.hasFDerivWithinAt (fun s hs => hs)
   simpa [Function.comp_def, Fintype.sum_option, spacetimeCoordinate] using! hc.hasDerivWithinAt
 

@@ -15,44 +15,44 @@ variable {ν : ℝ} {a : Field} {u : Velocity} {p : Pressure}
 theorem NSSolution.time_hasDerivWithinAt (h : NSSolution ν a u p)
     (t : ℝ) (ht : 0 ≤ t) (x : Vec) :
     HasDerivWithinAt (fun r => u r x) (timeDerivative u t x) (Ici 0) t :=
-  h.velocity_smooth.time_hasDerivWithinAt t ht x
+  SmoothVelocity.time_hasDerivWithinAt h.velocity_smooth t ht x
 
 theorem NSSolution.timeDerivative_eq_joint (h : NSSolution ν a u p)
     (t : ℝ) (ht : 0 ≤ t) (x : Vec) :
     timeDerivative u t x =
       fderivWithin ℝ (fun z : ℝ × Vec => u z.1 z.2) forwardSpacetime (t, x) (1, 0) :=
-  h.velocity_smooth.timeDerivative_eq_joint t ht x
+  SmoothVelocity.timeDerivative_eq_joint h.velocity_smooth t ht x
 
 theorem NSSolution.timeDerivative_smooth (h : NSSolution ν a u p) :
     SmoothVelocity (timeDerivative u) :=
-  h.velocity_smooth.timeDerivative_smooth
+  SmoothVelocity.timeDerivative_smooth h.velocity_smooth
 
 theorem NSSolution.timeDerivative_spatial_continuous (h : NSSolution ν a u p)
     (t : ℝ) (ht : 0 ≤ t) : Continuous (timeDerivative u t) :=
-  h.velocity_smooth.timeDerivative_spatial_continuous t ht
+  SmoothVelocity.timeDerivative_spatial_continuous h.velocity_smooth t ht
 
 theorem NSSolution.timeDerivative_uniform_bound (h : NSSolution ν a u p) (T : ℝ) :
     ∃ B : ℝ, 0 ≤ B ∧ ∀ t ∈ Icc (0 : ℝ) T, ∀ x ∈ unitCube,
       ‖timeDerivative u t x‖ ≤ B :=
-  h.velocity_smooth.timeDerivative_uniform_bound T
+  SmoothVelocity.timeDerivative_uniform_bound h.velocity_smooth T
 
 theorem NSSolution.fourierIntegrand_hasDerivWithinAt (h : NSSolution ν a u p)
     (t : ℝ) (ht : 0 ≤ t) (k : Frequency) (i : Fin 3) (x : Vec) :
     HasDerivWithinAt (fun r => datumFourierIntegrand (u r) k i x)
       (datumFourierIntegrand (timeDerivative u t) k i x) (Ici 0) t :=
-  h.velocity_smooth.fourierIntegrand_hasDerivWithinAt t ht k i x
+  SmoothVelocity.fourierIntegrand_hasDerivWithinAt h.velocity_smooth t ht k i x
 
 theorem NSSolution.fourierCoeff_hasDerivWithinAt_Icc (h : NSSolution ν a u p)
     (T t : ℝ) (ht : t ∈ Icc (0 : ℝ) T) (k : Frequency) (i : Fin 3) :
     HasDerivWithinAt (fun r => datumFourierCoeff (u r) k i)
       (datumFourierCoeff (timeDerivative u t) k i) (Icc 0 T) t :=
-  h.velocity_smooth.fourierCoeff_hasDerivWithinAt_Icc T t ht k i
+  SmoothVelocity.fourierCoeff_hasDerivWithinAt_Icc h.velocity_smooth T t ht k i
 
 theorem NSSolution.fourierCoeff_hasDerivWithinAt (h : NSSolution ν a u p)
     (t : ℝ) (ht : 0 ≤ t) (k : Frequency) (i : Fin 3) :
     HasDerivWithinAt (fun r => datumFourierCoeff (u r) k i)
       (datumFourierCoeff (timeDerivative u t) k i) (Ici 0) t :=
-  h.velocity_smooth.fourierCoeff_hasDerivWithinAt t ht k i
+  SmoothVelocity.fourierCoeff_hasDerivWithinAt h.velocity_smooth t ht k i
 
 /-- Differentiating the actual divergence constraint gives solenoidality of the time derivative. -/
 theorem NSSolution.timeDerivative_fourier_solenoidal (h : NSSolution ν a u p)
@@ -65,11 +65,11 @@ theorem NSSolution.timeDerivative_fourier_solenoidal (h : NSSolution ν a u p)
       (Ici 0) t := by
     apply HasDerivWithinAt.fun_sum
     intro i hi
-    exact (h.fourierCoeff_hasDerivWithinAt t ht k i).const_mul (k i : ℂ)
+    exact (NSSolution.fourierCoeff_hasDerivWithinAt h t ht k i).const_mul (k i : ℂ)
   have hz (r : ℝ) (hr : r ∈ Ici (0 : ℝ)) :
       (∑ i : Fin 3, (k i : ℂ) * datumFourierCoeff (u r) k i) = 0 :=
-    datumFourierCoeff_solenoidal (u r) (h.spatial_data r hr).smooth
-      (h.spatial_data r hr).periodic (h.spatial_data r hr).divergence_free k
+    datumFourierCoeff_solenoidal (u r) (NSSolution.spatial_data h r hr).smooth
+      (NSSolution.spatial_data h r hr).periodic (NSSolution.spatial_data h r hr).divergence_free k
   have hconst : HasDerivWithinAt (fun _ : ℝ => (0 : ℂ))
       (∑ i : Fin 3, (k i : ℂ) * datumFourierCoeff (timeDerivative u t) k i)
       (Ici 0) t :=

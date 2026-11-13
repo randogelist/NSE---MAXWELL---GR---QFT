@@ -50,8 +50,12 @@ theorem h3Pairing_laplacian_nonneg (N : ℕ) (q : Phase N) :
   have h1 := orderedPairing_laplacian_nonneg 1 N q
   have h2 := orderedPairing_laplacian_nonneg 2 N q
   have h3 := orderedPairing_laplacian_nonneg 3 N q
-  unfold h3Pairing
-  positivity
+  change 0 ≤ orderedPairing 0 N q (phaseLaplacian N q) +
+    3 * orderedPairing 1 N q (phaseLaplacian N q) +
+    3 * orderedPairing 2 N q (phaseLaplacian N q) +
+    orderedPairing 3 N q (phaseLaplacian N q)
+  exact add_nonneg (add_nonneg (add_nonneg h0
+    (mul_nonneg (by norm_num) h1)) (mul_nonneg (by norm_num) h2)) h3
 
 theorem h3Pairing_add_right (N : ℕ) (q a b : Phase N) :
     h3Pairing N q (a + b) = h3Pairing N q a + h3Pairing N q b := by

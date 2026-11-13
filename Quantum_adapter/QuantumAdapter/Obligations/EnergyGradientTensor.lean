@@ -38,7 +38,8 @@ theorem gradientTensor_norm_sq (N : ℕ) (q : Phase N) (x : Vec) :
 
 theorem gradientTensor_norm_le (N : ℕ) (q : Phase N) (x : Vec) :
     ‖gradientTensor N q x‖ ≤ gradientObservable q := by
-  rw [← Assembly.sqrt_gradientSquare_eq_norm]
+  change ‖Assembly.gradientCoordinates N x q‖ ≤ gradientObservable q
+  rw [← Assembly.sqrt_gradientSquare_eq_norm N q x]
   exact le_csSup (Assembly.gradientObservable_range_bddAbove N q) (Set.mem_range_self x)
 
 theorem tensorDir_euclidean_apply {I : Type*} [Fintype I]
@@ -125,7 +126,8 @@ theorem gradientSquare_continuous_native (N : ℕ) (q : Phase N) : Continuous (g
 theorem integral_gradientSquare_frequencyEnergy (N : ℕ) (q : Phase N) :
     (∫ x in unitCube, gradientSquare q x) = frequencyEnergy 1 N q := by
   simp only [gradientSquare, ← synthesis_phaseDerivative]
-  rw [integral_finsetSum Finset.univ (μ := volume.restrict unitCube) (fun j hj =>
+  rw [integral_finsetSum Finset.univ (μ := volume.restrict unitCube)
+    (f := fun j x => ‖synthesis (phaseDerivative N j q) x‖ ^ 2) (fun j hj =>
     ((synthesis_contDiff N (phaseDerivative N j q)).continuous.norm.pow 2).continuousOn.integrableOn_compact
       isCompact_unitCube)]
   simp_rw [integral_synthesis_norm_sq, ← frequencyEnergy_zero N]
@@ -134,7 +136,8 @@ theorem integral_gradientSquare_frequencyEnergy (N : ℕ) (q : Phase N) :
 theorem integral_gradientSecondDensity (N : ℕ) (q : Phase N) :
     (∫ x in unitCube, gradientSecondDensity N q x) = frequencyEnergy 2 N q := by
   simp_rw [gradientSecondDensity_eq_sum_gradientSquare]
-  rw [integral_finsetSum Finset.univ (μ := volume.restrict unitCube) (fun j hj =>
+  rw [integral_finsetSum Finset.univ (μ := volume.restrict unitCube)
+    (f := fun j x => gradientSquare (phaseDerivative N j q) x) (fun j hj =>
     (gradientSquare_continuous_native N (phaseDerivative N j q)).continuousOn.integrableOn_compact
       isCompact_unitCube)]
   simp_rw [integral_gradientSquare_frequencyEnergy]
@@ -143,7 +146,8 @@ theorem integral_gradientSecondDensity (N : ℕ) (q : Phase N) :
 theorem integral_gradientThirdDensity (N : ℕ) (q : Phase N) :
     (∫ x in unitCube, gradientThirdDensity N q x) = frequencyEnergy 3 N q := by
   simp_rw [gradientThirdDensity_eq_sum_second]
-  rw [integral_finsetSum Finset.univ (μ := volume.restrict unitCube) (fun j hj =>
+  rw [integral_finsetSum Finset.univ (μ := volume.restrict unitCube)
+    (f := fun j x => gradientSecondDensity N (phaseDerivative N j q) x) (fun j hj =>
     (gradientSecondDensity_continuous N (phaseDerivative N j q)).continuousOn.integrableOn_compact
       isCompact_unitCube)]
   simp_rw [integral_gradientSecondDensity]

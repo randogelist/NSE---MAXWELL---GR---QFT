@@ -27,7 +27,7 @@ theorem SmoothVelocity.physicalTimeJet {u : Velocity} (h : SmoothVelocity u) (n 
     SmoothVelocity (physicalTimeJet n u) := by
   induction n with
   | zero => exact h
-  | succ n ih => exact ih.timeDerivative_smooth
+  | succ n ih => exact SmoothVelocity.timeDerivative_smooth ih
 
 theorem timeDerivative_periodic {u : Velocity}
     (hp : ∀ t : ℝ, 0 ≤ t → SpatialPeriodic (u t)) :
@@ -67,7 +67,7 @@ def physicalPressureTimeTower (u : Velocity) (n : ℕ) (t : ℝ) : FourierCoeff 
 theorem physicalPressureTimeTower_derivative {u : Velocity} (h : SmoothVelocity u) :
     FourierTimeTowerDerivative (physicalPressureTimeTower u) := by
   intro n t ht k i
-  have hc (j : Fin 3) := (h.physicalTimeJet n).fourierCoeff_hasDerivWithinAt t ht k j
+  have hc (j : Fin 3) := SmoothVelocity.fourierCoeff_hasDerivWithinAt (SmoothVelocity.physicalTimeJet h n) t ht k j
   unfold physicalPressureTimeTower pressureFromTransport
   by_cases hk : k = 0
   · simp only [hk, ite_true]
@@ -82,7 +82,7 @@ theorem physicalPressureTimeTower_bounds {u : Velocity} (h : SmoothVelocity u)
     (hp : ∀ t : ℝ, 0 ≤ t → SpatialPeriodic (u t)) :
     FourierTimeTowerBounds (physicalPressureTimeTower u) := by
   intro n m T hT
-  obtain ⟨C, hC, hbound⟩ := (h.physicalTimeJet n).exists_uniform_smoothDatumDecayConstant m T
+  obtain ⟨C, hC, hbound⟩ := SmoothVelocity.exists_uniform_smoothDatumDecayConstant (SmoothVelocity.physicalTimeJet h n) m T
   let W : ℝ := ∑' k : Frequency, (torusSobolevWeight k)⁻¹ ^ 4
   have hW : 0 ≤ W := tsum_nonneg (fun _ => by positivity)
   refine ⟨3 * (9 * C ^ 2) * W, by positivity, ?_⟩
@@ -95,7 +95,7 @@ theorem physicalPressureTimeTower_bounds {u : Velocity} (h : SmoothVelocity u)
       torusSobolevWeight ki.1 ^ m * ‖datumFourierCoeff (physicalTimeJet n u t) ki.1 j‖ ≤
         C * (torusSobolevWeight ki.1)⁻¹ ^ 2 := by
     have he := smooth_datum_weightedCoeff_norm_le m (physicalTimeJet n u t)
-      ((h.physicalTimeJet n).spatial_contDiff t ht) (physicalTimeJet_periodic hp n t ht) (ki.1, j)
+      (SmoothVelocity.spatial_contDiff (SmoothVelocity.physicalTimeJet h n) t ht) (physicalTimeJet_periodic hp n t ht) (ki.1, j)
     rw [sobolevWeightedCoeff_norm_eq] at he
     exact he.trans (mul_le_mul_of_nonneg_right (hbound t ht htT) (by positivity))
   have hn : ‖sobolevWeightedCoeff m (physicalPressureTimeTower u n t) ki‖ ≤
@@ -136,7 +136,7 @@ def physicalConvectionPressure (u : Velocity) : Pressure :=
 theorem physicalConvectionPressure_smooth {u : Velocity} (h : SmoothVelocity u)
     (hp : ∀ t : ℝ, 0 ≤ t → SpatialPeriodic (u t)) :
     SmoothPressure (physicalConvectionPressure u) :=
-  infiniteTransportPressure_joint_smooth h.convection
+  infiniteTransportPressure_joint_smooth (SmoothVelocity.convection h)
     (fun t ht => convection_periodic (u t) (hp t ht))
 
 theorem physicalConvectionPressure_periodic (u : Velocity) (t : ℝ) :
