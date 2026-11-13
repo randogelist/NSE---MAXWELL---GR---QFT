@@ -237,3 +237,7 @@ RENAME_VALIDATION = PASS_CACHED_EXTERNAL_LINUX
 [Run 43353327242](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43353327242), source `8fd783b4d977fdb1a31cf4716023148ddfa26af9`: 226/226 integrated and 52/52 isolated audits passed; 37/37 integrated and 7/7 standalone Lean input hashes match. Both scopes reused trace-validated cached objects with zero module rebuilds. The 35 proof-module files remain byte-identical under the directory rename.
 
 [Rename evidence](Auxillary/evidence/linux-43353327242/).
+
+## Native Windows download
+
+[CLASSICAL_MECHANICS_WINDOWS.zip](Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS.zip) contains the exact native source closure, both A-tier scope records, the B-tier reference, the 62-theorem Linux certificate, and `run.cmd` for cached external Windows Lean 4.34.0-rc1 validation. All 47 mapped source files are byte-identical to the source snapshot; Windows compiler execution is not inferred from the Linux evidence.
