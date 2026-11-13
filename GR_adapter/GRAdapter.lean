@@ -8,3 +8,5 @@ import GRAdapter.Germs
 import GRAdapter.Locality
 import GRAdapter.CompletionSource
 import GRAdapter.Contracts
+import GRAdapter.LiteratureInputs
+import GRAdapter.UnitTorus
