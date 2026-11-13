@@ -27,13 +27,15 @@ noncomputable section
 theorem analyticAt_spatialPartial_joint {u : Velocity} {z : ℝ × Vec}
     (hu : AnalyticAt ℝ (fun y : ℝ × Vec => u y.1 y.2) z) (i : Fin 3) :
     AnalyticAt ℝ (fun y : ℝ × Vec => spatialPartial (u y.1) i y.2) z := by
+  let ev : ((ℝ × Vec) →L[ℝ] Vec) →L[ℝ] Vec :=
+    ContinuousLinearMap.apply ℝ Vec ((0 : ℝ), unitVector i)
   have htotal : AnalyticAt ℝ
       (fun y : ℝ × Vec =>
         fderiv ℝ (fun w : ℝ × Vec => u w.1 w.2) y (0, unitVector i)) z :=
-    ((ContinuousLinearMap.apply ℝ Vec (0, unitVector i)).analyticAt _).comp hu.fderiv
+    (ev.analyticAt _).comp hu.fderiv
   apply htotal.congr
   filter_upwards [hu.eventually_analyticAt] with y hy
-  have hslice := hy.differentiableAt.hasFDerivAt.comp
+  have hslice := hy.differentiableAt.hasFDerivAt.comp y.2
     ((hasFDerivAt_const y.1 y.2).prodMk (hasFDerivAt_id y.2))
   have heq := congrArg (fun L : Vec →L[ℝ] Vec => L (unitVector i)) hslice.fderiv
   simpa only [spatialPartial, Function.comp_def, id_eq,
@@ -46,11 +48,17 @@ theorem analyticAt_nseSpatialSource3_components
     (hu : AnalyticAt ℝ (fun y : ℝ × Vec => u y.1 y.2) z)
     (hp : AnalyticAt ℝ (fun y : ℝ × Vec => p y.1 y.2) z) (i j : Fin 3) :
     AnalyticAt ℝ (fun y : ℝ × Vec => nseSpatialSource3 ν u p y.1 y.2 i j) z := by
-  have hui := ((EuclideanSpace.proj i).analyticAt _).comp hu
-  have huj := ((EuclideanSpace.proj j).analyticAt _).comp hu
-  have hij := ((EuclideanSpace.proj j).analyticAt _).comp
+  let ei : Vec →L[ℝ] ℝ := EuclideanSpace.proj i
+  let ej : Vec →L[ℝ] ℝ := EuclideanSpace.proj j
+  have hui : AnalyticAt ℝ (fun y : ℝ × Vec => u y.1 y.2 i) z :=
+    (ei.analyticAt _).comp hu
+  have huj : AnalyticAt ℝ (fun y : ℝ × Vec => u y.1 y.2 j) z :=
+    (ej.analyticAt _).comp hu
+  have hij : AnalyticAt ℝ (fun y : ℝ × Vec => spatialPartial (u y.1) i y.2 j) z :=
+    (ej.analyticAt _).comp
     (analyticAt_spatialPartial_joint hu i)
-  have hji := ((EuclideanSpace.proj i).analyticAt _).comp
+  have hji : AnalyticAt ℝ (fun y : ℝ × Vec => spatialPartial (u y.1) j y.2 i) z :=
+    (ei.analyticAt _).comp
     (analyticAt_spatialPartial_joint hu j)
   have hc : AnalyticAt ℝ (fun _ : ℝ × Vec => identity3 i j) z := analyticAt_const
   have hν : AnalyticAt ℝ (fun _ : ℝ × Vec => ν) z := analyticAt_const
@@ -126,9 +134,11 @@ theorem analyticAt_scalarCKRHS
   have hF := analyticAt_scalarJetRHS_components
     (show AnalyticAt ℝ (fun _ : ScalarCKJet => ρ) J from analyticAt_const)
     huJ hAJ hQ hb hden
+  let e1 : ScalarCKState →L[ℝ] ℝ := EuclideanSpace.proj (1 : Fin 5)
+  have hstate : AnalyticAt ℝ (fun Y : ScalarCKJet => Y.2.1) J :=
+    analyticAt_fst.comp analyticAt_snd
   have hv : AnalyticAt ℝ (fun Y : ScalarCKJet => Y.2.1 1) J :=
-    ((EuclideanSpace.proj (1 : Fin 5)).analyticAt _).comp
-      (analyticAt_fst.comp analyticAt_snd)
+    (e1.analyticAt _).comp hstate
   have hall : AnalyticAt ℝ
       (fun Y : ScalarCKJet => Fin.cases (Y.2.1 1)
         (Fin.cases

@@ -66,7 +66,9 @@ theorem gradient_divergence_component {a : Field} (ha : ContDiff ℝ ∞ a)
 theorem laplacian_component {a : Field} (ha : ContDiff ℝ ∞ a)
     (x : Vec) (i : Fin 3) :
     laplacian a x i = ∑ j : Fin 3, secondSpatial a j j x i := by
-  simp [laplacian, partial_partial ha, Fin.sum_univ_succ, add_assoc]
+  have hsec (j : Fin 3) : fderiv ℝ (spatialPartial a j) x (unitVector j) =
+      secondSpatial a j j x := partial_partial ha j j x
+  simp [laplacian, hsec, Fin.sum_univ_succ, add_assoc]
 
 theorem vector_decomposition (v : Vec) :
     v = v 0 • unitVector 0 + v 1 • unitVector 1 + v 2 • unitVector 2 := by
@@ -310,11 +312,15 @@ theorem boundaryStress_tensorDivergence
   have hDT : tensorDivergence T x =
       tensorDivergence A x + tensorDivergence O x + tensorDivergence H x -
         ν • tensorDivergence Z x := by
+    have hAO (i j : Fin 3) : DifferentiableAt ℝ (fun y => (A y + O y) i j) x :=
+      (hA i j).add (ho i j)
+    have hAOH (i j : Fin 3) : DifferentiableAt ℝ (fun y => (A y + O y + H y) i j) x :=
+      (hAO i j).add (hh i j)
+    have hνZ (i j : Fin 3) : DifferentiableAt ℝ (fun y => (ν • Z y) i j) x :=
+      (hz i j).const_smul ν
     change tensorDivergence (fun y => (A y + O y + H y) - ν • Z y) x = _
-    rw [tensorDivergence_sub _ _ x
-      (fun i j => ((hA i j).add (ho i j)).add (hh i j))
-      (fun i j => (hz i j).const_smul ν)]
-    rw [tensorDivergence_add _ _ x (fun i j => (hA i j).add (ho i j)) hh,
+    rw [tensorDivergence_sub (fun y => A y + O y + H y) (fun y => ν • Z y) x hAOH hνZ]
+    rw [tensorDivergence_add (fun y => A y + O y) H x hAO hh,
       tensorDivergence_add A O x hA ho, tensorDivergence_smul ν Z x hz]
   have hLap : scalarLaplacian q = fun y => boundaryBeta K t y - ρ := funext hΔ
   have hGradLap : gradient (scalarLaplacian q) x = gradient (boundaryBeta K t) x := by

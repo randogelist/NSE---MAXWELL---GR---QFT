@@ -92,7 +92,7 @@ theorem ricci_gaussian_mixed (h : Bulk → Tensor4) (z : Bulk) (a : Fin 4) :
   simp only [ricci, Fin.sum_univ_succ (n := 4), christoffel_gaussian_rr,
     christoffel_gaussian_rrb_total, christoffel_gaussian_shape,
     christoffel_gaussian_abc_total, bulkPartial_const, zero_mul, mul_zero,
-    zero_sub, sub_zero, sub_self, zero_add, add_zero, Finset.sum_const_zero,
+    zero_sub, neg_zero, sub_zero, sub_self, zero_add, add_zero, Finset.sum_const_zero,
     gaussianCodazziComponent]
 
 /-- Exact radial contraction before any interchange of derivative and trace. -/
@@ -105,7 +105,7 @@ theorem ricci_gaussian_normal (h : Bulk → Tensor4) (z : Bulk) :
     ricci (gaussianMetric h) z 0 0 = gaussianNormalRicciComponent h z := by
   simp only [ricci, Fin.sum_univ_succ (n := 4), christoffel_gaussian_rr,
     christoffel_gaussian_rrb_total, christoffel_gaussian_shape,
-    bulkPartial_const, zero_mul, mul_zero, zero_sub, sub_zero, sub_self,
+    bulkPartial_const, zero_mul, mul_zero, zero_sub, neg_zero, sub_zero, sub_self,
     zero_add, add_zero, Finset.sum_const_zero, Finset.sum_neg_distrib,
     gaussianNormalRicciComponent]
   ring
