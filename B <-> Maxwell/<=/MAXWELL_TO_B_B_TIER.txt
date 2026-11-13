@@ -1,0 +1,296 @@
+MAXWELL_TO_B_B_TIER
+==================
+
+MODE = B_TIER_DERIVATION
+DIRECTION = MaxwellB -> FeffermanB
+MATHEMATICAL_STATUS = B_TIER
+RESTRUCTURED_LEAN_SOURCE_STATUS = A_TIER_CANDIDATE
+MATCHING_LAYOUT_EXTERNAL_COMPILER_AND_AXIOM_AUDIT = PENDING
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+
+THEOREM:
+
+  !  forall nu>0, forall c>0,
+       MaxwellB(nu,c) -> FeffermanB(nu).
+
+LOGICAL_SCOPE:
+  The theorem transfers the specified global constrained-Maxwell existence
+  statement to the frozen Fefferman-B existence statement. It does not
+  supply the Maxwell existence premise independently.
+
+1. EXACT OBJECTS
+---------------
+
+V=EuclideanSpace R (Fin 3), Q=[0,1]^3, S=[0,infinity) x V.
+The volume is standard Euclidean Lebesgue measure, vol(Q)=1, and
+<f>=integral_Q f. Spatial fields have period one in every coordinate.
+Joint smoothness means ContDiffOn R infinity on S. Time derivatives at
+zero are the actual derivatives within [0,infinity).
+
+Data(a): a is smooth, periodic, and div a=0. Its mean is unrestricted.
+MagneticData(B0): Data(B0) and <B0>=0.
+MagneticPath(B): B is jointly smooth on S and, for t>=0, periodic,
+divergence-free and mean-zero.
+
+The frozen scalar/vector inverse Laplacian is
+
+  Lf(x)=sum'_k lambda(k) integral_Q cos(2*pi*k.(x-y)) f(y) dy,
+  lambda(0)=0,
+  lambda(k)=1/(4*pi^2*|k|^2) for k!=0.
+
+Define
+
+  KB=curl(LB),
+  U_m[B]=m+KB,
+  G[B]=B cross U_m[B]+nu curl B,
+  V[B]=-curl G[B],
+  Q[B]=div G[B],
+  h[B]=L(Q[B]),
+  DG[B](b)=b cross U_m[B]+B cross Kb+nu curl b,
+  J[B]=c^2 curl B-DG[B](V[B]).
+
+MaxwellB(nu,c) states that every m and MagneticData(B0) admit jointly
+smooth spatially periodic B,E,rho,J on S satisfying B(0)=B0, <B(t)>=0,
+
+  div B=0,     B_t+curl E=0,
+  div E=rho,   E_t-c^2 curl B=-J,
+
+and the exact identities E=G[B], rho=Q[B], J=J[B].
+
+FeffermanB(nu) states that every Data(a) has jointly smooth spatially
+periodic u,p on S satisfying
+
+  div u=0,
+  u_t+(u.grad)u+grad p=nu Delta u,
+  u(0)=a.
+
+The pressure is periodic; a spatially constant gauge is admissible.
+
+2. SHARED FOURIER/HODGE RESULTS
+------------------------------
+
+Reference: ../FOURIER_HODGE_COMPOSITION_B_TIER.txt, C01-C12.
+
+The shared derivation proves, for the exact cosine-integral definitions,
+
+  -Delta Lf=f-<f>,
+  partial_j Lf=L(partial_j f),
+  <Lf>=0,
+  K(curl F)=F-<F>+grad L(div F).
+
+The proof uses actual cube/torus coefficient transport, periodic integration
+by parts, polynomial Fourier decay, rank-three lattice summability, and
+normally convergent synthesis. Thus every identity is obtained on the
+original smooth periodic class, without a replacement inverse operator.
+
+The resulting reconstruction identities are
+
+  U_<a>[curl a]=a  for Data(a),                        (H1)
+  curl(U_m[B])=B  for MagneticData(B),                 (H2)
+  div(U_m[B])=0,  <U_m[B]>=m.
+
+For every MagneticPath B, U_m[B(t)] and the canonical pressure below are
+jointly smooth on S, and div U_m[B(t)]=0.              (H3)
+
+For every MagneticData B,
+
+  G[B]+grad h[B]=K(curl G[B]).                         (H4)
+
+The parameter theorem establishes D_t K(B(t))=K(D_t B(t)) on S.
+Its boundary argument uses continuous Fourier jets and the derivative-
+extension endpoint on the closure of the positive-time half-space. No
+analyticity, negative-time smooth extension, or global uniform time bound
+is part of these premises.
+
+3. R01: MAGNETIC INITIAL DATA FOR ARBITRARY VELOCITY MEAN
+--------------------------------------------------------
+
+Assume MaxwellB(nu,c). Fix an arbitrary Data(a). Define
+
+  m=<a>,  B0=curl a.
+
+Smoothness and periodicity pass to actual spatial derivatives. Equality
+of mixed partials gives div B0=0. The integral of each periodic derivative
+over the cube vanishes, so <B0>=0. Hence MagneticData(B0).
+
+Apply the assumed Maxwell existence proposition to this pair (m,B0).
+Obtain B,E,rho,J satisfying the full frozen MaxwellSolution predicate.
+Its magnetic smoothness, periodicity, Gauss law, and mean-zero condition
+give MagneticPath(B).
+
+4. R02: CANONICAL VELOCITY, PRESSURE, AND REGULARITY
+--------------------------------------------------
+
+Define
+
+  u(t)=U_m[B(t)],
+  h(t)=L(div G[B(t)]),
+  e(t,x)=|u(t,x)|^2/2,
+  p(t,x)=h(t,x)-e(t,x)+<e(t,.)>.
+
+H3 gives joint smoothness on S and div u=0. Spatial periodicity follows
+from the integer-character Fourier formula and periodic differentiation.
+The mean term depends only on time. Since <h>=0 and vol(Q)=1,
+
+  <p(t)>=0.
+
+Thus p is the exact frozen canonical pressure, including its scalar gauge:
+
+  p=L(div G)-|U_m[B]|^2/2+<|U_m[B]|^2>/2.
+
+Joint smoothness of the actual mean term follows by differentiating its
+cube integral on compact time slabs, including at zero. This is the k=0
+coefficient instance of the same parameter argument. No additional pressure
+regularity assumption is introduced.
+
+By H2, curl u=B. The initial condition and H1 give
+
+  u(0)=U_m[B(0)]=U_<a>[curl a]=a.
+
+The harmonic mode m=<a> remains arbitrary throughout.
+
+5. R03: ELECTRIC HODGE WITH THE REQUIRED ZERO MODE
+------------------------------------------------
+
+For a fixed nonnegative time, H2 and div u=0 imply
+
+  B cross u=(u.grad)u-grad e.
+
+Periodic integration gives mean convection zero, mean gradient zero, and
+mean curl zero. Explicitly, for each i,
+
+  integral_Q (u.grad)u_i
+    =sum_j integral_Q partial_j(u_j*u_i)
+      -integral_Q u_i*div u
+    =0.
+
+Therefore
+
+  <G[B]>=<B cross u+nu curl B>=0.
+
+Substitution in the general periodic Hodge identity proves exactly
+
+  G[B]+grad L(div G[B])=K(curl G[B]).
+
+The plus sign and zero-mode condition are essential. The full Leray
+projection retains a constant Fourier coefficient; K curl removes it.
+Their equality here follows from the derived vanishing mean of G.
+
+The scalar potential itself has coefficients
+
+  hhat(0)=0,
+  hhat(k)=i*(k.Ghat(k))/(2*pi*|k|^2) for k!=0.
+
+Thus the frozen scalarL potential, rather than only a pressure gradient
+up to an unspecified gauge, is identified.
+
+6. R04: FARADAY GIVES THE RECONSTRUCTED TIME DERIVATIVE
+-----------------------------------------------------
+
+The Maxwell Faraday law and the electric constitutive identity give
+
+  B_t=-curl E=-curl G[B].
+
+The parameter-smoothness theorem gives the actual within time derivative
+
+  u_t=K(B_t).
+
+Negation commutes with K on these smooth periodic fields. Consequently
+
+  u_t=-K(curl G[B])=-G[B]-grad h,                      (M)
+
+where the electric Hodge identity gives the final equality.
+
+This calculation requires no off-solution additivity assertion for arbitrary
+totalized Fourier sums. The existing Lean construction uses the concrete
+K-negation identity and on-solution Faraday cancellation.
+
+7. R05: RECOVERY OF THE NSE MOMENTUM EQUATION
+-------------------------------------------
+
+Since curl u=B and div u=0, the curl-curl identity yields
+
+  curl B=grad div u-Delta u=-Delta u.
+
+The Lamb identity gives
+
+  (u.grad)u=B cross u+grad e.
+
+The spatial gradient of <e(t,.)> is zero. Using (M) and the definition of p,
+
+  u_t+(u.grad)u+grad p
+    =-G-grad h+(B cross u+grad e)+(grad h-grad e)
+    =-G+B cross u
+    =-nu curl B
+    =nu Delta u.
+
+Thus the actual momentum equation holds for every t>=0 and every x,
+including the right-time derivative at zero. Combined with R02, this is
+an NSSolution(nu,a,u,p).
+
+8. R06: EXISTENTIAL AND UNIVERSAL ASSEMBLY
+----------------------------------------
+
+The datum a was arbitrary in Data. Therefore FeffermanB(nu). Restricting
+the parameters to the frozen positive range gives
+
+  !  forall nu>0, forall c>0,
+       MaxwellB(nu,c) -> FeffermanB(nu).
+
+The proof uses the magnetic regularity, magnetic Gauss and mean constraints,
+Faraday, and the prescribed electric constitutive field from the supplied
+MaxwellSolution. The additional electric Gauss, Ampere, charge and current
+requirements remain part of the full target Maxwell existence proposition;
+the implication does not replace that proposition by a weaker definition.
+
+9. LEAN ENDPOINTS AND CERTIFICATION BOUNDARY
+-------------------------------------------
+
+Active directional source:
+  NSEMaxwellReverse.lean
+
+Base conditional endpoint:
+  NSEMaxwell.Bridge.maxwellB_implies_feffermanB_of_periodicAnalyticLaws
+  (laws : PeriodicAnalyticLaws) (nu c : R) :
+    MaxwellB nu c -> FeffermanB nu.
+
+Reduced directional source:
+  NSEMaxwellReverse/Reduced.lean
+
+Reduced conditional endpoint:
+  NSEMaxwell.Bridge.maxwellB_implies_feffermanB_of_fourierHodgeLaws
+  (laws : FourierHodgeLaws) (nu c : R) :
+    MaxwellB nu c -> FeffermanB nu.
+
+The actual construction proofs retain their declaration names:
+  canonical_momentum_split,
+  canonical_momentum_factorization,
+  canonical_momentum_zero_of_faraday,
+  ns_of_maxwell.
+
+The off-solution factorization retains its separate hKAdd hypothesis.
+That hypothesis is absent from the directional existence theorem.
+
+The mathematical Hodge realization is recorded in the shared B-tier
+derivation. Its Lean inhabitant is not supplied by this reorganization.
+The new layout is A_TIER_CANDIDATE until matching external cached native
+Linux Lean 4.34.0-rc1 compilation and theorem-level axiom audit succeed.
+
+Approved foundational axioms are propext, Classical.choice, Quot.sound.
+An axiom audit does not discharge an explicit FourierHodgeLaws hypothesis.
+
+DEPENDENCY_INDEX:
+  R01: actual div curl and periodic derivative integration.
+  R02: shared C01-C10; M01,M02,M05-M10; T01-T05.
+  R03: shared C07,C11; concrete Lamb and periodic mean identities;
+       optional T07 requires the exact pressure/zero-mode adapters.
+  R04: shared C08-C09; M06,M08,M09,M10; concrete K-negation.
+  R05: actual Lamb, curl-curl, and canonical pressure-gradient identities.
+  R06: the frozen NSSolution constructor and universal quantifiers.
+
+Shared source signatures and copied endpoints are indexed in the
+Fefferman_B_adapter directory. This derivation preserves the exact datum
+class, actual derivatives and cube means, canonical pressure, and boundary
+regularity of the frozen theorem.
+
+END OF REVERSE B-TIER DERIVATION

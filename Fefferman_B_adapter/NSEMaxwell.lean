@@ -20,3 +20,5 @@ import NSEMaxwell.AnalyticBridge
 import NSEMaxwell.CanonicalSmoothness
 import NSEMaxwell.AnalyticReduction
 import NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE
+import NSEMaxwellForward.Reduced
+import NSEMaxwellReverse.Reduced

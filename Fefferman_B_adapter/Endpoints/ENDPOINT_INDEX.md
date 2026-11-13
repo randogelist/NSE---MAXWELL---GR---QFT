@@ -8,7 +8,7 @@ REFERENCE_ONLY = 1
 TOTAL = 22
 ```
 
-Exact signatures, implicit context, required adapters and source imports: [ENDPOINTS.json](ENDPOINTS.json). Mathematical composition: [FOURIER_HODGE_COMPOSITION_B_TIER.txt](FOURIER_HODGE_COMPOSITION_B_TIER.txt).
+Exact signatures, implicit context, required adapters and source imports: [ENDPOINTS.json](ENDPOINTS.json). Mathematical composition: [FOURIER_HODGE_COMPOSITION_B_TIER.txt](../../B%20%3C-%3E%20Maxwell/FOURIER_HODGE_COMPOSITION_B_TIER.txt).
 
 ## Declaration index
 

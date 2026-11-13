@@ -44,4 +44,4 @@ The manifest records source signatures and explicit implicit-context summaries. 
 
 ## Integrity
 
-For each source file the staged SHA256 and Git blob hash match the recorded pinned upstream bytes. `SHA256SUMS` covers every staged file except itself. `CHECKS.json` records the static checks and mathematical reviews; it is not a compiler certificate.
+For each source file the staged SHA256 and Git blob hash match the recorded pinned upstream bytes. `SHA256SUMS` covers the current endpoint-reference folder except itself. `PRIOR_STAGING_CHECKS.json` and `PRIOR_STAGING_SHA256SUMS` preserve the earlier staging receipt at commit `2373ce37659fa2f84920da0e5a26652a124623b7`; its original paths belong to that historical layout. Neither receipt is a compiler certificate.

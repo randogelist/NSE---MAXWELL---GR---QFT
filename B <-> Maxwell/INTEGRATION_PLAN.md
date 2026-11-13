@@ -5,7 +5,7 @@ STATE              = SPECIFIED_MATHEMATICALLY
 IMPLEMENTATION     = DEFERRED
 COMPILER           = external native Linux / Lean 4.34.0-rc1
 DEPENDENCIES       = existing pinned Mathlib with retained caches
-TARGET_MUTATION    = none outside the temporary staging folder
+SOURCE_LAYOUT      = Fefferman_B_adapter plus B <-> Maxwell/=> and /<=
 ```
 
 The names below are prospective adapter names. They are not assertions that compiled declarations already exist. Their mathematical bodies are the indicated sections of [FOURIER_HODGE_COMPOSITION_B_TIER.txt](FOURIER_HODGE_COMPOSITION_B_TIER.txt).
@@ -83,9 +83,9 @@ The displayed forms specify proof dependencies. They are not `.lean` deliverable
 
 ## 5. Source-port boundary
 
-Mathlib endpoints are available at the target dependency pin. Selected Methlib files originate from Lean 4.33.0 and an older Mathlib pin. Their complete original imports are preserved in `ENDPOINTS.json` and in the reference snapshots. Some imports reach Sobolev, Galerkin, or unrelated NSE modules.
+Mathlib endpoints are available at the target dependency pin. Selected Methlib files originate from Lean 4.33.0 and an older Mathlib pin. Their complete original imports are preserved in `../Fefferman_B_adapter/Endpoints/ENDPOINTS.json` and in the reference snapshots. Some imports reach Sobolev, Galerkin, or unrelated NSE modules.
 
-Integration should transport only the required harmonic-analysis definitions and proof bodies into target-native modules, maintaining their explicit hypotheses. The staged files do not constitute a standalone build. No source-package global-existence endpoint, adjusted mean-zero theorem, all-order Sobolev admission, or unspecified inverse-Laplacian operator is part of the selected root route.
+Integration should transport only the required harmonic-analysis definitions and proof bodies into target-native modules, maintaining their explicit hypotheses. The copied endpoint reference files do not constitute a standalone build. The existing conditional equivalence is compiled separately through the adapter and directional source roots. No source-package global-existence endpoint, adjusted mean-zero theorem, all-order Sobolev admission, or unspecified inverse-Laplacian operator is part of the selected root route.
 
 ## 6. Compiler and audit gates
 

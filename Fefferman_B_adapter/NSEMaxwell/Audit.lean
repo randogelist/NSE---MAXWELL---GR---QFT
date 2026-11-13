@@ -529,3 +529,17 @@ set_option pp.proofs false
 
 #check @ZLattice.summable_norm_pow_inv
 #print axioms ZLattice.summable_norm_pow_inv
+
+-- Directional endpoints, with all original analytic premises retained.
+
+#check @NSEMaxwell.Bridge.feffermanB_implies_maxwellB_of_periodicAnalyticLaws
+#print axioms NSEMaxwell.Bridge.feffermanB_implies_maxwellB_of_periodicAnalyticLaws
+
+#check @NSEMaxwell.Bridge.maxwellB_implies_feffermanB_of_periodicAnalyticLaws
+#print axioms NSEMaxwell.Bridge.maxwellB_implies_feffermanB_of_periodicAnalyticLaws
+
+#check @NSEMaxwell.Bridge.feffermanB_implies_maxwellB_of_fourierHodgeLaws
+#print axioms NSEMaxwell.Bridge.feffermanB_implies_maxwellB_of_fourierHodgeLaws
+
+#check @NSEMaxwell.Bridge.maxwellB_implies_feffermanB_of_fourierHodgeLaws
+#print axioms NSEMaxwell.Bridge.maxwellB_implies_feffermanB_of_fourierHodgeLaws

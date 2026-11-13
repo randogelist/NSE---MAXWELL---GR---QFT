@@ -28,8 +28,16 @@ if (-not $ReportDirectory) {
     $ReportDirectory = "artifacts/external-" + $NativePlatform
 }
 
-$RepoRoot = Split-Path -Parent $PSScriptRoot
+$RepoRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 Set-Location -LiteralPath $RepoRoot
+$AdapterSourceRoot = "Fefferman_B_adapter"
+$ForwardSourceRoot = "B <-> Maxwell/=>"
+$ReverseSourceRoot = "B <-> Maxwell/<="
+$ProjectSourceRoots = @($AdapterSourceRoot, $ForwardSourceRoot, $ReverseSourceRoot)
+$ProjectRootSource = "$AdapterSourceRoot/NSEMaxwell.lean"
+$AuditSource = "$AdapterSourceRoot/NSEMaxwell/Audit.lean"
+$VerifierSource = "$AdapterSourceRoot/scripts/verify_audit.py"
+$AggregateTargets = @("NSEMaxwell", "NSEMaxwellForward.Reduced", "NSEMaxwellReverse.Reduced")
 $ReportRoot = Join-Path $RepoRoot $ReportDirectory
 $null = New-Item -ItemType Directory -Path $ReportRoot -Force
 $ExpectedToolchain = "leanprover/lean4:v4.34.0-rc1"
@@ -45,6 +53,30 @@ $env:MATHLIB_NO_CACHE_ON_UPDATE = "1"
 Remove-Item Env:LEAN_PATH -ErrorAction SilentlyContinue
 Remove-Item Env:LEAN_SRC_PATH -ErrorAction SilentlyContinue
 $CommandTimings = [Collections.Generic.List[object]]::new()
+
+function Get-ProjectSourcePath {
+    param([string]$Module)
+    $Relative = $Module.Replace(".", "/") + ".lean"
+    if ($Module -match '^NSEMaxwellForward(?:\.|$)') {
+        return Join-Path $ForwardSourceRoot $Relative
+    }
+    if ($Module -match '^NSEMaxwellReverse(?:\.|$)') {
+        return Join-Path $ReverseSourceRoot $Relative
+    }
+    if ($Module -match '^NSEMaxwell(?:\.|$)') {
+        return Join-Path $AdapterSourceRoot $Relative
+    }
+    throw "No active project source root is registered for module: $Module"
+}
+
+function Get-ProjectLeanSources {
+    foreach ($SourceRoot in $ProjectSourceRoots) {
+        if (-not (Test-Path -LiteralPath $SourceRoot -PathType Container)) {
+            throw "Active project source root is absent: $SourceRoot"
+        }
+        Get-ChildItem -LiteralPath $SourceRoot -Recurse -File -Filter "*.lean"
+    }
+}
 
 function Write-JsonFile {
     param([string]$Path, [object]$Value)
@@ -132,8 +164,12 @@ try {
     $null = Get-Command "lake" -ErrorAction Stop
     $null = Get-Command "git" -ErrorAction Stop
     foreach ($Required in @(
-        "NSEMaxwell.lean", "NSEMaxwell/Audit.lean", "audit-targets.txt",
-        "formalization-status.json", "scripts/verify_audit.py", "lake-manifest.json"
+        $ProjectRootSource, $AuditSource, "audit-targets.txt",
+        "formalization-status.json", $VerifierSource, "lake-manifest.json",
+        "$ForwardSourceRoot/NSEMaxwellForward.lean",
+        "$ForwardSourceRoot/NSEMaxwellForward/Reduced.lean",
+        "$ReverseSourceRoot/NSEMaxwellReverse.lean",
+        "$ReverseSourceRoot/NSEMaxwellReverse/Reduced.lean"
     )) {
         if (-not (Test-Path -LiteralPath $Required -PathType Leaf)) {
             throw "Required input is absent: $Required"
@@ -245,8 +281,7 @@ try {
         }
     }
     else {
-        $LeanSources = @(Get-ChildItem "NSEMaxwell" -Recurse -File -Filter "*.lean")
-        $LeanSources += Get-Item "NSEMaxwell.lean"
+        $LeanSources = @(Get-ProjectLeanSources)
         foreach ($Source in $LeanSources) {
             foreach ($Line in Get-Content -LiteralPath $Source.FullName) {
                 if ($Line -match '^\s*(?:public\s+)?import\s+(.+)$') {
@@ -355,13 +390,13 @@ try {
         }
     }
     # Hash untracked project source inputs as well as the resolved lockfile.
-    foreach ($Source in Get-ChildItem "NSEMaxwell" -Recurse -File -Filter "*.lean") {
+    foreach ($Source in Get-ProjectLeanSources) {
         $null = $Inputs.Add($Source.FullName.Substring($RepoRoot.Length + 1).Replace("\", "/"))
     }
     foreach ($Required in @(
-        "lean-toolchain", "lake-manifest.json", "NSEMaxwell.lean",
-        "NSEMaxwell/Audit.lean", "audit-targets.txt", "formalization-status.json",
-        "scripts/run.ps1", "scripts/verify_audit.py", "run.cmd"
+        "lean-toolchain", "lake-manifest.json", $ProjectRootSource,
+        $AuditSource, "audit-targets.txt", "formalization-status.json",
+        "$AdapterSourceRoot/scripts/run.ps1", $VerifierSource, "run.cmd"
     )) {
         $null = $Inputs.Add($Required)
     }
@@ -415,19 +450,24 @@ try {
         "NSEMaxwell.MeanConservation",
         "NSEMaxwell.Residual",
         "NSEMaxwell.ExistenceTransport",
+        "NSEMaxwell.AnalyticContracts",
+        "NSEMaxwellForward",
+        "NSEMaxwellReverse",
         "NSEMaxwell.AnalyticBridge",
         "NSEMaxwell.CanonicalSmoothness",
         "NSEMaxwell.AnalyticReduction",
+        "NSEMaxwellForward.Reduced",
+        "NSEMaxwellReverse.Reduced",
         "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE"
     )
     $Evidence.module_build_schedule = $BuildModules
     $Evidence.module_build_concurrency = 1
+    $Evidence.aggregate_build_targets = $AggregateTargets
     # The official no-build mode validates the ordinary transitive Lake traces.
     # Exit 0 certifies freshness; exit 3 requests the bounded compilation path.
     # No cached theorem-audit output participates in either branch.
-    $FreshnessExit = Invoke-NativeLogged "lake" @(
-        "build", "--no-build", "NSEMaxwell"
-    ) "run-build-freshness.log" -AllowFailure
+    $FreshnessExit = Invoke-NativeLogged "lake" (@("build", "--no-build") + $AggregateTargets) `
+        "run-build-freshness.log" -AllowFailure
     $Evidence.freshness_check_exit_code = $FreshnessExit
     $Evidence.failed_modules = @()
     $Evidence.skipped_modules = @()
@@ -448,7 +488,7 @@ try {
         foreach ($Module in $BuildModules) {
             $Evidence.current_build_module = $Module
             $ModuleLog = "run-build-" + $Module.Replace(".", "-") + ".log"
-            $SourcePath = $Module.Replace(".", "/") + ".lean"
+            $SourcePath = Get-ProjectSourcePath $Module
             $Dependencies = @()
             foreach ($Line in Get-Content -LiteralPath $SourcePath) {
                 if ($Line -match '^import\s+(.+)$') {
@@ -480,7 +520,7 @@ try {
         }
         $Evidence.current_build_module = "NSEMaxwell"
         Write-JsonFile $ProvenancePath $Evidence
-        $null = Invoke-NativeLogged "lake" @("build", "NSEMaxwell") "run-build.log"
+        $null = Invoke-NativeLogged "lake" (@("build") + $AggregateTargets) "run-build.log"
     }
     else {
         throw "Lake freshness validation failed with exit code $FreshnessExit."
@@ -489,17 +529,19 @@ try {
 
     $Evidence.stage = "AXIOM_AUDIT"
     Write-JsonFile $ProvenancePath $Evidence
-    $null = Invoke-NativeLogged "lake" @("env", "lean", "NSEMaxwell/Audit.lean") "run-audit.log"
+    $null = Invoke-NativeLogged "lake" @(
+        "env", "lean", "-R", $AdapterSourceRoot, $AuditSource
+    ) "run-audit.log"
     $Evidence.audit_command_status = "PASS"
 
     $Evidence.stage = "VERIFY_EVIDENCE"
     Write-JsonFile $ProvenancePath $Evidence
     $VerifierArguments = $PythonPrefix + @(
-        "scripts/verify_audit.py",
+        $VerifierSource,
         "--expected-platform", $NativePlatform,
         "--root", $RepoRoot,
         "--targets", "audit-targets.txt",
-        "--audit-source", "NSEMaxwell/Audit.lean",
+        "--audit-source", $AuditSource,
         "--log", (Join-Path $ReportRoot "run-audit.log"),
         "--manifest", $ManifestPath,
         "--provenance", $ProvenancePath,

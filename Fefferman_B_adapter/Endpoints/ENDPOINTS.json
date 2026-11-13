@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "kind": "TEMPORARY_ENDPOINT_STAGING_WITH_COMPLETE_B_TIER_COMPOSITION",
+  "kind": "FEFFERMAN_B_ADAPTER_PINNED_ENDPOINT_REFERENCES",
   "selection_date": "2026-11-13",
   "target": {
     "repository": "randogelist/NSE---MAXWELL---GR---QFT",
@@ -9,7 +9,8 @@
     "theorem_scope": "Frozen FB(ν) ↔ MB(ν,c), with remaining FourierHodgeLaws endpoints unchanged.",
     "branch": "codex/fefferman-b-maxwell",
     "active_ci_platform": "native Linux / Ubuntu 24.04",
-    "frozen_commit": "63f53e4c31d09cd1325f032d7456d2d2eb4386b3"
+    "frozen_commit": "63f53e4c31d09cd1325f032d7456d2d2eb4386b3",
+    "source_layout": "Fefferman_B_adapter/NSEMaxwell"
   },
   "reference": {
     "repository": "randogelist/Methlib",
@@ -31,13 +32,13 @@
   "proof_boundary": {
     "target": "NSEMaxwell.Bridge.FourierHodgeLaws; assembly yields NSEMaxwell.Classical.ExactEquivalence.",
     "exact_scope": "Frozen smooth unforced periodic 3D Fefferman B with arbitrary velocity mean, periodic pressure, joint C-infinity through t=0, and no analyticity requirement.",
-    "this_review": "Pinned public source selection and complete mathematical B-tier composition. Temporary staging folder only; no Lean/Lake/elan execution or new A-tier promotion.",
+    "this_review": "Pinned source references relocated into Fefferman_B_adapter. Existing equivalence proof bodies are separated by direction; source ports and a concrete FourierHodgeLaws inhabitant remain deferred.",
     "named_audit_inheritance": "Only M01, M02, M05, M07 inherit the previously retained exact-target external named audit; all additional names require later external checks and theorem-level axiom audit.",
     "source_port_boundary": "Methlib source proof bodies are references, not target proof certificates. Toolchain changes from 4.33 to 4.34.0-rc1 and namespace/measure/operator adapters remain.",
     "snapshot_boundary": "Fourteen unmodified selected source files are stored as .lean.txt reference snapshots. Source imports are recorded. This is not a dependency-closed or imported Lean package; later integration extracts/ports the required harmonic-analysis proofs.",
     "axiom_boundary": "A lexical scan is not a transitive axiom audit. Do not claim that absence of sorry/axiom text certifies imported endpoints.",
     "formalization_policy": "External native Linux with pinned cached Mathlib for later integration; never local Lean/Lake/elan.",
-    "adapter_status": "All selected-route mathematical adapters are derived in C01-C12 of FOURIER_HODGE_COMPOSITION_B_TIER.txt. Their Lean implementation and matching external theorem-level audits are deferred."
+    "adapter_status": "Mathematical adapters C01-C12 are recorded in ../../B <-> Maxwell/FOURIER_HODGE_COMPOSITION_B_TIER.txt. Their Lean implementation remains deferred; repository reorganization does not discharge those premises."
   },
   "definition_context": {
     "source_contracts": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/Contracts.lean",
@@ -1227,7 +1228,7 @@
     "artifact_id": 13998740266,
     "artifact_sha256": "76c772bea8d3a9879bcb3ced03e6c60e128c5fac8601df0b0e94ae58dce46b6d",
     "source_manifest_sha256": "2e170563a63e264960afcc7cfc9e4aed952ff209e029ca696f9b034687d597a5",
-    "directory": "evidence/linux-43336709607",
+    "directory": "Fefferman_B_adapter/evidence/linux-43336709607",
     "platform": "native Linux / Ubuntu 24.04",
     "build": "PASS",
     "lean_audit_command": "PASS",
@@ -1246,12 +1247,13 @@
     "The root agent owns final bundle staging, theorem TXT, repository edits and publication."
   ],
   "staging": {
-    "path": "tmp/fourier_hodge_composition",
-    "integration": "DEFERRED",
+    "path": "Fefferman_B_adapter/Endpoints",
+    "integration": "HODGE_ADAPTER_IMPLEMENTATION_DEFERRED",
     "source_extension": ".lean.txt",
     "reference_package_dependency_closed": false,
     "new_a_tier_promotion": false,
-    "b_tier_derivation": "FOURIER_HODGE_COMPOSITION_B_TIER.txt",
-    "integration_contracts": "INTEGRATION_PLAN.md"
+    "b_tier_derivation": "../../B <-> Maxwell/FOURIER_HODGE_COMPOSITION_B_TIER.txt",
+    "integration_contracts": "../../B <-> Maxwell/INTEGRATION_PLAN.md",
+    "prior_staging_commit": "2373ce37659fa2f84920da0e5a26652a124623b7"
   }
 }

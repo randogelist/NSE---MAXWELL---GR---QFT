@@ -1,3 +1,16 @@
+# External evidence after directory reorganization
+
+The certificate subdirectories below retain their original artifact bytes.
+Their embedded source-manifest paths describe the original source commit.
+The active library now resides under `Fefferman_B_adapter/`; directional
+proof bodies reside under `B <-> Maxwell/=>/` and `B <-> Maxwell/<=/`.
+
+A matching fresh cached native Linux build and 174-target audit is required
+for the reorganized source layout. Historical source-manifest paths are not
+rewritten inside certificate artifacts.
+
+## Historical evidence inventory
+
 # External compiler and theorem audit evidence
 
 ## Current certified Linux proof snapshot

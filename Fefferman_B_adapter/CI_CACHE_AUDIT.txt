@@ -1,3 +1,28 @@
+CURRENT SOURCE-LAYOUT MIGRATION (2026-11-13)
+===========================================
+
+Active module roots:
+  NSEMaxwell -> Fefferman_B_adapter
+  NSEMaxwellForward -> B <-> Maxwell/=>
+  NSEMaxwellReverse -> B <-> Maxwell/<=
+
+External native Linux only for this literal POSIX path layout.
+Registered audit targets: 174. Fresh source/axiom validation remains required.
+Pinned compiler and all dependency revisions remain unchanged.
+
+Verified previous dependency cache fallback:
+  nse-deps-v2-Linux-X64-61a962499c8eb2ab9217aea818efc9c8df3fc4c21642b7007e74a1a069a24416
+Verified previous project cache fallback:
+  nse-project-v2-Linux-X64-61a962499c8eb2ab9217aea818efc9c8df3fc4c21642b7007e74a1a069a24416-fc4dca293fc153a8f267633a5b81c65f4a9fe682d0c7c79f3abe80d4a3b6c323
+Provenance: successful native Linux run 43337888436, job 131598611127.
+
+The fallback objects remain provisional until normal pinned dependency and
+Lake trace checks pass. No theorem-audit seal is reused. No cache is cleaned.
+Active scripts: Fefferman_B_adapter/scripts/run.ps1 and verify_audit.py.
+
+HISTORICAL CACHE DESIGN RECORD FOLLOWS
+====================================
+
 CI_CACHE_AUDIT
 STATUS = CACHED_NATIVE_LINUX_BUILD_AND170_AUDIT_VERIFIED
 ACTIVE_CI_PLATFORM = NATIVE_LINUX_UBUNTU_24_04

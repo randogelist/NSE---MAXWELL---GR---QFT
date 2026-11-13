@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "source_status": "A_TIER_FOR_EXACT_CONDITIONAL_REDUCED_ROOT",
+  "source_status": "A_TIER_CANDIDATE_REORGANIZED_LAYOUT",
   "exact_target": "NSEMaxwell.Classical.ExactEquivalence",
   "exact_target_proved": false,
   "unconditional_closure": false,
@@ -22,7 +22,7 @@
   "promotion_rule": "Matching external compiler and theorem-level axiom evidence; semantic hypotheses audited separately.",
   "prepared_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED",
   "prepared_root_type": "NSEMaxwell.Bridge.FourierHodgeLaws -> NSEMaxwell.Classical.ExactEquivalence",
-  "conditional_root_status": "A_TIER",
+  "conditional_root_status": "A_TIER_CANDIDATE_PENDING_MATCHING_EXTERNAL_RUN",
   "analytic_laws_inhabitant_provided": false,
   "open_analytic_endpoints": [
     "reconstruct_velocity",
@@ -49,14 +49,14 @@
     "DG_curl_neg"
   ],
   "optional_off_solution_lemmas": "canonical_momentum_factorization retains its own hKAdd premise; the root does not depend on it.",
-  "audit_target_count": 170,
+  "audit_target_count": 174,
   "external_evidence": {
     "source_commit": "d241f2b700be66ab447cb1650770271e1b364b8a",
     "run_id": 43336709607,
     "artifact_id": 13998740266,
     "artifact_sha256": "76c772bea8d3a9879bcb3ced03e6c60e128c5fac8601df0b0e94ae58dce46b6d",
     "source_manifest_sha256": "2e170563a63e264960afcc7cfc9e4aed952ff209e029ca696f9b034687d597a5",
-    "directory": "evidence/linux-43336709607",
+    "directory": "Fefferman_B_adapter/evidence/linux-43336709607",
     "platform": "native Linux / Ubuntu 24.04",
     "build": "PASS",
     "lean_audit_command": "PASS",
@@ -84,7 +84,7 @@
     "artifact_id": 13990185678,
     "artifact_sha256": "e5fc7ade2aed6f22c3deeb3a83170a6c53e72c317ab04647692a436f0f1b33e5",
     "source_manifest_sha256": "cf68016d6739febf4580ce6bec82a5955a2e274cfd0a2ce28b9ff28a94e23c52",
-    "directory": "evidence/windows-43318057281",
+    "directory": "Fefferman_B_adapter/evidence/windows-43318057281",
     "build": "PASS",
     "lean_audit_command": "PASS",
     "theorem_axiom_audit": "PASS_STANDARD_ONLY",
@@ -97,7 +97,7 @@
     "artifact_id": 13998740266,
     "artifact_sha256": "76c772bea8d3a9879bcb3ced03e6c60e128c5fac8601df0b0e94ae58dce46b6d",
     "source_manifest_sha256": "2e170563a63e264960afcc7cfc9e4aed952ff209e029ca696f9b034687d597a5",
-    "directory": "evidence/linux-43336709607",
+    "directory": "Fefferman_B_adapter/evidence/linux-43336709607",
     "platform": "native Linux / Ubuntu 24.04",
     "build": "PASS",
     "lean_audit_command": "PASS",
@@ -110,7 +110,7 @@
   },
   "prepared_reduced_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED",
   "prepared_reduced_root_type": "NSEMaxwell.Bridge.FourierHodgeLaws -> NSEMaxwell.Classical.ExactEquivalence",
-  "reduced_root_status": "A_TIER_FOR_EXACT_CONDITIONAL_IMPLICATION",
+  "reduced_root_status": "A_TIER_CANDIDATE_PENDING_MATCHING_EXTERNAL_RUN",
   "reduced_open_analytic_endpoints": [
     "reconstruct_velocity",
     "reconstruct_curl",
@@ -142,7 +142,7 @@
   "original_conditional_root": {
     "name": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE",
     "type": "NSEMaxwell.Bridge.PeriodicAnalyticLaws -> NSEMaxwell.Classical.ExactEquivalence",
-    "status": "A_TIER_FOR_EXACT_CONDITIONAL_IMPLICATION",
+    "status": "A_TIER_CANDIDATE_CURRENT_LAYOUT; PRIOR_A_TIER_EVIDENCE_RETAINED",
     "analytic_endpoints": [
       "reconstruct_velocity",
       "reconstruct_curl",
@@ -162,16 +162,16 @@
     "ZLattice.summable_norm_pow_inv"
   ],
   "registered_methlib_port_candidates": 7,
-  "formal_status": "CONDITIONAL_FORMAL_CLOSURE",
+  "formal_status": "A_TIER_CANDIDATE_CURRENT_LAYOUT; PRIOR_CONDITIONAL_FORMAL_CLOSURE_RETAINED",
   "active_ci_platform": "native Linux / Ubuntu 24.04",
-  "active_ci_validation": "PASS_NATIVE_LINUX_BUILD_AND170_FRESH_AUDITS",
+  "active_ci_validation": "PENDING_CACHED_NATIVE_LINUX_BUILD_AND174_FRESH_AUDITS",
   "prior_reduced_root_windows_evidence": {
     "source_commit": "1bd2ee067d4aad3c265b32efd533ef270179e665",
     "run_id": 43333835295,
     "artifact_id": 13995999237,
     "artifact_sha256": "0fb3739800b7d282576868d0b9b5fac4246b8c713c67c8ac7901cfb8dfd9fa47",
     "source_manifest_sha256": "b3be4cfb54f92124268b4241625b8f60a3c66d9276179777223a388a46781628",
-    "directory": "evidence/windows-43333835295",
+    "directory": "Fefferman_B_adapter/evidence/windows-43333835295",
     "platform": "native Windows",
     "build": "PASS",
     "lean_audit_command": "PASS",
@@ -182,5 +182,47 @@
     "lean_source_hashes_matching_delivery": 25
   },
   "certified_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED",
-  "certified_root_type": "NSEMaxwell.Bridge.FourierHodgeLaws -> NSEMaxwell.Classical.ExactEquivalence"
+  "certified_root_type": "NSEMaxwell.Bridge.FourierHodgeLaws -> NSEMaxwell.Classical.ExactEquivalence",
+  "prior_layout_certification": {
+    "source_commit": "d241f2b700be66ab447cb1650770271e1b364b8a",
+    "status": "A_TIER_FOR_EXACT_CONDITIONAL_REDUCED_ROOT",
+    "audited_declarations": 170,
+    "snapshot_directory": "Fefferman_B_adapter/evidence/linux-43336709607"
+  },
+  "source_layout": {
+    "adapter": "Fefferman_B_adapter",
+    "forward": "B <-> Maxwell/=>",
+    "reverse": "B <-> Maxwell/<=",
+    "statement": "Fefferman_B_adapter/NSEMaxwell/Classical.lean",
+    "copied_endpoints": "Fefferman_B_adapter/Endpoints",
+    "full_b_tier_derivation": "B <-> Maxwell/FOURIER_HODGE_COMPOSITION_B_TIER.txt",
+    "literal_names_require_posix_checkout": true
+  },
+  "directional_endpoints": [
+    {
+      "name": "NSEMaxwell.Bridge.feffermanB_implies_maxwellB_of_periodicAnalyticLaws",
+      "premise": "PeriodicAnalyticLaws",
+      "direction": "FeffermanB -> MaxwellB",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "name": "NSEMaxwell.Bridge.maxwellB_implies_feffermanB_of_periodicAnalyticLaws",
+      "premise": "PeriodicAnalyticLaws",
+      "direction": "MaxwellB -> FeffermanB",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "name": "NSEMaxwell.Bridge.feffermanB_implies_maxwellB_of_fourierHodgeLaws",
+      "premise": "FourierHodgeLaws",
+      "direction": "FeffermanB -> MaxwellB",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "name": "NSEMaxwell.Bridge.maxwellB_implies_feffermanB_of_fourierHodgeLaws",
+      "premise": "FourierHodgeLaws",
+      "direction": "MaxwellB -> FeffermanB",
+      "status": "A_TIER_CANDIDATE"
+    }
+  ],
+  "mathematical_hodge_derivation": "B_TIER_COMPLETE; LEAN_INHABITANT_DEFERRED"
 }

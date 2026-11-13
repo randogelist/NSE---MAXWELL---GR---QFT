@@ -1,0 +1,99 @@
+FEFFERMAN_B_MAXWELL_EQUIVALENCE_A_TIER
+====================================
+
+CURRENT_SOURCE_STATUS = A_TIER_CANDIDATE_REORGANIZED_LAYOUT
+MATCHING_EXTERNAL_COMPILER_AUDIT = PENDING_CACHED_NATIVE_LINUX
+PRIOR_CONDITIONAL_ROOT = A_TIER_AT_ITS_RECORDED_SOURCE_COMMIT
+UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+
+EXACT ROOT
+----------
+NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED :
+  NSEMaxwell.Bridge.FourierHodgeLaws ->
+  NSEMaxwell.Classical.ExactEquivalence
+
+ExactEquivalence = forall nu>0, forall c>0,
+  FeffermanB(nu) iff MaxwellB(nu,c).
+
+The concrete definition remains in
+  ../Fefferman_B_adapter/NSEMaxwell/Classical.lean.
+Its bytes are unchanged from the prior audited layout.
+
+DIRECTIONAL ENDPOINTS
+--------------------
+NSEMaxwell.Bridge.feffermanB_implies_maxwellB_of_periodicAnalyticLaws
+NSEMaxwell.Bridge.maxwellB_implies_feffermanB_of_periodicAnalyticLaws
+NSEMaxwell.Bridge.feffermanB_implies_maxwellB_of_fourierHodgeLaws
+NSEMaxwell.Bridge.maxwellB_implies_feffermanB_of_fourierHodgeLaws
+
+The first two preserve the existing iff branch proof bodies. The reduced
+versions compose those directions with laws.toPeriodicAnalyticLaws. Every
+analytic-law hypothesis remains explicit.
+
+PHYSICAL SOURCE MAP
+-------------------
+../Fefferman_B_adapter/NSEMaxwell/AnalyticContracts.lean
+  Shared concrete objects, assumptions, and data reconstruction helpers.
+=>/NSEMaxwellForward.lean
+  momentum_zero_of_ns, maxwell_of_faraday, faraday_of_ns, maxwell_of_ns,
+  and the forward existence implication.
+<=/NSEMaxwellReverse.lean
+  canonical momentum split/factorization/cancellation, ns_of_maxwell,
+  and the reverse existence implication.
+=>/NSEMaxwellForward/Reduced.lean
+<=/NSEMaxwellReverse/Reduced.lean
+  The respective four-Hodge-field implication wrappers.
+../Fefferman_B_adapter/NSEMaxwell/AnalyticBridge.lean
+  Compatibility assembly of the two directions.
+
+PRESERVED SCOPE
+---------------
+Unforced three-dimensional unit-periodic fields; arbitrary velocity mean;
+periodic pressure; joint ContDiffOn R infinity through t=0; actual cube
+integrals and derivatives; exact cosine-integral reconstruction; constrained
+Maxwell electric field, charge and current.
+
+The exact Fefferman-B proposition is defined in Lean. No standalone proof of
+FeffermanB(nu) is asserted by its definition or by the conditional equivalence.
+
+REMAINING FORMAL PREMISE
+-----------------------
+FourierHodgeLaws consists of:
+  reconstruct_velocity
+  reconstruct_curl
+  canonical_smoothness
+  electric_hodge
+
+The complete mathematical B-tier derivation is
+  FOURIER_HODGE_COMPOSITION_B_TIER.txt.
+No target-native Lean inhabitant is supplied. The copied endpoint sources
+in ../Fefferman_B_adapter/Endpoints remain references pending integration.
+
+EXTERNAL VALIDATION CONTRACT
+----------------------------
+Compiler: native Linux Lean 4.34.0-rc1, Ubuntu 24.04.
+Mathlib: de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
+Registered named audit targets: 174.
+Allowed axioms: propext, Classical.choice, Quot.sound.
+
+The active build explicitly includes both reduced directional modules.
+Compiler, dependency and project caches are preserved. Exact verified legacy
+cache keys permit reuse across the source-layout change. Normal Lake traces
+validate reuse; the named theorem audit is fresh.
+
+PRIOR EVIDENCE
+--------------
+Native Linux run 43336709607, source d241f2b700be66ab447cb1650770271e1b364b8a:
+170/170 named audits passed; original proof source and artifact hashes remain
+recorded in ../Fefferman_B_adapter/evidence/linux-43336709607/.
+Those artifacts retain their original bytes and original source-layout paths.
+They are historical evidence, not a fresh certificate for the changed layout.
+
+PROMOTION
+---------
+Matching successful external compilation and named theorem-level axiom audit
+are necessary for the current source layout. Audit success does not discharge
+FourierHodgeLaws. CONDITIONAL_FORMAL_CLOSURE applies only to the exact audited
+implication. UNCONDITIONAL_CLOSURE requires the remaining H inhabitant and all
+other analytic/certificate/semantic premises to be discharged.

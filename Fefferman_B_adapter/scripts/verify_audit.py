@@ -296,10 +296,28 @@ def verify(args: argparse.Namespace) -> dict[str, object]:
         elif sha256(path) != expected.lower():
             manifest_errors.append(f"Source input changed during compilation: {relative}")
     required = {
-        "lean-toolchain", "lake-manifest.json", "NSEMaxwell.lean",
-        "NSEMaxwell/Audit.lean", "audit-targets.txt", "formalization-status.json",
-        "scripts/run.ps1", "scripts/verify_audit.py", "run.cmd",
+        "lean-toolchain", "lakefile.lean", "lake-manifest.json",
+        "Fefferman_B_adapter/NSEMaxwell.lean",
+        "Fefferman_B_adapter/NSEMaxwell/Audit.lean",
+        "audit-targets.txt", "formalization-status.json",
+        "Fefferman_B_adapter/scripts/run.ps1",
+        "Fefferman_B_adapter/scripts/verify_audit.py", "run.cmd",
+        "B <-> Maxwell/=>/NSEMaxwellForward.lean",
+        "B <-> Maxwell/=>/NSEMaxwellForward/Reduced.lean",
+        "B <-> Maxwell/<=/NSEMaxwellReverse.lean",
+        "B <-> Maxwell/<=/NSEMaxwellReverse/Reduced.lean",
     }
+    for source_root in (
+        "Fefferman_B_adapter", "B <-> Maxwell/=>", "B <-> Maxwell/<=",
+    ):
+        directory = root / source_root
+        if not directory.is_dir():
+            manifest_errors.append(f"Active project source root is absent: {source_root}")
+            continue
+        required.update(
+            path.relative_to(root).as_posix()
+            for path in directory.rglob("*.lean") if path.is_file()
+        )
     if expected_platform == "linux":
         required.add("run.sh")
     for relative in sorted(required - paths_seen):
