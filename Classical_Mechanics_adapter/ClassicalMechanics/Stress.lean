@@ -56,23 +56,22 @@ theorem newtonianStress_component_derivative
     fderiv ℝ (fun y : Vec => newtonianStress ν a p y i j) x (unitVector k) =
       (if i = j then -NSEMaxwell.Classical.gradient p x k else 0) +
         ν * (secondCoordinate a k j x i + secondCoordinate a k i x j) := by
-  have hp' := (hp.differentiable (by simp) x).hasFDerivAt
-  have hji := ((coordinate_component_smooth ha j i).differentiable (by simp) x).hasFDerivAt
-  have hij' := ((coordinate_component_smooth ha i j).differentiable (by simp) x).hasFDerivAt
-  have hpressure : HasFDerivAt (fun y : Vec => if i = j then -p y else 0)
-      (if i = j then -(fderiv ℝ p x) else 0) x := by
-    by_cases hij : i = j
-    · simpa only [hij, if_true] using hp'.neg
-    · simpa only [hij, if_false] using (hasFDerivAt_const (0 : ℝ) x)
-  have h := hpressure.add ((hji.add hij').const_mul ν)
-  have he := congrArg (fun L : Vec →L[ℝ] ℝ => L (unitVector k)) h.fderiv
+  have hp' := hp.differentiable (by simp) x
+  have hji := (coordinate_component_smooth ha j i).differentiable (by simp) x
+  have hij' := (coordinate_component_smooth ha i j).differentiable (by simp) x
+  have hsum := hji.add hij'
   by_cases hij : i = j
-  · simpa [newtonianStress, hij, NSEMaxwell.Classical.gradient, PiLp.toLp_apply,
+  · simp only [newtonianStress, if_pos hij]
+    rw [fderiv_fun_add hp'.neg (hsum.const_mul ν), fderiv_fun_neg,
+      fderiv_const_mul hsum ν, fderiv_fun_add hji hij']
+    simp only [NSEMaxwell.Classical.gradient, PiLp.toLp_apply,
       ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
-      ContinuousLinearMap.neg_apply, smul_eq_mul, second_coordinate_component ha] using he
-  · simpa [newtonianStress, hij, NSEMaxwell.Classical.gradient, PiLp.toLp_apply,
+      ContinuousLinearMap.neg_apply, smul_eq_mul, second_coordinate_component ha]
+  · simp only [newtonianStress, if_neg hij, zero_add]
+    rw [fderiv_const_mul hsum ν, fderiv_fun_add hji hij']
+    simp only [NSEMaxwell.Classical.gradient, PiLp.toLp_apply,
       ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
-      ContinuousLinearMap.zero_apply, smul_eq_mul, second_coordinate_component ha] using he
+      smul_eq_mul, second_coordinate_component ha]
 
 /-- The full identity retains the compressible `grad div` contribution. -/
 theorem tensorDivergence_newtonianStress
