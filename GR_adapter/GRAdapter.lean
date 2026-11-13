@@ -17,3 +17,4 @@ import GRAdapter.FourierBridge
 import GRAdapter.ScalarAnalytic
 import GRAdapter.GermUniformity
 import GRAdapter.ReconstructionCalculus
+import GRAdapter.GaussianUniqueness
