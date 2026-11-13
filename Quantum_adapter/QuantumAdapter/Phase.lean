@@ -102,7 +102,7 @@ def phaseSubmodule (N : ℕ) : Submodule ℝ (AmbientPhase N) where
       change (r : ℂ) * extendCoeff q (-k) i =
         star ((r : ℂ) * extendCoeff q k i)
       rw [hq.1 k i, star_mul]
-      simp
+      simp [mul_comm]
     · intro k
       simp only [extendCoeff_real_smul, Pi.smul_apply]
       change (∑ i : Fin 3, (k i : ℂ) * ((r : ℂ) * extendCoeff q k i)) = 0

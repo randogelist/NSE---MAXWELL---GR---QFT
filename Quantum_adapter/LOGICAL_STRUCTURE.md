@@ -36,7 +36,7 @@ the velocity mean nor the regularity class may be replaced.
 | Order | Native target | Exact analytic frontier |
 |---:|---|---|
 | 0 | Full finite Fourier phase; reality and solenoidality; constant modes | Actual real Hilbert phase, Fourier/physical energy agreement |
-| 1 | Canonical cotangent function and transport differential expression | Actual tangent drift equality, complete flow, divergence trace |
+| 1 | Canonical cotangent function and transport differential expression | Actual tangent drift equality (native proof bodies prepared in Tangency.lean; external validation pending), complete flow, divergence trace |
 | 2 | Complex states; Born density; actual energy expectation | Normalization, moment integrability, actual operator domains |
 | 3 | Galerkin scalar bound ⇒ packet expectation bound | Quantitative forward packet estimate |
 | 4 | Packet expectation bound ⇒ Galerkin scalar bound | Quantitative converse estimate/reference selection |
@@ -100,3 +100,5 @@ UNIVERSAL_NSE_REGULARITY = UNRESOLVED
 SINGLE_CONTINUUM_QUANTUM_HAMILTONIAN = NOT_CONSTRUCTED
 PER_CUTOFF_EFFECTIVE_ACCESS != UNIFORM_CUTOFF_BOUND
 ```
+
+`QuantumAdapter.QREG` denotes the canonical Gaussian criterion `QREG_Gauss` in R7. The full B-tier source is contained at `B <-> Quantum/NSE_3D_CANONICAL_QUANTUM_BRIDGE_B_TIER.txt`; its exact SHA256 is retained in checkpoint-manifest.json.

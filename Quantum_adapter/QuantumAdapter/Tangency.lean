@@ -88,8 +88,7 @@ theorem frequencySquare_ne_zero (k : Frequency) (hk : k ≠ 0) :
     exact_mod_cast hki
   have heq : (∑ i : Fin 3, (k i : ℂ) ^ 2) =
       ((∑ i : Fin 3, (k i : ℝ) ^ 2 : ℝ) : ℂ) := by
-    push_cast
-    rfl
+    push_cast <;> rfl
   rw [heq]
   exact_mod_cast hr
 

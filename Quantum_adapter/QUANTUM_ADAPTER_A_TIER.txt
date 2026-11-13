@@ -5,7 +5,7 @@ LOCAL_LEAN_EXECUTIONS=0
 EXTERNAL_COMPILER=Lean 4.34.0-rc1 native Linux
 BASE_COMMIT=1de664f2ef5ddc11caef25ac2274278b4171ab6b
 
-Exact implemented source: Phase, FiniteModel, Tangency, Born, Transport, Dynamics, RegularityContracts; forward/reverse implication modules; deterministic NSEQuantumBridge assembly.
+Exact implemented source: Phase, FiniteModel, Tangency, Born, Transport, L2Norm, L2Transport, Dynamics, RegularityContracts; forward/reverse implication modules; deterministic NSEQuantumBridge assembly.
 
 Root: forall nu>0,F:PhaseFlow nu,Cemb,C3,
  GalerkinAnalyticLaws F -> PacketBounds F Cemb C3 -> InitialProjectionBounds ->

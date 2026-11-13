@@ -1,5 +1,6 @@
 import QuantumAdapter.Phase
 import Mathlib.Analysis.InnerProductSpace.Projection.Basic
+import Mathlib.Analysis.InnerProductSpace.Calculus
 
 /-!
 # Full finite Fourier observables and a concrete projected vector field
@@ -7,7 +8,7 @@ import Mathlib.Analysis.InnerProductSpace.Projection.Basic
 The coefficient convolution contains the zero mode and therefore arbitrary
 constant-mean advection. `drift` is explicitly the real orthogonal projection
 of that finite Fourier RHS into `Phase N`. Equality to the raw RHS requires
-the separate tangency proposition below; no inhabitant is assumed or defined.
+the separate tangency proposition below; its body is proved in `Tangency.lean`.
 Likewise no global flow or continuum solution is supplied by these definitions.
 -/
 
@@ -176,6 +177,21 @@ theorem cotangent_momentum_increment (ν : ℝ) (N : ℕ)
     cotangentHamiltonian ν N q (p + s • r) =
       cotangentHamiltonian ν N q p + s * cotangentHamiltonian ν N q r := by
   simp [cotangentHamiltonian, inner_add_left, inner_smul_left]
+
+theorem cotangent_hasFDerivAt_momentum (ν : ℝ) (N : ℕ) (q p : Phase N) :
+    HasFDerivAt (fun r : Phase N => cotangentHamiltonian ν N q r)
+      (innerSL ℝ (drift ν N q)) p := by
+  have heq : (fun r : Phase N => cotangentHamiltonian ν N q r) =
+      fun r : Phase N => (innerSL ℝ (drift ν N q)) r := by
+    funext r
+    exact real_inner_comm (drift ν N q) r
+  rw [heq]
+  exact (innerSL ℝ (drift ν N q)).hasFDerivAt
+
+theorem cotangent_fderiv_momentum (ν : ℝ) (N : ℕ) (q p : Phase N) :
+    fderiv ℝ (fun r : Phase N => cotangentHamiltonian ν N q r) p =
+      innerSL ℝ (drift ν N q) :=
+  (cotangent_hasFDerivAt_momentum ν N q p).fderiv
 
 @[simp]
 theorem cotangent_zero_momentum (ν : ℝ) (N : ℕ) (q : Phase N) :

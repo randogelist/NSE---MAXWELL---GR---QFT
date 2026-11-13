@@ -1,5 +1,5 @@
 import QuantumAdapter.FiniteModel
-import QuantumAdapter.Transport
+import QuantumAdapter.L2Transport
 import Mathlib.MeasureTheory.Measure.Haar.OfBasis
 
 /-!
@@ -33,6 +33,10 @@ def phaseDimension (N : ℕ) : ℕ := Module.finrank ℝ (Phase N)
 def phaseVolume (N : ℕ) : Measure (Phase N) :=
   (stdOrthonormalBasis ℝ (Phase N)).toBasis.addHaar
 
+instance phaseVolumeSigmaFinite (N : ℕ) : SigmaFinite (phaseVolume N) := by
+  unfold phaseVolume
+  infer_instance
+
 abbrev QuantumHilbert (N : ℕ) := Lp ℂ 2 (phaseVolume N)
 
 def cutoffSobolevFactor (N : ℕ) : ℝ :=
@@ -56,6 +60,12 @@ theorem canonicalScale_pos (N : ℕ) : 0 < canonicalScale N := by
 def gaussianAmplitude (N : ℕ) : ℝ :=
   Real.rpow (2 * Real.pi * canonicalScale N ^ 2) (-(phaseDimension N : ℝ) / 4)
 
+theorem gaussianAmplitude_pos (N : ℕ) : 0 < gaussianAmplitude N := by
+  have hσ := canonicalScale_pos N
+  unfold gaussianAmplitude
+  apply Real.rpow_pos_of_pos
+  positivity
+
 def canonicalPacket (N : ℕ) (q₀ : Phase N) : Wave (Phase N) :=
   fun q => ((gaussianAmplitude N *
     Real.exp (-‖q - q₀‖ ^ 2 / (4 * canonicalScale N ^ 2)) : ℝ) : ℂ)
@@ -67,6 +77,12 @@ theorem canonicalPacket_im (N : ℕ) (q₀ q : Phase N) :
 theorem canonicalPacket_center (N : ℕ) (q₀ : Phase N) :
     canonicalPacket N q₀ q₀ = (gaussianAmplitude N : ℂ) := by
   simp [canonicalPacket]
+
+theorem canonicalPacket_re_pos (N : ℕ) (q₀ q : Phase N) :
+    0 < (canonicalPacket N q₀ q).re := by
+  change 0 < gaussianAmplitude N *
+    Real.exp (-‖q - q₀‖ ^ 2 / (4 * canonicalScale N ^ 2))
+  exact mul_pos (gaussianAmplitude_pos N) (Real.exp_pos _)
 
 /-- Full divergence-free Laplace trace, including zero contribution from means. -/
 def finiteLaplaceTrace (N : ℕ) : ℝ :=
@@ -126,6 +142,16 @@ theorem transportedPacket_zero {ν : ℝ} (F : PhaseFlow ν) (N : ℕ)
     (q₀ : Phase N) : transportedPacket F N q₀ 0 = canonicalPacket N q₀ :=
   transport_zero F N _
 
+theorem transport_add {ν : ℝ} (F : PhaseFlow ν) (N : ℕ)
+    (s t : ℝ) (ψ : Wave (Phase N)) :
+    transport F N s (transport F N t ψ) = transport F N (s + t) ψ :=
+  halfDensityPullback_add _ _ (F.map_add N) s t ψ
+
+theorem transport_inverse {ν : ℝ} (F : PhaseFlow ν) (N : ℕ)
+    (t : ℝ) (ψ : Wave (Phase N)) :
+    transport F N (-t) (transport F N t ψ) = ψ :=
+  halfDensityPullback_inverse _ _ (F.map_zero N) (F.map_add N) t ψ
+
 theorem phaseFlow_isTrajectory {ν : ℝ} (F : PhaseFlow ν) (N : ℕ)
     (q₀ : Phase N) : IsTrajectory ν N q₀ (fun t => F.map N t q₀) := by
   refine ⟨?_, F.map_zero N q₀, ?_⟩
@@ -140,6 +166,10 @@ def hamiltonianExpression (ν ℏ : ℝ) (N : ℕ)
   fun q => -(Complex.I * (ℏ : ℂ)) *
     (fderiv ℝ ψ q (drift ν N q) + ((driftDivergence ν N q / 2 : ℝ) : ℂ) * ψ q)
 
+/-- Actual smooth compact test domain for the differential expression. -/
+def HamiltonianTestDomain (N : ℕ) (ψ : Wave (Phase N)) : Prop :=
+  ContDiff ℝ ∞ ψ ∧ HasCompactSupport ψ
+
 theorem hamiltonianExpression_zero (ν ℏ : ℝ) (N : ℕ) :
     hamiltonianExpression ν ℏ N (fun _ => 0) = 0 := by
   funext q
@@ -151,6 +181,41 @@ structure PhaseTransportLaws {ν : ℝ} (F : PhaseFlow ν) : Prop where
     IntegralPullbackLaw (phaseVolume N) (phaseDecayRate ν N) (F.map N)
   memLp_law : ∀ N,
     MemLpPullbackLaw (phaseVolume N) (phaseDecayRate ν N) (F.map N)
+
+/-- Actual complex Hilbert-space isometry equivalence; analytic transport laws
+remain explicit. Strong continuity and a selfadjoint generator are separate. -/
+def quantumUnitary {ν : ℝ} (F : PhaseFlow ν) (L : PhaseTransportLaws F)
+    (N : ℕ) (t : ℝ) : QuantumHilbert N ≃ₗᵢ[ℂ] QuantumHilbert N :=
+  l2PullbackEquiv (L.integral_law N) (L.memLp_law N)
+    (F.map_zero N) (F.map_add N) t
+
+theorem quantumUnitary_zero {ν : ℝ} (F : PhaseFlow ν)
+    (L : PhaseTransportLaws F) (N : ℕ) (ψ : QuantumHilbert N) :
+    quantumUnitary F L N 0 ψ = ψ :=
+  l2Pullback_zero (L.memLp_law N) (F.map_zero N) ψ
+
+theorem quantumUnitary_add {ν : ℝ} (F : PhaseFlow ν)
+    (L : PhaseTransportLaws F) (N : ℕ) (s t : ℝ) (ψ : QuantumHilbert N) :
+    quantumUnitary F L N s (quantumUnitary F L N t ψ) =
+      quantumUnitary F L N (s + t) ψ :=
+  l2Pullback_add_times (L.integral_law N) (L.memLp_law N) (F.map_add N) s t ψ
+
+theorem transport_waveAdmissible {ν : ℝ} (F : PhaseFlow ν)
+    (L : PhaseTransportLaws F) (N : ℕ) (t : ℝ)
+    {ψ : Wave (Phase N)} (hψ : WaveAdmissible (phaseVolume N) ψ) :
+    WaveAdmissible (phaseVolume N) (transport F N t ψ) :=
+  hψ.halfDensityPullback (L.integral_law N) (L.memLp_law N) t
+
+theorem quantumEnergy_conjugacy {ν : ℝ} (F : PhaseFlow ν)
+    (L : PhaseTransportLaws F) (N : ℕ) (q₀ : Phase N) (t : ℝ)
+    (hi : Integrable (fun q => energy3 N (F.map N t q) *
+      bornDensity (canonicalPacket N q₀) q) (phaseVolume N)) :
+    quantumEnergy F N q₀ t =
+      expectation (phaseVolume N) (fun q => energy3 N (F.map N t q))
+        (canonicalPacket N q₀) :=
+  expectation_halfDensityPullback (phaseVolume N) (phaseDecayRate ν N)
+    (F.map N) (F.map_zero N) (F.map_add N) (L.integral_law N) t
+    (energy3 N) (canonicalPacket N q₀) hi
 
 end
 
