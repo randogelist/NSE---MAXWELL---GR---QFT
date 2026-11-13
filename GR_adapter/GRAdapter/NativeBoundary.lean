@@ -11,7 +11,7 @@ still requires the separately stated radial analytic extension theorem.
 
 set_option autoImplicit false
 
-open scoped Matrix.Norms.Frobenius
+open scoped BigOperators Matrix.Norms.Frobenius
 
 namespace NSEGR
 
@@ -42,8 +42,8 @@ theorem normalizedBoundaryMatrix_symmetric (ρ : ℝ) :
 
 @[simp] theorem constantNormalizedBoundary_beta (ρ : ℝ) (t : ℝ) (x : Vec) :
     boundaryBeta (constantNormalizedBoundary ρ) t x = ρ := by
-  simp [boundaryBeta, constantNormalizedBoundary, normalizedBoundaryMatrix,
-    spatialIndex4] <;> ring
+  change -(∑ i : Fin 3, -(ρ / 3) * identity3 i i) = ρ
+  simp [identity3] <;> ring
 
 @[simp] theorem constantNormalizedBoundary_beta_time (ρ t0 : ℝ) (x : Vec) :
     deriv (fun t : ℝ => boundaryBeta (constantNormalizedBoundary ρ) t x) t0 = 0 := by
