@@ -1,5 +1,4 @@
 import GRAssembly.NativeGaussianEvolution
-import GRAssembly.NativeCKFiniteDimensional
 
 /-! Native symmetry and spatial-jet compatibility of the actual Gaussian CK state. -/
 set_option autoImplicit false

@@ -85,7 +85,8 @@ theorem ckSpaceDerivative_eq_fderiv {w : ℝ × E → V} {z : ℝ × E}
     (hw : DifferentiableAt ℝ w z) :
     ckSpaceDerivative w z =
       (fderiv ℝ w z).comp (ContinuousLinearMap.inr ℝ ℝ E) := by
-  have hpath := (hasFDerivAt_const z.2 z.1).prodMk (hasFDerivAt_id z.2)
+  have hpath := (hasFDerivAt_const (𝕜 := ℝ) z.1 z.2).prodMk
+    (hasFDerivAt_id (𝕜 := ℝ) z.2)
   simpa only [ckSpaceDerivative, Function.comp_def, id_eq, Prod.eta] using
     (hw.hasFDerivAt.comp z.2 hpath).fderiv
 
@@ -121,7 +122,7 @@ theorem ckScaledSolution_spaceDerivative {w : ℝ × E → V} (ε : ℝ) (z : �
     ckSpaceDerivative (ckScaledSolution ε w) z =
       (ckSpaceDerivative w (ε ^ 2 * z.1, ε • z.2)).comp
         (ε • ContinuousLinearMap.id ℝ E) := by
-  have hx := (hasFDerivAt_id z.2).const_smul ε
+  have hx := (hasFDerivAt_id (𝕜 := ℝ) z.2).const_smul ε
   simpa only [ckSpaceDerivative, ckScaledSolution, Function.comp_def, id_eq] using
     (hw.hasFDerivAt.comp z.2 hx).fderiv
 
@@ -156,6 +157,7 @@ theorem ckNormalizedSolution_congr {g : CKRHS E V} {w v : ℝ × E → V}
   have hv := hw.analytic.congr h
   refine ⟨hv, ?_, ?_⟩
   · have ht : Tendsto (fun x : E => ((0 : ℝ), x)) (𝓝 0) (𝓝 0) := by
+      change Tendsto (fun x : E => ((0 : ℝ), x)) (𝓝 0) (𝓝 ((0 : ℝ), (0 : E)))
       simpa using ((continuous_const.prodMk continuous_id).continuousAt.tendsto :
         Tendsto (fun x : E => ((0 : ℝ), x)) (𝓝 0) (𝓝 ((0 : ℝ), (0 : E))))
     filter_upwards [ht.eventually h, hw.initial] with x hx hx₀

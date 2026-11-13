@@ -1,3 +1,4 @@
+import GRAssembly.NativeGaussianEvolutionExistence
 import GRAssembly.NativeGaussianEvolutionCompatibilityJet
 import GRAssembly.NativeGaussianEvolutionRicci
 import GRAssembly.NativeGaussianEvolutionRecovery

@@ -70,3 +70,5 @@ import GRAssembly.NativeGaussianEvolutionRecovery
 import GRAssembly.NativeGaussianEvolutionRicci
 import GRAssembly.NativeGaussianInput
 import GRAssembly.NativeGaussianJet
+import GRAssembly.NativeCKGerm
+import GRAssembly.NativeGaussianEvolutionExistence

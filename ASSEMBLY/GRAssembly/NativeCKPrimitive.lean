@@ -76,7 +76,7 @@ theorem ck_hasDerivAt_product {n : ℕ} (a b : Fin (n + 1) → ℝ) (s : ℝ) :
       (∑ j : Fin (n + 1), a j * ∏ i : Fin n, (s * a (j.succAbove i) + b (j.succAbove i))) s := by
   have h := HasDerivAt.fun_finsetProd (u := (Finset.univ : Finset (Fin (n + 1))))
     (fun j _ => ((hasDerivAt_id s).mul_const (a j)).add_const (b j))
-  simpa only [id_eq, one_mul, smul_eq_mul, ck_prod_erase_eq_succAbove, mul_comm] using h
+  simpa only [id_eq, one_mul, mul_one, smul_eq_mul, ck_prod_erase_eq_succAbove, mul_comm] using h
 
 theorem ck_integral_product_derivative {n : ℕ} (a b : Fin (n + 1) → ℝ) :
     (∫ s in (0 : ℝ)..1,
@@ -242,7 +242,7 @@ theorem ckTimePrimitiveFormal_norm_le [CompleteSpace F]
   | succ n =>
     apply (ckPrimitiveCoeffCLM_norm_apply_le E F (p.coeff (n + 1))).trans
     apply mul_le_mul_of_nonneg_right _ (norm_nonneg _)
-    simpa only [one_div] using
+    simpa only [one_div, Nat.cast_add, Nat.cast_one] using
       one_div_le_one_div_of_le (by norm_num : (0 : ℝ) < 2)
         (by have hn : (0 : ℝ) ≤ n := by positivity
             linarith : (2 : ℝ) ≤ (n + 1 + 1 : ℝ))
@@ -333,6 +333,7 @@ theorem ckTimeScale_norm_le {s : ℝ} (hs : s ∈ Set.Icc (0 : ℝ) 1)
   simpa only [Real.norm_eq_abs, one_mul, add_comm] using
     add_le_add_right (mul_le_mul_of_nonneg_right hs.2 (abs_nonneg z.fst)) ‖z.snd‖
 
+set_option maxHeartbeats 1000000 in
 theorem timePrimitive_eval_eq_scaled_integral [CompleteSpace F]
     (p : CKSeries (CKTimeSpace E) F) {z : CKTimeSpace E} (hz : ‖z‖ < 1) :
     (timePrimitive E F p).eval z =
@@ -369,7 +370,8 @@ theorem timePrimitive_eval_eq_scaled_integral [CompleteSpace F]
       ckPrimitiveCoeffCLM_diagonal] using hsum
   have hfull : HasSum (fun n => q.coeff n (fun _ => z))
       (∫ s in (0 : ℝ)..1, z.fst • p.eval (ckTimeScale E s z)) := by
-    simpa using hshift.zero_add
+    simpa only [CKSeries.coeff_zero, ContinuousMultilinearMap.zero_apply, zero_add] using
+      (HasSum.zero_add (f := fun n => q.coeff n (fun _ => z)) hshift)
   exact (q.hasSum_eval hz).unique hfull
 
 theorem timePrimitive_eval_eq_integral [CompleteSpace F]
@@ -410,15 +412,17 @@ theorem ckSymmetric_hasFDerivAt_diagonal {n : ℕ} (a : CKCoeff E F (n + 1))
       a (v ∘ σ) = a v) (x : E) :
     HasFDerivAt (fun z : E => a (fun _ => z))
       ((n + 1 : ℝ) • a.curryRight (fun _ => x)) x := by
-  have hd := (a.hasFDerivAt (fun _ => x)).comp x
-    (hasFDerivAt_pi.2 fun _ : Fin (n + 1) => hasFDerivAt_id x)
-  convert hd using 1
+  let δ : E →L[ℝ] (Fin (n + 1) → E) :=
+    ContinuousLinearMap.pi (fun _ => ContinuousLinearMap.id ℝ E)
+  have hd := (a.hasFDerivAt (δ x)).comp x δ.hasFDerivAt
+  convert! hd using 1
   ext y
-  simp only [ContinuousLinearMap.smul_apply, ContinuousMultilinearMap.curryRight_apply,
+  simp only [δ, ContinuousLinearMap.smul_apply, ContinuousMultilinearMap.curryRight_apply,
     ContinuousLinearMap.comp_apply, ContinuousMultilinearMap.linearDeriv_apply,
     ContinuousLinearMap.pi_apply, ContinuousLinearMap.id_apply]
   simp_rw [ckSymmetric_update_eq_snoc E F a ha x y]
-  simp only [Finset.sum_const, Finset.card_univ, Fintype.card_fin, Nat.cast_smul_eq_nsmul]
+  simp only [Finset.sum_const, Finset.card_univ, Fintype.card_fin,
+    ← Nat.cast_smul_eq_nsmul ℝ, Nat.cast_add, Nat.cast_one]
 
 def ckPrimitiveDerivativeCoeffCLM [CompleteSpace F] (n : ℕ) :
     CKCoeff (CKTimeSpace E) F n →L[ℝ]
@@ -427,13 +431,17 @@ def ckPrimitiveDerivativeCoeffCLM [CompleteSpace F] (n : ℕ) :
     ((continuousMultilinearCurryRightEquiv' ℝ n (CKTimeSpace E) F).toContinuousLinearEquiv.toContinuousLinearMap.comp
       (ckPrimitiveCoeffCLM E F n))
 
-@[simp] theorem ckPrimitiveDerivativeCoeffCLM_apply [CompleteSpace F] {n : ℕ}
+theorem ckPrimitiveDerivativeCoeffCLM_apply [CompleteSpace F] {n : ℕ}
     (a : CKCoeff (CKTimeSpace E) F n) :
     ckPrimitiveDerivativeCoeffCLM E F n a =
       (n + 1 : ℝ) • ckSymmetrize (CKTimeSpace E) (CKTimeSpace E →L[ℝ] F)
         (ckPrimitiveCoeffCLM E F n a).curryRight := by
   simp only [ckPrimitiveDerivativeCoeffCLM, ContinuousLinearMap.smul_apply,
     ContinuousLinearMap.comp_apply, ckSymmetrizeCLM_apply]
+  apply congrArg (fun b : CKCoeff (CKTimeSpace E) (CKTimeSpace E →L[ℝ] F) n =>
+    (n + 1 : ℝ) • ckSymmetrize (CKTimeSpace E) (CKTimeSpace E →L[ℝ] F) b)
+  ext v y
+  rfl
 
 theorem ckPrimitiveDerivativeCoeffCLM_norm_apply_le [CompleteSpace F] {n : ℕ}
     (a : CKCoeff (CKTimeSpace E) F n) : ‖ckPrimitiveDerivativeCoeffCLM E F n a‖ ≤ ‖a‖ := by
@@ -459,7 +467,7 @@ def ckPrimitiveDerivativeSeries [CompleteSpace F] (p : CKSeries (CKTimeSpace E) 
   CKSeries.ofCoeffs (fun n => ckPrimitiveDerivativeCoeffCLM E F n (p.coeff n))
     (p.summable_norm.of_nonneg_of_le (fun _ => norm_nonneg _)
       (fun n => ckPrimitiveDerivativeCoeffCLM_norm_apply_le E F (p.coeff n)))
-    (by simp)
+    (by rw [p.coeff_zero, map_zero])
     (fun n v σ => ckPrimitiveDerivativeCoeffCLM_symmetric E F (p.coeff n) v σ)
 
 @[simp] theorem ckPrimitiveDerivativeSeries_coeff [CompleteSpace F]
@@ -476,8 +484,16 @@ def timePrimitiveDerivative [CompleteSpace F] :
     CKSeries (CKTimeSpace E) F →L[ℝ] CKSeries (CKTimeSpace E) (CKTimeSpace E →L[ℝ] F) :=
   LinearMap.mkContinuous
     { toFun := ckPrimitiveDerivativeSeries E F
-      map_add' := by intro p q; ext n v y; simp
-      map_smul' := by intro c p; ext n v y; simp }
+      map_add' := by
+        intro p q
+        apply CKSeries.ext
+        intro n
+        simp only [ckPrimitiveDerivativeSeries_coeff, CKSeries.coeff_add, map_add]
+      map_smul' := by
+        intro c p
+        apply CKSeries.ext
+        intro n
+        simp only [ckPrimitiveDerivativeSeries_coeff, CKSeries.coeff_smul, map_smul] }
     1 (fun p => by simpa only [one_mul] using ckPrimitiveDerivativeSeries_norm_le E F p)
 
 @[simp] theorem timePrimitiveDerivative_coeff [CompleteSpace F]
@@ -488,6 +504,7 @@ def timePrimitiveDerivative [CompleteSpace F] :
 theorem timePrimitiveDerivative_norm_le [CompleteSpace F] : ‖timePrimitiveDerivative E F‖ ≤ 1 := by
   apply ContinuousLinearMap.opNorm_le_bound (timePrimitiveDerivative E F) zero_le_one
   intro p
+  change ‖ckPrimitiveDerivativeSeries E F p‖ ≤ 1 * ‖p‖
   simpa only [one_mul] using ckPrimitiveDerivativeSeries_norm_le E F p
 
 theorem ckPrimitiveCoeffCLM_hasFDerivAt_diagonal [CompleteSpace F] {n : ℕ}
@@ -508,7 +525,9 @@ theorem timePrimitive_hasFDerivAt [CompleteSpace F]
   have hz' : z ∈ Metric.ball (0 : CKTimeSpace E) 1 := by simpa using hz
   have hd : HasFDerivAt (fun w => ∑' n, u n w)
       (∑' n, d.coeff n (fun _ => z)) z := by
-    apply hasFDerivAt_tsum_of_isPreconnected p.summable_norm Metric.isOpen_ball
+    apply hasFDerivAt_tsum_of_isPreconnected (𝕜 := ℝ) (f := u)
+      (f' := fun n w => d.coeff n (fun _ => w)) (x₀ := 0) (x := z)
+      p.summable_norm Metric.isOpen_ball
       (convex_ball (0 : CKTimeSpace E) (1 : ℝ)).isPreconnected
     · intro n w _
       exact ckPrimitiveCoeffCLM_hasFDerivAt_diagonal E F (p.coeff n) w
@@ -544,7 +563,7 @@ theorem timePrimitiveDerivative_eval_eq_fderiv [CompleteSpace F]
 theorem ckSpaceInclude_norm_le : ‖ckSpaceInclude E‖ ≤ 1 := by
   apply ContinuousLinearMap.opNorm_le_bound (ckSpaceInclude E) zero_le_one
   intro x
-  simp only [ckSpaceInclude_apply, WithLp.prod_norm_eq_of_L1, norm_zero, zero_add, one_mul]
+  simp [ckSpaceInclude_apply, WithLp.prod_norm_eq_of_L1]
 
 def ckSpatialRestriction : (CKTimeSpace E →L[ℝ] F) →L[ℝ] (E →L[ℝ] F) :=
   (ContinuousLinearMap.compL ℝ E (CKTimeSpace E) F).flip (ckSpaceInclude E)
@@ -571,7 +590,7 @@ theorem spatialPrimitive_norm_le [CompleteSpace F] : ‖spatialPrimitive E F‖ 
         ‖timePrimitiveDerivative E F‖ := ContinuousLinearMap.opNorm_comp_le _ _
     _ ≤ 1 * 1 := mul_le_mul
       ((CKSeries.norm_postcomposeCLM_le (ckSpatialRestriction E F)).trans (ckSpatialRestriction_norm_le E F))
-      (timePrimitiveDerivative_norm_le E F) (norm_nonneg _) zero_le_one
+      (timePrimitiveDerivative_norm_le E F) (timePrimitiveDerivative E F).opNorm_nonneg zero_le_one
     _ = 1 := by norm_num
 
 theorem spatialPrimitive_eval_eq_fderiv [CompleteSpace F]

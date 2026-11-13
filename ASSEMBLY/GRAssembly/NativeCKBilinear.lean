@@ -60,11 +60,14 @@ def bilinearTerm (B : F →L[ℝ] G →L[ℝ] H)
     (ckSymmetrize E H (ckBilinearCoeff B (p.coeff nm.1) (q.coeff nm.2)))
     (by
       intro h
-      have hn : nm.1 = 0 := by omega
-      have hp₀ : p.coeff nm.1 = 0 := by simpa only [hn] using p.coeff_zero
+      rcases nm with ⟨n, m⟩
+      have hn : n = 0 := by omega
+      have hm : m = 0 := by omega
+      subst n
+      subst m
       apply ContinuousMultilinearMap.ext
       intro v
-      simp [ckSymmetrize, ckBilinearCoeff, hp₀])
+      simp [ckSymmetrize, ckBilinearCoeff])
     (ckSymmetrize_symmetric E H _)
 
 theorem norm_bilinearTerm_le (B : F →L[ℝ] G →L[ℝ] H)
@@ -159,22 +162,6 @@ theorem bilinear_smul_right (B : F →L[ℝ] G →L[ℝ] H)
   filter_upwards [Metric.ball_mem_nhds (0 : E) (by norm_num : (0 : ℝ) < 1)] with x hx
   have hx' : ‖x‖ < 1 := by simpa using hx
   simp only [eval_bilinear B _ _ hx', eval_smul _ _ hx', map_smul]
-
-def bilinearCLM (B : F →L[ℝ] G →L[ℝ] H) :
-    CKSeries E F →L[ℝ] CKSeries E G →L[ℝ] CKSeries E H :=
-  let M : CKSeries E F →ₗ[ℝ] CKSeries E G →ₗ[ℝ] CKSeries E H :=
-    LinearMap.mk₂ ℝ (bilinear B) (bilinear_add_left B) (bilinear_smul_left B)
-      (bilinear_add_right B) (bilinear_smul_right B)
-  M.mkContinuous₂ ‖B‖ (fun p q => norm_bilinear_le B p q)
-
-@[simp] theorem bilinearCLM_apply (B : F →L[ℝ] G →L[ℝ] H)
-    (p : CKSeries E F) (q : CKSeries E G) :
-    bilinearCLM B p q = bilinear B p q := rfl
-
-theorem norm_bilinearCLM_le (B : F →L[ℝ] G →L[ℝ] H) :
-    ‖bilinearCLM (E := E) B‖ ≤ ‖B‖ := by
-  apply LinearMap.mkContinuous₂_norm_le
-  exact norm_nonneg B
 
 end CKSeries
 

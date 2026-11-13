@@ -315,8 +315,8 @@ theorem coordDeriv_inverse_compatible {g : Metric} {z : Bulk}
       rw [Matrix.mul_nonsing_inv _ hN, Matrix.nonsing_inv_mul _ hN]
       noncomm_ring
 
-/-- Finite scalar-contraction derivative algebra. Symmetry is used only for
-the metric inverse and the Ricci-type matrix. -/
+/-- Finite scalar-contraction derivative algebra. The matrix pairing expands
+to the same polynomial on both sides. -/
 theorem scalar_contraction_derivative_algebra (H S D A : BulkMatrix)
     (hH : H.IsSymm) (hS : S.IsSymm) :
     (∑ a : Fin 5, ∑ b : Fin 5,
@@ -324,11 +324,6 @@ theorem scalar_contraction_derivative_algebra (H S D A : BulkMatrix)
     ∑ a : Fin 5, ∑ b : Fin 5, H a b * (D - A.transpose * S - S * A) a b := by
   simp only [Matrix.add_apply, Matrix.sub_apply, Matrix.neg_apply,
     Matrix.mul_apply, Matrix.transpose_apply, Fin.sum_univ_succ]
-  simp only [hH.apply 0 1, hH.apply 0 2, hH.apply 0 3, hH.apply 0 4,
-    hH.apply 1 2, hH.apply 1 3, hH.apply 1 4, hH.apply 2 3, hH.apply 2 4,
-    hH.apply 3 4, hS.apply 0 1, hS.apply 0 2, hS.apply 0 3, hS.apply 0 4,
-    hS.apply 1 2, hS.apply 1 3, hS.apply 1 4, hS.apply 2 3, hS.apply 2 4,
-    hS.apply 3 4]
   ring
 
 theorem bulkPartial_scalarCurvature {g : Metric} {z : Bulk}
@@ -353,12 +348,15 @@ theorem bulkPartial_scalarCurvature {g : Metric} {z : Bulk}
         (Assembly.analyticAt_matrix_entry hr a b))]
     apply Finset.sum_congr rfl
     intro a ha
-    rw [Assembly.bulkPartial_sum (fun b =>
+    rw [Assembly.bulkPartial_sum
+      (f := fun b y => (g y)⁻¹ a b * ricci g y a b) (fun b =>
       (Assembly.analyticAt_matrix_entry hi a b).mul
         (Assembly.analyticAt_matrix_entry hr a b))]
     apply Finset.sum_congr rfl
     intro b hb
-    rw [Assembly.bulkPartial_mul (Assembly.analyticAt_matrix_entry hi a b)
+    rw [Assembly.bulkPartial_mul
+      (f := fun y => (g y)⁻¹ a b) (q := fun y => ricci g y a b)
+      (Assembly.analyticAt_matrix_entry hi a b)
       (Assembly.analyticAt_matrix_entry hr a b)]
     rw [← coordDeriv_matrix_entry hi, ← coordDeriv_matrix_entry hr]
   rw [hd, coordDeriv_inverse_compatible hg hS hN.self_of_nhds e]

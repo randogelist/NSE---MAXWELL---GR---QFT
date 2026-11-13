@@ -1,5 +1,4 @@
 import GRAssembly.NativeCKNormalization
-import GRAssembly.NativeCKFiniteDimensional
 import GRAssembly.GaussianConstraints
 import GRAssembly.BoundaryConstraintsJets
 import GRAssembly.NativeGluingGaussianCoordinates
@@ -290,18 +289,6 @@ theorem gaussianEta_determinant : eta4Matrix.det = -1 := by
 theorem gaussianEta_isUnit : IsUnit eta4Matrix.det := by
   rw [gaussianEta_determinant]
   exact isUnit_neg_one
-
-theorem gaussianEvolutionState_exists_unique (input : LiteratureAnalyticCKInput)
-    (K : BoundaryTensor) (t0 : ℝ) (x0 : Vec)
-    (hK : AnalyticAt ℝ (fun y : GaussianBase => K y.1 y.2) (t0, x0)) :
-    ∃ U : ℝ × GaussianBase → GaussianState,
-      GaussianEvolutionStateSolution K t0 x0 U ∧
-        ∀ V : ℝ × GaussianBase → GaussianState,
-          GaussianEvolutionStateSolution K t0 x0 V → U =ᶠ[𝓝 (0, (t0, x0))] V := by
-  apply ckLocal_exists_unique_of_literatureCK input gaussianCKRHS
-    (gaussianInitialState K) 0 (t0, x0) (gaussianInitialState_analyticAt hK)
-  apply gaussianCKRHS_analyticAt
-  exact gaussianEta_isUnit
 
 theorem gaussianStateSolutionMetric_analyticAt {K : BoundaryTensor} {t0 : ℝ} {x0 : Vec}
     {U : ℝ × GaussianBase → GaussianState}
