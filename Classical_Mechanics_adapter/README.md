@@ -1,7 +1,7 @@
 # Classical mechanics adapter
 
 ```text
-STATUS = A_TIER_CANDIDATE
+STATUS = A_TIER (exact scoped results; full reference root remains open)
 ROOT = ClassicalMechanics.CLASSICAL_MECHANICS_ADAPTER
 ROOT_TYPE = GlobalExactEquivalence ∧ FiniteExactEquivalence
 LOCAL_LEAN_RUNS = 0
@@ -43,3 +43,11 @@ The complete B-tier reference and all 57 identity groups are indexed under `Auxi
 The active repository toolchain is external native Linux Lean `4.34.0-rc1`, Mathlib `de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11`. The historical B-tier source catalog retains its original `4.33.0` pins; only concrete declarations used by the native sources are ported here.
 
 External validation: the cached GitHub workflow first compiles and freshly audits this adapter, then retains all original integrated and isolated package checks. Evidence is recorded under `artifacts/external-linux/classical-mechanics/`; status promotion requires matching source hashes and theorem-level audit evidence.
+
+## Material-coordinate extension
+
+`Piola.lean` proves the native cofactor-divergence identity and its determinant-one inverse-transpose form. `TimeCalculus.lean` derives the acceleration pullback on the closed finite slab. `MaterialGradient.lean` derives pressure-gradient pullback. `Material.lean` defines the actual material geometry and operators; `MaterialBridge.lean` assembles both equation directions.
+
+The material root retains a supplied smooth volume-preserving flow, literal pressure pullback, and the transformed diffusion identity. The full moving-region and Lagrange-d’Alembert solution-set equivalence remains open. New source status: A_TIER; external source 699ae6cac2d9ccf57d0781b64b8e7804a5f827ea passed compilation and all 62 named theorem audits. The exact material equation implication has CONDITIONAL_FORMAL_CLOSURE.
+
+Native Windows source export: `python Auxillary/scripts/export_classical_windows.py --repo-root . --destination <new-directory>`. The export preserves every Lean source byte, removes incompatible path names, and provides `run.cmd`. The exporter executes no Lean; `run.cmd` targets external native Windows 4.34.0-rc1 and preserves caches.

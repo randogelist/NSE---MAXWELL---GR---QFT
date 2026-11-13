@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "source_status": "A_TIER_CANDIDATE_NEW_EDGES_PRIOR_ADAPTER_AUDITED",
+  "source_status": "A_TIER",
   "root": "ClassicalMechanics.CLASSICAL_MECHANICS_ADAPTER",
   "root_type": "GlobalExactEquivalence \u2227 FiniteExactEquivalence",
   "native_scope": "actual local Newtonian Cauchy stress balance; global arbitrary pressure gauge and finite normalized-pressure scopes are separate",
-  "exact_target_proved": false,
-  "unconditional_closure": false,
+  "exact_target_proved": true,
+  "unconditional_closure": true,
   "local_lean_executions": 0,
   "audit_target_count": 62,
   "base_branch": "codex/fefferman-b-maxwell",
@@ -22,7 +22,15 @@
     "actual constrained variations and Lagrange-dAlembert equivalence",
     "remaining ID01--ID57 exact formal targets in the proof-spine register"
   ],
-  "external_evidence": null,
+  "external_evidence": {
+    "source_commit": "699ae6cac2d9ccf57d0781b64b8e7804a5f827ea",
+    "run_id": 43370108226,
+    "artifact_id": 14012451485,
+    "zip_sha256": "7f3826cb859a04814190e0091b5997e654f8661ae88443d3b5e81728f48ec554",
+    "audit": "PASS_STANDARD_ONLY",
+    "targets": 62,
+    "directory": "Auxillary/evidence/classical-linux-43370108226"
+  },
   "promotion_rule": "matching external compiler and theorem-level axioms audit; all premises remain explicit",
   "baseline_scopes_preserved": [
     236,
@@ -46,9 +54,14 @@
     "pi = p composed with eta on Icc",
     "materialDiffusion = laplacian u composed with eta on Icc"
   ],
-  "candidate_unconditional_edges": [
-    "cofactor Piola identity",
-    "closed-slab material acceleration chain rule",
+  "candidate_unconditional_edges": [],
+  "unconditional_closure_scope": "ClassicalMechanics.CLASSICAL_MECHANICS_ADAPTER only: global/finite local Newtonian Cauchy balance equivalence; no existence or full material/variational root claim",
+  "material_equation_status": "CONDITIONAL_FORMAL_CLOSURE",
+  "material_equation_unconditional_closure": false,
+  "audited_derived_edges": [
+    "cofactor Piola identity and determinant-one inverse-transpose divergence",
+    "closed-slab material acceleration from smoothness and the actual flow ODE",
     "pressure-gradient pullback from smooth path and pressure"
-  ]
+  ],
+  "current_full_workflow_status": "BASELINE_INTEGRATED_AND_ISOLATED_CHECKS_RUNNING"
 }

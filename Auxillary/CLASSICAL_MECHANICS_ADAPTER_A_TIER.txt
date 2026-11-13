@@ -1,6 +1,6 @@
 CLASSICAL_MECHANICS_ADAPTER
 MODE = A_TIER_DERIVATION
-STATUS = A_TIER_CANDIDATE
+STATUS = A_TIER; MARKER = !!!!; SCOPE = EXACT_LOCAL_CAUCHY_ROOT
 BASE_BRANCH = codex/fefferman-b-maxwell
 BASE_COMMIT = 1de664f2ef5ddc11caef25ac2274278b4171ab6b
 BRANCH = codex/classical-mechanics-adapter
@@ -34,7 +34,7 @@ SEQUENTIAL_IMPLICATIONS:
   NewtonianB -> MaxwellB, under explicit FourierHodgeLaws;
   MaxwellB -> NewtonianB, under explicit FourierHodgeLaws.
 
-AUDIT_TARGETS = 25 exact named theorems.
+AUDIT_TARGETS = 62 exact named theorems, including the preserved first 25.
 AUDIT_SOURCE = Classical_Mechanics_adapter/ClassicalMechanics/Audit.lean.
 ALLOWED_FOUNDATIONAL_AXIOMS = propext, Classical.choice, Quot.sound.
 FORBIDDEN = sorryAx, added axioms, unproved opaque bodies, unsafe proof construction.
@@ -43,11 +43,11 @@ MATHLIB = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
 CACHE_POLICY = retain and verify compiler, dependency and project caches;
                fresh named theorem audit even after full object reuse.
 LOCAL_LEAN_EXECUTIONS = 0.
-EXTERNAL_COMPILER_EVIDENCE = pending.
-THEOREM_LEVEL_AXIOM_EVIDENCE = pending.
-A_TIER = NOT_ESTABLISHED.
-FORMAL_CLOSURE = NOT_ESTABLISHED_FOR_NEW_ROOT.
-UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED_FOR_NEW_ROOT.
+EXTERNAL_COMPILER_EVIDENCE = PASS; source 699ae6cac2d9ccf57d0781b64b8e7804a5f827ea; run 43370108226.
+THEOREM_LEVEL_AXIOM_EVIDENCE = PASS_STANDARD_ONLY; 62/62.
+A_TIER = ESTABLISHED_FOR_EXACT_NAMED_THEOREMS.
+FORMAL_CLOSURE = ESTABLISHED_FOR_CLASSICAL_MECHANICS_ADAPTER.
+UNCONDITIONAL_CLOSURE = ESTABLISHED_FOR_LOCAL_CAUCHY_EQUIVALENCE_ONLY.
 
 REFERENCE_ROOT_SCOPE_GUARD:
   The full B-tier E=N ~=M ~=D and E~=V target additionally includes
@@ -63,3 +63,8 @@ MAXWELL_SCOPE_GUARD:
 STRUCTURAL_REGISTER = Auxillary/classical-mechanics-proof-spine.json.
 COMPLETE_B_TIER_REFERENCE = Auxillary/derivations/NSE_CLASSICAL_MECHANICS_EQUIVALENCE_B_TIER.txt.
 CURRENT_STATUS_RECORD = Auxillary/classical-mechanics-status.json.
+
+CURRENT_BRANCH = codex/classical-mechanics-material.
+CURRENT_BASE_COMMIT = 645980350328a0638fe04b3a265b9a63d2b9b4db.
+CURRENT_EVIDENCE = Auxillary/evidence/classical-linux-43370108226/.
+MATERIAL_EQUATION_ROOT = CONDITIONAL_FORMAL_CLOSURE, separate scoped report.

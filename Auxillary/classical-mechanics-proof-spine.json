@@ -33,22 +33,26 @@
       "id": "ID03",
       "name": "FIN3_PIOLA_IDENTITY_AND_ROW_DIVERGENCE",
       "reference_line": 11715,
-      "lean_status": "PARTIAL_A_TIER_CANDIDATE_COMPLETE_GROUP_PENDING",
-      "new_native_scope": "Actual cofactor-Jacobian row divergence in dimension three.",
-      "pending_scope": "Full tensor Piola transform, cofactor/inverse conversion, transported viscosity, matching external theorem audits.",
-      "native_candidate_theorems": [
+      "lean_status": "PARTIAL_A_TIER_COMPLETE_GROUP_PENDING",
+      "new_native_scope": "Actual cofactor-Jacobian row divergence; adjugate/cofactor equality; determinant-one inverse-transpose identity and divergence; material-path specialization.",
+      "pending_scope": "Full arbitrary-tensor Piola transform and actual transported viscosity identity.",
+      "native_premises": "ContDiff R infinity of the actual spatial field; no invertibility or Piola admission.",
+      "native_audited_theorems": [
         "ClassicalMechanics.cofactorGradient_eq_adjugate_transpose",
         "ClassicalMechanics.piola_identity",
-        "ClassicalMechanics.tensorDivergence_adjugate_gradient"
+        "ClassicalMechanics.tensorDivergence_adjugate_gradient",
+        "ClassicalMechanics.cofactorGradient_eq_inverse_transpose_of_det_one",
+        "ClassicalMechanics.tensorDivergence_inverse_transpose_of_det_one",
+        "ClassicalMechanics.material_inverse_transpose_divergence_zero"
       ],
-      "native_premises": "ContDiff R infinity of the actual spatial field; no invertibility or Piola admission."
+      "evidence_source_commit": "699ae6cac2d9ccf57d0781b64b8e7804a5f827ea"
     },
     {
       "id": "ID04",
       "name": "MATERIAL_DIFFERENTIAL_OPERATORS_AND_ACCELERATION",
       "reference_line": 11812,
-      "lean_status": "PARTIAL_A_TIER_CANDIDATE_COMPLETE_GROUP_PENDING",
-      "new_native_scope": "Closed-slab time calculus, acceleration pullback for a supplied smooth flow, actual material-coordinate operators and conditional equation transport.",
+      "lean_status": "PARTIAL_A_TIER_COMPLETE_GROUP_PENDING",
+      "new_native_scope": "Actual finite-slab derivatives, acceleration from supplied smooth flow, pressure-gradient from actual chain rule and matrix inverse, concrete material operators and conditional equation transport.",
       "explicit_analytic_premise": "ClassicalMechanics.MaterialPullbackIdentities",
       "conditional_native_theorems": [
         "ClassicalMechanics.material_residual_pullback",
@@ -57,14 +61,21 @@
         "ClassicalMechanics.eulerian_equation_iff_material",
         "ClassicalMechanics.ns_solution_material_equation"
       ],
-      "pending_scope": "Pressure-gradient and viscosity identities, transported solution constraints, full bijection and matching external theorem audits.",
-      "native_chain_rule_candidates": [
+      "pending_scope": "Actual transported viscosity, construction of the smooth volume-preserving flow, transported solution constraints and full solution bijection.",
+      "chain_rule_premises": "T>0; actual joint closed-slab smoothness; supplied actual flow ODE. Smooth-flow existence is not constructed.",
+      "constructor_scope": "Legacy constructor derives acceleration; stronger material_pullback_of_flow_and_diffusion additionally derives the pressure gradient from actual geometry and scalar pullback. Smooth path/flow and diffusion remain explicit inputs.",
+      "native_chain_rule_theorems": [
         "ClassicalMechanics.finite_material_chain_rule",
         "ClassicalMechanics.finite_flow_acceleration"
       ],
-      "chain_rule_premises": "T>0; actual joint closed-slab smoothness; supplied actual flow ODE. Smooth-flow existence is not constructed.",
-      "native_package_constructor_candidate": "ClassicalMechanics.materialPullbackIdentities_of_flow",
-      "constructor_scope": "Acceleration derived from smoothness and the supplied flow ODE; scalar pressure pullback, pressure-gradient pullback and diffusion pullback remain explicit inputs."
+      "native_package_constructor_theorem": "ClassicalMechanics.materialPullbackIdentities_of_flow",
+      "native_pressure_gradient_theorems": [
+        "ClassicalMechanics.material_pressure_gradient_of_pullback",
+        "ClassicalMechanics.material_pressure_gradient_pullback_on"
+      ],
+      "native_stronger_constructor": "ClassicalMechanics.material_pullback_of_flow_and_diffusion",
+      "native_root": "ClassicalMechanics.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW_AND_DIFFUSION",
+      "evidence_source_commit": "699ae6cac2d9ccf57d0781b64b8e7804a5f827ea"
     },
     {
       "id": "ID05",
@@ -385,7 +396,7 @@
       "lean_status": "PENDING_EXACT_IDENTITY_BODY_AND_EXTERNAL_AUDIT"
     }
   ],
-  "first_native_status": "A_TIER_AT_RECORDED_IMPORTED_COMMIT",
+  "first_native_status": "A_TIER_AT_RECORDED_CURRENT_SOURCE",
   "first_native_evidence": {
     "source_commit": "80edf82888080953e2a7c991769f0de69fe7166e",
     "workflow_run_id": 43363763965,
@@ -398,6 +409,68 @@
     "scope_guard": "Local Cauchy stress equivalence only; global existence is an equivalence of propositions, not a proof of either existence proposition; new material modules require their own external evidence.",
     "retained_evidence_directory": "Auxillary/evidence/classical-linux-43363763965"
   },
-  "material_extension_status": "A_TIER_CANDIDATE",
-  "material_extension_status_file": "Auxillary/CLASSICAL_MECHANICS_MATERIAL_A_TIER.txt"
+  "material_extension_status": "A_TIER_CONDITIONAL_FORMAL_CLOSURE_FOR_EXACT_ROOT",
+  "material_extension_status_file": "Auxillary/CLASSICAL_MECHANICS_MATERIAL_A_TIER.txt",
+  "first_native_current_evidence": {
+    "source_commit": "699ae6cac2d9ccf57d0781b64b8e7804a5f827ea",
+    "workflow_run_id": 43370108226,
+    "workflow_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43370108226",
+    "artifact_id": 14012451485,
+    "artifact_sha256": "7f3826cb859a04814190e0091b5997e654f8661ae88443d3b5e81728f48ec554",
+    "source_manifest_sha256": "4463096e7f84349ac90a17cb25c60d9e989ae1152360071f6d9e337e2c746a72",
+    "retained_evidence_directory": "Auxillary/evidence/classical-linux-43370108226",
+    "compiler_status": "PASS",
+    "audit_status": "PASS_STANDARD_ONLY",
+    "audit_target_count": 62,
+    "source_input_verification": "PASS",
+    "current_mechanics_lean_source_hashes": "14/14_MATCH",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "cache_mode": "REUSE_VERIFIED_DEPENDENCY_PHASE",
+    "scope": "Classical-mechanics build and theorem audits only; no whole-workflow success inferred."
+  },
+  "material_extension_evidence": {
+    "source_commit": "699ae6cac2d9ccf57d0781b64b8e7804a5f827ea",
+    "workflow_run_id": 43370108226,
+    "workflow_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43370108226",
+    "artifact_id": 14012451485,
+    "artifact_sha256": "7f3826cb859a04814190e0091b5997e654f8661ae88443d3b5e81728f48ec554",
+    "source_manifest_sha256": "4463096e7f84349ac90a17cb25c60d9e989ae1152360071f6d9e337e2c746a72",
+    "retained_evidence_directory": "Auxillary/evidence/classical-linux-43370108226",
+    "compiler_status": "PASS",
+    "audit_status": "PASS_STANDARD_ONLY",
+    "audit_target_count": 62,
+    "source_input_verification": "PASS",
+    "current_mechanics_lean_source_hashes": "14/14_MATCH",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "cache_mode": "REUSE_VERIFIED_DEPENDENCY_PHASE",
+    "scope": "Classical-mechanics build and theorem audits only; no whole-workflow success inferred."
+  },
+  "material_root": {
+    "theorem": "ClassicalMechanics.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW_AND_DIFFUSION",
+    "status": "CONDITIONAL_FORMAL_CLOSURE",
+    "quantified_scope": "Arbitrary real nu,T and concrete fields u,eta,rho,p,pi; T>0.",
+    "explicit_premises": [
+      "SmoothVelocityOn T u",
+      "SmoothPressureOn T p",
+      "MaterialPathOn T eta rho",
+      "materialVelocity T eta = u composed with eta on the slab",
+      "pi = p composed with eta on the slab",
+      "materialDiffusion T eta = laplacian u composed with eta on the slab"
+    ],
+    "derived_identities": [
+      "actual acceleration pullback",
+      "actual pressure-gradient pullback",
+      "timewise surjectivity of eta"
+    ],
+    "conclusion": "Eulerian differential equation iff MaterialEquationOn on Icc 0 T.",
+    "scope_guard": "No full MaterialSolutionOn bijection or global NSE nonemptiness is asserted."
+  }
 }

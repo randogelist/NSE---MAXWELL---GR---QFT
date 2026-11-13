@@ -9,8 +9,8 @@ arbitrary-pressure-gauge equivalence and a separate finite normalized-pressure
 equivalence. Both Maxwell compositions retain `FourierHodgeLaws` explicitly.
 
 ```text
-CLASSICAL_MECHANICS_STATUS = A_TIER_CANDIDATE
-CLASSICAL_MECHANICS_THEOREM_AUDITS = 25
+CLASSICAL_MECHANICS_STATUS = A_TIER (local Cauchy root: UNCONDITIONAL_CLOSURE)
+CLASSICAL_MECHANICS_THEOREM_AUDITS = 62 / PASS_STANDARD_ONLY
 FULL_MATERIAL_AND_LDA_REFERENCE_ROOT = PENDING
 LOCAL_LEAN_EXECUTIONS = 0
 ```
@@ -19,6 +19,14 @@ LOCAL_LEAN_EXECUTIONS = 0
 [Directional structure](B%20%3C-%3E%20ClassicalMechanics/) ·
 [Exact status](Auxillary/CLASSICAL_MECHANICS_ADAPTER_A_TIER.txt) ·
 [Complete B-tier chain](Auxillary/derivations/NSE_CLASSICAL_MECHANICS_EQUIVALENCE_B_TIER.txt)
+
+## Material equation extension
+
+The native Piola identity, closed-slab acceleration chain rule, pressure-gradient pullback, and material equation transport have matching external Lean 4.34.0-rc1 evidence: [run 43370108226](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43370108226), 62/62 named theorem audits, approved foundational axioms only.
+
+`ClassicalMechanics.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW_AND_DIFFUSION` retains a supplied smooth volume-preserving flow, literal pressure pullback, and transformed diffusion identity. Acceleration and pressure-gradient identities are derived. This is conditional equation equivalence; the full moving-region/material-solution/Lagrange-d'Alembert reference root remains open.
+
+[Exact material scope](Auxillary/CLASSICAL_MECHANICS_MATERIAL_A_TIER.txt) · [Material proof](Classical_Mechanics_adapter/ClassicalMechanics/MaterialBridge.lean)
 
 ## Repository structure
 
