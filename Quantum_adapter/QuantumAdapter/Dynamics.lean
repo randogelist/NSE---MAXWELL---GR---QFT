@@ -71,8 +71,7 @@ def canonicalPacket (N : ℕ) (q₀ : Phase N) : Wave (Phase N) :=
     Real.exp (-‖q - q₀‖ ^ 2 / (4 * canonicalScale N ^ 2)) : ℝ) : ℂ)
 
 theorem canonicalPacket_im (N : ℕ) (q₀ q : Phase N) :
-    (canonicalPacket N q₀ q).im = 0 := by
-  simp [canonicalPacket]
+    (canonicalPacket N q₀ q).im = 0 := rfl
 
 theorem canonicalPacket_center (N : ℕ) (q₀ : Phase N) :
     canonicalPacket N q₀ q₀ = (gaussianAmplitude N : ℂ) := by
