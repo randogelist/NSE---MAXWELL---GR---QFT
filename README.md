@@ -32,6 +32,7 @@ The native Piola identity, closed-slab acceleration chain rule, pressure-gradien
 
 | Directory | Scope |
 |---|---|
+| [ASSEMBLY/](ASSEMBLY/) | The 25 selected native declarations, tensor Piola assembly, and supplied-flow equation transport; [exact status](Auxillary/ASSEMBLY_A_TIER.txt) |
 | [Fefferman_adapter/](Fefferman_adapter/) | Independent Fefferman package, exact statement, bridge proofs, complete pinned dependency sources, native Methlib endpoints |
 | [Maxwell_Endpoint/](Maxwell_Endpoint/) | Independent Maxwell package, native constructions, complete pinned dependency sources, native Methlib endpoints |
 | [B <-> Maxwell/](B%20%3C-%3E%20Maxwell/) | Equivalence derivations and the two directional proof directories |
@@ -39,7 +40,7 @@ The native Piola identity, closed-slab acceleration chain rule, pressure-gradien
 | [B <-> Maxwell/=>/](B%20%3C-%3E%20Maxwell/%3D%3E/) | Fefferman B ⇒ constrained Maxwell: actual forward proof bodies |
 | [B <-> Maxwell/<=/](B%20%3C-%3E%20Maxwell/%3C%3D/) | Constrained Maxwell ⇒ Fefferman B: actual reverse proof bodies |
 
-The four top-level content folders have the requested domain roles. `.github/` retains GitHub Actions discovery. Root files retain Lake configuration, compiler selection, repository instructions, and Git metadata. Auxiliary entry points, target lists, status, and evidence reside in `Auxillary/`.
+The top-level content folders have the requested domain roles. `.github/` retains GitHub Actions discovery. Root files retain Lake configuration, compiler selection, repository instructions, and Git metadata. Auxiliary entry points, target lists, status, and evidence reside in `Auxillary/`.
 
 ```text
 LAYOUT_PLATFORM              = LINUX / POSIX

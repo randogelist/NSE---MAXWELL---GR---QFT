@@ -33,6 +33,9 @@ lean_lib ClassicalMechanicsReverse where
 lean_lib ClassicalMechanics where
   srcDir := "Classical_Mechanics_adapter"
 
+lean_lib ClassicalMechanicsAssembly where
+  srcDir := "ASSEMBLY"
+
 @[default_target]
 lean_lib NSEMaxwell where
   srcDir := "Fefferman_adapter"

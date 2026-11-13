@@ -1,0 +1,35 @@
+CLASSICAL_MECHANICS_ASSEMBLY_A_TIER
+
+STATUS = A_TIER_CANDIDATE
+COMPILER_TARGET = external native Linux Ubuntu 24.04, Lean 4.34.0-rc1
+MATHLIB_PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+LOCAL_LEAN_EXECUTIONS = 0
+
+SELECTED_NATIVE_DECLARATIONS = 25 existing theorems
+EXACT_NATIVE_TARGET_LIST = Auxillary/assembly-native-targets.txt
+SOURCE_REGISTRY = Auxillary/assembly-native-registry.json
+NEW_PROOF_TARGET_LIST = Auxillary/assembly-proof-targets.txt
+NATIVE_IMPORT_ROOT = ClassicalMechanicsAssembly
+
+PROPOSED_NEW_DIFFUSION_ROOT =
+  ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_DIFFUSION_REALIZATION
+PROPOSED_NEW_EQUATION_ROOT =
+  ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW
+
+NEW_EXTERNAL_COMPILATION = PENDING
+NEW_THEOREM_LEVEL_AXIOM_AUDIT = PENDING
+
+Exact equation premises:
+  T>0; SmoothVelocityOn T u; SmoothPressureOn T p;
+  MaterialPathOn T eta rho;
+  forall t in [0,T], forall a,
+    materialVelocity T eta t a = u t (eta t a).
+Pressure is literally pi(t,a)=p(t,eta(t,a)).
+The transformed diffusion is proved by the new source, not a root hypothesis.
+
+Unresolved native existence:
+  smooth periodic solenoidal u -> exists eta rho, MaterialPathOn and flow ODE.
+No full solution-set bijection or arbitrary-data NSE existence is asserted.
+
+Promotion requires matching external compiler evidence and theorem-level
+axiom audits, with no sorryAx or unapproved axioms.

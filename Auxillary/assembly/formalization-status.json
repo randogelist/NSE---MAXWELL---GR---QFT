@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "status": "A_TIER_CANDIDATE_UNTIL_MATCHING_EXTERNAL_EVIDENCE",
+  "assembly_library": "ClassicalMechanicsAssembly",
+  "native_endpoint_count": 25,
+  "native_target_list": "Auxillary/assembly-native-targets.txt",
+  "additional_proof_target_list": "Auxillary/assembly-proof-targets.txt",
+  "native_alias_semantics": "Lean export aliases; native module checks definitional identity against original declarations. Each original receives one fresh theorem-level audit.",
+  "audit_scope": "Exactly the canonical declarations in the two committed target lists; generated audit file records their full signatures and transitive axioms.",
+  "root_semantics": "Preserve every explicit theorem hypothesis; no analytic or semantic premise is discharged by an axiom audit.",
+  "full_reference_root": "NOT_PROMOTED_BY_ASSEMBLY_INFRASTRUCTURE",
+  "external_platform": "native Linux / Ubuntu 24.04",
+  "toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "local_lean_executions": 0
+}
