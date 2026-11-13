@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "authorization": "User instruction, 2026-11-13: L1 and L2 as axioms.",
+  "foundational_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "authorized_axiom_declarations": [
+    "ClassicalMechanicsAssembly.Literature.L1",
+    "ClassicalMechanicsAssembly.Literature.L2"
+  ],
+  "exact_nonfoundational_policy": true,
+  "targets": [
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.L1",
+      "kind": "axiom",
+      "expected_nonfoundational_axioms": [
+        "ClassicalMechanicsAssembly.Literature.L1"
+      ]
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.L2",
+      "kind": "axiom",
+      "expected_nonfoundational_axioms": [
+        "ClassicalMechanicsAssembly.Literature.L2"
+      ]
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.L2_native",
+      "kind": "theorem",
+      "expected_nonfoundational_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2",
+      "kind": "theorem",
+      "expected_nonfoundational_axioms": [
+        "ClassicalMechanicsAssembly.Literature.L1",
+        "ClassicalMechanicsAssembly.Literature.L2"
+      ]
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1",
+      "kind": "theorem",
+      "expected_nonfoundational_axioms": [
+        "ClassicalMechanicsAssembly.Literature.L1"
+      ]
+    }
+  ]
+}

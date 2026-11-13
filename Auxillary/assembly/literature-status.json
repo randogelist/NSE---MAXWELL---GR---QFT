@@ -1,9 +1,12 @@
 {
   "schema_version": 1,
-  "status": "A_TIER_CANDIDATE",
-  "closure_status": "CONDITIONAL_FORMAL_CLOSURE_PENDING_EXTERNAL_AUDIT",
+  "status": "A_TIER_UNDER_EXACT_AUTHORIZED_LITERATURE_AXIOMS",
+  "closure_status": "CONDITIONAL_FORMAL_CLOSURE",
   "user_authorization": "2026-11-13: L1 and L2 as axioms",
-  "axiom_declarations": ["ClassicalMechanicsAssembly.Literature.L1", "ClassicalMechanicsAssembly.Literature.L2"],
+  "axiom_declarations": [
+    "ClassicalMechanicsAssembly.Literature.L1",
+    "ClassicalMechanicsAssembly.Literature.L2"
+  ],
   "axiom_status": "DECLARED_ANALYTIC_INPUTS_NOT_PROVED",
   "flow_realization": "ASSUMED_BY_L1; NATIVE_DERIVATION_OPEN",
   "diffusion_realization": "ASSUMED_BY_L2_IN_LITERATURE_ROUTE; NATIVE_PROOF_AVAILABLE",
@@ -13,5 +16,24 @@
   "local_lean_executions": 0,
   "external_platform": "native Linux / Ubuntu 24.04",
   "toolchain": "leanprover/lean4:v4.34.0-rc1",
-  "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11"
+  "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_commit": "585cc4b6e3fc360b9251858eeb0cbd7590fea39e",
+  "external_run_id": 43378501921,
+  "external_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43378501921",
+  "external_artifact_id": 14015706358,
+  "artifact_sha256": "6d0acdfbc36e4f8e1776580f73c0bd27201aed2b41a7d581040bb07d118e2d93",
+  "retained_evidence": "Auxillary/evidence/literature-linux-43378501921",
+  "external_compilation": "PASS",
+  "standard_43_axiom_audit": "PASS_STANDARD_ONLY",
+  "literature_5_axiom_audit": "PASS_EXACT_AUTHORIZED_AXIOMS",
+  "literature_import_closure_modules": 22,
+  "source_input_matches": 346,
+  "L2_native_axiom_audit": "PASS_STANDARD_ONLY",
+  "dual_root_analytic_axioms": [
+    "ClassicalMechanicsAssembly.Literature.L1",
+    "ClassicalMechanicsAssembly.Literature.L2"
+  ],
+  "native_diffusion_root_analytic_axioms": [
+    "ClassicalMechanicsAssembly.Literature.L1"
+  ]
 }

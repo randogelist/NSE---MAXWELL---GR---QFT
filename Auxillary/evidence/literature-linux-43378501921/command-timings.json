@@ -1,0 +1,95 @@
+[
+  {
+    "command": [
+      "lean",
+      "--version"
+    ],
+    "log": "lean-version.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.043
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      ".lake/packages/mathlib",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "mathlib-revision.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.002
+  },
+  {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "source-commit.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.002
+  },
+  {
+    "command": [
+      "git",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "working-tree.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.32
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "--no-build",
+      "ClassicalMechanicsAssembly"
+    ],
+    "log": "build-freshness.log",
+    "exit_code": 0,
+    "elapsed_seconds": 4.781
+  },
+  {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-R",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/GeneratedAudit.lean"
+    ],
+    "log": "audit.log",
+    "exit_code": 0,
+    "elapsed_seconds": 4.459
+  },
+  {
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python3",
+      "Auxillary/scripts/verify_audit.py",
+      "--expected-platform",
+      "linux",
+      "--root",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT",
+      "--targets",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/audit-targets.txt",
+      "--audit-source",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/GeneratedAudit.lean",
+      "--log",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/audit.log",
+      "--manifest",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/source-manifest.json",
+      "--provenance",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/run-provenance.json",
+      "--scope",
+      "Auxillary/assembly/formalization-status.json",
+      "--output",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/assembly/audit-summary.json"
+    ],
+    "log": "audit-verifier.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.088
+  }
+]

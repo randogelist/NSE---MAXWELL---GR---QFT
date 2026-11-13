@@ -1,8 +1,12 @@
 CLASSICAL_MECHANICS_LITERATURE_AXIOMS
 
-STATUS = A_TIER_CANDIDATE
-EXTERNAL_COMPILATION = PENDING
-THEOREM_LEVEL_AXIOM_AUDIT = PENDING
+STATUS = A_TIER_UNDER_EXACT_AUTHORIZED_LITERATURE_AXIOMS
+ROOT_CLOSURE = CONDITIONAL_FORMAL_CLOSURE
+EXTERNAL_COMPILATION = PASS
+THEOREM_LEVEL_AXIOM_AUDIT = PASS_EXACT_AUTHORIZED_AXIOMS
+STANDARD_ONLY_ASSEMBLY_AUDIT = 43 / 43 PASS_STANDARD_ONLY
+LITERATURE_DECLARATION_AUDIT = 2 AXIOMS + 3 THEOREMS; 5 / 5 PASS
+L2_NATIVE_AXIOM_AUDIT = PASS_STANDARD_ONLY
 LOCAL_LEAN_EXECUTIONS = 0
 COMPILER = external cached native Linux Lean 4.34.0-rc1
 MATHLIB_PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
@@ -54,5 +58,20 @@ The original 43-target standard-only audit retains its original whitelist.
 
 L1,L2 declarations are assumptions, not proof terms for the analytic inputs.
 No arbitrary-data NSE existence or full solution-set equivalence is claimed.
-The equation roots, once compiled and audited, are CONDITIONAL_FORMAL_CLOSURE.
+The externally compiled and audited equation roots are CONDITIONAL_FORMAL_CLOSURE.
 UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED.
+
+EXTERNAL CERTIFICATE
+AUDITED_SOURCE_COMMIT = 585cc4b6e3fc360b9251858eeb0cbd7590fea39e
+EXTERNAL_RUN = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43378501921
+ARTIFACT_ID = 14015706358
+ARTIFACT_SHA256 = 6d0acdfbc36e4f8e1776580f73c0bd27201aed2b41a7d581040bb07d118e2d93
+RETAINED_EVIDENCE = Auxillary/evidence/literature-linux-43378501921
+LITERATURE_SOURCE_MATCHES = 346 / 346 before evidence/documentation retention
+LITERATURE_NATIVE_IMPORT_CLOSURE = 22 byte-matched modules
+SOURCE_CERTIFICATE = Auxillary/evidence/literature-linux-43378501921/literature-source-match-certificate.json
+SIGNATURES_AND_AXIOMS = Auxillary/evidence/literature-linux-43378501921/literature/audit.log
+
+The evidence-retention commit changes only documentation/status/evidence.
+Proof modules, their imports, authorized-axiom policy, runners and pins remain
+byte-identical to the externally compiled source commit above.

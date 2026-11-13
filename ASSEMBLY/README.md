@@ -55,7 +55,13 @@ equation equivalence, and a second route replaces L2 with the native diffusion
 theorem. The respective nonfoundational dependencies are `{L1,L2}` and `{L1}`.
 These modules are separate from the standard-only aggregate import above.
 
-Current literature-route status: **A_TIER_CANDIDATE**.
+Literature-route status: **A_TIER under exact authorized literature axioms**.
+External [run 43378501921](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43378501921): strict43 `PASS_STANDARD_ONLY`;
+2 axioms + 3 theorems `PASS_EXACT_AUTHORIZED_AXIOMS`.
+Audited source: `585cc4b6e3fc360b9251858eeb0cbd7590fea39e`.
 Exact contracts: [ASSEMBLY_LITERATURE_A_TIER.txt](../Auxillary/ASSEMBLY_LITERATURE_A_TIER.txt).
 Native construction of the flow remains open. The roots retain
 `CONDITIONAL_FORMAL_CLOSURE`; declaring an analytic input does not prove it.
+
+Literature [source-match certificate](../Auxillary/evidence/literature-linux-43378501921/literature-source-match-certificate.json)
+and [full signatures/axiom log](../Auxillary/evidence/literature-linux-43378501921/literature/audit.log).
