@@ -71,14 +71,29 @@ The root is **CONDITIONAL_FORMAL_CLOSURE**. Scalar completion, radial extension,
 
 ## Literature-chain construction
 
-The three precise source signatures are in `GRAdapter/LiteratureInputs.lean`.
-The native source-to-root target remains open; these signatures contain no
-project contract fields and have no native inhabitants.
+`LI01 ∧ LI02 ∧ LI03 → ExactSectorEquivalence` remains **OPEN in Lean**.
+The three literal source signatures in `GRAdapter/LiteratureInputs.lean`
+contain no project-law fields; no literature-input inhabitants are supplied.
 
-`UnitTorus`, `ScalarNormalForm`, `ScalarAnalytic`, `GaussianMetric`,
-`GermUniformity`, `FourierBridge`, `ReconstructionAlgebra`, and
-`ReconstructionCalculus` contain the explicit lower edges. Their exact scope
-and unresolved adapters are recorded in [GR_LITERATURE_CHAIN_A_TIER.txt](GR_LITERATURE_CHAIN_A_TIER.txt).
-Compilation and theorem-level audits of this source revision are pending.
-The literature derivation and input signatures are recorded in
-[the B-tier chain](Derivation/NSE_GR_MISSING_PIECES_LITERATURE_CHAIN_B_TIER.txt).
+Cached native Lean 4.34.0-rc1 [run 43375199321](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43375199321)
+passed at `4e9638abfa0556ee74ddbce8441973993091271d`: **199 new theorem endpoints**, **401/401 standard-only declaration audits**.
+All audited source hashes and requested theorem records were verified.
+
+Native edges now include the concrete five-component scalar CK germ from LI01
+and actual gradient compatibility,
+full-spatial Gaussian uniqueness from LI02, `G(Delta f)=f-mean(f)` and
+`P(gradient f)=0` from LI03, actual Gaussian Ricci contractions, and native
+stress-divergence calculus. Their exact hypotheses remain visible.
+
+Remaining: scalar completion/gluing; uniform Lorentzian collar assembly;
+joint analytic Fourier/right-inverse calculus; flat-boundary constraints;
+gauge/inverse composition. The four project-law inhabitants remain open.
+
+[Formal status](GR_LITERATURE_CHAIN_A_TIER.txt) ·
+[Exact endpoint index](NATIVE_LITERATURE_ENDPOINTS.json) ·
+[Literature derivation](Derivation/NSE_GR_MISSING_PIECES_LITERATURE_CHAIN_B_TIER.txt).
+
+[Windows-safe literature-chain package](../Auxillary/GR/exports/GR_LITERATURE_CHAIN_4.34.0-rc1.zip)
+contains the native sources, TXT reports, `run.cmd`, endpoint index and original
+external certificate. The source-equivalence record distinguishes later status
+metadata from the byte-identical audited proof and runner inputs.

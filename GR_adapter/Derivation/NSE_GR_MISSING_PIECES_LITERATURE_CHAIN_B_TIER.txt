@@ -1,9 +1,9 @@
 NSE_GR_MISSING_PIECES_LITERATURE_CHAIN_B_TIER
-VERSION = 1.1.0
+VERSION = 1.2.0
 DATE = 2026-11-13
 MODE = B_TIER_DERIVATION
 MATHEMATICAL_STATUS = != B_TIER
-NATIVE_LEAN_INHABITANTS_ADDED = 0
+NATIVE_PROJECT_CONTRACT_INHABITANTS_ADDED = 0
 LOCAL_LEAN_EXECUTIONS = 0
 
 SOURCE_MODEL
@@ -24,7 +24,7 @@ kernel evidence and introduces no literature axiom into the repository.
 0. EXPLICIT LITERATURE INPUTS
 
 INPUT_POLICY = named mathematical hypotheses; source-backed B-tier use.
-LEAN_DECLARATIONS_ADDED = 0
+GLOBAL_LITERATURE_AXIOM_DECLARATIONS_ADDED = 0
 LEAN_AXIOMS_ADDED = 0
 LITERATURE_INPUT_NATIVE_PROOFS = OPEN
 
@@ -260,7 +260,7 @@ SCALAR_LAW_B_TIER = COMPLETE
 RADIAL_LAW_B_TIER = COMPLETE
 RECONSTRUCTION_LAW_B_TIER = COMPLETE
 GERM_LAWS_B_TIER = COMPLETE
-NEW_A_TIER_DISCHARGE = NONE
+NEW_FULL_PROJECT_CONTRACT_A_TIER_DISCHARGE = NONE
 UNCONDITIONAL_CLOSURE_MARKER_!!!! = NOT_ESTABLISHED
 
 NSE_EXISTENCE_FROM_ARBITRARY_INITIAL_u0 = NOT_ASSERTED
@@ -1372,3 +1372,68 @@ EXACT_STF_RESIDUAL_AND_INVERSE_COMPOSITION = DERIVED_HERE
 GEOMETRIC_RECONSTRUCTION_B_TIER = COMPLETE_WITH_EXPLICIT_STANDARD_INPUTS
 GERM_LAWS_B_TIER = COMPLETE_AFTER_SCALAR_AND_RADIAL_CK_UNIQUENESS
 A_TIER_NEW_INHABITANTS = NONE
+
+APPENDIX D. EXTERNALLY AUDITED NATIVE PROGRESSION
+
+SOURCE_COMMIT = 4e9638abfa0556ee74ddbce8441973993091271d
+NATIVE_NEW_THEOREMS = 199
+ALL_NAMED_AUDITS = 401/401 PASS_STANDARD_ONLY
+COMPILER = Lean 4.34.0-rc1
+ACTIVE_MATHLIB = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+SOURCE_NAMES_AND_LINES = ../NATIVE_LITERATURE_ENDPOINTS.json
+EXTERNAL_EVIDENCE = ../GR_LITERATURE_CHAIN_A_TIER.txt
+LOCAL_LEAN = 0
+
+The historical Mathlib/Methlib indices remain source pointers. They do not
+certify API identity at the active pin. The current external compiler and
+theorem-level audit identify the native declarations listed below.
+
+M01: UnitTorus.volume_unitCube and periodic FTC/zero-gradient means.
+     UnitTorus is the file; declaration namespace is NSEGR throughout.
+M02: joint analytic complexification remains OPEN natively.
+M03: literatureFourierCoefficient_summable_norm and
+     poisson_fourier_summable_of_literature. Joint parameter bounds OPEN.
+M04: poissonInverse_eq_re_tsum_fourier_of_literature;
+     poissonInverse_scalarLaplacian_of_literature;
+     leray_gradient_of_literature.
+     G(Delta f)=f-mean(f), P(gradient f)=0 are native.
+     Delta(Gf), analytic regularity and time commutation remain OPEN.
+M05: GaussianMetric Christoffels; ricci_gaussian_mixed;
+     ricci_gaussian_normal. Tangential Ricci block remains OPEN.
+M06: flat-boundary Codazzi/Hamiltonian extraction remains OPEN.
+M07: native stress derivative ingredients are in StressDivergence;
+     complete source/correction conservation remains OPEN.
+M08: scalar_hamiltonian_expansion;
+     completedBoundary_hamiltonian_zero_iff_scalar_normal;
+     scalar_hamiltonian_initial_noncharacteristic.
+M09: scalarCKRHS, analyticAt_scalarCKRHS and scalarCK_gradient_compatibility;
+     actual z=gradient(psi) germ compatibility is native.
+M10: scalarCK_exists_unique_firstOrder supplies the concrete 5-component
+     germ from LI01. Scalar second-order identification remains OPEN.
+M11-M14: periodic scalar gluing, admissible completion and complete record OPEN.
+M15-M18: LI02 provides point-local vacuum germs as an explicit input.
+     Uniform periodic Lorentzian collar assembly and radial record OPEN.
+     A separate radial CK/Bianchi proof is unnecessary when LI02 is retained.
+M19: gaussianVacuum_sameMetricAt_of_literatureJet, using an independently
+     admissible common K. Point-local uniqueness -> full-spatial metric germ
+     is native; vacuum-to-constraint extraction is still separate.
+M20: periodic FTC and Leray-gradient annihilation are native; full Codazzi,
+     mean conservation and Hodge-time assembly OPEN.
+M21: boundaryStress_tensorDivergence;
+     reconstruction_residual_of_codazzi_hodge.
+     Explicit remaining identities: Codazzi and differentiated Hodge;
+     regularity, Poisson and solenoidality premises remain visible.
+M22: GeometricReconstructionLaws inhabitant OPEN.
+M23: boundary_eq_completedBoundary_of_zero_stress under explicit symmetry,
+     div(u)=0, Delta(q)=beta-rho and w=u-gradient(q_t).
+M24-M26: scalar/gauge uniqueness and germ inverse record OPEN.
+M27: existing root from c,r,h,q remains audited conditional formal closure;
+     substitution from LI01-LI03 alone remains OPEN.
+M28: scalar noncharacteristic coefficient is native; full rho=0 obstruction
+     remains the B-tier statement of A.S11.
+
+NATIVE_STATUS_RULE
+  A compiled edge proves exactly its displayed implication.
+  A theorem-level standard-only axiom audit does not discharge its arguments.
+  LI01-LI03 are explicit premises; their native inhabitants are not supplied.
+  Root-only-from-LiteratureInputs native construction is NOT established.

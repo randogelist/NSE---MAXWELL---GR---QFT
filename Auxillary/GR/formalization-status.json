@@ -54,7 +54,7 @@
   "native_declarations_status": "A_TIER",
   "unconditional_root_status": "OPEN",
   "literature_chain": {
-    "status": "A_TIER_CANDIDATE",
+    "status": "A_TIER_NATIVE_EDGES; ROOT_OPEN",
     "inputs": [
       "LiteratureAnalyticCKInput",
       "LiteratureGaussianJetInput",
@@ -64,21 +64,53 @@
     "target": "LiteratureInputs -> forall nu rho t0, 0 < nu -> rho != 0 -> ExactSectorEquivalence nu rho t0",
     "target_native_theorem": "NOT_CONSTRUCTED",
     "four_project_contract_inhabitants": "OPEN",
-    "proved_source_edges_pending_external_audit": [
-      "unit-cell measure and periodic FTC",
-      "exact scalar Hamiltonian normal form",
-      "Gaussian block inverse and Christoffels",
-      "exact cosine/Fourier normalization",
-      "Poisson summability from LI03",
-      "conditional full tensor reconstruction"
-    ],
     "remaining": [
-      "scalar CK application, compatibility and periodic gluing",
-      "joint analytic Fourier parameter calculus and Poisson/Leray inversion",
-      "Gaussian Ricci/Codazzi transfer, collar assembly and Lorentz factor",
-      "derive all four project contracts and substitute into exact root"
+      "scalar second-order identification, periodic completion/gluing and recovery",
+      "joint analytic Fourier parameter calculus, Delta-G right inverse and time commutation",
+      "flat-boundary Codazzi/Hamiltonian and LI02 uniform Lorentzian collar assembly",
+      "construct all four project-law inhabitants and literature-only root"
     ],
     "local_lean_executions": 0,
-    "new_global_axioms": 0
+    "new_global_axioms": 0,
+    "native_edge_validation": {
+      "audited_source_commit": "4e9638abfa0556ee74ddbce8441973993091271d",
+      "workflow_run_id": 43375199321,
+      "artifact_id": 14014251182,
+      "artifact_sha256": "33fa8387b7df7a45d4a194c78436a3e088f16173260fde21356cc802427d4d58",
+      "compiler": "Lean4.34.0-rc1",
+      "mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "new_theorem_count": 199,
+      "named_declaration_audit_count": 401,
+      "all_declaration_audit_count": 401,
+      "status": "PASS_STANDARD_ONLY"
+    },
+    "native_modules": {
+      "LiteratureInputs.lean": 3,
+      "UnitTorus.lean": 23,
+      "ScalarNormalForm.lean": 19,
+      "ScalarAnalytic.lean": 9,
+      "GaussianMetric.lean": 26,
+      "GermUniformity.lean": 12,
+      "ReconstructionAlgebra.lean": 10,
+      "ReconstructionCalculus.lean": 3,
+      "FourierBridge.lean": 16,
+      "GaussianUniqueness.lean": 5,
+      "ScalarCK.lean": 9,
+      "StressDivergence.lean": 26,
+      "FourierInversion.lean": 17,
+      "GaussianCodazzi.lean": 12,
+      "ScalarCompatibility.lean": 9
+    },
+    "native_top_edges": [
+      "scalarCK_exists_unique_firstOrder",
+      "gaussianVacuum_sameMetricAt_of_literatureJet",
+      "poissonInverse_scalarLaplacian_of_literature",
+      "leray_gradient_of_literature",
+      "ricci_gaussian_mixed",
+      "ricci_gaussian_normal",
+      "boundaryStress_tensorDivergence",
+      "reconstruction_residual_of_codazzi_hodge",
+      "scalarCK_gradient_compatibility"
+    ]
   }
 }
