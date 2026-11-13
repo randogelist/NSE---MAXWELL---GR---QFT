@@ -1,7 +1,8 @@
 GR_ADAPTER_NATIVE_AND_SEQUENTIAL_NSE_GR_IMPLICATIONS
-VERSION = 0.1.0
+VERSION = 0.2.0
 MODE = A_TIER_DERIVATION
-STATUS = A_TIER_CANDIDATE
+STATUS = CONDITIONAL_FORMAL_CLOSURE
+NATIVE_ADAPTER_DECLARATIONS = A_TIER
 LOCAL_LEAN_EXECUTION = 0
 
 BASE = randogelist/NSE---MAXWELL---GR---QFT
@@ -59,14 +60,50 @@ Neither example proves arbitrary-data global NSE regularity.
 Theorem-level axiom audit does not discharge ordinary hypotheses.
 
 EVIDENCE
-MATCHING_EXTERNAL_COMPILATION = PENDING
-MATCHING_THEOREM_LEVEL_AXIOM_AUDIT = PENDING
+MATCHING_EXTERNAL_COMPILATION = PASS
+MATCHING_THEOREM_LEVEL_AXIOM_AUDIT = PASS_STANDARD_ONLY
 APPROVED_AXIOMS = propext, Classical.choice, Quot.sound
-A_TIER = NOT_YET_ESTABLISHED
-CONDITIONAL_FORMAL_CLOSURE = NOT_YET_ESTABLISHED
+A_TIER = ESTABLISHED_FOR_THE_EXACT_LISTED_DECLARATIONS
+CONDITIONAL_FORMAL_CLOSURE = ESTABLISHED
 UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED
 
 The original complete B-tier v1.6.0 derivation is preserved in Derivation/.
 Its old source pins are source provenance, not compilation evidence for the
 current 4.34.0-rc1 adapter. The external source manifest and named type/axiom
 logs must match the exact commit before any promotion.
+
+EXTERNAL_CERTIFICATE
+AUDITED_SOURCE_COMMIT = 3dc98a61115f8d2e79d115d70b8c3478c504d82e
+RUN = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43365946484
+NATIVE_COMPILER = Lean 4.34.0-rc1, x86_64-unknown-linux-gnu
+COMPILER_COMMIT = 3447a668783dbce1a8fdb97101dd067687b2b418
+ADAPTER_AUDIT = 190/190 STANDARD_ONLY
+FORWARD_AUDIT = 6/6 STANDARD_ONLY
+REVERSE_AUDIT = 6/6 STANDARD_ONLY
+SOURCE_INPUT_VERIFICATION = PASS
+RETAINED_ARTIFACT_SHA256 = 6f1f62bf0aa8d752a17b28b5ba8593f7445c18d4c1d606e5423899aa2e81bcf4
+The retained certificate identifies the immutable audited commit. Subsequent
+status/documentation updates are recorded by the source-equivalence manifest.
+No mathematical premise was discharged by these metadata updates.
+
+DERIVED_GERM_EDGES
+sameMetricAt_boundaryK: marked full-slice metric germ -> actual normal jet germ.
+boundaryPressure_congr_eventually: jet germ -> reconstructed pressure germ,
+including the actual second time derivative of the Poisson potential.
+sameMetricAt_boundaryFields: native reverse descent; no reverse_respects premise.
+forward_pressure_gauge_recovery: supplied completion + actual boundary match
+-> decode-after-lift; no extra decode_lift premise.
+sameFlowAt_iff_analytic_pressure_gauge: exact analytic gauge on the common interval.
+REMAINING_GERM_FIELDS = forward_respects; lift_decode
+
+ACTIVE_MATHLIB_LOCALITY_INDEX
+Mathlib/Topology/Neighborhoods.lean:
+  Filter.EventuallyEq.eq_of_nhds; Filter.EventuallyEq.eventuallyEq_nhds.
+Mathlib/Analysis/Calculus/Deriv/Basic.lean:
+  Filter.EventuallyEq.deriv; Filter.EventuallyEq.deriv_eq.
+Mathlib/Analysis/Calculus/FDeriv/Congr.lean:
+  Filter.EventuallyEq.fderiv_eq.
+Mathlib/Analysis/Analytic/Constructions.lean:
+  AnalyticAt.curry_left.
+The B-tier TXT preserves the larger Mathlib/Methlib index and its original pins.
+Only the exact external certificate above promotes this native package.

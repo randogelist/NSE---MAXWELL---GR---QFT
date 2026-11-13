@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "A_TIER_CANDIDATE",
+  "status": "CONDITIONAL_FORMAL_CLOSURE",
   "source_base": "1de664f2ef5ddc11caef25ac2274278b4171ab6b",
   "branch": "codex/gr-adapter",
   "compiler": "4.34.0-rc1",
@@ -24,13 +24,18 @@
   "native_flat_witness": "actual Lorentzian Ricci-flat metric; nonzero-rho normalization excluded",
   "validation": {
     "local_lean_executions": 0,
-    "external_compilation": "PENDING",
-    "theorem_axiom_audit": "PENDING",
+    "external_compilation": "PASS",
+    "theorem_axiom_audit": "PASS_STANDARD_ONLY",
     "counts": {
       "adapter": 190,
       "forward": 6,
       "reverse": 6
-    }
+    },
+    "audited_source_commit": "3dc98a61115f8d2e79d115d70b8c3478c504d82e",
+    "workflow_run_id": 43365946484,
+    "artifact_id": 14010271971,
+    "artifact_sha256": "6f1f62bf0aa8d752a17b28b5ba8593f7445c18d4c1d606e5423899aa2e81bcf4",
+    "target_total": 202
   },
   "derivation": {
     "version": "1.6.0",
@@ -45,5 +50,7 @@
   "remaining_germ_obligations": [
     "forward_respects",
     "lift_decode"
-  ]
+  ],
+  "native_declarations_status": "A_TIER",
+  "unconditional_root_status": "OPEN"
 }

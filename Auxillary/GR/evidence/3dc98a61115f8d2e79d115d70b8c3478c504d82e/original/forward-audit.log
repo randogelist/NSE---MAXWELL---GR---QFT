@@ -1,0 +1,29 @@
+@NSEGR.forward_velocity_recovery : ∀ {ν ρ t0 : ℝ} (c : NSEGR.ScalarBoundaryCompletionLaws ν ρ t0)
+  (r : NSEGR.AnalyticRadialExtensionLaws ρ t0) (n : NSEGR.NSERepresentative ν t0),
+  ∀ᶠ (t : ℝ) in nhds t0,
+    NSEGR.boundaryVelocity (NSEGR.boundaryK (NSEGR.forwardRepresentative c r n).metric) t = n.velocity t
+'NSEGR.forward_velocity_recovery' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.NSE_TO_GR_OF_SCALAR_AND_RADIAL_COMPLETION : ∀ (ν ρ t0 : ℝ),
+  0 < ν →
+    ρ ≠ 0 →
+      NSEGR.ScalarBoundaryCompletionLaws ν ρ t0 →
+        NSEGR.AnalyticRadialExtensionLaws ρ t0 →
+          ∀ (n : NSEGR.NSERepresentative ν t0),
+            ∃ g, ∀ᶠ (t : ℝ) in nhds t0, NSEGR.boundaryVelocity (NSEGR.boundaryK g.metric) t = n.velocity t
+'NSEGR.NSE_TO_GR_OF_SCALAR_AND_RADIAL_COMPLETION' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.nonempty_GRgerm_of_completion : ∀ (ν ρ t0 : ℝ),
+  NSEGR.ScalarBoundaryCompletionLaws ν ρ t0 → NSEGR.AnalyticRadialExtensionLaws ρ t0 → Nonempty (NSEGR.GRgerm ν ρ t0)
+'NSEGR.nonempty_GRgerm_of_completion' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.forwardRepresentative : {ν ρ t0 : ℝ} →
+  NSEGR.ScalarBoundaryCompletionLaws ν ρ t0 →
+    NSEGR.AnalyticRadialExtensionLaws ρ t0 → NSEGR.NSERepresentative ν t0 → NSEGR.CanonicalRepresentative ν ρ t0
+'NSEGR.forwardRepresentative' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.forward_boundary_match_eventually : ∀ {ν ρ t0 : ℝ} (c : NSEGR.ScalarBoundaryCompletionLaws ν ρ t0)
+  (r : NSEGR.AnalyticRadialExtensionLaws ρ t0) (n : NSEGR.NSERepresentative ν t0),
+  NSEGR.boundaryK (NSEGR.forwardRepresentative c r n).metric =ᶠ[nhds t0] (NSEGR.chosenBoundary c n).tensor
+'NSEGR.forward_boundary_match_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.forward_pressure_gauge_recovery : ∀ {ν ρ t0 : ℝ} (c : NSEGR.ScalarBoundaryCompletionLaws ν ρ t0)
+  (r : NSEGR.AnalyticRadialExtensionLaws ρ t0) (n : NSEGR.NSERepresentative ν t0),
+  NSEGR.SameFlowAt t0 (NSEGR.boundaryVelocity (NSEGR.boundaryK (NSEGR.forwardRepresentative c r n).metric))
+    (NSEGR.boundaryPressure ρ (NSEGR.boundaryK (NSEGR.forwardRepresentative c r n).metric)) n.velocity n.pressure
+'NSEGR.forward_pressure_gauge_recovery' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -5,7 +5,8 @@ BASE_BRANCH = codex/fefferman-b-maxwell
 BASE_COMMIT = 1de664f2ef5ddc11caef25ac2274278b4171ab6b
 BRANCH = codex/gr-adapter
 MODE = A_TIER_DERIVATION
-INITIAL_STATUS = A_TIER_CANDIDATE
+STATUS = CONDITIONAL_FORMAL_CLOSURE
+NATIVE_DECLARATIONS = A_TIER
 LOCAL_LEAN_EXECUTIONS = 0
 ```
 
@@ -59,3 +60,11 @@ bash GR_adapter/run.sh
 Source inventory, explicit hypotheses and matching evidence are recorded in [GR_ADAPTER_A_TIER.txt](GR_ADAPTER_A_TIER.txt), [audit targets](../Auxillary/GR/audit-targets.json), and [scope status](../Auxillary/GR/formalization-status.json). Existing compiler/dependency/project caches are retained. Each stage must pass compilation and a fresh named axiom audit before the next stage runs.
 
 Detailed source-to-obligation map: [ENDPOINT_PLAN.md](ENDPOINT_PLAN.md).
+
+## External certificate
+
+Cached native Lean 4.34.0-rc1 [run 43365946484](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43365946484) passed at `3dc98a61115f8d2e79d115d70b8c3478c504d82e`: adapter 190/190, forward 6/6, reverse 6/6 named standard-only audits. All input hashes were verified. The [immutable original artifact](../Auxillary/GR/evidence/3dc98a61115f8d2e79d115d70b8c3478c504d82e/external-artifact.zip) and its original logs, types and manifests are retained. The [source-equivalence record](../Auxillary/GR/source-equivalence.json) identifies the subsequent status-only changes to audited inputs.
+
+[Windows-safe standalone package](../Auxillary/GR/exports/GR_adapter_4.34.0-rc1.zip): extract both sibling folders and run `GR_adapter/run.cmd`. The package contains all project Lean files, pinned dependency configuration, the B-tier derivation and retained evidence. Dependency objects are restored by the cache runner; external compiler/dependency installation is required.
+
+The root is **CONDITIONAL_FORMAL_CLOSURE**. Scalar completion, radial extension, reconstruction, and the two remaining forward germ laws have no supplied inhabitants. `UNCONDITIONAL_CLOSURE` remains open.

@@ -48,3 +48,5 @@ GermInverseLaws c r h
 The decoded-left-inverse identity is derived from exact local boundary matching and pressure-derivative locality (`forward_pressure_gauge_recovery`); it is not an additional `GermInverseLaws` field.
 
 Native metric-jet locality derives reverse descent (`sameMetricAt_boundaryFields`); `reverseGerm` depends only on `GeometricReconstructionLaws`. The analytic pressure-gauge witness is established on the common positive-radius interval.
+
+External certificate: adapter 190/190; forward 6/6; reverse 6/6; standard axioms only. Exact compiled commit `3dc98a61115f8d2e79d115d70b8c3478c504d82e`. Native edges are A_TIER; the root is CONDITIONAL_FORMAL_CLOSURE with the named uninhabited contract packages above.

@@ -1,0 +1,493 @@
+NSEGR.identity3_diag : ∀ (i : Fin 3), NSEGR.identity3 i i = 1
+'NSEGR.identity3_diag' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.trace3_eq_matrix_trace : ∀ (A : NSEGR.Tensor3), NSEGR.trace3 A = Matrix.trace A
+'NSEGR.trace3_eq_matrix_trace' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.trace3_zero : NSEGR.trace3 0 = 0
+'NSEGR.trace3_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.trace3_add : ∀ (A B : NSEGR.Tensor3), NSEGR.trace3 (A + B) = NSEGR.trace3 A + NSEGR.trace3 B
+'NSEGR.trace3_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.trace3_sub : ∀ (A B : NSEGR.Tensor3), NSEGR.trace3 (A - B) = NSEGR.trace3 A - NSEGR.trace3 B
+'NSEGR.trace3_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.trace3_smul : ∀ (a : ℝ) (A : NSEGR.Tensor3), NSEGR.trace3 (a • A) = a * NSEGR.trace3 A
+'NSEGR.trace3_smul' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.trace3_tf3 : ∀ (A : NSEGR.Tensor3), NSEGR.trace3 (NSEGR.tf3 A) = 0
+'NSEGR.trace3_tf3' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.tf3_eq_self_of_trace_zero : ∀ (A : NSEGR.Tensor3), NSEGR.trace3 A = 0 → NSEGR.tf3 A = A
+'NSEGR.tf3_eq_self_of_trace_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.tf3_zero : NSEGR.tf3 0 = 0
+'NSEGR.tf3_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.tf3_idempotent : ∀ (A : NSEGR.Tensor3), NSEGR.tf3 (NSEGR.tf3 A) = NSEGR.tf3 A
+'NSEGR.tf3_idempotent' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.tf3_add : ∀ (A B : NSEGR.Tensor3), NSEGR.tf3 (A + B) = NSEGR.tf3 A + NSEGR.tf3 B
+'NSEGR.tf3_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.tf3_sub : ∀ (A B : NSEGR.Tensor3), NSEGR.tf3 (A - B) = NSEGR.tf3 A - NSEGR.tf3 B
+'NSEGR.tf3_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.tf3_smul : ∀ (a : ℝ) (A : NSEGR.Tensor3), NSEGR.tf3 (a • A) = a • NSEGR.tf3 A
+'NSEGR.tf3_smul' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.tf3_symmetric : ∀ (A : NSEGR.Tensor3),
+  (∀ (i j : Fin 3), A i j = A j i) → ∀ (i j : Fin 3), NSEGR.tf3 A i j = NSEGR.tf3 A j i
+'NSEGR.tf3_symmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.tf3_eq_zero_iff : ∀ (A : NSEGR.Tensor3),
+  NSEGR.tf3 A = 0 ↔ ∀ (i j : Fin 3), A i j = NSEGR.trace3 A / 3 * NSEGR.identity3 i j
+'NSEGR.tf3_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.frobeniusSq3_nonneg : ∀ (A : NSEGR.Tensor3), 0 ≤ NSEGR.frobeniusSq3 A
+'NSEGR.frobeniusSq3_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.vectorSq3_nonneg : ∀ (u : Fin 3 → ℝ), 0 ≤ NSEGR.vectorSq3 u
+'NSEGR.vectorSq3_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.viscosityResidual_affine : ∀ (A Z : NSEGR.Tensor3),
+  NSEGR.trace3 Z = 0 → ∀ (nu : ℝ), NSEGR.viscosityResidual A Z nu = NSEGR.tf3 A - nu • Z
+'NSEGR.viscosityResidual_affine' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.viscosityResidual_difference : ∀ (A Z : NSEGR.Tensor3),
+  NSEGR.trace3 Z = 0 → ∀ (nu mu : ℝ), NSEGR.viscosityResidual A Z nu - NSEGR.viscosityResidual A Z mu = -(nu - mu) • Z
+'NSEGR.viscosityResidual_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.lorentzTrace4_traceReverse4 : ∀ (B : NSEGR.Tensor4),
+  NSEGR.lorentzTrace4 (NSEGR.traceReverse4 B) = NSEGR.lorentzTrace4 B / 3
+'NSEGR.lorentzTrace4_traceReverse4' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.lorentzTrace4_traceRecover4 : ∀ (K : NSEGR.Tensor4),
+  NSEGR.lorentzTrace4 (NSEGR.traceRecover4 K) = 3 * NSEGR.lorentzTrace4 K
+'NSEGR.lorentzTrace4_traceRecover4' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.traceRecover4_traceReverse4 : ∀ (B : NSEGR.Tensor4), NSEGR.traceRecover4 (NSEGR.traceReverse4 B) = B
+'NSEGR.traceRecover4_traceReverse4' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.traceReverse4_traceRecover4 : ∀ (K : NSEGR.Tensor4), NSEGR.traceReverse4 (NSEGR.traceRecover4 K) = K
+'NSEGR.traceReverse4_traceRecover4' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.traceReverse4_hamiltonian : ∀ (B : NSEGR.Tensor4),
+  NSEGR.lorentzSquare4 (NSEGR.traceReverse4 B) - NSEGR.lorentzTrace4 (NSEGR.traceReverse4 B) ^ 2 =
+    NSEGR.lorentzSquare4 B - NSEGR.lorentzTrace4 B ^ 2 / 3
+'NSEGR.traceReverse4_hamiltonian' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryBlock_time_time : ∀ (k : ℝ) (u : Fin 3 → ℝ) (A : NSEGR.Tensor3), NSEGR.boundaryBlock k u A 0 0 = k
+'NSEGR.boundaryBlock_time_time' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryBlock_time_space : ∀ (k : ℝ) (u : Fin 3 → ℝ) (A : NSEGR.Tensor3) (i : Fin 3),
+  NSEGR.boundaryBlock k u A 0 i.succ = u i
+'NSEGR.boundaryBlock_time_space' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryBlock_space_time : ∀ (k : ℝ) (u : Fin 3 → ℝ) (A : NSEGR.Tensor3) (i : Fin 3),
+  NSEGR.boundaryBlock k u A i.succ 0 = u i
+'NSEGR.boundaryBlock_space_time' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryBlock_space_space : ∀ (k : ℝ) (u : Fin 3 → ℝ) (A : NSEGR.Tensor3) (i j : Fin 3),
+  NSEGR.boundaryBlock k u A i.succ j.succ = A i j
+'NSEGR.boundaryBlock_space_space' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.lorentzTrace4_boundaryBlock : ∀ (k : ℝ) (u : Fin 3 → ℝ) (A : NSEGR.Tensor3),
+  NSEGR.lorentzTrace4 (NSEGR.boundaryBlock k u A) = -k + NSEGR.trace3 A
+'NSEGR.lorentzTrace4_boundaryBlock' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.lorentzSquare4_boundaryBlock : ∀ (k : ℝ) (u : Fin 3 → ℝ) (A : NSEGR.Tensor3),
+  NSEGR.lorentzSquare4 (NSEGR.boundaryBlock k u A) = k ^ 2 - 2 * NSEGR.vectorSq3 u + NSEGR.frobeniusSq3 A
+'NSEGR.lorentzSquare4_boundaryBlock' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryBlock_hamiltonian : ∀ (rho k : ℝ) (u : Fin 3 → ℝ) (A : NSEGR.Tensor3),
+  NSEGR.trace3 A = -rho →
+    NSEGR.lorentzSquare4 (NSEGR.boundaryBlock k u A) - NSEGR.lorentzTrace4 (NSEGR.boundaryBlock k u A) ^ 2 =
+      NSEGR.frobeniusSq3 A - 2 * NSEGR.vectorSq3 u - rho ^ 2 - 2 * rho * k
+'NSEGR.boundaryBlock_hamiltonian' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.trace3_initialSpatial : ∀ (rho nu : ℝ) (u : Fin 3 → ℝ) (Z : NSEGR.Tensor3),
+  NSEGR.trace3 Z = 0 → NSEGR.trace3 (NSEGR.initialSpatial rho nu u Z) = -rho
+'NSEGR.trace3_initialSpatial' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryBlock_hamiltonian_zero_iff : ∀ (rho k : ℝ) (u : Fin 3 → ℝ) (A : NSEGR.Tensor3),
+  rho ≠ 0 →
+    NSEGR.trace3 A = -rho →
+      (NSEGR.lorentzSquare4 (NSEGR.boundaryBlock k u A) - NSEGR.lorentzTrace4 (NSEGR.boundaryBlock k u A) ^ 2 = 0 ↔
+        k = NSEGR.initialTimeTime rho u A)
+'NSEGR.boundaryBlock_hamiltonian_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.initialTimeTime_solves_hamiltonian : ∀ (rho : ℝ) (u : Fin 3 → ℝ) (A : NSEGR.Tensor3),
+  rho ≠ 0 →
+    NSEGR.trace3 A = -rho →
+      NSEGR.lorentzSquare4 (NSEGR.boundaryBlock (NSEGR.initialTimeTime rho u A) u A) -
+          NSEGR.lorentzTrace4 (NSEGR.boundaryBlock (NSEGR.initialTimeTime rho u A) u A) ^ 2 =
+        0
+'NSEGR.initialTimeTime_solves_hamiltonian' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.initial_boundary_hamiltonian : ∀ (rho nu : ℝ) (u : Fin 3 → ℝ) (Z : NSEGR.Tensor3),
+  rho ≠ 0 →
+    NSEGR.trace3 Z = 0 →
+      have A := NSEGR.initialSpatial rho nu u Z;
+      NSEGR.lorentzSquare4 (NSEGR.boundaryBlock (NSEGR.initialTimeTime rho u A) u A) -
+          NSEGR.lorentzTrace4 (NSEGR.boundaryBlock (NSEGR.initialTimeTime rho u A) u A) ^ 2 =
+        0
+'NSEGR.initial_boundary_hamiltonian' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.bulkPoint_radial : ∀ (r t : ℝ) (x : NSEGR.Vec), (NSEGR.bulkPoint r t x).ofLp 0 = r
+'NSEGR.bulkPoint_radial' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.bulkPoint_time : ∀ (r t : ℝ) (x : NSEGR.Vec), (NSEGR.bulkPoint r t x).ofLp 1 = t
+'NSEGR.bulkPoint_time' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.bulkPoint_spatial : ∀ (r t : ℝ) (x : NSEGR.Vec) (i : Fin 3), (NSEGR.bulkPoint r t x).ofLp i.succ.succ = x.ofLp i
+'NSEGR.bulkPoint_spatial' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundarySpatialTensor_congr_slice : ∀ (K L : NSEGR.BoundaryTensor) (t : ℝ),
+  K t = L t → NSEGR.boundarySpatialTensor K t = NSEGR.boundarySpatialTensor L t
+'NSEGR.boundarySpatialTensor_congr_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryBeta_congr_slice : ∀ (K L : NSEGR.BoundaryTensor) (t : ℝ),
+  K t = L t → NSEGR.boundaryBeta K t = NSEGR.boundaryBeta L t
+'NSEGR.boundaryBeta_congr_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryRawVelocity_congr_slice : ∀ (K L : NSEGR.BoundaryTensor) (t : ℝ),
+  K t = L t → NSEGR.boundaryRawVelocity K t = NSEGR.boundaryRawVelocity L t
+'NSEGR.boundaryRawVelocity_congr_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryVelocity_congr_slice : ∀ (K L : NSEGR.BoundaryTensor) (t : ℝ),
+  K t = L t → NSEGR.boundaryVelocity K t = NSEGR.boundaryVelocity L t
+'NSEGR.boundaryVelocity_congr_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryPotential_congr_slice : ∀ (K L : NSEGR.BoundaryTensor) (t : ℝ),
+  K t = L t → NSEGR.boundaryPotential K t = NSEGR.boundaryPotential L t
+'NSEGR.boundaryPotential_congr_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryStress_congr_slice : ∀ (ν : ℝ) (K L : NSEGR.BoundaryTensor) (t : ℝ),
+  K t = L t → NSEGR.boundaryStress ν K t = NSEGR.boundaryStress ν L t
+'NSEGR.boundaryStress_congr_slice' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryStress_trace_zero : ∀ (ν : ℝ) (K : NSEGR.BoundaryTensor) (t : ℝ) (x : NSEGR.Vec),
+  NSEGR.trace3 (NSEGR.boundaryStress ν K t x) = 0
+'NSEGR.boundaryStress_trace_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryStress_viscosity_difference : ∀ (ν μ : ℝ) (K : NSEGR.BoundaryTensor) (t : ℝ) (x : NSEGR.Vec),
+  NSEGR.divergence (NSEGR.boundaryVelocity K t) x = 0 →
+    NSEGR.boundaryStress ν K t x - NSEGR.boundaryStress μ K t x = -(ν - μ) • NSEGR.strain (NSEGR.boundaryVelocity K t) x
+'NSEGR.boundaryStress_viscosity_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryK_constant : ∀ (M : NSEGR.BulkMatrix), (NSEGR.boundaryK fun x => M) = 0
+'NSEGR.boundaryK_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryK_flat : NSEGR.boundaryK NSEGR.flatMetric = 0
+'NSEGR.boundaryK_flat' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundarySpatialTensor_zero : NSEGR.boundarySpatialTensor 0 = 0
+'NSEGR.boundarySpatialTensor_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryBeta_zero : NSEGR.boundaryBeta 0 = 0
+'NSEGR.boundaryBeta_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryRawVelocity_zero : NSEGR.boundaryRawVelocity 0 = 0
+'NSEGR.boundaryRawVelocity_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryVelocity_zero : NSEGR.boundaryVelocity 0 = 0
+'NSEGR.boundaryVelocity_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryPotential_zero : NSEGR.boundaryPotential 0 = 0
+'NSEGR.boundaryPotential_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.velocityOuter_zero : NSEGR.velocityOuter 0 = 0
+'NSEGR.velocityOuter_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryStress_zero : ∀ (ν : ℝ), NSEGR.boundaryStress ν 0 = 0
+'NSEGR.boundaryStress_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryPartial_const : ∀ (c : ℝ) (a : Fin 4) (t : ℝ) (x : NSEGR.Vec),
+  NSEGR.boundaryPartial (fun x x_1 => c) a t x = 0
+'NSEGR.boundaryPartial_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryHessian_const : ∀ (c t : ℝ) (x : NSEGR.Vec), NSEGR.boundaryHessian (fun x x_1 => c) t x = 0
+'NSEGR.boundaryHessian_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryHamiltonian_zero : NSEGR.boundaryHamiltonian 0 = 0
+'NSEGR.boundaryHamiltonian_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryCodazzi_zero : NSEGR.boundaryCodazzi 0 = 0
+'NSEGR.boundaryCodazzi_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.lorentzSign4_mul_self : ∀ (a : Fin 4), NSEGR.lorentzSign4 a * NSEGR.lorentzSign4 a = 1
+'NSEGR.lorentzSign4_mul_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.lowerTensor4_involutive : ∀ (T : NSEGR.Tensor4), NSEGR.lowerTensor4 (NSEGR.lowerTensor4 T) = T
+'NSEGR.lowerTensor4_involutive' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.lowerTensor4_add : ∀ (T U : NSEGR.Tensor4),
+  NSEGR.lowerTensor4 (T + U) = NSEGR.lowerTensor4 T + NSEGR.lowerTensor4 U
+'NSEGR.lowerTensor4_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.lowerTensor4_time_time : ∀ (T : NSEGR.Tensor4), NSEGR.lowerTensor4 T 0 0 = T 0 0
+'NSEGR.lowerTensor4_time_time' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.lowerTensor4_time_space : ∀ (T : NSEGR.Tensor4) (i : Fin 3), NSEGR.lowerTensor4 T 0 i.succ = -T 0 i.succ
+'NSEGR.lowerTensor4_time_space' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.lowerTensor4_space_space : ∀ (T : NSEGR.Tensor4) (i j : Fin 3),
+  NSEGR.lowerTensor4 T i.succ j.succ = T i.succ j.succ
+'NSEGR.lowerTensor4_space_space' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.conservedSourceUpper_time_time : ∀ (ν ρ : ℝ) (u : NSEGR.Velocity) (p : NSEGR.Pressure) (t : ℝ) (x : NSEGR.Vec),
+  NSEGR.conservedSourceUpper ν ρ u p t x 0 0 = ρ
+'NSEGR.conservedSourceUpper_time_time' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.conservedSourceUpper_time_space : ∀ (ν ρ : ℝ) (u : NSEGR.Velocity) (p : NSEGR.Pressure) (t : ℝ) (x : NSEGR.Vec)
+  (i : Fin 3), NSEGR.conservedSourceUpper ν ρ u p t x 0 i.succ = (u t x).ofLp i
+'NSEGR.conservedSourceUpper_time_space' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.conservedSourceUpper_space_space : ∀ (ν ρ : ℝ) (u : NSEGR.Velocity) (p : NSEGR.Pressure) (t : ℝ) (x : NSEGR.Vec)
+  (i j : Fin 3),
+  NSEGR.conservedSourceUpper ν ρ u p t x i.succ j.succ =
+    (u t x).ofLp i * (u t x).ofLp j + p t x * NSEGR.identity3 i j - ν * NSEGR.strain (u t) x i j
+'NSEGR.conservedSourceUpper_space_space' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.scalarCompletionUpper_time_time : ∀ (ψ : NSEGR.Pressure) (t : ℝ) (x : NSEGR.Vec),
+  NSEGR.scalarCompletionUpper ψ t x 0 0 = NSEGR.scalarLaplacian (ψ t) x
+'NSEGR.scalarCompletionUpper_time_time' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.scalarCompletionUpper_time_space : ∀ (ψ : NSEGR.Pressure) (t : ℝ) (x : NSEGR.Vec) (i : Fin 3),
+  NSEGR.scalarCompletionUpper ψ t x 0 i.succ = -(NSEGR.gradient (NSEGR.scalarLocalTimeDerivative ψ t) x).ofLp i
+'NSEGR.scalarCompletionUpper_time_space' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.scalarCompletionUpper_space_space : ∀ (ψ : NSEGR.Pressure) (t : ℝ) (x : NSEGR.Vec) (i j : Fin 3),
+  NSEGR.scalarCompletionUpper ψ t x i.succ j.succ =
+    NSEGR.scalarHessian (ψ t) x i j +
+      (NSEGR.scalarLocalTimeDerivative (NSEGR.scalarLocalTimeDerivative ψ) t x - NSEGR.scalarLaplacian (ψ t) x) *
+        NSEGR.identity3 i j
+'NSEGR.scalarCompletionUpper_space_space' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.completedBoundary_trace_recovery : ∀ (ν ρ : ℝ) (u : NSEGR.Velocity) (p ψ : NSEGR.Pressure) (t : ℝ)
+  (x : NSEGR.Vec),
+  NSEGR.traceRecover4 (NSEGR.completedBoundary ν ρ u p ψ t x) =
+    NSEGR.lowerTensor4 (NSEGR.conservedSourceUpper ν ρ u p t x + NSEGR.scalarCompletionUpper ψ t x)
+'NSEGR.completedBoundary_trace_recovery' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.completedBoundary_hamiltonian_identity : ∀ (ν ρ : ℝ) (u : NSEGR.Velocity) (p ψ : NSEGR.Pressure) (t : ℝ)
+  (x : NSEGR.Vec),
+  NSEGR.boundaryHamiltonian (NSEGR.completedBoundary ν ρ u p ψ) t x =
+    have B := NSEGR.lowerTensor4 (NSEGR.conservedSourceUpper ν ρ u p t x + NSEGR.scalarCompletionUpper ψ t x);
+    NSEGR.lorentzSquare4 B - NSEGR.lorentzTrace4 B ^ 2 / 3
+'NSEGR.completedBoundary_hamiltonian_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.localNSE_of_reconstruction_and_zero_stress : ∀ {ν ρ t0 δ ε : ℝ} {g : NSEGR.Metric},
+  NSEGR.GeometricReconstructionLaws ν ρ t0 →
+    NSEGR.GaussianVacuum ρ t0 δ ε g →
+      (∀ t ∈ NSEGR.timeInterval t0 δ, ∀ (x : NSEGR.Vec), NSEGR.boundaryStress ν (NSEGR.boundaryK g) t x = 0) →
+        NSEGR.LocalNSE ν t0 δ (NSEGR.boundaryVelocity (NSEGR.boundaryK g))
+          (NSEGR.boundaryPressure ρ (NSEGR.boundaryK g))
+'NSEGR.localNSE_of_reconstruction_and_zero_stress' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.timeInterval_mono : ∀ {t0 δ η : ℝ}, δ ≤ η → NSEGR.timeInterval t0 δ ⊆ NSEGR.timeInterval t0 η
+'NSEGR.timeInterval_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.timeInterval_mem_nhds : ∀ (t0 δ : ℝ), 0 < δ → NSEGR.timeInterval t0 δ ∈ nhds t0
+'NSEGR.timeInterval_mem_nhds' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.strain_symmetric : ∀ (a : NSEGR.Field) (x : NSEGR.Vec), (NSEGR.strain a x).transpose = NSEGR.strain a x
+'NSEGR.strain_symmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.trace_strain : ∀ (a : NSEGR.Field) (x : NSEGR.Vec), (NSEGR.strain a x).trace = 2 * NSEGR.divergence a x
+'NSEGR.trace_strain' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.trace_strain_eq_zero : ∀ (a : NSEGR.Field) (x : NSEGR.Vec),
+  NSEGR.divergence a x = 0 → (NSEGR.strain a x).trace = 0
+'NSEGR.trace_strain_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.spatialMean_zero : NSEGR.spatialMean 0 = 0
+'NSEGR.spatialMean_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.scalarMean_zero : NSEGR.scalarMean 0 = 0
+'NSEGR.scalarMean_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.spatialPeriodic_const : ∀ {E : Type u_1} (c : E), NSEGR.SpatialPeriodic fun x => c
+'NSEGR.spatialPeriodic_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.spatialPartial_const : ∀ (c : NSEGR.Vec) (i : Fin 3), NSEGR.spatialPartial (fun x => c) i = 0
+'NSEGR.spatialPartial_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.gradient_const : ∀ (c : ℝ), (NSEGR.gradient fun x => c) = 0
+'NSEGR.gradient_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.divergence_const : ∀ (c : NSEGR.Vec), (NSEGR.divergence fun x => c) = 0
+'NSEGR.divergence_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.laplacian_const : ∀ (c : NSEGR.Vec), (NSEGR.laplacian fun x => c) = 0
+'NSEGR.laplacian_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.scalarLaplacian_const : ∀ (c : ℝ), (NSEGR.scalarLaplacian fun x => c) = 0
+'NSEGR.scalarLaplacian_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.scalarHessian_const : ∀ (c : ℝ), (NSEGR.scalarHessian fun x => c) = 0
+'NSEGR.scalarHessian_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.strain_const : ∀ (c : NSEGR.Vec), (NSEGR.strain fun x => c) = 0
+'NSEGR.strain_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.tensorDivergence_const : ∀ (C : Matrix (Fin 3) (Fin 3) ℝ), (NSEGR.tensorDivergence fun x => C) = 0
+'NSEGR.tensorDivergence_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.convection_const : ∀ (c : NSEGR.Vec), (NSEGR.convection fun x => c) = 0
+'NSEGR.convection_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.localTimeDerivative_const : ∀ (c : NSEGR.Vec), (NSEGR.localTimeDerivative fun x x_1 => c) = 0
+'NSEGR.localTimeDerivative_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.scalarLocalTimeDerivative_const : ∀ (c : ℝ), (NSEGR.scalarLocalTimeDerivative fun x x_1 => c) = 0
+'NSEGR.scalarLocalTimeDerivative_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.nseResidual_const : ∀ (ν : ℝ) (m : NSEGR.Vec) (c : ℝ), (NSEGR.nseResidual ν (fun x x_1 => m) fun x x_1 => c) = 0
+'NSEGR.nseResidual_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.poissonSymbol_zero : NSEGR.poissonSymbol 0 = 0
+'NSEGR.poissonSymbol_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.poissonInverse_zero : NSEGR.poissonInverse 0 = 0
+'NSEGR.poissonInverse_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.leray_const : ∀ (c : NSEGR.Vec), (NSEGR.leray fun x => c) = fun x => c
+'NSEGR.leray_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.leray_zero : NSEGR.leray 0 = 0
+'NSEGR.leray_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.localNSE_const : ∀ (ν t0 δ : ℝ),
+  0 < δ → ∀ (m : NSEGR.Vec) (c : ℝ), NSEGR.LocalNSE ν t0 δ (fun x x_1 => m) fun x x_1 => c
+'NSEGR.localNSE_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.localNSE_zero : ∀ (ν t0 δ : ℝ), 0 < δ → NSEGR.LocalNSE ν t0 δ 0 0
+'NSEGR.localNSE_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.poissonInverse_definition : ∀ (f : NSEGR.ScalarField) (x : NSEGR.Vec),
+  NSEGR.poissonInverse f x =
+    ∑' (k : NSEGR.Frequency),
+      NSEGR.poissonSymbol k * ∫ (y : NSEGR.Vec) in NSEGR.unitCube, NSEGR.cosineKernel k x y * f y
+'NSEGR.poissonInverse_definition' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.leray_definition : ∀ (a : NSEGR.Field) (x : NSEGR.Vec),
+  NSEGR.leray a x = a x - NSEGR.gradient (NSEGR.poissonInverse (NSEGR.divergence a)) x
+'NSEGR.leray_definition' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.bulkPartial_const : ∀ (c : ℝ) (i : Fin 5) (z : NSEGR.Bulk), NSEGR.bulkPartial (fun x => c) i z = 0
+'NSEGR.bulkPartial_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.eta5_symmetric : Matrix.IsSymm NSEGR.eta5
+'NSEGR.eta5_symmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.eta5_transpose : Matrix.transpose NSEGR.eta5 = NSEGR.eta5
+'NSEGR.eta5_transpose' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.eta5_det : Matrix.det NSEGR.eta5 = -1
+'NSEGR.eta5_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.lorentzianAt_symmetric : ∀ {g : NSEGR.Metric} {z : NSEGR.Bulk}, NSEGR.LorentzianAt g z → Matrix.IsSymm (g z)
+'NSEGR.lorentzianAt_symmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.lorentzianAt_det_neg : ∀ {g : NSEGR.Metric} {z : NSEGR.Bulk}, NSEGR.LorentzianAt g z → Matrix.det (g z) < 0
+'NSEGR.lorentzianAt_det_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.lorentzianAt_nondegenerate : ∀ {g : NSEGR.Metric} {z : NSEGR.Bulk}, NSEGR.LorentzianAt g z → Matrix.det (g z) ≠ 0
+'NSEGR.lorentzianAt_nondegenerate' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.christoffel_constant : ∀ (M : NSEGR.BulkMatrix) (z : NSEGR.Bulk) (a b c : Fin 5),
+  NSEGR.christoffel (fun x => M) z a b c = 0
+'NSEGR.christoffel_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.ricci_constant : ∀ (M : NSEGR.BulkMatrix) (z : NSEGR.Bulk), NSEGR.ricci (fun x => M) z = 0
+'NSEGR.ricci_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.scalarCurvature_constant : ∀ (M : NSEGR.BulkMatrix) (z : NSEGR.Bulk), NSEGR.scalarCurvature (fun x => M) z = 0
+'NSEGR.scalarCurvature_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.einstein_constant : ∀ (M : NSEGR.BulkMatrix) (z : NSEGR.Bulk), NSEGR.einstein (fun x => M) z = 0
+'NSEGR.einstein_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.constant_vacuumOn : ∀ (M : NSEGR.BulkMatrix) (U : Set NSEGR.Bulk), NSEGR.VacuumOn (fun x => M) U
+'NSEGR.constant_vacuumOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.vacuumOn_mono : ∀ {g : NSEGR.Metric} {U V : Set NSEGR.Bulk}, NSEGR.VacuumOn g U → V ⊆ U → NSEGR.VacuumOn g V
+'NSEGR.vacuumOn_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.vacuumOn_implies_einsteinVacuumOn : ∀ {g : NSEGR.Metric} {U : Set NSEGR.Bulk},
+  NSEGR.VacuumOn g U → NSEGR.EinsteinVacuumOn g U
+'NSEGR.vacuumOn_implies_einsteinVacuumOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.flatMetric_lorentzian : ∀ (z : NSEGR.Bulk), NSEGR.LorentzianAt NSEGR.flatMetric z
+'NSEGR.flatMetric_lorentzian' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.flatMetric_symmetric : ∀ (z : NSEGR.Bulk), Matrix.IsSymm (NSEGR.flatMetric z)
+'NSEGR.flatMetric_symmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.flatMetric_det : ∀ (z : NSEGR.Bulk), Matrix.det (NSEGR.flatMetric z) = -1
+'NSEGR.flatMetric_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.flatMetric_nondegenerate : ∀ (z : NSEGR.Bulk), Matrix.det (NSEGR.flatMetric z) ≠ 0
+'NSEGR.flatMetric_nondegenerate' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.flatMetric_christoffel : ∀ (z : NSEGR.Bulk) (a b c : Fin 5), NSEGR.christoffel NSEGR.flatMetric z a b c = 0
+'NSEGR.flatMetric_christoffel' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.flatMetric_ricci : ∀ (z : NSEGR.Bulk), NSEGR.ricci NSEGR.flatMetric z = 0
+'NSEGR.flatMetric_ricci' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.flatMetric_scalarCurvature : ∀ (z : NSEGR.Bulk), NSEGR.scalarCurvature NSEGR.flatMetric z = 0
+'NSEGR.flatMetric_scalarCurvature' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.flatMetric_einstein : ∀ (z : NSEGR.Bulk), NSEGR.einstein NSEGR.flatMetric z = 0
+'NSEGR.flatMetric_einstein' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.flatMetric_vacuumOn : ∀ (U : Set NSEGR.Bulk), NSEGR.VacuumOn NSEGR.flatMetric U
+'NSEGR.flatMetric_vacuumOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.flatMetric_einsteinVacuumOn : ∀ (U : Set NSEGR.Bulk), NSEGR.EinsteinVacuumOn NSEGR.flatMetric U
+'NSEGR.flatMetric_einsteinVacuumOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.flatMetric_analyticOnNhd : ∀ (U : Set NSEGR.Bulk), AnalyticOnNhd ℝ NSEGR.flatMetric U
+'NSEGR.flatMetric_analyticOnNhd' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.native_flat_vacuum : ∀ (U : Set NSEGR.Bulk),
+  AnalyticOnNhd ℝ NSEGR.flatMetric U ∧
+    (∀ z ∈ U, NSEGR.LorentzianAt NSEGR.flatMetric z) ∧ NSEGR.VacuumOn NSEGR.flatMetric U
+'NSEGR.native_flat_vacuum' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.sameFlowAt_refl : ∀ (t0 : ℝ) (u : NSEGR.Velocity) (p : NSEGR.Pressure), NSEGR.SameFlowAt t0 u p u p
+'NSEGR.sameFlowAt_refl' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.sameFlowAt_symm : ∀ {t0 : ℝ} {u v : NSEGR.Velocity} {p q : NSEGR.Pressure},
+  NSEGR.SameFlowAt t0 u p v q → NSEGR.SameFlowAt t0 v q u p
+'NSEGR.sameFlowAt_symm' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.sameFlowAt_trans : ∀ {t0 : ℝ} {u v w : NSEGR.Velocity} {p q r : NSEGR.Pressure},
+  NSEGR.SameFlowAt t0 u p v q → NSEGR.SameFlowAt t0 v q w r → NSEGR.SameFlowAt t0 u p w r
+'NSEGR.sameFlowAt_trans' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.sameFlowAt_iff_origin_gauge : ∀ (t0 : ℝ) (u v : NSEGR.Velocity) (p q : NSEGR.Pressure),
+  NSEGR.SameFlowAt t0 u p v q ↔ ∀ᶠ (t : ℝ) in nhds t0, u t = v t ∧ ∀ (x : NSEGR.Vec), p t x = q t x + (p t 0 - q t 0)
+'NSEGR.sameFlowAt_iff_origin_gauge' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NSEgerm.sound : ∀ {ν t0 : ℝ} {a b : NSEGR.NSERepresentative ν t0},
+  NSEGR.SameFlowAt t0 a.velocity a.pressure b.velocity b.pressure → NSEGR.NSEgerm.mk a = NSEGR.NSEgerm.mk b
+'NSEGR.NSEgerm.sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.sameMetricAt_refl : ∀ (t0 : ℝ) (g : NSEGR.Metric), NSEGR.SameMetricAt t0 g g
+'NSEGR.sameMetricAt_refl' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.sameMetricAt_symm : ∀ {t0 : ℝ} {g h : NSEGR.Metric}, NSEGR.SameMetricAt t0 g h → NSEGR.SameMetricAt t0 h g
+'NSEGR.sameMetricAt_symm' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.sameMetricAt_trans : ∀ {t0 : ℝ} {g h k : NSEGR.Metric},
+  NSEGR.SameMetricAt t0 g h → NSEGR.SameMetricAt t0 h k → NSEGR.SameMetricAt t0 g k
+'NSEGR.sameMetricAt_trans' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.GRgerm.sound : ∀ {ν ρ t0 : ℝ} {a b : NSEGR.CanonicalRepresentative ν ρ t0},
+  NSEGR.SameMetricAt t0 a.metric b.metric → NSEGR.GRgerm.mk a = NSEGR.GRgerm.mk b
+'NSEGR.GRgerm.sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.nonempty_NSEgerm : ∀ (ν t0 : ℝ), Nonempty (NSEGR.NSEgerm ν t0)
+'NSEGR.nonempty_NSEgerm' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.canonical_stress_trace_zero : ∀ {ν ρ t0 : ℝ} (g : NSEGR.CanonicalRepresentative ν ρ t0) (t : ℝ) (x : NSEGR.Vec),
+  NSEGR.trace3 (NSEGR.boundaryStress ν (NSEGR.boundaryK g.metric) t x) = 0
+'NSEGR.canonical_stress_trace_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.gaussianVacuum_nondegenerate : ∀ {ρ t0 δ ε : ℝ} {g : NSEGR.Metric},
+  NSEGR.GaussianVacuum ρ t0 δ ε g → ∀ z ∈ NSEGR.bulkCollar t0 δ ε, Matrix.det (g z) ≠ 0
+'NSEGR.gaussianVacuum_nondegenerate' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.gaussianVacuum_einstein : ∀ {ρ t0 δ ε : ℝ} {g : NSEGR.Metric},
+  NSEGR.GaussianVacuum ρ t0 δ ε g → NSEGR.EinsteinVacuumOn g (NSEGR.bulkCollar t0 δ ε)
+'NSEGR.gaussianVacuum_einstein' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryAdmissible_zero : ∀ (t0 δ : ℝ), 0 < δ → NSEGR.BoundaryAdmissible 0 t0 δ 0
+'NSEGR.boundaryAdmissible_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.flatMetric_not_gaussianVacuum : ∀ (ρ t0 δ ε : ℝ), ρ ≠ 0 → ¬NSEGR.GaussianVacuum ρ t0 δ ε NSEGR.flatMetric
+'NSEGR.flatMetric_not_gaussianVacuum' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.boundaryAdmissible_zero_parameter : ∀ {ρ t0 δ : ℝ}, NSEGR.BoundaryAdmissible ρ t0 δ 0 → ρ = 0
+'NSEGR.boundaryAdmissible_zero_parameter' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.LorentzianAt : NSEGR.Metric → NSEGR.Bulk → Prop
+'NSEGR.LorentzianAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.ricci : NSEGR.Metric → NSEGR.Metric
+'NSEGR.ricci' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryK : NSEGR.Metric → NSEGR.BoundaryTensor
+'NSEGR.boundaryK' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryStress : ℝ → NSEGR.BoundaryTensor → ℝ → NSEGR.Vec → NSEGR.Tensor3
+'NSEGR.boundaryStress' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.GaussianVacuum : ℝ → ℝ → ℝ → ℝ → NSEGR.Metric → Prop
+'NSEGR.GaussianVacuum' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.CanonicalRepresentative : ℝ → ℝ → ℝ → Type
+'NSEGR.CanonicalRepresentative' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.LocalNSE : ℝ → ℝ → ℝ → NSEGR.Velocity → NSEGR.Pressure → Prop
+'NSEGR.LocalNSE' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.NSEgerm : ℝ → ℝ → Type
+'NSEGR.NSEgerm' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.GRgerm : ℝ → ℝ → ℝ → Type
+'NSEGR.GRgerm' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.ExactSectorEquivalence : ℝ → ℝ → ℝ → Prop
+'NSEGR.ExactSectorEquivalence' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.ScalarBoundaryCompletionLaws : ℝ → ℝ → ℝ → Prop
+'NSEGR.ScalarBoundaryCompletionLaws' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.AnalyticRadialExtensionLaws : ℝ → ℝ → Prop
+'NSEGR.AnalyticRadialExtensionLaws' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.GeometricReconstructionLaws : ℝ → ℝ → ℝ → Prop
+'NSEGR.GeometricReconstructionLaws' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.normalizedBoundaryMatrix_symmetric : ∀ (ρ : ℝ), Matrix.IsSymm (NSEGR.normalizedBoundaryMatrix ρ)
+'NSEGR.normalizedBoundaryMatrix_symmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.constantNormalizedBoundary_beta : ∀ (ρ t : ℝ) (x : NSEGR.Vec),
+  NSEGR.boundaryBeta (NSEGR.constantNormalizedBoundary ρ) t x = ρ
+'NSEGR.constantNormalizedBoundary_beta' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.constantNormalizedBoundary_beta_time : ∀ (ρ t0 : ℝ) (x : NSEGR.Vec),
+  deriv (fun t => NSEGR.boundaryBeta (NSEGR.constantNormalizedBoundary ρ) t x) t0 = 0
+'NSEGR.constantNormalizedBoundary_beta_time' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryCodazzi_constant : ∀ (M : NSEGR.Tensor4), (NSEGR.boundaryCodazzi fun x x_1 => M) = 0
+'NSEGR.boundaryCodazzi_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.constantNormalizedBoundary_codazzi : ∀ (ρ t : ℝ) (x : NSEGR.Vec) (b : Fin 4),
+  NSEGR.boundaryCodazzi (NSEGR.constantNormalizedBoundary ρ) t x b = 0
+'NSEGR.constantNormalizedBoundary_codazzi' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.constantNormalizedBoundary_hamiltonian : ∀ (ρ t : ℝ) (x : NSEGR.Vec),
+  NSEGR.boundaryHamiltonian (NSEGR.constantNormalizedBoundary ρ) t x = 0
+'NSEGR.constantNormalizedBoundary_hamiltonian' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.boundaryAdmissible_constantNormalized : ∀ (ρ t0 δ : ℝ),
+  0 < δ → NSEGR.BoundaryAdmissible ρ t0 δ (NSEGR.constantNormalizedBoundary ρ)
+'NSEGR.boundaryAdmissible_constantNormalized' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.constantNormalizedBoundary_ne_zero : ∀ (ρ : ℝ), ρ ≠ 0 → NSEGR.constantNormalizedBoundary ρ ≠ 0
+'NSEGR.constantNormalizedBoundary_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.exists_boundaryAdmissible : ∀ (ρ t0 δ : ℝ), 0 < δ → ∃ K, NSEGR.BoundaryAdmissible ρ t0 δ K
+'NSEGR.exists_boundaryAdmissible' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.normalizedBoundaryMatrix : ℝ → NSEGR.Tensor4
+'NSEGR.normalizedBoundaryMatrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.constantNormalizedBoundary : ℝ → NSEGR.BoundaryTensor
+'NSEGR.constantNormalizedBoundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.gradient_zero : NSEGR.gradient 0 = 0
+'NSEGR.gradient_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.spatialPartial_zero : ∀ (i : Fin 3), NSEGR.spatialPartial 0 i = 0
+'NSEGR.spatialPartial_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.divergence_zero : NSEGR.divergence 0 = 0
+'NSEGR.divergence_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.laplacian_zero : NSEGR.laplacian 0 = 0
+'NSEGR.laplacian_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.scalarLaplacian_zero : NSEGR.scalarLaplacian 0 = 0
+'NSEGR.scalarLaplacian_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.scalarHessian_zero : NSEGR.scalarHessian 0 = 0
+'NSEGR.scalarHessian_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.strain_zero : NSEGR.strain 0 = 0
+'NSEGR.strain_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.tensorDivergence_zero : NSEGR.tensorDivergence 0 = 0
+'NSEGR.tensorDivergence_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.convection_zero : NSEGR.convection 0 = 0
+'NSEGR.convection_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.localTimeDerivative_zero : NSEGR.localTimeDerivative 0 = 0
+'NSEGR.localTimeDerivative_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.scalarLocalTimeDerivative_zero : NSEGR.scalarLocalTimeDerivative 0 = 0
+'NSEGR.scalarLocalTimeDerivative_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.nseResidual_zero : ∀ (ν : ℝ), NSEGR.nseResidual ν 0 0 = 0
+'NSEGR.nseResidual_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.boundaryVelocity_congr_eventually : ∀ {t0 : ℝ} (K L : NSEGR.BoundaryTensor),
+  K =ᶠ[nhds t0] L → NSEGR.boundaryVelocity K =ᶠ[nhds t0] NSEGR.boundaryVelocity L
+'NSEGR.boundaryVelocity_congr_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.boundaryPressure_congr_eventually : ∀ {t0 : ℝ} (ρ : ℝ) (K L : NSEGR.BoundaryTensor),
+  K =ᶠ[nhds t0] L → NSEGR.boundaryPressure ρ K =ᶠ[nhds t0] NSEGR.boundaryPressure ρ L
+'NSEGR.boundaryPressure_congr_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.boundaryFields_sameFlow_of_eventually_eq : ∀ {t0 : ℝ} (ρ : ℝ) (K L : NSEGR.BoundaryTensor),
+  K =ᶠ[nhds t0] L →
+    NSEGR.SameFlowAt t0 (NSEGR.boundaryVelocity K) (NSEGR.boundaryPressure ρ K) (NSEGR.boundaryVelocity L)
+      (NSEGR.boundaryPressure ρ L)
+'NSEGR.boundaryFields_sameFlow_of_eventually_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.origin_pressure_gauge_analytic : ∀ {t0 δ ε : ℝ} {u v : NSEGR.Velocity} {p q : NSEGR.Pressure},
+  NSEGR.AnalyticPeriodicPair t0 δ u p →
+    NSEGR.AnalyticPeriodicPair t0 ε v q →
+      AnalyticOnNhd ℝ (fun t => p t 0 - q t 0) (NSEGR.timeInterval t0 δ ∩ NSEGR.timeInterval t0 ε)
+'NSEGR.origin_pressure_gauge_analytic' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.sameFlowAt_iff_analytic_pressure_gauge : ∀ {t0 δ ε : ℝ} {u v : NSEGR.Velocity} {p q : NSEGR.Pressure},
+  NSEGR.AnalyticPeriodicPair t0 δ u p →
+    NSEGR.AnalyticPeriodicPair t0 ε v q →
+      (NSEGR.SameFlowAt t0 u p v q ↔
+        ∃ a,
+          AnalyticOnNhd ℝ a (NSEGR.timeInterval t0 δ ∩ NSEGR.timeInterval t0 ε) ∧
+            ∀ᶠ (t : ℝ) in nhds t0, u t = v t ∧ ∀ (x : NSEGR.Vec), p t x = q t x + a t)
+'NSEGR.sameFlowAt_iff_analytic_pressure_gauge' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.bulkSpatialCoordinates : NSEGR.Bulk → NSEGR.Vec
+'NSEGR.bulkSpatialCoordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.bulkPoint_coordinates : ∀ (z : NSEGR.Bulk),
+  NSEGR.bulkPoint (z.ofLp 0) (z.ofLp 1) (NSEGR.bulkSpatialCoordinates z) = z
+'NSEGR.bulkPoint_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.metric_eventuallyEq_of_fullSlices : ∀ {r t : ℝ} {g h : NSEGR.Metric},
+  (∀ᶠ (rt : ℝ × ℝ) in nhds (r, t),
+      ∀ (x : NSEGR.Vec), g (NSEGR.bulkPoint rt.1 rt.2 x) = h (NSEGR.bulkPoint rt.1 rt.2 x)) →
+    ∀ (x : NSEGR.Vec), g =ᶠ[nhds (NSEGR.bulkPoint r t x)] h
+'NSEGR.metric_eventuallyEq_of_fullSlices' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.sameMetricAt_boundaryK : ∀ {t0 : ℝ} {g h : NSEGR.Metric},
+  NSEGR.SameMetricAt t0 g h → NSEGR.boundaryK g =ᶠ[nhds t0] NSEGR.boundaryK h
+'NSEGR.sameMetricAt_boundaryK' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.sameMetricAt_boundaryFields : ∀ {t0 : ℝ} (ρ : ℝ) {g h : NSEGR.Metric},
+  NSEGR.SameMetricAt t0 g h →
+    NSEGR.SameFlowAt t0 (NSEGR.boundaryVelocity (NSEGR.boundaryK g)) (NSEGR.boundaryPressure ρ (NSEGR.boundaryK g))
+      (NSEGR.boundaryVelocity (NSEGR.boundaryK h)) (NSEGR.boundaryPressure ρ (NSEGR.boundaryK h))
+'NSEGR.sameMetricAt_boundaryFields' depends on axioms: [propext, Classical.choice, Quot.sound]
