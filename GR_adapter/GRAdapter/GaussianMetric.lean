@@ -38,10 +38,10 @@ def gaussianMatrix (H : Tensor4) : BulkMatrix := fun a b =>
   · refine Fin.cases ?_ (fun j => ?_) b
     · rfl
     · change (0 : ℝ) = (1 : BulkMatrix) 0 j.succ
-      simp
+      exact (Matrix.one_apply_ne (Ne.symm (Fin.succ_ne_zero j))).symm
   · refine Fin.cases ?_ (fun j => ?_) b
     · change (0 : ℝ) = (1 : BulkMatrix) i.succ 0
-      simp
+      exact (Matrix.one_apply_ne (Fin.succ_ne_zero i)).symm
     · change (1 : Tensor4) i j = (1 : BulkMatrix) i.succ j.succ
       simp [Matrix.one_apply]
 
@@ -92,15 +92,15 @@ theorem gaussianMatrix_inverse (A : Tensor4) (hA : IsUnit A.det) :
   · refine Fin.cases ?_ (fun j => ?_) b
     · norm_num [eta5, gaussianMatrix]
     · change (0 : ℝ) = eta5 0 j.succ
-      simp [eta5]
+      simp [eta5, Matrix.diagonal_apply]
   · refine Fin.cases ?_ (fun j => ?_) b
     · change (0 : ℝ) = eta5 i.succ 0
-      simp [eta5]
+      simp [eta5, Matrix.diagonal_apply]
     · change eta4 i j = eta5 i.succ j.succ
       have hi : (i.succ = (1 : Fin 5)) ↔ i = 0 := by
         change (i.succ = (0 : Fin 4).succ) ↔ i = 0
         exact Fin.succ_inj
-      simp [eta4, eta5, lorentzSign4, hi]
+      simp [eta4, eta5, Matrix.diagonal_apply, lorentzSign4, hi]
 
 /-- A global coefficient field with the exact Gaussian radial row and column. -/
 def gaussianMetric (h : Bulk → Tensor4) : Metric := fun z => gaussianMatrix (h z)
@@ -125,7 +125,7 @@ theorem inverseMetric_gaussian (h : Bulk → Tensor4) (z : Bulk)
 /-- Lifting an explicit tangential Lorentz factor is actual bulk congruence. -/
 theorem gaussianMetric_lorentzian_of_congruence
     (h : Bulk → Tensor4) (z : Bulk) (C : Tensor4)
-    (hC : IsUnit C.det) (hh : h z = C.transpose * eta4 * C) :
+    (hC : IsUnit C.det) (hh : h z = C.transpose * (eta4 : Tensor4) * C) :
     LorentzianAt (gaussianMetric h) z := by
   refine ⟨gaussianMatrix C, gaussianMatrix_isUnit_det C hC, ?_⟩
   change gaussianMatrix (h z) = (gaussianMatrix C).transpose * eta5 * gaussianMatrix C

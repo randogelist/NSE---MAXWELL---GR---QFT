@@ -103,8 +103,10 @@ theorem scalar_hamiltonian_expansion (ρ : ℝ) (u : Fin 3 → ℝ)
       sourceHamiltonian4 (boundaryBlock ρ u A) + 2 * (ρ + trace3 Q) * s +
         4 * vectorDot3 u b + 2 * frobeniusInner3 A Q -
         2 * vectorSq3 b + frobeniusSq3 Q - (trace3 Q) ^ 2 := by
-  simp only [scalarCompletedUpper_eq_block, sourceHamiltonian4_boundaryBlock,
-    vectorSq3_sub, trace3_scalarSpatialJet, frobeniusSq3_scalarSpatialJet]
+  rw [scalarCompletedUpper_eq_block]
+  rw [sourceHamiltonian4_boundaryBlock]
+  rw [sourceHamiltonian4_boundaryBlock]
+  rw [vectorSq3_sub, trace3_scalarSpatialJet, frobeniusSq3_scalarSpatialJet]
   ring
 
 /-- The expansion remains exact after the native lowering of both indices. -/
@@ -183,8 +185,8 @@ theorem completedBoundary_hamiltonian_eq_scalarJet
   rw [completedBoundary_hamiltonian_identity]
   change sourceHamiltonian4 (lowerTensor4
     (conservedSourceUpper ν ρ u p t x + scalarCompletionUpper ψ t x)) = _
-  simp only [sourceHamiltonian4_lowerTensor4, scalarCompletionUpper_eq_scalarJet,
-    scalarCompletedUpper, conservedSourceUpper, nseSpatialSource3]
+  rw [sourceHamiltonian4_lowerTensor4, scalarCompletionUpper_eq_scalarJet]
+  rfl
 
 /-- Exact scalar PDE normal form for the actual native derivatives.
 Analyticity and existence of a solution of this equation are separate obligations. -/

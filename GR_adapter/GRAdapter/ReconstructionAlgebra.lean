@@ -114,22 +114,31 @@ theorem boundary_eq_completedBoundary_of_zero_stress
     rw [hκ]
     refine Fin.cases ?_ (fun i => ?_) a
     · refine Fin.cases ?_ (fun j => ?_) b
-      · change ρ + scalarLaplacian (boundaryPotential K t) x =
+      · rw [lowerTensor4_time_time]
+        change ρ + scalarLaplacian (boundaryPotential K t) x =
           (-K t x 0 0 - boundaryBeta K t x) * (-1) - K t x 0 0
         rw [hΔ]
         ring
-      · change -(boundaryVelocity K t x j +
+      · rw [lowerTensor4_time_space]
+        have hη : eta4 0 j.succ = 0 := by simp [eta4]
+        rw [hη]
+        change -(boundaryVelocity K t x j +
           -gradient (scalarLocalTimeDerivative (boundaryPotential K) t) x j) =
           (-K t x 0 0 - boundaryBeta K t x) * 0 - K t x 0 j.succ
         rw [hw j]
         ring
     · refine Fin.cases ?_ (fun j => ?_) b
-      · change -(boundaryVelocity K t x i +
+      · have hlower (T : Tensor4) : lowerTensor4 T i.succ 0 = -T i.succ 0 := by
+          simp [lowerTensor4, lorentzSign4]
+        rw [hlower]
+        have hη : eta4 i.succ 0 = 0 := by simp [eta4]
+        rw [hη]
+        change -(boundaryVelocity K t x i +
           -gradient (scalarLocalTimeDerivative (boundaryPotential K) t) x i) =
           (-K t x 0 0 - boundaryBeta K t x) * 0 - K t x i.succ 0
         rw [hsym.apply 0 i.succ, hw i]
         ring
-      · rw [reconstruction_eta4_spatial]
+      · rw [lowerTensor4_space_space, reconstruction_eta4_spatial]
         change boundaryVelocity K t x i * boundaryVelocity K t x j +
           boundaryPressure ρ K t x * identity3 i j -
           ν * strain (boundaryVelocity K t) x i j +

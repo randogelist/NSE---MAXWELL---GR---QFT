@@ -9,9 +9,9 @@ mode. No factor two is inserted. These identities use the actual unit-cube
 integral and the actual character in `LiteratureInputs`.
 
 Continuity supplies the integrability needed for taking a real part through
-the integral. Taking a real part through the infinite series retains an
-explicit complex summability hypothesis. Analytic coefficient decay and
-Poisson inversion are not inferred from the identities alone.
+the integral. The base series identity retains explicit summability;
+the final theorems derive that summability from LI03 for smooth periodic
+data. Analytic parameter estimates and Poisson inversion remain separate.
 -/
 
 set_option autoImplicit false
@@ -19,7 +19,7 @@ set_option autoImplicit false
 namespace NSEGR
 
 open Set Filter MeasureTheory
-open scoped BigOperators
+open scoped BigOperators ContDiff
 
 noncomputable section
 
@@ -126,6 +126,105 @@ theorem poissonInverse_eq_re_tsum_fourier (f : ScalarField) (hf : Continuous f)
   apply tsum_congr
   intro k
   simp
+
+/-- A nonzero integer frequency has squared Euclidean length at least one. -/
+theorem frequency_square_sum_ge_one (k : Frequency) (hk : k ≠ 0) :
+    1 ≤ ∑ i : Fin 3, (k i : ℝ) ^ 2 := by
+  classical
+  have hi : ∃ i : Fin 3, k i ≠ 0 := by
+    by_contra h
+    push_neg at h
+    apply hk
+    funext i
+    exact h i
+  rcases hi with ⟨i, hi⟩
+  have hsq : (0 : ℤ) < (k i) ^ 2 := sq_pos_of_ne_zero hi
+  have hsq' : (1 : ℤ) ≤ (k i) ^ 2 := by omega
+  have hreal : (1 : ℝ) ≤ (k i : ℝ) ^ 2 := by exact_mod_cast hsq'
+  exact hreal.trans (Finset.single_le_sum
+    (fun j _ => sq_nonneg (k j : ℝ)) (Finset.mem_univ i))
+
+/-- Uniform bound for the actual native Poisson multiplier, including k=0. -/
+theorem poissonSymbol_abs_le_one (k : Frequency) : |poissonSymbol k| ≤ 1 := by
+  by_cases hk : k = 0
+  · simp [poissonSymbol, hk]
+  · have hsum := frequency_square_sum_ge_one k hk
+    have hpi : (1 : ℝ) ≤ 4 * Real.pi ^ 2 := by nlinarith [Real.pi_gt_three]
+    have hden : (1 : ℝ) ≤ 4 * Real.pi ^ 2 * ∑ i : Fin 3, (k i : ℝ) ^ 2 := by
+      calc
+        1 ≤ 4 * Real.pi ^ 2 := hpi
+        _ = (4 * Real.pi ^ 2) * 1 := (mul_one _).symm
+        _ ≤ (4 * Real.pi ^ 2) * ∑ i : Fin 3, (k i : ℝ) ^ 2 :=
+          mul_le_mul_of_nonneg_left hsum (by positivity)
+    have hdenpos : 0 < 4 * Real.pi ^ 2 * ∑ i : Fin 3, (k i : ℝ) ^ 2 :=
+      zero_lt_one.trans_le hden
+    rw [poissonSymbol, if_neg hk, abs_neg, abs_of_nonneg (inv_nonneg.mpr hdenpos.le)]
+    exact (inv_le_one₀ hdenpos).mpr hden
+
+theorem literatureCharacter_norm (k : Frequency) (x : Vec) :
+    ‖LiteratureCharacter k x‖ = 1 := by
+  rw [literatureCharacter_eq_exp_phase, Complex.norm_exp_ofReal_mul_I]
+
+/-- LI03 supplies absolute summability of the actual period-one Fourier
+coefficients of a smooth periodic real field, without a new admission. -/
+theorem literatureFourierCoefficient_summable_norm
+    (L : LiteratureSmoothFourierInput) (f : ScalarField)
+    (hf : ContDiff ℝ ∞ f) (hp : SpatialPeriodic f) :
+    Summable (fun k : Frequency =>
+      ‖LiteratureFourierCoefficient (fun y : Vec => (f y : ℂ)) k‖) := by
+  have hfc : ContDiff ℝ ∞ (fun y : Vec => (f y : ℂ)) :=
+    Complex.ofRealCLM.contDiff.comp hf
+  have hpc : LiteraturePeriodic (fun y : Vec => (f y : ℂ)) := by
+    intro x i
+    change (f (x + unitVector i) : ℂ) = (f x : ℂ)
+    rw [hp x i]
+  have hs := (L.reconstruct 3 (by decide) (fun y : Vec => (f y : ℂ)) hfc hpc []).2.1
+  simpa [LiteratureFourierWordMultiplier] using hs
+
+/-- Absolute convergence of the concrete complex Poisson series follows
+from LI03 and smooth periodicity. No additional convergence field is used. -/
+theorem poisson_fourier_summable_of_literature
+    (L : LiteratureSmoothFourierInput) (f : ScalarField)
+    (hf : ContDiff ℝ ∞ f) (hp : SpatialPeriodic f) (x : Vec) :
+    Summable (fun k : Frequency => (poissonSymbol k : ℂ) *
+      (LiteratureCharacter k x *
+        LiteratureFourierCoefficient (fun y : Vec => (f y : ℂ)) k)) := by
+  apply (literatureFourierCoefficient_summable_norm L f hf hp).of_norm_bounded
+  intro k
+  have hm : ‖(poissonSymbol k : ℂ)‖ ≤ 1 := by
+    simpa only [Complex.norm_real, Real.norm_eq_abs] using poissonSymbol_abs_le_one k
+  rw [norm_mul, norm_mul, literatureCharacter_norm, one_mul]
+  calc
+    _ ≤ 1 * ‖LiteratureFourierCoefficient (fun y : Vec => (f y : ℂ)) k‖ :=
+      mul_le_mul_of_nonneg_right hm (norm_nonneg _)
+    _ = _ := one_mul _
+
+/-- Convergence of the native real cosine series itself, under exactly LI03
+and the displayed smooth-periodic hypotheses. -/
+theorem poissonInverse_series_summable_of_literature
+    (L : LiteratureSmoothFourierInput) (f : ScalarField)
+    (hf : ContDiff ℝ ∞ f) (hp : SpatialPeriodic f) (x : Vec) :
+    Summable (fun k : Frequency => poissonSymbol k *
+      (∫ y in unitCube, cosineKernel k x y * f y)) := by
+  have hs := poisson_fourier_summable_of_literature L f hf hp x
+  have hr := (Complex.hasSum_re hs.hasSum).summable
+  apply hr.congr
+  intro k
+  rw [cosineKernel_integral_eq_re_fourier f hf.continuous]
+  simp
+
+/-- LI03 discharges the summability premise of the exact native Fourier
+representation. Analytic parameter estimates and Delta inversion remain
+separate proof obligations. -/
+theorem poissonInverse_eq_re_tsum_fourier_of_literature
+    (L : LiteratureSmoothFourierInput) (f : ScalarField)
+    (hf : ContDiff ℝ ∞ f) (hp : SpatialPeriodic f) (x : Vec) :
+    poissonInverse f x =
+      (∑' k : Frequency, (poissonSymbol k : ℂ) *
+        (LiteratureCharacter k x *
+          LiteratureFourierCoefficient (fun y : Vec => (f y : ℂ)) k)).re :=
+  poissonInverse_eq_re_tsum_fourier f hf.continuous x
+    (poisson_fourier_summable_of_literature L f hf hp x)
 
 end
 
