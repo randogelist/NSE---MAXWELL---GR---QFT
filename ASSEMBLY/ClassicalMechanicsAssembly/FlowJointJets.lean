@@ -20,6 +20,7 @@ open scoped Topology ContDiff Interval
 
 noncomputable section
 
+set_option backward.isDefEq.respectTransparency false in
 /-- Evaluation of a varying finite multilinear map preserves finite-order smoothness. -/
 theorem flow_contDiffOn_multilinear_apply
     {D F : Type*} [NormedAddCommGroup D] [NormedSpace ℝ D]
@@ -44,7 +45,7 @@ theorem flow_contDiffOn_multilinear_apply
           M 0 →L[ℝ] ContinuousMultilinearMap ℝ (fun i : Fin r => M i.succ) F :=
         continuousMultilinearCurryLeftEquiv ℝ M F
       have he : ContDiffOn ℝ n (fun z => e (f z)) s :=
-        e.contDiff.comp_contDiffOn hf
+        e.toContinuousLinearEquiv.toContinuousLinearMap.contDiff.comp_contDiffOn hf
       have hc : ContDiffOn ℝ n (fun z => (f z).curryLeft (g z 0)) s :=
         he.clm_apply (hg 0)
       have ht := ih (fun i => M i.succ)
