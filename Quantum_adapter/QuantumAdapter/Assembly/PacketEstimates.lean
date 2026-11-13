@@ -138,10 +138,15 @@ theorem packetDistance_sq_mean_le_quarter (N : ℕ) (hN : 1 ≤ N) (q₀ : Phase
 
 theorem sqrt_energy3_le_reference_add_packetDistance (N : ℕ) (q r : Phase N) :
     Real.sqrt (energy3 N q) ≤ Real.sqrt (energy3 N r) + packetDistance N q r := by
-  have h := sqrt_energy3_le_add N q r
-  have hinverse := sqrt_energy3_le_cutoffSobolevFactor_mul_norm N (q - r)
-  dsimp [packetDistance]
-  linarith
+  change Real.sqrt (energy3 N q) ≤
+    Real.sqrt (energy3 N r) + cutoffSobolevFactor N * ‖q - r‖
+  calc
+    Real.sqrt (energy3 N q) ≤
+        Real.sqrt (energy3 N (q - r)) + Real.sqrt (energy3 N r) :=
+      sqrt_energy3_le_add N q r
+    _ ≤ cutoffSobolevFactor N * ‖q - r‖ + Real.sqrt (energy3 N r) :=
+      add_le_add_right (sqrt_energy3_le_cutoffSobolevFactor_mul_norm N (q - r)) _
+    _ = Real.sqrt (energy3 N r) + cutoffSobolevFactor N * ‖q - r‖ := add_comm _ _
 
 /-- The actual integrated spatial-gradient observable along one finite orbit. -/
 def orbitGradientCost {ν : ℝ} (F : PhaseFlow ν) (N : ℕ)
@@ -174,7 +179,7 @@ theorem packet_integral_sq_le {f : α → ℝ}
             hf2 (hf.const_mul (2 * m))]
         simp [integral_const_mul]
       _ = (∫ x, f x ^ 2 ∂μ) - m ^ 2 := by dsimp [m]; ring
-  have hnonneg := integral_nonneg hpnonneg
+  have hnonneg := MeasureTheory.integral_nonneg (μ := μ) (f := p) hpnonneg
   rw [hpval] at hnonneg
   dsimp [m] at hnonneg
   linarith
@@ -325,8 +330,12 @@ theorem PacketEstimatePrimitives.relative (H : PacketEstimatePrimitives F Cemb C
     (F.map N t q) (F.map N t r)
   have hrelative := mul_le_mul_of_nonneg_left (H.relative_l2 N q r t ht)
     (cutoffSobolevFactor_pos N).le
-  dsimp [packetDistance] at htriangle ⊢
-  nlinarith
+  have hdist : packetDistance N (F.map N t q) (F.map N t r) ≤
+      packetDistance N q r * Real.exp (orbitGradientCost F N r t) := by
+    change cutoffSobolevFactor N * ‖F.map N t q - F.map N t r‖ ≤
+      (cutoffSobolevFactor N * ‖q - r‖) * Real.exp (orbitGradientCost F N r t)
+    simpa only [mul_assoc] using hrelative
+  exact htriangle.trans (add_le_add_left hdist _)
 
 theorem PacketEstimatePrimitives.cost_nonneg (H : PacketEstimatePrimitives F Cemb C3)
     (N : ℕ) (q : Phase N) (t : ℝ) (ht : 0 ≤ t) :
@@ -509,10 +518,12 @@ theorem packet_gradient_product_integrable {ν : ℝ}
     (((continuous_gradientObservable N).measurable.comp (hjoint N)).aestronglyMeasurable)
   have htime : ∀ᵐ z : ℝ × Phase N
       ∂((volume.restrict (Ioc 0 T)).prod (canonicalBornMeasure N q₀)), z.1 ∈ Ioc 0 T := by
-    apply (ae_prod_iff_ae_ae (measurableSet_Ioc.preimage measurable_fst)).2
+    apply (Measure.ae_prod_iff_ae_ae (measurableSet_Ioc.preimage measurable_fst)).2
     filter_upwards [ae_restrict_mem measurableSet_Ioc] with s hs
     exact Filter.Eventually.of_forall (fun _q => hs)
   filter_upwards [htime] with z hz
+  change ‖gradientObservable (F.map N z.1 z.2)‖ ≤
+    (gradientEmbeddingConstant * cutoffSobolevFactor N) * ‖z.2‖
   rw [Real.norm_of_nonneg (gradientObservable_nonneg N (F.map N z.1 z.2))]
   have hroot : Real.sqrt (energy3 N (F.map N z.1 z.2)) ≤
       cutoffSobolevFactor N * ‖z.2‖ := by

@@ -25,6 +25,9 @@ GitHub Actions supplies the external context automatically. Other invocations
 require the explicit external opt-in. `run.cmd` launches this same procedure in
 the external user's WSL/Linux environment; it does not claim a native Windows
 checkout of paths containing `<` and `>`.
+For a downloaded launcher, pass the existing Linux Git checkout explicitly:
+`run.cmd /home/user/NSE---MAXWELL---GR---QFT`. The audit requires Git metadata
+to verify the exact checked-out source commit.
 
 Only matching successful dependency preparation is required. Integrated and
 standalone audits remain separate final validation scopes. The runner verifies

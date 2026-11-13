@@ -76,6 +76,8 @@ theorem phaseFlow_timeMap_lipschitzOn_closedBall {ν : ℝ} (hν : 0 ≤ ν)
   refine ⟨⟨Real.exp ((K : ℝ) * |t|), Real.exp_nonneg _⟩, ?_⟩
   apply LipschitzOnWith.of_dist_le_mul
   intro x hx y hy
+  change dist (F.map N t x) (F.map N t y) ≤
+    Real.exp ((K : ℝ) * |t|) * dist x y
   have h := dist_le_of_trajectories_ODE_of_mem
     (v := fun _ (z : Phase N) => σ • drift ν N z)
     (s := fun _ => closedBall (0 : Phase N) M)
@@ -87,7 +89,7 @@ theorem phaseFlow_timeMap_lipschitzOn_closedBall {ν : ℝ} (hν : 0 ≤ ν)
     ((continuous_iff_continuousAt.mpr (fun s => (hderiv y s).continuousAt)).continuousOn)
     (fun s _ => (hderiv y s).hasDerivWithinAt)
     (fun s hs => hbound y hy s (Ico_subset_Icc_self hs))
-    (by simp only [mul_zero, F.map_zero]) |t| ⟨abs_nonneg t, le_rfl⟩
+    (by simp only [mul_zero, F.map_zero]; exact le_rfl) |t| ⟨abs_nonneg t, le_rfl⟩
   simpa only [hσt, sub_zero, mul_comm] using h
 
 /-- Initial-data continuity follows from the actual drift and energy bounds. -/
