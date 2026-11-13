@@ -37,9 +37,12 @@ theorem gradient_comp_coordinate {η : Field} {p : ScalarField} {a : Vec}
       ∑ j : Fin 3, materialGradientMatrix η a j i *
         NSEMaxwell.Classical.gradient p (η a) j := by
   change fderiv ℝ (fun y => p (η y)) a (unitVector i) = _
-  rw [(hp.hasFDerivAt.comp a hη.hasFDerivAt).fderiv]
-  simp only [ContinuousLinearMap.comp_apply]
-  exact scalar_fderiv_coordinate_expansion p (η a) (fderiv ℝ η a (unitVector i))
+  have hc := congrArg (fun L : Vec →L[ℝ] ℝ => L (unitVector i))
+    (hp.hasFDerivAt.comp a hη.hasFDerivAt).fderiv
+  change fderiv ℝ (fun y => p (η y)) a (unitVector i) =
+    fderiv ℝ p (η a) (fderiv ℝ η a (unitVector i)) at hc
+  exact hc.trans
+    (scalar_fderiv_coordinate_expansion p (η a) (fderiv ℝ η a (unitVector i)))
 
 theorem inverse_transpose_gradient_chain {F : StressTensor}
     (hF : F.det ≠ 0) (g : Fin 3 → ℝ) :
