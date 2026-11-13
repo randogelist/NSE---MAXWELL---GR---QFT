@@ -158,13 +158,18 @@ def main():
         freshness, _ = run(["lake", "build", "--no-build", *names], "run-build-freshness.log", (0, 3))
         prov["freshness_check_exit_code"] = freshness
         prov["executed_module_builds"] = 0
-        prov["build_strategy"] = "LAKE_TRANSITIVE_TRACE_VERIFIED_WARM_REUSE" if freshness == 0 else "ORDERED_INCREMENTAL_REBUILD"
+        prov["executed_stage_builds"] = 0
+        prov["build_strategy"] = "LAKE_TRANSITIVE_TRACE_VERIFIED_WARM_REUSE" if freshness == 0 else "STAGED_INCREMENTAL_REBUILD"
         if freshness == 3:
-            for item in modules:
-                prov["current_module"], prov["current_stage"] = item["module"], item["stage"]
+            for stage in STAGES:
+                stage_names = [item["module"] for item in modules if item["stage"] == stage]
+                if not stage_names:
+                    continue
+                prov["current_stage"], prov["current_modules"] = stage, stage_names
                 save()
-                run(["lake", "build", item["module"]], "build-" + item["module"].replace(".", "-") + ".log")
-                prov["executed_module_builds"] += 1
+                run(["lake", "build", *stage_names], "build-" + stage + ".log")
+                prov["executed_module_builds"] += len(stage_names)
+                prov["executed_stage_builds"] += 1
                 save()
         prov["build_status"] = "PASS"
         save()

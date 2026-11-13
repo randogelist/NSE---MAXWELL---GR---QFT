@@ -33,7 +33,9 @@ rejects other local invocations before Lean, Lake, or Git subprocess execution.
 
 Stage order is `adapter → forward → reverse → assembly`. Every listed module
 must have an actual source file and a registered Lake library. Names are unique.
-The runner uses the ordinary incremental Lake build; no cleaning operation occurs.
+Each stage uses one ordinary incremental Lake invocation. Within a stage, Lake
+schedules independent targets according to its native dependency graph; the next
+stage starts only after the current stage succeeds. No cleaning operation occurs.
 
 `audit-targets.txt` lists exact existing declarations, one per line.
 `formalization-status.json` records the exact implemented scope and all remaining
@@ -46,7 +48,7 @@ unapproved axiom records. Matching input bytes are checked against the current
 Git commit and SHA-256 hashes before and after compilation.
 
 Outputs reside in `artifacts/external-linux/quantum/`: compiler identity,
-dependency identity, source manifest, per-module logs, fresh type/axiom output,
+dependency identity, source manifest, per-stage logs, fresh type/axiom output,
 provenance, and audit summary. The parent artifact also retains the matching
 inherited integrated audit and source closure.
 

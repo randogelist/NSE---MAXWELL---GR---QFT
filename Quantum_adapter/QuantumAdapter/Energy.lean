@@ -233,6 +233,7 @@ theorem IsTrajectory.energy0_le_initial
     (g : IsTrajectory ν N q₀ q) {t : ℝ} (ht : 0 ≤ t) :
     energy0 N (q t) ≤ energy0 N q₀ := by
   have h := g.energy0_antitoneOn hν (by simp) ht ht
+  change energy0 N (q t) ≤ energy0 N (q 0) at h
   rwa [g.initial] at h
 
 end

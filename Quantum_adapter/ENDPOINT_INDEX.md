@@ -10,7 +10,7 @@
 |---|---|---|
 | `ML` | Mathlib [`de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11`](https://github.com/leanprover-community/mathlib4/tree/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11), Lean `4.34.0-rc1` target | Active upstream endpoint register below. |
 | `ME` | Repository snapshot [`1de664f2ef5ddc11caef25ac2274278b4171ab6b`](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/tree/1de664f2ef5ddc11caef25ac2274278b4171ab6b/Fefferman_adapter/NativeSources/methlib/SingularClosure), prefix `Fefferman_adapter/NativeSources/methlib/SingularClosure/` | Exact vendored Methlib sources inspected; identities refer to this repository snapshot. |
-| `TXT` | B-tier v1.8.0: Lean `4.33.0-rc1`; Mathlib `db584cd6d46c92f209a44c0f1c829460d327499d`; Methlib `09dfe94a1ef150e21d09df3013fbe09002ef139c` | Historical prospective checkpoint register. Not interchangeable with `ML` or `ME`. |
+| `TXT` | B-tier v1.8.0: Lean `4.33.0`; Mathlib `db584cd6d46c92f209a44c0f1c829460d327499d`; Methlib `09dfe94a1ef150e21d09df3013fbe09002ef139c` | Historical prospective checkpoint register. Not interchangeable with `ML` or `ME`. |
 
 The tables record selected directly used semantic endpoints, not the transitive import closure or every tactic/typeclass dependency. `Native` entries refer to declarations in this branch; `ML` and `ME` entries refer to existing pinned sources.
 
@@ -41,6 +41,9 @@ Implicit typeclass parameters retain their upstream signatures. The contracts be
 | `ML19` | [`MeasureTheory.Lp.toLp_coeFn`](https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Function/LpSpace/Basic.lean#L167); [`MeasureTheory.Lp.eq_zero_iff_ae_eq_zero`](https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Function/LpSpace/Basic.lean#L304) | Reconstructing an Lp element from its representative returns that element; quotient zero is equivalent to AE-zero representative. |
 | `ML20` | [`MeasureTheory.Lp.coeFn_add`](https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Function/LpSpace/Basic.lean#L198); [`MeasureTheory.Lp.coeFn_smul`](https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Function/LpSpace/Basic.lean#L436) | Lp representative addition/scalar multiplication hold almost everywhere. |
 | `ML21` | [`LinearIsometryEquiv.ofLinearIsometry`](https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Operator/LinearIsometry.lean#L962) | Linear isometry `f`, linear inverse `g`, and both composition identities → linear isometric equivalence. |
+| `ML22` | [`PiLp.proj`](https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Lp/PiLp.lean#L1167) | Actual coordinate evaluation as a continuous linear map `PiLp p β →L[𝕜] β i`. |
+| `ML23` | [`HasFDerivAt.comp_hasDerivWithinAt`](https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/Deriv/Comp.lean#L378) | Fréchet derivative of outer map plus within-derivative of curve → within-derivative of the composition. |
+| `ML24` | [`antitoneOn_of_hasDerivWithinAt_nonpos`](https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/Deriv/MeanValue.lean#L496) | Convex real domain, continuity on that domain, and nonpositive within-derivative on its interior → `AntitoneOn`. |
 
 ## Existing Methlib endpoints
 
@@ -58,6 +61,10 @@ All names in this table belong to namespace `SingularClosure`. `Frequency`, `Vec
 | `ME08` | [`datumFourierIntegrand_coordinateDerivative`](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1de664f2ef5ddc11caef25ac2274278b4171ab6b/Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialFourier.lean#L181) | Differentiable datum → exact product derivative, including `derivativeSymbol i k`. |
 | `ME09` | [`integral_unitCube_divergence_eq_zero`](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1de664f2ef5ddc11caef25ac2274278b4171ab6b/Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialFourier.lean#L134) | Smooth `f : Fin 3 → Vec → ℂ`, each `f i` periodic in coordinate `i` → integral of summed coordinate derivatives equals zero. |
 | `ME10` | [`coefficientLeray_neg_star`](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1de664f2ef5ddc11caef25ac2274278b4171ab6b/Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinReality.lean#L19) | `coefficientLeray (-k) (fun i => star (v i)) = fun i => star (coefficientLeray k v i)`. |
+| `ME11` | [`coefficientTriadPower_swap`](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1de664f2ef5ddc11caef25ac2274278b4171ab6b/Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinEnergy.lean#L93) | Full coefficient reality and solenoidality at frequency `p` → `coefficientTriadPower c p (p-k) = -coefficientTriadPower c p k`. No zero-mode exclusion occurs in this signature. |
+| `ME12` | [`coefficientLeray_pairing`](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1de664f2ef5ddc11caef25ac2274278b4171ab6b/Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean#L250) | Solenoidal `c` at `k` → pairing `star c` against `coefficientLeray k v` equals pairing against `v`. |
+| `ME13` | [`complex_viscous_pairing`](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1de664f2ef5ddc11caef25ac2274278b4171ab6b/Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean#L264) | Real part of `star z * (-(lam:ℂ)*z-w)` equals `-lam*normSq z-(star z*w).re`. |
+| `ME14` | [`hasDerivWithinAt_complex_normSq`](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1de664f2ef5ddc11caef25ac2274278b4171ab6b/Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean#L226) | `HasDerivWithinAt f f' s t` → derivative of `normSq (f t)` equals `2*(star(f t)*f').re`. |
 
 `SingularClosure.smoothSigmaZero_fourier_solenoidal` and `SingularClosure.coefficientTransport_reality` supplied inspected proof patterns, not directly applied endpoints for the new arbitrary-mean/full-cutoff theorems. Their original contracts are not silently enlarged. The unit-cube integration-by-parts endpoint is in `InitialFourier.lean`; no `FourierIBP.lean` source is indexed.
 
@@ -80,6 +87,11 @@ All names below have prefix `QuantumAdapter.`. Native source paths are branch-re
 | [`drift_eq_rawRhs`, `drift_mean`](QuantumAdapter/Tangency.lean) | Actual projected drift equals actual raw RHS; mean coefficient derivative is zero. These declarations require no tangency hypothesis. | Previous native tangency; `ML04` transitively. |
 | [`zero_isTrajectory`](QuantumAdapter/FiniteModel.lean) | Zero orbit satisfies the actual `IsTrajectory ν N 0` ODE predicate. It supplies no general flow. | Constant derivative; native `drift_zero`. |
 | [`cotangent_momentum_increment`, `cotangent_hasFDerivAt_momentum`, `cotangent_fderiv_momentum`](QuantumAdapter/FiniteModel.lean) | For actual `H(q,p)=inner ℝ p (drift ν N q)`, momentum derivative is `innerSL ℝ (drift ν N q)`. | `ML05`, `ML06`; inner-product linearity. |
+| [`fullTransport_complex_energy_zero`](QuantumAdapter/Energy.lean) | Actual full-mode nonlinear energy pairing vanishes, given finite support in `fullModes N`, coefficient reality and solenoidality. | `ME11`; native full-cutoff triad involution. |
+| [`fullLerayTransport_complex_energy_zero`, `fullLerayTransport_real_energy_zero`](QuantumAdapter/Energy.lean) | Actual constrained phase supplies the support/reality/solenoidality hypotheses; Leray projection preserves energy cancellation. | `ME12`; previous native cancellation. |
+| [`rawRhs_energy_rate`, `rawRhs_energy_rate_nonpos`](QuantumAdapter/Energy.lean) | Actual energy rate equals `(-2*ν)*dissipation N q`; nonpositivity requires `0≤ν`. | `ME13`; native raw-RHS identity and cancellation. |
+| [`IsTrajectory.coefficient_hasDerivWithinAt`, `IsTrajectory.energy0_identity`](QuantumAdapter/Energy.lean) | Actual `IsTrajectory ν N q₀ q` and `t≥0` → exact coefficient derivative and unweighted-energy derivative on `Ici 0`. | `ML05`, `ML22`, `ML23`, `ME14`; native tangency and energy rate. |
+| [`IsTrajectory.energy0_antitoneOn`, `IsTrajectory.energy0_le_initial`](QuantumAdapter/Energy.lean) | Actual trajectory and `0≤ν` → energy antitone on `Ici 0`; at `t≥0`, `energy0 N (q t)≤energy0 N q₀`. No arbitrary-flow or H3 bound follows. | `ML24`; native dissipation positivity and energy derivative. |
 
 ## Native Born, transport, L2 and dynamics mappings
 
@@ -121,7 +133,7 @@ All names below have prefix `QuantumAdapter.`. Native source paths are branch-re
 | `R2` | [`QuantumAdapter.Directions.galerkin_implies_feffermanB_of_analyticLaws`](../B%20%3C-%3E%20Quantum/%3C%3D/NSEQuantumReverse.lean) | `F`, `laws`, `G` → `FB` | Fixed-datum `laws.compactness` produces exact native `NSSolution`. |
 | `R3` | [`QuantumAdapter.Directions.quantum_implies_feffermanB_of_analyticLaws`](../B%20%3C-%3E%20Quantum/%3C%3D/NSEQuantumReverse.lean) | `F`, `Cemb C3`, `laws`, `packets`, `initial`, `Q` → `FB` | Deterministic `R2 ∘ R1`. |
 
-These six declarations are native proof candidates, not existing Mathlib/Methlib theorems. Their analytic fields are not discharged by importing any endpoint in `ML01`–`ML21` or `ME01`–`ME10`.
+These six declarations are native proof candidates, not existing Mathlib/Methlib theorems. Their analytic fields are not discharged by importing any endpoint in `ML01`–`ML24` or `ME01`–`ME14`.
 
 The numeric contracts in [`RegularityContracts.lean`](QuantumAdapter/RegularityContracts.lean) are fixed:
 
