@@ -1,0 +1,45 @@
+{
+  "entry_id": "ME05",
+  "member_id": null,
+  "upstream_name": "NSEMaxwell.HodgeProof.coordinateDerivative_vectorL_commute",
+  "candidate_export": "GRTemp.ME05.endpoint",
+  "module": "ME05.Endpoint",
+  "declaration_kind": "theorem",
+  "status": "A_TIER_CANDIDATE",
+  "extraction_method": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+  "source_repository": "randogelist/Methlib",
+  "source_commit": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+  "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialMultiplier.lean",
+  "source_line_start": 95,
+  "source_line_end": 110,
+  "source_sha256": "9385b39dbebac0062302f458c2e4d6e0b3f072330bc81e896f2907b463de3d9f",
+  "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialMultiplier.lean#L95",
+  "source_declaration_sha256": "5be0fe4ccf6e20fe7a96f171100f0115dc91cd5594b76e0e7b82721da5a5578d",
+  "imports": [
+    "FourierHodgeLaws.SpatialMultiplier"
+  ],
+  "import_scope": "UPSTREAM_OWNING_MODULE; definitions and helper lemmas retained as explicit dependencies",
+  "uses": [
+    "GC02"
+  ],
+  "hypotheses": [
+    "F : Field",
+    "ContDiff ℝ ∞ F",
+    "SpatialPeriodic F",
+    "j : Fin 3"
+  ],
+  "source_signature": "theorem coordinateDerivative_vectorL_commute (F : Field)\n    (hF : ContDiff ℝ ∞ F) (hp : SpatialPeriodic F) (j : Fin 3) :\n    coordinateDerivative (vectorL F) j = vectorL (coordinateDerivative F j)",
+  "retained_upstream_audit": {
+    "name": "NSEMaxwell.HodgeProof.coordinateDerivative_vectorL_commute",
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "status": "PASS_STANDARD_ONLY"
+  },
+  "retained_audit_applies_to": "UPSTREAM_DECLARATION_ONLY; candidate copied export has no external audit yet",
+  "local_lean_executions": 0,
+  "new_axioms": 0,
+  "extracted_file_sha256": "b9e8c169e13061bf1e81045b82b55df4c32bf9ee7f482f82a38ecd4b724c7cbf"
+}

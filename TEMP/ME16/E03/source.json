@@ -1,0 +1,45 @@
+{
+  "entry_id": "ME16",
+  "member_id": "E03",
+  "upstream_name": "NSEMaxwell.HodgeProof.scalarLift_periodic",
+  "candidate_export": "GRTemp.ME16.E03.endpoint",
+  "module": "ME16.E03.Endpoint",
+  "declaration_kind": "theorem",
+  "status": "A_TIER_CANDIDATE",
+  "extraction_method": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+  "source_repository": "randogelist/Methlib",
+  "source_commit": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+  "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/TargetPrimitives.lean",
+  "source_line_start": 63,
+  "source_line_end": 67,
+  "source_sha256": "4fffe11365b4b539a063320719565a4e220983ed9113229c9613e87c58f02158",
+  "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/TargetPrimitives.lean#L63",
+  "source_declaration_sha256": "d853cc6243c2ee357d425843757c7c7e2360e3c49e427b261ed857e051feeac2",
+  "imports": [
+    "FourierHodgeLaws.TargetPrimitives"
+  ],
+  "import_scope": "UPSTREAM_OWNING_MODULE; definitions and helper lemmas retained as explicit dependencies",
+  "uses": [
+    "GC02"
+  ],
+  "hypotheses": [
+    "f : ScalarField",
+    "component: x : Vec, i : Fin 3",
+    "smooth lift: ContDiff ℝ ∞ f",
+    "periodic lift: SpatialPeriodic f"
+  ],
+  "source_signature": "theorem scalarLift_periodic (f : ScalarField) (hf : SpatialPeriodic f) :\n    SpatialPeriodic (scalarLift f)",
+  "retained_upstream_audit": {
+    "name": "NSEMaxwell.HodgeProof.scalarLift_periodic",
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "status": "PASS_STANDARD_ONLY"
+  },
+  "retained_audit_applies_to": "UPSTREAM_DECLARATION_ONLY; candidate copied export has no external audit yet",
+  "local_lean_executions": 0,
+  "new_axioms": 0,
+  "extracted_file_sha256": "86207df2ab118bb490166cc1ca665f1567cde0b6aeec3472c111586d4056725a"
+}

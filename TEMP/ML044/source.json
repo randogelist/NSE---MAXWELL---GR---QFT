@@ -1,0 +1,31 @@
+{
+  "id": "ML044",
+  "kind": "theorem",
+  "source_name": "AnalyticOnNhd.eqOn_of_preconnected_of_frequently_eq",
+  "endpoint": "GRTemp.ML044.endpoint",
+  "module": "ML044.Endpoint",
+  "source_path": "Mathlib/Analysis/Analytic/IsolatedZeros.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "23bb70a1bad8b88c338b504532e784a33bec653fe550442925672ff7e891b2f1",
+  "source_start_line": 238,
+  "source_end_line": 243,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/IsolatedZeros.lean#L238",
+  "upstream_import": "Mathlib.Analysis.Analytic.IsolatedZeros",
+  "retained_dependencies": [
+    "Mathlib.Analysis.Analytic.IsolatedZeros"
+  ],
+  "extraction_kind": "COPIED_PROOF_BODY",
+  "original_declaration": "theorem eqOn_of_preconnected_of_frequently_eq (hf : AnalyticOnNhd 𝕜 f U) (hg : AnalyticOnNhd 𝕜 g U)\n    (hU : IsPreconnected U) (h₀ : z₀ ∈ U) (hfg : ∃ᶠ z in 𝓝[≠] z₀, f z = g z) : EqOn f g U := by\n  have hfg' : ∃ᶠ z in 𝓝[≠] z₀, (f - g) z = 0 :=\n    hfg.mono fun z h => by rw [Pi.sub_apply, h, sub_self]\n  simpa [sub_eq_zero] using! fun z hz =>\n    (hf.sub hg).eqOn_zero_of_preconnected_of_frequently_eq_zero hU h₀ hfg' hz",
+  "generated_additive_declaration": null,
+  "source_context": "open Filter Function Module Nat FormalMultilinearSeries EMetric Set\nopen scoped Topology\nvariable {𝕜 : Type*} [NontriviallyNormedField 𝕜] {E : Type*} [NormedAddCommGroup E]\n  [NormedSpace 𝕜 E] {f g : 𝕜 → E} {z₀ : 𝕜}\nnamespace AnalyticOnNhd\nvariable {U : Set 𝕜}\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC03"
+  ],
+  "endpoint_sha256": "74b087ac1648290d0ede60dd11b8b970f900649d68afcec97a4ab23dea793af5",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+}

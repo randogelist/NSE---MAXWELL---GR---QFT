@@ -1,0 +1,34 @@
+{
+  "id": "ML029",
+  "kind": "theorem",
+  "source_name": "hasFDerivAt_tsum_of_isPreconnected",
+  "endpoint": "GRTemp.ML029.endpoint",
+  "module": "ML029.Endpoint",
+  "source_path": "Mathlib/Analysis/Calculus/SmoothSeries.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "5000d919737125bacacbc3df2f4e56284cd514dacc7f794c78f04d543ae47a78",
+  "source_start_line": 72,
+  "source_end_line": 83,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/SmoothSeries.lean#L72",
+  "upstream_import": "Mathlib.Analysis.Calculus.SmoothSeries",
+  "retained_dependencies": [
+    "Mathlib.Analysis.Calculus.SmoothSeries"
+  ],
+  "extraction_kind": "COPIED_PROOF_BODY",
+  "original_declaration": "theorem hasFDerivAt_tsum_of_isPreconnected (hu : Summable u) (hs : IsOpen s)\n    (h's : IsPreconnected s) (hf : ∀ n x, x ∈ s → HasFDerivAt (f n) (f' n x) x)\n    (hf' : ∀ n x, x ∈ s → ‖f' n x‖ ≤ u n) (hx₀ : x₀ ∈ s) (hf0 : Summable fun n => f n x₀)\n    (hx : x ∈ s) : HasFDerivAt (fun y => ∑' n, f n y) (∑' n, f' n x) x := by\n  have A :\n    ∀ x : E, x ∈ s → Tendsto (fun t : Finset α => ∑ n ∈ t, f n x) atTop (𝓝 (∑' n, f n x)) := by\n    intro y hy\n    apply Summable.hasSum\n    exact summable_of_summable_hasFDerivAt_of_isPreconnected hu hs h's hf hf' hx₀ hf0 hy\n  refine hasFDerivAt_of_tendstoUniformlyOn hs (tendstoUniformlyOn_tsum hu hf')\n    (fun t y hy => ?_) A hx\n  exact HasFDerivAt.fun_sum fun n _ => hf n y hy",
+  "generated_additive_declaration": null,
+  "source_context": "open Set Metric TopologicalSpace Function Asymptotics Filter\nopen scoped Topology NNReal\nvariable {α 𝕜 E F : Type*} [NontriviallyNormedField 𝕜] [IsRCLikeNormedField 𝕜]\n  [NormedAddCommGroup E] [NormedSpace 𝕜 E] [NormedAddCommGroup F] [CompleteSpace F]\n  {u : α → ℝ}\nvariable [NormedSpace 𝕜 F]\nvariable {f : α → E → F} {f' : α → E → E →L[𝕜] F}\n  {g : α → 𝕜 → F} {g' : α → 𝕜 → F}\n  {s : Set E} {t : Set 𝕜} {x₀ x : E} {y₀ y : 𝕜}\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC02",
+    "GC03",
+    "GC04"
+  ],
+  "endpoint_sha256": "89926d188ff3d5e65b80e85e23fb877d2dcf46454c2d4f4b368ee55e0fdbb4ba",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean.",
+  "context_revision": "Exact upstream section-variable binder order restored; proof body unchanged."
+}

@@ -1,0 +1,207 @@
+{
+  "status": "A_TIER",
+  "root_status": "CONDITIONAL_FORMAL_CLOSURE",
+  "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+  "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/tree/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+  "external_run": 43471012374,
+  "external_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43471012374",
+  "artifact_id": 14060453160,
+  "artifact_sha256": "8367bca5a1e2849957eb90105b982c6f90dbf4e6ee1238677af00abd9ccffc04",
+  "evidence_archive": "Auxillary/GR/Closure/EXTERNAL_EVIDENCE.zip",
+  "compiler": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+  "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "methlib_source_commit": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+  "source_manifest_sha256": "b827726cf9609b46d2146ede157245df8660c672201a5dee8df906127d8d3688",
+  "source_file_count": 337,
+  "target_count": 898,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "literature_inputs": [
+    "LI01",
+    "LI02",
+    "LI03"
+  ],
+  "native_unresolved_law_records": [],
+  "local_lean_executions": 0,
+  "proof_input_labels": "Frozen source-side candidate and historical baseline labels; this certificate records promotion from matching external named audits.",
+  "obligations": {
+    "U1": {
+      "status": "A_TIER",
+      "marker": "!=!",
+      "endpoints": [
+        {
+          "name": "NSEGR.Assembly.poissonInverse_joint_analytic_on_open_slab",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "GRAssembly.AnalyticHodge"
+        },
+        {
+          "name": "NSEGR.Assembly.scalarMean_analytic_on_open_slab",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "GRAssembly.AnalyticHodge"
+        },
+        {
+          "name": "NSEGR.Assembly.leray_joint_analytic_on_open_slab",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "GRAssembly.AnalyticHodge"
+        }
+      ]
+    },
+    "U2": {
+      "status": "A_TIER",
+      "marker": "!=!",
+      "endpoints": [
+        {
+          "name": "NSEGR.Assembly.scalar_periodic_normal_cylinder_of_literatureCK",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "GRAssembly.NativeGluingScalar"
+        },
+        {
+          "name": "NSEGR.Assembly.radialExtensionResult_of_literatureGaussian",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "GRAssembly.NativeGluingGaussian"
+        },
+        {
+          "name": "NSEGR.Assembly.analyticRadialExtensionLaws_of_literatureGaussian",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "GRAssembly.NativeGluingGaussian"
+        }
+      ]
+    },
+    "U3": {
+      "status": "A_TIER",
+      "marker": "!=!",
+      "endpoints": [
+        {
+          "name": "NSEGR.Assembly.gaussianVacuum_boundaryAdmissible",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "GRAssembly.BoundaryConstraints"
+        },
+        {
+          "name": "NSEGR.Assembly.boundaryAdmissible_residual",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "GRAssembly.NativeReconstructionCore"
+        },
+        {
+          "name": "NSEGR.Assembly.canonical_boundary_exact_completion",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "GRAssembly.NativeReconstruction"
+        },
+        {
+          "name": "NSEGR.Assembly.geometricReconstructionLaws_native",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "GRAssembly.NativeReconstruction"
+        },
+        {
+          "name": "NSEGR.Assembly.scalarBoundaryCompletionLaws_of_literatureCK",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "GRAssembly.NativeCompletion"
+        },
+        {
+          "name": "NSEGR.Assembly.germInverseLaws_of_literature",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "GRAssembly.NativeInverseCanonical"
+        }
+      ]
+    },
+    "ROOT": {
+      "status": "A_TIER",
+      "marker": "!!!",
+      "endpoints": [
+        {
+          "name": "NSEGR.Assembly.nativeLawPackages_of_literatureInputs",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "GRAssembly.RootClosure"
+        },
+        {
+          "name": "NSEGR.Assembly.NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_LITERATURE_INPUTS",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "GRAssembly.RootClosure"
+        },
+        {
+          "name": "NSEGR.Assembly.NSE_GR_THREE_OBLIGATION_CLOSURE",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "GRAssembly.NSE_GR_THREE_OBLIGATION_CLOSURE"
+        }
+      ]
+    }
+  },
+  "scope": "Local jointly analytic period-one 3D NSE germs modulo time-pressure gauge; independently defined marked 5D normalized Gaussian vacuum zero-stress sector germs."
+}

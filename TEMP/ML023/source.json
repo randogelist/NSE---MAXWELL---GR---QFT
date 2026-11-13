@@ -1,0 +1,31 @@
+{
+  "id": "ML023",
+  "kind": "theorem",
+  "source_name": "FormalMultilinearSeries.summable_norm_mul_pow",
+  "endpoint": "GRTemp.ML023.endpoint",
+  "module": "ML023.Endpoint",
+  "source_path": "Mathlib/Analysis/Analytic/ConvergenceRadius.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "f6314e1932da1cf3b52545f51ed3c70ab5a5173850aa24d4601aa0d7f1bbfb60",
+  "source_start_line": 241,
+  "source_end_line": 245,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ConvergenceRadius.lean#L241",
+  "upstream_import": "Mathlib.Analysis.Analytic.ConvergenceRadius",
+  "retained_dependencies": [
+    "Mathlib.Analysis.Analytic.ConvergenceRadius"
+  ],
+  "extraction_kind": "COPIED_PROOF_BODY",
+  "original_declaration": "theorem summable_norm_mul_pow (p : FormalMultilinearSeries 𝕜 E F) {r : ℝ≥0} (h : ↑r < p.radius) :\n    Summable fun n : ℕ => ‖p n‖ * (r : ℝ) ^ n := by\n  obtain ⟨a, ha : a ∈ Ioo (0 : ℝ) 1, C, - : 0 < C, hp⟩ := p.norm_mul_pow_le_mul_pow_of_lt_radius h\n  exact .of_nonneg_of_le (fun _ ↦ by positivity)\n    hp ((summable_geometric_of_lt_one ha.1.le ha.2).mul_left _)",
+  "generated_additive_declaration": null,
+  "source_context": "open Topology NNReal Filter ENNReal Set Asymptotics\nopen scoped Pointwise\nvariable {𝕜 E F : Type*} [NontriviallyNormedField 𝕜]\n  [NormedAddCommGroup E] [NormedSpace 𝕜 E]\n  [NormedAddCommGroup F] [NormedSpace 𝕜 F]\nnamespace FormalMultilinearSeries\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC03"
+  ],
+  "endpoint_sha256": "7e3267988599b3cb8ce32c99cf75d3c4ccebd73433183d62738b408076ee1595",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+}

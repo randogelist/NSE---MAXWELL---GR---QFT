@@ -1,0 +1,41 @@
+{
+  "entry_id": "ME08",
+  "member_id": null,
+  "upstream_name": "NSEMaxwell.HodgeProof.spatialInverseLaplacianLaws",
+  "candidate_export": "GRTemp.ME08.endpoint",
+  "module": "ME08.Endpoint",
+  "declaration_kind": "theorem",
+  "status": "A_TIER_CANDIDATE",
+  "extraction_method": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+  "source_repository": "randogelist/Methlib",
+  "source_commit": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+  "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialInhabitant.lean",
+  "source_line_start": 15,
+  "source_line_end": 19,
+  "source_sha256": "4a414a1125fffa62e0e4f760186fc1597cb116052c138ec3a486a0cb7c6b693f",
+  "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialInhabitant.lean#L15",
+  "source_declaration_sha256": "9c7641c606e0b20cab9bbebddbadf5f0da6c72e543cda59e0a4a07f656160000",
+  "imports": [
+    "FourierHodgeLaws.SpatialInhabitant"
+  ],
+  "import_scope": "UPSTREAM_OWNING_MODULE; definitions and helper lemmas retained as explicit dependencies",
+  "uses": [
+    "GC02",
+    "GC04"
+  ],
+  "hypotheses": [],
+  "source_signature": "theorem spatialInverseLaplacianLaws : SpatialInverseLaplacianLaws",
+  "retained_upstream_audit": {
+    "name": "NSEMaxwell.HodgeProof.spatialInverseLaplacianLaws",
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "status": "PASS_STANDARD_ONLY"
+  },
+  "retained_audit_applies_to": "UPSTREAM_DECLARATION_ONLY; candidate copied export has no external audit yet",
+  "local_lean_executions": 0,
+  "new_axioms": 0,
+  "extracted_file_sha256": "39cde666c70db8ef9761a49d234bc71e06f0481229ea79cdc57270b030fe3ff5"
+}

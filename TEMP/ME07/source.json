@@ -1,0 +1,44 @@
+{
+  "entry_id": "ME07",
+  "member_id": null,
+  "upstream_name": "NSEMaxwell.HodgeProof.neg_laplacian_vectorL",
+  "candidate_export": "GRTemp.ME07.endpoint",
+  "module": "ME07.Endpoint",
+  "declaration_kind": "theorem",
+  "status": "A_TIER_CANDIDATE",
+  "extraction_method": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+  "source_repository": "randogelist/Methlib",
+  "source_commit": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+  "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/PoissonFromCoefficients.lean",
+  "source_line_start": 106,
+  "source_line_end": 149,
+  "source_sha256": "23cf86397aa7029712671127bbdf7fc28abcd0eafb182d7c4ca48e7afb44fd06",
+  "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/PoissonFromCoefficients.lean#L106",
+  "source_declaration_sha256": "a98b081ce137595b6b003ee23fc38a9f4353c1d695d6f1b483e021e1d91e4337",
+  "imports": [
+    "FourierHodgeLaws.PoissonFromCoefficients"
+  ],
+  "import_scope": "UPSTREAM_OWNING_MODULE; definitions and helper lemmas retained as explicit dependencies",
+  "uses": [
+    "GC02"
+  ],
+  "hypotheses": [
+    "a : Field",
+    "ContDiff ℝ ∞ a",
+    "SpatialPeriodic a"
+  ],
+  "source_signature": "theorem neg_laplacian_vectorL (a : Field)\n    (ha : ContDiff ℝ ∞ a) (hp : SpatialPeriodic a) :\n    -NSEMaxwell.Classical.laplacian (vectorL a) = a - (fun _ => spatialMean a)",
+  "retained_upstream_audit": {
+    "name": "NSEMaxwell.HodgeProof.neg_laplacian_vectorL",
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "status": "PASS_STANDARD_ONLY"
+  },
+  "retained_audit_applies_to": "UPSTREAM_DECLARATION_ONLY; candidate copied export has no external audit yet",
+  "local_lean_executions": 0,
+  "new_axioms": 0,
+  "extracted_file_sha256": "b52d614920b4dc33f269b6071a583183a1412b4e05ec01c40b4564a96b52bd31"
+}

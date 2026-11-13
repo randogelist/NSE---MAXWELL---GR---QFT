@@ -1,0 +1,31 @@
+{
+  "id": "ML025",
+  "kind": "theorem",
+  "source_name": "FormalMultilinearSeries.hasFPowerSeriesOnBall",
+  "endpoint": "GRTemp.ML025.endpoint",
+  "module": "ML025.Endpoint",
+  "source_path": "Mathlib/Analysis/Analytic/Basic.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "af3ee71ee027f74ea4bf2254978f841722b90b75dabd1452ec98ca65857d38ec",
+  "source_start_line": 1072,
+  "source_end_line": 1079,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean#L1072",
+  "upstream_import": "Mathlib.Analysis.Analytic.Basic",
+  "retained_dependencies": [
+    "Mathlib.Analysis.Analytic.Basic"
+  ],
+  "extraction_kind": "COPIED_PROOF_BODY",
+  "original_declaration": "protected theorem FormalMultilinearSeries.hasFPowerSeriesOnBall [CompleteSpace F]\n    (p : FormalMultilinearSeries 𝕜 E F) (h : 0 < p.radius) :\n    HasFPowerSeriesOnBall p.sum p 0 p.radius :=\n  { r_le := le_rfl\n    r_pos := h\n    hasSum := fun hy => by\n      rw [zero_add]\n      exact p.hasSum hy }",
+  "generated_additive_declaration": null,
+  "source_context": "open Topology NNReal Filter ENNReal Set Asymptotics\nopen scoped Pointwise\nvariable {𝕜 E F : Type*} [NontriviallyNormedField 𝕜]\n  [NormedAddCommGroup E] [NormedSpace 𝕜 E]\n  [NormedAddCommGroup F] [NormedSpace 𝕜 F]\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC03"
+  ],
+  "endpoint_sha256": "58134d681cfb5c180b0e9730938fd7be2d48cb1b2cf05896e4acffa47438fc1a",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+}

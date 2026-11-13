@@ -1,0 +1,35 @@
+{
+  "id": "ML031",
+  "kind": "theorem",
+  "source_name": "hasFDerivAt_integral_of_dominated_of_fderiv_le",
+  "endpoint": "GRTemp.ML031.endpoint",
+  "module": "ML031.Endpoint",
+  "source_path": "Mathlib/Analysis/Calculus/ParametricIntegral.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "495f1a89774b147de1528e0213f519817d50fc3602724c9cbea633e9617c3375",
+  "source_start_line": 210,
+  "source_end_line": 230,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ParametricIntegral.lean#L210",
+  "upstream_import": "Mathlib.Analysis.Calculus.ParametricIntegral",
+  "retained_dependencies": [
+    "Mathlib.Analysis.Calculus.ParametricIntegral"
+  ],
+  "extraction_kind": "COPIED_PROOF_BODY",
+  "original_declaration": "theorem hasFDerivAt_integral_of_dominated_of_fderiv_le {F' : H → α → H →L[𝕜] E} (hs : s ∈ 𝓝 x₀)\n    (hF_meas : ∀ᶠ x in 𝓝 x₀, AEStronglyMeasurable (F x) μ) (hF_int : Integrable (F x₀) μ)\n    (hF'_meas : AEStronglyMeasurable (F' x₀) μ)\n    (h_bound : ∀ᵐ a ∂μ, ∀ x ∈ s, ‖F' x a‖ ≤ bound a)\n    (bound_integrable : Integrable (bound : α → ℝ) μ)\n    (h_diff : ∀ᵐ a ∂μ, ∀ x ∈ s, HasFDerivAt (F · a) (F' x a) x) :\n    HasFDerivAt (fun x ↦ ∫ a, F x a ∂μ) (∫ a, F' x₀ a ∂μ) x₀ := by\n  let : NormedSpace ℝ H := NormedSpace.restrictScalars ℝ 𝕜 H\n  rcases Metric.mem_nhds_iff.1 hs with ⟨ε, ε_pos, hε⟩\n  have x₀_in : x₀ ∈ ball x₀ ε := mem_ball_self ε_pos\n  have diff_x₀ : ∀ᵐ a ∂μ, HasFDerivAt (F · a) (F' x₀ a) x₀ :=\n    h_diff.mono fun a ha ↦ ha x₀ (hε x₀_in)\n  have : ∀ᵐ a ∂μ, LipschitzOnWith (Real.nnabs (bound a)) (F · a) (ball x₀ ε) := by\n    apply (h_diff.and h_bound).mono\n    rintro a ⟨ha_deriv, ha_bound⟩\n    refine (convex_ball _ _).lipschitzOnWith_of_nnnorm_hasFDerivWithin_le\n      (fun x x_in ↦ (ha_deriv x (hε x_in)).hasFDerivWithinAt) fun x x_in ↦ ?_\n    rw [← NNReal.coe_le_coe, coe_nnnorm, Real.coe_nnabs]\n    exact (ha_bound x (hε x_in)).trans (le_abs_self _)\n  apply (hasFDerivAt_integral_of_dominated_loc_of_lip (ball_mem_nhds x₀ ε_pos)\n    hF_meas hF_int hF'_meas this bound_integrable diff_x₀).2",
+  "generated_additive_declaration": null,
+  "source_context": "open TopologicalSpace MeasureTheory Filter Metric\nopen scoped Topology Filter\nvariable {α : Type*} [MeasurableSpace α] {μ : Measure α}\n  {𝕜 : Type*} [RCLike 𝕜] {E : Type*}\n  [NormedAddCommGroup E] [NormedSpace ℝ E] [NormedSpace 𝕜 E]\n  {H : Type*} [NormedAddCommGroup H] [NormedSpace 𝕜 H]\nvariable {F : H → α → E} {x₀ : H} {bound : α → ℝ} {s : Set H}\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC02",
+    "GC03",
+    "GC04",
+    "GC12",
+    "GC17"
+  ],
+  "endpoint_sha256": "3d37d337a565eb0d05dabb3ae97026fa40c47895d800f361d9f0f5591360c851",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+}

@@ -1,0 +1,108 @@
+GR_LITERATURE_CHAIN_A_TIER
+VERSION = 0.2.0
+MODE = A_TIER_DERIVATION
+NATIVE_EDGE_STATUS = !! A_TIER
+ROOT_FROM_LITERATURE_INPUTS = OPEN
+UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED
+LOCAL_LEAN_EXECUTIONS = 0
+NEW_GLOBAL_AXIOMS = 0
+COMPILER = Lean 4.34.0-rc1
+MATHLIB = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+BRANCH = codex/gr-adapter
+AUDITED_SOURCE_COMMIT = 4e9638abfa0556ee74ddbce8441973993091271d
+WORKFLOW_RUN = 43375199321
+WORKFLOW_URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43375199321
+ARTIFACT_ID = 14014251182
+ARTIFACT_SHA256 = 33fa8387b7df7a45d4a194c78436a3e088f16173260fde21356cc802427d4d58
+NEW_THEOREM_ENDPOINTS = 199
+ALL_NAMED_DECLARATION_AUDITS = 401/401 PASS_STANDARD_ONLY
+ALLOWED_FOUNDATIONAL_AXIOMS = propext, Classical.choice, Quot.sound
+THEOREM_ARGUMENT_DISCHARGE_FROM_AXIOM_AUDIT = NOT_INFERRED
+LITERATURE_INPUT_INHABITANTS = NOT_SUPPLIED
+
+EXACT TARGET
+  forall ell : LiteratureInputs,
+  forall nu rho t0 : R, nu>0 -> rho!=0 ->
+    Nonempty (NSEgerm nu t0 equiv GRgerm nu rho t0).
+TARGET_DECLARATION = NOT_CONSTRUCTED
+MATHEMATICAL_DERIVATION = != B_TIER relative to LI01, LI02, LI03
+
+EXPLICIT INPUTS
+  LI01 = LiteratureAnalyticCKInput
+  LI02 = LiteratureGaussianJetInput
+  LI03 = LiteratureSmoothFourierInput
+  Actual analytic/function/derivative/curvature/integral propositions;
+  no project-law fields, global literature axioms, or supplied inhabitants.
+  Three input projection theorems are included in the endpoint count;
+  they discharge no input.
+
+NATIVE MODULE COUNTS
+  LiteratureInputs.lean: 3
+  UnitTorus.lean: 23
+  ScalarNormalForm.lean: 19
+  ScalarAnalytic.lean: 9
+  GaussianMetric.lean: 26
+  GermUniformity.lean: 12
+  ReconstructionAlgebra.lean: 10
+  ReconstructionCalculus.lean: 3
+  FourierBridge.lean: 16
+  GaussianUniqueness.lean: 5
+  ScalarCK.lean: 9
+  StressDivergence.lean: 26
+  FourierInversion.lean: 17
+  GaussianCodazzi.lean: 12
+  ScalarCompatibility.lean: 9
+
+ESTABLISHED NATIVE IMPLICATIONS
+  LI01 + native joint analytic u,p + rho!=0
+    -> existence and uniqueness of the concrete 5-component scalar CK germ.
+  Actual zero-data scalar CK solution
+    -> transported z equals the actual spatial gradient of psi as a germ.
+  LI02 + independently admissible common K + actual Gaussian vacua g,h
+       + eventual full-slice K_g=K=K_h
+    -> SameMetricAt t0 g h.
+  LI03 + actual smooth periodic f
+    -> native Poisson-series absolute convergence
+    -> G(Delta f)=f-mean(f)
+    -> P(gradient f)=0.
+  Smoothness -> actual strain, velocity-outer-product and Hessian divergences.
+  Smoothness + div(u)=0 + Delta(q)=beta-rho
+    -> exact stress-divergence identity.
+  Codazzi + differentiated Hodge identities + explicit regularity/Poisson data
+    -> actual reconstructed NSE residual = divergence of actual STF stress.
+  Actual g=diag(1,h) -> exact mixed and normal Ricci contractions.
+  Finite tensor algebra -> scalar Hamiltonian normal form and noncharacteristic
+    coefficient 2*rho; actual full tensor reconstruction under listed hypotheses.
+
+REMAINING NATIVE CONSTRUCTIONS
+  A. Scalar second-order equation identification, periodic gluing,
+     constraints and recovery; ScalarBoundaryCompletionLaws.
+  B. LI02 local metric germs -> one periodic analytic Lorentzian collar;
+     AnalyticRadialExtensionLaws. With LI02 retained, a separate native
+     radial CK/Bianchi existence proof is not required for this adapter.
+  C. Joint analytic Fourier parameter calculus, Delta(Gf)=f-mean(f),
+     time commutation, and actual flat-boundary Gauss-Codazzi reduction;
+     GeometricReconstructionLaws.
+  D. Scalar/gauge uniqueness and both chosen-construction germ identities;
+     GermInverseLaws; substitute the four derived inhabitants into the root.
+
+EXISTING FORMAL ROOT
+  NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS
+  remains CONDITIONAL_FORMAL_CLOSURE on c,r,h,q.
+  No inhabitant of these four project-law records is asserted by this report.
+  No theorem solely from LiteratureInputs is asserted to have compiled.
+
+SCOPE
+  Existing two-sided jointly analytic periodic NSE germs on T^3;
+  fixed-Gaussian marked vacuum GR5 with actual STF constitutive constraint;
+  nu>0, rho!=0. No arbitrary-data global smooth Fefferman-B theorem.
+
+PROVENANCE AND REPLAY
+  NATIVE_LITERATURE_ENDPOINTS.json: exact named endpoint/source index.
+  NATIVE_LITERATURE_TARGETS.json: replayable new-theorem audit inventory.
+  Original external certificate: original types, logs, hashes and pin evidence.
+  Windows entry: GR_adapter\run.cmd; retain both exported sibling directories.
+  Linux entry: bash GR_adapter/run.sh.
+  Preserve matching native compiler/dependency/project caches.
+  External Linux evidence does not certify a separate Windows execution.
+  Later documentation/evidence commits do not change the audited source SHA.

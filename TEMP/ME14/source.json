@@ -1,0 +1,47 @@
+{
+  "entry_id": "ME14",
+  "member_id": null,
+  "upstream_name": "NSEMaxwell.HodgeProof.uniform_inverseScalarCoeff_moment_bound",
+  "candidate_export": "GRTemp.ME14.endpoint",
+  "module": "ME14.Endpoint",
+  "declaration_kind": "theorem",
+  "status": "A_TIER_CANDIDATE",
+  "extraction_method": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+  "source_repository": "randogelist/Methlib",
+  "source_commit": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+  "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/UniformCoefficientBounds.lean",
+  "source_line_start": 155,
+  "source_line_end": 168,
+  "source_sha256": "ee3d428ae138b05907a15bd3cc68d0a9afcd041b5ea400888bfaa75e1fb1402e",
+  "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/UniformCoefficientBounds.lean#L155",
+  "source_declaration_sha256": "a69ec0e01eca0b08b86b33315325856029d3d956b5372719171523a27f37e8fa",
+  "imports": [
+    "FourierHodgeLaws.UniformCoefficientBounds"
+  ],
+  "import_scope": "UPSTREAM_OWNING_MODULE; definitions and helper lemmas retained as explicit dependencies",
+  "uses": [
+    "GC02",
+    "GC03"
+  ],
+  "hypotheses": [
+    "f : Pressure",
+    "SmoothPressure f",
+    "PeriodicPressure f",
+    "T : ℝ",
+    "m : ℕ"
+  ],
+  "source_signature": "theorem uniform_inverseScalarCoeff_moment_bound (f : Pressure)\n    (hf : SmoothPressure f) (hp : PeriodicPressure f) (T : ℝ) (m : ℕ) :\n    ∃ M : Frequency → ℝ, Summable M ∧ (∀ k, 0 ≤ M k) ∧\n      ∀ t ∈ Icc (0 : ℝ) T, ∀ k : Frequency,\n        ‖inverseScalarCoeff (f t) k‖ * ‖SingularClosure.fourierPhaseCLM k‖ ^ m ≤ M k",
+  "retained_upstream_audit": {
+    "name": "NSEMaxwell.HodgeProof.uniform_inverseScalarCoeff_moment_bound",
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "status": "PASS_STANDARD_ONLY"
+  },
+  "retained_audit_applies_to": "UPSTREAM_DECLARATION_ONLY; candidate copied export has no external audit yet",
+  "local_lean_executions": 0,
+  "new_axioms": 0,
+  "extracted_file_sha256": "27d8460e4c80d1549bb11fadaa7506673514d71474c390839466ff36a03810a1"
+}

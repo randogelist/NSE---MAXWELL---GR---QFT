@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "status": "A_TIER",
+  "root_status": "UNCONDITIONAL_CLOSURE",
+  "marker": "!!!!",
+  "root": "NSEGR.NativeLiterature.NSE_GR_NATIVE_LITERATURE_CLOSURE",
+  "root_type": "forall (nu rho t0 : Real), 0 < nu -> rho != 0 -> NSEGR.ExactSectorEquivalence nu rho t0",
+  "unfolded_conclusion": "Nonempty (NSEGR.NSEgerm nu t0 ≃ NSEGR.GRgerm nu rho t0)",
+  "source_commit": "d5231111cbdbe8a9c686b52ae4224554d4fba48a",
+  "source_tree": "d25c6e9147ada65a12455c1b029c6a7e1d1c12a1",
+  "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/tree/d5231111cbdbe8a9c686b52ae4224554d4fba48a",
+  "external_run": 43509144981,
+  "external_attempt": 1,
+  "external_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43509144981",
+  "artifact_id": 14077334443,
+  "artifact_sha256": "b480c72c8325fc452ec18bb9544042c2f5cb0ea415f352cf77c107eb8f00c53e",
+  "artifact_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43509144981/artifacts/14077334443",
+  "evidence_directory": "Auxillary/GR/Closure/Native/evidence/d5231111cbdbe8a9c686b52ae4224554d4fba48a",
+  "compiler": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+  "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_manifest_sha256": "555bccdb3b8db857077fdd41f409e1c8135933bb1f4bdd6e1366a0c48b747734",
+  "source_file_count": 373,
+  "target_count": 1549,
+  "failed_stage_count": 0,
+  "unresolved_target_count": 0,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "exact_root_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "audit_mode": "FRESH_BATCH",
+  "audit_process_count": 1,
+  "audit_source_sha256": "aa5aa20993b6264986673e7f59428e69814d0feac9119ce696bc45078ddfe05d",
+  "audit_log_sha256": "ed7b7bb2a76aba0f4d25adfc2c676d466c742105d3c5ad4fa405d00a9ebe7c6d",
+  "native_endpoints": [
+    {
+      "name": "NSEGR.NativeLiterature.literatureAnalyticCKInput_native",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "module": "GRAssembly.NativeCK"
+    },
+    {
+      "name": "NSEGR.NativeLiterature.literatureSmoothFourierInput_native",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "module": "GRAssembly.NativeFourier"
+    },
+    {
+      "name": "NSEGR.NativeLiterature.literatureGaussianJetInput_of_analyticCK",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "module": "GRAssembly.NativeGaussianJet"
+    },
+    {
+      "name": "NSEGR.NativeLiterature.literatureGaussianJetInput_native",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "module": "GRAssembly.NativeGaussianInput"
+    },
+    {
+      "name": "NSEGR.NativeLiterature.literatureInputs_native",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "module": "GRAssembly.NSE_GR_NATIVE_LITERATURE_CLOSURE"
+    },
+    {
+      "name": "NSEGR.NativeLiterature.NSE_GR_NATIVE_LITERATURE_CLOSURE",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "module": "GRAssembly.NSE_GR_NATIVE_LITERATURE_CLOSURE"
+    }
+  ],
+  "domain_hypotheses": [
+    "0 < nu",
+    "rho != 0"
+  ],
+  "unresolved_literature_inputs": [],
+  "unresolved_native_law_records": [],
+  "unresolved_analytic_semantic_certificate_admission_premises": [],
+  "semantic_review": {
+    "source_carrier": "Actual local jointly real-analytic period-one NSE solutions; arbitrary velocity mean; full-spatial-slice equality modulo time-only pressure gauge",
+    "target_carrier": "Actual marked five-dimensional Lorentzian Gaussian vacuum metric germs; fixed induced eta4; boundary beta(t0)=rho and beta_t(t0)=0; actual boundaryStress nu (boundaryK metric)=0",
+    "carrier_definitions": "Independent solution predicates and quotients; not image-defined",
+    "constitutive_sector": "A defining condition of the exact target carrier, satisfied by the constructed lift",
+    "literal_LI01_inhabitant": "literatureAnalyticCKInput_native : LiteratureAnalyticCKInput",
+    "literal_LI02_inhabitant": "literatureGaussianJetInput_native : LiteratureGaussianJetInput",
+    "literal_LI03_inhabitant": "literatureSmoothFourierInput_native : LiteratureSmoothFourierInput",
+    "final_composition": "Native inhabitants assemble LiteratureInputs and instantiate the existing exact local germ equivalence",
+    "scope_exclusions": [
+      "Global arbitrary-data Fefferman-B existence",
+      "Unrestricted four-dimensional Einstein equations"
+    ]
+  },
+  "source_labels": "Frozen candidate inventory labels describe preparation; this exact-source certificate records external promotion.",
+  "cache_policy": "PRESERVE_AND_REUSE_COMPATIBLE_OBJECTS",
+  "local_lean_executions": 0,
+  "new_axioms": 0,
+  "sorryAx": false,
+  "input_derivation": {
+    "path": "GR_adapter/Derivation/NSE_GR_LI01_COMPOSED_CLOSURE_B_TIER.txt",
+    "sha256": "f75db53c0bfccbfe0230e1d51a170a80f47d989b96b0f78138b4f62be3fafa51",
+    "status": "Historical B-tier input; its native-pending assessments are superseded by this certificate."
+  }
+}

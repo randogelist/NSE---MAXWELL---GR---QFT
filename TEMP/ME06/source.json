@@ -1,0 +1,44 @@
+{
+  "entry_id": "ME06",
+  "member_id": null,
+  "upstream_name": "NSEMaxwell.HodgeProof.divergence_vectorL_commute",
+  "candidate_export": "GRTemp.ME06.endpoint",
+  "module": "ME06.Endpoint",
+  "declaration_kind": "theorem",
+  "status": "A_TIER_CANDIDATE",
+  "extraction_method": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+  "source_repository": "randogelist/Methlib",
+  "source_commit": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+  "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialMultiplier.lean",
+  "source_line_start": 127,
+  "source_line_end": 141,
+  "source_sha256": "9385b39dbebac0062302f458c2e4d6e0b3f072330bc81e896f2907b463de3d9f",
+  "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialMultiplier.lean#L127",
+  "source_declaration_sha256": "1e3d9682c1bea4624d7e2e78d3d8a17afef199d5bd6adc999451e0f9c0093537",
+  "imports": [
+    "FourierHodgeLaws.SpatialMultiplier"
+  ],
+  "import_scope": "UPSTREAM_OWNING_MODULE; definitions and helper lemmas retained as explicit dependencies",
+  "uses": [
+    "GC02"
+  ],
+  "hypotheses": [
+    "F : Field",
+    "ContDiff ℝ ∞ F",
+    "SpatialPeriodic F"
+  ],
+  "source_signature": "theorem divergence_vectorL_commute (F : Field) (hF : ContDiff ℝ ∞ F)\n    (hp : SpatialPeriodic F) :\n    NSEMaxwell.Classical.divergence (vectorL F) =\n      scalarL (NSEMaxwell.Classical.divergence F)",
+  "retained_upstream_audit": {
+    "name": "NSEMaxwell.HodgeProof.divergence_vectorL_commute",
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "status": "PASS_STANDARD_ONLY"
+  },
+  "retained_audit_applies_to": "UPSTREAM_DECLARATION_ONLY; candidate copied export has no external audit yet",
+  "local_lean_executions": 0,
+  "new_axioms": 0,
+  "extracted_file_sha256": "4465c5e07e5d06e5d6656941cdec2d704ce734971ce689ed49a1fb2319646939"
+}

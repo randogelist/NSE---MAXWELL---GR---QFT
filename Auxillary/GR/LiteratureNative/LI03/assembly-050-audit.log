@@ -1,0 +1,101 @@
+@NSEGR.NativeLiterature.coordinateDerivative : {n : ℕ} →
+  (NSEGR.LiteratureSpace n → ℂ) → Fin n → NSEGR.LiteratureSpace n → ℂ
+'NSEGR.NativeLiterature.coordinateDerivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.derivativeSymbol : {n : ℕ} → Fin n → NSEGR.LiteratureFrequency n → ℂ
+'NSEGR.NativeLiterature.derivativeSymbol' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.characterPhaseCLM : {n : ℕ} → NSEGR.LiteratureFrequency n → NSEGR.LiteratureSpace n →L[ℝ] ℂ
+'NSEGR.NativeLiterature.characterPhaseCLM' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.characterPhaseCLM_apply : ∀ {n : ℕ} (k : NSEGR.LiteratureFrequency n)
+  (x : NSEGR.LiteratureSpace n),
+  (NSEGR.NativeLiterature.characterPhaseCLM k) x = 2 * ↑Real.pi * Complex.I * ↑(∑ j, ↑(k j) * x.ofLp j)
+'NSEGR.NativeLiterature.characterPhaseCLM_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.characterPhaseCLM_unitVector : ∀ {n : ℕ} (k : NSEGR.LiteratureFrequency n) (j : Fin n),
+  (NSEGR.NativeLiterature.characterPhaseCLM k) (NSEGR.LiteratureUnitVector j) =
+    NSEGR.NativeLiterature.derivativeSymbol j k
+'NSEGR.NativeLiterature.characterPhaseCLM_unitVector' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.character_eq_exp_phase : ∀ {n : ℕ} (k : NSEGR.LiteratureFrequency n)
+  (x : NSEGR.LiteratureSpace n),
+  NSEGR.LiteratureCharacter k x = Complex.exp ((NSEGR.NativeLiterature.characterPhaseCLM k) x)
+'NSEGR.NativeLiterature.character_eq_exp_phase' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.character_contDiff : ∀ {n : ℕ} (k : NSEGR.LiteratureFrequency n),
+  ContDiff ℝ (↑⊤) (NSEGR.LiteratureCharacter k)
+'NSEGR.NativeLiterature.character_contDiff' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.character_hasFDerivAt : ∀ {n : ℕ} (k : NSEGR.LiteratureFrequency n)
+  (x : NSEGR.LiteratureSpace n),
+  HasFDerivAt (NSEGR.LiteratureCharacter k) (NSEGR.LiteratureCharacter k x • NSEGR.NativeLiterature.characterPhaseCLM k)
+    x
+'NSEGR.NativeLiterature.character_hasFDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.character_periodic : ∀ {n : ℕ} (k : NSEGR.LiteratureFrequency n),
+  NSEGR.LiteraturePeriodic (NSEGR.LiteratureCharacter k)
+'NSEGR.NativeLiterature.character_periodic' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.character_norm : ∀ {n : ℕ} (k : NSEGR.LiteratureFrequency n) (x : NSEGR.LiteratureSpace n),
+  ‖NSEGR.LiteratureCharacter k x‖ = 1
+'NSEGR.NativeLiterature.character_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.coordinateDerivative_contDiff : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  ContDiff ℝ (↑⊤) f → ∀ (j : Fin n), ContDiff ℝ (↑⊤) (NSEGR.NativeLiterature.coordinateDerivative f j)
+'NSEGR.NativeLiterature.coordinateDerivative_contDiff' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.coordinateDerivative_periodic : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  NSEGR.LiteraturePeriodic f → ∀ (j : Fin n), NSEGR.LiteraturePeriodic (NSEGR.NativeLiterature.coordinateDerivative f j)
+'NSEGR.NativeLiterature.coordinateDerivative_periodic' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.partialWord_contDiff : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  ContDiff ℝ (↑⊤) f → ∀ (w : List (Fin n)), ContDiff ℝ (↑⊤) (NSEGR.LiteraturePartialWord w f)
+'NSEGR.NativeLiterature.partialWord_contDiff' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.partialWord_periodic : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  NSEGR.LiteraturePeriodic f → ∀ (w : List (Fin n)), NSEGR.LiteraturePeriodic (NSEGR.LiteraturePartialWord w f)
+'NSEGR.NativeLiterature.partialWord_periodic' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.NativeLiterature.cube_isCompact : ∀ (n : ℕ), IsCompact (NSEGR.LiteratureUnitCube n)
+'NSEGR.NativeLiterature.cube_isCompact' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.integral_cube_coordinateDerivative_eq_zero : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  ContDiff ℝ (↑⊤) f →
+    NSEGR.LiteraturePeriodic f →
+      ∀ (j : Fin n),
+        ∫ (x : NSEGR.LiteratureSpace n) in NSEGR.LiteratureUnitCube n,
+            NSEGR.NativeLiterature.coordinateDerivative f j x =
+          0
+'NSEGR.NativeLiterature.integral_cube_coordinateDerivative_eq_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@NSEGR.NativeLiterature.fourierIntegrand_contDiff : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  ContDiff ℝ (↑⊤) f → ∀ (k : NSEGR.LiteratureFrequency n), ContDiff ℝ ↑⊤ fun x => f x * NSEGR.LiteratureCharacter (-k) x
+'NSEGR.NativeLiterature.fourierIntegrand_contDiff' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.fourierIntegrand_periodic : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  NSEGR.LiteraturePeriodic f →
+    ∀ (k : NSEGR.LiteratureFrequency n), NSEGR.LiteraturePeriodic fun x => f x * NSEGR.LiteratureCharacter (-k) x
+'NSEGR.NativeLiterature.fourierIntegrand_periodic' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.fourierIntegrand_integrableOn : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  Continuous f →
+    ∀ (k : NSEGR.LiteratureFrequency n),
+      MeasureTheory.IntegrableOn (fun x => f x * NSEGR.LiteratureCharacter (-k) x) (NSEGR.LiteratureUnitCube n)
+        MeasureTheory.volume
+'NSEGR.NativeLiterature.fourierIntegrand_integrableOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.fourierIntegrand_coordinateDerivative : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  Differentiable ℝ f →
+    ∀ (k : NSEGR.LiteratureFrequency n) (j : Fin n) (x : NSEGR.LiteratureSpace n),
+      NSEGR.NativeLiterature.coordinateDerivative (fun y => f y * NSEGR.LiteratureCharacter (-k) y) j x =
+        NSEGR.NativeLiterature.coordinateDerivative f j x * NSEGR.LiteratureCharacter (-k) x -
+          NSEGR.NativeLiterature.derivativeSymbol j k * (f x * NSEGR.LiteratureCharacter (-k) x)
+'NSEGR.NativeLiterature.fourierIntegrand_coordinateDerivative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@NSEGR.NativeLiterature.fourierCoefficient_coordinateDerivative : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  ContDiff ℝ (↑⊤) f →
+    NSEGR.LiteraturePeriodic f →
+      ∀ (j : Fin n) (k : NSEGR.LiteratureFrequency n),
+        NSEGR.LiteratureFourierCoefficient (NSEGR.NativeLiterature.coordinateDerivative f j) k =
+          NSEGR.NativeLiterature.derivativeSymbol j k * NSEGR.LiteratureFourierCoefficient f k
+'NSEGR.NativeLiterature.fourierCoefficient_coordinateDerivative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@NSEGR.NativeLiterature.fourierCoefficient_partialWord : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  ContDiff ℝ (↑⊤) f →
+    NSEGR.LiteraturePeriodic f →
+      ∀ (w : List (Fin n)) (k : NSEGR.LiteratureFrequency n),
+        NSEGR.LiteratureFourierCoefficient (NSEGR.LiteraturePartialWord w f) k =
+          NSEGR.LiteratureFourierWordMultiplier w k * NSEGR.LiteratureFourierCoefficient f k
+'NSEGR.NativeLiterature.fourierCoefficient_partialWord' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.fourierCoefficient_norm_le_integral_norm : ∀ {n : ℕ} (f : NSEGR.LiteratureSpace n → ℂ)
+  (k : NSEGR.LiteratureFrequency n),
+  ‖NSEGR.LiteratureFourierCoefficient f k‖ ≤ ∫ (x : NSEGR.LiteratureSpace n) in NSEGR.LiteratureUnitCube n, ‖f x‖
+'NSEGR.NativeLiterature.fourierCoefficient_norm_le_integral_norm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

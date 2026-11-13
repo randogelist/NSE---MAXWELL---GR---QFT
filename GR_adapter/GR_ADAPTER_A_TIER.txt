@@ -1,0 +1,109 @@
+GR_ADAPTER_NATIVE_AND_SEQUENTIAL_NSE_GR_IMPLICATIONS
+VERSION = 0.2.0
+MODE = A_TIER_DERIVATION
+STATUS = CONDITIONAL_FORMAL_CLOSURE
+NATIVE_ADAPTER_DECLARATIONS = A_TIER
+LOCAL_LEAN_EXECUTION = 0
+
+BASE = randogelist/NSE---MAXWELL---GR---QFT
+BASE_BRANCH = codex/fefferman-b-maxwell
+BASE_COMMIT = 1de664f2ef5ddc11caef25ac2274278b4171ab6b
+BRANCH = codex/gr-adapter
+
+COMPILER = Lean 4.34.0-rc1
+MATHLIB = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+EXTERNAL_RUNNER = GR_adapter/run.sh; native Windows safe-export GR_adapter/run.cmd
+CACHE_POLICY = RESTORE_COMPATIBLE_COMPILER_DEPENDENCY_AND_PROJECT_OBJECTS
+
+ORDER
+1. GRAdapter: actual geometry, finite tensor algebra, fields, boundary, sectors,
+   germ equivalence relations, scalar source formulas and explicit contracts.
+2. NSEGRForward: scalar completion -> actual constrained boundary -> radial
+   vacuum extension -> independent canonical sector; actual velocity recovery.
+3. NSEGRReverse: exact zero-stress reconstruction -> actual local analytic NSE;
+   explicit pressure-gauge/marked-germ inverse-law composition.
+
+EXACT_ROOT
+forall nu>0, rho!=0, t0:
+  ScalarBoundaryCompletionLaws nu rho t0 ->
+  AnalyticRadialExtensionLaws rho t0 ->
+  GeometricReconstructionLaws nu rho t0 ->
+  GermInverseLaws (the supplied three laws) ->
+  Nonempty (NSEgerm nu t0 equiv GRgerm nu rho t0).
+
+SOURCE_CARRIERS
+NSEgerm: jointly analytic, two-sided local periodic 3D NSE modulo actual
+full-slice time-germ equality and pressure gauge.
+GRgerm: independent marked analytic 5D Lorentzian vacuum metric germ,
+Gaussian gauge, induced eta4, beta(t0)=rho, beta_t(t0)=0, actual STF stress=0.
+No image-defined metric sector; no replacement of the global smooth
+FeffermanB proposition by this distinct local analytic carrier.
+
+UNRESOLVED
+Scalar CK existence/uniqueness and its concrete constraints/recovery.
+Radial CK existence/uniqueness and geometric constraint propagation.
+Analytic torus operators, actual geometric residual reconstruction.
+Forward pressure-gauge descent and the lift-after-decode identity.
+The decode-after-lift identity is derived from boundary matching and actual
+second-time-derivative locality; it is no longer an independent premise.
+Reverse germ descent is derived from actual metric-jet locality; it is also
+removed as an independent premise.
+Named premises have no supplied inhabitants.
+
+NATIVE_SAFETY_BOUNDARIES
+Actual flat Lorentzian vacuum proved at the native formula level.
+Flat metric with rho!=0 is not in the normalized Gaussian vacuum sector.
+Actual constant normalized boundary satisfies Codazzi and Hamiltonian constraints
+for every rho; its bulk vacuum realization remains an explicit radial obligation.
+Actual constant local NSE fields establish nonemptiness of the NSE carrier.
+Neither example proves arbitrary-data global NSE regularity.
+Theorem-level axiom audit does not discharge ordinary hypotheses.
+
+EVIDENCE
+MATCHING_EXTERNAL_COMPILATION = PASS
+MATCHING_THEOREM_LEVEL_AXIOM_AUDIT = PASS_STANDARD_ONLY
+APPROVED_AXIOMS = propext, Classical.choice, Quot.sound
+A_TIER = ESTABLISHED_FOR_THE_EXACT_LISTED_DECLARATIONS
+CONDITIONAL_FORMAL_CLOSURE = ESTABLISHED
+UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED
+
+The original complete B-tier v1.6.0 derivation is preserved in Derivation/.
+Its old source pins are source provenance, not compilation evidence for the
+current 4.34.0-rc1 adapter. The external source manifest and named type/axiom
+logs must match the exact commit before any promotion.
+
+EXTERNAL_CERTIFICATE
+AUDITED_SOURCE_COMMIT = 3dc98a61115f8d2e79d115d70b8c3478c504d82e
+RUN = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43365946484
+NATIVE_COMPILER = Lean 4.34.0-rc1, x86_64-unknown-linux-gnu
+COMPILER_COMMIT = 3447a668783dbce1a8fdb97101dd067687b2b418
+ADAPTER_AUDIT = 190/190 STANDARD_ONLY
+FORWARD_AUDIT = 6/6 STANDARD_ONLY
+REVERSE_AUDIT = 6/6 STANDARD_ONLY
+SOURCE_INPUT_VERIFICATION = PASS
+RETAINED_ARTIFACT_SHA256 = 6f1f62bf0aa8d752a17b28b5ba8593f7445c18d4c1d606e5423899aa2e81bcf4
+The retained certificate identifies the immutable audited commit. Subsequent
+status/documentation updates are recorded by the source-equivalence manifest.
+No mathematical premise was discharged by these metadata updates.
+
+DERIVED_GERM_EDGES
+sameMetricAt_boundaryK: marked full-slice metric germ -> actual normal jet germ.
+boundaryPressure_congr_eventually: jet germ -> reconstructed pressure germ,
+including the actual second time derivative of the Poisson potential.
+sameMetricAt_boundaryFields: native reverse descent; no reverse_respects premise.
+forward_pressure_gauge_recovery: supplied completion + actual boundary match
+-> decode-after-lift; no extra decode_lift premise.
+sameFlowAt_iff_analytic_pressure_gauge: exact analytic gauge on the common interval.
+REMAINING_GERM_FIELDS = forward_respects; lift_decode
+
+ACTIVE_MATHLIB_LOCALITY_INDEX
+Mathlib/Topology/Neighborhoods.lean:
+  Filter.EventuallyEq.eq_of_nhds; Filter.EventuallyEq.eventuallyEq_nhds.
+Mathlib/Analysis/Calculus/Deriv/Basic.lean:
+  Filter.EventuallyEq.deriv; Filter.EventuallyEq.deriv_eq.
+Mathlib/Analysis/Calculus/FDeriv/Congr.lean:
+  Filter.EventuallyEq.fderiv_eq.
+Mathlib/Analysis/Analytic/Constructions.lean:
+  AnalyticAt.curry_left.
+The B-tier TXT preserves the larger Mathlib/Methlib index and its original pins.
+Only the exact external certificate above promotes this native package.

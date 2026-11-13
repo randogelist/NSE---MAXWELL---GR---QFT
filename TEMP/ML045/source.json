@@ -1,0 +1,31 @@
+{
+  "id": "ML045",
+  "kind": "theorem",
+  "source_name": "Real.summable_exp_nat_mul_iff",
+  "endpoint": "GRTemp.ML045.endpoint",
+  "module": "ML045.Endpoint",
+  "source_path": "Mathlib/Analysis/SpecialFunctions/Exp.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "df9c7572f9816cccc1a7f8f6b03c2e11200654c18251fc7869c69ae63c20b9a6",
+  "source_start_line": 460,
+  "source_end_line": 463,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/Exp.lean#L460",
+  "upstream_import": "Mathlib.Analysis.SpecialFunctions.Exp",
+  "retained_dependencies": [
+    "Mathlib.Analysis.SpecialFunctions.Exp"
+  ],
+  "extraction_kind": "COPIED_PROOF_BODY",
+  "original_declaration": "lemma summable_exp_nat_mul_iff {a : ℝ} :\n    Summable (fun n : ℕ ↦ exp (n * a)) ↔ a < 0 := by\n  simp only [exp_nat_mul, summable_geometric_iff_norm_lt_one, norm_of_nonneg (exp_nonneg _),\n    exp_lt_one_iff]",
+  "generated_additive_declaration": null,
+  "source_context": "open Asymptotics Bornology Finset Filter Function Metric Set Topology\nopen scoped Nat\nnamespace Real\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC03"
+  ],
+  "endpoint_sha256": "ae1aafb06eed5d77f9558a559c1b38894e0b7df00519e1dc83f991daa1ae7f6a",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+}

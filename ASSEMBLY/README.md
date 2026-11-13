@@ -100,3 +100,30 @@ imports 54 source-matched native modules. Approved axioms only:
 [Exact source](ClassicalMechanicsAssembly/FlowNSEBCM.lean) ·
 [Certificate](../Auxillary/assembly/NSEB_IFF_CM_A_TIER.txt) ·
 [Retained evidence](../Auxillary/evidence/nseb-cm-linux-43447885685/).
+
+## Native NSE / marked Gaussian vacuum-sector closure
+
+```text
+ROOT_STATUS = !!!! UNCONDITIONAL_CLOSURE
+ROOT = NSEGR.NativeLiterature.NSE_GR_NATIVE_LITERATURE_CLOSURE
+TYPE = forall nu rho t0 : Real, 0 < nu -> rho != 0 ->
+       Nonempty (NSEGR.NSEgerm nu t0 ≃ NSEGR.GRgerm nu rho t0)
+SCOPE = local jointly analytic periodic NSE / normalized marked five-dimensional Gaussian vacuum sector
+SOURCE = d5231111cbdbe8a9c686b52ae4224554d4fba48a
+EXTERNAL_RUN = 43509144981
+EXACT_AUDITS = 1549 / 1549 PASS_STANDARD_ONLY
+SOURCE_HASHES = 373 / 373 PASS
+UNRESOLVED_ANALYTIC_INPUTS = empty
+FOUNDATIONAL_AXIOMS = {propext, Classical.choice, Quot.sound}
+LOCAL_LEAN_EXECUTIONS = 0
+```
+
+[Exact theorem](GRAssembly/NSE_GR_NATIVE_LITERATURE_CLOSURE.lean) ·
+[A-tier report](../Auxillary/GR/Closure/Native/NSE_GR_NATIVE_LITERATURE_CLOSURE_A_TIER.txt) ·
+[Certificate](../Auxillary/GR/Closure/Native/EXTERNAL_CERTIFICATE.json) ·
+[Scoped GR adapter](../GR_adapter/README.md) ·
+[External PASS](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43509144981)
+
+External cached GR entry point: `bash ASSEMBLY/run.sh --dag-build --batch-audits --individual-modules --keep-going`.
+
+Historical conditional assembly: [three-obligation report](NSE_GR_THREE_OBLIGATION_CLOSURE_A_TIER.txt); its explicit literature inputs are discharged by the current native closure above.

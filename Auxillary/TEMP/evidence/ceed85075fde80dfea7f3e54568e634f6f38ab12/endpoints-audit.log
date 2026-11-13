@@ -1,0 +1,804 @@
+@mem_nhds_prod_iff' : ∀ {X : Type u_1} {Y : Type u_2} [inst : TopologicalSpace X] [inst_1 : TopologicalSpace Y] {x : X}
+  {y : Y} {s : Set (X × Y)}, s ∈ nhds (x, y) ↔ ∃ u v, IsOpen u ∧ x ∈ u ∧ IsOpen v ∧ y ∈ v ∧ u ×ˢ v ⊆ s
+@GRTemp.ML001.endpoint : ∀ {X : Type u_1} {Y : Type u_2} [inst : TopologicalSpace X] [inst_1 : TopologicalSpace Y]
+  {x : X} {y : Y} {s : Set (X × Y)}, s ∈ nhds (x, y) ↔ ∃ u v, IsOpen u ∧ x ∈ u ∧ IsOpen v ∧ y ∈ v ∧ u ×ˢ v ⊆ s
+'GRTemp.ML001.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML001.endpoint
+@exists_compact_subset : ∀ {X : Type u_1} [inst : TopologicalSpace X] [LocallyCompactSpace X] {x : X} {U : Set X},
+  IsOpen U → x ∈ U → ∃ K, IsCompact K ∧ x ∈ interior K ∧ K ⊆ U
+@GRTemp.ML002.endpoint : ∀ {X : Type u_1} [inst : TopologicalSpace X] [LocallyCompactSpace X] {x : X} {U : Set X},
+  IsOpen U → x ∈ U → ∃ K, IsCompact K ∧ x ∈ interior K ∧ K ⊆ U
+'GRTemp.ML002.endpoint' depends on axioms: [propext, Quot.sound]
+TYPE_MATCH GRTemp.ML002.endpoint
+@IsCompact.elim_finite_subcover : ∀ {X : Type u_1} [inst : TopologicalSpace X] {s : Set X} {ι : Type u_2},
+  IsCompact s → ∀ (U : ι → Set X), (∀ (i : ι), IsOpen (U i)) → s ⊆ ⋃ i, U i → ∃ t, s ⊆ ⋃ i ∈ t, U i
+@GRTemp.ML003.endpoint : ∀ {X : Type u_1} [inst : TopologicalSpace X] {s : Set X} {ι : Type u_2},
+  IsCompact s → ∀ (U : ι → Set X), (∀ (i : ι), IsOpen (U i)) → s ⊆ ⋃ i, U i → ∃ t, s ⊆ ⋃ i ∈ t, U i
+'GRTemp.ML003.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML003.endpoint
+@IsCompact.eventually_forall_of_forall_eventually : ∀ {X : Type u_1} {Y : Type u_2} [inst : TopologicalSpace X]
+  [inst_1 : TopologicalSpace Y] {x₀ : X} {K : Set Y},
+  IsCompact K →
+    ∀ {P : X → Y → Prop}, (∀ y ∈ K, ∀ᶠ (z : X × Y) in nhds (x₀, y), P z.1 z.2) → ∀ᶠ (x : X) in nhds x₀, ∀ y ∈ K, P x y
+@GRTemp.ML004.endpoint : ∀ {X : Type u_1} {Y : Type u_2} [inst : TopologicalSpace X] [inst_1 : TopologicalSpace Y]
+  {x₀ : X} {K : Set Y},
+  IsCompact K →
+    ∀ {P : X → Y → Prop}, (∀ y ∈ K, ∀ᶠ (z : X × Y) in nhds (x₀, y), P z.1 z.2) → ∀ᶠ (x : X) in nhds x₀, ∀ y ∈ K, P x y
+'GRTemp.ML004.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML004.endpoint
+@IsCompact.mem_prod_nhdsSet_of_forall : ∀ {Y : Type u_1} [inst : TopologicalSpace Y] {K : Set Y} {X : Type u_2}
+  {l : Filter X} {s : Set (X × Y)}, IsCompact K → (∀ y ∈ K, s ∈ l ×ˢ nhds y) → s ∈ l ×ˢ nhdsSet K
+@GRTemp.ML005.endpoint : ∀ {Y : Type u_1} [inst : TopologicalSpace Y] {K : Set Y} {X : Type u_2} {l : Filter X}
+  {s : Set (X × Y)}, IsCompact K → (∀ y ∈ K, s ∈ l ×ˢ nhds y) → s ∈ l ×ˢ nhdsSet K
+'GRTemp.ML005.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML005.endpoint
+@Set.iUnionLift : {α : Type u_1} →
+  {ι : Sort u_2} →
+    {β : Sort u_3} →
+      (S : ι → Set α) →
+        (f : (i : ι) → ↑(S i) → β) →
+          (∀ (i j : ι) (x : α) (hxi : x ∈ S i) (hxj : x ∈ S j), f i ⟨x, hxi⟩ = f j ⟨x, hxj⟩) →
+            (T : Set α) → T ⊆ Set.iUnion S → ↑T → β
+@GRTemp.ML006.endpoint : {α : Type u_1} →
+  {ι : Sort u_2} →
+    {β : Sort u_3} →
+      (S : ι → Set α) →
+        (f : (i : ι) → ↑(S i) → β) →
+          (∀ (i j : ι) (x : α) (hxi : x ∈ S i) (hxj : x ∈ S j), f i ⟨x, hxi⟩ = f j ⟨x, hxj⟩) →
+            (T : Set α) → T ⊆ Set.iUnion S → ↑T → β
+'GRTemp.ML006.endpoint' depends on axioms: [Classical.choice]
+TYPE_MATCH GRTemp.ML006.endpoint
+@Set.iUnionLift_of_mem : ∀ {α : Type u_1} {ι : Sort u_3} {β : Sort u_2} {S : ι → Set α} {f : (i : ι) → ↑(S i) → β}
+  {hf : ∀ (i j : ι) (x : α) (hxi : x ∈ S i) (hxj : x ∈ S j), f i ⟨x, hxi⟩ = f j ⟨x, hxj⟩} {T : Set α}
+  {hT : T ⊆ Set.iUnion S} (x : ↑T) {i : ι} (hx : ↑x ∈ S i), Set.iUnionLift S f hf T hT x = f i ⟨↑x, hx⟩
+@GRTemp.ML007.endpoint : ∀ {α : Type u_1} {ι : Sort u_3} {β : Sort u_2} {S : ι → Set α} {f : (i : ι) → ↑(S i) → β}
+  {hf : ∀ (i j : ι) (x : α) (hxi : x ∈ S i) (hxj : x ∈ S j), f i ⟨x, hxi⟩ = f j ⟨x, hxj⟩} {T : Set α}
+  {hT : T ⊆ Set.iUnion S} (x : ↑T) {i : ι} (hx : ↑x ∈ S i), Set.iUnionLift S f hf T hT x = f i ⟨↑x, hx⟩
+'GRTemp.ML007.endpoint' depends on axioms: [Classical.choice]
+TYPE_MATCH GRTemp.ML007.endpoint
+@Set.liftCover : {α : Type u_1} →
+  {ι : Sort u_2} →
+    {β : Sort u_3} →
+      (S : ι → Set α) →
+        (f : (i : ι) → ↑(S i) → β) →
+          (∀ (i j : ι) (x : α) (hxi : x ∈ S i) (hxj : x ∈ S j), f i ⟨x, hxi⟩ = f j ⟨x, hxj⟩) →
+            Set.iUnion S = Set.univ → α → β
+@GRTemp.ML008.endpoint : {α : Type u_1} →
+  {ι : Sort u_2} →
+    {β : Sort u_3} →
+      (S : ι → Set α) →
+        (f : (i : ι) → ↑(S i) → β) →
+          (∀ (i j : ι) (x : α) (hxi : x ∈ S i) (hxj : x ∈ S j), f i ⟨x, hxi⟩ = f j ⟨x, hxj⟩) →
+            Set.iUnion S = Set.univ → α → β
+'GRTemp.ML008.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML008.endpoint
+@Set.liftCover_of_mem : ∀ {α : Type u_1} {ι : Sort u_3} {β : Sort u_2} {S : ι → Set α} {f : (i : ι) → ↑(S i) → β}
+  {hf : ∀ (i j : ι) (x : α) (hxi : x ∈ S i) (hxj : x ∈ S j), f i ⟨x, hxi⟩ = f j ⟨x, hxj⟩} {hS : Set.iUnion S = Set.univ}
+  {i : ι} {x : α} (hx : x ∈ S i), Set.liftCover S f hf hS x = f i ⟨x, hx⟩
+@GRTemp.ML009.endpoint : ∀ {α : Type u_1} {ι : Sort u_3} {β : Sort u_2} {S : ι → Set α} {f : (i : ι) → ↑(S i) → β}
+  {hf : ∀ (i j : ι) (x : α) (hxi : x ∈ S i) (hxj : x ∈ S j), f i ⟨x, hxi⟩ = f j ⟨x, hxj⟩} {hS : Set.iUnion S = Set.univ}
+  {i : ι} {x : α} (hx : x ∈ S i), Set.liftCover S f hf hS x = f i ⟨x, hx⟩
+'GRTemp.ML009.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML009.endpoint
+@AnalyticAt.congr : ∀ {𝕜 : Type u_1} {E : Type u_2} {F : Type u_3} [inst : NontriviallyNormedField 𝕜]
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] [inst_3 : NormedAddCommGroup F] [inst_4 : NormedSpace 𝕜 F]
+  {f g : E → F} {x : E}, AnalyticAt 𝕜 f x → f =ᶠ[nhds x] g → AnalyticAt 𝕜 g x
+@GRTemp.ML010.endpoint : ∀ {𝕜 : Type u_1} {E : Type u_2} {F : Type u_3} [inst : NontriviallyNormedField 𝕜]
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] [inst_3 : NormedAddCommGroup F] [inst_4 : NormedSpace 𝕜 F]
+  {f g : E → F} {x : E}, AnalyticAt 𝕜 f x → f =ᶠ[nhds x] g → AnalyticAt 𝕜 g x
+'GRTemp.ML010.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML010.endpoint
+@AnalyticOnNhd.congr : ∀ {𝕜 : Type u_1} {E : Type u_2} {F : Type u_3} [inst : NontriviallyNormedField 𝕜]
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] [inst_3 : NormedAddCommGroup F] [inst_4 : NormedSpace 𝕜 F]
+  {f g : E → F} {s : Set E}, IsOpen s → AnalyticOnNhd 𝕜 f s → Set.EqOn f g s → AnalyticOnNhd 𝕜 g s
+@GRTemp.ML011.endpoint : ∀ {𝕜 : Type u_1} {E : Type u_2} {F : Type u_3} [inst : NontriviallyNormedField 𝕜]
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] [inst_3 : NormedAddCommGroup F] [inst_4 : NormedSpace 𝕜 F]
+  {f g : E → F} {s : Set E}, IsOpen s → AnalyticOnNhd 𝕜 f s → Set.EqOn f g s → AnalyticOnNhd 𝕜 g s
+'GRTemp.ML011.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML011.endpoint
+@Filter.EventuallyEq.fderiv_eq : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {E : Type u_2}
+  [inst_1 : AddCommGroup E] [inst_2 : _root_.Module 𝕜 E] [inst_3 : TopologicalSpace E] {F : Type u_3}
+  [inst_4 : AddCommGroup F] [inst_5 : _root_.Module 𝕜 F] [inst_6 : TopologicalSpace F] {f f₁ : E → F} {x : E},
+  f₁ =ᶠ[nhds x] f → fderiv 𝕜 f₁ x = fderiv 𝕜 f x
+@GRTemp.ML012.endpoint : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {E : Type u_2} [inst_1 : AddCommGroup E]
+  [inst_2 : _root_.Module 𝕜 E] [inst_3 : TopologicalSpace E] {F : Type u_3} [inst_4 : AddCommGroup F]
+  [inst_5 : _root_.Module 𝕜 F] [inst_6 : TopologicalSpace F] {f f₁ : E → F} {x : E},
+  f₁ =ᶠ[nhds x] f → fderiv 𝕜 f₁ x = fderiv 𝕜 f x
+'GRTemp.ML012.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML012.endpoint
+@Filter.EventuallyEq.fderiv : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {E : Type u_2}
+  [inst_1 : AddCommGroup E] [inst_2 : _root_.Module 𝕜 E] [inst_3 : TopologicalSpace E] {F : Type u_3}
+  [inst_4 : AddCommGroup F] [inst_5 : _root_.Module 𝕜 F] [inst_6 : TopologicalSpace F] {f f₁ : E → F} {x : E},
+  f₁ =ᶠ[nhds x] f → fderiv 𝕜 f₁ =ᶠ[nhds x] fderiv 𝕜 f
+@GRTemp.ML013.endpoint : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {E : Type u_2} [inst_1 : AddCommGroup E]
+  [inst_2 : _root_.Module 𝕜 E] [inst_3 : TopologicalSpace E] {F : Type u_3} [inst_4 : AddCommGroup F]
+  [inst_5 : _root_.Module 𝕜 F] [inst_6 : TopologicalSpace F] {f f₁ : E → F} {x : E},
+  f₁ =ᶠ[nhds x] f → fderiv 𝕜 f₁ =ᶠ[nhds x] fderiv 𝕜 f
+'GRTemp.ML013.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML013.endpoint
+@Set.piecewise_eqOn : ∀ {α : Type u_1} {β : Type u_2} (s : Set α) [inst : (j : α) → Decidable (j ∈ s)] (f g : α → β),
+  Set.EqOn (s.piecewise f g) f s
+@GRTemp.ML014.endpoint : ∀ {α : Type u_1} {β : Type u_2} (s : Set α) [inst : (j : α) → Decidable (j ∈ s)] (f g : α → β),
+  Set.EqOn (s.piecewise f g) f s
+'GRTemp.ML014.endpoint' does not depend on any axioms
+TYPE_MATCH GRTemp.ML014.endpoint
+@Function.Periodic.zsmul : ∀ {α : Type u_1} {β : Type u_2} {f : α → β} {c : α} [inst : AddGroup α],
+  Function.Periodic f c → ∀ (n : ℤ), Function.Periodic f (n • c)
+@GRTemp.ML015.endpoint : ∀ {α : Type u_1} {β : Type u_2} {f : α → β} {c : α} [inst : AddGroup α],
+  Function.Periodic f c → ∀ (n : ℤ), Function.Periodic f (n • c)
+'GRTemp.ML015.endpoint' depends on axioms: [propext, Quot.sound]
+TYPE_MATCH GRTemp.ML015.endpoint
+@Function.Periodic.add_period : ∀ {α : Type u_1} {β : Type u_2} {f : α → β} {c₁ c₂ : α} [inst : AddSemigroup α],
+  Function.Periodic f c₁ → Function.Periodic f c₂ → Function.Periodic f (c₁ + c₂)
+@GRTemp.ML016.endpoint : ∀ {α : Type u_1} {β : Type u_2} {f : α → β} {c₁ c₂ : α} [inst : AddSemigroup α],
+  Function.Periodic f c₁ → Function.Periodic f c₂ → Function.Periodic f (c₁ + c₂)
+'GRTemp.ML016.endpoint' depends on axioms: [propext, Quot.sound]
+TYPE_MATCH GRTemp.ML016.endpoint
+@AnalyticAt.eventually_analyticAt : ∀ {𝕜 : Type u_1} {E : Type u_2} {F : Type u_3} [inst : NontriviallyNormedField 𝕜]
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] [inst_3 : NormedAddCommGroup F] [inst_4 : NormedSpace 𝕜 F]
+  [CompleteSpace F] {f : E → F} {x : E}, AnalyticAt 𝕜 f x → ∀ᶠ (y : E) in nhds x, AnalyticAt 𝕜 f y
+@GRTemp.ML017.endpoint : ∀ {𝕜 : Type u_1} {E : Type u_2} {F : Type u_3} [inst : NontriviallyNormedField 𝕜]
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] [inst_3 : NormedAddCommGroup F] [inst_4 : NormedSpace 𝕜 F]
+  [CompleteSpace F] {f : E → F} {x : E}, AnalyticAt 𝕜 f x → ∀ᶠ (y : E) in nhds x, AnalyticAt 𝕜 f y
+'GRTemp.ML017.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML017.endpoint
+@mem_nhds_iff_exists_Ioo_subset : ∀ {α : Type u_1} [inst : TopologicalSpace α] [inst_1 : LinearOrder α]
+  [OrderTopology α] [NoMaxOrder α] [NoMinOrder α] {a : α} {s : Set α},
+  s ∈ nhds a ↔ ∃ l u, a ∈ Set.Ioo l u ∧ Set.Ioo l u ⊆ s
+@GRTemp.ML018.endpoint : ∀ {α : Type u_1} [inst : TopologicalSpace α] [inst_1 : LinearOrder α] [OrderTopology α]
+  [NoMaxOrder α] [NoMinOrder α] {a : α} {s : Set α}, s ∈ nhds a ↔ ∃ l u, a ∈ Set.Ioo l u ∧ Set.Ioo l u ⊆ s
+'GRTemp.ML018.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML018.endpoint
+@ContDiffBump.contDiff : ∀ {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℝ E]
+  [inst_2 : HasContDiffBump E] {c : E} (f : ContDiffBump c) {n : ℕ∞}, ContDiff ℝ ↑n ↑f
+@GRTemp.ML019.endpoint : ∀ {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℝ E]
+  [inst_2 : HasContDiffBump E] {c : E} (f : ContDiffBump c) {n : ℕ∞}, ContDiff ℝ ↑n ↑f
+'GRTemp.ML019.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML019.endpoint
+@ContDiffBump.one_of_mem_closedBall : ∀ {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℝ E]
+  [inst_2 : HasContDiffBump E] {c : E} (f : ContDiffBump c) {x : E}, x ∈ Metric.closedBall c f.rIn → ↑f x = 1
+@GRTemp.ML020.endpoint : ∀ {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℝ E]
+  [inst_2 : HasContDiffBump E] {c : E} (f : ContDiffBump c) {x : E}, x ∈ Metric.closedBall c f.rIn → ↑f x = 1
+'GRTemp.ML020.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML020.endpoint
+@ContDiffBump.tsupport_eq : ∀ {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℝ E]
+  [inst_2 : HasContDiffBump E] {c : E} (f : ContDiffBump c), tsupport ↑f = Metric.closedBall c f.rOut
+@GRTemp.ML021.endpoint : ∀ {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℝ E]
+  [inst_2 : HasContDiffBump E] {c : E} (f : ContDiffBump c), tsupport ↑f = Metric.closedBall c f.rOut
+'GRTemp.ML021.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML021.endpoint
+@derivWithin_of_mem_nhds : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {F : Type u_2}
+  [inst_1 : NormedAddCommGroup F] [inst_2 : NormedSpace 𝕜 F] {f : 𝕜 → F} {x : 𝕜} {s : Set 𝕜},
+  s ∈ nhds x → derivWithin f s x = deriv f x
+@GRTemp.ML022.endpoint : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {F : Type u_2}
+  [inst_1 : NormedAddCommGroup F] [inst_2 : NormedSpace 𝕜 F] {f : 𝕜 → F} {x : 𝕜} {s : Set 𝕜},
+  s ∈ nhds x → derivWithin f s x = deriv f x
+'GRTemp.ML022.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML022.endpoint
+@FormalMultilinearSeries.summable_norm_mul_pow : ∀ {𝕜 : Type u_1} {E : Type u_2} {F : Type u_3}
+  [inst : NontriviallyNormedField 𝕜] [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E]
+  [inst_3 : NormedAddCommGroup F] [inst_4 : NormedSpace 𝕜 F] (p : FormalMultilinearSeries 𝕜 E F) {r : NNReal},
+  ↑r < p.radius → Summable fun n => ‖p n‖ * ↑r ^ n
+@GRTemp.ML023.endpoint : ∀ {𝕜 : Type u_1} {E : Type u_2} {F : Type u_3} [inst : NontriviallyNormedField 𝕜]
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] [inst_3 : NormedAddCommGroup F] [inst_4 : NormedSpace 𝕜 F]
+  (p : FormalMultilinearSeries 𝕜 E F) {r : NNReal}, ↑r < p.radius → Summable fun n => ‖p n‖ * ↑r ^ n
+'GRTemp.ML023.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML023.endpoint
+@FormalMultilinearSeries.le_radius_of_summable : ∀ {𝕜 : Type u_1} {E : Type u_2} {F : Type u_3}
+  [inst : NontriviallyNormedField 𝕜] [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E]
+  [inst_3 : NormedAddCommGroup F] [inst_4 : NormedSpace 𝕜 F] (p : FormalMultilinearSeries 𝕜 E F) {r : NNReal},
+  (Summable fun n => ‖p n‖ * ↑r ^ n) → ↑r ≤ p.radius
+@GRTemp.ML024.endpoint : ∀ {𝕜 : Type u_1} {E : Type u_2} {F : Type u_3} [inst : NontriviallyNormedField 𝕜]
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] [inst_3 : NormedAddCommGroup F] [inst_4 : NormedSpace 𝕜 F]
+  (p : FormalMultilinearSeries 𝕜 E F) {r : NNReal}, (Summable fun n => ‖p n‖ * ↑r ^ n) → ↑r ≤ p.radius
+'GRTemp.ML024.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML024.endpoint
+@FormalMultilinearSeries.hasFPowerSeriesOnBall : ∀ {𝕜 : Type u_1} {E : Type u_2} {F : Type u_3}
+  [inst : NontriviallyNormedField 𝕜] [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E]
+  [inst_3 : NormedAddCommGroup F] [inst_4 : NormedSpace 𝕜 F] [CompleteSpace F] (p : FormalMultilinearSeries 𝕜 E F),
+  0 < p.radius → HasFPowerSeriesOnBall p.sum p 0 p.radius
+@GRTemp.ML025.endpoint : ∀ {𝕜 : Type u_1} {E : Type u_2} {F : Type u_3} [inst : NontriviallyNormedField 𝕜]
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] [inst_3 : NormedAddCommGroup F] [inst_4 : NormedSpace 𝕜 F]
+  [CompleteSpace F] (p : FormalMultilinearSeries 𝕜 E F), 0 < p.radius → HasFPowerSeriesOnBall p.sum p 0 p.radius
+'GRTemp.ML025.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML025.endpoint
+@HasFPowerSeriesOnBall.analyticAt : ∀ {𝕜 : Type u_1} {E : Type u_2} {F : Type u_3} [inst : NontriviallyNormedField 𝕜]
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] [inst_3 : NormedAddCommGroup F] [inst_4 : NormedSpace 𝕜 F]
+  {f : E → F} {p : FormalMultilinearSeries 𝕜 E F} {x : E} {r : ENNReal},
+  HasFPowerSeriesOnBall f p x r → AnalyticAt 𝕜 f x
+@GRTemp.ML026.endpoint : ∀ {𝕜 : Type u_1} {E : Type u_2} {F : Type u_3} [inst : NontriviallyNormedField 𝕜]
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] [inst_3 : NormedAddCommGroup F] [inst_4 : NormedSpace 𝕜 F]
+  {f : E → F} {p : FormalMultilinearSeries 𝕜 E F} {x : E} {r : ENNReal},
+  HasFPowerSeriesOnBall f p x r → AnalyticAt 𝕜 f x
+'GRTemp.ML026.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML026.endpoint
+@tendstoUniformlyOn_tsum : ∀ {α : Type u_1} {β : Type u_2} {F : Type u_3} [inst : NormedAddCommGroup F]
+  [CompleteSpace F] {u : α → ℝ} {f : α → β → F},
+  Summable u →
+    ∀ {s : Set β},
+      (∀ (n : α), ∀ x ∈ s, ‖f n x‖ ≤ u n) →
+        TendstoUniformlyOn (fun t x => ∑ n ∈ t, f n x) (fun x => ∑' (n : α), f n x) Filter.atTop s
+@GRTemp.ML027.endpoint : ∀ {α : Type u_1} {β : Type u_2} {F : Type u_3} [inst : NormedAddCommGroup F] [CompleteSpace F]
+  {u : α → ℝ} {f : α → β → F},
+  Summable u →
+    ∀ {s : Set β},
+      (∀ (n : α), ∀ x ∈ s, ‖f n x‖ ≤ u n) →
+        TendstoUniformlyOn (fun t x => ∑ n ∈ t, f n x) (fun x => ∑' (n : α), f n x) Filter.atTop s
+'GRTemp.ML027.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML027.endpoint
+@continuousOn_tsum : ∀ {α : Type u_1} {β : Type u_2} {F : Type u_3} [inst : NormedAddCommGroup F] [CompleteSpace F]
+  {u : α → ℝ} [inst_2 : TopologicalSpace β] {f : α → β → F} {s : Set β},
+  (∀ (i : α), ContinuousOn (f i) s) →
+    Summable u → (∀ (n : α), ∀ x ∈ s, ‖f n x‖ ≤ u n) → ContinuousOn (fun x => ∑' (n : α), f n x) s
+@GRTemp.ML028.endpoint : ∀ {α : Type u_1} {β : Type u_2} {F : Type u_3} [inst : NormedAddCommGroup F] [CompleteSpace F]
+  {u : α → ℝ} [inst_2 : TopologicalSpace β] {f : α → β → F} {s : Set β},
+  (∀ (i : α), ContinuousOn (f i) s) →
+    Summable u → (∀ (n : α), ∀ x ∈ s, ‖f n x‖ ≤ u n) → ContinuousOn (fun x => ∑' (n : α), f n x) s
+'GRTemp.ML028.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML028.endpoint
+@hasFDerivAt_tsum_of_isPreconnected : ∀ {α : Type u_1} {𝕜 : Type u_2} {E : Type u_3} {F : Type u_4}
+  [inst : NontriviallyNormedField 𝕜] [IsRCLikeNormedField 𝕜] [inst_2 : NormedAddCommGroup E] [inst_3 : NormedSpace 𝕜 E]
+  [inst_4 : NormedAddCommGroup F] [CompleteSpace F] {u : α → ℝ} [inst_6 : NormedSpace 𝕜 F] {f : α → E → F}
+  {f' : α → E → E →L[𝕜] F} {s : Set E} {x₀ x : E},
+  Summable u →
+    IsOpen s →
+      IsPreconnected s →
+        (∀ (n : α), ∀ x ∈ s, HasFDerivAt (f n) (f' n x) x) →
+          (∀ (n : α), ∀ x ∈ s, ‖f' n x‖ ≤ u n) →
+            x₀ ∈ s →
+              (Summable fun n => f n x₀) → x ∈ s → HasFDerivAt (fun y => ∑' (n : α), f n y) (∑' (n : α), f' n x) x
+@GRTemp.ML029.endpoint : ∀ {α : Type u_1} {𝕜 : Type u_2} {E : Type u_3} {F : Type u_4}
+  [inst : NontriviallyNormedField 𝕜] [IsRCLikeNormedField 𝕜] [inst_2 : NormedAddCommGroup E] [inst_3 : NormedSpace 𝕜 E]
+  [inst_4 : NormedAddCommGroup F] [CompleteSpace F] {u : α → ℝ} [inst_6 : NormedSpace 𝕜 F] {f : α → E → F}
+  {f' : α → E → E →L[𝕜] F} {s : Set E} {x₀ x : E},
+  Summable u →
+    IsOpen s →
+      IsPreconnected s →
+        (∀ (n : α), ∀ x ∈ s, HasFDerivAt (f n) (f' n x) x) →
+          (∀ (n : α), ∀ x ∈ s, ‖f' n x‖ ≤ u n) →
+            x₀ ∈ s →
+              (Summable fun n => f n x₀) → x ∈ s → HasFDerivAt (fun y => ∑' (n : α), f n y) (∑' (n : α), f' n x) x
+'GRTemp.ML029.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML029.endpoint
+@hasDerivAt_tsum_of_isPreconnected : ∀ {α : Type u_1} {𝕜 : Type u_2} {F : Type u_3} [inst : NontriviallyNormedField 𝕜]
+  [IsRCLikeNormedField 𝕜] [inst_2 : NormedAddCommGroup F] [CompleteSpace F] {u : α → ℝ} [inst_4 : NormedSpace 𝕜 F]
+  {g g' : α → 𝕜 → F} {t : Set 𝕜} {y₀ y : 𝕜},
+  Summable u →
+    IsOpen t →
+      IsPreconnected t →
+        (∀ (n : α), ∀ y ∈ t, HasDerivAt (g n) (g' n y) y) →
+          (∀ (n : α), ∀ y ∈ t, ‖g' n y‖ ≤ u n) →
+            y₀ ∈ t → (Summable fun n => g n y₀) → y ∈ t → HasDerivAt (fun z => ∑' (n : α), g n z) (∑' (n : α), g' n y) y
+@GRTemp.ML030.endpoint : ∀ {α : Type u_1} {𝕜 : Type u_2} {F : Type u_3} [inst : NontriviallyNormedField 𝕜]
+  [IsRCLikeNormedField 𝕜] [inst_2 : NormedAddCommGroup F] [CompleteSpace F] {u : α → ℝ} [inst_4 : NormedSpace 𝕜 F]
+  {g g' : α → 𝕜 → F} {t : Set 𝕜} {y₀ y : 𝕜},
+  Summable u →
+    IsOpen t →
+      IsPreconnected t →
+        (∀ (n : α), ∀ y ∈ t, HasDerivAt (g n) (g' n y) y) →
+          (∀ (n : α), ∀ y ∈ t, ‖g' n y‖ ≤ u n) →
+            y₀ ∈ t → (Summable fun n => g n y₀) → y ∈ t → HasDerivAt (fun z => ∑' (n : α), g n z) (∑' (n : α), g' n y) y
+'GRTemp.ML030.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML030.endpoint
+@hasFDerivAt_integral_of_dominated_of_fderiv_le : ∀ {α : Type u_1} [inst : MeasurableSpace α]
+  {μ : MeasureTheory.Measure α} {𝕜 : Type u_2} [inst_1 : RCLike 𝕜] {E : Type u_3} [inst_2 : NormedAddCommGroup E]
+  [inst_3 : NormedSpace ℝ E] [inst_4 : NormedSpace 𝕜 E] {H : Type u_4} [inst_5 : NormedAddCommGroup H]
+  [inst_6 : NormedSpace 𝕜 H] {F : H → α → E} {x₀ : H} {bound : α → ℝ} {s : Set H} {F' : H → α → H →L[𝕜] E},
+  s ∈ nhds x₀ →
+    (∀ᶠ (x : H) in nhds x₀, MeasureTheory.AEStronglyMeasurable (F x) μ) →
+      MeasureTheory.Integrable (F x₀) μ →
+        MeasureTheory.AEStronglyMeasurable (F' x₀) μ →
+          (∀ᵐ (a : α) ∂μ, ∀ x ∈ s, ‖F' x a‖ ≤ bound a) →
+            MeasureTheory.Integrable bound μ →
+              (∀ᵐ (a : α) ∂μ, ∀ x ∈ s, HasFDerivAt (fun x => F x a) (F' x a) x) →
+                HasFDerivAt (fun x => ∫ (a : α), F x a ∂μ) (∫ (a : α), F' x₀ a ∂μ) x₀
+@GRTemp.ML031.endpoint : ∀ {α : Type u_1} [inst : MeasurableSpace α] {μ : MeasureTheory.Measure α} {𝕜 : Type u_2}
+  [inst_1 : RCLike 𝕜] {E : Type u_3} [inst_2 : NormedAddCommGroup E] [inst_3 : NormedSpace ℝ E]
+  [inst_4 : NormedSpace 𝕜 E] {H : Type u_4} [inst_5 : NormedAddCommGroup H] [inst_6 : NormedSpace 𝕜 H] {F : H → α → E}
+  {x₀ : H} {bound : α → ℝ} {s : Set H} {F' : H → α → H →L[𝕜] E},
+  s ∈ nhds x₀ →
+    (∀ᶠ (x : H) in nhds x₀, MeasureTheory.AEStronglyMeasurable (F x) μ) →
+      MeasureTheory.Integrable (F x₀) μ →
+        MeasureTheory.AEStronglyMeasurable (F' x₀) μ →
+          (∀ᵐ (a : α) ∂μ, ∀ x ∈ s, ‖F' x a‖ ≤ bound a) →
+            MeasureTheory.Integrable bound μ →
+              (∀ᵐ (a : α) ∂μ, ∀ x ∈ s, HasFDerivAt (fun x => F x a) (F' x a) x) →
+                HasFDerivAt (fun x => ∫ (a : α), F x a ∂μ) (∫ (a : α), F' x₀ a ∂μ) x₀
+'GRTemp.ML031.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML031.endpoint
+@Complex.integral_boundary_rect_eq_zero_of_differentiableOn : ∀ {E : Type u_1} [inst : NormedAddCommGroup E]
+  [inst_1 : NormedSpace ℂ E] (f : ℂ → E) (z w : ℂ),
+  DifferentiableOn ℂ f (Set.uIcc z.re w.re ×ℂ Set.uIcc z.im w.im) →
+    (((∫ (x : ℝ) in z.re..w.re, f (↑x + ↑z.im * Complex.I)) - ∫ (x : ℝ) in z.re..w.re, f (↑x + ↑w.im * Complex.I)) +
+          Complex.I • ∫ (y : ℝ) in z.im..w.im, f (↑w.re + ↑y * Complex.I)) -
+        Complex.I • ∫ (y : ℝ) in z.im..w.im, f (↑z.re + ↑y * Complex.I) =
+      0
+@GRTemp.ML032.endpoint : ∀ {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℂ E] (f : ℂ → E)
+  (z w : ℂ),
+  DifferentiableOn ℂ f (Set.uIcc z.re w.re ×ℂ Set.uIcc z.im w.im) →
+    (((∫ (x : ℝ) in z.re..w.re, f (↑x + ↑z.im * Complex.I)) - ∫ (x : ℝ) in z.re..w.re, f (↑x + ↑w.im * Complex.I)) +
+          Complex.I • ∫ (y : ℝ) in z.im..w.im, f (↑w.re + ↑y * Complex.I)) -
+        Complex.I • ∫ (y : ℝ) in z.im..w.im, f (↑z.re + ↑y * Complex.I) =
+      0
+'GRTemp.ML032.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML032.endpoint
+@Complex.norm_iteratedDeriv_le_of_forall_mem_sphere_norm_le : ∀ {F : Type u_1} [inst : NormedAddCommGroup F]
+  [inst_1 : NormedSpace ℂ F] [CompleteSpace F] {c : ℂ} {R C : ℝ} {f : ℂ → F} (n : ℕ),
+  0 < R →
+    DiffContOnCl ℂ f (Metric.ball c R) →
+      (∀ z ∈ Metric.sphere c R, ‖f z‖ ≤ C) → ‖iteratedDeriv n f c‖ ≤ ↑n.factorial * C / R ^ n
+@GRTemp.ML033.endpoint : ∀ {F : Type u_1} [inst : NormedAddCommGroup F] [inst_1 : NormedSpace ℂ F] [CompleteSpace F]
+  {c : ℂ} {R C : ℝ} {f : ℂ → F} (n : ℕ),
+  0 < R →
+    DiffContOnCl ℂ f (Metric.ball c R) →
+      (∀ z ∈ Metric.sphere c R, ‖f z‖ ≤ C) → ‖iteratedDeriv n f c‖ ≤ ↑n.factorial * C / R ^ n
+'GRTemp.ML033.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML033.endpoint
+@SummableLocallyUniformlyOn.differentiableOn : ∀ {ι : Type u_1} {E : Type u_2} [inst : NormedAddCommGroup E]
+  [inst_1 : NormedSpace ℂ E] [CompleteSpace E] {f : ι → ℂ → E} {s : Set ℂ},
+  IsOpen s →
+    SummableLocallyUniformlyOn f s →
+      (∀ (n : ι), ∀ r ∈ s, DifferentiableAt ℂ (f n) r) → DifferentiableOn ℂ (fun z => ∑' (n : ι), f n z) s
+@GRTemp.ML034.endpoint : ∀ {ι : Type u_1} {E : Type u_2} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℂ E]
+  [CompleteSpace E] {f : ι → ℂ → E} {s : Set ℂ},
+  IsOpen s →
+    SummableLocallyUniformlyOn f s →
+      (∀ (n : ι), ∀ r ∈ s, DifferentiableAt ℂ (f n) r) → DifferentiableOn ℂ (fun z => ∑' (n : ι), f n z) s
+'GRTemp.ML034.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML034.endpoint
+@DifferentiableOn.analyticAt : ∀ {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℂ E]
+  [CompleteSpace E] {s : Set ℂ} {f : ℂ → E} {z : ℂ}, DifferentiableOn ℂ f s → s ∈ nhds z → AnalyticAt ℂ f z
+@GRTemp.ML035.endpoint : ∀ {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℂ E] [CompleteSpace E]
+  {s : Set ℂ} {f : ℂ → E} {z : ℂ}, DifferentiableOn ℂ f s → s ∈ nhds z → AnalyticAt ℂ f z
+'GRTemp.ML035.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML035.endpoint
+@AnalyticAt.restrictScalars : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {E : Type u_2} {F : Type u_3}
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] [inst_3 : NormedAddCommGroup F] [inst_4 : NormedSpace 𝕜 F]
+  {𝕜' : Type u_4} [inst_5 : NontriviallyNormedField 𝕜'] [inst_6 : NormedAlgebra 𝕜 𝕜'] [inst_7 : NormedSpace 𝕜' E]
+  [IsScalarTower 𝕜 𝕜' E] [inst_9 : NormedSpace 𝕜' F] [IsScalarTower 𝕜 𝕜' F] {f : E → F} {x : E},
+  AnalyticAt 𝕜' f x → AnalyticAt 𝕜 f x
+@GRTemp.ML036.endpoint : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {E : Type u_2} {F : Type u_3}
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] [inst_3 : NormedAddCommGroup F] [inst_4 : NormedSpace 𝕜 F]
+  {𝕜' : Type u_4} [inst_5 : NontriviallyNormedField 𝕜'] [inst_6 : NormedAlgebra 𝕜 𝕜'] [inst_7 : NormedSpace 𝕜' E]
+  [IsScalarTower 𝕜 𝕜' E] [inst_9 : NormedSpace 𝕜' F] [IsScalarTower 𝕜 𝕜' F] {f : E → F} {x : E},
+  AnalyticAt 𝕜' f x → AnalyticAt 𝕜 f x
+'GRTemp.ML036.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML036.endpoint
+@AnalyticAt.re_ofReal : ∀ {f : ℂ → ℂ} {x : ℝ}, AnalyticAt ℂ f ↑x → AnalyticAt ℝ (fun x => (f ↑x).re) x
+@GRTemp.ML037.endpoint : ∀ {f : ℂ → ℂ} {x : ℝ}, AnalyticAt ℂ f ↑x → AnalyticAt ℝ (fun x => (f ↑x).re) x
+'GRTemp.ML037.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML037.endpoint
+@DifferentiableOn.isExactOn_ball : ∀ {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℂ E] {c : ℂ}
+  {r : ℝ} {f : ℂ → E} [CompleteSpace E], DifferentiableOn ℂ f (Metric.ball c r) → Complex.IsExactOn f (Metric.ball c r)
+@GRTemp.ML038.endpoint : ∀ {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℂ E] {c : ℂ} {r : ℝ}
+  {f : ℂ → E} [CompleteSpace E], DifferentiableOn ℂ f (Metric.ball c r) → Complex.IsExactOn f (Metric.ball c r)
+'GRTemp.ML038.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML038.endpoint
+@Complex.IsExactOn.with_val_at : ∀ {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℂ E] {f : ℂ → E}
+  {s : Set ℂ}, Complex.IsExactOn f s → ∀ (x₀ : ℂ) (y : E), ∃ g, g x₀ = y ∧ ∀ x ∈ s, HasDerivAt g (f x) x
+@GRTemp.ML039.endpoint : ∀ {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℂ E] {f : ℂ → E}
+  {s : Set ℂ}, Complex.IsExactOn f s → ∀ (x₀ : ℂ) (y : E), ∃ g, g x₀ = y ∧ ∀ x ∈ s, HasDerivAt g (f x) x
+'GRTemp.ML039.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML039.endpoint
+@intervalIntegral.integral_hasDerivAt_right : ∀ {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℝ E]
+  [CompleteSpace E] {f : ℝ → E} {a b : ℝ},
+  IntervalIntegrable f MeasureTheory.volume a b →
+    StronglyMeasurableAtFilter f (nhds b) MeasureTheory.volume →
+      ContinuousAt f b → HasDerivAt (fun u => ∫ (x : ℝ) in a..u, f x) (f b) b
+@GRTemp.ML040.endpoint : ∀ {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℝ E] [CompleteSpace E]
+  {f : ℝ → E} {a b : ℝ},
+  IntervalIntegrable f MeasureTheory.volume a b →
+    StronglyMeasurableAtFilter f (nhds b) MeasureTheory.volume →
+      ContinuousAt f b → HasDerivAt (fun u => ∫ (x : ℝ) in a..u, f x) (f b) b
+'GRTemp.ML040.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML040.endpoint
+@intervalIntegral.integral_deriv_eq_sub : ∀ {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℝ E]
+  {a b : ℝ} [CompleteSpace E] {f : ℝ → E},
+  (∀ x ∈ Set.uIcc a b, DifferentiableAt ℝ f x) →
+    IntervalIntegrable (deriv f) MeasureTheory.volume a b → ∫ (y : ℝ) in a..b, deriv f y = f b - f a
+@GRTemp.ML041.endpoint : ∀ {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℝ E] {a b : ℝ}
+  [CompleteSpace E] {f : ℝ → E},
+  (∀ x ∈ Set.uIcc a b, DifferentiableAt ℝ f x) →
+    IntervalIntegrable (deriv f) MeasureTheory.volume a b → ∫ (y : ℝ) in a..b, deriv f y = f b - f a
+'GRTemp.ML041.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML041.endpoint
+@MeasureTheory.integral_tsum_of_summable_integral_norm : ∀ {α : Type u_1} {E : Type u_2} [inst : NormedAddCommGroup E]
+  [inst_1 : NormedSpace ℝ E] {m : MeasurableSpace α} {μ : MeasureTheory.Measure α} {ι : Type u_3} [Countable ι]
+  {F : ι → α → E},
+  (∀ (i : ι), MeasureTheory.Integrable (F i) μ) →
+    (Summable fun i => ∫ (a : α), ‖F i a‖ ∂μ) → ∑' (i : ι), ∫ (a : α), F i a ∂μ = ∫ (a : α), ∑' (i : ι), F i a ∂μ
+@GRTemp.ML042.endpoint : ∀ {α : Type u_1} {E : Type u_2} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℝ E]
+  {m : MeasurableSpace α} {μ : MeasureTheory.Measure α} {ι : Type u_3} [Countable ι] {F : ι → α → E},
+  (∀ (i : ι), MeasureTheory.Integrable (F i) μ) →
+    (Summable fun i => ∫ (a : α), ‖F i a‖ ∂μ) → ∑' (i : ι), ∫ (a : α), F i a ∂μ = ∫ (a : α), ∑' (i : ι), F i a ∂μ
+'GRTemp.ML042.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML042.endpoint
+@AnalyticOnNhd.eqOn_of_preconnected_of_eventuallyEq : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {E : Type u_2}
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] {F : Type u_3} [inst_3 : NormedAddCommGroup F]
+  [inst_4 : NormedSpace 𝕜 F] {f g : E → F} {U : Set E},
+  AnalyticOnNhd 𝕜 f U → AnalyticOnNhd 𝕜 g U → IsPreconnected U → ∀ {z₀ : E}, z₀ ∈ U → f =ᶠ[nhds z₀] g → Set.EqOn f g U
+@GRTemp.ML043.endpoint : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {E : Type u_2}
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] {F : Type u_3} [inst_3 : NormedAddCommGroup F]
+  [inst_4 : NormedSpace 𝕜 F] {f g : E → F} {U : Set E},
+  AnalyticOnNhd 𝕜 f U → AnalyticOnNhd 𝕜 g U → IsPreconnected U → ∀ {z₀ : E}, z₀ ∈ U → f =ᶠ[nhds z₀] g → Set.EqOn f g U
+'GRTemp.ML043.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML043.endpoint
+@AnalyticOnNhd.eqOn_of_preconnected_of_frequently_eq : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜]
+  {E : Type u_2} [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] {f g : 𝕜 → E} {z₀ : 𝕜} {U : Set 𝕜},
+  AnalyticOnNhd 𝕜 f U →
+    AnalyticOnNhd 𝕜 g U → IsPreconnected U → z₀ ∈ U → (∃ᶠ (z : 𝕜) in nhdsWithin z₀ {z₀}ᶜ, f z = g z) → Set.EqOn f g U
+@GRTemp.ML044.endpoint : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {E : Type u_2}
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] {f g : 𝕜 → E} {z₀ : 𝕜} {U : Set 𝕜},
+  AnalyticOnNhd 𝕜 f U →
+    AnalyticOnNhd 𝕜 g U → IsPreconnected U → z₀ ∈ U → (∃ᶠ (z : 𝕜) in nhdsWithin z₀ {z₀}ᶜ, f z = g z) → Set.EqOn f g U
+'GRTemp.ML044.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML044.endpoint
+@Real.summable_exp_nat_mul_iff : ∀ {a : ℝ}, (Summable fun n => Real.exp (↑n * a)) ↔ a < 0
+@GRTemp.ML045.endpoint : ∀ {a : ℝ}, (Summable fun n => Real.exp (↑n * a)) ↔ a < 0
+'GRTemp.ML045.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML045.endpoint
+Real.summable_pow_mul_exp_neg_nat_mul : ∀ (k : ℕ) {r : ℝ}, 0 < r → Summable fun n => ↑n ^ k * Real.exp (-r * ↑n)
+GRTemp.ML046.endpoint : ∀ (k : ℕ) {r : ℝ}, 0 < r → Summable fun n => ↑n ^ k * Real.exp (-r * ↑n)
+'GRTemp.ML046.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML046.endpoint
+@summable_int_iff_summable_nat_and_neg : ∀ {G : Type u_1} [inst : AddCommGroup G] [inst_1 : UniformSpace G]
+  [IsUniformAddGroup G] [CompleteSpace G] {f : ℤ → G}, Summable f ↔ (Summable fun n => f ↑n) ∧ Summable fun n => f (-↑n)
+@GRTemp.ML047.endpoint : ∀ {G : Type u_1} [inst : AddCommGroup G] [inst_1 : UniformSpace G] [IsUniformAddGroup G]
+  [CompleteSpace G] {f : ℤ → G}, Summable f ↔ (Summable fun n => f ↑n) ∧ Summable fun n => f (-↑n)
+'GRTemp.ML047.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML047.endpoint
+@Summable.mul_of_nonneg : ∀ {ι : Type u_1} {ι' : Type u_2} {f : ι → ℝ} {g : ι' → ℝ},
+  Summable f → Summable g → 0 ≤ f → 0 ≤ g → Summable fun x => f x.1 * g x.2
+@GRTemp.ML048.endpoint : ∀ {ι : Type u_1} {ι' : Type u_2} {f : ι → ℝ} {g : ι' → ℝ},
+  Summable f → Summable g → 0 ≤ f → 0 ≤ g → Summable fun x => f x.1 * g x.2
+'GRTemp.ML048.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML048.endpoint
+@tsum_neg : ∀ {α : Type u_1} {β : Type u_2} {L : SummationFilter β} [inst : AddCommGroup α]
+  [inst_1 : TopologicalSpace α] [IsTopologicalAddGroup α] {f : β → α} [T2Space α],
+  ∑'[L] (b : β), -f b = -∑'[L] (b : β), f b
+@GRTemp.ML049.endpoint : ∀ {α : Type u_1} {β : Type u_2} {L : SummationFilter β} [inst : AddCommGroup α]
+  [inst_1 : TopologicalSpace α] [IsTopologicalAddGroup α] {f : β → α} [T2Space α],
+  ∑'[L] (b : β), -f b = -∑'[L] (b : β), f b
+'GRTemp.ML049.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML049.endpoint
+@Filter.EventuallyEq.deriv : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {F : Type u_2}
+  [inst_1 : NormedAddCommGroup F] [inst_2 : NormedSpace 𝕜 F] {f f₁ : 𝕜 → F} {x : 𝕜},
+  f₁ =ᶠ[nhds x] f → deriv f₁ =ᶠ[nhds x] deriv f
+@GRTemp.ML050.endpoint : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {F : Type u_2}
+  [inst_1 : NormedAddCommGroup F] [inst_2 : NormedSpace 𝕜 F] {f f₁ : 𝕜 → F} {x : 𝕜},
+  f₁ =ᶠ[nhds x] f → deriv f₁ =ᶠ[nhds x] deriv f
+'GRTemp.ML050.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML050.endpoint
+@AnalyticAt.fderiv : ∀ {𝕜 : Type u_3} [inst : NontriviallyNormedField 𝕜] {E : Type u_1} [inst_1 : NormedAddCommGroup E]
+  [inst_2 : NormedSpace 𝕜 E] {F : Type u_2} [inst_3 : NormedAddCommGroup F] [inst_4 : NormedSpace 𝕜 F] {f : E → F}
+  {x : E} [CompleteSpace F], AnalyticAt 𝕜 f x → AnalyticAt 𝕜 (fderiv 𝕜 f) x
+@GRTemp.ML051.endpoint : ∀ {𝕜 : Type u_3} [inst : NontriviallyNormedField 𝕜] {E : Type u_1}
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] {F : Type u_2} [inst_3 : NormedAddCommGroup F]
+  [inst_4 : NormedSpace 𝕜 F] {f : E → F} {x : E} [CompleteSpace F], AnalyticAt 𝕜 f x → AnalyticAt 𝕜 (fderiv 𝕜 f) x
+'GRTemp.ML051.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML051.endpoint
+@AnalyticAt.contDiffAt : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {E : Type u_2}
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] {F : Type u_3} [inst_3 : NormedAddCommGroup F]
+  [inst_4 : NormedSpace 𝕜 F] {f : E → F} {x : E} {n : WithTop ℕ∞} [CompleteSpace F],
+  AnalyticAt 𝕜 f x → ContDiffAt 𝕜 n f x
+@GRTemp.ML052.endpoint : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {E : Type u_2}
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] {F : Type u_3} [inst_3 : NormedAddCommGroup F]
+  [inst_4 : NormedSpace 𝕜 F] {f : E → F} {x : E} {n : WithTop ℕ∞} [CompleteSpace F],
+  AnalyticAt 𝕜 f x → ContDiffAt 𝕜 n f x
+'GRTemp.ML052.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML052.endpoint
+@ContDiffAt.isSymmSndFDerivAt_of_omega : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {E : Type u_2}
+  {F : Type u_3} [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] [inst_3 : NormedAddCommGroup F]
+  [inst_4 : NormedSpace 𝕜 F] {f : E → F} {x : E}, ContDiffAt 𝕜 ⊤ f x → IsSymmSndFDerivAt 𝕜 f x
+@GRTemp.ML053.endpoint : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {E : Type u_2} {F : Type u_3}
+  [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] [inst_3 : NormedAddCommGroup F] [inst_4 : NormedSpace 𝕜 F]
+  {f : E → F} {x : E}, ContDiffAt 𝕜 ⊤ f x → IsSymmSndFDerivAt 𝕜 f x
+'GRTemp.ML053.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML053.endpoint
+@AnalyticAt.curry_left : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {E : Type u_2} {F : Type u_3}
+  {G : Type u_4} [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] [inst_3 : NormedAddCommGroup F]
+  [inst_4 : NormedSpace 𝕜 F] [inst_5 : NormedAddCommGroup G] [inst_6 : NormedSpace 𝕜 G] {f : E × F → G} {p : E × F},
+  AnalyticAt 𝕜 f p → AnalyticAt 𝕜 (fun x => f (x, p.2)) p.1
+@GRTemp.ML054.endpoint : ∀ {𝕜 : Type u_1} [inst : NontriviallyNormedField 𝕜] {E : Type u_2} {F : Type u_3}
+  {G : Type u_4} [inst_1 : NormedAddCommGroup E] [inst_2 : NormedSpace 𝕜 E] [inst_3 : NormedAddCommGroup F]
+  [inst_4 : NormedSpace 𝕜 F] [inst_5 : NormedAddCommGroup G] [inst_6 : NormedSpace 𝕜 G] {f : E × F → G} {p : E × F},
+  AnalyticAt 𝕜 f p → AnalyticAt 𝕜 (fun x => f (x, p.2)) p.1
+'GRTemp.ML054.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML054.endpoint
+@Matrix.PosDef.of_dotProduct_mulVec_pos : ∀ {n : Type u_1} {R : Type u_2} [inst : Ring R] [inst_1 : PartialOrder R]
+  [inst_2 : StarRing R] [inst_3 : Fintype n] {M : Matrix n n R},
+  M.IsHermitian → (∀ ⦃x : n → R⦄, x ≠ 0 → 0 < star x ⬝ᵥ M.mulVec x) → M.PosDef
+@GRTemp.ML055.endpoint : ∀ {n : Type u_1} {R : Type u_2} [inst : Ring R] [inst_1 : PartialOrder R] [inst_2 : StarRing R]
+  [inst_3 : Fintype n] {M : Matrix n n R}, M.IsHermitian → (∀ ⦃x : n → R⦄, x ≠ 0 → 0 < star x ⬝ᵥ M.mulVec x) → M.PosDef
+'GRTemp.ML055.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML055.endpoint
+@Matrix.PosDef.add_posSemidef : ∀ {m : Type u_1} {R : Type u_2} [inst : Ring R] [inst_1 : PartialOrder R]
+  [inst_2 : StarRing R] [AddLeftMono R] {A B : Matrix m m R}, A.PosDef → B.PosSemidef → (A + B).PosDef
+@GRTemp.ML056.endpoint : ∀ {m : Type u_1} {R : Type u_2} [inst : Ring R] [inst_1 : PartialOrder R] [inst_2 : StarRing R]
+  [AddLeftMono R] {A B : Matrix m m R}, A.PosDef → B.PosSemidef → (A + B).PosDef
+'GRTemp.ML056.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML056.endpoint
+@Matrix.PosDef.isUnit : ∀ {n : Type u_1} [inst : Fintype n] {K : Type u_2} [inst_1 : Field K] [inst_2 : PartialOrder K]
+  [inst_3 : StarRing K] [inst_4 : DecidableEq n] {M : Matrix n n K}, M.PosDef → IsUnit M
+@GRTemp.ML057.endpoint : ∀ {n : Type u_1} [inst : Fintype n] {K : Type u_2} [inst_1 : Field K] [inst_2 : PartialOrder K]
+  [inst_3 : StarRing K] [inst_4 : DecidableEq n] {M : Matrix n n K}, M.PosDef → IsUnit M
+'GRTemp.ML057.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML057.endpoint
+@Matrix.nonneg_iff_posSemidef : ∀ {𝕜 : Type u_1} {n : Type u_2} [inst : RCLike 𝕜] {A : Matrix n n 𝕜},
+  0 ≤ A ↔ A.PosSemidef
+@GRTemp.ML058.endpoint : ∀ {𝕜 : Type u_1} {n : Type u_2} [inst : RCLike 𝕜] {A : Matrix n n 𝕜}, 0 ≤ A ↔ A.PosSemidef
+'GRTemp.ML058.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML058.endpoint
+@CFC.sqrt_nonneg : ∀ {A : Type u_1} [inst : PartialOrder A] [inst_1 : NonUnitalRing A] [inst_2 : TopologicalSpace A]
+  [inst_3 : StarRing A] [inst_4 : _root_.Module ℝ A] [inst_5 : SMulCommClass ℝ A A] [inst_6 : IsScalarTower ℝ A A]
+  [inst_7 : StarOrderedRing A] [inst_8 : NonUnitalContinuousFunctionalCalculus ℝ A IsSelfAdjoint]
+  [inst_9 : NonnegSpectrumClass ℝ A] (a : A), 0 ≤ CFC.sqrt a
+@GRTemp.ML059.endpoint : ∀ {A : Type u_1} [inst : PartialOrder A] [inst_1 : NonUnitalRing A]
+  [inst_2 : TopologicalSpace A] [inst_3 : StarRing A] [inst_4 : _root_.Module ℝ A] [inst_5 : SMulCommClass ℝ A A]
+  [inst_6 : IsScalarTower ℝ A A] [inst_7 : StarOrderedRing A]
+  [inst_8 : NonUnitalContinuousFunctionalCalculus ℝ A IsSelfAdjoint] [inst_9 : NonnegSpectrumClass ℝ A] (a : A),
+  0 ≤ CFC.sqrt a
+'GRTemp.ML059.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML059.endpoint
+@CFC.sqrt_mul_sqrt_self : ∀ {A : Type u_1} [inst : PartialOrder A] [inst_1 : NonUnitalRing A]
+  [inst_2 : TopologicalSpace A] [inst_3 : StarRing A] [inst_4 : _root_.Module ℝ A] [inst_5 : SMulCommClass ℝ A A]
+  [inst_6 : IsScalarTower ℝ A A] [inst_7 : StarOrderedRing A]
+  [inst_8 : NonUnitalContinuousFunctionalCalculus ℝ A IsSelfAdjoint] [inst_9 : NonnegSpectrumClass ℝ A]
+  [IsSemitopologicalRing A] [T2Space A] (a : A),
+  autoParam (0 ≤ a) CFC.sqrt_mul_sqrt_self._auto_1 → CFC.sqrt a * CFC.sqrt a = a
+@GRTemp.ML060.endpoint : ∀ {A : Type u_1} [inst : PartialOrder A] [inst_1 : NonUnitalRing A]
+  [inst_2 : TopologicalSpace A] [inst_3 : StarRing A] [inst_4 : _root_.Module ℝ A] [inst_5 : SMulCommClass ℝ A A]
+  [inst_6 : IsScalarTower ℝ A A] [inst_7 : StarOrderedRing A]
+  [inst_8 : NonUnitalContinuousFunctionalCalculus ℝ A IsSelfAdjoint] [inst_9 : NonnegSpectrumClass ℝ A]
+  [IsSemitopologicalRing A] [T2Space A] (a : A),
+  autoParam (0 ≤ a) GRTemp.ML060.endpoint._auto_1 → CFC.sqrt a * CFC.sqrt a = a
+'GRTemp.ML060.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML060.endpoint
+@CFC.isUnit_sqrt_iff : ∀ {A : Type u_1} [inst : PartialOrder A] [inst_1 : Ring A] [inst_2 : StarRing A]
+  [inst_3 : TopologicalSpace A] [inst_4 : StarOrderedRing A] [inst_5 : Algebra ℝ A]
+  [inst_6 : ContinuousFunctionalCalculus ℝ A IsSelfAdjoint] [inst_7 : NonnegSpectrumClass ℝ A] [IsSemitopologicalRing A]
+  [T2Space A] (a : A), autoParam (0 ≤ a) CFC.isUnit_sqrt_iff._auto_1 → (IsUnit (CFC.sqrt a) ↔ IsUnit a)
+@GRTemp.ML061.endpoint : ∀ {A : Type u_1} [inst : PartialOrder A] [inst_1 : Ring A] [inst_2 : StarRing A]
+  [inst_3 : TopologicalSpace A] [inst_4 : StarOrderedRing A] [inst_5 : Algebra ℝ A]
+  [inst_6 : ContinuousFunctionalCalculus ℝ A IsSelfAdjoint] [inst_7 : NonnegSpectrumClass ℝ A] [IsSemitopologicalRing A]
+  [T2Space A] (a : A), autoParam (0 ≤ a) GRTemp.ML061.endpoint._auto_1 → (IsUnit (CFC.sqrt a) ↔ IsUnit a)
+'GRTemp.ML061.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML061.endpoint
+@Matrix.det_fromBlocks_zero₂₁ : ∀ {m : Type u_2} {n : Type u_3} [inst : DecidableEq n] [inst_1 : Fintype n]
+  [inst_2 : DecidableEq m] [inst_3 : Fintype m] {R : Type u_1} [inst_4 : CommRing R] (A : Matrix m m R)
+  (B : Matrix m n R) (D : Matrix n n R), (Matrix.fromBlocks A B 0 D).det = A.det * D.det
+@GRTemp.ML062.endpoint : ∀ {m : Type u_1} {n : Type u_2} [inst : DecidableEq n] [inst_1 : Fintype n]
+  [inst_2 : DecidableEq m] [inst_3 : Fintype m] {R : Type u_3} [inst_4 : CommRing R] (A : Matrix m m R)
+  (B : Matrix m n R) (D : Matrix n n R), (Matrix.fromBlocks A B 0 D).det = A.det * D.det
+'GRTemp.ML062.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML062.endpoint
+@Matrix.isUnit_iff_isUnit_det : ∀ {n : Type u_1} {α : Type u_2} [inst : Fintype n] [inst_1 : DecidableEq n]
+  [inst_2 : CommRing α] (A : Matrix n n α), IsUnit A ↔ IsUnit A.det
+@GRTemp.ML063.endpoint : ∀ {n : Type u_1} {α : Type u_2} [inst : Fintype n] [inst_1 : DecidableEq n]
+  [inst_2 : CommRing α] (A : Matrix n n α), IsUnit A ↔ IsUnit A.det
+'GRTemp.ML063.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML063.endpoint
+@Matrix.IsHermitian.instContinuousFunctionalCalculus : ∀ {n : Type u_1} {𝕜 : Type u_2} [inst : RCLike 𝕜]
+  [inst_1 : Fintype n] [inst_2 : DecidableEq n], ContinuousFunctionalCalculus ℝ (Matrix n n 𝕜) IsSelfAdjoint
+@GRTemp.ML064.endpoint : ∀ {n : Type u_1} {𝕜 : Type u_2} [inst : RCLike 𝕜] [inst_1 : Fintype n]
+  [inst_2 : DecidableEq n], ContinuousFunctionalCalculus ℝ (Matrix n n 𝕜) IsSelfAdjoint
+'GRTemp.ML064.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML064.endpoint
+@Matrix.instCStarRing : ∀ {𝕜 : Type u_1} {n : Type u_2} [inst : RCLike 𝕜] [inst_1 : Fintype n] [inst_2 : DecidableEq n],
+  CStarRing (Matrix n n 𝕜)
+@GRTemp.ML065.endpoint : ∀ {𝕜 : Type u_1} {n : Type u_2} [inst : RCLike 𝕜] [inst_1 : Fintype n]
+  [inst_2 : DecidableEq n], CStarRing (Matrix n n 𝕜)
+'GRTemp.ML065.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ML065.endpoint
+NSEMaxwell.HodgeProof.scalarL_eq_realFourierSeries : ∀ (f : NSEMaxwell.Classical.ScalarField),
+  ContDiff ℝ (↑⊤) f →
+    NSEMaxwell.Classical.SpatialPeriodic f →
+      NSEMaxwell.Classical.scalarL f = SingularClosure.realFourierSeries (NSEMaxwell.HodgeProof.inverseScalarCoeff f)
+GRTemp.ME01.endpoint : ∀ (f : NSEMaxwell.Classical.ScalarField),
+  ContDiff ℝ (↑⊤) f →
+    NSEMaxwell.Classical.SpatialPeriodic f →
+      NSEMaxwell.Classical.scalarL f = SingularClosure.realFourierSeries (NSEMaxwell.HodgeProof.inverseScalarCoeff f)
+'GRTemp.ME01.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME01.endpoint
+NSEMaxwell.HodgeProof.scalarL_smooth : ∀ (f : NSEMaxwell.Classical.ScalarField),
+  ContDiff ℝ (↑⊤) f → NSEMaxwell.Classical.SpatialPeriodic f → ContDiff ℝ (↑⊤) (NSEMaxwell.Classical.scalarL f)
+GRTemp.ME02.endpoint : ∀ (f : NSEMaxwell.Classical.ScalarField),
+  ContDiff ℝ (↑⊤) f → NSEMaxwell.Classical.SpatialPeriodic f → ContDiff ℝ (↑⊤) (NSEMaxwell.Classical.scalarL f)
+'GRTemp.ME02.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME02.endpoint
+NSEMaxwell.HodgeProof.vectorL_smooth : ∀ (F : NSEMaxwell.Classical.Field),
+  ContDiff ℝ (↑⊤) F → NSEMaxwell.Classical.SpatialPeriodic F → ContDiff ℝ (↑⊤) (NSEMaxwell.Classical.vectorL F)
+GRTemp.ME03.endpoint : ∀ (F : NSEMaxwell.Classical.Field),
+  ContDiff ℝ (↑⊤) F → NSEMaxwell.Classical.SpatialPeriodic F → ContDiff ℝ (↑⊤) (NSEMaxwell.Classical.vectorL F)
+'GRTemp.ME03.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME03.endpoint
+NSEMaxwell.HodgeProof.vectorL_component : ∀ (F : NSEMaxwell.Classical.Field),
+  ContDiff ℝ (↑⊤) F →
+    NSEMaxwell.Classical.SpatialPeriodic F →
+      ∀ (i : Fin 3),
+        (fun x => (NSEMaxwell.Classical.vectorL F x).ofLp i) = NSEMaxwell.Classical.scalarL fun x => (F x).ofLp i
+GRTemp.ME04.endpoint : ∀ (F : NSEMaxwell.Classical.Field),
+  ContDiff ℝ (↑⊤) F →
+    NSEMaxwell.Classical.SpatialPeriodic F →
+      ∀ (i : Fin 3),
+        (fun x => (NSEMaxwell.Classical.vectorL F x).ofLp i) = NSEMaxwell.Classical.scalarL fun x => (F x).ofLp i
+'GRTemp.ME04.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME04.endpoint
+NSEMaxwell.HodgeProof.coordinateDerivative_vectorL_commute : ∀ (F : NSEMaxwell.Classical.Field),
+  ContDiff ℝ (↑⊤) F →
+    NSEMaxwell.Classical.SpatialPeriodic F →
+      ∀ (j : Fin 3),
+        NSEMaxwell.Classical.coordinateDerivative (NSEMaxwell.Classical.vectorL F) j =
+          NSEMaxwell.Classical.vectorL (NSEMaxwell.Classical.coordinateDerivative F j)
+GRTemp.ME05.endpoint : ∀ (F : NSEMaxwell.Classical.Field),
+  ContDiff ℝ (↑⊤) F →
+    NSEMaxwell.Classical.SpatialPeriodic F →
+      ∀ (j : Fin 3),
+        NSEMaxwell.Classical.coordinateDerivative (NSEMaxwell.Classical.vectorL F) j =
+          NSEMaxwell.Classical.vectorL (NSEMaxwell.Classical.coordinateDerivative F j)
+'GRTemp.ME05.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME05.endpoint
+NSEMaxwell.HodgeProof.divergence_vectorL_commute : ∀ (F : NSEMaxwell.Classical.Field),
+  ContDiff ℝ (↑⊤) F →
+    NSEMaxwell.Classical.SpatialPeriodic F →
+      NSEMaxwell.Classical.divergence (NSEMaxwell.Classical.vectorL F) =
+        NSEMaxwell.Classical.scalarL (NSEMaxwell.Classical.divergence F)
+GRTemp.ME06.endpoint : ∀ (F : NSEMaxwell.Classical.Field),
+  ContDiff ℝ (↑⊤) F →
+    NSEMaxwell.Classical.SpatialPeriodic F →
+      NSEMaxwell.Classical.divergence (NSEMaxwell.Classical.vectorL F) =
+        NSEMaxwell.Classical.scalarL (NSEMaxwell.Classical.divergence F)
+'GRTemp.ME06.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME06.endpoint
+NSEMaxwell.HodgeProof.neg_laplacian_vectorL : ∀ (a : NSEMaxwell.Classical.Field),
+  ContDiff ℝ (↑⊤) a →
+    NSEMaxwell.Classical.SpatialPeriodic a →
+      -NSEMaxwell.Classical.laplacian (NSEMaxwell.Classical.vectorL a) = a - fun x => NSEMaxwell.Classical.spatialMean a
+GRTemp.ME07.endpoint : ∀ (a : NSEMaxwell.Classical.Field),
+  ContDiff ℝ (↑⊤) a →
+    NSEMaxwell.Classical.SpatialPeriodic a →
+      -NSEMaxwell.Classical.laplacian (NSEMaxwell.Classical.vectorL a) = a - fun x => NSEMaxwell.Classical.spatialMean a
+'GRTemp.ME07.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME07.endpoint
+NSEMaxwell.HodgeProof.spatialInverseLaplacianLaws : NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws
+GRTemp.ME08.endpoint : NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws
+'GRTemp.ME08.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME08.endpoint
+NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.K_curl : NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws →
+  ∀ (F : NSEMaxwell.Classical.Field),
+    ContDiff ℝ (↑⊤) F →
+      NSEMaxwell.Classical.SpatialPeriodic F →
+        NSEMaxwell.Classical.K (NSEMaxwell.Classical.spatialCurl F) =
+          (F - fun x => NSEMaxwell.Classical.spatialMean F) +
+            NSEMaxwell.Classical.gradient (NSEMaxwell.Classical.scalarL (NSEMaxwell.Classical.divergence F))
+GRTemp.ME09.endpoint : NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws →
+  ∀ (F : NSEMaxwell.Classical.Field),
+    ContDiff ℝ (↑⊤) F →
+      NSEMaxwell.Classical.SpatialPeriodic F →
+        NSEMaxwell.Classical.K (NSEMaxwell.Classical.spatialCurl F) =
+          (F - fun x => NSEMaxwell.Classical.spatialMean F) +
+            NSEMaxwell.Classical.gradient (NSEMaxwell.Classical.scalarL (NSEMaxwell.Classical.divergence F))
+'GRTemp.ME09.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME09.endpoint
+@NSEMaxwell.HodgeProof.scalarL_trajectory_smooth : ∀ {f : NSEMaxwell.Classical.Pressure},
+  NSEMaxwell.Classical.SmoothPressure f →
+    NSEMaxwell.Classical.PeriodicPressure f →
+      NSEMaxwell.Classical.SmoothPressure fun t => NSEMaxwell.Classical.scalarL (f t)
+@GRTemp.ME10.endpoint : ∀ {f : NSEMaxwell.Classical.Pressure},
+  NSEMaxwell.Classical.SmoothPressure f →
+    NSEMaxwell.Classical.PeriodicPressure f →
+      NSEMaxwell.Classical.SmoothPressure fun t => NSEMaxwell.Classical.scalarL (f t)
+'GRTemp.ME10.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME10.endpoint
+NSEMaxwell.HodgeProof.inverseScalarSeries_hasFDerivAt_pos : ∀ (f : NSEMaxwell.Classical.Pressure),
+  NSEMaxwell.Classical.SmoothPressure f →
+    NSEMaxwell.Classical.PeriodicPressure f →
+      ∀ {z : ℝ × NSEMaxwell.Classical.Vec},
+        0 < z.1 →
+          HasFDerivAt (NSEMaxwell.HodgeProof.inverseScalarSeries f)
+            (NSEMaxwell.HodgeProof.inverseScalarSeriesDerivative f z) z
+GRTemp.ME11.endpoint : ∀ (f : NSEMaxwell.Classical.Pressure),
+  NSEMaxwell.Classical.SmoothPressure f →
+    NSEMaxwell.Classical.PeriodicPressure f →
+      ∀ {z : ℝ × NSEMaxwell.Classical.Vec},
+        0 < z.1 →
+          HasFDerivAt (NSEMaxwell.HodgeProof.inverseScalarSeries f)
+            (NSEMaxwell.HodgeProof.inverseScalarSeriesDerivative f z) z
+'GRTemp.ME11.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME11.endpoint
+@NSEMaxwell.HodgeProof.cubeIntegral_hasDerivWithinAt : ∀ {E : Type u_1} [inst : NormedAddCommGroup E]
+  [inst_1 : NormedSpace ℝ E] [CompleteSpace E] (F : ℝ → NSEMaxwell.Classical.Vec → E),
+  ContDiffOn ℝ (↑⊤) (fun z => F z.1 z.2) NSEMaxwell.Classical.forwardSpacetime →
+    ∀ {t : ℝ},
+      0 ≤ t →
+        HasDerivWithinAt (fun s => ∫ (x : NSEMaxwell.Classical.Vec) in NSEMaxwell.Classical.unitCube, F s x)
+          (∫ (x : NSEMaxwell.Classical.Vec) in NSEMaxwell.Classical.unitCube,
+            NSEMaxwell.HodgeProof.cubeTimeDerivative F t x)
+          (Set.Ici 0) t
+@GRTemp.ME12.endpoint : ∀ {E : Type u_1} [inst : NormedAddCommGroup E] [inst_1 : NormedSpace ℝ E] [CompleteSpace E]
+  (F : ℝ → NSEMaxwell.Classical.Vec → E),
+  ContDiffOn ℝ (↑⊤) (fun z => F z.1 z.2) NSEMaxwell.Classical.forwardSpacetime →
+    ∀ {t : ℝ},
+      0 ≤ t →
+        HasDerivWithinAt (fun s => ∫ (x : NSEMaxwell.Classical.Vec) in NSEMaxwell.Classical.unitCube, F s x)
+          (∫ (x : NSEMaxwell.Classical.Vec) in NSEMaxwell.Classical.unitCube,
+            NSEMaxwell.HodgeProof.cubeTimeDerivative F t x)
+          (Set.Ici 0) t
+'GRTemp.ME12.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME12.endpoint
+NSEMaxwell.HodgeProof.scalarCoeff_hasDerivAt_pos : ∀ (f : NSEMaxwell.Classical.Pressure),
+  NSEMaxwell.Classical.SmoothPressure f →
+    ∀ (k : NSEMaxwell.Classical.Frequency) {t : ℝ},
+      0 < t →
+        HasDerivAt (fun s => NSEMaxwell.HodgeProof.scalarCoeff (f s) k)
+          (NSEMaxwell.HodgeProof.scalarCoeff (NSEMaxwell.Classical.scalarTimeDerivative f t) k) t
+GRTemp.ME13.endpoint : ∀ (f : NSEMaxwell.Classical.Pressure),
+  NSEMaxwell.Classical.SmoothPressure f →
+    ∀ (k : NSEMaxwell.Classical.Frequency) {t : ℝ},
+      0 < t →
+        HasDerivAt (fun s => NSEMaxwell.HodgeProof.scalarCoeff (f s) k)
+          (NSEMaxwell.HodgeProof.scalarCoeff (NSEMaxwell.Classical.scalarTimeDerivative f t) k) t
+'GRTemp.ME13.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME13.endpoint
+NSEMaxwell.HodgeProof.uniform_inverseScalarCoeff_moment_bound : ∀ (f : NSEMaxwell.Classical.Pressure),
+  NSEMaxwell.Classical.SmoothPressure f →
+    NSEMaxwell.Classical.PeriodicPressure f →
+      ∀ (T : ℝ) (m : ℕ),
+        ∃ M,
+          Summable M ∧
+            (∀ (k : NSEMaxwell.Classical.Frequency), 0 ≤ M k) ∧
+              ∀ t ∈ Set.Icc 0 T,
+                ∀ (k : NSEMaxwell.Classical.Frequency),
+                  ‖NSEMaxwell.HodgeProof.inverseScalarCoeff (f t) k‖ * ‖SingularClosure.fourierPhaseCLM k‖ ^ m ≤ M k
+GRTemp.ME14.endpoint : ∀ (f : NSEMaxwell.Classical.Pressure),
+  NSEMaxwell.Classical.SmoothPressure f →
+    NSEMaxwell.Classical.PeriodicPressure f →
+      ∀ (T : ℝ) (m : ℕ),
+        ∃ M,
+          Summable M ∧
+            (∀ (k : NSEMaxwell.Classical.Frequency), 0 ≤ M k) ∧
+              ∀ t ∈ Set.Icc 0 T,
+                ∀ (k : NSEMaxwell.Classical.Frequency),
+                  ‖NSEMaxwell.HodgeProof.inverseScalarCoeff (f t) k‖ * ‖SingularClosure.fourierPhaseCLM k‖ ^ m ≤ M k
+'GRTemp.ME14.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME14.endpoint
+NSEMaxwell.HodgeProof.scalarMean_contDiffOn : ∀ (f : NSEMaxwell.Classical.Pressure),
+  NSEMaxwell.Classical.SmoothPressure f → ContDiffOn ℝ (↑⊤) (fun t => NSEMaxwell.Classical.scalarMean (f t)) (Set.Ici 0)
+GRTemp.ME15.endpoint : ∀ (f : NSEMaxwell.Classical.Pressure),
+  NSEMaxwell.Classical.SmoothPressure f → ContDiffOn ℝ (↑⊤) (fun t => NSEMaxwell.Classical.scalarMean (f t)) (Set.Ici 0)
+'GRTemp.ME15.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME15.endpoint
+NSEMaxwell.HodgeProof.scalarLift_component : ∀ (f : NSEMaxwell.Classical.ScalarField) (x : NSEMaxwell.Classical.Vec)
+  (i : Fin 3), (NSEMaxwell.HodgeProof.scalarLift f x).ofLp i = f x
+GRTemp.ME16.E01.endpoint : ∀ (f : NSEMaxwell.Classical.ScalarField) (x : NSEMaxwell.Classical.Vec) (i : Fin 3),
+  (NSEMaxwell.HodgeProof.scalarLift f x).ofLp i = f x
+'GRTemp.ME16.E01.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME16.E01.endpoint
+NSEMaxwell.HodgeProof.scalarLift_contDiff : ∀ (f : NSEMaxwell.Classical.ScalarField),
+  ContDiff ℝ (↑⊤) f → ContDiff ℝ (↑⊤) (NSEMaxwell.HodgeProof.scalarLift f)
+GRTemp.ME16.E02.endpoint : ∀ (f : NSEMaxwell.Classical.ScalarField),
+  ContDiff ℝ (↑⊤) f → ContDiff ℝ (↑⊤) (NSEMaxwell.HodgeProof.scalarLift f)
+'GRTemp.ME16.E02.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME16.E02.endpoint
+NSEMaxwell.HodgeProof.scalarLift_periodic : ∀ (f : NSEMaxwell.Classical.ScalarField),
+  NSEMaxwell.Classical.SpatialPeriodic f → NSEMaxwell.Classical.SpatialPeriodic (NSEMaxwell.HodgeProof.scalarLift f)
+GRTemp.ME16.E03.endpoint : ∀ (f : NSEMaxwell.Classical.ScalarField),
+  NSEMaxwell.Classical.SpatialPeriodic f → NSEMaxwell.Classical.SpatialPeriodic (NSEMaxwell.HodgeProof.scalarLift f)
+'GRTemp.ME16.E03.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME16.E03.endpoint
+@NSEMaxwell.HodgeProof.scalarTimeDerivative_smooth : ∀ {f : NSEMaxwell.Classical.Pressure},
+  NSEMaxwell.Classical.SmoothPressure f →
+    NSEMaxwell.Classical.SmoothPressure fun t => NSEMaxwell.Classical.scalarTimeDerivative f t
+@GRTemp.ME17.E01.endpoint : ∀ {f : NSEMaxwell.Classical.Pressure},
+  NSEMaxwell.Classical.SmoothPressure f →
+    NSEMaxwell.Classical.SmoothPressure fun t => NSEMaxwell.Classical.scalarTimeDerivative f t
+'GRTemp.ME17.E01.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME17.E01.endpoint
+@NSEMaxwell.HodgeProof.scalarTimeDerivative_periodic : ∀ {f : NSEMaxwell.Classical.Pressure},
+  NSEMaxwell.Classical.PeriodicPressure f →
+    NSEMaxwell.Classical.PeriodicPressure fun t => NSEMaxwell.Classical.scalarTimeDerivative f t
+@GRTemp.ME17.E02.endpoint : ∀ {f : NSEMaxwell.Classical.Pressure},
+  NSEMaxwell.Classical.PeriodicPressure f →
+    NSEMaxwell.Classical.PeriodicPressure fun t => NSEMaxwell.Classical.scalarTimeDerivative f t
+'GRTemp.ME17.E02.endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+TYPE_MATCH GRTemp.ME17.E02.endpoint

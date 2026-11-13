@@ -1,0 +1,45 @@
+{
+  "entry_id": "ME04",
+  "member_id": null,
+  "upstream_name": "NSEMaxwell.HodgeProof.vectorL_component",
+  "candidate_export": "GRTemp.ME04.endpoint",
+  "module": "ME04.Endpoint",
+  "declaration_kind": "theorem",
+  "status": "A_TIER_CANDIDATE",
+  "extraction_method": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+  "source_repository": "randogelist/Methlib",
+  "source_commit": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+  "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean",
+  "source_line_start": 162,
+  "source_line_end": 170,
+  "source_sha256": "d12c8efdffdbf21e98aed74ed436032e314343f7aa80df61d4ad3e6ee4accc42",
+  "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean#L162",
+  "source_declaration_sha256": "5979ffa9c365794b7b1adfaee594be1928fcf0d66868f289e7e4cf36c1d30550",
+  "imports": [
+    "FourierHodgeLaws.CosineMultiplier"
+  ],
+  "import_scope": "UPSTREAM_OWNING_MODULE; definitions and helper lemmas retained as explicit dependencies",
+  "uses": [
+    "GC02"
+  ],
+  "hypotheses": [
+    "F : Field",
+    "ContDiff ℝ ∞ F",
+    "SpatialPeriodic F",
+    "i : Fin 3"
+  ],
+  "source_signature": "theorem vectorL_component (F : Field) (hF : ContDiff ℝ ∞ F)\n    (hp : SpatialPeriodic F) (i : Fin 3) :\n    (fun x => vectorL F x i) = scalarL (fun x => F x i)",
+  "retained_upstream_audit": {
+    "name": "NSEMaxwell.HodgeProof.vectorL_component",
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "status": "PASS_STANDARD_ONLY"
+  },
+  "retained_audit_applies_to": "UPSTREAM_DECLARATION_ONLY; candidate copied export has no external audit yet",
+  "local_lean_executions": 0,
+  "new_axioms": 0,
+  "extracted_file_sha256": "32a06a690f14ea63aa7ab731228b6f7023f34848fb198b7b77417bc2bdfe9df3"
+}

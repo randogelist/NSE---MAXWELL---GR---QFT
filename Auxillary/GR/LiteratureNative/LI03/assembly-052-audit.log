@@ -1,0 +1,141 @@
+NSEGR.NativeLiterature.literaturePiToSpace : (n : ℕ) → (Fin n → ℝ) ≃L[ℝ] NSEGR.LiteratureSpace n
+'NSEGR.NativeLiterature.literaturePiToSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.NativeLiterature.literaturePiToSpace_preimage_cube : ∀ (n : ℕ),
+  ⇑(NSEGR.NativeLiterature.literaturePiToSpace n) ⁻¹' NSEGR.LiteratureUnitCube n = Set.Icc 0 1
+'NSEGR.NativeLiterature.literaturePiToSpace_preimage_cube' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.NativeLiterature.isCompact_literatureUnitCube : ∀ (n : ℕ), IsCompact (NSEGR.LiteratureUnitCube n)
+'NSEGR.NativeLiterature.isCompact_literatureUnitCube' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.integrableOn_literatureUnitCube_of_continuous : ∀ {n : ℕ} {E : Type u_1}
+  [inst : NormedAddCommGroup E] {f : NSEGR.LiteratureSpace n → E},
+  Continuous f → MeasureTheory.IntegrableOn f (NSEGR.LiteratureUnitCube n) MeasureTheory.volume
+'NSEGR.NativeLiterature.integrableOn_literatureUnitCube_of_continuous' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+NSEGR.NativeLiterature.volume_literatureUnitCube : ∀ (n : ℕ), MeasureTheory.volume (NSEGR.LiteratureUnitCube n) = 1
+'NSEGR.NativeLiterature.volume_literatureUnitCube' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.NativeLiterature.literatureUnitIntervalMeasure : MeasureTheory.Measure ℝ
+'NSEGR.NativeLiterature.literatureUnitIntervalMeasure' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.NativeLiterature.literatureUnitProductMeasure : (n : ℕ) → MeasureTheory.Measure (Fin n → ℝ)
+'NSEGR.NativeLiterature.literatureUnitProductMeasure' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.NativeLiterature.literatureUnitIntervalMeasure_probability : MeasureTheory.IsProbabilityMeasure
+  NSEGR.NativeLiterature.literatureUnitIntervalMeasure
+'NSEGR.NativeLiterature.literatureUnitIntervalMeasure_probability' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+NSEGR.NativeLiterature.literatureUnitProductMeasure_probability : ∀ (n : ℕ),
+  MeasureTheory.IsProbabilityMeasure (NSEGR.NativeLiterature.literatureUnitProductMeasure n)
+'NSEGR.NativeLiterature.literatureUnitProductMeasure_probability' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+NSEGR.NativeLiterature.literaturePiCube_eq : ∀ (n : ℕ), (Set.Icc 0 fun x => 1) = Set.univ.pi fun x => Set.Icc 0 1
+'NSEGR.NativeLiterature.literaturePiCube_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.integral_literatureUnitCube_productMeasure : ∀ {E : Type u_1} [inst : NormedAddCommGroup E]
+  [inst_1 : NormedSpace ℝ E] [CompleteSpace E] {n : ℕ} (f : NSEGR.LiteratureSpace n → E),
+  ∫ (x : NSEGR.LiteratureSpace n) in NSEGR.LiteratureUnitCube n, f x =
+    ∫ (x : Fin n → ℝ), f (WithLp.toLp 2 x) ∂NSEGR.NativeLiterature.literatureUnitProductMeasure n
+'NSEGR.NativeLiterature.integral_literatureUnitCube_productMeasure' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@NSEGR.NativeLiterature.continuous_integrable_literatureUnitProduct : ∀ {E : Type u_1} [inst : NormedAddCommGroup E]
+  [NormedSpace ℝ E] [CompleteSpace E] (n : ℕ) (f : (Fin n → ℝ) → E),
+  Continuous f → MeasureTheory.Integrable f (NSEGR.NativeLiterature.literatureUnitProductMeasure n)
+'NSEGR.NativeLiterature.continuous_integrable_literatureUnitProduct' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@NSEGR.NativeLiterature.integral_literatureUnitCube_disintegrate : ∀ {E : Type u_1} [inst : NormedAddCommGroup E]
+  [inst_1 : NormedSpace ℝ E] [CompleteSpace E] {n : ℕ} (j : Fin (n + 1)) (f : NSEGR.LiteratureSpace (n + 1) → E),
+  Continuous f →
+    ∫ (x : NSEGR.LiteratureSpace (n + 1)) in NSEGR.LiteratureUnitCube (n + 1), f x =
+      ∫ (y : Fin n → ℝ),
+        ∫ (s : ℝ) in Set.Icc 0 1,
+          f (WithLp.toLp 2 (j.insertNth s y)) ∂NSEGR.NativeLiterature.literatureUnitProductMeasure n
+'NSEGR.NativeLiterature.integral_literatureUnitCube_disintegrate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@NSEGR.NativeLiterature.integral_literatureUnitCube_eq_piIoc : ∀ {E : Type u_1} [inst : NormedAddCommGroup E]
+  [inst_1 : NormedSpace ℝ E] [CompleteSpace E] {n : ℕ} (f : NSEGR.LiteratureSpace n → E),
+  ∫ (x : NSEGR.LiteratureSpace n) in NSEGR.LiteratureUnitCube n, f x =
+    ∫ (x : Fin n → ℝ) in {x | ∀ (i : Fin n), x i ∈ Set.Ioc 0 1}, f (WithLp.toLp 2 x)
+'NSEGR.NativeLiterature.integral_literatureUnitCube_eq_piIoc' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.literatureIntegerShift : {n : ℕ} → (Fin n → ℤ) → NSEGR.LiteratureSpace n
+'NSEGR.NativeLiterature.literatureIntegerShift' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.literatureIntegerShift_apply : ∀ {n : ℕ} (z : Fin n → ℤ) (i : Fin n),
+  (NSEGR.NativeLiterature.literatureIntegerShift z).ofLp i = ↑(z i)
+'NSEGR.NativeLiterature.literatureIntegerShift_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.literaturePeriodic_integerShift : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  NSEGR.LiteraturePeriodic f → ∀ (z : Fin n → ℤ), Function.Periodic f (NSEGR.NativeLiterature.literatureIntegerShift z)
+'NSEGR.NativeLiterature.literaturePeriodic_integerShift' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.literatureTorusRepresentative : {n : ℕ} → UnitAddTorus (Fin n) → NSEGR.LiteratureSpace n
+'NSEGR.NativeLiterature.literatureTorusRepresentative' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.literatureTorusRepresentative_mem : ∀ {n : ℕ} (θ : UnitAddTorus (Fin n)),
+  NSEGR.NativeLiterature.literatureTorusRepresentative θ ∈ NSEGR.LiteratureUnitCube n
+'NSEGR.NativeLiterature.literatureTorusRepresentative_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.literatureTorusRepresentative_mk_of_mem : ∀ {n : ℕ} (x : Fin n → ℝ),
+  (∀ (i : Fin n), x i ∈ Set.Ioc 0 1) →
+    (NSEGR.NativeLiterature.literatureTorusRepresentative fun i => ↑(x i)) = WithLp.toLp 2 x
+'NSEGR.NativeLiterature.literatureTorusRepresentative_mk_of_mem' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@NSEGR.NativeLiterature.literatureTorusRepresentative_coe : ∀ {n : ℕ} (θ : UnitAddTorus (Fin n)) (i : Fin n),
+  ↑((NSEGR.NativeLiterature.literatureTorusRepresentative θ).ofLp i) = θ i
+'NSEGR.NativeLiterature.literatureTorusRepresentative_coe' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.literatureTorusRepresentative_periodic : ∀ {n : ℕ} (f : NSEGR.LiteratureSpace n → ℂ),
+  NSEGR.LiteraturePeriodic f →
+    ∀ (x : NSEGR.LiteratureSpace n), f (NSEGR.NativeLiterature.literatureTorusRepresentative fun i => ↑(x.ofLp i)) = f x
+'NSEGR.NativeLiterature.literatureTorusRepresentative_periodic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@NSEGR.NativeLiterature.literatureTorusFunction : {n : ℕ} → (NSEGR.LiteratureSpace n → ℂ) → UnitAddTorus (Fin n) → ℂ
+'NSEGR.NativeLiterature.literatureTorusFunction' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.literatureTorusFunction_mk : ∀ {n : ℕ} (f : NSEGR.LiteratureSpace n → ℂ),
+  NSEGR.LiteraturePeriodic f →
+    ∀ (x : NSEGR.LiteratureSpace n), (NSEGR.NativeLiterature.literatureTorusFunction f fun j => ↑(x.ofLp j)) = f x
+'NSEGR.NativeLiterature.literatureTorusFunction_mk' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.NativeLiterature.literatureCubeProjection : (n : ℕ) → ↑(NSEGR.LiteratureUnitCube n) → UnitAddTorus (Fin n)
+'NSEGR.NativeLiterature.literatureCubeProjection' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.NativeLiterature.literatureCubeProjection_continuous : ∀ (n : ℕ),
+  Continuous (NSEGR.NativeLiterature.literatureCubeProjection n)
+'NSEGR.NativeLiterature.literatureCubeProjection_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.NativeLiterature.literatureCubeProjection_surjective : ∀ (n : ℕ),
+  Function.Surjective (NSEGR.NativeLiterature.literatureCubeProjection n)
+'NSEGR.NativeLiterature.literatureCubeProjection_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.NativeLiterature.literatureCubeProjection_isQuotientMap : ∀ (n : ℕ),
+  Topology.IsQuotientMap (NSEGR.NativeLiterature.literatureCubeProjection n)
+'NSEGR.NativeLiterature.literatureCubeProjection_isQuotientMap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@NSEGR.NativeLiterature.literatureTorusFunction_continuous : ∀ {n : ℕ} (f : NSEGR.LiteratureSpace n → ℂ),
+  Continuous f → NSEGR.LiteraturePeriodic f → Continuous (NSEGR.NativeLiterature.literatureTorusFunction f)
+'NSEGR.NativeLiterature.literatureTorusFunction_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.literatureTorusContinuous : {n : ℕ} →
+  (f : NSEGR.LiteratureSpace n → ℂ) → Continuous f → NSEGR.LiteraturePeriodic f → C(UnitAddTorus (Fin n), ℂ)
+'NSEGR.NativeLiterature.literatureTorusContinuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.literatureCharacter_eq_mFourier : ∀ {n : ℕ} (k : NSEGR.LiteratureFrequency n)
+  (x : NSEGR.LiteratureSpace n), NSEGR.LiteratureCharacter k x = (UnitAddTorus.mFourier k) fun i => ↑(x.ofLp i)
+'NSEGR.NativeLiterature.literatureCharacter_eq_mFourier' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.literatureCharacter_norm_eq_one : ∀ {n : ℕ} (k : NSEGR.LiteratureFrequency n)
+  (x : NSEGR.LiteratureSpace n), ‖NSEGR.LiteratureCharacter k x‖ = 1
+'NSEGR.NativeLiterature.literatureCharacter_norm_eq_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.literatureTorusFunction_fourierCoeff : ∀ {n : ℕ} (f : NSEGR.LiteratureSpace n → ℂ)
+  (k : NSEGR.LiteratureFrequency n),
+  UnitAddTorus.mFourierCoeff (NSEGR.NativeLiterature.literatureTorusFunction f) k =
+    NSEGR.LiteratureFourierCoefficient f k
+'NSEGR.NativeLiterature.literatureTorusFunction_fourierCoeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.literatureFourier_hasSum_of_summable_norm : ∀ {n : ℕ} (f : NSEGR.LiteratureSpace n → ℂ),
+  Continuous f →
+    NSEGR.LiteraturePeriodic f →
+      (Summable fun k => ‖NSEGR.LiteratureFourierCoefficient f k‖) →
+        ∀ (x : NSEGR.LiteratureSpace n),
+          HasSum (fun k => NSEGR.LiteratureFourierCoefficient f k * NSEGR.LiteratureCharacter k x) (f x)
+'NSEGR.NativeLiterature.literatureFourier_hasSum_of_summable_norm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@NSEGR.NativeLiterature.literatureFourier_hasSumUniformly_of_summable_norm : ∀ {n : ℕ}
+  (f : NSEGR.LiteratureSpace n → ℂ),
+  Continuous f →
+    NSEGR.LiteraturePeriodic f →
+      (Summable fun k => ‖NSEGR.LiteratureFourierCoefficient f k‖) →
+        HasSumUniformly (fun k x => NSEGR.LiteratureFourierCoefficient f k * NSEGR.LiteratureCharacter k x) f
+'NSEGR.NativeLiterature.literatureFourier_hasSumUniformly_of_summable_norm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

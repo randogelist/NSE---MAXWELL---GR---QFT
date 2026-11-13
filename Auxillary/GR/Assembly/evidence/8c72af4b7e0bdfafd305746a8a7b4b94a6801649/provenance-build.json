@@ -1,0 +1,6374 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-11-13T07:56:12.530902+00:00",
+  "source_commit": "8c72af4b7e0bdfafd305746a8a7b4b94a6801649",
+  "github_run_id": "43389123717",
+  "requested_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "requested_compiler_commit": "3447a668783dbce1a8fdb97101dd067687b2b418",
+  "requested_mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "external_platform": "linux",
+  "phase": "build",
+  "cache_policy": "PRESERVE_AND_REUSE_COMPATIBLE_OBJECTS",
+  "commands": [
+    {
+      "command": [
+        "lean",
+        "--version"
+      ],
+      "log": "lean-version-build.log",
+      "exit_code": 0,
+      "seconds": 0.037
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/plausible",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-plausible-revision.log",
+      "exit_code": 0,
+      "seconds": 0.01
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/plausible",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-plausible-working-tree.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/LeanSearchClient",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-LeanSearchClient-revision.log",
+      "exit_code": 0,
+      "seconds": 0.01
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/LeanSearchClient",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-LeanSearchClient-working-tree.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/importGraph",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-importGraph-revision.log",
+      "exit_code": 0,
+      "seconds": 0.01
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/importGraph",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-importGraph-working-tree.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/proofwidgets",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-proofwidgets-revision.log",
+      "exit_code": 0,
+      "seconds": 0.009
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/proofwidgets",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-proofwidgets-working-tree.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/aesop",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-aesop-revision.log",
+      "exit_code": 0,
+      "seconds": 0.006
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/aesop",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-aesop-working-tree.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/Qq",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-Qq-revision.log",
+      "exit_code": 0,
+      "seconds": 0.01
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/Qq",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-Qq-working-tree.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/batteries",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-batteries-revision.log",
+      "exit_code": 0,
+      "seconds": 0.01
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/batteries",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-batteries-working-tree.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/Cli",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-Cli-revision.log",
+      "exit_code": 0,
+      "seconds": 0.01
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/Cli",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-Cli-working-tree.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/mathlib",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-mathlib-revision.log",
+      "exit_code": 0,
+      "seconds": 0.012
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/mathlib",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-mathlib-working-tree.log",
+      "exit_code": 0,
+      "seconds": 0.008
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "GRAdapter"
+      ],
+      "log": "adapter-build.log",
+      "exit_code": 0,
+      "seconds": 4.431
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-R",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/Auxillary/GR/Assembly/evidence-current",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/Auxillary/GR/Assembly/evidence-current/AdapterAudit.lean"
+      ],
+      "log": "adapter-audit.log",
+      "exit_code": 0,
+      "seconds": 4.611
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "NSEGRForward"
+      ],
+      "log": "forward-build.log",
+      "exit_code": 0,
+      "seconds": 4.023
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-R",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/Auxillary/GR/Assembly/evidence-current",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/Auxillary/GR/Assembly/evidence-current/ForwardAudit.lean"
+      ],
+      "log": "forward-audit.log",
+      "exit_code": 0,
+      "seconds": 3.396
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "NSEGRReverse"
+      ],
+      "log": "reverse-build.log",
+      "exit_code": 0,
+      "seconds": 4.115
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-R",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/Auxillary/GR/Assembly/evidence-current",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/Auxillary/GR/Assembly/evidence-current/ReverseAudit.lean"
+      ],
+      "log": "reverse-audit.log",
+      "exit_code": 0,
+      "seconds": 3.309
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "TempEndpoints"
+      ],
+      "log": "cutouts-build.log",
+      "exit_code": 0,
+      "seconds": 4.119
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-R",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/Auxillary/GR/Assembly/evidence-current",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/Auxillary/GR/Assembly/evidence-current/CutoutsAudit.lean"
+      ],
+      "log": "cutouts-audit.log",
+      "exit_code": 0,
+      "seconds": 3.641
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "GRAssembly"
+      ],
+      "log": "assembly-build.log",
+      "exit_code": 0,
+      "seconds": 11.093
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-R",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/Auxillary/GR/Assembly/evidence-current",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/Auxillary/GR/Assembly/evidence-current/AssemblyAudit.lean"
+      ],
+      "log": "assembly-audit.log",
+      "exit_code": 0,
+      "seconds": 3.716
+    }
+  ],
+  "stages": [
+    {
+      "stage": "adapter",
+      "module": "GRAdapter",
+      "status": "PASS_STANDARD_ONLY",
+      "source_commit": "8c72af4b7e0bdfafd305746a8a7b4b94a6801649",
+      "target_count": 389,
+      "audit_source": "AdapterAudit.lean",
+      "audit_source_sha256": "c9ef1b50575bc942cd7b45a8cc046b10c19ed91a07ef50cb211876c9aeababfe",
+      "audit_log": "adapter-audit.log",
+      "audit_log_sha256": "63e233a57ddc81ee1b24d14bab11debf2aceb0d738618acdd24c4bd4a7f4166e",
+      "targets": [
+        {
+          "name": "NSEGR.identity3_diag",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.trace3_eq_matrix_trace",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.trace3_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.trace3_add",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.trace3_sub",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.trace3_smul",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.trace3_tf3",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tf3_eq_self_of_trace_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tf3_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tf3_idempotent",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tf3_add",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tf3_sub",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tf3_smul",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tf3_symmetric",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tf3_eq_zero_iff",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.frobeniusSq3_nonneg",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.vectorSq3_nonneg",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.viscosityResidual_affine",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.viscosityResidual_difference",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.lorentzTrace4_traceReverse4",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.lorentzTrace4_traceRecover4",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.traceRecover4_traceReverse4",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.traceReverse4_traceRecover4",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.traceReverse4_hamiltonian",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryBlock_time_time",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryBlock_time_space",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryBlock_space_time",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryBlock_space_space",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.lorentzTrace4_boundaryBlock",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.lorentzSquare4_boundaryBlock",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryBlock_hamiltonian",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.trace3_initialSpatial",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryBlock_hamiltonian_zero_iff",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.initialTimeTime_solves_hamiltonian",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.initial_boundary_hamiltonian",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.bulkPoint_radial",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.bulkPoint_time",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.bulkPoint_spatial",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundarySpatialTensor_congr_slice",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryBeta_congr_slice",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryRawVelocity_congr_slice",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryVelocity_congr_slice",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryPotential_congr_slice",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryStress_congr_slice",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryStress_trace_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryStress_viscosity_difference",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryK_constant",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryK_flat",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundarySpatialTensor_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryBeta_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryRawVelocity_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryVelocity_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryPotential_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.velocityOuter_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryStress_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryPartial_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryHessian_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryHamiltonian_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryCodazzi_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.lorentzSign4_mul_self",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.lowerTensor4_involutive",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.lowerTensor4_add",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.lowerTensor4_time_time",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.lowerTensor4_time_space",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.lowerTensor4_space_space",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.conservedSourceUpper_time_time",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.conservedSourceUpper_time_space",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.conservedSourceUpper_space_space",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarCompletionUpper_time_time",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarCompletionUpper_time_space",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarCompletionUpper_space_space",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.completedBoundary_trace_recovery",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.completedBoundary_hamiltonian_identity",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.localNSE_of_reconstruction_and_zero_stress",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.timeInterval_mono",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.timeInterval_mem_nhds",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.strain_symmetric",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.trace_strain",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.trace_strain_eq_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.spatialMean_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarMean_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.spatialPeriodic_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.spatialPartial_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gradient_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.divergence_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.laplacian_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarLaplacian_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarHessian_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.strain_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tensorDivergence_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.convection_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.localTimeDerivative_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarLocalTimeDerivative_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.nseResidual_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.poissonSymbol_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.poissonInverse_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.leray_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.leray_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.localNSE_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.localNSE_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.poissonInverse_definition",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.leray_definition",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.bulkPartial_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.eta5_symmetric",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.eta5_transpose",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.eta5_det",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.lorentzianAt_symmetric",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.lorentzianAt_det_neg",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.lorentzianAt_nondegenerate",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.christoffel_constant",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.ricci_constant",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarCurvature_constant",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.einstein_constant",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.constant_vacuumOn",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.vacuumOn_mono",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.vacuumOn_implies_einsteinVacuumOn",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.flatMetric_lorentzian",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.flatMetric_symmetric",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.flatMetric_det",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.flatMetric_nondegenerate",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.flatMetric_christoffel",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.flatMetric_ricci",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.flatMetric_scalarCurvature",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.flatMetric_einstein",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.flatMetric_vacuumOn",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.flatMetric_einsteinVacuumOn",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.flatMetric_analyticOnNhd",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.native_flat_vacuum",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.sameFlowAt_refl",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.sameFlowAt_symm",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.sameFlowAt_trans",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.sameFlowAt_iff_origin_gauge",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.NSEgerm.sound",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.sameMetricAt_refl",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.sameMetricAt_symm",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.sameMetricAt_trans",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.GRgerm.sound",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.nonempty_NSEgerm",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.canonical_stress_trace_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianVacuum_nondegenerate",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianVacuum_einstein",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryAdmissible_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.flatMetric_not_gaussianVacuum",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryAdmissible_zero_parameter",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.LorentzianAt",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.ricci",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryK",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryStress",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.GaussianVacuum",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.CanonicalRepresentative",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.LocalNSE",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.NSEgerm",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.GRgerm",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.ExactSectorEquivalence",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.ScalarBoundaryCompletionLaws",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.AnalyticRadialExtensionLaws",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.GeometricReconstructionLaws",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.normalizedBoundaryMatrix_symmetric",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.constantNormalizedBoundary_beta",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.constantNormalizedBoundary_beta_time",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryCodazzi_constant",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.constantNormalizedBoundary_codazzi",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.constantNormalizedBoundary_hamiltonian",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryAdmissible_constantNormalized",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.constantNormalizedBoundary_ne_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.exists_boundaryAdmissible",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.normalizedBoundaryMatrix",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.constantNormalizedBoundary",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gradient_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.spatialPartial_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.divergence_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.laplacian_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarLaplacian_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarHessian_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.strain_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tensorDivergence_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.convection_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.localTimeDerivative_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarLocalTimeDerivative_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.nseResidual_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryVelocity_congr_eventually",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryPressure_congr_eventually",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryFields_sameFlow_of_eventually_eq",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.origin_pressure_gauge_analytic",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.sameFlowAt_iff_analytic_pressure_gauge",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.bulkSpatialCoordinates",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.bulkPoint_coordinates",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.metric_eventuallyEq_of_fullSlices",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.sameMetricAt_boundaryK",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.sameMetricAt_boundaryFields",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.LiteratureInputs_ck",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.LiteratureInputs_gaussianJet",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.LiteratureInputs_smoothFourier",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.fderiv_periodic",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.spatialPartial_periodic",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.divergence_periodic",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gradient_periodic",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.laplacian_periodic",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.isCompact_unitCube",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.integrableOn_unitCube_of_continuous",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.volume_unitCube",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarMean_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.spatialMean_const",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.integral_fderiv_unitVector_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.spatialMean_spatialPartial_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.spatialMean_apply",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gradient_smooth",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.spatialMean_gradient_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.cosineKernel_add_unit_left",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.cosineKernel_symm",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.cosineKernel_add_unit_right",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.poissonInverse_periodic",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.leray_periodic",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.spatialPartial_smooth",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.integral_spatial_component_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarMean_divergence_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.lorentzTrace4_lowerTensor4",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.lorentzSquare4_lowerTensor4",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.sourceHamiltonian4_lowerTensor4",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.sourceHamiltonian4_boundaryBlock",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.vectorSq3_sub",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.trace3_scalarSpatialJet",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.frobeniusSq3_scalarSpatialJet",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarCompletedUpper_eq_block",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalar_hamiltonian_expansion",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalar_hamiltonian_expansion_lowered",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalar_hamiltonian_zero_iff",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarJetRHS_solves_hamiltonian",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalar_hamiltonian_secondJet_difference",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalar_hamiltonian_initial_jet",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalar_hamiltonian_initial_noncharacteristic",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.trace3_scalarHessian",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarCompletionUpper_eq_scalarJet",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.completedBoundary_hamiltonian_eq_scalarJet",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.completedBoundary_hamiltonian_zero_iff_scalar_normal",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianMatrix_rr",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianMatrix_rb",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianMatrix_ar",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianMatrix_ab",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianMatrix_one",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianMatrix_mul",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianMatrix_transpose",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianMatrix_isUnit_det",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianMatrix_inverse",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianMatrix_eta4",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianMetric_rr",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianMetric_rb",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianMetric_ar",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianMetric_ab",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.inverseMetric_gaussian",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianMetric_lorentzian_of_congruence",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.bulkPartial_gaussian_rr",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.bulkPartial_gaussian_rb",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.bulkPartial_gaussian_ar",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.bulkPartial_gaussian_ab",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryK_gaussian",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.christoffel_gaussian_rr",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.christoffel_gaussian_rab",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.christoffel_gaussian_rrb",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.christoffel_gaussian_arb",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.christoffel_gaussian_abc",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.reconstruction_trace_scalarHessian",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.reconstruction_trace_velocityOuter",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.reconstruction_trace_boundarySpatial",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.reconstruction_lorentzTrace_boundary",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.reconstruction_eta4_spatial",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryPreStress_trace",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundarySpatial_eq_of_stress_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundary_eq_completedBoundary_of_zero_stress",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundary_slice_eq_completedBoundary_of_zero_stress",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.reconstruction_residual_of_differential_identities",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.literatureCharacter_eq_exp_phase",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.fourierPhase_neg",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.fourierPhase_sub",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.literatureCharacter_mul_negative",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.cosineKernel_eq_re_character",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.literatureCharacter_continuous",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.cosineKernel_integral_eq_re_fourier",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.poissonInverse_eq_tsum_fourier_re",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.poissonInverse_eq_re_tsum_fourier",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.frequency_square_sum_ge_one",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.poissonSymbol_abs_le_one",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.literatureCharacter_norm",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.literatureFourierCoefficient_summable_norm",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.poisson_fourier_summable_of_literature",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.poissonInverse_series_summable_of_literature",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.poissonInverse_eq_re_tsum_fourier_of_literature",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.analyticAt_fin3_sum",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.analyticAt_trace3_components",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.analyticAt_vectorDot3_components",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.analyticAt_vectorSq3_components",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.analyticAt_frobeniusInner3_components",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.analyticAt_frobeniusSq3_components",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.analyticAt_sourceHamiltonian4_boundaryBlock",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.analyticAt_scalarJetRHS_components",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.analyticOnNhd_scalarJetRHS_components",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.compact_slice_eventually_eq",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.integerSpatialShift_apply",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.spatialCellRepresentative_mem_unitCube",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.spatialCellRepresentative_add_shift",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.spatialPeriodic_integerSpatialShift",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.spatialPeriodic_eq_cellRepresentative",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.spatialPeriodic_eq_of_eqOn_unitCube",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.periodic_slice_germs_uniform",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.continuous_bulkPoint_product",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.sameMetricAt_of_boundary_germs",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianVacuum_eventually_periodic",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianVacuum_sameMetricAt_of_boundary_germs",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryPressure_hasFDerivAt",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryPressure_gradient",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.reconstruction_residual_of_three_differential_identities",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.bulkCollar_eventually_boundary",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryAdmissible_literatureFlatBoundaryGerm",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianVacuum_literatureFlatGaussianGerm",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.literatureGaussianJet_unique",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianVacuum_sameMetricAt_of_literatureJet",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.analyticAt_spatialPartial_joint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.analyticAt_nseSpatialSource3_components",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarCKRHS_potential",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarCKRHS_time",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarCKRHS_gradient",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.analyticAt_scalarCKJet_entry",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.analyticAt_scalarCKRHS",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarCK_zero_initial_noncharacteristic",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarCK_exists_unique_firstOrder",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.StressCalc.component_fderiv",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.StressCalc.partial_component_smooth",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.StressCalc.partial_partial",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.StressCalc.secondSpatial_symm",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.StressCalc.partial_component_fderiv",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.StressCalc.gradient_divergence_component",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.StressCalc.laplacian_component",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.StressCalc.vector_decomposition",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.StressCalc.convection_component",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tensorDivergence_strain",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tensorDivergence_strain_of_divergence_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tensorDivergence_tf3_strain_of_divergence_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tensorDivergence_velocityOuter",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tensorDivergence_velocityOuter_of_divergence_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.divergence_gradient",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tensorDivergence_scalarHessian",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tensorDivergence_add",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tensorDivergence_sub",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tensorDivergence_smul",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.tensorDivergence_isotropic",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarHessian_component_smooth",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.strain_component_smooth",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.velocityOuter_component_smooth",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.vectorSq3_smooth",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.boundaryStress_tensorDivergence",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.reconstruction_residual_of_codazzi_hodge",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.literatureCharacter_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.literatureFourierCoefficient_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.literatureFourier_hasSum_real",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.literatureFourier_nonzero_hasSum",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.cosine_nonzero_hasSum_of_literature",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.fourierScalarPartial_smooth",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.fourierScalarPartial_periodic",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarLaplacian_smooth",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarLaplacian_periodic",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.fourierScalarPartial_ofReal",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.literaturePartialWord_pair_ofReal",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.literatureFourierCoefficient_secondPartial",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.literatureFourierCoefficient_scalarLaplacian",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.poissonSymbol_mul_scalarLaplacianSymbol",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.poissonInverse_scalarLaplacian_of_literature",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gradient_sub_constant",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.leray_gradient_of_literature",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianMatrix_det",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.inverseMetric_gaussian_singular",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.christoffel_gaussian_singular",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianShapeOperator_singular",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianTangentialChristoffel_singular",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.christoffel_gaussian_rrb_total",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.christoffel_gaussian_shape",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.christoffel_gaussian_abc_total",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.ricci_gaussian_mixed",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.ricci_gaussian_normal",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianCodazziComponent_zero_of_vacuum",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.gaussianNormalRicciComponent_zero_of_vacuum",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.analyticAt_scalarJointPartial",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarJointPartial_commute",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalar_timeDerivative_eq_joint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalar_spatialDerivative_eq_joint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.analytic_zero_transport_germ",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarCK_coordinate_jointDerivative",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarCK_spatial_coordinate_derivative",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarCK_solution_transport",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.scalarCK_gradient_compatibility",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "forward",
+      "module": "NSEGRForward",
+      "status": "PASS_STANDARD_ONLY",
+      "source_commit": "8c72af4b7e0bdfafd305746a8a7b4b94a6801649",
+      "target_count": 6,
+      "audit_source": "ForwardAudit.lean",
+      "audit_source_sha256": "6b43e55008eb12f9014f33a5f6096b40a96465d7d477705445ca55a4b7fe15e3",
+      "audit_log": "forward-audit.log",
+      "audit_log_sha256": "8b00926642d0d52d1c4c06db9eb51cc3521202bd7c3bfcfa16388a9a10600ad4",
+      "targets": [
+        {
+          "name": "NSEGR.forward_velocity_recovery",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.NSE_TO_GR_OF_SCALAR_AND_RADIAL_COMPLETION",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.nonempty_GRgerm_of_completion",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.forwardRepresentative",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.forward_boundary_match_eventually",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.forward_pressure_gauge_recovery",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "reverse",
+      "module": "NSEGRReverse",
+      "status": "PASS_STANDARD_ONLY",
+      "source_commit": "8c72af4b7e0bdfafd305746a8a7b4b94a6801649",
+      "target_count": 6,
+      "audit_source": "ReverseAudit.lean",
+      "audit_source_sha256": "b75f67d7660e950e5405ef879668539887a09d835858e234e5d4cdd329efc587",
+      "audit_log": "reverse-audit.log",
+      "audit_log_sha256": "da0c3da9c7a9d9c157f43698301330b92736d3768ad4cb49bda9dbff6e3eaea3",
+      "targets": [
+        {
+          "name": "NSEGR.GR_TO_NSE_OF_GEOMETRIC_RECONSTRUCTION",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.reverseGerm_forwardGerm",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.forwardGerm_reverseGerm",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.GermInverseLaws",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.exactSectorEquivOfContracts",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "cutouts",
+      "module": "TempEndpoints",
+      "status": "PASS_STANDARD_ONLY",
+      "source_commit": "8c72af4b7e0bdfafd305746a8a7b4b94a6801649",
+      "target_count": 85,
+      "audit_source": "CutoutsAudit.lean",
+      "audit_source_sha256": "bad3825a5249e992d5a86aa00d5d7a30209164ee521178a17939c0f1fd0a2a5d",
+      "audit_log": "cutouts-audit.log",
+      "audit_log_sha256": "3e9e9eb1ff34f6763bec618f9cb2b08336b4fc8e7100fc440183cb1c9982df03",
+      "targets": [
+        {
+          "name": "GRTemp.ML001.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML002.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML003.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML004.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML005.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML006.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice"
+          ]
+        },
+        {
+          "name": "GRTemp.ML007.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice"
+          ]
+        },
+        {
+          "name": "GRTemp.ML008.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML009.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML010.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML011.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML012.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML013.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML014.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": []
+        },
+        {
+          "name": "GRTemp.ML015.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML016.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML017.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML018.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML019.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML020.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML021.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML022.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML023.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML024.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML025.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML026.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML027.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML028.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML029.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML030.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML031.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML032.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML033.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML034.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML035.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML036.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML037.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML038.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML039.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML040.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML041.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML042.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML043.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML044.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML045.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML046.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML047.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML048.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML049.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML050.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML051.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML052.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML053.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML054.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML055.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML056.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML057.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML058.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML059.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML060.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML061.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML062.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML063.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML064.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ML065.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME01.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME02.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME03.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME04.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME05.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME06.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME07.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME08.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME09.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME10.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME11.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME12.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME13.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME14.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME15.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME16.E01.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME16.E02.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME16.E03.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME17.E01.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "GRTemp.ME17.E02.endpoint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "assembly",
+      "module": "GRAssembly",
+      "status": "PASS_STANDARD_ONLY",
+      "source_commit": "8c72af4b7e0bdfafd305746a8a7b4b94a6801649",
+      "target_count": 171,
+      "audit_source": "AssemblyAudit.lean",
+      "audit_source_sha256": "89ce8a6bbb2e595a73d1b8c7fc4be4aad3572de8563ca3bb0cc0e57210880afb",
+      "audit_log": "assembly-audit.log",
+      "audit_log_sha256": "aa669e4f3e19124e937c11673700d1bd3d0ebf1e0ad1943793c416b1415a4629",
+      "targets": [
+        {
+          "name": "NSEGR.Assembly.coordinateExpWeight",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.coordinateExpWeight_nonneg",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.summable_coordinateExpWeight",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.frequencyTriple",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.frequencyTriple_injective",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.latticeExpMajorant",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.latticeExpMajorant_nonneg",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.summable_latticeExpMajorant",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.frequencyL1",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.frequencyExpWeight",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.frequencyExpWeight_eq_lattice",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.summable_frequencyExpWeight",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.summable_scaled_frequencyExpWeight",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.complexPoissonMode",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.realPoissonMode",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.complexPoissonMode_norm_le",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.realPoissonMode_eq_re",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.realPoissonMode_norm_le",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.realPoissonMode_continuous",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_uniform_of_summable_coefficients",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_continuous_of_summable_coefficients",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_uniform_of_literature",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_continuous_of_literature",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_parameter_uniform",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.realPoissonMode_parameter_continuousOn",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_parameter_continuousOn",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_parameter_continuousOn_of_exponential_bound",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.gaugeCKRHS",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.gaugeCKRHS_potential",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.gaugeCKRHS_velocity",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.analyticAt_gaugeCKRHS",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.gaugeCK_exists_unique_firstOrder",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.gaugeCK_coordinate_timeDerivative",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.gaugeCK_solution_transport",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.analytic_double_primitive_of_literatureCK",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.bulkPartial_congr_of_eventuallyEq",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.bulkPartial_neg",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.christoffel_gaussian_rbr_total",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.christoffel_gaussian_abr_total",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.radial_christoffel_derivative",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.gaussianTangentialRicciComponent",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.ricci_gaussian_tangential",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.gaussianTangentialRicciComponent_zero_of_vacuum",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.gaussian_vacuum_iff_components",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_hasDerivAt_global",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarMean_hasDerivAt_global",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.cutoff_mul_contDiff",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.exists_smooth_periodic_extension",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_hasDerivAt_local",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_localTimeDerivative",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarMean_hasDerivAt_local",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarTimeDerivative_eq_local",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_halfspace_smooth",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarL_hasDerivAt_pos",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_hasDerivAt_pos",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_localTimeDerivative_pos",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarMean_hasDerivAt_pos",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.poissonSymbol_eq_neg_methlib",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_eq_neg_scalarL",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_smooth",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarLaplacian_component",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarLaplacian_neg",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarLaplacian_poissonInverse",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarMean_poissonInverse_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarPartial_scalarL_commute",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarPartial_poissonInverse_commute",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_finset_sum",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarLaplacian_poissonInverse_commute",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_scalarLaplacian",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.leray_gradient_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.divergence_smooth",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.divergence_sub",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.leray_smooth",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.divergence_leray_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.leray_eq_self_of_divergence_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.leray_idempotent",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.spatialMean_leray",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.positive_matrix_gram_factor",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.lorentzSchur",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.lorentzSchur_posDef",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.lorentzTriangular",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.lorentzTriangular_00",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.lorentzTriangular_0j",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.lorentzTriangular_i0",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.lorentzTriangular_ij",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.lorentzTriangular_det",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.eta4_congruence_apply",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.lorentzTriangular_congruence",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.lorentz_factor_of_spatial_posDef",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.gaussian_lorentzian_of_spatial_posDef",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.small_entry_quadratic_bound",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.spatial_quadratic_error_bound",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.spatial_posDef_of_near_identity",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.lorentz_factor_of_near_eta4",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.gaussian_lorentzian_of_near_eta4",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.finite_precompact_refinement",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.finite_compact_overlap_uniform",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.overlapGlue",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.overlapGlue_eq",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.overlapGlue_eventuallyEq",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.overlapGlue_analyticAt",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.overlapGlue_fderiv",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.overlapGlue_fderiv_eventuallyEq",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.integerSpatialShift_add",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.integerSpatialShift_sub",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.integerSpatialShift_single",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.latticePatch",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.latticeLocal",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.latticePatch_isOpen",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.latticePatch_cover",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.boundedShiftVector",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.lattice_relative_shift_bound",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.compactLatticeOverlap",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.compactLatticeOverlap_isCompact",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.lattice_overlap_germs_uniform",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.periodic_witness_of_compatible_atlas",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.periodic_witness_of_compact_overlap_germs",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.analyticAt_of_lattice_local_germ",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.germ_local_law_of_lattice_local_germ",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.periodic_analytic_witness_of_compact_overlap_germs",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarHessian_sub_constant",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarLaplacian_sub_constant",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.analytic_second_deriv_sub",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarLocalTimeDerivative_gauge_germ",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.gradient_scalarLocalTimeDerivative_gauge",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarSecondTimeDerivative_gauge",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.source_plus_completion_pressure_gauge",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.completedBoundary_pressure_gauge",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.normalized_pressure_gauge_completion",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.nseSpatialSource3_trace",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.completedBoundary_lower_trace",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.completedBoundary_time_time",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.completedBoundary_time_space",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.completedBoundary_space_space",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.completedBoundary_rawVelocity",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.completedBoundary_beta",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.nseSpatialSource3_divergence",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.upperDivergence",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.velocity_coordinate_timeDerivative",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.nseSpatialSource3_symmetric",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.conservedSourceUpper_divergence_time",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.conservedSourceUpper_divergence_space",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.conservedSourceUpper_conserved",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalar_local_assembly",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.jointTime",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.jointSpace",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.jointTime_congr",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.jointSpace_congr",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.jointTime_congr_germ",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.jointSpace_congr_germ",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.analyticAt_jointTime",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.analyticAt_jointSpace",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.jointTime_jointSpace",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarCKPotential",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarCK_coordinate_timeDerivative",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarCK_coordinate_spaceDerivative",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarCK_potential_time_germ",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarCK_potential_initial",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarCK_potential_time_initial",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarCK_secondOrder_equation",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarCK_scalarNormalGerm",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarStateOfPotential",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.analyticAt_scalarStateOfPotential",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarStateOfPotential_solution",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalar_normalized_germ_unique",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarNormalGerm_exists",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarHessian_eq_zero_of_germ_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.scalarLaplacian_eq_zero_of_germ_zero",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.analyticAt_scalarLaplacian_joint",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.ScalarNormalGerm.noncharacteristic",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        },
+        {
+          "name": "NSEGR.Assembly.ScalarNormalGerm.hamiltonian",
+          "status": "PASS_STANDARD_ONLY",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "PASS_STANDARD_ONLY",
+  "semantic_discharge": "NOT_INFERRED_FROM_AXIOM_AUDIT",
+  "root_promotion": "REQUIRES_EXACT_ROOT_TYPE_AND_PREMISE_REVIEW",
+  "actual_lean_version": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+  "dependency_revisions": [
+    {
+      "name": "plausible",
+      "revision": "38e9c3ce15cbb63c92e90bb9a92e4eb82131f669"
+    },
+    {
+      "name": "LeanSearchClient",
+      "revision": "2bc7cf064315b26bc38dac2e9612fb581be9b75f"
+    },
+    {
+      "name": "importGraph",
+      "revision": "978b7ec9fbbf9a535114f1de8fe5b3778b358870"
+    },
+    {
+      "name": "proofwidgets",
+      "revision": "99e8adeea3c3cd86b6b79ba01a1383bf2d31d055"
+    },
+    {
+      "name": "aesop",
+      "revision": "c1c4362a130f12e632d252180a6c2a31d8fd4726"
+    },
+    {
+      "name": "Qq",
+      "revision": "3b55e9d00c6b0018e5d984eb011b6f93c09bd163"
+    },
+    {
+      "name": "batteries",
+      "revision": "01bc479e7432594821ba3fb0ca465211941de86d"
+    },
+    {
+      "name": "Cli",
+      "revision": "af8bc067a4cc6c6df472a68909a3f40b1c76c43e"
+    },
+    {
+      "name": "mathlib",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11"
+    }
+  ],
+  "actual_mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_manifest_sha256": "3de1891afa2e9cd20928c84cebcd58be0b6aa4823bed51a478a766a0f811dfd4"
+}

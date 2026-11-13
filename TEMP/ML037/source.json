@@ -1,0 +1,31 @@
+{
+  "id": "ML037",
+  "kind": "theorem",
+  "source_name": "AnalyticAt.re_ofReal",
+  "endpoint": "GRTemp.ML037.endpoint",
+  "module": "ML037.Endpoint",
+  "source_path": "Mathlib/Analysis/SpecialFunctions/Complex/Analytic.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "83fb8eba294cc5546aa3ff694213475d6779c30334a73809c788729460579a96",
+  "source_start_line": 86,
+  "source_end_line": 88,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/Complex/Analytic.lean#L86",
+  "upstream_import": "Mathlib.Analysis.SpecialFunctions.Complex.Analytic",
+  "retained_dependencies": [
+    "Mathlib.Analysis.SpecialFunctions.Complex.Analytic"
+  ],
+  "extraction_kind": "COPIED_PROOF_BODY",
+  "original_declaration": "lemma AnalyticAt.re_ofReal (hf : AnalyticAt ℂ f x) :\n    AnalyticAt ℝ (fun x : ℝ ↦ (f x).re) x :=\n  (Complex.reCLM.analyticAt _).comp (hf.restrictScalars.comp (Complex.ofRealCLM.analyticAt _))",
+  "generated_additive_declaration": null,
+  "source_context": "open Complex Set\nopen scoped Topology\nvariable {f : ℂ → ℂ} {x : ℝ}\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC21"
+  ],
+  "endpoint_sha256": "e3ebd025e70693805a148540deea7fe83fb9f24cd15d02ac43fcbc4a88cb50d2",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+}

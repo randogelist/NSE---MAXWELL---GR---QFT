@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "mode": "A_TIER_CANDIDATE",
+  "scope": "85 isolated Mathlib/Methlib endpoint bodies; imported source definitions and helper results remain explicit dependencies",
+  "expected_endpoints": 85,
+  "expected_entry_folders": 82,
+  "new_gr_law_inhabitants": 0,
+  "new_gr_root_certification": "NONE",
+  "new_global_axioms": 0,
+  "literature_axioms_declared": false,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "compiler": "Lean4.34.0-rc1",
+  "mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "promotion": "Matching external compilation, source hashes, exact types and named axiom audit required"
+}

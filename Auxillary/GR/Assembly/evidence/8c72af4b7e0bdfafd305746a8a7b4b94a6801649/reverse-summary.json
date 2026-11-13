@@ -1,0 +1,67 @@
+{
+  "stage": "reverse",
+  "module": "NSEGRReverse",
+  "status": "PASS_STANDARD_ONLY",
+  "source_commit": "8c72af4b7e0bdfafd305746a8a7b4b94a6801649",
+  "target_count": 6,
+  "audit_source": "ReverseAudit.lean",
+  "audit_source_sha256": "b75f67d7660e950e5405ef879668539887a09d835858e234e5d4cdd329efc587",
+  "audit_log": "reverse-audit.log",
+  "audit_log_sha256": "da0c3da9c7a9d9c157f43698301330b92736d3768ad4cb49bda9dbff6e3eaea3",
+  "targets": [
+    {
+      "name": "NSEGR.GR_TO_NSE_OF_GEOMETRIC_RECONSTRUCTION",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.reverseGerm_forwardGerm",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.forwardGerm_reverseGerm",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.GermInverseLaws",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.exactSectorEquivOfContracts",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ]
+}

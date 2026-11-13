@@ -1,0 +1,1411 @@
+{
+  "schema_version": 1,
+  "status": "SOURCE_CLOSURE_VERIFIED; EXTRACTED_ENDPOINT_COMPILATION_PENDING",
+  "local_lean_executions": 0,
+  "upstream_roots": [
+    "FourierHodgeLaws.CosineMultiplier",
+    "FourierHodgeLaws.ParameterCoefficients",
+    "FourierHodgeLaws.ParameterIntegral",
+    "FourierHodgeLaws.ParameterSmoothing",
+    "FourierHodgeLaws.PoissonFromCoefficients",
+    "FourierHodgeLaws.SpatialHodge",
+    "FourierHodgeLaws.SpatialInhabitant",
+    "FourierHodgeLaws.SpatialMultiplier",
+    "FourierHodgeLaws.TargetPrimitives",
+    "FourierHodgeLaws.UniformCoefficientBounds"
+  ],
+  "upstream_root_groups": {
+    "FourierHodgeLaws.CosineMultiplier": [
+      "ME01",
+      "ME02",
+      "ME03",
+      "ME04"
+    ],
+    "FourierHodgeLaws.SpatialMultiplier": [
+      "ME05",
+      "ME06"
+    ],
+    "FourierHodgeLaws.PoissonFromCoefficients": [
+      "ME07"
+    ],
+    "FourierHodgeLaws.SpatialInhabitant": [
+      "ME08"
+    ],
+    "FourierHodgeLaws.SpatialHodge": [
+      "ME09"
+    ],
+    "FourierHodgeLaws.ParameterSmoothing": [
+      "ME10",
+      "ME11"
+    ],
+    "FourierHodgeLaws.ParameterCoefficients": [
+      "ME12",
+      "ME13",
+      "ME17"
+    ],
+    "FourierHodgeLaws.UniformCoefficientBounds": [
+      "ME14"
+    ],
+    "FourierHodgeLaws.ParameterIntegral": [
+      "ME15"
+    ],
+    "FourierHodgeLaws.TargetPrimitives": [
+      "ME16"
+    ]
+  },
+  "module_count": 72,
+  "module_counts_by_root": {
+    "MaxwellEndpoint": 5,
+    "SingularClosure": 32,
+    "FourierHodgeLaws": 13,
+    "NSEMaxwell": 20,
+    "NSEMaxwellForward": 1,
+    "NSEMaxwellReverse": 1
+  },
+  "mathlib_pin": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "external_module_boundary": [
+    "Mathlib",
+    "Mathlib.Algebra.Module.ZLattice.Summable",
+    "Mathlib.Analysis.Calculus.ContDiff.Comp",
+    "Mathlib.Analysis.Calculus.ContDiff.FiniteDimension",
+    "Mathlib.Analysis.Calculus.FDeriv.Extend",
+    "Mathlib.Analysis.Calculus.SmoothSeries",
+    "Mathlib.Analysis.Fourier.AddCircleMulti",
+    "Mathlib.Analysis.InnerProductSpace.l2Space",
+    "Mathlib.Analysis.Normed.Operator.Compact.FiniteDimension",
+    "Mathlib.MeasureTheory.Integral.DominatedConvergence",
+    "Mathlib.MeasureTheory.Measure.OpenPos",
+    "Mathlib.Topology.Separation.Hausdorff"
+  ],
+  "topological_order": [
+    "MaxwellEndpoint.Geometry",
+    "MaxwellEndpoint.Constitutive",
+    "SingularClosure.Contracts",
+    "SingularClosure.SixChannels",
+    "SingularClosure.Galerkin",
+    "SingularClosure.Admission",
+    "SingularClosure.PhysicalChannels",
+    "SingularClosure.PhysicalEnstrophy",
+    "SingularClosure.FourierIntegral",
+    "SingularClosure.PhysicalProjection",
+    "SingularClosure.GalerkinAlgebra",
+    "SingularClosure.GalerkinEnergy",
+    "SingularClosure.GalerkinReality",
+    "SingularClosure.LerayPressure",
+    "SingularClosure.FourierPressure",
+    "SingularClosure.PhysicalParseval",
+    "SingularClosure.FiniteParseval",
+    "SingularClosure.FiniteHessian",
+    "SingularClosure.EnstrophyInequality",
+    "SingularClosure.PhysicalBilinear",
+    "SingularClosure.InitialFourier",
+    "SingularClosure.InitialCutoffBounds",
+    "SingularClosure.FourierDecay",
+    "SingularClosure.FourierSeriesCalculus",
+    "FourierHodgeLaws.TargetPrimitives",
+    "SingularClosure.TorusSobolev",
+    "SingularClosure.LatticeSobolevSummability",
+    "SingularClosure.SmoothDatumSobolev",
+    "SingularClosure.SobolevSmoothRealization",
+    "FourierHodgeLaws.FourierCoefficients",
+    "MaxwellEndpoint.System",
+    "MaxwellEndpoint.Native",
+    "MaxwellEndpoint",
+    "NSEMaxwell.Classical",
+    "NSEMaxwell.Kinematics",
+    "NSEMaxwell.CurlCurl",
+    "NSEMaxwell.Lamb",
+    "NSEMaxwell.PeriodicIntegration",
+    "SingularClosure.HilbertChannels",
+    "SingularClosure.CoordinateAverage",
+    "SingularClosure.CoordinateAverageOrthogonal",
+    "SingularClosure.PeriodicCover",
+    "SingularClosure.PeriodicFourierRealization",
+    "SingularClosure.PeriodicFourierInjective",
+    "FourierHodgeLaws.CosineMultiplier",
+    "NSEMaxwell.DominatedWithin",
+    "NSEMaxwell.Spacetime",
+    "NSEMaxwell.TemporalMean",
+    "NSEMaxwell.Constitutive",
+    "NSEMaxwell.Negation",
+    "NSEMaxwell.Pressure",
+    "NSEMaxwell.Ampere",
+    "NSEMaxwell.ConstantPaths",
+    "NSEMaxwell.AnalyticContracts",
+    "NSEMaxwellForward",
+    "NSEMaxwellReverse",
+    "NSEMaxwell.AnalyticBridge",
+    "NSEMaxwell.LocalEvolution",
+    "NSEMaxwell.MeanConservation",
+    "NSEMaxwell.FourierPeriodic",
+    "NSEMaxwell.CanonicalSmoothness",
+    "NSEMaxwell.AnalyticReduction",
+    "FourierHodgeLaws.ParameterIntegral",
+    "FourierHodgeLaws.ParameterCoefficients",
+    "FourierHodgeLaws.ClosedHalfspaceSmooth",
+    "FourierHodgeLaws.UniformCoefficientBounds",
+    "FourierHodgeLaws.ParameterSmoothing",
+    "FourierHodgeLaws.PoissonFromCoefficients",
+    "FourierHodgeLaws.SpatialHodge",
+    "FourierHodgeLaws.SpatialMultiplier",
+    "FourierHodgeLaws.ElectricHodge",
+    "FourierHodgeLaws.SpatialInhabitant"
+  ],
+  "closure_validation": {
+    "missing_non_mathlib_imports": [],
+    "cycles": [],
+    "all_files_source_hash_verified": true,
+    "all_files_reachable_from_selected_roots": true
+  },
+  "provenance_note": "The Methlib cached workflow at eac159c5f7bf5a99a00d994da34c4760ea8335d0 stages Fefferman_adapter from repository commit 9f5500cd5dadc351ab3ec98db09dccaa9a22eb25. The copied source bytes are verified against those exact published Git blob hashes. Existing upstream audits do not certify new extracted endpoint bodies.",
+  "upstream_staging_workflow_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/.github/workflows/fourier-hodge-laws.yml",
+  "modules": [
+    {
+      "module": "MaxwellEndpoint.Geometry",
+      "path": "MaxwellEndpoint/Geometry.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint/Geometry.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint/Geometry.lean",
+      "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+      "git_blob_sha1": "219e4565a7a80748ba9a2c4e72300dbd19bafdf0",
+      "bytes": 3646,
+      "imports": [
+        "Mathlib"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "MaxwellEndpoint.Constitutive",
+      "path": "MaxwellEndpoint/Constitutive.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint/Constitutive.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint/Constitutive.lean",
+      "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+      "git_blob_sha1": "e16d42fb04fc1deaddda6f85f8f80fa2d8313778",
+      "bytes": 2685,
+      "imports": [
+        "MaxwellEndpoint.Geometry"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.Contracts",
+      "path": "SingularClosure/Contracts.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Contracts.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/Contracts.lean",
+      "sha256": "4c59cbf26fd4196529a4865ac09404d18015228c737055c2674cbcc4a5fd18f7",
+      "git_blob_sha1": "7d64a61a47bedb2bd7a2801641c5959178837f04",
+      "bytes": 6043,
+      "imports": [
+        "Mathlib"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.SixChannels",
+      "path": "SingularClosure/SixChannels.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SixChannels.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/SixChannels.lean",
+      "sha256": "1c7f53956d9a766a3c8e4e781aa850a26351761ef0086c7ffd10047762854eab",
+      "git_blob_sha1": "d39d32cba53e57ab7a8bd458eff1725d1a810e6f",
+      "bytes": 5991,
+      "imports": [
+        "Mathlib"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.Galerkin",
+      "path": "SingularClosure/Galerkin.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Galerkin.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/Galerkin.lean",
+      "sha256": "e1ac5c944bab2667b02ae6c75b46f63605354b8c928c56298aee0e28b043a6fa",
+      "git_blob_sha1": "8ba283677fe19e33333b8169afbc39ba3ead1c54",
+      "bytes": 6444,
+      "imports": [
+        "SingularClosure.Contracts",
+        "SingularClosure.SixChannels"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.Admission",
+      "path": "SingularClosure/Admission.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Admission.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/Admission.lean",
+      "sha256": "cd8e62a4f88a33b14d3a699b2431e801d590bcadf02d03b2e67ef3ebb5dc63ca",
+      "git_blob_sha1": "b28f8ae19042a947a1c46a7eaf6f9afc306844f7",
+      "bytes": 2934,
+      "imports": [
+        "SingularClosure.Galerkin"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.PhysicalChannels",
+      "path": "SingularClosure/PhysicalChannels.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalChannels.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalChannels.lean",
+      "sha256": "0d522433e0a511a1c0f41b25947a05ece9780cacbe6809d105fdbb8991dca89f",
+      "git_blob_sha1": "51143ae4f06ee8bb6f2d0a7886a83a92ee913de3",
+      "bytes": 6166,
+      "imports": [
+        "SingularClosure.Galerkin"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.PhysicalEnstrophy",
+      "path": "SingularClosure/PhysicalEnstrophy.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalEnstrophy.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalEnstrophy.lean",
+      "sha256": "720eaee5f18ea728c366880aeb05ced52bd9167369103cb19450991f74e08614",
+      "git_blob_sha1": "23c2cf54b457b402952c1f70108807fdf49114f1",
+      "bytes": 11413,
+      "imports": [
+        "SingularClosure.Admission",
+        "SingularClosure.PhysicalChannels"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.FourierIntegral",
+      "path": "SingularClosure/FourierIntegral.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierIntegral.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierIntegral.lean",
+      "sha256": "8ecd56d311006a4db14bbe41a9d920d1760412f2ead5f3684239b85f0ad5290e",
+      "git_blob_sha1": "7e5ee2ef060d2fc6530ddc64aac313342caa07ff",
+      "bytes": 3944,
+      "imports": [
+        "SingularClosure.PhysicalEnstrophy"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.PhysicalProjection",
+      "path": "SingularClosure/PhysicalProjection.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalProjection.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalProjection.lean",
+      "sha256": "8ad95865c4dcec61caae216aa8fd09043f2e0e760a128752d00aee5aa82c4287",
+      "git_blob_sha1": "3e5946e86c86461f479900a33c4b69d3c65e32f0",
+      "bytes": 8251,
+      "imports": [
+        "SingularClosure.PhysicalChannels"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.GalerkinAlgebra",
+      "path": "SingularClosure/GalerkinAlgebra.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean",
+      "sha256": "f361277b03794598be46b2c5faaee641d3d0772a4c75eab543fd86aa0ea088a8",
+      "git_blob_sha1": "2db76563813ace44d18df11d0092dd9dd7933ca3",
+      "bytes": 12133,
+      "imports": [
+        "SingularClosure.Galerkin"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.GalerkinEnergy",
+      "path": "SingularClosure/GalerkinEnergy.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinEnergy.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinEnergy.lean",
+      "sha256": "1f0e5b8a62e9d65bd7161efdfe539793157e8edbe94434d0c43b7af4644d5c02",
+      "git_blob_sha1": "e6501bff17d1fa9aa48166e85a1ddfafc7c221ae",
+      "bytes": 10885,
+      "imports": [
+        "SingularClosure.GalerkinAlgebra"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.GalerkinReality",
+      "path": "SingularClosure/GalerkinReality.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinReality.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinReality.lean",
+      "sha256": "48dcb88fd3b82c93a8227432d4e909f4834434b51e24dfd9f2bdcc6f6d03cbe4",
+      "git_blob_sha1": "3ae23263fad711565812a58bac4dd4f922fb06f5",
+      "bytes": 2520,
+      "imports": [
+        "SingularClosure.GalerkinEnergy"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.LerayPressure",
+      "path": "SingularClosure/LerayPressure.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/LerayPressure.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/LerayPressure.lean",
+      "sha256": "fb20ecd6a63415920817de69141c2b6ce23ce1967c2d52c4c9415ceaaf744a27",
+      "git_blob_sha1": "5bfcf093f2862b7490d7fef01792f5ab1499551b",
+      "bytes": 4327,
+      "imports": [
+        "SingularClosure.GalerkinAlgebra"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.FourierPressure",
+      "path": "SingularClosure/FourierPressure.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierPressure.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierPressure.lean",
+      "sha256": "841c510c2133581789aa99c747d1315849abadabb7a2df019648a1ae5cd4b2fb",
+      "git_blob_sha1": "7d624acfec7e58d3f3719aeb14b9d310c2d5af73",
+      "bytes": 8589,
+      "imports": [
+        "SingularClosure.FourierIntegral",
+        "SingularClosure.PhysicalProjection",
+        "SingularClosure.GalerkinReality",
+        "SingularClosure.LerayPressure"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.PhysicalParseval",
+      "path": "SingularClosure/PhysicalParseval.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalParseval.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalParseval.lean",
+      "sha256": "5785d4892b4d869c19532547247eea3848d670f23b3f93a7c7288233b6cd9338",
+      "git_blob_sha1": "4f1d24f4b206c7a988ebcd191a54e789826ea0f5",
+      "bytes": 12070,
+      "imports": [
+        "SingularClosure.FourierIntegral",
+        "SingularClosure.PhysicalProjection"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.FiniteParseval",
+      "path": "SingularClosure/FiniteParseval.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FiniteParseval.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/FiniteParseval.lean",
+      "sha256": "63c51f81c008bf435d39b92710860dded6a9e09537a8056aeb425bd5769f5997",
+      "git_blob_sha1": "d519f88b4af3e354c0af670e19db69bc3ec3724f",
+      "bytes": 10498,
+      "imports": [
+        "SingularClosure.PhysicalParseval",
+        "SingularClosure.GalerkinEnergy"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.FiniteHessian",
+      "path": "SingularClosure/FiniteHessian.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FiniteHessian.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/FiniteHessian.lean",
+      "sha256": "1c2cc4c469bf1ccd75c3842ce9d17b72aba34866dd926c10d3ba98446fcd8b7d",
+      "git_blob_sha1": "d8ce599d5e40f4e40a372c179e428c73f2f970a4",
+      "bytes": 5552,
+      "imports": [
+        "SingularClosure.FiniteParseval"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.EnstrophyInequality",
+      "path": "SingularClosure/EnstrophyInequality.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/EnstrophyInequality.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/EnstrophyInequality.lean",
+      "sha256": "903678f104e8f312e0c7b2ed5f7846109931cea773b8a989df7ab14de2a93c17",
+      "git_blob_sha1": "fdc12e4676295ea43d0e2f8d1f0592e0c545200e",
+      "bytes": 4633,
+      "imports": [
+        "SingularClosure.GalerkinEnergy"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.PhysicalBilinear",
+      "path": "SingularClosure/PhysicalBilinear.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalBilinear.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalBilinear.lean",
+      "sha256": "6062c88611b7b2d8885d62272d2be88a95cbec37335a1129a636e84b564b3262",
+      "git_blob_sha1": "97b76bf8e8964a03b3ea13f2099900dd75865cd6",
+      "bytes": 13097,
+      "imports": [
+        "SingularClosure.FiniteHessian",
+        "SingularClosure.EnstrophyInequality"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.InitialFourier",
+      "path": "SingularClosure/InitialFourier.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialFourier.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialFourier.lean",
+      "sha256": "acc40e4e4acd8ffa46fdd6ea1a46ac38fa4196bb329cc2856be04c183aaa4b6e",
+      "git_blob_sha1": "c8f4073b788f8e055502c8e9b8574cbab9355402",
+      "bytes": 11225,
+      "imports": [
+        "SingularClosure.FourierIntegral",
+        "SingularClosure.PhysicalProjection"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.InitialCutoffBounds",
+      "path": "SingularClosure/InitialCutoffBounds.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialCutoffBounds.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialCutoffBounds.lean",
+      "sha256": "f9f7eec7c6f8fa46f45ce4bc5942ff9627fe532e377780d5701f144ffd833c30",
+      "git_blob_sha1": "dadf69927b1858ab267cd1d1c5c629abdcf1dd33",
+      "bytes": 9827,
+      "imports": [
+        "SingularClosure.PhysicalBilinear",
+        "SingularClosure.InitialFourier"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.FourierDecay",
+      "path": "SingularClosure/FourierDecay.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierDecay.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierDecay.lean",
+      "sha256": "8e9ccc5d7f43105c19eb4726dc6de30a97edfdad52945e96551ad20559526c45",
+      "git_blob_sha1": "df80f021be4266f97f40045289f42203e1caabc2",
+      "bytes": 8503,
+      "imports": [
+        "SingularClosure.InitialCutoffBounds"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.FourierSeriesCalculus",
+      "path": "SingularClosure/FourierSeriesCalculus.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierSeriesCalculus.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierSeriesCalculus.lean",
+      "sha256": "074ce0aa9a379ac5f378b57a0da44d95b54769e53689057337f9262f0579b846",
+      "git_blob_sha1": "96486c8c4d9f7b3128bc69b74b2127a363acb372",
+      "bytes": 9867,
+      "imports": [
+        "SingularClosure.FourierPressure",
+        "SingularClosure.FourierDecay",
+        "Mathlib.Analysis.Calculus.SmoothSeries",
+        "Mathlib.Analysis.Calculus.ContDiff.FiniteDimension",
+        "Mathlib.MeasureTheory.Integral.DominatedConvergence"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "FourierHodgeLaws.TargetPrimitives",
+      "path": "FourierHodgeLaws/TargetPrimitives.lean",
+      "source_repository": "randogelist/Methlib",
+      "source_pin": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/TargetPrimitives.lean",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/TargetPrimitives.lean",
+      "sha256": "4fffe11365b4b539a063320719565a4e220983ed9113229c9613e87c58f02158",
+      "git_blob_sha1": "2ab9a4a60342e01afb7e28bc7441a5f78f270c97",
+      "bytes": 5525,
+      "imports": [
+        "MaxwellEndpoint.Constitutive",
+        "SingularClosure.FourierSeriesCalculus"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": [
+        "ME16"
+      ]
+    },
+    {
+      "module": "SingularClosure.TorusSobolev",
+      "path": "SingularClosure/TorusSobolev.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/TorusSobolev.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/TorusSobolev.lean",
+      "sha256": "7e30008b592ff6124d10d0e6306e96f3528395bcee13fd11df3d1a6497834389",
+      "git_blob_sha1": "694c3996939724b61bd096c4dbf7967fe61e33ac",
+      "bytes": 22413,
+      "imports": [
+        "SingularClosure.GalerkinEnergy",
+        "SingularClosure.LerayPressure",
+        "Mathlib.Analysis.InnerProductSpace.l2Space",
+        "Mathlib.Analysis.Normed.Operator.Compact.FiniteDimension"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.LatticeSobolevSummability",
+      "path": "SingularClosure/LatticeSobolevSummability.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/LatticeSobolevSummability.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/LatticeSobolevSummability.lean",
+      "sha256": "34634888f8a8601ebb6a5c40f57d2b4a19b0f77295a0c37aeb59fbbd6ea09203",
+      "git_blob_sha1": "256ed4881539d214137116a01483050831dbd48f",
+      "bytes": 5521,
+      "imports": [
+        "SingularClosure.TorusSobolev",
+        "Mathlib.Algebra.Module.ZLattice.Summable"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.SmoothDatumSobolev",
+      "path": "SingularClosure/SmoothDatumSobolev.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SmoothDatumSobolev.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/SmoothDatumSobolev.lean",
+      "sha256": "533948ef73136fc1fe995e073063860044bd3e4d63081f2ba0c49383c51e4466",
+      "git_blob_sha1": "c8e9c99280050ab80558cc2d05c491f5f9e400b9",
+      "bytes": 7380,
+      "imports": [
+        "SingularClosure.FourierDecay",
+        "SingularClosure.LatticeSobolevSummability"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.SobolevSmoothRealization",
+      "path": "SingularClosure/SobolevSmoothRealization.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean",
+      "sha256": "9cc5097590bede10a43dcb711b869cd2c65ad955cf1636bc41ca5f4f29bf6ead",
+      "git_blob_sha1": "197414ab411a8c65a82b936e00e77322c33bf8a1",
+      "bytes": 12785,
+      "imports": [
+        "SingularClosure.FourierSeriesCalculus",
+        "SingularClosure.LatticeSobolevSummability"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "FourierHodgeLaws.FourierCoefficients",
+      "path": "FourierHodgeLaws/FourierCoefficients.lean",
+      "source_repository": "randogelist/Methlib",
+      "source_pin": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean",
+      "sha256": "280e00740d779c6c592a6a9a6ce650355297050e7a75f18affbe8348aa8c3212",
+      "git_blob_sha1": "9c3755c1fd05214dca2afb1d0a18d7876eca5c35",
+      "bytes": 4558,
+      "imports": [
+        "FourierHodgeLaws.TargetPrimitives",
+        "SingularClosure.SmoothDatumSobolev",
+        "SingularClosure.SobolevSmoothRealization"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "MaxwellEndpoint.System",
+      "path": "MaxwellEndpoint/System.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint/System.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint/System.lean",
+      "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+      "git_blob_sha1": "41d3c4c5f0dd15af4ec0f788a8fcd51f851e8d35",
+      "bytes": 1928,
+      "imports": [
+        "MaxwellEndpoint.Constitutive"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "MaxwellEndpoint.Native",
+      "path": "MaxwellEndpoint/Native.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint/Native.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint/Native.lean",
+      "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+      "git_blob_sha1": "e52a2814e2fa2f0ffc603c053fcf6385cf308965",
+      "bytes": 7121,
+      "imports": [
+        "MaxwellEndpoint.System"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "MaxwellEndpoint",
+      "path": "MaxwellEndpoint.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint.lean",
+      "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+      "git_blob_sha1": "353e6238e480d5a7c398a3dbb96855bbb85f8cb0",
+      "bytes": 128,
+      "imports": [
+        "MaxwellEndpoint.Geometry",
+        "MaxwellEndpoint.Constitutive",
+        "MaxwellEndpoint.System",
+        "MaxwellEndpoint.Native"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwell.Classical",
+      "path": "NSEMaxwell/Classical.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/Classical.lean",
+      "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+      "git_blob_sha1": "436b964ed678b7d5e47582f9dde3df522083bad8",
+      "bytes": 1507,
+      "imports": [
+        "MaxwellEndpoint"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwell.Kinematics",
+      "path": "NSEMaxwell/Kinematics.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+      "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+      "git_blob_sha1": "3e10d1e8f3899df6f7f5cb194eb61d5b1acf3459",
+      "bytes": 6563,
+      "imports": [
+        "NSEMaxwell.Classical"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwell.CurlCurl",
+      "path": "NSEMaxwell/CurlCurl.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+      "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+      "git_blob_sha1": "aedf3033c1747392e4c3abe933ee8e08eff04f01",
+      "bytes": 12995,
+      "imports": [
+        "NSEMaxwell.Kinematics"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwell.Lamb",
+      "path": "NSEMaxwell/Lamb.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/Lamb.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/Lamb.lean",
+      "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+      "git_blob_sha1": "080b372f71ef437fb9b0512081832057b79f16e5",
+      "bytes": 4681,
+      "imports": [
+        "NSEMaxwell.Classical"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwell.PeriodicIntegration",
+      "path": "NSEMaxwell/PeriodicIntegration.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean",
+      "sha256": "1e5ab9beb9eeb11fbf595ff4fbdad263ebd4f38e17f02f3ed53e687bfb03664c",
+      "git_blob_sha1": "fa5ec7d597c23fde2d972f3119670a7d9222135e",
+      "bytes": 14200,
+      "imports": [
+        "NSEMaxwell.CurlCurl",
+        "NSEMaxwell.Lamb"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.HilbertChannels",
+      "path": "SingularClosure/HilbertChannels.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/HilbertChannels.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/HilbertChannels.lean",
+      "sha256": "363e4a068a835c2d67c13ad9eed8cf313ea9b402959aab343d40e379238c4f09",
+      "git_blob_sha1": "92538be4320e594b9b0473d1453a9a2afe9ac5e3",
+      "bytes": 12035,
+      "imports": [
+        "SingularClosure.SixChannels",
+        "Mathlib.Analysis.Fourier.AddCircleMulti"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.CoordinateAverage",
+      "path": "SingularClosure/CoordinateAverage.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/CoordinateAverage.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/CoordinateAverage.lean",
+      "sha256": "3cdfd38ab7cc38805c04dfcba99bdbea711753c00cb2215d030d622514685076",
+      "git_blob_sha1": "3dba0b8286fcc034907a6438c5a4c0417169c3fd",
+      "bytes": 6071,
+      "imports": [
+        "SingularClosure.Contracts"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.CoordinateAverageOrthogonal",
+      "path": "SingularClosure/CoordinateAverageOrthogonal.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/CoordinateAverageOrthogonal.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/CoordinateAverageOrthogonal.lean",
+      "sha256": "0021524a73fb9c7d0ff4a9b9efe359f6479f649202c8d573c59d5e2718996ab9",
+      "git_blob_sha1": "e5c0c5aeb8fa605712a252e0a8969c8d7b56600f",
+      "bytes": 9554,
+      "imports": [
+        "SingularClosure.CoordinateAverage",
+        "SingularClosure.PhysicalEnstrophy"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.PeriodicCover",
+      "path": "SingularClosure/PeriodicCover.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicCover.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicCover.lean",
+      "sha256": "9d6f0d78c7a043ef7d8a7db1c3d5f647a84492ff6c3843d85527638990f7929f",
+      "git_blob_sha1": "a9425368b5a17e56bb469401b2fbae106e0ad1b1",
+      "bytes": 6432,
+      "imports": [
+        "SingularClosure.PhysicalEnstrophy"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.PeriodicFourierRealization",
+      "path": "SingularClosure/PeriodicFourierRealization.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicFourierRealization.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicFourierRealization.lean",
+      "sha256": "f4118fd9507488f5bf8cd3df2c1f174f245a32928b118eeb967017865edd2871",
+      "git_blob_sha1": "cb8f865f3531fe9d4239c2bcc074f06d148d9d60",
+      "bytes": 7948,
+      "imports": [
+        "SingularClosure.HilbertChannels",
+        "SingularClosure.CoordinateAverageOrthogonal",
+        "SingularClosure.FourierIntegral",
+        "SingularClosure.PeriodicCover"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "SingularClosure.PeriodicFourierInjective",
+      "path": "SingularClosure/PeriodicFourierInjective.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicFourierInjective.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicFourierInjective.lean",
+      "sha256": "2da981fc1a5db3b5b796fa11a687fe6e993a54938d83bc74513e0220c4f80e81",
+      "git_blob_sha1": "66acbb7c899060320f7aaf1d481ed1d28d41d9e6",
+      "bytes": 4441,
+      "imports": [
+        "SingularClosure.PeriodicFourierRealization",
+        "Mathlib.MeasureTheory.Measure.OpenPos",
+        "Mathlib.Topology.Separation.Hausdorff"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "FourierHodgeLaws.CosineMultiplier",
+      "path": "FourierHodgeLaws/CosineMultiplier.lean",
+      "source_repository": "randogelist/Methlib",
+      "source_pin": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean",
+      "sha256": "d12c8efdffdbf21e98aed74ed436032e314343f7aa80df61d4ad3e6ee4accc42",
+      "git_blob_sha1": "ba3b75ee3568eecb23ad6336e291bd644c453398",
+      "bytes": 7985,
+      "imports": [
+        "FourierHodgeLaws.FourierCoefficients",
+        "NSEMaxwell.PeriodicIntegration",
+        "SingularClosure.PeriodicFourierInjective"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": [
+        "ME01",
+        "ME02",
+        "ME03",
+        "ME04"
+      ]
+    },
+    {
+      "module": "NSEMaxwell.DominatedWithin",
+      "path": "NSEMaxwell/DominatedWithin.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/DominatedWithin.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/DominatedWithin.lean",
+      "sha256": "d42ff10c78decd35907a1574e37a86de5fe87b32ad0c5e4ed4ed83997ea7766b",
+      "git_blob_sha1": "53896795c9034520b54d40cbf95d73b1a4420890",
+      "bytes": 4522,
+      "imports": [
+        "NSEMaxwell.Classical"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwell.Spacetime",
+      "path": "NSEMaxwell/Spacetime.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/Spacetime.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/Spacetime.lean",
+      "sha256": "ebea01c7422186aaa0ec4c72c26774ee32f96291756be7775ba40f569eb89c57",
+      "git_blob_sha1": "4dd37f48ac5c19dded941be0994160aa23de0cf9",
+      "bytes": 10914,
+      "imports": [
+        "NSEMaxwell.CurlCurl"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwell.TemporalMean",
+      "path": "NSEMaxwell/TemporalMean.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/TemporalMean.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/TemporalMean.lean",
+      "sha256": "cf6a9d1afa1303db16e882cf52fc4e4db26842cf128a0a6fc050ac80735f5de6",
+      "git_blob_sha1": "2dc73ddff7c85b9ea497c634908ed346bb0823c6",
+      "bytes": 4515,
+      "imports": [
+        "NSEMaxwell.DominatedWithin",
+        "NSEMaxwell.Spacetime",
+        "NSEMaxwell.PeriodicIntegration"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwell.Constitutive",
+      "path": "NSEMaxwell/Constitutive.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/Constitutive.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/Constitutive.lean",
+      "sha256": "d7f1d613a094b2d7679d27d621286ac98e4998a67529f74c4614dcff4f1b4d81",
+      "git_blob_sha1": "e4903cdec379559f3ebf20ef0bd66bd76173f219",
+      "bytes": 6932,
+      "imports": [
+        "NSEMaxwell.Kinematics"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwell.Negation",
+      "path": "NSEMaxwell/Negation.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/Negation.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/Negation.lean",
+      "sha256": "4763b648a80780e3e8694b8953b249823a5349cfd52d3dbb7e0695781a1f531d",
+      "git_blob_sha1": "b9ba200afdcb2a9fd276fffbb30bc7c911b90558",
+      "bytes": 1966,
+      "imports": [
+        "NSEMaxwell.Constitutive"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwell.Pressure",
+      "path": "NSEMaxwell/Pressure.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/Pressure.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/Pressure.lean",
+      "sha256": "c46ba912d016697050c20c7effbe82d463d233469641c886dbb5a89cb1503677",
+      "git_blob_sha1": "bb4f53d1025a4936794b41bde9ca151ed41716cd",
+      "bytes": 2128,
+      "imports": [
+        "NSEMaxwell.Kinematics"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwell.Ampere",
+      "path": "NSEMaxwell/Ampere.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/Ampere.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/Ampere.lean",
+      "sha256": "e1ee9e880e2c50360fea276a49fe3ca4c05c8104fa7b29740877cde3d30bc648",
+      "git_blob_sha1": "9c676ee059a1ece752d6157b6d25b9ec3e337802",
+      "bytes": 1637,
+      "imports": [
+        "NSEMaxwell.Constitutive"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwell.ConstantPaths",
+      "path": "NSEMaxwell/ConstantPaths.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/ConstantPaths.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/ConstantPaths.lean",
+      "sha256": "14ddfa21be65dcb38ec3f9b2a5c62463de3846fd44c23b32a27ac0f083c206cf",
+      "git_blob_sha1": "6392adc81fb5408537b773e3cdab89156c8eb229",
+      "bytes": 1025,
+      "imports": [
+        "NSEMaxwell.Kinematics"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwell.AnalyticContracts",
+      "path": "NSEMaxwell/AnalyticContracts.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/AnalyticContracts.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/AnalyticContracts.lean",
+      "sha256": "7664e157e5ebe3c8ffc24a3eba714b180b248bb950e8b8c4ab5c2c3190b49f3e",
+      "git_blob_sha1": "114ba2794f62e9ccaf932b5acdcc4790c97e16fb",
+      "bytes": 7054,
+      "imports": [
+        "NSEMaxwell.Negation",
+        "NSEMaxwell.Lamb",
+        "NSEMaxwell.Pressure",
+        "NSEMaxwell.Ampere",
+        "NSEMaxwell.ConstantPaths",
+        "NSEMaxwell.CurlCurl"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwellForward",
+      "path": "NSEMaxwellForward.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/LocalDependencies/Forward/NSEMaxwellForward.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/LocalDependencies/Forward/NSEMaxwellForward.lean",
+      "sha256": "d2a74b2268c54de3593996480d18429aa11060ce72396c7d2cea8071cfb57845",
+      "git_blob_sha1": "74a7276db4139f66e2e8d5c11cdb86d0217664bb",
+      "bytes": 5190,
+      "imports": [
+        "NSEMaxwell.AnalyticContracts"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwellReverse",
+      "path": "NSEMaxwellReverse.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/LocalDependencies/Reverse/NSEMaxwellReverse.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/LocalDependencies/Reverse/NSEMaxwellReverse.lean",
+      "sha256": "b6cb2beb70264b98d23a8143def620121112077e3326125b4e51833990e9de04",
+      "git_blob_sha1": "5bd54c85b756bfce6cc1f5b83aa36da96d323bda",
+      "bytes": 5717,
+      "imports": [
+        "NSEMaxwell.AnalyticContracts"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwell.AnalyticBridge",
+      "path": "NSEMaxwell/AnalyticBridge.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/AnalyticBridge.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/AnalyticBridge.lean",
+      "sha256": "d1e5a1439d01599cacea35a0c45f6c2e3842011130b8645681f02cff817b5402",
+      "git_blob_sha1": "03e52624acee07e135a0dabff7b23705bb84aa15",
+      "bytes": 1059,
+      "imports": [
+        "NSEMaxwellForward",
+        "NSEMaxwellReverse"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwell.LocalEvolution",
+      "path": "NSEMaxwell/LocalEvolution.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/LocalEvolution.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/LocalEvolution.lean",
+      "sha256": "6ada4c7209bfcf163490fdd13d4ebb2381feed274b5ccec447025cac75f3a680",
+      "git_blob_sha1": "2ed56c52be7be3a0038b7299373d723bf5f01fab",
+      "bytes": 9639,
+      "imports": [
+        "NSEMaxwell.Spacetime",
+        "NSEMaxwell.Lamb"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwell.MeanConservation",
+      "path": "NSEMaxwell/MeanConservation.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/MeanConservation.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/MeanConservation.lean",
+      "sha256": "3bf93c76cfd27a1644c2a1f760b28a1710e62aa607202c1ddc81188a2f922da6",
+      "git_blob_sha1": "2bc9f9342d975ab4a9a0ced5751392f533f7d596",
+      "bytes": 4089,
+      "imports": [
+        "NSEMaxwell.PeriodicIntegration",
+        "NSEMaxwell.TemporalMean"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwell.FourierPeriodic",
+      "path": "NSEMaxwell/FourierPeriodic.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/FourierPeriodic.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/FourierPeriodic.lean",
+      "sha256": "1d49a7d1ead33dd2eb0ab6dd2d90d1dddeefe032d0bd1773f305c85c974591ef",
+      "git_blob_sha1": "ee957050b24510b95eb2f7fb96dd8d4b23622df8",
+      "bytes": 5329,
+      "imports": [
+        "NSEMaxwell.PeriodicIntegration"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwell.CanonicalSmoothness",
+      "path": "NSEMaxwell/CanonicalSmoothness.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/CanonicalSmoothness.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/CanonicalSmoothness.lean",
+      "sha256": "d63f7555c73d78141e53d86b463848e2594d01a6dcf8a0b3c026ac8de79dd021",
+      "git_blob_sha1": "9a8e5cf28ec2f38c28332f61e0a628f8a4b6e6c8",
+      "bytes": 4535,
+      "imports": [
+        "NSEMaxwell.AnalyticBridge",
+        "NSEMaxwell.LocalEvolution",
+        "NSEMaxwell.FourierPeriodic"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "NSEMaxwell.AnalyticReduction",
+      "path": "NSEMaxwell/AnalyticReduction.lean",
+      "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+      "source_pin": "9f5500cd5dadc351ab3ec98db09dccaa9a22eb25",
+      "source_path": "Fefferman_adapter/NSEMaxwell/AnalyticReduction.lean",
+      "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/9f5500cd5dadc351ab3ec98db09dccaa9a22eb25/Fefferman_adapter/NSEMaxwell/AnalyticReduction.lean",
+      "sha256": "2813f7dd8035681265656a3b6bb2476dbd30e928dc8a737bcb7e3277a8ae77ba",
+      "git_blob_sha1": "ff637eca5f8c13e96366d8616f4cad9f9cc2315f",
+      "bytes": 7983,
+      "imports": [
+        "NSEMaxwell.AnalyticBridge",
+        "NSEMaxwell.LocalEvolution",
+        "NSEMaxwell.MeanConservation",
+        "NSEMaxwell.FourierPeriodic",
+        "NSEMaxwell.CanonicalSmoothness"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "FourierHodgeLaws.ParameterIntegral",
+      "path": "FourierHodgeLaws/ParameterIntegral.lean",
+      "source_repository": "randogelist/Methlib",
+      "source_pin": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterIntegral.lean",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterIntegral.lean",
+      "sha256": "e057005dbf269c7fd797241224651d9f145272f9674f50faa24e2e3dba2e7fe7",
+      "git_blob_sha1": "9356e72322a01121d7106d1fff58d979df8745ee",
+      "bytes": 2900,
+      "imports": [
+        "NSEMaxwell.TemporalMean",
+        "NSEMaxwell.AnalyticReduction"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": [
+        "ME15"
+      ]
+    },
+    {
+      "module": "FourierHodgeLaws.ParameterCoefficients",
+      "path": "FourierHodgeLaws/ParameterCoefficients.lean",
+      "source_repository": "randogelist/Methlib",
+      "source_pin": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterCoefficients.lean",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterCoefficients.lean",
+      "sha256": "016d9cf0c1deda75770d39f66c2e5c684435448bc7c9785cbc5d28612db54eee",
+      "git_blob_sha1": "2cb1cb2711b0ba387457ae0117857b037ccedc77",
+      "bytes": 11236,
+      "imports": [
+        "FourierHodgeLaws.ParameterIntegral",
+        "FourierHodgeLaws.TargetPrimitives"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": [
+        "ME12",
+        "ME13",
+        "ME17"
+      ]
+    },
+    {
+      "module": "FourierHodgeLaws.ClosedHalfspaceSmooth",
+      "path": "FourierHodgeLaws/ClosedHalfspaceSmooth.lean",
+      "source_repository": "randogelist/Methlib",
+      "source_pin": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/ClosedHalfspaceSmooth.lean",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ClosedHalfspaceSmooth.lean",
+      "sha256": "2a6aa1174674cc2b8bd62ec09edde8fd8409891cc97e5e6461fcf1805585ba16",
+      "git_blob_sha1": "7bca45d0f0b7e3b5428e237231ddc32c82a81785",
+      "bytes": 5676,
+      "imports": [
+        "NSEMaxwell.Spacetime",
+        "Mathlib.Analysis.Calculus.FDeriv.Extend",
+        "Mathlib.Analysis.Calculus.ContDiff.Comp"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "FourierHodgeLaws.UniformCoefficientBounds",
+      "path": "FourierHodgeLaws/UniformCoefficientBounds.lean",
+      "source_repository": "randogelist/Methlib",
+      "source_pin": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/UniformCoefficientBounds.lean",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/UniformCoefficientBounds.lean",
+      "sha256": "ee3d428ae138b05907a15bd3cc68d0a9afcd041b5ea400888bfaa75e1fb1402e",
+      "git_blob_sha1": "6c55e7efb0b2184367178986113039a8c9d46650",
+      "bytes": 8249,
+      "imports": [
+        "FourierHodgeLaws.FourierCoefficients",
+        "NSEMaxwell.Spacetime",
+        "NSEMaxwell.PeriodicIntegration"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": [
+        "ME14"
+      ]
+    },
+    {
+      "module": "FourierHodgeLaws.ParameterSmoothing",
+      "path": "FourierHodgeLaws/ParameterSmoothing.lean",
+      "source_repository": "randogelist/Methlib",
+      "source_pin": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterSmoothing.lean",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterSmoothing.lean",
+      "sha256": "693e24c88e42270212ba4d6053b9141fcf2d1bbb983ab04bf6bfc43dbb870b0d",
+      "git_blob_sha1": "d50b9ba617b03db086786b1352c44566ffa3c6c4",
+      "bytes": 14987,
+      "imports": [
+        "FourierHodgeLaws.ClosedHalfspaceSmooth",
+        "FourierHodgeLaws.CosineMultiplier",
+        "FourierHodgeLaws.ParameterCoefficients",
+        "FourierHodgeLaws.UniformCoefficientBounds",
+        "Mathlib.Analysis.Calculus.SmoothSeries",
+        "Mathlib.Analysis.Calculus.ContDiff.FiniteDimension"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": [
+        "ME10",
+        "ME11"
+      ]
+    },
+    {
+      "module": "FourierHodgeLaws.PoissonFromCoefficients",
+      "path": "FourierHodgeLaws/PoissonFromCoefficients.lean",
+      "source_repository": "randogelist/Methlib",
+      "source_pin": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/PoissonFromCoefficients.lean",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/PoissonFromCoefficients.lean",
+      "sha256": "23cf86397aa7029712671127bbdf7fc28abcd0eafb182d7c4ca48e7afb44fd06",
+      "git_blob_sha1": "0c70f1a4b9bc68ad99225168e9dfac62d72dda23",
+      "bytes": 7173,
+      "imports": [
+        "FourierHodgeLaws.CosineMultiplier",
+        "NSEMaxwell.FourierPeriodic",
+        "SingularClosure.FiniteHessian"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": [
+        "ME07"
+      ]
+    },
+    {
+      "module": "FourierHodgeLaws.SpatialHodge",
+      "path": "FourierHodgeLaws/SpatialHodge.lean",
+      "source_repository": "randogelist/Methlib",
+      "source_pin": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialHodge.lean",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialHodge.lean",
+      "sha256": "96492e65f07cc825eb9e5ae2f43de61ee3b6f4ba2c96ac85dbf44290be228df4",
+      "git_blob_sha1": "d7ce86f84a87b0ff0fb7514de5a5c6d53ee6031e",
+      "bytes": 5695,
+      "imports": [
+        "NSEMaxwell.AnalyticReduction"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": [
+        "ME09"
+      ]
+    },
+    {
+      "module": "FourierHodgeLaws.SpatialMultiplier",
+      "path": "FourierHodgeLaws/SpatialMultiplier.lean",
+      "source_repository": "randogelist/Methlib",
+      "source_pin": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialMultiplier.lean",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialMultiplier.lean",
+      "sha256": "9385b39dbebac0062302f458c2e4d6e0b3f072330bc81e896f2907b463de3d9f",
+      "git_blob_sha1": "7c7708211bb9f8c001506e9550d6d8b192cc34f4",
+      "bytes": 7672,
+      "imports": [
+        "FourierHodgeLaws.CosineMultiplier",
+        "NSEMaxwell.CurlCurl"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": [
+        "ME05",
+        "ME06"
+      ]
+    },
+    {
+      "module": "FourierHodgeLaws.ElectricHodge",
+      "path": "FourierHodgeLaws/ElectricHodge.lean",
+      "source_repository": "randogelist/Methlib",
+      "source_pin": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/ElectricHodge.lean",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ElectricHodge.lean",
+      "sha256": "9a86c179c75a512f15a31e621afc5ace526dfb636e0ad8b704c4081731be10dd",
+      "git_blob_sha1": "67986797655ddfcab8dc1be4f263dd06b46cd1de",
+      "bytes": 4043,
+      "imports": [
+        "FourierHodgeLaws.SpatialHodge"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": []
+    },
+    {
+      "module": "FourierHodgeLaws.SpatialInhabitant",
+      "path": "FourierHodgeLaws/SpatialInhabitant.lean",
+      "source_repository": "randogelist/Methlib",
+      "source_pin": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialInhabitant.lean",
+      "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialInhabitant.lean",
+      "sha256": "4a414a1125fffa62e0e4f760186fc1597cb116052c138ec3a486a0cb7c6b693f",
+      "git_blob_sha1": "621953d21007e1206e2ad60e2c00abb1cb362fcc",
+      "bytes": 1172,
+      "imports": [
+        "FourierHodgeLaws.SpatialMultiplier",
+        "FourierHodgeLaws.PoissonFromCoefficients",
+        "FourierHodgeLaws.ElectricHodge"
+      ],
+      "source_byte_identity": "VERIFIED_AGAINST_IMMUTABLE_GIT_BLOB_SHA1",
+      "owning_endpoint_groups": [
+        "ME08"
+      ]
+    }
+  ]
+}

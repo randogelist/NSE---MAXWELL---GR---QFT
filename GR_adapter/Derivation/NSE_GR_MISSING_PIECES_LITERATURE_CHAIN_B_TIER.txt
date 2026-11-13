@@ -1,0 +1,1439 @@
+NSE_GR_MISSING_PIECES_LITERATURE_CHAIN_B_TIER
+VERSION = 1.2.0
+DATE = 2026-11-13
+MODE = B_TIER_DERIVATION
+MATHEMATICAL_STATUS = != B_TIER
+NATIVE_PROJECT_CONTRACT_INHABITANTS_ADDED = 0
+LOCAL_LEAN_EXECUTIONS = 0
+
+SOURCE_MODEL
+Repository: randogelist/NSE---MAXWELL---GR---QFT
+Branch: codex/gr-adapter
+Exact source: 509eb15eb7b8a2e5322befcc6fe95238be105290
+https://github.com/randogelist/NSE---MAXWELL---GR---QFT/tree/509eb15eb7b8a2e5322befcc6fe95238be105290/GR_adapter
+Native compiler: Lean 4.34.0-rc1
+Mathlib: de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+Existing certificate: 190 adapter + 6 forward + 6 reverse named audits.
+https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43366550531
+
+The existing native conditional root and its explicit premises are unchanged.
+This TXT supplies the missing mathematical derivations, using verified
+classical analytic theorems and explicit adapters. It supplies no new Lean
+kernel evidence and introduces no literature axiom into the repository.
+
+0. EXPLICIT LITERATURE INPUTS
+
+INPUT_POLICY = named mathematical hypotheses; source-backed B-tier use.
+GLOBAL_LITERATURE_AXIOM_DECLARATIONS_ADDED = 0
+LEAN_AXIOMS_ADDED = 0
+LITERATURE_INPUT_NATIVE_PROOFS = OPEN
+
+L01-L06 below identify SOURCES. LI01-LI03 identify selected INPUT SIGNATURES.
+M01-M28 identify PROJECT ADAPTERS. B1-B5 identify DERIVED OUTPUTS.
+The three selected signatures are useful interfaces, not a claim of three
+logically independent foundational assumptions. LI02 is reducible to LI01
+by the explicit Gaussian evolution and constraint-propagation derivation.
+
+0.1 LI01 = AnalyticCauchyKowalevskiInput
+
+Source = L01, Section 2, PDF p.4, equation (2), CK theorem.
+Variables:
+  n,m in N, n>=1, m>=1; t0 in R; a in R^n.
+  U open in R^n, a in U; u0:U->R^m real analytic.
+  O open in R x R^n x R^m x Lin(R^n,R^m).
+  j0=(t0,a,u0(a),D u0(a)) in O.
+  F:O->R^m real analytic.
+Conclusion, existence:
+  exists eps>0, V open, a in V subset U, and real-analytic
+    u:(t0-eps,t0+eps) x V -> R^m,
+  such that, throughout this product,
+    (t,x,u(t,x),D_x u(t,x)) in O,
+    partial_t u(t,x)=F(t,x,u(t,x),D_x u(t,x)),
+    u(t0,x)=u0(x).
+Conclusion, uniqueness:
+  any two such analytic solutions for the same F and initial germ u0
+  agree on an open neighborhood of (t0,a) contained in both domains.
+
+Quantifier boundary:
+  existence and uniqueness are LOCAL analytic statements;
+  no uniform radius over a noncompact set and no smooth-data theorem.
+Project applications:
+  scalar variables (psi,psi_t,grad psi), n=3, m=5;
+  scalar compatibility z=grad psi is M09, not an input field;
+  2(rho+Delta psi)!=0 follows from rho!=0 and M11;
+  periodic/full-spatial-slice gluing is M11, not a source conclusion.
+
+0.2 LI02 = FlatGaussianVacuumJetInput
+
+Sources = L02, Lemmas 1-2 and Theorem 2 sufficient direction;
+          L03, equations (1)-(8), curvature-convention footnote.
+This is the composition of L02 Lemmas 1 and 2, with the point-local,
+fixed-lapse, prescribed-jet specialization:
+  n=4, Lambda=0, epsilon=+1, lapse=1.
+
+eta=diag(-1,1,1,1); a,b,c,d in {0,1,2,3}.
+Let U be open in R^4, y0 in U, and K:U->Sym_4(R) real analytic.
+Raise indices with eta, put kappa=eta^{ab}K_ab, and require on U:
+  eta^{ac}eta^{bd}K_ab K_cd-kappa^2=0,
+  eta^{ac}partial_c K_ab-partial_b kappa=0, for every b.
+
+Conclusion, existence:
+  exists eps>0, V open, y0 in V subset U, and analytic
+    h:(-eps,eps) x V -> Sym_4(R),
+  such that g=dr^2+h_ab(r,y)dy^a dy^b is nondegenerate Lorentzian,
+    h(0,y)=eta,
+    partial_r h(0,y)=2K(y),
+    Ric[g]=0 throughout (-eps,eps) x V.
+Conclusion, uniqueness:
+  two analytic vacuum metrics in these SAME Gaussian coordinates,
+  with these SAME two initial jets, agree near (0,y0).
+
+Conventions:
+  K_native=+(1/2)partial_r h;
+  K_source=-K_native; Ric_source=-Ric_native; Ric=0 is invariant
+  under the latter overall sign. Flat Hamiltonian and homogeneous
+  Codazzi constraints are invariant under K->-K.
+  Uniqueness is equality in fixed marking, not equality modulo arbitrary
+  diffeomorphisms. The prescribed K is not replaced by an existentially
+  selected extrinsic curvature from a bare embedding statement.
+
+Not included in LI02:
+  periodicity, one collar for all T^3, beta normalizations, the native
+  LorentzianAt matrix witness, or a globally defined total Metric.
+  These are M17-M18. Full-slice uniqueness is M19.
+
+Redundancy certificate (B-tier, Appendix B):
+  write H=(h_ab)_{a<=b}, V=partial_r H, Z_a=partial_a H;
+  partial_r H=V,
+  partial_r V=R(H,V,Z,D_y Z),
+  partial_r Z_a=partial_a V,
+  H|_0=eta, V|_0=2K, Z_a|_0=0.
+  R is the analytic Gaussian Ricci normal form where det H!=0.
+  LI01 with n=4,m=60 gives a unique analytic germ; compatibility
+  partial_r(Z_a-partial_a H)=0 recovers the second-order system.
+  M05 and M16 give the homogeneous Bianchi subsidiary system;
+  zero initial constraints and analytic uniqueness give Ric[g]=0.
+  Lorentzian signature follows on a smaller neighborhood from h|_0=eta.
+  Thus LI01 plus the explicitly derived geometric identities implies LI02.
+  LI02 is retained as a source-facing convenience interface.
+
+0.3 LI03 = SmoothTorusFourierInput
+
+Source = L04, Section 4, Proposition 4.1, Corollary 4.2,
+         Proposition 4.3, equation (4.5), PDF pp.9-11.
+Normalization adapter = y=2pi*x from source period 2pi to period one.
+
+For every n>=1 and smooth Z^n-periodic f:R^n->C, define
+  fhat(k)=integral_[0,1]^n f(x) exp(-2pi*i*k.x) dx, k in Z^n.
+Then, for every multiindex alpha in N^n,
+  Fourier(partial^alpha f)(k)=(2pi*i*k)^alpha fhat(k),
+  partial^alpha f(x)=sum_{k in Z^n}
+      (2pi*i*k)^alpha fhat(k) exp(2pi*i*k.x),
+  with absolute and uniform convergence in x of the displayed series.
+Finite-dimensional vector/tensor versions follow componentwise.
+
+Not included in LI03:
+  analyticity in a time parameter, analytic regularity of the actual G,
+  time differentiation through G, or the native cosine-series identity.
+  M01-M04 supply these adapters. The k=0 coefficient is retained;
+  only the Poisson multiplier is zero there.
+
+0.4 SUPPORTING RESULTS; NO ADDITIONAL NAMED ADMISSIONS
+
+L05 (Tadmor) supports one-dimensional analytic-strip Fourier decay.
+The exact project bound is derived in A.S7/C.R01-R03:
+  joint real analyticity + compact torus
+    -> local complex time disk x common spatial tube;
+  contour shifts in three coordinates
+    -> |fhat(t,k)|<=M exp(-2pi*sigma*|k|_1);
+  polynomial multipliers + smaller tube + Cauchy estimates
+    -> joint analytic convergence and time/spatial differentiation.
+Therefore the full project analytic Fourier interface is not attributed
+verbatim to L04 or L05 and is not silently added to LI03.
+
+L06 (Lysov-Strominger) corroborates flat vacuum Gauss-Codazzi identities.
+Their large-curvature asymptotic NSE correspondence is not an input to
+this exact constitutive sector. M05-M06/M20 compute the native identities.
+
+Background calculus used in the adapters:
+  analytic power-series operations, mixed-derivative commutation,
+  complexification, Cauchy estimates, normal convergence,
+  compact finite covers, integration on the unit torus, matrix inertia,
+  and ordinary differentiation/integration.
+These are ordinary mathematical lemmas, not extra NSE/GR admissions.
+Their exact Lean realizations remain part of M01-M28; source/index
+availability alone does not certify their required native instantiations.
+
+0.5 EXPLICIT INPUT BUNDLE AND CONDITIONAL COMPOSITION
+
+Mathematical signatures (not compilable Lean declarations):
+  LiteratureInputs := LI01 and LI02 and LI03.
+  ReducedLiteratureInputs := LI01 and LI03.
+  ReducedLiteratureInputs -> LiteratureInputs
+    by the LI02 redundancy certificate above.
+  "Reduced" removes LI02; it asserts no absolute logical minimality.
+
+Every theorem B1-B5 below has an explicit parameter
+  ell : LiteratureInputs.
+The user-facing derived root signature is:
+
+  NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_LITERATURE_INPUTS:
+    forall ell : LiteratureInputs,
+    forall nu rho t0 : R, nu>0 -> rho!=0 ->
+      Nonempty (NSEgerm nu t0 equiv GRgerm nu rho t0).
+
+The four EXISTING project contracts are OUTPUTS of adapters:
+  ell + rho!=0 -> ScalarBoundaryCompletionLaws nu rho t0;
+  ell          -> AnalyticRadialExtensionLaws rho t0;
+  ell          -> GeometricReconstructionLaws nu rho t0;
+  ell + rho!=0 + c + r + h -> GermInverseLaws c r h.
+Here c,r,h are any inhabitants of the three indicated existing contracts.
+No selected source is asserted to contain these four complete native laws.
+
+Dependency ledger (transitive source dependencies):
+  M01-M04                : LI03 + explicit analytic Fourier adapters;
+  M05-M08                : coordinate calculus/algebra, no named LI needed;
+  M09-M12                : LI01;
+  M13-M14                : LI01 + LI03;
+  M15-M16                : LI01 + Gaussian/Bianchi calculations;
+  M17-M19                : LI02, or its derivation from LI01;
+  M20-M22                : LI03 + actual Gauss-Codazzi calculations;
+  M23-M24                : LI01 + LI03;
+  M25                    : LI01 + LI02 + LI03;
+  M26                    : LI01 + LI02 + LI03;
+  M27                    : the four derived contracts + existing root;
+  M28                    : exact polynomial algebra, no named LI needed.
+
+Admission ledger:
+  LI01 | literature-established | selected explicit input | native proof OPEN
+  LI02 | literature-established | selected explicit input | native proof OPEN
+  LI03 | literature-established | selected explicit input | native proof OPEN
+  B1-B5 | B-tier derived from ell | new native proofs OPEN
+
+Future Lean boundary:
+  use explicit structure fields/theorem arguments for LI01-LI03;
+  keep ell visible in the root type until those exact signatures are proved;
+  source references do not inhabit these fields;
+  a proved implication with ell as parameter remains conditional on ell;
+  declaring global literature axioms would require a separate exact
+  theorem-level axiom ledger and would not establish unconditional closure.
+
+0R. EXACT SCOPED THEOREM REGISTER
+
+Explicit parameter throughout this register: ell : LiteratureInputs.
+
+T^3 = R^3/Z^3, with unit-volume measure; t0 in R; nu>0; rho!=0.
+I_delta=(t0-delta,t0+delta), delta>0.
+The NSE carrier consists of existing jointly analytic periodic solutions
+on a two-sided time neighborhood, modulo full-slice time-germ equality
+and analytic time-only pressure gauge.
+The GR carrier consists of independently defined analytic Lorentzian 5D
+vacuum metrics in fixed Gaussian marking (r,t,x), with induced eta4,
+beta(t0)=rho, beta_t(t0)=0 and actual constitutive STF tensor F_nu=0.
+No arbitrary-coordinate quotient is inserted.
+
+B1. forall nu rho t0, rho!=0 ->
+      ScalarBoundaryCompletionLaws nu rho t0.
+
+B2. forall rho t0,
+      AnalyticRadialExtensionLaws rho t0.
+
+B3. forall nu rho t0,
+      GeometricReconstructionLaws nu rho t0.
+
+B4. forall nu rho t0, rho!=0,
+    forall c : ScalarBoundaryCompletionLaws nu rho t0,
+    forall r : AnalyticRadialExtensionLaws rho t0,
+    forall h : GeometricReconstructionLaws nu rho t0,
+      GermInverseLaws c r h.
+
+B5. forall nu>0, rho!=0, t0,
+      Nonempty (NSEgerm nu t0 equiv GRgerm nu rho t0).
+
+B1-B4 are derived in Appendices A-C. B5 follows by their substitution into
+the already-audited exact conditional root
+  NSEGR.NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS.
+The stronger all-real-nu scope of B1/B3/B4 is optional; the frozen physical
+root B5 retains nu>0.
+
+SCALAR_LAW_B_TIER = COMPLETE
+RADIAL_LAW_B_TIER = COMPLETE
+RECONSTRUCTION_LAW_B_TIER = COMPLETE
+GERM_LAWS_B_TIER = COMPLETE
+NEW_FULL_PROJECT_CONTRACT_A_TIER_DISCHARGE = NONE
+UNCONDITIONAL_CLOSURE_MARKER_!!!! = NOT_ESTABLISHED
+
+NSE_EXISTENCE_FROM_ARBITRARY_INITIAL_u0 = NOT_ASSERTED
+GLOBAL_TIME_EXTENSION = NOT_ASSERTED
+GLOBAL_SMOOTH_FEFFERMAN_B = NOT_ASSERTED
+EINSTEIN_4D_EQUIVALENCE = NOT_ASSERTED
+SMOOTH_SIDEWAYS_HADAMARD_THEOREM = NOT_ASSERTED
+
+All partial derivatives below are classical derivatives in the fixed
+orthonormal coordinates. On the analytic domains they equal the native
+fderiv evaluations along unitVector/bulkBasis and ordinary two-sided deriv.
+Coordinate restrictions and total-function extensions are differentiated
+only after establishing equality on an open neighborhood.
+
+The exact sector equivalence is a composition derived here. None of the
+selected sources is cited as asserting this complete normalized NSE/GR
+STF-sector theorem.
+
+1. VERIFIED LITERATURE ENDPOINTS
+
+L01. Marc Chaperon, On the Cauchy-Kowalevski theorem (2007).
+  Primary author PDF:
+  https://webusers.imj-prg.fr/~marc.chaperon/Chaperon_Cauchy_Kowalevski.pdf
+  Section 2, PDF p.4, equation (2), unnumbered CK theorem.
+  Endpoint: analytic first-order system W_t=F(t,x,W,D_x W), with analytic
+  initial germ and analytic F at the initial jet, has a unique analytic
+  solution germ. Apply in finite dimensions after translating t0.
+  Placement: M09-M11; scalar uniqueness in M24-M25.
+  Native specialization is derived in Appendix A, not supplied by the paper.
+
+L02. F. Dahia, C. Romero, The embedding of the spacetime in five dimensions:
+  an extension of Campbell-Magaard theorem, arXiv:gr-qc/0109076v2 (2001).
+  https://arxiv.org/pdf/gr-qc/0109076
+  Section II.A, equations (31)-(36); Lemmas 1 and 2; Theorem 2,
+  sufficient direction. PDF pp.8-13.
+  Endpoint: analytic noncharacteristic second-order CK; unique analytic
+  fixed-lapse metric evolution from prescribed induced metric and normal
+  jet; initial constraints propagate to the full Einstein equations.
+  Specialization: n=4, Lambda=0, epsilon=+1, lapse=1.
+  Placement: M05-M06, M15-M19, M24-M26.
+  The compact-periodic common collar is supplied below, not inferred from
+  pointwise existence without gluing.
+
+L03. F. Dahia, C. Romero, On the embedding of branes in five-dimensional
+  spaces, arXiv:gr-qc/0308056v2 (2003).
+  https://arxiv.org/pdf/gr-qc/0308056
+  Equations (1)-(8), PDF pp.3-5; curvature-sign footnote, PDF p.4.
+  Endpoint: explicit Gaussian vacuum equations, constraints and unique
+  analytic solution for both prescribed metric and normal derivative.
+  Adapter: K_source=-K_native; Ric_source=-Ric_native.
+  Placement: M05-M06, M15-M19. Only its vacuum construction is used.
+
+L04. Victor Guillemin, MIT 18.117, Elliptic operators notes (2005), Section 4.
+  https://math.mit.edu/~vwg/classnotes-spring05.pdf
+  Proposition 4.1, Corollary 4.2, Proposition 4.3, equation (4.5);
+  PDF pp.9-11.
+  Endpoint: torus Fourier derivative multipliers, differentiated convergence
+  and inversion. Source period is 2pi with normalized measure.
+  Adapter y=2pi*x yields our period-one multiplier 2pi*i*k and
+  Laplacian multiplier -4pi^2|k|^2.
+  Placement: M01-M04. Joint-analytic parameter bounds and the exact cosine
+  formula are established in Appendices A/C.
+
+L05. Eitan Tadmor, The (Pseudo)Spectral Fourier Expansions -- Exponential
+  Accuracy (1998), author-hosted note.
+  https://www.math.umd.edu/~tadmor/lecture-notes/hyperbolic/node19.html
+  Endpoint: strip analyticity and exponential Fourier decay.
+  Placement: M02-M04; the three-dimensional uniform-in-local-time version
+  is derived by contour shifts, not assumed from a one-variable statement.
+
+L06. V. Lysov, A. Strominger, From Petrov-Einstein to Navier-Stokes,
+  arXiv:1104.5502v2 (2011).
+  https://arxiv.org/pdf/1104.5502
+  Section 2, equations (1)-(3), PDF p.3.
+  Endpoint used: flat timelike vacuum Gauss-Codazzi constraints.
+  Placement: M06/M20, independently checked against the native coordinate
+  calculation in Appendix B.
+  Their NSE identification concerns a leading-order large-curvature limit;
+  it does not certify the exact STF sector used here.
+
+All endpoint descriptions are paraphrases. The project-specific formulas,
+normalizations, full-spatial-slice gluing and inverse compositions below
+are explicit mathematical derivations.
+
+2. THE FOUR DISCHARGES IN FORMULAS
+
+C_scalar:
+  S^00=rho, S^0i=u_i, S^ij=u_i*u_j+p*delta_ij-nu*Z_ij(u),
+  C^00=Delta psi, C^0i=-partial_i psi_t,
+  C^ij=psi_ij+(psi_tt-Delta psi)*delta_ij.
+  A_source=u tensor u+pI-nu*Z(u).
+  H(T)=T_ab*T^ab-(tr_eta T)^2/3.
+  H(S+C)=H(S)+2(rho+Delta psi)psi_tt+4u.grad psi_t
+          +2A_source:Hess psi-2|grad psi_t|^2+|Hess psi|^2-(Delta psi)^2.
+  partial_(psi_tt)H|_(psi=psi_t=0)=2rho!=0.
+  Local analytic CK + compatibility + periodic gluing -> actual psi.
+  K=tr_eta(S+C)*eta/3-lower(S+C).
+  q=psi-<psi>, u_decode=u, p_decode=p+(<psi>)_tt, F_nu(K)=0.
+
+C_radial:
+  g=dr^2+h; h|_0=eta; h_r|_0=2K.
+  h_ab,rr=2Ric[h]_ab-2kappa*K_ab+4K_ac*h^cd*K_db.
+  E_r=-div_h M-2kappa*E; (M_a)_r=partial_a E-kappa*M_a.
+  E|_0=M|_0=0 -> E=M=0 -> Ric[g]=0.
+  Compact T^3 gluing + small-collar inertia -> GaussianVacuum.
+  Prescribed-jet analytic uniqueness -> marked metric-germ uniqueness.
+
+C_reconstruction:
+  k=K_00, w_i=K_0i, A_ij=K_ij, beta=-tr A.
+  Codazzi -> beta_t+div w=0,
+              w_t=div A+grad(k+beta).
+  <beta>=rho; q=G(beta-rho); u=Pw=w+grad q_t.
+  p_*=-k-(2rho+|u|^2)/3-q_tt.
+  F_nu=A+u tensor u+Hess q-nu*Z(u)-(|u|^2-rho)I/3.
+  NSEresidual_nu(u,p_*)=div F_nu exactly.
+
+C_germ:
+  p'=p+c(t), a''=c, a(t0)=a'(t0)=0, psi'=psi-a(t)
+    -> S[u,p']+C[psi']=S[u,p]+C[psi]
+    -> K'=K -> L(n')~L(n).
+  F_nu(K_g)=0
+    -> K_g=completedBoundary(nu,rho,u_g,p_g,q_g),
+       q_g(t0)=q_g,t(t0)=0
+    -> scalar CK uniqueness -> identical boundary germ
+    -> radial CK uniqueness -> L(R(g))~g.
+
+The already-native proofs of reverse germ descent and R(L(n))~n are retained.
+The scalar completion's pressure_recovery field is supplied by the explicit
+mean-potential identity above, rather than silently treated as discharged by
+the earlier locality theorem.
+
+3. CHECKPOINT REGISTER FOR LATER LEAN RUNS
+
+Each M-id is mathematically resolved below. These new endpoint names are
+PROPOSED, not existing Lean declarations. No signature is a proof.
+
+ID | exact proof obligation | proof location / literature | proposed endpoint
+M01 | Euclidean unitCube integral = normalized torus integral | C.1 + note below | unitCube_integral_torus
+M02 | joint analytic function -> common local complex tube | C.R01 | analytic_periodic_complex_tube
+M03 | uniform exponential coefficients + differentiated normal convergence | A.S7,C.R02,L04-L05 | analytic_fourier_parameter_bounds
+M04 | native cosine G and P: inversion, means, time commutation | A.S7,C.R03-R05 | actual_poisson_leray_analytic
+M05 | actual Gaussian Christoffel and all Ricci blocks | B.R3 | gaussian_ricci_components
+M06 | vacuum -> actual constrained boundary jet | B.R5,C.R06,L02-L03 | gaussianVacuum_boundary_constraints
+M07 | NSE source conservation + scalar correction conservation | A.S1-S2 | completed_source_conserved
+M08 | Hamiltonian scalar normal form and coefficient 2(rho+Delta psi) | A.S3 | scalar_hamiltonian_normal_form
+M09 | first-order CK system; z=grad psi compatibility | A.S4 | scalar_CK_firstOrder_compatible
+M10 | convergent scalar analytic existence and germ uniqueness | A.S4,L01 | scalar_CK_exists_unique
+M11 | finite torus overlap gluing and nonzero denominator | A.S5 | scalar_periodic_common_cylinder
+M12 | actual completed K: constraints, symmetry, beta traces | A.S6 | completedBoundary_admissible
+M13 | actual velocity, stress and pressure-gauge recovery | A.S8 | completedBoundary_recovery
+M14 | exact scalar record inhabitant | A.S9 | scalarBoundaryCompletionLaws_of_rho_ne_zero
+M15 | radial analytic normal form with prescribed h,h_r | B.R4,L02-L03 | radial_CK_prescribed_jet
+M16 | Bianchi homogeneous propagation with zero data | B.R5-R6 | radial_constraints_propagate
+M17 | periodic common collar; actual LorentzianAt congruence | B.R7-R8 | radial_periodic_lorentzian_collar
+M18 | total Metric, exact boundary match, all radial fields | B.R9 | analyticRadialExtensionLaws
+M19 | fixed-marking full-spatial-slice radial uniqueness | B.R10 | radial_sameMetricAt_of_same_boundary_jet
+M20 | Codazzi -> conserved means -> Hodge decomposition | C.R07-R08 | boundary_codazzi_hodge_decomposition
+M21 | exact constitutive residual identity | C.R09-R10 | actual_boundary_NSE_residual
+M22 | exact reconstruction record on supplied entire time interval | C.R11 | geometricReconstructionLaws
+M23 | F=0 -> equality with actual scalar completed tensor | C.G01 | canonical_boundary_exact_completion
+M24 | reconstructed q is the unique normalized scalar solution | C.G02 | canonical_scalar_completion_unique
+M25 | analytic pressure double primitive and forward gauge descent | A.S10,C.G03 | forward_respects_of_CK_uniqueness
+M26 | lift_decode by scalar and radial uniqueness; exact germ record | C.G04-G06 | germInverseLaws_of_CK_uniqueness
+M27 | substitute B1-B4 in existing native root | Section 0,C.G06 | NSE_GR_EXACT_SECTOR_EQUIVALENCE
+M28 | rho=0 constant-velocity obstruction | A.S11 | scalarCompletion_rho_zero_obstruction
+
+M01 measure detail:
+Vec=EuclideanSpace R (Fin 3) has its canonical orthonormal coordinate basis.
+The coordinate isometry sends the native unitCube to [0,1]^3 and preserves
+Lebesgue volume. Product Lebesgue measure gives cube volume 1. Its boundary
+is a finite union of coordinate faces of measure zero, so closed/open/
+half-open cell integrals agree. The quotient torus measure is the pushforward
+of this unit cell measure. Periodicity under the three unit translations implies periodicity under
+all integer translations by iteration and translation inverses.
+These facts fix the actual native means; no
+unproved multiplicative normalization is inserted into G or P.
+
+M02 complexification detail:
+Use convergent complexified Taylor series on polydiscs centered at real
+points of a compact time neighborhood times T^3. Intersections of such
+polydiscs that are nonempty have real overlap after shrinking appropriately;
+uniqueness of convergent power series glues the extensions. A finite cover
+and periodic translation give a common smaller complex tube. All Fourier
+estimates use an interior closed tube, not its potentially singular edge.
+
+COMMON_ANALYTIC_ENGINE = CK existence + analytic uniqueness.
+CORE_DEPENDENCIES =
+  (M01-M04) -> (M13,M20-M22,M23)
+  (M07-M11) -> (M12-M14,M24-M25)
+  (M05-M06,M15-M17) -> (M18-M19)
+  (M19,M23-M25) -> M26
+  (M14,M18,M22,M26) -> M27.
+M28 certifies the necessity of rho!=0 for the universal scalar law.
+
+4. EXISTING NATIVE ENDPOINTS; NO NEW PROMOTION
+
+Native prefix = NSEGR.
+Immutable source root:
+https://github.com/randogelist/NSE---MAXWELL---GR---QFT/tree/509eb15eb7b8a2e5322befcc6fe95238be105290/GR_adapter
+
+Algebra.lean:
+  traceRecover4_traceReverse4
+  traceReverse4_hamiltonian
+  boundaryBlock_hamiltonian_zero_iff
+  initial_boundary_hamiltonian
+CompletionSource.lean:
+  completedBoundary_trace_recovery
+  completedBoundary_hamiltonian_identity
+Locality.lean:
+  sameFlowAt_iff_analytic_pressure_gauge
+  boundaryPressure_congr_eventually
+  sameMetricAt_boundaryK
+  sameMetricAt_boundaryFields
+NSEGRForward.lean:
+  forward_pressure_gauge_recovery
+NSEGRReverse.lean:
+  reverseGerm_forwardGerm
+  forwardGerm_reverseGerm
+  NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS
+
+Existing native locality does not prove CK existence, Fourier inversion,
+Gauss-Codazzi identification, or the remaining analytic law inhabitants.
+The final two inverse equalities retain their precise printed premises.
+
+Active Mathlib support, source-verified at the pinned revision:
+https://github.com/leanprover-community/mathlib4/tree/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib
+  MeasureTheory/Measure/Haar/InnerProductSpace.lean:124,134,139
+    EuclideanSpace.volume_preserving_symm_measurableEquiv_toLp;
+    PiLp.volume_preserving_ofLp; PiLp.volume_preserving_toLp [M01]
+  MeasureTheory/Constructions/Pi.lean:660,664
+    MeasureTheory.volume_pi; MeasureTheory.volume_pi_pi    [M01]
+  MeasureTheory/Measure/Lebesgue/Basic.lean:86
+    Real.volume_Icc                                      [M01]
+  Analysis/Calculus/FDeriv/Congr.lean:258
+    Filter.EventuallyEq.fderiv_eq                         [M18-M19]
+  Analysis/Calculus/Deriv/Basic.lean:641,653
+    Filter.EventuallyEq.deriv_eq; Filter.EventuallyEq.deriv [M13,M24-M26]
+  Analysis/Analytic/Basic.lean:491,495,502,509
+    AnalyticAt.congr; analyticAt_congr;
+    AnalyticOnNhd.congr'; AnalyticOnNhd.congr              [M11,M17-M19]
+  Analysis/Analytic/Constructions.lean:395
+    AnalyticAt.curry_left                                [M25]
+  LinearAlgebra/Matrix/PosDef.lean:507
+    Matrix.PosDef.isUnit                                 [M17 partial support]
+
+The previous B-tier TXT retains its 62 Mathlib / 24 Methlib source groups
+and their older pinned revisions. No selected Methlib theorem is asserted
+here to prove CK or the complete actual analytic Fourier/GR interfaces.
+No new CK endpoint was identified by the targeted search of the contained
+Mathlib Analysis sources and SingularClosure sources. This is a scoped
+search result, not an assertion that no Lean CK formalization exists anywhere.
+
+5. VERIFICATION AND FORMALIZATION BOUNDARY
+
+Independent derivation checks:
+  scalar normal-form contractions and source/correction conservation;
+  native Gaussian signs and Bianchi subsidiary coefficients;
+  exact Poisson symbol, zero mode, period scaling and cosine pairing;
+  full-spatial-slice compactness, pressure gauge and both inverse identities.
+Exact symbolic polynomial checks:
+  H(S+C) scalar expansion = PASS;
+  trace-reversal Hamiltonian identity = PASS;
+  partial_(psi_tt)H=2(rho+Delta psi) = PASS.
+These symbolic checks are supplementary algebra checks, not Lean certificates.
+
+B_TIER_ROOT = B5, with complete derivation from established L01-L06 inputs.
+A_TIER_MISSING = native implementations of M01-M27 where not already covered,
+especially CK, analytic Fourier semantics, Gaussian curvature/Bianchi and gluing.
+EXTERNAL_RUN_POLICY = pinned cached Lean; theorem-level axiom audits.
+LOCAL_LEAN = FORBIDDEN_AND_NOT_EXECUTED.
+PAPER_DERIVATION_DOES_NOT_PROMOTE_NATIVE_CONTRACTS.
+
+APPENDIX A. SCALAR COMPLETION
+
+SOURCE_ALIAS: L-CK=L01.
+
+S0. EXACT DATA AND CONCLUSION
+Let nu be real, rho != 0, t0 real, and delta0 > 0. Let (u,p) be real-valued,
+jointly real-analytic on J_delta0 x R^3, periodic with period 1 in each
+spatial coordinate, where J_delta0=(t0-delta0,t0+delta0), and satisfy
+
+  div u = 0,
+  u_t + (u . grad)u + grad p - nu Delta u = 0.
+
+No mean-zero or amplitude-smallness assumption is imposed on u.
+Claim: there exist 0 < delta <= delta0 and an analytic periodic psi on
+J_delta x R^3, with psi(t0,x)=psi_t(t0,x)=0, such that the concrete native
+formula K=completedBoundary nu rho u p psi satisfies every field of
+CompletedBoundary nu rho t0 n.
+
+The abstract scalar law is a Prop packaging these existential conclusions
+for every supplied NSE representative. Classical selection is not needed
+to prove Nonempty CompletedBoundary; a later chosenBoundary may use it.
+
+S1. CONSERVED NSE SOURCE
+Indices a,b range over 0,1,2,3; i,j range over 1,2,3.
+eta=diag(-1,1,1,1); Box=-partial_tt+Delta_x.
+Z_ij(u)=partial_i u_j+partial_j u_i.
+A=u tensor u+p I-nu Z(u).
+Define the contravariant symmetric tensor
+
+  S^00=rho, S^0i=S^i0=u_i, S^ij=A_ij.
+
+Then, by direct product differentiation,
+
+  partial_a S^{a0}=div u,
+  partial_a S^{ai}=NSEresidual_nu(u,p)_i
+                     +u_i div u-nu partial_i(div u).
+
+Hence partial_a S^{ab}=0 for the prescribed NSE data. These are the exact
+conservedSourceUpper components; no replacement tensor is used.
+
+S2. IDENTICALLY CONSERVED SCALAR CORRECTION
+Set C^{ab}[psi]=partial^a partial^b psi-eta^{ab} Box psi. In coordinates,
+
+  C^00=Delta psi,
+  C^0i=-partial_i psi_t,
+  C^ij=psi_ij+(psi_tt-Delta psi)delta_ij.
+
+Analytic mixed partial derivatives commute, giving
+
+  partial_a C^{a0}=Delta psi_t-Delta psi_t=0,
+  partial_a C^{ai}=-partial_i psi_tt+partial_i Delta psi
+                      +partial_i psi_tt-partial_i Delta psi=0.
+
+Thus B=S+C[psi] is conserved for every analytic psi. These formulas match
+scalarCompletionUpper and lowering by lowerTensor4 exactly.
+
+S3. HAMILTONIAN NORMAL FORM
+Define H(T)=T_ab T^{ab}-(tr_eta T)^2/3. Put
+
+  s=psi_tt, b=grad psi_t, Q=Hess_x psi, d=tr Q=Delta psi.
+
+Direct contractions yield
+
+  tr_eta C=-3 Box psi,
+  H(C)=2 d s-2|b|^2+|Q|^2-d^2,
+  S_ab C^{ab}-(tr_eta S)(tr_eta C)/3=rho s+2u.b+A:Q.
+
+Consequently
+
+  H(S+C)=H(S)+2(rho+d)s+4u.b+2A:Q
+                          -2|b|^2+|Q|^2-d^2.
+
+The exact scalar PDE is therefore
+
+  psi_tt=F(t,x,Q,b),
+
+  F=[-H(S)-4u.b-2A:Q+2|b|^2-|Q|^2+(tr Q)^2]
+      /[2(rho+tr Q)].                                      (S-CK)
+
+At the zero Cauchy data psi=psi_t=0,
+
+  Q=0, b=0, partial_s H(S+C)=2 rho != 0.
+
+All spatial derivatives on the RHS have order at most 2, and no second
+pure time derivative occurs there. This is a genuine local PDE. In
+particular the Poisson operator is NOT an input to the CK construction.
+
+S4. EXACT MATCH TO L-CK: FIRST-ORDER SYSTEM
+Introduce W=(psi,v,z_1,z_2,z_3), with equations
+
+  partial_t psi=v,
+  partial_t v=F(t,x,D_x z,grad_x v),
+  partial_t z_i=partial_i v,
+  W(t0,x)=0.                                              (S-FIRST)
+
+Interpret D_x z as a general 3x3 matrix when defining the analytic RHS;
+the polynomial expressions in (S-CK) extend analytically to that full
+matrix space. The denominator is nonzero at every initial jet because
+rho != 0. Therefore the RHS is analytic near
+(t0,x0,W=0,D_x W=0) for every x0, using analyticity of the given u,p and
+of their first derivatives in A.
+
+After translating t0 to 0, L-CK applies with E=R^3, F=R^5 and zero analytic
+initial data. It gives an actual convergent analytic solution germ W,
+unique among analytic solution germs of (S-FIRST).
+
+Compatibility is proved, not assumed:
+
+  partial_t(z_i-partial_i psi)=partial_i v-partial_i v=0,
+  (z_i-partial_i psi)(t0,x)=0.
+
+Hence z=grad psi and v=psi_t. The psi component solves (S-CK).
+Conversely every analytic psi solving (S-CK) with zero Cauchy data induces
+such a W. Thus the scalar solution germ is unique.
+
+S5. PERIODIC GLUING AND A COMMON POSITIVE RADIUS
+Work first on the compact torus T^3=R^3/Z^3. The local coordinate
+transitions may be chosen to be translations. The given coefficients
+and zero initial data agree under these translations, so L-CK uniqueness
+identifies the solution germs on overlaps at every initial point.
+
+Choose finitely many smaller coordinate neighborhoods V_i with compact
+closures contained in local CK neighborhoods U_i, covering T^3. For each
+pair, closure(V_i intersect V_j) is a compact subset of U_i intersect U_j.
+Uniqueness gives equality near each point of {t0} x that compact set.
+A finite subcover supplies a positive common time radius for this pair.
+Taking the minimum over finitely many charts and pairs yields one delta>0
+on which all local solutions agree and glue. Restrict further so that
+delta<=delta0. Lifting the glued torus solution gives a period-1 solution
+on J_delta x R^3.
+
+Since Delta psi(t0,x)=0 and T^3 is compact, continuity gives, after another
+common restriction,
+
+  |Delta psi(t,x)| < |rho|/2,
+  |rho+Delta psi(t,x)| > |rho|/2.
+
+This checks the denominator on the actual common cylinder. The result is
+not merely a compatible family of formal Taylor coefficients.
+
+S6. NATIVE TRACE REVERSAL AND CONSTRAINTS
+Lower the indices of B using eta and set
+
+  K_ab=(tr_eta B)eta_ab/3-B_ab,
+  kappa=tr_eta K=(tr_eta B)/3.
+
+Then B_ab=kappa eta_ab-K_ab. Finite-dimensional contraction gives
+
+  K_ab K^{ab}-kappa^2=H(B)=0.
+
+Conservation gives the exact Codazzi expression
+
+  partial^a(K_ab-kappa eta_ab)=-partial^a B_ab=0.
+
+Thus both native constraints in BoundaryAdmissible hold. No radial
+extension theorem is needed for this scalar/boundary conclusion.
+
+Trace reversal of C cancels its Box terms, so
+
+  K=K^0[u,p;rho]-Hess_{t,x} psi.
+
+Using div u=0, the exact components are
+
+  K_00=-(2rho+|u|^2)/3-p-psi_tt,
+  K_0i=u_i-partial_i psi_t,
+  K_ij=((|u|^2-rho)/3)delta_ij-u_i u_j+nu Z_ij(u)-psi_ij.
+
+These imply
+
+  beta=-sum_i K_ii=rho+Delta psi,
+  w_i=K_0i=u_i-partial_i psi_t,
+  beta(t0,x)=rho,
+  beta_t(t0,x)=Delta psi_t(t0,x)=0.
+
+Symmetry, analyticity and periodicity follow from the displayed formulas
+and analytic mixed-partial symmetry. All hypotheses are on the common
+cylinder obtained above.
+
+S7. MATCHING THE CONCRETE POISSON SERIES
+Let <f>=integral_[0,1]^3 f and let G be exactly the native cosine series
+with multiplier sigma(0)=0, sigma(k)=-1/(4pi^2|k|^2) for k != 0.
+For a real analytic periodic f, local complexification and compactness
+provide, near each fixed real time, a common complex time disk and spatial
+strip of positive width s. Its Fourier coefficients satisfy
+
+  |fhat_k(t)| <= M exp(-2pi s |k|_1)
+
+uniformly on a smaller complex time disk. This estimate follows by shifting
+each coordinate integration contour to +/-is according to the sign of k_i;
+periodicity cancels the vertical sides. Polynomial frequency factors from
+spatial differentiation, and the multiplier |k|^-2, preserve absolute
+normal convergence on smaller strips. Cauchy estimates in complex time
+justify termwise time differentiation. Hence G preserves joint analyticity
+locally in time and commutes with time/spatial derivatives there.
+
+Fourier reconstruction is justified without assuming a formal series identity.
+The one-dimensional Fejer kernel K_N(s)=N^-1(sin(pi N s)/sin(pi s))^2
+is nonnegative, has integral 1, and has mass outside any fixed neighborhood
+of 0 tending to 0 (use the bound 1/(N sin^2(pi epsilon)) away from 0).
+The product of three such kernels is an approximate identity on T^3;
+uniform continuity therefore makes its convolution with f converge uniformly
+to f. Absolute Fourier coefficient summability makes the same finite Fejer
+means converge uniformly to the full Fourier series by dominated convergence.
+Thus that series equals f.
+
+The native cosine summation equals the real Fourier expression because
+cos(theta)=(exp(i theta)+exp(-i theta))/2 and the k and -k contributions
+pair; all sums are absolutely convergent, so no summation convention is
+hidden. Integration by parts on the unit cell gives the multiplier
+-4pi^2|k|^2 for Delta. Therefore
+
+  G Delta f=f-<f>,   Delta G f=f-<f>,   <G f>=0,
+  grad <f>=0,        <Delta f>=0.
+
+This is the exact analytic Poisson/mean lemma needed by this adapter.
+It is an independently derivable Fourier lemma, not an extra CK premise.
+Normal convergence also proves <partial_t^j f>=partial_t^j <f>.
+
+S8. FIELD AND CONSTITUTIVE RECOVERY
+Since beta=rho+Delta psi and <Delta psi>=0,
+
+  <beta>=rho,
+  q=G(beta-<beta>)=G Delta psi=psi-<psi>.
+
+The native Leray reconstruction P a=a-grad G div a gives
+
+  div w=-Delta psi_t,
+  P w=u-grad psi_t+grad G Delta psi_t=u.
+
+Thus velocity_recovery holds on every full spatial slice of J_delta,
+including the constant velocity mode. Since Hess_x q=Hess_x psi,
+
+  K_spatial+u tensor u+Hess_x q-nu Z(u)
+       =((|u|^2-rho)/3) I,
+  TF(K_spatial+u tensor u+Hess_x q-nu Z(u))=0.
+
+Hence the native boundaryStress is exactly zero. Finally,
+
+  p_decode=-K_00-(2rho+|u|^2)/3-q_tt
+          =p+psi_tt-(psi-<psi>)_tt
+          =p+partial_tt <psi>.
+
+The difference is one analytic time-only scalar. Consequently the exact
+native SameFlowAt relation holds near t0. This supplies pressure_recovery,
+not only its velocity component.
+
+S9. EXACT RECORD ASSEMBLY
+Take timeRadius=delta, potential=psi, tensor=completedBoundary nu rho u p psi.
+S4-S5 supply potential_analytic, potential_periodic and both zero initial
+data; delta<=delta0 supplies radius_le_source. S6 supplies all fields of
+BoundaryAdmissible; S8 supplies stress_zero, velocity_recovery and
+pressure_recovery. Therefore Nonempty CompletedBoundary follows for every
+input representative and hence
+
+  rho != 0 -> ScalarBoundaryCompletionLaws nu rho t0.
+
+The total Lean function potential:R x R^3->R may be extended arbitrarily
+outside J_delta (for instance by zero). All required analyticity and
+derivative identities are local to the open cylinder; the extension does
+not change them. The torus-periodic local field is lifted to all spatial
+points before this total extension.
+
+SCALAR_B_TIER_STATUS = COMPLETE USING L-CK + EXPLICIT FOURIER ADAPTER
+SCALAR_A_TIER_INHABITANT = NOT_CONSTRUCTED
+The literature endpoint supplies analytic existence/uniqueness. Its
+specialization, index contractions, periodic gluing, concrete Poisson
+identification and record assembly remain native Lean proof work.
+
+S10. PRESSURE-GAUGE ACTION AND UNIQUENESS (SUPPORTING GERM EDGE)
+Let p'=p+a(t), with a analytic. Define the unique analytic time function f
+with f''=-a, f(t0)=f'(t0)=0, e.g. the iterated time integral of -a. Then
+
+  S[u,p']-S[u,p] = a I_spatial,
+  C[psi+f]-C[psi] = f'' I_spatial = -a I_spatial,
+  B[u,p',psi+f]=B[u,p,psi],
+  K[u,p',psi+f]=K[u,p,psi].
+
+The shifted potential has the same zero Cauchy normalization and satisfies
+the scalar Hamiltonian equation. S4 uniqueness identifies its germ with
+the selected scalar completion for (u,p'). Thus scalar completion descends
+through pressure gauge at the boundary-tensor level. A separate radial
+analytic uniqueness theorem is still needed to infer equality of bulk
+metric germs.
+
+S11. NONCHARACTERISTIC HYPOTHESIS IS ESSENTIAL
+No universal rho=0 version is asserted. Indeed take constant u=e_1,
+p=0 (an actual analytic periodic NSE solution for every nu). At t0 the
+zero psi/psi_t data force Q=b=d=0, while
+
+  H(S_0)=(2/3)|u|^4-2|u|^2=-4/3.
+
+The coefficient of psi_tt is 2rho=0, so H(S_0+C[psi])(t0,x)=-4/3 for every
+possible psi_tt. The prescribed scalar/boundary completion is impossible.
+Thus rho!=0 cannot be dropped from the universal scalar theorem.
+
+LEAN DECOMPOSITION (PROPOSED NAMES, NOT CLAIMED EXISTING)
+SC01 source_conservation_of_localNSE
+SC02 scalarCompletion_divergence_zero
+SC03 completedBoundary_scalar_hamiltonian_normal_form
+SC04 scalar_firstOrder_system_analytic
+SC05 scalar_firstOrder_compatibility
+SC06 scalar_CK_local_exists_unique                 [L-CK]
+SC07 scalar_periodic_common_cylinder               [finite overlap gluing]
+SC08 analytic_poisson_inverse_laplacian            [explicit Fourier adapter]
+SC09 completedBoundary_components
+SC10 completedBoundary_constraints
+SC11 completedBoundary_beta_normalization
+SC12 completedBoundary_velocity_recovery
+SC13 completedBoundary_stress_zero
+SC14 completedBoundary_pressure_gauge_recovery
+SC15 completedBoundary_exists
+SC16 scalarBoundaryCompletionLaws_of_rho_ne_zero
+SC17 scalarCompletion_pressure_gauge_covariance
+SC18 scalarBoundaryCompletionLaws_rho_zero_obstruction
+
+All proposed endpoint names require actual native theorem bodies and matching
+external compiler/axiom evidence before A_TIER promotion.
+
+
+APPENDIX B. PRESCRIBED-JET RADIAL VACUUM EXTENSION
+
+R0. EXACT ROOT
+
+For every rho,t0 in R (input symmetry is required only on the given collar):
+  forall delta>0, forall K : R x R^3 -> Mat_4(R),
+  BoundaryAdmissible(rho,t0,delta,K)
+  -> exists eta,epsilon>0, eta<=delta, exists g : R^5 -> Sym_5(R),
+       GaussianVacuum(rho,t0,eta,epsilon,g)
+       and forall t in (t0-eta,t0+eta), forall x in R^3,
+             boundaryK(g)(t,x)=K(t,x).
+
+This supplies precisely AnalyticRadialExtensionLaws rho t0.
+No nu parameter and no rho!=0 premise are required for this radial theorem.
+All tensor equalities below are component equalities in the fixed marking
+(r,t,x1,x2,x3); x has period one. No coordinate quotient is introduced.
+
+R1. SOURCE ALIASES: L-R1=L02; L-R2=L03.
+
+R2. SIGN-CONVENTION ADAPTER
+
+Native code:
+  Ric_ab = partial_c Gamma^c_ab - partial_b Gamma^c_ac
+           + Gamma^c_cd Gamma^d_ab - Gamma^c_bd Gamma^d_ac,
+  K_ab = +(1/2) partial_r h_ab,
+  g = dr^2 + h_ab dy^a dy^b,
+  y=(t,x1,x2,x3), eta=diag(-1,1,1,1).
+
+The L-R2 footnote uses the opposite Riemann/Ricci convention and (5) uses
+  K_DR = -(1/2) partial_r h = -K_native.
+Thus
+  Ric_DR = -Ric_native,
+  kappa_DR = -kappa_native.
+
+Substituting these two sign changes in L-R2 (2) gives, after multiplying by
+-1, the native tangential vacuum equation in R3 below. The vacuum equation
+itself is invariant under the global Ricci-sign change. At h=eta the scalar
+constraint is zero in both conventions; Codazzi changes by an overall sign.
+No sign is imported without this adapter.
+
+R3. ACTUAL GAUSSIAN COORDINATE IDENTITIES
+
+Let H=(h_ab) be a symmetric analytic invertible 4x4 matrix field. Set
+  K_ab=(1/2)h_ab,r;  kappa=h^{ab}K_ab;
+  |K|_h^2=h^{ac}h^{bd}K_ab K_cd.
+Here D denotes the Levi-Civita covariant derivative of h on each r-slice;
+all a,b,c indices run over the four tangential coordinates, including time.
+
+The inverse matrix is diag(1,H^{-1}). Direct substitution into the native
+Christoffel definition yields
+  Gamma^r_rr=Gamma^a_rr=Gamma^r_ra=0,
+  Gamma^r_ab=-K_ab,
+  Gamma^a_rb=Gamma^a_br=h^{ac}K_cb,
+  Gamma^a_bc=gamma[h]^a_bc.
+
+In the actual native Ricci formula, separating the r-index from tangential
+indices gives
+  Ric[g]_ab = Ric[h]_ab - K_ab,r - kappa K_ab + 2K_ac h^{cd}K_db,
+  Ric[g]_ra = D_b K^b_a - D_a kappa,
+  Ric[g]_rr = -kappa_r - |K|_h^2.                         (R3.1)
+
+The first formula's extra terms come from partial_r Gamma^r_ab=-K_ab,r,
+from Gamma^c_cr Gamma^r_ab=-kappa K_ab, and from the two mixed products
+-K terms, each equal to +K_ac h^{cd}K_db. For the last identity, differentiate
+h^{-1} by (H^{-1})_r=-H^{-1}H_rH^{-1}=-2H^{-1}KH^{-1}.
+These are coordinate identities, independent of the field equations.
+
+R4. ANALYTIC NONCHARACTERISTIC RADIAL NORMAL FORM
+
+Prescribe at r=0:
+  H(0,y)=eta,   H_r(0,y)=2K_input(y).                       (R4.1)
+
+Solve the ten independent symmetric equations
+  H_ab,rr = 2Ric[H]_ab - 2kappa K_ab
+              +4K_ac H^{cd}K_db,
+  K=(1/2)H_r.                                               (R4.2)
+
+Every right-hand side is an analytic function of finitely many jet
+coordinates (H,H_r,partial_y H,partial_y^2 H) wherever det H!=0.
+Indeed H^{-1}=adj(H)/det(H); derivatives of H^{-1} are rational expressions
+in H and partial_y H. No pure second r-derivative occurs on the right.
+The leading coefficient of H_ab,rr is the identity on Sym_4(R).
+At the initial jet det H=det eta=-1. Hence all CK hypotheses hold at every
+y in the initial analytic domain. L-R1 (31)-(33) supplies a unique analytic
+solution germ of (R4.1)-(R4.2). It follows from (R3.1) that Ric[g]_ab=0.
+This is an analytic sideways extension, not a smooth hyperbolic estimate.
+
+R5. INITIAL CONSTRAINT IDENTIFICATION
+
+The native BoundaryAdmissible hypothesis says
+  K_input is analytic, period-one in x and symmetric;
+  partial^a(K_ab - kappa eta_ab)=0;
+  |K_input|_eta^2 - kappa^2=0;
+  beta(K_input)(t0,x)=rho;
+  partial_t beta(K_input)(t0,x)=0.
+
+Since H(0,y)=eta, its entire tangential first and second jets vanish:
+  gamma[H](0,y)=0, Ric[H](0,y)=0, R[H](0,y)=0.
+Consequently
+  M_a(0,y):=G[g]_ra(0,y)
+     =partial^b K_input,ba - partial_a tr_eta K_input
+     =boundaryCodazzi(K_input)(y,a)=0.
+
+Tracing (R3.1) gives the exact Gauss scalar identity
+  E:=G[g]_rr=(kappa^2-|K|_h^2-R[h])/2.                       (R5.1)
+Therefore E(0,y)=0 by the native Hamiltonian constraint.
+Neither initial condition is an extra assumption beyond BoundaryAdmissible.
+
+R6. FULL VACUUM FROM THE SUBSIDIARY SYSTEM
+
+Under Ric[g]_ab=0, set E=G_rr and M_a=G_ra. Algebra gives
+  Ric_rr=2E, R[g]=2E, G_ab=-E h_ab.
+
+The contracted Bianchi identity applied to these components becomes
+  E_r = -D_a M^a - 2kappa E,
+  (M_a)_r = D_a E - kappa M_a.                              (R6.1)
+
+Check directly from the Gaussian Christoffels:
+  div(G)_r=E_r+D_aM^a+kappa E-K^{ab}G_ab,
+  div(G)_b=(M_b)_r+D_aG^a_b+kappa M_b.
+For the second line the two terms involving K^a_b M_a cancel; M_b is the
+covariant mixed component, not a contravariant replacement.
+Inserting G_ab=-E h_ab yields exactly (R6.1).
+
+The coefficients of (R6.1) are analytic. It is solved for first r-derivatives
+and homogeneous in (E,M). Its initial data vanish by R5. First-order CK
+uniqueness gives E=M=0. Equivalently, differentiate (R6.1) inductively in r:
+all pure r-jets vanish on r=0; all tangential jets then vanish; analyticity
+implies local vanishing. With Ric_ab=0 this implies every component of
+Ric[g] vanishes. No elliptic or hyperbolic positivity estimate is used.
+
+R7. COMPACT PERIODIC UNIFORM COLLAR
+
+Let eta_time=delta/2 and
+  S=[t0-eta_time,t0+eta_time] x T^3.
+This is compact and lies strictly inside the input analytic t-domain.
+For every y in S, R4-R6 gives a solution on a product
+  (-epsilon_y,epsilon_y) x V_y,
+where V_y is a connected torus chart neighborhood of y.
+
+On overlap V_y intersect V_z, both solutions have identical H and H_r
+on r=0 and obey the same analytic normal form. CK uniqueness implies their
+equality near every point of the r=0 overlap. Each connected component of
+  (-min(epsilon_y,epsilon_z),min(epsilon_y,epsilon_z))
+       x (V_y intersect V_z)
+meets r=0. The identity principle for real analytic functions therefore
+extends this equality over that component. Hence the local solutions glue.
+
+Torus transition maps are translations in the spatial coordinates. Translating
+a solution by an integer vector preserves (R4.2) and its periodic initial data;
+CK uniqueness gives equality. Thus the glued coefficients are period-one.
+Choose finitely many V_y covering S and epsilon_0=min epsilon_y>0.
+Restriction supplies one analytic periodic metric on
+  (-epsilon_0,epsilon_0) x (t0-eta_time,t0+eta_time) x T^3.
+The finite-cover argument is essential: pointwise analytic existence alone
+would not provide the full-spatial-slice germ required by the native code.
+
+R8. UNIFORM LORENTZIAN SIGNATURE AND EXPLICIT CONGRUENCE
+
+Initially H=eta everywhere on compact S. By continuity and a finite cover,
+shrink epsilon_0 so the Frobenius norm ||H-eta|| is less than 1/2 on the
+whole chosen collar. Write H in time/spatial blocks
+  H=[-alpha  b^T; b A].
+Then alpha>1/2 and A is positive definite (its quadratic form differs from
+|x|^2 by less than |x|^2/2). The Schur complement
+  Q=A+alpha^{-1}bb^T
+is positive definite. Choose an invertible R with R^T R=Q (finite-dimensional
+positive-definite Cholesky/spectral factorization), and define
+  C4=[sqrt(alpha), -b^T/sqrt(alpha); 0, R].
+A direct multiplication gives C4^T eta C4=H and det C4!=0.
+For C5=diag(1,C4),
+  C5^T eta5 C5=diag(1,H)=g,  det C5!=0.
+This is precisely the native LorentzianAt predicate. No analyticity of the
+chosen C5 is needed; the predicate is pointwise existential.
+Symmetry and the exact Gaussian rows g_rr=1, g_ra=0 hold by construction.
+
+R9. MATCHING THE GLOBAL TOTAL-FUNCTION LEAN CARRIER
+
+Lift the periodic collar metric to the full R^3 cover. Define a total
+Metric : R^5 -> Matrix_5(R) by this value inside the open collar and by eta5
+outside. At every collar point this total function agrees on a neighborhood
+with the constructed analytic metric. Thus actual fderiv, Christoffel and
+Ricci values, analyticity, and all GaussianVacuum fields are unchanged.
+No assertion of analyticity across the collar boundary is required.
+
+From H_r(0,t,x)=2K_input(t,x), the native half-normal-derivative definition
+implies boundaryK(g)(t,x)=K_input(t,x) for every t in the chosen interval.
+The beta initial value follows immediately. Equality holds on a time
+neighborhood of t0, so its first t-derivative also agrees there; hence the
+beta_time_initial field follows from the input field. This closes every
+field of GaussianVacuum and RadialExtensionResult without a new premise.
+
+R10. FIXED-MARKING RADIAL UNIQUENESS
+
+Let g and g' be analytic Gaussian vacuum metrics with the same induced eta
+and the same boundaryK on a common t-neighborhood times all T^3. Their H and
+H_r initial data agree, so CK uniqueness gives equality near each (0,t0,x).
+Compactness of T^3 yields a single time/radius neighborhood on which equality
+holds for ALL x. Therefore
+  SameMetricAt t0 g g'.
+This uniqueness is sufficient for the radial portion of forward_respects and
+lift_decode. It is not uniqueness modulo unrestricted diffeomorphisms; the
+marking, lapse=1, shift=0, induced metric, and normal orientation are fixed.
+
+R11. DEPENDENCY / LEAN IMPLEMENTATION INDEX
+
+R3 -> actual native-coordinate Gaussian Christoffels and Ricci identities.
+R4 -> a genuinely proved analytic CK2 endpoint (not present merely because
+      the target contract or an opaque signature compiles).
+R5 -> native flat-boundary Codazzi/Hamiltonian identification.
+R6 -> native contracted Bianchi identity + CK1 uniqueness or analytic jet
+      identity theorem.
+R7 -> uniqueness-compatible analytic gluing + compact T^3 finite subcover.
+R8 -> finite-dimensional positive-definite matrix factorization and the
+      explicit C4 multiplication; compact continuity bound.
+R9 -> local equality invariance of fderiv, exactly the locality mechanism
+      already used in GRAdapter.Locality; open-collar totalization.
+R10 -> exact full-spatial-slice SameMetricAt conclusion.
+
+LITERATURE_ADMISSION = available for R4 and R6; exact signs verified.
+B_TIER_RADIAL_ROOT = derived above from these classical analytic endpoints.
+A_TIER_RADIAL_INHABITANT = OPEN until native CK/geometry/gluing bodies compile.
+NO_CLAIM = global radial existence; Sobolev well-posedness; smooth sideways
+extension; causal/domain-of-dependence theorem; global Fefferman_B closure.
+
+R12. ADDITIONAL SOURCE-VERIFIED MATHLIB LOCALITY SUPPORT
+Active pinned source: Mathlib de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
+  Mathlib/Analysis/Calculus/FDeriv/Congr.lean:258
+    Filter.EventuallyEq.fderiv_eq
+  Mathlib/Analysis/Analytic/Basic.lean:491
+    AnalyticAt.congr
+  Mathlib/Analysis/Analytic/Basic.lean:495
+    analyticAt_congr
+  Mathlib/Analysis/Analytic/Basic.lean:502
+    AnalyticOnNhd.congr'
+  Mathlib/Analysis/Analytic/Basic.lean:509
+    AnalyticOnNhd.congr
+  Mathlib/LinearAlgebra/Matrix/PosDef.lean:507
+    Matrix.PosDef.isUnit
+These support R8-R9 but do not themselves supply analytic CK, Bianchi, the
+Gaussian identities, or the whole native radial law. Source verified only;
+no new compiler promotion is inferred from this index.
+
+R6 ALTERNATIVE NATIVE RICCI COMPONENT FORM
+For A=Ric_rr and B_a=Ric_ra, under Ric_ab=0:
+  A_r=-2kappa A-2D_a B^a,
+  (B_a)_r=-kappa B_a+(1/2)D_a A,
+  A|_0=-R[h]|_0+kappa^2-|K|^2=-boundaryHamiltonian(K)=0,
+  B|_0=boundaryCodazzi(K)=0.
+This is exactly R6.1 after A=2E, B=M; both coefficients and signs agree.
+
+
+APPENDIX C. RECONSTRUCTION AND GERM INVERSES
+SOURCE_ALIASES: L-GC=L06; L-FOURIER=L04; L-ANALYTIC-FOURIER=L05;
+L-RADIAL-UNIQUENESS=L03; L-SCALAR-CK=L01/L02.
+
+1. EXACT NORMALIZATION AND VARIABLE DICTIONARY
+
+I=(t0-delta,t0+delta), delta>0; T^3=R^3/Z^3; total spatial volume=1.
+nu,rho in R; no mean-zero assumption on velocity.
+For the actual boundary K=1/2 partial_r g_ab|r=0 define
+  k=K_00,
+  w_i=K_0i,
+  A_ij=K_ij,
+  beta=-tr A,
+  kappa=eta^{ab}K_ab=-k-beta.
+Define normalized mean <f>=integral_[0,1]^3 f.
+For scalar f set
+  fhat(k)=integral_[0,1]^3 f(x) exp(-2pi*i*k.x) dx,
+  m(0)=0,
+  m(k)=-1/(4pi^2 |k|^2), k!=0,
+  Gf=sum_k m(k) fhat(k) exp(2pi*i*k.x).
+The native definition is the real cosine convolution with this same symbol.
+P w=w-grad G(div w); all vector formulas componentwise.
+  q=G(beta-<beta>),
+  u=P w,
+  p_*=-k-(2rho+|u|^2)/3-q_tt,
+  Z_ij(u)=partial_i u_j+partial_j u_i,
+  F_nu[K]=TF(A+u tensor u+D_x^2 q-nu Z(u)),
+  TF T=T-(tr T/3)I_3.
+
+2. ANALYTIC TORUS OPERATORS: FULL JUSTIFICATION
+
+R01. Local uniform holomorphic extension.
+Let f be jointly real analytic on I x T^3. Fix any t_* in I. Compactness of
+{t_*} x T^3 and uniqueness of holomorphic continuations give tau,sigma>0
+and a periodic holomorphic extension to
+  |t-t_*|<tau,
+  z=x+iy, |y_j|<sigma, j=1,2,3.
+Shrink tau,sigma once to obtain a finite bound M on the closed smaller tube.
+Finite coordinate covers glue by equality on the real overlap; translations
+by Z^3 preserve the extension by holomorphic uniqueness. No uniform tube for
+the entire possibly noncompact interval I is asserted or needed.
+
+R02. Exponential Fourier estimate, including a time parameter.
+Contour shift y_j=-sigma sign(k_j), with cancellation of periodic vertical
+edges, gives
+  |fhat(t,k)| <= M exp(-2pi sigma |k|_1).
+Cauchy estimates on a smaller time disc give
+  |partial_t^a fhat(t,k)| <= M_a exp(-2pi sigma' |k|_1)
+for every finite a. Multiplication by any spatial derivative polynomial
+(2pi i k)^alpha preserves summability after another strictly smaller strip.
+Consequently Fourier inversion, spatial/time differentiation, and averaging
+commute, with locally uniform absolute convergence of every derivative.
+This proves jointly real analytic synthesis, not only separate analyticity.
+
+R03. Native cosine representation equals G exactly.
+For real f,
+  integral cos(2pi k.(x-y)) f(y)dy
+   = (exp(2pi i k.x) fhat(k)+exp(-2pi i k.x) fhat(-k))/2.
+Absolute convergence permits k -> -k reindexing; m(-k)=m(k). Summing the two
+halves yields precisely sum_k m(k) fhat(k) exp(2pi i k.x).
+There is NO extra factor two. The 0 term vanishes. In particular,
+  G1=0,
+  G cos(2pi x_1)=-(4pi^2)^(-1) cos(2pi x_1).
+The native `poissonInverse` is therefore the actual mean-zero inverse of Delta
+on the analytic class, despite its total-function definition outside that class.
+
+R04. Inverse, mean, and commutation identities.
+By the multiplier and inversion calculation,
+  Delta Gf=f-<f>,
+  G Delta f=f-<f>,
+  <Gf>=0,
+  G(partial_t f)=partial_t Gf,
+  G(partial_j f)=partial_j Gf,
+  partial_t<f>=<partial_t f>,
+  <partial_j f>=0.
+Uniqueness: if Delta h=0 and <h>=0, Fourier coefficients at all nonzero
+frequencies and at frequency zero vanish; hence h=0.
+The map G preserves real joint analyticity and spatial periodicity locally
+at each time in I. All equalities hold pointwise, with no distributional or
+formal-series replacement.
+
+R05. Leray identities.
+For analytic periodic vector w, <div w>=0. Therefore
+  div Pw=div w-Delta G div w=0,
+  <Pw>=<w>,
+  P^2w=Pw,
+  P(grad f)=0,
+  div w=0 => Pw=w,
+  partial_t Pw=P(partial_t w).
+P retains every constant vector mode. None of these statements requires
+< w >=0, a mean-zero NSE endpoint, or global time existence.
+
+3. FROM ACTUAL VACUUM GEOMETRY TO THE EXACT RESIDUAL
+
+R06. Actual boundary regularity and constraints.
+For GaussianVacuum rho t0 delta epsilon g, real analyticity of g on the
+actual collar implies joint analyticity of its normal derivative restricted
+to r=0. Spatial periodicity and symmetry differentiate to K. The induced
+metric is exactly eta for all (t,x), so its intrinsic Christoffel symbols and
+curvature vanish there. L-GC, with normal +partial_r and K=+1/2 h_r, gives
+  partial^a(K_ab-kappa eta_ab)=0,
+  H(K)=K_ab K^{ab}-kappa^2=0.
+The zero constraint is invariant under the simultaneous reversal K -> -K,
+so the normal-sign conversion is explicit and harmless for these zero equations.
+The radial chain supplies the native-coordinate proof matching the actual
+`ricci` definition; the literature formula is not an uninterpreted replacement.
+
+R07. Expand Codazzi, retaining every sign.
+For b=0,
+  -partial_t(k+kappa)+div w=0,
+  k+kappa=-beta,
+therefore
+  beta_t+div w=0.
+For b=i,
+  -partial_t w_i+partial_j A_ji-partial_i kappa=0.
+By A_ji=A_ij and kappa=-k-beta,
+  w_t=div A+grad(k+beta).
+
+R08. Conserved means and normalized potential.
+Periodic integration of R07 gives
+  d/dt <beta>=0,
+  d/dt <w>=0.
+The connected interval I contains t0 and beta(t0,x)=rho. Hence
+  <beta(t)>=rho for every t in I.
+Therefore
+  q=G(beta-rho),
+  Delta q=beta-rho,
+  q_t=G beta_t=-G div w,
+  u=Pw=w+grad q_t,
+  w=u-grad q_t,
+  div u=0,
+  <u>=<w>=constant.
+The normalization beta_t(t0,x)=0 additionally yields
+  q(t0,x)=0,
+  q_t(t0,x)=0.
+The latter normalization is needed for the lift-decode uniqueness argument;
+it is not needed for the exact residual identity itself.
+
+R09. Trace cancellation.
+Let T=A+u tensor u+D_x^2q-nu Z(u). Since div u=0,
+  tr Z=2 div u=0,
+  tr T=-beta+|u|^2+(beta-rho)=|u|^2-rho.
+Thus the native constitutive tensor is exactly
+  F=A+u tensor u+D_x^2q-nu Z-(|u|^2-rho)I_3/3.
+
+R10. Differentiate F.
+Use smooth derivative commutation and div u=0:
+  div(u tensor u)=(u.grad)u,
+  div D_x^2q=grad Delta q=grad beta,
+  div Z(u)=Delta u+grad div u=Delta u.
+It follows that
+  div F=div A+(u.grad)u+grad beta-nu Delta u-grad|u|^2/3.
+On the other hand R07--R08 give
+  u_t=div A+grad k+grad beta+grad q_tt.
+Substitute the actual p_*=-k-(2rho+|u|^2)/3-q_tt:
+  u_t+(u.grad)u+grad p_*-nu Delta u
+   =div A+(u.grad)u+grad beta-nu Delta u-grad|u|^2/3
+   =div F.
+Every q_tt term and every grad k term cancels explicitly. The coefficient
+2rho/3 is spatially constant and contributes zero gradient.
+
+R11. Exact native reconstruction law.
+R01--R06 prove AnalyticPeriodicPair t0 delta u p_* on the ENTIRE supplied
+open interval I: apply the local holomorphic argument separately at each
+arbitrary t_* in I. No smaller delta is needed for this law.
+R05 proves solenoidal. R10 proves the exact pointwise residual. Consequently
+  forall nu rho t0, GeometricReconstructionLaws nu rho t0
+has a complete mathematical derivation from L-GC and ordinary analytic
+Fourier calculus. Even rho!=0 is unnecessary for this law. Hamiltonian=0
+is not needed for R10, but is available for subsequent scalar inversion.
+Formal status: B_TIER derivation; the native Lean inhabitant is not yet built.
+
+4. EXACT CANONICAL DECOMPOSITION AND THE GERMS
+
+G01. Source reconstruction when F=0.
+For an actual canonical metric, F=0 and R09 give
+  A=(|u|^2-rho)I_3/3-u tensor u+nu Z(u)-D_x^2q.
+R08 gives w=u-grad q_t. The pressure definition gives
+  k=-(2rho+|u|^2)/3-p_*-q_tt.
+Direct expansion of `completedBoundary nu rho u p_* q` gives precisely these
+three blocks. Therefore, on I x T^3,
+  K_g=completedBoundary(nu,rho,u_g,p_g,q_g).
+This is equality of the actual tensor, not equality merely modulo divergence,
+STF tensors, gradients, or gauge.
+
+G02. q is a normalized solution of the exact scalar Hamiltonian equation.
+Vacuum yields H(K_g)=0; G01 transfers this equality to the concrete scalar
+completion. R08 gives q(t0)=q_t(t0)=0. The scalar chain's coefficient at this
+Cauchy data is 2rho. For rho!=0, scalar CK uniqueness identifies q with EVERY
+normalized analytic scalar completion for the same decoded (u,p_*) near t0.
+This includes a completion chosen through Classical.choice from any supplied
+`ScalarBoundaryCompletionLaws` inhabitant. No special choice function or
+stronger completion record is assumed.
+
+G03. Analytic pressure gauge and its normalized double primitive.
+Suppose analytic representatives n=(u,p), m=(v,p') satisfy SameFlowAt t0.
+Shrink to a common interval so u=v and p'=p+c(t) for all spatial points.
+The scalar c(t)=p'(t,0)-p(t,0) is analytic; this is also the already-audited
+native lemma `sameFlowAt_iff_analytic_pressure_gauge`.
+Choose the unique analytic a with
+  a''=c, a(t0)=a'(t0)=0,
+e.g. a(t)=integral_[t0,t] (t-s)c(s) ds, interpreted with oriented intervals,
+or the termwise twice-integrated convergent power series for c.
+If psi completes (u,p), put psi'=psi-a(t). Then psi' has the same zero
+Cauchy data, and
+  conservedSourceUpper(u,p+c)-conservedSourceUpper(u,p)
+    has only spatial block c I_3,
+  scalarCompletionUpper(psi-a)-scalarCompletionUpper(psi)
+    has only spatial block -a'' I_3=-c I_3.
+Hence the summed source, its lowered tensor, and completedBoundary are equal.
+In particular psi' solves the scalar Hamiltonian equation for (u,p').
+Scalar CK uniqueness forces equality with the chosen completion for (u,p').
+The resulting K germs agree. Fixed-marking radial analytic uniqueness then
+forces the chosen metric germs to agree. This proves `forward_respects`.
+
+G04. Lift after decode.
+Let g be canonical, n=reverseRepresentative h g. The fields in n are the
+actual u_g,p_g; h supplies their already-derived NSE proof, not alternative
+fields. G01--G02 identify the chosen scalar completion tensor with K_g as
+a full-spatial-slice time germ. Thus g and forwardRepresentative c r n have
+  induced boundary metric eta,
+  normal first derivative 2 K_g
+on a common time neighborhood. Both are actual analytic Gaussian vacuum
+metrics. The radial CK normal form and its analytic uniqueness force their
+metric germs to agree. This is exactly `lift_decode`.
+
+G05. Uniform germ quantifier: compactness is essential.
+Every scalar or radial uniqueness assertion initially holds near each point
+of {t0} x T^3 or {r=0,t=t0} x T^3. Choose finitely many spatial coordinate
+patches covering T^3. Intersect their positive time/radial neighborhoods.
+Each contains a positive product rectangle; take minimum radii over the
+finite family. The equality now holds for ALL x in T^3 and all (r,t) in one
+common rectangle. Periodicity extends this equality to every x in R^3.
+This proves the exact native `SameFlowAt` and `SameMetricAt` quantifiers,
+not merely a pointwise-in-x germ. The fixed marking prevents an unnoticed
+quotient by arbitrary diffeomorphisms.
+
+G06. Native contract consequence.
+For nu real, rho!=0 and any supplied records c,r,h satisfying the existing
+exact types, G03--G05 mathematically construct
+  GermInverseLaws c r h
+with its remaining fields forward_respects and lift_decode.
+The other two edges already have native compiled proofs:
+  sameMetricAt_boundaryFields: reverse_respects;
+  forward_pressure_gauge_recovery: decode_lift relative to c,r.
+The c record's pressure_recovery premise was not removed by the latter
+native proof. The independent scalar B-tier chain must supply it via
+q=psi-<psi>, decoded p=p+partial_tt<psi>.
+
+5. LEAN OBLIGATION GRANULARITY
+
+R01--R05: analytic Fourier semantic adapter for the concrete EuclideanSpace
+unitCube integral/cosine tsum; unit-volume measure and coordinate conversion
+must be checked. AddCircle Fourier endpoints alone do not instantiate this.
+R06--R07: native Gaussian coordinate Ricci -> exact flat-boundary Codazzi;
+Hamiltonian only required subsequently. Source signs must match Geometry.lean.
+R08--R10: finite tensor/calculus identities and periodic integration; natural
+native theorem targets before the three-field GeometricReconstructionLaws inhabitant.
+G01: exact completedBoundary reconstruction theorem, all three blocks.
+G02--G05: scalar CK uniqueness and radial CK uniqueness adapters, analytic
+pressure primitive and compact full-slice germ gluing.
+G06: inhabit GermInverseLaws; no axiom or certificate stub may substitute.
+
+LITERATURE_STATUS = STANDARD_ENDPOINTS_EXIST
+EXACT_STF_RESIDUAL_AND_INVERSE_COMPOSITION = DERIVED_HERE
+GEOMETRIC_RECONSTRUCTION_B_TIER = COMPLETE_WITH_EXPLICIT_STANDARD_INPUTS
+GERM_LAWS_B_TIER = COMPLETE_AFTER_SCALAR_AND_RADIAL_CK_UNIQUENESS
+A_TIER_NEW_INHABITANTS = NONE
+
+APPENDIX D. EXTERNALLY AUDITED NATIVE PROGRESSION
+
+SOURCE_COMMIT = 4e9638abfa0556ee74ddbce8441973993091271d
+NATIVE_NEW_THEOREMS = 199
+ALL_NAMED_AUDITS = 401/401 PASS_STANDARD_ONLY
+COMPILER = Lean 4.34.0-rc1
+ACTIVE_MATHLIB = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+SOURCE_NAMES_AND_LINES = ../NATIVE_LITERATURE_ENDPOINTS.json
+EXTERNAL_EVIDENCE = ../GR_LITERATURE_CHAIN_A_TIER.txt
+LOCAL_LEAN = 0
+
+The historical Mathlib/Methlib indices remain source pointers. They do not
+certify API identity at the active pin. The current external compiler and
+theorem-level audit identify the native declarations listed below.
+
+M01: UnitTorus.volume_unitCube and periodic FTC/zero-gradient means.
+     UnitTorus is the file; declaration namespace is NSEGR throughout.
+M02: joint analytic complexification remains OPEN natively.
+M03: literatureFourierCoefficient_summable_norm and
+     poisson_fourier_summable_of_literature. Joint parameter bounds OPEN.
+M04: poissonInverse_eq_re_tsum_fourier_of_literature;
+     poissonInverse_scalarLaplacian_of_literature;
+     leray_gradient_of_literature.
+     G(Delta f)=f-mean(f), P(gradient f)=0 are native.
+     Delta(Gf), analytic regularity and time commutation remain OPEN.
+M05: GaussianMetric Christoffels; ricci_gaussian_mixed;
+     ricci_gaussian_normal. Tangential Ricci block remains OPEN.
+M06: flat-boundary Codazzi/Hamiltonian extraction remains OPEN.
+M07: native stress derivative ingredients are in StressDivergence;
+     complete source/correction conservation remains OPEN.
+M08: scalar_hamiltonian_expansion;
+     completedBoundary_hamiltonian_zero_iff_scalar_normal;
+     scalar_hamiltonian_initial_noncharacteristic.
+M09: scalarCKRHS, analyticAt_scalarCKRHS and scalarCK_gradient_compatibility;
+     actual z=gradient(psi) germ compatibility is native.
+M10: scalarCK_exists_unique_firstOrder supplies the concrete 5-component
+     germ from LI01. Scalar second-order identification remains OPEN.
+M11-M14: periodic scalar gluing, admissible completion and complete record OPEN.
+M15-M18: LI02 provides point-local vacuum germs as an explicit input.
+     Uniform periodic Lorentzian collar assembly and radial record OPEN.
+     A separate radial CK/Bianchi proof is unnecessary when LI02 is retained.
+M19: gaussianVacuum_sameMetricAt_of_literatureJet, using an independently
+     admissible common K. Point-local uniqueness -> full-spatial metric germ
+     is native; vacuum-to-constraint extraction is still separate.
+M20: periodic FTC and Leray-gradient annihilation are native; full Codazzi,
+     mean conservation and Hodge-time assembly OPEN.
+M21: boundaryStress_tensorDivergence;
+     reconstruction_residual_of_codazzi_hodge.
+     Explicit remaining identities: Codazzi and differentiated Hodge;
+     regularity, Poisson and solenoidality premises remain visible.
+M22: GeometricReconstructionLaws inhabitant OPEN.
+M23: boundary_eq_completedBoundary_of_zero_stress under explicit symmetry,
+     div(u)=0, Delta(q)=beta-rho and w=u-gradient(q_t).
+M24-M26: scalar/gauge uniqueness and germ inverse record OPEN.
+M27: existing root from c,r,h,q remains audited conditional formal closure;
+     substitution from LI01-LI03 alone remains OPEN.
+M28: scalar noncharacteristic coefficient is native; full rho=0 obstruction
+     remains the B-tier statement of A.S11.
+
+NATIVE_STATUS_RULE
+  A compiled edge proves exactly its displayed implication.
+  A theorem-level standard-only axiom audit does not discharge its arguments.
+  LI01-LI03 are explicit premises; their native inhabitants are not supplied.
+  Root-only-from-LiteratureInputs native construction is NOT established.

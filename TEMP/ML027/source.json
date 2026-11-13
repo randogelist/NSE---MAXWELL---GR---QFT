@@ -1,0 +1,31 @@
+{
+  "id": "ML027",
+  "kind": "theorem",
+  "source_name": "tendstoUniformlyOn_tsum",
+  "endpoint": "GRTemp.ML027.endpoint",
+  "module": "ML027.Endpoint",
+  "source_path": "Mathlib/Analysis/Normed/Group/FunctionSeries.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "7852e142cb21d54b365d84ed4e1e2607a041242981cb96510b10f61b30aab5ac",
+  "source_start_line": 33,
+  "source_end_line": 44,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Group/FunctionSeries.lean#L33",
+  "upstream_import": "Mathlib.Analysis.Normed.Group.FunctionSeries",
+  "retained_dependencies": [
+    "Mathlib.Analysis.Normed.Group.FunctionSeries"
+  ],
+  "extraction_kind": "COPIED_PROOF_BODY",
+  "original_declaration": "theorem tendstoUniformlyOn_tsum {f : α → β → F} (hu : Summable u) {s : Set β}\n    (hfu : ∀ n x, x ∈ s → ‖f n x‖ ≤ u n) :\n    TendstoUniformlyOn (fun t : Finset α => fun x => ∑ n ∈ t, f n x) (fun x => ∑' n, f n x) atTop\n      s := by\n  refine tendstoUniformlyOn_iff.2 fun ε εpos => ?_\n  filter_upwards [(tendsto_order.1 (tendsto_tsum_compl_atTop_zero u)).2 _ εpos] with t ht x hx\n  have A : Summable fun n => ‖f n x‖ :=\n    .of_nonneg_of_le (fun _ ↦ norm_nonneg _) (fun n => hfu n x hx) hu\n  rw [dist_eq_norm, ← A.of_norm.sum_add_tsum_subtype_compl t, add_sub_cancel_left]\n  apply lt_of_le_of_lt _ ht\n  apply (norm_tsum_le_tsum_norm (A.subtype _)).trans\n  exact (A.subtype _).tsum_le_tsum (fun n => hfu _ _ hx) (hu.subtype _)",
+  "generated_additive_declaration": null,
+  "source_context": "open Set Metric TopologicalSpace Function Filter\nopen scoped Topology NNReal\nvariable {α β F : Type*} [NormedAddCommGroup F] [CompleteSpace F] {u : α → ℝ}\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC03"
+  ],
+  "endpoint_sha256": "ae9e9c9d9abb48d01ed61fb8e87463a5d91884b39ace744194a04a451b2ad6e1",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+}

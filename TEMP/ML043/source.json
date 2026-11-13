@@ -1,0 +1,31 @@
+{
+  "id": "ML043",
+  "kind": "theorem",
+  "source_name": "AnalyticOnNhd.eqOn_of_preconnected_of_eventuallyEq",
+  "endpoint": "GRTemp.ML043.endpoint",
+  "module": "ML043.Endpoint",
+  "source_path": "Mathlib/Analysis/Analytic/Uniqueness.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "3c095cfff0c66f30905355dfe8918c74148cf462427b0b59f5322a495e002424",
+  "source_start_line": 223,
+  "source_end_line": 228,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Uniqueness.lean#L223",
+  "upstream_import": "Mathlib.Analysis.Analytic.Uniqueness",
+  "retained_dependencies": [
+    "Mathlib.Analysis.Analytic.Uniqueness"
+  ],
+  "extraction_kind": "COPIED_PROOF_BODY",
+  "original_declaration": "theorem eqOn_of_preconnected_of_eventuallyEq {f g : E → F} {U : Set E} (hf : AnalyticOnNhd 𝕜 f U)\n    (hg : AnalyticOnNhd 𝕜 g U) (hU : IsPreconnected U) {z₀ : E} (h₀ : z₀ ∈ U) (hfg : f =ᶠ[𝓝 z₀] g) :\n    EqOn f g U := by\n  have hfg' : f - g =ᶠ[𝓝 z₀] 0 := hfg.mono fun z h => by simp [h]\n  simpa [sub_eq_zero] using! fun z hz =>\n    (hf.sub hg).eqOn_zero_of_preconnected_of_eventuallyEq_zero hU h₀ hfg' hz",
+  "generated_additive_declaration": null,
+  "source_context": "variable {𝕜 : Type*} [NontriviallyNormedField 𝕜] {E : Type*} [NormedAddCommGroup E]\n  [NormedSpace 𝕜 E] {F : Type*} [NormedAddCommGroup F] [NormedSpace 𝕜 F]\nopen Set\nopen scoped Topology ENNReal NNReal\nnamespace AnalyticOnNhd\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC03"
+  ],
+  "endpoint_sha256": "4f345e0237749eaa5ac7f6b5ea4ab9cdd60fdc9b26fd509a03cde22daf2b2d1d",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+}

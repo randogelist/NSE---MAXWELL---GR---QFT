@@ -1,0 +1,31 @@
+{
+  "id": "ML028",
+  "kind": "theorem",
+  "source_name": "continuousOn_tsum",
+  "endpoint": "GRTemp.ML028.endpoint",
+  "module": "ML028.Endpoint",
+  "source_path": "Mathlib/Analysis/Normed/Group/FunctionSeries.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "7852e142cb21d54b365d84ed4e1e2607a041242981cb96510b10f61b30aab5ac",
+  "source_start_line": 116,
+  "source_end_line": 121,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Group/FunctionSeries.lean#L116",
+  "upstream_import": "Mathlib.Analysis.Normed.Group.FunctionSeries",
+  "retained_dependencies": [
+    "Mathlib.Analysis.Normed.Group.FunctionSeries"
+  ],
+  "extraction_kind": "COPIED_PROOF_BODY",
+  "original_declaration": "theorem continuousOn_tsum [TopologicalSpace β] {f : α → β → F} {s : Set β}\n    (hf : ∀ i, ContinuousOn (f i) s) (hu : Summable u) (hfu : ∀ n x, x ∈ s → ‖f n x‖ ≤ u n) :\n    ContinuousOn (fun x => ∑' n, f n x) s := by\n  refine (tendstoUniformlyOn_tsum hu hfu).continuousOn (Frequently.of_forall ?_)\n  intro t\n  exact continuousOn_finsetSum _ fun i _ => hf i",
+  "generated_additive_declaration": null,
+  "source_context": "open Set Metric TopologicalSpace Function Filter\nopen scoped Topology NNReal\nvariable {α β F : Type*} [NormedAddCommGroup F] [CompleteSpace F] {u : α → ℝ}\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC03"
+  ],
+  "endpoint_sha256": "f3e65edf28524cee031397d5ee760af94c01490b55e4de36a346c118b50e9c0c",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+}

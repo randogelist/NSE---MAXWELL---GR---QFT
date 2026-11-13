@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "status": "CONDITIONAL_FORMAL_CLOSURE",
+  "source_base": "1de664f2ef5ddc11caef25ac2274278b4171ab6b",
+  "branch": "codex/gr-adapter",
+  "compiler": "4.34.0-rc1",
+  "mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "root": "NSEGR.NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS",
+  "scope": {
+    "space": "unit periodic T^3",
+    "time": "two-sided local analytic germs at t0",
+    "bulk": "marked Gaussian analytic five-dimensional vacuum with fixed flat timelike boundary",
+    "pressure": "analytic germs modulo time-only gauge",
+    "parameters": "nu>0, rho!=0",
+    "global_smooth_FeffermanB_equivalence": "NOT_ASSERTED"
+  },
+  "unresolved_premises": [
+    "ScalarBoundaryCompletionLaws",
+    "AnalyticRadialExtensionLaws",
+    "GeometricReconstructionLaws",
+    "GermInverseLaws"
+  ],
+  "premise_inhabitants": "NOT_SUPPLIED",
+  "native_flat_witness": "actual Lorentzian Ricci-flat metric; nonzero-rho normalization excluded",
+  "validation": {
+    "local_lean_executions": 0,
+    "external_compilation": "PASS",
+    "theorem_axiom_audit": "PASS_STANDARD_ONLY",
+    "counts": {
+      "adapter": 190,
+      "forward": 6,
+      "reverse": 6
+    },
+    "audited_source_commit": "3dc98a61115f8d2e79d115d70b8c3478c504d82e",
+    "workflow_run_id": 43365946484,
+    "artifact_id": 14010271971,
+    "artifact_sha256": "6f1f62bf0aa8d752a17b28b5ba8593f7445c18d4c1d606e5423899aa2e81bcf4",
+    "target_total": 202
+  },
+  "derivation": {
+    "version": "1.6.0",
+    "sha256": "8a9b3720f7f60499c04cf2b79eb873ce2c34100b30d512914dd33b14b41e9284",
+    "older_source_pins": "Mathlib db584cd6d46c92f209a44c0f1c829460d327499d; Methlib 09dfe94a1ef150e21d09df3013fbe09002ef139c; source-only support; not compilation at active pins"
+  },
+  "native_nonzero_normalization_boundary": "actual constant constrained analytic periodic boundary for every rho; bulk realization unresolved",
+  "derived_germ_obligations": [
+    "decode_lift",
+    "reverse_respects"
+  ],
+  "remaining_germ_obligations": [
+    "forward_respects",
+    "lift_decode"
+  ],
+  "native_declarations_status": "A_TIER",
+  "unconditional_root_status": "OPEN",
+  "literature_chain": {
+    "status": "A_TIER_NATIVE_EDGES; ROOT_OPEN",
+    "inputs": [
+      "LiteratureAnalyticCKInput",
+      "LiteratureGaussianJetInput",
+      "LiteratureSmoothFourierInput"
+    ],
+    "input_native_inhabitants": "OPEN",
+    "target": "LiteratureInputs -> forall nu rho t0, 0 < nu -> rho != 0 -> ExactSectorEquivalence nu rho t0",
+    "target_native_theorem": "NOT_CONSTRUCTED",
+    "four_project_contract_inhabitants": "OPEN",
+    "remaining": [
+      "scalar second-order identification, periodic completion/gluing and recovery",
+      "joint analytic Fourier parameter calculus, Delta-G right inverse and time commutation",
+      "flat-boundary Codazzi/Hamiltonian and LI02 uniform Lorentzian collar assembly",
+      "construct all four project-law inhabitants and literature-only root"
+    ],
+    "local_lean_executions": 0,
+    "new_global_axioms": 0,
+    "native_edge_validation": {
+      "audited_source_commit": "4e9638abfa0556ee74ddbce8441973993091271d",
+      "workflow_run_id": 43375199321,
+      "artifact_id": 14014251182,
+      "artifact_sha256": "33fa8387b7df7a45d4a194c78436a3e088f16173260fde21356cc802427d4d58",
+      "compiler": "Lean4.34.0-rc1",
+      "mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "new_theorem_count": 199,
+      "named_declaration_audit_count": 401,
+      "all_declaration_audit_count": 401,
+      "status": "PASS_STANDARD_ONLY"
+    },
+    "native_modules": {
+      "LiteratureInputs.lean": 3,
+      "UnitTorus.lean": 23,
+      "ScalarNormalForm.lean": 19,
+      "ScalarAnalytic.lean": 9,
+      "GaussianMetric.lean": 26,
+      "GermUniformity.lean": 12,
+      "ReconstructionAlgebra.lean": 10,
+      "ReconstructionCalculus.lean": 3,
+      "FourierBridge.lean": 16,
+      "GaussianUniqueness.lean": 5,
+      "ScalarCK.lean": 9,
+      "StressDivergence.lean": 26,
+      "FourierInversion.lean": 17,
+      "GaussianCodazzi.lean": 12,
+      "ScalarCompatibility.lean": 9
+    },
+    "native_top_edges": [
+      "scalarCK_exists_unique_firstOrder",
+      "gaussianVacuum_sameMetricAt_of_literatureJet",
+      "poissonInverse_scalarLaplacian_of_literature",
+      "leray_gradient_of_literature",
+      "ricci_gaussian_mixed",
+      "ricci_gaussian_normal",
+      "boundaryStress_tensorDivergence",
+      "reconstruction_residual_of_codazzi_hodge",
+      "scalarCK_gradient_compatibility"
+    ]
+  }
+}

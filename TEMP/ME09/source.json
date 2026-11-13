@@ -1,0 +1,45 @@
+{
+  "entry_id": "ME09",
+  "member_id": null,
+  "upstream_name": "NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.K_curl",
+  "candidate_export": "GRTemp.ME09.endpoint",
+  "module": "ME09.Endpoint",
+  "declaration_kind": "theorem",
+  "status": "A_TIER_CANDIDATE",
+  "extraction_method": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+  "source_repository": "randogelist/Methlib",
+  "source_commit": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+  "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialHodge.lean",
+  "source_line_start": 79,
+  "source_line_end": 88,
+  "source_sha256": "96492e65f07cc825eb9e5ae2f43de61ee3b6f4ba2c96ac85dbf44290be228df4",
+  "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/SpatialHodge.lean#L79",
+  "source_declaration_sha256": "7511d7c66c7f22f261b45bd6f1cce769a6e8735fd70d3f82405e481cc94237dc",
+  "imports": [
+    "FourierHodgeLaws.SpatialHodge"
+  ],
+  "import_scope": "UPSTREAM_OWNING_MODULE; definitions and helper lemmas retained as explicit dependencies",
+  "uses": [
+    "GC02"
+  ],
+  "hypotheses": [
+    "laws : SpatialInverseLaplacianLaws",
+    "F : Field",
+    "ContDiff ℝ ∞ F",
+    "SpatialPeriodic F"
+  ],
+  "source_signature": "theorem SpatialInverseLaplacianLaws.K_curl\n    (laws : SpatialInverseLaplacianLaws) (F : Field)\n    (hF : ContDiff ℝ ∞ F) (hp : SpatialPeriodic F) :\n    K (spatialCurl F) = F - (fun _ => spatialMean F) +\n      NSEMaxwell.Classical.gradient (scalarL (NSEMaxwell.Classical.divergence F))",
+  "retained_upstream_audit": {
+    "name": "NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.K_curl",
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "status": "PASS_STANDARD_ONLY"
+  },
+  "retained_audit_applies_to": "UPSTREAM_DECLARATION_ONLY; candidate copied export has no external audit yet",
+  "local_lean_executions": 0,
+  "new_axioms": 0,
+  "extracted_file_sha256": "e44ff4d2203c64bbd2d9bfeeccd29820bf80718801dd0fe1f7351c3edab241ce"
+}

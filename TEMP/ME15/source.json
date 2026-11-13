@@ -1,0 +1,45 @@
+{
+  "entry_id": "ME15",
+  "member_id": null,
+  "upstream_name": "NSEMaxwell.HodgeProof.scalarMean_contDiffOn",
+  "candidate_export": "GRTemp.ME15.endpoint",
+  "module": "ME15.Endpoint",
+  "declaration_kind": "theorem",
+  "status": "A_TIER_CANDIDATE",
+  "extraction_method": "COPIED_PROOF_BODY_WITH_RENAMED_EXPORT",
+  "source_repository": "randogelist/Methlib",
+  "source_commit": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+  "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterIntegral.lean",
+  "source_line_start": 50,
+  "source_line_end": 59,
+  "source_sha256": "e057005dbf269c7fd797241224651d9f145272f9674f50faa24e2e3dba2e7fe7",
+  "source_url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/ParameterIntegral.lean#L50",
+  "source_declaration_sha256": "76a4431079488b560c0117d5824e51a1f8272a9d6bab07ce4b16c2bec6a83087",
+  "imports": [
+    "FourierHodgeLaws.ParameterIntegral"
+  ],
+  "import_scope": "UPSTREAM_OWNING_MODULE; definitions and helper lemmas retained as explicit dependencies",
+  "uses": [
+    "GC02",
+    "GC04",
+    "GC17"
+  ],
+  "hypotheses": [
+    "f : Pressure",
+    "SmoothPressure f"
+  ],
+  "source_signature": "theorem scalarMean_contDiffOn (f : Pressure) (hf : SmoothPressure f) :\n    ContDiffOn ℝ ∞ (fun t : ℝ => scalarMean (f t)) (Ici (0 : ℝ))",
+  "retained_upstream_audit": {
+    "name": "NSEMaxwell.HodgeProof.scalarMean_contDiffOn",
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "status": "PASS_STANDARD_ONLY"
+  },
+  "retained_audit_applies_to": "UPSTREAM_DECLARATION_ONLY; candidate copied export has no external audit yet",
+  "local_lean_executions": 0,
+  "new_axioms": 0,
+  "extracted_file_sha256": "3df2ebc2b50f9ac013b4050504dde3efcb7715ac249452f2ab2369da38a2ab04"
+}

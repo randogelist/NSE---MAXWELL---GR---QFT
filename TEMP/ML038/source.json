@@ -1,0 +1,32 @@
+{
+  "id": "ML038",
+  "kind": "theorem",
+  "source_name": "DifferentiableOn.isExactOn_ball",
+  "endpoint": "GRTemp.ML038.endpoint",
+  "module": "ML038.Endpoint",
+  "source_path": "Mathlib/Analysis/Complex/HasPrimitives.lean",
+  "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_sha256": "6cf381a10ed0a913dd7bec999e88ab183d2579fc4445c4e795994e16e4be874f",
+  "source_start_line": 290,
+  "source_end_line": 292,
+  "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/HasPrimitives.lean#L290",
+  "upstream_import": "Mathlib.Analysis.Complex.HasPrimitives",
+  "retained_dependencies": [
+    "Mathlib.Analysis.Complex.HasPrimitives"
+  ],
+  "extraction_kind": "COPIED_PROOF_BODY",
+  "original_declaration": "theorem _root_.DifferentiableOn.isExactOn_ball (hf : DifferentiableOn ℂ f (ball c r)) :\n    IsExactOn f (ball c r) :=\n  hf.isConservativeOn.isExactOn_ball hf.continuousOn",
+  "generated_additive_declaration": null,
+  "source_context": "open Complex MeasureTheory Metric Set Topology\nopen scoped Interval\nvariable {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]\nnamespace Complex\nvariable {c : ℂ} {r : ℝ} {f : ℂ → E}\nvariable [CompleteSpace E]\n",
+  "status": "A_TIER_CANDIDATE",
+  "source_verified": true,
+  "proof_body_verified": true,
+  "compilation_status": "NOT_RUN",
+  "local_lean_executions": 0,
+  "uses": [
+    "GC21"
+  ],
+  "endpoint_sha256": "deb25ddfc8633cef318abcadbee73adb05dd99de04e5586de8a229cd871f0985",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean.",
+  "context_revision": "Exact upstream section-variable binder order restored; proof body unchanged."
+}

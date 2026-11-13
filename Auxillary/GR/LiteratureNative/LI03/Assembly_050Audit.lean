@@ -1,0 +1,48 @@
+import GRAssembly.NativeFourierCalculus
+set_option pp.universes false
+#check @NSEGR.NativeLiterature.coordinateDerivative
+#print axioms NSEGR.NativeLiterature.coordinateDerivative
+#check @NSEGR.NativeLiterature.derivativeSymbol
+#print axioms NSEGR.NativeLiterature.derivativeSymbol
+#check @NSEGR.NativeLiterature.characterPhaseCLM
+#print axioms NSEGR.NativeLiterature.characterPhaseCLM
+#check @NSEGR.NativeLiterature.characterPhaseCLM_apply
+#print axioms NSEGR.NativeLiterature.characterPhaseCLM_apply
+#check @NSEGR.NativeLiterature.characterPhaseCLM_unitVector
+#print axioms NSEGR.NativeLiterature.characterPhaseCLM_unitVector
+#check @NSEGR.NativeLiterature.character_eq_exp_phase
+#print axioms NSEGR.NativeLiterature.character_eq_exp_phase
+#check @NSEGR.NativeLiterature.character_contDiff
+#print axioms NSEGR.NativeLiterature.character_contDiff
+#check @NSEGR.NativeLiterature.character_hasFDerivAt
+#print axioms NSEGR.NativeLiterature.character_hasFDerivAt
+#check @NSEGR.NativeLiterature.character_periodic
+#print axioms NSEGR.NativeLiterature.character_periodic
+#check @NSEGR.NativeLiterature.character_norm
+#print axioms NSEGR.NativeLiterature.character_norm
+#check @NSEGR.NativeLiterature.coordinateDerivative_contDiff
+#print axioms NSEGR.NativeLiterature.coordinateDerivative_contDiff
+#check @NSEGR.NativeLiterature.coordinateDerivative_periodic
+#print axioms NSEGR.NativeLiterature.coordinateDerivative_periodic
+#check @NSEGR.NativeLiterature.partialWord_contDiff
+#print axioms NSEGR.NativeLiterature.partialWord_contDiff
+#check @NSEGR.NativeLiterature.partialWord_periodic
+#print axioms NSEGR.NativeLiterature.partialWord_periodic
+#check @NSEGR.NativeLiterature.cube_isCompact
+#print axioms NSEGR.NativeLiterature.cube_isCompact
+#check @NSEGR.NativeLiterature.integral_cube_coordinateDerivative_eq_zero
+#print axioms NSEGR.NativeLiterature.integral_cube_coordinateDerivative_eq_zero
+#check @NSEGR.NativeLiterature.fourierIntegrand_contDiff
+#print axioms NSEGR.NativeLiterature.fourierIntegrand_contDiff
+#check @NSEGR.NativeLiterature.fourierIntegrand_periodic
+#print axioms NSEGR.NativeLiterature.fourierIntegrand_periodic
+#check @NSEGR.NativeLiterature.fourierIntegrand_integrableOn
+#print axioms NSEGR.NativeLiterature.fourierIntegrand_integrableOn
+#check @NSEGR.NativeLiterature.fourierIntegrand_coordinateDerivative
+#print axioms NSEGR.NativeLiterature.fourierIntegrand_coordinateDerivative
+#check @NSEGR.NativeLiterature.fourierCoefficient_coordinateDerivative
+#print axioms NSEGR.NativeLiterature.fourierCoefficient_coordinateDerivative
+#check @NSEGR.NativeLiterature.fourierCoefficient_partialWord
+#print axioms NSEGR.NativeLiterature.fourierCoefficient_partialWord
+#check @NSEGR.NativeLiterature.fourierCoefficient_norm_le_integral_norm
+#print axioms NSEGR.NativeLiterature.fourierCoefficient_norm_le_integral_norm

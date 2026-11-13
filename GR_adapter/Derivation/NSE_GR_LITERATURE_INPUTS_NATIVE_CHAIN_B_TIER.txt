@@ -1,0 +1,3338 @@
+NSE_GR_LITERATURE_INPUTS_NATIVE_CHAIN_B_TIER
+MODE = B_TIER_DERIVATION
+DATE = 2026-11-13
+MARKER = !=B_TIER
+NEW_NATIVE_PROOFS = NOT_IMPLEMENTED
+NEW_EXTERNAL_COMPILER_EVIDENCE = NONE
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+NEW_AXIOM_DECLARATIONS = 0
+
+0. EXACT TARGET AND STATUS BOUNDARY
+
+LI01 := NSEGR.LiteratureAnalyticCKInput.
+LI02 := NSEGR.LiteratureGaussianJetInput.
+LI03 := NSEGR.LiteratureSmoothFourierInput.
+
+Target A: LI01.
+Target B: LI01 -> LI02.
+Target C: LI03.
+Target D: NSEGR.LiteratureInputs := <Target A, Target B(Target A), Target C>.
+Target E: forall nu rho t0 : R, nu > 0 -> rho != 0 ->
+            NSEGR.ExactSectorEquivalence nu rho t0.
+
+The mathematical derivations below construct A/B/C from selected established
+library results and explicitly derived intermediate lemmas. LI01, LI02 and
+LI03 do not occur as undischarged mathematical inputs to D or E. Target B
+is deliberately relative to A; D instantiates A before applying B.
+
+NEW_NATIVE_STATUS = B_TIER_DERIVATION_ONLY.
+No declaration name proposed below denotes a newly compiled theorem.
+The exact existing native root remains CONDITIONAL_FORMAL_CLOSURE until
+native inhabitants of the displayed inputs pass matching external compilation
+and theorem-level axiom audit. A mathematical proof in this TXT is not that
+compiler evidence. No marker !!, !!! or !!!! is awarded to the new chain.
+
+EXISTING_NATIVE_ROOT:
+  NSEGR.Assembly.NSE_GR_THREE_OBLIGATION_CLOSURE
+    (nu rho t0 : R) (hnu : 0 < nu) (hrho : rho != 0)
+    (input : NSEGR.LiteratureInputs) :
+      NSEGR.ExactSectorEquivalence nu rho t0.
+
+EXACT_ROOT_SEMANTICS:
+  Nonempty (NSEGR.NSEgerm nu t0 equiv NSEGR.GRgerm nu rho t0).
+  Source = local jointly analytic, spatially period-one NSE germs on R x R^3,
+           modulo velocity-germ equality and time-only pressure gauge.
+  Target = independently defined marked five-dimensional Gaussian vacuum
+           sector germs, induced boundary eta=diag(-1,1,1,1),
+           beta(t0)=rho, beta_t(t0)=0, constitutive F_nu(K)=0.
+  Coordinates = (r,t,x1,x2,x3); K=+1/2 partial_r h.
+  No zero-mean velocity restriction.
+  No global-in-time regularity conclusion.
+  No equivalence with unrestricted four-dimensional Einstein solutions.
+
+ROOT_DEPENDENCY_FACT:
+  The audited c/r/h/q construction uses .ck and .gaussianJet; .smoothFourier
+  is retained in its declared input bundle but is not projected by that
+  construction. The present task nevertheless derives the exact full LI03
+  for every positive finite dimension. No minimal-input root is asserted
+  to have been compiled by this B-tier document.
+
+1. SOURCE LOCK AND INDEX RULES
+
+Repository = randogelist/NSE---MAXWELL---GR---QFT.
+Branch = codex/gr-adapter.
+Base documentation head = ae12e66c63ff2677a7585052738b6e623567337a.
+Existing audited proof source = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2.
+Existing external cached native Linux run = 43471012374.
+Existing scope = 898 named standard-only audits; 337 matched source hashes.
+Compiler = leanprover/lean4:v4.34.0-rc1.
+Compiler commit = 3447a668783dbce1a8fdb97101dd067687b2b418.
+Mathlib = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
+Methlib FourierHodge source = eac159c5f7bf5a99a00d994da34c4760ea8335d0.
+Methlib retained cached native run = 43370286685.
+
+ML-CK / ML-GJ / ML-FT = selected Mathlib declarations.
+ME-FT = selected Methlib declarations.
+GR-GJ / GR-ROOT = selected existing native project declarations.
+CKxx / GJxx / FTxx = newly derived mathematical edges; native bodies pending.
+ROOTxx = deterministic final composition.
+
+Each selected declaration has a pinned path, source line, source hash,
+literal declaration header, mathematical role, and scope limitation in the
+endpoint ledger and machine index. Headers retain source notation; enclosing
+variables/typeclasses must be read from the linked source. A helper theorem
+is not promoted to a stronger endpoint by renaming it.
+
+Reuse classifications:
+  EXACT = the selected statement supplies the stated substep after its
+          displayed hypotheses and representation identifications are met.
+  SUPPORT = elementary ingredient; the native composition is still required.
+  TEMPLATE = mathematical/source pattern with a dimension or representation
+             restriction; not an inhabitant of the general target.
+
+The same original signature cannot be used as both a premise and the target
+under a new name. Conditional Fourier descendants of LI03, Gaussian
+descendants of LI02, and CK descendants of LI01 are excluded as foundations
+for the corresponding input proofs. Existing project definitions and
+unconditional calculus/geometry lemmas remain eligible.
+
+2. PROOF ORDER
+
+  CK01 -> ... -> LI01.
+  independent Gaussian coordinate identities + LI01 -> LI02.
+  FT01 -> ... -> LI03.
+  LI01 + LI02 + LI03 -> LiteratureInputs.
+  LiteratureInputs + audited exact root -> Target E.
+
+Independent endpoint elaboration may run concurrently. Dependencies precede
+their consumers. The final term must apply the exact audited root to the
+constructed exact LiteratureInputs; theorem weakening, extra admissions,
+unchecked signatures, and image-defined replacements are excluded.
+
+
+
+LI01 / ANALYTIC CAUCHY--KOWALEVSKI: COEFFICIENT-SPACE CONTRACTION
+================================================================
+
+STATUS = B_TIER_NATIVE_PENDING.
+CLAIM = LiteratureAnalyticCKInput.
+No Cauchy--Kowalevski theorem, analytic-PDE convergence theorem, or analytic
+implicit-function theorem is used as an unproved input in this derivation.
+Selected Mathlib results supply Banach completeness, power-series calculus,
+operator-norm bounds, and Banach fixed points. CK01--CK14 below supply the
+new coefficient-space construction and estimates. No Methlib CK inhabitant
+was identified; Methlib is not assigned an artificial dependency here.
+
+LITERATURE CROSS-CHECK.
+Chaperon, On the Cauchy-Kowalevski theorem (2007), pp.4--7:
+https://webusers.imj-prg.fr/~marc.chaperon/Chaperon_Cauchy_Kowalevski.pdf
+The coefficient space and anisotropic rescaling agree with that proof.
+The argument below explicitly implements the contraction alternative
+mentioned on p.7, with a numerical contraction budget and full germ descent.
+This is a mathematical derivation; it does not instantiate a Lean structure.
+
+EXACT TARGET.
+For all n,m>0, E=EuclideanSpace R (Fin n), F=EuclideanSpace R (Fin m),
+F0 : ((R x E) x (F x (E ->L[R] F))) -> F, analytic u0 at x0,
+and F0 analytic at ((t0,x0),(u0(x0),Du0(x0))), there is a globally typed
+u : R x E -> F such that, as germs near the indicated points,
+
+  u is jointly real analytic at (t0,x0),
+  u(t0,x) = u0(x),
+  partial_t u(t,x) = F0((t,x),(u(t,x),D_x u(t,x))),
+
+and every other jointly analytic solution of the same initial-data germ
+equals u as a joint (t,x) germ. No uniform radius is part of this statement.
+
+CK01. EQUIVALENT NORMS / TAXICAB DOMAIN.
+Endpoints: ML-CK-01, ML-CK-02, ML-CK-11, ML-CK-25.
+Put Z=R (+)_1 E, with ||(T,X)||=|T|+||X||, and
+H=(R (+)_1 E) (+)_1 (F (+)_1 L(E,F)). Here (+)_1 denotes WithLp 1
+of the parenthesized product. The identity maps between
+these products and the ordinary products are continuous linear equivalences.
+Compose a power series with these equivalences and use the multilinear
+composition bound. Analyticity, eventual equality, and Frechet derivatives
+transport through the equivalences; hence the target Euclidean norms are
+unchanged semantically. Write e=(1,0), iX(x)=(0,x).
+
+CK02. SYMMETRIC COEFFICIENT REPRESENTATIVES.
+Endpoints: ML-CK-04, ML-CK-05, ML-CK-06, ML-CK-07, ML-CK-22.
+For a continuous d-linear coefficient a, define
+
+  Sym(a)(z1,...,zd) = (1/d!) sum_{sigma in S_d} a(z_sigma(1),...,z_sigma(d)).
+
+The d=0 convention is 0!=1 and a singleton permutation set. Then
+Sym(a)(z,...,z)=a(z,...,z), ||Sym(a)||<=||a||, and Sym(a) is symmetric.
+The bound follows by the triangle inequality and the operator-norm estimate
+for each summand. Thus every analytic germ has a symmetric coefficient
+expansion with the same diagonal sum and at least the same convergence radius.
+For a symmetric expansion q, its d-th derivative at the centre is d! q_d
+by ML-CK-22. Consequently symmetric coefficients are unique.
+
+CK03. BANACH COEFFICIENT SPACE.
+Endpoints: ML-CK-03, ML-CK-23.
+For a Banach space G define
+
+  S_d(Z,G) = {a : Z^d ->L_mult[R] G | a invariant under all slot permutations},
+  B0(Z,G) = {(a_d)_{d>=1} : a_d in S_d(Z,G), sum_d ||a_d|| < infinity},
+  ||a||_B = sum_{d>=1} ||a_d||;     a_0 := 0.
+
+S_d is the intersection of the kernels a -> a-a.domDomCongr(sigma),
+each a continuous linear map. It is closed in the complete continuous
+multilinear-map space. Hence each S_d is complete. B0 is the dependent
+lp space with p=1 on d>=1 and these fibres. It is complete by ML-CK-03.
+Equivalently, a Cauchy sequence converges coefficientwise and the tail
+estimate for its l1 norm proves norm convergence. Its closed unit ball
+Q={a: ||a||_B<=1} is complete and contains 0, by ML-CK-23.
+
+CK04. EVALUATION / ANALYTIC SEMANTICS.
+Endpoints: ML-CK-05, ML-CK-07, ML-CK-08, ML-CK-09, ML-CK-15,
+ML-CK-16, ML-CK-22, ML-CK-24.
+For a in B0 define Ev(a)(z)=sum_{d>=1}a_d(z,...,z) when ||z||<1.
+Each term has norm <=||a_d|| ||z||^d. The same formula converges for
+||z||<=1, with ||Ev(a)(z)||<=||a||_B. Hence the formal-series radius is
+>=1; ML-CK-08/09/24 give analyticity throughout the open unit ball.
+On a smaller closed ball of radius 0<r<1, k-th derivatives are dominated by
+sum_{d>=k} (d!/(d-k)!) ||a_d|| r^(d-k), which is finite because
+sup_{d>=k}(d!/(d-k)!) r^(d-k)<infinity and sum_d||a_d||<infinity.
+Thus differentiation and summation commute there, also by the power-series
+derivative API. If Ev(a)=Ev(b) near 0 then a=b by CK02.
+Evaluation is linear and bounded; these statements concern actual sums,
+not formal series alone.
+
+CK05. MULTILINEAR SUPERPOSITION ON COEFFICIENT SPACES.
+Endpoints: ML-CK-04, ML-CK-05, ML-CK-06.
+Let c:H^j ->L_mult G be symmetric, j>=1. For W1,...,Wj in B0(Z,H),
+define a symmetric coefficient of total degree d by
+
+  T_c(W1,...,Wj)_d
+    = sum_{k1+...+kj=d; all ki>=1}
+        Sym( c( W1_k1(-), ..., Wj_kj(-) ) ).
+
+The arguments of the inner multilinear map are partitioned into consecutive
+blocks of lengths k1,...,kj before symmetrization. There are finitely many
+such compositions for each d. Its norm is at most
+
+  ||c|| sum_{k1+...+kj=d} product_i ||Wi_ki||.
+
+Summing nonnegative terms over d gives the product of j l1 sums; therefore
+
+  ||T_c(W1,...,Wj)||_B <= ||c|| product_i ||Wi||_B.                 (CK05.1)
+
+The defining map is j-linear, continuous, and symmetric in the W arguments.
+Absolute convergence allows evaluation and all summations to be reordered:
+
+  Ev(T_c(W1,...,Wj))(z)=c(Ev(W1)(z),...,Ev(Wj)(z)).              (CK05.2)
+
+CK06. TIME PRIMITIVE WITH A UNIFORM COEFFICIENT NORM.
+Endpoints: ML-CK-04, ML-CK-05.
+For a in B0(Z,F), define A(a)_0=A(a)_1=0. For d>=1 and N=d+1,
+z_i=(T_i,X_i), set
+
+  A(a)_N(z_1,...,z_N)
+    = (1/N) sum_{nonempty S subset {1,...,N}}
+        (product_{i in S} T_i)
+        a_d(e repeated |S|-1, iX(X_j) for j notin S).
+
+Symmetry of a_d removes ordering dependence. This is symmetric N-linear.
+Expanding product_i (|T_i|+||X_i||) and omitting the nonnegative S=empty
+term yields
+
+  ||A(a)_N(z_1,...,z_N)||
+    <= ||a_d||/N product_i (|T_i|+||X_i||),
+  ||A(a)_N|| <= ||a_d||/(d+1),
+  ||A(a)||_B <= (1/2)||a||_B.                                  (CK06.1)
+
+Hence A is a bounded linear map B0(Z,F)->B0(Z,F). On the diagonal,
+
+  A(a)_{d+1}(T,X)^(d+1)
+   = sum_{k=1}^{d+1} binom(d+1,k)/(d+1)
+       T^k a_d(e^(k-1),iX(X)^(d+1-k)).
+
+Since binom(d+1,k)/(d+1)=binom(d,k-1)/k, this is exactly the
+time primitive, with zero initial trace, of a_d((T,X)^d).
+
+CK07. SPATIAL DERIVATIVE OF THE TIME PRIMITIVE.
+Endpoints: ML-CK-04, ML-CK-05.
+For d>=1, define B(a)_d as a symmetric d-linear map with values in L(E,F):
+
+  [B(a)_d(z_1,...,z_d)]h
+   = sum_{nonempty S subset {1,...,d}}
+       (product_{i in S}T_i)
+       a_d(e repeated |S|-1, iX(X_j) for j notin S, iX(h)).
+
+The same subset-product expansion gives
+
+  ||[B(a)_d(z_1,...,z_d)]h||
+     <=||a_d|| ||h|| product_i (|T_i|+||X_i||),
+  ||B(a)_d||<=||a_d||,
+  ||B(a)||_B<=||a||_B.                                        (CK07.1)
+
+Thus B:B0(Z,F)->B0(Z,L(E,F)) is bounded linear. On repeated arguments,
+the coefficient of T^k is binom(d,k). Differentiating the CK06 expression
+in X gives precisely this coefficient, because
+((d+1-k)/(d+1))*binom(d+1,k)=binom(d,k). Therefore B=D_X A.
+No boundedness of the standalone operator D_X on B0 is asserted or used.
+
+CK08. OPERATOR/EVALUATION IDENTITIES.
+Endpoints: ML-CK-15, ML-CK-16.
+CK04 justifies termwise differentiation on every smaller ball. CK06/07 give
+
+  Ev(Aa)(0,X)=0,
+  partial_T Ev(Aa)(T,X)=Ev(a)(T,X),
+  D_X Ev(Aa)(T,X)=Ev(Ba)(T,X).                                 (CK08.1)
+
+These identities hold on the entire open taxicab unit ball. Conversely,
+an analytic w with w(0,X)=0 and partial_T w=Ev(a) satisfies w=Ev(Aa)
+on a smaller ball: for each X, subtract the two functions and integrate
+its zero T-derivative along the segment from 0 to T. The segment remains
+in the taxicab ball. Equivalently, compare the T-polynomial coefficients.
+
+CK09. NORMALIZATION OF THE ACTUAL CK INPUT.
+Endpoints: ML-CK-10, ML-CK-11, ML-CK-12, ML-CK-13, ML-CK-14.
+Translate t=t0+tau and x=x0+xi. Put a(xi)=u0(x0+xi) and
+
+  F1(tau,xi,y,z)
+   =F0((t0+tau,x0+xi),(a(xi)+y,Da(xi)+z)),
+  c=F1(0,0,0,0),
+  g(tau,xi,y,z)=F1(tau,xi,y+tau*c,z)-c.
+
+The hypotheses imply that a, Da, F1, and g are analytic near their centres;
+g(0,0,0,0)=0. The substitution
+
+  u(t0+tau,x0+xi)=a(xi)+tau*c+w(tau,xi)
+
+converts the exact target to
+
+  partial_tau w=g(tau,xi,w,D_xi w),    w(0,xi)=0.              (CK09.1)
+
+The initial germ implies D_xi w(0,0)=0. Evaluating the PDE at (0,0)
+therefore gives v(0,0)=g(0,0,0,0)=0 for v=partial_tau w; v is analytic
+near 0 by analytic derivative closure. The constant c is not assumed zero.
+
+CK10. QUANTITATIVE SUPERPOSITION LIPSCHITZ BOUND.
+Endpoints: ML-CK-06; dependencies CK02, CK05.
+Choose R>0 strictly inside both the coefficient convergence radius and
+the HasFPowerSeriesOnBall equality neighborhood of the symmetric expansion
+g(h)=sum_{j>=1} g_j(h^j), with sum_j ||g_j||R^j<infinity.
+Fix s=R/2 and
+
+  L=sum_{j>=1} j ||g_j|| s^(j-1) < infinity.
+
+Finiteness follows from
+j||g_j||s^(j-1)=(||g_j||R^j/R)*j(s/R)^(j-1),
+the bound j(s/R)^(j-1)<=sum_{l>=1}l(s/R)^(l-1)<infinity,
+and the summable sequence ||g_j||R^j. For ||W||_B<=s define
+G(W)=sum_{j>=1}T_{g_j}(W,...,W). CK05 gives convergence and
+
+  ||G(W)||_B<=L||W||_B,
+  ||G(W)-G(W')||_B<=L||W-W'||_B       (||W||,||W'||<=s).        (CK10.1)
+
+For the second inequality telescope the difference of two j-fold products
+into j terms, apply CK05.1 to each, and sum j||g_j||s^(j-1).
+CK05.2 gives Ev(G(W))(z)=g(Ev(W)(z)); G(W) has zero constant term.
+
+CK11. EXPLICIT CONTRACTING SELF-MAP.
+Endpoints: ML-CK-01; dependencies CK06, CK07, CK10.
+Choose
+
+  0<epsilon<min(1, s/8, 1/(8(L+1))).                          (CK11.0)
+
+For V in Q={||V||_B<=1} define the H-valued coefficient tuple
+
+  Pi_epsilon(V)=(epsilon^2*T, epsilon*X,
+                 epsilon^2*A(V), epsilon*B(V)),
+  Psi_epsilon(V)=G(Pi_epsilon(V)).
+
+Coordinate-linear functions T and X have coefficient norm <=1. Thus
+
+  ||Pi_epsilon(V)||_B
+    <=epsilon^2+epsilon+epsilon^2/2+epsilon
+    <=4epsilon<s/2,
+  ||Pi_epsilon(V)-Pi_epsilon(W)||_B
+    <=(epsilon^2/2+epsilon)||V-W||_B<=2epsilon||V-W||_B.
+
+Consequently
+
+  ||Psi_epsilon(V)||_B<=4L epsilon<1/2,
+  ||Psi_epsilon(V)-Psi_epsilon(W)||_B
+       <=2L epsilon||V-W||_B <= (1/4)||V-W||_B,
+  2L epsilon<1/4.                                             (CK11.1)
+
+Regard Psi_epsilon as a total self-map on subtype Q. It is a contraction
+with declared constant 1/4; no value outside Q is needed. This includes
+the degenerate case L=0, since the denominator uses L+1.
+
+CK12. FIXED POINT AND ACTUAL ANALYTIC SOLUTION.
+Endpoints: ML-CK-19, ML-CK-20, ML-CK-08, ML-CK-09, ML-CK-24.
+By CK03 and Banach's theorem there exists V_epsilon in Q with
+Psi_epsilon(V_epsilon)=V_epsilon. Put on
+Omega_epsilon={(tau,xi): |tau|/epsilon^2+||xi||/epsilon<1}
+
+  w(tau,xi)=epsilon^2 Ev(A V_epsilon)(tau/epsilon^2,xi/epsilon).
+
+This is analytic on the open Omega_epsilon. CK08 gives
+
+  partial_tau w=Ev(V_epsilon)(tau/epsilon^2,xi/epsilon),
+  D_xi w=epsilon Ev(BV_epsilon)(tau/epsilon^2,xi/epsilon),
+  w(0,xi)=0.
+
+Evaluating the fixed-point equation proves CK09.1 exactly.
+Undo CK09 to obtain u. The analytic expansions were chosen only inside
+the original input germs; if necessary intersect Omega_epsilon with those
+neighborhoods. Extend u arbitrarily (e.g. by zero) outside that open
+neighborhood. Such an extension preserves the analytic and PDE germs,
+because every point in the smaller open neighborhood has a neighborhood
+where the extension equals the analytic local representative.
+
+CK13. UNIQUENESS AMONG ALL ANALYTIC GERMS.
+Endpoints: ML-CK-10, ML-CK-06, ML-CK-21, ML-CK-22, ML-CK-25.
+Let u and u' be any two actual target solutions. Normalize to w,w' as
+in CK09 and put v=partial_tau w, v'=partial_tau w'. Both are analytic
+germs with value 0 at 0. Take their symmetric coefficient expansions p,p'.
+For 0<eta<=1, S_eta(T,X)=(eta^2 T,eta X) has operator norm <=eta.
+The rescaled coefficients therefore satisfy
+
+  ||p_j composed with S_eta in all slots||<=||p_j|| eta^j.
+
+Choose r>0 with sum_j (||p_j||+||p'_j||)r^j<infinity. For 0<eta<r,
+the two rescaled coefficient sums tend to zero as eta tends to zero,
+by dominated convergence for series (or an explicit finite-head/tail split).
+Choose a common eta satisfying CK11.0, both sums<=1, and both rescaled
+unit balls contained in the neighborhoods where the equations hold.
+CK08 identifies their normalized w with eta^2 A of the rescaled v.
+Both rescaled v are therefore coefficient-space fixed points of the same
+Psi_eta; evaluation equality implies coefficient equality by CK02/04.
+ML-CK-21 yields equality of their coefficient sequences. Evaluating and
+undoing S_eta gives v=v', hence w=w' and u=u' on a joint neighborhood.
+Thus uniqueness holds for all analytic competitors, not only for solutions
+whose original coefficient norm happened to be small.
+
+CK14. EXACT LI01 PACKAGING.
+Endpoints: ML-CK-17, ML-CK-18; dependencies CK09, CK12, CK13.
+For arbitrary n,m>0 and the exact source hypotheses, choose u from CK12.
+Its analytic, initial, and equation fields are exactly
+LiteratureCKSolution F0 u0 t0 x0 u. CK13 supplies
+
+  forall v, LiteratureCKSolution F0 u0 t0 x0 v ->
+    u =^f[nhds (t0,x0)] v.
+
+Hence the exact proposition LiteratureAnalyticCKInput follows.
+
+PROPOSED NATIVE DECLARATIONS (NO EXISTING PROOF CLAIM).
+ck_norm_transport                 : CK01
+ck_symmetric_expansion            : CK02
+ckCoefficientSpace_complete       : CK03
+ckCoefficientSpace_eval_analytic  : CK04
+ckCoefficientSpace_eval_injective : CK02 + CK04
+ck_lift_multilinear_bound         : CK05
+ck_timePrimitive_bound            : CK06
+ck_spatialPrimitive_bound         : CK07
+ck_primitive_eval_derivatives     : CK08
+ck_normalized_rhs_analytic        : CK09
+ck_superposition_lipschitz        : CK10
+ck_scaled_map_contracting         : CK11
+ck_normalized_solution_exists     : CK12
+ck_analytic_solution_germ_unique  : CK13
+literatureAnalyticCKInput_native  : CK14
+
+Final proposed signature:
+  theorem literatureAnalyticCKInput_native :
+    NSEGR.LiteratureAnalyticCKInput
+
+Lean implementation status for every declaration above = NATIVE_PENDING.
+The mathematical derivation above uses no LI01 hypothesis and establishes
+the exact B-tier statement. External compilation and named axiom audit
+are still required before any A-tier promotion.
+
+
+LI02: NATIVE GAUSSIAN-JET CHAIN FROM LI01
+=======================================
+
+Exact endpoint:
+  NSEGR.LiteratureAnalyticCKInput -> NSEGR.LiteratureGaussianJetInput.
+
+Input K : BoundaryTensor, y0=(t0,x0). Required data, all as germs at y0:
+  K analytic; K_ab=K_ba;
+  boundaryHamiltonian K=0; boundaryCodazzi K=0.
+Conclusion:
+  exists a globally typed Metric g satisfying LiteratureFlatGaussianGerm K
+  t0 x0 g, unique as an actual metric germ in the same coordinates.
+
+The implication below has a complete mathematical derivation. Its new native
+Lean declarations are pending. LI01 is the previously derived CK endpoint;
+LI02 itself is never used in this derivation. No periodic collar, velocity,
+viscosity, rho-normalization, constitutive stress, or NSE solution is assumed.
+This section does not use a bare existential embedding theorem as a substitute
+for prescribed-data existence or same-coordinate uniqueness.
+
+Notation and exact native convention
+------------------------------------
+  y=(t,x1,x2,x3), a,b,c,d in {0,1,2,3}; z=(r,y).
+  h(r,y) : Sym_4(R), H=h^{-1}, L=(1/2) partial_r h,
+  S=HL, kappa=tr S, g=dr^2+h_ab dy^a dy^b.
+  eta=diag(-1,1,1,1); L(0,y)=K(y).
+  partial denotes actual coordinate Frechet derivatives.
+  gamma^a_bc=(1/2) H^{ad}(partial_b h_dc+partial_c h_db-partial_d h_bc).
+  R(h)_ab is the tangential Ricci tensor computed from gamma by the same
+  coordinate formula as NSEGR.ricci. R(h)=H^{ab} R(h)_ab.
+  Repeated indices denote finite sums, never unlicensed infinite sums.
+
+Existing source definitions:
+  NSEGR.gaussianMetric, gaussianSecondForm, gaussianShapeOperator,
+  gaussianTangentialChristoffel, gaussianCodazziComponent,
+  gaussianNormalRicciComponent and Assembly.gaussianTangentialRicciComponent.
+Source K-sign conversion: Dahia--Romero Omega=-K for lapse=1 and epsilon=+1.
+
+GJ01 | Finite symmetric coordinates and analytic inverse
+-------------------------------------------------------
+Select the ten upper-triangle entries (a,b), a<=b, and reflect across the
+diagonal. This gives a real-linear isomorphism R^10 <-> Sym_4(R).
+Both directions are continuous: each entry is a coordinate projection, and
+the Frobenius norm is a finite square sum. The map (t,x) <-> LiteratureSpace 4
+is (t,x1,x2,x3), with inverse given by its first coordinate and last three
+coordinates; both are continuous linear maps. Together with the analogous
+60-coordinate state identification this supplies the literal LI01 n=4,m=60
+spaces. All state-coordinate maps below are therefore analytic.
+The coordinate map R x (R x Vec) <-> Bulk sends
+(r,(t,x)) to bulkPoint r t x and has inverse (z0,(z1,(z2,z3,z4))).
+
+On det h != 0,
+  Hh=hH=I,
+  D H[W] = -H W H.                                      (GJ01.1)
+Proof: differentiating Hh=I gives (DH[W])h+HW=0, followed by
+right multiplication by H. This agrees with hasFDerivAt_ringInverse.
+Analyticity follows from analyticAt_inverse and
+Matrix.nonsing_inv_eq_ringInverse. At h=eta, det h=-1; continuity preserves
+nondegeneracy on some neighborhood. No positivity of h is required.
+
+Selected: ML-GJ-01..04, ML-GJ-09..12; GR-GJ-01, GR-GJ-02,
+GR-GJ-03, GR-GJ-04.
+Native target: gaussianJet_coordinates_and_inverse_analytic.
+
+GJ02 | Christoffel reduction
+----------------------------
+Substitute g_rr=1, g_ra=0, g_ab=h_ab and g^{-1}=diag(1,H) into
+the literal native Christoffel formula. The nonzero families are
+  Gamma^r_ab=-L_ab,
+  Gamma^a_rb=Gamma^a_br=S^a_b,
+  Gamma^a_bc=gamma^a_bc.                                 (GJ02.1)
+Every Gamma^mu_rr and Gamma^r_ra vanishes. Each formula is a finite
+contraction: a radial derivative of 1 or 0 vanishes; the single radial
+term in the remaining sum gives -partial_r h/2; the tangential terms give
+H partial_r h/2 or gamma. These are already native project endpoints.
+
+Selected: GR-GJ-05..08. Native target: gaussian_connection_families.
+
+GJ03 | Coordinate curvature symmetries and contracted Bianchi
+------------------------------------------------------------
+This step proves the needed identity from coordinate derivatives. It does
+not assume Bianchi as a literature field. Let g be any analytic symmetric
+nondegenerate coordinate metric (in particular the constructed Gaussian g).
+Define
+  R^a_bcd = partial_c Gamma^a_db - partial_d Gamma^a_cb
+             + Gamma^a_ce Gamma^e_db - Gamma^a_de Gamma^e_cb,
+  R_abcd = g_ae R^e_bcd,
+  Ric_bd = g^{ac} R_abcd.
+Expanding the latter contraction gives the exact NSEGR.ricci convention.
+
+(i) Christoffel substitution gives
+  Gamma^a_bc=Gamma^a_cb,
+  partial_c g_ab = g_eb Gamma^e_ca + g_ae Gamma^e_cb.       (GJ03.1)
+The second equation is metric compatibility; multiplying by g^{-1} also
+gives partial_c g^{ab}=-Gamma^a_ce g^{eb}-Gamma^b_ce g^{ae}.
+These are obtained by distributing the three Christoffel summands and
+cancelling the crossed partial derivatives, using g_ab=g_ba.
+
+(ii) R_abcd=-R_abdc directly. Expand
+  R^a_bcd + R^a_cdb + R^a_dbc.
+The six derivative terms cancel in pairs by the lower-index symmetry of
+Gamma; the six quadratic terms cancel after swapping their finite dummy
+indices. Thus the first Bianchi identity holds.
+
+(iii) For a covariant tensor T define
+  (nabla_c T)_ab=partial_c T_ab-Gamma^e_ca T_eb-Gamma^e_cb T_ae.
+Expanding the commutator on g and using commuting second partials gives
+  ([nabla_c,nabla_d]g)_ab
+    = -R^e_acd g_eb - R^e_bcd g_ae.
+The left side is zero by (i), hence R_abcd=-R_bacd.
+Let B(a;b,c,d)=R_abcd+R_acdb+R_adbc. All B vanish by (ii).
+Using the two antisymmetries,
+  2(R_abcd-R_cdab)
+   = B(a;b,c,d)-B(b;a,c,d)-B(c;d,a,b)+B(d;c,a,b)=0.
+Therefore R_abcd=R_cdab. Contracting this pair symmetry shows Ric_ab=Ric_ba.
+
+(iv) Define connection matrices (Gamma_c)^a_b=Gamma^a_cb and
+  R_cd=partial_c Gamma_d-partial_d Gamma_c+[Gamma_c,Gamma_d].
+The cyclic sum of the endomorphism-valued covariant derivative is zero:
+  sum_cyclic(e,c,d)(partial_e R_cd+[Gamma_e,R_cd])=0.     (GJ03.2)
+Expansion is a complete cancellation by degree:
+  degree 1: partial_e partial_c Gamma_d terms cancel by mixed-partial
+            commutation;
+  degree 2: partial_e[Gamma_c,Gamma_d]
+            =[partial_e Gamma_c,Gamma_d]+[Gamma_c,partial_e Gamma_d]
+            cancels the commutators with partial_c Gamma_d-partial_d Gamma_c;
+  degree 3: [Gamma_e,[Gamma_c,Gamma_d]]+cyclic=0,
+            by associativity (each of the six triple products occurs twice
+            with opposite signs).
+The corrections for the form indices c,d cancel cyclically because
+Gamma^a_bc=Gamma^a_cb. Lowering the first index commutes with nabla by (i).
+Thus
+  nabla_e R_abcd+nabla_c R_abde+nabla_d R_abec=0.         (GJ03.3)
+
+(v) Contract (GJ03.3) with g^{ac}; using the last-index antisymmetry gives
+  nabla^a R_abde = nabla_d Ric_be-nabla_e Ric_bd.
+Contract again with g^{bd}. Since g^{bd}R_abde=-Ric_ae,
+  -nabla^a Ric_ae = nabla^b Ric_be-partial_e R(g).
+Therefore
+  2 nabla^a Ric_ab=partial_b R(g),
+  nabla^a (Ric_ab-(1/2)R(g)g_ab)=0.                     (GJ03.4)
+
+All derivatives exist and commute by AnalyticAt.fderiv, AnalyticAt.contDiffAt
+and ContDiffAt.isSymmSndFDerivAt. Products and finite sums use the actual
+Frechet product/chain rules. This is a finite coordinate proof; no metric
+signature restriction, manifold construction, or covariant-derivative
+black box is added.
+
+Selected: ML-GJ-05..08, ML-GJ-13..15; GR-GJ-09, GR-GJ-10.
+Native targets (independent opaque edges for later external elaboration):
+  coordinate_christoffel_metric_compatible;
+  coordinate_curvature_symmetries;
+  coordinate_differential_bianchi;
+  coordinate_contracted_bianchi.
+
+GJ04 | Actual Gaussian Ricci equations
+--------------------------------------
+Insert (GJ02.1) in NSEGR.ricci and separate radial/tangential summands:
+  Ric(g)_rr = -partial_r kappa-tr(S^2),
+  Ric(g)_ra = (div_h L)_a-partial_a kappa,
+  Ric(g)_ab = R(h)_ab-partial_r L_ab-kappa L_ab
+                           +2(LHL)_ab.                 (GJ04.1)
+The first two identities are ricci_gaussian_normal / ricci_gaussian_mixed
+after finite derivative-sum interchange. The third is the already native
+ricci_gaussian_tangential, normalized using symmetry of H and L.
+
+Trace differentiation is essential:
+  partial_r H=-2HLH,
+  partial_r kappa=tr(H partial_r L)-2tr(S^2).
+Consequently
+  H^{ab} Ric(g)_ab = R(h)-partial_r kappa-kappa^2.        (GJ04.2)
+No sign or trace identity is imported from the opposite K convention.
+
+Selected: GR-GJ-02, GR-GJ-11..14; ML-GJ-07, ML-GJ-08.
+Native targets: gaussian_ricci_reduced; gaussian_tangential_trace_reduced.
+
+GJ05 | Explicit 60-component first-order CK right-hand side
+----------------------------------------------------------
+Use U=(h,v,P_0,P_1,P_2,P_3), each component a symmetric 4x4 matrix:
+  10+10+4*10=60 real scalar state coordinates.
+Let Q_ca be the first y^c derivative of P_a, supplied by the CK first-jet
+argument. Define the rational expressions
+  H=h^{-1},
+  gamma^a_bd=(1/2) H^{ae}((P_b)_ed+(P_d)_eb-(P_e)_bd),
+  D_c H^{ae}=-H^{af}(P_c)_fg H^{ge},
+  D_c gamma^a_bd
+   =(1/2)(D_c H^{ae})((P_b)_ed+(P_d)_eb-(P_e)_bd)
+     +(1/2)H^{ae}((Q_cb)_ed+(Q_cd)_eb-(Q_ce)_bd),
+  T_ab=sum_c(D_c gamma^c_ab-D_b gamma^c_ac)
+        +sum_cd(gamma^c_cd gamma^d_ab-gamma^c_bd gamma^d_ac),
+  Rred_ab=(T_ab+T_ba)/2,
+  kappa=(1/2)tr(Hv).
+The CK system is
+  partial_r h=v,
+  partial_r P_a=partial_a v,                           (GJ05.1)
+  partial_r v=2Rred-kappa v+vHv.
+This uses only U and its first tangential derivatives, exactly the LI01
+signature. The use of Rred makes the output symmetric even on arbitrary
+incompatible CK jet arguments. At compatible jets P_a=partial_a h,
+T=Ric(h), and GJ03 makes Rred=Ric(h); hence no equation is altered on the
+constructed solution.
+
+The map F_GJ : LiteratureCKRHS 4 60 is globally typed using the total
+matrix inverse. It is analytic at every jet with det h != 0 by GJ01,
+analytic finite sums/products, and the linear coordinate identifications.
+No derivative in the distinguished variable r occurs on the right side.
+
+Selected: ML-GJ-01..04, ML-GJ-07, ML-GJ-08, ML-GJ-16;
+GR-GJ-01, GR-GJ-03.
+Native targets: gaussianCKRHS; gaussianCKRHS_analyticAt.
+
+GJ06 | Analytic Gaussian evolution
+----------------------------------
+Initial data are
+  U0(y)=(eta,2K(y),0,0,0,0).
+Only the ten upper-triangle entries of K are encoded; local symmetry of K
+ensures that decoding returns exactly K as a germ. Analyticity of K gives
+analyticity of U0. At the initial jet det h=det eta=-1.
+Apply LI01 with n=4, m=60, distinguished coordinate r, r0=0 and basepoint
+y0. Obtain a globally typed U analytic at (0,y0), satisfying (GJ05.1)
+and U(0,y)=U0(y) as germs. Decoded h and v are symmetric by construction.
+All equalities and analyticity predicates may be intersected into one
+neighborhood; only finitely many fields/indices occur.
+
+Selected: CK14, GJ01, GJ05; ML-GJ-12.
+Native target: gaussianCKEvolution_exists_of_CK.
+
+GJ07 | Jet compatibility without an additional premise
+-------------------------------------------------------
+Let E_a=P_a-partial_a h, an analytic 40-component germ. Differentiating
+(GJ05.1), using equality of germs under derivatives and mixed-partial
+commutation, gives
+  partial_r E_a=partial_a v-partial_a partial_r h=0.
+The initial germ is zero: P_a(0,y)=0 and h(0,y)=eta implies
+partial_a h(0,y)=0. Hence E solves the first-order zero CK system with zero
+initial data. LI01 at n=4,m=40 gives uniqueness of that analytic germ; the
+identically zero germ is another solution. Thus E=0, i.e.
+  P_a=partial_a h, Q_ca=partial_c partial_a h.           (GJ07.1)
+This use of CK is only uniqueness and introduces no new solvability input.
+
+Selected: CK14; ML-GJ-05, ML-GJ-06, ML-GJ-13;
+GR-GJ-09, GR-GJ-10.
+Native target: gaussianCKEvolution_compatible.
+
+GJ08 | Tangential Einstein equations and prescribed jets
+---------------------------------------------------------
+By GJ07 and Ricci symmetry, Rred=Ric(h). Set L=v/2=partial_r h/2.
+The v equation in (GJ05.1) becomes
+  partial_r L=Ric(h)-kappa L+2LHL.
+By GJ04 this is equivalent to Ric(g)_ab=0 for all tangential a,b.
+Moreover
+  h(0,y)=eta, L(0,y)=K(y), det h != 0 near (0,y0).
+The Gaussian block g=diag(1,h) is analytic and symmetric; its determinant
+is det h. The native boundaryK_gaussian identifies boundaryK g=K.
+
+Selected: GR-GJ-04, GR-GJ-11..13, GR-GJ-15;
+ML-GJ-12, ML-GJ-14, ML-GJ-16.
+Native target: gaussianCKEvolution_tangential_vacuum_and_initial_jets.
+
+GJ09 | Homogeneous constraint propagation with native signs
+-----------------------------------------------------------
+Define the remaining analytic Ricci components
+  A=Ric(g)_rr, C_a=Ric(g)_ra.
+Since Ric(g)_ab=0 and Ricci is symmetric, R(g)=A and the Einstein tensor is
+  E_rr=A/2, E_ra=C_a, E_ab=-(A/2)h_ab.
+Insert these into GJ03.4. For the radial equation,
+  nabla^mu E_mur=(1/2)partial_r A+div_h C+kappa A.
+For the tangential equation, the two S*C terms cancel:
+  nabla^mu E_mua=partial_r C_a-(1/2)partial_a A+kappa C_a.
+Thus
+  partial_r A=-2H^{ab}(partial_a C_b-gamma^c_ab C_c)-2kappa A,
+  partial_r C_a=(1/2)partial_a A-kappa C_a.              (GJ09.1)
+This is a homogeneous first-order linear analytic CK system on five scalar
+unknowns (A,C_0,C_1,C_2,C_3), with already constructed analytic coefficients.
+
+Initial values follow from GJ04.2 and the tangential equations:
+  partial_r kappa=R(h)-kappa^2,
+  A=-R(h)+kappa^2-tr(S^2).
+At r=0 the induced metric is the constant eta, hence R(h)=0 and gamma=0.
+Symmetry of K and eta^{-1}=eta give
+  tr(S^2)=sum_ab s_a s_b K_ab^2=lorentzSquare4 K,
+  kappa=lorentzTrace4 K,
+  A(0,y)=-boundaryHamiltonian K(y)=0,
+  C_a(0,y)=boundaryCodazzi K(y) a=0.                    (GJ09.2)
+Here s_0=-1 and s_1=s_2=s_3=1. The last equality follows by expanding
+div_eta K-partial_a kappa; eta is constant, so this is exactly the native
+definition partial^b(K_ba-kappa eta_ba), including the time sign.
+
+Selected: GR-GJ-11..14, GR-GJ-16; ML-GJ-05..08.
+Native targets: gaussian_constraint_evolution; gaussian_constraint_initial.
+
+GJ10 | Zero constraints and full vacuum
+---------------------------------------
+The actual (A,C) and the identically zero vector both solve (GJ09.1) with
+the same zero initial germ. Coefficients H,gamma,kappa are analytic; thus
+the right-hand side, considered as LiteratureCKRHS 4 5, is analytic at
+its initial zero jet. Apply LI01 n=4,m=5 and its analytic germ uniqueness.
+It follows that A=C=0 near (0,y0). Together with Ric(g)_ab=0 and Ricci
+symmetry, every actual entry of Ric(g) vanishes. The existing native
+gaussian_vacuum_iff_components can assemble these entries; its explicit
+mixed-symmetry premise is discharged by GJ03, not silently omitted.
+
+Selected: CK14; GR-GJ-14; ML-GJ-05..08.
+Native target: gaussianCKEvolution_vacuum_of_constraints.
+
+GJ11 | Exact existence field
+-----------------------------
+Define the globally typed g by the globally typed CK solution and the
+fixed linear bulk-coordinate identification. Outside the proved
+neighborhood no property is required. GJ06/GJ08/GJ10 supply respectively
+analyticity, symmetry/nondegeneracy/Gaussian entries/prescribed boundary
+germs, and Ricci-flatness. Therefore
+  exists g : Metric, LiteratureFlatGaussianGerm K t0 x0 g.
+This is an existence statement for the prescribed full K germ. No K is
+reselected and no data are weakened. Arbitrary extension outside a source
+chart, if used instead of the globally typed CK result, preserves the
+germ and every derivative appearing in LiteratureFlatGaussianGerm by
+Filter.EventuallyEq.fderiv; no global analyticity is asserted.
+
+Selected: GR-GJ-17, GR-GJ-18; ML-GJ-13, ML-GJ-14.
+Native target: literatureGaussianJet_exists_of_CK.
+
+GJ12 | Same-coordinate, same-orientation germ uniqueness
+---------------------------------------------------------
+Let g1,g2 satisfy LiteratureFlatGaussianGerm K t0 x0. On a common
+neighborhood, their Gaussian identities and symmetry give gi=diag(1,hi).
+Their h_i are analytic, symmetric and nondegenerate as germs. For the
+globally typed symmetric-state encoding, reflect their upper-triangle
+entries; the result agrees with each actual h_i on that neighborhood. Define
+  Ui=(hi,partial_r hi,partial_0 hi,...,partial_3 hi).
+Vacuum and GJ04 give the v equation of (GJ05.1); mixed-partial commutation
+gives the P equations. The initial data are precisely (eta,2K,0,0,0,0),
+because the induced metric germs are eta and boundaryK is +h_r/2.
+Thus U1 and U2 are analytic solutions of the same n=4,m=60 CK system.
+LI01 uniqueness gives U1=U2 as germs and hence g1=g2 as Bulk metric germs.
+No quotient by diffeomorphisms is used, and no change of normal orientation
+or lapse is permitted. This is the exact uniqueness required by LI02.
+
+Selected: CK14; GR-GJ-17, ML-GJ-05, ML-GJ-06, ML-GJ-13.
+Native target: literatureGaussianJet_unique_of_CK.
+
+GJ13 | Exact LI02 inhabitant from the CK inhabitant
+--------------------------------------------------
+For each K,t0,x0 and each LiteratureFlatBoundaryGerm hypothesis,
+choose GJ11's g and append GJ12's uniqueness function. This inhabits the
+single exists_unique field of LiteratureGaussianJetInput:
+
+  theorem literatureGaussianJetInput_of_analyticCK
+      (hCK : NSEGR.LiteratureAnalyticCKInput) :
+      NSEGR.LiteratureGaussianJetInput
+
+No other analytic, geometric, certificate or admission premise occurs.
+After CK14 supplies hCK, GJ13 supplies LI02 mathematically.
+Native status of GJ01--GJ13: B_TIER_NATIVE_PENDING.
+Current audited project status remains unchanged; no new A-tier promotion.
+
+Source-facing comparison (not an imported premise)
+--------------------------------------------------
+Dahia--Romero, arXiv:gr-qc/0109076v2, Lemmas 1--2 and Theorem 2 sufficient
+direction give the matching established local analytic result. The source
+specialization is n=4,Lambda=0,epsilon=+1,lapse=1,g0=eta,Omega=-K.
+https://arxiv.org/pdf/gr-qc/0109076
+The proof above instead exposes the coordinate reductions and homogeneous
+constraint CK system needed for a later native proof; it does not cite LI02
+to establish any edge in its own dependency chain.
+
+Non-reuse / anti-circularity ledger
+----------------------------------
+  gaussianVacuum_boundaryAdmissible: vacuum -> constraints, not existence.
+    It is not used to construct the vacuum germ.
+  analyticRadialExtensionLaws_of_literatureGaussian: requires LI02.
+    It is not used anywhere in GJ01--GJ13.
+  gaussianVacuum_sameMetricAt_of_literatureJet: requires LI02.
+    It is not used to prove GJ12.
+  Generic Gaussian coordinate/jet identities: used with explicit
+    nondegeneracy and differentiability premises, all discharged above.
+  Methlib Fourier/Hodge theorems: no role in this point-local LI02 proof.
+    They supply dimensional specializations/templates for the separate
+    Fourier chain and support the already audited periodic adapter.
+
+
+
+LI03 — DIMENSION-GENERAL SMOOTH FOURIER INPUT
+MODE = B_TIER_DERIVATION
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NATIVE_STATUS = B_TIER_NATIVE_PENDING
+LOCAL_LEAN_EXECUTIONS = 0
+
+Exact target:
+  NSEGR.LiteratureSmoothFourierInput.
+
+Quantifiers are preserved:
+  every n : Nat with 0<n;
+  every f : EuclideanSpace R (Fin n) -> C;
+  ContDiff R infinity f; unit-coordinate periodicity of f;
+  every finite coordinate-derivative word w : List (Fin n).
+
+Conclusion is the conjunction of:
+  (i) actual unit-cube Fourier derivative multiplier identities;
+  (ii) absolute summability of every differentiated coefficient family;
+  (iii) HasSumUniformly to the actual derivative word on the whole Euclidean
+        space, indexed by all finite subsets of (Fin n -> Z).
+
+No LI01, LI02, LI03, Fourier-inversion assumption, analytic regularity
+assumption, dimension-three specialization, or project Hodge-law record
+is a premise of the mathematical derivation below.
+
+NOTATION
+  E_n := EuclideanSpace R (Fin n).
+  Q_n := {x:E_n | forall j, 0<=x_j and x_j<=1}.
+  T_n := UnitAddTorus (Fin n).
+  pi_n(x)_j := [x_j] in R/Z.
+  e_j := LiteratureUnitVector j.
+  chi_k(x) := exp(2*pi*i*sum_j k_j*x_j).
+  c_f(k) := integral_{Q_n} f(x)*chi_{-k}(x) dx.
+  D_j f(x) := fderiv R f x e_j.
+  D_[] f := f; D_(j::w) f := D_j(D_w f).
+  m_w(k) := product_{j in w} (2*pi*i*k_j), with repeated indices retained.
+
+These are the existing definitions LiteratureCharacter,
+LiteratureFourierCoefficient, LiteraturePartialWord and
+LiteratureFourierWordMultiplier. No quotient Fourier coefficient replaces
+the physical coefficient in the final statement.
+
+The torus measure in this section is precisely the probability Haar measure
+used by Mathlib.Analysis.Fourier.AddCircleMulti: AddCircle.haarAddCircle in
+each coordinate and its finite product. For period one its mass is one;
+no missing (2*pi)^n or volume factor is introduced.
+
+FT01 — EXACT CHARACTERS
+Selected endpoints: ML-FT-01, ML-FT-04.
+
+For all n, k and x:
+  chi_k(x) = product_j fourier(k_j)([x_j]);
+  |chi_k(x)|=1;
+  chi_{k+l}(x)=chi_k(x)*chi_l(x);
+  chi_{-k}(x)=conj(chi_k(x));
+  chi_k(x+e_j)=chi_k(x);
+  D_j chi_k(x)=(2*pi*i*k_j)*chi_k(x).
+
+Derivation. Expand the exponential of the finite sum as a finite product.
+ML-FT-01 at T=1 identifies each factor with the AddCircle character.
+The exponent is purely imaginary, hence modulus one. Addition/negation
+follow from exp(a+b)=exp(a)exp(b) and complex conjugation. A unit shift
+adds 2*pi*i*k_j; its exponential is one because k_j is an integer.
+The coordinate phase map is real-linear; the chain rule gives the final
+derivative formula. Consequently all characters are C-infinity and
+unit-periodic. No convergence theorem is used.
+
+Proposed native endpoint:
+  NSEGR.literatureCharacter_finiteDimensional_laws.
+
+FT02 — LATTICE PERIODICITY AND DERIVATIVE WORDS
+Selected endpoints: ML-FT-08, ML-FT-09.
+
+For continuous/smooth f with f(x+e_j)=f(x):
+  f(x+sum_j z_j*e_j)=f(x), for every z:Fin n->Z;
+  ContDiff R infinity (D_w f);
+  (D_w f)(x+e_j)=(D_w f)(x), for every word w and coordinate j.
+
+Derivation. ML-FT-09 extends each coordinate period to all integer multiples;
+compose the finitely many translations to obtain lattice invariance.
+ML-FT-08 with smoothness order infinity shows x |-> fderiv R f x is smooth;
+evaluation on the fixed vector e_j is a continuous linear operation, so
+D_j f is smooth. Differentiate the function equality f o tau_j=f.
+Since D tau_j=Id, the chain rule and derivative uniqueness give
+  fderiv R f (x+e_j)=fderiv R f x.
+Evaluation at e_l proves periodicity of D_l f. Induction on the word
+proves the two derivative-word statements. No exchange of infinite sums
+or mixed partials is required here.
+
+Proposed native endpoint:
+  NSEGR.literaturePartialWord_smooth_periodic.
+
+FT03 — CONTINUOUS TORUS DESCENT
+Dependencies: FT02. Selected endpoints: ML-FT-02, ML-FT-20–ML-FT-22.
+
+For every continuous unit-periodic f:E_n->C, there exists
+  fT : C(T_n,C)
+such that
+  fT(pi_n(x))=f(x), for every x:E_n.
+
+Derivation. The coordinate quotient q:Q_n->T_n is continuous and surjective:
+choose in each circle a representative in (0,1], giving a point of Q_n.
+Q_n is compact by finite-dimensional Heine-Borel; T_n is Hausdorff.
+A continuous surjection from a compact space to a Hausdorff space is closed,
+hence a quotient map. If q(x)=q(y), each y_j-x_j is an integer. FT02 gives
+f(x)=f(y), so f restricted to Q_n factors uniquely through q. The quotient
+criterion for continuity makes the descended function continuous. For an
+arbitrary x in E_n, a coordinate representative y in Q_n satisfies
+x-y in Z^n; FT02 then proves the displayed equality globally.
+
+No continuous section of R->R/Z is asserted or required. Representatives
+are used only for surjectivity and for the pointwise equality. Their
+discontinuity at cube faces does not affect the descended function.
+
+Proposed native endpoint signature:
+  theorem literaturePeriodic_exists_continuous_torusLift
+      (n : Nat) (f : LiteratureSpace n -> C)
+      (hf : Continuous f) (hp : LiteraturePeriodic f) :
+      exists fT : C(UnitAddTorus (Fin n), C),
+        forall x, fT (fun j => (x j : UnitAddCircle)) = f x.
+
+FT04 — EXACT PHYSICAL/TORUS COEFFICIENT BRIDGE
+Dependencies: FT01, FT03.
+Selected endpoints: ML-FT-02, ML-FT-03, ML-FT-17, ML-FT-18, ML-FT-19.
+
+For the fT of FT03:
+  UnitAddTorus.mFourierCoeff fT k = c_f(k).
+
+Derivation. ML-FT-03 with the origin a=0 represents the torus coefficient as
+the integral over product_j (0,1] of
+  mFourier(-k)(pi_n(x)) * fT(pi_n(x)).
+FT01 and FT03 identify this integrand with chi_{-k}(x)*f(x), and complex
+commutativity gives f(x)*chi_{-k}(x), the target order of factors.
+The complement of product_j(0,1] in product_j[0,1] is contained in the finite
+union of coordinate faces {x_j=0}. Every such face has zero product Lebesgue
+measure: singleton mass is zero, while all other intervals have finite mass
+one. Thus replacing Ioc by Icc leaves the integral unchanged. ML-FT-18 is
+the corresponding one-dimensional endpoint; finite product restriction and
+Fubini prove the finite-dimensional version. Finally ML-FT-02 identifies
+product Lebesgue measure with the specified EuclideanSpace volume through
+toLp. The preimage of Q_n is exactly product_j[0,1].
+
+All integrands are continuous on the closed cube, hence integrable there.
+The measure bridge is a proved finite-dimensional change of variables,
+not a definition asserting that two differently represented integrals agree.
+
+Proposed native endpoint:
+  NSEGR.literatureFourierCoefficient_eq_mFourierCoeff.
+
+FT05 — ONE COORDINATE DERIVATIVE MULTIPLIER
+Dependencies: FT01, FT02, FT04 (physical/product measure bridge only).
+Selected endpoints: ML-FT-05, ML-FT-06, ML-FT-07.
+Methlib reference template: ME-FT-01 (n=3, real scalar).
+
+For smooth unit-periodic f, every j and k:
+  c_(D_j f)(k) = (2*pi*i*k_j)*c_f(k).
+
+Derivation. After the Euclidean/product-volume bridge, split coordinate j
+using ML-FT-06. For fixed other coordinates y, write x=x(s,y), s in [0,1].
+Let u(s)=chi_{-k}(x(s,y)) and v(s)=f(x(s,y)). Then
+  u'(s)=-(2*pi*i*k_j)*u(s),
+  v'(s)=D_j f(x(s,y)).
+The derivative/slice identification is the chain rule for the affine
+coordinate insertion, whose derivative is e_j. Both functions and their
+derivatives are continuous on [0,1], hence interval-integrable.
+FT01 and periodicity of f give u(1)=u(0) and v(1)=v(0). ML-FT-05 yields
+  integral_0^1 u*v'
+    = u(1)v(1)-u(0)v(0)-integral_0^1 u'*v
+    = (2*pi*i*k_j)*integral_0^1 u*v.
+Integrate in the remaining coordinates and use Fubini ML-FT-07. The full
+integrands are continuous on a compact cube, discharging its integrability
+premises. Constant extraction and factor commutativity give the claim.
+For n=1 the remaining coordinate set is empty, with its unit point mass;
+the same argument reduces to the displayed one-dimensional formula.
+
+Proposed native endpoint signature:
+  theorem literatureFourierCoefficient_coordinateDerivative
+      (n : Nat) (hn : 0<n) (f : LiteratureSpace n -> C)
+      (hf : ContDiff R infinity f) (hp : LiteraturePeriodic f)
+      (j : Fin n) (k : LiteratureFrequency n) :
+      LiteratureFourierCoefficient
+        (fun x => fderiv R f x (LiteratureUnitVector j)) k =
+        (2*(Real.pi:C)*Complex.I*(k j:C))*LiteratureFourierCoefficient f k.
+
+FT06 — EXACT FINITE-WORD MULTIPLIER
+Dependencies: FT02, FT05. Methlib reference template: ME-FT-01.
+
+For every w:
+  c_(D_w f)(k)=m_w(k)*c_f(k).
+
+Derivation. The empty word has D_[]f=f and multiplier one. For j::w,
+FT02 allows FT05 to be applied to D_w f. Thus
+  c_(D_(j::w)f)(k)
+    =(2*pi*i*k_j)*c_(D_w f)(k)
+    =((2*pi*i*k_j)*m_w(k))*c_f(k)
+    =m_(j::w)(k)*c_f(k).
+This proves exactly the List recursion of LiteraturePartialWord, including
+repeated indices and the coefficient signs. Smooth mixed-partial symmetry
+is compatible with this identity but not needed for this induction.
+
+Proposed native endpoint:
+  NSEGR.literatureFourierCoefficient_partialWord.
+
+FT07 — PRODUCT-WEIGHT DECAY WITHOUT DIMENSION-DEPENDENT SHELL ESTIMATES
+Dependencies: FT01, FT02, FT05. Selected endpoint: ML-FT-10.
+
+For a smooth periodic g:E_n->C define
+  A_j g := g - (2*pi)^(-2)*D_j(D_j g),
+  L_n g := A_0(A_1(...(A_(n-1) g)...)),
+  C_n(g) := integral_{Q_n} |L_n g(x)| dx,
+  B_n(k) := product_j (1+(k_j:R)^2)^(-1).
+
+L_n uses one fixed finite coordinate order. Each intermediate function is
+smooth and periodic by FT02. Consequently C_n(g) is finite and nonnegative.
+FT05 applied twice gives
+  c_(D_j^2 g)(k)=-(2*pi)^2*k_j^2*c_g(k),
+and hence
+  c_(A_j g)(k)=(1+k_j^2)*c_g(k).
+Induction through the finite composition gives
+  c_(L_n g)(k)=(product_j (1+k_j^2))*c_g(k).
+ML-FT-10 and FT01 show
+  |c_(L_n g)(k)|
+    <= integral_{Q_n} |L_n g(x)*chi_{-k}(x)| dx
+    = C_n(g).
+Each factor 1+k_j^2 is strictly positive, so division gives the exact bound
+  |c_g(k)| <= C_n(g)*B_n(k).                                  [FT07.1]
+
+This includes k=0; no inverse of k_j at zero occurs. The normalization
+(2*pi)^(-2) is defined because pi>0. No estimate uniform in n or uniform in
+g is required or claimed. The finite operator has differential order 2n.
+
+Proposed native endpoint:
+  NSEGR.literatureFourierCoefficient_product_decay.
+
+FT08 — SUMMABILITY OF THE PRODUCT WEIGHT
+Selected endpoints: ML-FT-11, ML-FT-12.
+
+Set b(l)=(1+(l:R)^2)^(-1), l in Z. Then
+  0<=b(l)<=1_{l=0}+1/(l:R)^2.
+At l=0 the right side is 1 because 1/0=0 in the field convention; at
+l!=0 the bound follows from 0<l^2<=1+l^2. The singleton indicator is
+summable, and ML-FT-11 at p=2 proves summability of the second term.
+Comparison therefore proves sum_l b(l)<infinity.
+
+For n=0 the index set Fin0->Z is a singleton and B_0=1. Given summability
+of B_n, identify (Fin(n+1)->Z) with Z times (Fin n->Z). Under this bijection
+B_(n+1)(l,k)=b(l)*B_n(k). Both factors are nonnegative and summable, so
+ML-FT-12 proves summability at n+1. Induction gives
+  Summable(B_n), for every finite n.
+Equivalently sum_k B_n(k)=(sum_l b(l))^n; this identity is optional,
+whereas summability alone is sufficient for FT09.
+
+Proposed native endpoint:
+  NSEGR.literatureProductWeight_summable.
+
+FT09 — ALL DIFFERENTIATED COEFFICIENTS ARE ABSOLUTELY SUMMABLE
+Dependencies: FT02, FT06, FT07, FT08.
+Methlib reference template: ME-FT-02 (n=3, real scalar).
+
+Apply FT07.1 to g=D_w f, which is smooth and periodic by FT02. FT08 and
+nonnegative comparison imply
+  sum_k |c_(D_w f)(k)| < infinity.
+Use FT06 to rewrite this as
+  Summable (fun k => |m_w(k)*c_f(k)|).                         [FT09.1]
+
+No Fourier reconstruction theorem has been used in the coefficient-decay
+argument. In particular neither LI03 nor a theorem conditional on LI03
+occurs in its dependency graph.
+
+Proposed native endpoint:
+  NSEGR.literatureFourier_partialWord_summable_norm.
+
+FT10 — ACTUAL POINTWISE RECONSTRUCTION
+Dependencies: FT02, FT04, FT06, FT09.
+Selected endpoints: ML-FT-13, ML-FT-14.
+
+Let g=D_w f and let gT be its continuous torus descent from FT03. FT04
+identifies its mFourierCoeff with the physical coefficients c_g. FT09 gives
+absolute summability, hence complex summability, of mFourierCoeff(gT).
+ML-FT-13 now gives
+  HasSum (fun k => mFourierCoeff(gT,k) smul mFourier(k)) gT
+in the Banach space of continuous complex functions on T_n. This theorem
+already identifies the sum with gT; its Mathlib proof uses the complete
+multivariate Fourier Hilbert basis and the continuous-map/L2 bridge.
+It is therefore actual reconstruction, not merely existence of a sum.
+
+Evaluate at pi_n(x) using ML-FT-14. FT01, FT03, FT04 and FT06 rewrite it to
+  HasSum (fun k => (m_w(k)*c_f(k))*chi_k(x)) (D_w f(x)),
+for every x:E_n.                                                        [FT10.1]
+
+The target is pointwise equality for all x, including cube faces and all
+integer translates. No unproved passage from almost-everywhere equality
+to pointwise equality remains; that passage is part of ML-FT-13's existing
+continuous-map theorem.
+
+Proposed native endpoint:
+  NSEGR.literatureFourier_partialWord_hasSum.
+
+FT11 — GLOBAL UNIFORM DIFFERENTIATED RECONSTRUCTION
+Dependencies: FT01, FT09, FT10.
+Selected endpoints: ML-FT-15, ML-FT-16.
+
+For a_w(k)=m_w(k)*c_f(k), FT01 gives the bound
+  |a_w(k)*chi_k(x)|=|a_w(k)|, for every x:E_n.
+The majorant |a_w(k)| is summable by FT09. Apply ML-FT-15 with s=univ:
+  HasSumUniformlyOn (fun k x => a_w(k)*chi_k(x))
+    (fun x => sum'_k a_w(k)*chi_k(x)) univ.
+FT10.1 identifies the displayed tsum with D_w f at every x. Replace the
+limit by this pointwise-equal function and use ML-FT-16 to obtain
+  HasSumUniformly (fun k x => a_w(k)*chi_k(x)) (D_w f).         [FT11.1]
+
+The uniform bound holds on all E_n, not merely Q_n. The sum is indexed by
+all finite subsets of Z^n, as in Lean HasSumUniformly; no rearrangement or
+conversion from rectangular/ball partial sums is silently assumed.
+Nor is termwise differentiation of a merely uniformly convergent series
+used: each derivative word g is treated as an actual smooth periodic
+function, reconstructed by FT10, with its coefficients identified by FT06.
+
+Proposed native endpoint:
+  NSEGR.literatureFourier_partialWord_hasSumUniformly.
+
+FT12 — EXACT STRUCTURE INHABITANT
+Dependencies: FT06, FT09, FT11.
+
+For arbitrary n>0, f, hf, hp and w, return the conjunction
+  (FT06, FT09.1, FT11.1).
+These are respectively the three clauses of
+  LiteratureSmoothFourierInput.reconstruct.
+Thus
+  LiteratureSmoothFourierInput
+is mathematically derived without a remaining literature input.
+
+Proposed native final signature:
+  theorem NSEGR.literatureSmoothFourierInput_native :
+    NSEGR.LiteratureSmoothFourierInput.
+
+Formal constructor shape after future compilation of the edges:
+  { reconstruct := fun n hn f hf hp w =>
+      And.intro (literatureFourierCoefficient_partialWord ...)
+        (And.intro (literatureFourier_partialWord_summable_norm ...)
+          (literatureFourier_partialWord_hasSumUniformly ...)) }
+
+The ellipses in this constructor are a dependency schematic, not Lean source
+or placeholders submitted for compilation. The exact quantified field is
+the existing LiteratureInputs.lean declaration; the mathematical arguments
+and every premise supplied to its edges are specified above.
+
+METHLIB REUSE SCOPE
+ME-FT-01 = NSEMaxwell.HodgeProof.scalarCoeff_coordinateDerivative.
+ME-FT-02 = NSEMaxwell.HodgeProof.rapid_scalarCoeff.
+
+Both endpoints are actual selected source declarations at Methlib
+eac159c5f7bf5a99a00d994da34c4760ea8335d0. They implement three-dimensional
+real-scalar Fourier calculus through actual physical coefficients. They
+provide independent verified implementation templates for FT05 and FT09.
+For a complex f at n=3, split f into real and imaginary parts; linearity
+reconstructs the complex coefficient identities and triangle comparison
+gives complex absolute summability. That supplies a valid n=3 specialization.
+It does not infer forall n from n=3.
+
+The universal LI03 proof therefore uses the explicit dimension-general
+edges FT01–FT12 above and the dimension-general AddCircleMulti endpoints.
+No new full-dimensional theorem is attributed to Methlib, and the already
+audited Hodge package is not silently promoted to the full LI03 statement.
+
+DEPENDENCY GRAPH
+  FT01 -> FT04,FT05,FT07,FT11.
+  FT02 -> FT03,FT05,FT06,FT07,FT09,FT10.
+  FT03 -> FT04.
+  FT04 -> FT05,FT10.
+  FT05 -> FT06,FT07.
+  FT06 -> FT09,FT10,FT12.
+  FT07,FT08 -> FT09.
+  FT09 -> FT10,FT11,FT12.
+  FT10 -> FT11.
+  FT11 -> FT12.
+
+SOURCE / STATUS CHECK
+  22 Mathlib endpoint records, 2 Methlib endpoint records, 12 native edges.
+  Exact names, literal source signatures, source file SHA256, pinned URLs,
+  ambient typeclass context, roles and limitations: NSE_GR_LITERATURE_INPUTS_NATIVE_CHAIN_INDEX.json.
+  Native edges FT01–FT12: B_TIER_NATIVE_PENDING.
+  Existing endpoints: source-inspected; no new compiler evidence asserted.
+  Literature agreement: V. Guillemin, Notes for18.117, section4,
+  https://math.mit.edu/~vwg/classnotes-spring05.pdf .
+  That source is a consistency reference, not an additional proof premise.
+
+!=B_TIER : LI03 mathematical derivation complete.
+No A_TIER or UNCONDITIONAL_CLOSURE marker is established by this section.
+
+
+ROOT01 / ROOT02. DETERMINISTIC EXACT COMPOSITION
+==============================================
+
+ROOT01. Let ck := CK14, gj := GJ13(ck), ft := FT12.
+The three entries have exactly the field types of NSEGR.LiteratureInputs.
+Therefore input := { ck := ck, gaussianJet := gj, smoothFourier := ft }
+is a mathematical inhabitant of that exact proposition. No existence field
+is replaced by an assumption. GJ13 depends on the independently constructed
+CK14 and never on its own conclusion.
+
+ROOT02. For arbitrary nu,rho,t0 with nu>0 and rho!=0, apply GR-ROOT-01 to
+nu,rho,t0,hnu,hrho,ROOT01. Its exact conclusion is
+  NSEGR.ExactSectorEquivalence nu rho t0.
+Hence all three literal literature premises have a complete mathematical
+derivation in this TXT, and the exact local marked-sector root follows
+mathematically. The already audited root remains an implication in Lean
+until the new inhabitants and this final application are externally checked.
+
+PROPOSED FINAL NATIVE TYPES; NOT COMPILED DECLARATIONS:
+  NSEGR.NativeLiterature.literatureAnalyticCKInput_native :
+    NSEGR.LiteratureAnalyticCKInput
+  NSEGR.NativeLiterature.literatureGaussianJetInput_of_analyticCK :
+    NSEGR.LiteratureAnalyticCKInput -> NSEGR.LiteratureGaussianJetInput
+  NSEGR.NativeLiterature.literatureSmoothFourierInput_native :
+    NSEGR.LiteratureSmoothFourierInput
+  NSEGR.NativeLiterature.literatureInputs_native : NSEGR.LiteratureInputs
+  NSEGR.NativeLiterature.NSE_GR_EXACT_SECTOR_EQUIVALENCE_NATIVE :
+    forall nu rho t0 : R, 0 < nu -> rho != 0 ->
+      NSEGR.ExactSectorEquivalence nu rho t0
+
+All proposed declaration basenames in the three sections are allocated to
+namespace NSEGR.NativeLiterature by the machine index. Earlier section
+labels without that prefix are mathematical edge labels, not declarations
+claimed to exist in the current repository.
+
+METHLIB IN THE COMPOSED ROOT
+===========================
+The two ME-FT selections are direct implementation templates/specializations
+for the three-dimensional Fourier substeps. The all-dimensional LI03 proof
+uses dimension-general Mathlib reconstruction and newly derived generic
+coordinate/decay bridges. No inference from dimension three to all n is made.
+The existing GR root already uses audited native Poisson/Leray constructions
+built on Methlib's three-dimensional smooth Hodge package; its inherited
+dependency record is Auxillary/GR/Closure/EXTERNAL_CERTIFICATE.json and the
+associated endpoint-crosswalk.json. This existing support is retained.
+Mathlib/Methlib endpoint selection therefore has an explicit scoped role;
+no irrelevant Methlib hypothesis is inserted into the CK or Gaussian proof.
+
+EXTERNAL FORMALIZATION ORDER; CACHED RUNS ONLY
+=============================================
+Wave A: CK01--CK08 coefficient calculus; independent GJ01--GJ05 coordinate
+        identities; FT01--FT08 physical Fourier calculus.
+Wave B: CK09--CK14 contraction/existence/uniqueness; FT09--FT12 reconstruction.
+Wave C: GJ06--GJ13, using the compiled CK14 endpoint and coordinate identities.
+Wave D: ROOT01, then ROOT02; exact final theorem-level axiom audit.
+
+The node-level dependencies below take precedence over wave grouping.
+Independent proved edge bodies may elaborate asynchronously; no unproved
+signature is treated as an established endpoint. One cached Lake build DAG
+may schedule dependencies; concurrent writers to one .lake/build are excluded.
+Reuse the pinned compiler, dependency/download cache and compatible project
+objects. No clean or forced cache replacement. No local Lean/Lake/elan runs.
+Every new theorem and ROOT02 requires matching source hashes, external
+compiler success, and a named theorem-level audit excluding sorryAx and
+unapproved axioms. Allowed foundations: propext, Classical.choice, Quot.sound.
+No such new external compiler evidence is supplied by this B-tier task.
+
+DERIVATION INDEX
+================
+
+CK01 | Equivalent taxicab norms transport exact target AnalyticAt and derivative germs.
+  DEPENDS = none
+  ENDPOINTS = ML-CK-01, ML-CK-02, ML-CK-11, ML-CK-25
+  NATIVE_TARGET = NSEGR.NativeLiterature.ck_norm_transport
+  STATUS = B_TIER_NATIVE_PENDING
+
+CK02 | Every analytic germ has unique symmetric coefficients with no larger coefficient norms.
+  DEPENDS = none
+  ENDPOINTS = ML-CK-04, ML-CK-05, ML-CK-06, ML-CK-07, ML-CK-22
+  NATIVE_TARGET = NSEGR.NativeLiterature.ck_symmetric_expansion
+  STATUS = B_TIER_NATIVE_PENDING
+
+CK03 | B0(Z,G) of summable symmetric positive-degree coefficients is a Banach space; its closed unit ball is complete.
+  DEPENDS = none
+  ENDPOINTS = ML-CK-03, ML-CK-23
+  NATIVE_TARGET = NSEGR.NativeLiterature.ckCoefficientSpace_complete
+  STATUS = B_TIER_NATIVE_PENDING
+
+CK04 | Evaluation of B0 has radius at least one, is analytic on the open ball, and is injective as an analytic germ.
+  DEPENDS = CK02, CK03
+  ENDPOINTS = ML-CK-05, ML-CK-07, ML-CK-08, ML-CK-09, ML-CK-15, ML-CK-16, ML-CK-22, ML-CK-24
+  NATIVE_TARGET = NSEGR.NativeLiterature.ckCoefficientSpace_eval_analytic
+  STATUS = B_TIER_NATIVE_PENDING
+
+CK05 | Multilinear superposition lift has norm at most coefficient norm times product of input norms and commutes with evaluation.
+  DEPENDS = CK02, CK03, CK04
+  ENDPOINTS = ML-CK-04, ML-CK-05, ML-CK-06
+  NATIVE_TARGET = NSEGR.NativeLiterature.ck_lift_multilinear_bound
+  STATUS = B_TIER_NATIVE_PENDING
+
+CK06 | Time-primitive A has coefficient norm at most one half.
+  DEPENDS = CK01, CK03
+  ENDPOINTS = ML-CK-04, ML-CK-05
+  NATIVE_TARGET = NSEGR.NativeLiterature.ck_timePrimitive_bound
+  STATUS = B_TIER_NATIVE_PENDING
+
+CK07 | Spatial derivative B=D_X A has coefficient norm at most one.
+  DEPENDS = CK01, CK03, CK06
+  ENDPOINTS = ML-CK-04, ML-CK-05
+  NATIVE_TARGET = NSEGR.NativeLiterature.ck_spatialPrimitive_bound
+  STATUS = B_TIER_NATIVE_PENDING
+
+CK08 | Ev(Aa) has zero time-zero trace, time derivative Ev(a), and spatial derivative Ev(Ba).
+  DEPENDS = CK04, CK06, CK07
+  ENDPOINTS = ML-CK-15, ML-CK-16
+  NATIVE_TARGET = NSEGR.NativeLiterature.ck_primitive_eval_derivatives
+  STATUS = B_TIER_NATIVE_PENDING
+
+CK09 | Exact arbitrary-data CK input reduces to w_t=g(t,x,w,D_xw), w(0,x)=0, with analytic g and g(0)=0.
+  DEPENDS = CK01
+  ENDPOINTS = ML-CK-10, ML-CK-11, ML-CK-12, ML-CK-13, ML-CK-14
+  NATIVE_TARGET = NSEGR.NativeLiterature.ck_normalized_rhs_analytic
+  STATUS = B_TIER_NATIVE_PENDING
+
+CK10 | Analytic superposition obeys explicit coefficient Lipschitz bound L on a smaller coefficient ball.
+  DEPENDS = CK02, CK05, CK09
+  ENDPOINTS = ML-CK-06
+  NATIVE_TARGET = NSEGR.NativeLiterature.ck_superposition_lipschitz
+  STATUS = B_TIER_NATIVE_PENDING
+
+CK11 | For explicit small epsilon, Psi_epsilon maps the closed coefficient unit ball to radius one half and contracts with constant one quarter.
+  DEPENDS = CK06, CK07, CK10
+  ENDPOINTS = ML-CK-01
+  NATIVE_TARGET = NSEGR.NativeLiterature.ck_scaled_map_contracting
+  STATUS = B_TIER_NATIVE_PENDING
+
+CK12 | The coefficient fixed point evaluates to an actual jointly analytic solution of the normalized PDE, then the exact original initial-value problem.
+  DEPENDS = CK03, CK08, CK09, CK11
+  ENDPOINTS = ML-CK-19, ML-CK-20, ML-CK-08, ML-CK-09, ML-CK-24
+  NATIVE_TARGET = NSEGR.NativeLiterature.ck_normalized_solution_exists
+  STATUS = B_TIER_NATIVE_PENDING
+
+CK13 | Every pair of analytic solution germs becomes a pair of fixed points after a common sufficiently small scaling, hence is equal.
+  DEPENDS = CK02, CK04, CK08, CK09, CK10, CK11
+  ENDPOINTS = ML-CK-10, ML-CK-06, ML-CK-21, ML-CK-22, ML-CK-25
+  NATIVE_TARGET = NSEGR.NativeLiterature.ck_analytic_solution_germ_unique
+  STATUS = B_TIER_NATIVE_PENDING
+
+CK14 | The exact NSEGR.LiteratureAnalyticCKInput proposition is inhabited mathematically.
+  DEPENDS = CK09, CK12, CK13
+  ENDPOINTS = ML-CK-17, ML-CK-18
+  NATIVE_TARGET = NSEGR.NativeLiterature.literatureAnalyticCKInput_native
+  STATUS = B_TIER_NATIVE_PENDING
+
+GJ01 | Finite symmetric coordinates and inverse analytic with D(H)[W]=-HWH
+  DEPENDS = none
+  ENDPOINTS = ML-GJ-01, ML-GJ-02, ML-GJ-03, ML-GJ-04, ML-GJ-09, ML-GJ-10, ML-GJ-11, ML-GJ-12, GR-GJ-01, GR-GJ-02, GR-GJ-03, GR-GJ-04
+  NATIVE_TARGET = NSEGR.NativeLiterature.gaussianJet_coordinates_and_inverse_analytic
+  STATUS = B_TIER_NATIVE_PENDING
+
+GJ02 | Actual Gaussian Christoffel families
+  DEPENDS = GJ01
+  ENDPOINTS = GR-GJ-05, GR-GJ-06, GR-GJ-07, GR-GJ-08
+  NATIVE_TARGET = NSEGR.NativeLiterature.gaussian_connection_families
+  STATUS = B_TIER_NATIVE_PENDING
+
+GJ03 | Coordinate curvature symmetries and contracted Bianchi from finite derivative algebra
+  DEPENDS = GJ01
+  ENDPOINTS = ML-GJ-05, ML-GJ-06, ML-GJ-07, ML-GJ-08, ML-GJ-13, ML-GJ-14, ML-GJ-15, GR-GJ-09, GR-GJ-10
+  NATIVE_TARGET = NSEGR.NativeLiterature.coordinate_contracted_bianchi
+  STATUS = B_TIER_NATIVE_PENDING
+
+GJ04 | Actual Gaussian Ricci and tangential trace identities
+  DEPENDS = GJ01, GJ02, GJ03
+  ENDPOINTS = GR-GJ-02, GR-GJ-11, GR-GJ-12, GR-GJ-13, GR-GJ-14, ML-GJ-07, ML-GJ-08
+  NATIVE_TARGET = NSEGR.NativeLiterature.gaussian_ricci_reduced
+  STATUS = B_TIER_NATIVE_PENDING
+
+GJ05 | Analytic 60-state first-order Gaussian CK RHS with off-solution symmetrized intrinsic Ricci
+  DEPENDS = GJ01, GJ03
+  ENDPOINTS = ML-GJ-01, ML-GJ-02, ML-GJ-03, ML-GJ-04, ML-GJ-07, ML-GJ-08, ML-GJ-16, GR-GJ-01, GR-GJ-03
+  NATIVE_TARGET = NSEGR.NativeLiterature.gaussianCKRHS_analyticAt
+  STATUS = B_TIER_NATIVE_PENDING
+
+GJ06 | Analytic 60-component Gaussian evolution from prescribed symmetric K
+  DEPENDS = CK14, GJ01, GJ05
+  ENDPOINTS = ML-GJ-12
+  NATIVE_TARGET = NSEGR.NativeLiterature.gaussianCKEvolution_exists_of_CK
+  STATUS = B_TIER_NATIVE_PENDING
+
+GJ07 | Compatibility P_a=partial_a h by uniqueness for the zero 40-state CK system
+  DEPENDS = CK14, GJ06
+  ENDPOINTS = ML-GJ-05, ML-GJ-06, ML-GJ-13, GR-GJ-09, GR-GJ-10
+  NATIVE_TARGET = NSEGR.NativeLiterature.gaussianCKEvolution_compatible
+  STATUS = B_TIER_NATIVE_PENDING
+
+GJ08 | Tangential Ricci zero; h(0)=eta; L(0)=K; nondegenerate Gaussian metric
+  DEPENDS = GJ03, GJ04, GJ06, GJ07
+  ENDPOINTS = GR-GJ-04, GR-GJ-11, GR-GJ-12, GR-GJ-13, GR-GJ-15, ML-GJ-12, ML-GJ-14, ML-GJ-16
+  NATIVE_TARGET = NSEGR.NativeLiterature.gaussianCKEvolution_tangential_vacuum_and_initial_jets
+  STATUS = B_TIER_NATIVE_PENDING
+
+GJ09 | Analytic homogeneous 5-state constraint propagation with zero initial constraints
+  DEPENDS = GJ03, GJ04, GJ08
+  ENDPOINTS = GR-GJ-11, GR-GJ-12, GR-GJ-13, GR-GJ-14, GR-GJ-16, ML-GJ-05, ML-GJ-06, ML-GJ-07, ML-GJ-08
+  NATIVE_TARGET = NSEGR.NativeLiterature.gaussian_constraint_evolution
+  STATUS = B_TIER_NATIVE_PENDING
+
+GJ10 | All actual Ricci components zero by homogeneous CK uniqueness
+  DEPENDS = CK14, GJ08, GJ09
+  ENDPOINTS = GR-GJ-14, ML-GJ-05, ML-GJ-06, ML-GJ-07, ML-GJ-08
+  NATIVE_TARGET = NSEGR.NativeLiterature.gaussianCKEvolution_vacuum_of_constraints
+  STATUS = B_TIER_NATIVE_PENDING
+
+GJ11 | Globally typed existence witness for exact LiteratureFlatGaussianGerm
+  DEPENDS = GJ06, GJ08, GJ10
+  ENDPOINTS = GR-GJ-17, GR-GJ-18, ML-GJ-13, ML-GJ-14
+  NATIVE_TARGET = NSEGR.NativeLiterature.literatureGaussianJet_exists_of_CK
+  STATUS = B_TIER_NATIVE_PENDING
+
+GJ12 | Uniqueness of actual metric germ in same Gaussian coordinates and normal orientation
+  DEPENDS = CK14, GJ03, GJ04, GJ05
+  ENDPOINTS = GR-GJ-17, ML-GJ-05, ML-GJ-06, ML-GJ-13
+  NATIVE_TARGET = NSEGR.NativeLiterature.literatureGaussianJet_unique_of_CK
+  STATUS = B_TIER_NATIVE_PENDING
+
+GJ13 | LiteratureAnalyticCKInput -> LiteratureGaussianJetInput
+  DEPENDS = GJ11, GJ12
+  ENDPOINTS = native composition
+  NATIVE_TARGET = NSEGR.NativeLiterature.literatureGaussianJetInput_of_analyticCK
+  STATUS = B_TIER_NATIVE_PENDING
+
+FT01 | Actual character factorization, modulus one and coordinate derivative identity.
+  DEPENDS = none
+  ENDPOINTS = ML-FT-01, ML-FT-04
+  NATIVE_TARGET = NSEGR.NativeLiterature.literatureCharacter_finiteDimensional_laws
+  STATUS = B_TIER_NATIVE_PENDING
+
+FT02 | Integer-lattice periodicity; every derivative word remains C∞ and unit-periodic.
+  DEPENDS = none
+  ENDPOINTS = ML-FT-08, ML-FT-09
+  NATIVE_TARGET = NSEGR.NativeLiterature.literaturePartialWord_smooth_periodic
+  STATUS = B_TIER_NATIVE_PENDING
+
+FT03 | Continuous periodic f descends to a continuous function on UnitAddTorus(Fin n).
+  DEPENDS = FT02
+  ENDPOINTS = ML-FT-02, ML-FT-20, ML-FT-21, ML-FT-22
+  NATIVE_TARGET = NSEGR.NativeLiterature.literaturePeriodic_exists_continuous_torusLift
+  STATUS = B_TIER_NATIVE_PENDING
+
+FT04 | Exact equality of physical Euclidean Icc-cube coefficients and normalized torus coefficients.
+  DEPENDS = FT01, FT03
+  ENDPOINTS = ML-FT-02, ML-FT-03, ML-FT-17, ML-FT-18, ML-FT-19
+  NATIVE_TARGET = NSEGR.NativeLiterature.literatureFourierCoefficient_eq_mFourierCoeff
+  STATUS = B_TIER_NATIVE_PENDING
+
+FT05 | Fourier(∂_j f)(k)=(2π i k_j) Fourier(f)(k).
+  DEPENDS = FT01, FT02, FT04
+  ENDPOINTS = ML-FT-05, ML-FT-06, ML-FT-07, ME-FT-01
+  NATIVE_TARGET = NSEGR.NativeLiterature.literatureFourierCoefficient_coordinateDerivative
+  STATUS = B_TIER_NATIVE_PENDING
+
+FT06 | Exact derivative-word multiplier identity.
+  DEPENDS = FT02, FT05
+  ENDPOINTS = ME-FT-01
+  NATIVE_TARGET = NSEGR.NativeLiterature.literatureFourierCoefficient_partialWord
+  STATUS = B_TIER_NATIVE_PENDING
+
+FT07 | Product-operator estimate |ĝ(k)|≤||L_n g||L1 Π_j(1+k_j²)^−1.
+  DEPENDS = FT01, FT02, FT05
+  ENDPOINTS = ML-FT-10
+  NATIVE_TARGET = NSEGR.NativeLiterature.literatureFourierCoefficient_product_decay
+  STATUS = B_TIER_NATIVE_PENDING
+
+FT08 | Summability on ℤ^n of Π_j(1+k_j²)^−1.
+  DEPENDS = none
+  ENDPOINTS = ML-FT-11, ML-FT-12
+  NATIVE_TARGET = NSEGR.NativeLiterature.literatureProductWeight_summable
+  STATUS = B_TIER_NATIVE_PENDING
+
+FT09 | Absolute Fourier coefficient summability for every smooth periodic derivative word.
+  DEPENDS = FT02, FT06, FT07, FT08
+  ENDPOINTS = ME-FT-02
+  NATIVE_TARGET = NSEGR.NativeLiterature.literatureFourier_partialWord_summable_norm
+  STATUS = B_TIER_NATIVE_PENDING
+
+FT10 | Actual global pointwise reconstruction of every derivative word.
+  DEPENDS = FT02, FT04, FT06, FT09
+  ENDPOINTS = ML-FT-13, ML-FT-14
+  NATIVE_TARGET = NSEGR.NativeLiterature.literatureFourier_partialWord_hasSum
+  STATUS = B_TIER_NATIVE_PENDING
+
+FT11 | Literal HasSumUniformly for the derivative Fourier series on all EuclideanSpace.
+  DEPENDS = FT01, FT09, FT10
+  ENDPOINTS = ML-FT-15, ML-FT-16
+  NATIVE_TARGET = NSEGR.NativeLiterature.literatureFourier_partialWord_hasSumUniformly
+  STATUS = B_TIER_NATIVE_PENDING
+
+FT12 | LiteratureSmoothFourierInput with no analytic/literature premise.
+  DEPENDS = FT06, FT09, FT11
+  ENDPOINTS = native composition
+  NATIVE_TARGET = NSEGR.NativeLiterature.literatureSmoothFourierInput_native
+  STATUS = B_TIER_NATIVE_PENDING
+
+ROOT01 | NSEGR.LiteratureInputs, constructed from CK14, GJ13(CK14), FT12.
+  DEPENDS = CK14, GJ13, FT12
+  ENDPOINTS = native composition
+  NATIVE_TARGET = NSEGR.NativeLiterature.literatureInputs_native
+  STATUS = B_TIER_NATIVE_PENDING
+
+ROOT02 | forall nu rho t0 : R, 0 < nu -> rho != 0 -> NSEGR.ExactSectorEquivalence nu rho t0.
+  DEPENDS = ROOT01
+  ENDPOINTS = GR-ROOT-01
+  NATIVE_TARGET = NSEGR.NativeLiterature.NSE_GR_EXACT_SECTOR_EQUIVALENCE_NATIVE
+  STATUS = B_TIER_NATIVE_PENDING
+
+SELECTED ENDPOINT LEDGER
+========================
+Records are source declarations with explicit ambient contexts; not fresh compiler transcripts.
+
+ML-CK-01 | WithLp.prod_norm_eq_of_L1
+PATH = Mathlib/Analysis/Normed/Lp/ProdLp.lean
+LINE = 773
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 9339f2f94bd3a6324cde1f0a45898f6d743c77457259d7e35e475829ca8e6a20
+GIT_BLOB_SHA1 = 0d0b033fbd0b2c114e6b62d82e71d3f87a63795c
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Lp/ProdLp.lean#L773
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Exact taxicab norm identity at p=1.
+LIMITATION = Must use WithLp 1, not the default max product norm.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK01, CK11
+DECLARATION_HEADER =
+theorem prod_norm_eq_of_L1 (x : WithLp 1 (α × β)) :
+    ‖x‖ = ‖x.fst‖ + ‖x.snd‖
+
+ML-CK-02 | WithLp.prodContinuousLinearEquiv
+PATH = Mathlib/Analysis/Normed/Lp/ProdLp.lean
+LINE = 554
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 9339f2f94bd3a6324cde1f0a45898f6d743c77457259d7e35e475829ca8e6a20
+GIT_BLOB_SHA1 = 0d0b033fbd0b2c114e6b62d82e71d3f87a63795c
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Lp/ProdLp.lean#L554
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Transport between taxicab and target product norms.
+LIMITATION = Continuous linear equivalence; not an isometry for p=1.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK01
+DECLARATION_HEADER =
+def prodContinuousLinearEquiv : WithLp p (α × β) ≃L[𝕜] α × β
+
+ML-CK-03 | lp.completeSpace
+PATH = Mathlib/Analysis/Normed/Lp/lpSpace.lean
+LINE = 1361
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 2e7e34546116f0ddf71d554d72654418c31b7325a36cc069fc5643167b424036
+GIT_BLOB_SHA1 = 89060c77846ffcd81a62e01b5eddd0971051b537
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Lp/lpSpace.lean#L1361
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Completeness of dependent coefficient l1 space.
+LIMITATION = Symmetric multilinear fibres and zero constant term must first be defined and shown closed.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK03
+DECLARATION_HEADER =
+instance completeSpace : CompleteSpace (lp E p)
+
+ML-CK-04 | ContinuousMultilinearMap.opNorm_le_bound
+PATH = Mathlib/Analysis/Normed/Module/Multilinear/Basic.lean
+LINE = 416
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 62b0c5491f2c576dacf5913f9e04fcafd49b2901449bf57e4213df5ec0e05534
+GIT_BLOB_SHA1 = 2ab48858ac4d3805e937baf14b4b8a4f12f53756
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Module/Multilinear/Basic.lean#L416
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Convert explicit subset-product estimates to coefficient operator-norm bounds.
+LIMITATION = Native A/B formula estimates must be supplied; theorem does not know CK operators.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK02, CK05, CK06, CK07
+DECLARATION_HEADER =
+theorem opNorm_le_bound {f : ContinuousMultilinearMap 𝕜 E G}
+    {M : ℝ} (hMp : 0 ≤ M) (hM : ∀ m, ‖f m‖ ≤ M * ∏ i, ‖m i‖) : ‖f‖ ≤ M
+
+ML-CK-05 | ContinuousMultilinearMap.le_opNorm
+PATH = Mathlib/Analysis/Normed/Module/Multilinear/Basic.lean
+LINE = 380
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 62b0c5491f2c576dacf5913f9e04fcafd49b2901449bf57e4213df5ec0e05534
+GIT_BLOB_SHA1 = 2ab48858ac4d3805e937baf14b4b8a4f12f53756
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Module/Multilinear/Basic.lean#L380
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Bound multilinear evaluation and symmetrized compositions.
+LIMITATION = Uses the normed spaces actually installed on each argument.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK02, CK04, CK05, CK06, CK07
+DECLARATION_HEADER =
+theorem le_opNorm (f : ContinuousMultilinearMap 𝕜 E G) (m : ∀ i, E i) :
+    ‖f m‖ ≤ ‖f‖ * ∏ i, ‖m i‖
+
+ML-CK-06 | FormalMultilinearSeries.summable_norm_mul_pow
+PATH = Mathlib/Analysis/Analytic/ConvergenceRadius.lean
+LINE = 241
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = f6314e1932da1cf3b52545f51ed3c70ab5a5173850aa24d4601aa0d7f1bbfb60
+GIT_BLOB_SHA1 = d22a06958c3212dca54bf793c7668cf623029b02
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ConvergenceRadius.lean#L241
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Obtain norm-summable coefficient bounds strictly inside analytic radius.
+LIMITATION = Requires a strict radius bound; no boundary-radius summability is inferred.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK02, CK05, CK10, CK13
+DECLARATION_HEADER =
+theorem summable_norm_mul_pow (p : FormalMultilinearSeries 𝕜 E F) {r : ℝ≥0} (h : ↑r < p.radius) :
+    Summable fun n : ℕ => ‖p n‖ * (r : ℝ) ^ n
+
+ML-CK-07 | FormalMultilinearSeries.le_radius_of_summable
+PATH = Mathlib/Analysis/Analytic/ConvergenceRadius.lean
+LINE = 133
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = f6314e1932da1cf3b52545f51ed3c70ab5a5173850aa24d4601aa0d7f1bbfb60
+GIT_BLOB_SHA1 = d22a06958c3212dca54bf793c7668cf623029b02
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ConvergenceRadius.lean#L133
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Convert coefficient l1 summability to radius at least one.
+LIMITATION = Only a lower bound on the radius; analytic evaluation uses the open unit ball.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK02, CK04
+DECLARATION_HEADER =
+theorem le_radius_of_summable (h : Summable fun n => ‖p n‖ * (r : ℝ) ^ n) : ↑r ≤ p.radius
+
+ML-CK-08 | FormalMultilinearSeries.hasFPowerSeriesOnBall
+PATH = Mathlib/Analysis/Analytic/Basic.lean
+LINE = 1072
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = af3ee71ee027f74ea4bf2254978f841722b90b75dabd1452ec98ca65857d38ec
+GIT_BLOB_SHA1 = 0c93cffbd50709474b662479574cd46121876eb5
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean#L1072
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Realize a positive-radius coefficient series as an actual power-series sum.
+LIMITATION = Requires complete codomain and strictly positive radius.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK04, CK12
+DECLARATION_HEADER =
+protected theorem FormalMultilinearSeries.hasFPowerSeriesOnBall [CompleteSpace F]
+    (p : FormalMultilinearSeries 𝕜 E F) (h : 0 < p.radius) :
+    HasFPowerSeriesOnBall p.sum p 0 p.radius
+
+ML-CK-09 | HasFPowerSeriesOnBall.analyticAt
+PATH = Mathlib/Analysis/Analytic/Basic.lean
+LINE = 139
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = af3ee71ee027f74ea4bf2254978f841722b90b75dabd1452ec98ca65857d38ec
+GIT_BLOB_SHA1 = 0c93cffbd50709474b662479574cd46121876eb5
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean#L139
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Obtain AnalyticAt for the actual sum at its centre.
+LIMITATION = Does not prove CK equation or initial condition.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK04, CK12
+DECLARATION_HEADER =
+theorem HasFPowerSeriesOnBall.analyticAt (hf : HasFPowerSeriesOnBall f p x r) : AnalyticAt 𝕜 f x
+
+ML-CK-10 | AnalyticAt.fderiv
+PATH = Mathlib/Analysis/Calculus/FDeriv/Analytic.lean
+LINE = 263
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 9aba8c2c2b20b545331182e56325445f33f0a0851e9558e97595995e10045365
+GIT_BLOB_SHA1 = ac5499a0d9272bb86bbe0cedb631e3881939cf54
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Analytic.lean#L263
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Analyticity of initial-data derivatives and time-derivative competitor germs.
+LIMITATION = Complete codomain required; restricting the full derivative to a coordinate still needs bounded evaluation maps.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK09, CK13
+DECLARATION_HEADER =
+protected theorem AnalyticAt.fderiv [CompleteSpace F] (h : AnalyticAt 𝕜 f x) :
+    AnalyticAt 𝕜 (fderiv 𝕜 f) x
+
+ML-CK-11 | AnalyticAt.comp
+PATH = Mathlib/Analysis/Analytic/Composition.lean
+LINE = 859
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = ec0f32e38de7f3cd4d89c9017fa8515b621a25da52d7ee6cb3299ca76d8a1545
+GIT_BLOB_SHA1 = d4c0139b0ff4c1b61df8e4e32ad0cca8036b19bc
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Composition.lean#L859
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Analytic coordinate translation, normalization, rescaling, and restoration.
+LIMITATION = Point equality and actual analytic premises must match.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK01, CK09
+DECLARATION_HEADER =
+theorem AnalyticAt.comp {g : F → G} {f : E → F} {x : E} (hg : AnalyticAt 𝕜 g (f x))
+    (hf : AnalyticAt 𝕜 f x) : AnalyticAt 𝕜 (g ∘ f) x
+
+ML-CK-12 | AnalyticAt.prod
+PATH = Mathlib/Analysis/Analytic/Constructions.lean
+LINE = 338
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 3bc1dd7547f45cee8ee3a341f0762deb56f42a155cce60757e14055b6f304964
+GIT_BLOB_SHA1 = a4823d7cdda8e314158bb4b5aff320cf02499038
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean#L338
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Assemble analytic jet tuples.
+LIMITATION = Ordinary product analytic tuple; taxicab transport goes through ML-CK-02.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK09
+DECLARATION_HEADER =
+lemma AnalyticAt.prod {e : E} {f : E → F} {g : E → G}
+    (hf : AnalyticAt 𝕜 f e) (hg : AnalyticAt 𝕜 g e) :
+    AnalyticAt 𝕜 (fun x ↦ (f x, g x)) e
+
+ML-CK-13 | AnalyticAt.sub
+PATH = Mathlib/Analysis/Analytic/Constructions.lean
+LINE = 187
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 3bc1dd7547f45cee8ee3a341f0762deb56f42a155cce60757e14055b6f304964
+GIT_BLOB_SHA1 = a4823d7cdda8e314158bb4b5aff320cf02499038
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean#L187
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Normalize initial data and nonzero constant drift.
+LIMITATION = Applies pointwise; no PDE content.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK09
+DECLARATION_HEADER =
+theorem AnalyticAt.sub (hf : AnalyticAt 𝕜 f x) (hg : AnalyticAt 𝕜 g x) :
+    AnalyticAt 𝕜 (f - g) x
+
+ML-CK-14 | AnalyticAt.add
+PATH = Mathlib/Analysis/Analytic/Constructions.lean
+LINE = 106
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 3bc1dd7547f45cee8ee3a341f0762deb56f42a155cce60757e14055b6f304964
+GIT_BLOB_SHA1 = a4823d7cdda8e314158bb4b5aff320cf02499038
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean#L106
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Restore initial analytic function plus linear drift plus local correction.
+LIMITATION = Applies pointwise; no PDE content.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK09
+DECLARATION_HEADER =
+theorem AnalyticAt.add (hf : AnalyticAt 𝕜 f x) (hg : AnalyticAt 𝕜 g x) :
+    AnalyticAt 𝕜 (f + g) x
+
+ML-CK-15 | HasFPowerSeriesOnBall.hasFDerivAt
+PATH = Mathlib/Analysis/Calculus/FDeriv/Analytic.lean
+LINE = 193
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 9aba8c2c2b20b545331182e56325445f33f0a0851e9558e97595995e10045365
+GIT_BLOB_SHA1 = ac5499a0d9272bb86bbe0cedb631e3881939cf54
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Analytic.lean#L193
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Identify actual Frechet derivatives from the evaluated formal series.
+LIMITATION = Requires interior displacement; native A/B diagonal coefficient identities still required.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK04, CK08
+DECLARATION_HEADER =
+theorem HasFPowerSeriesOnBall.hasFDerivAt [CompleteSpace F] (h : HasFPowerSeriesOnBall f p x r)
+    {y : E} (hy : (‖y‖₊ : ℝ≥0∞) < r) :
+    HasFDerivAt f (continuousMultilinearCurryFin1 𝕜 E F (p.changeOrigin y 1)) (x + y)
+
+ML-CK-16 | HasFPowerSeriesOnBall.sum
+PATH = Mathlib/Analysis/Analytic/Basic.lean
+LINE = 1085
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = af3ee71ee027f74ea4bf2254978f841722b90b75dabd1452ec98ca65857d38ec
+GIT_BLOB_SHA1 = 0c93cffbd50709474b662479574cd46121876eb5
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean#L1085
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Identify an analytic local representative with its actual coefficient sum.
+LIMITATION = Equality holds within the stated open power-series ball.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK04, CK08
+DECLARATION_HEADER =
+theorem HasFPowerSeriesOnBall.sum (h : HasFPowerSeriesOnBall f p x r) {y : E}
+    (hy : y ∈ Metric.eball (0 : E) r) : f (x + y) = p.sum y
+
+ML-CK-17 | HasFPowerSeriesAt.congr
+PATH = Mathlib/Analysis/Analytic/Basic.lean
+LINE = 286
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = af3ee71ee027f74ea4bf2254978f841722b90b75dabd1452ec98ca65857d38ec
+GIT_BLOB_SHA1 = 0c93cffbd50709474b662479574cd46121876eb5
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean#L286
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Transfer a local power-series representative to arbitrary globally typed extension.
+LIMITATION = Requires eventual equality on a neighborhood.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK14
+DECLARATION_HEADER =
+theorem HasFPowerSeriesAt.congr (hf : HasFPowerSeriesAt f p x) (hg : f =ᶠ[𝓝 x] g) :
+    HasFPowerSeriesAt g p x
+
+ML-CK-18 | AnalyticAt.congr
+PATH = Mathlib/Analysis/Analytic/Basic.lean
+LINE = 491
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = af3ee71ee027f74ea4bf2254978f841722b90b75dabd1452ec98ca65857d38ec
+GIT_BLOB_SHA1 = 0c93cffbd50709474b662479574cd46121876eb5
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean#L491
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Transfer AnalyticAt across the local-to-global extension.
+LIMITATION = Does not grant global analyticity of the arbitrary extension.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK14
+DECLARATION_HEADER =
+theorem AnalyticAt.congr (hf : AnalyticAt 𝕜 f x) (hg : f =ᶠ[𝓝 x] g) : AnalyticAt 𝕜 g x
+
+ML-CK-19 | ContractingWith.fixedPoint
+PATH = Mathlib/Topology/MetricSpace/Contracting.lean
+LINE = 274
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = cc579c4ca94d07166e161387d3f181877fdfd92ddd89ca6956c96c8fcfdf9a92
+GIT_BLOB_SHA1 = c4bd6fe2e61b904dfa1144ab1b7162550c99d1c3
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/MetricSpace/Contracting.lean#L274
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Construct the fixed point of Psi on the complete nonempty closed-ball subtype.
+LIMITATION = Ambient section parameters include f and hf:ContractingWith K f; Q self-map and completeness must be supplied.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK12
+DECLARATION_HEADER =
+noncomputable def fixedPoint : α
+
+ML-CK-20 | ContractingWith.fixedPoint_isFixedPt
+PATH = Mathlib/Topology/MetricSpace/Contracting.lean
+LINE = 278
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = cc579c4ca94d07166e161387d3f181877fdfd92ddd89ca6956c96c8fcfdf9a92
+GIT_BLOB_SHA1 = c4bd6fe2e61b904dfa1144ab1b7162550c99d1c3
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/MetricSpace/Contracting.lean#L278
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Fixed-point equation for coefficient-space solution.
+LIMITATION = Requires same Q, map, and contraction proof as ML-CK-19.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK12
+DECLARATION_HEADER =
+theorem fixedPoint_isFixedPt : IsFixedPt f (fixedPoint f hf)
+
+ML-CK-21 | ContractingWith.fixedPoint_unique'
+PATH = Mathlib/Topology/MetricSpace/Contracting.lean
+LINE = 257
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = cc579c4ca94d07166e161387d3f181877fdfd92ddd89ca6956c96c8fcfdf9a92
+GIT_BLOB_SHA1 = c4bd6fe2e61b904dfa1144ab1b7162550c99d1c3
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/MetricSpace/Contracting.lean#L257
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Uniqueness of two rescaled coefficient fixed points.
+LIMITATION = Both analytic competitors must first be scaled into Q and identified as exact fixed points.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK13
+DECLARATION_HEADER =
+theorem fixedPoint_unique' {x y} (hx : IsFixedPt f x) (hy : IsFixedPt f y) : x = y
+
+ML-CK-22 | HasFPowerSeriesOnBall.iteratedFDeriv_eq_sum_of_completeSpace
+PATH = Mathlib/Analysis/Analytic/IteratedFDeriv.lean
+LINE = 228
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 130f3735dcefdb6d087aac9722f31cab2e2e17828b548a2d2d6c66b88b83021f
+GIT_BLOB_SHA1 = e21e14a41788a93d11646e12f927a60befc218b0
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/IteratedFDeriv.lean#L228
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Unique symmetric coefficients via D^d f(0)=d!p_d.
+LIMITATION = Native symmetry proof and permutation-cardinality factor are required.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK02, CK04, CK13
+DECLARATION_HEADER =
+theorem HasFPowerSeriesOnBall.iteratedFDeriv_eq_sum_of_completeSpace [CompleteSpace F]
+    (h : HasFPowerSeriesOnBall f p x r) {n : ℕ} (v : Fin n → E) :
+    iteratedFDeriv 𝕜 n f x v = ∑ σ : Perm (Fin n), p n (fun i ↦ v (σ i))
+
+ML-CK-23 | IsClosed.completeSpace_coe
+PATH = Mathlib/Topology/UniformSpace/UniformEmbedding.lean
+LINE = 320
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = d654b7daf50aa5ec57538e3e957509ceb738bc764213858cd4a5aa98d60355f8
+GIT_BLOB_SHA1 = 1aaf86a3677273ffa84beb6c50b384428c8da5f6
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/UniformSpace/UniformEmbedding.lean#L320
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Completeness of closed symmetric coefficient fibres and closed unit-ball subtype.
+LIMITATION = Closedness is a native obligation discharged by kernels/intersections and continuity.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK03
+DECLARATION_HEADER =
+instance IsClosed.completeSpace_coe [CompleteSpace α] {s : Set α} [hs : IsClosed s] :
+    CompleteSpace s
+
+ML-CK-24 | HasFPowerSeriesOnBall.analyticOnNhd
+PATH = Mathlib/Analysis/Analytic/ChangeOrigin.lean
+LINE = 366
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = acda4eb054df857f353197ec8c9d8722c425fa0bd206198e9b04868dc3291663
+GIT_BLOB_SHA1 = 3dbdbdc6ca2e91a6dfaab4ffabe76dc180bc2458
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ChangeOrigin.lean#L366
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Analyticity at every interior point of the coefficient-sum ball.
+LIMITATION = Requires a positive-radius power-series representation.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK04, CK12
+DECLARATION_HEADER =
+theorem HasFPowerSeriesOnBall.analyticOnNhd (hf : HasFPowerSeriesOnBall f p x r) :
+    AnalyticOnNhd 𝕜 f (Metric.eball x r)
+
+ML-CK-25 | ContinuousMultilinearMap.norm_compContinuousLinearMap_le
+PATH = Mathlib/Analysis/Normed/Module/Multilinear/Basic.lean
+LINE = 1024
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 62b0c5491f2c576dacf5913f9e04fcafd49b2901449bf57e4213df5ec0e05534
+GIT_BLOB_SHA1 = 2ab48858ac4d3805e937baf14b4b8a4f12f53756
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Module/Multilinear/Basic.lean#L1024
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Coefficient bounds under equivalent-norm maps and anisotropic scaling.
+LIMITATION = Use operator norms of the actual taxicab maps; no unproved smallness assumption.
+CONTEXT = Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = CK01, CK13
+DECLARATION_HEADER =
+theorem norm_compContinuousLinearMap_le (g : ContinuousMultilinearMap 𝕜 E₁ G)
+    (f : ∀ i, E i →L[𝕜] E₁ i) : ‖g.compContinuousLinearMap f‖ ≤ ‖g‖ * ∏ i, ‖f i‖
+
+ML-GJ-01 | analyticAt_inverse
+PATH = Mathlib/Analysis/Analytic/Constructions.lean
+LINE = 942
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 3bc1dd7547f45cee8ee3a341f0762deb56f42a155cce60757e14055b6f304964
+GIT_BLOB_SHA1 = a4823d7cdda8e314158bb4b5aff320cf02499038
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean#L942
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Analytic inversion at an invertible matrix-valued jet.
+LIMITATION = Requires normed algebra and HasSummableGeomSeries; finite real matrix algebra supplies the instances.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = GJ01, GJ05
+DECLARATION_HEADER =
+lemma analyticAt_inverse [HasSummableGeomSeries A] (z : Aˣ) :
+    AnalyticAt 𝕜 Ring.inverse (z : A)
+
+ML-GJ-02 | Matrix.nonsing_inv_eq_ringInverse
+PATH = Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean
+LINE = 195
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 1ee785b6ebd213ad2ed971bf3c804afee8cc6ce52be69e63572b4cf1bdb5e880
+GIT_BLOB_SHA1 = b3ea61392d1cea6611deddfcf2c1da7938f3d9e6
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean#L195
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Identify native Matrix inverse with Ring.inverse used by analytic calculus.
+LIMITATION = Algebraic identification only; analyticity requires invertibility.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = GJ01, GJ05
+DECLARATION_HEADER =
+theorem nonsing_inv_eq_ringInverse : A⁻¹ = A⁻¹ʳ
+
+ML-GJ-03 | AnalyticAt.comp
+PATH = Mathlib/Analysis/Analytic/Composition.lean
+LINE = 859
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = ec0f32e38de7f3cd4d89c9017fa8515b621a25da52d7ee6cb3299ca76d8a1545
+GIT_BLOB_SHA1 = d4c0139b0ff4c1b61df8e4e32ad0cca8036b19bc
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Composition.lean#L859
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Compose analytic matrix inversion, jet projections and coordinate maps.
+LIMITATION = Both analytic premises must be established at matching points.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = GJ01, GJ05
+DECLARATION_HEADER =
+theorem AnalyticAt.comp {g : F → G} {f : E → F} {x : E} (hg : AnalyticAt 𝕜 g (f x))
+    (hf : AnalyticAt 𝕜 f x) : AnalyticAt 𝕜 (g ∘ f) x
+
+ML-GJ-04 | ContinuousLinearMap.analyticAt
+PATH = Mathlib/Analysis/Analytic/Linear.lean
+LINE = 61
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 8c644f823eebdc22142358065eec879a88fe0ccc3bf6675ec0df4d42d14d142b
+GIT_BLOB_SHA1 = df061f57a0de58779050ebdcb0b8b8fba45791a0
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Linear.lean#L61
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Finite symmetric-state and bulk coordinate maps are analytic.
+LIMITATION = The map must first be packaged as a continuous linear map.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = GJ01, GJ05
+DECLARATION_HEADER =
+protected theorem analyticAt (f : E →L[𝕜] F) (x : E) : AnalyticAt 𝕜 f x
+
+ML-GJ-05 | AnalyticAt.fderiv
+PATH = Mathlib/Analysis/Calculus/FDeriv/Analytic.lean
+LINE = 263
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 9aba8c2c2b20b545331182e56325445f33f0a0851e9558e97595995e10045365
+GIT_BLOB_SHA1 = ac5499a0d9272bb86bbe0cedb631e3881939cf54
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Analytic.lean#L263
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Analyticity of h derivatives, connection, curvature and residual fields.
+LIMITATION = Requires complete target; all finite real target spaces satisfy it.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = GJ03, GJ07, GJ09, GJ10, GJ12
+DECLARATION_HEADER =
+protected theorem AnalyticAt.fderiv [CompleteSpace F] (h : AnalyticAt 𝕜 f x) :
+    AnalyticAt 𝕜 (fderiv 𝕜 f) x
+
+ML-GJ-06 | ContDiffAt.isSymmSndFDerivAt
+PATH = Mathlib/Analysis/Calculus/FDeriv/Symmetric.lean
+LINE = 533
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 976a6342e21ca80d37767a9149c385a42b4d3ed615cbe1ad23745943f3b6287f
+GIT_BLOB_SHA1 = 513adb09ee91aa564bb9250d9e32086d9e8bfe58
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Symmetric.lean#L533
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Commute actual coordinate mixed second derivatives.
+LIMITATION = Requires minSmoothness bound; obtained from analytic regularity, including derivatives of h.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = GJ03, GJ07, GJ09, GJ10, GJ12
+DECLARATION_HEADER =
+theorem ContDiffAt.isSymmSndFDerivAt {n : ℕ∞ω}
+    (hf : ContDiffAt 𝕜 n f x) (hn : minSmoothness 𝕜 2 ≤ n) : IsSymmSndFDerivAt 𝕜 f x
+
+ML-GJ-07 | AnalyticAt.mul
+PATH = Mathlib/Analysis/Analytic/Constructions.lean
+LINE = 639
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 3bc1dd7547f45cee8ee3a341f0762deb56f42a155cce60757e14055b6f304964
+GIT_BLOB_SHA1 = a4823d7cdda8e314158bb4b5aff320cf02499038
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean#L639
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Analytic rational CK and curvature expressions after inversion.
+LIMITATION = Scalar or normed-algebra product; finite tensors are reconstructed entrywise.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = GJ03, GJ04, GJ05, GJ09, GJ10
+DECLARATION_HEADER =
+lemma AnalyticAt.mul {f g : E → A} {z : E} (hf : AnalyticAt 𝕜 f z) (hg : AnalyticAt 𝕜 g z) :
+    AnalyticAt 𝕜 (f * g) z
+
+ML-GJ-08 | Finset.analyticAt_sum
+PATH = Mathlib/Analysis/Analytic/Constructions.lean
+LINE = 1153
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 3bc1dd7547f45cee8ee3a341f0762deb56f42a155cce60757e14055b6f304964
+GIT_BLOB_SHA1 = a4823d7cdda8e314158bb4b5aff320cf02499038
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean#L1153
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Analyticity of all finite contractions.
+LIMITATION = Only finite sums; no infinite-series or PDE existence conclusion.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = GJ03, GJ04, GJ05, GJ09, GJ10
+DECLARATION_HEADER =
+theorem Finset.analyticAt_sum {f : α → E → F} {c : E}
+    (N : Finset α) (h : ∀ n ∈ N, AnalyticAt 𝕜 (f n) c) :
+    AnalyticAt 𝕜 (∑ n ∈ N, f n) c
+
+ML-GJ-09 | hasFDerivAt_ringInverse
+PATH = Mathlib/Analysis/Calculus/FDeriv/Mul.lean
+LINE = 661
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = cb6b129e2bc9f0e946445da29c072eff747cbe4477e8f90aecc6145eb69fea6a
+GIT_BLOB_SHA1 = 78915282e98b0d897bef526fc8b00b7faf097653
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Mul.lean#L661
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = D(H)[W]=-HWH with actual Frechet derivative.
+LIMITATION = Unit-valued basepoint required; Matrix.nonsing_inv_eq_ringInverse supplies native identification.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = GJ01
+DECLARATION_HEADER =
+theorem hasFDerivAt_ringInverse (x : Rˣ) :
+    HasFDerivAt Ring.inverse (-mulLeftRight 𝕜 R ↑x⁻¹ ↑x⁻¹) x
+
+ML-GJ-10 | Matrix.mul_nonsing_inv
+PATH = Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean
+LINE = 211
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 1ee785b6ebd213ad2ed971bf3c804afee8cc6ce52be69e63572b4cf1bdb5e880
+GIT_BLOB_SHA1 = b3ea61392d1cea6611deddfcf2c1da7938f3d9e6
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean#L211
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Eliminate inverse contractions hH=I.
+LIMITATION = Requires IsUnit(det h).
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = GJ01
+DECLARATION_HEADER =
+theorem mul_nonsing_inv (h : IsUnit A.det) : A * A⁻¹ = 1
+
+ML-GJ-11 | Matrix.nonsing_inv_mul
+PATH = Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean
+LINE = 217
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 1ee785b6ebd213ad2ed971bf3c804afee8cc6ce52be69e63572b4cf1bdb5e880
+GIT_BLOB_SHA1 = b3ea61392d1cea6611deddfcf2c1da7938f3d9e6
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean#L217
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Eliminate inverse contractions Hh=I.
+LIMITATION = Requires IsUnit(det h).
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = GJ01
+DECLARATION_HEADER =
+theorem nonsing_inv_mul (h : IsUnit A.det) : A⁻¹ * A = 1
+
+ML-GJ-12 | ContinuousAt.eventually_ne
+PATH = Mathlib/Topology/Separation/Basic.lean
+LINE = 710
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = d3932db8d5fae4c6ec691d4ee3ecc39c94d684edef7602f290bbe7c1f174c6f8
+GIT_BLOB_SHA1 = 4067fcf49e0f6d01930fb440340cb1c00b5e78e1
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Separation/Basic.lean#L710
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Preserve det h != 0 near the initial jet det eta=-1.
+LIMITATION = Continuity of determinant follows from its finite polynomial formula.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = GJ01, GJ06, GJ08
+DECLARATION_HEADER =
+theorem ContinuousAt.eventually_ne [TopologicalSpace Y] [T1Space Y] {g : X → Y} {x : X} {y : Y}
+    (hg1 : ContinuousAt g x) (hg2 : g x ≠ y) : ∀ᶠ z in 𝓝 x, g z ≠ y
+
+ML-GJ-13 | Filter.EventuallyEq.fderiv
+PATH = Mathlib/Analysis/Calculus/FDeriv/Congr.lean
+LINE = 261
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 5cad1d8c7480eac00c7004b6ec5ee9dd64ac80a833f10ad92936cdac4abe9673
+GIT_BLOB_SHA1 = fa50ff49921b4ef098c0bd002b539889fa104963
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Congr.lean#L261
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Differentiate germ equalities in compatibility, restriction, extension and uniqueness.
+LIMITATION = Equality is on a neighborhood, not equality only at the basepoint.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = GJ03, GJ07, GJ11, GJ12
+DECLARATION_HEADER =
+protected theorem Filter.EventuallyEq.fderiv (h : f₁ =ᶠ[𝓝 x] f) : fderiv 𝕜 f₁ =ᶠ[𝓝 x] fderiv 𝕜 f
+
+ML-GJ-14 | AnalyticAt.congr
+PATH = Mathlib/Analysis/Analytic/Basic.lean
+LINE = 491
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = af3ee71ee027f74ea4bf2254978f841722b90b75dabd1452ec98ca65857d38ec
+GIT_BLOB_SHA1 = 0c93cffbd50709474b662479574cd46121876eb5
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean#L491
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Transfer analyticity through an actual germ equality.
+LIMITATION = Does not manufacture analyticity from a pointwise value equality.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = GJ03, GJ08, GJ11
+DECLARATION_HEADER =
+theorem AnalyticAt.congr (hf : AnalyticAt 𝕜 f x) (hg : f =ᶠ[𝓝 x] g) : AnalyticAt 𝕜 g x
+
+ML-GJ-15 | AnalyticAt.contDiffAt
+PATH = Mathlib/Analysis/Calculus/ContDiff/Defs.lean
+LINE = 986
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 5d2f01069c6265873a372d4aed746c5d3411073b8acb108a180d02a84c832dca
+GIT_BLOB_SHA1 = aac7759c6a9585e2f80d63f3349039a29261d0e3
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Defs.lean#L986
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Supply all regularity needed by coordinate derivative identities.
+LIMITATION = Complete target required; analytic functions only.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = GJ03
+DECLARATION_HEADER =
+theorem AnalyticAt.contDiffAt [CompleteSpace F] (h : AnalyticAt 𝕜 f x) :
+    ContDiffAt 𝕜 n f x
+
+ML-GJ-16 | analyticAt_pi_iff
+PATH = Mathlib/Analysis/Analytic/Constructions.lean
+LINE = 565
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 3bc1dd7547f45cee8ee3a341f0762deb56f42a155cce60757e14055b6f304964
+GIT_BLOB_SHA1 = a4823d7cdda8e314158bb4b5aff320cf02499038
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean#L565
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Assemble analytic finite coordinate state maps.
+LIMITATION = Uses finite target family; the Frobenius matrix representation can alternatively use GR-GJ-03.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = GJ05, GJ08
+DECLARATION_HEADER =
+lemma analyticAt_pi_iff :
+    AnalyticAt 𝕜 (fun x ↦ (f · x)) e ↔ ∀ i, AnalyticAt 𝕜 (f i) e
+
+GR-GJ-01 | NSEGR.Assembly.analyticAt_matrix_inverse
+PATH = ASSEMBLY/GRAssembly/BoundaryConstraintsJets.lean
+LINE = 182
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = 18b169e9b5bbaa985f413fadd33ffb1a1a688b689329da4a951d9714f09331e2
+GIT_BLOB_SHA1 = 0f64046f9dd9041e256e8e964d457667f4e8026f
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/BoundaryConstraintsJets.lean#L182
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Already native 4x4 inverse analyticity in the actual Bulk domain.
+LIMITATION = State-space version needs the same generic Mathlib composition; does not itself prove CK.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = GJ01, GJ05
+DECLARATION_HEADER =
+theorem analyticAt_matrix_inverse {h : Bulk → Tensor4} {z : Bulk}
+    (hh : AnalyticAt ℝ h z) (hn : IsUnit (h z).det) :
+    AnalyticAt ℝ (fun y => (h y)⁻¹) z
+
+GR-GJ-02 | NSEGR.Assembly.bulkPartial_inverse
+PATH = ASSEMBLY/GRAssembly/BoundaryConstraintsJets.lean
+LINE = 194
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = 18b169e9b5bbaa985f413fadd33ffb1a1a688b689329da4a951d9714f09331e2
+GIT_BLOB_SHA1 = 0f64046f9dd9041e256e8e964d457667f4e8026f
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/BoundaryConstraintsJets.lean#L194
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Already native entrywise partial H=-H(partial h)H.
+LIMITATION = Requires AnalyticAt h and IsUnit determinant at the point.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = GJ01, GJ04
+DECLARATION_HEADER =
+theorem bulkPartial_inverse {h : Bulk → Tensor4} {z : Bulk}
+    (hh : AnalyticAt ℝ h z) (hn : IsUnit (h z).det)
+    (i : Fin 5) (a b : Fin 4) :
+    bulkPartial (fun y => (h y)⁻¹ a b) i z =
+      -∑ c : Fin 4, ∑ d : Fin 4,
+        (h z)⁻¹ a c * bulkPartial (fun y => h y c d) i z * (h z)⁻¹ d b
+
+GR-GJ-03 | NSEGR.Assembly.analyticAt_matrix_of_entries
+PATH = ASSEMBLY/GRAssembly/BoundaryConstraintsJets.lean
+LINE = 31
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = 18b169e9b5bbaa985f413fadd33ffb1a1a688b689329da4a951d9714f09331e2
+GIT_BLOB_SHA1 = 0f64046f9dd9041e256e8e964d457667f4e8026f
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/BoundaryConstraintsJets.lean#L31
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Assemble analytic Frobenius-norm matrix from entrywise analytic data.
+LIMITATION = Finite matrix indices; no PDE assumptions.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = GJ01, GJ05
+DECLARATION_HEADER =
+theorem analyticAt_matrix_of_entries {n : ℕ} {E : Type*}
+    [NormedAddCommGroup E] [NormedSpace ℝ E]
+    {f : E → Matrix (Fin n) (Fin n) ℝ} {z : E}
+    (hf : ∀ a b, AnalyticAt ℝ (fun y => f y a b) z) :
+    AnalyticAt ℝ f z
+
+GR-GJ-04 | NSEGR.gaussianMatrix_det
+PATH = GR_adapter/GRAdapter/GaussianCodazzi.lean
+LINE = 20
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = 25157c99abfbf8444db6b1a8c140a69a0516b6aadb77314b9f3364bd05cd46c0
+GIT_BLOB_SHA1 = 8233d040b9639d479260819b96f1de94bd03c8e3
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/GR_adapter/GRAdapter/GaussianCodazzi.lean#L20
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = det diag(1,h)=det h.
+LIMITATION = Algebraic determinant identity only.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = GJ01, GJ08
+DECLARATION_HEADER =
+theorem gaussianMatrix_det (H : Tensor4) : (gaussianMatrix H).det = H.det
+
+GR-GJ-05 | NSEGR.christoffel_gaussian_rab
+PATH = GR_adapter/GRAdapter/GaussianMetric.lean
+LINE = 179
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = 391ac9a392896e1fae8c0406957a8d3c83a5d7e266cbffaa0acd51c2ac91aa6b
+GIT_BLOB_SHA1 = 8d791487736692dac65a89f4ba0221466c2b3560
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/GR_adapter/GRAdapter/GaussianMetric.lean#L179
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Actual Gamma^r_ab=-L_ab in native K=+h_r/2 convention.
+LIMITATION = Requires IsUnit determinant at the point.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = GJ02
+DECLARATION_HEADER =
+theorem christoffel_gaussian_rab (h : Bulk → Tensor4) (z : Bulk)
+    (hh : IsUnit (h z).det) (a b : Fin 4) :
+    christoffel (gaussianMetric h) z 0 a.succ b.succ = -gaussianSecondForm h z a b
+
+GR-GJ-06 | NSEGR.christoffel_gaussian_arb
+PATH = GR_adapter/GRAdapter/GaussianMetric.lean
+LINE = 198
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = 391ac9a392896e1fae8c0406957a8d3c83a5d7e266cbffaa0acd51c2ac91aa6b
+GIT_BLOB_SHA1 = 8d791487736692dac65a89f4ba0221466c2b3560
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/GR_adapter/GRAdapter/GaussianMetric.lean#L198
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Actual Gamma^a_rb=(h^-1 L)^a_b.
+LIMITATION = Requires IsUnit determinant at the point.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = GJ02
+DECLARATION_HEADER =
+theorem christoffel_gaussian_arb (h : Bulk → Tensor4) (z : Bulk)
+    (hh : IsUnit (h z).det) (a b : Fin 4) :
+    christoffel (gaussianMetric h) z a.succ 0 b.succ =
+      ∑ c : Fin 4, (h z)⁻¹ a c * gaussianSecondForm h z c b
+
+GR-GJ-07 | NSEGR.christoffel_gaussian_abc
+PATH = GR_adapter/GRAdapter/GaussianMetric.lean
+LINE = 219
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = 391ac9a392896e1fae8c0406957a8d3c83a5d7e266cbffaa0acd51c2ac91aa6b
+GIT_BLOB_SHA1 = 8d791487736692dac65a89f4ba0221466c2b3560
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/GR_adapter/GRAdapter/GaussianMetric.lean#L219
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Actual tangential Christoffels equal intrinsic coordinate formula.
+LIMITATION = Requires IsUnit determinant at the point.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = GJ02
+DECLARATION_HEADER =
+theorem christoffel_gaussian_abc (h : Bulk → Tensor4) (z : Bulk)
+    (hh : IsUnit (h z).det) (a b c : Fin 4) :
+    christoffel (gaussianMetric h) z a.succ b.succ c.succ =
+      gaussianTangentialChristoffel h z a b c
+
+GR-GJ-08 | NSEGR.christoffel_gaussian_rr
+PATH = GR_adapter/GRAdapter/GaussianMetric.lean
+LINE = 171
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = 391ac9a392896e1fae8c0406957a8d3c83a5d7e266cbffaa0acd51c2ac91aa6b
+GIT_BLOB_SHA1 = 8d791487736692dac65a89f4ba0221466c2b3560
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/GR_adapter/GRAdapter/GaussianMetric.lean#L171
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = All Gamma^a_rr vanish.
+LIMITATION = Exact Gaussian metric definition required.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = GJ02
+DECLARATION_HEADER =
+theorem christoffel_gaussian_rr (h : Bulk → Tensor4) (z : Bulk) (a : Fin 5) :
+    christoffel (gaussianMetric h) z a 0 0 = 0
+
+GR-GJ-09 | NSEGR.Assembly.bulkPartial_mul
+PATH = ASSEMBLY/GRAssembly/BoundaryConstraintsGeometry.lean
+LINE = 33
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = fbdc0f06d7cdbb37eea72c635d67e609a7544ebf659ea724421f658f832e23e1
+GIT_BLOB_SHA1 = 457cb8d702eddaf1a0b8c32de627eaafd59cc8a3
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/BoundaryConstraintsGeometry.lean#L33
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Literal bulk-partial product rule for scalar curvature entries.
+LIMITATION = Both factors analytic at the evaluation point.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = GJ03, GJ07
+DECLARATION_HEADER =
+theorem bulkPartial_mul {f q : Bulk → ℝ} {z : Bulk}
+    (hf : AnalyticAt ℝ f z) (hq : AnalyticAt ℝ q z) (i : Fin 5) :
+    bulkPartial (fun y => f y * q y) i z =
+      bulkPartial f i z * q z + f z * bulkPartial q i z
+
+GR-GJ-10 | NSEGR.Assembly.bulkPartial_sum
+PATH = ASSEMBLY/GRAssembly/BoundaryConstraintsGeometry.lean
+LINE = 42
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = fbdc0f06d7cdbb37eea72c635d67e609a7544ebf659ea724421f658f832e23e1
+GIT_BLOB_SHA1 = 457cb8d702eddaf1a0b8c32de627eaafd59cc8a3
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/BoundaryConstraintsGeometry.lean#L42
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Move bulk-partial through finite contractions and traces.
+LIMITATION = Each finite summand analytic at the evaluation point.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = GJ03, GJ07
+DECLARATION_HEADER =
+theorem bulkPartial_sum {n : ℕ} {f : Fin n → Bulk → ℝ} {z : Bulk}
+    (hf : ∀ a, AnalyticAt ℝ (f a) z) (i : Fin 5) :
+    bulkPartial (fun y => ∑ a, f a y) i z = ∑ a, bulkPartial (f a) i z
+
+GR-GJ-11 | NSEGR.ricci_gaussian_normal
+PATH = GR_adapter/GRAdapter/GaussianCodazzi.lean
+LINE = 104
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = 25157c99abfbf8444db6b1a8c140a69a0516b6aadb77314b9f3364bd05cd46c0
+GIT_BLOB_SHA1 = 8233d040b9639d479260819b96f1de94bd03c8e3
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/GR_adapter/GRAdapter/GaussianCodazzi.lean#L104
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Literal Ric_rr formula before derivative-sum interchange.
+LIMITATION = Normalized kappa derivative formula additionally uses GR-GJ-10.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = GJ04, GJ08, GJ09
+DECLARATION_HEADER =
+theorem ricci_gaussian_normal (h : Bulk → Tensor4) (z : Bulk) :
+    ricci (gaussianMetric h) z 0 0 = gaussianNormalRicciComponent h z
+
+GR-GJ-12 | NSEGR.ricci_gaussian_mixed
+PATH = GR_adapter/GRAdapter/GaussianCodazzi.lean
+LINE = 90
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = 25157c99abfbf8444db6b1a8c140a69a0516b6aadb77314b9f3364bd05cd46c0
+GIT_BLOB_SHA1 = 8233d040b9639d479260819b96f1de94bd03c8e3
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/GR_adapter/GRAdapter/GaussianCodazzi.lean#L90
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Literal Ric_ra equals the native Gaussian Codazzi component.
+LIMITATION = Native formula uses shape derivatives; covariant-divergence normalization is proved in GJ04.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = GJ04, GJ08, GJ09
+DECLARATION_HEADER =
+theorem ricci_gaussian_mixed (h : Bulk → Tensor4) (z : Bulk) (a : Fin 4) :
+    ricci (gaussianMetric h) z 0 a.succ = gaussianCodazziComponent h z a
+
+GR-GJ-13 | NSEGR.Assembly.ricci_gaussian_tangential
+PATH = ASSEMBLY/GRAssembly/GaussianConstraints.lean
+LINE = 81
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = 8de58b62719127d4cfe4f1f869e23cb57c927568c6c24c3a267b1aeab3e45da0
+GIT_BLOB_SHA1 = a93f3268639f5546bc83cd32c8ed14d3c97d0b21
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/GaussianConstraints.lean#L81
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Literal Ric_ab radial/tangential decomposition.
+LIMITATION = Requires determinant unit on a neighborhood; h symmetric is needed to normalize the two LHL terms.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = GJ04, GJ08, GJ09
+DECLARATION_HEADER =
+theorem ricci_gaussian_tangential (h : Bulk → Tensor4) (z : Bulk)
+    (hN : ∀ᶠ y in 𝓝 z, IsUnit (h y).det) (a b : Fin 4) :
+    ricci (gaussianMetric h) z a.succ b.succ =
+      gaussianTangentialRicciComponent h z a b
+
+GR-GJ-14 | NSEGR.Assembly.gaussian_vacuum_iff_components
+PATH = ASSEMBLY/GRAssembly/GaussianConstraints.lean
+LINE = 107
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = 8de58b62719127d4cfe4f1f869e23cb57c927568c6c24c3a267b1aeab3e45da0
+GIT_BLOB_SHA1 = a93f3268639f5546bc83cd32c8ed14d3c97d0b21
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/GaussianConstraints.lean#L107
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Assemble full native Ricci-flatness from normal, mixed, tangential components.
+LIMITATION = Explicit mixed-Ricci symmetry premise is discharged in GJ03; cannot be omitted.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = GJ04, GJ09, GJ10
+DECLARATION_HEADER =
+theorem gaussian_vacuum_iff_components (h : Bulk → Tensor4) (z : Bulk)
+    (hN : ∀ᶠ y in 𝓝 z, IsUnit (h y).det)
+    (hMixed : ∀ a : Fin 4,
+      ricci (gaussianMetric h) z a.succ 0 = ricci (gaussianMetric h) z 0 a.succ) :
+    ricci (gaussianMetric h) z = 0 ↔
+      gaussianNormalRicciComponent h z = 0 ∧
+      (∀ a : Fin 4, gaussianCodazziComponent h z a = 0) ∧
+      (∀ a b : Fin 4, gaussianTangentialRicciComponent h z a b = 0)
+
+GR-GJ-15 | NSEGR.boundaryK_gaussian
+PATH = GR_adapter/GRAdapter/GaussianMetric.lean
+LINE = 167
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = 391ac9a392896e1fae8c0406957a8d3c83a5d7e266cbffaa0acd51c2ac91aa6b
+GIT_BLOB_SHA1 = 8d791487736692dac65a89f4ba0221466c2b3560
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/GR_adapter/GRAdapter/GaussianMetric.lean#L167
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Identify the native boundary jet with L(0,y).
+LIMITATION = Exact K=+h_r/2 convention.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = GJ08
+DECLARATION_HEADER =
+theorem boundaryK_gaussian (h : Bulk → Tensor4) (t : ℝ) (x : Vec) :
+    boundaryK (gaussianMetric h) t x = gaussianSecondForm h (bulkPoint 0 t x)
+
+GR-GJ-16 | NSEGR.Assembly.boundaryCodazzi_expanded
+PATH = ASSEMBLY/GRAssembly/BoundaryConstraintsGeometry.lean
+LINE = 222
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = fbdc0f06d7cdbb37eea72c635d67e609a7544ebf659ea724421f658f832e23e1
+GIT_BLOB_SHA1 = 457cb8d702eddaf1a0b8c32de627eaafd59cc8a3
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/BoundaryConstraintsGeometry.lean#L222
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Match flat initial mixed residual to the native boundary constraint.
+LIMITATION = Requires analytic K at the boundary basepoint.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = GJ09
+DECLARATION_HEADER =
+theorem boundaryCodazzi_expanded {K : BoundaryTensor} {t : ℝ} {x : Vec}
+    (hK : AnalyticAt ℝ (fun z : ℝ × Vec => K z.1 z.2) (t, x)) (a : Fin 4) :
+    boundaryCodazzi K t x a =
+      (∑ b : Fin 4, lorentzSign4 b * boundaryPartial (fun s y => K s y b a) b t x) -
+      ∑ b : Fin 4, lorentzSign4 b * boundaryPartial (fun s y => K s y b b) a t x
+
+GR-GJ-17 | NSEGR.Assembly.bulkPartial_metric_germ
+PATH = ASSEMBLY/GRAssembly/NativeGluingGaussianCoordinates.lean
+LINE = 101
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = dff29f539264001f11b9f73bb81ad84e6888341434f407d018793be3aa1acb05
+GIT_BLOB_SHA1 = c30351f4f7af85663b0718231f6ccd03ec492212
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/NativeGluingGaussianCoordinates.lean#L101
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Preserve actual metric derivatives under arbitrary extension away from germ.
+LIMITATION = Requires actual metric germ equality.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = GJ11, GJ12
+DECLARATION_HEADER =
+theorem bulkPartial_metric_germ {g h : Metric} {z : Bulk}
+    (he : g =ᶠ[𝓝 z] h) (a b i : Fin 5) :
+    bulkPartial (fun y => g y a b) i z = bulkPartial (fun y => h y a b) i z
+
+GR-GJ-18 | NSEGR.Assembly.ricci_metric_germ
+PATH = ASSEMBLY/GRAssembly/NativeGluingGaussianCoordinates.lean
+LINE = 119
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = dff29f539264001f11b9f73bb81ad84e6888341434f407d018793be3aa1acb05
+GIT_BLOB_SHA1 = c30351f4f7af85663b0718231f6ccd03ec492212
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/NativeGluingGaussianCoordinates.lean#L119
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Preserve actual native Ricci under germ-equal metric extension.
+LIMITATION = Locality only; does not prove vacuum or supply LI02.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = GJ11
+DECLARATION_HEADER =
+theorem ricci_metric_germ {g h : Metric} {z : Bulk}
+    (he : g =ᶠ[𝓝 z] h) : ricci g z = ricci h z
+
+ML-FT-01 | fourier_coe_apply
+PATH = Mathlib/Analysis/Fourier/AddCircle.lean
+LINE = 132
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 87fe0972a4370b6fdd14c327855f4e7ab98edf37e9e2ebb5182ab0f676bc16b2
+GIT_BLOB_SHA1 = 3f5c6ed72797f568db7740186fc4ee2f0cdf0fed
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Fourier/AddCircle.lean#L132
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Character normalization at period one.
+LIMITATION = No multivariate character bridge is supplied.
+CONTEXT = {T : ℝ}; {n : ℤ}; {x : ℝ}; source namespace is root.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT01
+DECLARATION_HEADER =
+theorem fourier_coe_apply {n : ℤ} {x : ℝ} :
+    fourier n (x : AddCircle T) = Complex.exp (2 * π * Complex.I * n * x / T)
+
+ML-FT-02 | PiLp.volume_preserving_toLp
+PATH = Mathlib/MeasureTheory/Measure/Haar/InnerProductSpace.lean
+LINE = 139
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 176ec47d5c89daf4d70e31fa237677305755d504dc0eedc2e0d803e592ea2d60
+GIT_BLOB_SHA1 = ec56bf802a75333ff66105c940eed9bf271fb6e1
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Measure/Haar/InnerProductSpace.lean#L139
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Exact EuclideanSpace/product-volume change.
+LIMITATION = Preserves ambient Lebesgue measure; unit-cube preimage must be identified.
+CONTEXT = (ι : Type*) [Fintype ι].
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT03, FT04
+DECLARATION_HEADER =
+theorem PiLp.volume_preserving_toLp : MeasurePreserving (@toLp 2 (ι → ℝ))
+
+ML-FT-03 | UnitAddTorus.mFourierCoeff_eq_integral
+PATH = Mathlib/Analysis/Fourier/AddCircleMulti.lean
+LINE = 251
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 6684531a5f300174571a95237e40b39363ff5339bba5e78c7c66dfd6f53e6a2b
+GIT_BLOB_SHA1 = e141194f7ebb4accfdf50eb8484026ad6476cf4c
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Fourier/AddCircleMulti.lean#L251
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Exact torus coefficient to half-open product cube.
+LIMITATION = Requires torus descended function and Ioc-to-Icc/Euclidean adapters.
+CONTEXT = {d : Type*} [Fintype d]; {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]; normalized AddCircle Haar instances.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT04
+DECLARATION_HEADER =
+theorem mFourierCoeff_eq_integral (f : UnitAddTorus d → E) (n : d → ℤ) (a : d → ℝ) :
+    mFourierCoeff f n =
+    ∫ (x : d → ℝ) in {x : d → ℝ | ∀ i, x i ∈ Ioc (a i) (a i + 1)},
+    mFourier (-n) (fun i => x i) • f (fun i => x i)
+
+ML-FT-04 | UnitAddTorus.mFourier_norm
+PATH = Mathlib/Analysis/Fourier/AddCircleMulti.lean
+LINE = 66
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 6684531a5f300174571a95237e40b39363ff5339bba5e78c7c66dfd6f53e6a2b
+GIT_BLOB_SHA1 = e141194f7ebb4accfdf50eb8484026ad6476cf4c
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Fourier/AddCircleMulti.lean#L66
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Norm-one torus monomials.
+LIMITATION = Norm is the bundled continuous-map supremum norm; physical character equality remains an adapter.
+CONTEXT = {d : Type*} [Fintype d]; {n : d → ℤ}.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT01
+DECLARATION_HEADER =
+lemma mFourier_norm : ‖mFourier n‖ = 1
+
+ML-FT-05 | intervalIntegral.integral_mul_deriv_eq_deriv_mul
+PATH = Mathlib/MeasureTheory/Integral/IntervalIntegral/IntegrationByParts.lean
+LINE = 142
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 848ba7260b6e8b0734dc3e9fef185865f3f4d185b4db9e67c22b847ee063eabb
+GIT_BLOB_SHA1 = b19f15eb3d86371c4f494274b8432a1aafd99a79
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/IntervalIntegral/IntegrationByParts.lean#L142
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Coordinate integration by parts after fixing remaining coordinates.
+LIMITATION = Boundary cancellation and derivative/slice identification are native edges.
+CONTEXT = {a b : ℝ}; {A : Type*} [NormedRing A] [NormedAlgebra ℝ A] [CompleteSpace A]; {u v u' v' : ℝ → A}.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT05
+DECLARATION_HEADER =
+theorem integral_mul_deriv_eq_deriv_mul
+    (hu : ∀ x ∈ [[a, b]], HasDerivAt u (u' x) x) (hv : ∀ x ∈ [[a, b]], HasDerivAt v (v' x) x)
+    (hu' : IntervalIntegrable u' volume a b) (hv' : IntervalIntegrable v' volume a b) :
+    ∫ x in a..b, u x * v' x = u b * v b - u a * v a - ∫ x in a..b, u' x * v x
+
+ML-FT-06 | MeasureTheory.volume_preserving_piFinSuccAbove
+PATH = Mathlib/MeasureTheory/Constructions/Pi.lean
+LINE = 819
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 8751b21ac855f1a7b7c63258e8325f75b6fc236d360758b822ddf54597b118bf
+GIT_BLOB_SHA1 = 277c9469b38ac701ab451167095b926c20c14e5e
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Constructions/Pi.lean#L819
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Split one coordinate from a finite product.
+LIMITATION = For positive dimension write n=m+1 and transport Fin indices.
+CONTEXT = {n : ℕ}; dependent measure spaces and SigmaFinite instances shown in signature.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT05
+DECLARATION_HEADER =
+theorem volume_preserving_piFinSuccAbove {n : ℕ} (α : Fin (n + 1) → Type u)
+    [∀ i, MeasureSpace (α i)] [∀ i, SigmaFinite (volume : Measure (α i))] (i : Fin (n + 1)) :
+    MeasurePreserving (MeasurableEquiv.piFinSuccAbove α i)
+
+ML-FT-07 | MeasureTheory.integral_prod
+PATH = Mathlib/MeasureTheory/Integral/Prod.lean
+LINE = 444
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 6b55fbc9ee94f0ef34a5c6e1fe91d4dc3b27df1eb60d72061366bd80d15de87b
+GIT_BLOB_SHA1 = afc6544a02349aaec3dcb70964a8352a21e01d69
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Prod.lean#L444
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Fubini for cube coordinate slices.
+LIMITATION = Integrability is discharged by smoothness on compact cube.
+CONTEXT = Measure spaces α,β; measures μ,ν; normed real vector space E; applicable SFinite instances.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT05
+DECLARATION_HEADER =
+theorem integral_prod (f : α × β → E) (hf : Integrable f (μ.prod ν)) :
+    ∫ z, f z ∂μ.prod ν = ∫ x, ∫ y, f (x, y) ∂ν ∂μ
+
+ML-FT-08 | ContDiff.fderiv_right
+PATH = Mathlib/Analysis/Calculus/ContDiff/Comp.lean
+LINE = 750
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 26495369d99d4815f99e8319623231a5fe25f0fdd1756c31162216323e27ed0f
+GIT_BLOB_SHA1 = 067d19883550ab5637d02f038d451c42ab16e4b7
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Comp.lean#L750
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Smoothness of coordinate derivatives and derivative words.
+LIMITATION = Evaluation on fixed coordinate vector and periodicity are separate native steps.
+CONTEXT = {𝕜 E F : Type*} [NontriviallyNormedField 𝕜] [NormedAddCommGroup E] [NormedSpace 𝕜 E] [NormedAddCommGroup F] [NormedSpace 𝕜 F]; {f : E → F}; {m n : ℕ∞ω}.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT02
+DECLARATION_HEADER =
+theorem ContDiff.fderiv_right (hf : ContDiff 𝕜 n f) (hmn : m + 1 ≤ n) :
+    ContDiff 𝕜 m (fderiv 𝕜 f)
+
+ML-FT-09 | Function.Periodic.zsmul
+PATH = Mathlib/Algebra/Ring/Periodic.lean
+LINE = 155
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 595ced3c0277252f889fa6f8c2f448c388e0a3f1dc83756fc29ab1290c2566b1
+GIT_BLOB_SHA1 = 71fcf017b9bc3e6a58d2520ebf317ad0abd69b9f
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Algebra/Ring/Periodic.lean#L155
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Extend unit-period identities to integer shifts.
+LIMITATION = Compose finitely many coordinate shifts for full lattice periodicity.
+CONTEXT = {α β : Type*}; {f : α → β}; {c : α}; [AddGroup α].
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT02
+DECLARATION_HEADER =
+protected theorem Periodic.zsmul [AddGroup α] (h : Periodic f c) (n : ℤ) : Periodic f (n • c)
+
+ML-FT-10 | MeasureTheory.norm_integral_le_integral_norm
+PATH = Mathlib/MeasureTheory/Integral/Bochner/Basic.lean
+LINE = 934
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 090e42d51020ea5b3f5265deabb442384e01eae30769d2b114d8141b87363ed5
+GIT_BLOB_SHA1 = 598253e209bb7a585588cb64b501ac877eedaf20
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Bochner/Basic.lean#L934
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Bound coefficient by L1 norm of the smooth product-differential operator.
+LIMITATION = Norm-one character property and integrability are supplied explicitly.
+CONTEXT = Measure space α, measure μ, normed real vector space G.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT07
+DECLARATION_HEADER =
+theorem norm_integral_le_integral_norm (f : α → G) : ‖∫ a, f a ∂μ‖ ≤ ∫ a, ‖f a‖ ∂μ
+
+ML-FT-11 | Real.summable_one_div_int_pow
+PATH = Mathlib/Analysis/PSeries.lean
+LINE = 335
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = dffb9a0012d0091a609e2caa5a8581e3245a8f8508b6c77ef31bc7f59c2d2f7c
+GIT_BLOB_SHA1 = 6499506f39f848904fbf7c0aca08bc303c19dca4
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/PSeries.lean#L335
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = One-dimensional p-series at p=2.
+LIMITATION = Zero index contributes zero in the p-series; add an explicit delta at zero for majorization of (1+k²)^−1.
+CONTEXT = {p : ℕ}.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT08
+DECLARATION_HEADER =
+theorem summable_one_div_int_pow {p : ℕ} :
+    (Summable fun n : ℤ ↦ 1 / (n : ℝ) ^ p) ↔ 1 < p
+
+ML-FT-12 | Summable.mul_of_nonneg
+PATH = Mathlib/Analysis/Normed/Ring/InfiniteSum.lean
+LINE = 34
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = d197a22a8073f6dfe1def4f755919629fdbbecdc4e72f82325eaff2759c4d62c
+GIT_BLOB_SHA1 = d9c1d83eba2ec955c3914387cf1ed15b09f052af
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Ring/InfiniteSum.lean#L34
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Inductive summability of product weights on ℤ^n.
+LIMITATION = Finite-coordinate product induction is native; no uniform-in-n estimate is claimed.
+CONTEXT = {ι ι' : Type*}; functions and nonnegative hypotheses explicit.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT08
+DECLARATION_HEADER =
+theorem Summable.mul_of_nonneg {f : ι → ℝ} {g : ι' → ℝ} (hf : Summable f) (hg : Summable g)
+    (hf' : 0 ≤ f) (hg' : 0 ≤ g) : Summable fun x : ι × ι' => f x.1 * g x.2
+
+ML-FT-13 | UnitAddTorus.hasSum_mFourier_series_of_summable
+PATH = Mathlib/Analysis/Fourier/AddCircleMulti.lean
+LINE = 320
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 6684531a5f300174571a95237e40b39363ff5339bba5e78c7c66dfd6f53e6a2b
+GIT_BLOB_SHA1 = e141194f7ebb4accfdf50eb8484026ad6476cf4c
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Fourier/AddCircleMulti.lean#L320
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Exact actual Fourier reconstruction in continuous-map norm.
+LIMITATION = Coefficient summability is a premise discharged by FT09, not a root assumption.
+CONTEXT = {d : Type*} [Fintype d]; {f : C(UnitAddTorus d, ℂ)}; normalized Haar instances.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT10
+DECLARATION_HEADER =
+theorem hasSum_mFourier_series_of_summable (h : Summable (mFourierCoeff f)) :
+    HasSum (fun i ↦ mFourierCoeff f i • mFourier i) f
+
+ML-FT-14 | UnitAddTorus.hasSum_mFourier_series_apply_of_summable
+PATH = Mathlib/Analysis/Fourier/AddCircleMulti.lean
+LINE = 329
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 6684531a5f300174571a95237e40b39363ff5339bba5e78c7c66dfd6f53e6a2b
+GIT_BLOB_SHA1 = e141194f7ebb4accfdf50eb8484026ad6476cf4c
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Fourier/AddCircleMulti.lean#L329
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Evaluate the reconstructed continuous map at arbitrary torus point.
+LIMITATION = Pullback along x↦(x_i mod1) required for the exact physical endpoint.
+CONTEXT = {d : Type*} [Fintype d]; {f : C(UnitAddTorus d, ℂ)}; normalized Haar instances.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT10
+DECLARATION_HEADER =
+theorem hasSum_mFourier_series_apply_of_summable (h : Summable (mFourierCoeff f))
+    (x : UnitAddTorus d) : HasSum (fun i ↦ mFourierCoeff f i • mFourier i x) (f x)
+
+ML-FT-15 | HasSumUniformlyOn.of_norm_le_summable
+PATH = Mathlib/Topology/Algebra/InfiniteSum/TsumUniformlyOn.lean
+LINE = 35
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 3e5df9c388d41dd3ee3d41a7e178f2d3c5ebcd78214e6785b76bc2f6fe372ea2
+GIT_BLOB_SHA1 = 928620af8c1ba9413cf54895a0c902a649626824
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Algebra/InfiniteSum/TsumUniformlyOn.lean#L35
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Global M-test for arbitrary frequency index set.
+LIMITATION = Concludes uniform convergence to tsum; FT10 identifies that tsum with the actual derivative.
+CONTEXT = {α β F : Type*} [NormedAddCommGroup F] [CompleteSpace F] {u : α → ℝ}.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT11
+DECLARATION_HEADER =
+theorem HasSumUniformlyOn.of_norm_le_summable {f : α → β → F} (hu : Summable u) {s : Set β}
+    (hfu : ∀ n x, x ∈ s → ‖f n x‖ ≤ u n) : HasSumUniformlyOn f (fun x ↦ ∑' n, f n x) s
+
+ML-FT-16 | hasSumUniformlyOn_univ_iff
+PATH = Mathlib/Topology/Algebra/InfiniteSum/UniformOn.lean
+LINE = 332
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 2b6842eac743a43520290d000eb157491298eb5a3ea6f74ead354b05f9674e74
+GIT_BLOB_SHA1 = 657bcee70889563870ac17cc34affca57f8d1f56
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Algebra/InfiniteSum/UniformOn.lean#L332
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Translate the univ M-test result to the literal HasSumUniformly target.
+LIMITATION = Generated by @[to_additive] from the displayed multiplicative declaration; no new compiler run performed.
+CONTEXT = {α β ι : Type*} [AddCommMonoid α] [UniformSpace α]; {f : ι → β → α}; {g : β → α}.
+SIGNATURE_CHECK = GENERATED_TO_ADDITIVE; ORIGINAL_DECLARATION_AND_ATTRIBUTE_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT11
+DECLARATION_HEADER =
+lemma hasSumUniformlyOn_univ_iff :
+    HasSumUniformlyOn f g .univ ↔ HasSumUniformly f g
+GENERATOR_SOURCE =
+@[to_additive]
+lemma hasProdUniformlyOn_univ_iff :
+    HasProdUniformlyOn f g .univ ↔ HasProdUniformly f g := by
+  simp [hasProdUniformly_iff_tendstoUniformly, hasProdUniformlyOn_iff_tendstoUniformlyOn,
+    tendstoUniformlyOn_univ]
+
+@[to_additive]
+theorem MultipliableUniformly.multipliableUniformlyOn (h : MultipliableUniformly f) :
+    MultipliableUniformlyOn f s :=
+  h.exists.choose_spec.hasProdUniformlyOn.multipliableUniformlyOn
+
+ML-FT-17 | UnitAddTorus.integral_preimage
+PATH = Mathlib/Analysis/Fourier/AddCircleMulti.lean
+LINE = 194
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 6684531a5f300174571a95237e40b39363ff5339bba5e78c7c66dfd6f53e6a2b
+GIT_BLOB_SHA1 = e141194f7ebb4accfdf50eb8484026ad6476cf4c
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Fourier/AddCircleMulti.lean#L194
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Normalized torus/product fundamental-domain integration.
+LIMITATION = Half-open product cube, not yet EuclideanSpace closed cube.
+CONTEXT = {d : Type*} [Fintype d]; {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]; normalized Haar instances.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT04
+DECLARATION_HEADER =
+theorem integral_preimage {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (f : UnitAddTorus d → E) (a : d → ℝ) :
+    ∫ x : UnitAddTorus d, f x =
+    ∫ (x : d → ℝ) in {x : d → ℝ | ∀ i, x i ∈ Ioc (a i) (a i + 1)}, f (fun i => x i)
+
+ML-FT-18 | MeasureTheory.integral_Icc_eq_integral_Ioc
+PATH = Mathlib/MeasureTheory/Integral/Bochner/Set.lean
+LINE = 706
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 119710a23a0a09d22f770ca36844ddc3ca1d72cb479e231fe9ec06cea20629f9
+GIT_BLOB_SHA1 = 338ff3f267c912291cbf581e3cd3f2de78982a82
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Bochner/Set.lean#L706
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = One-dimensional null-boundary replacement.
+LIMITATION = Finite-dimensional replacement uses finite product null faces.
+CONTEXT = No-atom measure on ordered space; specialize α=ℝ, μ=volume, x=0, y=1, complex integrand.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT04
+DECLARATION_HEADER =
+theorem integral_Icc_eq_integral_Ioc : ∫ t in Icc x y, f t ∂μ = ∫ t in Ioc x y, f t ∂μ
+
+ML-FT-19 | MeasureTheory.integral_fintype_prod_eq_prod
+PATH = Mathlib/MeasureTheory/Integral/Pi.lean
+LINE = 106
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 43c50a9d9a683b2050e145154410a7260c3dd84f3ec3010630cc6b90572afcd9
+GIT_BLOB_SHA1 = b3c25bf06d8f65f099cd65501eee61b34e1d9a2d
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Pi.lean#L106
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Exact finite-product integration/measure normalization.
+LIMITATION = For general non-product integrands use FT06/ML-FT-07 Fubini; this endpoint alone is not general multivariate IBP.
+CONTEXT = {𝕜 ι : Type*} [Fintype ι] [RCLike 𝕜]; finite product of SigmaFinite measures.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT04
+DECLARATION_HEADER =
+theorem integral_fintype_prod_eq_prod {E : ι → Type*} (f : (i : ι) → E i → 𝕜)
+    {mE : ∀ i, MeasurableSpace (E i)} {μ : (i : ι) → Measure (E i)} [∀ i, SigmaFinite (μ i)] :
+    ∫ x : (i : ι) → E i, ∏ i, f i (x i) ∂(Measure.pi μ) = ∏ i, ∫ x, f i x ∂(μ i)
+
+ME-FT-01 | NSEMaxwell.HodgeProof.scalarCoeff_coordinateDerivative
+PATH = FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean
+LINE = 42
+REVISION = eac159c5f7bf5a99a00d994da34c4760ea8335d0
+FILE_SHA256 = 280e00740d779c6c592a6a9a6ce650355297050e7a75f18affbe8348aa8c3212
+GIT_BLOB_SHA1 = 9c3755c1fd05214dca2afb1d0a18d7876eca5c35
+URL = https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean#L42
+REUSE = TEMPLATE_3D_ONLY
+ROLE = Proved n=3 real-scalar prototype for FT05/FT06.
+LIMITATION = ScalarField=Vec₃→ℝ. Complex-valued full LI03 needs real/imaginary splitting at n=3 and a genuinely n-general proof for arbitrary n.
+CONTEXT = namespace NSEMaxwell.HodgeProof; open NSEMaxwell.Classical; ScalarField and Vec fixed at dimension 3.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_METHLIB_RETRIEVAL_BLOB
+USED_BY = FT05, FT06
+DECLARATION_HEADER =
+theorem scalarCoeff_coordinateDerivative (f : ScalarField)
+    (hf : ContDiff ℝ ∞ f) (hp : SpatialPeriodic f) (j : Fin 3) (k : Frequency) :
+    scalarCoeff (fun x => fderiv ℝ f x (unitVector j)) k =
+      SingularClosure.derivativeSymbol j k * scalarCoeff f k
+
+ME-FT-02 | NSEMaxwell.HodgeProof.rapid_scalarCoeff
+PATH = FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean
+LINE = 58
+REVISION = eac159c5f7bf5a99a00d994da34c4760ea8335d0
+FILE_SHA256 = 280e00740d779c6c592a6a9a6ce650355297050e7a75f18affbe8348aa8c3212
+GIT_BLOB_SHA1 = 9c3755c1fd05214dca2afb1d0a18d7876eca5c35
+URL = https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean#L58
+REUSE = TEMPLATE_3D_ONLY
+ROLE = Proved n=3 rapid Fourier coefficient package; supports independent sanity check of FT09 at n=3.
+LIMITATION = Does not imply arbitrary-dimension LiteratureSmoothFourierInput. Its RapidScalarFourier weights use the three-dimensional phase norm.
+CONTEXT = namespace NSEMaxwell.HodgeProof; open NSEMaxwell.Classical; ScalarField and Vec fixed at dimension 3.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_METHLIB_RETRIEVAL_BLOB
+USED_BY = FT09
+DECLARATION_HEADER =
+theorem rapid_scalarCoeff (f : ScalarField)
+    (hf : ContDiff ℝ ∞ f) (hp : SpatialPeriodic f) :
+    SingularClosure.RapidScalarFourier (scalarCoeff f)
+
+ML-FT-20 | Continuous.isClosedMap
+PATH = Mathlib/Topology/Separation/Hausdorff.lean
+LINE = 673
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = 4e6998adc898c3aac6d01e0c8bc916aa68794bf6cca0d3c57e43f76760151a87
+GIT_BLOB_SHA1 = 035464532dbc48a094702ce5046ec3a46ed23824
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Separation/Hausdorff.lean#L673
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Continuous compact-to-Hausdorff quotient map is closed.
+LIMITATION = Compactness of the physical cube and periodic fiber constancy are proved in FT02/FT03.
+CONTEXT = Topological spaces X,Y,Z; maps f:X→Y and g:Y→Z. Compact/T2/surjectivity assumptions as in the displayed declaration.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT03
+DECLARATION_HEADER =
+protected theorem Continuous.isClosedMap [CompactSpace X] [T2Space Y] {f : X → Y}
+    (h : Continuous f) : IsClosedMap f
+
+ML-FT-21 | IsClosedMap.isQuotientMap
+PATH = Mathlib/Topology/Maps/Basic.lean
+LINE = 571
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = f5775adabdf497e328542ea77e5fe0ac46011bc34905a7e02ffe0284ec1e79d8
+GIT_BLOB_SHA1 = 84685026e27afe17242ad7aa3150104fe8085807
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Maps/Basic.lean#L571
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = A continuous closed surjection is a quotient map.
+LIMITATION = Compactness of the physical cube and periodic fiber constancy are proved in FT02/FT03.
+CONTEXT = Topological spaces X,Y,Z; maps f:X→Y and g:Y→Z. Compact/T2/surjectivity assumptions as in the displayed declaration.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT03
+DECLARATION_HEADER =
+theorem isQuotientMap (hcl : IsClosedMap f) (hcont : Continuous f)
+    (hsurj : Surjective f) : IsQuotientMap f
+
+ML-FT-22 | Topology.IsQuotientMap.continuous_iff
+PATH = Mathlib/Topology/Maps/Basic.lean
+LINE = 353
+REVISION = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+FILE_SHA256 = f5775adabdf497e328542ea77e5fe0ac46011bc34905a7e02ffe0284ec1e79d8
+GIT_BLOB_SHA1 = 84685026e27afe17242ad7aa3150104fe8085807
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Maps/Basic.lean#L353
+REUSE = EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE
+ROLE = Continuity of descended torus function from cube pullback.
+LIMITATION = Compactness of the physical cube and periodic fiber constancy are proved in FT02/FT03.
+CONTEXT = Topological spaces X,Y,Z; maps f:X→Y and g:Y→Z. Compact/T2/surjectivity assumptions as in the displayed declaration.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB
+USED_BY = FT03
+DECLARATION_HEADER =
+protected theorem continuous_iff (hf : IsQuotientMap f) : Continuous g ↔ Continuous (g ∘ f)
+
+GR-ROOT-01 | NSEGR.Assembly.NSE_GR_THREE_OBLIGATION_CLOSURE
+PATH = ASSEMBLY/GRAssembly/NSE_GR_THREE_OBLIGATION_CLOSURE.lean
+LINE = 10
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = 5706aa0e3f93c0e21f7fc46b85360d593c10e4e90bc0178dc365b125bed645d9
+GIT_BLOB_SHA1 = 05b43a75fe25c1cba37871b5c450fad438fa9212
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/NSE_GR_THREE_OBLIGATION_CLOSURE.lean#L10
+REUSE = EXACT_CONDITIONAL_ROOT
+ROLE = Audited exact conditional root; apply only after constructing literal LiteratureInputs.
+LIMITATION = Explicit LiteratureInputs remains a premise until independently inhabited; no native promotion of new chain by this existing audit.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = ROOT02
+DECLARATION_HEADER =
+theorem NSE_GR_THREE_OBLIGATION_CLOSURE
+    (ν ρ t0 : ℝ) (hν : 0 < ν) (hρ : ρ ≠ 0) (input : LiteratureInputs) :
+    ExactSectorEquivalence ν ρ t0 :=
+
+GR-ROOT-02 | NSEGR.Assembly.nativeLawPackages_of_literatureInputs
+PATH = ASSEMBLY/GRAssembly/RootClosure.lean
+LINE = 18
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = eeeb1a6aa2001ea7e0cea195f832874f884796da6012ddaeb7dcb21b2695d4b1
+GIT_BLOB_SHA1 = 9bb8b5597dbd6e67c24f0a42f9b2fd35c8940be9
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/RootClosure.lean#L18
+REUSE = EXACT_CONDITIONAL_ROOT
+ROLE = Audited construction of c/r/h/q from literal literature arguments.
+LIMITATION = Explicit LiteratureInputs remains a premise until independently inhabited; no native promotion of new chain by this existing audit.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = reference/support ledger
+DECLARATION_HEADER =
+theorem nativeLawPackages_of_literatureInputs
+    (input : LiteratureInputs) (ν ρ t0 : ℝ) (hρ : ρ ≠ 0) :
+    ∃ c : ScalarBoundaryCompletionLaws ν ρ t0,
+      ∃ r : AnalyticRadialExtensionLaws ρ t0,
+        ∃ h : GeometricReconstructionLaws ν ρ t0, GermInverseLaws c r h :=
+
+GR-ROOT-03 | NSEGR.Assembly.NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_LITERATURE_INPUTS
+PATH = ASSEMBLY/GRAssembly/RootClosure.lean
+LINE = 29
+REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+FILE_SHA256 = eeeb1a6aa2001ea7e0cea195f832874f884796da6012ddaeb7dcb21b2695d4b1
+GIT_BLOB_SHA1 = 9bb8b5597dbd6e67c24f0a42f9b2fd35c8940be9
+URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/RootClosure.lean#L29
+REUSE = EXACT_CONDITIONAL_ROOT
+ROLE = Audited germ equivalence from literal literature arguments.
+LIMITATION = Explicit LiteratureInputs remains a premise until independently inhabited; no native promotion of new chain by this existing audit.
+CONTEXT = Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.
+SIGNATURE_CHECK = LITERAL_SOURCE_HEADER_VERIFIED
+PROVENANCE = MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST
+USED_BY = reference/support ledger
+DECLARATION_HEADER =
+theorem NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_LITERATURE_INPUTS
+    (ν ρ t0 : ℝ) (hν : 0 < ν) (hρ : ρ ≠ 0) (input : LiteratureInputs) :
+    ExactSectorEquivalence ν ρ t0 :=
+
+LITERAL TARGET DEFINITIONS
+==========================
+SOURCE = GR_adapter/GRAdapter/LiteratureInputs.lean
+SOURCE_REVISION = 2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2
+SOURCE_SHA256 = b47aeed4d0117d3569bd0a739946f7339cb569d6c010d1e67235c3c9edd0b3f3
+The following is the existing exact source, not new proof code. Its historical
+comments do not supersede the current status ledger above; the original adapter
+obligations already have conditional native closure. The input structures below
+still lack native inhabitants. Literal source bytes follow unchanged.
+
+import GRAdapter.Boundary
+
+/-!
+# Explicit source-facing literature signatures
+
+LI01: Chaperon, On the Cauchy-Kowalevski theorem, Section 2, equation (2).
+LI02: Dahia--Romero, gr-qc/0109076, Lemmas 1 and 2, Theorem 2 sufficient
+direction; fixed lapse 1, extra sign +1, zero cosmological constant.
+LI03: Guillemin, Notes for 18.117 (2005), Section 4, Propositions 4.1/4.3,
+Corollary 4.2 and equation (4.5), after the period-one normalization.
+
+These are concrete mathematical propositions, not new axioms and not
+inhabitants of the propositions. All four project adapter contracts remain
+separate obligations. In particular no periodic collar, scalar completion,
+constitutive residual, or inverse-germ theorem occurs in the input fields.
+
+The germ formulation uses globally typed functions whose behavior is
+constrained only on neighborhoods. It is equivalent to the usual source
+formulation on open neighborhoods by restriction and arbitrary extension.
+-/
+
+set_option autoImplicit false
+
+open Set Filter MeasureTheory
+open scoped Topology BigOperators ContDiff Matrix.Norms.Frobenius
+
+namespace NSEGR
+
+noncomputable section
+
+abbrev LiteratureSpace (n : ℕ) := EuclideanSpace ℝ (Fin n)
+
+abbrev LiteratureCKJet (n m : ℕ) :=
+  (ℝ × LiteratureSpace n) ×
+    (LiteratureSpace m × (LiteratureSpace n →L[ℝ] LiteratureSpace m))
+
+abbrev LiteratureCKRHS (n m : ℕ) := LiteratureCKJet n m → LiteratureSpace m
+
+def LiteratureCKInitialJet {n m : ℕ} (t0 : ℝ) (x0 : LiteratureSpace n)
+    (u0 : LiteratureSpace n → LiteratureSpace m) : LiteratureCKJet n m :=
+  ((t0, x0), (u0 x0, fderiv ℝ u0 x0))
+
+/-- Actual analytic Cauchy solution near one base point; all equality data are
+germs on neighborhoods, not just equality of values at the base point. -/
+structure LiteratureCKSolution {n m : ℕ} (F : LiteratureCKRHS n m)
+    (u0 : LiteratureSpace n → LiteratureSpace m) (t0 : ℝ)
+    (x0 : LiteratureSpace n)
+    (u : ℝ × LiteratureSpace n → LiteratureSpace m) : Prop where
+  analytic : AnalyticAt ℝ u (t0, x0)
+  initial : ∀ᶠ x in 𝓝 x0, u (t0, x) = u0 x
+  equation : ∀ᶠ z in 𝓝 (t0, x0),
+    deriv (fun t : ℝ => u (t, z.2)) z.1 =
+      F (z, (u z, fderiv ℝ (fun x => u (z.1, x)) z.2))
+
+/-- LI01. The finite-dimensional first-order analytic CK theorem, including
+analytic solution-germ uniqueness. No radius uniformity is assumed. -/
+structure LiteratureAnalyticCKInput : Prop where
+  exists_unique : ∀ (n m : ℕ), 0 < n → 0 < m →
+    ∀ (F : LiteratureCKRHS n m)
+      (u0 : LiteratureSpace n → LiteratureSpace m)
+      (t0 : ℝ) (x0 : LiteratureSpace n),
+      AnalyticAt ℝ u0 x0 →
+      AnalyticAt ℝ F (LiteratureCKInitialJet t0 x0 u0) →
+      ∃ u : ℝ × LiteratureSpace n → LiteratureSpace m,
+        LiteratureCKSolution F u0 t0 x0 u ∧
+        ∀ v : ℝ × LiteratureSpace n → LiteratureSpace m,
+          LiteratureCKSolution F u0 t0 x0 v → u =ᶠ[𝓝 (t0, x0)] v
+
+/-- Flat constrained analytic boundary data near a single boundary point.
+No periodicity, rho normalization, or constitutive condition is present. -/
+structure LiteratureFlatBoundaryGerm (K : BoundaryTensor) (t0 : ℝ)
+    (x0 : Vec) : Prop where
+  analytic : AnalyticAt ℝ (fun z : ℝ × Vec => K z.1 z.2) (t0, x0)
+  symmetric : ∀ᶠ z in 𝓝 (t0, x0), (K z.1 z.2).IsSymm
+  hamiltonian : ∀ᶠ z in 𝓝 (t0, x0), boundaryHamiltonian K z.1 z.2 = 0
+  codazzi : ∀ᶠ z in 𝓝 (t0, x0), ∀ b : Fin 4, boundaryCodazzi K z.1 z.2 b = 0
+
+/-- Actual Gaussian metric germ with both prescribed boundary data germs.
+The native Lorentzian change-of-basis witness is not inserted as an input;
+it remains a consequence to derive from the induced eta metric. -/
+structure LiteratureFlatGaussianGerm (K : BoundaryTensor) (t0 : ℝ)
+    (x0 : Vec) (g : Metric) : Prop where
+  analytic : AnalyticAt ℝ g (bulkPoint 0 t0 x0)
+  symmetric : ∀ᶠ z in 𝓝 (bulkPoint 0 t0 x0), (g z).IsSymm
+  nondegenerate : ∀ᶠ z in 𝓝 (bulkPoint 0 t0 x0), (g z).det ≠ 0
+  gaussian_rr : ∀ᶠ z in 𝓝 (bulkPoint 0 t0 x0), g z 0 0 = 1
+  gaussian_rboundary : ∀ᶠ z in 𝓝 (bulkPoint 0 t0 x0),
+    ∀ a : Fin 4, g z 0 (boundaryIndex a) = 0
+  induced : ∀ᶠ z in 𝓝 (t0, x0), ∀ a b : Fin 4,
+    g (bulkPoint 0 z.1 z.2) (boundaryIndex a) (boundaryIndex b) = eta4 a b
+  boundary_match : ∀ᶠ z in 𝓝 (t0, x0), boundaryK g z.1 z.2 = K z.1 z.2
+  vacuum : ∀ᶠ z in 𝓝 (bulkPoint 0 t0 x0), ricci g z = 0
+
+/-- LI02. Point-local prescribed-data Gaussian vacuum existence and uniqueness.
+The source extrinsic-curvature sign is the negative of `boundaryK`.
+Uniqueness is in the same coordinates and normal orientation. -/
+structure LiteratureGaussianJetInput : Prop where
+  exists_unique : ∀ (K : BoundaryTensor) (t0 : ℝ) (x0 : Vec),
+    LiteratureFlatBoundaryGerm K t0 x0 →
+      ∃ g : Metric, LiteratureFlatGaussianGerm K t0 x0 g ∧
+        ∀ h : Metric, LiteratureFlatGaussianGerm K t0 x0 h →
+          g =ᶠ[𝓝 (bulkPoint 0 t0 x0)] h
+
+abbrev LiteratureFrequency (n : ℕ) := Fin n → ℤ
+
+def LiteratureUnitVector {n : ℕ} (i : Fin n) : LiteratureSpace n :=
+  EuclideanSpace.single i (1 : ℝ)
+
+def LiteratureUnitCube (n : ℕ) : Set (LiteratureSpace n) :=
+  {x | ∀ i : Fin n, 0 ≤ x i ∧ x i ≤ 1}
+
+def LiteraturePeriodic {n : ℕ} (f : LiteratureSpace n → ℂ) : Prop :=
+  ∀ (x : LiteratureSpace n) (i : Fin n), f (x + LiteratureUnitVector i) = f x
+
+/-- The actual unit-period character; no Fourier data are supplied abstractly. -/
+def LiteratureCharacter {n : ℕ} (k : LiteratureFrequency n)
+    (x : LiteratureSpace n) : ℂ :=
+  Complex.exp ((2 * (Real.pi : ℂ) * Complex.I) *
+    ((∑ i : Fin n, (k i : ℝ) * x i : ℝ) : ℂ))
+
+def LiteratureFourierCoefficient {n : ℕ} (f : LiteratureSpace n → ℂ)
+    (k : LiteratureFrequency n) : ℂ :=
+  ∫ x in LiteratureUnitCube n, f x * LiteratureCharacter (-k) x
+
+/-- A finite coordinate derivative word, expressed using actual Frechet
+derivatives. Smoothness identifies these with the usual multiindex partials. -/
+def LiteraturePartialWord {n : ℕ} :
+    List (Fin n) → (LiteratureSpace n → ℂ) → LiteratureSpace n → ℂ
+  | [], f => f
+  | i :: w, f => fun x =>
+      fderiv ℝ (LiteraturePartialWord w f) x (LiteratureUnitVector i)
+
+def LiteratureFourierWordMultiplier {n : ℕ} (w : List (Fin n))
+    (k : LiteratureFrequency n) : ℂ :=
+  (w.map (fun i => 2 * (Real.pi : ℂ) * Complex.I * (k i : ℂ))).prod
+
+/-- LI03. Smooth periodic Fourier inversion, derivative multipliers, absolute
+coefficient summability, and uniform differentiated convergence. The native
+Poisson/Leray identities and time-analytic estimates are not input fields. -/
+structure LiteratureSmoothFourierInput : Prop where
+  reconstruct : ∀ (n : ℕ), 0 < n → ∀ (f : LiteratureSpace n → ℂ),
+    ContDiff ℝ ∞ f → LiteraturePeriodic f → ∀ w : List (Fin n),
+      (∀ k : LiteratureFrequency n,
+        LiteratureFourierCoefficient (LiteraturePartialWord w f) k =
+          LiteratureFourierWordMultiplier w k * LiteratureFourierCoefficient f k) ∧
+      Summable (fun k : LiteratureFrequency n =>
+        ‖LiteratureFourierWordMultiplier w k * LiteratureFourierCoefficient f k‖) ∧
+      HasSumUniformly
+        (fun (k : LiteratureFrequency n) (x : LiteratureSpace n) =>
+          (LiteratureFourierWordMultiplier w k * LiteratureFourierCoefficient f k) *
+            LiteratureCharacter k x)
+        (LiteraturePartialWord w f)
+
+/-- Three explicit source signatures. This structure does not contain any
+of the four project law packages, nor does its declaration inhabit it. -/
+structure LiteratureInputs : Prop where
+  ck : LiteratureAnalyticCKInput
+  gaussianJet : LiteratureGaussianJetInput
+  smoothFourier : LiteratureSmoothFourierInput
+
+/-- Exact source field extraction. This does not discharge LI01. -/
+theorem LiteratureInputs_ck (h : LiteratureInputs) : LiteratureAnalyticCKInput := h.ck
+
+/-- Exact source field extraction. This does not discharge LI02. -/
+theorem LiteratureInputs_gaussianJet (h : LiteratureInputs) :
+    LiteratureGaussianJetInput := h.gaussianJet
+
+/-- Exact source field extraction. This does not discharge LI03. -/
+theorem LiteratureInputs_smoothFourier (h : LiteratureInputs) :
+    LiteratureSmoothFourierInput := h.smoothFourier
+
+end
+
+end NSEGR
+
+FINAL VALIDATION AND STATUS
+===========================
+{
+  "mathematical_review": "THREE_COMPLETE_SECTIONS_REVIEWED; CORRECTIONS_APPLIED",
+  "selected_endpoint_records": 86,
+  "unique_declarations": 83,
+  "source_files": 45,
+  "native_derivation_nodes": 41,
+  "endpoint_counts": {
+    "ML": 63,
+    "ME": 2,
+    "GR": 21
+  },
+  "all_source_sha256_verified": true,
+  "all_pinned_blob_or_audit_manifest_verified": true,
+  "all_declared_signature_sources_verified": true,
+  "dependency_graph_acyclic": true,
+  "all_existing_proof_input_hashes_unchanged": true,
+  "local_lean_executions": 0,
+  "new_compiler_evidence": null,
+  "new_native_promotion": false
+}
+
+MATHEMATICAL_RESULT = !=B_TIER: LI01; LI01 -> LI02; LI03; ROOT01; ROOT02.
+NATIVE_RESULT = Existing conditional A-tier root retained; new native input proofs pending.

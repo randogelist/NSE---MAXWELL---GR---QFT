@@ -1,0 +1,2206 @@
+{
+  "audited_source_commit": "4e9638abfa0556ee74ddbce8441973993091271d",
+  "native_theorem_count": 199,
+  "root_from_literature_inputs": "NOT_CONSTRUCTED",
+  "source_and_axiom_evidence": {
+    "audited_source_commit": "4e9638abfa0556ee74ddbce8441973993091271d",
+    "workflow_run_id": 43375199321,
+    "artifact_id": 14014251182,
+    "artifact_sha256": "33fa8387b7df7a45d4a194c78436a3e088f16173260fde21356cc802427d4d58",
+    "compiler": "Lean4.34.0-rc1",
+    "mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+    "new_theorem_count": 199,
+    "named_declaration_audit_count": 401
+  },
+  "endpoints": [
+    {
+      "name": "NSEGR.LiteratureInputs_ck",
+      "path": "GR_adapter/GRAdapter/LiteratureInputs.lean",
+      "line": 162,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.LiteratureInputs_gaussianJet",
+      "path": "GR_adapter/GRAdapter/LiteratureInputs.lean",
+      "line": 165,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.LiteratureInputs_smoothFourier",
+      "path": "GR_adapter/GRAdapter/LiteratureInputs.lean",
+      "line": 169,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.fderiv_periodic",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 14,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.spatialPartial_periodic",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 20,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.divergence_periodic",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 25,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gradient_periodic",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 33,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.laplacian_periodic",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 39,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.isCompact_unitCube",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 59,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.integrableOn_unitCube_of_continuous",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 65,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.volume_unitCube",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 74,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalarMean_const",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 81,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.spatialMean_const",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 84,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.integral_fderiv_unitVector_zero",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 163,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.spatialMean_spatialPartial_zero",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 189,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.spatialMean_apply",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 194,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.spatialPartial_smooth",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 199,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.integral_spatial_component_zero",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 203,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalarMean_divergence_zero",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 211,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gradient_smooth",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 221,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.spatialMean_gradient_zero",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 228,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.cosineKernel_add_unit_left",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 235,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.cosineKernel_symm",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 260,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.cosineKernel_add_unit_right",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 273,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.poissonInverse_periodic",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 279,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.leray_periodic",
+      "path": "GR_adapter/GRAdapter/UnitTorus.lean",
+      "line": 283,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.lorentzTrace4_lowerTensor4",
+      "path": "GR_adapter/GRAdapter/ScalarNormalForm.lean",
+      "line": 46,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.lorentzSquare4_lowerTensor4",
+      "path": "GR_adapter/GRAdapter/ScalarNormalForm.lean",
+      "line": 50,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.sourceHamiltonian4_lowerTensor4",
+      "path": "GR_adapter/GRAdapter/ScalarNormalForm.lean",
+      "line": 54,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.sourceHamiltonian4_boundaryBlock",
+      "path": "GR_adapter/GRAdapter/ScalarNormalForm.lean",
+      "line": 58,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.vectorSq3_sub",
+      "path": "GR_adapter/GRAdapter/ScalarNormalForm.lean",
+      "line": 63,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.trace3_scalarSpatialJet",
+      "path": "GR_adapter/GRAdapter/ScalarNormalForm.lean",
+      "line": 69,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.frobeniusSq3_scalarSpatialJet",
+      "path": "GR_adapter/GRAdapter/ScalarNormalForm.lean",
+      "line": 74,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalarCompletedUpper_eq_block",
+      "path": "GR_adapter/GRAdapter/ScalarNormalForm.lean",
+      "line": 80,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalar_hamiltonian_expansion",
+      "path": "GR_adapter/GRAdapter/ScalarNormalForm.lean",
+      "line": 100,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalar_hamiltonian_expansion_lowered",
+      "path": "GR_adapter/GRAdapter/ScalarNormalForm.lean",
+      "line": 127,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalar_hamiltonian_zero_iff",
+      "path": "GR_adapter/GRAdapter/ScalarNormalForm.lean",
+      "line": 137,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalarJetRHS_solves_hamiltonian",
+      "path": "GR_adapter/GRAdapter/ScalarNormalForm.lean",
+      "line": 147,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalar_hamiltonian_secondJet_difference",
+      "path": "GR_adapter/GRAdapter/ScalarNormalForm.lean",
+      "line": 154,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalar_hamiltonian_initial_jet",
+      "path": "GR_adapter/GRAdapter/ScalarNormalForm.lean",
+      "line": 162,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalar_hamiltonian_initial_noncharacteristic",
+      "path": "GR_adapter/GRAdapter/ScalarNormalForm.lean",
+      "line": 169,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.trace3_scalarHessian",
+      "path": "GR_adapter/GRAdapter/ScalarNormalForm.lean",
+      "line": 175,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalarCompletionUpper_eq_scalarJet",
+      "path": "GR_adapter/GRAdapter/ScalarNormalForm.lean",
+      "line": 180,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.completedBoundary_hamiltonian_eq_scalarJet",
+      "path": "GR_adapter/GRAdapter/ScalarNormalForm.lean",
+      "line": 192,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.completedBoundary_hamiltonian_zero_iff_scalar_normal",
+      "path": "GR_adapter/GRAdapter/ScalarNormalForm.lean",
+      "line": 207,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.analyticAt_fin3_sum",
+      "path": "GR_adapter/GRAdapter/ScalarAnalytic.lean",
+      "line": 21,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.analyticAt_trace3_components",
+      "path": "GR_adapter/GRAdapter/ScalarAnalytic.lean",
+      "line": 30,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.analyticAt_vectorDot3_components",
+      "path": "GR_adapter/GRAdapter/ScalarAnalytic.lean",
+      "line": 35,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.analyticAt_vectorSq3_components",
+      "path": "GR_adapter/GRAdapter/ScalarAnalytic.lean",
+      "line": 42,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.analyticAt_frobeniusInner3_components",
+      "path": "GR_adapter/GRAdapter/ScalarAnalytic.lean",
+      "line": 48,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.analyticAt_frobeniusSq3_components",
+      "path": "GR_adapter/GRAdapter/ScalarAnalytic.lean",
+      "line": 59,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.analyticAt_sourceHamiltonian4_boundaryBlock",
+      "path": "GR_adapter/GRAdapter/ScalarAnalytic.lean",
+      "line": 70,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.analyticAt_scalarJetRHS_components",
+      "path": "GR_adapter/GRAdapter/ScalarAnalytic.lean",
+      "line": 97,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.analyticOnNhd_scalarJetRHS_components",
+      "path": "GR_adapter/GRAdapter/ScalarAnalytic.lean",
+      "line": 129,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianMatrix_rr",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 27,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianMatrix_rb",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 29,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianMatrix_ar",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 32,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianMatrix_ab",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 35,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianMatrix_one",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 38,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianMatrix_mul",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 51,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianMatrix_transpose",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 75,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianMatrix_isUnit_det",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 82,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianMatrix_inverse",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 87,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianMatrix_eta4",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 92,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianMetric_rr",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 111,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianMetric_rb",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 114,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianMetric_ar",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 117,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianMetric_ab",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 120,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.inverseMetric_gaussian",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 123,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianMetric_lorentzian_of_congruence",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 129,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.bulkPartial_gaussian_rr",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 140,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.bulkPartial_gaussian_rb",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 146,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.bulkPartial_gaussian_ar",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 152,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.bulkPartial_gaussian_ab",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 158,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.boundaryK_gaussian",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 167,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.christoffel_gaussian_rr",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 171,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.christoffel_gaussian_rab",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 179,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.christoffel_gaussian_rrb",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 189,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.christoffel_gaussian_arb",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 198,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.christoffel_gaussian_abc",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line": 219,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.compact_slice_eventually_eq",
+      "path": "GR_adapter/GRAdapter/GermUniformity.lean",
+      "line": 21,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.integerSpatialShift_apply",
+      "path": "GR_adapter/GRAdapter/GermUniformity.lean",
+      "line": 32,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.spatialCellRepresentative_mem_unitCube",
+      "path": "GR_adapter/GRAdapter/GermUniformity.lean",
+      "line": 42,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.spatialCellRepresentative_add_shift",
+      "path": "GR_adapter/GRAdapter/GermUniformity.lean",
+      "line": 47,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.spatialPeriodic_integerSpatialShift",
+      "path": "GR_adapter/GRAdapter/GermUniformity.lean",
+      "line": 55,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.spatialPeriodic_eq_cellRepresentative",
+      "path": "GR_adapter/GRAdapter/GermUniformity.lean",
+      "line": 70,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.spatialPeriodic_eq_of_eqOn_unitCube",
+      "path": "GR_adapter/GRAdapter/GermUniformity.lean",
+      "line": 80,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.periodic_slice_germs_uniform",
+      "path": "GR_adapter/GRAdapter/GermUniformity.lean",
+      "line": 91,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.continuous_bulkPoint_product",
+      "path": "GR_adapter/GRAdapter/GermUniformity.lean",
+      "line": 101,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.sameMetricAt_of_boundary_germs",
+      "path": "GR_adapter/GRAdapter/GermUniformity.lean",
+      "line": 114,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianVacuum_eventually_periodic",
+      "path": "GR_adapter/GRAdapter/GermUniformity.lean",
+      "line": 127,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianVacuum_sameMetricAt_of_boundary_germs",
+      "path": "GR_adapter/GRAdapter/GermUniformity.lean",
+      "line": 139,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.reconstruction_trace_scalarHessian",
+      "path": "GR_adapter/GRAdapter/ReconstructionAlgebra.lean",
+      "line": 20,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.reconstruction_trace_velocityOuter",
+      "path": "GR_adapter/GRAdapter/ReconstructionAlgebra.lean",
+      "line": 25,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.reconstruction_trace_boundarySpatial",
+      "path": "GR_adapter/GRAdapter/ReconstructionAlgebra.lean",
+      "line": 30,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.reconstruction_lorentzTrace_boundary",
+      "path": "GR_adapter/GRAdapter/ReconstructionAlgebra.lean",
+      "line": 37,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.reconstruction_eta4_spatial",
+      "path": "GR_adapter/GRAdapter/ReconstructionAlgebra.lean",
+      "line": 45,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.boundaryPreStress_trace",
+      "path": "GR_adapter/GRAdapter/ReconstructionAlgebra.lean",
+      "line": 50,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.boundarySpatial_eq_of_stress_zero",
+      "path": "GR_adapter/GRAdapter/ReconstructionAlgebra.lean",
+      "line": 63,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.boundary_eq_completedBoundary_of_zero_stress",
+      "path": "GR_adapter/GRAdapter/ReconstructionAlgebra.lean",
+      "line": 91,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.boundary_slice_eq_completedBoundary_of_zero_stress",
+      "path": "GR_adapter/GRAdapter/ReconstructionAlgebra.lean",
+      "line": 158,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.reconstruction_residual_of_differential_identities",
+      "path": "GR_adapter/GRAdapter/ReconstructionAlgebra.lean",
+      "line": 175,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.boundaryPressure_hasFDerivAt",
+      "path": "GR_adapter/GRAdapter/ReconstructionCalculus.lean",
+      "line": 19,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.boundaryPressure_gradient",
+      "path": "GR_adapter/GRAdapter/ReconstructionCalculus.lean",
+      "line": 44,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.reconstruction_residual_of_three_differential_identities",
+      "path": "GR_adapter/GRAdapter/ReconstructionCalculus.lean",
+      "line": 72,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.literatureCharacter_eq_exp_phase",
+      "path": "GR_adapter/GRAdapter/FourierBridge.lean",
+      "line": 29,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.fourierPhase_neg",
+      "path": "GR_adapter/GRAdapter/FourierBridge.lean",
+      "line": 36,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.fourierPhase_sub",
+      "path": "GR_adapter/GRAdapter/FourierBridge.lean",
+      "line": 40,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.literatureCharacter_mul_negative",
+      "path": "GR_adapter/GRAdapter/FourierBridge.lean",
+      "line": 44,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.cosineKernel_eq_re_character",
+      "path": "GR_adapter/GRAdapter/FourierBridge.lean",
+      "line": 54,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.literatureCharacter_continuous",
+      "path": "GR_adapter/GRAdapter/FourierBridge.lean",
+      "line": 61,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.cosineKernel_integral_eq_re_fourier",
+      "path": "GR_adapter/GRAdapter/FourierBridge.lean",
+      "line": 67,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.poissonInverse_eq_tsum_fourier_re",
+      "path": "GR_adapter/GRAdapter/FourierBridge.lean",
+      "line": 104,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.poissonInverse_eq_re_tsum_fourier",
+      "path": "GR_adapter/GRAdapter/FourierBridge.lean",
+      "line": 116,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.frequency_square_sum_ge_one",
+      "path": "GR_adapter/GRAdapter/FourierBridge.lean",
+      "line": 131,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.poissonSymbol_abs_le_one",
+      "path": "GR_adapter/GRAdapter/FourierBridge.lean",
+      "line": 148,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.literatureCharacter_norm",
+      "path": "GR_adapter/GRAdapter/FourierBridge.lean",
+      "line": 164,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.literatureFourierCoefficient_summable_norm",
+      "path": "GR_adapter/GRAdapter/FourierBridge.lean",
+      "line": 170,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.poisson_fourier_summable_of_literature",
+      "path": "GR_adapter/GRAdapter/FourierBridge.lean",
+      "line": 186,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.poissonInverse_series_summable_of_literature",
+      "path": "GR_adapter/GRAdapter/FourierBridge.lean",
+      "line": 204,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.poissonInverse_eq_re_tsum_fourier_of_literature",
+      "path": "GR_adapter/GRAdapter/FourierBridge.lean",
+      "line": 219,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.bulkCollar_eventually_boundary",
+      "path": "GR_adapter/GRAdapter/GaussianUniqueness.lean",
+      "line": 21,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.boundaryAdmissible_literatureFlatBoundaryGerm",
+      "path": "GR_adapter/GRAdapter/GaussianUniqueness.lean",
+      "line": 35,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianVacuum_literatureFlatGaussianGerm",
+      "path": "GR_adapter/GRAdapter/GaussianUniqueness.lean",
+      "line": 55,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.literatureGaussianJet_unique",
+      "path": "GR_adapter/GRAdapter/GaussianUniqueness.lean",
+      "line": 79,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianVacuum_sameMetricAt_of_literatureJet",
+      "path": "GR_adapter/GRAdapter/GaussianUniqueness.lean",
+      "line": 90,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.analyticAt_spatialPartial_joint",
+      "path": "GR_adapter/GRAdapter/ScalarCK.lean",
+      "line": 27,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.analyticAt_nseSpatialSource3_components",
+      "path": "GR_adapter/GRAdapter/ScalarCK.lean",
+      "line": 49,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalarCKRHS_potential",
+      "path": "GR_adapter/GRAdapter/ScalarCK.lean",
+      "line": 94,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalarCKRHS_time",
+      "path": "GR_adapter/GRAdapter/ScalarCK.lean",
+      "line": 97,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalarCKRHS_gradient",
+      "path": "GR_adapter/GRAdapter/ScalarCK.lean",
+      "line": 103,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.analyticAt_scalarCKJet_entry",
+      "path": "GR_adapter/GRAdapter/ScalarCK.lean",
+      "line": 107,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.analyticAt_scalarCKRHS",
+      "path": "GR_adapter/GRAdapter/ScalarCK.lean",
+      "line": 115,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalarCK_zero_initial_noncharacteristic",
+      "path": "GR_adapter/GRAdapter/ScalarCK.lean",
+      "line": 161,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalarCK_exists_unique_firstOrder",
+      "path": "GR_adapter/GRAdapter/ScalarCK.lean",
+      "line": 168,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.StressCalc.component_fderiv",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 19,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.StressCalc.partial_component_smooth",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 25,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.StressCalc.partial_partial",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 29,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.StressCalc.secondSpatial_symm",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 40,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.StressCalc.partial_component_fderiv",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 47,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.StressCalc.gradient_divergence_component",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 57,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.StressCalc.laplacian_component",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 66,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.StressCalc.vector_decomposition",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 73,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.StressCalc.convection_component",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 80,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.tensorDivergence_strain",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 91,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.tensorDivergence_strain_of_divergence_zero",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 112,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.tensorDivergence_tf3_strain_of_divergence_zero",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 119,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.tensorDivergence_velocityOuter",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 131,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.tensorDivergence_velocityOuter_of_divergence_zero",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 150,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.divergence_gradient",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 155,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.tensorDivergence_scalarHessian",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 165,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.tensorDivergence_add",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 183,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.tensorDivergence_sub",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 196,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.tensorDivergence_smul",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 209,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.tensorDivergence_isotropic",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 219,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalarHessian_component_smooth",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 232,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.strain_component_smooth",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 242,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.velocityOuter_component_smooth",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 247,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.vectorSq3_smooth",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 251,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.boundaryStress_tensorDivergence",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 259,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.reconstruction_residual_of_codazzi_hodge",
+      "path": "GR_adapter/GRAdapter/StressDivergence.lean",
+      "line": 343,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.literatureCharacter_zero",
+      "path": "GR_adapter/GRAdapter/FourierInversion.lean",
+      "line": 19,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.literatureFourierCoefficient_zero",
+      "path": "GR_adapter/GRAdapter/FourierInversion.lean",
+      "line": 23,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.literatureFourier_hasSum_real",
+      "path": "GR_adapter/GRAdapter/FourierInversion.lean",
+      "line": 30,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.literatureFourier_nonzero_hasSum",
+      "path": "GR_adapter/GRAdapter/FourierInversion.lean",
+      "line": 45,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.cosine_nonzero_hasSum_of_literature",
+      "path": "GR_adapter/GRAdapter/FourierInversion.lean",
+      "line": 57,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.fourierScalarPartial_smooth",
+      "path": "GR_adapter/GRAdapter/FourierInversion.lean",
+      "line": 79,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.fourierScalarPartial_periodic",
+      "path": "GR_adapter/GRAdapter/FourierInversion.lean",
+      "line": 83,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalarLaplacian_smooth",
+      "path": "GR_adapter/GRAdapter/FourierInversion.lean",
+      "line": 88,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalarLaplacian_periodic",
+      "path": "GR_adapter/GRAdapter/FourierInversion.lean",
+      "line": 94,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.fourierScalarPartial_ofReal",
+      "path": "GR_adapter/GRAdapter/FourierInversion.lean",
+      "line": 103,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.literaturePartialWord_pair_ofReal",
+      "path": "GR_adapter/GRAdapter/FourierInversion.lean",
+      "line": 111,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.literatureFourierCoefficient_secondPartial",
+      "path": "GR_adapter/GRAdapter/FourierInversion.lean",
+      "line": 128,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.literatureFourierCoefficient_scalarLaplacian",
+      "path": "GR_adapter/GRAdapter/FourierInversion.lean",
+      "line": 148,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.poissonSymbol_mul_scalarLaplacianSymbol",
+      "path": "GR_adapter/GRAdapter/FourierInversion.lean",
+      "line": 179,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.poissonInverse_scalarLaplacian_of_literature",
+      "path": "GR_adapter/GRAdapter/FourierInversion.lean",
+      "line": 192,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gradient_sub_constant",
+      "path": "GR_adapter/GRAdapter/FourierInversion.lean",
+      "line": 221,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.leray_gradient_of_literature",
+      "path": "GR_adapter/GRAdapter/FourierInversion.lean",
+      "line": 228,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianMatrix_det",
+      "path": "GR_adapter/GRAdapter/GaussianCodazzi.lean",
+      "line": 20,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.inverseMetric_gaussian_singular",
+      "path": "GR_adapter/GRAdapter/GaussianCodazzi.lean",
+      "line": 26,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.christoffel_gaussian_singular",
+      "path": "GR_adapter/GRAdapter/GaussianCodazzi.lean",
+      "line": 32,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianShapeOperator_singular",
+      "path": "GR_adapter/GRAdapter/GaussianCodazzi.lean",
+      "line": 42,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianTangentialChristoffel_singular",
+      "path": "GR_adapter/GRAdapter/GaussianCodazzi.lean",
+      "line": 49,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.christoffel_gaussian_rrb_total",
+      "path": "GR_adapter/GRAdapter/GaussianCodazzi.lean",
+      "line": 57,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.christoffel_gaussian_shape",
+      "path": "GR_adapter/GRAdapter/GaussianCodazzi.lean",
+      "line": 63,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.christoffel_gaussian_abc_total",
+      "path": "GR_adapter/GRAdapter/GaussianCodazzi.lean",
+      "line": 70,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.ricci_gaussian_mixed",
+      "path": "GR_adapter/GRAdapter/GaussianCodazzi.lean",
+      "line": 90,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.ricci_gaussian_normal",
+      "path": "GR_adapter/GRAdapter/GaussianCodazzi.lean",
+      "line": 104,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianCodazziComponent_zero_of_vacuum",
+      "path": "GR_adapter/GRAdapter/GaussianCodazzi.lean",
+      "line": 113,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.gaussianNormalRicciComponent_zero_of_vacuum",
+      "path": "GR_adapter/GRAdapter/GaussianCodazzi.lean",
+      "line": 119,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.analyticAt_scalarJointPartial",
+      "path": "GR_adapter/GRAdapter/ScalarCompatibility.lean",
+      "line": 23,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalarJointPartial_commute",
+      "path": "GR_adapter/GRAdapter/ScalarCompatibility.lean",
+      "line": 29,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalar_timeDerivative_eq_joint",
+      "path": "GR_adapter/GRAdapter/ScalarCompatibility.lean",
+      "line": 42,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalar_spatialDerivative_eq_joint",
+      "path": "GR_adapter/GRAdapter/ScalarCompatibility.lean",
+      "line": 53,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.analytic_zero_transport_germ",
+      "path": "GR_adapter/GRAdapter/ScalarCompatibility.lean",
+      "line": 67,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalarCK_coordinate_jointDerivative",
+      "path": "GR_adapter/GRAdapter/ScalarCompatibility.lean",
+      "line": 87,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalarCK_spatial_coordinate_derivative",
+      "path": "GR_adapter/GRAdapter/ScalarCompatibility.lean",
+      "line": 94,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalarCK_solution_transport",
+      "path": "GR_adapter/GRAdapter/ScalarCompatibility.lean",
+      "line": 109,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "NSEGR.scalarCK_gradient_compatibility",
+      "path": "GR_adapter/GRAdapter/ScalarCompatibility.lean",
+      "line": 135,
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ]
+}

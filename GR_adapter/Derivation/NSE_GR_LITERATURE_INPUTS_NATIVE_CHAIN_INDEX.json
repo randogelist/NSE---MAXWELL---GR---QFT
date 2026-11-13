@@ -1,0 +1,2904 @@
+{
+  "schema_version": 1,
+  "title": "NSE_GR_LITERATURE_INPUTS_NATIVE_CHAIN",
+  "mode": "B_TIER_DERIVATION",
+  "marker": "!=B_TIER",
+  "mathematical_status": "COMPLETE_DERIVATION_NO_UNRESOLVED_LITERATURE_PREMISES",
+  "native_status": "NEW_PROOFS_NOT_IMPLEMENTED; EXISTING_ROOT_CONDITIONAL_FORMAL_CLOSURE",
+  "pins": {
+    "mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+    "methlib": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+    "existing_project_proof": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+  },
+  "exact_targets": [
+    "NSEGR.LiteratureAnalyticCKInput",
+    "NSEGR.LiteratureAnalyticCKInput -> NSEGR.LiteratureGaussianJetInput",
+    "NSEGR.LiteratureSmoothFourierInput",
+    "NSEGR.LiteratureInputs",
+    "forall nu rho t0 : R, 0 < nu -> rho != 0 -> NSEGR.ExactSectorEquivalence nu rho t0"
+  ],
+  "validation": {
+    "mathematical_review": "THREE_COMPLETE_SECTIONS_REVIEWED; CORRECTIONS_APPLIED",
+    "selected_endpoint_records": 86,
+    "unique_declarations": 83,
+    "source_files": 45,
+    "native_derivation_nodes": 41,
+    "endpoint_counts": {
+      "ML": 63,
+      "ME": 2,
+      "GR": 21
+    },
+    "all_source_sha256_verified": true,
+    "all_pinned_blob_or_audit_manifest_verified": true,
+    "all_declared_signature_sources_verified": true,
+    "dependency_graph_acyclic": true,
+    "all_existing_proof_input_hashes_unchanged": true,
+    "local_lean_executions": 0,
+    "new_compiler_evidence": null,
+    "new_native_promotion": false
+  },
+  "endpoints": [
+    {
+      "id": "ML-CK-01",
+      "name": "WithLp.prod_norm_eq_of_L1",
+      "path": "Mathlib/Analysis/Normed/Lp/ProdLp.lean",
+      "line_start": 773,
+      "signature": "theorem prod_norm_eq_of_L1 (x : WithLp 1 (α × β)) :\n    ‖x‖ = ‖x.fst‖ + ‖x.snd‖",
+      "sha256": "9339f2f94bd3a6324cde1f0a45898f6d743c77457259d7e35e475829ca8e6a20",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Lp/ProdLp.lean#L773",
+      "role": "Exact taxicab norm identity at p=1.",
+      "limitations": "Must use WithLp 1, not the default max product norm.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "0d0b033fbd0b2c114e6b62d82e71d3f87a63795c",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK01",
+        "CK11"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Normed/Lp/ProdLp.lean"
+    },
+    {
+      "id": "ML-CK-02",
+      "name": "WithLp.prodContinuousLinearEquiv",
+      "path": "Mathlib/Analysis/Normed/Lp/ProdLp.lean",
+      "line_start": 554,
+      "signature": "def prodContinuousLinearEquiv : WithLp p (α × β) ≃L[𝕜] α × β",
+      "sha256": "9339f2f94bd3a6324cde1f0a45898f6d743c77457259d7e35e475829ca8e6a20",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Lp/ProdLp.lean#L554",
+      "role": "Transport between taxicab and target product norms.",
+      "limitations": "Continuous linear equivalence; not an isometry for p=1.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "0d0b033fbd0b2c114e6b62d82e71d3f87a63795c",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK01"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Normed/Lp/ProdLp.lean"
+    },
+    {
+      "id": "ML-CK-03",
+      "name": "lp.completeSpace",
+      "path": "Mathlib/Analysis/Normed/Lp/lpSpace.lean",
+      "line_start": 1361,
+      "signature": "instance completeSpace : CompleteSpace (lp E p)",
+      "sha256": "2e7e34546116f0ddf71d554d72654418c31b7325a36cc069fc5643167b424036",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Lp/lpSpace.lean#L1361",
+      "role": "Completeness of dependent coefficient l1 space.",
+      "limitations": "Symmetric multilinear fibres and zero constant term must first be defined and shown closed.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "89060c77846ffcd81a62e01b5eddd0971051b537",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK03"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Normed/Lp/lpSpace.lean"
+    },
+    {
+      "id": "ML-CK-04",
+      "name": "ContinuousMultilinearMap.opNorm_le_bound",
+      "path": "Mathlib/Analysis/Normed/Module/Multilinear/Basic.lean",
+      "line_start": 416,
+      "signature": "theorem opNorm_le_bound {f : ContinuousMultilinearMap 𝕜 E G}\n    {M : ℝ} (hMp : 0 ≤ M) (hM : ∀ m, ‖f m‖ ≤ M * ∏ i, ‖m i‖) : ‖f‖ ≤ M",
+      "sha256": "62b0c5491f2c576dacf5913f9e04fcafd49b2901449bf57e4213df5ec0e05534",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Module/Multilinear/Basic.lean#L416",
+      "role": "Convert explicit subset-product estimates to coefficient operator-norm bounds.",
+      "limitations": "Native A/B formula estimates must be supplied; theorem does not know CK operators.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "2ab48858ac4d3805e937baf14b4b8a4f12f53756",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK02",
+        "CK05",
+        "CK06",
+        "CK07"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Normed/Module/Multilinear/Basic.lean"
+    },
+    {
+      "id": "ML-CK-05",
+      "name": "ContinuousMultilinearMap.le_opNorm",
+      "path": "Mathlib/Analysis/Normed/Module/Multilinear/Basic.lean",
+      "line_start": 380,
+      "signature": "theorem le_opNorm (f : ContinuousMultilinearMap 𝕜 E G) (m : ∀ i, E i) :\n    ‖f m‖ ≤ ‖f‖ * ∏ i, ‖m i‖",
+      "sha256": "62b0c5491f2c576dacf5913f9e04fcafd49b2901449bf57e4213df5ec0e05534",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Module/Multilinear/Basic.lean#L380",
+      "role": "Bound multilinear evaluation and symmetrized compositions.",
+      "limitations": "Uses the normed spaces actually installed on each argument.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "2ab48858ac4d3805e937baf14b4b8a4f12f53756",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK02",
+        "CK04",
+        "CK05",
+        "CK06",
+        "CK07"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Normed/Module/Multilinear/Basic.lean"
+    },
+    {
+      "id": "ML-CK-06",
+      "name": "FormalMultilinearSeries.summable_norm_mul_pow",
+      "path": "Mathlib/Analysis/Analytic/ConvergenceRadius.lean",
+      "line_start": 241,
+      "signature": "theorem summable_norm_mul_pow (p : FormalMultilinearSeries 𝕜 E F) {r : ℝ≥0} (h : ↑r < p.radius) :\n    Summable fun n : ℕ => ‖p n‖ * (r : ℝ) ^ n",
+      "sha256": "f6314e1932da1cf3b52545f51ed3c70ab5a5173850aa24d4601aa0d7f1bbfb60",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ConvergenceRadius.lean#L241",
+      "role": "Obtain norm-summable coefficient bounds strictly inside analytic radius.",
+      "limitations": "Requires a strict radius bound; no boundary-radius summability is inferred.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "d22a06958c3212dca54bf793c7668cf623029b02",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK02",
+        "CK05",
+        "CK10",
+        "CK13"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/ConvergenceRadius.lean"
+    },
+    {
+      "id": "ML-CK-07",
+      "name": "FormalMultilinearSeries.le_radius_of_summable",
+      "path": "Mathlib/Analysis/Analytic/ConvergenceRadius.lean",
+      "line_start": 133,
+      "signature": "theorem le_radius_of_summable (h : Summable fun n => ‖p n‖ * (r : ℝ) ^ n) : ↑r ≤ p.radius",
+      "sha256": "f6314e1932da1cf3b52545f51ed3c70ab5a5173850aa24d4601aa0d7f1bbfb60",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ConvergenceRadius.lean#L133",
+      "role": "Convert coefficient l1 summability to radius at least one.",
+      "limitations": "Only a lower bound on the radius; analytic evaluation uses the open unit ball.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "d22a06958c3212dca54bf793c7668cf623029b02",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK02",
+        "CK04"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/ConvergenceRadius.lean"
+    },
+    {
+      "id": "ML-CK-08",
+      "name": "FormalMultilinearSeries.hasFPowerSeriesOnBall",
+      "path": "Mathlib/Analysis/Analytic/Basic.lean",
+      "line_start": 1072,
+      "signature": "protected theorem FormalMultilinearSeries.hasFPowerSeriesOnBall [CompleteSpace F]\n    (p : FormalMultilinearSeries 𝕜 E F) (h : 0 < p.radius) :\n    HasFPowerSeriesOnBall p.sum p 0 p.radius",
+      "sha256": "af3ee71ee027f74ea4bf2254978f841722b90b75dabd1452ec98ca65857d38ec",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean#L1072",
+      "role": "Realize a positive-radius coefficient series as an actual power-series sum.",
+      "limitations": "Requires complete codomain and strictly positive radius.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "0c93cffbd50709474b662479574cd46121876eb5",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK04",
+        "CK12"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/Basic.lean"
+    },
+    {
+      "id": "ML-CK-09",
+      "name": "HasFPowerSeriesOnBall.analyticAt",
+      "path": "Mathlib/Analysis/Analytic/Basic.lean",
+      "line_start": 139,
+      "signature": "theorem HasFPowerSeriesOnBall.analyticAt (hf : HasFPowerSeriesOnBall f p x r) : AnalyticAt 𝕜 f x",
+      "sha256": "af3ee71ee027f74ea4bf2254978f841722b90b75dabd1452ec98ca65857d38ec",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean#L139",
+      "role": "Obtain AnalyticAt for the actual sum at its centre.",
+      "limitations": "Does not prove CK equation or initial condition.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "0c93cffbd50709474b662479574cd46121876eb5",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK04",
+        "CK12"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/Basic.lean"
+    },
+    {
+      "id": "ML-CK-10",
+      "name": "AnalyticAt.fderiv",
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Analytic.lean",
+      "line_start": 263,
+      "signature": "protected theorem AnalyticAt.fderiv [CompleteSpace F] (h : AnalyticAt 𝕜 f x) :\n    AnalyticAt 𝕜 (fderiv 𝕜 f) x",
+      "sha256": "9aba8c2c2b20b545331182e56325445f33f0a0851e9558e97595995e10045365",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Analytic.lean#L263",
+      "role": "Analyticity of initial-data derivatives and time-derivative competitor germs.",
+      "limitations": "Complete codomain required; restricting the full derivative to a coordinate still needs bounded evaluation maps.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "ac5499a0d9272bb86bbe0cedb631e3881939cf54",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK09",
+        "CK13"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/FDeriv/Analytic.lean"
+    },
+    {
+      "id": "ML-CK-11",
+      "name": "AnalyticAt.comp",
+      "path": "Mathlib/Analysis/Analytic/Composition.lean",
+      "line_start": 859,
+      "signature": "theorem AnalyticAt.comp {g : F → G} {f : E → F} {x : E} (hg : AnalyticAt 𝕜 g (f x))\n    (hf : AnalyticAt 𝕜 f x) : AnalyticAt 𝕜 (g ∘ f) x",
+      "sha256": "ec0f32e38de7f3cd4d89c9017fa8515b621a25da52d7ee6cb3299ca76d8a1545",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Composition.lean#L859",
+      "role": "Analytic coordinate translation, normalization, rescaling, and restoration.",
+      "limitations": "Point equality and actual analytic premises must match.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "d4c0139b0ff4c1b61df8e4e32ad0cca8036b19bc",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK01",
+        "CK09"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/Composition.lean"
+    },
+    {
+      "id": "ML-CK-12",
+      "name": "AnalyticAt.prod",
+      "path": "Mathlib/Analysis/Analytic/Constructions.lean",
+      "line_start": 338,
+      "signature": "lemma AnalyticAt.prod {e : E} {f : E → F} {g : E → G}\n    (hf : AnalyticAt 𝕜 f e) (hg : AnalyticAt 𝕜 g e) :\n    AnalyticAt 𝕜 (fun x ↦ (f x, g x)) e",
+      "sha256": "3bc1dd7547f45cee8ee3a341f0762deb56f42a155cce60757e14055b6f304964",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean#L338",
+      "role": "Assemble analytic jet tuples.",
+      "limitations": "Ordinary product analytic tuple; taxicab transport goes through ML-CK-02.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "a4823d7cdda8e314158bb4b5aff320cf02499038",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK09"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/Constructions.lean"
+    },
+    {
+      "id": "ML-CK-13",
+      "name": "AnalyticAt.sub",
+      "path": "Mathlib/Analysis/Analytic/Constructions.lean",
+      "line_start": 187,
+      "signature": "theorem AnalyticAt.sub (hf : AnalyticAt 𝕜 f x) (hg : AnalyticAt 𝕜 g x) :\n    AnalyticAt 𝕜 (f - g) x",
+      "sha256": "3bc1dd7547f45cee8ee3a341f0762deb56f42a155cce60757e14055b6f304964",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean#L187",
+      "role": "Normalize initial data and nonzero constant drift.",
+      "limitations": "Applies pointwise; no PDE content.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "a4823d7cdda8e314158bb4b5aff320cf02499038",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK09"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/Constructions.lean"
+    },
+    {
+      "id": "ML-CK-14",
+      "name": "AnalyticAt.add",
+      "path": "Mathlib/Analysis/Analytic/Constructions.lean",
+      "line_start": 106,
+      "signature": "theorem AnalyticAt.add (hf : AnalyticAt 𝕜 f x) (hg : AnalyticAt 𝕜 g x) :\n    AnalyticAt 𝕜 (f + g) x",
+      "sha256": "3bc1dd7547f45cee8ee3a341f0762deb56f42a155cce60757e14055b6f304964",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean#L106",
+      "role": "Restore initial analytic function plus linear drift plus local correction.",
+      "limitations": "Applies pointwise; no PDE content.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "a4823d7cdda8e314158bb4b5aff320cf02499038",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK09"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/Constructions.lean"
+    },
+    {
+      "id": "ML-CK-15",
+      "name": "HasFPowerSeriesOnBall.hasFDerivAt",
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Analytic.lean",
+      "line_start": 193,
+      "signature": "theorem HasFPowerSeriesOnBall.hasFDerivAt [CompleteSpace F] (h : HasFPowerSeriesOnBall f p x r)\n    {y : E} (hy : (‖y‖₊ : ℝ≥0∞) < r) :\n    HasFDerivAt f (continuousMultilinearCurryFin1 𝕜 E F (p.changeOrigin y 1)) (x + y)",
+      "sha256": "9aba8c2c2b20b545331182e56325445f33f0a0851e9558e97595995e10045365",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Analytic.lean#L193",
+      "role": "Identify actual Frechet derivatives from the evaluated formal series.",
+      "limitations": "Requires interior displacement; native A/B diagonal coefficient identities still required.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "ac5499a0d9272bb86bbe0cedb631e3881939cf54",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK04",
+        "CK08"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/FDeriv/Analytic.lean"
+    },
+    {
+      "id": "ML-CK-16",
+      "name": "HasFPowerSeriesOnBall.sum",
+      "path": "Mathlib/Analysis/Analytic/Basic.lean",
+      "line_start": 1085,
+      "signature": "theorem HasFPowerSeriesOnBall.sum (h : HasFPowerSeriesOnBall f p x r) {y : E}\n    (hy : y ∈ Metric.eball (0 : E) r) : f (x + y) = p.sum y",
+      "sha256": "af3ee71ee027f74ea4bf2254978f841722b90b75dabd1452ec98ca65857d38ec",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean#L1085",
+      "role": "Identify an analytic local representative with its actual coefficient sum.",
+      "limitations": "Equality holds within the stated open power-series ball.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "0c93cffbd50709474b662479574cd46121876eb5",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK04",
+        "CK08"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/Basic.lean"
+    },
+    {
+      "id": "ML-CK-17",
+      "name": "HasFPowerSeriesAt.congr",
+      "path": "Mathlib/Analysis/Analytic/Basic.lean",
+      "line_start": 286,
+      "signature": "theorem HasFPowerSeriesAt.congr (hf : HasFPowerSeriesAt f p x) (hg : f =ᶠ[𝓝 x] g) :\n    HasFPowerSeriesAt g p x",
+      "sha256": "af3ee71ee027f74ea4bf2254978f841722b90b75dabd1452ec98ca65857d38ec",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean#L286",
+      "role": "Transfer a local power-series representative to arbitrary globally typed extension.",
+      "limitations": "Requires eventual equality on a neighborhood.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "0c93cffbd50709474b662479574cd46121876eb5",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK14"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/Basic.lean"
+    },
+    {
+      "id": "ML-CK-18",
+      "name": "AnalyticAt.congr",
+      "path": "Mathlib/Analysis/Analytic/Basic.lean",
+      "line_start": 491,
+      "signature": "theorem AnalyticAt.congr (hf : AnalyticAt 𝕜 f x) (hg : f =ᶠ[𝓝 x] g) : AnalyticAt 𝕜 g x",
+      "sha256": "af3ee71ee027f74ea4bf2254978f841722b90b75dabd1452ec98ca65857d38ec",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean#L491",
+      "role": "Transfer AnalyticAt across the local-to-global extension.",
+      "limitations": "Does not grant global analyticity of the arbitrary extension.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "0c93cffbd50709474b662479574cd46121876eb5",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK14"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/Basic.lean"
+    },
+    {
+      "id": "ML-CK-19",
+      "name": "ContractingWith.fixedPoint",
+      "path": "Mathlib/Topology/MetricSpace/Contracting.lean",
+      "line_start": 274,
+      "signature": "noncomputable def fixedPoint : α",
+      "sha256": "cc579c4ca94d07166e161387d3f181877fdfd92ddd89ca6956c96c8fcfdf9a92",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/MetricSpace/Contracting.lean#L274",
+      "role": "Construct the fixed point of Psi on the complete nonempty closed-ball subtype.",
+      "limitations": "Ambient section parameters include f and hf:ContractingWith K f; Q self-map and completeness must be supplied.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "c4bd6fe2e61b904dfa1144ab1b7162550c99d1c3",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK12"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Topology/MetricSpace/Contracting.lean"
+    },
+    {
+      "id": "ML-CK-20",
+      "name": "ContractingWith.fixedPoint_isFixedPt",
+      "path": "Mathlib/Topology/MetricSpace/Contracting.lean",
+      "line_start": 278,
+      "signature": "theorem fixedPoint_isFixedPt : IsFixedPt f (fixedPoint f hf)",
+      "sha256": "cc579c4ca94d07166e161387d3f181877fdfd92ddd89ca6956c96c8fcfdf9a92",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/MetricSpace/Contracting.lean#L278",
+      "role": "Fixed-point equation for coefficient-space solution.",
+      "limitations": "Requires same Q, map, and contraction proof as ML-CK-19.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "c4bd6fe2e61b904dfa1144ab1b7162550c99d1c3",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK12"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Topology/MetricSpace/Contracting.lean"
+    },
+    {
+      "id": "ML-CK-21",
+      "name": "ContractingWith.fixedPoint_unique'",
+      "path": "Mathlib/Topology/MetricSpace/Contracting.lean",
+      "line_start": 257,
+      "signature": "theorem fixedPoint_unique' {x y} (hx : IsFixedPt f x) (hy : IsFixedPt f y) : x = y",
+      "sha256": "cc579c4ca94d07166e161387d3f181877fdfd92ddd89ca6956c96c8fcfdf9a92",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/MetricSpace/Contracting.lean#L257",
+      "role": "Uniqueness of two rescaled coefficient fixed points.",
+      "limitations": "Both analytic competitors must first be scaled into Q and identified as exact fixed points.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "c4bd6fe2e61b904dfa1144ab1b7162550c99d1c3",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK13"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Topology/MetricSpace/Contracting.lean"
+    },
+    {
+      "id": "ML-CK-22",
+      "name": "HasFPowerSeriesOnBall.iteratedFDeriv_eq_sum_of_completeSpace",
+      "path": "Mathlib/Analysis/Analytic/IteratedFDeriv.lean",
+      "line_start": 228,
+      "signature": "theorem HasFPowerSeriesOnBall.iteratedFDeriv_eq_sum_of_completeSpace [CompleteSpace F]\n    (h : HasFPowerSeriesOnBall f p x r) {n : ℕ} (v : Fin n → E) :\n    iteratedFDeriv 𝕜 n f x v = ∑ σ : Perm (Fin n), p n (fun i ↦ v (σ i))",
+      "sha256": "130f3735dcefdb6d087aac9722f31cab2e2e17828b548a2d2d6c66b88b83021f",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/IteratedFDeriv.lean#L228",
+      "role": "Unique symmetric coefficients via D^d f(0)=d!p_d.",
+      "limitations": "Native symmetry proof and permutation-cardinality factor are required.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "e21e14a41788a93d11646e12f927a60befc218b0",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK02",
+        "CK04",
+        "CK13"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/IteratedFDeriv.lean"
+    },
+    {
+      "id": "ML-CK-23",
+      "name": "IsClosed.completeSpace_coe",
+      "path": "Mathlib/Topology/UniformSpace/UniformEmbedding.lean",
+      "line_start": 320,
+      "signature": "instance IsClosed.completeSpace_coe [CompleteSpace α] {s : Set α} [hs : IsClosed s] :\n    CompleteSpace s",
+      "sha256": "d654b7daf50aa5ec57538e3e957509ceb738bc764213858cd4a5aa98d60355f8",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/UniformSpace/UniformEmbedding.lean#L320",
+      "role": "Completeness of closed symmetric coefficient fibres and closed unit-ball subtype.",
+      "limitations": "Closedness is a native obligation discharged by kernels/intersections and continuity.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "1aaf86a3677273ffa84beb6c50b384428c8da5f6",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK03"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Topology/UniformSpace/UniformEmbedding.lean"
+    },
+    {
+      "id": "ML-CK-24",
+      "name": "HasFPowerSeriesOnBall.analyticOnNhd",
+      "path": "Mathlib/Analysis/Analytic/ChangeOrigin.lean",
+      "line_start": 366,
+      "signature": "theorem HasFPowerSeriesOnBall.analyticOnNhd (hf : HasFPowerSeriesOnBall f p x r) :\n    AnalyticOnNhd 𝕜 f (Metric.eball x r)",
+      "sha256": "acda4eb054df857f353197ec8c9d8722c425fa0bd206198e9b04868dc3291663",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ChangeOrigin.lean#L366",
+      "role": "Analyticity at every interior point of the coefficient-sum ball.",
+      "limitations": "Requires a positive-radius power-series representation.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "3dbdbdc6ca2e91a6dfaab4ffabe76dc180bc2458",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK04",
+        "CK12"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/ChangeOrigin.lean"
+    },
+    {
+      "id": "ML-CK-25",
+      "name": "ContinuousMultilinearMap.norm_compContinuousLinearMap_le",
+      "path": "Mathlib/Analysis/Normed/Module/Multilinear/Basic.lean",
+      "line_start": 1024,
+      "signature": "theorem norm_compContinuousLinearMap_le (g : ContinuousMultilinearMap 𝕜 E₁ G)\n    (f : ∀ i, E i →L[𝕜] E₁ i) : ‖g.compContinuousLinearMap f‖ ≤ ‖g‖ * ∏ i, ‖f i‖",
+      "sha256": "62b0c5491f2c576dacf5913f9e04fcafd49b2901449bf57e4213df5ec0e05534",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Module/Multilinear/Basic.lean#L1024",
+      "role": "Coefficient bounds under equivalent-norm maps and anisotropic scaling.",
+      "limitations": "Use operator norms of the actual taxicab maps; no unproved smallness assumption.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "status": "SOURCE_VERIFIED_PINNED",
+      "source_context_note": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "2ab48858ac4d3805e937baf14b4b8a4f12f53756",
+      "ambient_context": "Literal source declaration header. Namespace and surrounding section variables/typeclasses are inherited from the pinned source; this is not an elaborated #check transcript.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "CK01",
+        "CK13"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Normed/Module/Multilinear/Basic.lean"
+    },
+    {
+      "id": "ML-GJ-01",
+      "name": "analyticAt_inverse",
+      "path": "Mathlib/Analysis/Analytic/Constructions.lean",
+      "line_start": 942,
+      "line_end": 943,
+      "signature": "lemma analyticAt_inverse [HasSummableGeomSeries A] (z : Aˣ) :\n    AnalyticAt 𝕜 Ring.inverse (z : A)",
+      "sha256": "3bc1dd7547f45cee8ee3a341f0762deb56f42a155cce60757e14055b6f304964",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean#L942",
+      "role": "Analytic inversion at an invertible matrix-valued jet.",
+      "limitations": "Requires normed algebra and HasSummableGeomSeries; finite real matrix algebra supplies the instances.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "a4823d7cdda8e314158bb4b5aff320cf02499038",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ01",
+        "GJ05"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/Constructions.lean"
+    },
+    {
+      "id": "ML-GJ-02",
+      "name": "Matrix.nonsing_inv_eq_ringInverse",
+      "path": "Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean",
+      "line_start": 195,
+      "line_end": 195,
+      "signature": "theorem nonsing_inv_eq_ringInverse : A⁻¹ = A⁻¹ʳ",
+      "sha256": "1ee785b6ebd213ad2ed971bf3c804afee8cc6ce52be69e63572b4cf1bdb5e880",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean#L195",
+      "role": "Identify native Matrix inverse with Ring.inverse used by analytic calculus.",
+      "limitations": "Algebraic identification only; analyticity requires invertibility.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "b3ea61392d1cea6611deddfcf2c1da7938f3d9e6",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ01",
+        "GJ05"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean"
+    },
+    {
+      "id": "ML-GJ-03",
+      "name": "AnalyticAt.comp",
+      "path": "Mathlib/Analysis/Analytic/Composition.lean",
+      "line_start": 859,
+      "line_end": 860,
+      "signature": "theorem AnalyticAt.comp {g : F → G} {f : E → F} {x : E} (hg : AnalyticAt 𝕜 g (f x))\n    (hf : AnalyticAt 𝕜 f x) : AnalyticAt 𝕜 (g ∘ f) x",
+      "sha256": "ec0f32e38de7f3cd4d89c9017fa8515b621a25da52d7ee6cb3299ca76d8a1545",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Composition.lean#L859",
+      "role": "Compose analytic matrix inversion, jet projections and coordinate maps.",
+      "limitations": "Both analytic premises must be established at matching points.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "d4c0139b0ff4c1b61df8e4e32ad0cca8036b19bc",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ01",
+        "GJ05"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/Composition.lean"
+    },
+    {
+      "id": "ML-GJ-04",
+      "name": "ContinuousLinearMap.analyticAt",
+      "path": "Mathlib/Analysis/Analytic/Linear.lean",
+      "line_start": 61,
+      "line_end": 124,
+      "signature": "protected theorem analyticAt (f : E →L[𝕜] F) (x : E) : AnalyticAt 𝕜 f x",
+      "sha256": "8c644f823eebdc22142358065eec879a88fe0ccc3bf6675ec0df4d42d14d142b",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Linear.lean#L61",
+      "role": "Finite symmetric-state and bulk coordinate maps are analytic.",
+      "limitations": "The map must first be packaged as a continuous linear map.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "df061f57a0de58779050ebdcb0b8b8fba45791a0",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ01",
+        "GJ05"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/Linear.lean"
+    },
+    {
+      "id": "ML-GJ-05",
+      "name": "AnalyticAt.fderiv",
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Analytic.lean",
+      "line_start": 263,
+      "line_end": 264,
+      "signature": "protected theorem AnalyticAt.fderiv [CompleteSpace F] (h : AnalyticAt 𝕜 f x) :\n    AnalyticAt 𝕜 (fderiv 𝕜 f) x",
+      "sha256": "9aba8c2c2b20b545331182e56325445f33f0a0851e9558e97595995e10045365",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Analytic.lean#L263",
+      "role": "Analyticity of h derivatives, connection, curvature and residual fields.",
+      "limitations": "Requires complete target; all finite real target spaces satisfy it.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "ac5499a0d9272bb86bbe0cedb631e3881939cf54",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ03",
+        "GJ07",
+        "GJ09",
+        "GJ10",
+        "GJ12"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/FDeriv/Analytic.lean"
+    },
+    {
+      "id": "ML-GJ-06",
+      "name": "ContDiffAt.isSymmSndFDerivAt",
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Symmetric.lean",
+      "line_start": 533,
+      "line_end": 534,
+      "signature": "theorem ContDiffAt.isSymmSndFDerivAt {n : ℕ∞ω}\n    (hf : ContDiffAt 𝕜 n f x) (hn : minSmoothness 𝕜 2 ≤ n) : IsSymmSndFDerivAt 𝕜 f x",
+      "sha256": "976a6342e21ca80d37767a9149c385a42b4d3ed615cbe1ad23745943f3b6287f",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Symmetric.lean#L533",
+      "role": "Commute actual coordinate mixed second derivatives.",
+      "limitations": "Requires minSmoothness bound; obtained from analytic regularity, including derivatives of h.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "513adb09ee91aa564bb9250d9e32086d9e8bfe58",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ03",
+        "GJ07",
+        "GJ09",
+        "GJ10",
+        "GJ12"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/FDeriv/Symmetric.lean"
+    },
+    {
+      "id": "ML-GJ-07",
+      "name": "AnalyticAt.mul",
+      "path": "Mathlib/Analysis/Analytic/Constructions.lean",
+      "line_start": 639,
+      "line_end": 659,
+      "signature": "lemma AnalyticAt.mul {f g : E → A} {z : E} (hf : AnalyticAt 𝕜 f z) (hg : AnalyticAt 𝕜 g z) :\n    AnalyticAt 𝕜 (f * g) z",
+      "sha256": "3bc1dd7547f45cee8ee3a341f0762deb56f42a155cce60757e14055b6f304964",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean#L639",
+      "role": "Analytic rational CK and curvature expressions after inversion.",
+      "limitations": "Scalar or normed-algebra product; finite tensors are reconstructed entrywise.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "a4823d7cdda8e314158bb4b5aff320cf02499038",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ03",
+        "GJ04",
+        "GJ05",
+        "GJ09",
+        "GJ10"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/Constructions.lean"
+    },
+    {
+      "id": "ML-GJ-08",
+      "name": "Finset.analyticAt_sum",
+      "path": "Mathlib/Analysis/Analytic/Constructions.lean",
+      "line_start": 1153,
+      "line_end": 1155,
+      "signature": "theorem Finset.analyticAt_sum {f : α → E → F} {c : E}\n    (N : Finset α) (h : ∀ n ∈ N, AnalyticAt 𝕜 (f n) c) :\n    AnalyticAt 𝕜 (∑ n ∈ N, f n) c",
+      "sha256": "3bc1dd7547f45cee8ee3a341f0762deb56f42a155cce60757e14055b6f304964",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean#L1153",
+      "role": "Analyticity of all finite contractions.",
+      "limitations": "Only finite sums; no infinite-series or PDE existence conclusion.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "a4823d7cdda8e314158bb4b5aff320cf02499038",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ03",
+        "GJ04",
+        "GJ05",
+        "GJ09",
+        "GJ10"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/Constructions.lean"
+    },
+    {
+      "id": "ML-GJ-09",
+      "name": "hasFDerivAt_ringInverse",
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Mul.lean",
+      "line_start": 661,
+      "line_end": 662,
+      "signature": "theorem hasFDerivAt_ringInverse (x : Rˣ) :\n    HasFDerivAt Ring.inverse (-mulLeftRight 𝕜 R ↑x⁻¹ ↑x⁻¹) x",
+      "sha256": "cb6b129e2bc9f0e946445da29c072eff747cbe4477e8f90aecc6145eb69fea6a",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Mul.lean#L661",
+      "role": "D(H)[W]=-HWH with actual Frechet derivative.",
+      "limitations": "Unit-valued basepoint required; Matrix.nonsing_inv_eq_ringInverse supplies native identification.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "78915282e98b0d897bef526fc8b00b7faf097653",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ01"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/FDeriv/Mul.lean"
+    },
+    {
+      "id": "ML-GJ-10",
+      "name": "Matrix.mul_nonsing_inv",
+      "path": "Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean",
+      "line_start": 211,
+      "line_end": 211,
+      "signature": "theorem mul_nonsing_inv (h : IsUnit A.det) : A * A⁻¹ = 1",
+      "sha256": "1ee785b6ebd213ad2ed971bf3c804afee8cc6ce52be69e63572b4cf1bdb5e880",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean#L211",
+      "role": "Eliminate inverse contractions hH=I.",
+      "limitations": "Requires IsUnit(det h).",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "b3ea61392d1cea6611deddfcf2c1da7938f3d9e6",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ01"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean"
+    },
+    {
+      "id": "ML-GJ-11",
+      "name": "Matrix.nonsing_inv_mul",
+      "path": "Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean",
+      "line_start": 217,
+      "line_end": 217,
+      "signature": "theorem nonsing_inv_mul (h : IsUnit A.det) : A⁻¹ * A = 1",
+      "sha256": "1ee785b6ebd213ad2ed971bf3c804afee8cc6ce52be69e63572b4cf1bdb5e880",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean#L217",
+      "role": "Eliminate inverse contractions Hh=I.",
+      "limitations": "Requires IsUnit(det h).",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "b3ea61392d1cea6611deddfcf2c1da7938f3d9e6",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ01"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/LinearAlgebra/Matrix/NonsingularInverse.lean"
+    },
+    {
+      "id": "ML-GJ-12",
+      "name": "ContinuousAt.eventually_ne",
+      "path": "Mathlib/Topology/Separation/Basic.lean",
+      "line_start": 710,
+      "line_end": 722,
+      "signature": "theorem ContinuousAt.eventually_ne [TopologicalSpace Y] [T1Space Y] {g : X → Y} {x : X} {y : Y}\n    (hg1 : ContinuousAt g x) (hg2 : g x ≠ y) : ∀ᶠ z in 𝓝 x, g z ≠ y",
+      "sha256": "d3932db8d5fae4c6ec691d4ee3ecc39c94d684edef7602f290bbe7c1f174c6f8",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Separation/Basic.lean#L710",
+      "role": "Preserve det h != 0 near the initial jet det eta=-1.",
+      "limitations": "Continuity of determinant follows from its finite polynomial formula.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "4067fcf49e0f6d01930fb440340cb1c00b5e78e1",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ01",
+        "GJ06",
+        "GJ08"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Topology/Separation/Basic.lean"
+    },
+    {
+      "id": "ML-GJ-13",
+      "name": "Filter.EventuallyEq.fderiv",
+      "path": "Mathlib/Analysis/Calculus/FDeriv/Congr.lean",
+      "line_start": 261,
+      "line_end": 267,
+      "signature": "protected theorem Filter.EventuallyEq.fderiv (h : f₁ =ᶠ[𝓝 x] f) : fderiv 𝕜 f₁ =ᶠ[𝓝 x] fderiv 𝕜 f",
+      "sha256": "5cad1d8c7480eac00c7004b6ec5ee9dd64ac80a833f10ad92936cdac4abe9673",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Congr.lean#L261",
+      "role": "Differentiate germ equalities in compatibility, restriction, extension and uniqueness.",
+      "limitations": "Equality is on a neighborhood, not equality only at the basepoint.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "fa50ff49921b4ef098c0bd002b539889fa104963",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ03",
+        "GJ07",
+        "GJ11",
+        "GJ12"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/FDeriv/Congr.lean"
+    },
+    {
+      "id": "ML-GJ-14",
+      "name": "AnalyticAt.congr",
+      "path": "Mathlib/Analysis/Analytic/Basic.lean",
+      "line_start": 491,
+      "line_end": 492,
+      "signature": "theorem AnalyticAt.congr (hf : AnalyticAt 𝕜 f x) (hg : f =ᶠ[𝓝 x] g) : AnalyticAt 𝕜 g x",
+      "sha256": "af3ee71ee027f74ea4bf2254978f841722b90b75dabd1452ec98ca65857d38ec",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean#L491",
+      "role": "Transfer analyticity through an actual germ equality.",
+      "limitations": "Does not manufacture analyticity from a pointwise value equality.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "0c93cffbd50709474b662479574cd46121876eb5",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ03",
+        "GJ08",
+        "GJ11"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/Basic.lean"
+    },
+    {
+      "id": "ML-GJ-15",
+      "name": "AnalyticAt.contDiffAt",
+      "path": "Mathlib/Analysis/Calculus/ContDiff/Defs.lean",
+      "line_start": 986,
+      "line_end": 987,
+      "signature": "theorem AnalyticAt.contDiffAt [CompleteSpace F] (h : AnalyticAt 𝕜 f x) :\n    ContDiffAt 𝕜 n f x",
+      "sha256": "5d2f01069c6265873a372d4aed746c5d3411073b8acb108a180d02a84c832dca",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Defs.lean#L986",
+      "role": "Supply all regularity needed by coordinate derivative identities.",
+      "limitations": "Complete target required; analytic functions only.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "aac7759c6a9585e2f80d63f3349039a29261d0e3",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ03"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/ContDiff/Defs.lean"
+    },
+    {
+      "id": "ML-GJ-16",
+      "name": "analyticAt_pi_iff",
+      "path": "Mathlib/Analysis/Analytic/Constructions.lean",
+      "line_start": 565,
+      "line_end": 566,
+      "signature": "lemma analyticAt_pi_iff :\n    AnalyticAt 𝕜 (fun x ↦ (f · x)) e ↔ ∀ i, AnalyticAt 𝕜 (f i) e",
+      "sha256": "3bc1dd7547f45cee8ee3a341f0762deb56f42a155cce60757e14055b6f304964",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean#L565",
+      "role": "Assemble analytic finite coordinate state maps.",
+      "limitations": "Uses finite target family; the Frobenius matrix representation can alternatively use GR-GJ-03.",
+      "classification": "EXISTING_MATHLIB_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "a4823d7cdda8e314158bb4b5aff320cf02499038",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ05",
+        "GJ08"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Analytic/Constructions.lean"
+    },
+    {
+      "id": "GR-GJ-01",
+      "name": "NSEGR.Assembly.analyticAt_matrix_inverse",
+      "path": "ASSEMBLY/GRAssembly/BoundaryConstraintsJets.lean",
+      "line_start": 182,
+      "line_end": 184,
+      "signature": "theorem analyticAt_matrix_inverse {h : Bulk → Tensor4} {z : Bulk}\n    (hh : AnalyticAt ℝ h z) (hn : IsUnit (h z).det) :\n    AnalyticAt ℝ (fun y => (h y)⁻¹) z",
+      "sha256": "18b169e9b5bbaa985f413fadd33ffb1a1a688b689329da4a951d9714f09331e2",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/BoundaryConstraintsJets.lean#L182",
+      "role": "Already native 4x4 inverse analyticity in the actual Bulk domain.",
+      "limitations": "State-space version needs the same generic Mathlib composition; does not itself prove CK.",
+      "classification": "EXISTING_AUDITED_PROJECT_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "audit_logs": [
+        "Auxillary/GR/Closure/evidence/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/assembly-013-audit.log"
+      ],
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "0f64046f9dd9041e256e8e964d457667f4e8026f",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ01",
+        "GJ05"
+      ],
+      "checked_local_source": "ASSEMBLY/GRAssembly/BoundaryConstraintsJets.lean"
+    },
+    {
+      "id": "GR-GJ-02",
+      "name": "NSEGR.Assembly.bulkPartial_inverse",
+      "path": "ASSEMBLY/GRAssembly/BoundaryConstraintsJets.lean",
+      "line_start": 194,
+      "line_end": 199,
+      "signature": "theorem bulkPartial_inverse {h : Bulk → Tensor4} {z : Bulk}\n    (hh : AnalyticAt ℝ h z) (hn : IsUnit (h z).det)\n    (i : Fin 5) (a b : Fin 4) :\n    bulkPartial (fun y => (h y)⁻¹ a b) i z =\n      -∑ c : Fin 4, ∑ d : Fin 4,\n        (h z)⁻¹ a c * bulkPartial (fun y => h y c d) i z * (h z)⁻¹ d b",
+      "sha256": "18b169e9b5bbaa985f413fadd33ffb1a1a688b689329da4a951d9714f09331e2",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/BoundaryConstraintsJets.lean#L194",
+      "role": "Already native entrywise partial H=-H(partial h)H.",
+      "limitations": "Requires AnalyticAt h and IsUnit determinant at the point.",
+      "classification": "EXISTING_AUDITED_PROJECT_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "audit_logs": [
+        "Auxillary/GR/Closure/evidence/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/assembly-013-audit.log"
+      ],
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "0f64046f9dd9041e256e8e964d457667f4e8026f",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ01",
+        "GJ04"
+      ],
+      "checked_local_source": "ASSEMBLY/GRAssembly/BoundaryConstraintsJets.lean"
+    },
+    {
+      "id": "GR-GJ-03",
+      "name": "NSEGR.Assembly.analyticAt_matrix_of_entries",
+      "path": "ASSEMBLY/GRAssembly/BoundaryConstraintsJets.lean",
+      "line_start": 31,
+      "line_end": 35,
+      "signature": "theorem analyticAt_matrix_of_entries {n : ℕ} {E : Type*}\n    [NormedAddCommGroup E] [NormedSpace ℝ E]\n    {f : E → Matrix (Fin n) (Fin n) ℝ} {z : E}\n    (hf : ∀ a b, AnalyticAt ℝ (fun y => f y a b) z) :\n    AnalyticAt ℝ f z",
+      "sha256": "18b169e9b5bbaa985f413fadd33ffb1a1a688b689329da4a951d9714f09331e2",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/BoundaryConstraintsJets.lean#L31",
+      "role": "Assemble analytic Frobenius-norm matrix from entrywise analytic data.",
+      "limitations": "Finite matrix indices; no PDE assumptions.",
+      "classification": "EXISTING_AUDITED_PROJECT_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "audit_logs": [
+        "Auxillary/GR/Closure/evidence/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/assembly-013-audit.log"
+      ],
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "0f64046f9dd9041e256e8e964d457667f4e8026f",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ01",
+        "GJ05"
+      ],
+      "checked_local_source": "ASSEMBLY/GRAssembly/BoundaryConstraintsJets.lean"
+    },
+    {
+      "id": "GR-GJ-04",
+      "name": "NSEGR.gaussianMatrix_det",
+      "path": "GR_adapter/GRAdapter/GaussianCodazzi.lean",
+      "line_start": 20,
+      "line_end": 20,
+      "signature": "theorem gaussianMatrix_det (H : Tensor4) : (gaussianMatrix H).det = H.det",
+      "sha256": "25157c99abfbf8444db6b1a8c140a69a0516b6aadb77314b9f3364bd05cd46c0",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/GR_adapter/GRAdapter/GaussianCodazzi.lean#L20",
+      "role": "det diag(1,h)=det h.",
+      "limitations": "Algebraic determinant identity only.",
+      "classification": "EXISTING_AUDITED_PROJECT_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "audit_logs": [
+        "Auxillary/GR/Closure/evidence/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/adapter-audit.log"
+      ],
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "8233d040b9639d479260819b96f1de94bd03c8e3",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ01",
+        "GJ08"
+      ],
+      "checked_local_source": "GR_adapter/GRAdapter/GaussianCodazzi.lean"
+    },
+    {
+      "id": "GR-GJ-05",
+      "name": "NSEGR.christoffel_gaussian_rab",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line_start": 179,
+      "line_end": 181,
+      "signature": "theorem christoffel_gaussian_rab (h : Bulk → Tensor4) (z : Bulk)\n    (hh : IsUnit (h z).det) (a b : Fin 4) :\n    christoffel (gaussianMetric h) z 0 a.succ b.succ = -gaussianSecondForm h z a b",
+      "sha256": "391ac9a392896e1fae8c0406957a8d3c83a5d7e266cbffaa0acd51c2ac91aa6b",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/GR_adapter/GRAdapter/GaussianMetric.lean#L179",
+      "role": "Actual Gamma^r_ab=-L_ab in native K=+h_r/2 convention.",
+      "limitations": "Requires IsUnit determinant at the point.",
+      "classification": "EXISTING_AUDITED_PROJECT_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "audit_logs": [
+        "Auxillary/GR/Closure/evidence/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/adapter-audit.log"
+      ],
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "8d791487736692dac65a89f4ba0221466c2b3560",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ02"
+      ],
+      "checked_local_source": "GR_adapter/GRAdapter/GaussianMetric.lean"
+    },
+    {
+      "id": "GR-GJ-06",
+      "name": "NSEGR.christoffel_gaussian_arb",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line_start": 198,
+      "line_end": 201,
+      "signature": "theorem christoffel_gaussian_arb (h : Bulk → Tensor4) (z : Bulk)\n    (hh : IsUnit (h z).det) (a b : Fin 4) :\n    christoffel (gaussianMetric h) z a.succ 0 b.succ =\n      ∑ c : Fin 4, (h z)⁻¹ a c * gaussianSecondForm h z c b",
+      "sha256": "391ac9a392896e1fae8c0406957a8d3c83a5d7e266cbffaa0acd51c2ac91aa6b",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/GR_adapter/GRAdapter/GaussianMetric.lean#L198",
+      "role": "Actual Gamma^a_rb=(h^-1 L)^a_b.",
+      "limitations": "Requires IsUnit determinant at the point.",
+      "classification": "EXISTING_AUDITED_PROJECT_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "audit_logs": [
+        "Auxillary/GR/Closure/evidence/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/adapter-audit.log"
+      ],
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "8d791487736692dac65a89f4ba0221466c2b3560",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ02"
+      ],
+      "checked_local_source": "GR_adapter/GRAdapter/GaussianMetric.lean"
+    },
+    {
+      "id": "GR-GJ-07",
+      "name": "NSEGR.christoffel_gaussian_abc",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line_start": 219,
+      "line_end": 222,
+      "signature": "theorem christoffel_gaussian_abc (h : Bulk → Tensor4) (z : Bulk)\n    (hh : IsUnit (h z).det) (a b c : Fin 4) :\n    christoffel (gaussianMetric h) z a.succ b.succ c.succ =\n      gaussianTangentialChristoffel h z a b c",
+      "sha256": "391ac9a392896e1fae8c0406957a8d3c83a5d7e266cbffaa0acd51c2ac91aa6b",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/GR_adapter/GRAdapter/GaussianMetric.lean#L219",
+      "role": "Actual tangential Christoffels equal intrinsic coordinate formula.",
+      "limitations": "Requires IsUnit determinant at the point.",
+      "classification": "EXISTING_AUDITED_PROJECT_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "audit_logs": [
+        "Auxillary/GR/Closure/evidence/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/adapter-audit.log"
+      ],
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "8d791487736692dac65a89f4ba0221466c2b3560",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ02"
+      ],
+      "checked_local_source": "GR_adapter/GRAdapter/GaussianMetric.lean"
+    },
+    {
+      "id": "GR-GJ-08",
+      "name": "NSEGR.christoffel_gaussian_rr",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line_start": 171,
+      "line_end": 172,
+      "signature": "theorem christoffel_gaussian_rr (h : Bulk → Tensor4) (z : Bulk) (a : Fin 5) :\n    christoffel (gaussianMetric h) z a 0 0 = 0",
+      "sha256": "391ac9a392896e1fae8c0406957a8d3c83a5d7e266cbffaa0acd51c2ac91aa6b",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/GR_adapter/GRAdapter/GaussianMetric.lean#L171",
+      "role": "All Gamma^a_rr vanish.",
+      "limitations": "Exact Gaussian metric definition required.",
+      "classification": "EXISTING_AUDITED_PROJECT_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "audit_logs": [
+        "Auxillary/GR/Closure/evidence/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/adapter-audit.log"
+      ],
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "8d791487736692dac65a89f4ba0221466c2b3560",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ02"
+      ],
+      "checked_local_source": "GR_adapter/GRAdapter/GaussianMetric.lean"
+    },
+    {
+      "id": "GR-GJ-09",
+      "name": "NSEGR.Assembly.bulkPartial_mul",
+      "path": "ASSEMBLY/GRAssembly/BoundaryConstraintsGeometry.lean",
+      "line_start": 33,
+      "line_end": 36,
+      "signature": "theorem bulkPartial_mul {f q : Bulk → ℝ} {z : Bulk}\n    (hf : AnalyticAt ℝ f z) (hq : AnalyticAt ℝ q z) (i : Fin 5) :\n    bulkPartial (fun y => f y * q y) i z =\n      bulkPartial f i z * q z + f z * bulkPartial q i z",
+      "sha256": "fbdc0f06d7cdbb37eea72c635d67e609a7544ebf659ea724421f658f832e23e1",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/BoundaryConstraintsGeometry.lean#L33",
+      "role": "Literal bulk-partial product rule for scalar curvature entries.",
+      "limitations": "Both factors analytic at the evaluation point.",
+      "classification": "EXISTING_AUDITED_PROJECT_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "audit_logs": [
+        "Auxillary/GR/Closure/evidence/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/assembly-014-audit.log"
+      ],
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "457cb8d702eddaf1a0b8c32de627eaafd59cc8a3",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ03",
+        "GJ07"
+      ],
+      "checked_local_source": "ASSEMBLY/GRAssembly/BoundaryConstraintsGeometry.lean"
+    },
+    {
+      "id": "GR-GJ-10",
+      "name": "NSEGR.Assembly.bulkPartial_sum",
+      "path": "ASSEMBLY/GRAssembly/BoundaryConstraintsGeometry.lean",
+      "line_start": 42,
+      "line_end": 44,
+      "signature": "theorem bulkPartial_sum {n : ℕ} {f : Fin n → Bulk → ℝ} {z : Bulk}\n    (hf : ∀ a, AnalyticAt ℝ (f a) z) (i : Fin 5) :\n    bulkPartial (fun y => ∑ a, f a y) i z = ∑ a, bulkPartial (f a) i z",
+      "sha256": "fbdc0f06d7cdbb37eea72c635d67e609a7544ebf659ea724421f658f832e23e1",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/BoundaryConstraintsGeometry.lean#L42",
+      "role": "Move bulk-partial through finite contractions and traces.",
+      "limitations": "Each finite summand analytic at the evaluation point.",
+      "classification": "EXISTING_AUDITED_PROJECT_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "audit_logs": [
+        "Auxillary/GR/Closure/evidence/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/assembly-014-audit.log"
+      ],
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "457cb8d702eddaf1a0b8c32de627eaafd59cc8a3",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ03",
+        "GJ07"
+      ],
+      "checked_local_source": "ASSEMBLY/GRAssembly/BoundaryConstraintsGeometry.lean"
+    },
+    {
+      "id": "GR-GJ-11",
+      "name": "NSEGR.ricci_gaussian_normal",
+      "path": "GR_adapter/GRAdapter/GaussianCodazzi.lean",
+      "line_start": 104,
+      "line_end": 105,
+      "signature": "theorem ricci_gaussian_normal (h : Bulk → Tensor4) (z : Bulk) :\n    ricci (gaussianMetric h) z 0 0 = gaussianNormalRicciComponent h z",
+      "sha256": "25157c99abfbf8444db6b1a8c140a69a0516b6aadb77314b9f3364bd05cd46c0",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/GR_adapter/GRAdapter/GaussianCodazzi.lean#L104",
+      "role": "Literal Ric_rr formula before derivative-sum interchange.",
+      "limitations": "Normalized kappa derivative formula additionally uses GR-GJ-10.",
+      "classification": "EXISTING_AUDITED_PROJECT_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "audit_logs": [
+        "Auxillary/GR/Closure/evidence/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/adapter-audit.log"
+      ],
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "8233d040b9639d479260819b96f1de94bd03c8e3",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ04",
+        "GJ08",
+        "GJ09"
+      ],
+      "checked_local_source": "GR_adapter/GRAdapter/GaussianCodazzi.lean"
+    },
+    {
+      "id": "GR-GJ-12",
+      "name": "NSEGR.ricci_gaussian_mixed",
+      "path": "GR_adapter/GRAdapter/GaussianCodazzi.lean",
+      "line_start": 90,
+      "line_end": 91,
+      "signature": "theorem ricci_gaussian_mixed (h : Bulk → Tensor4) (z : Bulk) (a : Fin 4) :\n    ricci (gaussianMetric h) z 0 a.succ = gaussianCodazziComponent h z a",
+      "sha256": "25157c99abfbf8444db6b1a8c140a69a0516b6aadb77314b9f3364bd05cd46c0",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/GR_adapter/GRAdapter/GaussianCodazzi.lean#L90",
+      "role": "Literal Ric_ra equals the native Gaussian Codazzi component.",
+      "limitations": "Native formula uses shape derivatives; covariant-divergence normalization is proved in GJ04.",
+      "classification": "EXISTING_AUDITED_PROJECT_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "audit_logs": [
+        "Auxillary/GR/Closure/evidence/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/adapter-audit.log"
+      ],
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "8233d040b9639d479260819b96f1de94bd03c8e3",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ04",
+        "GJ08",
+        "GJ09"
+      ],
+      "checked_local_source": "GR_adapter/GRAdapter/GaussianCodazzi.lean"
+    },
+    {
+      "id": "GR-GJ-13",
+      "name": "NSEGR.Assembly.ricci_gaussian_tangential",
+      "path": "ASSEMBLY/GRAssembly/GaussianConstraints.lean",
+      "line_start": 81,
+      "line_end": 84,
+      "signature": "theorem ricci_gaussian_tangential (h : Bulk → Tensor4) (z : Bulk)\n    (hN : ∀ᶠ y in 𝓝 z, IsUnit (h y).det) (a b : Fin 4) :\n    ricci (gaussianMetric h) z a.succ b.succ =\n      gaussianTangentialRicciComponent h z a b",
+      "sha256": "8de58b62719127d4cfe4f1f869e23cb57c927568c6c24c3a267b1aeab3e45da0",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/GaussianConstraints.lean#L81",
+      "role": "Literal Ric_ab radial/tangential decomposition.",
+      "limitations": "Requires determinant unit on a neighborhood; h symmetric is needed to normalize the two LHL terms.",
+      "classification": "EXISTING_AUDITED_PROJECT_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "audit_logs": [
+        "Auxillary/GR/Closure/evidence/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/assembly-certified-base-audit.log"
+      ],
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "a93f3268639f5546bc83cd32c8ed14d3c97d0b21",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ04",
+        "GJ08",
+        "GJ09"
+      ],
+      "checked_local_source": "ASSEMBLY/GRAssembly/GaussianConstraints.lean"
+    },
+    {
+      "id": "GR-GJ-14",
+      "name": "NSEGR.Assembly.gaussian_vacuum_iff_components",
+      "path": "ASSEMBLY/GRAssembly/GaussianConstraints.lean",
+      "line_start": 107,
+      "line_end": 114,
+      "signature": "theorem gaussian_vacuum_iff_components (h : Bulk → Tensor4) (z : Bulk)\n    (hN : ∀ᶠ y in 𝓝 z, IsUnit (h y).det)\n    (hMixed : ∀ a : Fin 4,\n      ricci (gaussianMetric h) z a.succ 0 = ricci (gaussianMetric h) z 0 a.succ) :\n    ricci (gaussianMetric h) z = 0 ↔\n      gaussianNormalRicciComponent h z = 0 ∧\n      (∀ a : Fin 4, gaussianCodazziComponent h z a = 0) ∧\n      (∀ a b : Fin 4, gaussianTangentialRicciComponent h z a b = 0)",
+      "sha256": "8de58b62719127d4cfe4f1f869e23cb57c927568c6c24c3a267b1aeab3e45da0",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/GaussianConstraints.lean#L107",
+      "role": "Assemble full native Ricci-flatness from normal, mixed, tangential components.",
+      "limitations": "Explicit mixed-Ricci symmetry premise is discharged in GJ03; cannot be omitted.",
+      "classification": "EXISTING_AUDITED_PROJECT_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "audit_logs": [
+        "Auxillary/GR/Closure/evidence/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/assembly-certified-base-audit.log"
+      ],
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "a93f3268639f5546bc83cd32c8ed14d3c97d0b21",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ04",
+        "GJ09",
+        "GJ10"
+      ],
+      "checked_local_source": "ASSEMBLY/GRAssembly/GaussianConstraints.lean"
+    },
+    {
+      "id": "GR-GJ-15",
+      "name": "NSEGR.boundaryK_gaussian",
+      "path": "GR_adapter/GRAdapter/GaussianMetric.lean",
+      "line_start": 167,
+      "line_end": 168,
+      "signature": "theorem boundaryK_gaussian (h : Bulk → Tensor4) (t : ℝ) (x : Vec) :\n    boundaryK (gaussianMetric h) t x = gaussianSecondForm h (bulkPoint 0 t x)",
+      "sha256": "391ac9a392896e1fae8c0406957a8d3c83a5d7e266cbffaa0acd51c2ac91aa6b",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/GR_adapter/GRAdapter/GaussianMetric.lean#L167",
+      "role": "Identify the native boundary jet with L(0,y).",
+      "limitations": "Exact K=+h_r/2 convention.",
+      "classification": "EXISTING_AUDITED_PROJECT_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "audit_logs": [
+        "Auxillary/GR/Closure/evidence/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/adapter-audit.log"
+      ],
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "8d791487736692dac65a89f4ba0221466c2b3560",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ08"
+      ],
+      "checked_local_source": "GR_adapter/GRAdapter/GaussianMetric.lean"
+    },
+    {
+      "id": "GR-GJ-16",
+      "name": "NSEGR.Assembly.boundaryCodazzi_expanded",
+      "path": "ASSEMBLY/GRAssembly/BoundaryConstraintsGeometry.lean",
+      "line_start": 222,
+      "line_end": 226,
+      "signature": "theorem boundaryCodazzi_expanded {K : BoundaryTensor} {t : ℝ} {x : Vec}\n    (hK : AnalyticAt ℝ (fun z : ℝ × Vec => K z.1 z.2) (t, x)) (a : Fin 4) :\n    boundaryCodazzi K t x a =\n      (∑ b : Fin 4, lorentzSign4 b * boundaryPartial (fun s y => K s y b a) b t x) -\n      ∑ b : Fin 4, lorentzSign4 b * boundaryPartial (fun s y => K s y b b) a t x",
+      "sha256": "fbdc0f06d7cdbb37eea72c635d67e609a7544ebf659ea724421f658f832e23e1",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/BoundaryConstraintsGeometry.lean#L222",
+      "role": "Match flat initial mixed residual to the native boundary constraint.",
+      "limitations": "Requires analytic K at the boundary basepoint.",
+      "classification": "EXISTING_AUDITED_PROJECT_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "audit_logs": [
+        "Auxillary/GR/Closure/evidence/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/assembly-014-audit.log"
+      ],
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "457cb8d702eddaf1a0b8c32de627eaafd59cc8a3",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ09"
+      ],
+      "checked_local_source": "ASSEMBLY/GRAssembly/BoundaryConstraintsGeometry.lean"
+    },
+    {
+      "id": "GR-GJ-17",
+      "name": "NSEGR.Assembly.bulkPartial_metric_germ",
+      "path": "ASSEMBLY/GRAssembly/NativeGluingGaussianCoordinates.lean",
+      "line_start": 101,
+      "line_end": 103,
+      "signature": "theorem bulkPartial_metric_germ {g h : Metric} {z : Bulk}\n    (he : g =ᶠ[𝓝 z] h) (a b i : Fin 5) :\n    bulkPartial (fun y => g y a b) i z = bulkPartial (fun y => h y a b) i z",
+      "sha256": "dff29f539264001f11b9f73bb81ad84e6888341434f407d018793be3aa1acb05",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/NativeGluingGaussianCoordinates.lean#L101",
+      "role": "Preserve actual metric derivatives under arbitrary extension away from germ.",
+      "limitations": "Requires actual metric germ equality.",
+      "classification": "EXISTING_AUDITED_PROJECT_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "audit_logs": [
+        "Auxillary/GR/Closure/evidence/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/assembly-032-audit.log"
+      ],
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "c30351f4f7af85663b0718231f6ccd03ec492212",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ11",
+        "GJ12"
+      ],
+      "checked_local_source": "ASSEMBLY/GRAssembly/NativeGluingGaussianCoordinates.lean"
+    },
+    {
+      "id": "GR-GJ-18",
+      "name": "NSEGR.Assembly.ricci_metric_germ",
+      "path": "ASSEMBLY/GRAssembly/NativeGluingGaussianCoordinates.lean",
+      "line_start": 119,
+      "line_end": 120,
+      "signature": "theorem ricci_metric_germ {g h : Metric} {z : Bulk}\n    (he : g =ᶠ[𝓝 z] h) : ricci g z = ricci h z",
+      "sha256": "dff29f539264001f11b9f73bb81ad84e6888341434f407d018793be3aa1acb05",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/NativeGluingGaussianCoordinates.lean#L119",
+      "role": "Preserve actual native Ricci under germ-equal metric extension.",
+      "limitations": "Locality only; does not prove vacuum or supply LI02.",
+      "classification": "EXISTING_AUDITED_PROJECT_ENDPOINT",
+      "source_validation": "LOCAL_SOURCE_READ; root validates pinned Git source",
+      "audit_logs": [
+        "Auxillary/GR/Closure/evidence/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/assembly-032-audit.log"
+      ],
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "c30351f4f7af85663b0718231f6ccd03ec492212",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "GJ11"
+      ],
+      "checked_local_source": "ASSEMBLY/GRAssembly/NativeGluingGaussianCoordinates.lean"
+    },
+    {
+      "id": "ML-FT-01",
+      "name": "fourier_coe_apply",
+      "path": "Mathlib/Analysis/Fourier/AddCircle.lean",
+      "line_start": 132,
+      "signature": "theorem fourier_coe_apply {n : ℤ} {x : ℝ} :\n    fourier n (x : AddCircle T) = Complex.exp (2 * π * Complex.I * n * x / T)",
+      "ambient_context": "{T : ℝ}; {n : ℤ}; {x : ℝ}; source namespace is root.",
+      "sha256": "87fe0972a4370b6fdd14c327855f4e7ab98edf37e9e2ebb5182ab0f676bc16b2",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Fourier/AddCircle.lean#L132",
+      "role": "Character normalization at period one.",
+      "limitations": "No multivariate character bridge is supplied.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "source_declaration": "fourier_coe_apply",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "3f5c6ed72797f568db7740186fc4ee2f0cdf0fed",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT01"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Fourier/AddCircle.lean"
+    },
+    {
+      "id": "ML-FT-02",
+      "name": "PiLp.volume_preserving_toLp",
+      "path": "Mathlib/MeasureTheory/Measure/Haar/InnerProductSpace.lean",
+      "line_start": 139,
+      "signature": "theorem PiLp.volume_preserving_toLp : MeasurePreserving (@toLp 2 (ι → ℝ))",
+      "ambient_context": "(ι : Type*) [Fintype ι].",
+      "sha256": "176ec47d5c89daf4d70e31fa237677305755d504dc0eedc2e0d803e592ea2d60",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Measure/Haar/InnerProductSpace.lean#L139",
+      "role": "Exact EuclideanSpace/product-volume change.",
+      "limitations": "Preserves ambient Lebesgue measure; unit-cube preimage must be identified.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "source_declaration": "PiLp.volume_preserving_toLp",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "ec56bf802a75333ff66105c940eed9bf271fb6e1",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT03",
+        "FT04"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/MeasureTheory/Measure/Haar/InnerProductSpace.lean"
+    },
+    {
+      "id": "ML-FT-03",
+      "name": "UnitAddTorus.mFourierCoeff_eq_integral",
+      "path": "Mathlib/Analysis/Fourier/AddCircleMulti.lean",
+      "line_start": 251,
+      "signature": "theorem mFourierCoeff_eq_integral (f : UnitAddTorus d → E) (n : d → ℤ) (a : d → ℝ) :\n    mFourierCoeff f n =\n    ∫ (x : d → ℝ) in {x : d → ℝ | ∀ i, x i ∈ Ioc (a i) (a i + 1)},\n    mFourier (-n) (fun i => x i) • f (fun i => x i)",
+      "ambient_context": "{d : Type*} [Fintype d]; {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]; normalized AddCircle Haar instances.",
+      "sha256": "6684531a5f300174571a95237e40b39363ff5339bba5e78c7c66dfd6f53e6a2b",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Fourier/AddCircleMulti.lean#L251",
+      "role": "Exact torus coefficient to half-open product cube.",
+      "limitations": "Requires torus descended function and Ioc-to-Icc/Euclidean adapters.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "source_declaration": "mFourierCoeff_eq_integral",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "e141194f7ebb4accfdf50eb8484026ad6476cf4c",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT04"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Fourier/AddCircleMulti.lean"
+    },
+    {
+      "id": "ML-FT-04",
+      "name": "UnitAddTorus.mFourier_norm",
+      "path": "Mathlib/Analysis/Fourier/AddCircleMulti.lean",
+      "line_start": 66,
+      "signature": "lemma mFourier_norm : ‖mFourier n‖ = 1",
+      "ambient_context": "{d : Type*} [Fintype d]; {n : d → ℤ}.",
+      "sha256": "6684531a5f300174571a95237e40b39363ff5339bba5e78c7c66dfd6f53e6a2b",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Fourier/AddCircleMulti.lean#L66",
+      "role": "Norm-one torus monomials.",
+      "limitations": "Norm is the bundled continuous-map supremum norm; physical character equality remains an adapter.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "source_declaration": "mFourier_norm",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "e141194f7ebb4accfdf50eb8484026ad6476cf4c",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT01"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Fourier/AddCircleMulti.lean"
+    },
+    {
+      "id": "ML-FT-05",
+      "name": "intervalIntegral.integral_mul_deriv_eq_deriv_mul",
+      "path": "Mathlib/MeasureTheory/Integral/IntervalIntegral/IntegrationByParts.lean",
+      "line_start": 142,
+      "signature": "theorem integral_mul_deriv_eq_deriv_mul\n    (hu : ∀ x ∈ [[a, b]], HasDerivAt u (u' x) x) (hv : ∀ x ∈ [[a, b]], HasDerivAt v (v' x) x)\n    (hu' : IntervalIntegrable u' volume a b) (hv' : IntervalIntegrable v' volume a b) :\n    ∫ x in a..b, u x * v' x = u b * v b - u a * v a - ∫ x in a..b, u' x * v x",
+      "ambient_context": "{a b : ℝ}; {A : Type*} [NormedRing A] [NormedAlgebra ℝ A] [CompleteSpace A]; {u v u' v' : ℝ → A}.",
+      "sha256": "848ba7260b6e8b0734dc3e9fef185865f3f4d185b4db9e67c22b847ee063eabb",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/IntervalIntegral/IntegrationByParts.lean#L142",
+      "role": "Coordinate integration by parts after fixing remaining coordinates.",
+      "limitations": "Boundary cancellation and derivative/slice identification are native edges.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "source_declaration": "integral_mul_deriv_eq_deriv_mul",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "b19f15eb3d86371c4f494274b8432a1aafd99a79",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT05"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/MeasureTheory/Integral/IntervalIntegral/IntegrationByParts.lean"
+    },
+    {
+      "id": "ML-FT-06",
+      "name": "MeasureTheory.volume_preserving_piFinSuccAbove",
+      "path": "Mathlib/MeasureTheory/Constructions/Pi.lean",
+      "line_start": 819,
+      "signature": "theorem volume_preserving_piFinSuccAbove {n : ℕ} (α : Fin (n + 1) → Type u)\n    [∀ i, MeasureSpace (α i)] [∀ i, SigmaFinite (volume : Measure (α i))] (i : Fin (n + 1)) :\n    MeasurePreserving (MeasurableEquiv.piFinSuccAbove α i)",
+      "ambient_context": "{n : ℕ}; dependent measure spaces and SigmaFinite instances shown in signature.",
+      "sha256": "8751b21ac855f1a7b7c63258e8325f75b6fc236d360758b822ddf54597b118bf",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Constructions/Pi.lean#L819",
+      "role": "Split one coordinate from a finite product.",
+      "limitations": "For positive dimension write n=m+1 and transport Fin indices.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "source_declaration": "volume_preserving_piFinSuccAbove",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "277c9469b38ac701ab451167095b926c20c14e5e",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT05"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/MeasureTheory/Constructions/Pi.lean"
+    },
+    {
+      "id": "ML-FT-07",
+      "name": "MeasureTheory.integral_prod",
+      "path": "Mathlib/MeasureTheory/Integral/Prod.lean",
+      "line_start": 444,
+      "signature": "theorem integral_prod (f : α × β → E) (hf : Integrable f (μ.prod ν)) :\n    ∫ z, f z ∂μ.prod ν = ∫ x, ∫ y, f (x, y) ∂ν ∂μ",
+      "ambient_context": "Measure spaces α,β; measures μ,ν; normed real vector space E; applicable SFinite instances.",
+      "sha256": "6b55fbc9ee94f0ef34a5c6e1fe91d4dc3b27df1eb60d72061366bd80d15de87b",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Prod.lean#L444",
+      "role": "Fubini for cube coordinate slices.",
+      "limitations": "Integrability is discharged by smoothness on compact cube.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "source_declaration": "integral_prod",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "afc6544a02349aaec3dcb70964a8352a21e01d69",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT05"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/MeasureTheory/Integral/Prod.lean"
+    },
+    {
+      "id": "ML-FT-08",
+      "name": "ContDiff.fderiv_right",
+      "path": "Mathlib/Analysis/Calculus/ContDiff/Comp.lean",
+      "line_start": 750,
+      "signature": "theorem ContDiff.fderiv_right (hf : ContDiff 𝕜 n f) (hmn : m + 1 ≤ n) :\n    ContDiff 𝕜 m (fderiv 𝕜 f)",
+      "ambient_context": "{𝕜 E F : Type*} [NontriviallyNormedField 𝕜] [NormedAddCommGroup E] [NormedSpace 𝕜 E] [NormedAddCommGroup F] [NormedSpace 𝕜 F]; {f : E → F}; {m n : ℕ∞ω}.",
+      "sha256": "26495369d99d4815f99e8319623231a5fe25f0fdd1756c31162216323e27ed0f",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Comp.lean#L750",
+      "role": "Smoothness of coordinate derivatives and derivative words.",
+      "limitations": "Evaluation on fixed coordinate vector and periodicity are separate native steps.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "source_declaration": "ContDiff.fderiv_right",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "067d19883550ab5637d02f038d451c42ab16e4b7",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT02"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Calculus/ContDiff/Comp.lean"
+    },
+    {
+      "id": "ML-FT-09",
+      "name": "Function.Periodic.zsmul",
+      "path": "Mathlib/Algebra/Ring/Periodic.lean",
+      "line_start": 155,
+      "signature": "protected theorem Periodic.zsmul [AddGroup α] (h : Periodic f c) (n : ℤ) : Periodic f (n • c)",
+      "ambient_context": "{α β : Type*}; {f : α → β}; {c : α}; [AddGroup α].",
+      "sha256": "595ced3c0277252f889fa6f8c2f448c388e0a3f1dc83756fc29ab1290c2566b1",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Algebra/Ring/Periodic.lean#L155",
+      "role": "Extend unit-period identities to integer shifts.",
+      "limitations": "Compose finitely many coordinate shifts for full lattice periodicity.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "source_declaration": "Periodic.zsmul",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "71fcf017b9bc3e6a58d2520ebf317ad0abd69b9f",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT02"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Algebra/Ring/Periodic.lean"
+    },
+    {
+      "id": "ML-FT-10",
+      "name": "MeasureTheory.norm_integral_le_integral_norm",
+      "path": "Mathlib/MeasureTheory/Integral/Bochner/Basic.lean",
+      "line_start": 934,
+      "signature": "theorem norm_integral_le_integral_norm (f : α → G) : ‖∫ a, f a ∂μ‖ ≤ ∫ a, ‖f a‖ ∂μ",
+      "ambient_context": "Measure space α, measure μ, normed real vector space G.",
+      "sha256": "090e42d51020ea5b3f5265deabb442384e01eae30769d2b114d8141b87363ed5",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Bochner/Basic.lean#L934",
+      "role": "Bound coefficient by L1 norm of the smooth product-differential operator.",
+      "limitations": "Norm-one character property and integrability are supplied explicitly.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "source_declaration": "norm_integral_le_integral_norm",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "598253e209bb7a585588cb64b501ac877eedaf20",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT07"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/MeasureTheory/Integral/Bochner/Basic.lean"
+    },
+    {
+      "id": "ML-FT-11",
+      "name": "Real.summable_one_div_int_pow",
+      "path": "Mathlib/Analysis/PSeries.lean",
+      "line_start": 335,
+      "signature": "theorem summable_one_div_int_pow {p : ℕ} :\n    (Summable fun n : ℤ ↦ 1 / (n : ℝ) ^ p) ↔ 1 < p",
+      "ambient_context": "{p : ℕ}.",
+      "sha256": "dffb9a0012d0091a609e2caa5a8581e3245a8f8508b6c77ef31bc7f59c2d2f7c",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/PSeries.lean#L335",
+      "role": "One-dimensional p-series at p=2.",
+      "limitations": "Zero index contributes zero in the p-series; add an explicit delta at zero for majorization of (1+k²)^−1.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "source_declaration": "summable_one_div_int_pow",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "6499506f39f848904fbf7c0aca08bc303c19dca4",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT08"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/PSeries.lean"
+    },
+    {
+      "id": "ML-FT-12",
+      "name": "Summable.mul_of_nonneg",
+      "path": "Mathlib/Analysis/Normed/Ring/InfiniteSum.lean",
+      "line_start": 34,
+      "signature": "theorem Summable.mul_of_nonneg {f : ι → ℝ} {g : ι' → ℝ} (hf : Summable f) (hg : Summable g)\n    (hf' : 0 ≤ f) (hg' : 0 ≤ g) : Summable fun x : ι × ι' => f x.1 * g x.2",
+      "ambient_context": "{ι ι' : Type*}; functions and nonnegative hypotheses explicit.",
+      "sha256": "d197a22a8073f6dfe1def4f755919629fdbbecdc4e72f82325eaff2759c4d62c",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Ring/InfiniteSum.lean#L34",
+      "role": "Inductive summability of product weights on ℤ^n.",
+      "limitations": "Finite-coordinate product induction is native; no uniform-in-n estimate is claimed.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "source_declaration": "Summable.mul_of_nonneg",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "d9c1d83eba2ec955c3914387cf1ed15b09f052af",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT08"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Normed/Ring/InfiniteSum.lean"
+    },
+    {
+      "id": "ML-FT-13",
+      "name": "UnitAddTorus.hasSum_mFourier_series_of_summable",
+      "path": "Mathlib/Analysis/Fourier/AddCircleMulti.lean",
+      "line_start": 320,
+      "signature": "theorem hasSum_mFourier_series_of_summable (h : Summable (mFourierCoeff f)) :\n    HasSum (fun i ↦ mFourierCoeff f i • mFourier i) f",
+      "ambient_context": "{d : Type*} [Fintype d]; {f : C(UnitAddTorus d, ℂ)}; normalized Haar instances.",
+      "sha256": "6684531a5f300174571a95237e40b39363ff5339bba5e78c7c66dfd6f53e6a2b",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Fourier/AddCircleMulti.lean#L320",
+      "role": "Exact actual Fourier reconstruction in continuous-map norm.",
+      "limitations": "Coefficient summability is a premise discharged by FT09, not a root assumption.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "source_declaration": "hasSum_mFourier_series_of_summable",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "e141194f7ebb4accfdf50eb8484026ad6476cf4c",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT10"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Fourier/AddCircleMulti.lean"
+    },
+    {
+      "id": "ML-FT-14",
+      "name": "UnitAddTorus.hasSum_mFourier_series_apply_of_summable",
+      "path": "Mathlib/Analysis/Fourier/AddCircleMulti.lean",
+      "line_start": 329,
+      "signature": "theorem hasSum_mFourier_series_apply_of_summable (h : Summable (mFourierCoeff f))\n    (x : UnitAddTorus d) : HasSum (fun i ↦ mFourierCoeff f i • mFourier i x) (f x)",
+      "ambient_context": "{d : Type*} [Fintype d]; {f : C(UnitAddTorus d, ℂ)}; normalized Haar instances.",
+      "sha256": "6684531a5f300174571a95237e40b39363ff5339bba5e78c7c66dfd6f53e6a2b",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Fourier/AddCircleMulti.lean#L329",
+      "role": "Evaluate the reconstructed continuous map at arbitrary torus point.",
+      "limitations": "Pullback along x↦(x_i mod1) required for the exact physical endpoint.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "source_declaration": "hasSum_mFourier_series_apply_of_summable",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "e141194f7ebb4accfdf50eb8484026ad6476cf4c",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT10"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Fourier/AddCircleMulti.lean"
+    },
+    {
+      "id": "ML-FT-15",
+      "name": "HasSumUniformlyOn.of_norm_le_summable",
+      "path": "Mathlib/Topology/Algebra/InfiniteSum/TsumUniformlyOn.lean",
+      "line_start": 35,
+      "signature": "theorem HasSumUniformlyOn.of_norm_le_summable {f : α → β → F} (hu : Summable u) {s : Set β}\n    (hfu : ∀ n x, x ∈ s → ‖f n x‖ ≤ u n) : HasSumUniformlyOn f (fun x ↦ ∑' n, f n x) s",
+      "ambient_context": "{α β F : Type*} [NormedAddCommGroup F] [CompleteSpace F] {u : α → ℝ}.",
+      "sha256": "3e5df9c388d41dd3ee3d41a7e178f2d3c5ebcd78214e6785b76bc2f6fe372ea2",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Algebra/InfiniteSum/TsumUniformlyOn.lean#L35",
+      "role": "Global M-test for arbitrary frequency index set.",
+      "limitations": "Concludes uniform convergence to tsum; FT10 identifies that tsum with the actual derivative.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "source_declaration": "HasSumUniformlyOn.of_norm_le_summable",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "928620af8c1ba9413cf54895a0c902a649626824",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT11"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Topology/Algebra/InfiniteSum/TsumUniformlyOn.lean"
+    },
+    {
+      "id": "ML-FT-16",
+      "name": "hasSumUniformlyOn_univ_iff",
+      "path": "Mathlib/Topology/Algebra/InfiniteSum/UniformOn.lean",
+      "line_start": 332,
+      "signature": "lemma hasSumUniformlyOn_univ_iff :\n    HasSumUniformlyOn f g .univ ↔ HasSumUniformly f g",
+      "ambient_context": "{α β ι : Type*} [AddCommMonoid α] [UniformSpace α]; {f : ι → β → α}; {g : β → α}.",
+      "sha256": "2b6842eac743a43520290d000eb157491298eb5a3ea6f74ead354b05f9674e74",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Algebra/InfiniteSum/UniformOn.lean#L332",
+      "role": "Translate the univ M-test result to the literal HasSumUniformly target.",
+      "limitations": "Generated by @[to_additive] from the displayed multiplicative declaration; no new compiler run performed.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "source_declaration": "hasProdUniformlyOn_univ_iff",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "GENERATED_TO_ADDITIVE; ORIGINAL_DECLARATION_AND_ATTRIBUTE_VERIFIED",
+      "source_signature": "@[to_additive]\nlemma hasProdUniformlyOn_univ_iff :\n    HasProdUniformlyOn f g .univ ↔ HasProdUniformly f g := by\n  simp [hasProdUniformly_iff_tendstoUniformly, hasProdUniformlyOn_iff_tendstoUniformlyOn,\n    tendstoUniformlyOn_univ]\n\n@[to_additive]\ntheorem MultipliableUniformly.multipliableUniformlyOn (h : MultipliableUniformly f) :\n    MultipliableUniformlyOn f s :=\n  h.exists.choose_spec.hasProdUniformlyOn.multipliableUniformlyOn",
+      "git_blob_sha1": "657bcee70889563870ac17cc34affca57f8d1f56",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT11"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Topology/Algebra/InfiniteSum/UniformOn.lean"
+    },
+    {
+      "id": "ML-FT-17",
+      "name": "UnitAddTorus.integral_preimage",
+      "path": "Mathlib/Analysis/Fourier/AddCircleMulti.lean",
+      "line_start": 194,
+      "signature": "theorem integral_preimage {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]\n    (f : UnitAddTorus d → E) (a : d → ℝ) :\n    ∫ x : UnitAddTorus d, f x =\n    ∫ (x : d → ℝ) in {x : d → ℝ | ∀ i, x i ∈ Ioc (a i) (a i + 1)}, f (fun i => x i)",
+      "ambient_context": "{d : Type*} [Fintype d]; {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]; normalized Haar instances.",
+      "sha256": "6684531a5f300174571a95237e40b39363ff5339bba5e78c7c66dfd6f53e6a2b",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Fourier/AddCircleMulti.lean#L194",
+      "role": "Normalized torus/product fundamental-domain integration.",
+      "limitations": "Half-open product cube, not yet EuclideanSpace closed cube.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "source_declaration": "integral_preimage",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "e141194f7ebb4accfdf50eb8484026ad6476cf4c",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT04"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Analysis/Fourier/AddCircleMulti.lean"
+    },
+    {
+      "id": "ML-FT-18",
+      "name": "MeasureTheory.integral_Icc_eq_integral_Ioc",
+      "path": "Mathlib/MeasureTheory/Integral/Bochner/Set.lean",
+      "line_start": 706,
+      "signature": "theorem integral_Icc_eq_integral_Ioc : ∫ t in Icc x y, f t ∂μ = ∫ t in Ioc x y, f t ∂μ",
+      "ambient_context": "No-atom measure on ordered space; specialize α=ℝ, μ=volume, x=0, y=1, complex integrand.",
+      "sha256": "119710a23a0a09d22f770ca36844ddc3ca1d72cb479e231fe9ec06cea20629f9",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Bochner/Set.lean#L706",
+      "role": "One-dimensional null-boundary replacement.",
+      "limitations": "Finite-dimensional replacement uses finite product null faces.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "source_declaration": "integral_Icc_eq_integral_Ioc",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "338ff3f267c912291cbf581e3cd3f2de78982a82",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT04"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/MeasureTheory/Integral/Bochner/Set.lean"
+    },
+    {
+      "id": "ML-FT-19",
+      "name": "MeasureTheory.integral_fintype_prod_eq_prod",
+      "path": "Mathlib/MeasureTheory/Integral/Pi.lean",
+      "line_start": 106,
+      "signature": "theorem integral_fintype_prod_eq_prod {E : ι → Type*} (f : (i : ι) → E i → 𝕜)\n    {mE : ∀ i, MeasurableSpace (E i)} {μ : (i : ι) → Measure (E i)} [∀ i, SigmaFinite (μ i)] :\n    ∫ x : (i : ι) → E i, ∏ i, f i (x i) ∂(Measure.pi μ) = ∏ i, ∫ x, f i x ∂(μ i)",
+      "ambient_context": "{𝕜 ι : Type*} [Fintype ι] [RCLike 𝕜]; finite product of SigmaFinite measures.",
+      "sha256": "43c50a9d9a683b2050e145154410a7260c3dd84f3ec3010630cc6b90572afcd9",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Pi.lean#L106",
+      "role": "Exact finite-product integration/measure normalization.",
+      "limitations": "For general non-product integrands use FT06/ML-FT-07 Fubini; this endpoint alone is not general multivariate IBP.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "source_declaration": "integral_fintype_prod_eq_prod",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "b3c25bf06d8f65f099cd65501eee61b34e1d9a2d",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT04"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/MeasureTheory/Integral/Pi.lean"
+    },
+    {
+      "id": "ME-FT-01",
+      "name": "NSEMaxwell.HodgeProof.scalarCoeff_coordinateDerivative",
+      "path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean",
+      "line_start": 42,
+      "signature": "theorem scalarCoeff_coordinateDerivative (f : ScalarField)\n    (hf : ContDiff ℝ ∞ f) (hp : SpatialPeriodic f) (j : Fin 3) (k : Frequency) :\n    scalarCoeff (fun x => fderiv ℝ f x (unitVector j)) k =\n      SingularClosure.derivativeSymbol j k * scalarCoeff f k",
+      "ambient_context": "namespace NSEMaxwell.HodgeProof; open NSEMaxwell.Classical; ScalarField and Vec fixed at dimension 3.",
+      "sha256": "280e00740d779c6c592a6a9a6ce650355297050e7a75f18affbe8348aa8c3212",
+      "revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean#L42",
+      "role": "Proved n=3 real-scalar prototype for FT05/FT06.",
+      "limitations": "ScalarField=Vec₃→ℝ. Complex-valued full LI03 needs real/imaginary splitting at n=3 and a genuinely n-general proof for arbitrary n.",
+      "status": "SOURCE_VERIFIED_3D_REUSE_TEMPLATE",
+      "proof_role": "NOT_A_FULL_LI03_PREMISE_OR_SUBSTITUTE",
+      "provenance_verification": "MATCHED_PINNED_METHLIB_RETRIEVAL_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "9c3755c1fd05214dca2afb1d0a18d7876eca5c35",
+      "reuse": "TEMPLATE_3D_ONLY",
+      "used_by": [
+        "FT05",
+        "FT06"
+      ],
+      "checked_local_source": "gr_gluing_research/methlib_sources/FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean"
+    },
+    {
+      "id": "ME-FT-02",
+      "name": "NSEMaxwell.HodgeProof.rapid_scalarCoeff",
+      "path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean",
+      "line_start": 58,
+      "signature": "theorem rapid_scalarCoeff (f : ScalarField)\n    (hf : ContDiff ℝ ∞ f) (hp : SpatialPeriodic f) :\n    SingularClosure.RapidScalarFourier (scalarCoeff f)",
+      "ambient_context": "namespace NSEMaxwell.HodgeProof; open NSEMaxwell.Classical; ScalarField and Vec fixed at dimension 3.",
+      "sha256": "280e00740d779c6c592a6a9a6ce650355297050e7a75f18affbe8348aa8c3212",
+      "revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean#L58",
+      "role": "Proved n=3 rapid Fourier coefficient package; supports independent sanity check of FT09 at n=3.",
+      "limitations": "Does not imply arbitrary-dimension LiteratureSmoothFourierInput. Its RapidScalarFourier weights use the three-dimensional phase norm.",
+      "status": "SOURCE_VERIFIED_3D_REUSE_TEMPLATE",
+      "proof_role": "NOT_A_FULL_LI03_PREMISE_OR_SUBSTITUTE",
+      "provenance_verification": "MATCHED_PINNED_METHLIB_RETRIEVAL_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "9c3755c1fd05214dca2afb1d0a18d7876eca5c35",
+      "reuse": "TEMPLATE_3D_ONLY",
+      "used_by": [
+        "FT09"
+      ],
+      "checked_local_source": "gr_gluing_research/methlib_sources/FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean"
+    },
+    {
+      "id": "ML-FT-20",
+      "name": "Continuous.isClosedMap",
+      "path": "Mathlib/Topology/Separation/Hausdorff.lean",
+      "line_start": 673,
+      "signature": "protected theorem Continuous.isClosedMap [CompactSpace X] [T2Space Y] {f : X → Y}\n    (h : Continuous f) : IsClosedMap f",
+      "ambient_context": "Topological spaces X,Y,Z; maps f:X→Y and g:Y→Z. Compact/T2/surjectivity assumptions as in the displayed declaration.",
+      "sha256": "4e6998adc898c3aac6d01e0c8bc916aa68794bf6cca0d3c57e43f76760151a87",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Separation/Hausdorff.lean#L673",
+      "role": "Continuous compact-to-Hausdorff quotient map is closed.",
+      "limitations": "Compactness of the physical cube and periodic fiber constancy are proved in FT02/FT03.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "035464532dbc48a094702ce5046ec3a46ed23824",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT03"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Topology/Separation/Hausdorff.lean"
+    },
+    {
+      "id": "ML-FT-21",
+      "name": "IsClosedMap.isQuotientMap",
+      "path": "Mathlib/Topology/Maps/Basic.lean",
+      "line_start": 571,
+      "signature": "theorem isQuotientMap (hcl : IsClosedMap f) (hcont : Continuous f)\n    (hsurj : Surjective f) : IsQuotientMap f",
+      "ambient_context": "Topological spaces X,Y,Z; maps f:X→Y and g:Y→Z. Compact/T2/surjectivity assumptions as in the displayed declaration.",
+      "sha256": "f5775adabdf497e328542ea77e5fe0ac46011bc34905a7e02ffe0284ec1e79d8",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Maps/Basic.lean#L571",
+      "role": "A continuous closed surjection is a quotient map.",
+      "limitations": "Compactness of the physical cube and periodic fiber constancy are proved in FT02/FT03.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "84685026e27afe17242ad7aa3150104fe8085807",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT03"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Topology/Maps/Basic.lean"
+    },
+    {
+      "id": "ML-FT-22",
+      "name": "Topology.IsQuotientMap.continuous_iff",
+      "path": "Mathlib/Topology/Maps/Basic.lean",
+      "line_start": 353,
+      "signature": "protected theorem continuous_iff (hf : IsQuotientMap f) : Continuous g ↔ Continuous (g ∘ f)",
+      "ambient_context": "Topological spaces X,Y,Z; maps f:X→Y and g:Y→Z. Compact/T2/surjectivity assumptions as in the displayed declaration.",
+      "sha256": "f5775adabdf497e328542ea77e5fe0ac46011bc34905a7e02ffe0284ec1e79d8",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Maps/Basic.lean#L353",
+      "role": "Continuity of descended torus function from cube pullback.",
+      "limitations": "Compactness of the physical cube and periodic fiber constancy are proved in FT02/FT03.",
+      "status": "SOURCE_VERIFIED_EXISTING_ENDPOINT",
+      "provenance_verification": "MATCHED_PINNED_MATHLIB_MANIFEST_AND_GIT_BLOB",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "84685026e27afe17242ad7aa3150104fe8085807",
+      "reuse": "EXISTING_SUPPORT_FOR_DISPLAYED_NATIVE_EDGE",
+      "used_by": [
+        "FT03"
+      ],
+      "checked_local_source": "Fefferman_adapter/NativeSources/mathlib/Mathlib/Topology/Maps/Basic.lean"
+    },
+    {
+      "id": "GR-ROOT-01",
+      "name": "NSEGR.Assembly.NSE_GR_THREE_OBLIGATION_CLOSURE",
+      "path": "ASSEMBLY/GRAssembly/NSE_GR_THREE_OBLIGATION_CLOSURE.lean",
+      "line_start": 10,
+      "signature": "theorem NSE_GR_THREE_OBLIGATION_CLOSURE\n    (ν ρ t0 : ℝ) (hν : 0 < ν) (hρ : ρ ≠ 0) (input : LiteratureInputs) :\n    ExactSectorEquivalence ν ρ t0 :=",
+      "sha256": "5706aa0e3f93c0e21f7fc46b85360d593c10e4e90bc0178dc365b125bed645d9",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/NSE_GR_THREE_OBLIGATION_CLOSURE.lean#L10",
+      "role": "Audited exact conditional root; apply only after constructing literal LiteratureInputs.",
+      "limitations": "Explicit LiteratureInputs remains a premise until independently inhabited; no native promotion of new chain by this existing audit.",
+      "reuse": "EXACT_CONDITIONAL_ROOT",
+      "status": "A_TIER_PASS_STANDARD_ONLY_EXISTING",
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "05b43a75fe25c1cba37871b5c450fad438fa9212",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "used_by": [
+        "ROOT02"
+      ],
+      "checked_local_source": "ASSEMBLY/GRAssembly/NSE_GR_THREE_OBLIGATION_CLOSURE.lean"
+    },
+    {
+      "id": "GR-ROOT-02",
+      "name": "NSEGR.Assembly.nativeLawPackages_of_literatureInputs",
+      "path": "ASSEMBLY/GRAssembly/RootClosure.lean",
+      "line_start": 18,
+      "signature": "theorem nativeLawPackages_of_literatureInputs\n    (input : LiteratureInputs) (ν ρ t0 : ℝ) (hρ : ρ ≠ 0) :\n    ∃ c : ScalarBoundaryCompletionLaws ν ρ t0,\n      ∃ r : AnalyticRadialExtensionLaws ρ t0,\n        ∃ h : GeometricReconstructionLaws ν ρ t0, GermInverseLaws c r h :=",
+      "sha256": "eeeb1a6aa2001ea7e0cea195f832874f884796da6012ddaeb7dcb21b2695d4b1",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/RootClosure.lean#L18",
+      "role": "Audited construction of c/r/h/q from literal literature arguments.",
+      "limitations": "Explicit LiteratureInputs remains a premise until independently inhabited; no native promotion of new chain by this existing audit.",
+      "reuse": "EXACT_CONDITIONAL_ROOT",
+      "status": "A_TIER_PASS_STANDARD_ONLY_EXISTING",
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "9bb8b5597dbd6e67c24f0a42f9b2fd35c8940be9",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "used_by": [],
+      "checked_local_source": "ASSEMBLY/GRAssembly/RootClosure.lean"
+    },
+    {
+      "id": "GR-ROOT-03",
+      "name": "NSEGR.Assembly.NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_LITERATURE_INPUTS",
+      "path": "ASSEMBLY/GRAssembly/RootClosure.lean",
+      "line_start": 29,
+      "signature": "theorem NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_LITERATURE_INPUTS\n    (ν ρ t0 : ℝ) (hν : 0 < ν) (hρ : ρ ≠ 0) (input : LiteratureInputs) :\n    ExactSectorEquivalence ν ρ t0 :=",
+      "sha256": "eeeb1a6aa2001ea7e0cea195f832874f884796da6012ddaeb7dcb21b2695d4b1",
+      "revision": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+      "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2/ASSEMBLY/GRAssembly/RootClosure.lean#L29",
+      "role": "Audited germ equivalence from literal literature arguments.",
+      "limitations": "Explicit LiteratureInputs remains a premise until independently inhabited; no native promotion of new chain by this existing audit.",
+      "reuse": "EXACT_CONDITIONAL_ROOT",
+      "status": "A_TIER_PASS_STANDARD_ONLY_EXISTING",
+      "external_run": 43471012374,
+      "provenance_verification": "MATCHED_EXTERNAL_AUDIT_SOURCE_MANIFEST",
+      "signature_verification": "LITERAL_SOURCE_HEADER_VERIFIED",
+      "git_blob_sha1": "9bb8b5597dbd6e67c24f0a42f9b2fd35c8940be9",
+      "ambient_context": "Section variables and typeclasses inherited from the pinned source; this header is not an elaborated compiler #check output.",
+      "used_by": [],
+      "checked_local_source": "ASSEMBLY/GRAssembly/RootClosure.lean"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "CK01",
+      "statement": "Equivalent taxicab norms transport exact target AnalyticAt and derivative germs.",
+      "depends_on": [],
+      "selected_endpoints": [
+        "ML-CK-01",
+        "ML-CK-02",
+        "ML-CK-11",
+        "ML-CK-25"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.ck_norm_transport",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "CK02",
+      "statement": "Every analytic germ has unique symmetric coefficients with no larger coefficient norms.",
+      "depends_on": [],
+      "selected_endpoints": [
+        "ML-CK-04",
+        "ML-CK-05",
+        "ML-CK-06",
+        "ML-CK-07",
+        "ML-CK-22"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.ck_symmetric_expansion",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "CK03",
+      "statement": "B0(Z,G) of summable symmetric positive-degree coefficients is a Banach space; its closed unit ball is complete.",
+      "depends_on": [],
+      "selected_endpoints": [
+        "ML-CK-03",
+        "ML-CK-23"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.ckCoefficientSpace_complete",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "CK04",
+      "statement": "Evaluation of B0 has radius at least one, is analytic on the open ball, and is injective as an analytic germ.",
+      "depends_on": [
+        "CK02",
+        "CK03"
+      ],
+      "selected_endpoints": [
+        "ML-CK-05",
+        "ML-CK-07",
+        "ML-CK-08",
+        "ML-CK-09",
+        "ML-CK-15",
+        "ML-CK-16",
+        "ML-CK-22",
+        "ML-CK-24"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.ckCoefficientSpace_eval_analytic",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "CK05",
+      "statement": "Multilinear superposition lift has norm at most coefficient norm times product of input norms and commutes with evaluation.",
+      "depends_on": [
+        "CK02",
+        "CK03",
+        "CK04"
+      ],
+      "selected_endpoints": [
+        "ML-CK-04",
+        "ML-CK-05",
+        "ML-CK-06"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.ck_lift_multilinear_bound",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "CK06",
+      "statement": "Time-primitive A has coefficient norm at most one half.",
+      "depends_on": [
+        "CK01",
+        "CK03"
+      ],
+      "selected_endpoints": [
+        "ML-CK-04",
+        "ML-CK-05"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.ck_timePrimitive_bound",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "CK07",
+      "statement": "Spatial derivative B=D_X A has coefficient norm at most one.",
+      "depends_on": [
+        "CK01",
+        "CK03",
+        "CK06"
+      ],
+      "selected_endpoints": [
+        "ML-CK-04",
+        "ML-CK-05"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.ck_spatialPrimitive_bound",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "CK08",
+      "statement": "Ev(Aa) has zero time-zero trace, time derivative Ev(a), and spatial derivative Ev(Ba).",
+      "depends_on": [
+        "CK04",
+        "CK06",
+        "CK07"
+      ],
+      "selected_endpoints": [
+        "ML-CK-15",
+        "ML-CK-16"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.ck_primitive_eval_derivatives",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "CK09",
+      "statement": "Exact arbitrary-data CK input reduces to w_t=g(t,x,w,D_xw), w(0,x)=0, with analytic g and g(0)=0.",
+      "depends_on": [
+        "CK01"
+      ],
+      "selected_endpoints": [
+        "ML-CK-10",
+        "ML-CK-11",
+        "ML-CK-12",
+        "ML-CK-13",
+        "ML-CK-14"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.ck_normalized_rhs_analytic",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "CK10",
+      "statement": "Analytic superposition obeys explicit coefficient Lipschitz bound L on a smaller coefficient ball.",
+      "depends_on": [
+        "CK02",
+        "CK05",
+        "CK09"
+      ],
+      "selected_endpoints": [
+        "ML-CK-06"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.ck_superposition_lipschitz",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "CK11",
+      "statement": "For explicit small epsilon, Psi_epsilon maps the closed coefficient unit ball to radius one half and contracts with constant one quarter.",
+      "depends_on": [
+        "CK06",
+        "CK07",
+        "CK10"
+      ],
+      "selected_endpoints": [
+        "ML-CK-01"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.ck_scaled_map_contracting",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "CK12",
+      "statement": "The coefficient fixed point evaluates to an actual jointly analytic solution of the normalized PDE, then the exact original initial-value problem.",
+      "depends_on": [
+        "CK03",
+        "CK08",
+        "CK09",
+        "CK11"
+      ],
+      "selected_endpoints": [
+        "ML-CK-19",
+        "ML-CK-20",
+        "ML-CK-08",
+        "ML-CK-09",
+        "ML-CK-24"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.ck_normalized_solution_exists",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "CK13",
+      "statement": "Every pair of analytic solution germs becomes a pair of fixed points after a common sufficiently small scaling, hence is equal.",
+      "depends_on": [
+        "CK02",
+        "CK04",
+        "CK08",
+        "CK09",
+        "CK10",
+        "CK11"
+      ],
+      "selected_endpoints": [
+        "ML-CK-10",
+        "ML-CK-06",
+        "ML-CK-21",
+        "ML-CK-22",
+        "ML-CK-25"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.ck_analytic_solution_germ_unique",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "CK14",
+      "statement": "The exact NSEGR.LiteratureAnalyticCKInput proposition is inhabited mathematically.",
+      "depends_on": [
+        "CK09",
+        "CK12",
+        "CK13"
+      ],
+      "selected_endpoints": [
+        "ML-CK-17",
+        "ML-CK-18"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.literatureAnalyticCKInput_native",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "GJ01",
+      "statement": "Finite symmetric coordinates and inverse analytic with D(H)[W]=-HWH",
+      "depends_on": [],
+      "selected_endpoints": [
+        "ML-GJ-01",
+        "ML-GJ-02",
+        "ML-GJ-03",
+        "ML-GJ-04",
+        "ML-GJ-09",
+        "ML-GJ-10",
+        "ML-GJ-11",
+        "ML-GJ-12",
+        "GR-GJ-01",
+        "GR-GJ-02",
+        "GR-GJ-03",
+        "GR-GJ-04"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.gaussianJet_coordinates_and_inverse_analytic",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "GJ02",
+      "statement": "Actual Gaussian Christoffel families",
+      "depends_on": [
+        "GJ01"
+      ],
+      "selected_endpoints": [
+        "GR-GJ-05",
+        "GR-GJ-06",
+        "GR-GJ-07",
+        "GR-GJ-08"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.gaussian_connection_families",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "GJ03",
+      "statement": "Coordinate curvature symmetries and contracted Bianchi from finite derivative algebra",
+      "depends_on": [
+        "GJ01"
+      ],
+      "selected_endpoints": [
+        "ML-GJ-05",
+        "ML-GJ-06",
+        "ML-GJ-07",
+        "ML-GJ-08",
+        "ML-GJ-13",
+        "ML-GJ-14",
+        "ML-GJ-15",
+        "GR-GJ-09",
+        "GR-GJ-10"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.coordinate_contracted_bianchi",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "GJ04",
+      "statement": "Actual Gaussian Ricci and tangential trace identities",
+      "depends_on": [
+        "GJ01",
+        "GJ02",
+        "GJ03"
+      ],
+      "selected_endpoints": [
+        "GR-GJ-02",
+        "GR-GJ-11",
+        "GR-GJ-12",
+        "GR-GJ-13",
+        "GR-GJ-14",
+        "ML-GJ-07",
+        "ML-GJ-08"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.gaussian_ricci_reduced",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "GJ05",
+      "statement": "Analytic 60-state first-order Gaussian CK RHS with off-solution symmetrized intrinsic Ricci",
+      "depends_on": [
+        "GJ01",
+        "GJ03"
+      ],
+      "selected_endpoints": [
+        "ML-GJ-01",
+        "ML-GJ-02",
+        "ML-GJ-03",
+        "ML-GJ-04",
+        "ML-GJ-07",
+        "ML-GJ-08",
+        "ML-GJ-16",
+        "GR-GJ-01",
+        "GR-GJ-03"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.gaussianCKRHS_analyticAt",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "GJ06",
+      "statement": "Analytic 60-component Gaussian evolution from prescribed symmetric K",
+      "depends_on": [
+        "CK14",
+        "GJ01",
+        "GJ05"
+      ],
+      "selected_endpoints": [
+        "ML-GJ-12"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.gaussianCKEvolution_exists_of_CK",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "GJ07",
+      "statement": "Compatibility P_a=partial_a h by uniqueness for the zero 40-state CK system",
+      "depends_on": [
+        "CK14",
+        "GJ06"
+      ],
+      "selected_endpoints": [
+        "ML-GJ-05",
+        "ML-GJ-06",
+        "ML-GJ-13",
+        "GR-GJ-09",
+        "GR-GJ-10"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.gaussianCKEvolution_compatible",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "GJ08",
+      "statement": "Tangential Ricci zero; h(0)=eta; L(0)=K; nondegenerate Gaussian metric",
+      "depends_on": [
+        "GJ03",
+        "GJ04",
+        "GJ06",
+        "GJ07"
+      ],
+      "selected_endpoints": [
+        "GR-GJ-04",
+        "GR-GJ-11",
+        "GR-GJ-12",
+        "GR-GJ-13",
+        "GR-GJ-15",
+        "ML-GJ-12",
+        "ML-GJ-14",
+        "ML-GJ-16"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.gaussianCKEvolution_tangential_vacuum_and_initial_jets",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "GJ09",
+      "statement": "Analytic homogeneous 5-state constraint propagation with zero initial constraints",
+      "depends_on": [
+        "GJ03",
+        "GJ04",
+        "GJ08"
+      ],
+      "selected_endpoints": [
+        "GR-GJ-11",
+        "GR-GJ-12",
+        "GR-GJ-13",
+        "GR-GJ-14",
+        "GR-GJ-16",
+        "ML-GJ-05",
+        "ML-GJ-06",
+        "ML-GJ-07",
+        "ML-GJ-08"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.gaussian_constraint_evolution",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "GJ10",
+      "statement": "All actual Ricci components zero by homogeneous CK uniqueness",
+      "depends_on": [
+        "CK14",
+        "GJ08",
+        "GJ09"
+      ],
+      "selected_endpoints": [
+        "GR-GJ-14",
+        "ML-GJ-05",
+        "ML-GJ-06",
+        "ML-GJ-07",
+        "ML-GJ-08"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.gaussianCKEvolution_vacuum_of_constraints",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "GJ11",
+      "statement": "Globally typed existence witness for exact LiteratureFlatGaussianGerm",
+      "depends_on": [
+        "GJ06",
+        "GJ08",
+        "GJ10"
+      ],
+      "selected_endpoints": [
+        "GR-GJ-17",
+        "GR-GJ-18",
+        "ML-GJ-13",
+        "ML-GJ-14"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.literatureGaussianJet_exists_of_CK",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "GJ12",
+      "statement": "Uniqueness of actual metric germ in same Gaussian coordinates and normal orientation",
+      "depends_on": [
+        "CK14",
+        "GJ03",
+        "GJ04",
+        "GJ05"
+      ],
+      "selected_endpoints": [
+        "GR-GJ-17",
+        "ML-GJ-05",
+        "ML-GJ-06",
+        "ML-GJ-13"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.literatureGaussianJet_unique_of_CK",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "GJ13",
+      "statement": "LiteratureAnalyticCKInput -> LiteratureGaussianJetInput",
+      "depends_on": [
+        "GJ11",
+        "GJ12"
+      ],
+      "selected_endpoints": [],
+      "proposed_native_name": "NSEGR.NativeLiterature.literatureGaussianJetInput_of_analyticCK",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "FT01",
+      "statement": "Actual character factorization, modulus one and coordinate derivative identity.",
+      "depends_on": [],
+      "selected_endpoints": [
+        "ML-FT-01",
+        "ML-FT-04"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.literatureCharacter_finiteDimensional_laws",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "FT02",
+      "statement": "Integer-lattice periodicity; every derivative word remains C∞ and unit-periodic.",
+      "depends_on": [],
+      "selected_endpoints": [
+        "ML-FT-08",
+        "ML-FT-09"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.literaturePartialWord_smooth_periodic",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "FT03",
+      "statement": "Continuous periodic f descends to a continuous function on UnitAddTorus(Fin n).",
+      "depends_on": [
+        "FT02"
+      ],
+      "selected_endpoints": [
+        "ML-FT-02",
+        "ML-FT-20",
+        "ML-FT-21",
+        "ML-FT-22"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.literaturePeriodic_exists_continuous_torusLift",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "FT04",
+      "statement": "Exact equality of physical Euclidean Icc-cube coefficients and normalized torus coefficients.",
+      "depends_on": [
+        "FT01",
+        "FT03"
+      ],
+      "selected_endpoints": [
+        "ML-FT-02",
+        "ML-FT-03",
+        "ML-FT-17",
+        "ML-FT-18",
+        "ML-FT-19"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.literatureFourierCoefficient_eq_mFourierCoeff",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "FT05",
+      "statement": "Fourier(∂_j f)(k)=(2π i k_j) Fourier(f)(k).",
+      "depends_on": [
+        "FT01",
+        "FT02",
+        "FT04"
+      ],
+      "selected_endpoints": [
+        "ML-FT-05",
+        "ML-FT-06",
+        "ML-FT-07",
+        "ME-FT-01"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.literatureFourierCoefficient_coordinateDerivative",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "FT06",
+      "statement": "Exact derivative-word multiplier identity.",
+      "depends_on": [
+        "FT02",
+        "FT05"
+      ],
+      "selected_endpoints": [
+        "ME-FT-01"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.literatureFourierCoefficient_partialWord",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "FT07",
+      "statement": "Product-operator estimate |ĝ(k)|≤||L_n g||L1 Π_j(1+k_j²)^−1.",
+      "depends_on": [
+        "FT01",
+        "FT02",
+        "FT05"
+      ],
+      "selected_endpoints": [
+        "ML-FT-10"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.literatureFourierCoefficient_product_decay",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "FT08",
+      "statement": "Summability on ℤ^n of Π_j(1+k_j²)^−1.",
+      "depends_on": [],
+      "selected_endpoints": [
+        "ML-FT-11",
+        "ML-FT-12"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.literatureProductWeight_summable",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "FT09",
+      "statement": "Absolute Fourier coefficient summability for every smooth periodic derivative word.",
+      "depends_on": [
+        "FT02",
+        "FT06",
+        "FT07",
+        "FT08"
+      ],
+      "selected_endpoints": [
+        "ME-FT-02"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.literatureFourier_partialWord_summable_norm",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "FT10",
+      "statement": "Actual global pointwise reconstruction of every derivative word.",
+      "depends_on": [
+        "FT02",
+        "FT04",
+        "FT06",
+        "FT09"
+      ],
+      "selected_endpoints": [
+        "ML-FT-13",
+        "ML-FT-14"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.literatureFourier_partialWord_hasSum",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "FT11",
+      "statement": "Literal HasSumUniformly for the derivative Fourier series on all EuclideanSpace.",
+      "depends_on": [
+        "FT01",
+        "FT09",
+        "FT10"
+      ],
+      "selected_endpoints": [
+        "ML-FT-15",
+        "ML-FT-16"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.literatureFourier_partialWord_hasSumUniformly",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "FT12",
+      "statement": "LiteratureSmoothFourierInput with no analytic/literature premise.",
+      "depends_on": [
+        "FT06",
+        "FT09",
+        "FT11"
+      ],
+      "selected_endpoints": [],
+      "proposed_native_name": "NSEGR.NativeLiterature.literatureSmoothFourierInput_native",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "ROOT01",
+      "statement": "NSEGR.LiteratureInputs, constructed from CK14, GJ13(CK14), FT12.",
+      "depends_on": [
+        "CK14",
+        "GJ13",
+        "FT12"
+      ],
+      "selected_endpoints": [],
+      "proposed_native_name": "NSEGR.NativeLiterature.literatureInputs_native",
+      "status": "B_TIER_NATIVE_PENDING"
+    },
+    {
+      "id": "ROOT02",
+      "statement": "forall nu rho t0 : R, 0 < nu -> rho != 0 -> NSEGR.ExactSectorEquivalence nu rho t0.",
+      "depends_on": [
+        "ROOT01"
+      ],
+      "selected_endpoints": [
+        "GR-ROOT-01"
+      ],
+      "proposed_native_name": "NSEGR.NativeLiterature.NSE_GR_EXACT_SECTOR_EQUIVALENCE_NATIVE",
+      "status": "B_TIER_NATIVE_PENDING"
+    }
+  ],
+  "topological_order": [
+    "CK01",
+    "CK02",
+    "CK03",
+    "GJ01",
+    "FT01",
+    "FT02",
+    "FT08",
+    "CK04",
+    "CK06",
+    "CK09",
+    "GJ02",
+    "GJ03",
+    "FT03",
+    "CK05",
+    "CK07",
+    "GJ04",
+    "GJ05",
+    "FT04",
+    "CK08",
+    "CK10",
+    "FT05",
+    "CK11",
+    "FT06",
+    "FT07",
+    "CK12",
+    "CK13",
+    "FT09",
+    "CK14",
+    "FT10",
+    "GJ06",
+    "GJ12",
+    "FT11",
+    "GJ07",
+    "FT12",
+    "GJ08",
+    "GJ09",
+    "GJ10",
+    "GJ11",
+    "GJ13",
+    "ROOT01",
+    "ROOT02"
+  ],
+  "literal_target_sha256": "b47aeed4d0117d3569bd0a739946f7339cb569d6c010d1e67235c3c9edd0b3f3",
+  "report_file": "NSE_GR_LITERATURE_INPUTS_NATIVE_CHAIN_B_TIER.txt",
+  "report_sha256": "cfcd269e337435bdae0c7c3e20a1f3399247cff07adee1da27bf29b0b7d95f23"
+}

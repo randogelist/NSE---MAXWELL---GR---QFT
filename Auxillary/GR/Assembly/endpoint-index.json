@@ -1,0 +1,2139 @@
+{
+  "schema_version": 1,
+  "scope": "native GR assembly declarations; premises remain in exact Lean types",
+  "baseline_gr_declarations": 401,
+  "cutout_declarations": 85,
+  "new_theorems": 150,
+  "new_definitions": 21,
+  "modules": [
+    {
+      "module": "GRAssembly.AnalyticFourier",
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "sha256": "5f7dbf120293f6cb390132255184233f62af5c4ac57e04f8625b8ec96abde18e",
+      "gc": [
+        "GC03"
+      ],
+      "imports": [
+        "GRAdapter.FourierBridge",
+        "ML027.Endpoint",
+        "ML028.Endpoint",
+        "ML046.Endpoint",
+        "ML047.Endpoint",
+        "ML048.Endpoint"
+      ]
+    },
+    {
+      "module": "GRAssembly.GaugePrimitive",
+      "source": "ASSEMBLY/GRAssembly/GaugePrimitive.lean",
+      "sha256": "29476ccece9f1628285b617f7652c7f06f62ab0a5d54fd70ee6a6ee77e24a57e",
+      "gc": [
+        "GC21"
+      ],
+      "imports": [
+        "GRAdapter.ScalarCompatibility"
+      ]
+    },
+    {
+      "module": "GRAssembly.GaussianConstraints",
+      "source": "ASSEMBLY/GRAssembly/GaussianConstraints.lean",
+      "sha256": "8de58b62719127d4cfe4f1f869e23cb57c927568c6c24c3a267b1aeab3e45da0",
+      "gc": [
+        "GC16"
+      ],
+      "imports": [
+        "GRAdapter.GaussianCodazzi"
+      ]
+    },
+    {
+      "module": "GRAssembly.HodgeLocal",
+      "source": "ASSEMBLY/GRAssembly/HodgeLocal.lean",
+      "sha256": "fb95529bc5757c39be3c9bea2edf4b06b4b71795be4b7764b19160f506e8e807",
+      "gc": [
+        "GC02",
+        "GC17"
+      ],
+      "imports": [
+        "GRAssembly.HodgeTime",
+        "ML019.Endpoint",
+        "ML020.Endpoint",
+        "ML021.Endpoint",
+        "Mathlib.Analysis.Calculus.BumpFunction.InnerProduct"
+      ]
+    },
+    {
+      "module": "GRAssembly.HodgeTime",
+      "source": "ASSEMBLY/GRAssembly/HodgeTime.lean",
+      "sha256": "cd3fdd3c61f16d318333a9b378521f0f37914ed8cc1e311be2663c47c659506a",
+      "gc": [
+        "GC02",
+        "GC17"
+      ],
+      "imports": [
+        "GRAssembly.HodgeTransport",
+        "ME10.Endpoint",
+        "ME11.Endpoint",
+        "ME12.Endpoint",
+        "ME17.E01.Endpoint",
+        "ME17.E02.Endpoint",
+        "ML022.Endpoint"
+      ]
+    },
+    {
+      "module": "GRAssembly.HodgeTransport",
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "sha256": "d6cf00be9f90c9809538e8c75b4c5c3c0b588355a42db865474a5205435982e9",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "imports": [
+        "GRAdapter.FourierInversion",
+        "ME02.Endpoint",
+        "ME03.Endpoint",
+        "ME04.Endpoint",
+        "ME05.Endpoint",
+        "ME07.Endpoint",
+        "ME16.E01.Endpoint",
+        "ME16.E02.Endpoint",
+        "ME16.E03.Endpoint",
+        "ML049.Endpoint"
+      ]
+    },
+    {
+      "module": "GRAssembly.LorentzFactor",
+      "source": "ASSEMBLY/GRAssembly/LorentzFactor.lean",
+      "sha256": "543f7016f9fbc018f9a1fb031415d917edfe3c9e485c1d9f39743b309d30ce81",
+      "gc": [
+        "GC15"
+      ],
+      "imports": [
+        "GRAdapter.GaussianMetric",
+        "ML056.Endpoint",
+        "ML057.Endpoint",
+        "ML058.Endpoint",
+        "ML059.Endpoint",
+        "ML060.Endpoint",
+        "ML061.Endpoint",
+        "ML063.Endpoint",
+        "ML064.Endpoint"
+      ]
+    },
+    {
+      "module": "GRAssembly.LorentzNeighborhood",
+      "source": "ASSEMBLY/GRAssembly/LorentzNeighborhood.lean",
+      "sha256": "634842442d29f28123dd71d1b142d1ee23b85155df7330202e31d28caeb0c042",
+      "gc": [
+        "GC15"
+      ],
+      "imports": [
+        "GRAssembly.LorentzFactor",
+        "ML055.Endpoint"
+      ]
+    },
+    {
+      "module": "GRAssembly.PeriodicGluing",
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "sha256": "06c8922447ac4a4b1d6165dbc121ba7d44c09726f938cfbe10ddf703953e1032",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "imports": [
+        "GRAdapter.GermUniformity",
+        "ML002.Endpoint",
+        "ML003.Endpoint",
+        "ML004.Endpoint",
+        "ML006.Endpoint",
+        "ML007.Endpoint",
+        "ML010.Endpoint",
+        "ML012.Endpoint",
+        "ML013.Endpoint"
+      ]
+    },
+    {
+      "module": "GRAssembly.PeriodicWitness",
+      "source": "ASSEMBLY/GRAssembly/PeriodicWitness.lean",
+      "sha256": "5d32c93482fcd07b0f8978d5e5f2fdc604b5f541c095bee3024617b6133495a5",
+      "gc": [
+        "GC08",
+        "GC09",
+        "GC14"
+      ],
+      "imports": [
+        "GRAssembly.PeriodicGluing"
+      ]
+    },
+    {
+      "module": "GRAssembly.PressureGauge",
+      "source": "ASSEMBLY/GRAssembly/PressureGauge.lean",
+      "sha256": "2b02e872c0b3d7f62ac22d996d0a3c9e256f296571ae098540ed0ce6ef12b162",
+      "gc": [
+        "GC21"
+      ],
+      "imports": [
+        "GRAdapter.ScalarCompatibility",
+        "GRAdapter.FourierInversion",
+        "GRAssembly.GaugePrimitive"
+      ]
+    },
+    {
+      "module": "GRAssembly.ScalarCompletion",
+      "source": "ASSEMBLY/GRAssembly/ScalarCompletion.lean",
+      "sha256": "44e1c33133a32edf1c79b21acd311c61487e685f3e232eaa41cc5d9d06ec3b95",
+      "gc": [
+        "GC11",
+        "GC19"
+      ],
+      "imports": [
+        "GRAssembly.ScalarJet",
+        "GRAdapter.StressDivergence"
+      ]
+    },
+    {
+      "module": "GRAssembly.ScalarCore",
+      "source": "ASSEMBLY/GRAssembly/ScalarCore.lean",
+      "sha256": "028df03bac11dfa07e65c30d56a055e1c3e4a0fdf9add01f6d35dfd4a29aa020",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "imports": [
+        "GRAssembly.ScalarJet"
+      ]
+    },
+    {
+      "module": "GRAssembly.ScalarJet",
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "sha256": "c4fae4df1ba2792faa4dcd78c2b3655bc74aef4a6066383652c8ae3088f2c935",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "imports": [
+        "GRAdapter.ScalarCompatibility",
+        "GRAdapter.ScalarNormalForm",
+        "ML012.Endpoint",
+        "ML050.Endpoint"
+      ]
+    }
+  ],
+  "declarations": [
+    {
+      "name": "NSEGR.Assembly.coordinateExpWeight",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "def",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 31
+    },
+    {
+      "name": "NSEGR.Assembly.coordinateExpWeight_nonneg",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 34
+    },
+    {
+      "name": "NSEGR.Assembly.summable_coordinateExpWeight",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 39
+    },
+    {
+      "name": "NSEGR.Assembly.frequencyTriple",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "def",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 48
+    },
+    {
+      "name": "NSEGR.Assembly.frequencyTriple_injective",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 51
+    },
+    {
+      "name": "NSEGR.Assembly.latticeExpMajorant",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "def",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 59
+    },
+    {
+      "name": "NSEGR.Assembly.latticeExpMajorant_nonneg",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 63
+    },
+    {
+      "name": "NSEGR.Assembly.summable_latticeExpMajorant",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 69
+    },
+    {
+      "name": "NSEGR.Assembly.frequencyL1",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "def",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 86
+    },
+    {
+      "name": "NSEGR.Assembly.frequencyExpWeight",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "def",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 89
+    },
+    {
+      "name": "NSEGR.Assembly.frequencyExpWeight_eq_lattice",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 92
+    },
+    {
+      "name": "NSEGR.Assembly.summable_frequencyExpWeight",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 101
+    },
+    {
+      "name": "NSEGR.Assembly.summable_scaled_frequencyExpWeight",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 106
+    },
+    {
+      "name": "NSEGR.Assembly.complexPoissonMode",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "def",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 110
+    },
+    {
+      "name": "NSEGR.Assembly.realPoissonMode",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "def",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 115
+    },
+    {
+      "name": "NSEGR.Assembly.complexPoissonMode_norm_le",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 118
+    },
+    {
+      "name": "NSEGR.Assembly.realPoissonMode_eq_re",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 127
+    },
+    {
+      "name": "NSEGR.Assembly.realPoissonMode_norm_le",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 134
+    },
+    {
+      "name": "NSEGR.Assembly.realPoissonMode_continuous",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 141
+    },
+    {
+      "name": "NSEGR.Assembly.poissonInverse_uniform_of_summable_coefficients",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 149
+    },
+    {
+      "name": "NSEGR.Assembly.poissonInverse_continuous_of_summable_coefficients",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 160
+    },
+    {
+      "name": "NSEGR.Assembly.poissonInverse_uniform_of_literature",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 170
+    },
+    {
+      "name": "NSEGR.Assembly.poissonInverse_continuous_of_literature",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 179
+    },
+    {
+      "name": "NSEGR.Assembly.poissonInverse_parameter_uniform",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 188
+    },
+    {
+      "name": "NSEGR.Assembly.realPoissonMode_parameter_continuousOn",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 201
+    },
+    {
+      "name": "NSEGR.Assembly.poissonInverse_parameter_continuousOn",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 222
+    },
+    {
+      "name": "NSEGR.Assembly.poissonInverse_parameter_continuousOn_of_exponential_bound",
+      "module": "GRAssembly.AnalyticFourier",
+      "kind": "theorem",
+      "gc": [
+        "GC03"
+      ],
+      "source": "ASSEMBLY/GRAssembly/AnalyticFourier.lean",
+      "line": 236
+    },
+    {
+      "name": "NSEGR.Assembly.gaugeCKRHS",
+      "module": "GRAssembly.GaugePrimitive",
+      "kind": "def",
+      "gc": [
+        "GC21"
+      ],
+      "source": "ASSEMBLY/GRAssembly/GaugePrimitive.lean",
+      "line": 22
+    },
+    {
+      "name": "NSEGR.Assembly.gaugeCKRHS_potential",
+      "module": "GRAssembly.GaugePrimitive",
+      "kind": "theorem",
+      "gc": [
+        "GC21"
+      ],
+      "source": "ASSEMBLY/GRAssembly/GaugePrimitive.lean",
+      "line": 26
+    },
+    {
+      "name": "NSEGR.Assembly.gaugeCKRHS_velocity",
+      "module": "GRAssembly.GaugePrimitive",
+      "kind": "theorem",
+      "gc": [
+        "GC21"
+      ],
+      "source": "ASSEMBLY/GRAssembly/GaugePrimitive.lean",
+      "line": 29
+    },
+    {
+      "name": "NSEGR.Assembly.analyticAt_gaugeCKRHS",
+      "module": "GRAssembly.GaugePrimitive",
+      "kind": "theorem",
+      "gc": [
+        "GC21"
+      ],
+      "source": "ASSEMBLY/GRAssembly/GaugePrimitive.lean",
+      "line": 32
+    },
+    {
+      "name": "NSEGR.Assembly.gaugeCK_exists_unique_firstOrder",
+      "module": "GRAssembly.GaugePrimitive",
+      "kind": "theorem",
+      "gc": [
+        "GC21"
+      ],
+      "source": "ASSEMBLY/GRAssembly/GaugePrimitive.lean",
+      "line": 54
+    },
+    {
+      "name": "NSEGR.Assembly.gaugeCK_coordinate_timeDerivative",
+      "module": "GRAssembly.GaugePrimitive",
+      "kind": "theorem",
+      "gc": [
+        "GC21"
+      ],
+      "source": "ASSEMBLY/GRAssembly/GaugePrimitive.lean",
+      "line": 71
+    },
+    {
+      "name": "NSEGR.Assembly.gaugeCK_solution_transport",
+      "module": "GRAssembly.GaugePrimitive",
+      "kind": "theorem",
+      "gc": [
+        "GC21"
+      ],
+      "source": "ASSEMBLY/GRAssembly/GaugePrimitive.lean",
+      "line": 81
+    },
+    {
+      "name": "NSEGR.Assembly.analytic_double_primitive_of_literatureCK",
+      "module": "GRAssembly.GaugePrimitive",
+      "kind": "theorem",
+      "gc": [
+        "GC21"
+      ],
+      "source": "ASSEMBLY/GRAssembly/GaugePrimitive.lean",
+      "line": 105
+    },
+    {
+      "name": "NSEGR.Assembly.bulkPartial_congr_of_eventuallyEq",
+      "module": "GRAssembly.GaussianConstraints",
+      "kind": "theorem",
+      "gc": [
+        "GC16"
+      ],
+      "source": "ASSEMBLY/GRAssembly/GaussianConstraints.lean",
+      "line": 18
+    },
+    {
+      "name": "NSEGR.Assembly.bulkPartial_neg",
+      "module": "GRAssembly.GaussianConstraints",
+      "kind": "theorem",
+      "gc": [
+        "GC16"
+      ],
+      "source": "ASSEMBLY/GRAssembly/GaussianConstraints.lean",
+      "line": 23
+    },
+    {
+      "name": "NSEGR.Assembly.christoffel_gaussian_rbr_total",
+      "module": "GRAssembly.GaussianConstraints",
+      "kind": "theorem",
+      "gc": [
+        "GC16"
+      ],
+      "source": "ASSEMBLY/GRAssembly/GaussianConstraints.lean",
+      "line": 28
+    },
+    {
+      "name": "NSEGR.Assembly.christoffel_gaussian_abr_total",
+      "module": "GRAssembly.GaussianConstraints",
+      "kind": "theorem",
+      "gc": [
+        "GC16"
+      ],
+      "source": "ASSEMBLY/GRAssembly/GaussianConstraints.lean",
+      "line": 38
+    },
+    {
+      "name": "NSEGR.Assembly.radial_christoffel_derivative",
+      "module": "GRAssembly.GaussianConstraints",
+      "kind": "theorem",
+      "gc": [
+        "GC16"
+      ],
+      "source": "ASSEMBLY/GRAssembly/GaussianConstraints.lean",
+      "line": 53
+    },
+    {
+      "name": "NSEGR.Assembly.gaussianTangentialRicciComponent",
+      "module": "GRAssembly.GaussianConstraints",
+      "kind": "def",
+      "gc": [
+        "GC16"
+      ],
+      "source": "ASSEMBLY/GRAssembly/GaussianConstraints.lean",
+      "line": 64
+    },
+    {
+      "name": "NSEGR.Assembly.ricci_gaussian_tangential",
+      "module": "GRAssembly.GaussianConstraints",
+      "kind": "theorem",
+      "gc": [
+        "GC16"
+      ],
+      "source": "ASSEMBLY/GRAssembly/GaussianConstraints.lean",
+      "line": 81
+    },
+    {
+      "name": "NSEGR.Assembly.gaussianTangentialRicciComponent_zero_of_vacuum",
+      "module": "GRAssembly.GaussianConstraints",
+      "kind": "theorem",
+      "gc": [
+        "GC16"
+      ],
+      "source": "ASSEMBLY/GRAssembly/GaussianConstraints.lean",
+      "line": 97
+    },
+    {
+      "name": "NSEGR.Assembly.gaussian_vacuum_iff_components",
+      "module": "GRAssembly.GaussianConstraints",
+      "kind": "theorem",
+      "gc": [
+        "GC16"
+      ],
+      "source": "ASSEMBLY/GRAssembly/GaussianConstraints.lean",
+      "line": 107
+    },
+    {
+      "name": "NSEGR.Assembly.poissonInverse_hasDerivAt_global",
+      "module": "GRAssembly.HodgeLocal",
+      "kind": "theorem",
+      "gc": [
+        "GC02",
+        "GC17"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeLocal.lean",
+      "line": 21
+    },
+    {
+      "name": "NSEGR.Assembly.scalarMean_hasDerivAt_global",
+      "module": "GRAssembly.HodgeLocal",
+      "kind": "theorem",
+      "gc": [
+        "GC02",
+        "GC17"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeLocal.lean",
+      "line": 46
+    },
+    {
+      "name": "NSEGR.Assembly.cutoff_mul_contDiff",
+      "module": "GRAssembly.HodgeLocal",
+      "kind": "theorem",
+      "gc": [
+        "GC02",
+        "GC17"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeLocal.lean",
+      "line": 69
+    },
+    {
+      "name": "NSEGR.Assembly.exists_smooth_periodic_extension",
+      "module": "GRAssembly.HodgeLocal",
+      "kind": "theorem",
+      "gc": [
+        "GC02",
+        "GC17"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeLocal.lean",
+      "line": 89
+    },
+    {
+      "name": "NSEGR.Assembly.poissonInverse_hasDerivAt_local",
+      "module": "GRAssembly.HodgeLocal",
+      "kind": "theorem",
+      "gc": [
+        "GC02",
+        "GC17"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeLocal.lean",
+      "line": 119
+    },
+    {
+      "name": "NSEGR.Assembly.poissonInverse_localTimeDerivative",
+      "module": "GRAssembly.HodgeLocal",
+      "kind": "theorem",
+      "gc": [
+        "GC02",
+        "GC17"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeLocal.lean",
+      "line": 136
+    },
+    {
+      "name": "NSEGR.Assembly.scalarMean_hasDerivAt_local",
+      "module": "GRAssembly.HodgeLocal",
+      "kind": "theorem",
+      "gc": [
+        "GC02",
+        "GC17"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeLocal.lean",
+      "line": 146
+    },
+    {
+      "name": "NSEGR.Assembly.scalarTimeDerivative_eq_local",
+      "module": "GRAssembly.HodgeTime",
+      "kind": "theorem",
+      "gc": [
+        "GC02",
+        "GC17"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTime.lean",
+      "line": 23
+    },
+    {
+      "name": "NSEGR.Assembly.poissonInverse_halfspace_smooth",
+      "module": "GRAssembly.HodgeTime",
+      "kind": "theorem",
+      "gc": [
+        "GC02",
+        "GC17"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTime.lean",
+      "line": 29
+    },
+    {
+      "name": "NSEGR.Assembly.scalarL_hasDerivAt_pos",
+      "module": "GRAssembly.HodgeTime",
+      "kind": "theorem",
+      "gc": [
+        "GC02",
+        "GC17"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTime.lean",
+      "line": 41
+    },
+    {
+      "name": "NSEGR.Assembly.poissonInverse_hasDerivAt_pos",
+      "module": "GRAssembly.HodgeTime",
+      "kind": "theorem",
+      "gc": [
+        "GC02",
+        "GC17"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTime.lean",
+      "line": 73
+    },
+    {
+      "name": "NSEGR.Assembly.poissonInverse_localTimeDerivative_pos",
+      "module": "GRAssembly.HodgeTime",
+      "kind": "theorem",
+      "gc": [
+        "GC02",
+        "GC17"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTime.lean",
+      "line": 89
+    },
+    {
+      "name": "NSEGR.Assembly.scalarMean_hasDerivAt_pos",
+      "module": "GRAssembly.HodgeTime",
+      "kind": "theorem",
+      "gc": [
+        "GC02",
+        "GC17"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTime.lean",
+      "line": 99
+    },
+    {
+      "name": "NSEGR.Assembly.poissonSymbol_eq_neg_methlib",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 28
+    },
+    {
+      "name": "NSEGR.Assembly.poissonInverse_eq_neg_scalarL",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 35
+    },
+    {
+      "name": "NSEGR.Assembly.poissonInverse_smooth",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 47
+    },
+    {
+      "name": "NSEGR.Assembly.scalarLaplacian_component",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 52
+    },
+    {
+      "name": "NSEGR.Assembly.scalarLaplacian_neg",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 67
+    },
+    {
+      "name": "NSEGR.Assembly.scalarLaplacian_poissonInverse",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 74
+    },
+    {
+      "name": "NSEGR.Assembly.scalarMean_poissonInverse_zero",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 101
+    },
+    {
+      "name": "NSEGR.Assembly.scalarPartial_scalarL_commute",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 128
+    },
+    {
+      "name": "NSEGR.Assembly.scalarPartial_poissonInverse_commute",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 162
+    },
+    {
+      "name": "NSEGR.Assembly.poissonInverse_finset_sum",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 174
+    },
+    {
+      "name": "NSEGR.Assembly.scalarLaplacian_poissonInverse_commute",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 184
+    },
+    {
+      "name": "NSEGR.Assembly.poissonInverse_scalarLaplacian",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 203
+    },
+    {
+      "name": "NSEGR.Assembly.leray_gradient_zero",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 210
+    },
+    {
+      "name": "NSEGR.Assembly.divergence_smooth",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 227
+    },
+    {
+      "name": "NSEGR.Assembly.divergence_sub",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 231
+    },
+    {
+      "name": "NSEGR.Assembly.leray_smooth",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 241
+    },
+    {
+      "name": "NSEGR.Assembly.divergence_leray_zero",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 248
+    },
+    {
+      "name": "NSEGR.Assembly.leray_eq_self_of_divergence_zero",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 260
+    },
+    {
+      "name": "NSEGR.Assembly.leray_idempotent",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 266
+    },
+    {
+      "name": "NSEGR.Assembly.spatialMean_leray",
+      "module": "GRAssembly.HodgeTransport",
+      "kind": "theorem",
+      "gc": [
+        "GC01",
+        "GC02",
+        "GC04"
+      ],
+      "source": "ASSEMBLY/GRAssembly/HodgeTransport.lean",
+      "line": 271
+    },
+    {
+      "name": "NSEGR.Assembly.positive_matrix_gram_factor",
+      "module": "GRAssembly.LorentzFactor",
+      "kind": "theorem",
+      "gc": [
+        "GC15"
+      ],
+      "source": "ASSEMBLY/GRAssembly/LorentzFactor.lean",
+      "line": 26
+    },
+    {
+      "name": "NSEGR.Assembly.lorentzSchur",
+      "module": "GRAssembly.LorentzFactor",
+      "kind": "def",
+      "gc": [
+        "GC15"
+      ],
+      "source": "ASSEMBLY/GRAssembly/LorentzFactor.lean",
+      "line": 43
+    },
+    {
+      "name": "NSEGR.Assembly.lorentzSchur_posDef",
+      "module": "GRAssembly.LorentzFactor",
+      "kind": "theorem",
+      "gc": [
+        "GC15"
+      ],
+      "source": "ASSEMBLY/GRAssembly/LorentzFactor.lean",
+      "line": 46
+    },
+    {
+      "name": "NSEGR.Assembly.lorentzTriangular",
+      "module": "GRAssembly.LorentzFactor",
+      "kind": "def",
+      "gc": [
+        "GC15"
+      ],
+      "source": "ASSEMBLY/GRAssembly/LorentzFactor.lean",
+      "line": 54
+    },
+    {
+      "name": "NSEGR.Assembly.lorentzTriangular_00",
+      "module": "GRAssembly.LorentzFactor",
+      "kind": "theorem",
+      "gc": [
+        "GC15"
+      ],
+      "source": "ASSEMBLY/GRAssembly/LorentzFactor.lean",
+      "line": 59
+    },
+    {
+      "name": "NSEGR.Assembly.lorentzTriangular_0j",
+      "module": "GRAssembly.LorentzFactor",
+      "kind": "theorem",
+      "gc": [
+        "GC15"
+      ],
+      "source": "ASSEMBLY/GRAssembly/LorentzFactor.lean",
+      "line": 62
+    },
+    {
+      "name": "NSEGR.Assembly.lorentzTriangular_i0",
+      "module": "GRAssembly.LorentzFactor",
+      "kind": "theorem",
+      "gc": [
+        "GC15"
+      ],
+      "source": "ASSEMBLY/GRAssembly/LorentzFactor.lean",
+      "line": 65
+    },
+    {
+      "name": "NSEGR.Assembly.lorentzTriangular_ij",
+      "module": "GRAssembly.LorentzFactor",
+      "kind": "theorem",
+      "gc": [
+        "GC15"
+      ],
+      "source": "ASSEMBLY/GRAssembly/LorentzFactor.lean",
+      "line": 68
+    },
+    {
+      "name": "NSEGR.Assembly.lorentzTriangular_det",
+      "module": "GRAssembly.LorentzFactor",
+      "kind": "theorem",
+      "gc": [
+        "GC15"
+      ],
+      "source": "ASSEMBLY/GRAssembly/LorentzFactor.lean",
+      "line": 71
+    },
+    {
+      "name": "NSEGR.Assembly.eta4_congruence_apply",
+      "module": "GRAssembly.LorentzFactor",
+      "kind": "theorem",
+      "gc": [
+        "GC15"
+      ],
+      "source": "ASSEMBLY/GRAssembly/LorentzFactor.lean",
+      "line": 78
+    },
+    {
+      "name": "NSEGR.Assembly.lorentzTriangular_congruence",
+      "module": "GRAssembly.LorentzFactor",
+      "kind": "theorem",
+      "gc": [
+        "GC15"
+      ],
+      "source": "ASSEMBLY/GRAssembly/LorentzFactor.lean",
+      "line": 88
+    },
+    {
+      "name": "NSEGR.Assembly.lorentz_factor_of_spatial_posDef",
+      "module": "GRAssembly.LorentzFactor",
+      "kind": "theorem",
+      "gc": [
+        "GC15"
+      ],
+      "source": "ASSEMBLY/GRAssembly/LorentzFactor.lean",
+      "line": 121
+    },
+    {
+      "name": "NSEGR.Assembly.gaussian_lorentzian_of_spatial_posDef",
+      "module": "GRAssembly.LorentzFactor",
+      "kind": "theorem",
+      "gc": [
+        "GC15"
+      ],
+      "source": "ASSEMBLY/GRAssembly/LorentzFactor.lean",
+      "line": 140
+    },
+    {
+      "name": "NSEGR.Assembly.small_entry_quadratic_bound",
+      "module": "GRAssembly.LorentzNeighborhood",
+      "kind": "theorem",
+      "gc": [
+        "GC15"
+      ],
+      "source": "ASSEMBLY/GRAssembly/LorentzNeighborhood.lean",
+      "line": 13
+    },
+    {
+      "name": "NSEGR.Assembly.spatial_quadratic_error_bound",
+      "module": "GRAssembly.LorentzNeighborhood",
+      "kind": "theorem",
+      "gc": [
+        "GC15"
+      ],
+      "source": "ASSEMBLY/GRAssembly/LorentzNeighborhood.lean",
+      "line": 22
+    },
+    {
+      "name": "NSEGR.Assembly.spatial_posDef_of_near_identity",
+      "module": "GRAssembly.LorentzNeighborhood",
+      "kind": "theorem",
+      "gc": [
+        "GC15"
+      ],
+      "source": "ASSEMBLY/GRAssembly/LorentzNeighborhood.lean",
+      "line": 48
+    },
+    {
+      "name": "NSEGR.Assembly.lorentz_factor_of_near_eta4",
+      "module": "GRAssembly.LorentzNeighborhood",
+      "kind": "theorem",
+      "gc": [
+        "GC15"
+      ],
+      "source": "ASSEMBLY/GRAssembly/LorentzNeighborhood.lean",
+      "line": 77
+    },
+    {
+      "name": "NSEGR.Assembly.gaussian_lorentzian_of_near_eta4",
+      "module": "GRAssembly.LorentzNeighborhood",
+      "kind": "theorem",
+      "gc": [
+        "GC15"
+      ],
+      "source": "ASSEMBLY/GRAssembly/LorentzNeighborhood.lean",
+      "line": 91
+    },
+    {
+      "name": "NSEGR.Assembly.finite_precompact_refinement",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "theorem",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 28
+    },
+    {
+      "name": "NSEGR.Assembly.finite_compact_overlap_uniform",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "theorem",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 49
+    },
+    {
+      "name": "NSEGR.Assembly.overlapGlue",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "def",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 59
+    },
+    {
+      "name": "NSEGR.Assembly.overlapGlue_eq",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "theorem",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 69
+    },
+    {
+      "name": "NSEGR.Assembly.overlapGlue_eventuallyEq",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "theorem",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 80
+    },
+    {
+      "name": "NSEGR.Assembly.overlapGlue_analyticAt",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "theorem",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 91
+    },
+    {
+      "name": "NSEGR.Assembly.overlapGlue_fderiv",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "theorem",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 104
+    },
+    {
+      "name": "NSEGR.Assembly.overlapGlue_fderiv_eventuallyEq",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "theorem",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 116
+    },
+    {
+      "name": "NSEGR.Assembly.integerSpatialShift_add",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "theorem",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 128
+    },
+    {
+      "name": "NSEGR.Assembly.integerSpatialShift_sub",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "theorem",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 134
+    },
+    {
+      "name": "NSEGR.Assembly.integerSpatialShift_single",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "theorem",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 140
+    },
+    {
+      "name": "NSEGR.Assembly.latticePatch",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "def",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 145
+    },
+    {
+      "name": "NSEGR.Assembly.latticeLocal",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "def",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 148
+    },
+    {
+      "name": "NSEGR.Assembly.latticePatch_isOpen",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "theorem",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 151
+    },
+    {
+      "name": "NSEGR.Assembly.latticePatch_cover",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "theorem",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 155
+    },
+    {
+      "name": "NSEGR.Assembly.boundedShiftVector",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "def",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 169
+    },
+    {
+      "name": "NSEGR.Assembly.lattice_relative_shift_bound",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "theorem",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 171
+    },
+    {
+      "name": "NSEGR.Assembly.compactLatticeOverlap",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "def",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 189
+    },
+    {
+      "name": "NSEGR.Assembly.compactLatticeOverlap_isCompact",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "theorem",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 193
+    },
+    {
+      "name": "NSEGR.Assembly.lattice_overlap_germs_uniform",
+      "module": "GRAssembly.PeriodicGluing",
+      "kind": "theorem",
+      "gc": [
+        "GC07",
+        "GC08",
+        "GC09"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+      "line": 201
+    },
+    {
+      "name": "NSEGR.Assembly.periodic_witness_of_compatible_atlas",
+      "module": "GRAssembly.PeriodicWitness",
+      "kind": "theorem",
+      "gc": [
+        "GC08",
+        "GC09",
+        "GC14"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicWitness.lean",
+      "line": 21
+    },
+    {
+      "name": "NSEGR.Assembly.periodic_witness_of_compact_overlap_germs",
+      "module": "GRAssembly.PeriodicWitness",
+      "kind": "theorem",
+      "gc": [
+        "GC08",
+        "GC09",
+        "GC14"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicWitness.lean",
+      "line": 72
+    },
+    {
+      "name": "NSEGR.Assembly.analyticAt_of_lattice_local_germ",
+      "module": "GRAssembly.PeriodicWitness",
+      "kind": "theorem",
+      "gc": [
+        "GC08",
+        "GC09",
+        "GC14"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicWitness.lean",
+      "line": 103
+    },
+    {
+      "name": "NSEGR.Assembly.germ_local_law_of_lattice_local_germ",
+      "module": "GRAssembly.PeriodicWitness",
+      "kind": "theorem",
+      "gc": [
+        "GC08",
+        "GC09",
+        "GC14"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicWitness.lean",
+      "line": 126
+    },
+    {
+      "name": "NSEGR.Assembly.periodic_analytic_witness_of_compact_overlap_germs",
+      "module": "GRAssembly.PeriodicWitness",
+      "kind": "theorem",
+      "gc": [
+        "GC08",
+        "GC09",
+        "GC14"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PeriodicWitness.lean",
+      "line": 139
+    },
+    {
+      "name": "NSEGR.Assembly.scalarHessian_sub_constant",
+      "module": "GRAssembly.PressureGauge",
+      "kind": "theorem",
+      "gc": [
+        "GC21"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PressureGauge.lean",
+      "line": 20
+    },
+    {
+      "name": "NSEGR.Assembly.scalarLaplacian_sub_constant",
+      "module": "GRAssembly.PressureGauge",
+      "kind": "theorem",
+      "gc": [
+        "GC21"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PressureGauge.lean",
+      "line": 25
+    },
+    {
+      "name": "NSEGR.Assembly.analytic_second_deriv_sub",
+      "module": "GRAssembly.PressureGauge",
+      "kind": "theorem",
+      "gc": [
+        "GC21"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PressureGauge.lean",
+      "line": 30
+    },
+    {
+      "name": "NSEGR.Assembly.scalarLocalTimeDerivative_gauge_germ",
+      "module": "GRAssembly.PressureGauge",
+      "kind": "theorem",
+      "gc": [
+        "GC21"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PressureGauge.lean",
+      "line": 41
+    },
+    {
+      "name": "NSEGR.Assembly.gradient_scalarLocalTimeDerivative_gauge",
+      "module": "GRAssembly.PressureGauge",
+      "kind": "theorem",
+      "gc": [
+        "GC21"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PressureGauge.lean",
+      "line": 53
+    },
+    {
+      "name": "NSEGR.Assembly.scalarSecondTimeDerivative_gauge",
+      "module": "GRAssembly.PressureGauge",
+      "kind": "theorem",
+      "gc": [
+        "GC21"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PressureGauge.lean",
+      "line": 62
+    },
+    {
+      "name": "NSEGR.Assembly.source_plus_completion_pressure_gauge",
+      "module": "GRAssembly.PressureGauge",
+      "kind": "theorem",
+      "gc": [
+        "GC21"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PressureGauge.lean",
+      "line": 72
+    },
+    {
+      "name": "NSEGR.Assembly.completedBoundary_pressure_gauge",
+      "module": "GRAssembly.PressureGauge",
+      "kind": "theorem",
+      "gc": [
+        "GC21"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PressureGauge.lean",
+      "line": 93
+    },
+    {
+      "name": "NSEGR.Assembly.normalized_pressure_gauge_completion",
+      "module": "GRAssembly.PressureGauge",
+      "kind": "theorem",
+      "gc": [
+        "GC21"
+      ],
+      "source": "ASSEMBLY/GRAssembly/PressureGauge.lean",
+      "line": 104
+    },
+    {
+      "name": "NSEGR.Assembly.nseSpatialSource3_trace",
+      "module": "GRAssembly.ScalarCompletion",
+      "kind": "theorem",
+      "gc": [
+        "GC11",
+        "GC19"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarCompletion.lean",
+      "line": 16
+    },
+    {
+      "name": "NSEGR.Assembly.completedBoundary_lower_trace",
+      "module": "GRAssembly.ScalarCompletion",
+      "kind": "theorem",
+      "gc": [
+        "GC11",
+        "GC19"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarCompletion.lean",
+      "line": 27
+    },
+    {
+      "name": "NSEGR.Assembly.completedBoundary_time_time",
+      "module": "GRAssembly.ScalarCompletion",
+      "kind": "theorem",
+      "gc": [
+        "GC11",
+        "GC19"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarCompletion.lean",
+      "line": 45
+    },
+    {
+      "name": "NSEGR.Assembly.completedBoundary_time_space",
+      "module": "GRAssembly.ScalarCompletion",
+      "kind": "theorem",
+      "gc": [
+        "GC11",
+        "GC19"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarCompletion.lean",
+      "line": 58
+    },
+    {
+      "name": "NSEGR.Assembly.completedBoundary_space_space",
+      "module": "GRAssembly.ScalarCompletion",
+      "kind": "theorem",
+      "gc": [
+        "GC11",
+        "GC19"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarCompletion.lean",
+      "line": 68
+    },
+    {
+      "name": "NSEGR.Assembly.completedBoundary_rawVelocity",
+      "module": "GRAssembly.ScalarCompletion",
+      "kind": "theorem",
+      "gc": [
+        "GC11",
+        "GC19"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarCompletion.lean",
+      "line": 80
+    },
+    {
+      "name": "NSEGR.Assembly.completedBoundary_beta",
+      "module": "GRAssembly.ScalarCompletion",
+      "kind": "theorem",
+      "gc": [
+        "GC11",
+        "GC19"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarCompletion.lean",
+      "line": 89
+    },
+    {
+      "name": "NSEGR.Assembly.nseSpatialSource3_divergence",
+      "module": "GRAssembly.ScalarCompletion",
+      "kind": "theorem",
+      "gc": [
+        "GC11",
+        "GC19"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarCompletion.lean",
+      "line": 106
+    },
+    {
+      "name": "NSEGR.Assembly.upperDivergence",
+      "module": "GRAssembly.ScalarCompletion",
+      "kind": "def",
+      "gc": [
+        "GC11",
+        "GC19"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarCompletion.lean",
+      "line": 135
+    },
+    {
+      "name": "NSEGR.Assembly.velocity_coordinate_timeDerivative",
+      "module": "GRAssembly.ScalarCompletion",
+      "kind": "theorem",
+      "gc": [
+        "GC11",
+        "GC19"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarCompletion.lean",
+      "line": 138
+    },
+    {
+      "name": "NSEGR.Assembly.nseSpatialSource3_symmetric",
+      "module": "GRAssembly.ScalarCompletion",
+      "kind": "theorem",
+      "gc": [
+        "GC11",
+        "GC19"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarCompletion.lean",
+      "line": 150
+    },
+    {
+      "name": "NSEGR.Assembly.conservedSourceUpper_divergence_time",
+      "module": "GRAssembly.ScalarCompletion",
+      "kind": "theorem",
+      "gc": [
+        "GC11",
+        "GC19"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarCompletion.lean",
+      "line": 158
+    },
+    {
+      "name": "NSEGR.Assembly.conservedSourceUpper_divergence_space",
+      "module": "GRAssembly.ScalarCompletion",
+      "kind": "theorem",
+      "gc": [
+        "GC11",
+        "GC19"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarCompletion.lean",
+      "line": 168
+    },
+    {
+      "name": "NSEGR.Assembly.conservedSourceUpper_conserved",
+      "module": "GRAssembly.ScalarCompletion",
+      "kind": "theorem",
+      "gc": [
+        "GC11",
+        "GC19"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarCompletion.lean",
+      "line": 191
+    },
+    {
+      "name": "NSEGR.Assembly.scalar_local_assembly",
+      "module": "GRAssembly.ScalarCore",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarCore.lean",
+      "line": 21
+    },
+    {
+      "name": "NSEGR.Assembly.jointTime",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "def",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 22
+    },
+    {
+      "name": "NSEGR.Assembly.jointSpace",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "def",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 25
+    },
+    {
+      "name": "NSEGR.Assembly.jointTime_congr",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 28
+    },
+    {
+      "name": "NSEGR.Assembly.jointSpace_congr",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 34
+    },
+    {
+      "name": "NSEGR.Assembly.jointTime_congr_germ",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 41
+    },
+    {
+      "name": "NSEGR.Assembly.jointSpace_congr_germ",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 45
+    },
+    {
+      "name": "NSEGR.Assembly.analyticAt_jointTime",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 49
+    },
+    {
+      "name": "NSEGR.Assembly.analyticAt_jointSpace",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 55
+    },
+    {
+      "name": "NSEGR.Assembly.jointTime_jointSpace",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 61
+    },
+    {
+      "name": "NSEGR.Assembly.scalarCKPotential",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "def",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 81
+    },
+    {
+      "name": "NSEGR.Assembly.scalarCK_coordinate_timeDerivative",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 84
+    },
+    {
+      "name": "NSEGR.Assembly.scalarCK_coordinate_spaceDerivative",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 101
+    },
+    {
+      "name": "NSEGR.Assembly.scalarCK_potential_time_germ",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 110
+    },
+    {
+      "name": "NSEGR.Assembly.scalarCK_potential_initial",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 119
+    },
+    {
+      "name": "NSEGR.Assembly.scalarCK_potential_time_initial",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 128
+    },
+    {
+      "name": "NSEGR.Assembly.scalarCK_secondOrder_equation",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 139
+    },
+    {
+      "name": "NSEGR.Assembly.scalarCK_scalarNormalGerm",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 193
+    },
+    {
+      "name": "NSEGR.Assembly.scalarStateOfPotential",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "def",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 206
+    },
+    {
+      "name": "NSEGR.Assembly.analyticAt_scalarStateOfPotential",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 211
+    },
+    {
+      "name": "NSEGR.Assembly.scalarStateOfPotential_solution",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 227
+    },
+    {
+      "name": "NSEGR.Assembly.scalar_normalized_germ_unique",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 281
+    },
+    {
+      "name": "NSEGR.Assembly.scalarNormalGerm_exists",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 300
+    },
+    {
+      "name": "NSEGR.Assembly.scalarHessian_eq_zero_of_germ_zero",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 308
+    },
+    {
+      "name": "NSEGR.Assembly.scalarLaplacian_eq_zero_of_germ_zero",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 320
+    },
+    {
+      "name": "NSEGR.Assembly.analyticAt_scalarLaplacian_joint",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 324
+    },
+    {
+      "name": "NSEGR.Assembly.ScalarNormalGerm.noncharacteristic",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 330
+    },
+    {
+      "name": "NSEGR.Assembly.ScalarNormalGerm.hamiltonian",
+      "module": "GRAssembly.ScalarJet",
+      "kind": "theorem",
+      "gc": [
+        "GC05",
+        "GC06",
+        "GC10",
+        "GC20"
+      ],
+      "source": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+      "line": 340
+    }
+  ]
+}

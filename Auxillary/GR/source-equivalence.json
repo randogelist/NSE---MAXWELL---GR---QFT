@@ -1,0 +1,20 @@
+{
+  "audited_source_commit": "3dc98a61115f8d2e79d115d70b8c3478c504d82e",
+  "audit_status": "PASS_STANDARD_ONLY",
+  "source_input_count": 21,
+  "comparison": "ALL_ORIGINAL_MANIFEST_INPUTS",
+  "checkout_normalization": "Root .gitattributes requires *.cmd eol=crlf; all other input bytes compared directly",
+  "changed_input_allowlist": [
+    "Auxillary/GR/formalization-status.json"
+  ],
+  "changed_inputs": [
+    {
+      "path": "Auxillary/GR/formalization-status.json",
+      "audited_sha256": "3dbd9661da3c7db460832419786ab93d2b5e07d04127f1dde159a991c084c61a",
+      "current_sha256": "7dedb8323b3ed50664e047185943ea03d74d3af107989d427085a96988455eb9"
+    }
+  ],
+  "all_other_inputs": "BYTE_IDENTICAL_AFTER_DECLARED_GIT_CHECKOUT_NORMALIZATION",
+  "new_status_metadata_discharges_premises": false,
+  "fresh_head_certificate": "Produced by the branch CI; retained original certificate remains tied to audited_source_commit"
+}
