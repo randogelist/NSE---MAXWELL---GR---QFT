@@ -14,6 +14,7 @@ on:
       - 'Auxillary/assembly-*'
       - 'Auxillary/run_assembly.sh'
       - 'Auxillary/run_literature.sh'
+      - 'Auxillary/run_flow.sh'
       - 'Auxillary/scripts/verify_audit.py'
       - 'Auxillary/scripts/run.ps1'
       - '.github/workflows/classical-assembly.yml'
@@ -33,6 +34,7 @@ on:
       - 'Auxillary/assembly-*'
       - 'Auxillary/run_assembly.sh'
       - 'Auxillary/run_literature.sh'
+      - 'Auxillary/run_flow.sh'
       - '.github/workflows/classical-assembly.yml'
       - 'lakefile.lean'
       - 'lake-manifest.json'
@@ -132,7 +134,10 @@ jobs:
         id: project-cache
         uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
-          path: .lake/build
+          path: |
+            .lake/build
+            .lake/packages/mathlib/.lake/build
+            .mathlib-download-cache
           key: nse-assembly-project-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-${{ hashFiles('ASSEMBLY/**/*.lean', 'Classical_Mechanics_adapter/**/*.lean', 'B <-> ClassicalMechanics/**/*.lean', 'Fefferman_adapter/NSEMaxwell.lean', 'Fefferman_adapter/NSEMaxwell/**/*.lean', 'B <-> Maxwell/**/*.lean', 'Maxwell_Endpoint/MaxwellEndpoint.lean', 'Maxwell_Endpoint/MaxwellEndpoint/**/*.lean') }}
           restore-keys: |
             nse-assembly-project-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-
@@ -147,6 +152,10 @@ jobs:
       - name: Compile the isolated literature route and audit exact authorized axioms
         shell: bash
         run: bash Auxillary/run_literature.sh
+
+      - name: Compile independent native flow edges and freshly audit each module
+        shell: bash
+        run: bash Auxillary/run_flow.sh
 
       - name: Preserve assembly source, compiler and theorem evidence
         if: always()
@@ -184,5 +193,8 @@ jobs:
         if: always() && steps.project-cache.outcome == 'success' && steps.project-cache.outputs.cache-hit != 'true' && steps.cache-directories.outputs.project-exists == 'true' && steps.project-cache.outputs.cache-primary-key != ''
         uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
-          path: .lake/build
+          path: |
+            .lake/build
+            .lake/packages/mathlib/.lake/build
+            .mathlib-download-cache
           key: ${{ steps.project-cache.outputs.cache-primary-key }}

@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "audit_policy": "FOUNDATIONAL_ONLY",
+  "exact_L1_promotion": "REQUIRES_COMPLETE_NATIVE_ROOT_AND_SCOPE_REVIEW",
+  "modules": [
+    {
+      "module": "ClassicalMechanicsAssembly.FlowBounds",
+      "targets": [
+        "ClassicalMechanicsAssembly.flow_integer_period",
+        "ClassicalMechanicsAssembly.flow_periodic_cell_representative",
+        "ClassicalMechanicsAssembly.flow_periodic_uniform_bound",
+        "ClassicalMechanicsAssembly.flow_spatial_fderiv_continuousOn",
+        "ClassicalMechanicsAssembly.periodic_velocity_uniform_bounds",
+        "ClassicalMechanicsAssembly.flow_velocity_time_continuousOn"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowBanach",
+      "targets": [
+        "ClassicalMechanicsAssembly.summable_operator_powers_of_factorial_bound",
+        "ClassicalMechanicsAssembly.operator_series_inverse_identities_of_factorial_bound",
+        "ClassicalMechanicsAssembly.one_sub_operator_isInvertible_of_factorial_bound",
+        "ClassicalMechanicsAssembly.operator_inverse_eq_tsum_of_factorial_bound",
+        "ClassicalMechanicsAssembly.contDiff_of_unique_implicit_branch",
+        "ClassicalMechanicsAssembly.contDiff_of_unique_volterra_residual",
+        "ClassicalMechanicsAssembly.flowPathSuperposition",
+        "ClassicalMechanicsAssembly.flowPathSuperposition_apply",
+        "ClassicalMechanicsAssembly.flowPathSuperposition_lipschitz"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowSmooth",
+      "targets": [
+        "ClassicalMechanicsAssembly.flowPath_hasFDerivAt_evaluation",
+        "ClassicalMechanicsAssembly.flowPath_contDiff_evaluation",
+        "ClassicalMechanicsAssembly.flowPath_continuous_evaluation",
+        "ClassicalMechanicsAssembly.flowPath_continuousOn_representative",
+        "ClassicalMechanicsAssembly.flowJointDerivative_apply",
+        "ClassicalMechanicsAssembly.flow_hasFDerivWithinAt_of_time_remainder",
+        "ClassicalMechanicsAssembly.flowJetDerivative_contDiffOn",
+        "ClassicalMechanicsAssembly.flowJet_tower_contDiffOn",
+        "ClassicalMechanicsAssembly.smoothVelocityOn_of_flowJet_tower"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowInverse",
+      "targets": [
+        "ClassicalMechanicsAssembly.hasFDerivWithinAt_inverse_of_contDiffOn",
+        "ClassicalMechanicsAssembly.contDiffOn_inverse_of_contDiffOn",
+        "ClassicalMechanicsAssembly.inverse_flow_dist_le",
+        "ClassicalMechanicsAssembly.continuousOn_inverse_flow_of_estimate",
+        "ClassicalMechanicsAssembly.smoothVelocityOn_inverse",
+        "ClassicalMechanicsAssembly.materialPathOn_of_smooth_inverse_data"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowJacobian",
+      "targets": [
+        "ClassicalMechanicsAssembly.det_hasDerivWithinAt_mul",
+        "ClassicalMechanicsAssembly.det_hasDerivWithinAt_zero_of_trace_zero",
+        "ClassicalMechanicsAssembly.determinant_eq_initial_of_matrix_ode_trace_zero",
+        "ClassicalMechanicsAssembly.determinant_one_of_matrix_ode",
+        "ClassicalMechanicsAssembly.trace_materialGradientMatrix",
+        "ClassicalMechanicsAssembly.materialGradientMatrix_id",
+        "ClassicalMechanicsAssembly.FLOW_JACOBIAN_ONE_OF_VARIATIONAL_ODE"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowTrajectories",
+      "targets": [
+        "ClassicalMechanicsAssembly.Flow.SlabODEData.isPicardLindelof",
+        "ClassicalMechanicsAssembly.Flow.exists_trajectory",
+        "ClassicalMechanicsAssembly.Flow.trajectory_initial",
+        "ClassicalMechanicsAssembly.Flow.trajectory_hasDerivWithinAt",
+        "ClassicalMechanicsAssembly.Flow.trajectory_continuousOn",
+        "ClassicalMechanicsAssembly.Flow.solution_unique",
+        "ClassicalMechanicsAssembly.Flow.trajectory_cocycle",
+        "ClassicalMechanicsAssembly.Flow.trajectory_translate",
+        "ClassicalMechanicsAssembly.Flow.flow_initial",
+        "ClassicalMechanicsAssembly.Flow.flow_hasDerivWithinAt",
+        "ClassicalMechanicsAssembly.Flow.inverseFlow_flow",
+        "ClassicalMechanicsAssembly.Flow.flow_inverseFlow",
+        "ClassicalMechanicsAssembly.Flow.flow_translate",
+        "ClassicalMechanicsAssembly.Flow.trajectory_contDiffOn",
+        "ClassicalMechanicsAssembly.Flow.trajectory_dist_le",
+        "ClassicalMechanicsAssembly.Flow.trajectory_lipschitz",
+        "ClassicalMechanicsAssembly.Flow.trajectory_time_lipschitz",
+        "ClassicalMechanicsAssembly.Flow.trajectory_joint_continuousOn",
+        "ClassicalMechanicsAssembly.Flow.inverseFlow_lipschitz",
+        "ClassicalMechanicsAssembly.Flow.smooth_periodic_slabODEData",
+        "ClassicalMechanicsAssembly.Flow.flow_materialVelocity",
+        "ClassicalMechanicsAssembly.Flow.flow_lattice_equivariant",
+        "ClassicalMechanicsAssembly.Flow.exists_flow_inverse_lattice"
+      ]
+    }
+  ]
+}
