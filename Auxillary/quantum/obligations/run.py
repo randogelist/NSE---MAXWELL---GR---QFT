@@ -46,7 +46,7 @@ def main():
         "requested_mathlib_commit": MATHLIB, "external_platform": platform.system().lower(),
         "stage": "PREPARATION", "commands": [], "module_results": [],
         "semantic_discharge": "NOT_INFERRED_FROM_AXIOM_AUDIT",
-        "build_strategy": "INCREMENTAL_MODULE_BUILDS_SKIP_KNOWN_FAILED_DEPENDENCIES",
+        "build_strategy": "SINGLE_CACHED_LAKE_BUILD_TRANSITIVE_FRESHNESS_SKIP_FAILED_DEPENDENCIES",
     }
     env = dict(os.environ, ELAN_TOOLCHAIN=TOOLCHAIN, MATHLIB_NO_CACHE_ON_UPDATE="1")
     env.pop("LEAN_PATH", None)
@@ -260,10 +260,11 @@ def main():
                 print(f"BLOCKED {name}: {', '.join(blocked)}", flush=True)
                 save()
                 continue
-            code, _ = run(["lake", "build", "--no-build", name], "freshness-" + stem + ".log")
-            result["freshness_exit_code"] = code
-            if code == 3:
-                code, _ = run(["lake", "build", name], "build-" + stem + ".log")
+            # Lake's build performs transitive trace validation and reuses every
+            # current cached object. A separate --no-build probe only duplicates
+            # that validation and process startup on stale modules.
+            result["cache_strategy"] = "LAKE_TRANSITIVE_TRACE_VALIDATION"
+            code, _ = run(["lake", "build", name], "build-" + stem + ".log")
             result["build_exit_code"] = code
             result["build_status"] = "PASS" if code == 0 else "FAIL"
             if code:

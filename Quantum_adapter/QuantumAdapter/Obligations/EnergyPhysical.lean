@@ -117,8 +117,8 @@ theorem synthesis_directionalDerivative_norm_le (N : ℕ) (q : Phase N)
     ext i
     fin_cases i <;> simp [unitVector, Fin.sum_univ_succ, Pi.single_apply]
   have he : fderiv ℝ (synthesis q) x v = ∑ j : Fin 3, v j • d j := by
-    rw [← hv, map_sum]
-    simp only [map_smul, d, coordinateDerivative]
+    have hh := congrArg (fderiv ℝ (synthesis q) x) hv
+    simpa only [map_sum, map_smul, d, coordinateDerivative] using hh.symm
   have hS : 0 ≤ S := Finset.sum_nonneg (fun j hj =>
     mul_nonneg (abs_nonneg _) (norm_nonneg _))
   have hnorm : ‖fderiv ℝ (synthesis q) x v‖ ≤ S := by
@@ -166,7 +166,9 @@ theorem synthesis_relative_transport_integral (N : ℕ) (q r : Phase N) :
         gradientObservable r * ‖q‖^2 := by
   have hq := (synthesis_contDiff N q).continuous
   have hm := mixedConvection_continuous _ _ hq (synthesis_contDiff N r)
-  have hi := (hq.inner hm).continuousOn.integrableOn_compact isCompact_unitCube
+  have hi : IntegrableOn (fun x => inner ℝ (synthesis q x)
+      (mixedConvection (synthesis q) (synthesis r) x)) unitCube :=
+    (hq.inner hm).continuousOn.integrableOn_compact isCompact_unitCube
   have he := (hq.norm.pow 2).continuousOn.integrableOn_compact isCompact_unitCube
   have h := integral_mono hi.neg (he.const_mul (gradientObservable r))
     (fun x => synthesis_relative_transport_pointwise N q r x)
@@ -188,8 +190,8 @@ theorem synthesis_directionalDerivative_norm_le_pointwise (N : ℕ) (q : Phase N
     ext i
     fin_cases i <;> simp [unitVector, Fin.sum_univ_succ, Pi.single_apply]
   have he : fderiv ℝ (synthesis q) x v = ∑ j : Fin 3, v j • d j := by
-    rw [← hv, map_sum]
-    simp only [map_smul, d, coordinateDerivative]
+    have hh := congrArg (fderiv ℝ (synthesis q) x) hv
+    simpa only [map_sum, map_smul, d, coordinateDerivative] using hh.symm
   have hS : 0 ≤ S := Finset.sum_nonneg (fun j hj =>
     mul_nonneg (abs_nonneg _) (norm_nonneg _))
   have hn : ‖fderiv ℝ (synthesis q) x v‖ ≤ S := by

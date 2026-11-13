@@ -9,8 +9,9 @@ Use `--module QuantumAdapter.Obligations.NAME` repeatedly to select a ready
 batch; all selected obligation dependencies must also be selected.
 
 `run.sh` reuses pinned dependency preparation and incremental Lake objects.
-Each selected module receives a cache freshness check, an incremental build
-when required, and a fresh `#check` / `#print axioms` audit. Independent modules
+Each selected module receives one cached `lake build`, which validates
+transitive source freshness and rebuilds only stale objects, followed by a fresh
+`#check` / `#print axioms` audit. Independent modules
 are attempted after unrelated failures; dependent failures are recorded.
 Evidence binds the exact source commit, every tracked proof-source blob,
 compiler, dependency revisions, theorem names, and permitted standard axioms.

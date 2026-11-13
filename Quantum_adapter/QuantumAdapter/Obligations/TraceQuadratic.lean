@@ -28,8 +28,7 @@ theorem drift_zero_viscosity_fderiv_apply (N : ℕ) (q r : Phase N) :
     funext z
     exact bilinearConvection_self N z
   rw [heq] at hd
-  rw [hd.fderiv]
-  rfl
+  exact congrArg (fun D : Phase N →L[ℝ] Phase N => D r) hd.fderiv
 
 def nonlinearDivergenceCLM (N : ℕ) : Phase N →L[ℝ] ℝ :=
   ∑ i : Fin (phaseDimension N),
@@ -45,8 +44,7 @@ theorem nonlinearDivergenceCLM_apply (N : ℕ) (q : Phase N) :
   unfold driftDivergence
   apply Finset.sum_congr rfl
   intro i hi
-  rw [drift_zero_viscosity_fderiv_apply]
-  rfl
+  simp only [drift_zero_viscosity_fderiv_apply]
 
 theorem nonlinearDivergenceCLM_translationInvariant (N : ℕ)
     (x : Vec) (q : Phase N) :

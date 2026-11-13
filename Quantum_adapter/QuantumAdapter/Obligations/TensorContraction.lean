@@ -117,7 +117,7 @@ theorem tensor_interpolation_integrand_bound
   have hC : |C| ≤ ‖f‖ * G * Real.sqrt D := tensor_gradient_hessian_contraction f g H
   change |T * G + 2 * C| ≤ 4 * ‖f‖ * G * Real.sqrt D
   calc
-    |T * G + 2 * C| ≤ |T * G| + |2 * C| := abs_add _ _
+    |T * G + 2 * C| ≤ |T * G| + |2 * C| := abs_add_le _ _
     _ = |T| * G + 2 * |C| := by rw [abs_mul, abs_mul, abs_of_nonneg hG]; norm_num
     _ ≤ (2 * ‖f‖ * Real.sqrt D) * G + 2 * (‖f‖ * G * Real.sqrt D) :=
       add_le_add (mul_le_mul_of_nonneg_right hT hG)

@@ -1,6 +1,7 @@
 import QuantumAdapter.Obligations.GalerkinLimits
 import QuantumAdapter.Assembly.Flow
 import SingularClosure.FourierTransport
+import Mathlib.Analysis.Normed.Operator.Bilinear
 
 /-!
 # Cutoff-independent fixed-frequency transport for the full native phase
@@ -117,9 +118,8 @@ theorem phaseCoeff_drift_eq_projectedTransport (ν : ℝ) (N : ℕ) (q : Phase N
   rw [drift_eq_rawRhs, rawRhs_all_modes]
   congr 1
   rw [projectedTransportCoefficient_apply]
-  congr 1
-  funext j
-  exact fullTransport_eq_divergenceTransport_phase N q k j
+  exact congrArg (fun v : Fin 3 → ℂ => coefficientLeray k v i)
+    (funext (fun j => fullTransport_eq_divergenceTransport_phase N q k j))
 
 /-- Explicit fixed-output coefficient derivative bound; it is independent of N. -/
 def coefficientDriftMajorant (ν C : ℝ) (k : Frequency) (i : Fin 3) : ℝ :=
@@ -172,6 +172,7 @@ theorem central_energy0_le_majorant {ν : ℝ} (hν : 0 ≤ ν) (F : PhaseFlow �
     (N : ℕ) (t : ℝ) (ht : 0 ≤ t) :
     energy0 N (F.map N t (initialPhaseData N a ha)) ≤ initialSobolevMajorant 0 a := by
   have hdec := phaseFlow_energy0_antitone hν F N (initialPhaseData N a ha) ht
+  dsimp only at hdec
   rw [F.map_zero] at hdec
   exact hdec.trans (by simpa only [sobolevEnergy_zero_order] using
     initialPhaseData_sobolevEnergy_le_majorant 0 N a ha)
@@ -184,6 +185,9 @@ theorem central_coefficient_time_modulus {ν : ℝ} (hν : 0 ≤ ν) (F : PhaseF
       phaseCoeff (F.map N s (initialPhaseData N a ha)) k i‖ ≤
       coefficientDriftMajorant ν (initialSobolevMajorant 0 a) k i * ‖t - s‖ := by
   apply Convex.norm_image_sub_le_of_norm_hasDerivWithin_le
+    (𝕜 := ℝ) (f := fun r : ℝ => phaseCoeff (F.map N r (initialPhaseData N a ha)) k i)
+    (C := coefficientDriftMajorant ν (initialSobolevMajorant 0 a) k i)
+    (x := s) (y := t)
     (s := Ici (0 : ℝ))
     (f' := fun r => phaseCoeff (drift ν N (F.map N r (initialPhaseData N a ha))) k i)
   · intro r hr

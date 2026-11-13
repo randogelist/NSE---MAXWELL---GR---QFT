@@ -166,10 +166,16 @@ theorem tensorFlux_divergence {f : Vec → E} (hf : ContDiff ℝ ∞ f) (x : Vec
       ((tensorGradSq_contDiff hf).differentiable (by simp)), tensorDir_gradSq hf,
       tensorDir_inner (hf.differentiable (by simp))
         ((tensorDir_contDiff hf j).differentiable (by simp)), real_inner_self_eq_norm_sq]
-  simp_rw [hpoint]
-  simp only [tensorRemainder, Finset.sum_add_distrib, mul_add, Finset.mul_sum,
-    ← Finset.sum_mul]
-  unfold tensorGradSq
+  have hpoint' (j : Fin 3) : tensorDir (tensorFlux f j) j x =
+      ‖tensorDir f j x‖ ^ 2 * tensorGradSq f x +
+      inner ℝ (f x) (tensorDir (tensorDir f j) j x) * tensorGradSq f x +
+      2 * (inner ℝ (f x) (tensorDir f j x) *
+        (∑ l : Fin 3, inner ℝ (tensorDir f l x) (tensorDir (tensorDir f l) j x))) := by
+    rw [hpoint]
+    ring
+  simp_rw [hpoint']
+  simp only [Finset.sum_add_distrib, ← Finset.sum_mul, ← Finset.mul_sum]
+  unfold tensorRemainder tensorGradSq
   ring
 
 theorem tensor_interpolation_integral_identity {f : Vec → E} (hf : ContDiff ℝ ∞ f)

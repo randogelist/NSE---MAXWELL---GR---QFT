@@ -67,6 +67,14 @@
     ]
   },
   {
+    "module": "QuantumAdapter.Obligations.GalerkinIntegral",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/GalerkinIntegral.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.hasFDerivWithinAt_integral_of_dominated_lip",
+      "QuantumAdapter.Obligations.hasDerivWithinAt_integral_of_dominated_lip"
+    ]
+  },
+  {
     "module": "QuantumAdapter.Obligations.GalerkinSobolev",
     "path": "Quantum_adapter/QuantumAdapter/Obligations/GalerkinSobolev.lean",
     "audit_targets": [
@@ -173,6 +181,15 @@
     ]
   },
   {
+    "module": "QuantumAdapter.Obligations.ContinuumSeries",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/ContinuumSeries.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.hasFDerivWithinAt_tsum_of_dominated_lip",
+      "QuantumAdapter.Obligations.hasFDerivWithinAt_tsum_of_convex_bound",
+      "QuantumAdapter.Obligations.contDiffOn_of_finite_derivative_family"
+    ]
+  },
+  {
     "module": "QuantumAdapter.Obligations.EnergyDerivatives",
     "path": "Quantum_adapter/QuantumAdapter/Obligations/EnergyDerivatives.lean",
     "audit_targets": [
@@ -208,6 +225,13 @@
       "QuantumAdapter.Obligations.synthesis_relative_transport_integral",
       "QuantumAdapter.Obligations.synthesis_gradientSquare_continuous",
       "QuantumAdapter.Obligations.synthesis_directionalDerivative_norm_le_pointwise"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Obligations.FiniteGrowth",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/FiniteGrowth.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.scalar_constant_growth_on_Icc"
     ]
   },
   {
@@ -346,6 +370,32 @@
     ]
   },
   {
+    "module": "QuantumAdapter.Obligations.EnergyGradientTensor",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/EnergyGradientTensor.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.gradientTensor_apply",
+      "QuantumAdapter.Obligations.gradientTensor_contDiff",
+      "QuantumAdapter.Obligations.gradientTensor_periodic",
+      "QuantumAdapter.Obligations.gradientTensor_norm_sq",
+      "QuantumAdapter.Obligations.gradientTensor_norm_le",
+      "QuantumAdapter.Obligations.tensorDir_euclidean_apply",
+      "QuantumAdapter.Obligations.tensorDir_gradientTensor",
+      "QuantumAdapter.Obligations.gradientSecondDensity_nonneg",
+      "QuantumAdapter.Obligations.gradientThirdDensity_nonneg",
+      "QuantumAdapter.Obligations.gradientSecondDensity_continuous",
+      "QuantumAdapter.Obligations.gradientThirdDensity_continuous",
+      "QuantumAdapter.Obligations.tensorGradSq_gradientTensor",
+      "QuantumAdapter.Obligations.tensorHessSq_gradientTensor",
+      "QuantumAdapter.Obligations.gradientSecondDensity_eq_sum_gradientSquare",
+      "QuantumAdapter.Obligations.gradientThirdDensity_eq_sum_second",
+      "QuantumAdapter.Obligations.gradientSquare_continuous_native",
+      "QuantumAdapter.Obligations.integral_gradientSquare_frequencyEnergy",
+      "QuantumAdapter.Obligations.integral_gradientSecondDensity",
+      "QuantumAdapter.Obligations.integral_gradientThirdDensity",
+      "QuantumAdapter.Obligations.synthesis_second_derivative_interpolation"
+    ]
+  },
+  {
     "module": "QuantumAdapter.Obligations.EnergyRelative",
     "path": "Quantum_adapter/QuantumAdapter/Obligations/EnergyRelative.lean",
     "audit_targets": [
@@ -365,6 +415,21 @@
       "QuantumAdapter.Obligations.phaseSobolev_mem_closedBall",
       "QuantumAdapter.Obligations.phase_sobolev_bounded_subsequence",
       "QuantumAdapter.Obligations.phase_sobolev_bounded_real_solenoidal_subsequence"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Obligations.GalerkinPhysicalFourier",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/GalerkinPhysicalFourier.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.datumFourierCoeff_add",
+      "QuantumAdapter.Obligations.datumFourierCoeff_sub",
+      "QuantumAdapter.Obligations.datumFourierCoeff_real_smul",
+      "QuantumAdapter.Obligations.datumFourierCoeff_finset_sum",
+      "QuantumAdapter.Obligations.datumFourierCoeff_laplacian",
+      "QuantumAdapter.Obligations.datumFourierCoeff_laplacian_apply",
+      "QuantumAdapter.Obligations.datumFourierCoeff_gradient",
+      "QuantumAdapter.Obligations.coefficientLeray_frequency_mul",
+      "QuantumAdapter.Obligations.coefficientLeray_datumFourierCoeff_gradient"
     ]
   },
   {
@@ -437,12 +502,52 @@
     ]
   },
   {
+    "module": "QuantumAdapter.Obligations.EnergyTrilinear",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/EnergyTrilinear.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.synthesis_trilinear_pointwise",
+      "QuantumAdapter.Obligations.abs_inner_bilinearConvection_le_integral",
+      "QuantumAdapter.Obligations.inner_bilinearConvection_le_of_pointwise"
+    ]
+  },
+  {
     "module": "QuantumAdapter.Obligations.GalerkinAscoli",
     "path": "Quantum_adapter/QuantumAdapter/Obligations/GalerkinAscoli.lean",
     "audit_targets": [
       "QuantumAdapter.Obligations.bounded_equicontinuous_range_isCompact",
       "QuantumAdapter.Obligations.bounded_equicontinuous_subsequence",
       "QuantumAdapter.Obligations.countable_bounded_equicontinuous_subsequence"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Obligations.GalerkinReferenceBounds",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/GalerkinReferenceBounds.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.uniqueDiffOn_forwardSpacetime",
+      "QuantumAdapter.Obligations.forwardSpatialDerivative_smooth",
+      "QuantumAdapter.Obligations.forwardSpatialDerivative_slice",
+      "QuantumAdapter.Obligations.forwardIteratedSpatialDerivative_smooth",
+      "QuantumAdapter.Obligations.forwardIteratedSpatialDerivative_slice",
+      "QuantumAdapter.Obligations.NSSolution.iteratedCoordinateDerivative_continuousOn",
+      "QuantumAdapter.Obligations.NSSolution.exists_uniform_coordinateDerivativeL1",
+      "QuantumAdapter.Obligations.NSSolution.exists_uniform_fourierDecayConstant",
+      "QuantumAdapter.Obligations.NSSolution.exists_uniform_smoothDatumDecayConstant",
+      "QuantumAdapter.Obligations.NSSolution.exists_uniform_referenceProjection_sobolevEnergy"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Obligations.GalerkinReferenceTime",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/GalerkinReferenceTime.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.NSSolution.time_hasDerivWithinAt",
+      "QuantumAdapter.Obligations.NSSolution.timeDerivative_eq_joint",
+      "QuantumAdapter.Obligations.NSSolution.timeDerivative_smooth",
+      "QuantumAdapter.Obligations.NSSolution.timeDerivative_spatial_continuous",
+      "QuantumAdapter.Obligations.NSSolution.timeDerivative_uniform_bound",
+      "QuantumAdapter.Obligations.NSSolution.fourierIntegrand_hasDerivWithinAt",
+      "QuantumAdapter.Obligations.NSSolution.fourierCoeff_hasDerivWithinAt_Icc",
+      "QuantumAdapter.Obligations.NSSolution.fourierCoeff_hasDerivWithinAt",
+      "QuantumAdapter.Obligations.NSSolution.timeDerivative_fourier_solenoidal"
     ]
   },
   {
@@ -463,6 +568,36 @@
     ]
   },
   {
+    "module": "QuantumAdapter.Obligations.CompactTimeExtraction",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/CompactTimeExtraction.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.compactTimeFunction_apply",
+      "QuantumAdapter.Obligations.compactTimeFunction_equicontinuous",
+      "QuantumAdapter.Obligations.compact_time_window_subsequence",
+      "QuantumAdapter.Obligations.compact_time_limits_compatible",
+      "QuantumAdapter.Obligations.gluedTimeLimit_eq_window",
+      "QuantumAdapter.Obligations.gluedTimeLimit_tendstoUniformlyOn",
+      "QuantumAdapter.Obligations.countable_compact_time_subsequence"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Obligations.EnergyCoarse",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/EnergyCoarse.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.norm_synthesis_first_le",
+      "QuantumAdapter.Obligations.norm_synthesis_second_le",
+      "QuantumAdapter.Obligations.norm_synthesis_third_le",
+      "QuantumAdapter.Obligations.sqrt_gradient_first_le_second",
+      "QuantumAdapter.Obligations.sqrt_gradient_second_le_third",
+      "QuantumAdapter.Obligations.norm_second_phase_sq_le",
+      "QuantumAdapter.Obligations.norm_third_phase_sq_le",
+      "QuantumAdapter.Obligations.trilinear_le_of_square_density",
+      "QuantumAdapter.Obligations.second_first_first_bound",
+      "QuantumAdapter.Obligations.third_first_second_bound",
+      "QuantumAdapter.Obligations.third_second_first_bound"
+    ]
+  },
+  {
     "module": "QuantumAdapter.Obligations.TraceViscous",
     "path": "Quantum_adapter/QuantumAdapter/Obligations/TraceViscous.lean",
     "audit_targets": [
@@ -474,6 +609,36 @@
       "QuantumAdapter.Obligations.drift_eq_inviscid_sub_laplacian",
       "QuantumAdapter.Obligations.drift_fderiv_viscosity_split",
       "QuantumAdapter.Obligations.driftDivergence_eq_neg_viscosity_mul_trace"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Obligations.EnergyCommutator",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/EnergyCommutator.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.orderedPairing_self",
+      "QuantumAdapter.Obligations.orderedPairing_add_right",
+      "QuantumAdapter.Obligations.orderedPairing_smul_right",
+      "QuantumAdapter.Obligations.h3Pairing_self",
+      "QuantumAdapter.Obligations.first_commutator_bound",
+      "QuantumAdapter.Obligations.second_commutator_bound",
+      "QuantumAdapter.Obligations.third_commutator_bound",
+      "QuantumAdapter.Obligations.orderedPairing_one_convection_le",
+      "QuantumAdapter.Obligations.orderedPairing_two_convection_le",
+      "QuantumAdapter.Obligations.orderedPairing_three_convection_le",
+      "QuantumAdapter.Obligations.h3Pairing_convection_le"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Obligations.GalerkinJet",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/GalerkinJet.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.GalerkinExpr.eval_driftExpr",
+      "QuantumAdapter.Obligations.GalerkinExpr.contDiff_eval",
+      "QuantumAdapter.Obligations.GalerkinExpr.hasDerivAt_eval_flow",
+      "QuantumAdapter.Obligations.phaseTimeJet_zero",
+      "QuantumAdapter.Obligations.phaseTimeJet_one",
+      "QuantumAdapter.Obligations.phaseTimeJet_hasDerivAt",
+      "QuantumAdapter.Obligations.phaseTimeJet_contDiff"
     ]
   },
   {
@@ -515,6 +680,43 @@
     ]
   },
   {
+    "module": "QuantumAdapter.Obligations.EnergyTame",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/EnergyTame.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.phaseDerivative_laplacian",
+      "QuantumAdapter.Obligations.inner_phaseLaplacian",
+      "QuantumAdapter.Obligations.orderedPairing_laplacian_nonneg",
+      "QuantumAdapter.Obligations.h3Pairing_laplacian_nonneg",
+      "QuantumAdapter.Obligations.h3Pairing_add_right",
+      "QuantumAdapter.Obligations.h3Pairing_smul_right",
+      "QuantumAdapter.Obligations.h3Pairing_drift_le",
+      "QuantumAdapter.Obligations.frequencyEnergy_hasDerivAt",
+      "QuantumAdapter.Obligations.energy3_hasDerivAt",
+      "QuantumAdapter.Obligations.phaseFlow_energy3_hasDerivAt",
+      "QuantumAdapter.Obligations.phaseFlow_h3_tame"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Obligations.GalerkinEnergyEstimates",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/GalerkinEnergyEstimates.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.scalar_young_div",
+      "QuantumAdapter.Obligations.fullBilinearTransport_eq_tensor_divergence",
+      "QuantumAdapter.Obligations.weighted_triad_young",
+      "QuantumAdapter.Obligations.weightedTransportPairing_abs_le_sum",
+      "QuantumAdapter.Obligations.weightedTransportPairing_young"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Obligations.GalerkinWeightedPairing",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/GalerkinWeightedPairing.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.complex_real_weight_pair",
+      "QuantumAdapter.Obligations.sobolevWeighted_inner_eq_sum",
+      "QuantumAdapter.Obligations.sobolevWeighted_inner_bilinearConvection"
+    ]
+  },
+  {
     "module": "QuantumAdapter.Obligations.TraceAmbient",
     "path": "Quantum_adapter/QuantumAdapter/Obligations/TraceAmbient.lean",
     "audit_targets": [
@@ -522,6 +724,27 @@
       "QuantumAdapter.Obligations.ambientSingle_resolution",
       "QuantumAdapter.Obligations.ambientEndomorphism_resolution",
       "QuantumAdapter.Obligations.ambient_real_trace_formula"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Obligations.GalerkinBilinearNorm",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/GalerkinBilinearNorm.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.coefficientLeray_norm_square_sum_le",
+      "QuantumAdapter.Obligations.finite_three_complex_sum_square_le",
+      "QuantumAdapter.Obligations.weighted_bilinear_coefficient_square_le",
+      "QuantumAdapter.Obligations.bilinearConvection_sobolevEnergy_le"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Obligations.GalerkinPropagation",
+    "path": "Quantum_adapter/QuantumAdapter/Obligations/GalerkinPropagation.lean",
+    "audit_targets": [
+      "QuantumAdapter.Obligations.sobolevViscousConstant_pos",
+      "QuantumAdapter.Obligations.sobolevEnergy_drift_rate_le",
+      "QuantumAdapter.Obligations.sobolevEnergy_drift_rate_le_of_h3_bound",
+      "QuantumAdapter.Obligations.central_all_order_bound_of_h3",
+      "QuantumAdapter.Obligations.galerkin_all_sobolev_bounds"
     ]
   },
   {

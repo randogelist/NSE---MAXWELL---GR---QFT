@@ -4,6 +4,8 @@ import Mathlib.Analysis.Normed.Operator.Bilinear
 
 set_option autoImplicit false
 set_option Elab.async true
+set_option maxHeartbeats 4000000
+set_option synthInstance.maxHeartbeats 400000
 
 open Set Filter Metric
 open scoped Topology ContDiff

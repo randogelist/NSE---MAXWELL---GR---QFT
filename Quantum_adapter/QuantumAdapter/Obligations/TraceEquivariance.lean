@@ -123,7 +123,7 @@ theorem driftDivergence_phaseTranslation (ν : ℝ) (N : ℕ) (x : Vec) (q : Pha
     apply LinearMap.ext
     intro r
     have hh := congrArg (fun A : Phase N →L[ℝ] Phase N => A (T.symm r)) hd
-    simpa only [ContinuousLinearMap.comp_apply, T,
+    simpa only [ContinuousLinearMap.comp_apply, ContinuousLinearMap.coe_coe, T,
       ContinuousLinearEquiv.coe_coe, ContinuousLinearEquiv.apply_symm_apply,
       LinearEquiv.conj_apply, LinearMap.comp_apply, LinearEquiv.coe_coe] using hh
   rw [hconj]

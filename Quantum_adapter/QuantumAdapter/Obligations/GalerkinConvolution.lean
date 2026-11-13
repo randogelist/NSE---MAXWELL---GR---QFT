@@ -33,7 +33,10 @@ theorem finite_shift_square_sum_le (S : Finset Frequency)
   have he : (∑ k ∈ S, b (k - p) ^ 2) = ∑ k ∈ T, b k ^ 2 := by
     rw [Finset.sum_image]
     intro k hk l hl h
-    exact sub_right_cancel h
+    funext i
+    have hi := congrFun h i
+    change k i-p i=l i-p i at hi
+    omega
   have hu : (∑ k ∈ S ∪ T, b k ^ 2) = ∑ k ∈ S, b k ^ 2 := by
     symm
     apply Finset.sum_subset Finset.subset_union_left
@@ -53,7 +56,10 @@ theorem finite_shift_sum_le (S : Finset Frequency)
   have he : (∑ k ∈ S, b (k - p)) = ∑ k ∈ T, b k := by
     rw [Finset.sum_image]
     intro k hk l hl h
-    exact sub_right_cancel h
+    funext i
+    have hi := congrFun h i
+    change k i-p i=l i-p i at hi
+    omega
   have hu : (∑ k ∈ S ∪ T, b k) = ∑ k ∈ S, b k := by
     symm
     apply Finset.sum_subset Finset.subset_union_left
@@ -72,7 +78,10 @@ theorem finite_reflection_sum_le (S : Finset Frequency)
   have he : (∑ p ∈ S, b (k-p)) = ∑ p ∈ T, b p := by
     rw [Finset.sum_image]
     intro p hp q hq h
-    exact sub_left_cancel h
+    funext i
+    have hi := congrFun h i
+    change k i-p i=k i-q i at hi
+    omega
   have hu : (∑ p ∈ S ∪ T, b p) = ∑ p ∈ S, b p := by
     symm
     apply Finset.sum_subset Finset.subset_union_left
@@ -123,7 +132,6 @@ theorem finite_convolution_square_sum_le_right (S : Finset Frequency)
     _ = (∑ p ∈ S, b p) * ∑ p ∈ S, a p ^ 2 * ∑ k ∈ S, b (k-p) := by
       rw [← Finset.mul_sum, Finset.sum_comm]
       simp_rw [Finset.mul_sum]
-      congr 1
       apply Finset.sum_congr rfl
       intro p hp
       apply Finset.sum_congr rfl
@@ -146,7 +154,7 @@ theorem coefficientMoment_nonneg (s N : ℕ) (q : Phase N) :
   intro i hi
   apply Finset.sum_nonneg
   intro k hk
-  positivity
+  exact mul_nonneg (pow_nonneg (torusSobolevWeight_pos k).le s) (norm_nonneg _)
 
 theorem weighted_component_l1_sq_le (s N : ℕ) (q : Phase N) (i : Fin 3) :
     (∑ k ∈ fullModes N, torusSobolevWeight k ^ s * ‖phaseCoeff q k i‖) ^ 2 ≤
