@@ -10,8 +10,8 @@ MATHLIB = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
 METHLIB = e9cf90726b8544a268469ebc8fa6634e9c713e07
 APPROVED_FOUNDATIONS = propext, Classical.choice, Quot.sound
 L1_AXIOM_REMOVAL = PENDING_EXACT_ROOT_COMPILATION_AND_AXIOM_AUDIT
-PARTIAL_EXTERNAL_SOURCE = 16941419d2b9c97acc9bd1eba74d621f01b3d2fe
-PARTIAL_EXTERNAL_RUN = 43396385655
+PARTIAL_EXTERNAL_SOURCE = 82d26ef52c923f7de0707b4811928e81cf06a0ab
+PARTIAL_EXTERNAL_RUN = 43397660178
 PARTIAL_STANDARD_ONLY = FlowBounds:6; FlowBanach:30; FlowSmooth:9; FlowInverse:10; FlowJacobian:7; FlowTrajectories:23; FlowVariational:6; FlowConstruction:5; FlowVolterra:11; FlowSpatialJets:13; FlowPathJets:5; FlowPathSolutions:9; FlowImplicit:11; FlowJetTime:5; FlowJetIntegral:5
 EXACT_L1_EXTERNAL_STATUS = NOT_YET_COMPILED
 
@@ -109,6 +109,9 @@ ContinuousLinearMap.IsInvertible.of_inverse
 ContDiffAt.contDiffAt_implicitFunction
 ContDiffAt.eventually_apply_implicitFunction
 ContinuousLinearMap.iteratedFDeriv_comp_left
+ContinuousLinearMap.intervalIntegral_comp_comm
+IsBoundedLinearMap.contDiff
+MultilinearMap.mkContinuousLinear_norm_le
 iteratedFDeriv_comp
 contDiffOn_succ_iff_hasFDerivWithinAt_of_uniqueDiffOn
 contDiffOn_infty

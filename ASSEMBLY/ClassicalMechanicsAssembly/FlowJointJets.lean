@@ -41,11 +41,23 @@ theorem flow_contDiffOn_multilinear_apply
       exact (ContinuousMultilinearMap.apply ℝ M F (fun i => Fin.elim0 i)).contDiff.comp_contDiffOn hf
   | succ r ih =>
       intro M _ _ f g hf hg
-      let e : ContinuousMultilinearMap ℝ M F ≃ₗᵢ[ℝ]
-          M 0 →L[ℝ] ContinuousMultilinearMap ℝ (fun i : Fin r => M i.succ) F :=
-        continuousMultilinearCurryLeftEquiv ℝ M F
-      have he : ContDiffOn ℝ n (fun z => e (f z)) s :=
-        e.toContinuousLinearEquiv.toContinuousLinearMap.contDiff.comp_contDiffOn hf
+      have hcurry : ContDiff ℝ n
+          (fun p : ContinuousMultilinearMap ℝ M F => p.curryLeft) := by
+        apply IsBoundedLinearMap.contDiff
+        refine { map_add := ?_, map_smul := ?_, bound := ?_ }
+        · intro p q
+          ext x v
+          rfl
+        · intro c p
+          ext x v
+          rfl
+        · refine ⟨1, zero_lt_one, ?_⟩
+          intro p
+          rw [one_mul]
+          exact MultilinearMap.mkContinuousLinear_norm_le
+            p.toMultilinearMap.curryLeft (norm_nonneg p) p.norm_map_cons_le
+      have he : ContDiffOn ℝ n (fun z => (f z).curryLeft) s :=
+        hcurry.comp_contDiffOn hf
       have hc : ContDiffOn ℝ n (fun z => (f z).curryLeft (g z 0)) s :=
         he.clm_apply (hg 0)
       have ht := ih (fun i => M i.succ)
