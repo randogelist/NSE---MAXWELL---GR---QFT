@@ -33,10 +33,12 @@ if (-not $ReportDirectory) {
 $RepoRoot = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $RepoRoot
 $EndpointSourceRoot = "MaxwellEndpoint"
+$MethlibSourceRoot = "NativeSources/methlib"
+$MethlibModuleOrder = "methlib-module-order.json"
 $ProjectRootSource = "MaxwellEndpoint.lean"
 $AuditSource = "MaxwellEndpoint/Audit.lean"
 $VerifierSource = "scripts/verify_audit.py"
-$AggregateTargets = @("MaxwellEndpoint")
+$AggregateTargets = @("MethlibEndpoints", "MaxwellEndpoint")
 $ReportRoot = if ([IO.Path]::IsPathRooted($ReportDirectory)) {
     [IO.Path]::GetFullPath($ReportDirectory)
 } else {
@@ -59,13 +61,35 @@ $CommandTimings = [Collections.Generic.List[object]]::new()
 
 function Get-ProjectSourcePath {
     param([string]$Module)
-    if ($Module -notmatch '^MaxwellEndpoint(?:\.|$)') {
-        throw "No standalone source root is registered for module: $Module"
+    $Relative = $Module.Replace(".", "/") + ".lean"
+    if ($Module -match '^SingularClosure(?:\.|$)') {
+        return Join-Path $MethlibSourceRoot $Relative
     }
-    return $Module.Replace(".", "/") + ".lean"
+    if ($Module -match '^(?:MaxwellEndpoint|MethlibEndpoints)(?:\.|$)') {
+        return $Relative
+    }
+    throw "No standalone source root is registered for module: $Module"
+}
+
+function Get-MethlibModuleOrder {
+    $Modules = @(Get-Content -LiteralPath $MethlibModuleOrder -Raw | ConvertFrom-Json)
+    if (($Modules.Count -eq 0) -or (@($Modules | Select-Object -Unique).Count -ne $Modules.Count)) {
+        throw "Methlib module schedule is empty or contains duplicates."
+    }
+    foreach ($Module in $Modules) {
+        if ($Module -notmatch '^SingularClosure(?:\.[A-Za-z0-9_]+)+$') {
+            throw "Invalid native Methlib module in schedule: $Module"
+        }
+        $Module
+    }
 }
 
 function Get-ProjectLeanSources {
+    Get-Item -LiteralPath "MethlibEndpoints.lean"
+    Get-Item -LiteralPath "MethlibEndpoints/Audit.lean"
+    foreach ($Module in @(Get-MethlibModuleOrder)) {
+        Get-Item -LiteralPath (Get-ProjectSourcePath $Module)
+    }
     if (-not (Test-Path -LiteralPath $ProjectRootSource -PathType Leaf)) {
         throw "Standalone aggregate source is absent: $ProjectRootSource"
     }
@@ -166,6 +190,9 @@ try {
     $null = Get-Command "git" -ErrorAction Stop
     foreach ($Required in @(
         $ProjectRootSource, $AuditSource, "audit-targets.txt",
+        $MethlibModuleOrder, "methlib-audit-targets.txt", "MethlibEndpoints.lean",
+        "MethlibEndpoints/Audit.lean", "native-sources.json", "scripts/verify_native_sources.py",
+        "scripts/hydrate_native_sources.py",
         "formalization-status.json", $VerifierSource, "lake-manifest.json",
         "lakefile.lean", "cache-targets.txt", "scripts/run.ps1", "run.cmd",
         "$EndpointSourceRoot/Geometry.lean",
@@ -223,6 +250,18 @@ try {
     if (($MathlibPackage.Count -ne 1) -or ($MathlibPackage[0].rev -ne $ExpectedMathlib)) {
         throw "The Lake manifest does not pin the approved Mathlib commit."
     }
+    $Evidence.stage = "NATIVE_SOURCE_HYDRATION"
+    $HydrationReport = Join-Path $ReportRoot "native-source-hydration.json"
+    $HydrationArguments = $PythonPrefix + @(
+        "scripts/hydrate_native_sources.py", "--package-root", $RepoRoot,
+        "--dependency-root", (Join-Path $RepoRoot ".lake/packages"),
+        "--report", $HydrationReport
+    )
+    $null = Invoke-NativeLogged $PythonExecutable $HydrationArguments "native-source-hydration.log"
+    $Evidence.native_source_hydration = [ordered]@{
+        report = "native-source-hydration.json"
+        sha256 = (Get-FileHash -LiteralPath $HydrationReport -Algorithm SHA256).Hash.ToLowerInvariant()
+    }
     $MissingPackages = @($LakeManifest.packages | Where-Object {
         -not (Test-Path (Join-Path (Join-Path ".lake/packages" $_.name) $_.configFile))
     })
@@ -271,6 +310,20 @@ try {
         throw "The pinned Mathlib checkout contains tracked modifications."
     }
     $Evidence.actual_mathlib_commit = $MathlibRevision
+
+    $Evidence.stage = "NATIVE_SOURCE_CLOSURE"
+    $NativeReport = Join-Path $ReportRoot "native-source-closure.json"
+    $NativeArguments = $PythonPrefix + @(
+        "scripts/verify_native_sources.py", "--package-root", $RepoRoot,
+        "--dependency-root", (Join-Path $RepoRoot ".lake/packages"),
+        "--report", $NativeReport
+    )
+    $null = Invoke-NativeLogged $PythonExecutable $NativeArguments "native-source-closure.log"
+    $Evidence.native_source_closure = @([ordered]@{
+        package = "."
+        report = "native-source-closure.json"
+        sha256 = (Get-FileHash -LiteralPath $NativeReport -Algorithm SHA256).Hash.ToLowerInvariant()
+    })
 
     $Evidence.stage = "CACHE"
     $CacheTargets = [Collections.Generic.HashSet[string]]::new()
@@ -466,7 +519,7 @@ try {
     # Bound concurrent heavy imports on each native platform without disabling Lean's
     # asynchronous theorem elaboration. Every dependency precedes its consumer;
     # each invocation reuses all already compiled and restored Lake artifacts.
-    $BuildModules = @(
+    $BuildModules = @(Get-MethlibModuleOrder) + @("MethlibEndpoints") + @(
         "MaxwellEndpoint.Geometry",
         "MaxwellEndpoint.Constitutive",
         "MaxwellEndpoint.System",

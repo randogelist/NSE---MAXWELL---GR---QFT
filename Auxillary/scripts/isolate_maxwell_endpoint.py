@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prepare and verify an isolated Maxwell package; never invoke Lean."""
+"""Prepare and verify isolated native adapters; never invoke Lean."""
 
 from __future__ import annotations
 
@@ -9,10 +9,11 @@ import json
 import os
 import re
 import subprocess
+import sys
 from pathlib import Path
 
 
-PREFIX = "Maxwell_Endpoint"
+PACKAGES = {"Maxwell_Endpoint": "maxwell", "Fefferman_adapter": "fefferman"}
 EXPECTED_LEAN = "leanprover/lean4:v4.34.0-rc1"
 EXPECTED_MATHLIB = "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11"
 
@@ -64,36 +65,77 @@ def without_comments(text: str) -> str:
     return "".join(result)
 
 
-def check_imports(root: Path, paths: set[str]) -> dict[str, list[str]]:
+def project_modules(paths: set[str], package: str) -> dict[str, str]:
+    roots = {"MethlibEndpoints": "", "SingularClosure": "NativeSources/methlib"}
+    if package == "Maxwell_Endpoint":
+        roots["MaxwellEndpoint"] = ""
+    else:
+        roots.update({"NSEMaxwell": "", "MaxwellEndpoint": "LocalDependencies/Maxwell",
+                      "NSEMaxwellForward": "LocalDependencies/Forward",
+                      "NSEMaxwellReverse": "LocalDependencies/Reverse"})
+    modules: dict[str, str] = {}
+    for namespace, prefix in roots.items():
+        stem = (prefix + "/" if prefix else "") + namespace
+        for relative in sorted(paths):
+            if (relative == stem + ".lean" or
+                    relative.startswith(stem + "/") and relative.endswith(".lean")):
+                suffix = relative[len(prefix) + 1:] if prefix else relative
+                name = suffix[:-5].replace("/", ".")
+                require(name not in modules, f"Duplicate project module: {name}")
+                modules[name] = relative
+    require(modules, "No active native implementation sources found.")
+    return modules
+
+
+def check_imports(root: Path, paths: set[str], package: str) -> dict[str, list[str]]:
+    modules = project_modules(paths, package)
     imports: dict[str, list[str]] = {}
-    for relative in sorted(paths):
-        if not relative.endswith(".lean") or relative == "lakefile.lean":
-            continue
+    for module, relative in sorted(modules.items()):
         text = without_comments((root / relative).read_text(encoding="utf-8-sig"))
         names: list[str] = []
         for match in re.finditer(r"^\s*(?:public\s+|private\s+)?import\s+([^\n]+)", text, re.M):
             for name in match.group(1).split():
-                require(
-                    re.fullmatch(r"(?:Mathlib|MaxwellEndpoint)(?:\.[A-Za-z0-9_]+)*", name) is not None,
-                    f"Non-standalone module import in {relative}: {name}",
-                )
-                if name == "MaxwellEndpoint" or name.startswith("MaxwellEndpoint."):
-                    require(name.replace(".", "/") + ".lean" in paths,
-                            f"Missing native imported source: {name}")
+                require(re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z0-9_]+)*", name)
+                        is not None, f"Invalid module import in {relative}: {name}")
+                require(name in modules or name == "Mathlib" or name.startswith("Mathlib."),
+                        f"Missing native imported source in {relative}: {name}")
                 names.append(name)
         imports[relative] = names
     return imports
 
 
-def source_files(repo: Path) -> dict[str, Path]:
+def check_local_copies(repo: Path, package: str, files: dict[str, Path]) -> None:
+    if package != "Fefferman_adapter":
+        return
+    inventory = read_json(repo / package / "local-project-sources.json")
+    require(isinstance(inventory.get("files"), list) and inventory["files"],
+            "Fefferman local project source inventory is absent.")
+    recorded: set[str] = set()
+    for entry in inventory["files"]:
+        source, target = entry["source_path"], entry["package_path"]
+        require(not Path(source).is_absolute() and ".." not in Path(source).parts,
+                "Invalid canonical project source path.")
+        require(target in files and target not in recorded and
+                target.startswith("LocalDependencies/"), "Invalid local project copy record.")
+        recorded.add(target)
+        original = repo / source
+        require(original.is_file() and not original.is_symlink(), "Missing canonical project source.")
+        require(sha256(original) == sha256(files[target]) == entry["sha256"] and
+                original.stat().st_size == files[target].stat().st_size == entry["size_bytes"],
+                f"Canonical project copy differs: {target}")
+    expected = {path for path in files if path.startswith("LocalDependencies/") and path.endswith(".lean")}
+    require(recorded == expected, "Local project copy inventory is incomplete.")
+
+
+def source_files(repo: Path, prefix: str) -> dict[str, Path]:
     result: dict[str, Path] = {}
-    package = repo / PREFIX
+    package = repo / prefix
     require(not package.is_symlink(), "Package source root must not be a symlink.")
-    for raw in git(repo, "ls-files", "-z", "--", PREFIX).split("\0"):
+    for raw in git(repo, "ls-files", "-z", "--", prefix).split("\0"):
         if not raw:
             continue
         path = Path(raw)
-        require(path.parts[0] == PREFIX and ".." not in path.parts,
+        require(path.parts[0] == prefix and ".." not in path.parts,
                 f"Invalid tracked package path: {raw}")
         relative = Path(*path.parts[1:])
         require(relative.parts and relative.parts[0] not in {
@@ -105,10 +147,18 @@ def source_files(repo: Path) -> dict[str, Path]:
             require(not current.is_symlink(), f"Symbolic link in package source: {raw}")
         require(current.is_file(), f"Missing tracked package source: {raw}")
         result[relative.as_posix()] = current
-    for required in ("MaxwellEndpoint.lean", "MaxwellEndpoint/Audit.lean", "lakefile.lean",
-                     "lean-toolchain", "lake-manifest.json", "audit-targets.txt", "run.sh",
-                     "run.cmd", "scripts/run.ps1", "scripts/verify_audit.py"):
-        require(required in result, f"Missing standalone package file: {required}")
+    required = {"lakefile.lean", "lean-toolchain", "lake-manifest.json", "audit-targets.txt",
+                "cache-targets.txt", "run.sh", "run.cmd", "scripts/run.ps1",
+                "scripts/verify_audit.py", "scripts/verify_native_sources.py", "scripts/hydrate_native_sources.py", "native-sources.json",
+                "MethlibEndpoints.lean", "MethlibEndpoints/Audit.lean", "methlib-module-order.json",
+                "methlib-audit-targets.txt", "NativeSources/methlib/SOURCE_MANIFEST.json"}
+    if prefix == "Maxwell_Endpoint":
+        required.update({"MaxwellEndpoint.lean", "MaxwellEndpoint/Audit.lean"})
+    else:
+        required.update({"NSEMaxwell.lean", "NSEMaxwell/Audit.lean", "local-project-sources.json"})
+    for relative in required:
+        require(relative in result, f"Missing standalone package file: {relative}")
+    check_local_copies(repo, prefix, result)
     require((package / "lean-toolchain").read_text().strip() == EXPECTED_LEAN,
             "Standalone compiler pin mismatch.")
     lock = read_json(package / "lake-manifest.json")
@@ -121,11 +171,30 @@ def source_files(repo: Path) -> dict[str, Path]:
     return result
 
 
-def check_isolation(stage: Path, packages: Path, expected_paths: set[str]) -> None:
+def check_isolation(stage: Path, packages: Path, expected_paths: set[str], package: str) -> None:
     require(not (stage / ".lake").is_symlink(), "Standalone Lake directory is linked.")
-    link = stage / ".lake/packages"
-    require(link.is_symlink() and link.resolve() == packages,
-            "Standalone dependency link does not target the verified cache.")
+    source_root = stage / ".lake/packages"
+    require(source_root.is_dir() and not source_root.is_symlink(),
+            "Standalone dependency source root must be an independent directory.")
+    pins = read_json(stage / "lake-manifest.json")["packages"]
+    require({item.name for item in source_root.iterdir()} == {pin["name"] for pin in pins},
+            "Standalone dependency source inventory differs from the pinned packages.")
+    for pin in pins:
+        dependency = source_root / pin["name"]
+        require(dependency.is_dir() and not dependency.is_symlink() and
+                (dependency / ".git").is_dir() and not (dependency / ".git").is_symlink(),
+                "Standalone dependency source checkout is shared or absent.")
+        require(git(dependency, "rev-parse", "HEAD").strip() == pin["rev"],
+                "Standalone native dependency revision mismatch.")
+        require(not git(dependency, "status", "--porcelain", "--untracked-files=no").strip(),
+                "Standalone native dependency worktree changed.")
+        compiled = packages / pin["name"] / ".lake/build"
+        link = dependency / ".lake/build"
+        if compiled.is_dir():
+            require(link.is_symlink() and link.resolve() == compiled.resolve(),
+                    "Standalone compiled dependency link differs from the verified cache.")
+        else:
+            require(not link.is_symlink(), "Unexpected standalone dependency build symlink.")
     require(not (stage / ".lake/build").is_symlink(), "Standalone project build directory is linked.")
     observed: set[str] = set()
     for directory, subdirs, names in os.walk(stage, followlinks=False):
@@ -137,12 +206,13 @@ def check_isolation(stage: Path, packages: Path, expected_paths: set[str]) -> No
         observed.update((base / name).relative_to(stage).as_posix() for name in names)
     require(observed == expected_paths, "Isolated package source inventory changed.")
     native = stage / ".lake/build/lib/lean"
+    namespaces = {name.split(".")[0] for name in project_modules(expected_paths, package)}
     if native.exists():
         for path in native.rglob("*"):
             require(not path.is_symlink(), "Linked standalone compiled object.")
             first = path.relative_to(native).parts[0]
-            require(first == "MaxwellEndpoint" or first.startswith("MaxwellEndpoint."),
-                    f"Unexpected non-Maxwell project object: {path}")
+            require(any(first == name or first.startswith(name + ".") for name in namespaces),
+                    f"Unexpected project object namespace: {path}")
 
 
 def main() -> int:
@@ -152,10 +222,14 @@ def main() -> int:
     parser.add_argument("--destination", type=Path, required=True)
     parser.add_argument("--report-directory", type=Path, required=True)
     parser.add_argument("--source-commit", required=True)
+    parser.add_argument("--package-name", choices=tuple(PACKAGES), default="Maxwell_Endpoint")
     args = parser.parse_args()
     repo, stage, report = (args.repo_root.resolve(), args.destination.resolve(),
                            args.report_directory.resolve())
-    result_path = report / "maxwell-isolation-result.json"
+    prefix = args.package_name
+    short_name = PACKAGES[prefix]
+    evidence_name = "standalone" if prefix == "Maxwell_Endpoint" else "fefferman-standalone"
+    result_path = report / (short_name + "-isolation-result.json")
     try:
         require(re.fullmatch(r"[a-f0-9]{40}", args.source_commit) is not None,
                 "Expected a lowercase 40-hex source commit.")
@@ -168,32 +242,48 @@ def main() -> int:
                 root_provenance["build_status"] == "PASS" and
                 root_provenance["theorem_axiom_audit_status"] == "PASS_STANDARD_ONLY",
                 "Matching successful integrated build/audit is required.")
-        files = source_files(repo)
-        imports = check_imports(repo / PREFIX, set(files))
+        files = source_files(repo, prefix)
+        imports = check_imports(repo / prefix, set(files), prefix)
         packages = (repo / ".lake/packages").resolve()
         require(packages.is_dir(), "Verified dependency cache is absent.")
-        manifest_path = report / "maxwell-isolation-manifest.json"
+        manifest_path = report / (short_name + "-isolation-manifest.json")
         if args.phase == "prepare":
             stage.mkdir(parents=True, exist_ok=True)
             require(all(p.name == ".lake" for p in stage.iterdir()),
                     "Destination already contains non-cache files; no files will be removed.")
             (stage / ".lake").mkdir(exist_ok=True)
             require(not (stage / ".lake").is_symlink(), "Linked standalone Lake directory.")
-            link = stage / ".lake/packages"
-            if not link.exists() and not link.is_symlink():
-                link.symlink_to(packages, target_is_directory=True)
             entries = []
             for relative, source in sorted(files.items()):
                 target = stage / relative
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes(source.read_bytes())
                 require(sha256(source) == sha256(target), f"Copy hash mismatch: {relative}")
-                entries.append({"source_path": PREFIX + "/" + relative,
+                entries.append({"source_path": prefix + "/" + relative,
                                 "isolated_path": relative, "sha256": sha256(source),
                                 "size_bytes": source.stat().st_size})
-            check_isolation(stage, packages, set(files))
-            write_json(manifest_path, {"schema_version": 1, "source_commit": args.source_commit,
-                       "isolated_root": str(stage), "dependency_cache": str(packages),
+            hydration_path = report / (short_name + "-source-hydration.json")
+            subprocess.run([
+                sys.executable, str(stage / "scripts/hydrate_native_sources.py"),
+                "--package-root", str(stage),
+                "--dependency-root", str(stage / ".lake/packages"),
+                "--compiled-cache-root", str(packages),
+                "--report", str(hydration_path),
+            ], check=True)
+            hydration = read_json(hydration_path)
+            require(hydration.get("status") == "PASS" and hydration.get("dependency_count") == 9 and
+                    hydration.get("dependency_source_downloads") == 0 and
+                    hydration.get("shared_source_checkouts") is False and
+                    all(item["status"] == "RESTORED_FROM_CONTAINED_NATIVE_SOURCES"
+                        for item in hydration["dependencies"]),
+                    "Standalone dependencies were not reconstructed from contained native source bytes.")
+            check_isolation(stage, packages, set(files), prefix)
+            write_json(manifest_path, {"schema_version": 2, "source_commit": args.source_commit,
+                       "isolated_root": str(stage), "compiled_dependency_cache": str(packages),
+                       "dependency_source_root": str(stage / ".lake/packages"),
+                       "source_hydration_report": hydration_path.name,
+                       "source_hydration_sha256": sha256(hydration_path),
+                       "shared_dependency_source_cache": False,
                        "files": entries, "imports": imports, "status": "PREPARED"})
             write_json(result_path, {"status": "PREPARED", "source_commit": args.source_commit,
                                     "copied_files": len(entries), "standalone_audit": "PENDING"})
@@ -201,16 +291,27 @@ def main() -> int:
             manifest = read_json(manifest_path)
             require(manifest["source_commit"] == args.source_commit and
                     manifest["isolated_root"] == str(stage) and
-                    manifest["dependency_cache"] == str(packages), "Isolation provenance mismatch.")
+                    manifest["compiled_dependency_cache"] == str(packages) and
+                    manifest["dependency_source_root"] == str(stage / ".lake/packages") and
+                    manifest["shared_dependency_source_cache"] is False,
+                    "Isolation provenance mismatch.")
+            hydration_path = report / (short_name + "-source-hydration.json")
+            require(manifest["source_hydration_report"] == hydration_path.name and
+                    manifest["source_hydration_sha256"] == sha256(hydration_path),
+                    "Standalone source hydration provenance changed.")
+            hydration = read_json(hydration_path)
+            require(hydration.get("status") == "PASS" and hydration.get("dependency_source_downloads") == 0 and
+                    hydration.get("dependency_count") == 9 and hydration.get("shared_source_checkouts") is False,
+                    "Standalone contained source hydration did not pass.")
             recorded = {item["isolated_path"]: item for item in manifest["files"]}
             require(set(recorded) == set(files), "Tracked package inventory changed.")
-            check_isolation(stage, packages, set(files))
-            require(check_imports(stage, set(files)) == imports == manifest["imports"],
+            check_isolation(stage, packages, set(files), prefix)
+            require(check_imports(stage, set(files), prefix) == imports == manifest["imports"],
                     "Native import graph changed.")
             for relative, source in files.items():
                 require(sha256(source) == sha256(stage / relative) == recorded[relative]["sha256"],
                         f"Source bytes changed during standalone validation: {relative}")
-            evidence = report / "standalone"
+            evidence = report / evidence_name
             provenance, audit = read_json(evidence / "run-provenance.json"), read_json(evidence / "audit-summary.json")
             compiled = read_json(evidence / "source-manifest.json")
             require(provenance["source_commit"] == audit["source_commit"] ==
@@ -226,6 +327,14 @@ def main() -> int:
                     audit["status"] == "PASS_STANDARD_ONLY" and
                     audit["source_input_verification"] == "PASS" and not audit["errors"],
                     "Standalone compiler/audit evidence did not pass.")
+            native_report = evidence / "native-source-closure.json"
+            native = read_json(native_report)
+            require(native.get("status") == "PASS", "Standalone native source closure failed.")
+            records = provenance.get("native_source_closure")
+            require(isinstance(records, list) and len(records) == 1 and
+                    records[0].get("report") == native_report.name and
+                    records[0].get("sha256") == sha256(native_report),
+                    "Standalone native source closure provenance mismatch.")
             targets = [line.strip() for line in (stage / "audit-targets.txt").read_text().splitlines()
                        if line.strip() and not line.lstrip().startswith("#")]
             require(targets and len(targets) == len(set(targets)) and
@@ -246,14 +355,18 @@ def main() -> int:
                        "isolation_manifest_sha256": sha256(manifest_path),
                        "standalone_source_manifest_sha256": sha256(evidence / "source-manifest.json"),
                        "standalone_audit": "PASS_STANDARD_ONLY",
-                       "shared_dependency_cache": True, "shared_project_object_cache": False,
+                       "shared_dependency_cache": "COMPILED_OBJECTS_ONLY",
+                       "shared_dependency_source_cache": False, "shared_project_object_cache": False,
+                       "source_hydration_sha256": sha256(hydration_path),
+                       "dependency_source_downloads": 0,
+                       "package_name": prefix, "native_source_closure": "PASS",
                        "semantic_discharge": "NOT_INFERRED_FROM_PACKAGE_COMPILATION"})
-        print(f"MAXWELL_ISOLATION={args.phase.upper()}_PASS")
+        print(f"{short_name.upper()}_ISOLATION={args.phase.upper()}_PASS")
         return 0
     except (OSError, ValueError, KeyError, TypeError, subprocess.CalledProcessError) as error:
         write_json(result_path, {"status": "FAIL", "phase": args.phase, "error": str(error),
                                 "source_commit": args.source_commit})
-        print(f"MAXWELL_ISOLATION=FAIL: {error}")
+        print(f"{short_name.upper()}_ISOLATION=FAIL: {error}")
         return 1
 
 

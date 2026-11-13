@@ -1,4 +1,5 @@
 import NSEMaxwell
+import MethlibEndpoints
 
 set_option pp.universes true
 set_option pp.fullNames true
@@ -701,3 +702,35 @@ set_option pp.proofs false
 
 #check @MaxwellEndpoint.zero_datum_global_instance
 #print axioms MaxwellEndpoint.zero_datum_global_instance
+
+-- Selected native Methlib endpoints; semantic hypotheses remain explicit.
+
+#check @SingularClosure.torusDatumComponent_fourierCoeff
+#print axioms SingularClosure.torusDatumComponent_fourierCoeff
+
+#check @SingularClosure.datumFourierCoeff_coordinateDerivative
+#print axioms SingularClosure.datumFourierCoeff_coordinateDerivative
+
+#check @SingularClosure.FOURIER_POLYNOMIAL_DECAY
+#print axioms SingularClosure.FOURIER_POLYNOMIAL_DECAY
+
+#check @SingularClosure.scalarFourierSeries_contDiff
+#print axioms SingularClosure.scalarFourierSeries_contDiff
+
+#check @SingularClosure.scalarFourierSeries_coefficient
+#print axioms SingularClosure.scalarFourierSeries_coefficient
+
+#check @SingularClosure.datumFourierCoeff_injective_continuous_periodic
+#print axioms SingularClosure.datumFourierCoeff_injective_continuous_periodic
+
+#check @SingularClosure.infiniteTransportPressure_recovery
+#print axioms SingularClosure.infiniteTransportPressure_recovery
+
+#check @SingularClosure.datumFourierCoeff_smoothFourierSynthesis
+#print axioms SingularClosure.datumFourierCoeff_smoothFourierSynthesis
+
+#check @SingularClosure.smoothFourierSynthesis_coordinateDerivative
+#print axioms SingularClosure.smoothFourierSynthesis_coordinateDerivative
+
+#check @SingularClosure.summable_torusSobolevWeight_inv_four
+#print axioms SingularClosure.summable_torusSobolevWeight_inv_four

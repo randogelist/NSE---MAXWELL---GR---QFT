@@ -1,0 +1,90 @@
+name: Materialize pinned native source snapshots
+
+on:
+  push:
+    branches: [codex/fefferman-b-maxwell]
+    paths:
+      - Auxillary/native-source-snapshot-request.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nse-native-source-materialization
+  cancel-in-progress: false
+
+jobs:
+  source-snapshots:
+    if: contains(github.event.head_commit.message, '[source-snapshot]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    steps:
+      - name: Check out the authorized source branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 1
+          persist-credentials: true
+
+      - name: Restore verified pinned source checkouts
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            .lake/packages
+            .lake/config
+            .mathlib-download-cache
+          key: nse-deps-v2-Linux-X64-1e0a11bbe2f771dc625218fed552a5e8c9ad571990c5e9674d1e2921162b35c5
+
+      - name: Copy complete pinned source objects into both adapters
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/source-snapshots
+          python Auxillary/scripts/vendor_native_sources.py \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --dependency-cache "$GITHUB_WORKSPACE/.lake/packages" \
+            --report artifacts/source-snapshots/materialization.json
+          python Fefferman_adapter/scripts/verify_native_sources.py \
+            --package-root Fefferman_adapter --source-only \
+            --report artifacts/source-snapshots/fefferman-source-closure.json
+          python Maxwell_Endpoint/scripts/verify_native_sources.py \
+            --package-root Maxwell_Endpoint --source-only \
+            --report artifacts/source-snapshots/maxwell-source-closure.json
+
+      - name: Commit exact source snapshots to the unchanged authorized branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF" = refs/heads/codex/fefferman-b-maxwell
+          expected_head=$(git ls-remote origin "$GITHUB_REF" | cut -f1)
+          test "$expected_head" = "$GITHUB_SHA"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- Fefferman_adapter/NativeSources Fefferman_adapter/native-sources.json \
+            Maxwell_Endpoint/NativeSources Maxwell_Endpoint/native-sources.json
+          git diff --cached --quiet && { echo 'No source snapshot changes'; exit 1; }
+          git commit -m 'Contain complete pinned native dependency sources in both adapters [skip ci]'
+          git push --porcelain origin "HEAD:$GITHUB_REF"
+          git rev-parse HEAD > artifacts/source-snapshots/source-commit.txt
+          git rev-parse HEAD^{tree} > artifacts/source-snapshots/source-tree.txt
+
+      - name: Preserve downloadable exact native source snapshots
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar --sort=name --mtime=@0 --owner=0 --group=0 --numeric-owner \
+            -czf artifacts/source-snapshots/native-source-snapshots.tar.gz \
+            Fefferman_adapter/NativeSources Fefferman_adapter/native-sources.json \
+            Maxwell_Endpoint/NativeSources Maxwell_Endpoint/native-sources.json
+          sha256sum artifacts/source-snapshots/native-source-snapshots.tar.gz \
+            > artifacts/source-snapshots/SHA256SUMS
+
+      - name: Upload source materialization evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: native-source-snapshots-${{ github.sha }}
+          path: artifacts/source-snapshots/
+          if-no-files-found: error
+          retention-days: 30

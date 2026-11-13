@@ -224,6 +224,50 @@ def verify(args: argparse.Namespace) -> dict[str, object]:
     if provenance.get("audit_command_status") != "PASS":
         errors.append("A successful Lean audit command is required.")
 
+    hydration = provenance.get("native_source_hydration")
+    if not isinstance(hydration, dict) or hydration.get("report") != "native-source-hydration.json":
+        errors.append("Matching native source hydration provenance is required.")
+    else:
+        hydration_path = at_root(args.provenance).parent / hydration["report"]
+        if (not hydration_path.is_file() or hydration_path.is_symlink() or
+                sha256(hydration_path) != hydration.get("sha256")):
+            errors.append("Native source hydration report is missing or differs from its recorded hash.")
+        else:
+            hydration_report = json.loads(read_text(hydration_path))
+            if (hydration_report.get("status") != "PASS" or
+                    hydration_report.get("dependency_count") != 9 or
+                    hydration_report.get("dependency_source_downloads") != 0 or
+                    hydration_report.get("shared_source_checkouts") is not False or
+                    hydration_report.get("native_sources_manifest_sha256") !=
+                    sha256(root / "Fefferman_adapter/native-sources.json")):
+                errors.append("Contained native dependency hydration did not pass.")
+
+    native_reports = provenance.get("native_source_closure")
+    if not isinstance(native_reports, list) or not native_reports:
+        errors.append("Matching native source-closure verification is required.")
+    else:
+        reports_seen: set[str] = set()
+        for record in native_reports:
+            if not isinstance(record, dict):
+                errors.append("Invalid native source-closure provenance record.")
+                continue
+            relative = record.get("report")
+            if (not isinstance(relative, str) or Path(relative).name != relative or
+                    relative in reports_seen):
+                errors.append("Invalid or duplicate native source-closure report path.")
+                continue
+            reports_seen.add(relative)
+            report_path = at_root(args.provenance).parent / relative
+            if not report_path.is_file() or report_path.is_symlink():
+                errors.append(f"Missing native source-closure report: {relative}")
+                continue
+            if sha256(report_path) != record.get("sha256"):
+                errors.append(f"Native source-closure report hash differs: {relative}")
+                continue
+            report = json.loads(read_text(report_path))
+            if report.get("status") != "PASS":
+                errors.append(f"Native source-closure verification did not pass: {relative}")
+
     commands = re.findall(
         r"^\s*#print\s+axioms\s+([A-Za-z_][A-Za-z0-9_'.]*)\s*(?:--.*)?$",
         audit_source,
@@ -314,9 +358,16 @@ def verify(args: argparse.Namespace) -> dict[str, object]:
         "Maxwell_Endpoint/scripts/run.ps1", "Maxwell_Endpoint/scripts/verify_audit.py",
         "Maxwell_Endpoint/run.sh", "Maxwell_Endpoint/run.cmd",
         "Auxillary/scripts/isolate_maxwell_endpoint.py",
+        "Fefferman_adapter/native-sources.json", "Fefferman_adapter/scripts/verify_native_sources.py",
+        "Fefferman_adapter/scripts/hydrate_native_sources.py", "Maxwell_Endpoint/scripts/hydrate_native_sources.py",
+        "Fefferman_adapter/methlib-module-order.json", "Fefferman_adapter/methlib-audit-targets.txt",
+        "Fefferman_adapter/MethlibEndpoints.lean", "Fefferman_adapter/MethlibEndpoints/Audit.lean",
+        "Fefferman_adapter/NativeSources/methlib/SOURCE_MANIFEST.json",
+        "Maxwell_Endpoint/native-sources.json", "Maxwell_Endpoint/scripts/verify_native_sources.py",
     }
     for source_root in (
-        "Fefferman_adapter", "B <-> Maxwell/=>", "B <-> Maxwell/<=",
+        "Fefferman_adapter/NSEMaxwell", "B <-> Maxwell/=>", "B <-> Maxwell/<=",
+        "Fefferman_adapter/NativeSources/methlib/SingularClosure", "Fefferman_adapter/MethlibEndpoints",
         "Maxwell_Endpoint/MaxwellEndpoint",
     ):
         directory = root / source_root

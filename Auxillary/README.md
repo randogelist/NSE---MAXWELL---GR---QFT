@@ -8,8 +8,8 @@
 | [run.cmd](run.cmd) | Historical repository Windows entry point |
 | [scripts/run.ps1](scripts/run.ps1) | Pinned dependency verification, cached compilation, source manifests |
 | [scripts/verify_audit.py](scripts/verify_audit.py) | Exact named axioms, compiler provenance, and source-hash verification |
-| [scripts/isolate_maxwell_endpoint.py](scripts/isolate_maxwell_endpoint.py) | Independent native Maxwell package isolation and source verification |
-| [audit-targets.txt](audit-targets.txt) | 226 exact integrated audit targets |
+| [scripts/isolate_maxwell_endpoint.py](scripts/isolate_maxwell_endpoint.py) | Independent Fefferman/Maxwell package isolation and source verification |
+| [audit-targets.txt](audit-targets.txt) | 236 exact integrated audit targets |
 | [cache-targets.txt](cache-targets.txt) | Pinned Mathlib cache target list |
 | [formalization-status.json](formalization-status.json) | Exact theorem scope, explicit premises, external certification |
 | [CI_CACHE_AUDIT.txt](CI_CACHE_AUDIT.txt) | Cache design and validation history |
@@ -25,10 +25,11 @@ The independent [Maxwell package](../Maxwell_Endpoint/) contains its own native 
 
 ```text
 COMPILER = LEAN_4.34.0-rc1_NATIVE_LINUX
-INTEGRATED_AUDIT_TARGETS = 226
-ISOLATED_MAXWELL_AUDIT_TARGETS = 52
+INTEGRATED_AUDIT_TARGETS = 236
+ISOLATED_FEFFERMAN_AUDIT_TARGETS = 236
+ISOLATED_MAXWELL_AUDIT_TARGETS = 62
 NATIVE_MAXWELL_THEOREMS = 23
-CURRENT_VALIDATION = PASS_226_INTEGRATED_AND52_ISOLATED_AUDITS
+CURRENT_VALIDATION = PENDING_NATIVE_SOURCE_PACKAGE_AUDITS
 LOCAL_LEAN_EXECUTIONS = 0
 HODGE_LEAN_INHABITANT = NOT_SUPPLIED
 ```

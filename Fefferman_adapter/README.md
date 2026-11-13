@@ -1,5 +1,23 @@
 # Fefferman adapter
 
+## Standalone native package
+
+[PACKAGE.md](PACKAGE.md) specifies the independent package. All 35 project modules are contained here, including ten byte-identical copies under [LocalDependencies/](LocalDependencies/) of the canonical Maxwell and directional sources. Complete Mathlib and eight companion dependency snapshots reside in [NativeSources/](NativeSources/). The selected 39-module Methlib closure is native Lean source, compiled through [MethlibEndpoints.lean](MethlibEndpoints.lean) and included in the 236-target package audit.
+
+```bash
+bash Fefferman_adapter/run.sh
+```
+
+Package extraction requires no parent-directory source dependency. `scripts/hydrate_native_sources.py` reconstructs missing exact pinned dependency checkouts from contained sources. Existing valid dependency checkouts and object caches remain intact. `scripts/verify_native_sources.py` checks source inventory, upstream Git identities, cached source equality and import closure.
+
+```text
+CURRENT_PACKAGE_STATUS = A_TIER_CANDIDATE
+EXTERNAL_VALIDATION = PENDING
+REGISTERED_PACKAGE_AUDIT_TARGETS = 236
+METHLIB_NATIVE_MODULES = 39
+METHLIB_ENDPOINT_AUDITS = 10
+```
+
 ## Exact Lean statement
 
 Location: [NSEMaxwell/Classical.lean](NSEMaxwell/Classical.lean).
@@ -25,15 +43,17 @@ NSEMaxwell.Classical.FeffermanB (ν : ℝ) : Prop :=
 | [Endpoints/](Endpoints/) | Selected Mathlib/Methlib source copies and index |
 | [NSEMaxwell/Audit.lean](NSEMaxwell/Audit.lean) | Exact signature and theorem-level axiom audit commands |
 
-The module root remains `NSEMaxwell`; Lake maps it to this physical directory.
+The module root remains `NSEMaxwell`; both repository and standalone Lake configurations map it to this physical directory.
 
 External runners, verification infrastructure, and retained compiler evidence reside in [Auxillary/](../Auxillary/).
 
-## Copied endpoint boundary
+## Legacy copied endpoint boundary
 
 ```text
 PUBLIC_SOURCE_COPIES   = PRESENT
-TARGET_NATIVE_PORTS   = DEFERRED
+LEGACY_TEXT_SNAPSHOTS = RETAINED
+NATIVE_METHLIB_CLOSURE = NativeSources/methlib
+TARGET_NATIVE_AUDIT = PENDING
 HODGE_LEAN_INHABITANT  = NOT_SUPPLIED
 ```
 

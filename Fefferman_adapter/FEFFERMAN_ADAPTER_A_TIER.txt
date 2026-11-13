@@ -1,0 +1,90 @@
+FEFFERMAN_ADAPTER_NATIVE_SOURCE_PACKAGE
+
+MODE = A_TIER_DERIVATION
+STATUS = A_TIER_CANDIDATE
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+
+EXACT_CONDITIONAL_ROOT =
+  NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED :
+    NSEMaxwell.Bridge.FourierHodgeLaws ->
+    NSEMaxwell.Classical.ExactEquivalence
+
+EXACT_CONCLUSION =
+  forall nu : Real, 0 < nu -> forall c : Real, 0 < c ->
+    (NSEMaxwell.Classical.FeffermanB nu <->
+      NSEMaxwell.Classical.MaxwellB nu c)
+
+DOMAIN = unforced unit-periodic three-dimensional Euclidean fields
+VELOCITY_MEAN = arbitrary
+PRESSURE = periodic
+SMOOTHNESS = joint C-infinity on nonnegative spacetime, including t=0
+ANALYTICITY = no premise
+
+UNRESOLVED_PREMISES = {
+  FourierHodgeLaws.reconstruct_velocity,
+  FourierHodgeLaws.reconstruct_curl,
+  FourierHodgeLaws.canonical_smoothness,
+  FourierHodgeLaws.electric_hodge
+}
+
+PACKAGE_LOCAL_NATIVE_ROOTS = {
+  NSEMaxwell,
+  LocalDependencies/Maxwell/MaxwellEndpoint,
+  LocalDependencies/Forward/NSEMaxwellForward,
+  LocalDependencies/Reverse/NSEMaxwellReverse,
+  NativeSources/methlib/SingularClosure,
+  MethlibEndpoints
+}
+
+SOURCE_CONTAINMENT_MANIFEST = native-sources.json
+CANONICAL_PROJECT_COPY_MANIFEST = local-project-sources.json
+COMPLETE_PINNED_UPSTREAM_SNAPSHOTS = {
+  mathlib, batteries, Qq, aesop, proofwidgets,
+  importGraph, LeanSearchClient, plausible, Cli
+}
+SNAPSHOT_SCOPE = all tracked files of each of the nine pinned repositories
+NATIVE_LEAN_SOURCE_BYTES = preserved
+NATIVE_LEAN_MODULE_PATHS = preserved
+UPSTREAM_GIT_METADATA_BASENAME_MAP = {
+  .gitattributes -> .gitattributes.upstream,
+  .gitignore -> .gitignore.upstream
+}
+UPSTREAM_GIT_METADATA_BYTES = preserved
+ANCILLARY_SYMLINK_STORAGE = original link bytes in regular .upstream-symlink files
+NATIVE_LEAN_SYMLINKS = none in the selected pinned dependency snapshots
+SOURCE_HYDRATION = exact original paths, modes, blobs, trees, and commits
+DEPENDENCY_SOURCE_DOWNLOADS = zero during source hydration
+RECORDED_UPSTREAM_TREE_IDENTITIES = original Git trees
+SNAPSHOT_PHYSICAL_TREE = metadata-renamed layout
+COMPILER_PROVIDED_LIBRARIES = {Init, Lean, Std, Lake}
+NAMED_AUDIT_SCOPE = selected declarations and their imported proof dependencies
+METHLIB_NATIVE_CLOSURE = 39 modules
+METHLIB_SELECTED_AUDIT_ENDPOINTS = 10
+AGGREGATE_AUDIT_TARGETS = 236
+
+EXTERNAL_COMPILER = leanprover/lean4:v4.34.0-rc1
+PINNED_MATHLIB = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+UPSTREAM_METHLIB = e9cf90726b8544a268469ebc8fa6634e9c713e07
+UPSTREAM_METHLIB_COMPILER = Lean 4.33.0
+TARGET_METHLIB_COMPILATION = PENDING_EXTERNAL_VALIDATION
+
+ALLOWED_AXIOMS = {propext, Classical.choice, Quot.sound}
+FORBIDDEN_AUDIT_IDENTITIES = sorryAx and every unapproved axiom
+CACHE_POLICY = compiler + pinned dependency + separate project object caches
+CACHE_DELETION = forbidden
+AUDIT_REPLAY = forbidden
+FRESH_SIGNATURE_AXIOM_AUDIT = required
+
+PREVIOUS_CONDITIONAL_ROOT_CERTIFICATE =
+  https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43353327242
+PREVIOUS_CERTIFIED_SOURCE = 8fd783b4d977fdb1a31cf4716023148ddfa26af9
+CURRENT_PACKAGE_CERTIFICATE = pending
+
+SOURCE_CONTAINMENT != proof_of_Hodge_fields
+METHLIB_ENDPOINT_COMPILATION != semantic_alignment_with_exact_root
+EXACT_ROOT_WITH_PREMISES = previously certified conditional implication
+CURRENT_ISOLATED_PACKAGE = A_TIER_CANDIDATE
+UNCONDITIONAL_CLOSURE = not established
+
+LINUX_ENTRYPOINT = bash run.sh
+WINDOWS_ENTRYPOINT = run.cmd

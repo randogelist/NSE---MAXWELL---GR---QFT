@@ -224,6 +224,50 @@ def verify(args: argparse.Namespace) -> dict[str, object]:
     if provenance.get("audit_command_status") != "PASS":
         errors.append("A successful Lean audit command is required.")
 
+    hydration = provenance.get("native_source_hydration")
+    if not isinstance(hydration, dict) or hydration.get("report") != "native-source-hydration.json":
+        errors.append("Matching native source hydration provenance is required.")
+    else:
+        hydration_path = at_root(args.provenance).parent / hydration["report"]
+        if (not hydration_path.is_file() or hydration_path.is_symlink() or
+                sha256(hydration_path) != hydration.get("sha256")):
+            errors.append("Native source hydration report is missing or differs from its recorded hash.")
+        else:
+            hydration_report = json.loads(read_text(hydration_path))
+            if (hydration_report.get("status") != "PASS" or
+                    hydration_report.get("dependency_count") != 9 or
+                    hydration_report.get("dependency_source_downloads") != 0 or
+                    hydration_report.get("shared_source_checkouts") is not False or
+                    hydration_report.get("native_sources_manifest_sha256") !=
+                    sha256(root / "native-sources.json")):
+                errors.append("Contained native dependency hydration did not pass.")
+
+    native_reports = provenance.get("native_source_closure")
+    if not isinstance(native_reports, list) or not native_reports:
+        errors.append("Matching native source-closure verification is required.")
+    else:
+        reports_seen: set[str] = set()
+        for record in native_reports:
+            if not isinstance(record, dict):
+                errors.append("Invalid native source-closure provenance record.")
+                continue
+            relative = record.get("report")
+            if (not isinstance(relative, str) or Path(relative).name != relative or
+                    relative in reports_seen):
+                errors.append("Invalid or duplicate native source-closure report path.")
+                continue
+            reports_seen.add(relative)
+            report_path = at_root(args.provenance).parent / relative
+            if not report_path.is_file() or report_path.is_symlink():
+                errors.append(f"Missing native source-closure report: {relative}")
+                continue
+            if sha256(report_path) != record.get("sha256"):
+                errors.append(f"Native source-closure report hash differs: {relative}")
+                continue
+            report = json.loads(read_text(report_path))
+            if report.get("status") != "PASS":
+                errors.append(f"Native source-closure verification did not pass: {relative}")
+
     commands = re.findall(
         r"^\s*#print\s+axioms\s+([A-Za-z_][A-Za-z0-9_'.]*)\s*(?:--.*)?$",
         audit_source,
@@ -302,6 +346,10 @@ def verify(args: argparse.Namespace) -> dict[str, object]:
         "MaxwellEndpoint/System.lean", "MaxwellEndpoint/Native.lean",
         "audit-targets.txt", "cache-targets.txt", "formalization-status.json",
         "scripts/run.ps1", "scripts/verify_audit.py", "run.cmd",
+        "native-sources.json", "scripts/verify_native_sources.py", "scripts/hydrate_native_sources.py",
+        "methlib-module-order.json", "methlib-audit-targets.txt",
+        "MethlibEndpoints.lean", "MethlibEndpoints/Audit.lean",
+        "NativeSources/methlib/SOURCE_MANIFEST.json",
     }
     directory = root / "MaxwellEndpoint"
     if not directory.is_dir():
@@ -311,6 +359,13 @@ def verify(args: argparse.Namespace) -> dict[str, object]:
             path.relative_to(root).as_posix()
             for path in directory.rglob("*.lean") if path.is_file()
         )
+    for directory_name in ("NativeSources/methlib/SingularClosure", "MethlibEndpoints"):
+        directory = root / directory_name
+        if not directory.is_dir():
+            manifest_errors.append(f"Native Methlib source root is absent: {directory_name}")
+        else:
+            required.update(path.relative_to(root).as_posix()
+                            for path in directory.rglob("*.lean") if path.is_file())
     if expected_platform == "linux":
         required.add("run.sh")
     for relative in sorted(required - paths_seen):

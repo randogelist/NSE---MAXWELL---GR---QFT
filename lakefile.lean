@@ -18,6 +18,12 @@ lean_lib NSEMaxwellForward where
 lean_lib NSEMaxwellReverse where
   srcDir := "B <-> Maxwell/<="
 
+lean_lib SingularClosure where
+  srcDir := "Fefferman_adapter/NativeSources/methlib"
+
+lean_lib MethlibEndpoints where
+  srcDir := "Fefferman_adapter"
+
 @[default_target]
 lean_lib NSEMaxwell where
   srcDir := "Fefferman_adapter"

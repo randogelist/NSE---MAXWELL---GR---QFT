@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "package": "fefferman_adapter",
+  "source_status": "A_TIER_CANDIDATE_FOR_ISOLATED_NATIVE_PACKAGE",
+  "exact_target": "NSEMaxwell.Classical.ExactEquivalence",
+  "exact_target_proved": false,
+  "prepared_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED",
+  "prepared_root_type": "NSEMaxwell.Bridge.FourierHodgeLaws -> NSEMaxwell.Classical.ExactEquivalence",
+  "formal_status": "CONDITIONAL_FORMAL_CLOSURE_FOR_PREVIOUSLY_CERTIFIED_IMPLICATION; CURRENT_PACKAGE_AWAITING_EXTERNAL_VALIDATION",
+  "analytic_laws_inhabitant_provided": false,
+  "unconditional_closure": false,
+  "open_analytic_endpoints": [
+    "reconstruct_velocity",
+    "reconstruct_curl",
+    "canonical_smoothness",
+    "electric_hodge"
+  ],
+  "concrete_realization": {
+    "domain": "unit-periodic lifts on EuclideanSpace R (Fin 3)",
+    "smoothness": "joint ContDiffOn R infinity on nonnegative spacetime, including t=0",
+    "pressure": "periodic; unrestricted spatial-constant gauge",
+    "velocity_mean": "arbitrary",
+    "forcing": "zero",
+    "K": "curl of actual mean-zero inverse-Laplacian Fourier formula"
+  },
+  "audit_target_count": 236,
+  "local_lean_executions": 0,
+  "required_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "required_mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "native_source_manifest": "native-sources.json",
+  "local_project_source_map": "local-project-sources.json",
+  "package_local_source_roots": {
+    "NSEMaxwell": ".",
+    "MaxwellEndpoint": "LocalDependencies/Maxwell",
+    "NSEMaxwellForward": "LocalDependencies/Forward",
+    "NSEMaxwellReverse": "LocalDependencies/Reverse",
+    "SingularClosure": "NativeSources/methlib",
+    "MethlibEndpoints": "."
+  },
+  "copied_project_declarations": "Original namespaces, theorem statements and proof bodies preserved.",
+  "methlib_native_endpoints": {
+    "source_repository": "randogelist/Methlib",
+    "source_commit": "e9cf90726b8544a268469ebc8fa6634e9c713e07",
+    "upstream_lean": "4.33.0",
+    "selected_endpoint_count": 10,
+    "native_module_closure": 39,
+    "current_target_status": "A_TIER_CANDIDATE",
+    "analytic_alignment": "NOT_DISCHARGED"
+  },
+  "prior_exact_conditional_root_certificate": {
+    "source_commit": "8fd783b4d977fdb1a31cf4716023148ddfa26af9",
+    "run_id": 43353327242,
+    "url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43353327242",
+    "status": "A_TIER_FOR_EXACT_CONDITIONAL_IMPLICATION"
+  },
+  "external_evidence": null,
+  "promotion_rule": "Matching external native compiler and named theorem-level axiom audit; no sorryAx or unapproved axioms. Source containment does not discharge hypotheses.",
+  "native_source_containment": {
+    "complete_pinned_repository_snapshots": [
+      "mathlib",
+      "batteries",
+      "Qq",
+      "aesop",
+      "proofwidgets",
+      "importGraph",
+      "LeanSearchClient",
+      "plausible",
+      "Cli"
+    ],
+    "snapshot_scope": "all tracked files of each exact pinned upstream revision",
+    "native_lean_source_bytes": "preserved",
+    "native_lean_module_paths": "preserved",
+    "upstream_git_metadata_basename_map": {
+      ".gitattributes": ".gitattributes.upstream",
+      ".gitignore": ".gitignore.upstream"
+    },
+    "upstream_git_metadata_bytes": "preserved",
+    "recorded_upstream_tree_identities": "exact original Git trees; snapshot layout includes explicit metadata and ancillary-symlink filename mappings",
+    "compiler_provided_libraries": [
+      "Init",
+      "Lean",
+      "Std",
+      "Lake"
+    ],
+    "methlib": "complete 39-module import closure for 10 selected endpoints",
+    "audit_scope": "selected native declaration inventory and its imported proof dependencies; complete source presence does not certify every upstream test or source file",
+    "current_containment_certificate": "PENDING_EXTERNAL_VERIFICATION",
+    "ancillary_symlink_storage": "original link payload bytes in regular files with .upstream-symlink suffix",
+    "native_lean_symlink_modules": 0,
+    "source_hydration": "reconstruct original pinned Git blobs, trees and commits with original paths and modes; preserve existing correct caches",
+    "isolated_dependency_source_checkouts": "independent; only compiled dependency objects may be shared"
+  },
+  "native_source_hydrator": "scripts/hydrate_native_sources.py"
+}

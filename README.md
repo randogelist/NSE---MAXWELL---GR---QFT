@@ -4,8 +4,8 @@
 
 | Directory | Scope |
 |---|---|
-| [Fefferman_adapter/](Fefferman_adapter/) | Exact Fefferman-B statement, shared bridge calculus, copied Mathlib/Methlib endpoints |
-| [Maxwell_Endpoint/](Maxwell_Endpoint/) | Independent native Maxwell definitions, constructions, compiler configuration, and named audit |
+| [Fefferman_adapter/](Fefferman_adapter/) | Independent Fefferman package, exact statement, bridge proofs, complete pinned dependency sources, native Methlib endpoints |
+| [Maxwell_Endpoint/](Maxwell_Endpoint/) | Independent Maxwell package, native constructions, complete pinned dependency sources, native Methlib endpoints |
 | [B <-> Maxwell/](B%20%3C-%3E%20Maxwell/) | Equivalence derivations and the two directional proof directories |
 | [Auxillary/](Auxillary/) | External runners, audit/cache targets, status, cache documentation, retained compiler evidence |
 | [B <-> Maxwell/=>/](B%20%3C-%3E%20Maxwell/%3D%3E/) | Fefferman B ⇒ constrained Maxwell: actual forward proof bodies |
@@ -14,23 +14,47 @@
 The four top-level content folders have the requested domain roles. `.github/` retains GitHub Actions discovery. Root files retain Lake configuration, compiler selection, repository instructions, and Git metadata. Auxiliary entry points, target lists, status, and evidence reside in `Auxillary/`.
 
 ```text
-LAYOUT_PLATFORM             = LINUX / POSIX
-CURRENT_SOURCE_STATUS      = A_TIER_FOR_EXACT_NATIVE_AND_CONDITIONAL_BRIDGE_THEOREMS
-ROOT_EXTERNAL_VALIDATION    = PASS_BUILD_AND226_FRESH_AUDITS
-ISOLATED_MAXWELL_VALIDATION  = PASS_BUILD_AND52_FRESH_AUDITS
-PRIOR_CERTIFIED_RUN         = 43348914489
-REGISTERED_ROOT_TARGETS     = 226
-REGISTERED_MAXWELL_TARGETS  = 52
+LAYOUT_PLATFORM              = LINUX / POSIX
+CURRENT_PACKAGE_STATUS       = A_TIER_CANDIDATE
+INTEGRATED_AUDIT_TARGETS      = 236
+ISOLATED_FEFFERMAN_TARGETS    = 236
+ISOLATED_MAXWELL_TARGETS      = 62
+CURRENT_EXTERNAL_VALIDATION  = PENDING
 LOCAL_LEAN_EXECUTIONS        = 0
-HODGE_LEAN_INHABITANT        = NOT_SUPPLIED
-HODGE_B_TIER_DERIVATION      = COMPLETE
+HODGE_LEAN_INHABITANT         = NOT_SUPPLIED
+HODGE_B_TIER_DERIVATION       = COMPLETE
 ```
 
 Literal `<` and `>` directory names require a POSIX checkout. Active compiler: external native Linux Lean `4.34.0-rc1`. Historical Windows evidence and `Auxillary/run.cmd` remain recorded; native Windows checkout compatibility is not asserted for this literal layout.
 
+## Contained native source packages
+
+Both [Fefferman_adapter](Fefferman_adapter/) and [Maxwell_Endpoint](Maxwell_Endpoint/) contain native `.lean` sources for their complete application closure, all nine pinned dependency repositories including Mathlib, and the selected 39-module Methlib closure. Each package has its own Lake configuration, source manifest, native runners, source hydration and verification, and named axiom audit.
+
+| Component | Fefferman package | Maxwell package |
+|---|---|---|
+| Native project modules | All 35, including byte-checked local Maxwell/direction copies | All six Maxwell modules |
+| Upstream dependency sources | Complete nine-repository pinned snapshots | Identical complete snapshots |
+| Native Methlib closure | 39 original `SingularClosure` modules; ten endpoint audits | Identical closure and ten endpoint audits |
+| Exact named audit inventory | 236 | 62 |
+| Dependency source acquisition | Contained snapshots; exact pinned Git identities reconstructed on a cache miss | Same |
+| Compiler libraries | `Init`, `Lean`, `Std`, `Lake` from the pinned Lean distribution | Same |
+
+External entry points:
+
+```bash
+bash Auxillary/run.sh
+bash Fefferman_adapter/run.sh
+bash Maxwell_Endpoint/run.sh
+```
+
+The native source inventories are `native-sources.json` in each package. Snapshot bytes are checked against upstream Git blob/tree identities and the actual compiler dependency sources. Existing verified dependency checkouts and compilation caches are preserved. Isolated package builds use contained source files and share only verified dependency compilation objects.
+
+Original Methlib declarations retain their `SingularClosure` names. The source's `Fefferman_B_0_adjust` and `AX6Statement` remain distinct from the exact arbitrary-mean target. Neither inclusion nor compilation supplies an inhabitant of `FourierHodgeLaws`.
+
 ## Exact statement
 
-The definition occurs once, in [Classical.lean](Fefferman_adapter/NSEMaxwell/Classical.lean):
+The canonical definition occurs in [Classical.lean](Fefferman_adapter/NSEMaxwell/Classical.lean):
 
 ```lean
 NSEMaxwell.Classical.FeffermanB (ν : ℝ) : Prop :=

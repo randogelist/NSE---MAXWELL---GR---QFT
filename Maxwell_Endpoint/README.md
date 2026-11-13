@@ -4,15 +4,21 @@
 PACKAGE                       = Maxwell_Endpoint
 NATIVE_MODULE_ROOT            = MaxwellEndpoint
 EXISTING_DEFINITION_NAMESPACE = NSEMaxwell.Classical
-STATUS                        = A_TIER_FOR_EXACT_NATIVE_THEOREMS
-ROOT_EXTERNAL_VALIDATION      = PASS_CACHED_NATIVE_LINUX_AND226_FRESH_AUDITS
-ISOLATED_EXTERNAL_VALIDATION  = PASS_CACHED_NATIVE_LINUX_AND52_FRESH_AUDITS
-LOCAL_LEAN_EXECUTIONS          = 0
-STANDALONE_AUDIT_TARGETS       = 52
-NATIVE_THEOREMS                = 23
+CURRENT_PACKAGE_STATUS        = A_TIER_CANDIDATE
+CURRENT_EXTERNAL_VALIDATION   = PENDING
+LOCAL_LEAN_EXECUTIONS         = 0
+STANDALONE_AUDIT_TARGETS       = 62
+NATIVE_MAXWELL_THEOREMS        = 23
 NATIVE_DEFINITION_TYPE_TARGETS = 29
-INTEGRATED_AUDIT_TARGETS       = 226
+NATIVE_METHLIB_ENDPOINTS       = 10
+INTEGRATED_AUDIT_TARGETS       = 236
 ```
+
+## Contained dependency sources
+
+[NativeSources/](NativeSources/) contains complete pinned snapshots of Mathlib and all eight companion dependency repositories, plus the selected 39-module native Methlib closure. [native-sources.json](native-sources.json) records each upstream revision, Git tree/blob identity and SHA256. Native `.lean` bytes and module paths are preserved; upstream Git attribute/ignore files retain their original bytes under `.upstream` basenames.
+
+`scripts/hydrate_native_sources.py` reconstructs exact dependency checkouts from these contained sources on a cache miss. `scripts/verify_native_sources.py` verifies full source inventory, import closure and identity with actual compiler inputs. Existing dependency objects remain cached. `MethlibEndpoints.lean` provides ten separately audited harmonic-analysis declarations without introducing an NSE adapter import or discharging Hodge premises.
 
 ## Native source closure
 
