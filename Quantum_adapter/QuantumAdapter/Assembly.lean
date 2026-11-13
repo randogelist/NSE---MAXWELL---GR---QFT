@@ -28,14 +28,8 @@ noncomputable section
 variable {ν : ℝ}
 
 theorem native_initial_packet_triangle (N : ℕ) (q r : Phase N) :
-    Real.sqrt (energy3 N q) ≤ Real.sqrt (energy3 N r) + packetDistance N q r := by
-  calc
-    Real.sqrt (energy3 N q) ≤
-        Real.sqrt (energy3 N (q - r)) + Real.sqrt (energy3 N r) :=
-      sqrt_energy3_le_add N q r
-    _ ≤ packetDistance N q r + Real.sqrt (energy3 N r) :=
-      add_le_add_right (sqrt_energy3_le_cutoffSobolevFactor_mul_norm N (q - r)) _
-    _ = Real.sqrt (energy3 N r) + packetDistance N q r := add_comm _ _
+    Real.sqrt (energy3 N q) ≤ Real.sqrt (energy3 N r) + packetDistance N q r :=
+  sqrt_energy3_le_reference_add_packetDistance N q r
 
 theorem transportedPacket_waveAdmissible_of_jacobian (F : PhaseFlow ν)
     (hd : ∀ N t, Differentiable ℝ (F.map N t))

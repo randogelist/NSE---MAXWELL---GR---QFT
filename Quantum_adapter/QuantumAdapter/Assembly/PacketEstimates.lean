@@ -140,13 +140,13 @@ theorem sqrt_energy3_le_reference_add_packetDistance (N : ℕ) (q r : Phase N) :
     Real.sqrt (energy3 N q) ≤ Real.sqrt (energy3 N r) + packetDistance N q r := by
   change Real.sqrt (energy3 N q) ≤
     Real.sqrt (energy3 N r) + cutoffSobolevFactor N * ‖q - r‖
-  calc
-    Real.sqrt (energy3 N q) ≤
-        Real.sqrt (energy3 N (q - r)) + Real.sqrt (energy3 N r) :=
-      sqrt_energy3_le_add N q r
-    _ ≤ cutoffSobolevFactor N * ‖q - r‖ + Real.sqrt (energy3 N r) :=
-      add_le_add_right (sqrt_energy3_le_cutoffSobolevFactor_mul_norm N (q - r)) _
-    _ = Real.sqrt (energy3 N r) + cutoffSobolevFactor N * ‖q - r‖ := add_comm _ _
+  have htriangle : Real.sqrt (energy3 N q) ≤
+      Real.sqrt (energy3 N (q - r)) + Real.sqrt (energy3 N r) :=
+    sqrt_energy3_le_add N q r
+  have hinverse : Real.sqrt (energy3 N (q - r)) ≤
+      cutoffSobolevFactor N * ‖q - r‖ :=
+    sqrt_energy3_le_cutoffSobolevFactor_mul_norm N (q - r)
+  linarith only [htriangle, hinverse]
 
 /-- The actual integrated spatial-gradient observable along one finite orbit. -/
 def orbitGradientCost {ν : ℝ} (F : PhaseFlow ν) (N : ℕ)
@@ -335,7 +335,7 @@ theorem PacketEstimatePrimitives.relative (H : PacketEstimatePrimitives F Cemb C
     change cutoffSobolevFactor N * ‖F.map N t q - F.map N t r‖ ≤
       (cutoffSobolevFactor N * ‖q - r‖) * Real.exp (orbitGradientCost F N r t)
     simpa only [mul_assoc] using hrelative
-  exact htriangle.trans (add_le_add_left hdist _)
+  linarith only [htriangle, hdist]
 
 theorem PacketEstimatePrimitives.cost_nonneg (H : PacketEstimatePrimitives F Cemb C3)
     (N : ℕ) (q : Phase N) (t : ℝ) (ht : 0 ≤ t) :
