@@ -82,6 +82,84 @@ def successful_dag_modules(log: str, selected_modules: set[str]) -> set[str]:
     return (successes - failures) & selected_modules
 
 
+def batch_build_targets(stages: list[tuple[str, str, list[str]]],
+                        current_successes: set[str], current_failures: set[str],
+                        dependency_closures: dict[str, set[str]]) -> list[str]:
+    """Only unresolved targets whose current dependency graph has no known failure."""
+    return list(dict.fromkeys(
+        module for _, module, _ in stages
+        if module not in current_successes and module not in current_failures
+        and not (dependency_closures[module] & current_failures)))
+
+
+def audit_source(stages: list[tuple[str, str, list[str]]]) -> tuple[str, list[str]]:
+    """One deterministic fresh audit; all names stay fully qualified and unique."""
+    require(bool(stages), "Empty audit batch")
+    modules, names = [], []
+    for stage, module, targets in stages:
+        require(NAME.fullmatch(module) is not None, "Invalid audit module: " + module)
+        require(bool(targets) and all(SOURCE_NAME.fullmatch(n) for n in targets),
+                "Invalid named stage: " + stage)
+        modules.append(module)
+        names.extend(targets)
+    require(len(names) == len(set(names)), "Duplicate target in audit batch")
+    text = "".join("import " + module + "\n" for module in dict.fromkeys(modules))
+    text += "set_option pp.universes false\n"
+    text += "\n".join("#check @" + name + "\n#print axioms " + name for name in names) + "\n"
+    return text, names
+
+
+def validate_batch_builds(stages: list[tuple[str, str, list[str]]],
+                          current_successes: set[str], current_failures: set[str],
+                          dependency_closures: dict[str, set[str]], run,
+                          keep_going: bool) -> tuple[list[tuple[str, str, list[str]]], list[dict], dict]:
+    """Validate this run's objects before batching audits; failed commands prove nothing.
+
+    `run` must raise on a nonzero process exit. A failed batch falls back to
+    individual builds; neither its partial output nor cached files certify a target.
+    """
+    successes = set(current_successes) - current_failures
+    pending = batch_build_targets(stages, successes, current_failures, dependency_closures)
+    stats = {"requested_modules": pending, "status": "NOT_NEEDED", "fallback_builds": 0}
+    if pending:
+        try:
+            run(["lake", "build", *pending], "batch-validation-build.log")
+            successes.update(pending)
+            stats["status"] = "PASS; ALL_REQUESTED_TARGETS_CURRENT"
+        except (OSError, ValueError) as error:
+            stats["status"] = "FAIL; INDIVIDUAL_VALIDATION_REQUIRED"
+            stats["error"] = str(error)
+    ready, failures = [], []
+    failed_modules = set(current_failures)
+    for stage, module, names in stages:
+        entry = None
+        if module in current_failures:
+            entry = {"stage": stage, "module": module, "status": "FAIL",
+                     "error": "Explicit compiler error in shared DAG build; log=dag-build.log"}
+        else:
+            blocked = sorted(dependency_closures[module] & failed_modules)
+            if blocked:
+                entry = {"stage": stage, "module": module,
+                         "status": "BLOCKED_BY_FAILED_DEPENDENCY", "dependencies": blocked}
+            elif module not in successes:
+                try:
+                    stats["fallback_builds"] += 1
+                    run(["lake", "build", module], stage + "-build.log")
+                    successes.add(module)
+                except (OSError, ValueError) as error:
+                    entry = {"stage": stage, "module": module, "status": "FAIL", "error": str(error)}
+        if entry is not None:
+            failures.append(entry)
+            failed_modules.add(module)
+            if entry["status"] == "FAIL" and (not keep_going or not stage.startswith("assembly")):
+                raise ValueError(entry["error"])
+        else:
+            require(module in successes, "Unvalidated module cannot enter audit batch: " + module)
+            ready.append((stage, module, names))
+    stats["validated_modules"] = [module for _, module, _ in ready]
+    return ready, failures, stats
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--package-root", type=Path, required=True)
@@ -96,6 +174,8 @@ def main() -> int:
                         help="Retain successful exact audits after independent module failures")
     parser.add_argument("--dag-build", action="store_true",
                         help="Prebuild all selected targets in one Lake dependency-graph invocation")
+    parser.add_argument("--batch-audits", action="store_true",
+                        help="Validate successful modules then run their exact audits in one fresh Lean process")
     args = parser.parse_args()
     package = args.package_root.resolve()
     repo = package.parent
@@ -328,7 +408,46 @@ def main() -> int:
             persist()
         stage_summaries = []
         failed_stages = []
-        for stage, module, names in stages:
+        audit_stages = stages
+        batch_records = None
+        batch_audit = report / "BatchAudit.lean"
+        batch_log_name = "batch-audit.log"
+        if args.batch_audits:
+            current_successes = ({module for _, module, _ in stages}
+                                 if dag_build_pass else dag_successes)
+            closures = {module: dependency_closure(module) for _, module, _ in stages}
+            audit_stages, failed_stages, batch_validation = validate_batch_builds(
+                stages, current_successes, dag_failures, closures, run, args.keep_going)
+            provenance["batch_build_validation"] = batch_validation
+            for entry in failed_stages:
+                write_json(report / (entry["stage"] + "-summary.json"), entry)
+                print("BUILD_STAGE_STATUS=" + entry["status"] + "; MODULE=" + entry["module"], flush=True)
+            provenance["failed_stages"] = failed_stages
+            provenance["audit_mode"] = "FRESH_BATCH_REQUESTED"
+            persist()
+            if audit_stages:
+                try:
+                    text, batch_names = audit_source(audit_stages)
+                    batch_audit.write_text(text, encoding="utf-8")
+                    log = run(["lake", "env", "lean", "-R", str(report), str(batch_audit)], batch_log_name)
+                    batch_records = {item["name"]: item for item in audit_records(log, batch_names)}
+                    provenance["batch_audit"] = {"status": "PASS_STANDARD_ONLY",
+                        "stage_count": len(audit_stages), "target_count": len(batch_names),
+                        "audit_source": batch_audit.name, "audit_source_sha256": digest(batch_audit),
+                        "audit_log": batch_log_name, "audit_log_sha256": digest(report / batch_log_name)}
+                    provenance["audit_mode"] = "FRESH_BATCH"
+                except (OSError, ValueError) as error:
+                    # A nonzero batch invocation, missing record or unapproved
+                    # axiom never promotes a partial result. Fresh individual
+                    # audits isolate the failing stage and retain independent evidence.
+                    batch_records = None
+                    provenance["batch_audit"] = {"status": "FAIL; FRESH_STAGE_FALLBACK",
+                                                  "error": str(error)}
+                    provenance["audit_mode"] = "FRESH_STAGE_FALLBACK"
+                persist()
+        else:
+            provenance["audit_mode"] = "FRESH_STAGE"
+        for stage, module, names in audit_stages:
             require(bool(names), "Empty named stage: " + stage)
             require(len(set(names)) == len(names) and all(SOURCE_NAME.fullmatch(n) for n in names),
                     "Invalid named stage: " + stage)
@@ -354,17 +473,22 @@ def main() -> int:
                 require(args.keep_going, entry["error"])
                 continue
             try:
-                if not dag_build_pass and module not in dag_successes:
+                if not args.batch_audits and not dag_build_pass and module not in dag_successes:
                     run(["lake", "build", module], stage + "-build.log")
-                audit = report / (stage.replace("-", "_").title() + "Audit.lean")
-                text = "import " + module + "\nset_option pp.universes false\n"
-                text += "\n".join("#check @" + name + "\n#print axioms " + name for name in names) + "\n"
-                audit.write_text(text, encoding="utf-8")
-                log_name = stage + "-audit.log"
-                log = run(["lake", "env", "lean", "-R", str(report), str(audit)], log_name)
-                records = audit_records(log, names)
+                if batch_records is not None:
+                    audit, log_name = batch_audit, batch_log_name
+                    records = [batch_records[name] for name in names]
+                else:
+                    audit = report / (stage.replace("-", "_").title() + "Audit.lean")
+                    text = "import " + module + "\nset_option pp.universes false\n"
+                    text += "\n".join("#check @" + name + "\n#print axioms " + name for name in names) + "\n"
+                    audit.write_text(text, encoding="utf-8")
+                    log_name = stage + "-audit.log"
+                    log = run(["lake", "env", "lean", "-R", str(report), str(audit)], log_name)
+                    records = audit_records(log, names)
                 entry = {"stage": stage, "module": module, "status": "PASS_STANDARD_ONLY",
                          "source_commit": args.source_commit, "target_count": len(records),
+                         "audit_mode": "FRESH_BATCH" if batch_records is not None else "FRESH_STAGE",
                          "audit_source": audit.name, "audit_source_sha256": digest(audit),
                          "audit_log": log_name, "audit_log_sha256": digest(report / log_name), "targets": records}
                 write_json(report / (stage + "-summary.json"), entry)
@@ -378,6 +502,11 @@ def main() -> int:
             provenance["stages"] = stage_summaries
             provenance["failed_stages"] = failed_stages
             persist()
+        audit_process_count = sum(item["log"].endswith("-audit.log") for item in provenance["commands"])
+        provenance["audit_process_count"] = audit_process_count
+        provenance["audited_stage_count"] = len(stage_summaries)
+        provenance["batch_audit_stage_count"] = sum(
+            item.get("audit_mode") == "FRESH_BATCH" for item in stage_summaries)
         require(digest(lock_path) == lock_hash, "Compilation changed committed dependency lock")
         for item in manifest["files"]:
             require(digest(repo / item["path"]) == item["sha256"], "Source changed during run: " + item["path"])
@@ -388,6 +517,8 @@ def main() -> int:
                    "baseline_target_count": 401, "cutout_target_count": len(cutouts),
                    "new_target_count": len(selected),
                    "target_count": sum(x["target_count"] for x in stage_summaries),
+                   "audit_mode": provenance["audit_mode"], "audit_process_count": audit_process_count,
+                   "batch_audit_stage_count": provenance["batch_audit_stage_count"],
                    "allowed_axioms": sorted(ALLOWED), "stages": stage_summaries,
                    "failed_stages": failed_stages, "declared_scope": scope,
                    "semantic_discharge": "NOT_INFERRED_FROM_AXIOM_AUDIT"}

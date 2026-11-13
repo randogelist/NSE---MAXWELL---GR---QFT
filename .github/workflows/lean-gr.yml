@@ -4,6 +4,18 @@ on:
   push:
     branches:
       - codex/gr-adapter
+    paths:
+      - 'GR_adapter/**'
+      - 'Auxillary/GR/scripts/**'
+      - 'Auxillary/GR/audit-targets.json'
+      - 'Auxillary/GR/formalization-status.json'
+      - 'Fefferman_adapter/scripts/hydrate_native_sources.py'
+      - 'Fefferman_adapter/native-sources.json'
+      - 'Fefferman_adapter/lake-manifest.json'
+      - 'Fefferman_adapter/lean-toolchain'
+      - 'Fefferman_adapter/NativeSources/**'
+      - '.github/workflows/lean-gr.yml'
+      - '.gitattributes'
   workflow_dispatch:
 
 permissions:

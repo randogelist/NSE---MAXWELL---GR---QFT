@@ -2,7 +2,31 @@ name: Cached Linux Lean and theorem audit
 
 on:
   push:
+    paths:
+      - 'Fefferman_adapter/**'
+      - 'Maxwell_Endpoint/**'
+      - 'B <-> Maxwell/**'
+      - 'Auxillary/scripts/**'
+      - 'Auxillary/*'
+      - 'lean-toolchain'
+      - 'lakefile.lean'
+      - 'lakefile.toml'
+      - 'lake-manifest.json'
+      - '.github/workflows/lean-linux.yml'
+      - '.gitattributes'
   pull_request:
+    paths:
+      - 'Fefferman_adapter/**'
+      - 'Maxwell_Endpoint/**'
+      - 'B <-> Maxwell/**'
+      - 'Auxillary/scripts/**'
+      - 'Auxillary/*'
+      - 'lean-toolchain'
+      - 'lakefile.lean'
+      - 'lakefile.toml'
+      - 'lake-manifest.json'
+      - '.github/workflows/lean-linux.yml'
+      - '.gitattributes'
   workflow_dispatch:
 
 permissions:
