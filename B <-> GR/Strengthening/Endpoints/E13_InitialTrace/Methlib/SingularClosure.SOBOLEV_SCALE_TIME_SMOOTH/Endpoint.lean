@@ -1,0 +1,26 @@
+import SingularClosure.SobolevScaleTimeSmooth
+
+/-!
+ENDPOINT = SingularClosure.SOBOLEV_SCALE_TIME_SMOOTH
+PROOF_STAGE = E13_InitialTrace
+SOURCE_COHORT = M1_CURRENT_433_SOURCE
+SOURCE_REVISION = 4813604a46179c745b82f51bee51a186e9f4cc2d
+SOURCE_MODULE = SingularClosure.SobolevScaleTimeSmooth
+SOURCE_SHA256 = 2b1ceb36eb83e97fe3dde94bd178c1d98f8478e36e651de7f33b9cadb8c81fa7
+DECLARATION_LINE = 47
+COMPILER = leanprover/lean4:v4.33.0
+MATHLIB = db584cd6d46c92f209a44c0f1c829460d327499d
+SOURCE_COPY = Source.lean; complete byte-identical defining module.
+ENTRYPOINT_KIND = IMPORT_AND_SYMBOL_AXIOM_QUERY
+COLLECTION_STATUS = A_TIER_CANDIDATE
+MATCHING_EXTERNAL_COLLECTION_AUDIT = NONE
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+Dependencies resolve from the stated source cohort.
+Source.lean is an archival copy; import the canonical module above.
+The existing theorem retains all original hypotheses.
+-/
+
+set_option autoImplicit false
+
+#check @SingularClosure.SOBOLEV_SCALE_TIME_SMOOTH
+#print axioms SingularClosure.SOBOLEV_SCALE_TIME_SMOOTH
