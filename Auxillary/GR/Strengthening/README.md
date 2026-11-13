@@ -69,6 +69,33 @@ The verifier checks source and entrypoint bytes, exact import/query symbols,
 canonical-source identity where present, directory coverage, and all 24
 pending placeholders. It performs no Lean, Lake, elan, or compiler execution.
 
+## B-tier chain and intermediate goals
+
+The revision-3 mathematical factorization is
+`S_nu(a) ≃ P_nu^+(a) ≃ N_nu^+(a) ≃ G_nu,rho^+(a)`.
+`P` is the carrier of normalized positive-time analytic NSE pairs with the
+velocity trace in every spatial Sobolev order; `N` is the corresponding
+coherent native NSE germ-family carrier. The frozen source, geometric target,
+arbitrary velocity mean, and actual forward/reverse maps are unchanged.
+
+- [Complete B-tier derivation](../../../B%20%3C-%3E%20GR/Strengthening/Derivation/NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_B_TIER.txt)
+- [Intermediate-goal ledger](intermediate-goals.json)
+
+The ledger contains 45 definition/proof goals, including the root and its
+existence corollary, and maps all 24 reserved constructions to their finer
+obligations. It cites 132 distinct anchors from the 183-endpoint collection.
+The primary root has 39 dependency goals. Three additional jet goals give
+an independent proof of the initial-boundary extension; the remaining
+three goals assemble the literal existence corollary.
+
+The critical new interfaces are the complete weighted complex-time sector,
+actual Fourier norm differentiation, the right-boundary derivative equation,
+compatible Sobolev synthesis, quotient center evaluation, and the physical
+local inverse identities on positive recovery intervals. The document derives
+their hypotheses explicitly. New integration declarations remain unimplemented
+in Lean; source collection and B-tier derivation provide no new compiler or
+theorem-level axiom-audit evidence.
+
 ## Formal status
 
 The existing certified local GR theorem retains its original evidence.

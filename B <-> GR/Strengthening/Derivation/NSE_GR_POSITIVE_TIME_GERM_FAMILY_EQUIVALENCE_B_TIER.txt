@@ -1,0 +1,3722 @@
+NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_B_TIER
+================================================
+
+MODE = B_TIER_DERIVATION
+STATUS = ! B_TIER
+COMPLETE_MATHEMATICAL_DERIVATION = YES
+NEW_THEOREM_EXTERNAL_LEAN_CERTIFICATION = NONE
+NEW_THEOREM_A_TIER = NOT_ESTABLISHED
+NEW_THEOREM_FORMAL_CLOSURE = NOT_ESTABLISHED
+NEW_THEOREM_UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+NEW_LEAN_DECLARATIONS = 0
+REPOSITORY_MUTATIONS = B_TIER_DERIVATION_AND_INTERMEDIATE_GOAL_LEDGER_ONLY
+CACHE_POLICY = PRESERVE_EXISTING_COMPATIBLE_EXTERNAL_CACHE_AND_EVIDENCE
+DERIVATION_REVISION = 3
+SOURCE_COMPOSITION = CERTIFIED_LOCAL_GR_PLUS_METHLIB_AND_MATHLIB
+
+GOAL_ID = NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE
+GOAL_VERSION = 1
+GOAL_STATUS = FROZEN
+MATHEMATICAL_STATUS = ! B_TIER
+A_TIER_GOAL = EXACT_FROZEN_THEOREM_WITH_MATCHING_EXTERNAL_AUDIT
+DERIVATION_BASELINE_SHA256 = a64ef888e9a8dfe449b3052f58f0bf175469b141dc980d6dd03014e70195f463
+ANCHOR_COLLECTION_COMMIT = 49801d86a61c09a6829ad430206d222239bff49a
+REVISION_3_APPENDIX = C
+FINE_INTERMEDIATE_GOALS = 45
+RETAINED_COARSE_CONSTRUCTIONS = 24
+
+FROZEN GOAL CONTRACT
+--------------------
+
+ROOT:
+  forall nu>0, forall rho!=0, forall a in C^infinity_sigma(T3),
+    S_nu(a) ~= G^+_nu,rho(a).
+
+NOTATION:
+  G^+_nu,rho(a) := G_nu,rho(a) as defined in Section 6.
+  The superscript + records indexing by every positive center tau>0.
+  It introduces no additional admission condition.
+
+SOURCE CARRIER:
+  Exactly Section 1: pairs (u,q) on [0,infinity) x T3, jointly C-infinity
+  through zero, satisfying actual unforced incompressible NSE with fixed
+  viscosity nu, u(0)=a, and q(t,x=0)=0 for every t>=0.
+  The time derivative at zero is the right derivative.
+  Equality concerns forward restrictions; negative-time values are absent.
+
+TARGET CARRIER:
+  Exactly Sections 2 and 6: one canonical five-dimensional marked analytic
+  Gaussian vacuum germ at every tau>0, with the same fixed nu and rho;
+  actual decoded-velocity coherence on open positive-time neighborhoods;
+  V_gamma(t)->a in every spatial H^m, equivalently spatial C-infinity.
+  Representative, radius, and cover witnesses remain properties.
+  The original centerwise normalization and constitutive condition remain.
+
+FROZEN MAPS:
+  Phi(u,q)_tau = E_tau([u,q]_tau), using the native physical local lift.
+  Psi(gamma) = (the smooth forward extension of V_gamma,
+                its origin-normalized Poisson pressure).
+  Psi o Phi = id; Phi o Psi = id, exactly as proved in Section 9.
+
+DOMAIN INVARIANTS:
+  Arbitrary smooth periodic divergence-free datum; arbitrary velocity mean.
+  No analyticity assumption on a or at t=0.
+  Fixed foliation and marking; full spatial T3 at every positive center.
+
+SCOPE:
+  The target consists of coherent GR germ families.
+  Single-metric bulk gluing and arbitrary refoliation/diffeomorphism
+  invariance are separate obligations.
+  The root is a carrier equivalence, with empty carriers permitted.
+  It contains no independent universal-existence or uniqueness assertion.
+
+COMPANION COROLLARY:
+  NSE_B_IFF_GR_BOUNDARY_FAMILY, exactly Section 10, remains derived from
+  the frozen root. It does not replace the selected primary goal.
+
+PROMOTION:
+  This freeze records the exact B-tier goal and retained complete derivation.
+  It supplies no new Lean compilation or theorem-level axiom audit.
+  A-tier promotion requires the unchanged frozen theorem and both inverse
+  maps to pass the matching external compiler and approved-axiom audit.
+
+
+Exact extension:
+
+  For every nu > 0, rho != 0, and smooth unit-periodic divergence-free
+  datum a of arbitrary spatial mean, there is a bijection
+
+    S_nu(a) ~= G_nu,rho(a).
+
+  S_nu(a): global smooth forward NSE trajectories, with pressure normalized
+  by q(t,0)=0, and initial velocity a.
+
+  G_nu,rho(a): coherent families of actual normalized marked analytic
+  five-dimensional Gaussian vacuum germs indexed by every positive time,
+  with the velocity-only spatial C-infinity initial trace a.
+
+Corollary:
+
+  forall nu > 0, forall rho != 0,
+    FeffermanB(nu) <-> GRFamilyB(nu,rho),
+
+  where GRFamilyB is defined independently in Section 10 by the geometric
+  family carrier of Section 6.
+
+The geometric endpoint in this document is a family of metric germs with
+coherent decoded boundary velocity. A single global bulk metric, isometric
+transition functions, and arbitrary refoliation invariance are separate
+theorems. Existence of either globally quantified endpoint is not asserted.
+
+The complete new mathematical bridges are proved here. The corresponding
+new native Lean declarations remain to be written and externally audited.
+
+
+0. PINNED SOURCE AND CERTIFIED LOCAL DEPENDENCIES
+----------------------------------------------
+
+Repository:
+  https://github.com/randogelist/NSE---MAXWELL---GR---QFT
+
+Inspected repository commit:
+  40fe0bbef0a615f1363ef1598a2dd8531b0eae31
+
+Certified local proof-source commit:
+  d5231111cbdbe8a9c686b52ae4224554d4fba48a
+
+Certified local root:
+
+  NSEGR.NativeLiterature.NSE_GR_NATIVE_LITERATURE_CLOSURE :
+    forall (nu rho t0 : Real),
+      0 < nu -> rho != 0 ->
+        Nonempty (NSEGR.NSEgerm nu t0 ~= NSEGR.GRgerm nu rho t0).
+
+Canonical root source:
+  ASSEMBLY/GRAssembly/NSE_GR_NATIVE_LITERATURE_CLOSURE.lean
+
+Retained external certificate:
+  Auxillary/GR/Closure/Native/EXTERNAL_CERTIFICATE.json
+
+External cached run:
+  https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43509144981
+
+Recorded compiler: Lean 4.34.0-rc1, native Linux.
+Recorded audits: 1549/1549 named declarations, standard axioms only.
+Root axioms: {propext, Classical.choice, Quot.sound}.
+Recorded source manifest: 373 inputs.
+
+The existing local root has status !!!! for its exact original scope.
+This status does not automatically transfer to the new theorems below.
+
+SEMANTIC DEPENDENCY REQUIREMENT.
+
+The bare proposition Nonempty(NSEgerm ~= GRgerm) asserts existence of a
+carrier equivalence. By itself it does not identify the equivalence with
+the physical boundary decoder. This derivation uses the stronger actual
+construction and recovery identities retained in the source:
+
+  (L1) literatureInputs_native;
+  (L2) nativeLawPackages_of_literatureInputs;
+  (L3) forwardRepresentative and forward_pressure_gauge_recovery;
+  (L4) geometricReconstructionLaws_native;
+  (L5) reverseRepresentative and localNSE_of_reconstruction_and_zero_stress;
+  (L6) reverseGerm_forwardGerm and forwardGerm_reverseGerm.
+
+Consequently, for every center tau and the fixed parameters nu,rho, choose
+the native constructed equivalence E_tau with actual boundary-decoding
+inverse D_tau. The identities used below are
+
+  D_tau(E_tau(n)) = n,
+  E_tau(D_tau(gamma)) = gamma,
+
+together with actual representative recovery on a common full-spatial-slice
+time neighborhood. Choice of an arbitrary unrelated carrier bijection is
+not a substitute for these facts.
+
+
+1. EXACT SOURCE TRAJECTORY CARRIER
+--------------------------------
+
+Let T3 = R^3/Z^3, with unit spatial periods and normalized volume one.
+Let H = [0,infinity). All vector fields are real-valued with three components.
+All pressures are real-valued scalars. Fix nu>0 and rho!=0.
+
+Data(a) means:
+
+  a in C^infinity(T3;R^3),
+  div a = 0.
+
+There is no condition on mean(a). This is exactly the spatial datum class
+in Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean.
+
+Define S_nu(a) to be the set of pairs (u,q) on H x T3 satisfying
+
+  (S1) u,q are jointly C^infinity through the boundary t=0;
+  (S2) div u = 0;
+  (S3) partial_t u + (u dot grad)u + grad q = nu Delta u;
+  (S4) u(0,.) = a;
+  (S5) q(t,0) = 0 for every t>=0.
+
+At t=0, partial_t is the right derivative. Smoothness means the closed
+forward-domain smoothness represented by ContDiffOn in the repository.
+
+Two elements of S_nu(a) are equal precisely when their forward velocity
+and normalized pressure agree on H x T3. The set can be empty.
+
+Repository functions are total functions of t in R. Their negative-time
+values are unconstrained by NSSolution. Thus S_nu(a) is the carrier of
+forward restrictions, equivalently a quotient by equality for t>=0 after
+pressure normalization. A bijection of literal total functions without this
+identification would incorrectly retain arbitrary negative-time values.
+
+PRESSURE-GAUGE NORMALIZATION.
+
+For every literal NSSolution(nu,a,u,p), define
+
+  q(t,x) = p(t,x)-p(t,0), t>=0.                         (1.1)
+
+Composition with x=0 and subtraction preserve joint forward smoothness.
+The spatial gradient of p(t,0) vanishes. Therefore (u,q) belongs to S_nu(a).
+
+Conversely, any (u,q) in S_nu(a) supplies a literal NSSolution after arbitrary
+totalization to negative times. The smoothness and derivative predicates
+are within H and are independent of the chosen values at t<0.
+
+Hence, for each original datum,
+
+  (exists u,p, NSSolution(nu,a,u,p))
+    <-> Nonempty(S_nu(a)).                             (1.2)
+
+This removes only the time-only pressure gauge and irrelevant negative-time
+values. It does not modify the prescribed viscosity, initial datum, velocity
+mean, periodicity, or smoothness at t=0.
+
+
+2. EXACT GEOMETRIC LOCAL CARRIER AND DECODERS
+-------------------------------------------
+
+A canonical representative centered at tau consists of positive radii
+delta,epsilon and an actual metric g on the marked collar
+
+  (-epsilon,epsilon)_r x (tau-delta,tau+delta)_t x T3_x.
+
+It satisfies the existing CanonicalRepresentative predicate:
+
+  (G0.1) g is jointly real analytic, spatially periodic, symmetric and
+         Lorentzian;
+  (G0.2) g_rr=1 and g_ra=0 for boundary indices a;
+  (G0.3) at r=0, the induced metric is eta4=diag(-1,1,1,1);
+  (G0.4) the actual coordinate Ricci tensor vanishes;
+  (G0.5) beta(tau,x)=rho and partial_t beta(tau,x)=0;
+  (G0.6) boundaryStress_nu(K_g)=0.
+
+The distinguished hypersurface B={r=0} is four-dimensional and timelike.
+Sigma_tau={r=0,t=tau} is a spacelike T3, of codimension two in the bulk.
+The number tau labels a slice in the selected boundary foliation.
+
+The actual boundary tensor is
+
+  K_ab(t,x) = (1/2) partial_r g_ab(0,t,x),               (2.1)
+
+where a,b are the four tangential indices, with index 0 corresponding to t.
+This is radial extrinsic curvature, with normal +partial_r.
+
+For a boundary tensor K, define
+
+  beta = -sum_{i=1}^3 K_ii,
+  w = (K_01,K_02,K_03),
+  V = P w,
+  Phi = Delta_0^{-1}(beta-mean(beta)),
+  P_rho(K) = -K_00 -(2rho+|V|^2)/3 - partial_t^2 Phi,
+
+  F_nu(K) = TF(K_spatial + V tensor V + Hess Phi
+                       - nu(grad V+(grad V)^T)).        (2.2)
+
+Here P is the periodic Leray projector retaining the zero Fourier mode,
+Delta_0^{-1} is the mean-zero inverse of the spatial Laplacian, and
+TF(A)=A-(trace(A)/3)I is the actual trace-free operator tf3. The canonical
+operand is symmetric, so its trace-free part is also symmetric. These are the actual named
+operators in GR_adapter/GRAdapter/Boundary.lean and Fields.lean.
+
+Thus V=boundaryVelocity(K), P_rho(K)=boundaryPressure(rho,K), and
+F_nu(K)=boundaryStress(nu,K). Admission contains F_nu(K)=0, not an NSE
+solution predicate.
+
+The germ relation on GR representatives is equality of the actual marked
+metrics on a common radial/time neighborhood, uniformly over every spatial
+point. It is not quotienting by arbitrary spacetime diffeomorphisms.
+
+By the existing locality theorem, equality of these metric germs gives
+equality of the boundary tensors and decoded fields on a common full-slice
+time neighborhood. Full-spatial-slice equality is required because P and
+Delta_0^{-1} are spatially nonlocal.
+
+NATIVE REVERSE RESULT.
+
+For every canonical representative g, the actual pair
+
+  (V_g,P_g) = (boundaryVelocity(K_g),boundaryPressure(rho,K_g))
+
+is a jointly analytic periodic NSE solution on its time slab. This follows
+from geometricReconstructionLaws_native and the actual zero-stress condition.
+
+
+3. PERIODIC FOURIER AND PRESSURE LEMMAS
+-------------------------------------
+
+Write xi_k=2pi k for k in Z^3, and use inhomogeneous Sobolev norms
+
+  ||v||_{H^m}^2 = sum_k (1+|xi_k|^2)^m |vhat(k)|^2.     (3.1)
+
+The zero mode is included. These norms therefore retain arbitrary means.
+
+3.1 Algebra and point evaluation.
+
+For integer m>=2, sum_k(1+|xi_k|^2)^(-m) is finite. Cauchy-Schwarz gives
+
+  sum_k |vhat(k)| <= C_m ||v||_{H^m}.
+
+The weight inequality
+
+  <xi_{j+l}>^m <= C_m(<xi_j>^m+<xi_l>^m)
+
+and the convolution estimate ||a*b||_{ell^2}<=||a||_{ell^2}||b||_{ell^1}
+give the product bound
+
+  ||vw||_{H^m} <= C_m ||v||_{H^m}||w||_{H^m}.           (3.2)
+
+The same bound holds for vector/tensor products using the finite-dimensional
+Euclidean/Frobenius norms. The Fourier ell^1 bound also proves bounded point
+evaluation, |v(0)|<=C_m||v||_{H^m}.
+
+For m>r+3/2, the same Cauchy-Schwarz argument with |xi_k|^r gives
+
+  ||v||_{C^r} <= C_{m,r}||v||_{H^m}.                   (3.3)
+
+Conversely, on the compact torus, ||v||_{H^m}<=C_m||v||_{C^m} for integer m.
+Consequently convergence in every H^m is equivalent to convergence in the
+spatial C-infinity topology.
+
+3.2 Leray and pressure multipliers.
+
+Set
+
+  P(k)=I-k tensor k/|k|^2, k!=0; P(0)=I.
+
+Then P is bounded on every H^m with norm <=1, commutes with spatial
+derivatives, and P div maps tensor H^{m+1} continuously to vector H^m.
+
+For a tensor field A, define a scalar R(A) by
+
+  R(A)hat(0)=0,
+  R(A)hat(k)=-sum_{i,j} xi_{k,i}xi_{k,j}/|xi_k|^2
+                              * Ahat_ij(k), k!=0.       (3.4)
+
+The matrix (xi_i xi_j/|xi|^2) has Frobenius norm one. Therefore
+||R(A)||_{H^m}<=||A||_{H^m}. Define the normalized bilinear pressure operator
+
+  Q(v,w)=R(v tensor w)-R(v tensor w)(0),
+  Pi(v)=Q(v,v).                                        (3.5)
+
+For m>=2, Q:H^m x H^m -> H^m is continuous bilinear, and Pi is a continuous
+quadratic map. In particular,
+
+  ||Pi(v)||_{H^m} <= C_m||v||_{H^m}^2,
+  ||Pi(v)-Pi(w)||_{H^m}
+    <= C_m(||v||_{H^m}+||w||_{H^m})||v-w||_{H^m}.       (3.6)
+
+3.3 Pressure is determined by velocity up to gauge.
+
+Let (v,p) be any smooth periodic NSE pair on an open positive-time interval.
+Taking divergence, using div v=0 and commuting the actual smooth derivatives,
+gives
+
+  Delta p = -sum_{i,j} partial_i partial_j(v_i v_j).    (3.7)
+
+The Fourier formula (3.4) solves this equation. The difference
+p-R(v tensor v) is spatially harmonic. Its nonzero Fourier coefficients
+vanish, so it is spatially constant. Hence
+
+  p(t,x)-p(t,0) = Pi(v(t))(x).                          (3.8)
+
+Thus equal local velocities imply equal normalized local pressures.
+Pressure compatibility will be derived from velocity compatibility; it is
+not an independent admission in Section 6.
+
+For divergence-free v,
+
+  F(v):=nu Delta v-P div(v tensor v)
+       =nu Delta v-(v dot grad)v-grad Pi(v).           (3.9)
+
+The sign follows from Delta Pi(v)=-div div(v tensor v) and
+P=I-grad Delta_0^{-1} div.
+
+
+4. SPATIAL C-INFINITY TRACE IMPLIES THE FULL SMOOTH INITIAL TRACE
+--------------------------------------------------------------
+
+LEMMA T_TRACE.
+
+Suppose v,q are a smooth periodic NSE pair for t>0, with q(t,0)=0. Suppose
+a is smooth and divergence-free and
+
+  for every m>=0,
+    lim_{t downarrow 0} ||v(t)-a||_{H^m}=0.            (4.1)
+
+Then v(0)=a and q(0)=Pi(a) extend the pair jointly C-infinity to H x T3.
+The exact NSE equation holds at t=0 with the right time derivative.
+
+PROOF.
+
+By (3.8), q(t)=Pi(v(t)) for positive t, and v_t=F(v).
+Define polynomial spatial jet operators by
+
+  J_0(b)=b,
+
+  J_{n+1}(b)
+    = nu Delta J_n(b)
+      -sum_{j=0}^n binom(n,j)
+          P div(J_j(b) tensor J_{n-j}(b)).              (4.2)
+
+For every m>=2 and n>=0,
+
+  J_n:H^{m+2n} -> H^m
+
+is a continuous polynomial map. This follows by induction. For the Laplacian
+term, apply the induction hypothesis with target order m+2. For a product
+term, both factors are controlled in H^{m+1} by input H^{m+2n+2}; use (3.2),
+then the bounded operator P div:H^{m+1}->H^m. All maps are finite polynomial
+combinations of these continuous linear and bilinear operations.
+
+Differentiating the already smooth positive-time PDE repeatedly and using
+the product rule proves, by induction,
+
+  partial_t^n v(t)=J_n(v(t)), t>0.                     (4.3)
+
+This argument differentiates an existing trajectory. It asserts no ODE
+existence theorem on a Frechet space with derivative loss.
+
+By (4.1) and continuity of J_n,
+
+  J_n(v(t)) -> J_n(a) in H^m as t downarrow 0.         (4.4)
+
+Define W_n(t)=J_n(v(t)) for t>0 and W_n(0)=J_n(a). Each W_n is continuous
+from H to H^m. For t>0 its derivative is W_{n+1}. For 0<eta<t, the Banach-
+valued fundamental theorem of calculus gives
+
+  W_n(t)-W_n(eta)=integral_eta^t W_{n+1}(s) ds.
+
+Let eta decrease to zero. Continuity and boundedness on compact intervals
+justify passage to the limit in H^m, giving
+
+  W_n(t)-W_n(0)=integral_0^t W_{n+1}(s) ds.            (4.5)
+
+Therefore W_n has right derivative W_{n+1}(0) at zero. All time derivatives
+extend continuously in every H^m, with
+
+  partial_t^n v(0+)=J_n(a).                            (4.6)
+
+For pressure, define
+
+  K_n(b)=sum_{j=0}^n binom(n,j)
+                       Q(J_j(b),J_{n-j}(b)).          (4.7)
+
+By continuity of Q and J_j, K_n:H^{m+2n}->H^m is a continuous polynomial
+map for m>=2. The Leibniz rule gives partial_t^n q(t)=K_n(v(t)) for t>0.
+These functions converge to K_n(a), and the same integral argument proves
+smoothness of q in time through zero, with q(0)=Pi(a).
+
+For each spatial derivative order r, choose m>r+3/2 in (3.3). All mixed
+time-space derivatives consequently extend continuously to the closed
+forward domain. Finite-order Taylor formulas along segments in a local
+half-space chart, with continuous mixed derivatives and integral remainders,
+give the corresponding within derivatives at boundary points. Applying this
+at every finite order gives exactly joint C-infinity/ContDiffOn regularity
+on the closed forward domain. A negative-time analytic extension is not used.
+
+Finally, v_t(0+)=J_1(a)=F(a). Equations (3.9) and q(0)=Pi(a) give the NSE
+identity at zero. The initial divergence condition is div a=0. QED.
+
+The recurrence establishes existence of all initial time derivatives. It
+establishes no factorial bound and no analyticity at t=0.
+
+
+5. POSITIVE-TIME JOINT ANALYTICITY OF A GIVEN SMOOTH TRAJECTORY
+------------------------------------------------------------
+
+LEMMA T_ANALYTIC.
+
+For every (u,q) in S_nu(a),
+
+  u,q in C^omega((0,infinity) x T3).                   (5.1)
+
+This is a regularity theorem for a trajectory already supplied by the
+premise. It contains no arbitrary-data global existence assertion.
+
+A complete direct Fourier proof is recorded in Appendix A. Its main
+quantitative estimates are included here to identify the exact input and
+to avoid leaving an unspecified analytic-smoothing premise.
+
+For xi_k=2pi k, let
+
+  ||v||_{A_sigma}=sum_k exp(sigma |xi_k|)|vhat(k)|.
+
+Take 0<theta<pi/2, omega>0, complex time z with 0<|z|<T and |arg z|<theta,
+and sigma(z)=omega sqrt(nu Re z). Set
+
+  L=exp(omega^2/4),
+  C=2 exp(omega^2/2)/sqrt(e cos(theta)).
+
+The actual heat semigroup and projected Duhamel operator satisfy
+
+  ||exp(nu z Delta)v0||_{A_sigma(z)} <= L||v0||_{A_0},
+
+  ||B(U,V)||_X <= C sqrt(T/nu)||U||_X||V||_X,
+
+  ||U||_X=sup_z ||U(z)||_{A_sigma(z)}.                 (5.2)
+
+For ||v0||_{A_0}<=M, M>0, choose
+
+  R=2LM,
+  T=nu/(64 C^2 L^2 M^2).                              (5.3)
+
+The complex-time integral equation is a contraction, with constant at most
+1/2, on the closed ball of radius R. On any smaller disk centered at a
+positive real z, a fixed positive spatial Fourier weight is available.
+The Fourier series consequently extends jointly holomorphically in time
+and the complex spatial variables.
+
+Real-time uniqueness in C([0,T'];A_0) identifies this constructed analytic
+solution with the supplied smooth solution. Starting at a time slightly
+before an arbitrary tau>0 makes tau an interior point of the complex-time
+domain. The argument retains the zero Fourier mode by P(0)=I.
+
+The bounded quadratic pressure multiplier (3.4), followed by normalization
+at x=0, gives joint analyticity of q. Separate real analyticity in space and
+time is not used as a substitute for joint analyticity.
+
+
+6. INDEPENDENT GEOMETRIC FAMILY CARRIER
+-------------------------------------
+
+6.1 Germ center evaluation.
+
+For gamma_tau in GRgerm(nu,rho,tau), choose any canonical representative g.
+Define
+
+  evV_tau(gamma_tau) = boundaryVelocity(K_g)(tau,.).   (6.1)
+
+This is well-defined: metric-germ equality implies boundary-field equality
+on a common neighborhood and therefore at the center. The existing source
+anchors are sameMetricAt_boundaryK and sameMetricAt_boundaryFields.
+
+6.2 Underlying family.
+
+A family gamma has one actual geometric germ at every positive center:
+
+  gamma in product_{tau>0} GRgerm(nu,rho,tau).
+
+Its positive-time velocity is defined solely from the metric jets:
+
+  V_gamma(t,.)=evV_t(gamma_t), t>0.                    (6.2)
+
+6.3 Decoded-velocity coherence.
+
+Require that for every tau>0 there exist a canonical representative g_tau
+of gamma_tau and a symmetric interval
+
+  I_tau=(tau-delta_tau,tau+delta_tau),
+  0<delta_tau<tau,
+
+contained in the representative's time domain, such that
+
+  for every t in I_tau and every x in T3,
+    V_gamma(t,x)=boundaryVelocity(K_{g_tau})(t,x).      (6.3)
+
+The intervals automatically cover (0,infinity), since tau belongs to I_tau.
+This condition is equality of the actual decoded fields on neighborhoods,
+not merely equality at a single time.
+
+6.4 Initial spatial trace.
+
+Require
+
+  for every m>=0,
+    lim_{t downarrow 0} ||V_gamma(t)-a||_{H^m}=0.       (6.4)
+
+By Section 3 this is equivalent to spatial C-infinity convergence.
+
+DEFINITION.
+
+  G_nu,rho(a) is the set of families gamma satisfying (6.3) and (6.4).
+
+No choice of representative, radius, cover, or proof witness is retained as
+additional set-theoretic data. The elements are the germ families themselves;
+the existence of the required representatives is a property.
+
+ADMISSION INDEPENDENCE.
+
+The definition uses only:
+
+  actual normalized canonical vacuum germs;
+  explicit metric boundary jets and the boundary velocity operator;
+  local compatibility of these decoded velocities;
+  a spatial C-infinity trace at the initial slice.
+
+The definition contains no NSSolution predicate, FeffermanB proposition,
+image-of-encoding condition, global solution witness, temporal derivative
+trace, pressure trace, or assumed equivalence.
+
+Pressure compatibility and temporal regularity are conclusions proved below.
+
+
+7. GEOMETRIC FAMILY TO GLOBAL SMOOTH NSE TRAJECTORY
+-------------------------------------------------
+
+Let gamma belong to G_nu,rho(a).
+
+For each tau>0, choose the representative and interval in (6.3). Native
+geometric reconstruction gives an actual jointly analytic NSE pair
+(V_g,P_g) on that interval. By coherence, V_g=V_gamma there. By (3.8),
+
+  P_g(t,x)-P_g(t,0)=Pi(V_gamma(t))(x).                 (7.1)
+
+Define a single global positive-time pressure
+
+  Q_gamma(t)=Pi(V_gamma(t)), t>0.                     (7.2)
+
+On every I_tau, this pressure equals the normalized decoded local pressure.
+It is therefore jointly analytic locally at every positive time. The same
+is true of V_gamma. Local equality on an open time interval transports all
+derivatives, so
+
+  div V_gamma=0,
+  partial_t V_gamma+(V_gamma dot grad)V_gamma
+      +grad Q_gamma=nu Delta V_gamma                  (7.3)
+
+at every positive time and every spatial point.
+
+The trace condition (6.4) and Lemma T_TRACE give the unique jointly smooth
+forward extension
+
+  U_gamma(0)=a,
+  Q_gamma(0)=Pi(a),
+  U_gamma(t)=V_gamma(t), t>0.                         (7.4)
+
+The right-time NSE equation holds at zero. Thus
+
+  Psi(gamma):=(U_gamma,Q_gamma) belongs to S_nu(a).    (7.5)
+
+The construction depends only on gamma, not on the local representatives
+chosen to verify coherence. Positive-time velocity is already defined by
+center evaluation, normalized pressure by Pi, and the initial values by
+their forced continuous traces.
+
+
+8. GLOBAL SMOOTH NSE TRAJECTORY TO GEOMETRIC FAMILY
+-------------------------------------------------
+
+Let (u,q) belong to S_nu(a).
+
+By Lemma T_ANALYTIC, (u,q) is jointly analytic for t>0. For every tau>0 it
+therefore defines an actual local NSE germ [u,q]_tau. Define
+
+  Phi(u,q)_tau=E_tau([u,q]_tau).                      (8.1)
+
+Use the actual native forward construction in E_tau. Its representative
+has decoded velocity u and pressure q modulo a spatially constant time
+gauge on some neighborhood of tau. Intersect that recovery neighborhood
+with its metric time domain and with (0,infinity), and choose a smaller
+symmetric interval I_tau with radius 0<delta_tau<tau.
+
+This shrink is required before claiming exact representative recovery.
+The relevant neighborhood equality is the actual SameFlowAt conclusion of
+forward_pressure_gauge_recovery, not arbitrary carrier-level nonemptiness.
+
+At every center t>0, native recovery gives
+
+  V_{Phi(u,q)}(t)=u(t).                               (8.2)
+
+The chosen representatives consequently satisfy coherence (6.3). Joint
+smoothness of u through zero and compactness of T3 imply convergence of
+every spatial derivative uniformly as t downarrow 0; hence convergence in
+every H^m. Therefore (6.4) also holds, and
+
+  Phi(u,q) belongs to G_nu,rho(a).                    (8.3)
+
+All positive centers are used. Selecting arbitrary metric collars only at
+rational centers would not guarantee coverage, because their radii could
+avoid an irrational time. A countable subcover may be selected only after
+the full positive-time cover has been obtained.
+
+
+9. EXACT GLOBAL INVERSE IDENTITIES
+---------------------------------
+
+9.1 Psi after Phi.
+
+For t>0, (8.2) gives U_{Phi(u,q)}(t)=u(t). By (3.8) and q(t,0)=0,
+
+  Q_{Phi(u,q)}(t)=Pi(u(t))=q(t).
+
+Both pairs extend continuously through zero, with the same initial velocity
+and normalized pressure. Thus
+
+  Psi(Phi(u,q))=(u,q).                                (9.1)
+
+9.2 Phi after Psi.
+
+Fix gamma in G_nu,rho(a) and tau>0. A coherence representative g_tau of
+gamma_tau has decoded velocity V_gamma on an open neighborhood of tau.
+Its normalized pressure is Pi(V_gamma)=Q_gamma there. Hence its actual
+decoded NSE germ is
+
+  D_tau(gamma_tau)=[U_gamma,Q_gamma]_tau.              (9.2)
+
+Applying the native local right inverse gives
+
+  Phi(Psi(gamma))_tau
+    =E_tau([U_gamma,Q_gamma]_tau)
+    =E_tau(D_tau(gamma_tau))
+    =gamma_tau.                                      (9.3)
+
+This holds for every positive tau, so the germ families are equal.
+
+THEOREM NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE.
+
+  forall nu>0, forall rho!=0, forall a with Data(a),
+    Phi:S_nu(a) ~= G_nu,rho(a),
+
+  with inverse Psi and both identities (9.1), (9.3).
+
+QED.
+
+The proof does not require a separate global uniqueness theorem for NSE.
+The inverse identities follow from exact recovery of the supplied trajectory
+and the existing local geometric inverse. Empty carriers are permitted.
+
+
+10. GLOBAL FEFFERMAN-B EXISTENCE EQUIVALENCE
+------------------------------------------
+
+Define the geometric existence proposition
+
+  GRFamilyB(nu,rho) :=
+    forall a, Data(a) -> Nonempty(G_nu,rho(a)).         (10.1)
+
+This definition quantifies over the original full smooth periodic
+divergence-free datum class, with arbitrary spatial mean.
+
+By (1.2) and the theorem of Section 9, for every such a,
+
+  (exists u,p, NSSolution(nu,a,u,p))
+    <-> Nonempty(S_nu(a))
+    <-> Nonempty(G_nu,rho(a)).                         (10.2)
+
+Quantifying over the unchanged datum class gives
+
+THEOREM NSE_B_IFF_GR_BOUNDARY_FAMILY.
+
+  forall nu>0, forall rho!=0,
+    FeffermanB(nu) <-> GRFamilyB(nu,rho).              (10.3)
+
+QED.
+
+The definition of FeffermanB is the literal one in
+Fefferman_adapter/NSEMaxwell/Classical.lean.
+
+The theorem establishes equivalence of the two universal existence
+propositions. It establishes neither proposition independently.
+
+The global GR symbol in (10.3) has the explicit family meaning (10.1).
+Replacing it by an unrestricted Einstein-existence proposition or existence
+of one globally glued vacuum metric would change the theorem.
+
+
+11. INITIAL-TIME NONANALYTICITY IS ADMITTED
+-----------------------------------------
+
+Fix nu>0 and kappa=4pi^2 nu. For alpha in {1/2,1}, set
+
+  u_alpha(t,x)
+    =e_1 sum_{k>=1} exp(-k^alpha-kappa k^2 t) cos(2pi k x_2),
+  p_alpha=0, t>=0.                                   (11.1)
+
+Every polynomially weighted Fourier series converges at t=0. Thus all mixed
+space/time derivatives converge uniformly on compact forward time slabs,
+and (u_alpha,0) is jointly C-infinity through zero.
+
+The field is divergence-free. Its convection vanishes because the velocity
+points in e_1 while its scalar amplitude is independent of x_1. The Fourier
+heat equation therefore gives exact unforced NSE for every t>=0.
+
+For alpha=1, the initial datum extends holomorphically to the spatial strip
+|Im x_2|<1/(2pi). For alpha=1/2, its Fourier coefficients have no positive
+exponential decay rate, so its smooth periodic initial datum is not real
+analytic. Both are jointly analytic for t>0.
+
+At x=0,
+
+  |partial_t^n u_{alpha,1}(0+,0)|/n!
+    =kappa^n/n! sum_{k>=1} k^{2n} exp(-k^alpha)
+    >=(4 kappa n/e^2)^n.                              (11.2)
+
+The inequality selects k=2n, uses (2n)^alpha<=2n and n!<=n^n.
+Hence the time Taylor radius at zero is zero for both trajectories.
+
+Nevertheless, each trajectory belongs to S_nu(u_alpha(0)) and has the
+spatial C-infinity initial trace required by (6.4). Section 9 therefore
+assigns to it a coherent GR germ at every tau>0.
+
+The extension neither imposes nor derives an analytic GR germ through t=0.
+It is compatible with both analytic and nonanalytic smooth spatial data.
+These trajectories satisfy global smooth NSE existence and do not refute
+the literal FeffermanB proposition.
+
+
+12. GEOMETRIC AND LOGICAL SCOPE
+------------------------------
+
+12.1 Locality retained in the bulk.
+
+The boundary velocity is global on (0,infinity) x T3 and extends smoothly
+to the initial slice. Each metric remains a germ on its own radial/time
+collar. The complete spatial torus is retained in every collar.
+
+12.2 Center normalization.
+
+For every tau, the germ gamma_tau retains
+
+  beta_tau(tau,x)=rho,
+  partial_t beta_tau(tau,x)=0.
+
+These are separate centerwise normalizations. If all chosen representatives
+were restrictions of one marked metric on one common hypersurface, they
+would additionally force beta(t,x)=rho for every positive t. The present
+construction neither proves such an identity nor supplies metric transition
+maps. Decoded-velocity coherence is weaker than metric equality on overlaps.
+
+12.3 Germ families versus raw metric atlases.
+
+The bijection is with a family of germ classes indexed by all positive
+centers. It is not a bijection with raw lists of representatives: index
+sets, radii, cover refinements, and extensions outside germ neighborhoods
+would give redundant choices.
+
+Because normalization depends on the center, these objects should not be
+identified with the ordinary sheaf of one metric under unrestricted
+restriction/re-centering. Their compatibility is the explicitly defined
+decoded-boundary compatibility (6.3).
+
+12.4 Foliation.
+
+The coordinate t labels the selected boundary foliation. The construction
+does not assert an absolute physical time. The chosen Gaussian marking,
+flat induced boundary geometry, periodic spatial structure, constitutive
+condition, and normalization remain part of the exact sector.
+
+Covariance under arbitrary refoliations, a diffeomorphism quotient, global
+hyperbolicity, geodesic completeness, and one global Einstein spacetime
+are not conclusions of this theorem.
+
+12.5 Quantifiers and regularity.
+
+There is no uniform positive lower bound for all collar radii, and no
+analyticity premise at the initial slice. The spatial initial trace is
+convergence in every H^m, equivalently C-infinity. Replacing that trace by
+L^2, distributional, or pointwise convergence would require a separate
+theorem and is not performed here.
+
+
+13. INDEXED NATIVE AND MATHLIB ENTRYPOINTS
+---------------------------------------
+
+The following index records the exact stage where each existing declaration
+is used and the new declaration still required for A-tier formalization.
+EXISTING means source-present; NEW means the exact extension declaration has
+not been prepared or externally certified. Existing GR construction inputs
+retain their original matched local certificate. This document supplies
+mathematical proofs, not new compiler evidence. Appendix B records the exact
+source-based instantiations, current Methlib additions, and compiler-pin
+separation for this derivation revision.
+
+E01. GLOBAL/LOCAL CALCULUS ALIGNMENT.
+  Used in Sections 1, 7, 8.
+  Existing spatial definitions:
+    GR_adapter/GRAdapter/Fields.lean;
+    Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean.
+  Mathlib: derivWithin_of_mem_nhds; fderivWithin_of_mem_nhds;
+    Ici_mem_nhds.
+  For t>0, Ici(0) is a neighborhood of t, so the within time derivative
+  equals the ordinary derivative. Spatial definitions agree after unfolding.
+  NEW wrapper: nse_gr_calculus_agree_on_positive_time.
+
+E02. CANONICAL PRESSURE GAUGE.
+  Used in (1.1), (1.2), (3.8).
+  Mathlib: ContDiffOn.comp; ContDiffOn.sub.
+  Native: NSEMaxwell.Classical.pressure_slice_smooth,
+    Fefferman_adapter/NSEMaxwell/Kinematics.lean.
+  Native spatial-gradient anchor:
+    NSEGR.gradient_sub_constant,
+      GR_adapter/GRAdapter/FourierInversion.lean.
+  Native gauge anchors:
+    NSEGR.sameFlowAt_iff_origin_gauge,
+      GR_adapter/GRAdapter/Germs.lean;
+    NSEGR.origin_pressure_gauge_analytic;
+    NSEGR.sameFlowAt_iff_analytic_pressure_gauge,
+      GR_adapter/GRAdapter/Locality.lean.
+  NEW wrapper: normalized_forward_pressure.
+
+E03. FOURIER PRESSURE POLYNOMIAL.
+  Used throughout Sections 3, 4, 7, 9.
+  Existing concrete Poisson/Leray definitions:
+    GR_adapter/GRAdapter/Fields.lean.
+  Existing smooth periodic inversion anchor:
+    NSEGR.Assembly.poissonInverse_scalarLaplacian,
+      ASSEMBLY/GRAssembly/HodgeTransport.lean.
+  This states poissonInverse(Delta f)=f-mean(f) and supports pressure
+  uniqueness modulo a spatial constant. It does not supply the new Sobolev
+  continuity or temporal-trace polynomial bridges.
+  Existing analytic mapping anchors:
+    NSEGR.Assembly.poissonInverse_joint_analytic_on_open_slab;
+    NSEGR.Assembly.scalarMean_analytic_on_open_slab;
+    NSEGR.Assembly.leray_joint_analytic_on_open_slab,
+      ASSEMBLY/GRAssembly/AnalyticHodge.lean.
+  Existing additional Methlib endpoints, detailed in B.2 and B.4:
+    SingularClosure.torusSobolevPressure;
+    SingularClosure.sobolevDivergenceProductBilinear;
+    SingularClosure.SOBOLEV_TRANSPORT_PRESSURE_JOINT_SMOOTH.
+  NEW integration wrappers: identification of the exact normalized pressure
+    polynomial; periodic_pressure_eq_normalized_quadratic_pressure.
+  The existing analytic mapping theorems preserve already established
+  analyticity. They do not prove smoothing of a supplied smooth trajectory.
+
+E04. POSITIVE-TIME JOINT ANALYTICITY.
+  Used in Section 8; proved in Section 5 and Appendix A.
+  NEW: periodic_wiener_complex_sector_fixed_point;
+    periodic_wiener_mild_uniqueness;
+    nse_positive_time_joint_analytic_normalized.
+  Existing native analytic closure anchor:
+    NSEGR.Assembly.analyticAt_of_iteratedFDeriv_bound,
+      ASSEMBLY/GRAssembly/AnalyticHodgeTaylor.lean.
+  The direct proof here uses joint complex extension. A Lean implementation
+  may instead derive joint factorial bounds and use that exact endpoint.
+  B.5 instantiates Mathlib lp completeness, Banach contraction, complex
+  Cauchy estimates and dominated integration, then the actual native
+  factorial-bound and analytic Poisson endpoints.
+  No positive-time smoothing theorem was found in the inspected GR source.
+
+E05. POSITIVE LOCAL REPRESENTATIVES.
+  Used in (8.1).
+  Existing: NSEGR.AnalyticPeriodicPair; NSEGR.LocalNSE;
+    NSEGR.NSERepresentative; NSEGR.NSEgerm.mk.
+  Mathlib: AnalyticOnNhd.mono.
+  NEW wrapper: positive_time_nse_representative.
+
+E06. NATIVE LAW PACKAGE AND ACTUAL LOCAL EQUIVALENCE.
+  Used in Sections 0, 8, 9.
+  Existing:
+    NSEGR.NativeLiterature.literatureInputs_native,
+      ASSEMBLY/GRAssembly/NSE_GR_NATIVE_LITERATURE_CLOSURE.lean;
+    NSEGR.Assembly.nativeLawPackages_of_literatureInputs,
+      ASSEMBLY/GRAssembly/RootClosure.lean;
+    NSEGR.exactSectorEquivOfContracts,
+      GR_adapter/NSEGRReverse.lean.
+  Select this construction with actual reverse decoder, not an arbitrary
+  abstract equivalence between carriers.
+
+E07. NATIVE GEOMETRIC REALIZATION AND RECOVERY.
+  Used in Section 8.
+  Existing:
+    NSEGR.forwardRepresentative;
+    NSEGR.NSE_TO_GR_OF_SCALAR_AND_RADIAL_COMPLETION;
+    NSEGR.forward_velocity_recovery;
+    NSEGR.forward_pressure_gauge_recovery,
+      GR_adapter/NSEGRForward.lean.
+
+E08. RECOVERY NEIGHBORHOOD SHRINK.
+  Used before (8.2) and (8.3).
+  Existing:
+    NSEGR.timeInterval_mono;
+    NSEGR.timeInterval_mem_nhds,
+      GR_adapter/GRAdapter/Contracts.lean;
+    NSEGR.Assembly.positive_timeInterval_subset,
+      ASSEMBLY/GRAssembly/NativeGluingAtlas.lean.
+  The latter name means a positive interval radius, not positive time by
+  itself. Intersect the neighborhood with Ioi(0) explicitly.
+  Use the radius cap min(g.timeRadius,tau/2). The frozen coherence
+  condition restricts its interval and retains the original representative.
+  No new metric-restriction wrapper is needed for this step.
+  Existing flow restriction: NSEGR.Assembly.localNSE_restrict_native.
+
+E09. CENTER EVALUATION ON METRIC GERMS.
+  Used in (6.1) and (6.2).
+  Existing:
+    NSEGR.sameMetricAt_boundaryK;
+    NSEGR.sameMetricAt_boundaryFields,
+      GR_adapter/GRAdapter/Locality.lean.
+  Mathlib/core: Quotient.lift and function extensionality.
+  NEW: GRgerm.velocityAtCenter; proof of well-definedness.
+
+E10. COHERENT FAMILY CARRIER.
+  Used in Section 6.
+  NEW: PositiveTimeGRGermFamily; DecodedVelocityCoherent;
+    SpatialSmoothInitialTrace; GRForwardFamily.
+  Exact admission is (6.3), (6.4), with the original canonical germ type.
+  No NSSolution, image condition, pressure trace, or temporal trace field.
+
+E11. LOCAL DECODE AND POSITIVE-TIME GLOBAL PDE.
+  Used in Section 7.
+  Existing:
+    NSEGR.Assembly.geometricReconstructionLaws_native,
+      ASSEMBLY/GRAssembly/NativeReconstruction.lean;
+    NSEGR.localNSE_of_reconstruction_and_zero_stress,
+      GR_adapter/GRAdapter/Contracts.lean;
+    NSEGR.reverseRepresentative;
+    NSEGR.GR_TO_NSE_OF_GEOMETRIC_RECONSTRUCTION,
+      GR_adapter/NSEGRReverse.lean.
+  Existing analytic-to-smooth anchors:
+    NSEGR.Assembly.analyticOnNhd_slab_contDiffOn;
+    NSEGR.Assembly.analyticOnNhd_slab_slice_smooth,
+      ASSEMBLY/GRAssembly/NativeCalculus.lean.
+  NEW wrapper: coherent_family_decoded_positive_time_nse.
+
+E12. OPTIONAL REPRESENTATIVE-COVER GLUING.
+  The center-evaluation formulation (6.2) avoids choosing a global field
+  from a cover, but an equivalent collar-family implementation may use:
+    NSEGR.Assembly.overlapGlue;
+    overlapGlue_eq; overlapGlue_eventuallyEq;
+    overlapGlue_analyticAt; overlapGlue_fderiv;
+    overlapGlue_fderiv_eventuallyEq,
+      ASSEMBLY/GRAssembly/PeriodicGluing.lean.
+  Only decoded fields are glued. These declarations do not supply equality
+  or transition maps between differently centered bulk metrics.
+
+E13. INITIAL SPATIAL TRACE TO ALL TEMPORAL JETS.
+  Used in (7.4); proved completely in Section 4.
+  Existing source-based route, with exact instantiations in B.2--B.4:
+    SingularClosure.fourierSobolevRhs_contDiff;
+    hasDerivWithinAt_Ici_of_tendsto_deriv;
+    SingularClosure.SOBOLEV_SCALE_TIME_SMOOTH;
+    SingularClosure.SOBOLEV_CURVES_JOINT_SPACETIME_SMOOTH;
+    SingularClosure.SOBOLEV_TRANSPORT_PRESSURE_JOINT_SMOOTH.
+  NEW integration wrappers: actual physical/Fourier trajectory and
+    derivative identification; normalized pressure identification;
+    smooth_spatial_trace_implies_joint_forward_smoothness.
+  The polynomial-jet implementation of Section 4 is an alternative route:
+    nse_spatial_jet_polynomial; nse_time_derivatives_eq_spatial_jets.
+  Its FTC step uses integral_eq_sub_of_hasDerivAt_of_tendsto.
+  Inputs: actual positive-time NSE plus H^m convergence for every m.
+  Outputs: joint C-infinity extension, normalized pressure, exact right
+  derivatives at zero. No factorial estimate is asserted.
+
+E14. CLOSED-HALF-SPACE CALCULUS AND INITIAL PDE.
+  Native anchors in Fefferman_adapter/NSEMaxwell/Spacetime.lean,
+  namespace NSEMaxwell.Spacetime:
+    forwardSpacetime_eq_prod;
+    uniqueDiffOn_forwardSpacetime;
+    closure_interior_forwardSpacetime;
+    spatial_restriction_fderiv;
+    time_restriction_hasDerivWithinAt;
+    time_restriction_derivWithin;
+    directional_smooth;
+    coordinateDerivative_trajectory_smooth;
+    timeDerivative_smooth.
+  Existing alternative final joint-jet closure:
+    NSEMaxwell.HodgeProof.contDiffOn_forwardSpacetime_of_continuous_jets,
+      TEMP/FourierHodgeLaws/ClosedHalfspaceSmooth.lean.
+  Its inputs are compatible actual joint derivative jets, continuous on
+  the full closed halfspace; spatial continuity alone is insufficient.
+  Additional native anchor:
+    NSEMaxwell.CanonicalSmoothness.divergence_trajectory_smooth,
+      Fefferman_adapter/NSEMaxwell/CanonicalSmoothness.lean.
+  Native convection expression:
+    NSEMaxwell.Lamb.convection_coordinate,
+      Fefferman_adapter/NSEMaxwell/Lamb.lean.
+  Mathlib dense-boundary endpoint:
+    Set.EqOn.of_subset_closure,
+      Mathlib/Topology/Separation/Hausdorff.lean;
+    closure_Ioi.
+  These can close the t=0 PDE by continuity of the actual residual after
+  E13. The direct mathematical proof also uses J_1(a)=F(a).
+  NEW wrapper: forward_residual_zero_of_positive_time_zero.
+
+E15. FORWARD AND REVERSE GLOBAL MAPS.
+  NEW: normalizedTrajectoryToGRFamily; GRFamilyToNormalizedTrajectory.
+  Mathematical definitions: (8.1) and (7.5).
+  Depend on E01--E14 with actual local recovery.
+
+E16. GLOBAL INVERSE IDENTITIES.
+  Existing local anchors:
+    NSEGR.reverseGerm_forwardGerm;
+    NSEGR.forwardGerm_reverseGerm,
+      GR_adapter/NSEGRReverse.lean.
+  NEW: GRFamilyToTrajectory_toGRFamily;
+    normalizedTrajectoryToGRFamily_toTrajectory.
+  Mathematical proofs: Section 9.
+
+E17. EXACT GLOBAL CARRIER EQUIVALENCE.
+  NEW: NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE.
+  Signature: for nu>0,rho!=0,Data(a), S_nu(a) ~= G_nu,rho(a).
+  B-tier proof: complete in Sections 1--9 and Appendices A--B.
+  A-tier: not established.
+
+E18. LITERAL GLOBAL EXISTENCE ROOT.
+  Existing: NSEMaxwell.Classical.NSSolution; FeffermanB,
+    Fefferman_adapter/NSEMaxwell/Classical.lean.
+  NEW: GRFamilyB; NSE_B_IFF_GR_BOUNDARY_FAMILY.
+  Signature: for nu>0,rho!=0, FeffermanB(nu)<->GRFamilyB(nu,rho).
+  B-tier proof: Section 10.
+  A-tier: not established.
+
+
+14. SOURCE REFERENCES AND EVIDENCE LIMITS
+---------------------------------------
+
+All repository references below are pinned to the inspected commit. Every
+native declaration cited in Section 13 is an existing source anchor; NEW
+names are proposed implementation names, not claims of existing Lean code.
+
+Repository base:
+  https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/
+
+Core source paths:
+  ASSEMBLY/GRAssembly/NSE_GR_NATIVE_LITERATURE_CLOSURE.lean
+  ASSEMBLY/GRAssembly/RootClosure.lean
+  ASSEMBLY/GRAssembly/NativeReconstruction.lean
+  GR_adapter/NSEGRForward.lean
+  GR_adapter/NSEGRReverse.lean
+  GR_adapter/GRAdapter/Fields.lean
+  GR_adapter/GRAdapter/Boundary.lean
+  GR_adapter/GRAdapter/Sector.lean
+  GR_adapter/GRAdapter/Germs.lean
+  GR_adapter/GRAdapter/Locality.lean
+  Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean
+  Fefferman_adapter/NSEMaxwell/Classical.lean
+  Fefferman_adapter/NSEMaxwell/Spacetime.lean
+  Auxillary/GR/Closure/Native/EXTERNAL_CERTIFICATE.json
+
+Direct local root download:
+  https://raw.githubusercontent.com/randogelist/NSE---MAXWELL---GR---QFT/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/NSE_GR_NATIVE_LITERATURE_CLOSURE.lean
+
+Primary literature context for the distinction between separate and joint
+space-time analyticity:
+
+  Cong Wang, Yu Gao, Xiaoping Xue (2022), Joint space-time analyticity of
+  mild solutions to the Navier-Stokes equations, Journal of Mathematical
+  Analysis and Applications 515(2), article 126428.
+  DOI: https://doi.org/10.1016/j.jmaa.2022.126428
+  Inspected institutional author manuscript:
+  https://ira.lib.polyu.edu.hk/bitstream/10397/94106/1/NS_Space_Time_Analyticity.pdf
+  Abstract and Theorem 1.1 concern their whole-space formulation. No
+  whole-space theorem is silently substituted for the torus problem here.
+  Appendix A supplies the required periodic theorem directly.
+
+Classical bibliographic context:
+
+  C. Foias and R. Temam (1989), Gevrey class regularity for the solutions of
+  the Navier-Stokes equations, Journal of Functional Analysis 87, 359--369.
+  DOI: https://doi.org/10.1016/0022-1236(89)90015-3
+  The original full text was not available for inspection in this derivation.
+  No theorem number or uninspected exact hypothesis is attributed to it.
+
+No new A-tier certificate is attached to the present TXT. The new theorem
+has a complete mathematical derivation; translating E01--E18 into native
+declarations and obtaining matching external compiler/theorem-level audit
+evidence remain the requirements for A-tier promotion.
+
+
+APPENDIX A. DIRECT POSITIVE-TIME JOINT ANALYTICITY PROOF
+=====================================================
+
+EXACT LEMMA
+
+Let nu>0. Let u,p be an already supplied solution of unforced incompressible
+NSE on [0,infinity) x T^3, jointly C-infinity up to t=0 and unit-periodic in
+space. Define q(t,x)=p(t,x)-p(t,0). Then q is jointly C-infinity up to t=0,
+q(t,0)=0, grad_x q=grad_x p, and u,q are jointly real analytic on
+(0,infinity) x T^3. No restriction on the velocity mean is needed.
+
+This is a conditional regularity theorem for a given smooth trajectory.
+It proves neither arbitrary-data global existence nor initial-time analyticity.
+
+The following Fourier fixed-point argument proves the lemma directly. It uses
+only the Banach contraction theorem, elementary Fourier convolution, Duhamel's
+formula, and uniform-limit holomorphy. It therefore avoids leaving the joint
+analyticity conclusion as an unresolved literature premise at B-tier.
+
+1. FOURIER BANACH SPACES
+
+Write xi_k=2*pi*k, k in Z^3. For sigma>=0 define
+
+  ||v||_{A_sigma} = sum_k exp(sigma*|xi_k|) |vhat(k)|.
+
+Use the Euclidean norm on C^3 and the Frobenius norm on complex 3x3 tensors.
+A_sigma denotes the corresponding weighted ell^1 Fourier space. For scalars,
+vectors, and tensors the norm is interpreted in the relevant finite-dimensional
+coefficient space. The triangle inequality |xi_{j+l}|<=|xi_j|+|xi_l| yields
+
+  ||v tensor w||_{A_sigma} <= ||v||_{A_sigma} ||w||_{A_sigma}.
+
+For k!=0 let P(k)=I-k tensor k/|k|^2; set P(0)=I. Each matrix has complex
+Euclidean operator norm <=1. Consequently
+
+  |(P div F)hat(k)| <= |xi_k| |Fhat(k)|,
+
+with zero left-hand side for k=0. Keeping P(0)=I retains arbitrary mean.
+
+Every smooth periodic field belongs to A_0. For example, C^4 control gives
+|vhat(k)| <= C(1+|k|^2)^(-2)||v||_{C^4}, and the displayed weight is summable
+on Z^3. Thus t -> u(t) is continuous into A_0 on every compact time interval.
+
+2. COMPLEX-TIME SECTOR AND HEAT ESTIMATES
+
+Fix 0<theta<pi/2 and omega>0. Set
+
+  S_{theta,T} = {z in C : 0<|z|<T, |arg z|<theta},
+  sigma(z)=omega*sqrt(nu*Re z),
+  S(z)=exp(nu*z*Delta).
+
+The heat multiplier is exp(-nu*z*|xi_k|^2). Completing the square gives
+
+  ||S(z)b||_{A_{sigma(z)}} <= L ||b||_{A_0},
+  L=exp(omega^2/4).
+
+For z in S_{theta,T}, 0<s<1, put
+
+  b0=nu*(1-s)*Re z > 0,
+  d=sigma(z)-sigma(sz)
+   =omega*sqrt(nu*Re z)*(1-sqrt(s)).
+
+For y>=0,
+
+  y exp(-b0*y^2+d*y)
+  = [y exp(-(b0/2)*y^2)] [exp(-(b0/2)*y^2+d*y)]
+  <= (e*b0)^(-1/2) exp(d^2/(2*b0)).
+
+Moreover
+
+  d^2/(2*b0)
+  = (omega^2/2)*(1-sqrt(s))/(1+sqrt(s)) <= omega^2/2.
+
+Hence
+
+  ||S((1-s)z) P div F||_{A_{sigma(z)}}
+  <= exp(omega^2/2) / sqrt(e*nu*(1-s)*Re z)
+     * ||F||_{A_{sigma(sz)}}.
+
+This estimate is the exact one-derivative smoothing needed for the nonlinear
+term. It is uniform over the entire spatial torus.
+
+3. ANALYTIC FIXED POINT
+
+Let X consist of A_0-valued holomorphic maps on S_{theta,T}, continuous at
+z=0 into A_0, with finite norm
+
+  ||V||_X = sup_{z in S_{theta,T}} ||V(z)||_{A_{sigma(z)}}.
+
+For completeness, an X-Cauchy sequence converges uniformly into A_0.
+For each z, Fatou's inequality for its weighted Fourier sums preserves the
+weighted estimates and gives convergence in the X norm. Holomorphy is
+preserved on compact subsets. Continuity at zero and the initial-value
+condition are preserved by uniform A_0 convergence. The affine ball is
+nonempty because z -> S(z)b belongs to it. Work in the closed affine subset V(0)=b and the closed norm ball of
+radius R. Define the bilinear map
+
+  B(V,W)(z)
+  = -z * integral_{s=0}^1 S((1-s)z) P div(V(sz) tensor W(sz)) ds.
+
+The previous estimate and integral_0^1 (1-s)^(-1/2) ds=2 imply
+
+  ||B(V,W)||_X <= C_{theta,omega} sqrt(T/nu) ||V||_X ||W||_X,
+
+  C_{theta,omega}=2*exp(omega^2/2)/sqrt(e*cos(theta)).
+
+The integral defines a holomorphic A_0-valued map: on each compact subset of
+the sector, the integrand is holomorphic for 0<s<1 and dominated by a constant
+times (1-s)^(-1/2). Truncation in s and uniform convergence justify holomorphy.
+The same estimate shows B(V,W)(z)->0 in A_0 as z->0 inside the sector.
+
+Choose any M>0 with ||b||_{A_0}<=M. Put
+
+  R=2*L*M,
+  T=nu/(64*C_{theta,omega}^2*L^2*M^2).
+
+Then K=C_{theta,omega}sqrt(T/nu)=1/(8*L*M), so K*R=1/4. The map
+
+  F(V)=S(z)b+B(V,V)
+
+satisfies ||F(V)||_X<=R/2+R/4 and
+
+  ||F(V)-F(W)||_X<=2*K*R*||V-W||_X=(1/2)||V-W||_X.
+
+Banach's theorem gives a unique fixed point in this ball. Divergence freedom
+is preserved, because the initial Fourier coefficients are divergence-free
+and the nonlinear term is projected by P. The zero Fourier coefficient stays
+equal to bhat(0), so arbitrary velocity means are retained.
+
+4. JOINT, NOT MERELY SEPARATE, ANALYTICITY
+
+Fix a positive real z0<T. There is a complex disk D around z0, with closure
+inside S_{theta,T}, and a sigma_*>0 such that sigma(z)>sigma_* for z in D.
+For w in C^3 with |Im w|<sigma_*, define
+
+  V(z,w)=sum_k Vhat(z,k) exp(i*xi_k dot w).
+
+Each term is jointly holomorphic in (z,w). On every compact subset with a
+positive margin from |Im w|=sigma_*, the Fourier series converges uniformly:
+the weighted ell^1 norm bounds the tail, including an exponentially decaying
+factor from the positive spatial margin. Hence V is jointly holomorphic on
+D x {w : |Im w|<sigma_*}. Its restriction to real variables is jointly real
+analytic, uniformly over the periodic real spatial slice.
+
+This construction avoids the invalid inference that separate REAL analyticity
+in space and time would by itself imply joint real analyticity.
+
+5. IDENTIFICATION WITH THE GIVEN SMOOTH SOLUTION
+
+At any starting time s0>=0, set b=u(s0). The given smooth periodic NSE
+solution satisfies the projected Fourier equation
+
+  d/dt uhat(k)+nu*|xi_k|^2 uhat(k)
+    = -(P div(u tensor u))hat(k).
+
+Pressure vanishes after applying P. Integration gives the same real-time
+mild/Duhamel equation as the fixed point.
+
+Uniqueness in C([0,T'];A_0), T'<T, identifies the two solutions. Indeed for
+two solutions U,V with the same initial value and uniform A_0 norms <=M0,
+the difference obeys
+
+  ||U(t)-V(t)||_{A_0}
+  <= (2*M0/sqrt(e*nu))
+     * integral_0^t (t-s)^(-1/2)||U(s)-V(s)||_{A_0} ds.
+
+Choose h>0 with (4*M0/sqrt(e*nu))*sqrt(h)<1. Taking the supremum on [0,h]
+forces zero difference. Restart on successive subintervals of length <=h;
+finitely many suffice on [0,T']. This is a full uniqueness argument, not an
+assumption that the given smooth solution lies in the analytic weighted ball.
+
+To cover an arbitrary target time tau>0, let
+
+  M_tau=max(1, sup_{s in [tau/2,tau]} ||u(s)||_{A_0}),
+  T_tau=nu/(64*C_{theta,omega}^2*L^2*M_tau^2),
+  h=min(tau/4,T_tau/4), s0=tau-h.
+
+Then s0>=3*tau/4>0, b=u(s0) obeys the uniform initial bound, and the target
+z0=tau-s0=h lies strictly between 0 and T_tau. Applying Sections 2--4 and
+the uniqueness argument gives a jointly analytic neighborhood of tau over
+all of T^3. Since tau was arbitrary, u is jointly real analytic on t>0.
+
+6. ANALYTIC CANONICAL PRESSURE AND THE INITIAL TRACE
+
+Taking divergence of NSE gives
+
+  Delta p = -sum_{i,j} partial_i partial_j(u_i u_j).
+
+Define the mean-zero pressure pi by Fourier coefficients
+
+  pihat(0)=0,
+  pihat(k)=-sum_{i,j} xi_{k,i}xi_{k,j}/|xi_k|^2
+                    * (u_i u_j)hat(k), k!=0.
+
+The coefficient contraction has Frobenius norm one, so
+
+  ||pi||_{A_sigma} <= ||u tensor u||_{A_sigma} <= ||u||_{A_sigma}^2.
+
+The same quadratic bounded map applies to the complex-time fixed point.
+Thus pi is A_0-holomorphic with ||pi(z)||_{A_{sigma(z)}}<=R^2.
+On every smaller disk D in the sector and for each fixed
+0<sigma_*<inf_{z in D}sigma(z), its Fourier truncations converge locally
+uniformly in the fixed Banach space A_{sigma_*}. Thus pi is holomorphic
+into that fixed space and jointly analytic on the corresponding smaller
+positive-time neighborhoods. Evaluation at x=0 is a
+bounded functional on A_0. Therefore
+
+  q(t,x)=pi(t,x)-pi(t,0)
+
+is also jointly analytic there. For real t, p-pi is periodic harmonic and
+hence spatially constant. Consequently
+
+  q(t,x)=p(t,x)-p(t,0).
+
+The latter expression defines q smoothly on the closed forward domain,
+including t=0, directly from the supplied smooth p. It also proves q(t,0)=0
+and grad_x q=grad_x p. Therefore u,q retain the original NSE equation at
+t=0 with its right-time derivative convention.
+
+7. CONSEQUENCE FOR THE GR EXTENSION
+
+For every tau>0 choose a common delta>0, delta<tau, on which u and q are
+jointly analytic over all T^3. The certified local NSEgerm/GRgerm construction
+then applies with center tau and the original fixed nonzero rho. Shrink
+each metric time collar to a symmetric positive-time interval where the
+actual representative recovery identities give V_tau=u and
+P_tau=q+c_tau(t). Only on that interval infer
+P_tau(t,x)-P_tau(t,0)=q(t,x), and hence exact normalized-pressure equality
+on overlaps. This uses physical germ recovery, not an arbitrary carrier
+bijection.
+
+No positive lower bound for delta as tau decreases to zero is asserted.
+No analyticity at t=0 is deduced. No global smooth NSE existence is deduced.
+No gluing of the center-normalized bulk metrics is deduced.
+
+
+END OF APPENDIX A.
+
+
+APPENDIX B. SOURCE-BASED DERIVATION OF THE FROZEN THEOREM
+======================================================
+
+DERIVATION_REVISION = 2
+FROZEN_GOAL_VERSION = 1
+FROZEN_ROOT_SOURCE_TARGET_AND_MAPS = UNCHANGED
+METHOD = NATIVE_LOCAL_EQUIVALENCE + METHLIB_SOBOLEV_CALCULUS + MATHLIB_ANALYSIS
+SOURCE_INSPECTION_IS_NEW_COMPILER_EVIDENCE = NO
+
+B.0 PINNED DEPENDENCIES AND THE EXACT REUSE CLAIM
+
+N0. Native NSE--GR construction.
+  Repository: randogelist/NSE---MAXWELL---GR---QFT
+  Inspected source: 40fe0bbef0a615f1363ef1598a2dd8531b0eae31
+  Certified local source: d5231111cbdbe8a9c686b52ae4224554d4fba48a
+  External cached evidence: run 43509144981, as recorded in Section 0.
+  Compiler: Lean 4.34.0-rc1.
+  Mathlib: de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
+
+M0. Existing Methlib snapshot in N0.
+  Upstream: randogelist/Methlib
+  Source commit: e9cf90726b8544a268469ebc8fa6634e9c713e07
+  Package: regularity-B-assembly/Singular-Axiomatic-closure
+  Local reference prefix:
+    Fefferman_adapter/NativeSources/methlib/SingularClosure/
+  Complete selected snapshot: 39 original modules; SOURCE_MANIFEST.json
+  records the source identities. This appendix uses the actual generic
+  Fourier/Sobolev endpoints, not a mean-zero global-existence wrapper.
+
+M1. Additional current Methlib source inspected for this derivation.
+  Source commit: 4813604a46179c745b82f51bee51a186e9f4cc2d
+  Source prefix:
+    regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/
+  Declared compiler: Lean 4.33.0.
+  Declared Mathlib: db584cd6d46c92f209a44c0f1c829460d327499d.
+  Concrete new reuse: FourierSobolevOperators, FourierSobolevProduct,
+    FourierSobolevRhs, SobolevScaleTimeSmooth, SmoothEvaluation,
+    SobolevSpacetimeSmooth, SobolevPressure.
+  These source declarations are not certified by the older N0 GR audit.
+  Their statements and proofs supply mathematical composition interfaces;
+  integration into the N0 compiler requires a source-preserving port where
+  necessary, followed by matching external cached compilation and audit.
+
+ML. Mathlib source inspected at the N0 target pin.
+  Commit: de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
+  Local reference prefix:
+    Fefferman_adapter/NativeSources/mathlib/Mathlib/
+  Exact paths and theorem names are recorded below.
+
+The mathematical proof uses the displayed statements after their concrete
+hypotheses have been derived. An import statement, a theorem name, or an
+axiom audit alone does not discharge those hypotheses. M1 supplies no new
+premise to the frozen root. Sections 3--5 and Appendix A independently
+record the mathematical arguments behind the additional analytic bridges.
+
+
+B.1 SELECT THE ACTUAL CERTIFIED LOCAL EQUIVALENCE
+
+For each tau>0 use
+
+  NSEGR.NativeLiterature.literatureInputs_native : LiteratureInputs
+
+and the actual constructor
+
+  NSEGR.Assembly.nativeLawPackages_of_literatureInputs
+    (input : LiteratureInputs) (nu rho tau : Real) (hrho : rho!=0) :
+    exists c : ScalarBoundaryCompletionLaws nu rho tau,
+      exists r : AnalyticRadialExtensionLaws rho tau,
+        exists h : GeometricReconstructionLaws nu rho tau,
+          GermInverseLaws c r h.
+
+Select c_tau,r_tau,h_tau,i_tau from this theorem and define
+
+  E_tau := NSEGR.exactSectorEquivOfContracts
+             c_tau r_tau h_tau i_tau,
+  D_tau := E_tau.symm.
+
+The source definition gives, exactly,
+
+  E_tau.toFun = NSEGR.forwardGerm c_tau r_tau h_tau i_tau,
+  D_tau.toFun = NSEGR.reverseGerm h_tau.
+
+The existing identities are
+
+  NSEGR.reverseGerm_forwardGerm,
+  NSEGR.forwardGerm_reverseGerm.
+
+The inverse is therefore the actual boundary decoder of the actual metric.
+The representative-level inputs are
+
+  NSEGR.forward_velocity_recovery,
+  NSEGR.forward_pressure_gauge_recovery,
+  NSEGR.localNSE_of_reconstruction_and_zero_stress.
+
+No additional local geometric existence, local uniqueness, radial extension,
+or local inverse contract is postulated by the new theorem.
+
+For center evaluation, use
+
+  NSEGR.sameMetricAt_boundaryK,
+  Filter.EventuallyEq.eq_of_nhds,
+  NSEGR.boundaryVelocity_congr_slice,
+
+followed by Quotient.lift. This proves that
+
+  ev^V_tau([g]) = boundaryVelocity(boundaryK(g))(tau)
+
+is independent of the representative. Thus V_gamma(t)=ev^V_t(gamma_t) is
+the exact independently defined field appearing in the frozen target.
+
+At tau>0, a recovery interval is obtained from
+
+  NSEGR.Assembly.positive_timeInterval_subset
+
+with radius cap min(g.timeRadius,tau/2), intersecting the actual recovery
+neighborhood. The resulting d satisfies 0<d<=g.timeRadius and d<tau.
+The coherence interval is timeInterval(tau,d). The original canonical
+representative is retained; its recorded radius need not be changed.
+For a flow restriction, the existing theorem is
+
+  NSEGR.Assembly.localNSE_restrict_native.
+
+This step introduces no metric re-centering and preserves the fixed rho
+and beta_t(tau)=0 normalization of each original GR germ.
+
+
+B.2 IDENTIFY THE EXACT METHLIB SOBOLEV CARRIER AND NONLINEAR RHS
+
+For k in Z^3, Methlib defines
+
+  torusSobolevWeight(k) = sqrt(1+(2pi)^2 |k|^2),
+  sobolevWeightedCoeff(m,c)(k,i) = torusSobolevWeight(k)^m c(k,i).
+
+TorusSobolev(m) consists of ALL coefficient sequences with the displayed
+weighted sequence in ell^2. Its norm is exactly
+
+  ||c||_m^2 = sum_(k,i) (1+|2pi k|^2)^m |c(k,i)|^2.
+
+The actual definitions
+
+  SingularClosure.torusSobolevRepr,
+  SingularClosure.torusSobolevCompleteSpace,
+  SingularClosure.torusSobolev_norm_sq
+
+identify this carrier with a complete weighted Hilbert space. The zero
+frequency is included. The M1 TorusSobolev.lean source is byte-identical to
+the M0 snapshot; its Git blob is 694c3996939724b61bd096c4dbf7967fe61e33ac.
+
+For any smooth periodic real vector field b, the existing M0 theorem
+
+  SingularClosure.SMOOTH_DATUM_MEM_TORUS_SOBOLEV
+
+places its actual Fourier coefficients in every TorusSobolev(m), without
+a mean-zero premise. Synthesis uses the generic chain
+
+  SingularClosure.sobolev_weighted_component_summable;
+  SingularClosure.ALL_SOBOLEV_IMP_RAPID_SCALAR;
+  SingularClosure.smoothFourierSynthesis_contDiff;
+  SingularClosure.datumFourierCoeff_smoothFourierSynthesis;
+  SingularClosure.datumFourierCoeff_injective_continuous_periodic.
+
+Reality of the actual Fourier coefficients supplies the reality hypotheses
+of the reconstruction endpoints. Spatial divergence freedom supplies
+solenoidality wherever an endpoint requires it. No zero-mode hypothesis is
+needed by this chain. In particular, the actual smooth field is recovered
+from its coefficients, including its unrestricted constant component.
+
+The concrete reality endpoint is SingularClosure.datumFourierCoeff_reality.
+The existing arbitrary-mean pressure recovery endpoint is
+SingularClosure.INFINITE_TRANSPORT_PRESSURE_RECOVERY; its hypotheses are
+all-Sobolev membership, spectral reality, and spectral solenoidality. These
+hold for the actual real divergence-free fields used here.
+
+M1 provides the continuous operators
+
+  torusSobolevViscous nu m : H^(m+2) ->L H^m,
+  torusSobolevLeray m : H^m ->L H^m,
+  sobolevDivergenceProductBilinear m :
+    H^(m+2) ->L (H^(m+2) ->L H^m).
+
+The last operator is the actual untruncated Fourier convolution followed
+by divergence. Its boundedness is the existing theorem
+
+  SingularClosure.SOBOLEV_DIVERGENCE_PRODUCT_NORM_BOUND.
+
+Consequently the actual vector field
+
+  F_m(c) := SingularClosure.fourierSobolevRhs nu m c
+          = torusSobolevViscous nu m c
+            -torusSobolevLeray m (sobolevDivergenceProduct m c c)
+
+satisfies the existing exact endpoints
+
+  SingularClosure.fourierSobolevRhs_contDiff (nu : Real) (m : Nat) :
+    ContDiff Real infinity (fourierSobolevRhs nu m),
+
+  SingularClosure.fourierSobolevRhs_coefficient_eq_fullRhs
+    (nu : Real) (m : Nat) (c : TorusSobolev(m+2)) :
+    (fourierSobolevRhs nu m c).val =
+      fullFourierRhs nu (torusSobolevLower 0 (m+2) (Nat.zero_le _) c).
+
+The Fourier equation on the right is exactly
+
+  -nu |2pi k|^2 c(k) - P(k) [div(v tensor v)]hat(k),
+
+with coefficientLeray(0)=I. The divergence factor is zero at k=0, hence
+F_m(c)(0)=0. Arbitrary velocity means are preserved.
+
+The declarations just listed quantify over arbitrary Sobolev inputs.
+They contain no AX6, canonical-Galerkin convergence, smallness, solution-
+existence, or SpectralMeanZero premise. The separately defined structure
+GlobalStrongCoefficientNSE and the packaged canonical AX6 existence
+theorems are unnecessary for this application.
+
+
+B.3 DERIVE THE RIGHT-BOUNDARY DIFFERENTIAL EQUATION
+
+Let gamma belong to the frozen target. Section 7, using B.1, supplies the
+actual smooth positive-time NSE field v=V_gamma and normalized pressure
+q=Pi(v). Define, for each m,
+
+  U_m(t) = Fourier(v(t)) in TorusSobolev(m), t>0;
+  U_m(0) = Fourier(a) in TorusSobolev(m).
+
+For APIs with domain Real, extend U_m arbitrarily to t<0. Only its forward
+restriction occurs below. The fixed spatial trace gives
+
+  U_m(t) -> U_m(0) in H^m as t decreases to zero.
+
+For t>0, local joint smoothness on the compact torus gives smoothness of
+t -> v(t) in every H^m. Explicitly, choose a compact time interval inside
+(0,infinity). Each mixed spatial derivative through order m of the time
+difference quotient converges uniformly, by the integral remainder and
+uniform continuity of the next time derivative on that compact cylinder.
+The C^m-to-H^m bound from Section 3 transfers this convergence to H^m.
+Fourier analysis then transfers the derivative to U_m. Fourier products,
+integration by parts, and the actual pressure elimination yield
+
+  deriv U_m(t) = F_m(U_(m+2)(t)), t>0.                 (B.1)
+
+This is an actual Hilbert-valued derivative identity, not merely a list of
+coordinate derivatives. It follows from norm convergence before taking
+Fourier coefficients. Thus the hypotheses of the subsequent scale theorem
+are derived from the concrete PDE rather than assumed in the target.
+
+By B.2, F_m is continuous. The frozen H^(m+2) trace therefore gives
+
+  deriv U_m(t) -> F_m(U_(m+2)(0)) as t decreases to zero. (B.2)
+
+Apply the exact Mathlib theorem
+
+  hasDerivWithinAt_Ici_of_tendsto_deriv
+    (f_diff : DifferentiableOn Real f s)
+    (f_lim : ContinuousWithinAt f s a0)
+    (hs : s in nhdsWithin (Ioi a0) a0)
+    (f_lim' : Tendsto (fun x => deriv f x)
+       (nhdsWithin (Ioi a0) a0) (nhds e)) :
+    HasDerivWithinAt f e (Ici a0) a0.
+
+Instantiate
+
+  f=U_m; s=Ioi(0); a0=0; e=F_m(U_(m+2)(0)).
+
+Differentiability is (B.1), continuity is the frozen trace, hs is
+self_mem_nhdsWithin, and the derivative limit is (B.2). This proves
+
+  HasDerivWithinAt U_m (F_m(U_(m+2)(0))) (Ici 0) 0.
+
+Together with (B.1), it supplies the same within-derivative equation at
+every t>=0. The Mathlib facts uniqueDiffOn_Ici and
+HasDerivWithinAt.derivWithin identify the derivative with the literal
+forward derivative used by the original NSE source.
+
+Source:
+  Mathlib/Analysis/Calculus/FDeriv/Extend.lean.
+
+The original polynomial-jet proof in Section 4 remains valid. Its identity
+(4.5) can alternatively be obtained directly from the existing endpoint
+
+  intervalIntegral.integral_eq_sub_of_hasDerivAt_of_tendsto,
+
+in Mathlib/MeasureTheory/Integral/IntervalIntegral/FundThmCalculus.lean,
+with f=W_n, f'=W_(n+1), endpoint values J_n(a),W_n(T), and interval (0,T).
+It requires derivatives only in the open interval and one-sided endpoint
+limits. Continuity of W_(n+1) implies its interval integrability. Therefore
+neither route assumes the boundary derivative that it is proving.
+
+
+B.4 COMPOSE THE EXISTING TIME-SCALE, VELOCITY, AND PRESSURE ENDPOINTS
+
+The exact generic Methlib scale theorem is
+
+  SingularClosure.SOBOLEV_SCALE_TIME_SMOOTH
+    (U : forall m : Nat, Real -> TorusSobolev m)
+    (F : forall m : Nat, TorusSobolev(m+2) -> TorusSobolev m)
+    (hU : forall m, ContinuousOn (U m) (Ici 0))
+    (hF : forall m, ContDiff Real infinity (F m))
+    (hderiv : forall m t, t in Ici 0 ->
+      HasDerivWithinAt (U m) (F m (U (m+2) t)) (Ici 0) t) :
+    forall m, ContDiffOn Real infinity (U m) (Ici 0).
+
+Use U from B.3 and F=F_m from B.2. Its three substantive hypotheses have
+now been proved: continuity from the trace, nonlinear smoothness from
+fourierSobolevRhs_contDiff, and the actual within-derivative equation from
+B.3. The conclusion is all time orders in all spatial Sobolev spaces.
+
+All U_m use the same actual Fourier sequence. Hence
+
+  forall m,t>=0, (U_m(t)).val = (U_0(t)).val.          (B.3)
+
+Apply the existing M1 theorem
+
+  SingularClosure.SOBOLEV_CURVES_JOINT_SPACETIME_SMOOTH
+    (U : forall m : Nat, Real -> TorusSobolev m)
+    (hU : forall m, ContDiffOn Real infinity (U m) (Ici 0))
+    (hcoeff : forall m t, 0<=t -> (U m t).val=(U 0 t).val) :
+    ContDiffOn Real infinity
+      (fun z => smoothFourierSynthesis (U 0 z.1).val z.2)
+      forwardSpacetime.
+
+The actual Fourier reconstruction from B.2 identifies this synthesis with
+v for t>0 and a for t=0. ContDiffOn.congr therefore yields exactly the
+velocity extension required by the frozen source carrier.
+
+Pressure has its own existing scalar endpoint:
+
+  SingularClosure.SOBOLEV_TRANSPORT_PRESSURE_JOINT_SMOOTH
+    (U : forall m : Nat, Real -> TorusSobolev m)
+    (hU : forall m, ContDiffOn Real infinity (U m) (Ici 0))
+    (hcoeff : forall m t, 0<=t -> (U m t).val=(U 0 t).val) :
+    ContDiffOn Real infinity
+      (fun z => fullTransportPressure (U 0 z.1) z.2)
+      forwardSpacetime.
+
+Its source, SobolevPressure.lean, constructs the actual continuous pressure
+multiplier and packs the scalar into the first vector component. The scalar
+conclusion above is already proved there; it is not inferred merely from
+the velocity theorem.
+
+To identify the exact pressure, write
+
+  b_i(k)=2pi i sum_j k_j [v_j v_i]hat(k).
+
+The existing pressureFromTransport coefficient is
+
+  0,                                             k=0;
+  i sum_i k_i b_i(k)/(2pi |k|^2),                 k!=0.
+
+Substitution gives
+
+  -sum_(i,j) k_i k_j [v_j v_i]hat(k)/|k|^2,       k!=0,
+
+which is precisely the coefficient of R(v tensor v) in (3.4). The zero
+mode of both pressures is zero. The fields are therefore equal by Fourier
+reconstruction. Set
+
+  p(t,x)=fullTransportPressure(U_0(t))(x),
+  q(t,x)=p(t,x)-p(t,0).
+
+Then q=Pi(v) for positive time, q(0)=Pi(a), and q(t,0)=0. The map
+(t,x)->(t,0) preserves forwardSpacetime. Mathlib ContDiffOn.comp and
+ContDiffOn.sub prove the normalized pressure jointly smooth through zero.
+The spatial gradient of the removed time-only term vanishes.
+
+The NSE residual is continuous on the closed forward domain and is zero
+for t>0. Mathlib Set.EqOn.of_subset_closure, closure_Ioi, and the native
+forward-spacetime calculus extend the literal PDE to t=0. Equivalently,
+evaluate B.3 at zero and use the Fourier multiplier identities. Divergence
+at zero is div(a)=0. Thus Psi(gamma) belongs to exactly S_nu(a).
+
+No pressure trace, temporal trace, analytic trace, or global existence
+condition has been added to the geometric carrier.
+
+
+B.5 EXISTING ENDPOINTS INSIDE THE POSITIVE-TIME ANALYTICITY PROOF
+
+The forward implication uses T_ANALYTIC from Section 5 and Appendix A.
+The following source composition supplies reusable substeps without
+postulating positive-time analyticity as an extra assumption.
+
+B.5.1 Uniform Fourier bounds for the given smooth solution.
+
+Native endpoint:
+  NSEMaxwell.HodgeProof.uniform_datumFourierCoeff_moment_bound,
+  Fefferman_adapter/FourierHodgeLaws/UniformCoefficientBounds.lean.
+
+For a supplied SmoothVelocity and PeriodicVelocity on a finite forward
+slab, this theorem supplies a summable majorant for each polynomial Fourier
+moment, uniformly in time on the slab. Its zeroth-moment specialization
+gives the finite A_0 bound used for M_tau in Appendix A. Finite-dimensional
+component/norm comparison transfers its componentwise bounds to the
+Euclidean coefficient norm. The source trajectory supplies its hypotheses.
+
+B.5.2 Banach spaces and the contraction theorem.
+
+For fixed sigma, multiplication by exp(sigma|2pi k|) identifies A_sigma
+isometrically with a vector-valued ell^1 space. Mathlib's lp completeness
+therefore supplies the underlying Banach-space completeness. The sector
+space X still needs the variable-weight supremum-norm and Fatou argument
+given explicitly in Appendix A; lp completeness alone does not prove it.
+
+The exact Mathlib source is Analysis/Normed/Lp/lpSpace.lean, with
+
+  lp.completeSpace,
+  lp.norm_eq_tsum_rpow,
+  lp.evalCLM,
+  lp.tsumCLM.
+
+Use p=1 and complete complex Euclidean coefficient fibers. The weighted
+isometry gives the claimed norm; evalCLM supplies continuous coefficient
+evaluation, and tsumCLM supplies continuous evaluation of a Fourier series
+at spatial origin. The norm conventions are explicit:
+
+  coefficient vectors: EuclideanSpace Complex (Fin 3);
+  coefficient tensors: the complex Frobenius norm;
+  real spacetime: Real x EuclideanSpace Real (Fin 3), with max product norm.
+
+The unbundled native coefficientLeray uses Fin 3 -> Complex. Transport its
+coordinate formula to the Euclidean carrier before applying the norm-one
+orthogonal-projection estimate. For k!=0 this estimate follows from
+
+  |P(k)c|_2^2 = |c|_2^2-|sum_j k_j c_j|^2/|k|_2^2;
+
+for k=0 it is the identity. No norm-one claim for the default Pi sup norm
+is used. The divergence and tensor estimates then match Appendix A's
+unchanged constants.
+
+Absolute convolution uses the existing Mathlib declarations
+
+  Summable.mul_of_nonneg,
+  tsum_mul_tsum_of_summable_norm,
+  Summable.tsum_prod,
+
+after the lattice bijection (k,l)->(k+l,l) and exponential-weight triangle
+inequality. Complex.hasDerivAt_exp, Complex.norm_exp, and Complex.exp_add
+supply coefficient holomorphy, the exact heat multiplier modulus, and its
+semigroup identity. The concrete estimates are those in Appendix A.
+
+The sector-space closure uses
+
+  TendstoLocallyUniformlyOn.differentiableOn
+
+from Mathlib/Analysis/Complex/LocallyUniformLimit.lean. Its domain is
+Complex and its codomain may be any complex Banach space. Uniform A_0
+convergence supplies local uniform convergence; the open sector supplies
+the domain hypothesis. The time-varying weights themselves are not asserted
+to be holomorphic.
+
+The Duhamel parameter integral can use
+
+  hasFDerivAt_integral_of_dominated_of_fderiv_le
+
+from Mathlib/Analysis/Calculus/ParametricIntegral.lean, also exported by
+the existing GRTemp.ML031.endpoint. This endpoint requires domination of
+the PARAMETER DERIVATIVE as well as the stated measurability, integrability,
+and pointwise derivative hypotheses. On nested time disks, Cauchy's estimate
+upgrades the Appendix A integrand bound to
+
+  ||partial_z Integrand(z,s)|| <= (C_D/d)*(1-s)^(-1/2),
+
+where d>0 is the disk margin. The majorant is integrable on (0,1).
+Thus derivative domination is derived, not silently inferred from
+domination of the integrand alone. Continuity supplies the required strong
+measurability; at fixed 0<s<1 the heat and convolution maps are holomorphic.
+
+The existing Mathlib endpoints
+
+  ContractingWith.fixedPoint,
+  ContractingWith.fixedPoint_isFixedPt,
+  ContractingWith.fixedPoint_unique
+
+apply to the complete nonempty subtype consisting of the affine initial-
+value condition and the closed norm ball. The heat path makes this subtype
+nonempty. The estimates R=2LM and T=nu/(64 C^2 L^2 M^2) prove that the
+Duhamel map preserves it and has contraction constant at most 1/2.
+
+Source: Mathlib/Topology/MetricSpace/Contracting.lean.
+
+The Fourier product estimate, sector heat estimate, Duhamel estimate,
+norm-complete sector space, and real mild uniqueness argument remain
+concrete bridges proved in Appendix A. A generic fixed-point theorem does
+not establish any of these application-specific hypotheses.
+
+B.5.3 Joint real analyticity through an existing native endpoint.
+
+The one-complex-variable uniform-limit theorems apply to time-holomorphic
+coefficient maps. They do not alone give a theorem about the four joint
+real variables. A direct native closure route is available:
+
+  NSEGR.Assembly.analyticAt_of_iteratedFDeriv_bound
+    (f : E -> F) (x : E)
+    (hr : 0<r) (hM : 0<=M) (hA : 0<=A)
+    (hf : ContDiffOn Real infinity f (ball x r))
+    (hbound : forall n z, z in ball x r ->
+      ||iteratedFDeriv Real n f z|| <= M*A^n*n!) :
+    AnalyticAt Real f x.
+
+The actual u is already jointly smooth by the source hypothesis. Fix a
+compact complex time disk strictly inside the sector and a strictly
+positive spatial Fourier weight sigma. Appendix A supplies a uniform
+weighted coefficient bound there. Cauchy's coefficient estimate on a
+slightly larger disk and exponential Fourier decay imply, on the smaller
+real cylinder, for m>=0 and spatial multiindex alpha,
+
+  |partial_t^m partial_x^alpha u|
+    <= C0 * m! * |alpha|! * R0^(-m) * (2/sigma)^|alpha|.
+
+Here R0>0 is the uniform Cauchy radius, and C0 is finite; the remaining
+positive exponential spatial margin absorbs the summation over Z^3.
+Termwise differentiation is justified by the same summable bound.
+Coefficient/time derivative identification follows from differentiation
+under the finite-torus integral of the supplied smooth solution.
+
+The exact Cauchy endpoint is
+
+  Complex.norm_iteratedDeriv_le_of_forall_mem_sphere_norm_le
+    (n : Nat) (hR : 0<R0)
+    (hf : DiffContOnCl Complex f (ball c R0))
+    (hC : forall z in sphere c R0, ||f(z)||<=M0) :
+    ||iteratedDeriv n f c|| <= n! * M0 / R0^n.
+
+Source: Mathlib/Analysis/Complex/Liouville.lean; existing native export:
+GRTemp.ML033.endpoint. Use the complex Euclidean vector coefficient, not
+just individual coordinates. The closed disk is contained in the open
+sector, so its continuity and differentiability hypotheses hold.
+
+Spatial derivative reconstruction uses the actual existing theorem
+
+  NSEGR.NativeLiterature.fourier_partialWord_hasSumUniformly,
+
+in ASSEMBLY/GRAssembly/NativeFourier.lean, applied to each smooth time
+derivative. One may take
+
+  C0 = M * sum_k exp(-sigma*|2pi k|/2).
+
+The exponential lattice sum is finite. Native summability anchors are
+NSEGR.Assembly.summable_latticeExpMajorant and summable_frequencyExpWeight
+in AnalyticFourier.lean, after the elementary comparison of Euclidean and
+frequency l1 norms. The estimate y^r<=r!*exp(y) absorbs the remaining
+spatial derivative factors.
+
+For n=m+|alpha|, m!|alpha|!<=n!. Expanding an n-linear total derivative
+in the four coordinate directions gives a bound
+
+  ||D^n u|| <= C0 * [4 max(R0^(-1),2/sigma)]^n * n!.
+
+Each of the four coordinate functionals on the stated real spacetime
+normed space has norm at most one. The expansion has 4^n terms. Therefore
+the displayed constant is compatible with the exact Euclidean/max norm
+conventions, without an unrecorded dimension-dependent operator estimate.
+
+Choose a real spacetime ball contained in the smaller cylinder. This
+supplies every hypothesis of analyticAt_of_iteratedFDeriv_bound. The same
+argument applies to the quadratic Fourier pressure; alternatively the
+existing analytic Hodge mapping theorems may be used after the required
+analyticity of their inputs is established. Hence the conclusion is JOINT
+real analyticity on (0,infinity) x T3.
+
+This route is an implementation alternative to the direct joint complex
+Fourier extension in Appendix A. It proves the same mathematical lemma.
+The time-sector coefficient estimates are still required; separate real
+analyticity is insufficient, and analytic Hodge preservation is not a
+smoothing theorem for an arbitrary smooth input.
+
+B.5.4 Canonical pressure through the existing analytic Poisson endpoint.
+
+Once the actual velocity is jointly analytic, set
+
+  H(t,x)=-sum_(i,j) partial_i partial_j(u_i*u_j)(t,x).
+
+Analytic products, finite sums, and spatial derivatives make H jointly
+analytic and periodic on every positive-time open slab. In particular the
+native analyticHodge_scalarSpatialPartial_joint supplies the required
+spatial-derivative preservation. Apply
+
+  NSEGR.Assembly.poissonInverse_joint_analytic_on_open_slab
+    (f : Pressure) (hI : IsOpen I)
+    (hf : AnalyticOnNhd Real (fun z => f z.1 z.2) {z | z.1 in I})
+    (hp : forall t in I, SpatialPeriodic (f t)) :
+    AnalyticOnNhd Real
+      (fun z => poissonInverse (f z.1) z.2) {z | z.1 in I}.
+
+The actual NSE divergence identity is scalarLaplacian(p(t))=H(t).
+The existing theorem
+
+  NSEGR.Assembly.poissonInverse_scalarLaplacian
+    (f : ScalarField) (hf : ContDiff Real infinity f)
+    (hp : SpatialPeriodic f) :
+    poissonInverse(scalarLaplacian f)=f-(fun _ => scalarMean f)
+
+therefore identifies pi=poissonInverse(H) with p-mean(p). Consequently
+
+  pi(t,x)-pi(t,0)=p(t,x)-p(t,0)=q(t,x).
+
+Analytic composition with (t,x)->(t,0) and subtraction give exactly the
+normalized analytic pressure. This reuses the actual existing Hodge proof
+after its analytic-input hypothesis has been discharged. It requires no
+second new weighted Fourier-pressure implementation. The given smooth p
+still supplies q's joint smoothness through the initial boundary.
+
+
+B.6 COMPOSE THE TWO GLOBAL MAPS AND THEIR INVERSES
+
+Forward map:
+
+  (u,q) in S_nu(a)
+    -> T_ANALYTIC
+    -> [u,q]_tau in NSEgerm(nu,tau), for every tau>0
+    -> Phi(u,q)_tau := E_tau([u,q]_tau).
+
+B.1's recovery interval proves actual decoded-velocity coherence. The
+source's joint smoothness through zero gives every spatial C^m trace on
+the compact torus, hence every H^m trace by (3.3) and its converse.
+Therefore Phi(u,q) belongs to the exact frozen G^+_nu,rho(a).
+
+Reverse map:
+
+  gamma in G^+_nu,rho(a)
+    -> actual center velocity V_gamma
+    -> coherent local native decodes and positive-time NSE
+    -> the derived right-boundary equation in B.3
+    -> existing Methlib scale and joint-synthesis endpoints in B.4
+    -> Psi(gamma)=(extended V_gamma,Pi(extended V_gamma)) in S_nu(a).
+
+For each positive t, forward_velocity_recovery evaluated at the center
+gives V_(Phi(u,q))(t)=u(t). Normalized pressure is uniquely Pi(u(t)).
+Continuity supplies equality at zero. Consequently
+
+  Psi(Phi(u,q))=(u,q).
+
+Conversely, coherence and actual local pressure normalization imply
+
+  [Psi(gamma)]_tau = D_tau(gamma_tau).
+
+The existing native forwardGerm_reverseGerm then yields
+
+  Phi(Psi(gamma))_tau
+    = E_tau(D_tau(gamma_tau))
+    = gamma_tau.
+
+Function extensionality over all positive centers, followed by Subtype.ext
+for the coherence/trace properties, gives
+
+  Phi(Psi(gamma))=gamma.
+
+Thus the actual constructed equivalence is
+
+  NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE :
+    forall nu>0, rho!=0, a in C^infinity_sigma(T3),
+      S_nu(a) ~= G^+_nu,rho(a),
+
+with toFun=Phi, invFun=Psi and the two identities just proved.
+
+The existing Mathlib theorem Equiv.nonempty_congr transports nonemptiness
+for each datum. Quantifying over the unchanged datum predicate and using
+the forward-restriction/pressure-normalization equivalence in Section 1
+gives exactly NSE_B_IFF_GR_BOUNDARY_FAMILY in Section 10.
+
+
+B.7 REMAINING FORMALIZATION INTERFACES
+
+The mathematical statements in the following list are proved in this TXT.
+Their exact new GR/global Lean declarations and matching external evidence
+are not supplied by this source-based B-tier revision.
+
+I01. Actual physical/Fourier interfaces.
+  Smooth periodic physical trajectories -> the compatible U_m curves;
+  Banach-valued derivative -> actual fourierSobolevRhs; synthesis identity;
+  pressure multiplier identity and origin gauge. Mathematical proofs:
+  Sections 3--4, B.2--B.4. Reusable endpoints: M0 and M1 above.
+
+I02. Positive-time joint analytic smoothing.
+  Weighted complex-sector space, heat/Duhamel estimates, fixed-point
+  application, mild uniqueness, and joint factorial or complex-extension
+  bridge. Mathematical proof: Section 5, Appendix A, B.5. Reusable endpoints:
+  Mathlib Banach/complex calculus and native analytic Taylor closure.
+
+I03. Exact family types and quotient evaluation.
+  Forward-restriction trajectory carrier; actual center evaluation;
+  positive-time germ family; velocity coherence; spatial initial trace.
+  Mathematical definitions: frozen Sections 1, 2, 6; construction: B.1.
+
+I04. Deterministic global assembly.
+  The two concrete maps, exact inverse identities, root equivalence, and
+  the literal FeffermanB existence corollary. Mathematical proofs:
+  Sections 7--10 and B.6. Reusable endpoints: native local inverses,
+  Quotient.lift, function/Subtype extensionality, Equiv.nonempty_congr.
+
+I05. Matching compiler and theorem-level evidence.
+  Align required M1 sources with the N0 Lean/Mathlib pin; preserve approved
+  foundational axioms; retain existing compatible external caches; compile
+  and audit the exact new theorem, both maps, and each nontrivial bridge.
+  No local Lean/Lake/elan execution is permitted or performed.
+
+These are formalization and certification interfaces, not extra analytic
+premises hidden in the frozen B-tier theorem. Prepared code would have
+status A_TIER_CANDIDATE until the required external evidence exists.
+
+
+B.8 IMMUTABLE SOURCE LOCATORS
+
+Native local construction and physical inverse:
+  https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/RootClosure.lean
+  https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean
+
+M0 arbitrary-mean Fourier analysis and reconstruction:
+  https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SmoothDatumSobolev.lean
+  https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevSmoothRealization.lean
+
+M1 exact nonlinear RHS:
+  https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevRhs.lean
+M1 time-scale regularity:
+  https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevScaleTimeSmooth.lean
+M1 joint spacetime velocity:
+  https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevSpacetimeSmooth.lean
+M1 joint spacetime pressure:
+  https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevPressure.lean
+
+Mathlib one-sided derivative extension:
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Extend.lean
+Mathlib Banach fixed point:
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/MetricSpace/Contracting.lean
+Mathlib endpoint-limit FTC:
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/IntervalIntegral/FundThmCalculus.lean
+Mathlib nonemptiness transport:
+  https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Logic/Equiv/Defs.lean
+
+Native factorial-bound analytic closure:
+  https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/AnalyticHodgeTaylor.lean
+
+
+B.9 EXACT FINAL STATUS
+
+ROOT = NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE
+GOAL_VERSION = 1
+DERIVATION_REVISION = 2
+SOURCE_TARGET_MAPS_AND_SCOPE_CHANGED = NO
+MATHEMATICAL_DERIVATION = COMPLETE
+TIER = ! B_TIER
+NEW_ROOT_EXTERNAL_COMPILER_EVIDENCE = NONE
+NEW_ROOT_THEOREM_LEVEL_AXIOM_AUDIT = NONE
+NEW_ROOT_A_TIER = NOT_ESTABLISHED
+NEW_ROOT_UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+
+All velocity means remain admitted. Analyticity is required only at positive
+time and is derived from the supplied smooth trajectory. The target remains
+the coherent family of actual marked GR germs. Global NSE existence and
+single-metric global bulk gluing are not conclusions of this equivalence.
+
+
+END OF RETAINED REVISION-2 DERIVATION.
+The preceding Appendix B records its original revision-2 source review.
+Appendix C below is the authoritative revision-3 chain and intermediate-goal ledger.
+
+
+APPENDIX C. ANCHORED CARRIER CHAIN AND INTERMEDIATE GOALS
+=======================================================
+
+MODE = B_TIER_DERIVATION
+DERIVATION_REVISION = 3
+GOAL_VERSION = 1
+ANCHOR_COLLECTION_COMMIT = 49801d86a61c09a6829ad430206d222239bff49a
+ANCHOR_COLLECTION = 183 EXISTING ENDPOINTS; 79 DEFINING MODULES
+FINE_GOALS = 45 INCLUDING THE PRIMARY ROOT AND EXISTENCE COROLLARY
+EXISTING_RESERVED_CONSTRUCTIONS = 24
+NEW_LEAN_IMPLEMENTATIONS = NONE
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+
+C.0 EXACT REFINEMENT
+-------------------
+
+For nu>0, rho!=0 and a in C-infinity_sigma(T3), define the two intermediate
+carriers P_nu^+(a) and N_nu^+(a) below. Then the exact frozen root factors as
+
+  S_nu(a) ~= P_nu^+(a) ~= N_nu^+(a) ~= G_nu,rho^+(a).        (C.0)
+
+The source, geometric target, prescribed datum, arbitrary mean, and frozen
+maps are unchanged. P and N are intermediate mathematical objects. Neither
+is inserted as an additional hypothesis into the independent geometric
+target. The statement remains an equivalence of carriers, including the
+possibility that both carriers are empty.
+
+The collected Source.lean files are immutable defining-module copies.
+The collected Endpoint.lean files import the original module and request
+symbol/axiom inspection. Neither file class establishes the new application
+bridges by mere import. The G01--G45 statements below record every concrete
+bridge, its dependencies, its mathematical derivation and its exact anchors.
+Every new integration declaration remains unimplemented in Lean.
+
+The 24 original ToDerive directories remain reserved. The finer goal ledger
+is a decomposition of their obligations, together with the carrier and
+quotient interfaces needed to compose them. There is no assertion that the
+number of reserved directories equals the number of proof obligations.
+
+
+C.1 TWO INTERMEDIATE CARRIERS
+----------------------------
+
+Let H=[0,infinity), Tplus=(0,infinity), and xi_k=2pi k for k in Z^3.
+All spatial fields are unit-periodic. H^m uses the inhomogeneous Fourier
+weight <xi_k>^m, including k=0. Equality of source trajectories is equality
+on H x T3; equality of positive-time profiles is equality on Tplus x T3.
+Within derivatives at t=0 are right derivatives.
+
+Let R_pressure(A) have coefficient zero at k=0 and coefficient
+  -sum_(i,j) k_i k_j Ahat_ij(k)/|k|^2
+at k!=0. Set
+  Pi(v)=R_pressure(v tensor v)-R_pressure(v tensor v)(0).
+This is the origin-normalized periodic quadratic pressure from Section 3.
+
+P_nu^+(a) consists of exactly the pairs (v,q) satisfying:
+
+  v,q jointly real analytic on Tplus x T3;
+  div v=0;
+  v_t+(v dot grad)v+grad q=nu Delta v;
+  q(t,0)=0 for every t>0;
+  for every m in N, ||v(t)-a||_(H^m)->0 as t downarrow 0.
+
+No initial time jet, initial pressure value, or analytic initial datum is
+included. The equation and pressure normalization imply q=Pi(v), while the
+trace theorem derives q(0)=Pi(a) and every right time derivative.
+
+For each tau>0, native NSEgerm(nu,tau) is the quotient of actual analytic
+local NSE representatives by SameFlowAt. Its center velocity is
+  evN_tau([u,p])=u(tau).
+This is well-defined because SameFlowAt contains equality of full spatial
+velocity slices on a time neighborhood. Pressure itself is not evaluated
+on this gauge quotient.
+
+For eta in product_(tau>0) NSEgerm(nu,tau), define
+  W_eta(t)=evN_t(eta_t).
+
+N_nu^+(a) consists of exactly the families eta satisfying:
+
+  for every tau>0, there exist an actual NSE representative n of eta_tau
+  and d with 0<d<tau and d<=n.radius such that
+    W_eta(t,x)=n.velocity(t,x)
+  for every |t-tau|<d and every x in T3;
+
+  for every m in N, ||W_eta(t)-a||_(H^m)->0 as t downarrow 0.
+
+These are properties of the family. Representatives, radii, interval
+covers and proof witnesses are not extra carrier data. The coherence
+condition is neighborhood equality over complete spatial slices. Equality
+at the center alone is insufficient for the local derivative transfers.
+
+The geometric carrier G_nu,rho^+(a) remains exactly frozen Section 6:
+  gamma in product_(tau>0) GRgerm(nu,rho,tau),
+  V_gamma(t)=evG_t(gamma_t),
+  neighborhood coherence of the actual boundary-decoded velocity,
+  V_gamma(t)->a in every spatial H^m.
+All canonical metric, vacuum, normalization and zero-stress conditions are
+the original conditions on each GRgerm. No NSE witness occurs in G's
+definition.
+
+
+C.2 THREE EQUIVALENCES AND SIX EXPLICIT MAPS
+------------------------------------------
+
+C.2.1 R:S_nu(a) ~= P_nu^+(a).
+
+  R(u,q)=(u,q)|_(t>0).
+  T(v,q)=(vbar,Pi(vbar)),
+    vbar(t)=v(t) for t>0 and vbar(0)=a.
+
+Well-definedness of R:
+  G06--G16 derive positive-time joint analyticity of a supplied trajectory.
+  Joint smoothness at zero and compactness of T3 give uniform convergence
+  of every spatial derivative; G04 converts it to the exact H^m trace.
+
+Well-definedness of T:
+  G30--G35 derive the right boundary equation, all Sobolev time orders,
+  joint forward velocity and pressure smoothness, and the PDE at zero.
+  Alternatively G27--G29 derive the same smooth extension from explicit
+  polynomial jets. G05 identifies the supplied q with Pi(v) for t>0.
+
+Inverse identities:
+  R(T(v,q))=(v,Pi(v))=(v,q).
+  T(R(u,q))=(u,q) on t>0; continuity gives equality at zero.
+  G01 makes equality on H the complete source equality relation.
+
+C.2.2 A:P_nu^+(a) ~= N_nu^+(a).
+
+  A(v,q)_tau=[v,q]_tau.
+  B(eta)=(W_eta,Pi(W_eta)).
+
+Well-definedness of A:
+  For every tau>0, radius tau/2 lies entirely in positive time and yields
+  an actual analytic NSE representative. Its germ is independent of a
+  different admissible radius. Center evaluation gives W_(A(v,q))=v.
+  Each original pair witnesses coherence, and the spatial trace transfers.
+
+Well-definedness of B:
+  On any coherence neighborhood, W_eta equals the representative velocity.
+  The actual representative pressure, minus its value at x=0, equals
+  Pi(W_eta) by G05. Consequently (W_eta,Pi(W_eta)) is jointly analytic and
+  solves NSE on each neighborhood. Such neighborhoods contain every
+  positive center, so the properties hold on all Tplus. The spatial trace
+  is the one in N. This is G25.
+
+Inverse identities:
+  B(A(v,q))=(v,Pi(v))=(v,q).
+  [B(eta)]_tau=eta_tau because the normalized local pairs have equal
+  velocities and normalized pressures on an open neighborhood. Hence
+  A(B(eta))=eta by function and subtype extensionality.
+
+C.2.3 C:N_nu^+(a) ~= G_nu,rho^+(a).
+
+For every positive center, use the actual native law packages from
+  nativeLawPackages_of_literatureInputs literatureInputs_native.
+Define E_tau by exactSectorEquivOfContracts on those records, and define
+D_tau by the actual reverseGerm on the same reconstruction record. Then
+
+  D_tau(E_tau(n))=n,
+  E_tau(D_tau(gamma))=gamma.
+
+The dependent-product maps are
+  C(eta)_tau=E_tau(eta_tau),
+  D(gamma)_tau=D_tau(gamma_tau).
+
+They preserve center velocity:
+  evG_tau(E_tau(n))=evN_tau(n),
+  evN_tau(D_tau(gamma))=evG_tau(gamma).
+
+For the first identity, use actual forward representative recovery and
+evaluate its full-slice equality at tau. For the second, unfold the actual
+reverse representative. Thus V_(C eta)=W_eta and W_(D gamma)=V_gamma.
+
+Coherence of C(eta):
+  Choose a coherence NSE representative at tau and its actual forward
+  metric representative. Intersect the coherence neighborhood with the
+  native recovery neighborhood and the two representative domains. Choose
+  radius d capped by tau/2 and by both representative radii. On this
+  interval the decoded metric velocity equals the family velocity.
+
+Coherence of D(gamma):
+  Choose a coherence metric representative. Its actual reverse NSE
+  representative has precisely that decoded velocity. The same coherence
+  interval, or a smaller one, witnesses the NSE family condition.
+
+The spatial trace transfers by exact center-velocity equality. Both inverse
+identities hold componentwise by the native local theorems, and then hold
+for the subtypes. No common radial radius or equality of center-normalized
+metrics at different centers is required.
+
+
+C.3 IDENTIFICATION WITH THE FROZEN GLOBAL MAPS
+--------------------------------------------
+
+The composed forward map is
+
+  Phi=C o A o R,
+  Phi(u,q)_tau=E_tau([u,q]_tau).
+
+The composed reverse map is
+
+  Psi=T o B o D,
+  Psi(gamma)=(U_gamma,Pi(U_gamma)),
+    U_gamma(t)=V_gamma(t) for t>0,
+    U_gamma(0)=a.
+
+These are exactly the maps fixed in the original goal contract. For each
+gamma and tau, actual coherence and normalized-pressure recovery give
+
+  D_tau(gamma_tau)=[U_gamma,Pi(U_gamma)]_tau.              (C.1)
+
+Consequently
+
+  Psi(Phi(u,q))=(u,q),
+  Phi(Psi(gamma))_tau
+     =E_tau([Psi(gamma)]_tau)
+     =E_tau(D_tau(gamma_tau))
+     =gamma_tau.
+
+The frozen root follows with its exact maps and unchanged hypotheses.
+For each datum, nonemptiness then yields
+
+  (exists u,p, NSSolution(nu,a,u,p))
+    <-> Nonempty(S_nu(a))
+    <-> Nonempty(G_nu,rho^+(a)).                           (C.2)
+
+Quantification over the original Data predicate gives the exact companion
+
+  FeffermanB(nu) <-> GRFamilyB(nu,rho),                    (C.3)
+
+where GRFamilyB is defined from the independent geometric family carrier.
+Neither universal existence proposition is asserted by (C.3).
+
+
+C.4 PRINCIPAL ANALYTIC AND SEMANTIC INTERMEDIATE GOALS
+-----------------------------------------------------
+
+C.4.1 Positive-time analyticity: G06--G16.
+
+The application-specific sequence is
+
+  weighted ell^1 Banach algebra
+  -> actual heat and projected-Duhamel estimates
+  -> complete variable-weight holomorphic sector space
+  -> holomorphic Duhamel map and complete invariant ball
+  -> complex-sector fixed point
+  -> equality with the supplied trajectory by real A_0 mild uniqueness
+  -> mixed factorial derivative bound
+  -> native joint real analyticity
+  -> native analytic Poisson recovery and origin normalization.
+
+The decisive constants are unchanged:
+  L=exp(omega^2/4),
+  C=2exp(omega^2/2)/sqrt(e cos(theta)),
+  R=2LM,
+  T=nu/(64C^2L^2M^2),
+  K=C sqrt(T/nu),
+  KR=1/4,
+  Lip(H)<=1/2.
+
+The theorem ContractingWith.fixedPoint applies only after completeness,
+nonemptiness, invariance and contraction have all been established. The
+variable weight sigma(z)=omega sqrt(nu Re z) is used in estimates; it is
+not asserted to be holomorphic. Parameter differentiation of the integral
+uses an integrable derivative majorant obtained from nested-disk Cauchy
+estimates. Holomorphy of A_0-valued time curves is converted to joint real
+analyticity by the mixed Fourier/Cauchy derivative bounds in G15.
+
+C.4.2 Initial boundary: G30--G35, with G27--G29 as an independent route.
+
+For the actual positive-time field v define U_m(t)=Fourier(v(t)), with
+U_m(0)=Fourier(a). The necessary derivative statement is the norm statement
+
+  HasDerivAt U_m (F_m(U_(m+2)(t))) t, t>0,                (C.4)
+
+where F_m is the actual fourierSobolevRhs. It follows from uniform C^m
+difference-quotient convergence on a compact torus, followed by the H^m
+norm comparison. Differentiability of each Fourier coefficient alone is
+insufficient for (C.4).
+
+The spatial trace and continuity of F_m imply
+
+  deriv U_m(t)->F_m(U_(m+2)(0)),                          (C.5)
+
+so hasDerivWithinAt_Ici_of_tendsto_deriv gives the actual right derivative.
+Only after this discharge may SOBOLEV_SCALE_TIME_SMOOTH be instantiated.
+It gives all temporal orders in all spatial Sobolev spaces. The actual
+coefficient compatibility across m then supplies the hypotheses of the
+separate velocity and pressure joint-synthesis theorems. Origin
+normalization and the literal forward residual calculus give the exact
+source predicates, including t=0.
+
+The independent jet route records
+
+  J_0(b)=b,
+  J_(n+1)(b)=nu Delta J_n(b)
+    -sum_(j=0)^n binom(n,j)P div(J_j(b) tensor J_(n-j)(b)),
+
+  J_n:H^(m+2n)->H^m,
+  partial_t^n v(t)=J_n(v(t)),
+  partial_t^n v(t)->J_n(a),                               (C.6)
+
+and the analogous normalized pressure jets K_n. Endpoint FTC and the
+native continuous joint-jet theorem close the boundary without postulating
+temporal trace data. These estimates establish smoothness; they establish
+no factorial growth bound or convergent Taylor series at t=0.
+
+C.4.3 Actual geometric interfaces: G18--G26.
+
+Bare Nonempty(NSEgerm ~= GRgerm) does not identify a chosen bijection with
+the actual boundary decoder. G18 uses the actual constructor and its native
+inverse theorems. G19 and G20 establish center evaluation on the two
+quotients. G21 includes the explicit d<=tau/2 cap: positivity of an interval
+radius alone does not imply that its centered interval lies in t>0.
+G23 and G24 preserve coherence under representative changes by shrinking
+the neighborhood. Equality of full spatial slices is retained before using
+the nonlocal Leray and pressure operators.
+
+C.4.4 Exact pressure interface: G05, G16 and G34.
+
+torusSobolevPressure is a bounded linear map on transport coefficient
+sequences. The frozen pressure Pi is obtained only after the nonlinear
+transport composition, scalar extraction and origin normalization. Its
+Fourier symbol is checked explicitly in G05. Likewise the native inverse
+Laplacian returns p-mean(p), after which subtraction at x=0 gives p-p(t,0).
+Analytic preservation by this operator is invoked only after the velocity
+and its Poisson source have been proved jointly analytic.
+
+All these constructions retain P(0)=I. The divergence multiplier vanishes
+at k=0, so the arbitrary velocity mean is preserved rather than removed.
+
+
+C.5 FORMALIZATION ORDER AND EVIDENCE BOUNDARIES
+----------------------------------------------
+
+BLOCK F1: exact carriers, calculus, quotient evaluation and local maps.
+  G01--G03, G17--G24.
+  Native/Mathlib interfaces; no new analytic hypothesis may be inserted.
+
+BLOCK F2: actual Fourier derivative and right-boundary closure.
+  G04--G05, G30--G35.
+  Reuse the generic Methlib operators and scale/synthesis theorems only
+  after the physical norm derivative and coefficient compatibility pass.
+
+BLOCK F3: analytic smoothing of the supplied smooth trajectory.
+  G06--G16.
+  Sector completeness, Duhamel domination, mild uniqueness and mixed
+  factorial bounds are independent intermediate proof obligations.
+
+BLOCK F4: deterministic carrier and root assembly.
+  G25--G26, G36--G45.
+  Compose the exact maps, identify them with frozen Phi/Psi, prove both
+  inverse identities, then transport nonemptiness to the native root.
+
+The dependency fields in C.6, rather than the block labels, determine the
+actual elaboration order. For example G21 depends on quotient evaluation,
+and G22 depends on the pressure/Fourier interfaces. Independent bodies may
+be scheduled concurrently after their fixed signatures are established.
+No pending body is considered proved before matching external compilation.
+
+The three alternative jet goals G27--G29 are a second complete mathematical
+proof of the boundary extension, not additional assumptions on the root.
+E12_OptionalFieldGluing is not a necessary stage in the primary dependency
+closure. Its existing anchors glue equal decoded fields on a cover; they
+do not supply a single global vacuum bulk metric.
+
+M1 endpoints retain their upstream Lean 4.33.0 / Mathlib
+db584cd6d46c92f209a44c0f1c829460d327499d source cohort. Integration into the
+GR target Lean 4.34.0-rc1 / Mathlib de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+requires the matching dependencies or an explicit port followed by external
+cached compilation and exact theorem-level audit. The mathematical
+arguments in this document do not rely on unverified compiler evidence.
+
+Publication of this B-tier derivation does not promote the new global root
+to A_TIER, FORMAL_CLOSURE or UNCONDITIONAL_CLOSURE. The existing local native
+theorem keeps its original certificate and exact scope. No original Lean
+source, endpoint copy, source index, cache or certificate is modified here.
+
+
+C.6 EXACT INTERMEDIATE-GOAL LEDGER
+----------------------------------
+
+G01. normalized_forward_restriction_carrier
+STAGE = E01_GlobalLocalCalculus
+KIND = DEFINITION
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = DEFINITION_FIXED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = PINNED_ANCHORS_AND_EXPLICIT_LOCAL_INPUTS
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+Define S_nu(a) as normalized smooth NSE pairs on H=[0,infinity), with equality on H x T3. Equivalently quotient normalized total functions by equality on H. All source predicates descend to this quotient; equality has no negative-time component.
+
+DERIVATION.
+Within smoothness and within derivatives depend only on the forward restriction. The cited congruence results preserve the literal derivative predicates. Spatial derivatives use entire spatial slices at fixed forward t. Initial value and origin gauge are pointwise restrictions. Quotient or restricted-function extensionality therefore gives the exact carrier of Section 1.
+
+ANCHORS.
+  NSEMaxwell.Classical.Data [S005]
+  NSEMaxwell.Classical.SmoothVelocity [S005]
+  NSEMaxwell.Classical.SmoothPressure [S005]
+  NSEMaxwell.Classical.forwardSpacetime [S005]
+  NSEMaxwell.Classical.timeDerivative_congr_field [S006]
+  NSEMaxwell.Classical.scalarTimeDerivative_congr_field [S006]
+  ContDiffOn.congr [S059]
+
+G02. positive_time_calculus_identification
+STAGE = E01_GlobalLocalCalculus
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = PINNED_ANCHORS_AND_EXPLICIT_LOCAL_INPUTS
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+For t>0 the literal forward time derivative equals the native GR local time derivative. The spatial gradients, divergences, convections and Laplacians agree after the common Euclidean coordinate definitions are unfolded.
+
+DERIVATION.
+Ici 0 belongs to the neighborhood filter of every t>0. The within-derivative equalities therefore apply. Both spatial definitions use EuclideanSpace Real (Fin 3), the same coordinate vectors, and the same Frechet derivative. No ordinary two-sided time derivative at zero is inferred.
+
+ANCHORS.
+  Ici_mem_nhds [S001]
+  derivWithin_of_mem_nhds [S002]
+  fderivWithin_of_mem_nhds [S003]
+  NSEGR.localTimeDerivative [S004]
+  NSEGR.spatialPartial [S004]
+  NSEGR.nseResidual [S004]
+  NSEMaxwell.Classical.timeDerivative [S005]
+  NSEMaxwell.Classical.coordinateDerivative [S005]
+
+G03. forward_pressure_normalization
+STAGE = E02_PressureGauge
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G01
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+NSSolution(nu,a,u,p) implies NSSolution(nu,a,u,q) and q(t,0)=0 for t>=0, where q(t,x)=p(t,x)-p(t,0). The velocity, initial datum and arbitrary mean are preserved.
+
+DERIVATION.
+The map (t,x)->(t,0) preserves forwardSpacetime and is smooth. Composition and subtraction give joint forward smoothness of q. The subtracted scalar is spatially constant, hence has zero spatial gradient. Periodicity and every remaining NSE predicate are preserved. Analyticity is not needed here.
+
+ANCHORS.
+  ContDiffOn.comp [S007]
+  ContDiffOn.sub [S008]
+  NSEMaxwell.Classical.pressure_slice_smooth [S006]
+  NSEGR.gradient_sub_constant [S009]
+
+G04. arbitrary_mean_fourier_sobolev_realization
+STAGE = E03_FourierPressure
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = PINNED_ANCHORS_AND_EXPLICIT_LOCAL_INPUTS
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+For every smooth periodic real field b, its actual Fourier coefficients define compatible elements of every TorusSobolev(m); synthesis recovers b pointwise. The squared norm is sum_k <2pi k>^(2m)|bhat(k)|^2, including k=0. Convergence in every H^m is equivalent to spatial C-infinity convergence.
+
+DERIVATION.
+Use generic smooth-datum membership, coefficient reality, rapid decay and the actual coefficient/synthesis inverse. Pointwise Fourier injectivity applies to continuous periodic fields. Weighted Cauchy--Schwarz gives H^m -> C^r for m>r+3/2; the finite derivative L2 expansion gives C^m -> H^m. No mean-zero packaged realization theorem is used.
+
+ANCHORS.
+  SingularClosure.SMOOTH_DATUM_MEM_TORUS_SOBOLEV [S062]
+  SingularClosure.smoothDatumSobolev [S062]
+  SingularClosure.datumFourierCoeff_reality [S068]
+  SingularClosure.ALL_SOBOLEV_IMP_RAPID_SCALAR [S016]
+  SingularClosure.datumFourierCoeff_smoothFourierSynthesis [S016]
+  SingularClosure.datumFourierCoeff_injective_continuous_periodic [S067]
+  SingularClosure.torusSobolev_norm_sq [S066]
+
+G05. normalized_quadratic_pressure_identity
+STAGE = E03_FourierPressure
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G02, G04
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+Let R(A)hat(0)=0 and R(A)hat(k)=-sum_ij k_i k_j Ahat_ij(k)/|k|^2 for k!=0. Set Q(b,c)=R(b tensor c)-R(b tensor c)(0), Pi(b)=Q(b,b). For m>=2, Q:H^m x H^m -> H^m is continuous bilinear. Every smooth periodic NSE pair satisfies p-p(t,0)=Pi(v) and v_t=F(v):=nu Delta v-P div(v tensor v).
+
+DERIVATION.
+The R symbol has Frobenius operator norm <=1. The Sobolev product estimate and bounded point evaluation prove continuity of Q. Taking divergence of NSE gives Delta p=-div div(v tensor v); the Fourier symbol solves this equation. A periodic harmonic difference has only its zero coefficient, hence is spatially constant. The transport-pressure coefficient i sum_i k_i b_i/(2pi|k|^2), with b_i=2pi i sum_j k_j (v_j v_i)hat, equals the displayed R symbol. The linear torusSobolevPressure is applied to transport coefficients, then normalized; it is not identified directly with Pi.
+
+ANCHORS.
+  SingularClosure.INFINITE_TRANSPORT_PRESSURE_RECOVERY [S014]
+  SingularClosure.infiniteTransportPressure_coeff [S014]
+  SingularClosure.pressureFromTransport_recovery [S015]
+  SingularClosure.smoothFourierSynthesis_convection_coeff [S017]
+  SingularClosure.torusSobolevPressure [S018]
+  NSEGR.Assembly.poissonInverse_scalarLaplacian [S021]
+  NSEGR.leray [S004]
+  NSEGR.poissonInverse [S004]
+
+G06. weighted_wiener_banach_algebra
+STAGE = E04_PositiveTimeAnalyticity
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = PINNED_ANCHORS_AND_EXPLICIT_LOCAL_INPUTS
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+A_sigma={c: sum_k exp(sigma|2pi k|)|c(k)|<infinity} is a complex Banach space for sigma>=0. With Euclidean coefficient vectors and Frobenius tensors, ||v tensor w||_(A_sigma)<=||v||_(A_sigma)||w||_(A_sigma). P(0)=I, ||P(k)||<=1, and |(P div A)hat(k)|<=|2pi k||Ahat(k)|.
+
+DERIVATION.
+Multiplication by the positive weight is an isometric isomorphism onto vector-valued ell^1. The exponential triangle inequality bounds the convolution; absolute summability permits reindexing the lattice double sum. The real symmetric orthogonal projection formula, complexified, proves the Euclidean norm-one Leray bound. The default function-space supremum norm is not substituted for the Euclidean norm.
+
+ANCHORS.
+  lp.completeSpace [S030]
+  lp.norm_eq_tsum_rpow [S030]
+  lp.evalCLM [S030]
+  lp.tsumCLM [S030]
+  Memℓp.summable_of_one [S030]
+  Summable.mul_of_nonneg [S031]
+  Summable.tsum_prod [S032]
+  tsum_mul_tsum_of_summable_norm [S031]
+
+G07. smooth_trajectory_wiener_control
+STAGE = E04_PositiveTimeAnalyticity
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G04, G06
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+A supplied jointly smooth periodic trajectory is continuous into A_0 on every compact time interval, with finite uniform A_0 norm there.
+
+DERIVATION.
+Four spatial derivatives give |uhat(k)|<=C<k>^(-4), uniformly on a compact cylinder. The Z^3 majorant is summable. Uniform continuity of the spatial derivatives gives continuity into A_0 by dominated Fourier summation. The native uniform moment theorem is instantiated on the supplied trajectory, not on an unknown global solution.
+
+ANCHORS.
+  NSEMaxwell.HodgeProof.uniform_datumFourierCoeff_moment_bound [S043]
+  SingularClosure.FOURIER_POLYNOMIAL_DECAY [S037]
+  SingularClosure.summable_torusSobolevWeight_inv_four [S039]
+
+G08. complex_heat_and_duhamel_bounds
+STAGE = E04_PositiveTimeAnalyticity
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G06
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+For 0<theta<pi/2, omega>0 and T>0, on S_(theta,T) put sigma(z)=omega sqrt(nu Re z), L=exp(omega^2/4), C=2 exp(omega^2/2)/sqrt(e cos theta). For b in A_0, z->exp(nu z Delta)b is A_0-holomorphic and tends to b in A_0 as z->0 inside the sector. Also ||exp(nu z Delta)b||_(A_sigma(z))<=L||b||_(A_0), and ||B(V,W)||_X<=C sqrt(T/nu)||V||_X||W||_X.
+
+DERIVATION.
+For y>=0, -nu Re(z)y^2+sigma(z)y<=omega^2/4. On compact subsets of the sector, Re z has a positive lower bound, so derivatives of the heat multipliers admit summable coefficient majorants and give A_0 holomorphy. Their moduli are <=1; dominated summation gives strong A_0 convergence to b at zero. For 0<s<1 set b0=nu(1-s)Re z and d=sigma(z)-sigma(sz). Then y exp(-b0 y^2+d y)<=(e b0)^(-1/2)exp(d^2/(2b0)), with d^2/(2b0)<=omega^2/2. Multiplication by |z| and integration of (1-s)^(-1/2), whose integral is 2, give the exact Duhamel constant. The zero-mode divergence is zero.
+
+ANCHORS.
+  Complex.exp_add [S022]
+  Complex.hasDerivAt_exp [S023]
+  Complex.norm_exp [S024]
+  intervalIntegral.intervalIntegrable_rpow' [S035]
+
+G09. holomorphic_sector_space_complete
+STAGE = E04_PositiveTimeAnalyticity
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G06
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+X consists of A_0-holomorphic maps on S_(theta,T), continuous at 0 into A_0, with finite norm sup_z ||V(z)||_(A_sigma(z)). X is complete; the affine initial-value slice intersected with a closed norm ball is complete.
+
+DERIVATION.
+An X-Cauchy sequence is uniformly A_0-Cauchy. Its limit is continuous at zero and holomorphic by locally uniform convergence. Fatou applied at each z to the weighted coefficient differences preserves each uniform Cauchy estimate, so convergence also holds in X. Initial evaluation and the norm bound define closed sets. Fixed-weight lp completeness alone does not establish this variable-weight space.
+
+ANCHORS.
+  lp.completeSpace [S030]
+  TendstoLocallyUniformlyOn.differentiableOn [S033]
+  IsClosed.isComplete [S028]
+
+G10. duhamel_holomorphic_and_closed_ball
+STAGE = E04_PositiveTimeAnalyticity
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G08, G09
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+B(V,W)(z)=-z integral_0^1 exp(nu(1-s)z Delta) P div(V(sz) tensor W(sz)) ds belongs to X and tends to 0 in A_0 as z->0. The map H(V)=exp(nu z Delta)b+B(V,V) preserves the initial-value ball when the constants in G11 are imposed.
+
+DERIVATION.
+For fixed 0<s<1, heat smoothing and bounded convolution give an A_0-holomorphic integrand. On a compact disk inside the sector its norm is bounded by C_D(1-s)^(-1/2). On nested disks, Cauchy gives derivative domination by (C_D/d)(1-s)^(-1/2), an integrable majorant. Thus parameter differentiation under the integral has all required hypotheses. The sqrt(|z|) estimate gives continuity at zero. Holomorphy of the real-valued variable weight is never assumed.
+
+ANCHORS.
+  IsBoundedBilinearMap.hasFDerivAt [S027]
+  hasFDerivAt_integral_of_dominated_of_fderiv_le [S034]
+  TendstoLocallyUniformlyOn.differentiableOn [S033]
+  Complex.norm_iteratedDeriv_le_of_forall_mem_sphere_norm_le [S025]
+  intervalIntegral.intervalIntegrable_rpow' [S035]
+
+G11. periodic_wiener_complex_sector_fixed_point
+STAGE = E04_PositiveTimeAnalyticity
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G08, G09, G10
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+For b in A_0 with ||b||_(A_0)<=M and M>0, choose R=2LM and T=nu/(64 C^2 L^2 M^2). There exists a unique fixed point in the complete affine closed ball of radius R; its contraction constant is <=1/2. If k dot bhat(k)=0 for every k, the fixed point is solenoidal. Its zero coefficient is bhat(0), with no mean restriction.
+
+DERIVATION.
+K=C sqrt(T/nu)=1/(8LM), hence KR=1/4. The heat path makes the affine ball nonempty; ||H(V)||<=R/2+R/4 and ||H(V)-H(W)||<=2KR||V-W||. Apply the cited fixed-point theorem on this complete subtype. Fourier divergence of every nonlinear iterate vanishes after projection; the zero coefficient remains bhat(0).
+
+ANCHORS.
+  ContractingWith.fixedPoint [S026]
+  ContractingWith.fixedPoint_isFixedPt [S026]
+  ContractingWith.fixedPoint_unique [S026]
+
+G12. physical_nse_projected_mild_equation
+STAGE = E04_PositiveTimeAnalyticity
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G02, G05, G07, G08
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+Every supplied smooth NSE trajectory, restarted at s0>=0, satisfies uhat_t(k)+nu|2pi k|^2 uhat(k)=-(P div(u tensor u))hat(k), and therefore the actual A_0-valued heat/Duhamel equation on each compact forward interval.
+
+DERIVATION.
+Differentiate its actual Fourier coefficients under the finite-torus integral, use integration by parts and the pressure projection identity, and integrate the scalar coefficient ODE. G07 and the integrable one-derivative heat bound justify summation and time integration in A_0. This establishes the physical equation required for identification, not just a formal coefficient identity.
+
+ANCHORS.
+  SingularClosure.smoothFourierSynthesis_convection_coeff [S017]
+  SingularClosure.datumFourierCoeff_coordinateDerivative [S073]
+  SingularClosure.fourierSobolevRhs_coefficient_eq_fullRhs [S069]
+
+G13. periodic_wiener_mild_uniqueness
+STAGE = E04_PositiveTimeAnalyticity
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G06, G08
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+Two A_0-continuous real-time mild solutions on [0,Tprime], with the same initial value and norms bounded by M0, are equal.
+
+DERIVATION.
+Their difference d satisfies d(t)<=(2M0/sqrt(e nu)) integral_0^t (t-s)^(-1/2)d(s) ds. Choose h>0 with 4M0 sqrt(h)/sqrt(e nu)<1. Taking the supremum on [0,h] forces d=0. Restart the semigroup equation on successive intervals of length <=h; finitely many cover [0,Tprime]. Membership of the supplied smooth solution in the analytic weighted ball is not assumed.
+
+ANCHORS.
+  intervalIntegral.intervalIntegrable_rpow' [S035]
+
+G14. identify_analytic_solution_at_every_positive_center
+STAGE = E04_PositiveTimeAnalyticity
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G07, G11, G12, G13
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+For every tau>0, the supplied smooth trajectory equals the complex-sector fixed point on a real interval containing tau.
+
+DERIVATION.
+Set M_tau=max(1,sup_[tau/2,tau]||u(s)||_(A_0)), T_tau=nu/(64C^2L^2M_tau^2), h=min(tau/4,T_tau/4), s0=tau-h. Then s0>0 and h lies strictly inside the sector lifetime. G12 and G13 identify the real solutions up to a time strictly beyond h. Thus tau is an interior analytic center. No lower bound for these radii as tau->0 is needed.
+
+ANCHORS.
+  NSEMaxwell.HodgeProof.uniform_datumFourierCoeff_moment_bound [S043]
+
+G15. joint_factorial_bound_and_velocity_analyticity
+STAGE = E04_PositiveTimeAnalyticity
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G14
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+The actual velocity is jointly real analytic on (0,infinity) x T3. On a sufficiently small real cylinder there are C0,A>0 such that ||D^n u||<=C0 A^n n! for every n.
+
+DERIVATION.
+A closed complex time disk admits a fixed positive Fourier weight sigma. Cauchy bounds the mth coefficient derivative by m! R0^(-m) M exp(-sigma|2pi k|). Spatial differentiation and y^r<=r!exp(y) leave a summable exponential margin, giving |d_t^m d_x^alpha u|<=C0 m!|alpha|! R0^(-m)(2/sigma)^|alpha|. Expanding the total n-linear derivative in four coordinate directions gives A=4 max(R0^(-1),2/sigma), since m!|alpha|!<=n!. The actual source is already jointly smooth; the native factorial-bound theorem therefore applies. Separate real analyticity is not substituted for this mixed bound.
+
+ANCHORS.
+  Complex.norm_iteratedDeriv_le_of_forall_mem_sphere_norm_le [S025]
+  NSEGR.NativeLiterature.fourier_partialWord_hasSumUniformly [S042]
+  NSEGR.Assembly.summable_frequencyExpWeight [S041]
+  NSEGR.Assembly.summable_latticeExpMajorant [S041]
+  NSEGR.Assembly.analyticAt_of_iteratedFDeriv_bound [S040]
+
+G16. origin_normalized_pressure_joint_analyticity
+STAGE = E04_PositiveTimeAnalyticity
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G05, G15
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+For the actual smooth pressure p of the supplied NSE trajectory, q(t,x)=p(t,x)-p(t,0) is jointly analytic on positive time.
+
+DERIVATION.
+H=-sum_ij partial_i partial_j(u_i u_j) is jointly analytic by G15 and analytic calculus. The native analytic Poisson theorem gives pi=poissonInverse(H) analytic on every positive-time open slab. Since H=Delta p, the actual inverse identity gives pi=p-mean(p); therefore pi-pi(t,0)=p-p(t,0)=q. This discharges the analytic-input hypothesis before using analytic Hodge preservation.
+
+ANCHORS.
+  NSEGR.Assembly.analyticHodge_scalarSpatialPartial_joint [S019]
+  NSEGR.Assembly.poissonInverse_joint_analytic_on_open_slab [S020]
+  NSEGR.Assembly.poissonInverse_scalarLaplacian [S021]
+  AnalyticOnNhd.comp [S012]
+  AnalyticOnNhd.mul [S013]
+  AnalyticOnNhd.sub [S013]
+  Finset.analyticOnNhd_sum [S013]
+
+G17. positive_time_nse_representative
+STAGE = E05_LocalRepresentatives
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G02
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+A jointly analytic periodic NSE pair on all positive times defines an actual native NSERepresentative and NSEgerm at every tau>0; one may use radius tau/2.
+
+DERIVATION.
+The slab |t-tau|<tau/2 lies in t>0. Restrict joint analyticity, periodicity and the exact PDE to this slab, using G02 for the derivative conventions when the input is a forward trajectory. Populate the actual AnalyticPeriodicPair and LocalNSE fields and apply NSEgerm.mk. This goal takes positive-time analyticity as its local input; G15 and G16 derive that input from S_nu(a).
+
+ANCHORS.
+  AnalyticOnNhd.mono [S044]
+  NSEGR.AnalyticPeriodicPair [S004]
+  NSEGR.LocalNSE [S004]
+  NSEGR.NSERepresentative [S011]
+  NSEGR.NSEgerm.mk [S011]
+
+G18. physical_native_local_equivalence_family
+STAGE = E06_NativeLocalEquivalence
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = PINNED_ANCHORS_AND_EXPLICIT_LOCAL_INPUTS
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+For every tau>0 choose the actual native c_tau,r_tau,h_tau,i_tau and set E_tau=exactSectorEquivOfContracts c_tau r_tau h_tau i_tau, D_tau=reverseGerm h_tau. Then D_tau E_tau=id and E_tau D_tau=id, with D_tau the actual metric boundary decoder.
+
+DERIVATION.
+Instantiate nativeLawPackages_of_literatureInputs at literatureInputs_native, nu,rho,tau and rho!=0. Its output supplies all named contracts and the actual inverse laws. The definition of exactSectorEquivOfContracts identifies its maps with the native forwardGerm and reverseGerm. Apply the two existing inverse theorems. Choice of a bare unrelated carrier equivalence would not identify its inverse with the physical decoder.
+
+ANCHORS.
+  NSEGR.NativeLiterature.literatureInputs_native [S048]
+  NSEGR.Assembly.nativeLawPackages_of_literatureInputs [S046]
+  NSEGR.exactSectorEquivOfContracts [S047]
+  NSEGR.reverseGerm [S047]
+  NSEGR.forwardGerm [S047]
+  NSEGR.reverseGerm_forwardGerm [S047]
+  NSEGR.forwardGerm_reverseGerm [S047]
+
+G19. nse_germ_center_velocity
+STAGE = E09_GermEvaluation
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = PINNED_ANCHORS_AND_EXPLICIT_LOCAL_INPUTS
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+Define evN_tau:NSEgerm(nu,tau)->Field by evN_tau([u,p])=u(tau). This is independent of the representative and has the displayed computation rule.
+
+DERIVATION.
+SameFlowAt contains eventual equality of the entire velocity field near tau. Evaluation at the center yields equality of fields, so Quotient.lift applies. The quotient computation rule follows from the eliminator. No pressure evaluation on the pressure-gauge quotient is used.
+
+ANCHORS.
+  NSEGR.NSERepresentative [S011]
+  NSEGR.NSEgerm [S011]
+  NSEGR.NSEgerm.mk [S011]
+  NSEGR.sameFlowAt_iff_origin_gauge [S011]
+  Filter.EventuallyEq.eq_of_nhds [S053]
+
+G20. gr_germ_center_velocity
+STAGE = E09_GermEvaluation
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = PINNED_ANCHORS_AND_EXPLICIT_LOCAL_INPUTS
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+Define evG_tau:GRgerm(nu,rho,tau)->Field by evG_tau([g])=boundaryVelocity(boundaryK(g))(tau). This is independent of the metric representative.
+
+DERIVATION.
+SameMetricAt gives eventual equality of full spatial boundary-tensor slices, hence of boundary velocities. This full-slice equality is required by the spatially nonlocal Leray operator. Evaluate the equality at tau and use Quotient.lift. Neither representative choices nor radii remain in the output.
+
+ANCHORS.
+  NSEGR.CanonicalRepresentative [S054]
+  NSEGR.GRgerm [S011]
+  NSEGR.GRgerm.mk [S011]
+  NSEGR.sameMetricAt_boundaryK [S010]
+  NSEGR.sameMetricAt_boundaryFields [S010]
+  NSEGR.boundaryVelocity_congr_slice [S055]
+  Filter.EventuallyEq.eq_of_nhds [S053]
+
+G21. positive_recovery_interval_and_germ_identification
+STAGE = E08_RecoveryIntervals
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G18, G19, G20
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+For tau>0, an actual local NSE representative n at tau and its forward metric representative g admit d>0 with d<=tau/2, d<=n.radius and d<=g.timeRadius, such that v_g=n.velocity and p_g-p_g(t,0)=n.pressure-n.pressure(t,0) throughout |t-tau|<d. Hence evG_tau(E_tau(NSEgerm.mk n))=evN_tau(NSEgerm.mk n), and evN_tau(D_tau gamma)=evG_tau(gamma).
+
+DERIVATION.
+Native forward recovery gives SameFlowAt on a neighborhood R of tau. Apply positive_timeInterval_subset with cap min(tau/2,min(n.radius,g.timeRadius)) and neighborhood R. The cap, rather than the name of that theorem, establishes positive-time containment. Subtract the x=0 gauge equality to obtain exact normalized pressures. ReverseRepresentative has the actual decoded velocity by definition. For analytic local pairs the origin gauge is analytic on the intersection of their slabs, by the cited analytic gauge theorem.
+
+ANCHORS.
+  NSEGR.forwardRepresentative [S049]
+  NSEGR.forward_velocity_recovery [S049]
+  NSEGR.forward_pressure_gauge_recovery [S049]
+  NSEGR.Assembly.positive_timeInterval_subset [S052]
+  NSEGR.Assembly.localNSE_restrict_native [S051]
+  NSEGR.sameFlowAt_iff_origin_gauge [S011]
+  NSEGR.origin_pressure_gauge_analytic [S010]
+  NSEGR.sameFlowAt_iff_analytic_pressure_gauge [S010]
+
+G22. positive_time_profile_and_spatial_trace
+STAGE = E10_FamilyCarrier
+KIND = DEFINITION
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = DEFINITION_FIXED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G04, G05
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+Define P_nu^+(a) as pairs (v,q) on (0,infinity) x T3 that are jointly analytic, periodic, solve unforced incompressible NSE, obey q(t,0)=0, and satisfy lim_(t downarrow 0)||v(t)-a||_(H^m)=0 for every m. No temporal derivative or pressure trace belongs to this definition.
+
+DERIVATION.
+The spatial trace is meaningful through the actual coefficient/H^m identification in G04. G05 derives q=Pi(v) from the PDE and gauge; it is not an extra assumption. Equality is equality of these positive-time fields. This is an intermediate carrier; the frozen geometric target remains defined solely by geometric germs, velocity coherence and the spatial trace.
+
+ANCHORS.
+  SingularClosure.TorusSobolev [S066]
+  SingularClosure.torusSobolev_norm_sq [S066]
+  NSEMaxwell.Classical.Data [S005]
+
+G23. coherent_native_nse_family_carrier
+STAGE = E10_FamilyCarrier
+KIND = DEFINITION
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = DEFINITION_FIXED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G19, G22
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+For eta in product_(tau>0) NSEgerm(nu,tau), set W_eta(t)=evN_t(eta_t). Define N_nu^+(a) by: at each tau, some representative n of eta_tau agrees in velocity with W_eta on |t-tau|<d for a 0<d<tau within n.radius; and W_eta(t)->a in every H^m. Coherence is an intrinsic property and is invariant under changing representative after shrinking.
+
+DERIVATION.
+SameFlowAt relates any two representatives by equality of full velocity slices on a neighborhood. Intersect this neighborhood with the old coherence interval, the new representative domain, and t>0; select a symmetric interval with radius at most tau/2. Coherence transfers by equality. The family is a subtype of the dependent product; representative/radius/proof witnesses are not retained as data. Function and subtype extensionality determine equality.
+
+ANCHORS.
+  NSEGR.NSEgerm [S011]
+  NSEGR.NSERepresentative [S011]
+  NSEGR.sameFlowAt_iff_origin_gauge [S011]
+  NSEGR.timeInterval_mem_nhds [S045]
+  NSEGR.timeInterval_mono [S045]
+  Filter.inter_mem [S050]
+
+G24. coherent_geometric_family_carrier
+STAGE = E10_FamilyCarrier
+KIND = DEFINITION
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = DEFINITION_FIXED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G20, G22
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+PositiveTimeGRGermFamily is product_(tau>0) GRgerm(nu,rho,tau). Set V_gamma(t)=evG_t(gamma_t). GRForwardFamily(nu,rho,a) is its subtype satisfying DecodedVelocityCoherent and SpatialSmoothInitialTrace(a), exactly as in frozen Section 6. Coherence is intrinsic under representative change.
+
+DERIVATION.
+The metric-germ locality theorem gives equality of decoded full-slice fields on a neighborhood. Intersect with the coherence interval and the new representative domain and shrink below tau/2. This transfers the coherence witness. The trace concerns only V_gamma. No NSE predicate, encoding image, pressure trace, time trace, or common metric collar occurs in the definition. Proof witnesses do not affect subtype equality.
+
+ANCHORS.
+  NSEGR.GRgerm [S011]
+  NSEGR.CanonicalRepresentative [S054]
+  NSEGR.sameMetricAt_boundaryFields [S010]
+  NSEGR.timeInterval_mem_nhds [S045]
+  NSEGR.timeInterval_mono [S045]
+  Filter.inter_mem [S050]
+
+G25. coherent_native_family_decodes_to_positive_profile
+STAGE = E11_PositiveTimeDecode
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G05, G23
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+For eta in N_nu^+(a), B(eta):=(W_eta,Pi(W_eta)) lies in P_nu^+(a), and [B(eta)]_tau=eta_tau for every tau>0.
+
+DERIVATION.
+Each coherence representative is an analytic LocalNSE pair on a neighborhood. G05 identifies its normalized pressure with Pi(W_eta), since its velocity agrees with W_eta over complete spatial slices. Normalization preserves the analytic local equation. These neighborhoods cover every positive center; thus analyticity, PDE and gauge hold globally on positive time. The inherited trace gives membership of P. Normalized local equality gives SameFlowAt and hence the displayed germ identity.
+
+ANCHORS.
+  NSEGR.LocalNSE [S004]
+  NSEGR.Assembly.localNSE_restrict_native [S051]
+  NSEGR.origin_pressure_gauge_analytic [S010]
+  NSEGR.gradient_sub_constant [S009]
+  NSEGR.sameFlowAt_iff_origin_gauge [S011]
+
+G26. coherent_geometric_family_decodes_to_positive_profile
+STAGE = E11_PositiveTimeDecode
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G05, G18, G24
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+For gamma in G_nu,rho^+(a), (V_gamma,Pi(V_gamma)) belongs to P_nu^+(a). On every coherence interval this pair is the origin-normalized actual native boundary decode of the chosen metric representative.
+
+DERIVATION.
+Native reconstruction uses the actual vacuum metric, actual boundary tensor and zero constitutive stress to produce LocalNSE. Restrict to the coherence interval. Full-slice velocity equality and G05 identify the pressure after normalization. Consequently every positive point has an analytic NSE neighborhood. The trace is precisely the admitted spatial trace. No metric gluing or additional geometric premise is used.
+
+ANCHORS.
+  NSEGR.Assembly.geometricReconstructionLaws_native [S057]
+  NSEGR.localNSE_of_reconstruction_and_zero_stress [S045]
+  NSEGR.reverseRepresentative [S047]
+  NSEGR.GR_TO_NSE_OF_GEOMETRIC_RECONSTRUCTION [S047]
+  NSEGR.Assembly.localNSE_restrict_native [S051]
+  NSEGR.origin_pressure_gauge_analytic [S010]
+
+G27. spatial_jet_polynomial
+STAGE = E13_InitialTrace
+KIND = THEOREM
+ROUTE = ALTERNATIVE_JET_ROUTE
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G04, G05
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+Set J_0(b)=b and J_(n+1)(b)=nu Delta J_n(b)-sum_(j=0)^n binom(n,j) P div(J_j(b) tensor J_(n-j)(b)). For m>=2, J_n:H^(m+2n)->H^m is a continuous polynomial of degree <=n+1 and is Lipschitz on each bounded input ball.
+
+DERIVATION.
+Induct in n. The linear Laplacian costs two Sobolev orders. For each product term both lower jets are controlled in H^(m+1) by an input in H^(m+2n+2); use the Sobolev algebra estimate and P div:H^(m+1)->H^m. Finite sums and bounded multilinear compositions preserve polynomial continuity and bounded-ball Lipschitz bounds. The generic Methlib bilinear/Fourier-RHS anchors implement these operations without smallness or a mean-zero premise.
+
+ANCHORS.
+  SingularClosure.torusSobolevViscous [S070]
+  SingularClosure.torusSobolevLeray [S070]
+  SingularClosure.sobolevDivergenceProductBilinear [S069]
+  SingularClosure.fourierSobolevRhs_contDiff [S069]
+  SingularClosure.SOBOLEV_DIVERGENCE_PRODUCT_NORM_BOUND [S064]
+
+G28. time_jet_identities_and_spatial_trace_limits
+STAGE = E13_InitialTrace
+KIND = THEOREM
+ROUTE = ALTERNATIVE_JET_ROUTE
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G27
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+For a supplied smooth normalized positive-time NSE pair, partial_t^n v(t)=J_n(v(t)); with K_n(b)=sum_j binom(n,j)Q(J_j(b),J_(n-j)(b)), partial_t^n q(t)=K_n(v(t)). If v(t)->a in every H^m, these converge to J_n(a),K_n(a) in every H^m and after every spatial derivative uniformly.
+
+DERIVATION.
+Differentiate the actual positive-time PDE n times and apply the product rule; this gives precisely the J recurrence. Apply the same rule to q=Q(v,v). Polynomial continuity and the all-order spatial trace give the H^m limits. Sobolev embedding with m>|alpha|+3/2 gives each mixed derivative limit. This is differentiation of an existing trajectory, not an existence theorem for a derivative-losing Frechet ODE.
+
+ANCHORS.
+  SingularClosure.ALL_SOBOLEV_IMP_RAPID_SCALAR [S016]
+  SingularClosure.sobolev_weighted_component_summable [S016]
+
+G29. joint_continuous_jet_extension
+STAGE = E13_InitialTrace
+KIND = THEOREM
+ROUTE = ALTERNATIVE_JET_ROUTE
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G28
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+Extend every velocity and pressure mixed jet at zero by the limits in G28. The extended fields are jointly C-infinity on [0,infinity) x T3, with right time jets J_n(a),K_n(a).
+
+DERIVATION.
+For W_n(t)=J_n(v(t)), continuity of W_(n+1) and the positive-time FTC give W_n(t)-W_n(0)=integral_0^t W_(n+1)(s)ds by taking the lower endpoint to zero. Hence the right derivative at zero is W_(n+1)(0). Pack finitely many mixed derivatives of each total order into its symmetric multilinear joint jet. Their component limits give operator-norm continuity. Positive-time derivative identities and continuous linear currying supply the actual hderiv/C tower required by the native closed-halfspace theorem. The same construction applies to pressure. No factorial estimate at zero is claimed.
+
+ANCHORS.
+  hasDerivWithinAt_Ici_of_tendsto_deriv [S060]
+  NSEMaxwell.HodgeProof.contDiffOn_forwardSpacetime_of_continuous_jets [S075]
+  NSEMaxwell.Spacetime.uniqueDiffOn_forwardSpacetime [S077]
+
+G30. physical_fourier_sobolev_norm_derivative
+STAGE = E13_InitialTrace
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G02, G04, G05
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+For the actual smooth positive-time field v with v_t=F(v), let U_m(t)=Fourier(v(t)) in TorusSobolev(m). Then HasDerivAt U_m (fourierSobolevRhs nu m (U_(m+2)(t))) t for every t>0.
+
+DERIVATION.
+On a compact cylinder around t, every spatial derivative through order m of the difference quotient minus v_t equals integral_0^1 [partial_x^alpha v_t(t+theta h)-partial_x^alpha v_t(t)]dtheta. Uniform continuity makes its C^m norm tend to zero. The C^m-to-H^m estimate and the defining Fourier Hilbert isometry give an actual norm derivative in TorusSobolev(m). Integration by parts, convolution and G05 identify it with the exact fourierSobolevRhs coefficient sequence. Coordinatewise coefficient derivatives alone would not discharge this goal.
+
+ANCHORS.
+  SingularClosure.fourierSobolevRhs [S069]
+  SingularClosure.fourierSobolevRhs_coefficient_eq_fullRhs [S069]
+  SingularClosure.datumFourierCoeff_coordinateDerivative [S073]
+  SingularClosure.smoothFourierSynthesis_convection_coeff [S017]
+  SingularClosure.torusSobolevRepr [S066]
+
+G31. compatible_fourier_curves_and_right_boundary_equation
+STAGE = E13_InitialTrace
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G22, G30
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+For any positive-time smooth NSE pair with the spatial trace in G22, put U_m(0)=Fourier(a). Each U_m is ContinuousOn(Ici 0), all U_m share one coefficient sequence at every forward time, and HasDerivWithinAt U_m (F_m(U_(m+2)(t))) (Ici 0) t holds for every t>=0.
+
+DERIVATION.
+Positive-time continuity follows from G30, and the boundary limit is the admitted H^m trace. Compatibility is definitional because every U_m is the same physical coefficient sequence. F_m is continuous, so deriv U_m(t)=F_m(U_(m+2)(t)) tends to F_m(U_(m+2)(0)). Apply hasDerivWithinAt_Ici_of_tendsto_deriv with s=Ioi 0. Its differentiability, continuity and derivative-limit premises have now been derived. Combine the boundary result with the positive-time derivative; uniqueDiffOn_Ici identifies the literal within derivative.
+
+ANCHORS.
+  SingularClosure.fourierSobolevRhs_contDiff [S069]
+  hasDerivWithinAt_Ici_of_tendsto_deriv [S060]
+  HasDerivWithinAt.derivWithin [S002]
+  uniqueDiffOn_Ici [S061]
+
+G32. sobolev_scale_all_forward_time_orders
+STAGE = E13_InitialTrace
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G31
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+For every m, U_m is ContDiffOn Real infinity on Ici 0.
+
+DERIVATION.
+Instantiate SOBOLEV_SCALE_TIME_SMOOTH with the actual compatible U_m and F_m=fourierSobolevRhs nu m. G31 supplies continuity and the within-derivative equation at every forward time. The existing RHS theorem supplies smoothness of F_m:H^(m+2)->H^m. Its simultaneous induction in temporal order consumes two spatial orders per step, all of which are available. The differential-equation hypothesis is discharged; no trajectory existence is assumed by this invocation.
+
+ANCHORS.
+  SingularClosure.SOBOLEV_SCALE_TIME_SMOOTH [S065]
+  SingularClosure.fourierSobolevRhs_contDiff [S069]
+
+G33. joint_forward_velocity_synthesis
+STAGE = E13_InitialTrace
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G04, G32
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+The extension vbar(t)=v(t) for t>0, vbar(0)=a is jointly ContDiffOn Real infinity on forwardSpacetime.
+
+DERIVATION.
+Apply the generic joint synthesis theorem to all smooth U_m and their coefficient compatibility from G31. G04 identifies this synthesized field with the original v at positive times and a at zero. ContDiffOn.congr transfers the conclusion to precisely vbar. The generic synthesis theorem has no SpectralMeanZero hypothesis.
+
+ANCHORS.
+  SingularClosure.SOBOLEV_CURVES_JOINT_SPACETIME_SMOOTH [S063]
+  SingularClosure.datumFourierCoeff_smoothFourierSynthesis [S016]
+  SingularClosure.datumFourierCoeff_injective_continuous_periodic [S067]
+  ContDiffOn.congr [S059]
+
+G34. joint_forward_pressure_synthesis_and_origin_gauge
+STAGE = E13_InitialTrace
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G05, G32
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+qbar(t)=Pi(vbar(t)), including qbar(0)=Pi(a), is jointly smooth on forwardSpacetime and agrees with the supplied normalized positive-time pressure.
+
+DERIVATION.
+Apply SOBOLEV_TRANSPORT_PRESSURE_JOINT_SMOOTH to the same all-order compatible U_m. Its literal pressure multiplier is composed with the actual divergence-product coefficients; substitution gives exactly the R(vbar tensor vbar) symbol in G05. Subtract the value at spatial origin using smooth composition and subtraction. Pressure uniqueness from G05 identifies the result at every positive time. No pressure trace is included in the target.
+
+ANCHORS.
+  SingularClosure.SOBOLEV_TRANSPORT_PRESSURE_JOINT_SMOOTH [S018]
+  SingularClosure.torusSobolevPressure [S018]
+  SingularClosure.infiniteTransportPressure_coeff [S014]
+  SingularClosure.pressureFromTransport_recovery [S015]
+  ContDiffOn.comp [S007]
+  ContDiffOn.sub [S008]
+
+G35. initial_nse_from_forward_smooth_extension
+STAGE = E14_InitialPDE
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G33, G34
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+The extended fields satisfy the literal forward NSE, divergence freedom and initial data on all t>=0. In particular partial_t^+ vbar(0)=nu Delta a-P div(a tensor a) and qbar(0)=Pi(a).
+
+DERIVATION.
+The native forward-spacetime calculus makes the within-time derivative, spatial derivatives, convection and full residual continuous on the closed halfspace. The residual vanishes on its positive-time interior. Its closure is the full forward domain, so equality extends by the cited closure theorem. Divergence follows by the same argument or from div a=0. Equivalently evaluate the actual boundary equation in G31 and the pressure identity. G29 supplies an alternative complete smoothness route with the same conclusion.
+
+ANCHORS.
+  NSEMaxwell.Spacetime.timeDerivative_smooth [S077]
+  NSEMaxwell.Spacetime.coordinateDerivative_trajectory_smooth [S077]
+  NSEMaxwell.Spacetime.time_restriction_derivWithin [S077]
+  NSEMaxwell.Spacetime.spatial_restriction_fderiv [S077]
+  NSEMaxwell.Spacetime.closure_interior_forwardSpacetime [S077]
+  NSEMaxwell.CanonicalSmoothness.divergence_trajectory_smooth [S074]
+  Set.EqOn.of_subset_closure [S071]
+  closure_Ioi [S072]
+
+G36. restriction_extension_equivalence
+STAGE = E15_GlobalMaps
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G01, G03, G15, G16, G22, G35
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+R:S_nu(a) ~= P_nu^+(a), with R(u,q)=(u,q)|_(t>0) and inverse T(v,q)=(vbar,Pi(vbar)), vbar(0)=a.
+
+DERIVATION.
+G15--G16 prove the analytic requirement for the restricted pair. Joint forward smoothness and spatial compactness give uniform convergence of every spatial derivative at zero, hence the all-H^m trace. Conversely G31--G35 derive joint forward smoothness and the actual right-time NSE from the velocity-only trace. G05 identifies the existing normalized pressure with Pi(v) for t>0. Thus R T=id there; T R=id on positive time and at zero by continuity and normalization. Forward-restriction extensionality from G01 completes the equality. The alternate G27--G29 route yields the identical T.
+
+ANCHORS.
+  ContDiffOn.congr [S059]
+  NSEMaxwell.Classical.timeDerivative_congr_field [S006]
+
+G37. positive_profile_native_family_equivalence
+STAGE = E15_GlobalMaps
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G17, G19, G23, G25
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+A:P_nu^+(a) ~= N_nu^+(a), with A(v,q)_tau=[v,q]_tau and inverse B(eta)=(W_eta,Pi(W_eta)).
+
+DERIVATION.
+G17 produces every local representative, and center evaluation gives W_(A(v,q))=v. Restrict the same positive-time pair to each slab to obtain coherence; the trace is inherited. G25 proves B is well-defined and gives [B(eta)]_tau=eta_tau. Hence A B=id pointwise on germs. Conversely B A=(v,Pi(v))=(v,q) by G05. Different valid input radii give the same germ by restriction, so A is independent of the radius witness.
+
+ANCHORS.
+  NSEGR.NSEgerm.mk [S011]
+  NSEGR.sameFlowAt_iff_origin_gauge [S011]
+  NSEGR.origin_pressure_gauge_analytic [S010]
+
+G38. native_geometric_family_equivalence
+STAGE = E15_GlobalMaps
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G18, G21, G23, G24
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+C:N_nu^+(a) ~= G_nu,rho^+(a), with C(eta)_tau=E_tau(eta_tau) and inverse D(gamma)_tau=D_tau(gamma_tau). Their decoded positive-time velocities are identical to those of the input families.
+
+DERIVATION.
+G21 gives center-velocity preservation for each pointwise map. For N->G, intersect the NSE coherence interval with the actual forward-recovery interval to obtain GR coherence. For G->N, the reverseRepresentative of a coherence metric has exactly its decoded velocity, so the same interval witnesses NSE coherence. The spatial traces are unchanged. Pointwise native inverse identities give D C=id and C D=id; function and subtype extensionality remove all proof-witness differences.
+
+ANCHORS.
+  NSEGR.forwardGerm [S047]
+  NSEGR.reverseGerm [S047]
+  NSEGR.forward_pressure_gauge_recovery [S049]
+  NSEGR.reverseRepresentative [S047]
+  NSEGR.reverseGerm_forwardGerm [S047]
+  NSEGR.forwardGerm_reverseGerm [S047]
+
+G39. frozen_global_maps_as_composites
+STAGE = E15_GlobalMaps
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G26, G36, G37, G38
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+Phi=C o A o R and Psi=T o B o D are well-defined between exactly the frozen carriers. Explicitly Phi(u,q)_tau=E_tau([u,q]_tau), while Psi(gamma)=(U_gamma,Pi(U_gamma)), with U_gamma(t)=V_gamma(t) for t>0 and U_gamma(0)=a.
+
+DERIVATION.
+Expand the three carrier equivalences. D preserves actual center velocity, so B D(gamma)=(V_gamma,Pi(V_gamma)); T is its forced smooth forward extension. G26 independently identifies this positive-time pair with each actual local metric decode. Thus these composites agree with the frozen maps of Section 6, rather than merely giving an unspecified abstract bijection.
+
+ANCHORS.
+  NSEGR.forwardGerm [S047]
+  NSEGR.reverseGerm [S047]
+  NSEGR.forward_velocity_recovery [S049]
+  NSEGR.sameFlowAt_iff_origin_gauge [S011]
+
+G40. global_trajectory_inverse_identity
+STAGE = E16_InverseIdentities
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G05, G39
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+For every (u,q) in S_nu(a), Psi(Phi(u,q))=(u,q).
+
+DERIVATION.
+At every t>0, native center recovery gives U_(Phi(u,q))(t)=u(t); pressure recovery and normalization give Pi(u(t))=q(t). Both normalized pairs extend continuously to zero, with the same velocity a and pressure Pi(a). Equality on all forward times is precisely source equality by G01.
+
+ANCHORS.
+  NSEGR.forward_velocity_recovery [S049]
+  NSEGR.reverseGerm_forwardGerm [S047]
+  NSEMaxwell.Classical.timeDerivative_congr_field [S006]
+
+G41. global_family_inverse_identity
+STAGE = E16_InverseIdentities
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G18, G21, G39
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+For gamma in G_nu,rho^+(a), D_tau(gamma_tau)=[Psi(gamma)]_tau for each tau>0, and consequently Phi(Psi(gamma))=gamma.
+
+DERIVATION.
+Choose a coherence representative at tau. Its actual velocity equals V_gamma on a positive symmetric neighborhood. G05 identifies its normalized pressure with Pi(V_gamma), so it defines the same NSEgerm as Psi(gamma). Apply E_tau D_tau=id to obtain equality of the tau components. This holds at every positive center; function and subtype extensionality prove the family equality.
+
+ANCHORS.
+  NSEGR.reverseRepresentative [S047]
+  NSEGR.sameFlowAt_iff_origin_gauge [S011]
+  NSEGR.forwardGerm_reverseGerm [S047]
+
+G42. NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE
+STAGE = E17_GlobalEquivalence
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G39, G40, G41
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+For every nu>0, rho!=0 and a in C-infinity_sigma(T3), S_nu(a) ~= G_nu,rho^+(a), with toFun=Phi and invFun=Psi. More precisely S_nu(a) ~= P_nu^+(a) ~= N_nu^+(a) ~= G_nu,rho^+(a).
+
+DERIVATION.
+The two explicit maps are defined in G39 and have both inverse identities G40--G41. These fields construct the exact equivalence. Equivalently compose the equivalences G36, G37 and G38. Every application-specific analytic and semantic premise has been derived in the preceding goals; the local geometric contracts are supplied by G18. Empty carriers are allowed; nonemptiness is not inferred.
+
+ANCHORS.
+  NSEGR.exactSectorEquivOfContracts [S047]
+
+G43. literal_nssolution_nonempty_normalized_source
+STAGE = E18_ExistenceEquivalence
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G01, G03
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+(exists u,p, NSSolution(nu,a,u,p)) iff Nonempty(S_nu(a)).
+
+DERIVATION.
+Forward: normalize pressure by G03 and pass to forward restrictions by G01. Reverse: choose a representative of the forward restriction, or totalize it arbitrarily for t<0. All native hypotheses concern forwardSpacetime, initial data or within derivatives, so G01 makes the totalization satisfy the exact original NSSolution predicate. No assertion about the negative-time extension is added.
+
+ANCHORS.
+  NSEMaxwell.Classical.NSSolution [S079]
+  NSEMaxwell.Classical.Data [S005]
+  NSEMaxwell.Classical.timeDerivative_congr_field [S006]
+  NSEMaxwell.Classical.scalarTimeDerivative_congr_field [S006]
+
+G44. geometric_global_existence_predicate
+STAGE = E18_ExistenceEquivalence
+KIND = DEFINITION
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = DEFINITION_FIXED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G24
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+Define GRFamilyB(nu,rho):=forall a, Data(a)->Nonempty(G_nu,rho^+(a)), using the original full smooth periodic divergence-free datum class and the independently defined geometric carrier.
+
+DERIVATION.
+This quantification introduces no new admission and no mean restriction. The target carrier is exactly G24. The definition of FeffermanB supplies the unchanged source datum quantification for the following corollary.
+
+ANCHORS.
+  NSEMaxwell.Classical.Data [S005]
+  NSEMaxwell.Classical.FeffermanB [S079]
+
+G45. NSE_B_IFF_GR_BOUNDARY_FAMILY
+STAGE = E18_ExistenceEquivalence
+KIND = THEOREM
+ROUTE = PRIMARY
+MATHEMATICAL_STATUS = B_TIER_DERIVED
+NEW_INTEGRATION_LEAN_STATUS = NOT_IMPLEMENTED
+DEPENDS_ON = G42, G43, G44
+HYPOTHESES = nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below
+
+STATEMENT.
+For every nu>0 and rho!=0, FeffermanB(nu) iff GRFamilyB(nu,rho).
+
+DERIVATION.
+For each datum, G43 identifies literal source existence with Nonempty(S_nu(a)); G42 and Equiv.nonempty_congr identify that with Nonempty(G_nu,rho^+(a)). Quantify the equivalence over the unchanged Data predicate. This proves equivalence of the two universal existence propositions, not either proposition independently.
+
+ANCHORS.
+  Equiv.nonempty_congr [S078]
+  NSEMaxwell.Classical.FeffermanB [S079]
+  NSEMaxwell.Classical.NSSolution [S079]
+
+
+C.7 COVERAGE OF THE 24 EXISTING RESERVED ENDPOINTS
+-------------------------------------------------
+nse_gr_calculus_agree_on_positive_time
+  STAGE = E01_GlobalLocalCalculus
+  FINE_GOALS = G02
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+normalized_forward_pressure
+  STAGE = E02_PressureGauge
+  FINE_GOALS = G01, G03
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+periodic_pressure_eq_normalized_quadratic_pressure
+  STAGE = E03_FourierPressure
+  FINE_GOALS = G04, G05
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+nse_positive_time_joint_analytic_normalized
+  STAGE = E04_PositiveTimeAnalyticity
+  FINE_GOALS = G06, G07, G08, G09, G10, G11, G12, G13, G14, G15, G16
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+periodic_wiener_complex_sector_fixed_point
+  STAGE = E04_PositiveTimeAnalyticity
+  FINE_GOALS = G06, G08, G09, G10, G11
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+periodic_wiener_mild_uniqueness
+  STAGE = E04_PositiveTimeAnalyticity
+  FINE_GOALS = G12, G13
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+positive_time_nse_representative
+  STAGE = E05_LocalRepresentatives
+  FINE_GOALS = G02, G15, G16, G17
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+NSEGR.GRgerm.velocityAtCenter
+  STAGE = E09_GermEvaluation
+  FINE_GOALS = G20
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+DecodedVelocityCoherent
+  STAGE = E10_FamilyCarrier
+  FINE_GOALS = G21, G24
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+GRForwardFamily
+  STAGE = E10_FamilyCarrier
+  FINE_GOALS = G22, G24
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+PositiveTimeGRGermFamily
+  STAGE = E10_FamilyCarrier
+  FINE_GOALS = G20, G24
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+SpatialSmoothInitialTrace
+  STAGE = E10_FamilyCarrier
+  FINE_GOALS = G04, G22, G24
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+coherent_family_decoded_positive_time_nse
+  STAGE = E11_PositiveTimeDecode
+  FINE_GOALS = G05, G18, G21, G24, G26
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+nse_spatial_jet_polynomial
+  STAGE = E13_InitialTrace
+  FINE_GOALS = G27
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+nse_time_derivatives_eq_spatial_jets
+  STAGE = E13_InitialTrace
+  FINE_GOALS = G27, G28
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+smooth_spatial_trace_implies_joint_forward_smoothness
+  STAGE = E13_InitialTrace
+  FINE_GOALS = G27, G28, G29, G30, G31, G32, G33, G34
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+forward_residual_zero_of_positive_time_zero
+  STAGE = E14_InitialPDE
+  FINE_GOALS = G35
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+GRFamilyToNormalizedTrajectory
+  STAGE = E15_GlobalMaps
+  FINE_GOALS = G26, G35, G39
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+normalizedTrajectoryToGRFamily
+  STAGE = E15_GlobalMaps
+  FINE_GOALS = G17, G18, G21, G36, G37, G38, G39
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+GRFamilyToTrajectory_toGRFamily
+  STAGE = E16_InverseIdentities
+  FINE_GOALS = G41
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+normalizedTrajectoryToGRFamily_toTrajectory
+  STAGE = E16_InverseIdentities
+  FINE_GOALS = G40
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE
+  STAGE = E17_GlobalEquivalence
+  FINE_GOALS = G42
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+GRFamilyB
+  STAGE = E18_ExistenceEquivalence
+  FINE_GOALS = G44
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+NSE_B_IFF_GR_BOUNDARY_FAMILY
+  STAGE = E18_ExistenceEquivalence
+  FINE_GOALS = G43, G44, G45
+  LEAN_STATUS = TO_DERIVE_NO_LEAN_IMPLEMENTATION
+
+
+C.8 IMMUTABLE ANCHOR LOCATORS
+------------------------------
+Collection commit: 49801d86a61c09a6829ad430206d222239bff49a
+Index: https://raw.githubusercontent.com/randogelist/NSE---MAXWELL---GR---QFT/49801d86a61c09a6829ad430206d222239bff49a/Auxillary/GR/Strengthening/endpoint-index.json
+Index SHA256: e755ff0fbb6c1193b8c6e1e68871977d9740bf396cc57c64adcf3235f53a44c5
+The following S identifiers are the original source identifiers in that exact index.
+S001 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Order/OrderClosed.lean
+S002 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/Deriv/Basic.lean
+S003 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Basic.lean
+S004 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Fields.lean
+S005 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean
+S006 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Kinematics.lean
+S007 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Comp.lean
+S008 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Operations.lean
+S009 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/FourierInversion.lean
+S010 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Locality.lean
+S011 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Germs.lean
+S012 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Composition.lean
+S013 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean
+S014 = https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InfiniteFourierPressure.lean
+S015 = https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/LerayPressure.lean
+S016 = https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevSmoothRealization.lean
+S017 = https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierProduct.lean
+S018 = https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevPressure.lean
+S019 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/AnalyticHodgeCalculus.lean
+S020 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/AnalyticHodge.lean
+S021 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/HodgeTransport.lean
+S022 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/Exponential.lean
+S023 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/ExpDeriv.lean
+S024 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/Trigonometric.lean
+S025 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/Liouville.lean
+S026 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/MetricSpace/Contracting.lean
+S027 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Bilinear.lean
+S028 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/UniformSpace/Cauchy.lean
+S030 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Lp/lpSpace.lean
+S031 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Ring/InfiniteSum.lean
+S032 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Algebra/InfiniteSum/Constructions.lean
+S033 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/LocallyUniformLimit.lean
+S034 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ParametricIntegral.lean
+S035 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/Integrability/Basic.lean
+S037 = https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierDecay.lean
+S039 = https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/LatticeSobolevSummability.lean
+S040 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/AnalyticHodgeTaylor.lean
+S041 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/AnalyticFourier.lean
+S042 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/NativeFourier.lean
+S043 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/FourierHodgeLaws/UniformCoefficientBounds.lean
+S044 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean
+S045 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Contracts.lean
+S046 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/RootClosure.lean
+S047 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean
+S048 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/NSE_GR_NATIVE_LITERATURE_CLOSURE.lean
+S049 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRForward.lean
+S050 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Order/Filter/Defs.lean
+S051 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/NativeCompletion.lean
+S052 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/NativeGluingAtlas.lean
+S053 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Neighborhoods.lean
+S054 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Sector.lean
+S055 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Boundary.lean
+S057 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/NativeReconstruction.lean
+S059 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Defs.lean
+S060 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Extend.lean
+S061 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/TangentCone/Real.lean
+S062 = https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SmoothDatumSobolev.lean
+S063 = https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevSpacetimeSmooth.lean
+S064 = https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevProduct.lean
+S065 = https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevScaleTimeSmooth.lean
+S066 = https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/TorusSobolev.lean
+S067 = https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PeriodicFourierInjective.lean
+S068 = https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InitialFourier.lean
+S069 = https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevRhs.lean
+S070 = https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevOperators.lean
+S071 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Separation/Hausdorff.lean
+S072 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Order/DenselyOrdered.lean
+S073 = https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InitialCutoffBounds.lean
+S074 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/CanonicalSmoothness.lean
+S075 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/FourierHodgeLaws/ClosedHalfspaceSmooth.lean
+S077 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Spacetime.lean
+S078 = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Logic/Equiv/Defs.lean
+S079 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Classical.lean
+
+
+C.9 EXACT REVISION-3 STATUS
+----------------------------
+ROOT = NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE
+GOAL_VERSION = 1
+DERIVATION_REVISION = 3
+FROZEN_SOURCE_TARGET_MAPS_AND_SCOPE_CHANGED = NO
+MATHEMATICAL_DERIVATION = COMPLETE
+STATUS = ! B_TIER
+CARRIER_FACTORIZATION = S ~= P^+ ~= N^+ ~= G^+
+FINE_INTERMEDIATE_GOALS = 45
+RESERVED_COARSE_CONSTRUCTIONS = 24
+REFERENCED_DISTINCT_COLLECTED_ANCHORS = 132
+PRIMARY_ROOT_DEPENDENCY_GOALS = 39
+ADDITIONAL_ROOT_ANALYTIC_OR_GEOMETRIC_PREMISES = NONE
+NEW_LEAN_DECLARATIONS = 0
+NEW_ROOT_A_TIER = NOT_ESTABLISHED
+NEW_ROOT_EXTERNAL_COMPILER_EVIDENCE = NONE
+NEW_ROOT_THEOREM_LEVEL_AXIOM_AUDIT = NONE
+NEW_ROOT_FORMAL_CLOSURE = NOT_ESTABLISHED
+NEW_ROOT_UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+EXTERNAL_COMPILATION_POLICY = CACHED_MATCHING_PIN_ONLY
+SOURCE_COLLECTION_AND_HISTORICAL_CERTIFICATE_BYTES = PRESERVED
+END OF REVISION-3 B-TIER DERIVATION.
