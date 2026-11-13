@@ -136,7 +136,7 @@ The freshness check and final build include both reduced direction modules and t
 
 [Retained evidence](Auxillary/evidence/linux-43348914489/) preserves all **38 original artifact files**. [Audit summary](Auxillary/evidence/linux-43348914489/audit-summary.json) records `PASS_STANDARD_ONLY`; the explicit `FourierHodgeLaws` premise remains unresolved. The certificate covers 289 source inputs, with the recorded CRLF checkout normalization for `Auxillary/run.cmd`.
 
-## Current native Maxwell certificate
+## Initial native Maxwell certificate
 
 [Native Linux run 43351199370](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43351199370) passed both build scopes at source commit `7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6`:
 
@@ -157,5 +157,9 @@ The 23 native theorem endpoints are A-tier. The reduced bridge remains `FourierH
 ADAPTER_DIRECTORY = Fefferman_adapter
 FORMER_DIRECTORY = Fefferman_B_adapter
 PROOF_DECLARATIONS_AND_PREMISES = UNCHANGED
-RENAME_VALIDATION = PENDING_CACHED_EXTERNAL_LINUX
+RENAME_VALIDATION = PASS_CACHED_EXTERNAL_LINUX
 ```
+
+[Run 43353327242](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43353327242), source `8fd783b4d977fdb1a31cf4716023148ddfa26af9`: 226/226 integrated and 52/52 isolated audits passed; 37/37 integrated and 7/7 standalone Lean input hashes match. Both scopes reused trace-validated cached objects with zero module rebuilds. The 35 proof-module files remain byte-identical under the directory rename.
+
+[Rename evidence](Auxillary/evidence/linux-43353327242/).

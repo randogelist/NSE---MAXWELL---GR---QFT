@@ -54,7 +54,7 @@ The directional base modules import `NSEMaxwell.AnalyticContracts`. Their separa
 
 [Native Linux run 43345557147](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147): build PASS; 174/174 named audits PASS_STANDARD_ONLY; 30/30 Lean input hashes matched that source snapshot. [Audit summary](../Auxillary/evidence/linux-43345557147/audit-summary.json). The conditional directions are A-tier; the Hodge inhabitant remains deferred. The relocated auxiliary runner paths also passed [native Linux run 43348914489](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43348914489), source `b02425040a217a94855cfa52934e303f12fe80de`: 174/174 fresh audits, 30/30 matching Lean inputs, and zero module rebuilds after Lake trace validation. [Retained audit summary](../Auxillary/evidence/linux-43348914489/audit-summary.json).
 
-## Current extraction status
+## Initial native extraction certificate
 
 ```text
 SOURCE_STATUS = A_TIER_FOR_EXACT_CONDITIONAL_BRIDGE
@@ -78,3 +78,9 @@ ISOLATED_SOURCE_FILES_VERIFIED = 18
 ISOLATED_PROJECT_OBJECTS = INDEPENDENT
 FORMAL_STATUS = CONDITIONAL_FORMAL_CLOSURE
 ```
+
+## Adapter rename certificate
+
+[Run 43353327242](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43353327242), source `8fd783b4d977fdb1a31cf4716023148ddfa26af9`: 226/226 integrated and 52/52 isolated audits passed; 37/37 integrated and 7/7 standalone Lean input hashes match. Both scopes reused trace-validated cached objects with zero module rebuilds. The 35 proof-module files remain byte-identical under the directory rename.
+
+[Matching evidence](../Auxillary/evidence/linux-43353327242/).

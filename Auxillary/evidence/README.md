@@ -1,3 +1,18 @@
+# Fefferman adapter rename certificate
+
+[Run 43353327242](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43353327242), source `8fd783b4d977fdb1a31cf4716023148ddfa26af9`: 226/226 integrated and 52/52 isolated audits passed; 37/37 integrated and 7/7 standalone Lean input hashes match. Both scopes reused trace-validated cached objects with zero module rebuilds. The 35 proof-module files remain byte-identical under the directory rename.
+
+[linux-43353327242/](linux-43353327242/) preserves all73 original artifact files. [Integrated audit](linux-43353327242/audit-summary.json); [isolated audit](linux-43353327242/standalone/audit-summary.json).
+
+```text
+ARTIFACT_SHA256 = 58b473f212cb1ae8385edf4a2e1535ddc2feb7fb88f6f168fc668db3f4868924
+INTEGRATED_MANIFEST_SHA256 = 8c685d3c9e3372fadc5ed36418a7a70e0c323d2c057c71da027d07c7de8c4316
+STANDALONE_MANIFEST_SHA256 = c11c4f17a5bf5826e0545332038e408d7c2080c2ccb4b16657bce3973481f7f5
+LOCAL_LEAN_EXECUTIONS = 0
+```
+
+## Historical certificates
+
 # Native Maxwell package and integrated bridge certificate
 
 [Run 43351199370](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43351199370) compiled the native package and the complete repository using external native Linux Lean 4.34.0-rc1. Source commit: `7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6`.

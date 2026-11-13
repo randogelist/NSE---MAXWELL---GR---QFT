@@ -48,3 +48,9 @@ HODGE_LEAN_INHABITANT = NOT_SUPPLIED
 [Run 43351199370](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43351199370), source `7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6`: 226/226 integrated audits and 52/52 isolated Maxwell audits passed with approved foundational axioms only. All 37 integrated and seven standalone Lean input hashes match. The isolated compiler verified all 18 package files and shared only the pinned mathematical dependency cache.
 
 [Original evidence](evidence/linux-43351199370/) preserves 109 artifact files. [Standalone audit](evidence/linux-43351199370/standalone/audit-summary.json) and [isolation result](evidence/linux-43351199370/maxwell-isolation-result.json) certify the native package independently of the NSE adapter.
+
+## Adapter rename certificate
+
+[Run 43353327242](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43353327242), source `8fd783b4d977fdb1a31cf4716023148ddfa26af9`: 226/226 integrated and 52/52 isolated audits passed; 37/37 integrated and 7/7 standalone Lean input hashes match. Both scopes reused trace-validated cached objects with zero module rebuilds. The 35 proof-module files remain byte-identical under the directory rename.
+
+[Matching evidence](evidence/linux-43353327242/).

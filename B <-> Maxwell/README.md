@@ -62,3 +62,9 @@ ISOLATED_MAXWELL_AUDIT_TARGETS = 52
 ```
 
 Matching native extraction: [run 43351199370](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43351199370), source `7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6`; [integrated audit](../Auxillary/evidence/linux-43351199370/audit-summary.json). The exact implication `FourierHodgeLaws → ExactEquivalence` remains A-tier with the same explicit analytic premise.
+
+## Adapter rename certificate
+
+[Run 43353327242](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43353327242), source `8fd783b4d977fdb1a31cf4716023148ddfa26af9`: 226/226 integrated and 52/52 isolated audits passed; 37/37 integrated and 7/7 standalone Lean input hashes match. Both scopes reused trace-validated cached objects with zero module rebuilds. The 35 proof-module files remain byte-identical under the directory rename.
+
+[Matching evidence](../Auxillary/evidence/linux-43353327242/).

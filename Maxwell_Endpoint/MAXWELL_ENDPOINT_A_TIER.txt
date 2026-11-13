@@ -206,14 +206,14 @@ Native-model instantiation does not supply an inhabitant of FourierHodgeLaws.
 Native zero-field existence does not prove MaxwellB(nu,c) for arbitrary data.
 The full unconditional NSE-Maxwell equivalence is not promoted by this package.
 
-8. CERTIFICATION RECORD
+8. INITIAL NATIVE CERTIFICATION RECORD
 -----------------------
 
-CURRENT_PACKAGE = A_TIER_FOR_EXACT_NATIVE_THEOREMS.
-CURRENT_MATCHING_EXTERNAL_RUN = 43351199370.
-CURRENT_JOB = 131642414974.
-CURRENT_SOURCE_COMMIT = 7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6.
-CURRENT_NAMED_AXIOM_AUDIT = PASS_STANDARD_ONLY.
+INITIAL_PACKAGE = A_TIER_FOR_EXACT_NATIVE_THEOREMS.
+INITIAL_MATCHING_EXTERNAL_RUN = 43351199370.
+INITIAL_JOB = 131642414974.
+INITIAL_SOURCE_COMMIT = 7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6.
+INITIAL_NAMED_AXIOM_AUDIT = PASS_STANDARD_ONLY.
 COMPILER = Lean 4.34.0-rc1, x86_64-unknown-linux-gnu.
 COMPILER_COMMIT = 3447a668783dbce1a8fdb97101dd067687b2b418.
 MATHLIB_COMMIT = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
@@ -418,3 +418,14 @@ MaxwellEndpoint.timeDerivative_zero
 MaxwellEndpoint.magneticData_zero
 MaxwellEndpoint.zero_solution
 MaxwellEndpoint.zero_datum_global_instance
+
+ADAPTER DIRECTORY RENAME CERTIFICATE
+--------------------------------------
+Current adapter directory: Fefferman_adapter.
+Source: 8fd783b4d977fdb1a31cf4716023148ddfa26af9.
+Run: 43353327242. Integrated audits226/226; isolated audits52/52.
+Matching Lean hashes: integrated37/37; standalone7/7.
+Both scopes: LAKE_TRANSITIVE_TRACE_VERIFIED_WARM_REUSE; zero module rebuilds.
+All35 proof-module file bytes, declarations and premises preserved.
+Evidence: ../Auxillary/evidence/linux-43353327242/.
+Previous certificates above retain their original source-commit scope.

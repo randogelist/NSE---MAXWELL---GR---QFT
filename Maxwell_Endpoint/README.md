@@ -148,3 +148,9 @@ UNCONDITIONAL_NSE_MAXWELL_EQUIVALENCE = NOT_PROVED
 ```
 
 The Fourier formulas are total Lean definitions. Convergence, Poisson inversion, parameter smoothness, and the four `FourierHodgeLaws` fields remain separate analytic obligations. The standalone package supplies neither an assumed Hodge inhabitant nor an arbitrary-data global-existence proof.
+
+## Adapter rename certificate
+
+[Run 43353327242](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43353327242), source `8fd783b4d977fdb1a31cf4716023148ddfa26af9`: 226/226 integrated and 52/52 isolated audits passed; 37/37 integrated and 7/7 standalone Lean input hashes match. Both scopes reused trace-validated cached objects with zero module rebuilds. The 35 proof-module files remain byte-identical under the directory rename.
+
+[Matching evidence](../Auxillary/evidence/linux-43353327242/).
