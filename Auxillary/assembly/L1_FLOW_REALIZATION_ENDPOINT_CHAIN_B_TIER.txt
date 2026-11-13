@@ -1,0 +1,735 @@
+L1_FLOW_REALIZATION_ENDPOINT_CHAIN_B_TIER
+=======================================
+
+MODE = B_TIER_DERIVATION
+MARKER = !
+DATE = 2026-11-13
+MATHEMATICAL_STATUS = COMPLETE_B_TIER_DERIVATION
+MATHEMATICAL_REVIEW = PASS_SUPERPOSITION_VOLTERRA_IFT; PASS_JOINT_SMOOTHNESS; PASS_EXACT_SCOPE
+ENDPOINT_COUNT = 20
+ADDITIONAL_ANALYTIC_ASSUMPTIONS = NONE
+NEW_LEAN_PROOF_BODIES = NONE
+LOCAL_LEAN_EXECUTIONS = 0
+FORMAL_L1_STATUS = AXIOM_REMAINS; NOT_DISCHARGED_BY_THIS_TXT
+
+Repository: randogelist/NSE---MAXWELL---GR---QFT
+Branch: codex/classical-mechanics-material
+Inspected source: 3cddb467d67f51a2ae75051ff047fd273087a044
+Mathlib: de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+Methlib: e9cf90726b8544a268469ebc8fa6634e9c713e07
+Target native compiler: Lean 4.34.0-rc1, cached external Linux.
+
+Current formal evidence:
+  L2 is already a native theorem, not an axiom.
+  Both existing material-equation roots have analytic axiom set {L1}.
+  Run 43379686374: 43 standard-only + 5 exact-policy audits PASS.
+  This mathematical derivation does not change those formal audit results.
+
+0. EXACT ROOT, OBJECTS, AND SOURCE REGISTER
+------------------------------------------
+
+E := EuclideanSpace R (Fin 3), identified isometrically with R^3.
+T>0; I := [0,T]; S := I x E.
+u : R -> E -> E.
+
+H_smooth := ContDiffOn R infinity ((t,x) |-> u(t,x)) S.
+H_periodic := forall t in I, forall x,i, u(t,x+e_i)=u(t,x).
+H_div := forall t in I, forall x, div_x u(t,x)=0.
+H := T>0 and H_smooth and H_periodic and H_div.
+
+ROOT_TYPE = the literal type of ClassicalMechanicsAssembly.Literature.L1:
+
+  {T : R} -> 0<T -> {u : Velocity} ->
+  SmoothVelocityOn T u ->
+  (forall t in Icc 0 T, SpatialPeriodic (u t)) ->
+  (forall t in Icc 0 T, forall x : Vec,
+     NSEMaxwell.Classical.divergence (u t) x = 0) ->
+  exists eta rho : Velocity,
+    MaterialPathOn T eta rho and
+    forall t in Icc 0 T, forall a : Vec,
+      materialVelocity T eta t a = u t (eta t a).
+
+MaterialPathOn requires:
+  (M1) SmoothVelocityOn T eta;
+  (M2) SmoothVelocityOn T rho;
+  (M3) rho(t,eta(t,a))=a;
+  (M4) eta(t,rho(t,x))=x;
+  (M5) eta(t,a+e_i)=eta(t,a)+e_i;
+  (M6) eta(0,a)=a;
+  (M7) det(deformationGradient eta t a)=1.
+All time-dependent conditions are restricted to t in I.
+materialVelocity T eta t a = derivWithin (s |-> eta(s,a)) I t.
+
+CONVENTIONS:
+  [D v]_(i,j)=partial_j v_i; all norms are the corresponding operator norms.
+  C^m on S means the actual within-set ContDiffOn notion, not merely
+  separately smooth slices. infinity means C-infinity, not analyticity.
+  B := C(I,E) with sup norm; I is a nonempty compact interval, hence B is Banach.
+  L^r(E;F) := continuous r-linear maps, with L^0(E;F):=F.
+  Oriented integrals satisfy integral_s^t = - integral_t^s for t<s.
+  All selected paths may be extended outside I by clamping t to I.
+  Only within-I derivatives and restrictions to S enter the theorem.
+
+REGISTER REFERENCES:
+  ODE.MFxx / ODE.Rxx -> l1-research/MathlibODE.txt.
+  GEO.Pxx/Jxx/Gxx/Dxx/Ixx -> l1-research/ClosedSlabGeometry.txt.
+  METH -> l1-research/Methlib.txt.
+  Full source paths, pins, hypotheses, lines and relevant hashes are recorded
+  there. Section 23 below gives the main exact entrypoints used here.
+  E01--E20 are B-tier endpoints proved below, not claims that Lean constants
+  with these names have already been emitted or compiled.
+
+1. E01 -- CLOSED-SLAB SPATIAL JETS
+----------------------------------
+
+PREMISES: T>0, H_smooth, H_periodic.
+OUTPUT: for each r>=0,
+  U_r(t,x):=D_x^r u(t,x) belongs to L^r(E;E),
+  U_r is C-infinity on S, and U_r(t,x+e_i)=U_r(t,x).
+
+DERIVATION:
+  I has unique within derivatives because T>0; S=I x E has UniqueDiffOn.
+  Repeated ContDiffOn.fderivWithin produces C-infinity within derivative fields.
+  Restriction of every derivative argument to (0,h) gives U_r. The spatial
+  slice x |-> u(t,x) is ordinarily smooth for every t in I; uniqueness of
+  derivatives identifies this restriction with its ordinary spatial derivative.
+  Each restriction/currying operation is continuous linear on the relevant
+  operator spaces and preserves the asserted regularity.
+
+  For q=(0,e_i), translation maps S onto S and u(z+q)=u(z) on S.
+  The within-set chain rule and EqOn congruence give equality of all jets after
+  translation. No identity of arbitrary off-slab extensions is used.
+  Thus all U_r inherit the spatial periods. Integer periods follow by iteration
+  of unit translations, their negatives, and finite sums.
+
+LINKS: ODE.MF15/MF22/MF23; GEO.J03/J05/J07/J08;
+  ClassicalMechanics.finite_velocity_slice_smooth;
+  ClassicalMechanics.finite_spatial_restriction_fderiv.
+
+2. E02 -- UNIFORM SPATIAL JET BOUNDS
+------------------------------------
+
+PREMISES: E01.
+OUTPUT: constants M_r>=0, for every r>=0, with
+  sup_(t,x in S) ||U_r(t,x)|| <= M_r.
+  In particular B0:=M_0, K:=M_1, and
+    ||u(t,x)||<=B0,
+    ||u(t,x)-u(t,y)||<=K||x-y||.
+
+DERIVATION:
+  C := I x {x in E : 0<=x_i<=1 for every i} is compact.
+  Every continuous norm ||U_r|| has a finite bound on C.
+  For any x, let k_i=floor(x_i), b_i=fract(x_i). Then x=b+k and b is in
+  the closed unit cube. E01 gives U_r(t,x)=U_r(t,b). Enlarge the bound to
+  a nonnegative M_r. This proves the bound on the full slab.
+  Integrate D_xu along the line segment from x to y to obtain the Lipschitz
+  estimate. All segments lie in E and all times remain in I.
+  Similarly, for every r,
+    ||U_r(t,x+h)-U_r(t,x)|| <= M_(r+1)||h||,
+    ||U_r(t,x+h)-U_r(t,x)-U_(r+1)(t,x)[h, ...]||
+      <= (M_(r+2)/2)||h||^2.
+  These are operator-norm estimates, uniform in t and x.
+
+LINKS: GEO.P02--P14; METH.6 SingularClosure.spatialPeriodic_integerShift;
+  ODE.MF12 lipschitzWith_of_nnnorm_fderiv_le.
+  A namespace/coordinate adapter is needed before native reuse of the Methlib
+  theorem; the displayed integer-translation argument already proves the
+  B-tier assertion without assuming that adapter.
+
+3. E03 -- ALL-START-TIME WHOLE-SLAB TRAJECTORIES
+-----------------------------------------------
+
+PREMISES: continuous u on S and E02 bounds B0,K.
+OUTPUT: for every s in I and a in E, a path X(.;s,a) in B with
+  X(s;s,a)=a,
+  X(t;s,a)=a+integral_s^t u(r,X(r;s,a)) dr,
+  HasDerivWithinAt (t |-> X(t;s,a)) (u(t,X(t;s,a))) I t for every t in I.
+
+DERIVATION:
+  Define gamma_0(t)=a and
+    gamma_(n+1)(t)=a+integral_s^t u(r,gamma_n(r)) dr.
+  By induction, in both time directions,
+    ||gamma_(n+1)(t)-gamma_n(t)||
+      <= B0 K^n |t-s|^(n+1)/(n+1)!.
+  Base n=0 uses ||u||<=B0. The induction step uses the spatial Lipschitz
+  bound and integrates |r-s|^(n+1) over the interval between s and t.
+  The scalar series is summable uniformly on I, since |t-s|<=T.
+  Hence gamma_n converges in the Banach space B to a continuous X.
+  The Picard map is Lipschitz in the sup norm with constant KT, so the limit
+  satisfies the integral equation even when KT>=1. The fundamental theorem
+  of calculus for its continuous integrand gives the actual within derivative,
+  including the right-sided derivative at 0 and left-sided derivative at T.
+
+  Equivalent native entry:
+    IsPicardLindelof parameters t0=s, initial radius=1,
+      ambient radius=B0*T+1, norm bound=B0, Lipschitz bound=K.
+    B0*max(T-s,s)<=B0*T=(B0*T+1)-1 verifies its radius condition.
+  No KT<1 assumption, maximal continuation theorem, or time extension is needed.
+
+LINKS: ODE.MF01/MF02/MF05/MF06; PicardLindelof and ExistUnique modules.
+
+4. E04 -- UNIQUENESS, DISPLACEMENT, STABILITY
+--------------------------------------------
+
+PREMISES: E03; E02 bounds.
+OUTPUT:
+  each prescribed initial value at s determines one path on I;
+  ||X(t;s,a)-a|| <= B0|t-s|;
+  ||X(t;s,a)-X(t;s,b)|| <= exp(K|t-s|)||a-b||.
+
+DERIVATION:
+  Subtract two integral equations. For equal initial values, their continuous
+  difference has a finite sup norm D and satisfies
+    ||delta(t)|| <= K * integral_(between s,t) ||delta(r)|| dr.
+  Iterating n times gives ||delta(t)||<=D K^n|t-s|^n/n! -> 0.
+  For initial separation d0, the same iteration yields
+    ||delta(t)|| <= d0*sum_(j<n)(K|t-s|)^j/j!
+                    + D(K|t-s|)^n/n!;
+  passage to the limit gives the exponential estimate. Displacement follows
+  directly from the integral equation and ||u||<=B0.
+
+  Consequently, for fixed s, (t,a) |-> X(t;s,a) is jointly continuous:
+    ||X(t;s,a)-X(q;s,b)|| <= exp(KT)||a-b||+B0|t-q|.
+
+LINKS: ODE.MF08/MF09/MF10/MF11/R04.
+
+5. E05 -- COHERENT TWO-TIME FLOW AND INVERSES
+---------------------------------------------
+
+PREMISES: E03/E04.
+OUTPUT, for r,t,s in I:
+  X(r;t,X(t;s,a))=X(r;s,a).
+  eta(t,a):=X(t;0,a), rho(t,x):=X(0;t,x), and
+    rho(t,eta(t,a))=a,
+    eta(t,rho(t,x))=x,
+    eta(0,a)=a.
+
+DERIVATION:
+  The two r-paths in the first identity solve the same ODE on I and agree at r=t.
+  E04 yields equality on all I. Substituting r=0 or r=t gives both inverse laws;
+  the prescribed initial condition at s=0 gives eta(0)=id.
+  Existence for arbitrary starting time supplies rho set-theoretically.
+  No smooth dependence on the starting time has been assumed.
+
+DEPENDENCIES: E03/E04 only; H_div is not used.
+
+6. E06 -- LATTICE EQUIVARIANCE
+------------------------------
+
+PREMISES: E03/E04; H_periodic.
+OUTPUT: X(t;s,a+e_i)=X(t;s,a)+e_i; in particular eta(t,a+e_i)=eta(t,a)+e_i.
+
+DERIVATION:
+  Y(t):=X(t;s,a)+e_i has initial value a+e_i and
+    Y'(t)=u(t,X(t;s,a))=u(t,Y(t))
+  within I. Uniqueness identifies Y with X(.;s,a+e_i).
+  This proves the exact unit-lattice condition required by MaterialPathOn.
+
+7. E07 -- C-INFINITY SUPERPOSITION ON CONTINUOUS PATHS
+------------------------------------------------------
+
+PREMISES: E01/E02; B=C(I,E).
+OUTPUT: N:B->B, N(gamma)(t):=u(t,gamma(t)), is C-infinity.
+  For r>=0,
+    D^r N(gamma)[h_1,...,h_r](t)
+      = U_r(t,gamma(t))[h_1(t),...,h_r(t)],
+    ||D^r N(gamma)|| <= M_r.
+
+DERIVATION:
+  Joint continuity of U_r and continuity of the paths imply that the displayed
+  output is a continuous path. Multilinearity and the sup estimate give a
+  bounded r-linear operator A_r(gamma):B^r->B of norm at most M_r.
+  The E02 mean-value bound gives
+    ||A_r(gamma+h)-A_r(gamma)|| <= M_(r+1)||h||_infinity.
+  The E02 second-order remainder gives, in the operator norm on L^r(B;B),
+    ||A_r(gamma+h)-A_r(gamma)
+        - (h_1,...,h_r |-> A_(r+1)(gamma)[h,h_1,...,h_r])||
+      <= (M_(r+2)/2)||h||_infinity^2.
+  Divide by ||h||_infinity and let h->0. This is the actual Frechet derivative
+  of A_r. Its derivative field is continuous by the preceding Lipschitz bound.
+  Starting with A_0=N, induction proves N is C^m for every finite m, with the
+  asserted D^r formula. Thus N is C-infinity on the entire Banach space B.
+
+  This step proves the path-space smoothness required by the implicit theorem;
+  it is not inserted as an additional analytic input. No time derivative of u
+  outside I is involved.
+
+NATIVE ROLE: new superposition lemma; general Banach calculus/ContDiff successor
+  rules are available. A ready-made theorem with this exact package was not
+  asserted in the source register.
+
+8. E08 -- VOLTERRA RESOLVENT ON THE WHOLE FINITE INTERVAL
+--------------------------------------------------------
+
+PREMISES: gamma in B; E01/E02.
+DEFINITIONS:
+  V f(t):=integral_0^t f(s) ds, a bounded linear map B->B with ||V||<=T.
+  K_gamma h(t):=integral_0^t U_1(s,gamma(s))[h(s)] ds.
+OUTPUT:
+  ||K_gamma^n|| <= (KT)^n/n! for n>=0;
+  R_gamma:=sum_(n>=0) K_gamma^n exists in operator norm;
+  (Id-K_gamma)R_gamma=R_gamma(Id-K_gamma)=Id;
+  ||R_gamma||<=exp(KT).
+
+DERIVATION:
+  E01 makes s |-> U_1(s,gamma(s)) continuous on I. Thus K_gamma maps continuous
+  paths to continuous paths; E02 supplies its bounded linear operator estimate.
+  For every h and t in I, induction on n gives
+    ||K_gamma^n h(t)|| <= K^n t^n/n! * ||h||_infinity.
+  Integrating the induction bound proves the next power; n=0 is the identity.
+  Taking sup over t gives the operator bound. The bounded-operator space is
+  Banach; comparison with the exponential series yields norm convergence.
+  For R_N=sum_(n=0)^N K_gamma^n,
+    (Id-K_gamma)R_N=R_N(Id-K_gamma)=Id-K_gamma^(N+1).
+  The last power tends to zero by the factorial bound. Continuity of bounded
+  operator composition gives both inverse identities and the norm estimate.
+  In particular Id-K_gamma is a continuous linear equivalence.
+
+  This argument remains valid when KT>=1 and when K=0. No smallness hypothesis
+  or appeal to the ordinary norm<1 geometric-series criterion is made.
+
+9. E09 -- SMOOTH INITIAL-LABEL DEPENDENCE IN B
+---------------------------------------------
+
+PREMISES: E03/E04/E07/E08.
+DEFINITIONS:
+  c:E->B, c(a)(t)=a, is bounded linear with norm 1.
+  Phi(a,gamma):=gamma-c(a)-V N(gamma).
+  Gamma(a)(t):=eta(t,a), for t in I.
+OUTPUT: Gamma:E->B is C-infinity.
+
+DERIVATION:
+  Phi:E x B->B is C-infinity by E07 and bounded linear calculus.
+  E03 gives Phi(a,Gamma(a))=0.
+  The partial derivative in the B variable is
+    D_gamma Phi(a,gamma)=Id-V D N(gamma)=Id-K_gamma.
+  E08 gives its bounded inverse at every gamma.
+  E and B are real Banach spaces. The Banach implicit-function theorem at
+  (a0,Gamma(a0)) therefore gives an open label neighborhood W and a C-infinity
+  map psi:W->B with Phi(a,psi(a))=0 and psi(a0)=Gamma(a0).
+  For each a in W, that integral identity implies the same initial value and
+  actual ODE as Gamma(a). E04 gives psi(a)=Gamma(a). Thus Gamma is C-infinity
+  near every a0 and hence globally.
+
+  This instantiates ContDiffAt.contDiffAt_implicitFunction with
+    E1=E, E2=B, F=B, n=infinity, f=Phi, u=(a0,Gamma(a0));
+    n!=0 and IsInvertible(fderiv Phi u composed with inr)
+  are supplied respectively by infinity!=0 and E08.
+  ContDiffAt.eventually_apply_implicitFunction supplies the local equation.
+  Only the unrestricted initial label is an implicit-function parameter;
+  the closed-interval time variable remains inside the path space.
+
+LINKS: ODE.R05/R06; Mathlib/Analysis/Calculus/ImplicitContDiff.lean:72,90.
+
+10. E10 -- CONTINUOUS LABEL JETS AS FUNCTIONS OF TIME
+----------------------------------------------------
+
+PREMISES: E09.
+DEFINITIONS, r>=0:
+  J_r(t,a)[h_1,...,h_r]
+    := (D^r Gamma(a)[h_1,...,h_r])(t).
+  J_0=eta; J_r(t,a) belongs to L^r(E;E).
+OUTPUT:
+  each J_r is jointly continuous on S;
+  D_a J_r(t,a)[h] = J_(r+1)(t,a)[h, ...];
+  J_0(0,a)=a; J_1(0,a)=Id; J_r(0,a)=0 for r>=2.
+
+DERIVATION:
+  Evaluation ev_t:B->E is bounded linear, norm at most 1. For fixed t it
+  commutes with every label derivative. Its norm bound makes the label Taylor
+  remainder uniform over t in I.
+  For fixed a, t |-> D^r Gamma(a)(...)(t) is continuous for each choice of
+  arguments. Since E=R^3, finitely many basis evaluations determine an element
+  of L^r(E;E); equivalence of finite-dimensional tensor norms gives continuity
+  in its operator norm. Continuity of a |-> D^r Gamma(a) in the Banach operator
+  norm then gives joint continuity in (t,a), including t=0,T.
+  Evaluating Gamma(a)(0)=a at the fixed time 0 and differentiating in a yields
+  the stated initial jets.
+
+  No differentiability of the variable-time evaluation map B x I -> E is
+  asserted. That map on arbitrary C^0 paths is not the required smooth map.
+
+11. E11 -- ACTUAL TIME EQUATIONS FOR ALL LABEL JETS
+---------------------------------------------------
+
+PREMISES: E07/E09/E10 and the Banach identity Gamma=c+V(N composed with Gamma).
+DEFINITIONS:
+  P_0(t,a):=u(t,J_0(t,a)).
+  For r>=1, let Part(r) be the finite set of set partitions of {1,...,r}.
+  For arguments h_1,...,h_r, set
+    P_r(t,a)[h_1,...,h_r] :=
+      sum_(pi in Part(r))
+        U_(|pi|)(t,J_0(t,a))[
+          J_(|B|)(t,a)[h_i : i in B] : B in pi ].
+  Any fixed ordering of blocks and their members gives the same expression,
+  by symmetry of the derivatives. Partitions carry no additional factorial.
+OUTPUT:
+  J_r(t,a)=J_r(0,a)+integral_0^t P_r(s,a) ds;
+  HasDerivWithinAt (t |-> J_r(t,a)) (P_r(t,a)) I t.
+
+DERIVATION:
+  Differentiate the Banach identity in labels. The map V is bounded linear,
+  so it commutes with Frechet differentiation. The iterated chain rule for
+  N composed with Gamma gives exactly the finite partition formula above.
+  That formula can also be checked inductively: differentiating U creates
+  a new singleton block; differentiating a J factor inserts the new index
+  into that block. Every partition of r+1 arises once by these alternatives.
+  Fixed-time evaluation gives the displayed integral identity.
+  Every P_r is jointly continuous by E01/E10 and finite multilinear operations.
+  The continuous-integrand fundamental theorem gives the actual within time
+  derivative, including both endpoints of I.
+
+  In particular F:=J_1 satisfies the actual variation equation
+    partial_t^I F(t,a)=U_1(t,eta(t,a)) composed with F(t,a), F(0,a)=Id.
+  This is derived after label differentiability, not assumed by formal
+  differentiation of an unknown family.
+
+Optional quantitative jet bounds, derived by Gronwall:
+  C_1:=exp(KT),
+  C_r:=T exp(KT) * sum_(pi in Part(r), |pi|>=2)
+                     M_(|pi|) product_(B in pi) C_(|B|), r>=2.
+  Then sup_(t,a in S)||J_r(t,a)||<=C_r. In the sum, every block size is <r.
+  The one-block term is U_1 J_r and is absorbed by the linear Gronwall factor.
+
+12. E12 -- JOINT WITHIN DERIVATIVE OF EVERY JET
+----------------------------------------------
+
+PREMISES: E10/E11.
+OUTPUT, for every r>=0 and z=(t,a) in S:
+  HasFDerivWithinAt J_r L_r S z,
+  L_r(t,a)(tau,h)=tau P_r(t,a)+J_(r+1)(t,a)[h, ...].
+  The field L_r is jointly continuous on S.
+
+DERIVATION:
+  Let (t+tau,a+h) remain in S. Split the increment exactly as
+    J_r(t+tau,a+h)-J_r(t,a)
+     = integral_t^(t+tau) P_r(s,a+h) ds
+       + J_r(t,a+h)-J_r(t,a).
+  By continuity of P_r at (t,a), the first term minus tau P_r(t,a) has norm
+    <= |tau| * epsilon(tau,h), with epsilon(tau,h)->0.
+  The second term minus J_(r+1)(t,a)[h,...] is o(||h||), uniformly in t,
+  by the Banach-space differentiability of D^r Gamma and ||ev_t||<=1.
+  Therefore the full remainder is o(|tau|+||h||), equivalent to o(||(tau,h)||)
+  for a product norm. This is the joint Frechet derivative within S.
+  At t=0 or T the same split uses only allowed increments and oriented integrals.
+  Continuity of L_r follows from continuity of P_r and J_(r+1).
+
+LINK: ODE.MF33; the actual derivative field is now available for its use.
+
+13. E13 -- SIMULTANEOUS JOINT C-INFINITY BOOTSTRAP
+-------------------------------------------------
+
+PREMISES: E01/E10/E11/E12; UniqueDiffOn R S.
+OUTPUT: forall r>=0, J_r is C-infinity on S; in particular SmoothVelocityOn T eta.
+
+DERIVATION:
+  For m>=0 define A_m := forall r>=0, ContDiffOn R m J_r S.
+  A_0 follows from E10 and contDiffOn_zero.
+  Assume A_m. The map H(t,a)=(t,J_0(t,a)) is C^m and maps S into S.
+  Every U_k is C-infinity on S by E01, so U_k composed with H is C^m.
+  Each P_r is a finite sum of continuous multilinear compositions of these
+  maps and the J_j; consequently every P_r is C^m on S.
+  Since A_m also includes J_(r+1), every derivative field
+    L_r(t,a)(tau,h)=tau P_r(t,a)+J_(r+1)(t,a)[h,...]
+  is C^m as a map into the appropriate continuous-linear-map space.
+  E12 supplies its exact within derivative relation. The successor theorem
+    contDiffOn_succ_iff_hasFDerivWithinAt_of_uniqueDiffOn
+  gives ContDiffOn R (m+1) J_r S for every r. Its analytic side condition is
+  vacuous at a finite natural order m. Thus A_m implies A_(m+1).
+  Induction gives every A_m; contDiffOn_infty gives C-infinity for every J_r.
+
+  This is simultaneous induction in the regularity order m, with all label
+  orders r available from E09 at the base. It neither assumes J_(r+1) already
+  has order m+1 nor circularly differentiates an unproved label dependence.
+  No reflection, collar extension, time-parameter implicit theorem or analytic
+  regularity of u is required.
+
+LINKS: ODE.R11/MF15/MF16/MF22/MF23/MF33; within-set composition calculus.
+
+14. E14 -- UNIT JACOBIAN FROM THE ACTUAL VARIATION EQUATION
+---------------------------------------------------------
+
+PREMISES: E10/E11; H_div.
+DEFINITIONS:
+  F(t,a):=matrix of J_1(t,a), so F_(i,j)=partial_j eta_i(t,a).
+  G(t,a):=matrix of U_1(t,eta(t,a)).
+  J(t,a):=det F(t,a).
+OUTPUT: J(t,a)=1 for every t in I and a in E.
+
+DERIVATION:
+  E11 gives F'=G F, F(0,a)=Id, with actual within time derivatives.
+  Differentiate the six signed triple products in Matrix.det_fin_three.
+  Finite product/sum rules give, for every matrix F, singular or nonsingular,
+    J'=trace(adj(F) F').
+  Substitute F'=G F and use trace cyclicity and F adj(F)=det(F) Id:
+    J'=trace(adj(F) G F)=trace(F adj(F) G)=J trace(G).
+  By the coordinate convention, trace(G)=div u(t,eta(t,a))=0.
+  Thus J'=0 on I. The continuous derivative/integral identity, or the
+  closed-interval zero-derivative constancy theorem, gives J(t,a)=J(0,a)=1.
+  Only after this step is F declared invertible.
+
+LINKS: GEO.D01--D09; Matrix.det_fin_three; HasDerivWithinAt.mul;
+  Matrix.mul_adjugate; Matrix.trace_mul_cycle; eq_of_derivWithin_eq.
+
+15. E15 -- JOINT CONTINUITY OF THE INVERSE FAMILY
+------------------------------------------------
+
+PREMISES: E04/E05.
+OUTPUT:
+  ||rho(t,x)-rho(s,y)|| <= exp(KT)(||x-y||+B0|t-s|),
+  hence rho and Q(t,x):=(t,rho(t,x)) are continuous on S; Q maps S into S.
+
+DERIVATION:
+  E05 gives rho(t,x)=X(0;s,X(s;t,x)). Subtract X(0;s,y), use the label
+  stability bound exp(Ks)<=exp(KT), and then the displacement estimate
+  ||X(s;t,x)-x||<=B0|t-s|. This proves the inequality.
+  No derivative with respect to the starting time is invoked.
+
+16. E16 -- ACTUAL CLOSED-SLAB INVERSE DERIVATIVE
+------------------------------------------------
+
+PREMISES: E05/E13/E14/E15.
+DEFINITIONS: H(t,a):=(t,eta(t,a)); Q(t,x):=(t,rho(t,x)); H composed with Q=id on S.
+OUTPUT:
+  D_S Q(z)=(D_S H(Q(z)))^(-1), as an actual HasFDerivWithinAt statement on S.
+
+DERIVATION:
+  E12 at r=0 gives the block derivative of H:
+    D_S H(t,a)(tau,h)=(tau,tau*u(t,eta(t,a))+F(t,a)h).
+  E14 gives det F=1. Therefore the displayed block map is a continuous linear
+  equivalence, with explicit inverse
+    (tau,k) |-> (tau,F(t,a)^(-1)(k-tau*u(t,eta(t,a)))).
+  E15 and MapsTo Q S S give
+    Tendsto Q (nhdsWithin z S) (nhdsWithin (Q(z)) S).
+  The inverse identity holds everywhere on S, hence eventually within S.
+  HasFDerivWithinAt.of_local_left_inverse now gives exactly the claimed inverse
+  derivative at z, including both boundary time slices.
+
+LINKS: ODE.R09; GEO.I01 LinearEquiv.toContinuousLinearEquiv if a native
+  finite-dimensional block equivalence is constructed first.
+
+17. E17 -- JOINT C-INFINITY INVERSE
+-----------------------------------
+
+PREMISES: E13/E15/E16; UniqueDiffOn R S.
+OUTPUT: SmoothVelocityOn T rho.
+
+DERIVATION:
+  Let M(z):=fderivWithin R H S z. Since H is C-infinity on S,
+  ContDiffOn.fderivWithin gives M C-infinity on S.
+  Prove Q is C^m on S by induction. Base m=0 is E15.
+  If Q is C^m and maps S into S, then M composed with Q is C^m.
+  Its values are invertible by E16. Inversion of continuous linear maps is
+  C-infinity at every invertible value, so
+    z |-> inverse(M(Q(z)))
+  is C^m within S. E16 identifies this field with the actual derivative of Q.
+  The within-set successor theorem proves Q C^(m+1).
+  All finite orders imply Q C-infinity; spatial projection gives rho C-infinity.
+
+LINKS: ODE.R10 ContinuousLinearMap.IsInvertible.contDiffAt_map_inverse;
+  ODE.MF15/MF16/MF33. There is no unproved smoothness premise for rho.
+
+18. E18 -- LITERAL MATERIAL VELOCITY
+------------------------------------
+
+PREMISES: E03; eta(t,a)=X(t;0,a); T>0.
+OUTPUT:
+  materialVelocity T eta t a = u(t,eta(t,a)) for every t in I and a in E.
+
+DERIVATION:
+  E03 supplies HasDerivWithinAt eta(.;a) (u(t,eta(t,a))) I t.
+  uniqueDiffOn_Icc (0<T) supplies unique within derivatives at every point of I.
+  HasDerivWithinAt.derivWithin identifies the actual derivWithin with that value.
+  Unfold materialVelocity and finiteTimeDerivative.
+
+LINKS: ODE.MF21/MF22; native ClassicalMechanics time-calculus definitions.
+
+19. E19 -- EXACT L1 FLOW REALIZATION
+------------------------------------
+
+PREMISES: H, and the derived endpoints above.
+OUTPUT: ROOT_TYPE.
+
+DETERMINISTIC RECORD ASSEMBLY:
+  Choose eta,rho from E05, extended outside I by clamping when a total function
+  R->E->E is required. On S all preceding values and within derivatives agree.
+  MaterialPathOn.smooth                <- E13.
+  MaterialPathOn.inverse_smooth        <- E17.
+  MaterialPathOn.left_inverse          <- E05.
+  MaterialPathOn.right_inverse         <- E05.
+  MaterialPathOn.lattice_equivariant   <- E06.
+  MaterialPathOn.initial_configuration <- E05.
+  MaterialPathOn.determinant_one       <- E14.
+  Actual materialVelocity flow equation <- E18.
+  Existential introduction yields the exact current L1 contract.
+
+  L1 itself was never used as a premise. The construction uses only its stated
+  hypotheses and standard finite-dimensional/Banach-space analysis, with the
+  cited Mathlib implicit theorem supplying a proved general calculus endpoint.
+  Divergence-free was first used at E14. No velocity solution of NSE is created.
+
+20. E20 -- SCOPED EULERIAN/MATERIAL EQUATION EQUIVALENCE
+------------------------------------------------------
+
+PREMISES: H; SmoothPressureOn T p; nu in R.
+DEFINITION: pi(t,a):=p(t,eta(t,a)).
+OUTPUT: there exist eta,rho with the E19 path and flow properties, and
+
+  [forall t in I, forall x,
+     finiteMaterialAcceleration T u t x + gradient(p t)(x)
+       = nu smul laplacian(u t)(x)]
+  iff MaterialEquationOn nu T eta pi.
+
+DERIVATION:
+  E19 supplies the exact path and flow witnesses.
+  Native finite_flow_acceleration supplies acceleration pullback.
+  Native material_pressure_gradient_pullback_on supplies pressure-gradient
+  pullback for the literal pi=p composed with eta.
+  Native CLASSICAL_MECHANICS_DIFFUSION_REALIZATION supplies transformed
+  diffusion; there is no L2 axiom.
+  Thus the material residual equals the Eulerian residual composed with eta.
+  Forward implication: evaluate the Eulerian equation at eta(t,a).
+  Reverse implication: for a given x, choose a=rho(t,x) and use eta(t,a)=x.
+  This is exactly the already-native supplied-flow equation equivalence,
+  now with its flow witness constructed at B-tier by E19.
+
+NATIVE LINK: ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW.
+SCOPE: equation equivalence for a supplied smooth periodic solenoidal field;
+  not arbitrary-data NSE existence, global-in-time regularity, or a complete
+  pressure-gauge/energy/variational solution-set bijection.
+
+21. DEPENDENCY REGISTER
+-----------------------
+
+E01 <- H_smooth,H_periodic,T>0; unique within jets and translation calculus.
+E02 <- E01; compactness and integer-period reduction.
+E03 <- E02,H_smooth; whole-interval Picard iteration.
+E04 <- E03,E02; factorial uniqueness and Gronwall estimates.
+E05 <- E03,E04; two-time coherence and inverse laws.
+E06 <- E03,E04,H_periodic; translated-trajectory uniqueness.
+E07 <- E01,E02; uniform operator Taylor estimates on C(I,E).
+E08 <- E01,E02; continuous coefficient and factorial Volterra resolvent.
+E09 <- E03,E04,E07,E08; Banach implicit theorem and uniqueness.
+E10 <- E09; bounded fixed-time evaluation and finite-dimensional tensor norms.
+E11 <- E07,E09,E10; differentiated Banach integral identity and FTC.
+E12 <- E10,E11; actual joint increment remainder.
+E13 <- E01,E10,E11,E12; simultaneous within C^m induction for every label jet.
+E14 <- E10,E11,H_div; polynomial Jacobi, initial determinant one.
+E15 <- E04,E05; inverse continuity estimate.
+E16 <- E05,E13,E14,E15; within inverse derivative.
+E17 <- E13,E15,E16; smooth operator inverse and within induction.
+E18 <- E03,T>0; actual derivWithin identification.
+E19 <- E05,E06,E13,E14,E17,E18; exact MaterialPathOn record.
+E20 <- E19,SmoothPressureOn T p,native pullback calculus; equation iff.
+
+Every edge is derived above. E07/E08/E09/E10--E13 replace the previous
+unproved-smooth-dependence placeholder with a complete B-tier argument.
+Native emission still requires independently proved Lean bodies for these edges.
+
+22. NATIVE EMISSION CONTRACTS AND STATUS BOUNDARY
+------------------------------------------------
+
+Suggested names, NOT CURRENT COMPILED DECLARATIONS:
+  E01 periodic_slab_spatial_jets
+  E02 periodic_slab_jet_bounds
+  E03 exists_closed_slab_trajectory
+  E04 closed_slab_trajectory_unique_stable
+  E05 closed_slab_flow_cocycle
+  E06 closed_slab_flow_lattice_equivariant
+  E07 path_superposition_contDiff
+  E08 volterra_linearization_isInvertible
+  E09 initial_label_path_map_contDiff
+  E10 evaluated_label_jets_continuous
+  E11 label_jets_time_equations
+  E12 label_jets_hasFDerivWithinAt
+  E13 smoothVelocityOn_of_periodic_flow
+  E14 closed_slab_flow_determinant_one
+  E15 inverse_flow_continuousOn
+  E16 inverse_flow_hasFDerivWithinAt
+  E17 inverse_flow_contDiffOn
+  E18 material_velocity_of_constructed_flow
+  E19 CLASSICAL_MECHANICS_FLOW_REALIZATION
+  E20 CLASSICAL_MECHANICS_EQUATION_EQUIVALENCE_REALIZED
+
+Formal scheduling may separate E01/E02, E07/E08, and E14/E16 as independent
+opaque edges once their exact endpoint signatures are fixed. Pending bodies
+are not proofs. No new axiom may replace any of E01--E19.
+
+B_TIER_ENDPOINT = exact H -> E19 and exact H + smooth p -> E20.
+CURRENT_LEAN_ENDPOINT = conditional formal closure under the existing L1 axiom.
+This TXT does not remove that axiom or establish A_TIER/UNCONDITIONAL_CLOSURE.
+
+23. PRECISE REUSE MAP
+---------------------
+
+Mathlib path prefix:
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/
+
+E01/E02:
+  uniqueDiffOn_Icc -- Mathlib/Analysis/Calculus/TangentCone/Real.lean:99.
+  UniqueDiffOn.prod -- Mathlib/Analysis/Calculus/TangentCone/Prod.lean:63.
+  ContDiffOn.fderivWithin -- Mathlib/Analysis/Calculus/ContDiff/Defs.lean:904.
+  iteratedFDerivWithin_comp_add_right -- ContDiff/FTaylorSeries.lean:678.
+  iteratedFDerivWithin_congr -- ContDiff/FTaylorSeries.lean:571.
+  IsCompact.exists_bound_of_continuousOn -- Analysis/Normed/Group/Bounded.lean:96,
+    generated additive declaration; see GEO.P12 for exact ambient types.
+  lipschitzWith_of_nnnorm_fderiv_le -- Analysis/Calculus/MeanValue.lean:516.
+
+E03/E04 native shortcuts:
+  IsPicardLindelof -- Mathlib/Analysis/ODE/PicardLindelof.lean:79.
+  IsPicardLindelof.exists_eq_forall_mem_Icc_hasDerivWithinAt
+    -- Mathlib/Analysis/ODE/ExistUnique.lean:57.
+  IsPicardLindelof.exists_forall_mem_closedBall_eq_hasDerivWithinAt_continuousOn
+    -- same file:114.
+  ODE_solution_unique_of_mem_Icc_right / left -- same file:194 / 209.
+  ODE_solution_unique_of_mem_Icc -- same file:252.
+  norm_le_gronwallBound_of_norm_deriv_right_le
+    -- Mathlib/Analysis/ODE/Gronwall.lean:134.
+  dist_le_of_trajectories_ODE_of_mem -- same file:208.
+
+E09 exact implicit-function interface:
+  ContDiffAt.implicitFunction
+    -- Mathlib/Analysis/Calculus/ImplicitContDiff.lean:55.
+  ContDiffAt.eventually_apply_implicitFunction -- same file:72.
+  ContDiffAt.contDiffAt_implicitFunction -- same file:90.
+  E07 and E08 explicitly prove the analytic hypotheses of these interfaces.
+
+E13/E17:
+  contDiffOn_zero -- Mathlib/Analysis/Calculus/ContDiff/Defs.lean:619.
+  contDiffOn_succ_iff_hasFDerivWithinAt_of_uniqueDiffOn -- same file:875.
+  contDiffOn_infty -- same file:549.
+  The C-infinity label-map argument is not replaced by the weaker time-only
+  ODE.contDiffOn_enat_Icc_of_hasDerivWithinAt (PicardLindelof.lean:560).
+
+E14:
+  Matrix.det_fin_three -- Mathlib/LinearAlgebra/Matrix/Determinant/Basic.lean:818.
+  HasDerivWithinAt.mul -- Mathlib/Analysis/Calculus/Deriv/Mul.lean:261.
+  Matrix.mul_adjugate -- Mathlib/LinearAlgebra/Matrix/Adjugate.lean:264.
+  Matrix.trace_mul_cycle -- Mathlib/LinearAlgebra/Matrix/Trace.lean:161.
+  eq_of_derivWithin_eq -- Mathlib/Analysis/Calculus/MeanValue.lean:386.
+
+E16/E17:
+  HasFDerivWithinAt.of_local_left_inverse
+    -- Mathlib/Analysis/Calculus/FDeriv/OfCompLeft.lean:179.
+  ContinuousLinearMap.IsInvertible.contDiffAt_map_inverse
+    -- Mathlib/Analysis/Calculus/ContDiff/Operations.lean:869.
+
+E18:
+  HasDerivWithinAt.derivWithin -- Mathlib/Analysis/Calculus/Deriv/Basic.lean:444.
+
+Methlib supporting endpoint for E01/E02:
+  SingularClosure.spatialPeriodic_integerShift
+  https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PeriodicCover.lean#L30
+  Scope = integer-period reduction; no claim that it is a material-flow theorem.
+
+Methlib endpoints not substituted into this proof:
+  SingularClosure.forwardGlobalSolution_exists requires autonomous dissipativity.
+  Fourier/Galerkin regularity statements concern different curves and variables.
+  None is used to silently supply the missing joint material-flow theorem.
+
+Native downstream E20 source:
+  ASSEMBLY/ClassicalMechanicsAssembly/Equation.lean;
+  ASSEMBLY/ClassicalMechanicsAssembly/PiolaTransport.lean;
+  Classical_Mechanics_adapter/ClassicalMechanics/MaterialBridge.lean.
+
+END L1_FLOW_REALIZATION_ENDPOINT_CHAIN_B_TIER

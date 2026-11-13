@@ -63,3 +63,8 @@ L1 still requires a native flow construction; the target closure remains
 `CONDITIONAL_FORMAL_CLOSURE`.
 
 L1 construction register: [L1_FLOW_REALIZATION_ENTRYPOINTS.txt](../Auxillary/assembly/L1_FLOW_REALIZATION_ENTRYPOINTS.txt).
+
+Mathematical derivation: [L1_FLOW_REALIZATION_ENDPOINT_CHAIN_B_TIER.txt](../Auxillary/assembly/L1_FLOW_REALIZATION_ENDPOINT_CHAIN_B_TIER.txt).
+The 20 derived endpoints construct the exact L1 flow witness and yield the
+scoped Eulerian/material equation equivalence at B-tier. Native L1 discharge
+remains open; existing Lean axiom declarations and audit status are unchanged.
