@@ -1,0 +1,2428 @@
+{
+  "schema_version": 1,
+  "artifact": "D01_D22_NATIVE_ENDPOINT_CROSSWALK",
+  "status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTES",
+  "date": "2026-11-13",
+  "source_snapshot_kind": "EXTERNAL_COMPILER_AND_NAMED_AXIOM_AUDITS_MATCH_SOURCE_MANIFEST",
+  "external_round_in_progress_at_mapping": {
+    "round": 5,
+    "source_commit": "faa173f63bbe78e493be6d857e1136e4cb2e7f88"
+  },
+  "b_tier_index": {
+    "path": "GR_adapter/Derivation/NSE_GR_THREE_OBLIGATION_INDEX.json",
+    "sha256": "5d08c03d5c19168730713b55e05937900a9a336701c8a3f3d6ae91342f4cc6c4",
+    "txt_path": "GR_adapter/Derivation/NSE_GR_THREE_OBLIGATION_CLOSURE_B_TIER.txt",
+    "txt_sha256": "062295b874912769ecd597e2dd08b6c5faf79e82f7aa70cff729b4cd74bea176"
+  },
+  "pins": {
+    "mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+    "methlib": "eac159c5f7bf5a99a00d994da34c4760ea8335d0"
+  },
+  "status_policy": "This file maps exact source declarations. It does not itself establish compilation, axiom admissibility, semantic discharge, or promotion. Final promotion requires matching external compiler logs, theorem-level axiom audits and source hashes. D02 sharp loss-two and D14 auxiliary mean(rawVelocity) constancy remain explicitly unpromoted even if the root-required native route passes.",
+  "allowed_foundational_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "root": {
+    "name": "NSEGR.Assembly.NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_LITERATURE_INPUTS",
+    "module": "GRAssembly.RootClosure",
+    "explicit_premises": [
+      "nu > 0",
+      "rho != 0",
+      "NSEGR.LiteratureInputs"
+    ],
+    "literal_inputs": [
+      "NSEGR.LiteratureAnalyticCKInput",
+      "NSEGR.LiteratureGaussianJetInput",
+      "NSEGR.LiteratureSmoothFourierInput"
+    ],
+    "conclusion": "NSEGR.ExactSectorEquivalence nu rho t0",
+    "expanded_conclusion": "Nonempty (NSEGR.NSEgerm nu t0 equiv NSEGR.GRgerm nu rho t0)",
+    "constructed_internal_records": [
+      "ScalarBoundaryCompletionLaws",
+      "AnalyticRadialExtensionLaws",
+      "GeometricReconstructionLaws",
+      "GermInverseLaws"
+    ],
+    "claim_scope": "local analytic periodic 3D NSE germs modulo time-pressure gauge versus marked 5D normalized Gaussian vacuum exact zero-stress sector germs",
+    "extra_native_law_premises": [],
+    "unconditional_closure_claim": false,
+    "delivery_endpoint": "NSEGR.Assembly.NSE_GR_THREE_OBLIGATION_CLOSURE",
+    "delivery_module": "GRAssembly.NSE_GR_THREE_OBLIGATION_CLOSURE",
+    "audit_status": "A_TIER_CONDITIONAL_FORMAL_CLOSURE"
+  },
+  "nodes": [
+    {
+      "id": "D01",
+      "b_tier_index_pointer": "/nodes/0",
+      "b_tier_proof": "U1.1",
+      "b_tier_predecessors": [],
+      "b_tier_goal": "Joint smoothness and every mixed coordinate derivative commute with G on the original open interval.",
+      "b_tier_endpoint_refs": [
+        "U1-N01",
+        "U1-N03",
+        "U1-N04",
+        "U1-N05",
+        "U1-N06",
+        "ML052"
+      ],
+      "resolved_library_endpoint_ids": [
+        "ML052"
+      ],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.Assembly.poissonInverse_joint_smooth_on_open_slab",
+          "module": "GRAssembly.HodgeBounds",
+          "path": "ASSEMBLY/GRAssembly/HodgeBounds.lean",
+          "declaration_line_at_mapping": 40,
+          "declaration_header": "theorem poissonInverse_joint_smooth_on_open_slab (f : Pressure) {I : Set ℝ}\n    (hI : IsOpen I)\n    (hf : ContDiffOn ℝ ∞ (fun z : ℝ × Vec => f z.1 z.2) {z | z.1 ∈ I})\n    (hp : ∀ s ∈ I, SpatialPeriodic (f s)) :\n    ContDiffOn ℝ ∞ (fun z : ℝ × Vec => poissonInverse (f z.1) z.2)\n      {z | z.1 ∈ I}",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "7bcbd1cfd2a5a6e9a1322a607895e83dd0e1875af4bda38fd1b2b68db5b53a25",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_iteratedFDeriv_commute",
+          "module": "GRAssembly.HodgeCommutation",
+          "path": "ASSEMBLY/GRAssembly/HodgeCommutation.lean",
+          "declaration_line_at_mapping": 219,
+          "declaration_header": "theorem poissonInverse_iteratedFDeriv_commute (f : Pressure) {I : Set ℝ}\n    (hI : IsOpen I)\n    (hf : ContDiffOn ℝ ∞ (fun z : ℝ × Vec => f z.1 z.2) {z | z.1 ∈ I})\n    (hp : ∀ t ∈ I, SpatialPeriodic (f t)) {t : ℝ} (ht : t ∈ I)\n    (n : ℕ) (v : Fin n → ℝ × Vec) (x : Vec) :\n    iteratedFDeriv ℝ n (fun z : ℝ × Vec => poissonInverse (f z.1) z.2) (t, x) v =\n      poissonInverse (fun y => iteratedFDeriv ℝ n\n        (fun z : ℝ × Vec => f z.1 z.2) (t, y) v) x",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "21866e0d398c8517c05e19638e5bcf4faab00c50a36023423cdbb875f5177b00",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_localTimeDerivative",
+          "module": "GRAssembly.HodgeLocal",
+          "path": "ASSEMBLY/GRAssembly/HodgeLocal.lean",
+          "declaration_line_at_mapping": 136,
+          "declaration_header": "theorem poissonInverse_localTimeDerivative (f : Pressure) {I : Set ℝ}\n    (hI : IsOpen I)\n    (hf : ContDiffOn ℝ ∞ (fun z : ℝ × Vec => f z.1 z.2) {z | z.1 ∈ I})\n    (hp : ∀ s ∈ I, SpatialPeriodic (f s)) {t : ℝ} (ht : t ∈ I) :\n    scalarLocalTimeDerivative (fun s => poissonInverse (f s)) t =\n      poissonInverse (scalarLocalTimeDerivative f t)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "fb95529bc5757c39be3c9bea2edf4b06b4b71795be4b7764b19160f506e8e807",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "Mixed iterated Frechet derivatives are stronger than the fixed mixed-coordinate words needed by U1; all statements retain the supplied open time interval."
+    },
+    {
+      "id": "D02",
+      "b_tier_index_pointer": "/nodes/1",
+      "b_tier_proof": "U1.2",
+      "b_tier_predecessors": [],
+      "b_tier_goal": "Actual cosine summands satisfy ||Gg||inf <= C0 ||Delta g||inf; C0 <= 13/(4*pi^4).",
+      "b_tier_endpoint_refs": [
+        "U1-ME01",
+        "U1-ME02",
+        "U1-ML10"
+      ],
+      "resolved_library_endpoint_ids": [
+        "ME18",
+        "ME19",
+        "ML075"
+      ],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "REPLACEMENT_FIXED_LOSS_EIGHT_ROUTE",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.Assembly.scalarCoeff_norm_le_eight",
+          "module": "GRAssembly.HodgeBounds",
+          "path": "ASSEMBLY/GRAssembly/HodgeBounds.lean",
+          "declaration_line_at_mapping": 122,
+          "declaration_header": "theorem scalarCoeff_norm_le_eight (f : ScalarField)\n    (hf : ContDiff ℝ ∞ f) (hp : SpatialPeriodic f) (B : ℝ)\n    (hzero : ∀ x ∈ unitCube, ‖f x‖ ≤ B)\n    (height : ∀ j : Fin 3, ∀ x ∈ unitCube, ‖scalarSpatialIterate j 8 f x‖ ≤ B)\n    (k : Frequency) :\n    ‖NSEMaxwell.HodgeProof.scalarCoeff f k‖ ≤\n      ((4 : ℝ) ^ 4 * (12 * (volume.real unitCube * B))) *\n        (SingularClosure.torusSobolevWeight k)⁻¹ ^ 4",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "7bcbd1cfd2a5a6e9a1322a607895e83dd0e1875af4bda38fd1b2b68db5b53a25",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverseFixedLossConstant_pos",
+          "module": "GRAssembly.HodgeBounds",
+          "path": "ASSEMBLY/GRAssembly/HodgeBounds.lean",
+          "declaration_line_at_mapping": 152,
+          "declaration_header": "theorem poissonInverseFixedLossConstant_pos : 0 < poissonInverseFixedLossConstant",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "7bcbd1cfd2a5a6e9a1322a607895e83dd0e1875af4bda38fd1b2b68db5b53a25",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_norm_le_eight",
+          "module": "GRAssembly.HodgeBounds",
+          "path": "ASSEMBLY/GRAssembly/HodgeBounds.lean",
+          "declaration_line_at_mapping": 159,
+          "declaration_header": "theorem poissonInverse_norm_le_eight (f : ScalarField)\n    (hf : ContDiff ℝ ∞ f) (hp : SpatialPeriodic f) (B : ℝ) (hB : 0 ≤ B)\n    (hzero : ∀ x ∈ unitCube, ‖f x‖ ≤ B)\n    (height : ∀ j : Fin 3, ∀ x ∈ unitCube, ‖scalarSpatialIterate j 8 f x‖ ≤ B)\n    (x : Vec) : ‖poissonInverse f x‖ ≤ poissonInverseFixedLossConstant * B",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "7bcbd1cfd2a5a6e9a1322a607895e83dd0e1875af4bda38fd1b2b68db5b53a25",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_iteratedFDeriv_bound_eight",
+          "module": "GRAssembly.AnalyticHodge",
+          "path": "ASSEMBLY/GRAssembly/AnalyticHodge.lean",
+          "declaration_line_at_mapping": 24,
+          "declaration_header": "theorem poissonInverse_iteratedFDeriv_bound_eight\n    (f : Pressure) {I : Set ℝ} (hI : IsOpen I)\n    (hf : ContDiffOn ℝ ∞ (fun z : ℝ × Vec => f z.1 z.2) {z | z.1 ∈ I})\n    (hp : ∀ t ∈ I, SpatialPeriodic (f t)) {t : ℝ} (ht : t ∈ I)\n    {M A : ℝ} (hM : 0 ≤ M) (hA : 1 ≤ A)\n    (hb : ∀ (k : ℕ) (y : Vec), y ∈ unitCube →\n      ‖iteratedFDeriv ℝ k (fun z : ℝ × Vec => f z.1 z.2) (t, y)‖ ≤\n        M * A ^ k * (k.factorial : ℝ)) (n : ℕ) (x : Vec) :\n    ‖iteratedFDeriv ℝ n\n      (fun z : ℝ × Vec => poissonInverse (f z.1) z.2) (t, x)‖ ≤\n        poissonInverseFixedLossConstant * M * A ^ (n + 8) *\n          ((n + 8).factorial : ℝ)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "226f50c4a14293f098f9003a26f76bb224b0947c4e5b8c8436684170d84c4473",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.analyticHodge_absorb_fixed_loss",
+          "module": "GRAssembly.AnalyticHodgeInput",
+          "path": "ASSEMBLY/GRAssembly/AnalyticHodgeInput.lean",
+          "declaration_line_at_mapping": 26,
+          "declaration_header": "theorem analyticHodge_absorb_fixed_loss {C M A : ℝ}\n    (hC : 0 ≤ C) (hM : 0 ≤ M) (hA : 0 ≤ A) (n k : ℕ) :\n    C * M * A ^ (n + k) * ((n + k).factorial : ℝ) ≤\n      (C * M * A ^ k * (k.factorial : ℝ) * (2 : ℝ) ^ k) *\n        (2 * A) ^ n * (n.factorial : ℝ)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "3d9602eba935736bfa70de0ef1f3d8102e6a5b5783b9635d33b846dd24f754e9",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "The sharp loss-two estimate and the constant 13/(4*pi^4) are B-tier only and are not promoted by this mapping. The implemented route instead uses a fixed loss of eight spatial derivatives, a positive field/order-independent constant, and factorial-shift absorption. This replacement proves the same D04/U1 conclusion.",
+      "unpromoted_b_tier_strengthenings": [
+        {
+          "claim": "||Gg||inf <= C0 ||Delta g||inf with C0 <= 13/(4*pi^4)",
+          "status": "B_TIER_ONLY_NOT_A_TIER_PROMOTED",
+          "needed_for_current_root": false
+        }
+      ]
+    },
+    {
+      "id": "D03",
+      "b_tier_index_pointer": "/nodes/2",
+      "b_tier_proof": "U1.3",
+      "b_tier_predecessors": [],
+      "b_tier_goal": "Compact periodic analytic input has simultaneous local bounds M R^(-n)n! for all mixed derivatives.",
+      "b_tier_endpoint_refs": [
+        "ML003",
+        "ML023",
+        "U1-ML02",
+        "U1-ML03",
+        "U1-ML04"
+      ],
+      "resolved_library_endpoint_ids": [
+        "ML003",
+        "ML023",
+        "ML066",
+        "ML067",
+        "ML068",
+        "ML069"
+      ],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.Assembly.analyticAt_exists_uniform_iteratedFDeriv_bound",
+          "module": "GRAssembly.AnalyticHodgeSeries",
+          "path": "ASSEMBLY/GRAssembly/AnalyticHodgeSeries.lean",
+          "declaration_line_at_mapping": 78,
+          "declaration_header": "theorem analyticAt_exists_uniform_iteratedFDeriv_bound\n    {f : E → F} {x : E} (hf : AnalyticAt ℝ f x) :\n    ∃ r M A : ℝ, 0 < r ∧ 0 < M ∧ 0 < A ∧\n      ∀ (n : ℕ) (y : E), y ∈ ball x r →\n        ‖iteratedFDeriv ℝ n f y‖ ≤ M * A ^ n * (n.factorial : ℝ)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "bde1c26e556314dccf1c64a158a5c20b73014395bab8c9733345a1b066f70379",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.analyticOnNhd_compact_uniform_iteratedFDeriv_bound",
+          "module": "GRAssembly.AnalyticHodgeSeries",
+          "path": "ASSEMBLY/GRAssembly/AnalyticHodgeSeries.lean",
+          "declaration_line_at_mapping": 131,
+          "declaration_header": "theorem analyticOnNhd_compact_uniform_iteratedFDeriv_bound\n    {f : E → F} {K : Set E} (hK : IsCompact K) (hf : AnalyticOnNhd ℝ f K) :\n    ∃ M A : ℝ, 0 < M ∧ 0 < A ∧ ∀ (n : ℕ) (y : E), y ∈ K →\n      ‖iteratedFDeriv ℝ n f y‖ ≤ M * A ^ n * (n.factorial : ℝ)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "bde1c26e556314dccf1c64a158a5c20b73014395bab8c9733345a1b066f70379",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.analyticHodge_open_slab_local_uniform_bound",
+          "module": "GRAssembly.AnalyticHodgeInput",
+          "path": "ASSEMBLY/GRAssembly/AnalyticHodgeInput.lean",
+          "declaration_line_at_mapping": 46,
+          "declaration_header": "theorem analyticHodge_open_slab_local_uniform_bound\n    (f : Pressure) {I : Set ℝ} (hI : IsOpen I)\n    (hf : AnalyticOnNhd ℝ (fun z : ℝ × Vec => f z.1 z.2) {z | z.1 ∈ I})\n    {t : ℝ} (ht : t ∈ I) :\n    ∃ r M A : ℝ, 0 < r ∧ 0 < M ∧ 1 ≤ A ∧ closedBall t r ⊆ I ∧\n      ∀ (n : ℕ) (s : ℝ), s ∈ closedBall t r → ∀ x ∈ unitCube,\n        ‖iteratedFDeriv ℝ n (fun z : ℝ × Vec => f z.1 z.2) (s, x)‖ ≤\n          M * A ^ n * (n.factorial : ℝ)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "3d9602eba935736bfa70de0ef1f3d8102e6a5b5783b9635d33b846dd24f754e9",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "Compact-slab local constants may depend on the base time. No uniform positive radius over all of the input interval is required."
+    },
+    {
+      "id": "D04",
+      "b_tier_index_pointer": "/nodes/3",
+      "b_tier_proof": "U1.4--U1.7",
+      "b_tier_predecessors": [
+        "D01",
+        "D02",
+        "D03"
+      ],
+      "b_tier_goal": "Actual G, spatial mean and P preserve joint analyticity on the entire supplied interval.",
+      "b_tier_endpoint_refs": [
+        "U1-ML05",
+        "U1-ML06",
+        "ML026",
+        "ML051"
+      ],
+      "resolved_library_endpoint_ids": [
+        "ML070",
+        "ML071",
+        "ML026",
+        "ML051"
+      ],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.Assembly.analyticAt_of_iteratedFDeriv_bound",
+          "module": "GRAssembly.AnalyticHodgeTaylor",
+          "path": "ASSEMBLY/GRAssembly/AnalyticHodgeTaylor.lean",
+          "declaration_line_at_mapping": 76,
+          "declaration_header": "theorem analyticAt_of_iteratedFDeriv_bound (f : E → F) (x : E)\n    {r M A : ℝ} (hr : 0 < r) (hM : 0 ≤ M) (hA : 0 ≤ A)\n    (hf : ContDiffOn ℝ ∞ f (ball x r))\n    (hbound : ∀ n z, z ∈ ball x r →\n      ‖iteratedFDeriv ℝ n f z‖ ≤ M * A ^ n * (n.factorial : ℝ)) :\n    AnalyticAt ℝ f x",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "3745431424e0ce669116836587dbef34056c35b7ded3c200b2076a5bd4a676e8",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.poissonInverse_joint_analytic_on_open_slab",
+          "module": "GRAssembly.AnalyticHodge",
+          "path": "ASSEMBLY/GRAssembly/AnalyticHodge.lean",
+          "declaration_line_at_mapping": 83,
+          "declaration_header": "theorem poissonInverse_joint_analytic_on_open_slab\n    (f : Pressure) {I : Set ℝ} (hI : IsOpen I)\n    (hf : AnalyticOnNhd ℝ (fun z : ℝ × Vec => f z.1 z.2) {z | z.1 ∈ I})\n    (hp : ∀ t ∈ I, SpatialPeriodic (f t)) :\n    AnalyticOnNhd ℝ\n      (fun z : ℝ × Vec => poissonInverse (f z.1) z.2) {z | z.1 ∈ I}",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "226f50c4a14293f098f9003a26f76bb224b0947c4e5b8c8436684170d84c4473",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.scalarMean_analytic_on_open_slab",
+          "module": "GRAssembly.AnalyticHodge",
+          "path": "ASSEMBLY/GRAssembly/AnalyticHodge.lean",
+          "declaration_line_at_mapping": 114,
+          "declaration_header": "theorem scalarMean_analytic_on_open_slab\n    (f : Pressure) {I : Set ℝ} (hI : IsOpen I)\n    (hf : AnalyticOnNhd ℝ (fun z : ℝ × Vec => f z.1 z.2) {z | z.1 ∈ I})\n    (hp : ∀ t ∈ I, SpatialPeriodic (f t)) :\n    AnalyticOnNhd ℝ (fun t => scalarMean (f t)) I",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "226f50c4a14293f098f9003a26f76bb224b0947c4e5b8c8436684170d84c4473",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.leray_joint_analytic_on_open_slab",
+          "module": "GRAssembly.AnalyticHodge",
+          "path": "ASSEMBLY/GRAssembly/AnalyticHodge.lean",
+          "declaration_line_at_mapping": 124,
+          "declaration_header": "theorem leray_joint_analytic_on_open_slab\n    (w : Velocity) {I : Set ℝ} (hI : IsOpen I)\n    (hw : AnalyticOnNhd ℝ (fun z : ℝ × Vec => w z.1 z.2) {z | z.1 ∈ I})\n    (hp : ∀ t ∈ I, SpatialPeriodic (w t)) :\n    AnalyticOnNhd ℝ (fun z : ℝ × Vec => leray (w z.1) z.2) {z | z.1 ∈ I}",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "226f50c4a14293f098f9003a26f76bb224b0947c4e5b8c8436684170d84c4473",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "The actual Poisson inverse, cube mean and Leray formula preserve analyticity on precisely the input open interval. No zero-mean velocity assumption."
+    },
+    {
+      "id": "D05",
+      "b_tier_index_pointer": "/nodes/4",
+      "b_tier_proof": "U2 sections 1/6",
+      "b_tier_predecessors": [],
+      "b_tier_goal": "LI01, rho!=0 give actual second-order normalized scalar germs, including converse uniqueness.",
+      "b_tier_endpoint_refs": [
+        "ScalarNormalGerm",
+        "scalar_normalized_germ_unique"
+      ],
+      "resolved_library_endpoint_ids": [],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.Assembly.scalarNormalGerm_exists",
+          "module": "GRAssembly.ScalarJet",
+          "path": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+          "declaration_line_at_mapping": 300,
+          "declaration_header": "theorem scalarNormalGerm_exists\n    (input : LiteratureAnalyticCKInput)\n    {ν ρ t0 δ : ℝ} {u : Velocity} {p : Pressure}\n    (hρ : ρ ≠ 0) (hpair : AnalyticPeriodicPair t0 δ u p) (x0 : Vec) :\n    ∃ ψ : Pressure, ScalarNormalGerm ν ρ u p t0 x0 ψ",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "c4fae4df1ba2792faa4dcd78c2b3655bc74aef4a6066383652c8ae3088f2c935",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.scalar_normalized_germ_unique",
+          "module": "GRAssembly.ScalarJet",
+          "path": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+          "declaration_line_at_mapping": 281,
+          "declaration_header": "theorem scalar_normalized_germ_unique\n    (input : LiteratureAnalyticCKInput)\n    {ν ρ t0 : ℝ} {u : Velocity} {p ψ φ : Pressure} {x0 : Vec}\n    (hρ : ρ ≠ 0)\n    (hu : AnalyticAt ℝ (fun z : ℝ × Vec => u z.1 z.2) (t0, x0))\n    (hp : AnalyticAt ℝ (fun z : ℝ × Vec => p z.1 z.2) (t0, x0))\n    (hψ : ScalarNormalGerm ν ρ u p t0 x0 ψ)\n    (hφ : ScalarNormalGerm ν ρ u p t0 x0 φ) :\n    (fun z : ℝ × Vec => ψ z.1 z.2) =ᶠ[𝓝 (t0, x0)]\n      (fun z : ℝ × Vec => φ z.1 z.2)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "c4fae4df1ba2792faa4dcd78c2b3655bc74aef4a6066383652c8ae3088f2c935",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.ScalarNormalGerm.noncharacteristic",
+          "module": "GRAssembly.ScalarJet",
+          "path": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+          "declaration_line_at_mapping": 330,
+          "declaration_header": "theorem ScalarNormalGerm.noncharacteristic\n    {ν ρ t0 : ℝ} {u : Velocity} {p ψ : Pressure} {x0 : Vec}\n    (hψ : ScalarNormalGerm ν ρ u p t0 x0 ψ) (hρ : ρ ≠ 0) :\n    ∀ᶠ z in 𝓝 (t0, x0), ρ + scalarLaplacian (ψ z.1) z.2 ≠ 0",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "c4fae4df1ba2792faa4dcd78c2b3655bc74aef4a6066383652c8ae3088f2c935",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.ScalarNormalGerm.hamiltonian",
+          "module": "GRAssembly.ScalarJet",
+          "path": "ASSEMBLY/GRAssembly/ScalarJet.lean",
+          "declaration_line_at_mapping": 340,
+          "declaration_header": "theorem ScalarNormalGerm.hamiltonian\n    {ν ρ t0 : ℝ} {u : Velocity} {p ψ : Pressure} {x0 : Vec}\n    (hψ : ScalarNormalGerm ν ρ u p t0 x0 ψ) (hρ : ρ ≠ 0) :\n    ∀ᶠ z in 𝓝 (t0, x0),\n      boundaryHamiltonian (completedBoundary ν ρ u p ψ) z.1 z.2 = 0",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "c4fae4df1ba2792faa4dcd78c2b3655bc74aef4a6066383652c8ae3088f2c935",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.scalarNormalGerm_of_hamiltonian",
+          "module": "GRAssembly.NativeInverse",
+          "path": "ASSEMBLY/GRAssembly/NativeInverse.lean",
+          "declaration_line_at_mapping": 23,
+          "declaration_header": "theorem scalarNormalGerm_of_hamiltonian\n    {ν ρ t0 : ℝ} {u : Velocity} {p ψ : Pressure} {x0 : Vec}\n    (hρ : ρ ≠ 0)\n    (ha : AnalyticAt ℝ (fun z : ℝ × Vec => ψ z.1 z.2) (t0, x0))\n    (hi : ∀ᶠ x in 𝓝 x0, ψ t0 x = 0)\n    (hti : ∀ᶠ x in 𝓝 x0, scalarLocalTimeDerivative ψ t0 x = 0)\n    (hH : ∀ᶠ z in 𝓝 (t0, x0),\n      boundaryHamiltonian (completedBoundary ν ρ u p ψ) z.1 z.2 = 0) :\n    ScalarNormalGerm ν ρ u p t0 x0 ψ",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "01ea144bcbce7cf254f4c6f17b33c1d94a3894a4d1b40908eea5a059d3ef1d8a",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "Scalar normalization uses rho != 0; the Hamiltonian converse proves noncharacteristic persistence from zero Cauchy data before using the scalar normal equation."
+    },
+    {
+      "id": "D06",
+      "b_tier_index_pointer": "/nodes/5",
+      "b_tier_proof": "U2 section 2",
+      "b_tier_predecessors": [
+        "D05"
+      ],
+      "b_tier_goal": "Finite source atlas has compact patch closures strictly inside valid larger source domains.",
+      "b_tier_endpoint_refs": [
+        "ML001",
+        "ML002",
+        "ML003",
+        "finite_precompact_refinement"
+      ],
+      "resolved_library_endpoint_ids": [
+        "ML001",
+        "ML002",
+        "ML003"
+      ],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.Assembly.finite_precompact_refinement",
+          "module": "GRAssembly.PeriodicGluing",
+          "path": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+          "declaration_line_at_mapping": 28,
+          "declaration_header": "theorem finite_precompact_refinement\n    {X : Type*} [TopologicalSpace X] [LocallyCompactSpace X] [T2Space X]\n    {K : Set X} (hK : IsCompact K) (U : K → Set X)\n    (hU : ∀ i, IsOpen (U i)) (hmem : ∀ i : K, (i : X) ∈ U i) :\n    ∃ (V : K → Set X) (t : Finset K),\n      (∀ i, IsOpen (V i) ∧ IsCompact (closure (V i)) ∧ closure (V i) ⊆ U i) ∧\n      K ⊆ ⋃ i ∈ t, V i",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "06c8922447ac4a4b1d6165dbc121ba7d44c09726f938cfbe10ddf703953e1032",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.periodic_law_of_unique_local_germs",
+          "module": "GRAssembly.NativeGluingAtlas",
+          "path": "ASSEMBLY/GRAssembly/NativeGluingAtlas.lean",
+          "declaration_line_at_mapping": 40,
+          "declaration_header": "theorem periodic_law_of_unique_local_germs\n    {S Y : Type*} [TopologicalSpace S] {s0 : S}\n    (Law : ((S × Vec) → Y) → S × Vec → Prop)\n    (hex : ∀ x ∈ unitCube, ∃ f : S × Vec → Y,\n      ∀ᶠ z in 𝓝 (s0, x), Law f z)\n    (hlocality : ∀ f g z, f =ᶠ[𝓝 z] g → (Law f z ↔ Law g z))\n    (htranslate : ∀ f z n,\n      Law f (z.1, z.2 - integerSpatialShift n) → Law (spatialTranslate f n) z)\n    (hunique : ∀ f g x,\n      (∀ᶠ z in 𝓝 (s0, x), Law f z) →\n      (∀ᶠ z in 𝓝 (s0, x), Law g z) → f =ᶠ[𝓝 (s0, x)] g)\n    (outside : Y) :\n    ∃ W : Set S, IsOpen W ∧ s0 ∈ W ∧ ∃ g : S × Vec → Y,\n      (∀ s ∈ W, SpatialPeriodic (fun x => g (s, x))) ∧\n      ∀ s ∈ W, ∀ x, Law g (s, x)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "f4c3bd4936f890556b3c0a0b456781edf2885a72495765e542ecc57ae32b6d74",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "The generic atlas constructor discharges the compact/precompact hypotheses from local source germs; a finished glued witness is not assumed."
+    },
+    {
+      "id": "D07",
+      "b_tier_index_pointer": "/nodes/6",
+      "b_tier_proof": "U2 section 3",
+      "b_tier_predecessors": [],
+      "b_tier_goal": "Constant spatial translations preserve literal scalar equations, metric derivatives, boundary jets and Ricci.",
+      "b_tier_endpoint_refs": [
+        "ML015",
+        "ML016",
+        "ML012",
+        "ML013"
+      ],
+      "resolved_library_endpoint_ids": [
+        "ML015",
+        "ML016",
+        "ML012",
+        "ML013"
+      ],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.Assembly.completedBoundary_spatial_sub",
+          "module": "GRAssembly.NativeGluingTranslation",
+          "path": "ASSEMBLY/GRAssembly/NativeGluingTranslation.lean",
+          "declaration_line_at_mapping": 58,
+          "declaration_header": "theorem completedBoundary_spatial_sub {ν ρ : ℝ} {u : Velocity} {p ψ : Pressure}\n    {t : ℝ} (hu : SpatialPeriodic (u t)) (hp : SpatialPeriodic (p t))\n    (n : Frequency) (x : Vec) :\n    completedBoundary ν ρ u p (fun s y => ψ s (y - integerSpatialShift n)) t x =\n      completedBoundary ν ρ u p ψ t (x - integerSpatialShift n)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "80d346ade35ee2a293a8fe0722713497457b38e44cf2fec1903ba16dff945df4",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.boundaryHamiltonian_joint_congr",
+          "module": "GRAssembly.NativeGluingTranslation",
+          "path": "ASSEMBLY/GRAssembly/NativeGluingTranslation.lean",
+          "declaration_line_at_mapping": 99,
+          "declaration_header": "theorem boundaryHamiltonian_joint_congr {ν ρ : ℝ} {u : Velocity} {p : Pressure}\n    {f g : ℝ × Vec → ℝ} {z : ℝ × Vec} (h : f =ᶠ[𝓝 z] g) :\n    boundaryHamiltonian (completedBoundary ν ρ u p (fun t x => f (t, x))) z.1 z.2 =\n      boundaryHamiltonian (completedBoundary ν ρ u p (fun t x => g (t, x))) z.1 z.2",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "80d346ade35ee2a293a8fe0722713497457b38e44cf2fec1903ba16dff945df4",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.bulkPartial_comp_sub",
+          "module": "GRAssembly.NativeGluingTranslation",
+          "path": "ASSEMBLY/GRAssembly/NativeGluingTranslation.lean",
+          "declaration_line_at_mapping": 106,
+          "declaration_header": "theorem bulkPartial_comp_sub (f : Bulk → ℝ) (c : Bulk) (i : Fin 5) (z : Bulk) :\n    bulkPartial (fun y => f (y - c)) i z = bulkPartial f i (z - c)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "80d346ade35ee2a293a8fe0722713497457b38e44cf2fec1903ba16dff945df4",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.christoffel_comp_sub",
+          "module": "GRAssembly.NativeGluingTranslation",
+          "path": "ASSEMBLY/GRAssembly/NativeGluingTranslation.lean",
+          "declaration_line_at_mapping": 110,
+          "declaration_header": "theorem christoffel_comp_sub (g : Metric) (c z : Bulk) (a b d : Fin 5) :\n    christoffel (fun y => g (y - c)) z a b d = christoffel g (z - c) a b d",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "80d346ade35ee2a293a8fe0722713497457b38e44cf2fec1903ba16dff945df4",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.ricci_comp_sub",
+          "module": "GRAssembly.NativeGluingTranslation",
+          "path": "ASSEMBLY/GRAssembly/NativeGluingTranslation.lean",
+          "declaration_line_at_mapping": 118,
+          "declaration_header": "theorem ricci_comp_sub (g : Metric) (c z : Bulk) :\n    ricci (fun y => g (y - c)) z = ricci g (z - c)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "80d346ade35ee2a293a8fe0722713497457b38e44cf2fec1903ba16dff945df4",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.boundaryK_comp_spatial_sub",
+          "module": "GRAssembly.NativeGluingTranslation",
+          "path": "ASSEMBLY/GRAssembly/NativeGluingTranslation.lean",
+          "declaration_line_at_mapping": 139,
+          "declaration_header": "theorem boundaryK_comp_spatial_sub (g : Metric) (c : Vec) (t : ℝ) (x : Vec) :\n    boundaryK (fun z => g (z - bulkPoint 0 0 c)) t x = boundaryK g t (x - c)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "80d346ade35ee2a293a8fe0722713497457b38e44cf2fec1903ba16dff945df4",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "Translations act on literal derivative, curvature and boundary-tensor definitions. Local equality transports all required derivatives."
+    },
+    {
+      "id": "D08",
+      "b_tier_index_pointer": "/nodes/7",
+      "b_tier_proof": "U2 sections 4/5",
+      "b_tier_predecessors": [
+        "D06",
+        "D07"
+      ],
+      "b_tier_goal": "Finite relative shifts and compact closed overlaps produce one parameter neighborhood and an actual periodic analytic witness.",
+      "b_tier_endpoint_refs": [
+        "ML004",
+        "ML005",
+        "ML006",
+        "ML007",
+        "periodic_analytic_witness_of_compact_overlap_germs"
+      ],
+      "resolved_library_endpoint_ids": [
+        "ML004",
+        "ML005",
+        "ML006",
+        "ML007"
+      ],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.Assembly.lattice_relative_shift_bound",
+          "module": "GRAssembly.PeriodicGluing",
+          "path": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+          "declaration_line_at_mapping": 171,
+          "declaration_header": "theorem lattice_relative_shift_bound {ι : Type*} (U : ι → Set Vec)\n    (hbox : ∀ i, ∀ y ∈ U i, ∀ j, (-1 : ℝ) < y j ∧ y j < 2)\n    {a b : ι × Frequency} {x : Vec}\n    (ha : x ∈ latticePatch U a) (hb : x ∈ latticePatch U b) (j : Fin 3) :\n    (-3 : ℤ) ≤ b.2 j - a.2 j ∧ b.2 j - a.2 j ≤ 3",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "06c8922447ac4a4b1d6165dbc121ba7d44c09726f938cfbe10ddf703953e1032",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.compactLatticeOverlap_isCompact",
+          "module": "GRAssembly.PeriodicGluing",
+          "path": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+          "declaration_line_at_mapping": 193,
+          "declaration_header": "theorem compactLatticeOverlap_isCompact {ι : Type*} (U : ι → Set Vec)\n    (hU : ∀ i, IsCompact (closure (U i))) (i j : ι) (a : BoundedLatticeShift) :\n    IsCompact (compactLatticeOverlap U i j a)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "06c8922447ac4a4b1d6165dbc121ba7d44c09726f938cfbe10ddf703953e1032",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.lattice_overlap_germs_uniform",
+          "module": "GRAssembly.PeriodicGluing",
+          "path": "ASSEMBLY/GRAssembly/PeriodicGluing.lean",
+          "declaration_line_at_mapping": 201,
+          "declaration_header": "theorem lattice_overlap_germs_uniform\n    {S Y ι : Type*} [TopologicalSpace S] [Finite ι] {s0 : S}\n    (U : ι → Set Vec) (f : ι → S → Vec → Y)\n    (hcompact : ∀ i, IsCompact (closure (U i)))\n    (hbox : ∀ i, ∀ y ∈ U i, ∀ j, (-1 : ℝ) < y j ∧ y j < 2)\n    (hlocal : ∀ i j (a : BoundedLatticeShift), ∀ x ∈ compactLatticeOverlap U i j a,\n      ∀ᶠ z : S × Vec in 𝓝 (s0, x),\n        f i z.1 z.2 = f j z.1 (z.2 - integerSpatialShift (boundedShiftVector a))) :\n    ∀ᶠ s in 𝓝 s0, ∀ a b : ι × Frequency, ∀ x,\n      x ∈ latticePatch U a → x ∈ latticePatch U b →\n        latticeLocal f a s x = latticeLocal f b s x",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "06c8922447ac4a4b1d6165dbc121ba7d44c09726f938cfbe10ddf703953e1032",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.periodic_analytic_witness_of_compact_overlap_germs",
+          "module": "GRAssembly.PeriodicWitness",
+          "path": "ASSEMBLY/GRAssembly/PeriodicWitness.lean",
+          "declaration_line_at_mapping": 139,
+          "declaration_header": "theorem periodic_analytic_witness_of_compact_overlap_germs\n    {S Y ι : Type*} [NormedAddCommGroup S] [NormedSpace ℝ S]\n    [NormedAddCommGroup Y] [NormedSpace ℝ Y] [Finite ι] {s0 : S}\n    (U : ι → Set Vec) (V : ι → Set S) (f : ι → S → Vec → Y)\n    (hU : ∀ i, IsOpen (U i)) (hV : ∀ i, V i ∈ 𝓝 s0)\n    (hcover : unitCube ⊆ ⋃ i, U i)\n    (hcompact : ∀ i, IsCompact (closure (U i)))\n    (hbox : ∀ i, ∀ y ∈ U i, ∀ j, (-1 : ℝ) < y j ∧ y j < 2)\n    (hlocal : ∀ i j (a : BoundedLatticeShift), ∀ x ∈ compactLatticeOverlap U i j a,\n      ∀ᶠ z : S × Vec in 𝓝 (s0, x),\n        f i z.1 z.2 = f j z.1 (z.2 - integerSpatialShift (boundedShiftVector a)))\n    (hanalytic : ∀ i, ∀ s ∈ V i, ∀ x ∈ U i,\n      AnalyticAt ℝ (fun z : S × Vec => f i z.1 z.2) (s, x))\n    (outside : Y) :\n    ∃ W : Set S, IsOpen W ∧ s0 ∈ W ∧ (∀ i, W ⊆ V i) ∧\n      ∃ g : S → Vec → Y,\n        (∀ s ∈ W, SpatialPeriodic (g s)) ∧\n        (∀ s ∈ W, ∀ x, AnalyticAt ℝ (fun z : S × Vec => g z.1 z.2) (s, x)) ∧\n        (∀ a : ι × Frequency, ∀ s ∈ W, ∀ x ∈ latticePatch U a,\n          (fun z : S × Vec => g z.1 z.2) =ᶠ[𝓝 (s, x)]\n            (fun z => latticeLocal f a z.1 z.2))",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "5d32c93482fcd07b0f8978d5e5f2fdc604b5f541c095bee3024617b6133495a5",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.periodic_law_of_unique_local_germs",
+          "module": "GRAssembly.NativeGluingAtlas",
+          "path": "ASSEMBLY/GRAssembly/NativeGluingAtlas.lean",
+          "declaration_line_at_mapping": 40,
+          "declaration_header": "theorem periodic_law_of_unique_local_germs\n    {S Y : Type*} [TopologicalSpace S] {s0 : S}\n    (Law : ((S × Vec) → Y) → S × Vec → Prop)\n    (hex : ∀ x ∈ unitCube, ∃ f : S × Vec → Y,\n      ∀ᶠ z in 𝓝 (s0, x), Law f z)\n    (hlocality : ∀ f g z, f =ᶠ[𝓝 z] g → (Law f z ↔ Law g z))\n    (htranslate : ∀ f z n,\n      Law f (z.1, z.2 - integerSpatialShift n) → Law (spatialTranslate f n) z)\n    (hunique : ∀ f g x,\n      (∀ᶠ z in 𝓝 (s0, x), Law f z) →\n      (∀ᶠ z in 𝓝 (s0, x), Law g z) → f =ᶠ[𝓝 (s0, x)] g)\n    (outside : Y) :\n    ∃ W : Set S, IsOpen W ∧ s0 ∈ W ∧ ∃ g : S × Vec → Y,\n      (∀ s ∈ W, SpatialPeriodic (fun x => g (s, x))) ∧\n      ∀ s ∈ W, ∀ x, Law g (s, x)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "f4c3bd4936f890556b3c0a0b456781edf2885a72495765e542ecc57ae32b6d74",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "Finite relative shifts and compact closed overlaps precede totalization; the produced witness agrees locally with analytic source branches."
+    },
+    {
+      "id": "D09",
+      "b_tier_index_pointer": "/nodes/8",
+      "b_tier_proof": "U2 section 6",
+      "b_tier_predecessors": [
+        "D05",
+        "D08"
+      ],
+      "b_tier_goal": "Normalized scalar witness on a common cylinder with |rho+Delta psi|>|rho|/2 and Hamiltonian zero.",
+      "b_tier_endpoint_refs": [
+        "completedBoundary_hamiltonian_zero_iff_scalar_normal"
+      ],
+      "resolved_library_endpoint_ids": [],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.Assembly.scalar_periodic_cylinder_of_literatureCK",
+          "module": "GRAssembly.NativeGluingScalar",
+          "path": "ASSEMBLY/GRAssembly/NativeGluingScalar.lean",
+          "declaration_line_at_mapping": 116,
+          "declaration_header": "theorem scalar_periodic_cylinder_of_literatureCK\n    (input : LiteratureAnalyticCKInput)\n    {ν ρ t0 δ : ℝ} {u : Velocity} {p : Pressure}\n    (hρ : ρ ≠ 0) (hpair : AnalyticPeriodicPair t0 δ u p) :\n    ∃ (d : ℝ) (ψ : Pressure), 0 < d ∧ d ≤ δ ∧\n      AnalyticOnNhd ℝ (fun z : ℝ × Vec => ψ z.1 z.2) (spacetimeSlab t0 d) ∧\n      (∀ t ∈ timeInterval t0 d, SpatialPeriodic (ψ t)) ∧\n      (∀ x, ψ t0 x = 0) ∧\n      (∀ x, scalarLocalTimeDerivative ψ t0 x = 0) ∧\n      (∀ t ∈ timeInterval t0 d, ∀ x,\n        boundaryHamiltonian (completedBoundary ν ρ u p ψ) t x = 0)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "b8f2173b4a671f7bee9127a2c6c9380ac8c8ae295953b31f424d5c1902693b05",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.scalar_periodic_normal_cylinder_of_literatureCK",
+          "module": "GRAssembly.NativeGluingScalar",
+          "path": "ASSEMBLY/GRAssembly/NativeGluingScalar.lean",
+          "declaration_line_at_mapping": 180,
+          "declaration_header": "theorem scalar_periodic_normal_cylinder_of_literatureCK\n    (input : LiteratureAnalyticCKInput)\n    {ν ρ t0 δ : ℝ} {u : Velocity} {p : Pressure}\n    (hρ : ρ ≠ 0) (hpair : AnalyticPeriodicPair t0 δ u p) :\n    ∃ (d : ℝ) (ψ : Pressure), 0 < d ∧ d ≤ δ ∧\n      AnalyticOnNhd ℝ (fun z : ℝ × Vec => ψ z.1 z.2) (spacetimeSlab t0 d) ∧\n      (∀ t ∈ timeInterval t0 d, SpatialPeriodic (ψ t)) ∧\n      (∀ x, ψ t0 x = 0) ∧\n      (∀ x, scalarLocalTimeDerivative ψ t0 x = 0) ∧\n      (∀ t ∈ timeInterval t0 d, ∀ x,\n        |ρ| / 2 < |ρ + scalarLaplacian (ψ t) x|) ∧\n      (∀ t ∈ timeInterval t0 d, ∀ x,\n        scalarLocalTimeDerivative (scalarLocalTimeDerivative ψ) t x =\n          scalarJetRHS ρ (fun i => u t x i) (nseSpatialSource3 ν u p t x)\n            (scalarHessian (ψ t) x)\n            (fun i => gradient (scalarLocalTimeDerivative ψ t) x i)) ∧\n      (∀ t ∈ timeInterval t0 d, ∀ x,\n        boundaryHamiltonian (completedBoundary ν ρ u p ψ) t x = 0)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "b8f2173b4a671f7bee9127a2c6c9380ac8c8ae295953b31f424d5c1902693b05",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "The stronger normal-cylinder endpoint records |rho+Delta psi|>|rho|/2. The completion constructor only needs the zero-Hamiltonian cylinder endpoint."
+    },
+    {
+      "id": "D10",
+      "b_tier_index_pointer": "/nodes/9",
+      "b_tier_proof": "U2 section 7",
+      "b_tier_predecessors": [
+        "D07",
+        "D08"
+      ],
+      "b_tier_goal": "LI02 yields r: actual periodic Gaussian vacuum collar with boundary match and explicit Lorentz congruence.",
+      "b_tier_endpoint_refs": [
+        "gaussian_lorentzian_of_near_eta4",
+        "ML055",
+        "ML056",
+        "ML059",
+        "ML060",
+        "ML061",
+        "ML062"
+      ],
+      "resolved_library_endpoint_ids": [
+        "ML055",
+        "ML056",
+        "ML059",
+        "ML060",
+        "ML061",
+        "ML062"
+      ],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.Assembly.gaussian_lorentzian_of_near_eta4",
+          "module": "GRAssembly.LorentzNeighborhood",
+          "path": "ASSEMBLY/GRAssembly/LorentzNeighborhood.lean",
+          "declaration_line_at_mapping": 91,
+          "declaration_header": "theorem gaussian_lorentzian_of_near_eta4 (h : Bulk → Tensor4) (z : Bulk)\n    (hs : ∀ i j, h z i j = h z j i)\n    (hclose : ∀ i j : Fin 4, |h z i j - eta4 i j| < (1 / 12 : ℝ)) :\n    LorentzianAt (gaussianMetric h) z",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "634842442d29f28123dd71d1b142d1ee23b85155df7330202e31d28caeb0c042",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.lorentzian_of_gaussianGluingLaw",
+          "module": "GRAssembly.NativeGluingGaussian",
+          "path": "ASSEMBLY/GRAssembly/NativeGluingGaussian.lean",
+          "declaration_line_at_mapping": 147,
+          "declaration_header": "theorem lorentzian_of_gaussianGluingLaw\n    {K : BoundaryTensor} {t0 δ : ℝ} {f : GaussianJoint → BulkMatrix} {z : GaussianJoint}\n    (hf : GaussianGluingLaw K t0 δ f z) : LorentzianAt (metricOfJoint f) (bulkFromJoint z)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "fb89aeacd5af11e327f68b037d4ab2894786d1b4a5f615ab44aa25978f60df34",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.radialExtensionResult_of_literatureGaussian",
+          "module": "GRAssembly.NativeGluingGaussian",
+          "path": "ASSEMBLY/GRAssembly/NativeGluingGaussian.lean",
+          "declaration_line_at_mapping": 171,
+          "declaration_header": "theorem radialExtensionResult_of_literatureGaussian\n    (input : LiteratureGaussianJetInput)\n    {ρ t0 δ : ℝ} {K : BoundaryTensor} (hK : BoundaryAdmissible ρ t0 δ K) :\n    Nonempty (RadialExtensionResult ρ t0 δ K)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "fb89aeacd5af11e327f68b037d4ab2894786d1b4a5f615ab44aa25978f60df34",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.analyticRadialExtensionLaws_of_literatureGaussian",
+          "module": "GRAssembly.NativeGluingGaussian",
+          "path": "ASSEMBLY/GRAssembly/NativeGluingGaussian.lean",
+          "declaration_line_at_mapping": 244,
+          "declaration_header": "theorem analyticRadialExtensionLaws_of_literatureGaussian\n    (input : LiteratureGaussianJetInput) (ρ t0 : ℝ) : AnalyticRadialExtensionLaws ρ t0",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "fb89aeacd5af11e327f68b037d4ab2894786d1b4a5f615ab44aa25978f60df34",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "LI02 supplies local Gaussian germs; the new endpoint constructs one periodic collar, its boundary match, and the native Lorentz congruence. Time shrinking is allowed."
+    },
+    {
+      "id": "D11",
+      "b_tier_index_pointer": "/nodes/10",
+      "b_tier_proof": "U3b C01/C02",
+      "b_tier_predecessors": [
+        "D09"
+      ],
+      "b_tier_goal": "Actual scalar correction is conserved; completed K satisfies every BoundaryAdmissible field.",
+      "b_tier_endpoint_refs": [
+        "ML051",
+        "ML052",
+        "ML053",
+        "traceRecover4_traceReverse4"
+      ],
+      "resolved_library_endpoint_ids": [
+        "ML051",
+        "ML052",
+        "ML053"
+      ],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.Assembly.scalarCompletionUpper_conserved",
+          "module": "GRAssembly.NativeCompletionCalculus",
+          "path": "ASSEMBLY/GRAssembly/NativeCompletionCalculus.lean",
+          "declaration_line_at_mapping": 37,
+          "declaration_header": "theorem scalarCompletionUpper_conserved {ψ : Pressure} {t : ℝ} {x : Vec}\n    (hψ : AnalyticAt ℝ (fun z : ℝ × Vec => ψ z.1 z.2) (t, x)) :\n    ∀ b, upperDivergence (scalarCompletionUpper ψ) t x b = 0",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "6877b55571ce618f62fb926c729e1a44cb6a74d92f7a0ccb6d9f9412dedddc56",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.completedBoundary_codazzi",
+          "module": "GRAssembly.NativeCompletionCalculus",
+          "path": "ASSEMBLY/GRAssembly/NativeCompletionCalculus.lean",
+          "declaration_line_at_mapping": 176,
+          "declaration_header": "theorem completedBoundary_codazzi {ν ρ : ℝ} {u : Velocity} {p ψ : Pressure}\n    {t : ℝ} {x : Vec}\n    (hu : ContDiff ℝ ∞ (u t))\n    (hua : AnalyticAt ℝ (fun z : ℝ × Vec => u z.1 z.2) (t,x))\n    (hpa : AnalyticAt ℝ (fun z : ℝ × Vec => p z.1 z.2) (t,x))\n    (hψ : AnalyticAt ℝ (fun z : ℝ × Vec => ψ z.1 z.2) (t,x))\n    (hdiv : ∀ y, divergence (u t) y = 0) (hmom : nseResidual ν u p t x = 0)\n    (b : Fin 4) : boundaryCodazzi (completedBoundary ν ρ u p ψ) t x b = 0",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "6877b55571ce618f62fb926c729e1a44cb6a74d92f7a0ccb6d9f9412dedddc56",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.completedBoundary_symmetric",
+          "module": "GRAssembly.NativeCompletionCalculus",
+          "path": "ASSEMBLY/GRAssembly/NativeCompletionCalculus.lean",
+          "declaration_line_at_mapping": 209,
+          "declaration_header": "theorem completedBoundary_symmetric {ν ρ : ℝ} {u : Velocity} {p ψ : Pressure}\n    {t : ℝ} {x : Vec}\n    (hψ : AnalyticAt ℝ (fun z : ℝ × Vec => ψ z.1 z.2) (t,x)) :\n    (completedBoundary ν ρ u p ψ t x).IsSymm",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "6877b55571ce618f62fb926c729e1a44cb6a74d92f7a0ccb6d9f9412dedddc56",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.completedBoundary_periodic",
+          "module": "GRAssembly.NativeCompletionCalculus",
+          "path": "ASSEMBLY/GRAssembly/NativeCompletionCalculus.lean",
+          "declaration_line_at_mapping": 258,
+          "declaration_header": "theorem completedBoundary_periodic {ν ρ t0 δ : ℝ} {u : Velocity} {p ψ : Pressure}\n    (hpair : AnalyticPeriodicPair t0 δ u p)\n    (hp : ∀ s ∈ timeInterval t0 δ, SpatialPeriodic (ψ s))\n    {t : ℝ} (ht : t ∈ timeInterval t0 δ) :\n    SpatialPeriodic (completedBoundary ν ρ u p ψ t)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "6877b55571ce618f62fb926c729e1a44cb6a74d92f7a0ccb6d9f9412dedddc56",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.completedBoundary_admissible",
+          "module": "GRAssembly.NativeCompletionCalculus",
+          "path": "ASSEMBLY/GRAssembly/NativeCompletionCalculus.lean",
+          "declaration_line_at_mapping": 278,
+          "declaration_header": "theorem completedBoundary_admissible {ν ρ t0 δ : ℝ} {u : Velocity} {p ψ : Pressure}\n    (hn : LocalNSE ν t0 δ u p)\n    (hψ : AnalyticOnNhd ℝ (fun z : ℝ × Vec => ψ z.1 z.2) (spacetimeSlab t0 δ))\n    (hper : ∀ t ∈ timeInterval t0 δ, SpatialPeriodic (ψ t))\n    (h0 : ∀ x, ψ t0 x = 0)\n    (h1 : ∀ x, scalarLocalTimeDerivative ψ t0 x = 0)\n    (hH : ∀ t ∈ timeInterval t0 δ, ∀ x,\n      boundaryHamiltonian (completedBoundary ν ρ u p ψ) t x = 0) :\n    BoundaryAdmissible ρ t0 δ (completedBoundary ν ρ u p ψ)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "6877b55571ce618f62fb926c729e1a44cb6a74d92f7a0ccb6d9f9412dedddc56",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "The completed tensor satisfies all native BoundaryAdmissible fields; scalar correction conservation is a derived theorem, not an assumption."
+    },
+    {
+      "id": "D12",
+      "b_tier_index_pointer": "/nodes/11",
+      "b_tier_proof": "U3b C03",
+      "b_tier_predecessors": [
+        "D04",
+        "D11"
+      ],
+      "b_tier_goal": "Every CompletedBoundary field holds: decoded velocity u, pressure p+(mean psi)tt, stress zero; construct c.",
+      "b_tier_endpoint_refs": [
+        "poissonInverse_scalarLaplacian",
+        "leray_gradient_zero"
+      ],
+      "resolved_library_endpoint_ids": [],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.Assembly.completedBoundary_velocity_recovery",
+          "module": "GRAssembly.NativeCompletion",
+          "path": "ASSEMBLY/GRAssembly/NativeCompletion.lean",
+          "declaration_line_at_mapping": 44,
+          "declaration_header": "theorem completedBoundary_velocity_recovery {ν ρ t0 δ : ℝ} {u : Velocity} {p ψ : Pressure}\n    (hn : LocalNSE ν t0 δ u p)\n    (hψ : AnalyticOnNhd ℝ (fun z : ℝ × Vec => ψ z.1 z.2) (spacetimeSlab t0 δ))\n    (hper : ∀ t ∈ timeInterval t0 δ, SpatialPeriodic (ψ t))\n    {t : ℝ} (ht : t ∈ timeInterval t0 δ) :\n    boundaryVelocity (completedBoundary ν ρ u p ψ) t = u t",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "b5b7194228547f127f4a80a88d874e7dbe98694a7649557bd560d6632e1d7fa6",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.completedBoundary_potential_recovery",
+          "module": "GRAssembly.NativeCompletion",
+          "path": "ASSEMBLY/GRAssembly/NativeCompletion.lean",
+          "declaration_line_at_mapping": 61,
+          "declaration_header": "theorem completedBoundary_potential_recovery {ν ρ t0 δ : ℝ} {u : Velocity} {p ψ : Pressure}\n    (hn : LocalNSE ν t0 δ u p)\n    (hψ : AnalyticOnNhd ℝ (fun z : ℝ × Vec => ψ z.1 z.2) (spacetimeSlab t0 δ))\n    (hper : ∀ t ∈ timeInterval t0 δ, SpatialPeriodic (ψ t))\n    (hK : BoundaryAdmissible ρ t0 δ (completedBoundary ν ρ u p ψ))\n    {t : ℝ} (ht : t ∈ timeInterval t0 δ) :\n    boundaryPotential (completedBoundary ν ρ u p ψ) t =\n      fun x => ψ t x - scalarMean (ψ t)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "b5b7194228547f127f4a80a88d874e7dbe98694a7649557bd560d6632e1d7fa6",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.completedBoundary_stress_zero",
+          "module": "GRAssembly.NativeCompletion",
+          "path": "ASSEMBLY/GRAssembly/NativeCompletion.lean",
+          "declaration_line_at_mapping": 78,
+          "declaration_header": "theorem completedBoundary_stress_zero {ν ρ t0 δ : ℝ} {u : Velocity} {p ψ : Pressure}\n    (hn : LocalNSE ν t0 δ u p)\n    (hψ : AnalyticOnNhd ℝ (fun z : ℝ × Vec => ψ z.1 z.2) (spacetimeSlab t0 δ))\n    (hper : ∀ t ∈ timeInterval t0 δ, SpatialPeriodic (ψ t))\n    (hK : BoundaryAdmissible ρ t0 δ (completedBoundary ν ρ u p ψ))\n    {t : ℝ} (ht : t ∈ timeInterval t0 δ) (x : Vec) :\n    boundaryStress ν (completedBoundary ν ρ u p ψ) t x = 0",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "b5b7194228547f127f4a80a88d874e7dbe98694a7649557bd560d6632e1d7fa6",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.completedBoundary_pressure_recovery",
+          "module": "GRAssembly.NativeCompletion",
+          "path": "ASSEMBLY/GRAssembly/NativeCompletion.lean",
+          "declaration_line_at_mapping": 103,
+          "declaration_header": "theorem completedBoundary_pressure_recovery {ν ρ t0 δ : ℝ} {u : Velocity} {p ψ : Pressure}\n    (hn : LocalNSE ν t0 δ u p)\n    (hψ : AnalyticOnNhd ℝ (fun z : ℝ × Vec => ψ z.1 z.2) (spacetimeSlab t0 δ))\n    (hper : ∀ t ∈ timeInterval t0 δ, SpatialPeriodic (ψ t))\n    (hK : BoundaryAdmissible ρ t0 δ (completedBoundary ν ρ u p ψ)) :\n    SameFlowAt t0 (boundaryVelocity (completedBoundary ν ρ u p ψ))\n      (boundaryPressure ρ (completedBoundary ν ρ u p ψ)) u p",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "b5b7194228547f127f4a80a88d874e7dbe98694a7649557bd560d6632e1d7fa6",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.scalarBoundaryCompletionLaws_of_literatureCK",
+          "module": "GRAssembly.NativeCompletion",
+          "path": "ASSEMBLY/GRAssembly/NativeCompletion.lean",
+          "declaration_line_at_mapping": 149,
+          "declaration_header": "theorem scalarBoundaryCompletionLaws_of_literatureCK\n    (input : LiteratureAnalyticCKInput) (ν ρ t0 : ℝ) (hρ : ρ ≠ 0) :\n    ScalarBoundaryCompletionLaws ν ρ t0",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "b5b7194228547f127f4a80a88d874e7dbe98694a7649557bd560d6632e1d7fa6",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "Every field of the original CompletedBoundary record is supplied; timeRadius remains positive and at most the source radius. The pressure recovery is the existing SameFlowAt gauge relation."
+    },
+    {
+      "id": "D13",
+      "b_tier_index_pointer": "/nodes/12",
+      "b_tier_proof": "U3a G01--G05",
+      "b_tier_predecessors": [],
+      "b_tier_goal": "Differentiate actual inverse and contract actual Ricci at flat boundary; Hamiltonian and Codazzi vanish.",
+      "b_tier_endpoint_refs": [
+        "ricci_gaussian_normal",
+        "ricci_gaussian_mixed",
+        "ricci_gaussian_tangential"
+      ],
+      "resolved_library_endpoint_ids": [],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.Assembly.bulkPartial_inverse",
+          "module": "GRAssembly.BoundaryConstraintsJets",
+          "path": "ASSEMBLY/GRAssembly/BoundaryConstraintsJets.lean",
+          "declaration_line_at_mapping": 194,
+          "declaration_header": "theorem bulkPartial_inverse {h : Bulk → Tensor4} {z : Bulk}\n    (hh : AnalyticAt ℝ h z) (hn : IsUnit (h z).det)\n    (i : Fin 5) (a b : Fin 4) :\n    bulkPartial (fun y => (h y)⁻¹ a b) i z =\n      -∑ c : Fin 4, ∑ d : Fin 4,\n        (h z)⁻¹ a c * bulkPartial (fun y => h y c d) i z * (h z)⁻¹ d b",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "18b169e9b5bbaa985f413fadd33ffb1a1a688b689329da4a951d9714f09331e2",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.bulkPartial_inverse_at_flat",
+          "module": "GRAssembly.BoundaryConstraintsJets",
+          "path": "ASSEMBLY/GRAssembly/BoundaryConstraintsJets.lean",
+          "declaration_line_at_mapping": 279,
+          "declaration_header": "theorem bulkPartial_inverse_at_flat {h : Bulk → Tensor4} {z : Bulk}\n    (hh : AnalyticAt ℝ h z) (hn : IsUnit (h z).det) (he : h z = eta4Matrix)\n    (a b : Fin 4) :\n    bulkPartial (fun y => (h y)⁻¹ a b) 0 z =\n      -2 * lorentzSign4 a * lorentzSign4 b * gaussianSecondForm h z a b",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "18b169e9b5bbaa985f413fadd33ffb1a1a688b689329da4a951d9714f09331e2",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.gaussian_normal_flat",
+          "module": "GRAssembly.BoundaryConstraintsGeometry",
+          "path": "ASSEMBLY/GRAssembly/BoundaryConstraintsGeometry.lean",
+          "declaration_line_at_mapping": 74,
+          "declaration_header": "theorem gaussian_normal_flat {h : Bulk → Tensor4} {z : Bulk}\n    (hh : AnalyticAt ℝ h z) (hn : IsUnit (h z).det) (he : h z = eta4Matrix)\n    (hs : (gaussianSecondForm h z).IsSymm) :\n    ricci (gaussianMetric h) z 0 0 =\n      -(∑ a : Fin 4, lorentzSign4 a *\n        bulkPartial (fun y => gaussianSecondForm h y a a) 0 z) +\n      lorentzSquare4 (gaussianSecondForm h z)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "fbdc0f06d7cdbb37eea72c635d67e609a7544ebf659ea724421f658f832e23e1",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.gaussian_tangential_flat",
+          "module": "GRAssembly.BoundaryConstraintsGeometry",
+          "path": "ASSEMBLY/GRAssembly/BoundaryConstraintsGeometry.lean",
+          "declaration_line_at_mapping": 94,
+          "declaration_header": "theorem gaussian_tangential_flat {h : Bulk → Tensor4} {z : Bulk}\n    (hn : ∀ᶠ y in 𝓝 z, IsUnit (h y).det) (he : h z = eta4Matrix)\n    (hs : (gaussianSecondForm h z).IsSymm)\n    (hc : ∀ a b c : Fin 4, gaussianTangentialChristoffel h z a b c = 0)\n    (hdc : ∀ a b c d : Fin 4,\n      bulkPartial (fun y => gaussianTangentialChristoffel h y a b c) d.succ z = 0)\n    (a b : Fin 4) :\n    ricci (gaussianMetric h) z a.succ b.succ =\n      -bulkPartial (fun y => gaussianSecondForm h y a b) 0 z -\n      lorentzTrace4 (gaussianSecondForm h z) * gaussianSecondForm h z a b +\n      2 * ∑ c : Fin 4, lorentzSign4 c *\n        gaussianSecondForm h z a c * gaussianSecondForm h z c b",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "fbdc0f06d7cdbb37eea72c635d67e609a7544ebf659ea724421f658f832e23e1",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.gaussian_hamiltonian_flat",
+          "module": "GRAssembly.BoundaryConstraintsGeometry",
+          "path": "ASSEMBLY/GRAssembly/BoundaryConstraintsGeometry.lean",
+          "declaration_line_at_mapping": 117,
+          "declaration_header": "theorem gaussian_hamiltonian_flat {h : Bulk → Tensor4} {z : Bulk}\n    (hh : AnalyticAt ℝ h z) (hn : ∀ᶠ y in 𝓝 z, IsUnit (h y).det)\n    (he : h z = eta4Matrix) (hs : (gaussianSecondForm h z).IsSymm)\n    (hc : ∀ a b c : Fin 4, gaussianTangentialChristoffel h z a b c = 0)\n    (hdc : ∀ a b c d : Fin 4,\n      bulkPartial (fun y => gaussianTangentialChristoffel h y a b c) d.succ z = 0)\n    (hv : ricci (gaussianMetric h) z = 0) :\n    lorentzSquare4 (gaussianSecondForm h z) -\n      (lorentzTrace4 (gaussianSecondForm h z)) ^ 2 = 0",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "fbdc0f06d7cdbb37eea72c635d67e609a7544ebf659ea724421f658f832e23e1",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.gaussianVacuum_boundary_hamiltonian",
+          "module": "GRAssembly.BoundaryConstraints",
+          "path": "ASSEMBLY/GRAssembly/BoundaryConstraints.lean",
+          "declaration_line_at_mapping": 188,
+          "declaration_header": "theorem gaussianVacuum_boundary_hamiltonian {ρ t0 δ ε : ℝ} {g : Metric}\n    (hg : GaussianVacuum ρ t0 δ ε g) {t : ℝ} (ht : t ∈ timeInterval t0 δ) (x : Vec) :\n    boundaryHamiltonian (boundaryK g) t x = 0",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "67190085d5c063fd7b0d6cf36eff0ef432d15465d3670d0e81ac06688c202c44",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.gaussianVacuum_boundary_codazzi",
+          "module": "GRAssembly.BoundaryConstraints",
+          "path": "ASSEMBLY/GRAssembly/BoundaryConstraints.lean",
+          "declaration_line_at_mapping": 223,
+          "declaration_header": "theorem gaussianVacuum_boundary_codazzi {ρ t0 δ ε : ℝ} {g : Metric}\n    (hg : GaussianVacuum ρ t0 δ ε g) {t : ℝ} (ht : t ∈ timeInterval t0 δ)\n    (x : Vec) (a : Fin 4) : boundaryCodazzi (boundaryK g) t x a = 0",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "67190085d5c063fd7b0d6cf36eff0ef432d15465d3670d0e81ac06688c202c44",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "The actual inverse derivative and actual coordinate Ricci contractions are used; metric flatness is only imposed on the boundary slice."
+    },
+    {
+      "id": "D14",
+      "b_tier_index_pointer": "/nodes/13",
+      "b_tier_proof": "U3a G06--G08",
+      "b_tier_predecessors": [
+        "D13"
+      ],
+      "b_tier_goal": "Full-interval BoundaryAdmissible; mean beta=rho and mean w constant, with native index/sign conventions.",
+      "b_tier_endpoint_refs": [
+        "scalarMean_hasDerivAt_local",
+        "scalarMean_divergence_zero",
+        "GML06"
+      ],
+      "resolved_library_endpoint_ids": [
+        "ML090"
+      ],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "ROOT_REQUIRED_PART_MAPPED_AUXILIARY_STRENGTHENING_UNPROMOTED",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.Assembly.gaussianVacuum_boundaryAdmissible",
+          "module": "GRAssembly.BoundaryConstraints",
+          "path": "ASSEMBLY/GRAssembly/BoundaryConstraints.lean",
+          "declaration_line_at_mapping": 235,
+          "declaration_header": "theorem gaussianVacuum_boundaryAdmissible {ρ t0 δ ε : ℝ} {g : Metric}\n    (hg : GaussianVacuum ρ t0 δ ε g) :\n    BoundaryAdmissible ρ t0 δ (boundaryK g)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "67190085d5c063fd7b0d6cf36eff0ef432d15465d3670d0e81ac06688c202c44",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.boundaryAdmissible_beta_time",
+          "module": "GRAssembly.NativeConservation",
+          "path": "ASSEMBLY/GRAssembly/NativeConservation.lean",
+          "declaration_line_at_mapping": 46,
+          "declaration_header": "theorem boundaryAdmissible_beta_time {ρ t0 δ : ℝ} {K : BoundaryTensor}\n    (hK : BoundaryAdmissible ρ t0 δ K) {t : ℝ} (ht : t ∈ timeInterval t0 δ)\n    (x : Vec) : scalarLocalTimeDerivative (boundaryBeta K) t x =\n      -divergence (boundaryRawVelocity K t) x",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "6140070b66361ba85df6976e780166ec659fcb42b2749d11ebe1be4114d2356b",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.boundaryAdmissible_beta_mean",
+          "module": "GRAssembly.NativeConservation",
+          "path": "ASSEMBLY/GRAssembly/NativeConservation.lean",
+          "declaration_line_at_mapping": 81,
+          "declaration_header": "theorem boundaryAdmissible_beta_mean {ρ t0 δ : ℝ} {K : BoundaryTensor}\n    (hK : BoundaryAdmissible ρ t0 δ K) {t : ℝ} (ht : t ∈ timeInterval t0 δ) :\n    scalarMean (boundaryBeta K t) = ρ",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "6140070b66361ba85df6976e780166ec659fcb42b2749d11ebe1be4114d2356b",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.boundaryAdmissible_rawVelocity_time",
+          "module": "GRAssembly.NativeConservation",
+          "path": "ASSEMBLY/GRAssembly/NativeConservation.lean",
+          "declaration_line_at_mapping": 112,
+          "declaration_header": "theorem boundaryAdmissible_rawVelocity_time {ρ t0 δ : ℝ} {K : BoundaryTensor}\n    (hK : BoundaryAdmissible ρ t0 δ K) {t : ℝ} (ht : t ∈ timeInterval t0 δ)\n    (x : Vec) : localTimeDerivative (boundaryRawVelocity K) t x =\n      tensorDivergence (boundarySpatialTensor K t) x +\n        gradient (fun y => K t y 0 0) x + gradient (boundaryBeta K t) x",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "6140070b66361ba85df6976e780166ec659fcb42b2749d11ebe1be4114d2356b",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "The root-required full-interval BoundaryAdmissible, beta mean, and Codazzi time identities are mapped. The additional B-tier statement that mean(rawVelocity) is constant has no standalone native export in this route and is not A-tier-promoted here.",
+      "unpromoted_b_tier_strengthenings": [
+        {
+          "claim": "spatialMean(boundaryRawVelocity K t) is constant on the supplied interval",
+          "status": "B_TIER_ONLY_NO_STANDALONE_NATIVE_EXPORT_IN_CURRENT_ROUTE",
+          "needed_for_current_root": false
+        }
+      ]
+    },
+    {
+      "id": "D15",
+      "b_tier_index_pointer": "/nodes/14",
+      "b_tier_proof": "U3a G09; U3b R02",
+      "b_tier_predecessors": [
+        "D04",
+        "D14"
+      ],
+      "b_tier_goal": "q=G(beta-rho), Delta q=beta-rho, u=w+grad q_t, div u=0; q and q_t initially zero.",
+      "b_tier_endpoint_refs": [
+        "poissonInverse_localTimeDerivative",
+        "scalarLaplacian_poissonInverse",
+        "divergence_leray_zero"
+      ],
+      "resolved_library_endpoint_ids": [],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.Assembly.boundaryAdmissible_velocity_analytic",
+          "module": "GRAssembly.NativeReconstructionCore",
+          "path": "ASSEMBLY/GRAssembly/NativeReconstructionCore.lean",
+          "declaration_line_at_mapping": 16,
+          "declaration_header": "theorem boundaryAdmissible_velocity_analytic {ρ t0 δ : ℝ} {K : BoundaryTensor}\n    (hK : BoundaryAdmissible ρ t0 δ K) :\n    AnalyticOnNhd ℝ (fun z : ℝ × Vec => boundaryVelocity K z.1 z.2)\n      (spacetimeSlab t0 δ)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "reexported_by": "GRAssembly.NativeReconstruction",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "a5051d4930eef4a0e22899c6194802311394340dec4697987f553a523a8d84f6",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.boundaryAdmissible_solenoidal",
+          "module": "GRAssembly.NativeReconstructionCore",
+          "path": "ASSEMBLY/GRAssembly/NativeReconstructionCore.lean",
+          "declaration_line_at_mapping": 24,
+          "declaration_header": "theorem boundaryAdmissible_solenoidal {ρ t0 δ : ℝ} {K : BoundaryTensor}\n    (hK : BoundaryAdmissible ρ t0 δ K) {t : ℝ} (ht : t ∈ timeInterval t0 δ)\n    (x : Vec) : divergence (boundaryVelocity K t) x = 0",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "reexported_by": "GRAssembly.NativeReconstruction",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "a5051d4930eef4a0e22899c6194802311394340dec4697987f553a523a8d84f6",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.boundaryAdmissible_potential_eq",
+          "module": "GRAssembly.NativeReconstructionCore",
+          "path": "ASSEMBLY/GRAssembly/NativeReconstructionCore.lean",
+          "declaration_line_at_mapping": 30,
+          "declaration_header": "theorem boundaryAdmissible_potential_eq {ρ t0 δ : ℝ} {K : BoundaryTensor}\n    (hK : BoundaryAdmissible ρ t0 δ K) {t : ℝ} (ht : t ∈ timeInterval t0 δ) :\n    boundaryPotential K t = poissonInverse (fun x => boundaryBeta K t x - ρ)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "reexported_by": "GRAssembly.NativeReconstruction",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "a5051d4930eef4a0e22899c6194802311394340dec4697987f553a523a8d84f6",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.boundaryAdmissible_potential_analytic",
+          "module": "GRAssembly.NativeReconstructionCore",
+          "path": "ASSEMBLY/GRAssembly/NativeReconstructionCore.lean",
+          "declaration_line_at_mapping": 42,
+          "declaration_header": "theorem boundaryAdmissible_potential_analytic {ρ t0 δ : ℝ} {K : BoundaryTensor}\n    (hK : BoundaryAdmissible ρ t0 δ K) :\n    AnalyticOnNhd ℝ (fun z : ℝ × Vec => boundaryPotential K z.1 z.2)\n      (spacetimeSlab t0 δ)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "reexported_by": "GRAssembly.NativeReconstruction",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "a5051d4930eef4a0e22899c6194802311394340dec4697987f553a523a8d84f6",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.boundaryAdmissible_potential_laplacian",
+          "module": "GRAssembly.NativeReconstructionCore",
+          "path": "ASSEMBLY/GRAssembly/NativeReconstructionCore.lean",
+          "declaration_line_at_mapping": 62,
+          "declaration_header": "theorem boundaryAdmissible_potential_laplacian {ρ t0 δ : ℝ} {K : BoundaryTensor}\n    (hK : BoundaryAdmissible ρ t0 δ K) {t : ℝ} (ht : t ∈ timeInterval t0 δ)\n    (x : Vec) : scalarLaplacian (boundaryPotential K t) x = boundaryBeta K t x - ρ",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "reexported_by": "GRAssembly.NativeReconstruction",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "a5051d4930eef4a0e22899c6194802311394340dec4697987f553a523a8d84f6",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.boundaryAdmissible_potential_time",
+          "module": "GRAssembly.NativeReconstructionCore",
+          "path": "ASSEMBLY/GRAssembly/NativeReconstructionCore.lean",
+          "declaration_line_at_mapping": 76,
+          "declaration_header": "theorem boundaryAdmissible_potential_time {ρ t0 δ : ℝ} {K : BoundaryTensor}\n    (hK : BoundaryAdmissible ρ t0 δ K) {t : ℝ} (ht : t ∈ timeInterval t0 δ) :\n    scalarLocalTimeDerivative (boundaryPotential K) t =\n      poissonInverse (scalarLocalTimeDerivative (boundaryBeta K) t)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "reexported_by": "GRAssembly.NativeReconstruction",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "a5051d4930eef4a0e22899c6194802311394340dec4697987f553a523a8d84f6",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.boundaryAdmissible_potential_initial",
+          "module": "GRAssembly.NativeReconstructionCore",
+          "path": "ASSEMBLY/GRAssembly/NativeReconstructionCore.lean",
+          "declaration_line_at_mapping": 99,
+          "declaration_header": "theorem boundaryAdmissible_potential_initial {ρ t0 δ : ℝ} {K : BoundaryTensor}\n    (hK : BoundaryAdmissible ρ t0 δ K) : ∀ x, boundaryPotential K t0 x = 0",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "reexported_by": "GRAssembly.NativeReconstruction",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "a5051d4930eef4a0e22899c6194802311394340dec4697987f553a523a8d84f6",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.boundaryAdmissible_potential_time_initial",
+          "module": "GRAssembly.NativeReconstructionCore",
+          "path": "ASSEMBLY/GRAssembly/NativeReconstructionCore.lean",
+          "declaration_line_at_mapping": 109,
+          "declaration_header": "theorem boundaryAdmissible_potential_time_initial {ρ t0 δ : ℝ} {K : BoundaryTensor}\n    (hK : BoundaryAdmissible ρ t0 δ K) :\n    ∀ x, scalarLocalTimeDerivative (boundaryPotential K) t0 x = 0",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "reexported_by": "GRAssembly.NativeReconstruction",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "a5051d4930eef4a0e22899c6194802311394340dec4697987f553a523a8d84f6",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.boundaryAdmissible_raw_recovery",
+          "module": "GRAssembly.NativeReconstructionCore",
+          "path": "ASSEMBLY/GRAssembly/NativeReconstructionCore.lean",
+          "declaration_line_at_mapping": 119,
+          "declaration_header": "theorem boundaryAdmissible_raw_recovery {ρ t0 δ : ℝ} {K : BoundaryTensor}\n    (hK : BoundaryAdmissible ρ t0 δ K) {t : ℝ} (ht : t ∈ timeInterval t0 δ)\n    (x : Vec) : boundaryRawVelocity K t x = boundaryVelocity K t x -\n      gradient (scalarLocalTimeDerivative (boundaryPotential K) t) x",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "reexported_by": "GRAssembly.NativeReconstruction",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "a5051d4930eef4a0e22899c6194802311394340dec4697987f553a523a8d84f6",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "The actual decoded fields q,u are used on the entire supplied interval; q and q_t have exactly zero initial data."
+    },
+    {
+      "id": "D16",
+      "b_tier_index_pointer": "/nodes/15",
+      "b_tier_proof": "U3a G10/G11; U3b R03",
+      "b_tier_predecessors": [
+        "D14",
+        "D15"
+      ],
+      "b_tier_goal": "Actual residual equals div F on the original interval; construct h.",
+      "b_tier_endpoint_refs": [
+        "reconstruction_residual_of_codazzi_hodge",
+        "boundaryStress_tensorDivergence"
+      ],
+      "resolved_library_endpoint_ids": [],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.Assembly.boundaryAdmissible_hodge_time",
+          "module": "GRAssembly.NativeReconstructionCore",
+          "path": "ASSEMBLY/GRAssembly/NativeReconstructionCore.lean",
+          "declaration_line_at_mapping": 133,
+          "declaration_header": "theorem boundaryAdmissible_hodge_time {ρ t0 δ : ℝ} {K : BoundaryTensor}\n    (hK : BoundaryAdmissible ρ t0 δ K) {t : ℝ} (ht : t ∈ timeInterval t0 δ)\n    (x : Vec) : localTimeDerivative (boundaryVelocity K) t x =\n      localTimeDerivative (boundaryRawVelocity K) t x +\n        gradient (scalarLocalTimeDerivative (scalarLocalTimeDerivative (boundaryPotential K)) t) x",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "reexported_by": "GRAssembly.NativeReconstruction",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "a5051d4930eef4a0e22899c6194802311394340dec4697987f553a523a8d84f6",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.boundaryAdmissible_pressure_analytic",
+          "module": "GRAssembly.NativeReconstructionCore",
+          "path": "ASSEMBLY/GRAssembly/NativeReconstructionCore.lean",
+          "declaration_line_at_mapping": 163,
+          "declaration_header": "theorem boundaryAdmissible_pressure_analytic {ρ t0 δ : ℝ} {K : BoundaryTensor}\n    (hK : BoundaryAdmissible ρ t0 δ K) :\n    AnalyticOnNhd ℝ (fun z : ℝ × Vec => boundaryPressure ρ K z.1 z.2)\n      (spacetimeSlab t0 δ)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "reexported_by": "GRAssembly.NativeReconstruction",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "a5051d4930eef4a0e22899c6194802311394340dec4697987f553a523a8d84f6",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.boundaryAdmissible_decoded_pair",
+          "module": "GRAssembly.NativeReconstructionCore",
+          "path": "ASSEMBLY/GRAssembly/NativeReconstructionCore.lean",
+          "declaration_line_at_mapping": 179,
+          "declaration_header": "theorem boundaryAdmissible_decoded_pair {ρ t0 δ : ℝ} {K : BoundaryTensor}\n    (hK : BoundaryAdmissible ρ t0 δ K) :\n    AnalyticPeriodicPair t0 δ (boundaryVelocity K) (boundaryPressure ρ K)",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "reexported_by": "GRAssembly.NativeReconstruction",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "a5051d4930eef4a0e22899c6194802311394340dec4697987f553a523a8d84f6",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.boundaryAdmissible_residual",
+          "module": "GRAssembly.NativeReconstructionCore",
+          "path": "ASSEMBLY/GRAssembly/NativeReconstructionCore.lean",
+          "declaration_line_at_mapping": 195,
+          "declaration_header": "theorem boundaryAdmissible_residual {ν ρ t0 δ : ℝ} {K : BoundaryTensor}\n    (hK : BoundaryAdmissible ρ t0 δ K) {t : ℝ} (ht : t ∈ timeInterval t0 δ)\n    (x : Vec) : nseResidual ν (boundaryVelocity K) (boundaryPressure ρ K) t x =\n      tensorDivergence (boundaryStress ν K t) x",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "reexported_by": "GRAssembly.NativeReconstruction",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "a5051d4930eef4a0e22899c6194802311394340dec4697987f553a523a8d84f6",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.geometricReconstructionLaws_native",
+          "module": "GRAssembly.NativeReconstruction",
+          "path": "ASSEMBLY/GRAssembly/NativeReconstruction.lean",
+          "declaration_line_at_mapping": 28,
+          "declaration_header": "theorem geometricReconstructionLaws_native (ν ρ t0 : ℝ) :\n    GeometricReconstructionLaws ν ρ t0",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "1e0ae5ed185b40b601c6493a3f72664763a8f48c50a8ac47da428427316bca69",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "The full-interval decoder and residual identity construct h for every supplied GaussianVacuum. Neither rho != 0 nor an extra Hodge-law premise is added."
+    },
+    {
+      "id": "D17",
+      "b_tier_index_pointer": "/nodes/16",
+      "b_tier_proof": "U3b I01",
+      "b_tier_predecessors": [
+        "D15",
+        "D16"
+      ],
+      "b_tier_goal": "For independent canonical F=0 sector, recover entire K=completedBoundary(u,p,q).",
+      "b_tier_endpoint_refs": [
+        "boundary_slice_eq_completedBoundary_of_zero_stress"
+      ],
+      "resolved_library_endpoint_ids": [],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.boundary_slice_eq_completedBoundary_of_zero_stress",
+          "module": "GRAdapter.ReconstructionAlgebra",
+          "path": "GR_adapter/GRAdapter/ReconstructionAlgebra.lean",
+          "declaration_line_at_mapping": 158,
+          "declaration_header": "theorem boundary_slice_eq_completedBoundary_of_zero_stress\n    (ν ρ : ℝ) (K : BoundaryTensor) (t : ℝ)\n    (hsym : ∀ x, (K t x).IsSymm)\n    (hdiv : ∀ x, divergence (boundaryVelocity K t) x = 0)\n    (hΔ : ∀ x, scalarLaplacian (boundaryPotential K t) x = boundaryBeta K t x - ρ)\n    (hraw : ∀ x, boundaryRawVelocity K t x = boundaryVelocity K t x -\n      gradient (scalarLocalTimeDerivative (boundaryPotential K) t) x)\n    (hF : ∀ x, boundaryStress ν K t x = 0) :\n    K t = completedBoundary ν ρ (boundaryVelocity K)\n      (boundaryPressure ρ K) (boundaryPotential K) t",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "de8b11063f0f7231fa4ba87448bc6d4ee13ea75b66c16854f6671f726fe0e95a",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.canonical_boundary_exact_completion",
+          "module": "GRAssembly.NativeReconstruction",
+          "path": "ASSEMBLY/GRAssembly/NativeReconstruction.lean",
+          "declaration_line_at_mapping": 16,
+          "declaration_header": "theorem canonical_boundary_exact_completion {ν ρ t0 : ℝ}\n    (g : CanonicalRepresentative ν ρ t0) :\n    ∀ t ∈ timeInterval t0 g.timeRadius,\n      boundaryK g.metric t = completedBoundary ν ρ (boundaryVelocity (boundaryK g.metric))\n        (boundaryPressure ρ (boundaryK g.metric)) (boundaryPotential (boundaryK g.metric)) t",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "1e0ae5ed185b40b601c6493a3f72664763a8f48c50a8ac47da428427316bca69",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "The canonical target remains independently defined by vacuum/marking/normalization/zero stress; its whole tensor is recovered, not merely trace-free spatial components."
+    },
+    {
+      "id": "D18",
+      "b_tier_index_pointer": "/nodes/17",
+      "b_tier_proof": "U2 section 8; U3b I04",
+      "b_tier_predecessors": [],
+      "b_tier_goal": "An analytic pressure gauge gamma has normalized a with a_tt=gamma; K[u,p+gamma,psi-a]=K[u,p,psi].",
+      "b_tier_endpoint_refs": [
+        "sameFlowAt_iff_analytic_pressure_gauge",
+        "analytic_double_primitive_of_literatureCK",
+        "normalized_pressure_gauge_completion"
+      ],
+      "resolved_library_endpoint_ids": [],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.sameFlowAt_iff_analytic_pressure_gauge",
+          "module": "GRAdapter.Locality",
+          "path": "GR_adapter/GRAdapter/Locality.lean",
+          "declaration_line_at_mapping": 66,
+          "declaration_header": "theorem sameFlowAt_iff_analytic_pressure_gauge\n    {t0 δ ε : ℝ} {u v : Velocity} {p q : Pressure}\n    (hp : AnalyticPeriodicPair t0 δ u p)\n    (hq : AnalyticPeriodicPair t0 ε v q) :\n    SameFlowAt t0 u p v q ↔\n      ∃ a : ℝ → ℝ,\n        AnalyticOnNhd ℝ a (timeInterval t0 δ ∩ timeInterval t0 ε) ∧\n          ∀ᶠ t in 𝓝 t0, u t = v t ∧ ∀ x : Vec, p t x = q t x + a t",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "85388322fcbffadb44ce56d0c52cbd929b8189faddb862aeb66ce2c0470d6ce1",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.analytic_double_primitive_of_literatureCK",
+          "module": "GRAssembly.GaugePrimitive",
+          "path": "ASSEMBLY/GRAssembly/GaugePrimitive.lean",
+          "declaration_line_at_mapping": 105,
+          "declaration_header": "theorem analytic_double_primitive_of_literatureCK\n    (input : LiteratureAnalyticCKInput) {γ : ℝ → ℝ} {t0 : ℝ}\n    (hγ : AnalyticAt ℝ γ t0) :\n    ∃ a : ℝ → ℝ, AnalyticAt ℝ a t0 ∧ a t0 = 0 ∧\n      deriv a t0 = 0 ∧ deriv (deriv a) =ᶠ[𝓝 t0] γ",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "29476ccece9f1628285b617f7652c7f06f62ab0a5d54fd70ee6a6ee77e24a57e",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.completedBoundary_pressure_gauge",
+          "module": "GRAssembly.PressureGauge",
+          "path": "ASSEMBLY/GRAssembly/PressureGauge.lean",
+          "declaration_line_at_mapping": 93,
+          "declaration_header": "theorem completedBoundary_pressure_gauge {ν ρ t : ℝ} {u : Velocity}\n    {p ψ : Pressure} {a γ : ℝ → ℝ} {x : Vec}\n    (hψ : AnalyticAt ℝ (fun z : ℝ × Vec => ψ z.1 z.2) (t, x))\n    (ha : AnalyticAt ℝ a t) (ha2 : deriv (deriv a) t = γ t) :\n    completedBoundary ν ρ u (fun s y => p s y + γ s)\n      (fun s y => ψ s y - a s) t x = completedBoundary ν ρ u p ψ t x",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "2b02e872c0b3d7f62ac22d996d0a3c9e256f296571ae098540ed0ce6ef12b162",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.normalized_pressure_gauge_completion",
+          "module": "GRAssembly.PressureGauge",
+          "path": "ASSEMBLY/GRAssembly/PressureGauge.lean",
+          "declaration_line_at_mapping": 104,
+          "declaration_header": "theorem normalized_pressure_gauge_completion\n    (input : LiteratureAnalyticCKInput) {ν ρ t0 : ℝ} {u : Velocity}\n    {p ψ : Pressure} {γ : ℝ → ℝ} {x0 : Vec}\n    (hψ : AnalyticAt ℝ (fun z : ℝ × Vec => ψ z.1 z.2) (t0, x0))\n    (hγ : AnalyticAt ℝ γ t0) :\n    ∃ a : ℝ → ℝ, AnalyticAt ℝ a t0 ∧ a t0 = 0 ∧ deriv a t0 = 0 ∧\n      ∀ᶠ z in 𝓝 (t0, x0),\n        completedBoundary ν ρ u (fun s y => p s y + γ s)\n          (fun s y => ψ s y - a s) z.1 z.2 =\n            completedBoundary ν ρ u p ψ z.1 z.2",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "2b02e872c0b3d7f62ac22d996d0a3c9e256f296571ae098540ed0ce6ef12b162",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "The primitive is normalized once before spatial uniformization. The sign is p -> p+gamma, psi -> psi-a, a_tt=gamma."
+    },
+    {
+      "id": "D19",
+      "b_tier_index_pointer": "/nodes/18",
+      "b_tier_proof": "U2 section 8; U3b I02/I04",
+      "b_tier_predecessors": [
+        "D05",
+        "D08",
+        "D12",
+        "D18"
+      ],
+      "b_tier_goal": "For arbitrary c,r,h, same-flow germs yield same selected forward metric germ: forward_respects.",
+      "b_tier_endpoint_refs": [
+        "scalar_normalized_germ_unique",
+        "gaussianVacuum_sameMetricAt_of_literatureJet"
+      ],
+      "resolved_library_endpoint_ids": [],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.Assembly.completedBoundary_scalarNormalGerm",
+          "module": "GRAssembly.NativeInverse",
+          "path": "ASSEMBLY/GRAssembly/NativeInverse.lean",
+          "declaration_line_at_mapping": 45,
+          "declaration_header": "theorem completedBoundary_scalarNormalGerm\n    {ν ρ t0 : ℝ} {n : NSERepresentative ν t0}\n    (c : CompletedBoundary ν ρ t0 n) (hρ : ρ ≠ 0) (x0 : Vec) :\n    ScalarNormalGerm ν ρ n.velocity n.pressure t0 x0 c.potential",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "01ea144bcbce7cf254f4c6f17b33c1d94a3894a4d1b40908eea5a059d3ef1d8a",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.completedBoundary_congr_eventually",
+          "module": "GRAssembly.NativeInverse",
+          "path": "ASSEMBLY/GRAssembly/NativeInverse.lean",
+          "declaration_line_at_mapping": 71,
+          "declaration_header": "theorem completedBoundary_congr_eventually\n    {ν ρ t0 : ℝ} {u v : Velocity} {p q ψ φ : Pressure}\n    (hu : u =ᶠ[𝓝 t0] v) (hp : p =ᶠ[𝓝 t0] q)\n    (hψ : ψ =ᶠ[𝓝 t0] φ) :\n    completedBoundary ν ρ u p ψ =ᶠ[𝓝 t0] completedBoundary ν ρ v q φ",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "01ea144bcbce7cf254f4c6f17b33c1d94a3894a4d1b40908eea5a059d3ef1d8a",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.forward_respects_of_literature",
+          "module": "GRAssembly.NativeInverse",
+          "path": "ASSEMBLY/GRAssembly/NativeInverse.lean",
+          "declaration_line_at_mapping": 92,
+          "declaration_header": "theorem forward_respects_of_literature\n    (ck : LiteratureAnalyticCKInput) (gj : LiteratureGaussianJetInput)\n    {ν ρ t0 : ℝ} (hρ : ρ ≠ 0)\n    (c : ScalarBoundaryCompletionLaws ν ρ t0)\n    (r : AnalyticRadialExtensionLaws ρ t0)\n    (a b : NSERepresentative ν t0)\n    (hab : SameFlowAt t0 a.velocity a.pressure b.velocity b.pressure) :\n    SameMetricAt t0 (forwardRepresentative c r a).metric\n      (forwardRepresentative c r b).metric",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "01ea144bcbce7cf254f4c6f17b33c1d94a3894a4d1b40908eea5a059d3ef1d8a",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.gaussianVacuum_sameMetricAt_of_literatureJet",
+          "module": "GRAdapter.GaussianUniqueness",
+          "path": "GR_adapter/GRAdapter/GaussianUniqueness.lean",
+          "declaration_line_at_mapping": 90,
+          "declaration_header": "theorem gaussianVacuum_sameMetricAt_of_literatureJet\n    (input : LiteratureGaussianJetInput)\n    {ρK ρg ρh t0 δK δg εg δh εh : ℝ} {K : BoundaryTensor} {g h : Metric}\n    (hK : BoundaryAdmissible ρK t0 δK K)\n    (hg : GaussianVacuum ρg t0 δg εg g) (hh : GaussianVacuum ρh t0 δh εh h)\n    (hgmatch : boundaryK g =ᶠ[𝓝 t0] K)\n    (hhmatch : boundaryK h =ᶠ[𝓝 t0] K) :\n    SameMetricAt t0 g h",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "f655cb491e099e78ad2901f9135b87b7f40a37d2cbe39501279d48a3c93cd9a2",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "The endpoint quantifies arbitrary c and r; it does not require either record to be the constructors from D10/D12. Pressure-gauge descent precedes Gaussian uniqueness."
+    },
+    {
+      "id": "D20",
+      "b_tier_index_pointer": "/nodes/19",
+      "b_tier_proof": "U3b I02/I03",
+      "b_tier_predecessors": [
+        "D05",
+        "D08",
+        "D17",
+        "D19"
+      ],
+      "b_tier_goal": "For arbitrary c,r,h, normalize and identify canonical q before Gaussian uniqueness: lift_decode; together with D19 construct GermInverseLaws.",
+      "b_tier_endpoint_refs": [
+        "scalar_normalized_germ_unique",
+        "gaussianVacuum_sameMetricAt_of_literatureJet"
+      ],
+      "resolved_library_endpoint_ids": [],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.Assembly.canonical_scalarNormalGerm",
+          "module": "GRAssembly.NativeInverseCanonical",
+          "path": "ASSEMBLY/GRAssembly/NativeInverseCanonical.lean",
+          "declaration_line_at_mapping": 21,
+          "declaration_header": "theorem canonical_scalarNormalGerm\n    {ν ρ t0 : ℝ} (hρ : ρ ≠ 0)\n    (g : CanonicalRepresentative ν ρ t0) (x0 : Vec) :\n    ScalarNormalGerm ν ρ (boundaryVelocity (boundaryK g.metric))\n      (boundaryPressure ρ (boundaryK g.metric)) t0 x0\n      (boundaryPotential (boundaryK g.metric))",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "a9b40a59c7c334c25155a18b8876fb9a1a2dbd3320cf9c60d935d97ec5fd2491",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.canonical_chosenBoundary_eventually",
+          "module": "GRAssembly.NativeInverseCanonical",
+          "path": "ASSEMBLY/GRAssembly/NativeInverseCanonical.lean",
+          "declaration_line_at_mapping": 40,
+          "declaration_header": "theorem canonical_chosenBoundary_eventually\n    (ck : LiteratureAnalyticCKInput) {ν ρ t0 : ℝ} (hρ : ρ ≠ 0)\n    (c : ScalarBoundaryCompletionLaws ν ρ t0)\n    (h : GeometricReconstructionLaws ν ρ t0)\n    (g : CanonicalRepresentative ν ρ t0) :\n    (chosenBoundary c (reverseRepresentative h g)).tensor =ᶠ[𝓝 t0]\n      boundaryK g.metric",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "a9b40a59c7c334c25155a18b8876fb9a1a2dbd3320cf9c60d935d97ec5fd2491",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.lift_decode_of_literature",
+          "module": "GRAssembly.NativeInverseCanonical",
+          "path": "ASSEMBLY/GRAssembly/NativeInverseCanonical.lean",
+          "declaration_line_at_mapping": 77,
+          "declaration_header": "theorem lift_decode_of_literature\n    (ck : LiteratureAnalyticCKInput) (gj : LiteratureGaussianJetInput)\n    {ν ρ t0 : ℝ} (hρ : ρ ≠ 0)\n    (c : ScalarBoundaryCompletionLaws ν ρ t0)\n    (r : AnalyticRadialExtensionLaws ρ t0)\n    (h : GeometricReconstructionLaws ν ρ t0)\n    (g : CanonicalRepresentative ν ρ t0) :\n    SameMetricAt t0\n      (forwardRepresentative c r (reverseRepresentative h g)).metric g.metric",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "a9b40a59c7c334c25155a18b8876fb9a1a2dbd3320cf9c60d935d97ec5fd2491",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.germInverseLaws_of_literature",
+          "module": "GRAssembly.NativeInverseCanonical",
+          "path": "ASSEMBLY/GRAssembly/NativeInverseCanonical.lean",
+          "declaration_line_at_mapping": 93,
+          "declaration_header": "theorem germInverseLaws_of_literature\n    (ck : LiteratureAnalyticCKInput) (gj : LiteratureGaussianJetInput)\n    {ν ρ t0 : ℝ} (hρ : ρ ≠ 0)\n    (c : ScalarBoundaryCompletionLaws ν ρ t0)\n    (r : AnalyticRadialExtensionLaws ρ t0)\n    (h : GeometricReconstructionLaws ν ρ t0) : GermInverseLaws c r h",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "a9b40a59c7c334c25155a18b8876fb9a1a2dbd3320cf9c60d935d97ec5fd2491",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "The endpoint quantifies arbitrary c,r,h. Canonical scalar normalization and full boundary identity precede Gaussian uniqueness; q combines this result with D19."
+    },
+    {
+      "id": "D21",
+      "b_tier_index_pointer": "/nodes/20",
+      "b_tier_proof": "U3b I05",
+      "b_tier_predecessors": [
+        "D10",
+        "D12",
+        "D16",
+        "D19",
+        "D20"
+      ],
+      "b_tier_goal": "Quotient maps are well-defined and inverse on the exact source and target carriers.",
+      "b_tier_endpoint_refs": [
+        "sameMetricAt_boundaryFields",
+        "forward_pressure_gauge_recovery",
+        "reverseGerm_forwardGerm",
+        "forwardGerm_reverseGerm"
+      ],
+      "resolved_library_endpoint_ids": [],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.sameMetricAt_boundaryFields",
+          "module": "GRAdapter.Locality",
+          "path": "GR_adapter/GRAdapter/Locality.lean",
+          "declaration_line_at_mapping": 141,
+          "declaration_header": "theorem sameMetricAt_boundaryFields {t0 : ℝ} (ρ : ℝ) {g h : Metric}\n    (hmetric : SameMetricAt t0 g h) :\n    SameFlowAt t0 (boundaryVelocity (boundaryK g))\n      (boundaryPressure ρ (boundaryK g))\n      (boundaryVelocity (boundaryK h)) (boundaryPressure ρ (boundaryK h))",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "85388322fcbffadb44ce56d0c52cbd929b8189faddb862aeb66ce2c0470d6ce1",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.forward_pressure_gauge_recovery",
+          "module": "NSEGRForward",
+          "path": "GR_adapter/NSEGRForward.lean",
+          "declaration_line_at_mapping": 76,
+          "declaration_header": "theorem forward_pressure_gauge_recovery {ν ρ t0 : ℝ}\n    (c : ScalarBoundaryCompletionLaws ν ρ t0)\n    (r : AnalyticRadialExtensionLaws ρ t0) (n : NSERepresentative ν t0) :\n    SameFlowAt t0\n      (boundaryVelocity (boundaryK (forwardRepresentative c r n).metric))\n      (boundaryPressure ρ (boundaryK (forwardRepresentative c r n).metric))\n      n.velocity n.pressure",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "dc18c71718fccb0f84d5c09cfc7edac38db1dc880ed208545ae9d12744f45d79",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.reverseGerm_forwardGerm",
+          "module": "NSEGRReverse",
+          "path": "GR_adapter/NSEGRReverse.lean",
+          "declaration_line_at_mapping": 53,
+          "declaration_header": "theorem reverseGerm_forwardGerm {ν ρ t0 : ℝ}\n    (c : ScalarBoundaryCompletionLaws ν ρ t0) (r : AnalyticRadialExtensionLaws ρ t0)\n    (h : GeometricReconstructionLaws ν ρ t0) (q : GermInverseLaws c r h)\n    (x : NSEgerm ν t0) : reverseGerm h (forwardGerm c r h q x) = x",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "db46006337f381557294fbe368fbba0decc0d5fa0763156a2900410064a0af63",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.forwardGerm_reverseGerm",
+          "module": "NSEGRReverse",
+          "path": "GR_adapter/NSEGRReverse.lean",
+          "declaration_line_at_mapping": 62,
+          "declaration_header": "theorem forwardGerm_reverseGerm {ν ρ t0 : ℝ}\n    (c : ScalarBoundaryCompletionLaws ν ρ t0) (r : AnalyticRadialExtensionLaws ρ t0)\n    (h : GeometricReconstructionLaws ν ρ t0) (q : GermInverseLaws c r h)\n    (x : GRgerm ν ρ t0) : forwardGerm c r h q (reverseGerm h x) = x",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "db46006337f381557294fbe368fbba0decc0d5fa0763156a2900410064a0af63",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "The existing source quotient is SameFlowAt (time-only pressure gauge); the target quotient is SameMetricAt (one joint (r,t) neighborhood, all x simultaneous)."
+    },
+    {
+      "id": "D22",
+      "b_tier_index_pointer": "/nodes/21",
+      "b_tier_proof": "Composed root",
+      "b_tier_predecessors": [
+        "D10",
+        "D12",
+        "D16",
+        "D19",
+        "D20",
+        "D21"
+      ],
+      "b_tier_goal": "nu>0, rho!=0, LiteratureInputs imply ExactSectorEquivalence; all c/r/h/q supplied mathematically.",
+      "b_tier_endpoint_refs": [
+        "NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS"
+      ],
+      "resolved_library_endpoint_ids": [],
+      "mapping_status": "A_TIER_ROOT_REQUIRED_NATIVE_ROUTE",
+      "scope_correspondence": "COMPOSED_NATIVE_ENDPOINTS_FOR_B_TIER_GOAL",
+      "native_endpoints": [
+        {
+          "name": "NSEGR.Assembly.nativeLawPackages_of_literatureInputs",
+          "module": "GRAssembly.RootClosure",
+          "path": "ASSEMBLY/GRAssembly/RootClosure.lean",
+          "declaration_line_at_mapping": 18,
+          "declaration_header": "theorem nativeLawPackages_of_literatureInputs\n    (input : LiteratureInputs) (ν ρ t0 : ℝ) (hρ : ρ ≠ 0) :\n    ∃ c : ScalarBoundaryCompletionLaws ν ρ t0,\n      ∃ r : AnalyticRadialExtensionLaws ρ t0,\n        ∃ h : GeometricReconstructionLaws ν ρ t0, GermInverseLaws c r h",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "eeeb1a6aa2001ea7e0cea195f832874f884796da6012ddaeb7dcb21b2695d4b1",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_LITERATURE_INPUTS",
+          "module": "GRAssembly.RootClosure",
+          "path": "ASSEMBLY/GRAssembly/RootClosure.lean",
+          "declaration_line_at_mapping": 29,
+          "declaration_header": "theorem NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_LITERATURE_INPUTS\n    (ν ρ t0 : ℝ) (hν : 0 < ν) (hρ : ρ ≠ 0) (input : LiteratureInputs) :\n    ExactSectorEquivalence ν ρ t0",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "eeeb1a6aa2001ea7e0cea195f832874f884796da6012ddaeb7dcb21b2695d4b1",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS",
+          "module": "NSEGRReverse",
+          "path": "GR_adapter/NSEGRReverse.lean",
+          "declaration_line_at_mapping": 80,
+          "declaration_header": "theorem NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS\n    (ν ρ t0 : ℝ) (_hν : 0 < ν) (_hρ : ρ ≠ 0)\n    (c : ScalarBoundaryCompletionLaws ν ρ t0) (r : AnalyticRadialExtensionLaws ρ t0)\n    (h : GeometricReconstructionLaws ν ρ t0) (q : GermInverseLaws c r h) :\n    ExactSectorEquivalence ν ρ t0",
+          "role": "native endpoint",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "db46006337f381557294fbe368fbba0decc0d5fa0763156a2900410064a0af63",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        },
+        {
+          "name": "NSEGR.Assembly.NSE_GR_THREE_OBLIGATION_CLOSURE",
+          "module": "GRAssembly.NSE_GR_THREE_OBLIGATION_CLOSURE",
+          "path": "ASSEMBLY/GRAssembly/NSE_GR_THREE_OBLIGATION_CLOSURE.lean",
+          "declaration_line_at_mapping": 10,
+          "declaration_header": "theorem NSE_GR_THREE_OBLIGATION_CLOSURE\n    (ν ρ t0 : ℝ) (hν : 0 < ν) (hρ : ρ ≠ 0) (input : LiteratureInputs) :\n    ExactSectorEquivalence ν ρ t0",
+          "role": "exact delivery alias of the scoped root",
+          "audit_status": "A_TIER",
+          "axioms": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "source_sha256": "5706aa0e3f93c0e21f7fc46b85360d593c10e4e90bc0178dc365b125bed645d9",
+          "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2"
+        }
+      ],
+      "scope_notes": "All c/r/h/q inhabitants are constructed internally from the literal inputs. The root statement retains nu>0, rho!=0, LiteratureInputs only. LI03 remains in the input bundle; the selected smooth Methlib route does not need its field, and minimality is not claimed."
+    }
+  ],
+  "library_endpoint_identity_references": [
+    {
+      "id": "ML001",
+      "name": "mem_nhds_prod_iff'",
+      "source_index_pointer": "/mathlib/0",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Topology/Constructions/SumProd.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Constructions/SumProd.lean#L290",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML002",
+      "name": "exists_compact_subset",
+      "source_index_pointer": "/mathlib/1",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Topology/Compactness/LocallyCompact.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Compactness/LocallyCompact.lean#L148",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML003",
+      "name": "IsCompact.elim_finite_subcover",
+      "source_index_pointer": "/mathlib/2",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Topology/Compactness/Compact.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Compactness/Compact.lean#L202",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML004",
+      "name": "IsCompact.eventually_forall_of_forall_eventually",
+      "source_index_pointer": "/mathlib/3",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Topology/Compactness/Compact.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Compactness/Compact.lean#L464",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML005",
+      "name": "IsCompact.mem_prod_nhdsSet_of_forall",
+      "source_index_pointer": "/mathlib/4",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Topology/Compactness/Compact.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Compactness/Compact.lean#L427",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML006",
+      "name": "Set.iUnionLift",
+      "source_index_pointer": "/mathlib/5",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Data/Set/UnionLift.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Data/Set/UnionLift.lean#L56",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML007",
+      "name": "Set.iUnionLift_of_mem",
+      "source_index_pointer": "/mathlib/6",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Data/Set/UnionLift.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Data/Set/UnionLift.lean#L74",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML012",
+      "name": "Filter.EventuallyEq.fderiv_eq",
+      "source_index_pointer": "/mathlib/11",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Analysis/Calculus/FDeriv/Congr.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Congr.lean#L258",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML013",
+      "name": "Filter.EventuallyEq.fderiv",
+      "source_index_pointer": "/mathlib/12",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Analysis/Calculus/FDeriv/Congr.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Congr.lean#L261",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML015",
+      "name": "Function.Periodic.zsmul",
+      "source_index_pointer": "/mathlib/14",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Algebra/Ring/Periodic.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Algebra/Ring/Periodic.lean#L155",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML016",
+      "name": "Function.Periodic.add_period",
+      "source_index_pointer": "/mathlib/15",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Algebra/Ring/Periodic.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Algebra/Ring/Periodic.lean#L97",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML023",
+      "name": "FormalMultilinearSeries.summable_norm_mul_pow",
+      "source_index_pointer": "/mathlib/22",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Analysis/Analytic/ConvergenceRadius.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ConvergenceRadius.lean#L241",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML026",
+      "name": "HasFPowerSeriesOnBall.analyticAt",
+      "source_index_pointer": "/mathlib/25",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Analysis/Analytic/Basic.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean#L139",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML051",
+      "name": "AnalyticAt.fderiv",
+      "source_index_pointer": "/mathlib/50",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Analysis/Calculus/FDeriv/Analytic.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Analytic.lean#L263",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML052",
+      "name": "AnalyticAt.contDiffAt",
+      "source_index_pointer": "/mathlib/51",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Analysis/Calculus/ContDiff/Defs.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Defs.lean#L986",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML053",
+      "name": "ContDiffAt.isSymmSndFDerivAt_of_omega",
+      "source_index_pointer": "/mathlib/52",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Analysis/Calculus/FDeriv/Symmetric.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Symmetric.lean#L198",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML055",
+      "name": "Matrix.PosDef.of_dotProduct_mulVec_pos",
+      "source_index_pointer": "/mathlib/54",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/LinearAlgebra/Matrix/PosDef.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/PosDef.lean#L441",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML056",
+      "name": "Matrix.PosDef.add_posSemidef",
+      "source_index_pointer": "/mathlib/55",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/LinearAlgebra/Matrix/PosDef.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/PosDef.lean#L245",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML059",
+      "name": "CFC.sqrt_nonneg",
+      "source_index_pointer": "/mathlib/58",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Basic.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Basic.lean#L239",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML060",
+      "name": "CFC.sqrt_mul_sqrt_self",
+      "source_index_pointer": "/mathlib/59",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Basic.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Basic.lean#L265",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML061",
+      "name": "CFC.isUnit_sqrt_iff",
+      "source_index_pointer": "/mathlib/60",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Basic.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/ContinuousFunctionalCalculus/Rpow/Basic.lean#L722",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML062",
+      "name": "Matrix.det_fromBlocks_zero₂₁",
+      "source_index_pointer": "/mathlib/61",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/LinearAlgebra/Matrix/Determinant/Basic.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Matrix/Determinant/Basic.lean#L675",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML066",
+      "name": "FormalMultilinearSeries.norm_mul_pow_le_of_lt_radius",
+      "source_index_pointer": "/mathlib/65",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Analysis/Analytic/ConvergenceRadius.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ConvergenceRadius.lean#L212",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML067",
+      "name": "HasFPowerSeriesOnBall.changeOrigin",
+      "source_index_pointer": "/mathlib/66",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Analysis/Analytic/ChangeOrigin.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ChangeOrigin.lean#L338",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML068",
+      "name": "FormalMultilinearSeries.nnnorm_changeOrigin_le",
+      "source_index_pointer": "/mathlib/67",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Analysis/Analytic/ChangeOrigin.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ChangeOrigin.lean#L203",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML069",
+      "name": "HasFPowerSeriesOnBall.iteratedFDeriv_eq_sum_of_completeSpace",
+      "source_index_pointer": "/mathlib/68",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Analysis/Analytic/IteratedFDeriv.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/IteratedFDeriv.lean#L228",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML070",
+      "name": "map_add_eq_sum_add_integral_iteratedFDeriv",
+      "source_index_pointer": "/mathlib/69",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Analysis/Calculus/TaylorIntegral.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/TaylorIntegral.lean#L69",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML071",
+      "name": "FormalMultilinearSeries.le_radius_of_bound",
+      "source_index_pointer": "/mathlib/70",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Analysis/Analytic/ConvergenceRadius.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/ConvergenceRadius.lean#L111",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML075",
+      "name": "ZLattice.summable_norm_pow_inv",
+      "source_index_pointer": "/mathlib/74",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Algebra/Module/ZLattice/Summable.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Algebra/Module/ZLattice/Summable.lean#L273",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ML090",
+      "name": "IsOpen.is_const_of_deriv_eq_zero",
+      "source_index_pointer": "/mathlib/89",
+      "source_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_path": "Mathlib/Analysis/Calculus/MeanValue.lean",
+      "url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/MeanValue.lean#L768",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ME18",
+      "name": "NSEMaxwell.HodgeProof.scalar_cosine_integral",
+      "source_index_pointer": "/methlib/17",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean",
+      "url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/CosineMultiplier.lean#L38",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    },
+    {
+      "id": "ME19",
+      "name": "NSEMaxwell.HodgeProof.scalarCoeff_coordinateDerivative",
+      "source_index_pointer": "/methlib/18",
+      "source_revision": "eac159c5f7bf5a99a00d994da34c4760ea8335d0",
+      "source_path": "FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean",
+      "url": "https://github.com/randogelist/Methlib/blob/eac159c5f7bf5a99a00d994da34c4760ea8335d0/FourierHodgeLaws_inhabitant/FourierHodgeLaws/FourierCoefficients.lean#L42",
+      "identity_status": "REFERENCED_FROM_FROZEN_B_TIER_INDEX_NOT_RENUMBERED"
+    }
+  ],
+  "alias_resolution_source": "GR_adapter/Derivation/NSE_GR_THREE_OBLIGATION_INDEX.json#/alias_mapping",
+  "validation": {
+    "node_count": 22,
+    "native_reference_count": 96,
+    "all_native_names_found_in_declared_source_modules": true,
+    "local_lean_executions": 0,
+    "new_axiom_declarations": 0,
+    "matching_final_external_audit_checked": true
+  },
+  "declaration_header_scope": "Headers are source-level signatures; ambient section variables remain those of the cited module. Full elaborated signatures must be read from the final external #check audit.",
+  "source_layout_notes": [
+    "NativeReconstructionCore contains generic BoundaryAdmissible Hodge/residual theorems; NativeReconstruction imports/reexports Core and retains the canonical full-tensor identity and the native reconstruction-law constructor. The declaration names and exact root premises are unchanged."
+  ],
+  "final_external_evidence": {
+    "source_commit": "2efaf74109eb30b6ca3c3bc426b4c7da5811f7b2",
+    "run": 43471012374,
+    "certificate": "Auxillary/GR/Closure/EXTERNAL_CERTIFICATE.json"
+  }
+}
