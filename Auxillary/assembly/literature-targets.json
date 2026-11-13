@@ -1,14 +1,13 @@
 {
   "schema_version": 1,
-  "authorization": "User instruction, 2026-11-13: L1 and L2 as axioms.",
+  "authorization": "User revision, 2026-11-13: remove L2 from axioms; retain only L1 as an analytic axiom and prove L2 natively with the unchanged type.",
   "foundational_axioms": [
     "Classical.choice",
     "Quot.sound",
     "propext"
   ],
   "authorized_axiom_declarations": [
-    "ClassicalMechanicsAssembly.Literature.L1",
-    "ClassicalMechanicsAssembly.Literature.L2"
+    "ClassicalMechanicsAssembly.Literature.L1"
   ],
   "exact_nonfoundational_policy": true,
   "targets": [
@@ -21,10 +20,8 @@
     },
     {
       "name": "ClassicalMechanicsAssembly.Literature.L2",
-      "kind": "axiom",
-      "expected_nonfoundational_axioms": [
-        "ClassicalMechanicsAssembly.Literature.L2"
-      ]
+      "kind": "theorem",
+      "expected_nonfoundational_axioms": []
     },
     {
       "name": "ClassicalMechanicsAssembly.Literature.L2_native",
@@ -35,8 +32,7 @@
       "name": "ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2",
       "kind": "theorem",
       "expected_nonfoundational_axioms": [
-        "ClassicalMechanicsAssembly.Literature.L1",
-        "ClassicalMechanicsAssembly.Literature.L2"
+        "ClassicalMechanicsAssembly.Literature.L1"
       ]
     },
     {

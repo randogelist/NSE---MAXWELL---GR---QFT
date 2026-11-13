@@ -28,9 +28,9 @@ PREFIX = "ClassicalMechanicsAssembly.Literature."
 FOUNDATIONS = frozenset({"propext", "Classical.choice", "Quot.sound"})
 EXACT_POLICY = {
     PREFIX + "L1": frozenset({PREFIX + "L1"}),
-    PREFIX + "L2": frozenset({PREFIX + "L2"}),
+    PREFIX + "L2": frozenset(),
     PREFIX + "L2_native": frozenset(),
-    PREFIX + "CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2": frozenset({PREFIX + "L1", PREFIX + "L2"}),
+    PREFIX + "CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2": frozenset({PREFIX + "L1"}),
     PREFIX + "CLASSICAL_MECHANICS_MATERIAL_FROM_L1": frozenset({PREFIX + "L1"}),
 }
 MODULES = ["ClassicalMechanicsAssembly.LiteratureInputs",
@@ -70,8 +70,8 @@ def validate_policy(policy: dict) -> list[str]:
             "Exact literature axiom policy required.")
     require(set(policy.get("foundational_axioms", [])) == FOUNDATIONS,
             "The foundational axiom policy must remain unchanged.")
-    require(set(policy.get("authorized_axiom_declarations", [])) == {PREFIX + "L1", PREFIX + "L2"},
-            "Only the two explicitly authorized literature axioms are admitted.")
+    require(set(policy.get("authorized_axiom_declarations", [])) == {PREFIX + "L1"},
+            "Only the remaining explicitly authorized literature axiom L1 is admitted; L2 must be native.")
     targets = policy.get("targets", [])
     require(isinstance(targets, list) and len(targets) == 5, "Exactly five literature audit targets required.")
     names = [item["name"] for item in targets]
@@ -81,7 +81,7 @@ def validate_policy(policy: dict) -> list[str]:
         require(isinstance(actual, list) and len(actual) == len(set(actual))
                 and frozenset(actual) == EXACT_POLICY[item["name"]],
                 f"Exact axiom policy differs: {item['name']}")
-        expected_kind = "axiom" if item["name"] in {PREFIX + "L1", PREFIX + "L2"} else "theorem"
+        expected_kind = "axiom" if item["name"] == PREFIX + "L1" else "theorem"
         require(item.get("kind") == expected_kind, f"Wrong declaration kind: {item['name']}")
     return names
 
@@ -158,7 +158,7 @@ def main() -> int:
     report.mkdir(parents=True, exist_ok=True)
     evidence: dict = {"schema_version": 1, "stage": "INITIALIZE", "build_status": "NOT_RUN",
         "audit_command_status": "NOT_RUN", "theorem_axiom_audit_status": "NOT_RUN",
-        "semantic_discharge": "L1_AND_L2_ARE_DECLARED_ANALYTIC_INPUTS_NOT_PROVED"}
+        "semantic_discharge": "L1_IS_DECLARED_ANALYTIC_INPUT_NOT_PROVED; L2_IS_NATIVE_THEOREM"}
     timings: list[dict] = []
 
     def save() -> None:
@@ -220,9 +220,9 @@ def main() -> int:
             "build_status": "NOT_RUN", "audit_command_status": "NOT_RUN",
             "theorem_axiom_audit_status": "NOT_RUN", "audit_target_count": 5,
             "native_endpoint_count": 0, "additional_proof_target_count": 0,
-            "authorized_axiom_declaration_count": 2, "literature_theorem_count": 3,
+            "authorized_axiom_declaration_count": 1, "literature_theorem_count": 4,
             "module_build_schedule": MODULES, "local_lean_executions": 0,
-            "semantic_discharge": "L1_AND_L2_ARE_DECLARED_ANALYTIC_INPUTS_NOT_PROVED",
+            "semantic_discharge": "L1_IS_DECLARED_ANALYTIC_INPUT_NOT_PROVED; L2_IS_NATIVE_THEOREM",
             "standard_43_audit_summary_sha256": digest(standard / "audit-summary.json"),
             "standard_43_source_manifest_sha256": digest(standard / "source-manifest.json"),
             "standard_43_provenance_sha256": digest(standard / "run-provenance.json"),
@@ -309,12 +309,12 @@ def main() -> int:
             "source_manifest_sha256": digest(manifest), "axiom_policy_sha256": digest(root / POLICY),
             "external_compiler_status": "PASS", "audit_command_status": "PASS", "source_input_verification": "PASS",
             "expected_platform": "linux", "actual_lean_version": version, "mathlib_commit": MATHLIB,
-            "foundational_axioms": sorted(FOUNDATIONS), "authorized_axiom_declarations": [PREFIX + "L1", PREFIX + "L2"],
+            "foundational_axioms": sorted(FOUNDATIONS), "authorized_axiom_declarations": [PREFIX + "L1"],
             "exact_nonfoundational_policy": True, "targets": records, "errors": [],
             "standard_43_audit_summary_sha256": evidence["standard_43_audit_summary_sha256"],
             "standard_43_audit_status": "PASS_STANDARD_ONLY",
-            "semantic_discharge": "L1_AND_L2_ARE_DECLARED_ANALYTIC_INPUTS_NOT_PROVED",
-            "L2_elimination": "L2_NATIVE_STANDARD_ONLY_AND_SECOND_ROOT_DEPENDS_ONLY_ON_L1",
+            "semantic_discharge": "L1_IS_DECLARED_ANALYTIC_INPUT_NOT_PROVED; L2_IS_NATIVE_THEOREM",
+            "L2_elimination": "L2_AND_L2_NATIVE_STANDARD_ONLY; BOTH_COMPATIBILITY_ROOTS_DEPEND_ONLY_ON_L1",
             "full_solution_set_bijection": "NOT_ASSERTED"})
         evidence["theorem_axiom_audit_status"] = "PASS_EXACT_AUTHORIZED_AXIOMS"
         evidence["stage"] = "COMPLETE"
@@ -329,7 +329,7 @@ def main() -> int:
         evidence["completed_at_utc"] = dt.datetime.now(dt.timezone.utc).isoformat()
         save()
         write_json(report / "audit-summary.json", {"status": "FAIL", "errors": [str(error)],
-            "semantic_discharge": "L1_AND_L2_ARE_DECLARED_ANALYTIC_INPUTS_NOT_PROVED"})
+            "semantic_discharge": "L1_IS_DECLARED_ANALYTIC_INPUT_NOT_PROVED; L2_IS_NATIVE_THEOREM"})
         print(f"LITERATURE_EXTERNAL_RUN=FAIL: {error}", file=sys.stderr)
         return 1
 

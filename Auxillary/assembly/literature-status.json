@@ -1,15 +1,14 @@
 {
   "schema_version": 1,
-  "status": "A_TIER_UNDER_EXACT_AUTHORIZED_LITERATURE_AXIOMS",
-  "closure_status": "CONDITIONAL_FORMAL_CLOSURE",
-  "user_authorization": "2026-11-13: L1 and L2 as axioms",
+  "status": "A_TIER_CANDIDATE_AFTER_L2_AXIOM_REMOVAL",
+  "closure_status": "CONDITIONAL_FORMAL_CLOSURE_PENDING_MATCHING_AUDIT",
+  "user_authorization": "2026-11-13: L2 removed from axioms; retain L1 only",
   "axiom_declarations": [
-    "ClassicalMechanicsAssembly.Literature.L1",
-    "ClassicalMechanicsAssembly.Literature.L2"
+    "ClassicalMechanicsAssembly.Literature.L1"
   ],
-  "axiom_status": "DECLARED_ANALYTIC_INPUTS_NOT_PROVED",
+  "axiom_status": "L1_DECLARED_ANALYTIC_INPUT_NOT_PROVED",
   "flow_realization": "ASSUMED_BY_L1; NATIVE_DERIVATION_OPEN",
-  "diffusion_realization": "ASSUMED_BY_L2_IN_LITERATURE_ROUTE; NATIVE_PROOF_AVAILABLE",
+  "diffusion_realization": "NATIVE_THEOREM_L2; NO_DIFFUSION_AXIOM",
   "native_proof": "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_DIFFUSION_REALIZATION",
   "standard_only_assembly_target_count": 43,
   "literature_audit_target_count": 5,
@@ -17,21 +16,13 @@
   "external_platform": "native Linux / Ubuntu 24.04",
   "toolchain": "leanprover/lean4:v4.34.0-rc1",
   "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
-  "source_commit": "585cc4b6e3fc360b9251858eeb0cbd7590fea39e",
-  "external_run_id": 43378501921,
-  "external_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43378501921",
-  "external_artifact_id": 14015706358,
-  "artifact_sha256": "6d0acdfbc36e4f8e1776580f73c0bd27201aed2b41a7d581040bb07d118e2d93",
-  "retained_evidence": "Auxillary/evidence/literature-linux-43378501921",
-  "external_compilation": "PASS",
+  "external_compilation": "PENDING_FOR_UPDATED_SOURCE",
   "standard_43_axiom_audit": "PASS_STANDARD_ONLY",
-  "literature_5_axiom_audit": "PASS_EXACT_AUTHORIZED_AXIOMS",
+  "literature_5_axiom_audit": "PENDING_FOR_UPDATED_SOURCE",
   "literature_import_closure_modules": 22,
-  "source_input_matches": 346,
   "L2_native_axiom_audit": "PASS_STANDARD_ONLY",
   "dual_root_analytic_axioms": [
-    "ClassicalMechanicsAssembly.Literature.L1",
-    "ClassicalMechanicsAssembly.Literature.L2"
+    "ClassicalMechanicsAssembly.Literature.L1"
   ],
   "native_diffusion_root_analytic_axioms": [
     "ClassicalMechanicsAssembly.Literature.L1"

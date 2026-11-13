@@ -46,22 +46,15 @@ Retained [source-match certificate](../Auxillary/evidence/assembly-linux-4337663
 [exact signatures and axiom log](../Auxillary/evidence/assembly-linux-43376636262/audit.log).
 The audited proof source is unchanged by the documentation/evidence retention commit.
 
-## Explicit literature inputs
+## Remaining literature input
 
-`ClassicalMechanicsAssembly.LiteratureInputs` declares the user-authorized
-`Literature.L1` flow-realization and `Literature.L2` diffusion-realization axioms.
-`ClassicalMechanicsAssembly.LiteratureClosure` assembles their exact finite-slab
-equation equivalence, and a second route replaces L2 with the native diffusion
-theorem. The respective nonfoundational dependencies are `{L1,L2}` and `{L1}`.
-These modules are separate from the standard-only aggregate import above.
+`ClassicalMechanicsAssembly.Literature.L1` is the finite-slab flow-realization
+axiom. `Literature.L2` and `Literature.L2_native` are native diffusion theorems.
+Both equation closure routes now depend only on L1. The historical
+`CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2` name is retained for compatibility.
+The standard-only aggregate import remains unchanged.
 
-Literature-route status: **A_TIER under exact authorized literature axioms**.
-External [run 43378501921](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43378501921): strict43 `PASS_STANDARD_ONLY`;
-2 axioms + 3 theorems `PASS_EXACT_AUTHORIZED_AXIOMS`.
-Audited source: `585cc4b6e3fc360b9251858eeb0cbd7590fea39e`.
+Updated-module status: **A_TIER_CANDIDATE** pending matching external audit.
 Exact contracts: [ASSEMBLY_LITERATURE_A_TIER.txt](../Auxillary/ASSEMBLY_LITERATURE_A_TIER.txt).
-Native construction of the flow remains open. The roots retain
-`CONDITIONAL_FORMAL_CLOSURE`; declaring an analytic input does not prove it.
-
-Literature [source-match certificate](../Auxillary/evidence/literature-linux-43378501921/literature-source-match-certificate.json)
-and [full signatures/axiom log](../Auxillary/evidence/literature-linux-43378501921/literature/audit.log).
+L1 still requires a native flow construction; the target closure remains
+`CONDITIONAL_FORMAL_CLOSURE`.

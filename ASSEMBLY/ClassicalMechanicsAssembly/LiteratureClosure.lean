@@ -3,9 +3,10 @@ import ClassicalMechanicsAssembly.LiteratureInputs
 /-!
 # Material equation closure with named literature axioms
 
-The first theorem explicitly uses both authorized inputs. The second has the
-same conclusion and uses only `L1`, because the native Piola assembly already
-proves the `L2` contract. Both construct a path for a supplied smooth velocity
+The first theorem uses the L1 flow axiom and the native L2 diffusion theorem.
+Its historical name is retained for compatibility. The second has the same
+conclusion and invokes the native supplied-flow equation theorem directly.
+Both routes now have L1 as their only nonfoundational axiom. Both construct a path for a supplied smooth velocity
 field and establish equation equivalence with the literal pressure pullback.
 Neither theorem asserts NSE existence from initial data or a full solution-set
 bijection with pressure-normalization, energy, or variational transport.
@@ -19,7 +20,7 @@ open Set ClassicalMechanics NSEMaxwell.Classical
 
 noncomputable section
 
-/-- Conditional material equation closure with explicit dependence on L1 and L2. -/
+/-- Compatibility root: L1 is assumed and L2 is proved natively. -/
 theorem CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2
     {ν T : ℝ} (hT : 0 < T) {u : Velocity} {p : Pressure}
     (hu : SmoothVelocityOn T u) (hp : SmoothPressureOn T p)
@@ -39,7 +40,7 @@ theorem CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2
   exact ClassicalMechanics.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW_AND_DIFFUSION
     hT hu hp hη hflow (fun _ _ _ => rfl) (L2 hu hη hflow)
 
-/-- The same closure after eliminating L2 by the existing native diffusion proof. -/
+/-- The same closure with only the L1 analytic axiom. -/
 theorem CLASSICAL_MECHANICS_MATERIAL_FROM_L1
     {ν T : ℝ} (hT : 0 < T) {u : Velocity} {p : Pressure}
     (hu : SmoothVelocityOn T u) (hp : SmoothPressureOn T p)
