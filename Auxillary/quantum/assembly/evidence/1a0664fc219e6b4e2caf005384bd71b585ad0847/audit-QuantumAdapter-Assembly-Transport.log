@@ -1,0 +1,65 @@
+@QuantumAdapter.Assembly.phaseFlow_timeMap_inverse : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (t : ℝ)
+  (q : QuantumAdapter.Phase N), Eq.{1} (F.map N (Neg.neg.{0} t) (F.map N t q)) q
+'QuantumAdapter.Assembly.phaseFlow_timeMap_inverse' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Assembly.phaseFlow_timeMap_bijective : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (t : ℝ),
+  Function.Bijective.{1, 1} (F.map N t)
+'QuantumAdapter.Assembly.phaseFlow_timeMap_bijective' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Assembly.phaseFlow_preimage_eq_inverse_image : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ)
+  (t : ℝ) (s : Set.{0} (QuantumAdapter.Phase N)),
+  Eq.{1} (Set.preimage.{0, 0} (F.map N t) s) (Set.image.{0, 0} (F.map N (Neg.neg.{0} t)) s)
+'QuantumAdapter.Assembly.phaseFlow_preimage_eq_inverse_image' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.phaseFlow_quasiMeasurePreserving : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν),
+  (∀ (N : ℕ) (t : ℝ), Differentiable.{0, 0, 0} ℝ (F.map N t)) →
+    ∀ (N : ℕ) (t : ℝ),
+      MeasureTheory.Measure.QuasiMeasurePreserving.{0, 0} (F.map N t) (QuantumAdapter.phaseVolume N)
+        (QuantumAdapter.phaseVolume N)
+'QuantumAdapter.Assembly.phaseFlow_quasiMeasurePreserving' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.phaseFlow_integralPullbackLaw_of_jacobian : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν),
+  (∀ (N : ℕ) (t : ℝ), Differentiable.{0, 0, 0} ℝ (F.map N t)) →
+    (∀ (N : ℕ) (t : ℝ) (q : QuantumAdapter.Phase N),
+        Eq.{1} (ContinuousLinearMap.det.{0, 0} (fderiv.{0, 0, 0} ℝ (F.map N t) q))
+          (Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N)) t))) →
+      ∀ (N : ℕ),
+        QuantumAdapter.IntegralPullbackLaw.{0} (QuantumAdapter.phaseVolume N) (QuantumAdapter.phaseDecayRate ν N)
+          (F.map N)
+'QuantumAdapter.Assembly.phaseFlow_integralPullbackLaw_of_jacobian' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.phaseFlow_integrable_weighted_comp_of_jacobian : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν),
+  (∀ (N : ℕ) (t : ℝ), Differentiable.{0, 0, 0} ℝ (F.map N t)) →
+    (∀ (N : ℕ) (t : ℝ) (q : QuantumAdapter.Phase N),
+        Eq.{1} (ContinuousLinearMap.det.{0, 0} (fderiv.{0, 0, 0} ℝ (F.map N t) q))
+          (Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N)) t))) →
+      ∀ (N : ℕ) (t : ℝ) (f : QuantumAdapter.Phase N → ℝ),
+        MeasureTheory.Integrable.{0, 0} f (QuantumAdapter.phaseVolume N) →
+          MeasureTheory.Integrable.{0, 0}
+            (fun q =>
+              HMul.hMul.{0, 0, 0} (Real.exp (HMul.hMul.{0, 0, 0} (QuantumAdapter.phaseDecayRate ν N) t))
+                (f (F.map N (Neg.neg.{0} t) q)))
+            (QuantumAdapter.phaseVolume N)
+'QuantumAdapter.Assembly.phaseFlow_integrable_weighted_comp_of_jacobian' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.phaseFlow_memLpPullbackLaw_of_jacobian : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν),
+  (∀ (N : ℕ) (t : ℝ), Differentiable.{0, 0, 0} ℝ (F.map N t)) →
+    (∀ (N : ℕ) (t : ℝ) (q : QuantumAdapter.Phase N),
+        Eq.{1} (ContinuousLinearMap.det.{0, 0} (fderiv.{0, 0, 0} ℝ (F.map N t) q))
+          (Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N)) t))) →
+      ∀ (N : ℕ),
+        QuantumAdapter.MemLpPullbackLaw.{0} (QuantumAdapter.phaseVolume N) (QuantumAdapter.phaseDecayRate ν N) (F.map N)
+'QuantumAdapter.Assembly.phaseFlow_memLpPullbackLaw_of_jacobian' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.phaseTransportLaws_of_jacobian : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν),
+  (∀ (N : ℕ) (t : ℝ), Differentiable.{0, 0, 0} ℝ (F.map N t)) →
+    (∀ (N : ℕ) (t : ℝ) (q : QuantumAdapter.Phase N),
+        Eq.{1} (ContinuousLinearMap.det.{0, 0} (fderiv.{0, 0, 0} ℝ (F.map N t) q))
+          (Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N)) t))) →
+      QuantumAdapter.PhaseTransportLaws F
+'QuantumAdapter.Assembly.phaseTransportLaws_of_jacobian' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

@@ -60,3 +60,18 @@ PASS_STANDARD_ONLY
   != universal Navier–Stokes regularity
 ```
 
+
+## Native analytic assembly
+
+`QuantumAdapter.Assembly`: 203 additional declarations in 13 modules.
+Exact source: `1a0664fc219e6b4e2caf005384bd71b585ad0847`.
+External compiler and fresh theorem-level standard-axiom audit: PASS.
+
+[Current exact root and premise index](assembly/exports/exact_quantum_root_for_canonical_flow_A_TIER.txt)
+· [Assembly replay](assembly/README.md)
+· [Assembly evidence](assembly/evidence/1a0664fc219e6b4e2caf005384bd71b585ad0847/).
+
+The original 204-target adapter audit remains separately reproducible.
+The native assembly constructs complete phase orbits, projection bounds,
+Gaussian moments, transport/domain adapters, and quantitative packet estimates.
+Seven explicit dynamical/continuum endpoints remain in the canonical root.

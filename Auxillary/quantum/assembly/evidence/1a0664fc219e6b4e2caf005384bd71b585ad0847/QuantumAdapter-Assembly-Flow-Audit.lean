@@ -1,0 +1,41 @@
+import QuantumAdapter.Assembly.Flow
+set_option pp.universes true
+set_option pp.fullNames true
+#check @QuantumAdapter.Assembly.contDiff_phaseCoeff
+#print axioms QuantumAdapter.Assembly.contDiff_phaseCoeff
+#check @QuantumAdapter.Assembly.contDiff_fullTransport
+#print axioms QuantumAdapter.Assembly.contDiff_fullTransport
+#check @QuantumAdapter.Assembly.contDiff_lerayTransport
+#print axioms QuantumAdapter.Assembly.contDiff_lerayTransport
+#check @QuantumAdapter.Assembly.contDiff_rawRhs
+#print axioms QuantumAdapter.Assembly.contDiff_rawRhs
+#check @QuantumAdapter.Assembly.contDiff_drift
+#print axioms QuantumAdapter.Assembly.contDiff_drift
+#check @QuantumAdapter.Assembly.exists_local_drift_solution
+#print axioms QuantumAdapter.Assembly.exists_local_drift_solution
+#check @QuantumAdapter.Assembly.drift_locally_lipschitz
+#print axioms QuantumAdapter.Assembly.drift_locally_lipschitz
+#check @QuantumAdapter.Assembly.drift_solutions_eventuallyEq
+#print axioms QuantumAdapter.Assembly.drift_solutions_eventuallyEq
+#check @QuantumAdapter.Assembly.drift_solutions_unique
+#print axioms QuantumAdapter.Assembly.drift_solutions_unique
+#check @QuantumAdapter.Assembly.phaseFlow_map_unique
+#print axioms QuantumAdapter.Assembly.phaseFlow_map_unique
+#check @QuantumAdapter.Assembly.phaseFlow_unique
+#print axioms QuantumAdapter.Assembly.phaseFlow_unique
+#check @QuantumAdapter.Assembly.phaseFlow_zero
+#print axioms QuantumAdapter.Assembly.phaseFlow_zero
+#check @QuantumAdapter.Assembly.phaseFlow_energy0_hasDerivAt
+#print axioms QuantumAdapter.Assembly.phaseFlow_energy0_hasDerivAt
+#check @QuantumAdapter.Assembly.phaseFlow_energy0_antitone
+#print axioms QuantumAdapter.Assembly.phaseFlow_energy0_antitone
+#check @QuantumAdapter.Assembly.laplaceSymbol_le_finiteLaplaceTrace
+#print axioms QuantumAdapter.Assembly.laplaceSymbol_le_finiteLaplaceTrace
+#check @QuantumAdapter.Assembly.dissipation_le_finiteLaplaceTrace_mul_energy0
+#print axioms QuantumAdapter.Assembly.dissipation_le_finiteLaplaceTrace_mul_energy0
+#check @QuantumAdapter.Assembly.phaseFlow_energy0_le_initial
+#print axioms QuantumAdapter.Assembly.phaseFlow_energy0_le_initial
+#check @QuantumAdapter.Assembly.phaseFlow_weighted_energy0_monotone
+#print axioms QuantumAdapter.Assembly.phaseFlow_weighted_energy0_monotone
+#check @QuantumAdapter.Assembly.phaseFlow_energy0_backward_bound
+#print axioms QuantumAdapter.Assembly.phaseFlow_energy0_backward_bound

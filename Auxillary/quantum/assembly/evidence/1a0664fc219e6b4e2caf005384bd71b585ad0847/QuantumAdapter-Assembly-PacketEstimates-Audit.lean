@@ -1,0 +1,67 @@
+import QuantumAdapter.Assembly.PacketEstimates
+set_option pp.universes true
+set_option pp.fullNames true
+#check @QuantumAdapter.Assembly.canonicalBornDensity_measurable
+#print axioms QuantumAdapter.Assembly.canonicalBornDensity_measurable
+#check @QuantumAdapter.Assembly.integrable_canonicalBornMeasure_iff
+#print axioms QuantumAdapter.Assembly.integrable_canonicalBornMeasure_iff
+#check @QuantumAdapter.Assembly.integral_canonicalBornMeasure
+#print axioms QuantumAdapter.Assembly.integral_canonicalBornMeasure
+#check @QuantumAdapter.Assembly.canonicalBornMeasure_centered_moment_integrable
+#print axioms QuantumAdapter.Assembly.canonicalBornMeasure_centered_moment_integrable
+#check @QuantumAdapter.Assembly.packetDistance_nonneg
+#print axioms QuantumAdapter.Assembly.packetDistance_nonneg
+#check @QuantumAdapter.Assembly.packetDistance_symm
+#print axioms QuantumAdapter.Assembly.packetDistance_symm
+#check @QuantumAdapter.Assembly.packetDistance_integrable
+#print axioms QuantumAdapter.Assembly.packetDistance_integrable
+#check @QuantumAdapter.Assembly.packetDistance_sq_integrable
+#print axioms QuantumAdapter.Assembly.packetDistance_sq_integrable
+#check @QuantumAdapter.Assembly.packetDistance_sq_mean
+#print axioms QuantumAdapter.Assembly.packetDistance_sq_mean
+#check @QuantumAdapter.Assembly.packetDistance_sq_mean_le_quarter
+#print axioms QuantumAdapter.Assembly.packetDistance_sq_mean_le_quarter
+#check @QuantumAdapter.Assembly.sqrt_energy3_le_reference_add_packetDistance
+#print axioms QuantumAdapter.Assembly.sqrt_energy3_le_reference_add_packetDistance
+#check @QuantumAdapter.Assembly.packet_integral_sq_le
+#print axioms QuantumAdapter.Assembly.packet_integral_sq_le
+#check @QuantumAdapter.Assembly.packet_integrable_sqrt
+#print axioms QuantumAdapter.Assembly.packet_integrable_sqrt
+#check @QuantumAdapter.Assembly.packet_integral_sqrt_le
+#print axioms QuantumAdapter.Assembly.packet_integral_sqrt_le
+#check @QuantumAdapter.Assembly.packet_integral_distance_le_half
+#print axioms QuantumAdapter.Assembly.packet_integral_distance_le_half
+#check @QuantumAdapter.Assembly.packet_integral_quadratic_bound
+#print axioms QuantumAdapter.Assembly.packet_integral_quadratic_bound
+#check @QuantumAdapter.Assembly.exists_joint_packet_control
+#print axioms QuantumAdapter.Assembly.exists_joint_packet_control
+#check @QuantumAdapter.Assembly.PacketEstimatePrimitives.energy_conjugacy
+#print axioms QuantumAdapter.Assembly.PacketEstimatePrimitives.energy_conjugacy
+#check @QuantumAdapter.Assembly.PacketEstimatePrimitives.relative
+#print axioms QuantumAdapter.Assembly.PacketEstimatePrimitives.relative
+#check @QuantumAdapter.Assembly.PacketEstimatePrimitives.cost_nonneg
+#print axioms QuantumAdapter.Assembly.PacketEstimatePrimitives.cost_nonneg
+#check @QuantumAdapter.Assembly.PacketEstimatePrimitives.cost_mono
+#print axioms QuantumAdapter.Assembly.PacketEstimatePrimitives.cost_mono
+#check @QuantumAdapter.Assembly.PacketEstimatePrimitives.central_cost_bound
+#print axioms QuantumAdapter.Assembly.PacketEstimatePrimitives.central_cost_bound
+#check @QuantumAdapter.Assembly.PacketEstimatePrimitives.cost_integrable
+#print axioms QuantumAdapter.Assembly.PacketEstimatePrimitives.cost_integrable
+#check @QuantumAdapter.Assembly.PacketEstimatePrimitives.mean_cost_bound
+#print axioms QuantumAdapter.Assembly.PacketEstimatePrimitives.mean_cost_bound
+#check @QuantumAdapter.Assembly.forwardPacketBound_of_primitives
+#print axioms QuantumAdapter.Assembly.forwardPacketBound_of_primitives
+#check @QuantumAdapter.Assembly.reversePacketBound_of_primitives
+#print axioms QuantumAdapter.Assembly.reversePacketBound_of_primitives
+#check @QuantumAdapter.Assembly.packetBounds_of_scalar_primitives
+#print axioms QuantumAdapter.Assembly.packetBounds_of_scalar_primitives
+#check @QuantumAdapter.Assembly.canonicalBornMeasure_raw_moment_integrable
+#print axioms QuantumAdapter.Assembly.canonicalBornMeasure_raw_moment_integrable
+#check @QuantumAdapter.Assembly.packet_energy_integrable_of_nonneg_viscosity
+#print axioms QuantumAdapter.Assembly.packet_energy_integrable_of_nonneg_viscosity
+#check @QuantumAdapter.Assembly.packet_gradient_product_integrable
+#print axioms QuantumAdapter.Assembly.packet_gradient_product_integrable
+#check @QuantumAdapter.Assembly.packetEstimatePrimitives_of_jacobian
+#print axioms QuantumAdapter.Assembly.packetEstimatePrimitives_of_jacobian
+#check @QuantumAdapter.Assembly.packetBounds_of_jacobian
+#print axioms QuantumAdapter.Assembly.packetBounds_of_jacobian

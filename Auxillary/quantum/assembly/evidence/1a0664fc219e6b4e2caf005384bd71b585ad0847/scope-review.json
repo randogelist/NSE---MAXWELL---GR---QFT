@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "review_kind": "POST_COMPILER_EXACT_SOURCE_AND_SIGNATURE_REVIEW",
+  "source_commit": "1a0664fc219e6b4e2caf005384bd71b585ad0847",
+  "exact_root": "QuantumAdapter.Assembly.exact_quantum_root_for_canonical_flow",
+  "classification": "CONDITIONAL_FORMAL_CLOSURE",
+  "compiled_declarations": 203,
+  "axiom_audit": "PASS_STANDARD_ONLY",
+  "arbitrary_mean_retained": true,
+  "full_mode_set_retained": true,
+  "intrinsic_real_phase_volume": true,
+  "canonical_finite_width_Gaussian": true,
+  "full_multiplier_and_expectation_admissibility_retained": true,
+  "complete_orbit_existence_discharged": true,
+  "initial_projection_bound_discharged": true,
+  "Gaussian_normalization_and_moments_discharged": true,
+  "packet_bounds_constructed_from_named_dynamical_premises": true,
+  "residual_formal_endpoints": [
+    {
+      "id": "P1",
+      "endpoint": "actual drift divergence identity"
+    },
+    {
+      "id": "P2",
+      "endpoint": "initial-data differentiability of every real-time map"
+    },
+    {
+      "id": "P3",
+      "endpoint": "exact determinant/Jacobian identity"
+    },
+    {
+      "id": "P4",
+      "endpoint": "relative L2 exponential estimate"
+    },
+    {
+      "id": "P5",
+      "endpoint": "one positive uniform tame H3 constant and estimate"
+    },
+    {
+      "id": "P6",
+      "endpoint": "GalerkinAnalyticLaws.smooth_stability"
+    },
+    {
+      "id": "P7",
+      "endpoint": "GalerkinAnalyticLaws.compactness"
+    }
+  ],
+  "no_unconditional_closure_claim": true,
+  "legacy_and_native_declaration_sets_disjoint": true,
+  "legacy_count": 204,
+  "native_assembly_count": 203,
+  "repository_regression": {
+    "run_id": 43384137765,
+    "status": "PASS",
+    "artifact_id": 14019347135,
+    "artifact_sha256": "72df68b21282044409fa4e151e00ce137991a626c5a1f6cd18e4580d41dd230c",
+    "scopes": [
+      {
+        "scope": "integrated",
+        "status": "PASS_STANDARD_ONLY",
+        "theorem_count": 236,
+        "source_commit": "1a0664fc219e6b4e2caf005384bd71b585ad0847"
+      },
+      {
+        "scope": "quantum",
+        "status": "PASS_STANDARD_ONLY",
+        "theorem_count": 204,
+        "source_commit": "1a0664fc219e6b4e2caf005384bd71b585ad0847"
+      },
+      {
+        "scope": "quantum-assembly",
+        "status": "PASS_STANDARD_ONLY",
+        "theorem_count": 203,
+        "source_commit": "1a0664fc219e6b4e2caf005384bd71b585ad0847"
+      },
+      {
+        "scope": "maxwell-standalone",
+        "status": "PASS_STANDARD_ONLY",
+        "theorem_count": 62,
+        "source_commit": "1a0664fc219e6b4e2caf005384bd71b585ad0847"
+      },
+      {
+        "scope": "fefferman-standalone",
+        "status": "PASS_STANDARD_ONLY",
+        "theorem_count": 236,
+        "source_commit": "1a0664fc219e6b4e2caf005384bd71b585ad0847"
+      }
+    ]
+  }
+}

@@ -35,6 +35,11 @@ the exact compiler, dependency lock revisions, preparation fingerprint, Git
 source blobs and SHA-256 source manifest. Cached Lake objects are reused through
 ordinary `lake build --no-build` freshness checks and incremental `lake build`.
 No cache cleanup or forced cache download occurs.
+Full-repository and assembly-only project caches use separate primary key
+namespaces. On a primary-key miss, assembly runs prefer a compatible full cache,
+then their own cache;
+both retain the prior project-cache keys as restore fallbacks. This prevents a
+partial assembly cache from occupying the full validation's immutable cache key.
 
 Each independent module is attempted even after another module fails. Modules
 depending on a failed assembly build are explicitly marked blocked, without

@@ -1,0 +1,104 @@
+QuantumAdapter.Assembly.contDiff_phaseCoeff : ∀ (N : ℕ) (k : SingularClosure.Frequency) (i : Fin 3),
+  ContDiff.{0, 0, 0} ℝ ↑Top.top.{0} fun q => QuantumAdapter.phaseCoeff q k i
+'QuantumAdapter.Assembly.contDiff_phaseCoeff' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.contDiff_fullTransport : ∀ (N : ℕ) (k : SingularClosure.Frequency) (i : Fin 3),
+  ContDiff.{0, 0, 0} ℝ ↑Top.top.{0} fun q => QuantumAdapter.fullTransport N (QuantumAdapter.phaseCoeff q) k i
+'QuantumAdapter.Assembly.contDiff_fullTransport' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.contDiff_lerayTransport : ∀ (N : ℕ) (k : SingularClosure.Frequency) (i : Fin 3),
+  ContDiff.{0, 0, 0} ℝ ↑Top.top.{0} fun q =>
+    SingularClosure.coefficientLeray k (QuantumAdapter.fullTransport N (QuantumAdapter.phaseCoeff q) k) i
+'QuantumAdapter.Assembly.contDiff_lerayTransport' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.contDiff_rawRhs : ∀ (ν : ℝ) (N : ℕ),
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) (QuantumAdapter.rawRhs ν N)
+'QuantumAdapter.Assembly.contDiff_rawRhs' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.contDiff_drift : ∀ (ν : ℝ) (N : ℕ),
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) (QuantumAdapter.drift ν N)
+'QuantumAdapter.Assembly.contDiff_drift' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.exists_local_drift_solution : ∀ (ν : ℝ) (N : ℕ) (q₀ : QuantumAdapter.Phase N) (t₀ : ℝ),
+  ∃ q,
+    Eq.{1} (q t₀) q₀ ∧
+      ∃ ε,
+        GT.gt.{0} ε 0 ∧
+          ∀ (t : ℝ),
+            Membership.mem.{0, 0} (Set.Ioo.{0} (HSub.hSub.{0, 0, 0} t₀ ε) (HAdd.hAdd.{0, 0, 0} t₀ ε)) t →
+              HasDerivAt.{0, 0} q (QuantumAdapter.drift ν N (q t)) t
+'QuantumAdapter.Assembly.exists_local_drift_solution' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.drift_locally_lipschitz : ∀ (ν : ℝ) (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+  ∃ K s, Membership.mem.{0, 0} (nhds.{0} q₀) s ∧ LipschitzOnWith.{0, 0} K (QuantumAdapter.drift ν N) s
+'QuantumAdapter.Assembly.drift_locally_lipschitz' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.drift_solutions_eventuallyEq : ∀ (ν : ℝ) (N : ℕ) {q r : ℝ → QuantumAdapter.Phase N} {t₀ : ℝ},
+  (∀ (t : ℝ), HasDerivAt.{0, 0} q (QuantumAdapter.drift ν N (q t)) t) →
+    (∀ (t : ℝ), HasDerivAt.{0, 0} r (QuantumAdapter.drift ν N (r t)) t) →
+      Eq.{1} (q t₀) (r t₀) → Filter.EventuallyEq.{0, 0} (nhds.{0} t₀) q r
+'QuantumAdapter.Assembly.drift_solutions_eventuallyEq' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.drift_solutions_unique : ∀ (ν : ℝ) (N : ℕ) {q r : ℝ → QuantumAdapter.Phase N} {t₀ : ℝ},
+  (∀ (t : ℝ), HasDerivAt.{0, 0} q (QuantumAdapter.drift ν N (q t)) t) →
+    (∀ (t : ℝ), HasDerivAt.{0, 0} r (QuantumAdapter.drift ν N (r t)) t) → Eq.{1} (q t₀) (r t₀) → Eq.{1} q r
+'QuantumAdapter.Assembly.drift_solutions_unique' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Assembly.phaseFlow_map_unique : ∀ {ν : ℝ} (F G : QuantumAdapter.PhaseFlow ν) (N : ℕ) (t : ℝ)
+  (q₀ : QuantumAdapter.Phase N), Eq.{1} (F.map N t q₀) (G.map N t q₀)
+'QuantumAdapter.Assembly.phaseFlow_map_unique' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Assembly.phaseFlow_unique : ∀ {ν : ℝ} (F G : QuantumAdapter.PhaseFlow ν), Eq.{1} F G
+'QuantumAdapter.Assembly.phaseFlow_unique' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Assembly.phaseFlow_zero : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (t : ℝ),
+  Eq.{1} (F.map N t 0) 0
+'QuantumAdapter.Assembly.phaseFlow_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Assembly.phaseFlow_energy0_hasDerivAt : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ)
+  (q₀ : QuantumAdapter.Phase N) (t : ℝ),
+  HasDerivAt.{0, 0} (fun s => QuantumAdapter.energy0 N (F.map N s q₀))
+    (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} (-2) ν) (QuantumAdapter.dissipation N (F.map N t q₀))) t
+'QuantumAdapter.Assembly.phaseFlow_energy0_hasDerivAt' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.phaseFlow_energy0_antitone : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+      Antitone.{0, 0} fun t => QuantumAdapter.energy0 N (F.map N t q₀)
+'QuantumAdapter.Assembly.phaseFlow_energy0_antitone' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.laplaceSymbol_le_finiteLaplaceTrace : ∀ (N : ℕ) (k : SingularClosure.Frequency),
+  Membership.mem.{0, 0} (QuantumAdapter.fullModes N) k →
+    LE.le.{0} (QuantumAdapter.laplaceSymbol k) (QuantumAdapter.finiteLaplaceTrace N)
+'QuantumAdapter.Assembly.laplaceSymbol_le_finiteLaplaceTrace' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.dissipation_le_finiteLaplaceTrace_mul_energy0 : ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+  LE.le.{0} (QuantumAdapter.dissipation N q)
+    (HMul.hMul.{0, 0, 0} (QuantumAdapter.finiteLaplaceTrace N) (QuantumAdapter.energy0 N q))
+'QuantumAdapter.Assembly.dissipation_le_finiteLaplaceTrace_mul_energy0' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.phaseFlow_energy0_le_initial : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (q₀ : QuantumAdapter.Phase N) {t : ℝ},
+      LE.le.{0} 0 t → LE.le.{0} (QuantumAdapter.energy0 N (F.map N t q₀)) (QuantumAdapter.energy0 N q₀)
+'QuantumAdapter.Assembly.phaseFlow_energy0_le_initial' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.phaseFlow_weighted_energy0_monotone : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+      Monotone.{0, 0} fun t =>
+        HMul.hMul.{0, 0, 0}
+          (Real.exp
+            (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 ν) (QuantumAdapter.finiteLaplaceTrace N))
+              t))
+          (QuantumAdapter.energy0 N (F.map N t q₀))
+'QuantumAdapter.Assembly.phaseFlow_weighted_energy0_monotone' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.phaseFlow_energy0_backward_bound : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (q₀ : QuantumAdapter.Phase N) {t : ℝ},
+      LE.le.{0} t 0 →
+        LE.le.{0} (QuantumAdapter.energy0 N (F.map N t q₀))
+          (HMul.hMul.{0, 0, 0}
+            (Real.exp
+              (Neg.neg.{0}
+                (HMul.hMul.{0, 0, 0}
+                  (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 ν) (QuantumAdapter.finiteLaplaceTrace N)) t)))
+            (QuantumAdapter.energy0 N q₀))
+'QuantumAdapter.Assembly.phaseFlow_energy0_backward_bound' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

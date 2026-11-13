@@ -100,8 +100,10 @@ jobs:
         uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: .lake/build
-          key: nse-project-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-${{ hashFiles('Fefferman_adapter/NSEMaxwell.lean', 'Fefferman_adapter/NSEMaxwell/**/*.lean', 'Fefferman_adapter/MethlibEndpoints.lean', 'Fefferman_adapter/MethlibEndpoints/**/*.lean', 'Fefferman_adapter/NativeSources/methlib/SingularClosure/**/*.lean', 'B <-> Maxwell/**/*.lean', 'Maxwell_Endpoint/MaxwellEndpoint.lean', 'Maxwell_Endpoint/MaxwellEndpoint/**/*.lean', 'Quantum_adapter/**/*.lean', 'B <-> Quantum/**/*.lean', 'Auxillary/quantum/module-order.json') }}
+          key: nse-assembly-project-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-${{ hashFiles('Fefferman_adapter/NSEMaxwell.lean', 'Fefferman_adapter/NSEMaxwell/**/*.lean', 'Fefferman_adapter/MethlibEndpoints.lean', 'Fefferman_adapter/MethlibEndpoints/**/*.lean', 'Fefferman_adapter/NativeSources/methlib/SingularClosure/**/*.lean', 'B <-> Maxwell/**/*.lean', 'Maxwell_Endpoint/MaxwellEndpoint.lean', 'Maxwell_Endpoint/MaxwellEndpoint/**/*.lean', 'Quantum_adapter/**/*.lean', 'B <-> Quantum/**/*.lean', 'Auxillary/quantum/module-order.json') }}
           restore-keys: |
+            nse-full-project-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-
+            nse-assembly-project-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-
             nse-project-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-
             nse-project-v2-Linux-X64-1e0a11bbe2f771dc625218fed552a5e8c9ad571990c5e9674d1e2921162b35c5-5a1aca4898000db4f1f98f887cf1a5b2548ed4bc4bf43edc34b73fdff48fd97f
             nse-project-v2-Linux-X64-9b51ac59a9bf389c36d0ee08f81eebfa504c2a733df8c25b1187266979e41203-5a1aca4898000db4f1f98f887cf1a5b2548ed4bc4bf43edc34b73fdff48fd97f

@@ -1,0 +1,1246 @@
+{
+  "schema_version": 1,
+  "source_commit": "1a0664fc219e6b4e2caf005384bd71b585ad0847",
+  "scope": "ALL_TRACKED_PROJECT_PROOFS_PLUS_CONFIG; VENDORED_DEPENDENCIES_VERIFIED_BY_PREPARATION_AND_LOCK",
+  "files": [
+    {
+      "path": ".github/workflows/lean-linux.yml",
+      "sha256": "b66868db9f90ab2766131dd4dedfb9a78aeb9060672b471a12c13e33adbff68c",
+      "git_blob_sha": "838117bc03346891d55dd8d24207a563594ea2c8",
+      "working_tree_blob_sha": "838117bc03346891d55dd8d24207a563594ea2c8",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": ".github/workflows/quantum-assembly.yml",
+      "sha256": "0e5fb001f39f4328fbf5347221031c7c724525fbc47c77bdd85a354afef39fd9",
+      "git_blob_sha": "7c12c6f5b1095884e4ebd764ff56a3291f8736d6",
+      "working_tree_blob_sha": "7c12c6f5b1095884e4ebd764ff56a3291f8736d6",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Auxillary/cache-targets.txt",
+      "sha256": "6534bc4fa124679c91833cded1886eceb5f8b55ce4217c7e2748c8430b37d5f2",
+      "git_blob_sha": "8328a114f60c53905491c89bf6a53eca7654ec1b",
+      "working_tree_blob_sha": "8328a114f60c53905491c89bf6a53eca7654ec1b",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Auxillary/quantum/assembly/README.md",
+      "sha256": "1a0ff0f67cd2e715c64312ddd97af1f1086a61ae0dd5752be1a31a2e07774a0c",
+      "git_blob_sha": "1af9b69d092c0e53fa6856f9305eee3e99004bb0",
+      "working_tree_blob_sha": "1af9b69d092c0e53fa6856f9305eee3e99004bb0",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Auxillary/quantum/assembly/audit-targets.txt",
+      "sha256": "2ef8680706c5be5d4a8f9845f48fae8739af0fb42277f3691760d9f150cd9478",
+      "git_blob_sha": "aa7e680ddc2e82544e2444cc6479f3b8edd5e557",
+      "working_tree_blob_sha": "aa7e680ddc2e82544e2444cc6479f3b8edd5e557",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Auxillary/quantum/assembly/formalization-status.json",
+      "sha256": "9ccca6050ea8e72163792071f74105562d0afdbd62411faa962c3ce38bd45269",
+      "git_blob_sha": "f148d2d902091bfb9a4e92809090f62ee64b0466",
+      "working_tree_blob_sha": "f148d2d902091bfb9a4e92809090f62ee64b0466",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Auxillary/quantum/assembly/mathlib-endpoints.json",
+      "sha256": "7008edccd1e3a511d4dfee9a5e8fbc1a695e6ff1e62e9c3d8ba1ac5da53050a8",
+      "git_blob_sha": "3b686030e3b9b7db043660cb2d94b5b041e46648",
+      "working_tree_blob_sha": "3b686030e3b9b7db043660cb2d94b5b041e46648",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Auxillary/quantum/assembly/module-targets.json",
+      "sha256": "5d0ac13a9ebcf80964de11089e5a6991da80a0c34efb3edae3a64066dfe4f3f9",
+      "git_blob_sha": "f8365fb534595bb27c2f5fa76f10efeb9fde738b",
+      "working_tree_blob_sha": "f8365fb534595bb27c2f5fa76f10efeb9fde738b",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Auxillary/quantum/assembly/prepare_targets.py",
+      "sha256": "1ef1e43cbf7329b0ca404c3dd30a80909f752ea3efa8c3d7115b800fdcdbcb71",
+      "git_blob_sha": "276b6ff6660065378aae0ba049ddbb8f37b43626",
+      "working_tree_blob_sha": "276b6ff6660065378aae0ba049ddbb8f37b43626",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Auxillary/quantum/assembly/run.cmd",
+      "sha256": "74eb895bcc8e23bed3130163714c49601e52fd7c3cd08c0d99a86c23dbf1ed4b",
+      "git_blob_sha": "dc47551c55faf26e41ca6cbd49f299181261fb6a",
+      "working_tree_blob_sha": "bc4027ebea2c0567aeee335a43ffcca12164266b",
+      "checkout_normalization": "CMD_CRLF_TO_LF"
+    },
+    {
+      "path": "Auxillary/quantum/assembly/run.py",
+      "sha256": "8492b1d350ce12c7e1c88a346dd3ddab247ecf508ae959521d14b7c76f3ffcd4",
+      "git_blob_sha": "5ccd281b9c7d2764bce4153609f6f5482f76a900",
+      "working_tree_blob_sha": "5ccd281b9c7d2764bce4153609f6f5482f76a900",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Auxillary/quantum/assembly/run.sh",
+      "sha256": "93b6ad7d496370252f3523e52172caf8f8478393547662ce9dd81a30daa9e303",
+      "git_blob_sha": "f6dedc7cc3a5508e6c6ae150e9724bd94f4031f2",
+      "working_tree_blob_sha": "f6dedc7cc3a5508e6c6ae150e9724bd94f4031f2",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Auxillary/run.sh",
+      "sha256": "0f5df37c1ad7c1495eb494cfc35cc1f547199485ad5703efd6b2e1ac6851e5e8",
+      "git_blob_sha": "0011efe80f60326d1d5d2fd801a3f131a29c17f7",
+      "working_tree_blob_sha": "0011efe80f60326d1d5d2fd801a3f131a29c17f7",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Auxillary/scripts/isolate_maxwell_endpoint.py",
+      "sha256": "571daba1d503ad91dd176c486170f06bd64f0d3997bbd1316382b6765c3276ea",
+      "git_blob_sha": "34369c43a77efde2416c6498dadcd9788e7e037b",
+      "working_tree_blob_sha": "34369c43a77efde2416c6498dadcd9788e7e037b",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Auxillary/scripts/run.ps1",
+      "sha256": "dd0b88ed8b2bf50f73b9558876cc5f41d7b9d559e5d6de60e19b2bbb5c5c8aee",
+      "git_blob_sha": "0e021cca8918e420f2f65c900bb7144df8d1132e",
+      "working_tree_blob_sha": "0e021cca8918e420f2f65c900bb7144df8d1132e",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Auxillary/scripts/seed_project_cache.py",
+      "sha256": "6d24769caa6f34f6c8f1689327493028bcfdc2562d4d528e14efc16f63a90522",
+      "git_blob_sha": "dd359423592633a0e150ecea7bb2c50fe9e8f762",
+      "working_tree_blob_sha": "dd359423592633a0e150ecea7bb2c50fe9e8f762",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Auxillary/scripts/vendor_native_sources.py",
+      "sha256": "597f9bb67ee154154d3d426f6ae4d45140e55013c32948557fc4a3a2f5520378",
+      "git_blob_sha": "bb7115c0ef19b1ab05f6978e215cf33b9231ac71",
+      "working_tree_blob_sha": "bb7115c0ef19b1ab05f6978e215cf33b9231ac71",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Auxillary/scripts/verify_audit.py",
+      "sha256": "c9b3f83e86920a296c2ccb35325b49b7c2fa6fa8ed3c870cfbe10effb413868c",
+      "git_blob_sha": "a28d2dd722c1982779a22a190a2c6c7e5914f8ca",
+      "working_tree_blob_sha": "a28d2dd722c1982779a22a190a2c6c7e5914f8ca",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "B <-> Maxwell/<=/NSEMaxwellReverse.lean",
+      "sha256": "b6cb2beb70264b98d23a8143def620121112077e3326125b4e51833990e9de04",
+      "git_blob_sha": "5bd54c85b756bfce6cc1f5b83aa36da96d323bda",
+      "working_tree_blob_sha": "5bd54c85b756bfce6cc1f5b83aa36da96d323bda",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "B <-> Maxwell/<=/NSEMaxwellReverse/Reduced.lean",
+      "sha256": "8c7e2bfd5dece9032b2335d73db50fd55bc34c9a66c11fe3ab6580b3e1b40635",
+      "git_blob_sha": "146e796cc4661b0ba3935dc8768d63495932ab3a",
+      "working_tree_blob_sha": "146e796cc4661b0ba3935dc8768d63495932ab3a",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "B <-> Maxwell/=>/NSEMaxwellForward.lean",
+      "sha256": "d2a74b2268c54de3593996480d18429aa11060ce72396c7d2cea8071cfb57845",
+      "git_blob_sha": "74a7276db4139f66e2e8d5c11cdb86d0217664bb",
+      "working_tree_blob_sha": "74a7276db4139f66e2e8d5c11cdb86d0217664bb",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "B <-> Maxwell/=>/NSEMaxwellForward/Reduced.lean",
+      "sha256": "3393dba7f320674f92f1067b623564e8bf239d00511d65305027b620ae65098a",
+      "git_blob_sha": "5b1e0eb69eea37727cb725601b8cc1c6285a0ac7",
+      "working_tree_blob_sha": "5b1e0eb69eea37727cb725601b8cc1c6285a0ac7",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "B <-> Quantum/<=/NSEQuantumReverse.lean",
+      "sha256": "74429597d46b1688ede8b9a1451ac8a1164c6a5f7d23d66ae0549c0b9019e74a",
+      "git_blob_sha": "c0a9abcefb9f2894bc7961242411c9605c781eee",
+      "working_tree_blob_sha": "c0a9abcefb9f2894bc7961242411c9605c781eee",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "B <-> Quantum/=>/NSEQuantumForward.lean",
+      "sha256": "5bfae4c9f0796814eec2b7cae9f9473b72f3b0c1ac087cbcb1d7ad04821a25a6",
+      "git_blob_sha": "642248150514b29b52d7331375d4de0c1c23668d",
+      "working_tree_blob_sha": "642248150514b29b52d7331375d4de0c1c23668d",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Forward/NSEMaxwellForward.lean",
+      "sha256": "d2a74b2268c54de3593996480d18429aa11060ce72396c7d2cea8071cfb57845",
+      "git_blob_sha": "74a7276db4139f66e2e8d5c11cdb86d0217664bb",
+      "working_tree_blob_sha": "74a7276db4139f66e2e8d5c11cdb86d0217664bb",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Forward/NSEMaxwellForward/Reduced.lean",
+      "sha256": "3393dba7f320674f92f1067b623564e8bf239d00511d65305027b620ae65098a",
+      "git_blob_sha": "5b1e0eb69eea37727cb725601b8cc1c6285a0ac7",
+      "working_tree_blob_sha": "5b1e0eb69eea37727cb725601b8cc1c6285a0ac7",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint.lean",
+      "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+      "git_blob_sha": "353e6238e480d5a7c398a3dbb96855bbb85f8cb0",
+      "working_tree_blob_sha": "353e6238e480d5a7c398a3dbb96855bbb85f8cb0",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint/Audit.lean",
+      "sha256": "4da3e7d03be3f97497d11943d65ab1d70efa93382ec60e807b08934af06a1b83",
+      "git_blob_sha": "a5e79834299cf6dd425d133eec387b72f89f34f2",
+      "working_tree_blob_sha": "a5e79834299cf6dd425d133eec387b72f89f34f2",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint/Constitutive.lean",
+      "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+      "git_blob_sha": "e16d42fb04fc1deaddda6f85f8f80fa2d8313778",
+      "working_tree_blob_sha": "e16d42fb04fc1deaddda6f85f8f80fa2d8313778",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint/Geometry.lean",
+      "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+      "git_blob_sha": "219e4565a7a80748ba9a2c4e72300dbd19bafdf0",
+      "working_tree_blob_sha": "219e4565a7a80748ba9a2c4e72300dbd19bafdf0",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint/Native.lean",
+      "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+      "git_blob_sha": "e52a2814e2fa2f0ffc603c053fcf6385cf308965",
+      "working_tree_blob_sha": "e52a2814e2fa2f0ffc603c053fcf6385cf308965",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Maxwell/MaxwellEndpoint/System.lean",
+      "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+      "git_blob_sha": "41d3c4c5f0dd15af4ec0f788a8fcd51f851e8d35",
+      "working_tree_blob_sha": "41d3c4c5f0dd15af4ec0f788a8fcd51f851e8d35",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Reverse/NSEMaxwellReverse.lean",
+      "sha256": "b6cb2beb70264b98d23a8143def620121112077e3326125b4e51833990e9de04",
+      "git_blob_sha": "5bd54c85b756bfce6cc1f5b83aa36da96d323bda",
+      "working_tree_blob_sha": "5bd54c85b756bfce6cc1f5b83aa36da96d323bda",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/LocalDependencies/Reverse/NSEMaxwellReverse/Reduced.lean",
+      "sha256": "8c7e2bfd5dece9032b2335d73db50fd55bc34c9a66c11fe3ab6580b3e1b40635",
+      "git_blob_sha": "146e796cc4661b0ba3935dc8768d63495932ab3a",
+      "working_tree_blob_sha": "146e796cc4661b0ba3935dc8768d63495932ab3a",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/MethlibEndpoints.lean",
+      "sha256": "07e56315bc06718af426ffcff8f771a08422d6962d0e6c1774ef25f06b6e5985",
+      "git_blob_sha": "a7fecb39a0488bef59c4fc8c6871c65e195e3357",
+      "working_tree_blob_sha": "a7fecb39a0488bef59c4fc8c6871c65e195e3357",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/MethlibEndpoints/Audit.lean",
+      "sha256": "c44a433383aeeb47265644e36ac99acde821d60f1a9b3ac00e80ba440d45d4fb",
+      "git_blob_sha": "9fe5273e1e97b9e302f86ad49c1651e6102a496c",
+      "working_tree_blob_sha": "9fe5273e1e97b9e302f86ad49c1651e6102a496c",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell.lean",
+      "sha256": "3be1cf79c390b8e769d235f08cc5884bbc8ef17d8b541a141629c697f0429617",
+      "git_blob_sha": "438a05607d6aedbb298394050b96640d778fd650",
+      "working_tree_blob_sha": "438a05607d6aedbb298394050b96640d778fd650",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Ampere.lean",
+      "sha256": "e1ee9e880e2c50360fea276a49fe3ca4c05c8104fa7b29740877cde3d30bc648",
+      "git_blob_sha": "9c676ee059a1ece752d6157b6d25b9ec3e337802",
+      "working_tree_blob_sha": "9c676ee059a1ece752d6157b6d25b9ec3e337802",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/AnalyticBridge.lean",
+      "sha256": "d1e5a1439d01599cacea35a0c45f6c2e3842011130b8645681f02cff817b5402",
+      "git_blob_sha": "03e52624acee07e135a0dabff7b23705bb84aa15",
+      "working_tree_blob_sha": "03e52624acee07e135a0dabff7b23705bb84aa15",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/AnalyticContracts.lean",
+      "sha256": "7664e157e5ebe3c8ffc24a3eba714b180b248bb950e8b8c4ab5c2c3190b49f3e",
+      "git_blob_sha": "114ba2794f62e9ccaf932b5acdcc4790c97e16fb",
+      "working_tree_blob_sha": "114ba2794f62e9ccaf932b5acdcc4790c97e16fb",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/AnalyticReduction.lean",
+      "sha256": "2813f7dd8035681265656a3b6bb2476dbd30e928dc8a737bcb7e3277a8ae77ba",
+      "git_blob_sha": "ff637eca5f8c13e96366d8616f4cad9f9cc2315f",
+      "working_tree_blob_sha": "ff637eca5f8c13e96366d8616f4cad9f9cc2315f",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Audit.lean",
+      "sha256": "a33ebc24740c596b02b1e6ef9c74a658a147045ea3087dbf1d16cf6e5c604331",
+      "git_blob_sha": "1fe45f6e21614bb0d265ba4ad4be3cd2add2d5a2",
+      "working_tree_blob_sha": "1fe45f6e21614bb0d265ba4ad4be3cd2add2d5a2",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/CanonicalSmoothness.lean",
+      "sha256": "d63f7555c73d78141e53d86b463848e2594d01a6dcf8a0b3c026ac8de79dd021",
+      "git_blob_sha": "9a8e5cf28ec2f38c28332f61e0a628f8a4b6e6c8",
+      "working_tree_blob_sha": "9a8e5cf28ec2f38c28332f61e0a628f8a4b6e6c8",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+      "sha256": "d8db7b5d7cce8d443a2143880dc65c48799d7e153eb49d37e4eb3c23230eb109",
+      "git_blob_sha": "436b964ed678b7d5e47582f9dde3df522083bad8",
+      "working_tree_blob_sha": "436b964ed678b7d5e47582f9dde3df522083bad8",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/ConstantPaths.lean",
+      "sha256": "14ddfa21be65dcb38ec3f9b2a5c62463de3846fd44c23b32a27ac0f083c206cf",
+      "git_blob_sha": "6392adc81fb5408537b773e3cdab89156c8eb229",
+      "working_tree_blob_sha": "6392adc81fb5408537b773e3cdab89156c8eb229",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Constitutive.lean",
+      "sha256": "d7f1d613a094b2d7679d27d621286ac98e4998a67529f74c4614dcff4f1b4d81",
+      "git_blob_sha": "e4903cdec379559f3ebf20ef0bd66bd76173f219",
+      "working_tree_blob_sha": "e4903cdec379559f3ebf20ef0bd66bd76173f219",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+      "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+      "git_blob_sha": "aedf3033c1747392e4c3abe933ee8e08eff04f01",
+      "working_tree_blob_sha": "aedf3033c1747392e4c3abe933ee8e08eff04f01",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/DominatedWithin.lean",
+      "sha256": "d42ff10c78decd35907a1574e37a86de5fe87b32ad0c5e4ed4ed83997ea7766b",
+      "git_blob_sha": "53896795c9034520b54d40cbf95d73b1a4420890",
+      "working_tree_blob_sha": "53896795c9034520b54d40cbf95d73b1a4420890",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/ExistenceTransport.lean",
+      "sha256": "998d18cb2914c1613c8a484b9d2df2e499480abde6caee09592e3e5db6ba4156",
+      "git_blob_sha": "8c0493024e1c704512e47f297003e0fb89d55153",
+      "working_tree_blob_sha": "8c0493024e1c704512e47f297003e0fb89d55153",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/FEFFERMAN_B_MAXWELL_EQUIVALENCE.lean",
+      "sha256": "61c84e691c54d61bdfb0526858b519381014156eef99d9f66b7d6c0fcc982501",
+      "git_blob_sha": "d396e1897a6ff23ec3cbb61684bd2a63ab260f55",
+      "working_tree_blob_sha": "d396e1897a6ff23ec3cbb61684bd2a63ab260f55",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/FourierPeriodic.lean",
+      "sha256": "1d49a7d1ead33dd2eb0ab6dd2d90d1dddeefe032d0bd1773f305c85c974591ef",
+      "git_blob_sha": "ee957050b24510b95eb2f7fb96dd8d4b23622df8",
+      "working_tree_blob_sha": "ee957050b24510b95eb2f7fb96dd8d4b23622df8",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Kinematics.lean",
+      "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+      "git_blob_sha": "3e10d1e8f3899df6f7f5cb194eb61d5b1acf3459",
+      "working_tree_blob_sha": "3e10d1e8f3899df6f7f5cb194eb61d5b1acf3459",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Lamb.lean",
+      "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+      "git_blob_sha": "080b372f71ef437fb9b0512081832057b79f16e5",
+      "working_tree_blob_sha": "080b372f71ef437fb9b0512081832057b79f16e5",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/LocalEvolution.lean",
+      "sha256": "6ada4c7209bfcf163490fdd13d4ebb2381feed274b5ccec447025cac75f3a680",
+      "git_blob_sha": "2ed56c52be7be3a0038b7299373d723bf5f01fab",
+      "working_tree_blob_sha": "2ed56c52be7be3a0038b7299373d723bf5f01fab",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/MeanConservation.lean",
+      "sha256": "3bf93c76cfd27a1644c2a1f760b28a1710e62aa607202c1ddc81188a2f922da6",
+      "git_blob_sha": "2bc9f9342d975ab4a9a0ced5751392f533f7d596",
+      "working_tree_blob_sha": "2bc9f9342d975ab4a9a0ced5751392f533f7d596",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Negation.lean",
+      "sha256": "4763b648a80780e3e8694b8953b249823a5349cfd52d3dbb7e0695781a1f531d",
+      "git_blob_sha": "b9ba200afdcb2a9fd276fffbb30bc7c911b90558",
+      "working_tree_blob_sha": "b9ba200afdcb2a9fd276fffbb30bc7c911b90558",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/PeriodicIntegration.lean",
+      "sha256": "1e5ab9beb9eeb11fbf595ff4fbdad263ebd4f38e17f02f3ed53e687bfb03664c",
+      "git_blob_sha": "fa5ec7d597c23fde2d972f3119670a7d9222135e",
+      "working_tree_blob_sha": "fa5ec7d597c23fde2d972f3119670a7d9222135e",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Pressure.lean",
+      "sha256": "c46ba912d016697050c20c7effbe82d463d233469641c886dbb5a89cb1503677",
+      "git_blob_sha": "bb4f53d1025a4936794b41bde9ca151ed41716cd",
+      "working_tree_blob_sha": "bb4f53d1025a4936794b41bde9ca151ed41716cd",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Residual.lean",
+      "sha256": "4c88782f4ced9cc84a9584a235adad8fba69f1d24e318e49238f884484ae7754",
+      "git_blob_sha": "a07f4ff4b377d5faf915c150d53f4e3aa6c0d7e5",
+      "working_tree_blob_sha": "a07f4ff4b377d5faf915c150d53f4e3aa6c0d7e5",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/Spacetime.lean",
+      "sha256": "ebea01c7422186aaa0ec4c72c26774ee32f96291756be7775ba40f569eb89c57",
+      "git_blob_sha": "4dd37f48ac5c19dded941be0994160aa23de0cf9",
+      "working_tree_blob_sha": "4dd37f48ac5c19dded941be0994160aa23de0cf9",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NSEMaxwell/TemporalMean.lean",
+      "sha256": "cf6a9d1afa1303db16e882cf52fc4e4db26842cf128a0a6fc050ac80735f5de6",
+      "git_blob_sha": "2dc73ddff7c85b9ea497c634908ed346bb0823c6",
+      "working_tree_blob_sha": "2dc73ddff7c85b9ea497c634908ed346bb0823c6",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Admission.lean",
+      "sha256": "cd8e62a4f88a33b14d3a699b2431e801d590bcadf02d03b2e67ef3ebb5dc63ca",
+      "git_blob_sha": "b28f8ae19042a947a1c46a7eaf6f9afc306844f7",
+      "working_tree_blob_sha": "b28f8ae19042a947a1c46a7eaf6f9afc306844f7",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Contracts.lean",
+      "sha256": "4c59cbf26fd4196529a4865ac09404d18015228c737055c2674cbcc4a5fd18f7",
+      "git_blob_sha": "7d64a61a47bedb2bd7a2801641c5959178837f04",
+      "working_tree_blob_sha": "7d64a61a47bedb2bd7a2801641c5959178837f04",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/CoordinateAverage.lean",
+      "sha256": "3cdfd38ab7cc38805c04dfcba99bdbea711753c00cb2215d030d622514685076",
+      "git_blob_sha": "3dba0b8286fcc034907a6438c5a4c0417169c3fd",
+      "working_tree_blob_sha": "3dba0b8286fcc034907a6438c5a4c0417169c3fd",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/CoordinateAverageOrthogonal.lean",
+      "sha256": "0021524a73fb9c7d0ff4a9b9efe359f6479f649202c8d573c59d5e2718996ab9",
+      "git_blob_sha": "e5c0c5aeb8fa605712a252e0a8969c8d7b56600f",
+      "working_tree_blob_sha": "e5c0c5aeb8fa605712a252e0a8969c8d7b56600f",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/EnstrophyInequality.lean",
+      "sha256": "903678f104e8f312e0c7b2ed5f7846109931cea773b8a989df7ab14de2a93c17",
+      "git_blob_sha": "fdc12e4676295ea43d0e2f8d1f0592e0c545200e",
+      "working_tree_blob_sha": "fdc12e4676295ea43d0e2f8d1f0592e0c545200e",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FiniteHessian.lean",
+      "sha256": "1c2cc4c469bf1ccd75c3842ce9d17b72aba34866dd926c10d3ba98446fcd8b7d",
+      "git_blob_sha": "d8ce599d5e40f4e40a372c179e428c73f2f970a4",
+      "working_tree_blob_sha": "d8ce599d5e40f4e40a372c179e428c73f2f970a4",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FiniteParseval.lean",
+      "sha256": "63c51f81c008bf435d39b92710860dded6a9e09537a8056aeb425bd5769f5997",
+      "git_blob_sha": "d519f88b4af3e354c0af670e19db69bc3ec3724f",
+      "working_tree_blob_sha": "d519f88b4af3e354c0af670e19db69bc3ec3724f",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierDecay.lean",
+      "sha256": "8e9ccc5d7f43105c19eb4726dc6de30a97edfdad52945e96551ad20559526c45",
+      "git_blob_sha": "df80f021be4266f97f40045289f42203e1caabc2",
+      "working_tree_blob_sha": "df80f021be4266f97f40045289f42203e1caabc2",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierIntegral.lean",
+      "sha256": "8ecd56d311006a4db14bbe41a9d920d1760412f2ead5f3684239b85f0ad5290e",
+      "git_blob_sha": "7e5ee2ef060d2fc6530ddc64aac313342caa07ff",
+      "working_tree_blob_sha": "7e5ee2ef060d2fc6530ddc64aac313342caa07ff",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierPressure.lean",
+      "sha256": "841c510c2133581789aa99c747d1315849abadabb7a2df019648a1ae5cd4b2fb",
+      "git_blob_sha": "7d624acfec7e58d3f3719aeb14b9d310c2d5af73",
+      "working_tree_blob_sha": "7d624acfec7e58d3f3719aeb14b9d310c2d5af73",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierProduct.lean",
+      "sha256": "3b8ff49814d3496cdd6abb2b77d2ccf222c2d0ba93d0a225fb4bd2704aa1c9a4",
+      "git_blob_sha": "7a691a0c85bc7c1fb2fb8b76c1a1711b89e44155",
+      "working_tree_blob_sha": "7a691a0c85bc7c1fb2fb8b76c1a1711b89e44155",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierSeriesCalculus.lean",
+      "sha256": "074ce0aa9a379ac5f378b57a0da44d95b54769e53689057337f9262f0579b846",
+      "git_blob_sha": "96486c8c4d9f7b3128bc69b74b2127a363acb372",
+      "working_tree_blob_sha": "96486c8c4d9f7b3128bc69b74b2127a363acb372",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierTransport.lean",
+      "sha256": "bcfbb39cc4f0c44819a304d329a2506b0392f569ec3e6c30b16af69445af5f46",
+      "git_blob_sha": "20bb72957e2ba90af0bfedf5a951062ba6eb4684",
+      "working_tree_blob_sha": "20bb72957e2ba90af0bfedf5a951062ba6eb4684",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/Galerkin.lean",
+      "sha256": "e1ac5c944bab2667b02ae6c75b46f63605354b8c928c56298aee0e28b043a6fa",
+      "git_blob_sha": "8ba283677fe19e33333b8169afbc39ba3ead1c54",
+      "working_tree_blob_sha": "8ba283677fe19e33333b8169afbc39ba3ead1c54",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean",
+      "sha256": "f361277b03794598be46b2c5faaee641d3d0772a4c75eab543fd86aa0ea088a8",
+      "git_blob_sha": "2db76563813ace44d18df11d0092dd9dd7933ca3",
+      "working_tree_blob_sha": "2db76563813ace44d18df11d0092dd9dd7933ca3",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinEnergy.lean",
+      "sha256": "1f0e5b8a62e9d65bd7161efdfe539793157e8edbe94434d0c43b7af4644d5c02",
+      "git_blob_sha": "e6501bff17d1fa9aa48166e85a1ddfafc7c221ae",
+      "working_tree_blob_sha": "e6501bff17d1fa9aa48166e85a1ddfafc7c221ae",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinEnergyIntegral.lean",
+      "sha256": "49b7de259b4a30dd3975e120ad2766917c6de5b3722bd54eff5100f123d7d8a9",
+      "git_blob_sha": "1710ba30f76683f9bbfe4d9c3e60eb7785259114",
+      "working_tree_blob_sha": "1710ba30f76683f9bbfe4d9c3e60eb7785259114",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinReality.lean",
+      "sha256": "48dcb88fd3b82c93a8227432d4e909f4834434b51e24dfd9f2bdcc6f6d03cbe4",
+      "git_blob_sha": "3ae23263fad711565812a58bac4dd4f922fb06f5",
+      "working_tree_blob_sha": "3ae23263fad711565812a58bac4dd4f922fb06f5",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/HilbertChannels.lean",
+      "sha256": "363e4a068a835c2d67c13ad9eed8cf313ea9b402959aab343d40e379238c4f09",
+      "git_blob_sha": "92538be4320e594b9b0473d1453a9a2afe9ac5e3",
+      "working_tree_blob_sha": "92538be4320e594b9b0473d1453a9a2afe9ac5e3",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/InfiniteFourierPressure.lean",
+      "sha256": "8afcd5d69497cfc1c782b0f9809051938675f61b03b13bc4591ade6761f95a15",
+      "git_blob_sha": "b26b4c4e3277ca063365011c9e6ae6d7fc7aa768",
+      "working_tree_blob_sha": "b26b4c4e3277ca063365011c9e6ae6d7fc7aa768",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialCutoffBounds.lean",
+      "sha256": "f9f7eec7c6f8fa46f45ce4bc5942ff9627fe532e377780d5701f144ffd833c30",
+      "git_blob_sha": "dadf69927b1858ab267cd1d1c5c629abdcf1dd33",
+      "working_tree_blob_sha": "dadf69927b1858ab267cd1d1c5c629abdcf1dd33",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialFourier.lean",
+      "sha256": "acc40e4e4acd8ffa46fdd6ea1a46ac38fa4196bb329cc2856be04c183aaa4b6e",
+      "git_blob_sha": "c8f4073b788f8e055502c8e9b8574cbab9355402",
+      "working_tree_blob_sha": "c8f4073b788f8e055502c8e9b8574cbab9355402",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/LatticeSobolevSummability.lean",
+      "sha256": "34634888f8a8601ebb6a5c40f57d2b4a19b0f77295a0c37aeb59fbbd6ea09203",
+      "git_blob_sha": "256ed4881539d214137116a01483050831dbd48f",
+      "working_tree_blob_sha": "256ed4881539d214137116a01483050831dbd48f",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/LerayPressure.lean",
+      "sha256": "fb20ecd6a63415920817de69141c2b6ce23ce1967c2d52c4c9415ceaaf744a27",
+      "git_blob_sha": "5bfcf093f2862b7490d7fef01792f5ab1499551b",
+      "working_tree_blob_sha": "5bfcf093f2862b7490d7fef01792f5ab1499551b",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicCover.lean",
+      "sha256": "9d6f0d78c7a043ef7d8a7db1c3d5f647a84492ff6c3843d85527638990f7929f",
+      "git_blob_sha": "a9425368b5a17e56bb469401b2fbae106e0ad1b1",
+      "working_tree_blob_sha": "a9425368b5a17e56bb469401b2fbae106e0ad1b1",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicFourierInjective.lean",
+      "sha256": "2da981fc1a5db3b5b796fa11a687fe6e993a54938d83bc74513e0220c4f80e81",
+      "git_blob_sha": "66acbb7c899060320f7aaf1d481ed1d28d41d9e6",
+      "working_tree_blob_sha": "66acbb7c899060320f7aaf1d481ed1d28d41d9e6",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicFourierRealization.lean",
+      "sha256": "f4118fd9507488f5bf8cd3df2c1f174f245a32928b118eeb967017865edd2871",
+      "git_blob_sha": "cb8f865f3531fe9d4239c2bcc074f06d148d9d60",
+      "working_tree_blob_sha": "cb8f865f3531fe9d4239c2bcc074f06d148d9d60",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicPoincare.lean",
+      "sha256": "f296d6b876aee593424a7d78c524a7afc42824e9efb8bafa29e90bcaaa7e3202",
+      "git_blob_sha": "4a24fc413939247ffcbca5471004f9ff3de953b3",
+      "working_tree_blob_sha": "4a24fc413939247ffcbca5471004f9ff3de953b3",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalBilinear.lean",
+      "sha256": "6062c88611b7b2d8885d62272d2be88a95cbec37335a1129a636e84b564b3262",
+      "git_blob_sha": "97b76bf8e8964a03b3ea13f2099900dd75865cd6",
+      "working_tree_blob_sha": "97b76bf8e8964a03b3ea13f2099900dd75865cd6",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalChannels.lean",
+      "sha256": "0d522433e0a511a1c0f41b25947a05ece9780cacbe6809d105fdbb8991dca89f",
+      "git_blob_sha": "51143ae4f06ee8bb6f2d0a7886a83a92ee913de3",
+      "working_tree_blob_sha": "51143ae4f06ee8bb6f2d0a7886a83a92ee913de3",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalEnergy.lean",
+      "sha256": "79652e7198f23154071200893e97111c232bd4581f8544c50fbb6f7f0671ae73",
+      "git_blob_sha": "399eded3a28a452ed4c41591d3fb4201f98edc30",
+      "working_tree_blob_sha": "399eded3a28a452ed4c41591d3fb4201f98edc30",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalEnstrophy.lean",
+      "sha256": "720eaee5f18ea728c366880aeb05ced52bd9167369103cb19450991f74e08614",
+      "git_blob_sha": "23c2cf54b457b402952c1f70108807fdf49114f1",
+      "working_tree_blob_sha": "23c2cf54b457b402952c1f70108807fdf49114f1",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalParseval.lean",
+      "sha256": "5785d4892b4d869c19532547247eea3848d670f23b3f93a7c7288233b6cd9338",
+      "git_blob_sha": "4f1d24f4b206c7a988ebcd191a54e789826ea0f5",
+      "working_tree_blob_sha": "4f1d24f4b206c7a988ebcd191a54e789826ea0f5",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalProjection.lean",
+      "sha256": "8ad95865c4dcec61caae216aa8fd09043f2e0e760a128752d00aee5aa82c4287",
+      "git_blob_sha": "3e5946e86c86461f479900a33c4b69d3c65e32f0",
+      "working_tree_blob_sha": "3e5946e86c86461f479900a33c4b69d3c65e32f0",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SixChannels.lean",
+      "sha256": "1c7f53956d9a766a3c8e4e781aa850a26351761ef0086c7ffd10047762854eab",
+      "git_blob_sha": "d39d32cba53e57ab7a8bd458eff1725d1a810e6f",
+      "working_tree_blob_sha": "d39d32cba53e57ab7a8bd458eff1725d1a810e6f",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SmoothDatumSobolev.lean",
+      "sha256": "533948ef73136fc1fe995e073063860044bd3e4d63081f2ba0c49383c51e4466",
+      "git_blob_sha": "c8e9c99280050ab80558cc2d05c491f5f9e400b9",
+      "working_tree_blob_sha": "c8e9c99280050ab80558cc2d05c491f5f9e400b9",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SobolevL2Realization.lean",
+      "sha256": "e6d03d9d4fb08d7f1e5fb0ba38b64c309c62b8656c67b8d66c9ba8ffee2f6b69",
+      "git_blob_sha": "9d02e54557b68b934e877823242801a8a6c3e514",
+      "working_tree_blob_sha": "9d02e54557b68b934e877823242801a8a6c3e514",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean",
+      "sha256": "9cc5097590bede10a43dcb711b869cd2c65ad955cf1636bc41ca5f4f29bf6ead",
+      "git_blob_sha": "197414ab411a8c65a82b936e00e77322c33bf8a1",
+      "working_tree_blob_sha": "197414ab411a8c65a82b936e00e77322c33bf8a1",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/TorusSobolev.lean",
+      "sha256": "7e30008b592ff6124d10d0e6306e96f3528395bcee13fd11df3d1a6497834389",
+      "git_blob_sha": "694c3996939724b61bd096c4dbf7967fe61e33ac",
+      "working_tree_blob_sha": "694c3996939724b61bd096c4dbf7967fe61e33ac",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Fefferman_adapter/lakefile.lean",
+      "sha256": "131e2be875e076c44147cbabca1b6c2b2cb633a9176c7ef72d94e347af876165",
+      "git_blob_sha": "9d6e30de3f3549e5c95e2b4fc508b151e30433fa",
+      "working_tree_blob_sha": "9d6e30de3f3549e5c95e2b4fc508b151e30433fa",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/MaxwellEndpoint.lean",
+      "sha256": "99d68c53adc959ad1d18851bdc9a8a4001d8f2e31b6624048fd622beb28dae68",
+      "git_blob_sha": "353e6238e480d5a7c398a3dbb96855bbb85f8cb0",
+      "working_tree_blob_sha": "353e6238e480d5a7c398a3dbb96855bbb85f8cb0",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/MaxwellEndpoint/Audit.lean",
+      "sha256": "4da3e7d03be3f97497d11943d65ab1d70efa93382ec60e807b08934af06a1b83",
+      "git_blob_sha": "a5e79834299cf6dd425d133eec387b72f89f34f2",
+      "working_tree_blob_sha": "a5e79834299cf6dd425d133eec387b72f89f34f2",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean",
+      "sha256": "e85061de1f8e633d652bd791ef0c9478eca242a6c4d783b09ed4cccfd3087616",
+      "git_blob_sha": "e16d42fb04fc1deaddda6f85f8f80fa2d8313778",
+      "working_tree_blob_sha": "e16d42fb04fc1deaddda6f85f8f80fa2d8313778",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean",
+      "sha256": "67d984b5c32a29ef0f278382c7d279e250dabbc45f84997513f9609c85bfa541",
+      "git_blob_sha": "219e4565a7a80748ba9a2c4e72300dbd19bafdf0",
+      "working_tree_blob_sha": "219e4565a7a80748ba9a2c4e72300dbd19bafdf0",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/MaxwellEndpoint/Native.lean",
+      "sha256": "45d79ffb394ed250c276490f8fbc8e560433f6f4cfea69bfee66f57d277c9d9d",
+      "git_blob_sha": "e52a2814e2fa2f0ffc603c053fcf6385cf308965",
+      "working_tree_blob_sha": "e52a2814e2fa2f0ffc603c053fcf6385cf308965",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/MaxwellEndpoint/System.lean",
+      "sha256": "518558263ca34aeb4d01fd88a8e26cb518c37d7a9cf276a62932175fdd32b024",
+      "git_blob_sha": "41d3c4c5f0dd15af4ec0f788a8fcd51f851e8d35",
+      "working_tree_blob_sha": "41d3c4c5f0dd15af4ec0f788a8fcd51f851e8d35",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/MethlibEndpoints.lean",
+      "sha256": "07e56315bc06718af426ffcff8f771a08422d6962d0e6c1774ef25f06b6e5985",
+      "git_blob_sha": "a7fecb39a0488bef59c4fc8c6871c65e195e3357",
+      "working_tree_blob_sha": "a7fecb39a0488bef59c4fc8c6871c65e195e3357",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/MethlibEndpoints/Audit.lean",
+      "sha256": "c44a433383aeeb47265644e36ac99acde821d60f1a9b3ac00e80ba440d45d4fb",
+      "git_blob_sha": "9fe5273e1e97b9e302f86ad49c1651e6102a496c",
+      "working_tree_blob_sha": "9fe5273e1e97b9e302f86ad49c1651e6102a496c",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/Admission.lean",
+      "sha256": "cd8e62a4f88a33b14d3a699b2431e801d590bcadf02d03b2e67ef3ebb5dc63ca",
+      "git_blob_sha": "b28f8ae19042a947a1c46a7eaf6f9afc306844f7",
+      "working_tree_blob_sha": "b28f8ae19042a947a1c46a7eaf6f9afc306844f7",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/Contracts.lean",
+      "sha256": "4c59cbf26fd4196529a4865ac09404d18015228c737055c2674cbcc4a5fd18f7",
+      "git_blob_sha": "7d64a61a47bedb2bd7a2801641c5959178837f04",
+      "working_tree_blob_sha": "7d64a61a47bedb2bd7a2801641c5959178837f04",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/CoordinateAverage.lean",
+      "sha256": "3cdfd38ab7cc38805c04dfcba99bdbea711753c00cb2215d030d622514685076",
+      "git_blob_sha": "3dba0b8286fcc034907a6438c5a4c0417169c3fd",
+      "working_tree_blob_sha": "3dba0b8286fcc034907a6438c5a4c0417169c3fd",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/CoordinateAverageOrthogonal.lean",
+      "sha256": "0021524a73fb9c7d0ff4a9b9efe359f6479f649202c8d573c59d5e2718996ab9",
+      "git_blob_sha": "e5c0c5aeb8fa605712a252e0a8969c8d7b56600f",
+      "working_tree_blob_sha": "e5c0c5aeb8fa605712a252e0a8969c8d7b56600f",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/EnstrophyInequality.lean",
+      "sha256": "903678f104e8f312e0c7b2ed5f7846109931cea773b8a989df7ab14de2a93c17",
+      "git_blob_sha": "fdc12e4676295ea43d0e2f8d1f0592e0c545200e",
+      "working_tree_blob_sha": "fdc12e4676295ea43d0e2f8d1f0592e0c545200e",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/FiniteHessian.lean",
+      "sha256": "1c2cc4c469bf1ccd75c3842ce9d17b72aba34866dd926c10d3ba98446fcd8b7d",
+      "git_blob_sha": "d8ce599d5e40f4e40a372c179e428c73f2f970a4",
+      "working_tree_blob_sha": "d8ce599d5e40f4e40a372c179e428c73f2f970a4",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/FiniteParseval.lean",
+      "sha256": "63c51f81c008bf435d39b92710860dded6a9e09537a8056aeb425bd5769f5997",
+      "git_blob_sha": "d519f88b4af3e354c0af670e19db69bc3ec3724f",
+      "working_tree_blob_sha": "d519f88b4af3e354c0af670e19db69bc3ec3724f",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/FourierDecay.lean",
+      "sha256": "8e9ccc5d7f43105c19eb4726dc6de30a97edfdad52945e96551ad20559526c45",
+      "git_blob_sha": "df80f021be4266f97f40045289f42203e1caabc2",
+      "working_tree_blob_sha": "df80f021be4266f97f40045289f42203e1caabc2",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/FourierIntegral.lean",
+      "sha256": "8ecd56d311006a4db14bbe41a9d920d1760412f2ead5f3684239b85f0ad5290e",
+      "git_blob_sha": "7e5ee2ef060d2fc6530ddc64aac313342caa07ff",
+      "working_tree_blob_sha": "7e5ee2ef060d2fc6530ddc64aac313342caa07ff",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/FourierPressure.lean",
+      "sha256": "841c510c2133581789aa99c747d1315849abadabb7a2df019648a1ae5cd4b2fb",
+      "git_blob_sha": "7d624acfec7e58d3f3719aeb14b9d310c2d5af73",
+      "working_tree_blob_sha": "7d624acfec7e58d3f3719aeb14b9d310c2d5af73",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/FourierProduct.lean",
+      "sha256": "3b8ff49814d3496cdd6abb2b77d2ccf222c2d0ba93d0a225fb4bd2704aa1c9a4",
+      "git_blob_sha": "7a691a0c85bc7c1fb2fb8b76c1a1711b89e44155",
+      "working_tree_blob_sha": "7a691a0c85bc7c1fb2fb8b76c1a1711b89e44155",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/FourierSeriesCalculus.lean",
+      "sha256": "074ce0aa9a379ac5f378b57a0da44d95b54769e53689057337f9262f0579b846",
+      "git_blob_sha": "96486c8c4d9f7b3128bc69b74b2127a363acb372",
+      "working_tree_blob_sha": "96486c8c4d9f7b3128bc69b74b2127a363acb372",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/FourierTransport.lean",
+      "sha256": "bcfbb39cc4f0c44819a304d329a2506b0392f569ec3e6c30b16af69445af5f46",
+      "git_blob_sha": "20bb72957e2ba90af0bfedf5a951062ba6eb4684",
+      "working_tree_blob_sha": "20bb72957e2ba90af0bfedf5a951062ba6eb4684",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/Galerkin.lean",
+      "sha256": "e1ac5c944bab2667b02ae6c75b46f63605354b8c928c56298aee0e28b043a6fa",
+      "git_blob_sha": "8ba283677fe19e33333b8169afbc39ba3ead1c54",
+      "working_tree_blob_sha": "8ba283677fe19e33333b8169afbc39ba3ead1c54",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean",
+      "sha256": "f361277b03794598be46b2c5faaee641d3d0772a4c75eab543fd86aa0ea088a8",
+      "git_blob_sha": "2db76563813ace44d18df11d0092dd9dd7933ca3",
+      "working_tree_blob_sha": "2db76563813ace44d18df11d0092dd9dd7933ca3",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/GalerkinEnergy.lean",
+      "sha256": "1f0e5b8a62e9d65bd7161efdfe539793157e8edbe94434d0c43b7af4644d5c02",
+      "git_blob_sha": "e6501bff17d1fa9aa48166e85a1ddfafc7c221ae",
+      "working_tree_blob_sha": "e6501bff17d1fa9aa48166e85a1ddfafc7c221ae",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/GalerkinEnergyIntegral.lean",
+      "sha256": "49b7de259b4a30dd3975e120ad2766917c6de5b3722bd54eff5100f123d7d8a9",
+      "git_blob_sha": "1710ba30f76683f9bbfe4d9c3e60eb7785259114",
+      "working_tree_blob_sha": "1710ba30f76683f9bbfe4d9c3e60eb7785259114",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/GalerkinReality.lean",
+      "sha256": "48dcb88fd3b82c93a8227432d4e909f4834434b51e24dfd9f2bdcc6f6d03cbe4",
+      "git_blob_sha": "3ae23263fad711565812a58bac4dd4f922fb06f5",
+      "working_tree_blob_sha": "3ae23263fad711565812a58bac4dd4f922fb06f5",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/HilbertChannels.lean",
+      "sha256": "363e4a068a835c2d67c13ad9eed8cf313ea9b402959aab343d40e379238c4f09",
+      "git_blob_sha": "92538be4320e594b9b0473d1453a9a2afe9ac5e3",
+      "working_tree_blob_sha": "92538be4320e594b9b0473d1453a9a2afe9ac5e3",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/InfiniteFourierPressure.lean",
+      "sha256": "8afcd5d69497cfc1c782b0f9809051938675f61b03b13bc4591ade6761f95a15",
+      "git_blob_sha": "b26b4c4e3277ca063365011c9e6ae6d7fc7aa768",
+      "working_tree_blob_sha": "b26b4c4e3277ca063365011c9e6ae6d7fc7aa768",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/InitialCutoffBounds.lean",
+      "sha256": "f9f7eec7c6f8fa46f45ce4bc5942ff9627fe532e377780d5701f144ffd833c30",
+      "git_blob_sha": "dadf69927b1858ab267cd1d1c5c629abdcf1dd33",
+      "working_tree_blob_sha": "dadf69927b1858ab267cd1d1c5c629abdcf1dd33",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/InitialFourier.lean",
+      "sha256": "acc40e4e4acd8ffa46fdd6ea1a46ac38fa4196bb329cc2856be04c183aaa4b6e",
+      "git_blob_sha": "c8f4073b788f8e055502c8e9b8574cbab9355402",
+      "working_tree_blob_sha": "c8f4073b788f8e055502c8e9b8574cbab9355402",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/LatticeSobolevSummability.lean",
+      "sha256": "34634888f8a8601ebb6a5c40f57d2b4a19b0f77295a0c37aeb59fbbd6ea09203",
+      "git_blob_sha": "256ed4881539d214137116a01483050831dbd48f",
+      "working_tree_blob_sha": "256ed4881539d214137116a01483050831dbd48f",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/LerayPressure.lean",
+      "sha256": "fb20ecd6a63415920817de69141c2b6ce23ce1967c2d52c4c9415ceaaf744a27",
+      "git_blob_sha": "5bfcf093f2862b7490d7fef01792f5ab1499551b",
+      "working_tree_blob_sha": "5bfcf093f2862b7490d7fef01792f5ab1499551b",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PeriodicCover.lean",
+      "sha256": "9d6f0d78c7a043ef7d8a7db1c3d5f647a84492ff6c3843d85527638990f7929f",
+      "git_blob_sha": "a9425368b5a17e56bb469401b2fbae106e0ad1b1",
+      "working_tree_blob_sha": "a9425368b5a17e56bb469401b2fbae106e0ad1b1",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PeriodicFourierInjective.lean",
+      "sha256": "2da981fc1a5db3b5b796fa11a687fe6e993a54938d83bc74513e0220c4f80e81",
+      "git_blob_sha": "66acbb7c899060320f7aaf1d481ed1d28d41d9e6",
+      "working_tree_blob_sha": "66acbb7c899060320f7aaf1d481ed1d28d41d9e6",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PeriodicFourierRealization.lean",
+      "sha256": "f4118fd9507488f5bf8cd3df2c1f174f245a32928b118eeb967017865edd2871",
+      "git_blob_sha": "cb8f865f3531fe9d4239c2bcc074f06d148d9d60",
+      "working_tree_blob_sha": "cb8f865f3531fe9d4239c2bcc074f06d148d9d60",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PeriodicPoincare.lean",
+      "sha256": "f296d6b876aee593424a7d78c524a7afc42824e9efb8bafa29e90bcaaa7e3202",
+      "git_blob_sha": "4a24fc413939247ffcbca5471004f9ff3de953b3",
+      "working_tree_blob_sha": "4a24fc413939247ffcbca5471004f9ff3de953b3",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PhysicalBilinear.lean",
+      "sha256": "6062c88611b7b2d8885d62272d2be88a95cbec37335a1129a636e84b564b3262",
+      "git_blob_sha": "97b76bf8e8964a03b3ea13f2099900dd75865cd6",
+      "working_tree_blob_sha": "97b76bf8e8964a03b3ea13f2099900dd75865cd6",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PhysicalChannels.lean",
+      "sha256": "0d522433e0a511a1c0f41b25947a05ece9780cacbe6809d105fdbb8991dca89f",
+      "git_blob_sha": "51143ae4f06ee8bb6f2d0a7886a83a92ee913de3",
+      "working_tree_blob_sha": "51143ae4f06ee8bb6f2d0a7886a83a92ee913de3",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PhysicalEnergy.lean",
+      "sha256": "79652e7198f23154071200893e97111c232bd4581f8544c50fbb6f7f0671ae73",
+      "git_blob_sha": "399eded3a28a452ed4c41591d3fb4201f98edc30",
+      "working_tree_blob_sha": "399eded3a28a452ed4c41591d3fb4201f98edc30",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PhysicalEnstrophy.lean",
+      "sha256": "720eaee5f18ea728c366880aeb05ced52bd9167369103cb19450991f74e08614",
+      "git_blob_sha": "23c2cf54b457b402952c1f70108807fdf49114f1",
+      "working_tree_blob_sha": "23c2cf54b457b402952c1f70108807fdf49114f1",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PhysicalParseval.lean",
+      "sha256": "5785d4892b4d869c19532547247eea3848d670f23b3f93a7c7288233b6cd9338",
+      "git_blob_sha": "4f1d24f4b206c7a988ebcd191a54e789826ea0f5",
+      "working_tree_blob_sha": "4f1d24f4b206c7a988ebcd191a54e789826ea0f5",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/PhysicalProjection.lean",
+      "sha256": "8ad95865c4dcec61caae216aa8fd09043f2e0e760a128752d00aee5aa82c4287",
+      "git_blob_sha": "3e5946e86c86461f479900a33c4b69d3c65e32f0",
+      "working_tree_blob_sha": "3e5946e86c86461f479900a33c4b69d3c65e32f0",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/SixChannels.lean",
+      "sha256": "1c7f53956d9a766a3c8e4e781aa850a26351761ef0086c7ffd10047762854eab",
+      "git_blob_sha": "d39d32cba53e57ab7a8bd458eff1725d1a810e6f",
+      "working_tree_blob_sha": "d39d32cba53e57ab7a8bd458eff1725d1a810e6f",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/SmoothDatumSobolev.lean",
+      "sha256": "533948ef73136fc1fe995e073063860044bd3e4d63081f2ba0c49383c51e4466",
+      "git_blob_sha": "c8e9c99280050ab80558cc2d05c491f5f9e400b9",
+      "working_tree_blob_sha": "c8e9c99280050ab80558cc2d05c491f5f9e400b9",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/SobolevL2Realization.lean",
+      "sha256": "e6d03d9d4fb08d7f1e5fb0ba38b64c309c62b8656c67b8d66c9ba8ffee2f6b69",
+      "git_blob_sha": "9d02e54557b68b934e877823242801a8a6c3e514",
+      "working_tree_blob_sha": "9d02e54557b68b934e877823242801a8a6c3e514",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean",
+      "sha256": "9cc5097590bede10a43dcb711b869cd2c65ad955cf1636bc41ca5f4f29bf6ead",
+      "git_blob_sha": "197414ab411a8c65a82b936e00e77322c33bf8a1",
+      "working_tree_blob_sha": "197414ab411a8c65a82b936e00e77322c33bf8a1",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/NativeSources/methlib/SingularClosure/TorusSobolev.lean",
+      "sha256": "7e30008b592ff6124d10d0e6306e96f3528395bcee13fd11df3d1a6497834389",
+      "git_blob_sha": "694c3996939724b61bd096c4dbf7967fe61e33ac",
+      "working_tree_blob_sha": "694c3996939724b61bd096c4dbf7967fe61e33ac",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Maxwell_Endpoint/lakefile.lean",
+      "sha256": "29701c82ad4d7845aac29a1c84880f043b973deca5e62919f4e88d93f8d582e7",
+      "git_blob_sha": "94824e51b3061d1920445defd2cf7c127a4951c0",
+      "working_tree_blob_sha": "94824e51b3061d1920445defd2cf7c127a4951c0",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/NSEQuantumBridge.lean",
+      "sha256": "7413332c9ddfff103a0c310fc34e12942a9e98406e3e46ba5ecb357eb96ea54d",
+      "git_blob_sha": "8853a88c70d0cf09a3991aee8527ef5692f7d386",
+      "working_tree_blob_sha": "8853a88c70d0cf09a3991aee8527ef5692f7d386",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter.lean",
+      "sha256": "c00ab01d0990faa0fa49969a6409d45b132661a4358d62c58a5228d6593b3c19",
+      "git_blob_sha": "f4fa3c3c1169e275cc627c505b749ef6c7b9f9d3",
+      "working_tree_blob_sha": "f4fa3c3c1169e275cc627c505b749ef6c7b9f9d3",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Assembly.lean",
+      "sha256": "45423106963cf7c88ede5d4105573ab54b3e5f828ae228d4a325930231a1ef9e",
+      "git_blob_sha": "e1a0881586e44f016552f9334a7de8ffafe13836",
+      "working_tree_blob_sha": "e1a0881586e44f016552f9334a7de8ffafe13836",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Assembly/Admissibility.lean",
+      "sha256": "91105032a88092c390533e7c63cd54948d3b875d2f37a25e97beccc80c43a7e4",
+      "git_blob_sha": "cdbbc4ac371f157c52ae15b5a5060befd6709291",
+      "working_tree_blob_sha": "cdbbc4ac371f157c52ae15b5a5060befd6709291",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Assembly/CanonicalFlow.lean",
+      "sha256": "adc10260685077605d6ac6be54580d9a6fefe452087e67aa8dc6b67c89299100",
+      "git_blob_sha": "ceffe251e471653eb4d85672285acd26a86a0e58",
+      "working_tree_blob_sha": "ceffe251e471653eb4d85672285acd26a86a0e58",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Assembly/CompleteFlow.lean",
+      "sha256": "88688e61ff07012a403bd0f8f8e4a90e742b800fcbbc6fc1565b10a09dd4d072",
+      "git_blob_sha": "e70d43224d928cc82988ec1ccae97ae493b8200c",
+      "working_tree_blob_sha": "e70d43224d928cc82988ec1ccae97ae493b8200c",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Assembly/Flow.lean",
+      "sha256": "2731c7ab905751f889270428fddd21ff9a63c06190dda2e4e0dedd4bf4115a63",
+      "git_blob_sha": "88607192d6ebf2da7870ad51d332227ca31df05c",
+      "working_tree_blob_sha": "88607192d6ebf2da7870ad51d332227ca31df05c",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Assembly/FlowContinuity.lean",
+      "sha256": "8d5cd76e5037d41810e3576b7680fadc8a16a69b7f4472304e5bb046f5fccf93",
+      "git_blob_sha": "b810466c332ddb402a6e077b0091c44b20b459b1",
+      "working_tree_blob_sha": "b810466c332ddb402a6e077b0091c44b20b459b1",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Assembly/FlowDependence.lean",
+      "sha256": "6178a95fe92340c73dac5d856e4b56ff26ddbb1f4577fbb34d53b7fe6e11f738",
+      "git_blob_sha": "a71ca7dd9ea63e9b04a799ac1dfc7bb6b07b483b",
+      "working_tree_blob_sha": "a71ca7dd9ea63e9b04a799ac1dfc7bb6b07b483b",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Assembly/Fourier.lean",
+      "sha256": "191418e918b4f6041e8b2d2d75f4cb9093ae2b0b7ace8b6c6418ad8d2c3ecba8",
+      "git_blob_sha": "dada1476f8f41c79108beeb3c8397197a08fe065",
+      "working_tree_blob_sha": "dada1476f8f41c79108beeb3c8397197a08fe065",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Assembly/Galerkin.lean",
+      "sha256": "078f16e4ac5663ffa279d1ebd21acae44b562b9060e1767b2b5661779a075887",
+      "git_blob_sha": "30a873f1700f23b2d58a4a365be0a7908c5e0c05",
+      "working_tree_blob_sha": "30a873f1700f23b2d58a4a365be0a7908c5e0c05",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Assembly/Gaussian.lean",
+      "sha256": "953f285fa2f054195693f5fb6d743f2c5dd44b6625b4ad6247d77d01facdd595",
+      "git_blob_sha": "234d92646e3165a608c4d8e0a37e84b81898dce3",
+      "working_tree_blob_sha": "234d92646e3165a608c4d8e0a37e84b81898dce3",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Assembly/GlobalDrift.lean",
+      "sha256": "1f514713ec5f99b54965b6eb2c7fee0ea2a8033bf8cde298017dc94ffa988bdf",
+      "git_blob_sha": "25c1f300f71120e01735d410530841e1ab219afd",
+      "working_tree_blob_sha": "25c1f300f71120e01735d410530841e1ab219afd",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Assembly/PacketEstimates.lean",
+      "sha256": "5b449bd4b80edaaf37f0e23b980c83d10178b6314416121aa907694bfaab7979",
+      "git_blob_sha": "2b6c6d1186c20d6481a0335cb82d6b79ea61c39e",
+      "working_tree_blob_sha": "2b6c6d1186c20d6481a0335cb82d6b79ea61c39e",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Assembly/Transport.lean",
+      "sha256": "34f3dcb0545455633f257b9f254fdf498d0f7819f380a39cc0f743f9f68a97cd",
+      "git_blob_sha": "b637632df54126493f4bf8b47bfcba1895a7e149",
+      "working_tree_blob_sha": "b637632df54126493f4bf8b47bfcba1895a7e149",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Born.lean",
+      "sha256": "acf93a20740141d4b6b6fc1f33533fad5e201b8674b2ff83177ee9d8cc05f59d",
+      "git_blob_sha": "9d2153e0f03501a3d500c1a97c6d5e87dc039bb1",
+      "working_tree_blob_sha": "9d2153e0f03501a3d500c1a97c6d5e87dc039bb1",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Dynamics.lean",
+      "sha256": "f6bc8dca65ffd2e8f035926ad11b5a6e7c0af2c7ed77da94bd304c30aec33e30",
+      "git_blob_sha": "199d5e39073e98e57a8ef9b36d589addd17a067a",
+      "working_tree_blob_sha": "199d5e39073e98e57a8ef9b36d589addd17a067a",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Energy.lean",
+      "sha256": "3e9d398deaf1c726299cbf2680c7d0d266ff9edcaef5dc199129d4c284e037b3",
+      "git_blob_sha": "4a82d484bf92e349cb0aadc63408d6596bed3b3b",
+      "working_tree_blob_sha": "4a82d484bf92e349cb0aadc63408d6596bed3b3b",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/FiniteModel.lean",
+      "sha256": "d588ffdbe0d7c31e0e0ac9a1ae6b5d100110e04b66c77433cbbde5d59d53d829",
+      "git_blob_sha": "f215ccd003ca5cae9ab8883a0088879f554b7d22",
+      "working_tree_blob_sha": "f215ccd003ca5cae9ab8883a0088879f554b7d22",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/L2Norm.lean",
+      "sha256": "8b2880330764386e39717b3a03b5c8264b94e81b60714e19319a8e8e6bf72fb4",
+      "git_blob_sha": "1958e0c9f7e6a640cc8b292488a617492813d037",
+      "working_tree_blob_sha": "1958e0c9f7e6a640cc8b292488a617492813d037",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/L2Transport.lean",
+      "sha256": "fa38627d137f49f3ef8a5327eb965559c60785c228f76b6f2676bc9f8a6a785d",
+      "git_blob_sha": "18f421661ce60321bf1a4497e71c2ce5c78beb5e",
+      "working_tree_blob_sha": "18f421661ce60321bf1a4497e71c2ce5c78beb5e",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Phase.lean",
+      "sha256": "73aa0f6ba283501015444befeb8dc42c0d68d816714e06e2e766694065b5e1cd",
+      "git_blob_sha": "4508721c9fb33999c9055f22208812dba28bd139",
+      "working_tree_blob_sha": "4508721c9fb33999c9055f22208812dba28bd139",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/RegularityContracts.lean",
+      "sha256": "9e61a871b314983b94fc59c79f4ad53f69cf6a65658635d69c1fc7fa4f7d2d86",
+      "git_blob_sha": "4d366cce233a1d08fc58d6444c39fb805e625b77",
+      "working_tree_blob_sha": "4d366cce233a1d08fc58d6444c39fb805e625b77",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Tangency.lean",
+      "sha256": "8d94af8dd71d422c741a88c122201c0a038a6481078d3a44251ec753286bb731",
+      "git_blob_sha": "ed90b52b9c51c9391f146be4bc7204b3188513f2",
+      "working_tree_blob_sha": "ed90b52b9c51c9391f146be4bc7204b3188513f2",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Transport.lean",
+      "sha256": "4f61453f99c689f077f8d9dab1cdb8d0593042601b377b6b503a9278e4d8b187",
+      "git_blob_sha": "509b5b05fcc346522b2d0d87867ea2412aff2fc9",
+      "working_tree_blob_sha": "509b5b05fcc346522b2d0d87867ea2412aff2fc9",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "lake-manifest.json",
+      "sha256": "69c22ad5678fd37f874d60dd5c604bfd96a2604fcb788a054764d6f1e346a939",
+      "git_blob_sha": "4287c5339dc24957ebf6d1d0c52881a8b2b8717f",
+      "working_tree_blob_sha": "4287c5339dc24957ebf6d1d0c52881a8b2b8717f",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "lakefile.lean",
+      "sha256": "1eaae3fea3c41983aa7cd3a001700811231f5e8f3175a994fb46767c60b8370a",
+      "git_blob_sha": "e9eb65b8f9d60cc03ced8f461a93dee63f529017",
+      "working_tree_blob_sha": "e9eb65b8f9d60cc03ced8f461a93dee63f529017",
+      "checkout_normalization": "IDENTITY"
+    },
+    {
+      "path": "lean-toolchain",
+      "sha256": "cdbc6c372a2b37ad94430a6cec69cedfa4d36f255bfd968773fd91bf7a1746bf",
+      "git_blob_sha": "75def60936d3c4cf2f7edea699117d6cf7299a04",
+      "working_tree_blob_sha": "75def60936d3c4cf2f7edea699117d6cf7299a04",
+      "checkout_normalization": "IDENTITY"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+@QuantumAdapter.Assembly.phaseFlow_energy0_bound_abs : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (q : QuantumAdapter.Phase N) (t : ℝ),
+      LE.le.{0} (QuantumAdapter.energy0 N (F.map N t q))
+        (HMul.hMul.{0, 0, 0}
+          (Real.exp
+            (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 ν) (QuantumAdapter.finiteLaplaceTrace N))
+              (abs.{0} t)))
+          (QuantumAdapter.energy0 N q))
+'QuantumAdapter.Assembly.phaseFlow_energy0_bound_abs' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Assembly.phaseFlow_timeMap_lipschitzOn_closedBall : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (t : ℝ) {R : ℝ},
+      LE.le.{0} 0 R → ∃ L, LipschitzOnWith.{0, 0} L (F.map N t) (Metric.closedBall.{0} 0 R)
+'QuantumAdapter.Assembly.phaseFlow_timeMap_lipschitzOn_closedBall' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.continuous_phaseFlow_timeMap : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν → ∀ (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (t : ℝ), Continuous.{0, 0} (F.map N t)
+'QuantumAdapter.Assembly.continuous_phaseFlow_timeMap' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.continuous_phaseFlow_uncurry : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν → ∀ (F : QuantumAdapter.PhaseFlow ν) (N : ℕ), Continuous.{0, 0} fun p => F.map N p.1 p.2
+'QuantumAdapter.Assembly.continuous_phaseFlow_uncurry' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.measurable_phaseFlow_uncurry : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν → ∀ (F : QuantumAdapter.PhaseFlow ν) (N : ℕ), Measurable.{0, 0} fun p => F.map N p.1 p.2
+'QuantumAdapter.Assembly.measurable_phaseFlow_uncurry' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

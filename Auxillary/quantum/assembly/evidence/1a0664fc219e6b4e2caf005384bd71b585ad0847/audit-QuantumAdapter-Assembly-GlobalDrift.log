@@ -1,0 +1,81 @@
+QuantumAdapter.Assembly.local_drift_solutions_unique : ∀ (ν : ℝ) (N : ℕ) {q r : ℝ → QuantumAdapter.Phase N}
+  {a b t₀ : ℝ},
+  (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Ioo.{0} a b) t → HasDerivAt.{0, 0} q (QuantumAdapter.drift ν N (q t)) t) →
+    (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Ioo.{0} a b) t → HasDerivAt.{0, 0} r (QuantumAdapter.drift ν N (r t)) t) →
+      Membership.mem.{0, 0} (Set.Ioo.{0} a b) t₀ → Eq.{1} (q t₀) (r t₀) → Set.EqOn.{0, 0} q r (Set.Ioo.{0} a b)
+'QuantumAdapter.Assembly.local_drift_solutions_unique' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.local_drift_solutions_piecewise : ∀ (ν : ℝ) (N : ℕ) {q r : ℝ → QuantumAdapter.Phase N}
+  {a b c d t₀ : ℝ},
+  (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Ioo.{0} a b) t → HasDerivAt.{0, 0} q (QuantumAdapter.drift ν N (q t)) t) →
+    (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Ioo.{0} c d) t → HasDerivAt.{0, 0} r (QuantumAdapter.drift ν N (r t)) t) →
+      Membership.mem.{0, 0} (Inter.inter.{0} (Set.Ioo.{0} a b) (Set.Ioo.{0} c d)) t₀ →
+        Eq.{1} (q t₀) (r t₀) →
+          ∀ (t : ℝ),
+            Membership.mem.{0, 0} (Union.union.{0} (Set.Ioo.{0} a b) (Set.Ioo.{0} c d)) t →
+              HasDerivAt.{0, 0} (Set.piecewise.{0, 1} (Set.Ioo.{0} a b) q r)
+                (QuantumAdapter.drift ν N (Set.piecewise.{0, 1} (Set.Ioo.{0} a b) q r t)) t
+'QuantumAdapter.Assembly.local_drift_solutions_piecewise' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.local_drift_energy0_bound_abs : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (N : ℕ) {q : ℝ → QuantumAdapter.Phase N} {a : ℝ},
+      LT.lt.{0} 0 a →
+        (∀ (t : ℝ),
+            Membership.mem.{0, 0} (Set.Ioo.{0} (Neg.neg.{0} a) a) t →
+              HasDerivAt.{0, 0} q (QuantumAdapter.drift ν N (q t)) t) →
+          ∀ {t : ℝ},
+            Membership.mem.{0, 0} (Set.Ioo.{0} (Neg.neg.{0} a) a) t →
+              LE.le.{0} (QuantumAdapter.energy0 N (q t))
+                (HMul.hMul.{0, 0, 0}
+                  (Real.exp
+                    (HMul.hMul.{0, 0, 0}
+                      (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 ν) (QuantumAdapter.finiteLaplaceTrace N))
+                      (abs.{0} t)))
+                  (QuantumAdapter.energy0 N (q 0)))
+'QuantumAdapter.Assembly.local_drift_energy0_bound_abs' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.exists_uniform_local_drift_solutions_on_ball : ∀ (ν : ℝ) (N : ℕ) (R : NNReal),
+  ∃ ε,
+    GT.gt.{0} ε 0 ∧
+      ∀ (t₀ : ℝ) (x : QuantumAdapter.Phase N),
+        Membership.mem.{0, 0} (Metric.closedBall.{0} 0 ↑R) x →
+          ∃ q,
+            Eq.{1} (q t₀) x ∧
+              ∀ (t : ℝ),
+                Membership.mem.{0, 0} (Set.Ioo.{0} (HSub.hSub.{0, 0, 0} t₀ ε) (HAdd.hAdd.{0, 0, 0} t₀ ε)) t →
+                  HasDerivAt.{0, 0} q (QuantumAdapter.drift ν N (q t)) t
+'QuantumAdapter.Assembly.exists_uniform_local_drift_solutions_on_ball' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.exists_drift_solution_on_arbitrary_interval : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N) (T : ℝ),
+      ∃ q,
+        Eq.{1} (q 0) q₀ ∧
+          ∀ (t : ℝ),
+            Membership.mem.{0, 0} (Set.Ioo.{0} (Neg.neg.{0} T) T) t →
+              HasDerivAt.{0, 0} q (QuantumAdapter.drift ν N (q t)) t
+'QuantumAdapter.Assembly.exists_drift_solution_on_arbitrary_interval' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.exists_complete_drift_orbit : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+      ∃ q, Eq.{1} (q 0) q₀ ∧ ∀ (t : ℝ), HasDerivAt.{0, 0} q (QuantumAdapter.drift ν N (q t)) t
+'QuantumAdapter.Assembly.exists_complete_drift_orbit' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Assembly.exists_unique_complete_drift_orbit : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+      ExistsUnique.{1} fun q => Eq.{1} (q 0) q₀ ∧ ∀ (t : ℝ), HasDerivAt.{0, 0} q (QuantumAdapter.drift ν N (q t)) t
+'QuantumAdapter.Assembly.exists_unique_complete_drift_orbit' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.contDiff_complete_drift_orbit : ∀ (ν : ℝ) (N : ℕ) {q : ℝ → QuantumAdapter.Phase N},
+  (∀ (t : ℝ), HasDerivAt.{0, 0} q (QuantumAdapter.drift ν N (q t)) t) → ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) q
+'QuantumAdapter.Assembly.contDiff_complete_drift_orbit' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

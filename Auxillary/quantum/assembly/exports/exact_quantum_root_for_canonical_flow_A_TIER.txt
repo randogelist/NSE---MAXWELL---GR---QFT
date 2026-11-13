@@ -1,0 +1,655 @@
+EXACT_QUANTUM_ROOT_FOR_CANONICAL_FLOW
+MODE = A_TIER_DERIVATION
+DECLARATION_STATUS = A_TIER
+ROOT_DECLARATION = QuantumAdapter.Assembly.exact_quantum_root_for_canonical_flow
+ROOT_CLASSIFICATION = CONDITIONAL_FORMAL_CLOSURE
+ROOT_MARKER = !!!
+UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED
+REPOSITORY_REGRESSION = PASS
+REGRESSION_ARTIFACT_ID = 14019347135
+REGRESSION_ARTIFACT_SHA256 = 72df68b21282044409fa4e151e00ce137991a626c5a1f6cd18e4580d41dd230c
+INTEGRATED_AUDIT = 236/236 PASS_STANDARD_ONLY
+LEGACY_QUANTUM_AUDIT = 204/204 PASS_STANDARD_ONLY
+NATIVE_ASSEMBLY_AUDIT = 203/203 PASS_STANDARD_ONLY
+MAXWELL_STANDALONE_AUDIT = 62/62 PASS_STANDARD_ONLY
+FEFFERMAN_STANDALONE_AUDIT = 236/236 PASS_STANDARD_ONLY
+LOCAL_LEAN_EXECUTIONS = 0
+
+SOURCE_COMMIT = 1a0664fc219e6b4e2caf005384bd71b585ad0847
+BRANCH = codex/quantum-adapter-from-maxwell
+ASSEMBLY_RUN = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43384137901
+REGRESSION_RUN = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43384137765
+COMPILER = Lean 4.34.0-rc1; x86_64-unknown-linux-gnu
+COMPILER_COMMIT = 3447a668783dbce1a8fdb97101dd067687b2b418
+MATHLIB_COMMIT = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+MODULES = 13
+AUDITED_DECLARATIONS = 203
+COMPILE = PASS
+FRESH_THEOREM_AXIOM_AUDIT = PASS_STANDARD_ONLY
+APPROVED_AXIOMS = {propext, Classical.choice, Quot.sound}
+SORRYAX = ABSENT
+UNAPPROVED_AXIOMS = ABSENT
+ARTIFACT_ID = 14017707891
+ARTIFACT_SHA256 = dfe20449f9f3d44f35a902754b8dd3ba4d9163f94c4fee11a118339a41cbc24c
+SOURCE_MANIFEST_SHA256 = e348eb991d4823bffc87e3461ddd1f34745142955aa944fa59bd55c45e600068
+
+SCOPE
+Torus = T^3, with the native unit-periodic realization.
+Initial datum = native NSEMaxwell.Classical.Data; arbitrary mean retained.
+Mode set = insert 0 (cutoffModes N).
+Phase = actual real Hilbert subspace of complex full-mode coefficients,
+        constrained by conjugate reality and spectral solenoidality.
+E3 = sum_k (1 + 4*pi^2*|k|^2)^3 * sum_i |q_k,i|^2.
+QREG = actual transported canonical-Gaussian admissibility and uniform
+       finite-horizon E3-expectation bounds, for all native smooth data.
+Endpoint = NSEMaxwell.Classical.FeffermanB nu <-> QuantumAdapter.QREG F.
+
+EXACT ROOT DECLARATION
+CONTEXT = namespace QuantumAdapter.Assembly; variable {nu : Real}, written as {ν : ℝ}.
+theorem exact_quantum_root_for_canonical_flow
+    (hν : 0 < ν)
+    (divergence : ∀ N q, driftDivergence ν N q = -phaseDecayRate ν N) :
+    let F := canonicalPhaseFlow hν.le divergence
+    ∀ C3 : ℝ,
+      (∀ N t, Differentiable ℝ (F.map N t)) →
+      (∀ N t q, (fderiv ℝ (F.map N t) q).det =
+        Real.exp (-(phaseDecayRate ν N) * t)) →
+      0 < C3 →
+      (∀ N (q r : Phase N) t, 0 ≤ t →
+        ‖F.map N t q - F.map N t r‖ ≤
+          ‖q - r‖ * Real.exp (orbitGradientCost F N r t)) →
+      (∀ N (q : Phase N) t, 0 ≤ t →
+        Real.sqrt (energy3 N (F.map N t q)) ≤
+          Real.sqrt (energy3 N q) * Real.exp (C3 * orbitGradientCost F N q t)) →
+      GalerkinAnalyticLaws F →
+      (NSEMaxwell.Classical.FeffermanB ν ↔ QREG F) := by
+  dsimp only
+  intro C3 hd hdet hC3 hrelative htame laws
+  exact exact_quantum_root_of_native_dynamics hν _ hd hdet hC3 hrelative htame laws
+
+
+RESIDUAL FORMAL ENDPOINTS
+Let nu > 0 and F = canonicalPhaseFlow (le_of_lt hnu) divergence.
+Let K_N(q,t) = orbitGradientCost F N q t.
+
+P1 DIV: forall N,q,
+  driftDivergence nu N q = -phaseDecayRate nu N.
+P2 DIFF: forall N,t in R, Differentiable R (F.map N t).
+P3 JAC: forall N,t,q,
+  det(fderiv R (F.map N t) q) = exp(-phaseDecayRate nu N * t).
+P4 REL: forall N in Nat, q,r in Phase N, t in R with t >= 0,
+  ||F.map N t q - F.map N t r||
+    <= ||q-r|| * exp(K_N(r,t)).
+P5 TAME: one C3 > 0, uniform in N in Nat, q in Phase N and t >= 0, satisfies
+  sqrt(E3_N(F.map N t q))
+    <= sqrt(E3_N(q)) * exp(C3*K_N(q,t)).
+P6 STABILITY: GalerkinAnalyticLaws.smooth_stability:
+  each actual global NSSolution for datum a supplies GalerkinBoundAt F a ha T
+  for every T > 0.
+P7 COMPACTNESS: GalerkinAnalyticLaws.compactness:
+  (forall T > 0, GalerkinBoundAt F a ha T)
+    -> exists actual u,p, NSSolution nu a u p.
+
+ROOT = (nu > 0 AND P1 AND P2 AND P3 AND P4 AND P5 AND P6 AND P7)
+       -> (FeffermanB nu <-> QREG F).
+P1--P7 = EXPLICIT_HYPOTHESES; NATIVE_INHABITANTS_NOT_CONSTRUCTED_HERE.
+REGULARITY_ITSELF = NOT_ASSERTED.
+UNIVERSAL_TAME_CONSTANT_WITNESS = NOT_ASSERTED.
+SELFADJOINT_GENERATOR = NOT_ASSERTED.
+
+DISCHARGED NATIVE CHAINS
+C1 Polynomial native drift -> local Picard-Lindelof -> signed energy bound
+   -> uniform restart on bounded balls -> unbounded existence interval
+   -> unique complete orbit through every q0, for every nu >= 0 and every N.
+   exists_complete_drift_orbit; exists_unique_complete_drift_orbit.
+   Complete orbit -> C-infinity time dependence.
+   contDiff_complete_drift_orbit.
+C2 Actual PhaseFlow + nu >= 0 -> bounded-ball Lipschitz time maps
+   -> joint continuity -> joint measurability.
+   phaseFlow_timeMap_lipschitzOn_closedBall;
+   continuous_phaseFlow_uncurry; measurable_phaseFlow_uncurry.
+C3 Actual coefficient Hilbert norm -> E0 = ||q||^2;
+   sqrt(E3) = weighted-coordinate norm -> triangle and cutoff bounds.
+   energy0_eq_norm_sq; sqrt_energy3_eq_norm;
+   sqrt_energy3_le_reference_add_packetDistance.
+C4 Smooth periodic datum -> native Fourier decay + lattice summability
+   -> initialProjectionBounds, without an additional analytic hypothesis.
+   A(a)^2 = 3*smoothDatumDecayConstant(3,a)^2
+              * sum_k (torusSobolevWeight k)^(-4).
+   E3_N(initialPhaseData N a ha) <= A(a)^2.
+C5 Native Fourier synthesis -> physical gradient embedding,
+   gradientObservable q <= 3*sqrt(latticeSobolevConstant)*sqrt(E3_N q).
+   gradientObservable_le_sqrt_energy3; continuous_gradientObservable;
+   intervalIntegrable_gradientObservable.
+C6 Intrinsic Haar Gaussian -> exact normalization and all natural moments.
+   E_rho[||q-q0||^2] = d_N*sigma_N^2.
+   E_rho[||q-q0||^4] = d_N*(d_N+2)*sigma_N^4.
+   All natural raw moments are integrable.
+   canonicalPacket_normalized; canonicalPacket_second_moment;
+   canonicalPacket_fourth_moment; canonicalPacket_raw_moment_integrable.
+C7 P2+P3 -> actual change of variables -> L2 half-density transport.
+   phaseTransportLaws_of_jacobian.
+   Gaussian raw moments + dissipative E3 quadratic majorant
+   -> full transported multiplier/expectation admissibility.
+   transportedPacket_quantumAdmissible_of_jacobian.
+C8 Canonical Born probability + actual weighted integral identities ->
+   E_rho[packetDistance^2] = (N+1)^(-2) <= 1/4 for N >= 1.
+   packetDistance_sq_mean; packetDistance_sq_mean_le_quarter.
+   Product integrability + Fubini + scalar square bound + one-point selection
+   -> integrated gradient budget and simultaneous distance/cost control.
+   packet_gradient_product_integrable; packet_integral_sqrt_le;
+   exists_joint_packet_control.
+C9 C1--C8 + P4+P5 -> PacketBounds F gradientEmbeddingConstant C3.
+   packetBounds_of_jacobian.
+   Quantifiers: N >= 1; T > 0; A,C >= 0; Cemb,C3 > 0; t in [0,T].
+   Forward: if E3_N(F_t(q0)) <= C on [0,T], then
+     quantumEnergy <= (sqrt(C) + (1/2)*exp(Cemb*sqrt(C)*T))^2.
+   Reverse: if quantumEnergy <= C on [0,T] and E3_N(q0) <= A^2, let
+     L=Cemb*T*sqrt(C), S=L+1/4, R=sqrt(L+1/4).
+     E3_N(F_t(q0)) <= ((A+R)*exp(C3*S)+R*exp(S))^2.
+C10 PacketBounds + initialProjectionBounds + P6+P7
+    -> exact native FeffermanB <-> QREG root.
+
+INTEGRABILITY_GUARD = quantumAdmissible retained in QREG.
+INITIAL_MEAN = arbitrary; no mean-zero restriction introduced.
+INITIAL_TIME = native smooth trace; no analyticity-at-zero premise introduced.
+NATIVE_CONSTRUCTOR_NOTE = phaseFlowOfCompleteOrbits exposes generic orbit and
+  divergence premises; canonicalPhaseFlow discharges orbit existence via
+  GlobalDrift and retains only the divergence premise at construction.
+
+SELECTED PINNED MATHLIB ENDPOINTS
+
+ROLE = Gaussian moments
+DECLARATION = MeasureTheory.integral_fun_norm_addHaar
+IMPORT = Mathlib.MeasureTheory.Constructions.HaarToSphere
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Constructions/HaarToSphere.lean#L296
+
+ROLE = Gaussian moment integrability
+DECLARATION = MeasureTheory.integrable_fun_norm_addHaar
+IMPORT = Mathlib.MeasureTheory.Constructions.HaarToSphere
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Constructions/HaarToSphere.lean#L255
+
+ROLE = Radial moment evaluation
+DECLARATION = integral_rpow_mul_exp_neg_mul_rpow
+IMPORT = Mathlib.MeasureTheory.Integral.Gamma
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Gamma.lean#L43
+
+ROLE = Second and fourth moments
+DECLARATION = Real.Gamma_add_one
+IMPORT = Mathlib.Analysis.SpecialFunctions.Gamma.Basic
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/Gamma/Basic.lean#L410
+
+ROLE = Gaussian radial integrability
+DECLARATION = integrable_rpow_mul_exp_neg_mul_sq
+IMPORT = Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/Gaussian/GaussianIntegral.lean#L97
+
+ROLE = Born probability
+DECLARATION = MeasureTheory.ofReal_integral_eq_lintegral_ofReal
+IMPORT = Mathlib.MeasureTheory.Integral.Bochner.Basic
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Bochner/Basic.lean#L702
+
+ROLE = Native weighted integrability
+DECLARATION = MeasureTheory.integrable_withDensity_iff
+IMPORT = Mathlib.MeasureTheory.Function.L1Space.Integrable
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Function/L1Space/Integrable.lean#L846
+
+ROLE = Born expectation transfer
+DECLARATION = MeasureTheory.integral_withDensity_eq_integral_toReal_smul
+IMPORT = Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Bochner/ContinuousLinearMap.lean#L317
+
+ROLE = Affine-square integration
+DECLARATION = MeasureTheory.integral_add
+IMPORT = Mathlib.MeasureTheory.Integral.Bochner.Basic
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Bochner/Basic.lean#L237
+
+ROLE = Joint low-cost selection
+DECLARATION = MeasureTheory.exists_le_integral
+IMPORT = Mathlib.MeasureTheory.Integral.Average
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Average.lean#L597
+
+ROLE = Expected orbit cost
+DECLARATION = MeasureTheory.integral_integral_swap
+IMPORT = Mathlib.MeasureTheory.Integral.Prod
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Prod.lean#L482
+
+ROLE = Time cost monotonicity
+DECLARATION = intervalIntegral.integral_mono_interval
+IMPORT = Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/IntervalIntegral/Basic.lean#L1405
+
+ROLE = Central cost bound
+DECLARATION = intervalIntegral.integral_mono_on
+IMPORT = Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/IntervalIntegral/Basic.lean#L1432
+
+ROLE = Mean-independent derivative
+DECLARATION = hasFDerivAt_const_add_iff
+IMPORT = Mathlib.Analysis.Calculus.FDeriv.Add
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Add.lean
+
+ROLE = Product almost-everywhere time support
+DECLARATION = MeasureTheory.Measure.ae_prod_iff_ae_ae
+IMPORT = Mathlib.MeasureTheory.Measure.Prod
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Measure/Prod.lean#L445
+
+ROLE = C1 autonomous local existence
+DECLARATION = IsPicardLindelof.of_time_independent
+IMPORT = Mathlib.Analysis.ODE.PicardLindelof
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/PicardLindelof.lean#L662
+
+ROLE = C1 actual local orbits
+DECLARATION = IsPicardLindelof.exists_eq_forall_mem_Icc_hasDerivWithinAt
+IMPORT = Mathlib.Analysis.ODE.ExistUnique
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/ExistUnique.lean#L57
+
+ROLE = C1 local uniqueness
+DECLARATION = ODE_solution_unique_of_eventually
+IMPORT = Mathlib.Analysis.ODE.ExistUnique
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/ExistUnique.lean#L312
+
+ROLE = C1 smooth orbit time dependence
+DECLARATION = ODE.contDiffOn_enat_Icc_of_hasDerivWithinAt
+IMPORT = Mathlib.Analysis.ODE.PicardLindelof
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/PicardLindelof.lean#L560
+
+ROLE = C1/C2 compact-ball Lipschitz constant
+DECLARATION = ContDiffOn.exists_lipschitzOnWith
+IMPORT = Mathlib.Analysis.Calculus.ContDiff.RCLike
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/RCLike.lean#L149
+
+ROLE = C2 initial-data dependence
+DECLARATION = dist_le_of_trajectories_ODE_of_mem
+IMPORT = Mathlib.Analysis.ODE.Gronwall
+SOURCE = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/Gronwall.lean#L208
+
+NATIVE METHLIB IMPORT/ENDPOINT INDEX
+SingularClosure.SmoothDatumSobolev:
+  SingularClosure.smooth_datum_weightedCoeff_sq_le -> C4.
+SingularClosure.LatticeSobolevSummability:
+  SingularClosure.summable_torusSobolevWeight_inv_four -> C4,C5.
+SingularClosure.InitialCutoffBounds:
+  SingularClosure.datumFourierCoeff_coordinateDerivative -> C4,C5.
+SingularClosure.SobolevSmoothRealization:
+  SingularClosure.ALL_SOBOLEV_IMP_RAPID_SCALAR -> native spatial realization.
+  SingularClosure.datumFourierCoeff_smoothFourierSynthesis -> coefficient recovery.
+Provider imports are recorded; declarations may originate in their transitive imports.
+Native source scope = audited repository's Fefferman_adapter/NativeSources/methlib.
+
+EXACT VENDORED METHLIB SOURCE ANCHORS
+
+SingularClosure.smooth_datum_weightedCoeff_sq_le -> C4
+https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/SmoothDatumSobolev.lean#L101
+
+SingularClosure.summable_torusSobolevWeight_inv_four -> C4,C5
+https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/LatticeSobolevSummability.lean#L66
+
+SingularClosure.datumFourierCoeff_coordinateDerivative -> C4,C5
+https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialCutoffBounds.lean#L130
+
+SingularClosure.ALL_SOBOLEV_IMP_RAPID_SCALAR -> native spatial realization
+https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean#L81
+
+SingularClosure.datumFourierCoeff_smoothFourierSynthesis -> coefficient recovery
+https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean#L246
+
+AUDITED DECLARATION INDEX
+
+MODULE = QuantumAdapter.Assembly.Flow
+SOURCE = Quantum_adapter/QuantumAdapter/Assembly/Flow.lean
+COUNT = 19
+QuantumAdapter.Assembly.contDiff_phaseCoeff
+QuantumAdapter.Assembly.contDiff_fullTransport
+QuantumAdapter.Assembly.contDiff_lerayTransport
+QuantumAdapter.Assembly.contDiff_rawRhs
+QuantumAdapter.Assembly.contDiff_drift
+QuantumAdapter.Assembly.exists_local_drift_solution
+QuantumAdapter.Assembly.drift_locally_lipschitz
+QuantumAdapter.Assembly.drift_solutions_eventuallyEq
+QuantumAdapter.Assembly.drift_solutions_unique
+QuantumAdapter.Assembly.phaseFlow_map_unique
+QuantumAdapter.Assembly.phaseFlow_unique
+QuantumAdapter.Assembly.phaseFlow_zero
+QuantumAdapter.Assembly.phaseFlow_energy0_hasDerivAt
+QuantumAdapter.Assembly.phaseFlow_energy0_antitone
+QuantumAdapter.Assembly.laplaceSymbol_le_finiteLaplaceTrace
+QuantumAdapter.Assembly.dissipation_le_finiteLaplaceTrace_mul_energy0
+QuantumAdapter.Assembly.phaseFlow_energy0_le_initial
+QuantumAdapter.Assembly.phaseFlow_weighted_energy0_monotone
+QuantumAdapter.Assembly.phaseFlow_energy0_backward_bound
+
+MODULE = QuantumAdapter.Assembly.Fourier
+SOURCE = Quantum_adapter/QuantumAdapter/Assembly/Fourier.lean
+COUNT = 61
+QuantumAdapter.Assembly.sum_fullModes_eq_sum_coordinates
+QuantumAdapter.Assembly.phaseCoeff_mode
+QuantumAdapter.Assembly.energy0_eq_norm_sq
+QuantumAdapter.Assembly.weightedCoordinates_apply
+QuantumAdapter.Assembly.continuous_weightedCoordinates
+QuantumAdapter.Assembly.weightedCoordinates_norm_sq
+QuantumAdapter.Assembly.sqrt_energy3_eq_norm
+QuantumAdapter.Assembly.continuous_energy3
+QuantumAdapter.Assembly.continuous_sqrt_energy3
+QuantumAdapter.Assembly.sqrt_energy3_add_le
+QuantumAdapter.Assembly.sqrt_energy3_sub_le
+QuantumAdapter.Assembly.sqrt_energy3_le_add
+QuantumAdapter.Assembly.abs_sqrt_energy3_sub_le
+QuantumAdapter.Assembly.cutoffLambda_nonneg
+QuantumAdapter.Assembly.cutoffWeight_pos
+QuantumAdapter.Assembly.laplaceSymbol_le_cutoffLambda
+QuantumAdapter.Assembly.one_le_h3Weight
+QuantumAdapter.Assembly.h3Weight_le_cutoffWeight
+QuantumAdapter.Assembly.energy0_le_energy3
+QuantumAdapter.Assembly.energy3_le_cutoffWeight_mul_energy0
+QuantumAdapter.Assembly.dissipation_le_cutoffLambda_mul_energy0
+QuantumAdapter.Assembly.cutoffSobolevFactor_sq
+QuantumAdapter.Assembly.energy3_le_cutoffSobolevFactor_sq_mul_norm_sq
+QuantumAdapter.Assembly.norm_le_sqrt_energy3
+QuantumAdapter.Assembly.sqrt_energy3_le_cutoffSobolevFactor_mul_norm
+QuantumAdapter.Assembly.fullModes_mono
+QuantumAdapter.Assembly.initialEnergyDensity_nonneg
+QuantumAdapter.Assembly.initialPhaseData_energy3_eq_sum
+QuantumAdapter.Assembly.initialPhaseData_energy3_mono
+QuantumAdapter.Assembly.integral_unitCube_fderiv_eq_zero
+QuantumAdapter.Assembly.datumFourierIntegrand_fderiv_coordinate
+QuantumAdapter.Assembly.datumFourierCoeff_coordinateDerivative
+QuantumAdapter.Assembly.h3Weight_eq_torusSobolevWeight_cube_sq
+QuantumAdapter.Assembly.h3Coeff_eq_sobolevWeightedCoeff_sq
+QuantumAdapter.Assembly.initialProjectionMajorant_nonneg
+QuantumAdapter.Assembly.initialEnergyDensity_le
+QuantumAdapter.Assembly.initialPhaseData_energy3_le_majorant
+QuantumAdapter.Assembly.initialProjectionBounds
+QuantumAdapter.Assembly.synthesis_coordinateDerivative
+QuantumAdapter.Assembly.derivativeSymbol_norm_le_torusSobolevWeight
+QuantumAdapter.Assembly.derivative_weighted_sq_le_h3Coeff
+QuantumAdapter.Assembly.finiteSynthesis_component_norm_le
+QuantumAdapter.Assembly.derivative_component_sq_le
+QuantumAdapter.Assembly.gradientEmbeddingConstant_pos
+QuantumAdapter.Assembly.gradientEmbeddingConstant_sq
+QuantumAdapter.Assembly.gradientSquare_nonneg
+QuantumAdapter.Assembly.gradientSquare_le_energy3
+QuantumAdapter.Assembly.sqrt_gradientSquare_le
+QuantumAdapter.Assembly.gradientObservable_range_bddAbove
+QuantumAdapter.Assembly.gradientObservable_nonneg
+QuantumAdapter.Assembly.gradientObservable_le_sqrt_energy3
+QuantumAdapter.Assembly.phaseCoeff_add
+QuantumAdapter.Assembly.phaseCoeff_smul
+QuantumAdapter.Assembly.gradientCoordinates_apply
+QuantumAdapter.Assembly.gradientCoordinates_norm_sq
+QuantumAdapter.Assembly.sqrt_gradientSquare_eq_norm
+QuantumAdapter.Assembly.gradientObservable_le_add
+QuantumAdapter.Assembly.abs_gradientObservable_sub_le
+QuantumAdapter.Assembly.lipschitz_gradientObservable
+QuantumAdapter.Assembly.continuous_gradientObservable
+QuantumAdapter.Assembly.intervalIntegrable_gradientObservable
+
+MODULE = QuantumAdapter.Assembly.Galerkin
+SOURCE = Quantum_adapter/QuantumAdapter/Assembly/Galerkin.lean
+COUNT = 14
+QuantumAdapter.Assembly.allSobolev_nativeData
+QuantumAdapter.Assembly.allSobolev_nativeData_and_coefficients
+QuantumAdapter.Assembly.energy3_continuous
+QuantumAdapter.Assembly.phaseFlow_orbit_continuous
+QuantumAdapter.Assembly.centralEnergy_continuous
+QuantumAdapter.Assembly.centralEnergy_bounded_on_Icc
+QuantumAdapter.Assembly.centralEnergy_finite_cutoffs_bounded
+QuantumAdapter.Assembly.galerkinBoundAt_of_tail
+QuantumAdapter.Assembly.continuumFourierEnergy_nonneg
+QuantumAdapter.Assembly.galerkinBoundAt_of_uniform_energy_approximation
+QuantumAdapter.Assembly.galerkinBoundAt_of_uniform_energy_convergence
+QuantumAdapter.Assembly.continuumFourierEnergy_le_of_centralEnergy_tendsto
+QuantumAdapter.Assembly.continuumFourierEnergy_bounded_before
+QuantumAdapter.Assembly.no_finite_fourierEnergy_blowup
+
+MODULE = QuantumAdapter.Assembly.Gaussian
+SOURCE = Quantum_adapter/QuantumAdapter/Assembly/Gaussian.lean
+COUNT = 19
+QuantumAdapter.phaseVolume_eq_volume
+QuantumAdapter.canonicalPacket_continuous
+QuantumAdapter.canonicalPacket_bornDensity
+QuantumAdapter.gaussianAmplitude_sq
+QuantumAdapter.canonicalGaussian_integral
+QuantumAdapter.canonicalPacket_normalized
+QuantumAdapter.canonicalPacket_density_integrable
+QuantumAdapter.canonicalPacket_memLp
+QuantumAdapter.canonicalPacket_waveAdmissible
+QuantumAdapter.canonicalPacket_norm_toL2
+QuantumAdapter.phaseGaussian_moment_formula
+QuantumAdapter.phaseGaussian_moment_integrable
+QuantumAdapter.phaseGaussian_second_moment
+QuantumAdapter.phaseGaussian_fourth_moment
+QuantumAdapter.canonicalPacket_centered_integrand
+QuantumAdapter.canonicalPacket_centered_moment
+QuantumAdapter.canonicalPacket_centered_moment_integrable
+QuantumAdapter.canonicalPacket_second_moment
+QuantumAdapter.canonicalPacket_fourth_moment
+
+MODULE = QuantumAdapter.Assembly.Transport
+SOURCE = Quantum_adapter/QuantumAdapter/Assembly/Transport.lean
+COUNT = 8
+QuantumAdapter.Assembly.phaseFlow_timeMap_inverse
+QuantumAdapter.Assembly.phaseFlow_timeMap_bijective
+QuantumAdapter.Assembly.phaseFlow_preimage_eq_inverse_image
+QuantumAdapter.Assembly.phaseFlow_quasiMeasurePreserving
+QuantumAdapter.Assembly.phaseFlow_integralPullbackLaw_of_jacobian
+QuantumAdapter.Assembly.phaseFlow_integrable_weighted_comp_of_jacobian
+QuantumAdapter.Assembly.phaseFlow_memLpPullbackLaw_of_jacobian
+QuantumAdapter.Assembly.phaseTransportLaws_of_jacobian
+
+MODULE = QuantumAdapter.Assembly.CompleteFlow
+SOURCE = Quantum_adapter/QuantumAdapter/Assembly/CompleteFlow.lean
+COUNT = 11
+QuantumAdapter.Assembly.energy0_hasDerivAt_of_drift
+QuantumAdapter.Assembly.local_energy0_antitoneOn
+QuantumAdapter.Assembly.local_weighted_energy0_monotoneOn
+QuantumAdapter.Assembly.drift_bounded_on_closedBall
+QuantumAdapter.Assembly.local_drift_solution_lipschitz_of_norm_bound
+QuantumAdapter.Assembly.local_drift_solution_endpoint_limits_of_norm_bound
+QuantumAdapter.Assembly.local_drift_solution_endpoint_limits_of_energy_bound
+QuantumAdapter.Assembly.local_drift_solution_has_forward_limit
+QuantumAdapter.Assembly.local_drift_solution_has_backward_limit
+QuantumAdapter.Assembly.exists_uniform_local_drift_solutions
+QuantumAdapter.Assembly.local_drift_solution_forward_limit_restart
+
+MODULE = QuantumAdapter.Assembly.GlobalDrift
+SOURCE = Quantum_adapter/QuantumAdapter/Assembly/GlobalDrift.lean
+COUNT = 8
+QuantumAdapter.Assembly.local_drift_solutions_unique
+QuantumAdapter.Assembly.local_drift_solutions_piecewise
+QuantumAdapter.Assembly.local_drift_energy0_bound_abs
+QuantumAdapter.Assembly.exists_uniform_local_drift_solutions_on_ball
+QuantumAdapter.Assembly.exists_drift_solution_on_arbitrary_interval
+QuantumAdapter.Assembly.exists_complete_drift_orbit
+QuantumAdapter.Assembly.exists_unique_complete_drift_orbit
+QuantumAdapter.Assembly.contDiff_complete_drift_orbit
+
+MODULE = QuantumAdapter.Assembly.CanonicalFlow
+SOURCE = Quantum_adapter/QuantumAdapter/Assembly/CanonicalFlow.lean
+COUNT = 7
+QuantumAdapter.Assembly.chosenCompleteOrbit_zero
+QuantumAdapter.Assembly.chosenCompleteOrbit_derivative
+QuantumAdapter.Assembly.chosenCompleteOrbit_add
+QuantumAdapter.Assembly.nonempty_phaseFlow_of_completeOrbits
+QuantumAdapter.Assembly.phaseFlow_eq_constructed
+QuantumAdapter.Assembly.nonempty_phaseFlow_of_divergence
+QuantumAdapter.Assembly.phaseFlow_eq_canonical
+
+MODULE = QuantumAdapter.Assembly.FlowContinuity
+SOURCE = Quantum_adapter/QuantumAdapter/Assembly/FlowContinuity.lean
+COUNT = 6
+QuantumAdapter.Assembly.phaseFlow_energy0_bound_unit
+QuantumAdapter.Assembly.phaseFlow_uniform_time_lipschitz
+QuantumAdapter.Assembly.phaseFlow_small_time_dist
+QuantumAdapter.Assembly.continuous_phaseFlow_uncurry_of_timeMaps
+QuantumAdapter.Assembly.continuous_phaseFlow_uncurry_of_differentiable
+QuantumAdapter.Assembly.measurable_phaseFlow_uncurry_of_differentiable
+
+MODULE = QuantumAdapter.Assembly.FlowDependence
+SOURCE = Quantum_adapter/QuantumAdapter/Assembly/FlowDependence.lean
+COUNT = 5
+QuantumAdapter.Assembly.phaseFlow_energy0_bound_abs
+QuantumAdapter.Assembly.phaseFlow_timeMap_lipschitzOn_closedBall
+QuantumAdapter.Assembly.continuous_phaseFlow_timeMap
+QuantumAdapter.Assembly.continuous_phaseFlow_uncurry
+QuantumAdapter.Assembly.measurable_phaseFlow_uncurry
+
+MODULE = QuantumAdapter.Assembly.Admissibility
+SOURCE = Quantum_adapter/QuantumAdapter/Assembly/Admissibility.lean
+COUNT = 7
+QuantumAdapter.Assembly.norm_pow_le_centered
+QuantumAdapter.Assembly.canonicalPacket_bornDensity_continuous
+QuantumAdapter.Assembly.canonicalPacket_raw_moment_integrable
+QuantumAdapter.Assembly.canonicalPacket_observableIntegrable_of_quadratic_bound
+QuantumAdapter.Assembly.canonicalPacket_multiplierDomain_of_quadratic_bound
+QuantumAdapter.Assembly.phaseFlow_energy3_le_quadratic
+QuantumAdapter.Assembly.transportedPacket_quantumAdmissible_of_jacobian
+
+MODULE = QuantumAdapter.Assembly.PacketEstimates
+SOURCE = Quantum_adapter/QuantumAdapter/Assembly/PacketEstimates.lean
+COUNT = 32
+QuantumAdapter.Assembly.canonicalBornDensity_measurable
+QuantumAdapter.Assembly.integrable_canonicalBornMeasure_iff
+QuantumAdapter.Assembly.integral_canonicalBornMeasure
+QuantumAdapter.Assembly.canonicalBornMeasure_centered_moment_integrable
+QuantumAdapter.Assembly.packetDistance_nonneg
+QuantumAdapter.Assembly.packetDistance_symm
+QuantumAdapter.Assembly.packetDistance_integrable
+QuantumAdapter.Assembly.packetDistance_sq_integrable
+QuantumAdapter.Assembly.packetDistance_sq_mean
+QuantumAdapter.Assembly.packetDistance_sq_mean_le_quarter
+QuantumAdapter.Assembly.sqrt_energy3_le_reference_add_packetDistance
+QuantumAdapter.Assembly.packet_integral_sq_le
+QuantumAdapter.Assembly.packet_integrable_sqrt
+QuantumAdapter.Assembly.packet_integral_sqrt_le
+QuantumAdapter.Assembly.packet_integral_distance_le_half
+QuantumAdapter.Assembly.packet_integral_quadratic_bound
+QuantumAdapter.Assembly.exists_joint_packet_control
+QuantumAdapter.Assembly.PacketEstimatePrimitives.energy_conjugacy
+QuantumAdapter.Assembly.PacketEstimatePrimitives.relative
+QuantumAdapter.Assembly.PacketEstimatePrimitives.cost_nonneg
+QuantumAdapter.Assembly.PacketEstimatePrimitives.cost_mono
+QuantumAdapter.Assembly.PacketEstimatePrimitives.central_cost_bound
+QuantumAdapter.Assembly.PacketEstimatePrimitives.cost_integrable
+QuantumAdapter.Assembly.PacketEstimatePrimitives.mean_cost_bound
+QuantumAdapter.Assembly.forwardPacketBound_of_primitives
+QuantumAdapter.Assembly.reversePacketBound_of_primitives
+QuantumAdapter.Assembly.packetBounds_of_scalar_primitives
+QuantumAdapter.Assembly.canonicalBornMeasure_raw_moment_integrable
+QuantumAdapter.Assembly.packet_energy_integrable_of_nonneg_viscosity
+QuantumAdapter.Assembly.packet_gradient_product_integrable
+QuantumAdapter.Assembly.packetEstimatePrimitives_of_jacobian
+QuantumAdapter.Assembly.packetBounds_of_jacobian
+
+MODULE = QuantumAdapter.Assembly
+SOURCE = Quantum_adapter/QuantumAdapter/Assembly.lean
+COUNT = 6
+QuantumAdapter.Assembly.native_initial_packet_triangle
+QuantumAdapter.Assembly.transportedPacket_waveAdmissible_of_jacobian
+QuantumAdapter.Assembly.exact_quantum_root_of_scalar_primitives
+QuantumAdapter.Assembly.exact_quantum_root_with_transport
+QuantumAdapter.Assembly.exact_quantum_root_of_native_dynamics
+QuantumAdapter.Assembly.exact_quantum_root_for_canonical_flow
+
+EXTERNAL REPLAY
+Required checkout: exact audited Git source commit, inside Linux/WSL.
+Compiler and Mathlib pins: as recorded above.
+Command: bash Auxillary/run.sh -Phase Dependencies
+Command: NSE_QUANTUM_ASSEMBLY_EXTERNAL_NATIVE=1 bash Auxillary/quantum/assembly/run.sh
+Windows launcher: run.cmd /absolute/Linux/path/to/the/Git/checkout
+Policy: restore and verify compiler/dependency/project caches; incremental builds;
+        fresh #check and #print axioms for every selected declaration.
+Exported .lean = byte-identical audited Quantum_adapter/QuantumAdapter/Assembly.lean.
+Full dependency tree = repository at SOURCE_COMMIT.
+Source ZIP = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/archive/1a0664fc219e6b4e2caf005384bd71b585ad0847.zip
+Git metadata is required by the provenance-checking replay runner.
+
+EXACT ROOT SIGNATURE / AXIOM EVIDENCE
+QuantumAdapter.Assembly.native_initial_packet_triangle : ∀ (N : ℕ) (q r : QuantumAdapter.Phase N),
+  LE.le.{0} (√(QuantumAdapter.energy3 N q))
+    (HAdd.hAdd.{0, 0, 0} (√(QuantumAdapter.energy3 N r)) (QuantumAdapter.Assembly.packetDistance N q r))
+'QuantumAdapter.Assembly.native_initial_packet_triangle' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.transportedPacket_waveAdmissible_of_jacobian : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν),
+  (∀ (N : ℕ) (t : ℝ), Differentiable.{0, 0, 0} ℝ (F.map N t)) →
+    (∀ (N : ℕ) (t : ℝ) (q : QuantumAdapter.Phase N),
+        Eq.{1} (ContinuousLinearMap.det.{0, 0} (fderiv.{0, 0, 0} ℝ (F.map N t) q))
+          (Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N)) t))) →
+      ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N) (t : ℝ),
+        QuantumAdapter.WaveAdmissible.{0} (QuantumAdapter.phaseVolume N) (QuantumAdapter.transportedPacket F N q₀ t)
+'QuantumAdapter.Assembly.transportedPacket_waveAdmissible_of_jacobian' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.exact_quantum_root_of_scalar_primitives : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν)
+  (Cemb C3 : ℝ),
+  QuantumAdapter.GalerkinAnalyticLaws F →
+    QuantumAdapter.Assembly.PacketEstimatePrimitives F Cemb C3 →
+      (NSEMaxwell.Classical.FeffermanB ν ↔ QuantumAdapter.QREG F)
+'QuantumAdapter.Assembly.exact_quantum_root_of_scalar_primitives' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.exact_quantum_root_with_transport : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν),
+  (∀ (N : ℕ) (t : ℝ), Differentiable.{0, 0, 0} ℝ (F.map N t)) →
+    (∀ (N : ℕ) (t : ℝ) (q : QuantumAdapter.Phase N),
+        Eq.{1} (ContinuousLinearMap.det.{0, 0} (fderiv.{0, 0, 0} ℝ (F.map N t) q))
+          (Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N)) t))) →
+      ∀ (Cemb C3 : ℝ),
+        QuantumAdapter.GalerkinAnalyticLaws F →
+          QuantumAdapter.Assembly.PacketEstimatePrimitives F Cemb C3 →
+            QuantumAdapter.PhaseTransportLaws F ∧ (NSEMaxwell.Classical.FeffermanB ν ↔ QuantumAdapter.QREG F)
+'QuantumAdapter.Assembly.exact_quantum_root_with_transport' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.exact_quantum_root_of_native_dynamics : ∀ {ν C3 : ℝ},
+  LT.lt.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν),
+      (∀ (N : ℕ) (t : ℝ), Differentiable.{0, 0, 0} ℝ (F.map N t)) →
+        (∀ (N : ℕ) (t : ℝ) (q : QuantumAdapter.Phase N),
+            Eq.{1} (ContinuousLinearMap.det.{0, 0} (fderiv.{0, 0, 0} ℝ (F.map N t) q))
+              (Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N)) t))) →
+          LT.lt.{0} 0 C3 →
+            (∀ (N : ℕ) (q r : QuantumAdapter.Phase N) (t : ℝ),
+                LE.le.{0} 0 t →
+                  LE.le.{0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} (F.map N t q) (F.map N t r)))
+                    (HMul.hMul.{0, 0, 0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} q r))
+                      (Real.exp (QuantumAdapter.Assembly.orbitGradientCost F N r t)))) →
+              (∀ (N : ℕ) (q : QuantumAdapter.Phase N) (t : ℝ),
+                  LE.le.{0} 0 t →
+                    LE.le.{0} (√(QuantumAdapter.energy3 N (F.map N t q)))
+                      (HMul.hMul.{0, 0, 0} (√(QuantumAdapter.energy3 N q))
+                        (Real.exp (HMul.hMul.{0, 0, 0} C3 (QuantumAdapter.Assembly.orbitGradientCost F N q t))))) →
+                QuantumAdapter.GalerkinAnalyticLaws F → (NSEMaxwell.Classical.FeffermanB ν ↔ QuantumAdapter.QREG F)
+'QuantumAdapter.Assembly.exact_quantum_root_of_native_dynamics' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.exact_quantum_root_for_canonical_flow : ∀ {ν : ℝ} (hν : LT.lt.{0} 0 ν)
+  (divergence :
+    ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+      Eq.{1} (QuantumAdapter.driftDivergence ν N q) (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N))),
+  have F := QuantumAdapter.Assembly.canonicalPhaseFlow ⋯ divergence;
+  ∀ (C3 : ℝ),
+    (∀ (N : ℕ) (t : ℝ), Differentiable.{0, 0, 0} ℝ (F.map N t)) →
+      (∀ (N : ℕ) (t : ℝ) (q : QuantumAdapter.Phase N),
+          Eq.{1} (ContinuousLinearMap.det.{0, 0} (fderiv.{0, 0, 0} ℝ (F.map N t) q))
+            (Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N)) t))) →
+        LT.lt.{0} 0 C3 →
+          (∀ (N : ℕ) (q r : QuantumAdapter.Phase N) (t : ℝ),
+              LE.le.{0} 0 t →
+                LE.le.{0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} (F.map N t q) (F.map N t r)))
+                  (HMul.hMul.{0, 0, 0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} q r))
+                    (Real.exp (QuantumAdapter.Assembly.orbitGradientCost F N r t)))) →
+            (∀ (N : ℕ) (q : QuantumAdapter.Phase N) (t : ℝ),
+                LE.le.{0} 0 t →
+                  LE.le.{0} (√(QuantumAdapter.energy3 N (F.map N t q)))
+                    (HMul.hMul.{0, 0, 0} (√(QuantumAdapter.energy3 N q))
+                      (Real.exp (HMul.hMul.{0, 0, 0} C3 (QuantumAdapter.Assembly.orbitGradientCost F N q t))))) →
+              QuantumAdapter.GalerkinAnalyticLaws F → (NSEMaxwell.Classical.FeffermanB ν ↔ QuantumAdapter.QREG F)
+'QuantumAdapter.Assembly.exact_quantum_root_for_canonical_flow' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+
+POST-AUDIT REPORT/CACHE MAINTENANCE
+PROOF_MODULES = byte-identical to SOURCE_COMMIT.
+PROJECT_CACHE_KEYS = separate full/assembly namespaces; prior caches retained as fallbacks.
+CACHE_CONFIGURATION_CHECK = YAML parsing and scope/fallback assertions PASS; no proof change.

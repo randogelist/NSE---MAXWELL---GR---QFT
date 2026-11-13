@@ -1,0 +1,83 @@
+QuantumAdapter.Assembly.native_initial_packet_triangle : ∀ (N : ℕ) (q r : QuantumAdapter.Phase N),
+  LE.le.{0} (√(QuantumAdapter.energy3 N q))
+    (HAdd.hAdd.{0, 0, 0} (√(QuantumAdapter.energy3 N r)) (QuantumAdapter.Assembly.packetDistance N q r))
+'QuantumAdapter.Assembly.native_initial_packet_triangle' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.transportedPacket_waveAdmissible_of_jacobian : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν),
+  (∀ (N : ℕ) (t : ℝ), Differentiable.{0, 0, 0} ℝ (F.map N t)) →
+    (∀ (N : ℕ) (t : ℝ) (q : QuantumAdapter.Phase N),
+        Eq.{1} (ContinuousLinearMap.det.{0, 0} (fderiv.{0, 0, 0} ℝ (F.map N t) q))
+          (Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N)) t))) →
+      ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N) (t : ℝ),
+        QuantumAdapter.WaveAdmissible.{0} (QuantumAdapter.phaseVolume N) (QuantumAdapter.transportedPacket F N q₀ t)
+'QuantumAdapter.Assembly.transportedPacket_waveAdmissible_of_jacobian' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.exact_quantum_root_of_scalar_primitives : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν)
+  (Cemb C3 : ℝ),
+  QuantumAdapter.GalerkinAnalyticLaws F →
+    QuantumAdapter.Assembly.PacketEstimatePrimitives F Cemb C3 →
+      (NSEMaxwell.Classical.FeffermanB ν ↔ QuantumAdapter.QREG F)
+'QuantumAdapter.Assembly.exact_quantum_root_of_scalar_primitives' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.exact_quantum_root_with_transport : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν),
+  (∀ (N : ℕ) (t : ℝ), Differentiable.{0, 0, 0} ℝ (F.map N t)) →
+    (∀ (N : ℕ) (t : ℝ) (q : QuantumAdapter.Phase N),
+        Eq.{1} (ContinuousLinearMap.det.{0, 0} (fderiv.{0, 0, 0} ℝ (F.map N t) q))
+          (Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N)) t))) →
+      ∀ (Cemb C3 : ℝ),
+        QuantumAdapter.GalerkinAnalyticLaws F →
+          QuantumAdapter.Assembly.PacketEstimatePrimitives F Cemb C3 →
+            QuantumAdapter.PhaseTransportLaws F ∧ (NSEMaxwell.Classical.FeffermanB ν ↔ QuantumAdapter.QREG F)
+'QuantumAdapter.Assembly.exact_quantum_root_with_transport' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.exact_quantum_root_of_native_dynamics : ∀ {ν C3 : ℝ},
+  LT.lt.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν),
+      (∀ (N : ℕ) (t : ℝ), Differentiable.{0, 0, 0} ℝ (F.map N t)) →
+        (∀ (N : ℕ) (t : ℝ) (q : QuantumAdapter.Phase N),
+            Eq.{1} (ContinuousLinearMap.det.{0, 0} (fderiv.{0, 0, 0} ℝ (F.map N t) q))
+              (Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N)) t))) →
+          LT.lt.{0} 0 C3 →
+            (∀ (N : ℕ) (q r : QuantumAdapter.Phase N) (t : ℝ),
+                LE.le.{0} 0 t →
+                  LE.le.{0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} (F.map N t q) (F.map N t r)))
+                    (HMul.hMul.{0, 0, 0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} q r))
+                      (Real.exp (QuantumAdapter.Assembly.orbitGradientCost F N r t)))) →
+              (∀ (N : ℕ) (q : QuantumAdapter.Phase N) (t : ℝ),
+                  LE.le.{0} 0 t →
+                    LE.le.{0} (√(QuantumAdapter.energy3 N (F.map N t q)))
+                      (HMul.hMul.{0, 0, 0} (√(QuantumAdapter.energy3 N q))
+                        (Real.exp (HMul.hMul.{0, 0, 0} C3 (QuantumAdapter.Assembly.orbitGradientCost F N q t))))) →
+                QuantumAdapter.GalerkinAnalyticLaws F → (NSEMaxwell.Classical.FeffermanB ν ↔ QuantumAdapter.QREG F)
+'QuantumAdapter.Assembly.exact_quantum_root_of_native_dynamics' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.exact_quantum_root_for_canonical_flow : ∀ {ν : ℝ} (hν : LT.lt.{0} 0 ν)
+  (divergence :
+    ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+      Eq.{1} (QuantumAdapter.driftDivergence ν N q) (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N))),
+  have F := QuantumAdapter.Assembly.canonicalPhaseFlow ⋯ divergence;
+  ∀ (C3 : ℝ),
+    (∀ (N : ℕ) (t : ℝ), Differentiable.{0, 0, 0} ℝ (F.map N t)) →
+      (∀ (N : ℕ) (t : ℝ) (q : QuantumAdapter.Phase N),
+          Eq.{1} (ContinuousLinearMap.det.{0, 0} (fderiv.{0, 0, 0} ℝ (F.map N t) q))
+            (Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N)) t))) →
+        LT.lt.{0} 0 C3 →
+          (∀ (N : ℕ) (q r : QuantumAdapter.Phase N) (t : ℝ),
+              LE.le.{0} 0 t →
+                LE.le.{0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} (F.map N t q) (F.map N t r)))
+                  (HMul.hMul.{0, 0, 0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} q r))
+                    (Real.exp (QuantumAdapter.Assembly.orbitGradientCost F N r t)))) →
+            (∀ (N : ℕ) (q : QuantumAdapter.Phase N) (t : ℝ),
+                LE.le.{0} 0 t →
+                  LE.le.{0} (√(QuantumAdapter.energy3 N (F.map N t q)))
+                    (HMul.hMul.{0, 0, 0} (√(QuantumAdapter.energy3 N q))
+                      (Real.exp (HMul.hMul.{0, 0, 0} C3 (QuantumAdapter.Assembly.orbitGradientCost F N q t))))) →
+              QuantumAdapter.GalerkinAnalyticLaws F → (NSEMaxwell.Classical.FeffermanB ν ↔ QuantumAdapter.QREG F)
+'QuantumAdapter.Assembly.exact_quantum_root_for_canonical_flow' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

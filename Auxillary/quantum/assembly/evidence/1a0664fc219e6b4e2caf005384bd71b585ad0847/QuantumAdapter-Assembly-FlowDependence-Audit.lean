@@ -1,0 +1,13 @@
+import QuantumAdapter.Assembly.FlowDependence
+set_option pp.universes true
+set_option pp.fullNames true
+#check @QuantumAdapter.Assembly.phaseFlow_energy0_bound_abs
+#print axioms QuantumAdapter.Assembly.phaseFlow_energy0_bound_abs
+#check @QuantumAdapter.Assembly.phaseFlow_timeMap_lipschitzOn_closedBall
+#print axioms QuantumAdapter.Assembly.phaseFlow_timeMap_lipschitzOn_closedBall
+#check @QuantumAdapter.Assembly.continuous_phaseFlow_timeMap
+#print axioms QuantumAdapter.Assembly.continuous_phaseFlow_timeMap
+#check @QuantumAdapter.Assembly.continuous_phaseFlow_uncurry
+#print axioms QuantumAdapter.Assembly.continuous_phaseFlow_uncurry
+#check @QuantumAdapter.Assembly.measurable_phaseFlow_uncurry
+#print axioms QuantumAdapter.Assembly.measurable_phaseFlow_uncurry

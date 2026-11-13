@@ -1,23 +1,37 @@
 # Quantum adapter
 
-BASE = codex/fefferman-b-maxwell @ 1de664f2ef5ddc11caef25ac2274278b4171ab6b.
+BASE = `codex/fefferman-b-maxwell` @ `1de664f2ef5ddc11caef25ac2274278b4171ab6b`.
 
-STATUS = A_TIER (204 selected declarations); ROOT = CONDITIONAL_FORMAL_CLOSURE.
+STATUS = A_TIER: 204 adapter declarations + 203 native assembly declarations.
+ROOT = CONDITIONAL_FORMAL_CLOSURE; UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED.
 
-Cached external native Linux Lean 4.34.0-rc1: PASS. Proof commit `216217a88fc8039b5551738a0ce3b6bbe884e45d`.
+Native assembly proof commit: `1a0664fc219e6b4e2caf005384bd71b585ad0847`.
+Cached external Linux Lean 4.34.0-rc1 and fresh standard-axiom audit: PASS.
 
-Native phase: intrinsic real Hilbert subspace of all finite Fourier coefficients, including k=0, with actual conjugate reality and solenoidality. Initial coefficients are actual torus integrals; arbitrary velocity mean is retained.
+[Current exact root / premises / theorem index](../Auxillary/quantum/assembly/exports/exact_quantum_root_for_canonical_flow_A_TIER.txt)
+· [Native source](QuantumAdapter/Assembly.lean)
+· [Exact assembly evidence](../Auxillary/quantum/assembly/evidence/1a0664fc219e6b4e2caf005384bd71b585ad0847/).
 
-Native quantum expressions: intrinsic phase volume, L2 representatives, actual Born densities, canonical Gaussians, half-density transport, full multiplier-domain predicate, and first-order differential Hamiltonian expression. These definitions do not construct a selfadjoint generator or a complete flow.
+Native scope: intrinsic real Hilbert full Fourier phase; actual conjugate reality
+and solenoidality; zero mode and arbitrary velocity mean retained; torus Fourier
+initial coefficients; canonical finite-width Gaussian QREG.
 
-The directional source bodies are ordered as FeffermanB -> G3 -> QREG, then QREG -> G3 -> FeffermanB. Their exact analytic and semantic premises remain in the root type.
+Constructed: unique complete native orbits for nonnegative viscosity; smooth
+time dependence; bounded-ball Lipschitz time maps and joint continuity; initial
+Sobolev projection bounds; gradient embedding; Gaussian normalization/moments;
+transport and full multiplier/expectation domains from the explicit Jacobian
+hypotheses; forward/reverse packet estimates from the remaining energy inequalities.
 
-[Logical structure](LOGICAL_STRUCTURE.md) and [75-checkpoint manifest](checkpoint-manifest.json) preserve the original B-tier target. Full original checkpoints remain unresolved unless all of their exact bodies and external evidence are present.
+Root: `QuantumAdapter.Assembly.exact_quantum_root_for_canonical_flow`.
+Explicit frontier: divergence; initial-data differentiability; Jacobian;
+relative L2 estimate; one positive uniform tame H3 constant; Galerkin stability;
+Galerkin compactness. No unconditional Navier–Stokes regularity or selfadjoint
+generator is asserted.
 
-Audit/run infrastructure: [Auxillary/quantum](../Auxillary/quantum/). No local Lean execution.
+[Logical structure](LOGICAL_STRUCTURE.md), [75-checkpoint manifest](checkpoint-manifest.json),
+[historical endpoint index](ENDPOINT_INDEX.md), and [historical 204-target scope](QUANTUM_ADAPTER_A_TIER.txt)
+retain the earlier checkpoint. The current assembly report supplies the reduced
+premise inventory and the exact pinned Mathlib/Methlib entrypoints.
 
-[Exact endpoint index](ENDPOINT_INDEX.md): pinned source declarations, native signatures, explicit premises, and unresolved scope.
-
-Additional native candidates: arbitrary-mean finite energy identity and complex L2 isometry equivalence under explicit transport laws. Strong continuity and selfadjoint generation remain unresolved.
-
-[Exact external evidence](../Auxillary/quantum/evidence/216217a88fc8039b5551738a0ce3b6bbe884e45d/) · [Native checkpoint fragments](NATIVE_CHECKPOINT_PROGRESS.md) · [A-tier scope](QUANTUM_ADAPTER_A_TIER.txt).
+[External replay](../Auxillary/quantum/assembly/README.md).
+Local Lean executions = 0. Proof bodies remain byte-identical to the audited commit.

@@ -85,6 +85,48 @@
       "declaration": "hasFDerivAt_const_add_iff",
       "module": "Mathlib.Analysis.Calculus.FDeriv.Add",
       "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Add.lean"
+    },
+    {
+      "role": "Product almost-everywhere time support",
+      "declaration": "MeasureTheory.Measure.ae_prod_iff_ae_ae",
+      "module": "Mathlib.MeasureTheory.Measure.Prod",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Measure/Prod.lean#L445"
+    },
+    {
+      "role": "C1 autonomous local existence",
+      "declaration": "IsPicardLindelof.of_time_independent",
+      "module": "Mathlib.Analysis.ODE.PicardLindelof",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/PicardLindelof.lean#L662"
+    },
+    {
+      "role": "C1 actual local orbits",
+      "declaration": "IsPicardLindelof.exists_eq_forall_mem_Icc_hasDerivWithinAt",
+      "module": "Mathlib.Analysis.ODE.ExistUnique",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/ExistUnique.lean#L57"
+    },
+    {
+      "role": "C1 local uniqueness",
+      "declaration": "ODE_solution_unique_of_eventually",
+      "module": "Mathlib.Analysis.ODE.ExistUnique",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/ExistUnique.lean#L312"
+    },
+    {
+      "role": "C1 smooth orbit time dependence",
+      "declaration": "ODE.contDiffOn_enat_Icc_of_hasDerivWithinAt",
+      "module": "Mathlib.Analysis.ODE.PicardLindelof",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/PicardLindelof.lean#L560"
+    },
+    {
+      "role": "C1/C2 compact-ball Lipschitz constant",
+      "declaration": "ContDiffOn.exists_lipschitzOnWith",
+      "module": "Mathlib.Analysis.Calculus.ContDiff.RCLike",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/RCLike.lean#L149"
+    },
+    {
+      "role": "C2 initial-data dependence",
+      "declaration": "dist_le_of_trajectories_ODE_of_mem",
+      "module": "Mathlib.Analysis.ODE.Gronwall",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/Gronwall.lean#L208"
     }
   ]
 }

@@ -16,11 +16,13 @@
     "InitialProjectionBounds"
   ],
   "additional_unresolved_realization": [
-    "complete actual finite flow and drift divergence inhabitant",
-    "Gaussian normalization and full multiplier domains for all evolved packets",
-    "actual integral and MemLp pullback laws",
-    "selfadjoint closed Hamiltonian and its exact L2 unitary realization",
-    "concrete physical Sobolev/analytic estimates instantiating all four root hypotheses"
+    "actual drift divergence identity",
+    "initial-data differentiability of every signed-time native map",
+    "exact determinant/Jacobian identity",
+    "relative L2 exponential estimate",
+    "positive cutoff-independent tame H3 constant and estimate",
+    "Galerkin smooth-solution stability",
+    "Galerkin compactness/continuum reconstruction"
   ],
   "universal_regularity": "NOT_PROVED",
   "full_txt_root_R1_R24": "NOT_FORMALIZED",
@@ -33,5 +35,31 @@
   "external_artifact_id": 14011806145,
   "evidence_path": "Auxillary/quantum/evidence/216217a88fc8039b5551738a0ce3b6bbe884e45d",
   "selected_declarations_pass": 204,
-  "full_original_checkpoint_promotions": 0
+  "full_original_checkpoint_promotions": 0,
+  "legacy_checkpoint_scope": "The 204-declaration adapter checkpoint and its exact root signature are preserved below.",
+  "native_assembly": {
+    "status": "A_TIER",
+    "root_status": "CONDITIONAL_FORMAL_CLOSURE",
+    "exact_root": "QuantumAdapter.Assembly.exact_quantum_root_for_canonical_flow",
+    "proof_commit": "1a0664fc219e6b4e2caf005384bd71b585ad0847",
+    "external_run_id": 43384137901,
+    "target_count": 203,
+    "modules": 13,
+    "evidence_path": "Auxillary/quantum/assembly/evidence/1a0664fc219e6b4e2caf005384bd71b585ad0847",
+    "scope_report": "Auxillary/quantum/assembly/exports/exact_quantum_root_for_canonical_flow_A_TIER.txt",
+    "full_repository_regression_run_id": 43384137765,
+    "full_repository_regression_status": "PASS"
+  },
+  "constructed_native_inputs": [
+    "complete actual native orbits and uniqueness",
+    "C-infinity time dependence",
+    "local Lipschitz dependence on initial data and joint continuity",
+    "actual initial Sobolev projection bound",
+    "Gaussian normalization and all natural moment integrability",
+    "exact second/fourth Gaussian moments",
+    "pullback laws from actual differentiability and Jacobian hypotheses",
+    "full evolved multiplier/expectation domains from those hypotheses",
+    "packet forward/reverse bounds from the remaining dynamical inequalities"
+  ],
+  "separate_generator_target": "strongly continuous L2 group, dense symmetric realization and selfadjoint generator are not claimed by the present root"
 }
