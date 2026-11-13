@@ -1,6 +1,7 @@
 TEMP_ENDPOINT_EXTRACTION
 MODE = A_TIER_DERIVATION
-STATUS = A_TIER_CANDIDATE
+STATUS = A_TIER
+MARKER = !!
 LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
 NEW_GLOBAL_AXIOMS = 0
 
@@ -34,11 +35,13 @@ VALIDATION
   STATIC_SOURCE_RANGE_AND_HASH_CHECKS = PASS
   ENTRY_AND_EXPORT_BIJECTION = PASS (82 folders / 85 exports)
   NON_MATHLIB_IMPORT_CLOSURE = PASS
-  EXTERNAL_BUILD = PENDING
-  EXACT_SOURCE_TYPE_EQUALITY = PENDING
-  NAMED_AXIOM_AUDIT = PENDING
+  EXTERNAL_BUILD = PASS (85 endpoints)
+  EXACT_SOURCE_TYPE_EQUALITY = PASS (85/85)
+  NAMED_AXIOM_AUDIT = PASS_STANDARD_ONLY (85/85)
   Allowed foundational axioms: propext, Classical.choice, Quot.sound.
-  Existing upstream audits do not certify these renamed cutout exports.
+  These renamed exports have their own matching external certificate.
+  Candidate labels in immutable source comments and source.json/INDEX metadata
+  record preparation provenance; EXTERNAL_CERTIFICATE.json supplies promotion.
 
 RUNNERS
   Native Windows: run.cmd.
@@ -53,3 +56,15 @@ GR_SCOPE
   GR namespace/sign/time-domain adapters are not implemented by extraction.
   LI01, LI02, LI03 are not discharged.
   The GR c/r/h/q inhabitants and exact native root remain OPEN.
+
+EXTERNAL_CERTIFICATE
+  Audited source commit: ceed85075fde80dfea7f3e54568e634f6f38ab12
+  Cached native Linux run: 43383376659.
+  Artifact ID: 14016914025.
+  Artifact SHA256: 096c78a0ccdffc74fcea7216f4d51ea0e86ec8a758295557c4d02fa98e3139f2
+  Source files checked against the retained manifest: 253/253.
+  Source-type matches: 85/85.
+  Named axiom audits: 85/85, standard-only.
+  Audit log SHA256: be60fc119359f3af9949b4976705ec25ac347e46f065d270d8cf40a0311c57f5
+  Retained evidence: ../Auxillary/TEMP/evidence/ceed85075fde80dfea7f3e54568e634f6f38ab12/
+  Certificate overlay: EXTERNAL_CERTIFICATE.json.

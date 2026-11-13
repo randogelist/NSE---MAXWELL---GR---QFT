@@ -1,0 +1,1115 @@
+{
+  "status": "A_TIER",
+  "marker": "!!",
+  "audited_source_commit": "ceed85075fde80dfea7f3e54568e634f6f38ab12",
+  "workflow_run_id": 43383376659,
+  "workflow_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43383376659",
+  "artifact_id": 14016914025,
+  "artifact_sha256": "096c78a0ccdffc74fcea7216f4d51ea0e86ec8a758295557c4d02fa98e3139f2",
+  "compiler": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+  "mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "endpoint_count": 85,
+  "source_type_equality": "PASS_85_OF_85",
+  "named_axiom_audit": "PASS_STANDARD_ONLY_85_OF_85",
+  "source_files_verified": 253,
+  "evidence_directory": "Auxillary/TEMP/evidence/ceed85075fde80dfea7f3e54568e634f6f38ab12",
+  "source_catalog_status": "Candidate labels in immutable endpoint source/INDEX provenance are superseded by this matching external certificate.",
+  "gr_root_promotion": "NONE",
+  "local_lean_executions": 0,
+  "endpoints": [
+    {
+      "name": "GRTemp.ML001.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML001/Endpoint.lean",
+      "sha256": "f6e9125dfad7c4cd7397df6876a674b9ef242b2a9fb357e163b9135879372296",
+      "source_name": "mem_nhds_prod_iff'",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML002.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML002/Endpoint.lean",
+      "sha256": "8c8d99b6a3f6771d05412a5523ea4d402dea994b0975878c6d714b5d1afcfadf",
+      "source_name": "exists_compact_subset",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML003.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML003/Endpoint.lean",
+      "sha256": "17c5d23b97c5091d3c4705427d76943a82b7022372490115070fa6f0838cf673",
+      "source_name": "IsCompact.elim_finite_subcover",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML004.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML004/Endpoint.lean",
+      "sha256": "af9852ff9d59d6e7472d03cc49f594d81d3c7953a1b958d90692fd9be0104142",
+      "source_name": "IsCompact.eventually_forall_of_forall_eventually",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML005.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML005/Endpoint.lean",
+      "sha256": "9f99c90645a0e56e22bd3d5015c2aa2b7923d5011097ff8598a96a6915094a24",
+      "source_name": "IsCompact.mem_prod_nhdsSet_of_forall",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML006.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice"
+      ],
+      "path": "TEMP/ML006/Endpoint.lean",
+      "sha256": "c043b75e57d0359d0677b4ffc10ee9377c9e7b7c39073a72b386b5e82f779f22",
+      "source_name": "Set.iUnionLift",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML007.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice"
+      ],
+      "path": "TEMP/ML007/Endpoint.lean",
+      "sha256": "f7d7f5975d73e72da7d720f5c62353c614f05a8917e47ba3c9039fa5d002f68c",
+      "source_name": "Set.iUnionLift_of_mem",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML008.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML008/Endpoint.lean",
+      "sha256": "3af403a4dc695d760db01ba3667284e1c3b6e66562e651e6f4a97caabd81414c",
+      "source_name": "Set.liftCover",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML009.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML009/Endpoint.lean",
+      "sha256": "75d2fc7d44a71adf00ccd2eb2b21abeadf724240f36b7a1a400cab86da78edd9",
+      "source_name": "Set.liftCover_of_mem",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML010.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML010/Endpoint.lean",
+      "sha256": "17910d26e65b82694b6918a012e91c927b20b573806a8a44cf661f4aeaf74058",
+      "source_name": "AnalyticAt.congr",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML011.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML011/Endpoint.lean",
+      "sha256": "911a6bfa523c5d8f1eaca2c844af83791f13a4c47304c76062011f7d857814a2",
+      "source_name": "AnalyticOnNhd.congr",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML012.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML012/Endpoint.lean",
+      "sha256": "4bc30ce373dde72a6f3d0e32fa790753c1a421bba32059c88cf8c19a4e96b6c0",
+      "source_name": "Filter.EventuallyEq.fderiv_eq",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML013.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML013/Endpoint.lean",
+      "sha256": "154a9689e08814dd202b6589e22308f08c99edc82e3091db339fe728367a5aab",
+      "source_name": "Filter.EventuallyEq.fderiv",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML014.endpoint",
+      "status": "A_TIER",
+      "axioms": [],
+      "path": "TEMP/ML014/Endpoint.lean",
+      "sha256": "cbff49bc0e238d8e7f8366f79d433a85517e9a62529dca6b1b0b3b64aac8ed3b",
+      "source_name": "Set.piecewise_eqOn",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML015.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML015/Endpoint.lean",
+      "sha256": "d5786e848ff11cb3ca7c361b8021ab2c17fcd19acaa823215589734bbd958564",
+      "source_name": "Function.Periodic.zsmul",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML016.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML016/Endpoint.lean",
+      "sha256": "b67d9f7b5ba9db6c819b53342b8a73e8a5d58d215284435455d96b47b4e53bb6",
+      "source_name": "Function.Periodic.add_period",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML017.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML017/Endpoint.lean",
+      "sha256": "67c70ded3a84abefa14977b3bfd4380aa2e686a431313086d5127de6f9b2cc3d",
+      "source_name": "AnalyticAt.eventually_analyticAt",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML018.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML018/Endpoint.lean",
+      "sha256": "9b72185531e838b7e95e86d542fa15f79e436c6082985aa399bec59099edd9aa",
+      "source_name": "mem_nhds_iff_exists_Ioo_subset",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML019.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML019/Endpoint.lean",
+      "sha256": "6ddf77763e141bfb6fc9ea4cbf2c93a09306ece2fffad9f02c448c455d8a1bed",
+      "source_name": "ContDiffBump.contDiff",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML020.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML020/Endpoint.lean",
+      "sha256": "f6f4490adc655c64d02b553b12ef0ef7f5ca898ffedb0fe7607675fc48c8e751",
+      "source_name": "ContDiffBump.one_of_mem_closedBall",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML021.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML021/Endpoint.lean",
+      "sha256": "90955866a749d264052fbf8a4ea27aa1529847b1e0e4b46124b0e4fca1f3f176",
+      "source_name": "ContDiffBump.tsupport_eq",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML022.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML022/Endpoint.lean",
+      "sha256": "22cab3887e9534b4b0c55e04f5f5937c7d6d1b72381b12e12081dbbb3c7ff951",
+      "source_name": "derivWithin_of_mem_nhds",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML023.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML023/Endpoint.lean",
+      "sha256": "7e3267988599b3cb8ce32c99cf75d3c4ccebd73433183d62738b408076ee1595",
+      "source_name": "FormalMultilinearSeries.summable_norm_mul_pow",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML024.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML024/Endpoint.lean",
+      "sha256": "d2b01f5440389e6e6354ec44a6a554516f5cf6c732707499d5dc2c07e9d05de4",
+      "source_name": "FormalMultilinearSeries.le_radius_of_summable",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML025.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML025/Endpoint.lean",
+      "sha256": "58134d681cfb5c180b0e9730938fd7be2d48cb1b2cf05896e4acffa47438fc1a",
+      "source_name": "FormalMultilinearSeries.hasFPowerSeriesOnBall",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML026.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML026/Endpoint.lean",
+      "sha256": "e440111e011d13dfdf8c031b6ab0f9c7da764a0f50e808e749d2242ea491dd99",
+      "source_name": "HasFPowerSeriesOnBall.analyticAt",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML027.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML027/Endpoint.lean",
+      "sha256": "ae9e9c9d9abb48d01ed61fb8e87463a5d91884b39ace744194a04a451b2ad6e1",
+      "source_name": "tendstoUniformlyOn_tsum",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML028.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML028/Endpoint.lean",
+      "sha256": "f3e65edf28524cee031397d5ee760af94c01490b55e4de36a346c118b50e9c0c",
+      "source_name": "continuousOn_tsum",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML029.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML029/Endpoint.lean",
+      "sha256": "89926d188ff3d5e65b80e85e23fb877d2dcf46454c2d4f4b368ee55e0fdbb4ba",
+      "source_name": "hasFDerivAt_tsum_of_isPreconnected",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML030.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML030/Endpoint.lean",
+      "sha256": "f9e2281beab94bb0e2db33ac745e9e2d5e19f3f0abbfc3145932e3f0996abb75",
+      "source_name": "hasDerivAt_tsum_of_isPreconnected",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML031.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML031/Endpoint.lean",
+      "sha256": "3d37d337a565eb0d05dabb3ae97026fa40c47895d800f361d9f0f5591360c851",
+      "source_name": "hasFDerivAt_integral_of_dominated_of_fderiv_le",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML032.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML032/Endpoint.lean",
+      "sha256": "66f95ed117caad6657ecf7041e6d16771acf1a743cd5ac2ec51019fcdb16817d",
+      "source_name": "Complex.integral_boundary_rect_eq_zero_of_differentiableOn",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML033.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML033/Endpoint.lean",
+      "sha256": "f92bf5a464faa1c9bf8d9abda4988fe31bb8d2fb41cf9c8a09611be8c2f70741",
+      "source_name": "Complex.norm_iteratedDeriv_le_of_forall_mem_sphere_norm_le",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML034.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML034/Endpoint.lean",
+      "sha256": "cb00e5479887d8b9a31ec109f84ae8474a1bab854d850676317110950cce7c40",
+      "source_name": "SummableLocallyUniformlyOn.differentiableOn",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML035.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML035/Endpoint.lean",
+      "sha256": "b9c3123022fde7ec313a4858fa8cbdb869251ba9e899fe6bb9b92335d37f6b88",
+      "source_name": "DifferentiableOn.analyticAt",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML036.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML036/Endpoint.lean",
+      "sha256": "6d0fc027a6fa83e96d0d829629059142e9f34a99ef5dddb8ff5c5111e4216626",
+      "source_name": "AnalyticAt.restrictScalars",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML037.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML037/Endpoint.lean",
+      "sha256": "e3ebd025e70693805a148540deea7fe83fb9f24cd15d02ac43fcbc4a88cb50d2",
+      "source_name": "AnalyticAt.re_ofReal",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML038.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML038/Endpoint.lean",
+      "sha256": "deb25ddfc8633cef318abcadbee73adb05dd99de04e5586de8a229cd871f0985",
+      "source_name": "DifferentiableOn.isExactOn_ball",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML039.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML039/Endpoint.lean",
+      "sha256": "0852ab4623448bf5db99f3dc423b3541059c3a38ad6b0a983976fa712271a364",
+      "source_name": "Complex.IsExactOn.with_val_at",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML040.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML040/Endpoint.lean",
+      "sha256": "ee14f502f084174f40c87439e5930503bc3a447ec3a6ef6564c6a3c37365b3ba",
+      "source_name": "intervalIntegral.integral_hasDerivAt_right",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML041.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML041/Endpoint.lean",
+      "sha256": "8c09e24f40937478629fe0bd2746bce7126634951b8d7940f775990d071f4ac5",
+      "source_name": "intervalIntegral.integral_deriv_eq_sub",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML042.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML042/Endpoint.lean",
+      "sha256": "68c299d36380d1aa4b005ffbe9fb9069a6624d150dc8bf47bf031a6860b71904",
+      "source_name": "MeasureTheory.integral_tsum_of_summable_integral_norm",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML043.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML043/Endpoint.lean",
+      "sha256": "4f345e0237749eaa5ac7f6b5ea4ab9cdd60fdc9b26fd509a03cde22daf2b2d1d",
+      "source_name": "AnalyticOnNhd.eqOn_of_preconnected_of_eventuallyEq",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML044.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML044/Endpoint.lean",
+      "sha256": "74b087ac1648290d0ede60dd11b8b970f900649d68afcec97a4ab23dea793af5",
+      "source_name": "AnalyticOnNhd.eqOn_of_preconnected_of_frequently_eq",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML045.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML045/Endpoint.lean",
+      "sha256": "ae1aafb06eed5d77f9558a559c1b38894e0b7df00519e1dc83f991daa1ae7f6a",
+      "source_name": "Real.summable_exp_nat_mul_iff",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML046.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML046/Endpoint.lean",
+      "sha256": "f8f560b5018c63e680f887590c1d44d281113ebe433a2f7781a6ce99bd3c024a",
+      "source_name": "Real.summable_pow_mul_exp_neg_nat_mul",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML047.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML047/Endpoint.lean",
+      "sha256": "2a30d0e71abe41490f148457ca74487c62df41d036c498447785786266b4cda2",
+      "source_name": "summable_int_iff_summable_nat_and_neg",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML048.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML048/Endpoint.lean",
+      "sha256": "4307a7d678e473d48b8abc8dd1fb1a4fcd8d96ed8a632a78c5fc869e18b83d32",
+      "source_name": "Summable.mul_of_nonneg",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML049.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML049/Endpoint.lean",
+      "sha256": "163232f562c12405e5cd67fcdafb1daadd2a6aab3e01d1d073363e2237b15f18",
+      "source_name": "tsum_neg",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML050.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML050/Endpoint.lean",
+      "sha256": "fdf8a92213bfa429af766b9258337e9d26f3b4c9733c9ff6710eea0982cb3a26",
+      "source_name": "Filter.EventuallyEq.deriv",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML051.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML051/Endpoint.lean",
+      "sha256": "3942ecd1c1aa282f6483d95ad892e2115ddf59f14154396f97107dd4e355adf6",
+      "source_name": "AnalyticAt.fderiv",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML052.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML052/Endpoint.lean",
+      "sha256": "e8a88f6568bcc6a488baf3e164dc2c7549482dee5f99c6fab47866f16628e334",
+      "source_name": "AnalyticAt.contDiffAt",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML053.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML053/Endpoint.lean",
+      "sha256": "b5ac86e965825a51c11662082e0d1cad96730ef9d5395d40b7a373fbf699f755",
+      "source_name": "ContDiffAt.isSymmSndFDerivAt_of_omega",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML054.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML054/Endpoint.lean",
+      "sha256": "9002288ee8c24b05050662048af465b625a6b7976a5027349778341f5e424a0f",
+      "source_name": "AnalyticAt.curry_left",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML055.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML055/Endpoint.lean",
+      "sha256": "4dc29f00e9a417fe9825067c8b3725bda87fdc0b1dcc5e14e536fe37c76264fb",
+      "source_name": "Matrix.PosDef.of_dotProduct_mulVec_pos",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML056.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML056/Endpoint.lean",
+      "sha256": "d8441ea330c2ed6fac254adc69fde5da85f5a3e4ed51a505ee4604a7a7082e54",
+      "source_name": "Matrix.PosDef.add_posSemidef",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML057.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML057/Endpoint.lean",
+      "sha256": "c7ff1838eb8c23f063757322092221cfaee1c078cd7c22091e4fb2ee386fad83",
+      "source_name": "Matrix.PosDef.isUnit",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML058.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML058/Endpoint.lean",
+      "sha256": "8247d14b426031b253b0d58c5809a8180d811906e5596ca2ce9940381e9cfcdf",
+      "source_name": "Matrix.nonneg_iff_posSemidef",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML059.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML059/Endpoint.lean",
+      "sha256": "8b1886024d097525ae1b9f973cb87c64530dc8af5a78ffe7d8dfeb8f1d219e84",
+      "source_name": "CFC.sqrt_nonneg",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML060.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML060/Endpoint.lean",
+      "sha256": "45fbffe4184de2598f0c5932fc9e2d41787b12ddbf61c1a1b8671aaf81939ca3",
+      "source_name": "CFC.sqrt_mul_sqrt_self",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML061.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML061/Endpoint.lean",
+      "sha256": "970793f92d806bba4eba30dd33583cbb8d6e3aecd9798bcd516d5860f249eff6",
+      "source_name": "CFC.isUnit_sqrt_iff",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML062.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML062/Endpoint.lean",
+      "sha256": "d0205e069212791100096bb213d086863d5234576e1cd17feda6b030dbee001d",
+      "source_name": "Matrix.det_fromBlocks_zero₂₁",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML063.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML063/Endpoint.lean",
+      "sha256": "30ce544d8a32e0bbaea000c8b947b92a76976f09f380a2beece9f3aae1452956",
+      "source_name": "Matrix.isUnit_iff_isUnit_det",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML064.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML064/Endpoint.lean",
+      "sha256": "5e13fe6bb1cbbdf51403f6a50c8b4fd4ebb9200b4e01151d48e03e8d48040540",
+      "source_name": "Matrix.IsHermitian.instContinuousFunctionalCalculus",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ML065.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ML065/Endpoint.lean",
+      "sha256": "094554eb054efefcb12ad429ee2123bec5e003ff3069c0f932c4aff906c79708",
+      "source_name": "Matrix.instCStarRing",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME01.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME01/Endpoint.lean",
+      "sha256": "d521bbcc877543f04d017349f46a0655a4c6f4728863c1ac2ef15f6d7a87b188",
+      "source_name": "NSEMaxwell.HodgeProof.scalarL_eq_realFourierSeries",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME02.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME02/Endpoint.lean",
+      "sha256": "7f5fcbefe91d332329db76090e1e0a4e3afc2835d1403260b8c9254a41206e0b",
+      "source_name": "NSEMaxwell.HodgeProof.scalarL_smooth",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME03.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME03/Endpoint.lean",
+      "sha256": "2f9e7998af09dfca24f44b0ba1133b97f61dc5ca48c498e6b948f08b4800e602",
+      "source_name": "NSEMaxwell.HodgeProof.vectorL_smooth",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME04.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME04/Endpoint.lean",
+      "sha256": "32a06a690f14ea63aa7ab731228b6f7023f34848fb198b7b77417bc2bdfe9df3",
+      "source_name": "NSEMaxwell.HodgeProof.vectorL_component",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME05.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME05/Endpoint.lean",
+      "sha256": "b9e8c169e13061bf1e81045b82b55df4c32bf9ee7f482f82a38ecd4b724c7cbf",
+      "source_name": "NSEMaxwell.HodgeProof.coordinateDerivative_vectorL_commute",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME06.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME06/Endpoint.lean",
+      "sha256": "4465c5e07e5d06e5d6656941cdec2d704ce734971ce689ed49a1fb2319646939",
+      "source_name": "NSEMaxwell.HodgeProof.divergence_vectorL_commute",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME07.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME07/Endpoint.lean",
+      "sha256": "b52d614920b4dc33f269b6071a583183a1412b4e05ec01c40b4564a96b52bd31",
+      "source_name": "NSEMaxwell.HodgeProof.neg_laplacian_vectorL",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME08.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME08/Endpoint.lean",
+      "sha256": "39cde666c70db8ef9761a49d234bc71e06f0481229ea79cdc57270b030fe3ff5",
+      "source_name": "NSEMaxwell.HodgeProof.spatialInverseLaplacianLaws",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME09.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME09/Endpoint.lean",
+      "sha256": "e44ff4d2203c64bbd2d9bfeeccd29820bf80718801dd0fe1f7351c3edab241ce",
+      "source_name": "NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.K_curl",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME10.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME10/Endpoint.lean",
+      "sha256": "e7893556874e36c2156c69f5694aada4a32180ed5ee97a16358e73a0d3f768c8",
+      "source_name": "NSEMaxwell.HodgeProof.scalarL_trajectory_smooth",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME11.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME11/Endpoint.lean",
+      "sha256": "0510788dac906e166b3a55f7c5b1a4f97413707a232b60e8fdaa84c60a4a734c",
+      "source_name": "NSEMaxwell.HodgeProof.inverseScalarSeries_hasFDerivAt_pos",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME12.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME12/Endpoint.lean",
+      "sha256": "3b045d1eba6e1e83fdf4a693bc94c90fc3dccee1f84a4b3689c57a4d3bb6d5e4",
+      "source_name": "NSEMaxwell.HodgeProof.cubeIntegral_hasDerivWithinAt",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME13.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME13/Endpoint.lean",
+      "sha256": "42f754dd3a54090f5af50be5ba4edac3c6fb4c6a3b858bf774fe197d50ad3261",
+      "source_name": "NSEMaxwell.HodgeProof.scalarCoeff_hasDerivAt_pos",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME14.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME14/Endpoint.lean",
+      "sha256": "27d8460e4c80d1549bb11fadaa7506673514d71474c390839466ff36a03810a1",
+      "source_name": "NSEMaxwell.HodgeProof.uniform_inverseScalarCoeff_moment_bound",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME15.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME15/Endpoint.lean",
+      "sha256": "3df2ebc2b50f9ac013b4050504dde3efcb7715ac249452f2ab2369da38a2ab04",
+      "source_name": "NSEMaxwell.HodgeProof.scalarMean_contDiffOn",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME16.E01.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME16/E01/Endpoint.lean",
+      "sha256": "d11af0b1a8900fdabc27e12968adb3f305ffb9a47397445b4efe7a106ec0f75f",
+      "source_name": "NSEMaxwell.HodgeProof.scalarLift_component",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME16.E02.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME16/E02/Endpoint.lean",
+      "sha256": "df791d8edd8e70e9f3db04a1461268d1f383e1066548a0b358da58bbfdae8346",
+      "source_name": "NSEMaxwell.HodgeProof.scalarLift_contDiff",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME16.E03.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME16/E03/Endpoint.lean",
+      "sha256": "86207df2ab118bb490166cc1ca665f1567cde0b6aeec3472c111586d4056725a",
+      "source_name": "NSEMaxwell.HodgeProof.scalarLift_periodic",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME17.E01.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME17/E01/Endpoint.lean",
+      "sha256": "ce3ad9ffd1a5e2e901a31a7c5cb6b20d57978b271363904b5e26168085134d79",
+      "source_name": "NSEMaxwell.HodgeProof.scalarTimeDerivative_smooth",
+      "source_type_match": "PASS"
+    },
+    {
+      "name": "GRTemp.ME17.E02.endpoint",
+      "status": "A_TIER",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "path": "TEMP/ME17/E02/Endpoint.lean",
+      "sha256": "7670923e64eea069c564cb3ec2a639ea069749254a6ce2c983f80e8e0ba6337b",
+      "source_name": "NSEMaxwell.HodgeProof.scalarTimeDerivative_periodic",
+      "source_type_match": "PASS"
+    }
+  ]
+}

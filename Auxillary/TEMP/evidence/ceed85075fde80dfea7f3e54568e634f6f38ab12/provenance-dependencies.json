@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-11-13T07:07:42.003409+00:00",
+  "source_commit": "ceed85075fde80dfea7f3e54568e634f6f38ab12",
+  "github_run_id": "43383376659",
+  "requested_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "requested_compiler_commit": "3447a668783dbce1a8fdb97101dd067687b2b418",
+  "requested_mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "external_platform": "linux",
+  "phase": "dependencies",
+  "cache_policy": "PRESERVE_AND_REUSE_COMPATIBLE_OBJECTS",
+  "commands": [
+    {
+      "command": [
+        "lean",
+        "--version"
+      ],
+      "log": "lean-version-dependencies.log",
+      "exit_code": 0,
+      "seconds": 0.056
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--version"
+      ],
+      "log": "dependency-resolution.log",
+      "exit_code": 0,
+      "seconds": 6.554
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/TEMP/.lake/packages/plausible",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-plausible-revision.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/TEMP/.lake/packages/plausible",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-plausible-working-tree.log",
+      "exit_code": 0,
+      "seconds": 0.003
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/TEMP/.lake/packages/LeanSearchClient",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-LeanSearchClient-revision.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/TEMP/.lake/packages/LeanSearchClient",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-LeanSearchClient-working-tree.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/TEMP/.lake/packages/importGraph",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-importGraph-revision.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/TEMP/.lake/packages/importGraph",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-importGraph-working-tree.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/TEMP/.lake/packages/proofwidgets",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-proofwidgets-revision.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/TEMP/.lake/packages/proofwidgets",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-proofwidgets-working-tree.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/TEMP/.lake/packages/aesop",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-aesop-revision.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/TEMP/.lake/packages/aesop",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-aesop-working-tree.log",
+      "exit_code": 0,
+      "seconds": 0.003
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/TEMP/.lake/packages/Qq",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-Qq-revision.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/TEMP/.lake/packages/Qq",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-Qq-working-tree.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/TEMP/.lake/packages/batteries",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-batteries-revision.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/TEMP/.lake/packages/batteries",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-batteries-working-tree.log",
+      "exit_code": 0,
+      "seconds": 0.003
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/TEMP/.lake/packages/Cli",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-Cli-revision.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/TEMP/.lake/packages/Cli",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-Cli-working-tree.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/TEMP/.lake/packages/mathlib",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-mathlib-revision.log",
+      "exit_code": 0,
+      "seconds": 0.002
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/TEMP/.lake/packages/mathlib",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-mathlib-working-tree.log",
+      "exit_code": 0,
+      "seconds": 0.012
+    },
+    {
+      "command": [
+        "lake",
+        "exe",
+        "cache",
+        "get",
+        "Mathlib"
+      ],
+      "log": "mathlib-cache-get.log",
+      "exit_code": 0,
+      "seconds": 5.668
+    }
+  ],
+  "status": "PASS",
+  "semantic_discharge": "NOT_INFERRED_FROM_AXIOM_AUDIT",
+  "gr_law_or_root_promotion": "NONE",
+  "actual_lean_version": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+  "dependency_revisions": [
+    {
+      "name": "plausible",
+      "revision": "38e9c3ce15cbb63c92e90bb9a92e4eb82131f669"
+    },
+    {
+      "name": "LeanSearchClient",
+      "revision": "2bc7cf064315b26bc38dac2e9612fb581be9b75f"
+    },
+    {
+      "name": "importGraph",
+      "revision": "978b7ec9fbbf9a535114f1de8fe5b3778b358870"
+    },
+    {
+      "name": "proofwidgets",
+      "revision": "99e8adeea3c3cd86b6b79ba01a1383bf2d31d055"
+    },
+    {
+      "name": "aesop",
+      "revision": "c1c4362a130f12e632d252180a6c2a31d8fd4726"
+    },
+    {
+      "name": "Qq",
+      "revision": "3b55e9d00c6b0018e5d984eb011b6f93c09bd163"
+    },
+    {
+      "name": "batteries",
+      "revision": "01bc479e7432594821ba3fb0ca465211941de86d"
+    },
+    {
+      "name": "Cli",
+      "revision": "af8bc067a4cc6c6df472a68909a3f40b1c76c43e"
+    },
+    {
+      "name": "mathlib",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11"
+    }
+  ],
+  "dependency_status": "PASS"
+}

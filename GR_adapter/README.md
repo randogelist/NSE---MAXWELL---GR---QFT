@@ -114,3 +114,7 @@ gauge/inverse composition. The four project-law inhabitants remain open.
 contains the native sources, TXT reports, `run.cmd`, endpoint index and original
 external certificate. The source-equivalence record distinguishes later status
 metadata from the byte-identical audited proof and runner inputs.
+
+## Isolated source endpoints
+
+[TEMP](../TEMP/README.md): 82 source-entry folders, 85 isolated copied Lean endpoint bodies. Cached native Linux [run 43383376659](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43383376659) passed all 85 source-type comparisons and named standard-only axiom audits at `ceed85075fde80dfea7f3e54568e634f6f38ab12`. Upstream helper/type imports remain explicit. This certifies the cutout exports; GR namespace/sign/time-domain bridges and the exact GR root remain open.

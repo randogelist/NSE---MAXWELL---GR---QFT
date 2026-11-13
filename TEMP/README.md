@@ -6,7 +6,7 @@ SINGLE_ENDPOINT_MODULES = 85
 MATHLIB_ENTRIES = 65
 METHLIB_ENTRIES = 17 / 20 declarations
 COPIED_NON_MATHLIB_DEPENDENCIES = 72
-SOURCE_STATUS = A_TIER_CANDIDATE; promotion requires matching external evidence
+CURRENT_ENDPOINT_STATUS = A_TIER; 85/85 external source-type and axiom checks PASS
 LOCAL_LEAN_EXECUTIONS = 0
 ```
 
@@ -21,7 +21,7 @@ pinned; the 72-module non-Mathlib source closure is copied byte-for-byte.
 This does not supply the unimplemented GR adapters or the GR root.
 
 [Endpoint/chain index](INDEX.json) · [Dependency provenance](dependency-sources.json) ·
-[Compiler status](TEMP_ENDPOINT_EXTRACTION_A_TIER.txt)
+[Compiler status](TEMP_ENDPOINT_EXTRACTION_A_TIER.txt) · [Exact external certificate](EXTERNAL_CERTIFICATE.json)
 
 External cached execution: `run.cmd` on native Windows, or `bash run.sh` on Linux.
 Each export is compared with its original type and receives a named axiom audit.
@@ -110,3 +110,5 @@ Each export is compared with its original type and receives a named axiom audit.
 | ML063 | [`ML063.Endpoint`](ML063/Endpoint.lean) | `Matrix.isUnit_iff_isUnit_det` | GC15 |
 | ML064 | [`ML064.Endpoint`](ML064/Endpoint.lean) | `Matrix.IsHermitian.instContinuousFunctionalCalculus` | GC15 |
 | ML065 | [`ML065.Endpoint`](ML065/Endpoint.lean) | `Matrix.instCStarRing` | GC15 |
+
+Cached native Linux [run 43383376659](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43383376659) passed at `ceed85075fde80dfea7f3e54568e634f6f38ab12`: 85/85 compiled endpoints, exact source-type matches and standard-only named audits; 253 source-file hashes verified. Immutable source comments and catalog metadata retain their preparation labels; the certificate overlay records current promotion. GR adapters and root remain open.
