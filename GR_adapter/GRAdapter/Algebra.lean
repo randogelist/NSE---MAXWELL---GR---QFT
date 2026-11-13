@@ -180,7 +180,8 @@ def boundaryBlock (k : ℝ) (u : Fin 3 → ℝ) (A : Tensor3) : Tensor4 :=
 
 theorem lorentzTrace4_boundaryBlock (k : ℝ) (u : Fin 3 → ℝ) (A : Tensor3) :
     lorentzTrace4 (boundaryBlock k u A) = -k + trace3 A := by
-  simp [lorentzTrace4, boundaryBlock, trace3] <;> ring
+  change -k + A 0 0 + A 1 1 + A 2 2 = -k + (A 0 0 + A 1 1 + A 2 2)
+  ring
 
 theorem lorentzSquare4_boundaryBlock (k : ℝ) (u : Fin 3 → ℝ) (A : Tensor3) :
     lorentzSquare4 (boundaryBlock k u A) =

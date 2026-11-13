@@ -3,6 +3,7 @@ import GRAdapter.Algebra
 import GRAdapter.Fields
 import GRAdapter.Boundary
 import GRAdapter.Sector
+import GRAdapter.NativeBoundary
 import GRAdapter.Germs
 import GRAdapter.CompletionSource
 import GRAdapter.Contracts

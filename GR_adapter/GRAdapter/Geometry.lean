@@ -14,12 +14,15 @@ satisfy the nonzero-rho constitutive sector merely by being Ricci-flat.
 set_option autoImplicit false
 
 open Set
-open scoped BigOperators
+open scoped BigOperators Matrix.Norms.Frobenius
 
 namespace NSEGR
 
 noncomputable section
 
+/-- All matrix-valued analytic predicates use Mathlib's explicit Frobenius
+norm structure. This fixes the finite-dimensional topology without substituting
+an operator norm for the tensor norm. -/
 abbrev Bulk := EuclideanSpace ℝ (Fin 5)
 abbrev BulkMatrix := Matrix (Fin 5) (Fin 5) ℝ
 abbrev Metric := Bulk → BulkMatrix
@@ -51,11 +54,11 @@ def christoffel (g : Metric) (z : Bulk) (a b c : Fin 5) : ℝ :=
 radial equation in the B-tier derivation. -/
 def ricci (g : Metric) : Metric := fun z a b =>
   (∑ c : Fin 5,
-    bulkPartial (fun y => christoffel g y c a b) c z -
-      bulkPartial (fun y => christoffel g y c a c) b z) +
-  ∑ c : Fin 5, ∑ d : Fin 5,
-    christoffel g z c c d * christoffel g z d a b -
-      christoffel g z c b d * christoffel g z d a c
+    (bulkPartial (fun y => christoffel g y c a b) c z -
+      bulkPartial (fun y => christoffel g y c a c) b z)) +
+  (∑ c : Fin 5, ∑ d : Fin 5,
+    (christoffel g z c c d * christoffel g z d a b -
+      christoffel g z c b d * christoffel g z d a c))
 
 def scalarCurvature (g : Metric) (z : Bulk) : ℝ :=
   ∑ a : Fin 5, ∑ b : Fin 5, inverseMetric g z a b * ricci g z a b

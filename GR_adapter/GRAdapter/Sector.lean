@@ -12,6 +12,7 @@ analytic radial extension theorem remain independent formal obligations.
 set_option autoImplicit false
 
 open Set
+open scoped Matrix.Norms.Frobenius
 
 namespace NSEGR
 

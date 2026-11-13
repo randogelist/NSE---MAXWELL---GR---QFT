@@ -13,7 +13,7 @@ independent proof obligations; they are not encoded in these definitions.
 set_option autoImplicit false
 
 open Set
-open scoped BigOperators
+open scoped BigOperators Matrix.Norms.Frobenius
 
 namespace NSEGR
 

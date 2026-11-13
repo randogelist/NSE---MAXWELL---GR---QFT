@@ -127,7 +127,9 @@ theorem strain_symmetric (a : Field) (x : Vec) :
 /-- The trace-free strain property uses the actual divergence definition. -/
 theorem trace_strain (a : Field) (x : Vec) :
     Matrix.trace (strain a x) = 2 * divergence a x := by
-  simp only [Matrix.trace, strain, divergence, Finset.sum_add_distrib]
+  change (∑ i : Fin 3, (spatialPartial a i x i + spatialPartial a i x i)) =
+    2 * ∑ i : Fin 3, spatialPartial a i x i
+  rw [Finset.sum_add_distrib]
   ring
 
 theorem trace_strain_eq_zero (a : Field) (x : Vec) (h : divergence a x = 0) :
@@ -157,8 +159,23 @@ theorem spatialPeriodic_const {E : Type*} (c : E) :
   intro i
   simp [gradient, PiLp.toLp_apply]
 
+@[simp] theorem gradient_zero : gradient (0 : ScalarField) = 0 := by
+  funext x
+  apply PiLp.ext
+  intro i
+  simp [gradient, PiLp.toLp_apply]
+
 @[simp] theorem divergence_const (c : Vec) :
     divergence (fun _ : Vec => c) = 0 := by
+  funext x
+  simp [divergence]
+
+@[simp] theorem spatialPartial_zero (i : Fin 3) :
+    spatialPartial (0 : Field) i = 0 := by
+  funext x
+  simp [spatialPartial]
+
+@[simp] theorem divergence_zero : divergence (0 : Field) = 0 := by
   funext x
   simp [divergence]
 
@@ -167,8 +184,16 @@ theorem spatialPeriodic_const {E : Type*} (c : E) :
   funext x
   simp [laplacian]
 
+@[simp] theorem laplacian_zero : laplacian (0 : Field) = 0 := by
+  funext x
+  simp [laplacian]
+
 @[simp] theorem scalarLaplacian_const (c : ℝ) :
     scalarLaplacian (fun _ : Vec => c) = 0 := by
+  funext x
+  simp [scalarLaplacian]
+
+@[simp] theorem scalarLaplacian_zero : scalarLaplacian (0 : ScalarField) = 0 := by
   funext x
   simp [scalarLaplacian]
 
@@ -177,8 +202,16 @@ theorem spatialPeriodic_const {E : Type*} (c : E) :
   funext x i j
   simp [scalarHessian]
 
+@[simp] theorem scalarHessian_zero : scalarHessian (0 : ScalarField) = 0 := by
+  funext x i j
+  simp [scalarHessian]
+
 @[simp] theorem strain_const (c : Vec) :
     strain (fun _ : Vec => c) = 0 := by
+  funext x i j
+  simp [strain]
+
+@[simp] theorem strain_zero : strain (0 : Field) = 0 := by
   funext x i j
   simp [strain]
 
@@ -189,8 +222,18 @@ theorem spatialPeriodic_const {E : Type*} (c : E) :
   intro i
   simp [tensorDivergence, PiLp.toLp_apply]
 
+@[simp] theorem tensorDivergence_zero : tensorDivergence (0 : TensorField) = 0 := by
+  funext x
+  apply PiLp.ext
+  intro i
+  simp [tensorDivergence, PiLp.toLp_apply]
+
 @[simp] theorem convection_const (c : Vec) :
     convection (fun _ : Vec => c) = 0 := by
+  funext x
+  simp [convection]
+
+@[simp] theorem convection_zero : convection (0 : Field) = 0 := by
   funext x
   simp [convection]
 
@@ -199,13 +242,27 @@ theorem spatialPeriodic_const {E : Type*} (c : E) :
   funext t x
   simp [localTimeDerivative]
 
+@[simp] theorem localTimeDerivative_zero : localTimeDerivative (0 : Velocity) = 0 := by
+  funext t x
+  simp [localTimeDerivative]
+
 @[simp] theorem scalarLocalTimeDerivative_const (c : ℝ) :
     scalarLocalTimeDerivative (fun _ _ => c) = 0 := by
   funext t x
   simp [scalarLocalTimeDerivative]
 
+@[simp] theorem scalarLocalTimeDerivative_zero :
+    scalarLocalTimeDerivative (0 : Pressure) = 0 := by
+  funext t x
+  simp [scalarLocalTimeDerivative]
+
 @[simp] theorem nseResidual_const (ν : ℝ) (m : Vec) (c : ℝ) :
     nseResidual ν (fun _ _ => m) (fun _ _ => c) = 0 := by
+  funext t x
+  simp [nseResidual]
+
+@[simp] theorem nseResidual_zero (ν : ℝ) :
+    nseResidual ν (0 : Velocity) (0 : Pressure) = 0 := by
   funext t x
   simp [nseResidual]
 
@@ -222,7 +279,8 @@ theorem spatialPeriodic_const {E : Type*} (c : E) :
   simp [leray]
 
 @[simp] theorem leray_zero : leray (0 : Field) = 0 := by
-  simpa using leray_const (0 : Vec)
+  funext x
+  simp [leray]
 
 /-- The representative-level local PDE carrier has genuine constant solutions. -/
 theorem localNSE_const (ν t0 δ : ℝ) (hδ : 0 < δ) (m : Vec) (c : ℝ) :
@@ -237,7 +295,8 @@ theorem localNSE_const (ν t0 δ : ℝ) (hδ : 0 < δ) (m : Vec) (c : ℝ) :
 
 theorem localNSE_zero (ν t0 δ : ℝ) (hδ : 0 < δ) :
     LocalNSE ν t0 δ (0 : Velocity) (0 : Pressure) := by
-  simpa using localNSE_const ν t0 δ hδ (0 : Vec) (0 : ℝ)
+  change LocalNSE ν t0 δ (fun _ _ => (0 : Vec)) (fun _ _ => (0 : ℝ))
+  exact localNSE_const ν t0 δ hδ 0 0
 
 /-- No time regularity or PDE condition is inferred from a total operator formula. -/
 theorem poissonInverse_definition (f : ScalarField) (x : Vec) :

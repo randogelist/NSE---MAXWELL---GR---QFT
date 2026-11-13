@@ -27,6 +27,7 @@ This statement is local in time and radius. The inherited `FeffermanB` is a glob
 | 1 | `GRAdapter/Fields.lean` | Ordinary-time local analytic NSE, concrete Poisson/Leray series, actual constant solutions |
 | 1 | `GRAdapter/Boundary.lean` | Actual `K`, beta, velocity, pressure, STF stress, Codazzi and Hamiltonian expressions |
 | 1 | `GRAdapter/Sector.lean` | Independent constrained-boundary, normalized vacuum and canonical metric predicates |
+| 1 | `GRAdapter/NativeBoundary.lean` | Actual constant constrained boundary for every rho; no bulk realization asserted |
 | 1 | `GRAdapter/Germs.lean` | Independent pressure-gauge and marked metric germ quotients |
 | 1 | `GRAdapter/CompletionSource.lean` | Actual source, scalar correction, lowering and completed boundary tensor |
 | 1 | `GRAdapter/Contracts.lean` | Explicit scalar/radial/reconstruction obligations and exact zero-stress deduction |
@@ -55,3 +56,5 @@ bash GR_adapter/run.sh
 `run.cmd` is the native Windows entry point for the Windows-safe standalone export containing the sibling `GR_adapter/` and `Auxillary/GR/` directories. The full inherited repository contains POSIX-only names and is not a native Windows checkout target.
 
 Source inventory, explicit hypotheses and matching evidence are recorded in [GR_ADAPTER_A_TIER.txt](GR_ADAPTER_A_TIER.txt), [audit targets](../Auxillary/GR/audit-targets.json), and [scope status](../Auxillary/GR/formalization-status.json). Existing compiler/dependency/project caches are retained. Each stage must pass compilation and a fresh named axiom audit before the next stage runs.
+
+Detailed source-to-obligation map: [ENDPOINT_PLAN.md](ENDPOINT_PLAN.md).
