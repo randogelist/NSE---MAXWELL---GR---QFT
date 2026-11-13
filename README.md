@@ -1,5 +1,25 @@
 # Fefferman B ↔ constrained Maxwell
 
+## Classical mechanics branch
+
+`Classical_Mechanics_adapter/` contains the actual Newtonian Cauchy stress
+adapter. `B <-> ClassicalMechanics/=>` and `B <-> ClassicalMechanics/<=`
+contain its two directional proofs. The first root combines the global
+arbitrary-pressure-gauge equivalence and a separate finite normalized-pressure
+equivalence. Both Maxwell compositions retain `FourierHodgeLaws` explicitly.
+
+```text
+CLASSICAL_MECHANICS_STATUS = A_TIER_CANDIDATE
+CLASSICAL_MECHANICS_THEOREM_AUDITS = 25
+FULL_MATERIAL_AND_LDA_REFERENCE_ROOT = PENDING
+LOCAL_LEAN_EXECUTIONS = 0
+```
+
+[Native adapter](Classical_Mechanics_adapter/) ·
+[Directional structure](B%20%3C-%3E%20ClassicalMechanics/) ·
+[Exact status](Auxillary/CLASSICAL_MECHANICS_ADAPTER_A_TIER.txt) ·
+[Complete B-tier chain](Auxillary/derivations/NSE_CLASSICAL_MECHANICS_EQUIVALENCE_B_TIER.txt)
+
 ## Repository structure
 
 | Directory | Scope |

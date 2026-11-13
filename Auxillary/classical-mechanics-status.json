@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "source_status": "A_TIER_CANDIDATE",
+  "root": "ClassicalMechanics.CLASSICAL_MECHANICS_ADAPTER",
+  "root_type": "GlobalExactEquivalence \u2227 FiniteExactEquivalence",
+  "native_scope": "actual local Newtonian Cauchy stress balance; global arbitrary pressure gauge and finite normalized-pressure scopes are separate",
+  "exact_target_proved": false,
+  "unconditional_closure": false,
+  "local_lean_executions": 0,
+  "audit_target_count": 25,
+  "base_branch": "codex/fefferman-b-maxwell",
+  "base_commit": "1de664f2ef5ddc11caef25ac2274278b4171ab6b",
+  "branch": "codex/classical-mechanics-adapter",
+  "lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "analytic_premises_first_adapter": [],
+  "conditional_maxwell_premise": "NSEMaxwell.Bridge.FourierHodgeLaws",
+  "full_B_tier_reference_root_proved": false,
+  "open_reference_obligations": [
+    "actual material flow existence/inverse/volume and transported differential operators",
+    "moving-region Newtonian momentum balance and Reynolds/divergence adapters",
+    "actual constrained variations and Lagrange-dAlembert equivalence",
+    "remaining ID01--ID57 exact formal targets in the proof-spine register"
+  ],
+  "external_evidence": null,
+  "promotion_rule": "matching external compiler and theorem-level axioms audit; all premises remain explicit",
+  "baseline_scopes_preserved": [
+    236,
+    236,
+    62
+  ]
+}

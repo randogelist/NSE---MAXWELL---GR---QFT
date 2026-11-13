@@ -1,0 +1,57 @@
+import ClassicalMechanics
+
+set_option autoImplicit false
+set_option pp.universes true
+set_option pp.fullNames true
+set_option pp.proofs false
+
+#check @ClassicalMechanics.CLASSICAL_MECHANICS_ADAPTER
+#print axioms ClassicalMechanics.CLASSICAL_MECHANICS_ADAPTER
+#check @ClassicalMechanics.nseSolution_iff_newtonianSolution
+#print axioms ClassicalMechanics.nseSolution_iff_newtonianSolution
+#check @ClassicalMechanics.feffermanB_iff_newtonianB
+#print axioms ClassicalMechanics.feffermanB_iff_newtonianB
+#check @ClassicalMechanics.global_exact_equivalence
+#print axioms ClassicalMechanics.global_exact_equivalence
+#check @ClassicalMechanics.nseSolutionOn_iff_newtonianSolutionOn
+#print axioms ClassicalMechanics.nseSolutionOn_iff_newtonianSolutionOn
+#check @ClassicalMechanics.finite_solution_sets_eq
+#print axioms ClassicalMechanics.finite_solution_sets_eq
+#check @ClassicalMechanics.finite_existence_iff
+#print axioms ClassicalMechanics.finite_existence_iff
+#check @ClassicalMechanics.finite_exact_equivalence
+#print axioms ClassicalMechanics.finite_exact_equivalence
+#check @ClassicalMechanics.finite_velocity_slice_smooth
+#print axioms ClassicalMechanics.finite_velocity_slice_smooth
+#check @ClassicalMechanics.finite_pressure_slice_smooth
+#print axioms ClassicalMechanics.finite_pressure_slice_smooth
+#check @ClassicalMechanics.newtonianB_implies_maxwellB_of_fourierHodgeLaws
+#print axioms ClassicalMechanics.newtonianB_implies_maxwellB_of_fourierHodgeLaws
+#check @ClassicalMechanics.maxwellB_implies_newtonianB_of_fourierHodgeLaws
+#print axioms ClassicalMechanics.maxwellB_implies_newtonianB_of_fourierHodgeLaws
+#check @ClassicalMechanics.newtonianB_iff_maxwellB_of_fourierHodgeLaws
+#print axioms ClassicalMechanics.newtonianB_iff_maxwellB_of_fourierHodgeLaws
+#check @ClassicalMechanics.strain_symmetric
+#print axioms ClassicalMechanics.strain_symmetric
+#check @ClassicalMechanics.newtonianStress_constitutive
+#print axioms ClassicalMechanics.newtonianStress_constitutive
+#check @ClassicalMechanics.newtonianStress_symmetric
+#print axioms ClassicalMechanics.newtonianStress_symmetric
+#check @ClassicalMechanics.newtonianStress_component_derivative
+#print axioms ClassicalMechanics.newtonianStress_component_derivative
+#check @ClassicalMechanics.tensorDivergence_newtonianStress
+#print axioms ClassicalMechanics.tensorDivergence_newtonianStress
+#check @ClassicalMechanics.tensorDivergence_newtonianStress_of_divergence_zero
+#print axioms ClassicalMechanics.tensorDivergence_newtonianStress_of_divergence_zero
+#check @ClassicalMechanics.newtonianSolution_to_nseSolution
+#print axioms ClassicalMechanics.newtonianSolution_to_nseSolution
+#check @ClassicalMechanics.newtonianB_implies_feffermanB
+#print axioms ClassicalMechanics.newtonianB_implies_feffermanB
+#check @ClassicalMechanics.newtonianSolutionOn_to_nseSolutionOn
+#print axioms ClassicalMechanics.newtonianSolutionOn_to_nseSolutionOn
+#check @ClassicalMechanics.nseSolution_to_newtonianSolution
+#print axioms ClassicalMechanics.nseSolution_to_newtonianSolution
+#check @ClassicalMechanics.feffermanB_implies_newtonianB
+#print axioms ClassicalMechanics.feffermanB_implies_newtonianB
+#check @ClassicalMechanics.nseSolutionOn_to_newtonianSolutionOn
+#print axioms ClassicalMechanics.nseSolutionOn_to_newtonianSolutionOn

@@ -24,6 +24,15 @@ lean_lib SingularClosure where
 lean_lib MethlibEndpoints where
   srcDir := "Fefferman_adapter"
 
+lean_lib ClassicalMechanicsForward where
+  srcDir := "B <-> ClassicalMechanics/=>"
+
+lean_lib ClassicalMechanicsReverse where
+  srcDir := "B <-> ClassicalMechanics/<="
+
+lean_lib ClassicalMechanics where
+  srcDir := "Classical_Mechanics_adapter"
+
 @[default_target]
 lean_lib NSEMaxwell where
   srcDir := "Fefferman_adapter"
