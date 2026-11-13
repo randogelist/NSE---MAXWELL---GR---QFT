@@ -92,7 +92,7 @@ def main() -> int:
     aggregate: dict = {"schema_version": 1, "status": "INITIALIZE", "modules": [],
         "local_lean_executions": 0, "allowed_axioms": sorted(FOUNDATIONS),
         "L1_status": "NOT_PROMOTED_BY_PARTIAL_MODULE_AUDITS",
-        "literature_L1": "RETAINED_UNTIL_EXACT_NATIVE_CONSTRUCTION_IS_VERIFIED"}
+        "literature_L1": "NATIVE_COMPATIBILITY_THEOREM; CURRENT_AUDIT_REQUIRED"}
 
     def save() -> None:
         write_json(report / "aggregate-summary.json", aggregate)

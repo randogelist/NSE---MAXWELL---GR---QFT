@@ -1,15 +1,13 @@
 import ClassicalMechanicsAssembly.LiteratureInputs
 
 /-!
-# Material equation closure with named literature axioms
+# Native material equation compatibility routes
 
-The first theorem uses the L1 flow axiom and the native L2 diffusion theorem.
-Its historical name is retained for compatibility. The second has the same
-conclusion and invokes the native supplied-flow equation theorem directly.
-Both routes now have L1 as their only nonfoundational axiom. Both construct a path for a supplied smooth velocity
-field and establish equation equivalence with the literal pressure pullback.
-Neither theorem asserts NSE existence from initial data or a full solution-set
-bijection with pressure-normalization, energy, or variational transport.
+Both historical theorem names are retained. L1 and L2 are native theorems;
+their exact original signatures and the two root conclusions are unchanged.
+The roots construct a path for a supplied smooth periodic divergence-free
+velocity and establish equation equivalence with literal pressure pullback.
+No arbitrary-data NSE existence or full solution-set bijection is asserted.
 -/
 
 set_option autoImplicit false
@@ -20,7 +18,7 @@ open Set ClassicalMechanics NSEMaxwell.Classical
 
 noncomputable section
 
-/-- Compatibility root: L1 is assumed and L2 is proved natively. -/
+/-- Compatibility root using the native L1 and L2 theorems. -/
 theorem CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2
     {ν T : ℝ} (hT : 0 < T) {u : Velocity} {p : Pressure}
     (hu : SmoothVelocityOn T u) (hp : SmoothPressureOn T p)
@@ -40,7 +38,7 @@ theorem CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2
   exact ClassicalMechanics.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW_AND_DIFFUSION
     hT hu hp hη hflow (fun _ _ _ => rfl) (L2 hu hη hflow)
 
-/-- The same closure with only the L1 analytic axiom. -/
+/-- The same closure using native flow realization and the native equation bridge. -/
 theorem CLASSICAL_MECHANICS_MATERIAL_FROM_L1
     {ν T : ℝ} (hT : 0 < T) {u : Velocity} {p : Pressure}
     (hu : SmoothVelocityOn T u) (hp : SmoothPressureOn T p)

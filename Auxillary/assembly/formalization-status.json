@@ -28,5 +28,24 @@
     "Quot.sound"
   ],
   "diffusion_obligation": "DISCHARGED_FROM_SUPPLIED_SMOOTH_UNIT_JACOBIAN_FLOW",
-  "flow_existence_obligation": "OPEN"
+  "flow_existence_obligation": "DISCHARGED_FOR_SMOOTH_PERIODIC_SOLENOIDAL_FINITE_SLAB_FIELDS_BY_L1_NATIVE",
+  "native_root_extension": {
+    "status": "A_TIER",
+    "evidence": {
+      "source_commit": "ff3c809f241ff14c7b9556b858bb423e1f9630d0",
+      "report_directory": "Auxillary/evidence/flow-linux-43399380498/flow/FlowRealization",
+      "audit_summary_sha256": "3ad65cc9ac7fae25afc099bdab42171f19c13aa84cf6a5946aef7597c3d40b52",
+      "source_manifest_sha256": "9f61c7606542dafc0b7b9bb011cbdcec9c65fcf3a436392cb71cbcd6f365a848",
+      "import_closure_sha256": "658eb04fed096e4a6506ccc07aa285d58d12494101a60afd42b954d3aa215c11",
+      "native_module_count": 46,
+      "exact_roots": [
+        "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE",
+        "ClassicalMechanicsAssembly.L1_native"
+      ],
+      "status": "PASS_STANDARD_ONLY"
+    },
+    "root": "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE",
+    "closure": "UNCONDITIONAL_CLOSURE_WITHIN_STATED_FINITE_SLAB_SCOPE"
+  },
+  "original_supplied_flow_root": "The original certified theorem retains its explicit MaterialPathOn and flow-ODE premises."
 }

@@ -1,16 +1,12 @@
-import ClassicalMechanicsAssembly.Equation
+import ClassicalMechanicsAssembly.FlowRealization
 
 /-!
-# Explicit literature inputs
+# Native compatibility contracts
 
-`L1` is the remaining user-authorized FLOW axiom. `L2` is a theorem with
-the exact DIFFUSION contract from Section 1 of
-`CLASSICAL_MECHANICS_FLOW_PIOLA_INPUTS_B_TIER.txt`, proved by native Piola
-transport. These contracts remain isolated from the standard-only entry point.
-
-`L2_native` has the same type as `L2` and uses the existing native diffusion
-theorem. Thus `L2` can be eliminated from the material equation closure;
-the flow-existence assumption `L1` remains explicitly visible.
+`L1` retains the exact former FLOW axiom signature and invokes the native
+finite-slab flow-realization theorem. `L2` and `L2_native` retain their native
+diffusion proofs. No custom axiom is declared in this compatibility module.
+Fresh matching external audits are required for the changed declarations.
 -/
 
 set_option autoImplicit false
@@ -22,7 +18,7 @@ open Set ClassicalMechanics NSEMaxwell.Classical
 noncomputable section
 
 /-- O_FLOW: smooth periodic solenoidal fields admit a normalized material path. -/
-axiom L1 {T : ℝ} (hT : 0 < T) {u : Velocity}
+theorem L1 {T : ℝ} (hT : 0 < T) {u : Velocity}
     (hu : SmoothVelocityOn T u)
     (hperiodic : ∀ t ∈ Icc (0 : ℝ) T, SpatialPeriodic (u t))
     (hdiv : ∀ t ∈ Icc (0 : ℝ) T, ∀ x : Vec,
@@ -30,7 +26,8 @@ axiom L1 {T : ℝ} (hT : 0 < T) {u : Velocity}
     ∃ η ρ : Velocity,
       MaterialPathOn T η ρ ∧
       ∀ t ∈ Icc (0 : ℝ) T, ∀ a : Vec,
-        materialVelocity T η t a = u t (η t a)
+        materialVelocity T η t a = u t (η t a) :=
+  ClassicalMechanicsAssembly.L1_native hT hu hperiodic hdiv
 
 /-- O_DIFF is a native theorem; no positivity of T or literature axiom is added. -/
 theorem L2 {T : ℝ} {u η ρ : Velocity}

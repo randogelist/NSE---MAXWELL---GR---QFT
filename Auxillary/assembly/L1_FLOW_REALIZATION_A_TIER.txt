@@ -1,7 +1,7 @@
 L1_FLOW_REALIZATION
 ===================
 
-STATUS = A_TIER_CANDIDATE
+STATUS = A_TIER
 EXACT_ROOT = ClassicalMechanicsAssembly.L1_native
 SOURCE = ASSEMBLY/ClassicalMechanicsAssembly/FlowRealization.lean
 LOCAL_LEAN_EXECUTIONS = 0
@@ -9,11 +9,11 @@ EXTERNAL_PLATFORM = native Linux; cached Lean 4.34.0-rc1
 MATHLIB = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
 METHLIB = e9cf90726b8544a268469ebc8fa6634e9c713e07
 APPROVED_FOUNDATIONS = propext, Classical.choice, Quot.sound
-L1_AXIOM_REMOVAL = PENDING_EXACT_ROOT_COMPILATION_AND_AXIOM_AUDIT
+L1_AXIOM_REMOVAL = NATIVE_THEOREM_REPLACEMENT; COMPATIBILITY_REAUDIT_PENDING
 PARTIAL_EXTERNAL_SOURCE = 82d26ef52c923f7de0707b4811928e81cf06a0ab
 PARTIAL_EXTERNAL_RUN = 43397660178
 PARTIAL_STANDARD_ONLY = FlowBounds:6; FlowBanach:30; FlowSmooth:9; FlowInverse:10; FlowJacobian:7; FlowTrajectories:23; FlowVariational:6; FlowConstruction:5; FlowVolterra:11; FlowSpatialJets:13; FlowPathJets:5; FlowPathSolutions:9; FlowImplicit:11; FlowJetTime:5; FlowJetIntegral:5
-EXACT_L1_EXTERNAL_STATUS = NOT_YET_COMPILED
+EXACT_L1_EXTERNAL_STATUS = PASS_STANDARD_ONLY
 
 EXACT SCOPE
 -----------
@@ -135,3 +135,19 @@ fails. Dependents of a failed module are explicitly BLOCKED.
 Prepared source is not a kernel proof. Only matching external compilation
 and exact theorem-level standard-foundation-only audits promote a target.
 Partial module audits do not discharge L1.
+
+EXACT_NATIVE_MIGRATION_EVIDENCE
+{
+  "source_commit": "ff3c809f241ff14c7b9556b858bb423e1f9630d0",
+  "report_directory": "Auxillary/evidence/flow-linux-43399380498/flow/FlowRealization",
+  "audit_summary_sha256": "3ad65cc9ac7fae25afc099bdab42171f19c13aa84cf6a5946aef7597c3d40b52",
+  "source_manifest_sha256": "9f61c7606542dafc0b7b9bb011cbdcec9c65fcf3a436392cb71cbcd6f365a848",
+  "import_closure_sha256": "658eb04fed096e4a6506ccc07aa285d58d12494101a60afd42b954d3aa215c11",
+  "native_module_count": 46,
+  "exact_roots": [
+    "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE",
+    "ClassicalMechanicsAssembly.L1_native"
+  ],
+  "status": "PASS_STANDARD_ONLY"
+}
+Changed literature compatibility wrappers remain A_TIER_CANDIDATE until their own matching audit.

@@ -146,10 +146,6 @@ jobs:
         shell: bash
         run: bash Auxillary/run_assembly.sh
 
-      - name: Compile the isolated literature route and audit exact authorized axioms
-        shell: bash
-        run: bash Auxillary/run_literature.sh
-
       - name: Restore reusable native flow dependency objects
         id: flow-deps-cache
         uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
@@ -163,6 +159,10 @@ jobs:
         id: flow-audit
         shell: bash
         run: bash Auxillary/run_flow.sh
+
+      - name: Audit all five native compatibility theorems with zero custom axioms
+        shell: bash
+        run: bash Auxillary/run_literature.sh
 
       - name: Preserve assembly source, compiler and theorem evidence
         if: always()

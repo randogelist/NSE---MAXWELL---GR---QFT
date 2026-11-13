@@ -1,40 +1,71 @@
 {
   "schema_version": 1,
-  "status": "A_TIER_UNDER_L1_ONLY",
-  "closure_status": "CONDITIONAL_FORMAL_CLOSURE",
-  "user_authorization": "2026-11-13: L2 removed from axioms; retain L1 only",
-  "axiom_declarations": [
-    "ClassicalMechanicsAssembly.Literature.L1"
-  ],
-  "axiom_status": "L1_DECLARED_ANALYTIC_INPUT_NOT_PROVED",
-  "flow_realization": "ASSUMED_BY_L1; NATIVE_DERIVATION_OPEN",
-  "diffusion_realization": "NATIVE_THEOREM_L2; NO_DIFFUSION_AXIOM",
-  "native_proof": "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_DIFFUSION_REALIZATION",
-  "standard_only_assembly_target_count": 43,
+  "status": "A_TIER_CANDIDATE",
+  "closure_status": "PENDING_FRESH_COMPATIBILITY_AUDIT",
+  "native_L1_status": "A_TIER",
+  "native_root_evidence": {
+    "source_commit": "ff3c809f241ff14c7b9556b858bb423e1f9630d0",
+    "report_directory": "Auxillary/evidence/flow-linux-43399380498/flow/FlowRealization",
+    "audit_summary_sha256": "3ad65cc9ac7fae25afc099bdab42171f19c13aa84cf6a5946aef7597c3d40b52",
+    "source_manifest_sha256": "9f61c7606542dafc0b7b9bb011cbdcec9c65fcf3a436392cb71cbcd6f365a848",
+    "import_closure_sha256": "658eb04fed096e4a6506ccc07aa285d58d12494101a60afd42b954d3aa215c11",
+    "native_module_count": 46,
+    "exact_roots": [
+      "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE",
+      "ClassicalMechanicsAssembly.L1_native"
+    ],
+    "status": "PASS_STANDARD_ONLY"
+  },
+  "axiom_declarations": [],
+  "literature_axiom_declaration_count": 0,
+  "literature_theorem_count": 5,
   "literature_audit_target_count": 5,
+  "standard_only_assembly_target_count": 43,
+  "axiom_status": "NO_CUSTOM_AXIOM_DECLARATIONS",
+  "flow_realization": "NATIVE_L1; COMPATIBILITY_WRAPPER_PENDING_FRESH_AUDIT",
+  "diffusion_realization": "NATIVE_L2_AND_L2_NATIVE",
+  "external_compilation": "PENDING_FOR_CHANGED_COMPATIBILITY_SOURCE",
+  "literature_5_axiom_audit": "PENDING_STANDARD_ONLY",
+  "expected_nonfoundational_axioms": [],
   "local_lean_executions": 0,
-  "external_platform": "native Linux / Ubuntu 24.04",
-  "toolchain": "leanprover/lean4:v4.34.0-rc1",
-  "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
-  "external_compilation": "PASS",
-  "standard_43_axiom_audit": "PASS_STANDARD_ONLY",
-  "literature_5_axiom_audit": "PASS_EXACT_AUTHORIZED_AXIOMS",
-  "literature_import_closure_modules": 22,
-  "L2_native_axiom_audit": "PASS_STANDARD_ONLY",
-  "dual_root_analytic_axioms": [
-    "ClassicalMechanicsAssembly.Literature.L1"
-  ],
-  "native_diffusion_root_analytic_axioms": [
-    "ClassicalMechanicsAssembly.Literature.L1"
-  ],
-  "source_commit": "f2030b012904c84d088ec2a6af407b4f81a314b5",
-  "external_run_id": 43379686374,
-  "external_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43379686374",
-  "external_artifact_id": 14016092956,
-  "artifact_sha256": "c9361450df283e6625c1a2292168e96a3648a2b254c0d475ae2928a9364f8daf",
-  "retained_evidence": "Auxillary/evidence/l1-only-linux-43379686374",
-  "source_input_matches": 346,
-  "L2_axiom_audit": "PASS_STANDARD_ONLY",
-  "literature_axiom_declaration_count": 1,
-  "literature_theorem_count": 4
+  "prior_literature_audit_historical_only": {
+    "schema_version": 1,
+    "status": "A_TIER_UNDER_L1_ONLY",
+    "closure_status": "CONDITIONAL_FORMAL_CLOSURE",
+    "user_authorization": "2026-11-13: L2 removed from axioms; retain L1 only",
+    "axiom_declarations": [
+      "ClassicalMechanicsAssembly.Literature.L1"
+    ],
+    "axiom_status": "L1_DECLARED_ANALYTIC_INPUT_NOT_PROVED",
+    "flow_realization": "ASSUMED_BY_L1; NATIVE_DERIVATION_OPEN",
+    "diffusion_realization": "NATIVE_THEOREM_L2; NO_DIFFUSION_AXIOM",
+    "native_proof": "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_DIFFUSION_REALIZATION",
+    "standard_only_assembly_target_count": 43,
+    "literature_audit_target_count": 5,
+    "local_lean_executions": 0,
+    "external_platform": "native Linux / Ubuntu 24.04",
+    "toolchain": "leanprover/lean4:v4.34.0-rc1",
+    "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+    "external_compilation": "PASS",
+    "standard_43_axiom_audit": "PASS_STANDARD_ONLY",
+    "literature_5_axiom_audit": "PASS_EXACT_AUTHORIZED_AXIOMS",
+    "literature_import_closure_modules": 22,
+    "L2_native_axiom_audit": "PASS_STANDARD_ONLY",
+    "dual_root_analytic_axioms": [
+      "ClassicalMechanicsAssembly.Literature.L1"
+    ],
+    "native_diffusion_root_analytic_axioms": [
+      "ClassicalMechanicsAssembly.Literature.L1"
+    ],
+    "source_commit": "f2030b012904c84d088ec2a6af407b4f81a314b5",
+    "external_run_id": 43379686374,
+    "external_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43379686374",
+    "external_artifact_id": 14016092956,
+    "artifact_sha256": "c9361450df283e6625c1a2292168e96a3648a2b254c0d475ae2928a9364f8daf",
+    "retained_evidence": "Auxillary/evidence/l1-only-linux-43379686374",
+    "source_input_matches": 346,
+    "L2_axiom_audit": "PASS_STANDARD_ONLY",
+    "literature_axiom_declaration_count": 1,
+    "literature_theorem_count": 4
+  }
 }

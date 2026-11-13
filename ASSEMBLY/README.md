@@ -28,9 +28,10 @@ from the `export` mechanism and the recorded canonical source hashes.
 
 The audited new root derives diffusion from the supplied smooth unit-Jacobian
 path and its actual flow ODE. Pressure is defined by scalar pullback. The
-remaining premise is the supplied `MaterialPathOn` and flow ODE; construction
-of that path from a smooth periodic solenoidal Eulerian field remains open in
-Lean. This root is equation equivalence, not full solution-set equivalence.
+remaining premises of this original root are the supplied `MaterialPathOn` and flow ODE.
+The separate native `ClassicalMechanicsAssembly.L1_native` construction now discharges those
+requirements for the exact smooth periodic divergence-free finite-slab scope.
+The resulting root proves equation equivalence for a supplied velocity and pressure.
 
 External cached validation:
 
@@ -46,25 +47,24 @@ Retained [source-match certificate](../Auxillary/evidence/assembly-linux-4337663
 [exact signatures and axiom log](../Auxillary/evidence/assembly-linux-43376636262/audit.log).
 The audited proof source is unchanged by the documentation/evidence retention commit.
 
-## Remaining literature input
+## Native flow realization and compatibility contracts
 
-`ClassicalMechanicsAssembly.Literature.L1` is the finite-slab flow-realization
-axiom. `Literature.L2` and `Literature.L2_native` are native diffusion theorems.
-Both equation closure routes now depend only on L1. The historical
-`CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2` name is retained for compatibility.
-The standard-only aggregate import remains unchanged.
+`ClassicalMechanicsAssembly.L1_native` and
+`ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE` have matching
+external standard-only audits for their exact finite-slab statements.
+The [native status record](../Auxillary/assembly/L1_FLOW_REALIZATION_A_TIER.txt)
+contains the source identity and evidence.
 
-Updated-module status: **A_TIER under L1 only**.
-[Cached Linux run 43379686374](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43379686374) passed all 43 standard-only
-assembly audits and the five exact literature-module audits. L2 and L2_native
-are standard-only; both closure roots have L1 as their sole analytic axiom.
-Exact contracts: [ASSEMBLY_LITERATURE_A_TIER.txt](../Auxillary/ASSEMBLY_LITERATURE_A_TIER.txt).
-L1 still requires a native flow construction; the target closure remains
-`CONDITIONAL_FORMAL_CLOSURE`.
+`Literature.L1` now has a theorem body invoking the native construction.
+All five historical compatibility declarations require zero custom axioms.
+Their updated source remains **A_TIER_CANDIDATE** until a fresh five-target
+external audit passes. The 43-target standard assembly audit remains separate.
 
-L1 construction register: [L1_FLOW_REALIZATION_ENTRYPOINTS.txt](../Auxillary/assembly/L1_FLOW_REALIZATION_ENTRYPOINTS.txt).
+The native statement supplies a smooth material path and inverse for each
+given smooth periodic divergence-free velocity on [0,T], T>0, and proves the
+exact pulled-back equation equivalence. Both endpoints and arbitrary velocity
+mean are retained. Arbitrary-data NSE existence, global regularity, full
+moving-region balance, and full solution-set bijection remain outside this scope.
 
-Mathematical derivation: [L1_FLOW_REALIZATION_ENDPOINT_CHAIN_B_TIER.txt](../Auxillary/assembly/L1_FLOW_REALIZATION_ENDPOINT_CHAIN_B_TIER.txt).
-The 20 derived endpoints construct the exact L1 flow witness and yield the
-scoped Eulerian/material equation equivalence at B-tier. Native L1 discharge
-remains open; existing Lean axiom declarations and audit status are unchanged.
+Historical literature certificates and research/derivation records remain
+preserved with their original source-specific status explicitly marked historical.
