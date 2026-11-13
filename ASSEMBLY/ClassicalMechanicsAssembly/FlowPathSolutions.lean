@@ -89,6 +89,7 @@ theorem selectedFlowPath_integral_equation (h : SlabODEData T u B K)
   intro r hr
   have hrT : r ∈ Icc (0 : ℝ) T :=
     uIcc_subset_Icc ⟨le_rfl, hT⟩ t.property hr
+  change u r (flow h hT r a) = u r (flowPathExtend hT (selectedFlowPath h hT a) r)
   rw [flowPathExtend_of_mem hT _ r hrT]
   rfl
 

@@ -44,8 +44,7 @@ theorem flow_multilinearPath_continuous_evaluation {T : ℝ}
         apply continuous_clm_apply.mpr
         intro h
         have hh : Continuous (fun x => (L x).curryLeft h) :=
-          (ContinuousLinearMap.apply ℝ (Vec [×r]→L[ℝ] C(Icc (0 : ℝ) T, Vec)) h)
-            .continuous.comp
+          (ContinuousLinearMap.apply ℝ (Vec [×r]→L[ℝ] C(Icc (0 : ℝ) T, Vec)) h).continuous.comp
               ((continuousMultilinearCurryLeftEquiv ℝ (fun _ : Fin (r + 1) => Vec)
                 C(Icc (0 : ℝ) T, Vec)).continuous.comp hL)
         convert ih (fun x => (L x).curryLeft h) hh using 1 <;> rfl

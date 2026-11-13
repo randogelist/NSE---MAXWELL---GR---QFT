@@ -124,9 +124,15 @@ theorem flowSpatialJet_superposition_contDiff {T : ℝ} (hT : 0 < T)
       t.property).differentiable (by simp) x).hasFDerivAt
     exact hd
   · intro r t
-    simpa only [one_mul, flowSpatialCurry, Function.comp_def] using
-      (continuousMultilinearCurryLeftEquiv ℝ (fun _ : Fin (r + 1) => Vec) Vec).lipschitz.comp
-        (hK r t t.property)
+    apply LipschitzWith.of_dist_le_mul
+    intro x y
+    change dist
+      ((continuousMultilinearCurryLeftEquiv ℝ (fun _ : Fin (r + 1) => Vec) Vec)
+        (flowSpatialJet u (r + 1) t x))
+      ((continuousMultilinearCurryLeftEquiv ℝ (fun _ : Fin (r + 1) => Vec) Vec)
+        (flowSpatialJet u (r + 1) t y)) ≤ (K r : ℝ) * dist x y
+    rw [(continuousMultilinearCurryLeftEquiv ℝ (fun _ : Fin (r + 1) => Vec) Vec).dist_map]
+    exact (hK r t t.property).dist_le_mul x y
 
 /-- The actual velocity field restricted to the compact time domain. -/
 def flowVelocityMap {T : ℝ} {u : Velocity} (hu : SmoothVelocityOn T u) :

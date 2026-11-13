@@ -52,6 +52,7 @@ theorem evaluatedFlowJet_integral_of_path_equation {T : ℝ} (hT : 0 ≤ T)
   let e0 := ContinuousMap.evalCLM ℝ (M := Vec) t0
   let et := ContinuousMap.evalCLM ℝ (M := Vec) t
   let V := flowPathPrimitive (E := Vec) hT
+  have hr : (r : ℕ∞ω) ≤ ∞ := ENat.natCast_le_of_coe_top_le_withTop le_rfl r
   have hzero : ∀ b : Vec, Γ b t0 = b := by
     intro b
     have he := congrArg (fun p : C(Icc (0 : ℝ) T, Vec) => p t0) (hroot b)
@@ -63,12 +64,12 @@ theorem evaluatedFlowJet_integral_of_path_equation {T : ℝ} (hT : 0 ≤ T)
     rw [hzero b]
     exact he
   have hd := congrArg (fun f : Vec → Vec => iteratedFDeriv ℝ r f a) heq
-  rw [iteratedFDeriv_add_apply
-    ((e0.contDiff.comp hΓ).of_le (by simp)).contDiffAt
-    (((et.comp V).contDiff.comp hH).of_le (by simp)).contDiffAt] at hd
-  rw [et.iteratedFDeriv_comp_left hΓ.contDiffAt (by simp),
-    e0.iteratedFDeriv_comp_left hΓ.contDiffAt (by simp),
-    (et.comp V).iteratedFDeriv_comp_left hH.contDiffAt (by simp)] at hd
+  rw [iteratedFDeriv_add_apply (i := r)
+    ((e0.contDiff.comp hΓ).of_le hr).contDiffAt
+    (((et.comp V).contDiff.comp hH).of_le hr).contDiffAt] at hd
+  rw [et.iteratedFDeriv_comp_left (i := r) hΓ.contDiffAt hr,
+    e0.iteratedFDeriv_comp_left (i := r) hΓ.contDiffAt hr,
+    (et.comp V).iteratedFDeriv_comp_left (i := r) hH.contDiffAt hr] at hd
   exact hd.trans (congrArg (fun J => evaluatedFlowJet Γ r t0 a + J)
     (flow_primitive_evaluated_jet hT hH r t a))
 
@@ -82,7 +83,8 @@ theorem flow_labelJet_eq_evaluated {T : ℝ}
     iteratedFDeriv ℝ r (η t) a = evaluatedFlowJet Γ r ⟨t, ht⟩ a := by
   have heq : η t = (ContinuousMap.evalCLM ℝ ⟨t, ht⟩) ∘ Γ := funext (hrep t ht)
   rw [heq]
-  exact (ContinuousMap.evalCLM ℝ ⟨t, ht⟩).iteratedFDeriv_comp_left hΓ.contDiffAt (by simp)
+  exact (ContinuousMap.evalCLM ℝ ⟨t, ht⟩).iteratedFDeriv_comp_left (i := r)
+    hΓ.contDiffAt (ENat.natCast_le_of_coe_top_le_withTop le_rfl r)
 
 /-- Every actual label derivative of an integral-curve family satisfies the
 literal differentiated time-integral equation, including the boundary times. -/

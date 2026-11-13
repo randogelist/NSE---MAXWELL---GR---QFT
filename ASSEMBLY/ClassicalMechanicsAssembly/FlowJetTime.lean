@@ -69,6 +69,7 @@ theorem flow_time_remainder_of_integral {T : ℝ} {J P : ℝ × Vec → F}
     rw [flow_integral_difference hP hbase hz ht z.2,
       intervalIntegral.integral_sub hi intervalIntegrable_const,
       intervalIntegral.integral_const]
+  change ‖J z - J (t, z.2) - (z.1 - t) • P (t, a)‖ ≤ c * ‖z - (t, a)‖
   rw [heq]
   calc
     ‖∫ r in t..z.1, P (r, z.2) - P (t, a)‖ ≤ c * |z.1 - t| := by

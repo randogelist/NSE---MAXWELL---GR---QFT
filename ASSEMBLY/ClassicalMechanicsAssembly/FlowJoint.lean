@@ -38,13 +38,11 @@ theorem flow_contDiffOn_multilinear_apply
         funext z i
         exact Fin.elim0 i
       rw [hg]
-      exact (ContinuousMultilinearMap.apply ℝ M F (fun i => Fin.elim0 i)).contDiff
-        .comp_contDiffOn hf
+      exact (ContinuousMultilinearMap.apply ℝ M F (fun i => Fin.elim0 i)).contDiff.comp_contDiffOn hf
   | succ r ih =>
       intro M _ _ f g hf hg
       have hc : ContDiffOn ℝ n (fun z => (f z).curryLeft (g z 0)) s :=
-        ((continuousMultilinearCurryLeftEquiv ℝ M F).contDiff.comp_contDiffOn hf)
-          .clm_apply (hg 0)
+        ((continuousMultilinearCurryLeftEquiv ℝ M F).contDiff.comp_contDiffOn hf).clm_apply (hg 0)
       have ht := ih (fun i => M i.succ)
         (fun z => (f z).curryLeft (g z 0)) (fun z i => g z i.succ)
         hc (fun i => hg i.succ)
@@ -106,8 +104,7 @@ theorem flowLabelJet_hasFDerivAt {T : ℝ}
       (flowLabelJet η (r + 1) (t, a)).curryLeft a := by
   have hs := flow_representative_slice_contDiff hΓ hrep ht
   have hd := ((ContDiff.differentiable_iteratedFDeriv (n := ∞) (m := r)
-    (ENat.natCast_lt_of_coe_top_le_withTop le_rfl r) hs) a)
-    .hasFDerivAt
+    (ENat.natCast_lt_of_coe_top_le_withTop le_rfl r) hs) a).hasFDerivAt
   apply hd.congr_fderiv
   ext h v
   rfl
