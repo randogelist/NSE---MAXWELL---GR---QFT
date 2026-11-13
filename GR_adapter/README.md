@@ -61,6 +61,23 @@ Source inventory, explicit hypotheses and matching evidence are recorded in [GR_
 
 Detailed source-to-obligation map: [ENDPOINT_PLAN.md](ENDPOINT_PLAN.md).
 
+## AX-relative gluing index
+
+[NSE_GR_AXIOM_GLUING_CHAIN_B_TIER.txt](Derivation/NSE_GR_AXIOM_GLUING_CHAIN_B_TIER.txt)
+contains the scoped mathematical derivation from `LI01`, `LI02`, `LI03`,
+with 24 dependency nodes, 65 verified Mathlib entries (including two instance
+supports), 20 Methlib theorems, and 58 selected audited native endpoints.
+The [machine index](Derivation/NSE_GR_AXIOM_GLUING_INDEX.json) records the same
+predecessors, exact signatures, hypotheses, immutable source pins, source
+hashes and endpoint-to-node backlinks.
+
+The selected Methlib Fourier/Hodge package matches the active compiler and
+Mathlib pin. Its actual inverse has the opposite sign: `G_GR = -scalarL`.
+Namespace/sign transport, local ordinary-time transport, joint analyticity,
+construction gluing and the resulting `c/r/h/q` inhabitants remain native
+implementation targets. This B-tier index supplies no new compiler evidence
+and introduces no Lean axiom declarations.
+
 ## External certificate
 
 Cached native Lean 4.34.0-rc1 [run 43365946484](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43365946484) passed at `3dc98a61115f8d2e79d115d70b8c3478c504d82e`: adapter 190/190, forward 6/6, reverse 6/6 named standard-only audits. All input hashes were verified. The [immutable original artifact](../Auxillary/GR/evidence/3dc98a61115f8d2e79d115d70b8c3478c504d82e/external-artifact.zip) and its original logs, types and manifests are retained. The [source-equivalence record](../Auxillary/GR/source-equivalence.json) identifies the subsequent status-only changes to audited inputs.

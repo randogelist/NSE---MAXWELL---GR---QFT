@@ -5,6 +5,21 @@ NATIVE_SOURCE != EXTERNAL_KERNEL_PASS
 EXTERNAL_AXIOM_PASS != PREMISE_DISCHARGE
 ```
 
+Current AX-relative dependency index:
+[TXT](Derivation/NSE_GR_AXIOM_GLUING_CHAIN_B_TIER.txt) ·
+[JSON](Derivation/NSE_GR_AXIOM_GLUING_INDEX.json).
+
+| Nodes | Derived output | Native status |
+|---|---|---|
+| GC01–GC04 | Actual smooth/analytic Poisson–Leray laws; Methlib sign and time-domain bridges | New bridges open; selected upstream source audited |
+| GC05–GC12 | Scalar CK, periodic witness construction, constrained boundary and recovery; `c` | CK germ/gradient edge audited; complete inhabitant open |
+| GC13–GC15 | Prescribed Gaussian germs, uniform periodic Lorentzian collar; `r` | Uniqueness edges audited; construction inhabitant open |
+| GC16–GC18 | Actual flat-boundary constraints, differentiated Hodge and residual; `h` | Selected calculus edges audited; complete inhabitant open |
+| GC19–GC23 | Canonical completion, gauge descent, inverse germs; `q` and exact root | Named-contract root audited; root from LI01–LI03 open |
+
+The following NP inventory is retained as the historical parent decomposition;
+the current GC index records the finer source-to-derivation obligations.
+
 | B-tier parent | Present native body | Remaining exact obligation |
 |---|---|---|
 | NP01 | `SameFlowAt`, `SameMetricAt`, independent quotient carriers | Full analytic restriction and lift/decode descent |
