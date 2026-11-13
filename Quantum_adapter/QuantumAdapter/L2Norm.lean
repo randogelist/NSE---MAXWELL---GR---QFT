@@ -21,7 +21,8 @@ theorem memLp_bornDensity_integrable {E : Type*} [MeasurableSpace E]
     {μ : Measure E} {ψ : Wave E} (hψ : MemLp ψ 2 μ) :
     Integrable (bornDensity ψ) μ := by
   have hi := (memLp_two_iff_integrable_sq_norm hψ.aestronglyMeasurable).mp hψ
-  simpa only [bornDensity, Complex.normSq_eq_norm_sq] using hi
+  change Integrable (fun q => Complex.normSq (ψ q)) μ
+  simpa only [Complex.normSq_eq_norm_sq] using hi
 
 theorem memLp_toLp_norm_sq {E : Type*} [MeasurableSpace E]
     {μ : Measure E} {ψ : Wave E} (hψ : MemLp ψ 2 μ) :
