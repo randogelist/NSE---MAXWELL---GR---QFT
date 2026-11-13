@@ -35,8 +35,11 @@ theorem analyticAt_spatialPartial_joint {u : Velocity} {z : ℝ × Vec}
     (ev.analyticAt _).comp hu.fderiv
   apply htotal.congr
   filter_upwards [hu.eventually_analyticAt] with y hy
+  have hmap : HasFDerivAt (fun x : Vec => (y.1, x))
+      ((0 : Vec →L[ℝ] ℝ).prod (ContinuousLinearMap.id ℝ Vec)) y.2 :=
+    (hasFDerivAt_const y.1 y.2).prodMk (hasFDerivAt_id y.2)
   have hslice := hy.differentiableAt.hasFDerivAt.comp y.2
-    ((hasFDerivAt_const y.1 y.2).prodMk (hasFDerivAt_id y.2))
+    hmap
   have heq := congrArg (fun L : Vec →L[ℝ] Vec => L (unitVector i)) hslice.fderiv
   simpa only [spatialPartial, Function.comp_def, id_eq,
     ContinuousLinearMap.comp_apply, ContinuousLinearMap.prod_apply,
@@ -140,12 +143,12 @@ theorem analyticAt_scalarCKRHS
   have hv : AnalyticAt ℝ (fun Y : ScalarCKJet => Y.2.1 1) J :=
     (e1.analyticAt _).comp hstate
   have hall : AnalyticAt ℝ
-      (fun Y : ScalarCKJet => Fin.cases (Y.2.1 1)
+      (fun Y : ScalarCKJet => (Fin.cases (Y.2.1 1)
         (Fin.cases
           (scalarJetRHS ρ (fun i => u Y.1.1 Y.1.2 i)
             (nseSpatialSource3 ν u p Y.1.1 Y.1.2)
             (scalarCKSpatialJet Y) (scalarCKMixedJet Y))
-          (scalarCKMixedJet Y))) J := by
+          (scalarCKMixedJet Y)) : Fin 5 → ℝ)) J := by
     apply AnalyticAt.pi
     intro k
     refine Fin.cases ?_ (fun l => ?_) k

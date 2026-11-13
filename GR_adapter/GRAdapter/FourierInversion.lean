@@ -158,7 +158,7 @@ theorem literatureFourierCoefficient_scalarLaplacian
     change (∫ y in unitCube, (scalarLaplacian f y : ℂ) * LiteratureCharacter (-k) y) = _
     have heq (y : Vec) : (scalarLaplacian f y : ℂ) =
         ∑ i : Fin 3, (fourierScalarPartial (fourierScalarPartial f i) i y : ℂ) := by
-      simp [scalarLaplacian, fourierScalarPartial]
+      simp [scalarLaplacian, fourierScalarPartial] <;> rfl
     simp_rw [heq, Finset.sum_mul]
     apply integral_finsetSum
     intro i _
@@ -184,7 +184,8 @@ theorem poissonSymbol_mul_scalarLaplacianSymbol (k : Frequency) :
   · have hsum : 0 < ∑ i : Fin 3, (k i : ℝ) ^ 2 :=
       zero_lt_one.trans_le (frequency_square_sum_ge_one k hk)
     have hden : 4 * Real.pi ^ 2 * (∑ i : Fin 3, (k i : ℝ) ^ 2) ≠ 0 := by positivity
-    simp [poissonSymbol, hk, hden]
+    simp only [poissonSymbol, if_neg hk, neg_mul_neg]
+    exact inv_mul_cancel₀ hden
 
 /-- One native inverse direction: G(Delta f)=f-mean(f), derived from LI03
 for every smooth periodic real field, with no additional analytic law. -/
