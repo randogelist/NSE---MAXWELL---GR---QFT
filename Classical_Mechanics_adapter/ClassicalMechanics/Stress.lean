@@ -59,16 +59,20 @@ theorem newtonianStress_component_derivative
   have hp' := hp.differentiable (by simp) x
   have hji := (coordinate_component_smooth ha j i).differentiable (by simp) x
   have hij' := (coordinate_component_smooth ha i j).differentiable (by simp) x
-  have hsum := hji.add hij'
+  have hsum : DifferentiableAt ℝ
+      (fun y : Vec => coordinateDerivative a j y i + coordinateDerivative a i y j) x := by
+    simpa only [Pi.add_def] using hji.add hij'
+  have hneg : DifferentiableAt ℝ (fun y : Vec => -p y) x := by
+    simpa only [Pi.neg_def] using hp'.neg
   by_cases hij : i = j
   · simp only [newtonianStress, if_pos hij]
-    rw [fderiv_fun_add hp'.neg (hsum.const_mul ν), fderiv_fun_neg,
+    erw [fderiv_fun_add hneg (hsum.const_mul ν), fderiv_fun_neg,
       fderiv_const_mul hsum ν, fderiv_fun_add hji hij']
     simp only [NSEMaxwell.Classical.gradient, PiLp.toLp_apply,
       ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
       ContinuousLinearMap.neg_apply, smul_eq_mul, second_coordinate_component ha]
   · simp only [newtonianStress, if_neg hij, zero_add]
-    rw [fderiv_const_mul hsum ν, fderiv_fun_add hji hij']
+    erw [fderiv_const_mul hsum ν, fderiv_fun_add hji hij']
     simp only [NSEMaxwell.Classical.gradient, PiLp.toLp_apply,
       ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
       smul_eq_mul, second_coordinate_component ha]
