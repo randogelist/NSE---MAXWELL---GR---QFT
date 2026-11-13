@@ -86,6 +86,7 @@ theorem material_displacement_periodic {T : ℝ} {η ρ : Velocity}
     (h : MaterialPathOn T η ρ) {t : ℝ} (ht : t ∈ Icc (0 : ℝ) T) :
     SpatialPeriodic (fun a => η t a - a) := by
   intro a i
+  change η t (a + unitVector i) - (a + unitVector i) = η t a - a
   rw [h.lattice_equivariant t ht a i]
   abel
 
