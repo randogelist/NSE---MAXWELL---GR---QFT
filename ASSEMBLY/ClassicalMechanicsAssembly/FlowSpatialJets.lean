@@ -140,8 +140,9 @@ theorem periodic_velocity_superposition_contDiff {T : ℝ} (hT : 0 < T)
     (hp : ∀ t ∈ Icc (0 : ℝ) T, SpatialPeriodic (u t)) :
     ContDiff ℝ ∞ (flowPathSuperpositionTo (flowVelocityMap hu)) := by
   have hzero := flowSpatialJet_superposition_contDiff hT hu hp 0
-  have hc := ((continuousMultilinearCurryFin0 ℝ Vec Vec).toContinuousLinearEquiv.toContinuousLinearMap
-    .compLeftContinuous ℝ (Icc (0 : ℝ) T)).contDiff.comp hzero
+  have hc := (flowPathPostcomposition (I := Icc (0 : ℝ) T)
+    (continuousMultilinearCurryFin0 ℝ Vec Vec).toContinuousLinearEquiv.toContinuousLinearMap)
+    .contDiff.comp hzero
   exact hc
 
 end

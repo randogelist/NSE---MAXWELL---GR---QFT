@@ -1,0 +1,134 @@
+L1_FLOW_REALIZATION
+===================
+
+STATUS = A_TIER_CANDIDATE
+EXACT_ROOT = ClassicalMechanicsAssembly.L1_native
+SOURCE = ASSEMBLY/ClassicalMechanicsAssembly/FlowRealization.lean
+LOCAL_LEAN_EXECUTIONS = 0
+EXTERNAL_PLATFORM = native Linux; cached Lean 4.34.0-rc1
+MATHLIB = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+METHLIB = e9cf90726b8544a268469ebc8fa6634e9c713e07
+APPROVED_FOUNDATIONS = propext, Classical.choice, Quot.sound
+L1_AXIOM_REMOVAL = PENDING_EXACT_ROOT_COMPILATION_AND_AXIOM_AUDIT
+PARTIAL_EXTERNAL_SOURCE = e3f6b8d8aebe9ae0b06371203fe4f329397151ce
+PARTIAL_EXTERNAL_RUN = 43387803803
+PARTIAL_STANDARD_ONLY = FlowBounds:6; FlowJacobian:7
+EXACT_L1_EXTERNAL_STATUS = NOT_YET_COMPILED
+
+EXACT SCOPE
+-----------
+I := [0,T]; E := EuclideanSpace R (Fin 3); S := I x E.
+
+T > 0;
+u : R -> E -> E;
+ContDiffOn R infinity (fun (t,x) => u(t,x)) S;
+forall t in I, SpatialPeriodic (u t);
+forall t in I, forall x, divergence (u t) x = 0
+
+imply
+
+exists eta rho : R -> E -> E,
+  MaterialPathOn T eta rho
+  and forall t in I, forall a,
+    derivWithin (fun s => eta(s,a)) I t = u(t,eta(t,a)).
+
+MaterialPathOn fields:
+  joint smoothness of eta and rho on S;
+  rho(t,eta(t,a))=a;
+  eta(t,rho(t,x))=x;
+  eta(t,a+e_i)=eta(t,a)+e_i;
+  eta(0,a)=a;
+  det(D_a eta(t,a))=1.
+
+Both temporal endpoints are included. No time-length smallness, spatial-mean
+restriction, pressure, viscosity, NSE existence, or off-slab extension premise.
+
+NATIVE PROOF SPINE
+------------------
+FlowBounds:
+  coordinate periodicity -> integer lattice periodicity -> compact cell bounds
+  -> global spatial Lipschitz constant.
+
+FlowTrajectories:
+  actual whole-slab Picard existence -> boundary-inclusive ODE uniqueness
+  -> cocycle, inverse laws, lattice equivariance, Gronwall estimates.
+
+FlowBanach + FlowSpatialJets:
+  actual spatial derivative tower -> uniform quadratic remainders
+  -> C-infinity actual superposition map on C(I,E).
+
+FlowVolterra:
+  actual integral operator L_A;
+  ||L_A^n|| <= (K*T)^n/n!;
+  sum_n L_A^n = (1-L_A)^(-1).
+
+FlowPathSolutions + FlowImplicit:
+  actual path equation Gamma(a)=const(a)+V(N(Gamma(a)));
+  actual integral uniqueness;
+  partial derivative of the exact residual = 1-L_A;
+  Banach implicit function theorem -> Gamma in C-infinity(E,C(I,E)).
+
+FlowPathJets + FlowJetIntegral:
+  evaluation of actual Banach label derivatives;
+  fixed bounded linear maps commute with iterated derivatives;
+  actual tensor-valued differentiated time-integral equations.
+
+FlowSmooth + FlowJetTime + FlowJoint:
+  continuous actual label jets;
+  actual finite ordered-partition composition formula;
+  uniform time remainder;
+  simultaneous finite-order induction -> joint C-infinity on S.
+
+FlowJacobian + FlowVariational:
+  actual mixed derivatives -> F'=D_xu(t,eta)F;
+  polynomial determinant derivative -> J'=trace(D_xu)J=0;
+  J(0)=1 -> J=1, without prior invertibility.
+
+FlowInverse + FlowConstruction:
+  backward stability and time estimates -> joint inverse continuity;
+  J=1 -> invertible triangular spacetime derivative;
+  within-set inverse calculus -> joint inverse smoothness;
+  assemble all seven MaterialPathOn fields.
+
+FlowRealization:
+  exact L1_native;
+  native Eulerian/material equivalence via the existing native diffusion chain.
+
+MATHLIB ENTRYPOINTS USED
+-----------------------
+IsCompact.exists_bound_of_continuousOn
+lipschitzWith_of_nnnorm_fderiv_le
+IsPicardLindelof.exists_eq_forall_mem_Icc_hasDerivWithinAt
+ODE_solution_unique_of_mem_Icc_left
+ODE_solution_unique_of_mem_Icc_right
+dist_le_of_trajectories_ODE_of_mem
+Real.summable_pow_div_factorial
+Summable.one_sub_mul_tsum_pow
+Summable.tsum_pow_mul_one_sub
+ContinuousLinearMap.IsInvertible.of_inverse
+ContDiffAt.contDiffAt_implicitFunction
+ContDiffAt.eventually_apply_implicitFunction
+ContinuousLinearMap.iteratedFDeriv_comp_left
+iteratedFDeriv_comp
+contDiffOn_succ_iff_hasFDerivWithinAt_of_uniqueDiffOn
+contDiffOn_infty
+ContDiffWithinAt.isSymmSndFDerivWithinAt
+HasFDerivWithinAt.of_local_left_inverse
+
+METHLIB ENTRYPOINT USED
+----------------------
+SingularClosure.spatialPeriodic_integerShift
+
+VERIFICATION CONTRACT
+---------------------
+Auxillary/run_flow.sh
+Auxillary/assembly/run_flow.py
+Auxillary/assembly/flow-targets.json
+
+Every registered declaration receives a fresh #check and #print axioms.
+Independent modules retain their individual audit results if another module
+fails. Dependents of a failed module are explicitly BLOCKED.
+
+Prepared source is not a kernel proof. Only matching external compilation
+and exact theorem-level standard-foundation-only audits promote a target.
+Partial module audits do not discharge L1.

@@ -36,7 +36,7 @@ theorem SlabODEData.isPicardLindelof (h : SlabODEData T u B K)
   have hT : 0 ≤ T := s.property.1.trans s.property.2
   refine ⟨fun t ht => (h.lipschitz t ht).lipschitzOnWith,
     fun x _ => h.continuous_time x, fun t ht x _ => h.norm_le t ht x, ?_⟩
-  simp only [NNReal.coe_mul, Real.coe_toNNReal hT, NNReal.coe_zero, sub_zero]
+  simp only [NNReal.coe_mul, Real.coe_toNNReal T hT, NNReal.coe_zero, sub_zero]
   exact mul_le_mul_of_nonneg_left
     (max_le (sub_le_self T s.property.1) s.property.2) B.coe_nonneg
 
@@ -182,7 +182,7 @@ theorem trajectory_dist_le (h : SlabODEData T u B K)
       (fun r hr => (trajectory_hasDerivWithinAt h s b r
         ⟨s.property.1.trans hr.1, hr.2.le⟩).mono_of_mem_nhdsWithin
         (Icc_mem_nhdsGE_of_mem ⟨s.property.1.trans hr.1, hr.2⟩))
-      (fun _ _ => mem_univ _) (by simp only [trajectory_initial]) t ⟨hst, ht.2⟩
+      (fun _ _ => mem_univ _) (by simp only [trajectory_initial, le_refl]) t ⟨hst, ht.2⟩
     apply hg.trans
     apply mul_le_mul_of_nonneg_left _ (dist_nonneg : 0 ≤ dist a b)
     apply Real.exp_le_exp.mpr
@@ -203,7 +203,7 @@ theorem trajectory_dist_le (h : SlabODEData T u B K)
         (Icc_mem_nhdsLE_of_mem (hmem r hr))
       convert HasFDerivWithinAt.comp_hasDerivWithinAt r hd
         (hasDerivAt_neg r).hasDerivWithinAt
-        (fun q (hq : q ∈ Ici r) => (neg_le_neg hq : -q ∈ Iic (-r))) using 1 <;> simp
+        (fun q (hq : q ∈ Ici r) => mem_Iic.mpr (neg_le_neg (mem_Ici.mp hq))) using 1 <;> simp
     have hg := dist_le_of_trajectories_ODE_of_mem
       (s := fun _ => (univ : Set E)) (K := K) (δ := dist a b)
       (v := fun r x => -u (-r) x)
@@ -213,9 +213,9 @@ theorem trajectory_dist_le (h : SlabODEData T u B K)
       (hder a) (fun _ _ => mem_univ _)
       ((trajectory_continuousOn h s b).comp continuous_neg.continuousOn hmaps)
       (hder b) (fun _ _ => mem_univ _)
-      (by simp only [neg_neg, trajectory_initial]) (-t)
+      (by simp only [Function.comp_def, neg_neg, trajectory_initial, le_refl]) (-t)
       ⟨neg_le_neg hts, neg_nonpos.mpr ht.1⟩
-    simp only [neg_neg] at hg
+    simp only [Function.comp_def, neg_neg] at hg
     apply hg.trans
     apply mul_le_mul_of_nonneg_left _ (dist_nonneg : 0 ≤ dist a b)
     apply Real.exp_le_exp.mpr
@@ -228,7 +228,7 @@ theorem trajectory_lipschitz (h : SlabODEData T u B K)
       (fun a => trajectory h s a t) := by
   apply LipschitzWith.of_dist_le_mul
   intro a b
-  simpa only [Real.coe_toNNReal (Real.exp_nonneg _), mul_comm] using
+  simpa only [Real.coe_toNNReal _ (Real.exp_nonneg _), mul_comm] using
     trajectory_dist_le h s a b t ht
 
 /-- Bounded velocity makes every trajectory Lipschitz in time. -/
@@ -253,8 +253,11 @@ theorem trajectory_joint_continuousOn (h : SlabODEData T u B K)
 theorem inverseFlow_lipschitz (h : SlabODEData T u B K) (hT : 0 ≤ T)
     (t : ℝ) (ht : t ∈ Icc (0 : ℝ) T) :
     LipschitzWith (Real.toNNReal (Real.exp ((K : ℝ) * T))) (inverseFlow h t) := by
-  simpa only [inverseFlow, dif_pos ht] using
-    trajectory_lipschitz h ⟨t, ht⟩ 0 ⟨le_rfl, hT⟩
+  have heq : inverseFlow h t = (fun a => trajectory h ⟨t, ht⟩ a 0) := by
+    funext a
+    simp only [inverseFlow, dif_pos ht]
+  rw [heq]
+  exact trajectory_lipschitz h ⟨t, ht⟩ 0 ⟨le_rfl, hT⟩
 
 section ClassicalAdapter
 

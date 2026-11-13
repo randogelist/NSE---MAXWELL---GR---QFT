@@ -188,7 +188,8 @@ def flowPathMultiplicationLinear (A : C(I, E →L[ℝ] F)) :
 
 theorem flowPathMultiplicationLinear_bound (A : C(I, E →L[ℝ] F)) (h : C(I, E)) :
     ‖flowPathMultiplicationLinear A h‖ ≤ ‖A‖ * ‖h‖ := by
-  apply (ContinuousMap.norm_le _ (mul_nonneg (norm_nonneg _) (norm_nonneg _))).mpr
+  apply ((flowPathMultiplicationLinear A h).norm_le
+    (mul_nonneg (norm_nonneg A) (norm_nonneg h))).mpr
   intro t
   exact ((A t).le_opNorm (h t)).trans
     (mul_le_mul (A.norm_coe_le_norm t) (h.norm_coe_le_norm t)
@@ -206,7 +207,7 @@ theorem flowPathMultiplication_apply (A : C(I, E →L[ℝ] F)) (h : C(I, E)) (t 
 
 theorem flowPathMultiplication_norm_le (A : C(I, E →L[ℝ] F)) :
     ‖flowPathMultiplication A‖ ≤ ‖A‖ :=
-  (flowPathMultiplicationLinear A).mkContinuous_norm_le (norm_nonneg _)
+  (flowPathMultiplicationLinear A).mkContinuous_norm_le (norm_nonneg A)
     (flowPathMultiplicationLinear_bound A)
 
 /-- The coefficient-to-operator construction is itself linear. -/
@@ -223,12 +224,23 @@ def flowPathMultiplicationLiftLinear :
 /-- Continuous dependence of the multiplication operator on its coefficient. -/
 def flowPathMultiplicationLift :
     C(I, E →L[ℝ] F) →L[ℝ] (C(I, E) →L[ℝ] C(I, F)) :=
-  flowPathMultiplicationLiftLinear.mkContinuous 1 (fun A => by
-    simpa only [one_mul] using flowPathMultiplication_norm_le A)
+  (flowPathMultiplicationLiftLinear (I := I) (E := E) (F := F)).mkContinuous 1
+    (fun (A : C(I, E →L[ℝ] F)) => by
+      change ‖flowPathMultiplication A‖ ≤ 1 * ‖A‖
+      rw [one_mul]
+      exact flowPathMultiplication_norm_le A)
 
 @[simp]
 theorem flowPathMultiplicationLift_apply (A : C(I, E →L[ℝ] F)) :
     flowPathMultiplicationLift A = flowPathMultiplication A := rfl
+
+/-- Postcomposition expressed directly in the sup-norm path-space structures. -/
+def flowPathPostcomposition (L : E →L[ℝ] F) : C(I, E) →L[ℝ] C(I, F) :=
+  flowPathMultiplication (ContinuousMap.const I L)
+
+@[simp]
+theorem flowPathPostcomposition_apply (L : E →L[ℝ] F) (γ : C(I, E)) (t : I) :
+    flowPathPostcomposition L γ t = L (γ t) := rfl
 
 /-- Superposition with different source and target Banach spaces. -/
 def flowPathSuperpositionTo (u : C(I × E, F)) (γ : C(I, E)) : C(I, F) :=
@@ -303,7 +315,9 @@ theorem flowPathSuperposition_contDiff_succ
     ContDiff ℝ (n + 1) (flowPathSuperpositionTo u) := by
   apply contDiff_succ_iff_hasFDerivAt.mpr
   refine ⟨flowPathSuperpositionDerivative A, ?_, ?_⟩
-  · exact (flowPathMultiplicationLift (I := I) (E := E) (F := F)).contDiff.comp hA
+  · simpa only [Function.comp_def, flowPathMultiplicationLift_apply,
+      flowPathSuperpositionDerivative] using
+      (flowPathMultiplicationLift (I := I) (E := E) (F := F)).contDiff.comp hA
   · exact flowPathSuperposition_hasFDerivAt u A M hM htaylor
 
 end SuperpositionCalculus
@@ -346,8 +360,8 @@ theorem flowPathSuperposition_contDiff_of_taylor_tower
       apply flowPathSuperposition_contDiff_succ (u n) (A n) (M n) (M n).coe_nonneg
         (htaylor n) m
       change ContDiff ℝ m (fun γ =>
-        (curry n).compLeftContinuous ℝ I (flowPathSuperpositionTo (u (n + 1)) γ))
-      exact ((curry n).compLeftContinuous ℝ I).contDiff.comp (ih (n + 1))
+        flowPathPostcomposition (curry n) (flowPathSuperpositionTo (u (n + 1)) γ))
+      exact (flowPathPostcomposition (I := I) (curry n)).contDiff.comp (ih (n + 1))
   intro n
   exact contDiff_infty.mpr (fun m => hfinite m n)
 

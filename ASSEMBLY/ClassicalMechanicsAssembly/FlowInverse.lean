@@ -139,9 +139,11 @@ theorem triangular_spacetime_isInvertible
     · intro z
       refine ⟨(z.1, e.symm (z.2 - z.1 • D (1, 0))), ?_⟩
       change (z.1, D (z.1, e.symm (z.2 - z.1 • D (1, 0)))) = z
-      apply Prod.ext rfl
-      rw [hsum, e.apply_symm_apply]
-      abel
+      apply Prod.ext
+      · rfl
+      · change D (z.1, e.symm (z.2 - z.1 • D (1, 0))) = z.2
+        rw [hsum, e.apply_symm_apply]
+        abel
   refine ⟨(LinearEquiv.ofBijective L.toLinearMap hbij).toContinuousLinearEquiv, ?_⟩
   apply ContinuousLinearMap.ext
   intro z

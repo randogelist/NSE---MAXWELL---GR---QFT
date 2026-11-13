@@ -51,7 +51,7 @@ theorem finite_mixed_directional_hasDerivWithinAt
   let H := fderivWithin ℝ L (finiteSpacetime T) (t, a)
   have hL : ContDiffWithinAt ℝ 1 L (finiteSpacetime T) (t, a) :=
     (hη (t, a) ht).fderivWithin_right (uniqueDiffOn_finiteSpacetime hT)
-      (by simp) ht
+      (by decide) ht
   have hdL : HasFDerivWithinAt L H (finiteSpacetime T) (t, a) :=
     (hL.differentiableWithinAt (by simp)).hasFDerivWithinAt
   have heTime : HasDerivWithinAt (fun s : ℝ => (s, a)) (1, 0)
