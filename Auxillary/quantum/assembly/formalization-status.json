@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "status": "A_TIER",
+  "status_scope": "Exact named declarations at proof_commit; current-source freshness is independently checked by the runner.",
+  "root_status": "CONDITIONAL_FORMAL_CLOSURE",
+  "marker": "!!!",
+  "proof_commit": "1a0664fc219e6b4e2caf005384bd71b585ad0847",
+  "compiler": "leanprover/lean4:v4.34.0-rc1",
+  "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "external_run_id": 43384137901,
+  "external_artifact_id": 14017707891,
+  "module_count": 13,
+  "theorem_count": 203,
+  "theorem_axiom_audit": "PASS_STANDARD_ONLY",
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "exact_root": "QuantumAdapter.Assembly.exact_quantum_root_for_canonical_flow",
+  "required_root_module_for_assembly_claim": "QuantumAdapter.Assembly",
+  "semantic_discharge": "EXACT_SOURCE_AND_SIGNATURE_REVIEW; NOT_INFERRED_FROM_AXIOM_AUDIT",
+  "residual_formal_endpoints": [
+    {
+      "id": "P1",
+      "endpoint": "actual drift divergence identity"
+    },
+    {
+      "id": "P2",
+      "endpoint": "initial-data differentiability of every real-time map"
+    },
+    {
+      "id": "P3",
+      "endpoint": "exact determinant/Jacobian identity"
+    },
+    {
+      "id": "P4",
+      "endpoint": "relative L2 exponential estimate"
+    },
+    {
+      "id": "P5",
+      "endpoint": "one positive uniform tame H3 constant and estimate"
+    },
+    {
+      "id": "P6",
+      "endpoint": "GalerkinAnalyticLaws.smooth_stability"
+    },
+    {
+      "id": "P7",
+      "endpoint": "GalerkinAnalyticLaws.compactness"
+    }
+  ],
+  "unconditional_closure": "NOT_ESTABLISHED",
+  "universal_regularity": "NOT_PROVED",
+  "selfadjoint_generator": "OUTSIDE_THIS_ROOT; NOT_CONSTRUCTED",
+  "repository_regression": {
+    "run_id": 43384137765,
+    "status": "PASS",
+    "artifact_id": 14019347135,
+    "artifact_sha256": "72df68b21282044409fa4e151e00ce137991a626c5a1f6cd18e4580d41dd230c",
+    "scopes": [
+      {
+        "scope": "integrated",
+        "status": "PASS_STANDARD_ONLY",
+        "theorem_count": 236,
+        "source_commit": "1a0664fc219e6b4e2caf005384bd71b585ad0847"
+      },
+      {
+        "scope": "quantum",
+        "status": "PASS_STANDARD_ONLY",
+        "theorem_count": 204,
+        "source_commit": "1a0664fc219e6b4e2caf005384bd71b585ad0847"
+      },
+      {
+        "scope": "quantum-assembly",
+        "status": "PASS_STANDARD_ONLY",
+        "theorem_count": 203,
+        "source_commit": "1a0664fc219e6b4e2caf005384bd71b585ad0847"
+      },
+      {
+        "scope": "maxwell-standalone",
+        "status": "PASS_STANDARD_ONLY",
+        "theorem_count": 62,
+        "source_commit": "1a0664fc219e6b4e2caf005384bd71b585ad0847"
+      },
+      {
+        "scope": "fefferman-standalone",
+        "status": "PASS_STANDARD_ONLY",
+        "theorem_count": 236,
+        "source_commit": "1a0664fc219e6b4e2caf005384bd71b585ad0847"
+      }
+    ]
+  },
+  "evidence_path": "Auxillary/quantum/assembly/evidence/1a0664fc219e6b4e2caf005384bd71b585ad0847",
+  "scope_report": "Auxillary/quantum/assembly/exports/exact_quantum_root_for_canonical_flow_A_TIER.txt",
+  "local_lean_executions": 0,
+  "external_artifact_sha256": "dfe20449f9f3d44f35a902754b8dd3ba4d9163f94c4fee11a118339a41cbc24c",
+  "source_manifest_sha256": "e348eb991d4823bffc87e3461ddd1f34745142955aa944fa59bd55c45e600068"
+}

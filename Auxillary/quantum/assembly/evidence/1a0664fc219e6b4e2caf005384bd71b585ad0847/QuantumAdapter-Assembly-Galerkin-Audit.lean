@@ -1,0 +1,31 @@
+import QuantumAdapter.Assembly.Galerkin
+set_option pp.universes true
+set_option pp.fullNames true
+#check @QuantumAdapter.Assembly.allSobolev_nativeData
+#print axioms QuantumAdapter.Assembly.allSobolev_nativeData
+#check @QuantumAdapter.Assembly.allSobolev_nativeData_and_coefficients
+#print axioms QuantumAdapter.Assembly.allSobolev_nativeData_and_coefficients
+#check @QuantumAdapter.Assembly.energy3_continuous
+#print axioms QuantumAdapter.Assembly.energy3_continuous
+#check @QuantumAdapter.Assembly.phaseFlow_orbit_continuous
+#print axioms QuantumAdapter.Assembly.phaseFlow_orbit_continuous
+#check @QuantumAdapter.Assembly.centralEnergy_continuous
+#print axioms QuantumAdapter.Assembly.centralEnergy_continuous
+#check @QuantumAdapter.Assembly.centralEnergy_bounded_on_Icc
+#print axioms QuantumAdapter.Assembly.centralEnergy_bounded_on_Icc
+#check @QuantumAdapter.Assembly.centralEnergy_finite_cutoffs_bounded
+#print axioms QuantumAdapter.Assembly.centralEnergy_finite_cutoffs_bounded
+#check @QuantumAdapter.Assembly.galerkinBoundAt_of_tail
+#print axioms QuantumAdapter.Assembly.galerkinBoundAt_of_tail
+#check @QuantumAdapter.Assembly.continuumFourierEnergy_nonneg
+#print axioms QuantumAdapter.Assembly.continuumFourierEnergy_nonneg
+#check @QuantumAdapter.Assembly.galerkinBoundAt_of_uniform_energy_approximation
+#print axioms QuantumAdapter.Assembly.galerkinBoundAt_of_uniform_energy_approximation
+#check @QuantumAdapter.Assembly.galerkinBoundAt_of_uniform_energy_convergence
+#print axioms QuantumAdapter.Assembly.galerkinBoundAt_of_uniform_energy_convergence
+#check @QuantumAdapter.Assembly.continuumFourierEnergy_le_of_centralEnergy_tendsto
+#print axioms QuantumAdapter.Assembly.continuumFourierEnergy_le_of_centralEnergy_tendsto
+#check @QuantumAdapter.Assembly.continuumFourierEnergy_bounded_before
+#print axioms QuantumAdapter.Assembly.continuumFourierEnergy_bounded_before
+#check @QuantumAdapter.Assembly.no_finite_fourierEnergy_blowup
+#print axioms QuantumAdapter.Assembly.no_finite_fourierEnergy_blowup

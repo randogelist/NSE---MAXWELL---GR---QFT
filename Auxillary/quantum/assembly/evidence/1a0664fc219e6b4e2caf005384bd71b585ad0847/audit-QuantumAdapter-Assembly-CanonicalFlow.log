@@ -1,0 +1,57 @@
+@QuantumAdapter.Assembly.chosenCompleteOrbit_zero : ∀ {ν : ℝ}
+  (complete :
+    ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+      ∃ q, Eq.{1} (q 0) q₀ ∧ ∀ (t : ℝ), HasDerivAt.{0, 0} q (QuantumAdapter.drift ν N (q t)) t)
+  (N : ℕ) (q₀ : QuantumAdapter.Phase N), Eq.{1} (QuantumAdapter.Assembly.chosenCompleteOrbit complete N q₀ 0) q₀
+'QuantumAdapter.Assembly.chosenCompleteOrbit_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Assembly.chosenCompleteOrbit_derivative : ∀ {ν : ℝ}
+  (complete :
+    ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+      ∃ q, Eq.{1} (q 0) q₀ ∧ ∀ (t : ℝ), HasDerivAt.{0, 0} q (QuantumAdapter.drift ν N (q t)) t)
+  (N : ℕ) (q₀ : QuantumAdapter.Phase N) (t : ℝ),
+  HasDerivAt.{0, 0} (QuantumAdapter.Assembly.chosenCompleteOrbit complete N q₀)
+    (QuantumAdapter.drift ν N (QuantumAdapter.Assembly.chosenCompleteOrbit complete N q₀ t)) t
+'QuantumAdapter.Assembly.chosenCompleteOrbit_derivative' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.chosenCompleteOrbit_add : ∀ {ν : ℝ}
+  (complete :
+    ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+      ∃ q, Eq.{1} (q 0) q₀ ∧ ∀ (t : ℝ), HasDerivAt.{0, 0} q (QuantumAdapter.drift ν N (q t)) t)
+  (N : ℕ) (q₀ : QuantumAdapter.Phase N) (t s : ℝ),
+  Eq.{1} (QuantumAdapter.Assembly.chosenCompleteOrbit complete N q₀ (HAdd.hAdd.{0, 0, 0} t s))
+    (QuantumAdapter.Assembly.chosenCompleteOrbit complete N
+      (QuantumAdapter.Assembly.chosenCompleteOrbit complete N q₀ s) t)
+'QuantumAdapter.Assembly.chosenCompleteOrbit_add' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Assembly.nonempty_phaseFlow_of_completeOrbits : ∀ {ν : ℝ},
+  (∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+      ∃ q, Eq.{1} (q 0) q₀ ∧ ∀ (t : ℝ), HasDerivAt.{0, 0} q (QuantumAdapter.drift ν N (q t)) t) →
+    (∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+        Eq.{1} (QuantumAdapter.driftDivergence ν N q) (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N))) →
+      Nonempty.{1} (QuantumAdapter.PhaseFlow ν)
+'QuantumAdapter.Assembly.nonempty_phaseFlow_of_completeOrbits' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.phaseFlow_eq_constructed : ∀ {ν : ℝ}
+  (complete :
+    ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+      ∃ q, Eq.{1} (q 0) q₀ ∧ ∀ (t : ℝ), HasDerivAt.{0, 0} q (QuantumAdapter.drift ν N (q t)) t)
+  (divergence :
+    ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+      Eq.{1} (QuantumAdapter.driftDivergence ν N q) (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N)))
+  (F : QuantumAdapter.PhaseFlow ν), Eq.{1} F (QuantumAdapter.Assembly.phaseFlowOfCompleteOrbits complete divergence)
+'QuantumAdapter.Assembly.phaseFlow_eq_constructed' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Assembly.nonempty_phaseFlow_of_divergence : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    (∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+        Eq.{1} (QuantumAdapter.driftDivergence ν N q) (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N))) →
+      Nonempty.{1} (QuantumAdapter.PhaseFlow ν)
+'QuantumAdapter.Assembly.nonempty_phaseFlow_of_divergence' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.phaseFlow_eq_canonical : ∀ {ν : ℝ} (hν : LE.le.{0} 0 ν)
+  (divergence :
+    ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+      Eq.{1} (QuantumAdapter.driftDivergence ν N q) (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N)))
+  (F : QuantumAdapter.PhaseFlow ν), Eq.{1} F (QuantumAdapter.Assembly.canonicalPhaseFlow hν divergence)
+'QuantumAdapter.Assembly.phaseFlow_eq_canonical' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]

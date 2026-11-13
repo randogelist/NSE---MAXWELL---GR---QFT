@@ -1,0 +1,17 @@
+import QuantumAdapter.Assembly.Admissibility
+set_option pp.universes true
+set_option pp.fullNames true
+#check @QuantumAdapter.Assembly.norm_pow_le_centered
+#print axioms QuantumAdapter.Assembly.norm_pow_le_centered
+#check @QuantumAdapter.Assembly.canonicalPacket_bornDensity_continuous
+#print axioms QuantumAdapter.Assembly.canonicalPacket_bornDensity_continuous
+#check @QuantumAdapter.Assembly.canonicalPacket_raw_moment_integrable
+#print axioms QuantumAdapter.Assembly.canonicalPacket_raw_moment_integrable
+#check @QuantumAdapter.Assembly.canonicalPacket_observableIntegrable_of_quadratic_bound
+#print axioms QuantumAdapter.Assembly.canonicalPacket_observableIntegrable_of_quadratic_bound
+#check @QuantumAdapter.Assembly.canonicalPacket_multiplierDomain_of_quadratic_bound
+#print axioms QuantumAdapter.Assembly.canonicalPacket_multiplierDomain_of_quadratic_bound
+#check @QuantumAdapter.Assembly.phaseFlow_energy3_le_quadratic
+#print axioms QuantumAdapter.Assembly.phaseFlow_energy3_le_quadratic
+#check @QuantumAdapter.Assembly.transportedPacket_quantumAdmissible_of_jacobian
+#print axioms QuantumAdapter.Assembly.transportedPacket_quantumAdmissible_of_jacobian

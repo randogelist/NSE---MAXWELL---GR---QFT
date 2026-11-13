@@ -1,0 +1,839 @@
+QuantumAdapter.fullModes : ℕ → Finset.{0} SingularClosure.Frequency
+'QuantumAdapter.fullModes' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Mode : ℕ → Type
+'QuantumAdapter.Mode' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.PhaseIndex : ℕ → Type
+'QuantumAdapter.PhaseIndex' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.AmbientPhase : ℕ → Type
+'QuantumAdapter.AmbientPhase' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.zero_mem_fullModes : ∀ (N : ℕ), Membership.mem.{0, 0} (QuantumAdapter.fullModes N) 0
+'QuantumAdapter.zero_mem_fullModes' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.fullModes_neg_mem : ∀ {N : ℕ} {k : SingularClosure.Frequency},
+  Membership.mem.{0, 0} (QuantumAdapter.fullModes N) k →
+    Membership.mem.{0, 0} (QuantumAdapter.fullModes N) (Neg.neg.{0} k)
+'QuantumAdapter.fullModes_neg_mem' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.fullModes_neg_mem_iff : ∀ (N : ℕ) (k : SingularClosure.Frequency),
+  Membership.mem.{0, 0} (QuantumAdapter.fullModes N) (Neg.neg.{0} k) ↔
+    Membership.mem.{0, 0} (QuantumAdapter.fullModes N) k
+'QuantumAdapter.fullModes_neg_mem_iff' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.extendCoeff : {N : ℕ} → QuantumAdapter.AmbientPhase N → SingularClosure.FourierCoeff
+'QuantumAdapter.extendCoeff' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.extendCoeff_zero : ∀ (N : ℕ), Eq.{1} (QuantumAdapter.extendCoeff 0) 0
+'QuantumAdapter.extendCoeff_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.extendCoeff_add : ∀ {N : ℕ} (q r : QuantumAdapter.AmbientPhase N),
+  Eq.{1} (QuantumAdapter.extendCoeff (HAdd.hAdd.{0, 0, 0} q r))
+    (HAdd.hAdd.{0, 0, 0} (QuantumAdapter.extendCoeff q) (QuantumAdapter.extendCoeff r))
+'QuantumAdapter.extendCoeff_add' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.extendCoeff_real_smul : ∀ {N : ℕ} (r : ℝ) (q : QuantumAdapter.AmbientPhase N),
+  Eq.{1} (QuantumAdapter.extendCoeff (HSMul.hSMul.{0, 0, 0} r q))
+    (HSMul.hSMul.{0, 0, 0} r (QuantumAdapter.extendCoeff q))
+'QuantumAdapter.extendCoeff_real_smul' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.extendCoeff_injective : ∀ (N : ℕ), Function.Injective.{1, 1} QuantumAdapter.extendCoeff
+'QuantumAdapter.extendCoeff_injective' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.phaseSubmodule : (N : ℕ) → Submodule.{0, 0} ℝ (QuantumAdapter.AmbientPhase N)
+'QuantumAdapter.phaseSubmodule' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Phase : ℕ → Type
+'QuantumAdapter.Phase' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.phaseCoeff : {N : ℕ} → QuantumAdapter.Phase N → SingularClosure.FourierCoeff
+'QuantumAdapter.phaseCoeff' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.phaseCoeff_reality : ∀ {N : ℕ} (q : QuantumAdapter.Phase N),
+  SingularClosure.SpectralReality (QuantumAdapter.phaseCoeff q)
+'QuantumAdapter.phaseCoeff_reality' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.phaseCoeff_solenoidal : ∀ {N : ℕ} (q : QuantumAdapter.Phase N),
+  SingularClosure.SpectralSolenoidal (QuantumAdapter.phaseCoeff q)
+'QuantumAdapter.phaseCoeff_solenoidal' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.phaseCoeff_support : ∀ {N : ℕ} (q : QuantumAdapter.Phase N),
+  ∀ k ∉ QuantumAdapter.fullModes N, ∀ (i : Fin 3), Eq.{1} (QuantumAdapter.phaseCoeff q k i) 0
+'QuantumAdapter.phaseCoeff_support' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.phaseCoeff_zero : ∀ (N : ℕ), Eq.{1} (QuantumAdapter.phaseCoeff 0) 0
+'QuantumAdapter.phaseCoeff_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.meanAmbient : (N : ℕ) → SingularClosure.Vec → QuantumAdapter.AmbientPhase N
+'QuantumAdapter.meanAmbient' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.meanAmbient_coeff : ∀ (N : ℕ) (m : SingularClosure.Vec) (k : SingularClosure.Frequency) (i : Fin 3),
+  Eq.{1} (QuantumAdapter.extendCoeff (QuantumAdapter.meanAmbient N m) k i)
+    (ite.{1} (Eq.{1} k 0) (↑(WithLp.ofLp.{0} m i)) 0)
+'QuantumAdapter.meanAmbient_coeff' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.meanAmbient_mem : ∀ (N : ℕ) (m : SingularClosure.Vec),
+  Membership.mem.{0, 0} (QuantumAdapter.phaseSubmodule N) (QuantumAdapter.meanAmbient N m)
+'QuantumAdapter.meanAmbient_mem' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.meanPhase : (N : ℕ) → SingularClosure.Vec → QuantumAdapter.Phase N
+'QuantumAdapter.meanPhase' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.meanPhase_coeff : ∀ (N : ℕ) (m : SingularClosure.Vec) (k : SingularClosure.Frequency) (i : Fin 3),
+  Eq.{1} (QuantumAdapter.phaseCoeff (QuantumAdapter.meanPhase N m) k i)
+    (ite.{1} (Eq.{1} k 0) (↑(WithLp.ofLp.{0} m i)) 0)
+'QuantumAdapter.meanPhase_coeff' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.meanPhase_injective : ∀ (N : ℕ), Function.Injective.{1, 1} (QuantumAdapter.meanPhase N)
+'QuantumAdapter.meanPhase_injective' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.phase_finrank_pos : ∀ (N : ℕ), LT.lt.{0} 0 (Module.finrank.{0, 0} ℝ (QuantumAdapter.Phase N))
+'QuantumAdapter.phase_finrank_pos' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.datumFourierCoeff_solenoidal : ∀ (a : SingularClosure.Field),
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a →
+    SingularClosure.SpatialPeriodic.{0} a →
+      (∀ (x : SingularClosure.Vec), Eq.{1} (SingularClosure.divergence a x) 0) →
+        SingularClosure.SpectralSolenoidal (SingularClosure.datumFourierCoeff a)
+'QuantumAdapter.datumFourierCoeff_solenoidal' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.initialAmbient : (N : ℕ) → SingularClosure.Field → QuantumAdapter.AmbientPhase N
+'QuantumAdapter.initialAmbient' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.initialAmbient_coeff : ∀ (N : ℕ) (a : SingularClosure.Field) (k : SingularClosure.Frequency) (i : Fin 3),
+  Eq.{1} (QuantumAdapter.extendCoeff (QuantumAdapter.initialAmbient N a) k i)
+    (ite.{1} (Membership.mem.{0, 0} (QuantumAdapter.fullModes N) k) (SingularClosure.datumFourierCoeff a k i) 0)
+'QuantumAdapter.initialAmbient_coeff' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.initialAmbient_mem : ∀ (N : ℕ) (a : SingularClosure.Field),
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a →
+    SingularClosure.SpatialPeriodic.{0} a →
+      (∀ (x : SingularClosure.Vec), Eq.{1} (SingularClosure.divergence a x) 0) →
+        Membership.mem.{0, 0} (QuantumAdapter.phaseSubmodule N) (QuantumAdapter.initialAmbient N a)
+'QuantumAdapter.initialAmbient_mem' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.initialPhase : (N : ℕ) →
+  (a : SingularClosure.Field) →
+    ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a →
+      SingularClosure.SpatialPeriodic.{0} a →
+        (∀ (x : SingularClosure.Vec), Eq.{1} (SingularClosure.divergence a x) 0) → QuantumAdapter.Phase N
+'QuantumAdapter.initialPhase' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.initialPhase_coeff : ∀ (N : ℕ) (a : SingularClosure.Field) (hs : ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a)
+  (hp : SingularClosure.SpatialPeriodic.{0} a)
+  (hd : ∀ (x : SingularClosure.Vec), Eq.{1} (SingularClosure.divergence a x) 0) (k : SingularClosure.Frequency)
+  (i : Fin 3),
+  Eq.{1} (QuantumAdapter.phaseCoeff (QuantumAdapter.initialPhase N a hs hp hd) k i)
+    (ite.{1} (Membership.mem.{0, 0} (QuantumAdapter.fullModes N) k) (SingularClosure.datumFourierCoeff a k i) 0)
+'QuantumAdapter.initialPhase_coeff' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.initialPhase_mean : ∀ (N : ℕ) (a : SingularClosure.Field) (hs : ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a)
+  (hp : SingularClosure.SpatialPeriodic.{0} a)
+  (hd : ∀ (x : SingularClosure.Vec), Eq.{1} (SingularClosure.divergence a x) 0) (i : Fin 3),
+  Eq.{1} (QuantumAdapter.phaseCoeff (QuantumAdapter.initialPhase N a hs hp hd) 0 i)
+    ↑(WithLp.ofLp.{0} (SingularClosure.spatialMean a) i)
+'QuantumAdapter.initialPhase_mean' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.initialPhaseData : (N : ℕ) →
+  (a : NSEMaxwell.Classical.Field) → NSEMaxwell.Classical.Data a → QuantumAdapter.Phase N
+'QuantumAdapter.initialPhaseData' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.initialPhaseData_mean : ∀ (N : ℕ) (a : NSEMaxwell.Classical.Field) (ha : NSEMaxwell.Classical.Data a)
+  (i : Fin 3),
+  Eq.{1} (QuantumAdapter.phaseCoeff (QuantumAdapter.initialPhaseData N a ha) 0 i)
+    ↑(WithLp.ofLp.{0} (NSEMaxwell.Classical.spatialMean a) i)
+'QuantumAdapter.initialPhaseData_mean' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.laplaceSymbol : SingularClosure.Frequency → ℝ
+'QuantumAdapter.laplaceSymbol' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.laplaceSymbol_nonneg : ∀ (k : SingularClosure.Frequency), LE.le.{0} 0 (QuantumAdapter.laplaceSymbol k)
+'QuantumAdapter.laplaceSymbol_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.h3Weight : SingularClosure.Frequency → ℝ
+'QuantumAdapter.h3Weight' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.h3Weight_pos : ∀ (k : SingularClosure.Frequency), LT.lt.{0} 0 (QuantumAdapter.h3Weight k)
+'QuantumAdapter.h3Weight_pos' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.energy3 : (N : ℕ) → QuantumAdapter.Phase N → ℝ
+'QuantumAdapter.energy3' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.energy3_nonneg : ∀ (N : ℕ) (q : QuantumAdapter.Phase N), LE.le.{0} 0 (QuantumAdapter.energy3 N q)
+'QuantumAdapter.energy3_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.energy3_zero : ∀ (N : ℕ), Eq.{1} (QuantumAdapter.energy3 N 0) 0
+'QuantumAdapter.energy3_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.synthesis : {N : ℕ} → QuantumAdapter.Phase N → SingularClosure.Field
+'QuantumAdapter.synthesis' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.meanVector : {N : ℕ} → QuantumAdapter.Phase N → SingularClosure.Vec
+'QuantumAdapter.meanVector' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.synthesis_eq_mean_add_source : ∀ {N : ℕ} (q : QuantumAdapter.Phase N),
+  Eq.{1} (QuantumAdapter.synthesis q) fun x =>
+    HAdd.hAdd.{0, 0, 0} (QuantumAdapter.meanVector q)
+      (SingularClosure.finiteSynthesis N (QuantumAdapter.phaseCoeff q) x)
+'QuantumAdapter.synthesis_eq_mean_add_source' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.synthesis_zero : ∀ (N : ℕ), Eq.{1} (QuantumAdapter.synthesis 0) 0
+'QuantumAdapter.synthesis_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.gradientSquare : {N : ℕ} → QuantumAdapter.Phase N → SingularClosure.Vec → ℝ
+'QuantumAdapter.gradientSquare' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.gradientObservable : {N : ℕ} → QuantumAdapter.Phase N → ℝ
+'QuantumAdapter.gradientObservable' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.fullTransport : ℕ → SingularClosure.FourierCoeff → SingularClosure.Frequency → Fin 3 → ℂ
+'QuantumAdapter.fullTransport' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.fullTransport_eq_source_add_mean : ∀ (N : ℕ) (c : SingularClosure.FourierCoeff)
+  (k : SingularClosure.Frequency) (i : Fin 3),
+  Eq.{1} (QuantumAdapter.fullTransport N c k i)
+    (HAdd.hAdd.{0, 0, 0}
+      (HMul.hMul.{0, 0, 0}
+        (∑ j,
+          HMul.hMul.{0, 0, 0} (c 0 j)
+            (HMul.hMul.{0, 0, 0} (↑(HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 Real.pi) ↑(k j))) Complex.I))
+        (c k i))
+      (SingularClosure.coefficientTransport N c k i))
+'QuantumAdapter.fullTransport_eq_source_add_mean' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.fullTransport_eq_source_of_mean_zero : ∀ (N : ℕ) (c : SingularClosure.FourierCoeff),
+  (∀ (i : Fin 3), Eq.{1} (c 0 i) 0) →
+    ∀ (k : SingularClosure.Frequency) (i : Fin 3),
+      Eq.{1} (QuantumAdapter.fullTransport N c k i) (SingularClosure.coefficientTransport N c k i)
+'QuantumAdapter.fullTransport_eq_source_of_mean_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.fullTransport_zero : ∀ (N : ℕ) (k : SingularClosure.Frequency) (i : Fin 3),
+  Eq.{1} (QuantumAdapter.fullTransport N 0 k i) 0
+'QuantumAdapter.fullTransport_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.fullTransport_zero_fun : ∀ (N : ℕ) (k : SingularClosure.Frequency),
+  Eq.{1} (QuantumAdapter.fullTransport N 0 k) 0
+'QuantumAdapter.fullTransport_zero_fun' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.rawRhs : ℝ → (N : ℕ) → QuantumAdapter.Phase N → QuantumAdapter.AmbientPhase N
+'QuantumAdapter.rawRhs' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.rawRhs_mean : ∀ (ν : ℝ) (N : ℕ) (q : QuantumAdapter.Phase N) (i : Fin 3),
+  Eq.{1} (QuantumAdapter.extendCoeff (QuantumAdapter.rawRhs ν N q) 0 i) 0
+'QuantumAdapter.rawRhs_mean' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.rawRhs_zero : ∀ (ν : ℝ) (N : ℕ), Eq.{1} (QuantumAdapter.rawRhs ν N 0) 0
+'QuantumAdapter.rawRhs_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.RawRhsTangent : Prop
+'QuantumAdapter.RawRhsTangent' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.drift : ℝ → (N : ℕ) → QuantumAdapter.Phase N → QuantumAdapter.Phase N
+'QuantumAdapter.drift' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.drift_zero : ∀ (ν : ℝ) (N : ℕ), Eq.{1} (QuantumAdapter.drift ν N 0) 0
+'QuantumAdapter.drift_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.drift_eq_rawRhs_of_tangent : QuantumAdapter.RawRhsTangent →
+  ∀ (ν : ℝ) (N : ℕ) (q : QuantumAdapter.Phase N), Eq.{1} (↑(QuantumAdapter.drift ν N q)) (QuantumAdapter.rawRhs ν N q)
+'QuantumAdapter.drift_eq_rawRhs_of_tangent' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.IsTrajectory : ℝ → (N : ℕ) → QuantumAdapter.Phase N → (ℝ → QuantumAdapter.Phase N) → Prop
+'QuantumAdapter.IsTrajectory' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.zero_isTrajectory : ∀ (ν : ℝ) (N : ℕ), QuantumAdapter.IsTrajectory ν N 0 fun x => 0
+'QuantumAdapter.zero_isTrajectory' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.cotangentHamiltonian : ℝ → (N : ℕ) → QuantumAdapter.Phase N → QuantumAdapter.Phase N → ℝ
+'QuantumAdapter.cotangentHamiltonian' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.cotangent_momentum_increment : ∀ (ν : ℝ) (N : ℕ) (q p r : QuantumAdapter.Phase N) (s : ℝ),
+  Eq.{1} (QuantumAdapter.cotangentHamiltonian ν N q (HAdd.hAdd.{0, 0, 0} p (HSMul.hSMul.{0, 0, 0} s r)))
+    (HAdd.hAdd.{0, 0, 0} (QuantumAdapter.cotangentHamiltonian ν N q p)
+      (HMul.hMul.{0, 0, 0} s (QuantumAdapter.cotangentHamiltonian ν N q r)))
+'QuantumAdapter.cotangent_momentum_increment' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.cotangent_hasFDerivAt_momentum : ∀ (ν : ℝ) (N : ℕ) (q p : QuantumAdapter.Phase N),
+  HasFDerivAt.{0, 0, 0} (fun r => QuantumAdapter.cotangentHamiltonian ν N q r)
+    ((innerSL.{0, 0} ℝ) (QuantumAdapter.drift ν N q)) p
+'QuantumAdapter.cotangent_hasFDerivAt_momentum' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.cotangent_fderiv_momentum : ∀ (ν : ℝ) (N : ℕ) (q p : QuantumAdapter.Phase N),
+  Eq.{1} (fderiv.{0, 0, 0} ℝ (fun r => QuantumAdapter.cotangentHamiltonian ν N q r) p)
+    ((innerSL.{0, 0} ℝ) (QuantumAdapter.drift ν N q))
+'QuantumAdapter.cotangent_fderiv_momentum' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.cotangent_zero_momentum : ∀ (ν : ℝ) (N : ℕ) (q : QuantumAdapter.Phase N),
+  Eq.{1} (QuantumAdapter.cotangentHamiltonian ν N q 0) 0
+'QuantumAdapter.cotangent_zero_momentum' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.cotangent_zero_configuration : ∀ (ν : ℝ) (N : ℕ) (p : QuantumAdapter.Phase N),
+  Eq.{1} (QuantumAdapter.cotangentHamiltonian ν N 0 p) 0
+'QuantumAdapter.cotangent_zero_configuration' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.fullTransport_zero_frequency : ∀ (N : ℕ) (c : SingularClosure.FourierCoeff),
+  SingularClosure.SpectralSolenoidal c → ∀ (i : Fin 3), Eq.{1} (QuantumAdapter.fullTransport N c 0 i) 0
+'QuantumAdapter.fullTransport_zero_frequency' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.fullTransport_reality : ∀ (N : ℕ) (c : SingularClosure.FourierCoeff),
+  SingularClosure.SpectralReality c → SingularClosure.SpectralReality (QuantumAdapter.fullTransport N c)
+'QuantumAdapter.fullTransport_reality' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.frequencySquare_ne_zero : ∀ (k : SingularClosure.Frequency),
+  Ne.{1} k 0 → Ne.{1} (∑ i, HPow.hPow.{0, 0, 0} (↑(k i)) 2) 0
+'QuantumAdapter.frequencySquare_ne_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.coefficientLeray_solenoidal : ∀ (k : SingularClosure.Frequency) (v : Fin 3 → ℂ),
+  Eq.{1} (∑ i, HMul.hMul.{0, 0, 0} (↑(k i)) (SingularClosure.coefficientLeray k v i)) 0
+'QuantumAdapter.coefficientLeray_solenoidal' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.rawRhs_coeff : ∀ (ν : ℝ) (N : ℕ) (q : QuantumAdapter.Phase N) (k : SingularClosure.Frequency)
+  (i : Fin 3),
+  Eq.{1} (QuantumAdapter.extendCoeff (QuantumAdapter.rawRhs ν N q) k i)
+    (ite.{1} (Membership.mem.{0, 0} (QuantumAdapter.fullModes N) k)
+      (ite.{1} (Eq.{1} k 0) 0
+        (HSub.hSub.{0, 0, 0}
+          (HMul.hMul.{0, 0, 0} (Neg.neg.{0} ↑(HMul.hMul.{0, 0, 0} ν (QuantumAdapter.laplaceSymbol k)))
+            (QuantumAdapter.phaseCoeff q k i))
+          (SingularClosure.coefficientLeray k (QuantumAdapter.fullTransport N (QuantumAdapter.phaseCoeff q) k) i)))
+      0)
+'QuantumAdapter.rawRhs_coeff' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.rawRhs_all_modes : ∀ (ν : ℝ) (N : ℕ) (q : QuantumAdapter.Phase N) (k : SingularClosure.Frequency)
+  (i : Fin 3),
+  Eq.{1} (QuantumAdapter.extendCoeff (QuantumAdapter.rawRhs ν N q) k i)
+    (ite.{1} (Membership.mem.{0, 0} (QuantumAdapter.fullModes N) k)
+      (HSub.hSub.{0, 0, 0}
+        (HMul.hMul.{0, 0, 0} (Neg.neg.{0} ↑(HMul.hMul.{0, 0, 0} ν (QuantumAdapter.laplaceSymbol k)))
+          (QuantumAdapter.phaseCoeff q k i))
+        (SingularClosure.coefficientLeray k (QuantumAdapter.fullTransport N (QuantumAdapter.phaseCoeff q) k) i))
+      0)
+'QuantumAdapter.rawRhs_all_modes' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.rawRhs_reality : ∀ (ν : ℝ) (N : ℕ) (q : QuantumAdapter.Phase N),
+  SingularClosure.SpectralReality (QuantumAdapter.extendCoeff (QuantumAdapter.rawRhs ν N q))
+'QuantumAdapter.rawRhs_reality' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.rawRhs_solenoidal : ∀ (ν : ℝ) (N : ℕ) (q : QuantumAdapter.Phase N),
+  SingularClosure.SpectralSolenoidal (QuantumAdapter.extendCoeff (QuantumAdapter.rawRhs ν N q))
+'QuantumAdapter.rawRhs_solenoidal' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.rawRhs_tangent : QuantumAdapter.RawRhsTangent
+'QuantumAdapter.rawRhs_tangent' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.drift_eq_rawRhs : ∀ (ν : ℝ) (N : ℕ) (q : QuantumAdapter.Phase N),
+  Eq.{1} (↑(QuantumAdapter.drift ν N q)) (QuantumAdapter.rawRhs ν N q)
+'QuantumAdapter.drift_eq_rawRhs' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.drift_mean : ∀ (ν : ℝ) (N : ℕ) (q : QuantumAdapter.Phase N) (i : Fin 3),
+  Eq.{1} (QuantumAdapter.phaseCoeff (QuantumAdapter.drift ν N q) 0 i) 0
+'QuantumAdapter.drift_mean' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.fullTransport_complex_energy_zero : ∀ (N : ℕ) (c : SingularClosure.FourierCoeff),
+  (∀ k ∉ QuantumAdapter.fullModes N, ∀ (i : Fin 3), Eq.{1} (c k i) 0) →
+    (∀ (k : SingularClosure.Frequency) (i : Fin 3), Eq.{1} (c (Neg.neg.{0} k) i) (Star.star.{0} (c k i))) →
+      (∀ (k : SingularClosure.Frequency), Eq.{1} (∑ i, HMul.hMul.{0, 0, 0} (↑(k i)) (c k i)) 0) →
+        Eq.{1}
+          (∑ k ∈ QuantumAdapter.fullModes N,
+            ∑ i, HMul.hMul.{0, 0, 0} (Star.star.{0} (c k i)) (QuantumAdapter.fullTransport N c k i))
+          0
+'QuantumAdapter.fullTransport_complex_energy_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.fullLerayTransport_complex_energy_zero : ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+  Eq.{1}
+    (∑ k ∈ QuantumAdapter.fullModes N,
+      ∑ i,
+        HMul.hMul.{0, 0, 0} (Star.star.{0} (QuantumAdapter.phaseCoeff q k i))
+          (SingularClosure.coefficientLeray k (QuantumAdapter.fullTransport N (QuantumAdapter.phaseCoeff q) k) i))
+    0
+'QuantumAdapter.fullLerayTransport_complex_energy_zero' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.fullLerayTransport_real_energy_zero : ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+  Eq.{1}
+    (∑ k ∈ QuantumAdapter.fullModes N,
+      ∑ i,
+        (HMul.hMul.{0, 0, 0} (Star.star.{0} (QuantumAdapter.phaseCoeff q k i))
+            (SingularClosure.coefficientLeray k (QuantumAdapter.fullTransport N (QuantumAdapter.phaseCoeff q) k) i)).re)
+    0
+'QuantumAdapter.fullLerayTransport_real_energy_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.energy0 : (N : ℕ) → QuantumAdapter.Phase N → ℝ
+'QuantumAdapter.energy0' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.dissipation : (N : ℕ) → QuantumAdapter.Phase N → ℝ
+'QuantumAdapter.dissipation' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.energy0_nonneg : ∀ (N : ℕ) (q : QuantumAdapter.Phase N), LE.le.{0} 0 (QuantumAdapter.energy0 N q)
+'QuantumAdapter.energy0_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.dissipation_nonneg : ∀ (N : ℕ) (q : QuantumAdapter.Phase N), LE.le.{0} 0 (QuantumAdapter.dissipation N q)
+'QuantumAdapter.dissipation_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.rawRhs_energy_rate : ∀ (ν : ℝ) (N : ℕ) (q : QuantumAdapter.Phase N),
+  Eq.{1}
+    (∑ k ∈ QuantumAdapter.fullModes N,
+      ∑ i,
+        HMul.hMul.{0, 0, 0} 2
+          (HMul.hMul.{0, 0, 0} (Star.star.{0} (QuantumAdapter.phaseCoeff q k i))
+              (QuantumAdapter.extendCoeff (QuantumAdapter.rawRhs ν N q) k i)).re)
+    (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} (-2) ν) (QuantumAdapter.dissipation N q))
+'QuantumAdapter.rawRhs_energy_rate' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.rawRhs_energy_rate_nonpos : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+      LE.le.{0}
+        (∑ k ∈ QuantumAdapter.fullModes N,
+          ∑ i,
+            HMul.hMul.{0, 0, 0} 2
+              (HMul.hMul.{0, 0, 0} (Star.star.{0} (QuantumAdapter.phaseCoeff q k i))
+                  (QuantumAdapter.extendCoeff (QuantumAdapter.rawRhs ν N q) k i)).re)
+        0
+'QuantumAdapter.rawRhs_energy_rate_nonpos' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.phaseCoordinate : (N : ℕ) →
+  SingularClosure.Frequency → Fin 3 → ContinuousLinearMap.{0, 0, 0, 0} (RingHom.id.{0} ℝ) (QuantumAdapter.Phase N) ℂ
+'QuantumAdapter.phaseCoordinate' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.phaseCoordinate_apply : ∀ (N : ℕ) (k : SingularClosure.Frequency) (i : Fin 3)
+  (q : QuantumAdapter.Phase N), Eq.{1} ((QuantumAdapter.phaseCoordinate N k i) q) (QuantumAdapter.phaseCoeff q k i)
+'QuantumAdapter.phaseCoordinate_apply' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.IsTrajectory.coefficient_hasDerivWithinAt : ∀ {ν : ℝ} {N : ℕ} {q₀ : QuantumAdapter.Phase N}
+  {q : ℝ → QuantumAdapter.Phase N},
+  QuantumAdapter.IsTrajectory ν N q₀ q →
+    ∀ {t : ℝ},
+      LE.le.{0} 0 t →
+        ∀ (k : SingularClosure.Frequency) (i : Fin 3),
+          HasDerivWithinAt.{0, 0} (fun s => QuantumAdapter.phaseCoeff (q s) k i)
+            (QuantumAdapter.phaseCoeff (QuantumAdapter.drift ν N (q t)) k i) (Set.Ici.{0} 0) t
+'QuantumAdapter.IsTrajectory.coefficient_hasDerivWithinAt' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.IsTrajectory.energy0_identity : ∀ {ν : ℝ} {N : ℕ} {q₀ : QuantumAdapter.Phase N}
+  {q : ℝ → QuantumAdapter.Phase N},
+  QuantumAdapter.IsTrajectory ν N q₀ q →
+    ∀ {t : ℝ},
+      LE.le.{0} 0 t →
+        HasDerivWithinAt.{0, 0} (fun s => QuantumAdapter.energy0 N (q s))
+          (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} (-2) ν) (QuantumAdapter.dissipation N (q t))) (Set.Ici.{0} 0) t
+'QuantumAdapter.IsTrajectory.energy0_identity' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.IsTrajectory.energy0_antitoneOn : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ {N : ℕ} {q₀ : QuantumAdapter.Phase N} {q : ℝ → QuantumAdapter.Phase N},
+      QuantumAdapter.IsTrajectory ν N q₀ q → AntitoneOn.{0, 0} (fun t => QuantumAdapter.energy0 N (q t)) (Set.Ici.{0} 0)
+'QuantumAdapter.IsTrajectory.energy0_antitoneOn' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.IsTrajectory.energy0_le_initial : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ {N : ℕ} {q₀ : QuantumAdapter.Phase N} {q : ℝ → QuantumAdapter.Phase N},
+      QuantumAdapter.IsTrajectory ν N q₀ q →
+        ∀ {t : ℝ}, LE.le.{0} 0 t → LE.le.{0} (QuantumAdapter.energy0 N (q t)) (QuantumAdapter.energy0 N q₀)
+'QuantumAdapter.IsTrajectory.energy0_le_initial' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Wave.{u_1} : Type u_1 → Type u_1
+'QuantumAdapter.Wave' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.bornDensity.{u_1} : {E : Type u_1} → QuantumAdapter.Wave.{u_1} E → E → ℝ
+'QuantumAdapter.bornDensity' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.expectation.{u_1} : {E : Type u_1} →
+  [inst : MeasurableSpace.{u_1} E] → MeasureTheory.Measure.{u_1} E → (E → ℝ) → QuantumAdapter.Wave.{u_1} E → ℝ
+'QuantumAdapter.expectation' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.WaveAdmissible.{u_1} : {E : Type u_1} →
+  [inst : MeasurableSpace.{u_1} E] → MeasureTheory.Measure.{u_1} E → QuantumAdapter.Wave.{u_1} E → Prop
+'QuantumAdapter.WaveAdmissible' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.ObservableIntegrable.{u_1} : {E : Type u_1} →
+  [inst : MeasurableSpace.{u_1} E] → MeasureTheory.Measure.{u_1} E → (E → ℝ) → QuantumAdapter.Wave.{u_1} E → Prop
+'QuantumAdapter.ObservableIntegrable' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.MultiplierDomain.{u_1} : {E : Type u_1} →
+  [inst : MeasurableSpace.{u_1} E] → MeasureTheory.Measure.{u_1} E → (E → ℝ) → QuantumAdapter.Wave.{u_1} E → Prop
+'QuantumAdapter.MultiplierDomain' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.bornDensity_nonneg.{u_1} : ∀ {E : Type u_1} (ψ : QuantumAdapter.Wave.{u_1} E) (q : E),
+  LE.le.{0} 0 (QuantumAdapter.bornDensity.{u_1} ψ q)
+'QuantumAdapter.bornDensity_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.bornDensity_zero.{u_1} : ∀ {E : Type u_1} (q : E),
+  Eq.{1} (QuantumAdapter.bornDensity.{u_1} (fun x => 0) q) 0
+'QuantumAdapter.bornDensity_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.bornDensity_const_mul.{u_1} : ∀ {E : Type u_1} (c : ℂ) (ψ : QuantumAdapter.Wave.{u_1} E) (q : E),
+  Eq.{1} (QuantumAdapter.bornDensity.{u_1} (fun x => HMul.hMul.{0, 0, 0} c (ψ x)) q)
+    (HMul.hMul.{0, 0, 0} (Complex.normSq c) (QuantumAdapter.bornDensity.{u_1} ψ q))
+'QuantumAdapter.bornDensity_const_mul' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.bornDensity_unit_phase.{u_1} : ∀ {E : Type u_1} (c : ℂ),
+  Eq.{1} (Complex.normSq c) 1 →
+    ∀ (ψ : QuantumAdapter.Wave.{u_1} E) (q : E),
+      Eq.{1} (QuantumAdapter.bornDensity.{u_1} (fun x => HMul.hMul.{0, 0, 0} c (ψ x)) q)
+        (QuantumAdapter.bornDensity.{u_1} ψ q)
+'QuantumAdapter.bornDensity_unit_phase' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.WaveAdmissible.density_integrable.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {ψ : QuantumAdapter.Wave.{u_1} E},
+  QuantumAdapter.WaveAdmissible.{u_1} μ ψ → MeasureTheory.Integrable.{0, u_1} (QuantumAdapter.bornDensity.{u_1} ψ) μ
+'QuantumAdapter.WaveAdmissible.density_integrable' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.not_waveAdmissible_zero.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  (μ : MeasureTheory.Measure.{u_1} E), ¬QuantumAdapter.WaveAdmissible.{u_1} μ fun x => 0
+'QuantumAdapter.not_waveAdmissible_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.WaveAdmissible.toL2.{u_1} : {E : Type u_1} →
+  [inst : MeasurableSpace.{u_1} E] →
+    {μ : MeasureTheory.Measure.{u_1} E} →
+      {ψ : QuantumAdapter.Wave.{u_1} E} → QuantumAdapter.WaveAdmissible.{u_1} μ ψ → ↥(MeasureTheory.Lp.{0, u_1} ℂ 2 μ)
+'QuantumAdapter.WaveAdmissible.toL2' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.WaveAdmissible.coe_toL2.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {ψ : QuantumAdapter.Wave.{u_1} E} (hψ : QuantumAdapter.WaveAdmissible.{u_1} μ ψ),
+  ↑↑(QuantumAdapter.WaveAdmissible.toL2.{u_1} hψ) =ᵐ[μ] ψ
+'QuantumAdapter.WaveAdmissible.coe_toL2' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.expectation_congr_ae.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  (μ : MeasureTheory.Measure.{u_1} E) (f : E → ℝ) {ψ χ : QuantumAdapter.Wave.{u_1} E},
+  ψ =ᵐ[μ] χ → Eq.{1} (QuantumAdapter.expectation.{u_1} μ f ψ) (QuantumAdapter.expectation.{u_1} μ f χ)
+'QuantumAdapter.expectation_congr_ae' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.WaveAdmissible.expectation_toL2.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {ψ : QuantumAdapter.Wave.{u_1} E} (hψ : QuantumAdapter.WaveAdmissible.{u_1} μ ψ)
+  (f : E → ℝ),
+  Eq.{1} (QuantumAdapter.expectation.{u_1} μ f ↑↑(QuantumAdapter.WaveAdmissible.toL2.{u_1} hψ))
+    (QuantumAdapter.expectation.{u_1} μ f ψ)
+'QuantumAdapter.WaveAdmissible.expectation_toL2' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.expectation_nonneg.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  (μ : MeasureTheory.Measure.{u_1} E) (f : E → ℝ) (ψ : QuantumAdapter.Wave.{u_1} E),
+  (∀ (q : E), LE.le.{0} 0 (f q)) → LE.le.{0} 0 (QuantumAdapter.expectation.{u_1} μ f ψ)
+'QuantumAdapter.expectation_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.expectation_const_mul_wave.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  (μ : MeasureTheory.Measure.{u_1} E) (f : E → ℝ) (c : ℂ) (ψ : QuantumAdapter.Wave.{u_1} E),
+  Eq.{1} (QuantumAdapter.expectation.{u_1} μ f fun q => HMul.hMul.{0, 0, 0} c (ψ q))
+    (HMul.hMul.{0, 0, 0} (Complex.normSq c) (QuantumAdapter.expectation.{u_1} μ f ψ))
+'QuantumAdapter.expectation_const_mul_wave' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.expectation_unit_phase.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  (μ : MeasureTheory.Measure.{u_1} E) (f : E → ℝ) (c : ℂ),
+  Eq.{1} (Complex.normSq c) 1 →
+    ∀ (ψ : QuantumAdapter.Wave.{u_1} E),
+      Eq.{1} (QuantumAdapter.expectation.{u_1} μ f fun q => HMul.hMul.{0, 0, 0} c (ψ q))
+        (QuantumAdapter.expectation.{u_1} μ f ψ)
+'QuantumAdapter.expectation_unit_phase' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.expectation_const.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {ψ : QuantumAdapter.Wave.{u_1} E},
+  QuantumAdapter.WaveAdmissible.{u_1} μ ψ → ∀ (c : ℝ), Eq.{1} (QuantumAdapter.expectation.{u_1} μ (fun x => c) ψ) c
+'QuantumAdapter.expectation_const' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.expectation_mono.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  (μ : MeasureTheory.Measure.{u_1} E) {f g : E → ℝ} (ψ : QuantumAdapter.Wave.{u_1} E),
+  QuantumAdapter.ObservableIntegrable.{u_1} μ f ψ →
+    QuantumAdapter.ObservableIntegrable.{u_1} μ g ψ →
+      (∀ (q : E), LE.le.{0} (f q) (g q)) →
+        LE.le.{0} (QuantumAdapter.expectation.{u_1} μ f ψ) (QuantumAdapter.expectation.{u_1} μ g ψ)
+'QuantumAdapter.expectation_mono' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.expectation_add.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  (μ : MeasureTheory.Measure.{u_1} E) {f g : E → ℝ} (ψ : QuantumAdapter.Wave.{u_1} E),
+  QuantumAdapter.ObservableIntegrable.{u_1} μ f ψ →
+    QuantumAdapter.ObservableIntegrable.{u_1} μ g ψ →
+      Eq.{1} (QuantumAdapter.expectation.{u_1} μ (fun q => HAdd.hAdd.{0, 0, 0} (f q) (g q)) ψ)
+        (HAdd.hAdd.{0, 0, 0} (QuantumAdapter.expectation.{u_1} μ f ψ) (QuantumAdapter.expectation.{u_1} μ g ψ))
+'QuantumAdapter.expectation_add' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.expectation_le_bound.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {ψ : QuantumAdapter.Wave.{u_1} E},
+  QuantumAdapter.WaveAdmissible.{u_1} μ ψ →
+    ∀ {f : E → ℝ},
+      QuantumAdapter.ObservableIntegrable.{u_1} μ f ψ →
+        ∀ {C : ℝ}, (∀ (q : E), LE.le.{0} (f q) C) → LE.le.{0} (QuantumAdapter.expectation.{u_1} μ f ψ) C
+'QuantumAdapter.expectation_le_bound' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.bound_le_expectation.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {ψ : QuantumAdapter.Wave.{u_1} E},
+  QuantumAdapter.WaveAdmissible.{u_1} μ ψ →
+    ∀ {f : E → ℝ},
+      QuantumAdapter.ObservableIntegrable.{u_1} μ f ψ →
+        ∀ {C : ℝ}, (∀ (q : E), LE.le.{0} C (f q)) → LE.le.{0} C (QuantumAdapter.expectation.{u_1} μ f ψ)
+'QuantumAdapter.bound_le_expectation' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.halfDensityPullback.{u_1} : {E : Type u_1} →
+  ℝ → (ℝ → E → E) → ℝ → QuantumAdapter.Wave.{u_1} E → QuantumAdapter.Wave.{u_1} E
+'QuantumAdapter.halfDensityPullback' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.halfDensityPullback_zero.{u_1} : ∀ {E : Type u_1} (κ : ℝ) (Φ : ℝ → E → E),
+  (∀ (q : E), Eq.{u_1 + 1} (Φ 0 q) q) →
+    ∀ (ψ : QuantumAdapter.Wave.{u_1} E), Eq.{u_1 + 1} (QuantumAdapter.halfDensityPullback.{u_1} κ Φ 0 ψ) ψ
+'QuantumAdapter.halfDensityPullback_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.halfDensityPullback_add.{u_1} : ∀ {E : Type u_1} (κ : ℝ) (Φ : ℝ → E → E),
+  (∀ (s t : ℝ) (q : E), Eq.{u_1 + 1} (Φ (HAdd.hAdd.{0, 0, 0} s t) q) (Φ s (Φ t q))) →
+    ∀ (s t : ℝ) (ψ : QuantumAdapter.Wave.{u_1} E),
+      Eq.{u_1 + 1} (QuantumAdapter.halfDensityPullback.{u_1} κ Φ s (QuantumAdapter.halfDensityPullback.{u_1} κ Φ t ψ))
+        (QuantumAdapter.halfDensityPullback.{u_1} κ Φ (HAdd.hAdd.{0, 0, 0} s t) ψ)
+'QuantumAdapter.halfDensityPullback_add' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.halfDensityPullback_inverse.{u_1} : ∀ {E : Type u_1} (κ : ℝ) (Φ : ℝ → E → E),
+  (∀ (q : E), Eq.{u_1 + 1} (Φ 0 q) q) →
+    (∀ (s t : ℝ) (q : E), Eq.{u_1 + 1} (Φ (HAdd.hAdd.{0, 0, 0} s t) q) (Φ s (Φ t q))) →
+      ∀ (t : ℝ) (ψ : QuantumAdapter.Wave.{u_1} E),
+        Eq.{u_1 + 1}
+          (QuantumAdapter.halfDensityPullback.{u_1} κ Φ (Neg.neg.{0} t)
+            (QuantumAdapter.halfDensityPullback.{u_1} κ Φ t ψ))
+          ψ
+'QuantumAdapter.halfDensityPullback_inverse' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.bornDensity_halfDensityPullback.{u_1} : ∀ {E : Type u_1} (κ : ℝ) (Φ : ℝ → E → E) (t : ℝ)
+  (ψ : QuantumAdapter.Wave.{u_1} E) (q : E),
+  Eq.{1} (QuantumAdapter.bornDensity.{u_1} (QuantumAdapter.halfDensityPullback.{u_1} κ Φ t ψ) q)
+    (HMul.hMul.{0, 0, 0} (Real.exp (HMul.hMul.{0, 0, 0} κ t))
+      (QuantumAdapter.bornDensity.{u_1} ψ (Φ (Neg.neg.{0} t) q)))
+'QuantumAdapter.bornDensity_halfDensityPullback' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.IntegralPullbackLaw.{u_1} : {E : Type u_1} →
+  [inst : MeasurableSpace.{u_1} E] → MeasureTheory.Measure.{u_1} E → ℝ → (ℝ → E → E) → Prop
+'QuantumAdapter.IntegralPullbackLaw' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.MemLpPullbackLaw.{u_1} : {E : Type u_1} →
+  [inst : MeasurableSpace.{u_1} E] → MeasureTheory.Measure.{u_1} E → ℝ → (ℝ → E → E) → Prop
+'QuantumAdapter.MemLpPullbackLaw' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.WaveAdmissible.halfDensityPullback.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {κ : ℝ} {Φ : ℝ → E → E},
+  QuantumAdapter.IntegralPullbackLaw.{u_1} μ κ Φ →
+    QuantumAdapter.MemLpPullbackLaw.{u_1} μ κ Φ →
+      ∀ {ψ : QuantumAdapter.Wave.{u_1} E},
+        QuantumAdapter.WaveAdmissible.{u_1} μ ψ →
+          ∀ (t : ℝ), QuantumAdapter.WaveAdmissible.{u_1} μ (QuantumAdapter.halfDensityPullback.{u_1} κ Φ t ψ)
+'QuantumAdapter.WaveAdmissible.halfDensityPullback' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.expectation_halfDensityPullback.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  (μ : MeasureTheory.Measure.{u_1} E) (κ : ℝ) (Φ : ℝ → E → E),
+  (∀ (q : E), Eq.{u_1 + 1} (Φ 0 q) q) →
+    (∀ (s t : ℝ) (q : E), Eq.{u_1 + 1} (Φ (HAdd.hAdd.{0, 0, 0} s t) q) (Φ s (Φ t q))) →
+      QuantumAdapter.IntegralPullbackLaw.{u_1} μ κ Φ →
+        ∀ (t : ℝ) (f : E → ℝ) (ψ : QuantumAdapter.Wave.{u_1} E),
+          MeasureTheory.Integrable.{0, u_1}
+              (fun q => HMul.hMul.{0, 0, 0} (f (Φ t q)) (QuantumAdapter.bornDensity.{u_1} ψ q)) μ →
+            Eq.{1} (QuantumAdapter.expectation.{u_1} μ f (QuantumAdapter.halfDensityPullback.{u_1} κ Φ t ψ))
+              (QuantumAdapter.expectation.{u_1} μ (fun q => f (Φ t q)) ψ)
+'QuantumAdapter.expectation_halfDensityPullback' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.memLp_bornDensity_integrable.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {ψ : QuantumAdapter.Wave.{u_1} E},
+  MeasureTheory.MemLp.{u_1, 0} ψ 2 μ → MeasureTheory.Integrable.{0, u_1} (QuantumAdapter.bornDensity.{u_1} ψ) μ
+'QuantumAdapter.memLp_bornDensity_integrable' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.memLp_toLp_norm_sq.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {ψ : QuantumAdapter.Wave.{u_1} E} (hψ : MeasureTheory.MemLp.{u_1, 0} ψ 2 μ),
+  Eq.{1} (HPow.hPow.{0, 0, 0} (Norm.norm.{u_1} (MeasureTheory.MemLp.toLp.{u_1, 0} ψ hψ)) 2)
+    (∫ (q : E), QuantumAdapter.bornDensity.{u_1} ψ q ∂μ)
+'QuantumAdapter.memLp_toLp_norm_sq' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.WaveAdmissible.norm_toL2.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {ψ : QuantumAdapter.Wave.{u_1} E} (hψ : QuantumAdapter.WaveAdmissible.{u_1} μ ψ),
+  Eq.{1} (Norm.norm.{u_1} (QuantumAdapter.WaveAdmissible.toL2.{u_1} hψ)) 1
+'QuantumAdapter.WaveAdmissible.norm_toL2' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.halfDensityPullback_toLp_norm.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {κ : ℝ} {Φ : ℝ → E → E},
+  QuantumAdapter.IntegralPullbackLaw.{u_1} μ κ Φ →
+    ∀ (hLp : QuantumAdapter.MemLpPullbackLaw.{u_1} μ κ Φ) {ψ : QuantumAdapter.Wave.{u_1} E}
+      (hψ : MeasureTheory.MemLp.{u_1, 0} ψ 2 μ) (t : ℝ),
+      Eq.{1} (Norm.norm.{u_1} (MeasureTheory.MemLp.toLp.{u_1, 0} (QuantumAdapter.halfDensityPullback.{u_1} κ Φ t ψ) ⋯))
+        (Norm.norm.{u_1} (MeasureTheory.MemLp.toLp.{u_1, 0} ψ hψ))
+'QuantumAdapter.halfDensityPullback_toLp_norm' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.halfDensityPullback_congr_ae.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {κ : ℝ} {Φ : ℝ → E → E},
+  QuantumAdapter.IntegralPullbackLaw.{u_1} μ κ Φ →
+    QuantumAdapter.MemLpPullbackLaw.{u_1} μ κ Φ →
+      ∀ {ψ χ : QuantumAdapter.Wave.{u_1} E},
+        MeasureTheory.MemLp.{u_1, 0} ψ 2 μ →
+          MeasureTheory.MemLp.{u_1, 0} χ 2 μ →
+            ψ =ᵐ[μ] χ →
+              ∀ (t : ℝ),
+                QuantumAdapter.halfDensityPullback.{u_1} κ Φ t ψ =ᵐ[μ] QuantumAdapter.halfDensityPullback.{u_1} κ Φ t χ
+'QuantumAdapter.halfDensityPullback_congr_ae' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.l2Pullback.{u_1} : {E : Type u_1} →
+  [inst : MeasurableSpace.{u_1} E] →
+    {μ : MeasureTheory.Measure.{u_1} E} →
+      {κ : ℝ} →
+        {Φ : ℝ → E → E} →
+          QuantumAdapter.MemLpPullbackLaw.{u_1} μ κ Φ →
+            ℝ → ↥(MeasureTheory.Lp.{0, u_1} ℂ 2 μ) → ↥(MeasureTheory.Lp.{0, u_1} ℂ 2 μ)
+'QuantumAdapter.l2Pullback' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.l2Pullback_coe.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {κ : ℝ} {Φ : ℝ → E → E} (hLp : QuantumAdapter.MemLpPullbackLaw.{u_1} μ κ Φ)
+  (t : ℝ) (ψ : ↥(MeasureTheory.Lp.{0, u_1} ℂ 2 μ)),
+  ↑↑(QuantumAdapter.l2Pullback.{u_1} hLp t ψ) =ᵐ[μ] QuantumAdapter.halfDensityPullback.{u_1} κ Φ t ↑↑ψ
+'QuantumAdapter.l2Pullback_coe' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.l2Pullback_toLp.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {κ : ℝ} {Φ : ℝ → E → E},
+  QuantumAdapter.IntegralPullbackLaw.{u_1} μ κ Φ →
+    ∀ (hLp : QuantumAdapter.MemLpPullbackLaw.{u_1} μ κ Φ) {ψ : QuantumAdapter.Wave.{u_1} E}
+      (hψ : MeasureTheory.MemLp.{u_1, 0} ψ 2 μ) (t : ℝ),
+      Eq.{u_1 + 1} (QuantumAdapter.l2Pullback.{u_1} hLp t (MeasureTheory.MemLp.toLp.{u_1, 0} ψ hψ))
+        (MeasureTheory.MemLp.toLp.{u_1, 0} (QuantumAdapter.halfDensityPullback.{u_1} κ Φ t ψ) ⋯)
+'QuantumAdapter.l2Pullback_toLp' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.l2Pullback_norm.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {κ : ℝ} {Φ : ℝ → E → E},
+  QuantumAdapter.IntegralPullbackLaw.{u_1} μ κ Φ →
+    ∀ (hLp : QuantumAdapter.MemLpPullbackLaw.{u_1} μ κ Φ) (t : ℝ) (ψ : ↥(MeasureTheory.Lp.{0, u_1} ℂ 2 μ)),
+      Eq.{1} (Norm.norm.{u_1} (QuantumAdapter.l2Pullback.{u_1} hLp t ψ)) (Norm.norm.{u_1} ψ)
+'QuantumAdapter.l2Pullback_norm' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.l2Pullback_add_vectors.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {κ : ℝ} {Φ : ℝ → E → E},
+  QuantumAdapter.IntegralPullbackLaw.{u_1} μ κ Φ →
+    ∀ (hLp : QuantumAdapter.MemLpPullbackLaw.{u_1} μ κ Φ) (t : ℝ) (ψ χ : ↥(MeasureTheory.Lp.{0, u_1} ℂ 2 μ)),
+      Eq.{u_1 + 1} (QuantumAdapter.l2Pullback.{u_1} hLp t (HAdd.hAdd.{u_1, u_1, u_1} ψ χ))
+        (HAdd.hAdd.{u_1, u_1, u_1} (QuantumAdapter.l2Pullback.{u_1} hLp t ψ) (QuantumAdapter.l2Pullback.{u_1} hLp t χ))
+'QuantumAdapter.l2Pullback_add_vectors' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.l2Pullback_smul.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {κ : ℝ} {Φ : ℝ → E → E},
+  QuantumAdapter.IntegralPullbackLaw.{u_1} μ κ Φ →
+    ∀ (hLp : QuantumAdapter.MemLpPullbackLaw.{u_1} μ κ Φ) (t : ℝ) (c : ℂ) (ψ : ↥(MeasureTheory.Lp.{0, u_1} ℂ 2 μ)),
+      Eq.{u_1 + 1} (QuantumAdapter.l2Pullback.{u_1} hLp t (HSMul.hSMul.{0, u_1, u_1} c ψ))
+        (HSMul.hSMul.{0, u_1, u_1} c (QuantumAdapter.l2Pullback.{u_1} hLp t ψ))
+'QuantumAdapter.l2Pullback_smul' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.l2PullbackIsometry.{u_1} : {E : Type u_1} →
+  [inst : MeasurableSpace.{u_1} E] →
+    {μ : MeasureTheory.Measure.{u_1} E} →
+      {κ : ℝ} →
+        {Φ : ℝ → E → E} →
+          QuantumAdapter.IntegralPullbackLaw.{u_1} μ κ Φ →
+            QuantumAdapter.MemLpPullbackLaw.{u_1} μ κ Φ →
+              ℝ →
+                LinearIsometry.{0, 0, u_1, u_1} (RingHom.id.{0} ℂ) ↥(MeasureTheory.Lp.{0, u_1} ℂ 2 μ)
+                  ↥(MeasureTheory.Lp.{0, u_1} ℂ 2 μ)
+'QuantumAdapter.l2PullbackIsometry' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.l2Pullback_zero.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {κ : ℝ} {Φ : ℝ → E → E} (hLp : QuantumAdapter.MemLpPullbackLaw.{u_1} μ κ Φ),
+  (∀ (q : E), Eq.{u_1 + 1} (Φ 0 q) q) →
+    ∀ (ψ : ↥(MeasureTheory.Lp.{0, u_1} ℂ 2 μ)), Eq.{u_1 + 1} (QuantumAdapter.l2Pullback.{u_1} hLp 0 ψ) ψ
+'QuantumAdapter.l2Pullback_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.l2Pullback_add_times.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {κ : ℝ} {Φ : ℝ → E → E},
+  QuantumAdapter.IntegralPullbackLaw.{u_1} μ κ Φ →
+    ∀ (hLp : QuantumAdapter.MemLpPullbackLaw.{u_1} μ κ Φ),
+      (∀ (s t : ℝ) (q : E), Eq.{u_1 + 1} (Φ (HAdd.hAdd.{0, 0, 0} s t) q) (Φ s (Φ t q))) →
+        ∀ (s t : ℝ) (ψ : ↥(MeasureTheory.Lp.{0, u_1} ℂ 2 μ)),
+          Eq.{u_1 + 1} (QuantumAdapter.l2Pullback.{u_1} hLp s (QuantumAdapter.l2Pullback.{u_1} hLp t ψ))
+            (QuantumAdapter.l2Pullback.{u_1} hLp (HAdd.hAdd.{0, 0, 0} s t) ψ)
+'QuantumAdapter.l2Pullback_add_times' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.l2PullbackEquiv.{u_1} : {E : Type u_1} →
+  [inst : MeasurableSpace.{u_1} E] →
+    {μ : MeasureTheory.Measure.{u_1} E} →
+      {κ : ℝ} →
+        {Φ : ℝ → E → E} →
+          QuantumAdapter.IntegralPullbackLaw.{u_1} μ κ Φ →
+            QuantumAdapter.MemLpPullbackLaw.{u_1} μ κ Φ →
+              (∀ (q : E), Eq.{u_1 + 1} (Φ 0 q) q) →
+                (∀ (s t : ℝ) (q : E), Eq.{u_1 + 1} (Φ (HAdd.hAdd.{0, 0, 0} s t) q) (Φ s (Φ t q))) →
+                  ℝ →
+                    LinearIsometryEquiv.{0, 0, u_1, u_1} (RingHom.id.{0} ℂ) ↥(MeasureTheory.Lp.{0, u_1} ℂ 2 μ)
+                      ↥(MeasureTheory.Lp.{0, u_1} ℂ 2 μ)
+'QuantumAdapter.l2PullbackEquiv' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.l2PullbackEquiv_apply.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {κ : ℝ} {Φ : ℝ → E → E} (hI : QuantumAdapter.IntegralPullbackLaw.{u_1} μ κ Φ)
+  (hLp : QuantumAdapter.MemLpPullbackLaw.{u_1} μ κ Φ) (hzero : ∀ (q : E), Eq.{u_1 + 1} (Φ 0 q) q)
+  (hadd : ∀ (s t : ℝ) (q : E), Eq.{u_1 + 1} (Φ (HAdd.hAdd.{0, 0, 0} s t) q) (Φ s (Φ t q))) (t : ℝ)
+  (ψ : ↥(MeasureTheory.Lp.{0, u_1} ℂ 2 μ)),
+  Eq.{u_1 + 1} ((QuantumAdapter.l2PullbackEquiv.{u_1} hI hLp hzero hadd t) ψ) (QuantumAdapter.l2Pullback.{u_1} hLp t ψ)
+'QuantumAdapter.l2PullbackEquiv_apply' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.l2PullbackEquiv_symm_apply.{u_1} : ∀ {E : Type u_1} [inst : MeasurableSpace.{u_1} E]
+  {μ : MeasureTheory.Measure.{u_1} E} {κ : ℝ} {Φ : ℝ → E → E} (hI : QuantumAdapter.IntegralPullbackLaw.{u_1} μ κ Φ)
+  (hLp : QuantumAdapter.MemLpPullbackLaw.{u_1} μ κ Φ) (hzero : ∀ (q : E), Eq.{u_1 + 1} (Φ 0 q) q)
+  (hadd : ∀ (s t : ℝ) (q : E), Eq.{u_1 + 1} (Φ (HAdd.hAdd.{0, 0, 0} s t) q) (Φ s (Φ t q))) (t : ℝ)
+  (ψ : ↥(MeasureTheory.Lp.{0, u_1} ℂ 2 μ)),
+  Eq.{u_1 + 1}
+    ((LinearIsometryEquiv.symm.{0, 0, u_1, u_1} (QuantumAdapter.l2PullbackEquiv.{u_1} hI hLp hzero hadd t)) ψ)
+    (QuantumAdapter.l2Pullback.{u_1} hLp (Neg.neg.{0} t) ψ)
+'QuantumAdapter.l2PullbackEquiv_symm_apply' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.phaseDimension : ℕ → ℕ
+'QuantumAdapter.phaseDimension' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.phaseVolume : (N : ℕ) → MeasureTheory.Measure.{0} (QuantumAdapter.Phase N)
+'QuantumAdapter.phaseVolume' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.QuantumHilbert : (N : ℕ) →
+  AddSubgroup.{0} (MeasureTheory.AEEqFun.{0, 0} (QuantumAdapter.Phase N) ℂ (QuantumAdapter.phaseVolume N))
+'QuantumAdapter.QuantumHilbert' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.cutoffSobolevFactor : ℕ → ℝ
+'QuantumAdapter.cutoffSobolevFactor' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.cutoffSobolevFactor_pos : ∀ (N : ℕ), LT.lt.{0} 0 (QuantumAdapter.cutoffSobolevFactor N)
+'QuantumAdapter.cutoffSobolevFactor_pos' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.canonicalScale : ℕ → ℝ
+'QuantumAdapter.canonicalScale' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.canonicalScale_pos : ∀ (N : ℕ), LT.lt.{0} 0 (QuantumAdapter.canonicalScale N)
+'QuantumAdapter.canonicalScale_pos' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.gaussianAmplitude : ℕ → ℝ
+'QuantumAdapter.gaussianAmplitude' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.gaussianAmplitude_pos : ∀ (N : ℕ), LT.lt.{0} 0 (QuantumAdapter.gaussianAmplitude N)
+'QuantumAdapter.gaussianAmplitude_pos' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.canonicalPacket : (N : ℕ) → QuantumAdapter.Phase N → QuantumAdapter.Wave.{0} (QuantumAdapter.Phase N)
+'QuantumAdapter.canonicalPacket' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.canonicalPacket_im : ∀ (N : ℕ) (q₀ q : QuantumAdapter.Phase N),
+  Eq.{1} (QuantumAdapter.canonicalPacket N q₀ q).im 0
+'QuantumAdapter.canonicalPacket_im' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.canonicalPacket_center : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+  Eq.{1} (QuantumAdapter.canonicalPacket N q₀ q₀) ↑(QuantumAdapter.gaussianAmplitude N)
+'QuantumAdapter.canonicalPacket_center' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.canonicalPacket_re_pos : ∀ (N : ℕ) (q₀ q : QuantumAdapter.Phase N),
+  LT.lt.{0} 0 (QuantumAdapter.canonicalPacket N q₀ q).re
+'QuantumAdapter.canonicalPacket_re_pos' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.finiteLaplaceTrace : ℕ → ℝ
+'QuantumAdapter.finiteLaplaceTrace' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.finiteLaplaceTrace_nonneg : ∀ (N : ℕ), LE.le.{0} 0 (QuantumAdapter.finiteLaplaceTrace N)
+'QuantumAdapter.finiteLaplaceTrace_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.phaseDecayRate : ℝ → ℕ → ℝ
+'QuantumAdapter.phaseDecayRate' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.driftDivergence : ℝ → (N : ℕ) → QuantumAdapter.Phase N → ℝ
+'QuantumAdapter.driftDivergence' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.PhaseFlow : ℝ → Type
+'QuantumAdapter.PhaseFlow' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.transport : {ν : ℝ} →
+  QuantumAdapter.PhaseFlow ν →
+    (N : ℕ) → ℝ → QuantumAdapter.Wave.{0} (QuantumAdapter.Phase N) → QuantumAdapter.Wave.{0} (QuantumAdapter.Phase N)
+'QuantumAdapter.transport' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.transportedPacket : {ν : ℝ} →
+  QuantumAdapter.PhaseFlow ν → (N : ℕ) → QuantumAdapter.Phase N → ℝ → QuantumAdapter.Wave.{0} (QuantumAdapter.Phase N)
+'QuantumAdapter.transportedPacket' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.quantumEnergy : {ν : ℝ} → QuantumAdapter.PhaseFlow ν → (N : ℕ) → QuantumAdapter.Phase N → ℝ → ℝ
+'QuantumAdapter.quantumEnergy' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.quantumAdmissible : {ν : ℝ} → QuantumAdapter.PhaseFlow ν → (N : ℕ) → QuantumAdapter.Phase N → ℝ → Prop
+'QuantumAdapter.quantumAdmissible' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.quantumEnergy_nonneg : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (q₀ : QuantumAdapter.Phase N)
+  (t : ℝ), LE.le.{0} 0 (QuantumAdapter.quantumEnergy F N q₀ t)
+'QuantumAdapter.quantumEnergy_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.transport_zero : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ)
+  (ψ : QuantumAdapter.Wave.{0} (QuantumAdapter.Phase N)), Eq.{1} (QuantumAdapter.transport F N 0 ψ) ψ
+'QuantumAdapter.transport_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.transportedPacket_zero : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ)
+  (q₀ : QuantumAdapter.Phase N),
+  Eq.{1} (QuantumAdapter.transportedPacket F N q₀ 0) (QuantumAdapter.canonicalPacket N q₀)
+'QuantumAdapter.transportedPacket_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.transport_add : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (s t : ℝ)
+  (ψ : QuantumAdapter.Wave.{0} (QuantumAdapter.Phase N)),
+  Eq.{1} (QuantumAdapter.transport F N s (QuantumAdapter.transport F N t ψ))
+    (QuantumAdapter.transport F N (HAdd.hAdd.{0, 0, 0} s t) ψ)
+'QuantumAdapter.transport_add' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.transport_inverse : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (t : ℝ)
+  (ψ : QuantumAdapter.Wave.{0} (QuantumAdapter.Phase N)),
+  Eq.{1} (QuantumAdapter.transport F N (Neg.neg.{0} t) (QuantumAdapter.transport F N t ψ)) ψ
+'QuantumAdapter.transport_inverse' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.phaseFlow_isTrajectory : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ)
+  (q₀ : QuantumAdapter.Phase N), QuantumAdapter.IsTrajectory ν N q₀ fun t => F.map N t q₀
+'QuantumAdapter.phaseFlow_isTrajectory' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.hamiltonianExpression : ℝ →
+  ℝ → (N : ℕ) → QuantumAdapter.Wave.{0} (QuantumAdapter.Phase N) → QuantumAdapter.Wave.{0} (QuantumAdapter.Phase N)
+'QuantumAdapter.hamiltonianExpression' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.HamiltonianTestDomain : (N : ℕ) → QuantumAdapter.Wave.{0} (QuantumAdapter.Phase N) → Prop
+'QuantumAdapter.HamiltonianTestDomain' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.hamiltonianExpression_zero : ∀ (ν ℏ : ℝ) (N : ℕ),
+  Eq.{1} (QuantumAdapter.hamiltonianExpression ν ℏ N fun x => 0) 0
+'QuantumAdapter.hamiltonianExpression_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.PhaseTransportLaws : {ν : ℝ} → QuantumAdapter.PhaseFlow ν → Prop
+'QuantumAdapter.PhaseTransportLaws' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.quantumUnitary : {ν : ℝ} →
+  (F : QuantumAdapter.PhaseFlow ν) →
+    QuantumAdapter.PhaseTransportLaws F →
+      (N : ℕ) →
+        ℝ →
+          LinearIsometryEquiv.{0, 0, 0, 0} (RingHom.id.{0} ℂ) ↥(QuantumAdapter.QuantumHilbert N)
+            ↥(QuantumAdapter.QuantumHilbert N)
+'QuantumAdapter.quantumUnitary' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.quantumUnitary_zero : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν)
+  (L : QuantumAdapter.PhaseTransportLaws F) (N : ℕ) (ψ : ↥(QuantumAdapter.QuantumHilbert N)),
+  Eq.{1} ((QuantumAdapter.quantumUnitary F L N 0) ψ) ψ
+'QuantumAdapter.quantumUnitary_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.quantumUnitary_add : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν)
+  (L : QuantumAdapter.PhaseTransportLaws F) (N : ℕ) (s t : ℝ) (ψ : ↥(QuantumAdapter.QuantumHilbert N)),
+  Eq.{1} ((QuantumAdapter.quantumUnitary F L N s) ((QuantumAdapter.quantumUnitary F L N t) ψ))
+    ((QuantumAdapter.quantumUnitary F L N (HAdd.hAdd.{0, 0, 0} s t)) ψ)
+'QuantumAdapter.quantumUnitary_add' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.transport_waveAdmissible : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν),
+  QuantumAdapter.PhaseTransportLaws F →
+    ∀ (N : ℕ) (t : ℝ) {ψ : QuantumAdapter.Wave.{0} (QuantumAdapter.Phase N)},
+      QuantumAdapter.WaveAdmissible.{0} (QuantumAdapter.phaseVolume N) ψ →
+        QuantumAdapter.WaveAdmissible.{0} (QuantumAdapter.phaseVolume N) (QuantumAdapter.transport F N t ψ)
+'QuantumAdapter.transport_waveAdmissible' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.quantumEnergy_conjugacy : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν),
+  QuantumAdapter.PhaseTransportLaws F →
+    ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N) (t : ℝ),
+      MeasureTheory.Integrable.{0, 0}
+          (fun q =>
+            HMul.hMul.{0, 0, 0} (QuantumAdapter.energy3 N (F.map N t q))
+              (QuantumAdapter.bornDensity.{0} (QuantumAdapter.canonicalPacket N q₀) q))
+          (QuantumAdapter.phaseVolume N) →
+        Eq.{1} (QuantumAdapter.quantumEnergy F N q₀ t)
+          (QuantumAdapter.expectation.{0} (QuantumAdapter.phaseVolume N)
+            (fun q => QuantumAdapter.energy3 N (F.map N t q)) (QuantumAdapter.canonicalPacket N q₀))
+'QuantumAdapter.quantumEnergy_conjugacy' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.centralEnergy : {ν : ℝ} →
+  QuantumAdapter.PhaseFlow ν → ℕ → (a : NSEMaxwell.Classical.Field) → NSEMaxwell.Classical.Data a → ℝ → ℝ
+'QuantumAdapter.centralEnergy' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.packetEnergy : {ν : ℝ} →
+  QuantumAdapter.PhaseFlow ν → ℕ → (a : NSEMaxwell.Classical.Field) → NSEMaxwell.Classical.Data a → ℝ → ℝ
+'QuantumAdapter.packetEnergy' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.GalerkinBoundAt : {ν : ℝ} →
+  QuantumAdapter.PhaseFlow ν → (a : NSEMaxwell.Classical.Field) → NSEMaxwell.Classical.Data a → ℝ → Prop
+'QuantumAdapter.GalerkinBoundAt' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.G3 : {ν : ℝ} → QuantumAdapter.PhaseFlow ν → Prop
+'QuantumAdapter.G3' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.QREG : {ν : ℝ} → QuantumAdapter.PhaseFlow ν → Prop
+'QuantumAdapter.QREG' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.forwardPacketBound : ℝ → ℝ → ℝ → ℝ
+'QuantumAdapter.forwardPacketBound' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.packetGradientBudget : ℝ → ℝ → ℝ → ℝ
+'QuantumAdapter.packetGradientBudget' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.reversePacketBound : ℝ → ℝ → ℝ → ℝ → ℝ → ℝ
+'QuantumAdapter.reversePacketBound' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.forwardPacketBound_nonneg : ∀ (Cemb T C : ℝ), LE.le.{0} 0 (QuantumAdapter.forwardPacketBound Cemb T C)
+'QuantumAdapter.forwardPacketBound_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.reversePacketBound_nonneg : ∀ (Cemb C3 T A C : ℝ),
+  LE.le.{0} 0 (QuantumAdapter.reversePacketBound Cemb C3 T A C)
+'QuantumAdapter.reversePacketBound_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.PacketBounds : {ν : ℝ} → QuantumAdapter.PhaseFlow ν → ℝ → ℝ → Prop
+'QuantumAdapter.PacketBounds' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.InitialProjectionBounds : Prop
+'QuantumAdapter.InitialProjectionBounds' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.GalerkinAnalyticLaws : {ν : ℝ} → QuantumAdapter.PhaseFlow ν → Prop
+'QuantumAdapter.GalerkinAnalyticLaws' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.ExactQuantumEquivalence : {ν : ℝ} → QuantumAdapter.PhaseFlow ν → Prop
+'QuantumAdapter.ExactQuantumEquivalence' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Directions.feffermanB_implies_galerkin_of_analyticLaws : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν),
+  QuantumAdapter.GalerkinAnalyticLaws F → NSEMaxwell.Classical.FeffermanB ν → QuantumAdapter.G3 F
+'QuantumAdapter.Directions.feffermanB_implies_galerkin_of_analyticLaws' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Directions.galerkin_implies_quantum_of_packetBounds : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν)
+  (Cemb C3 : ℝ), QuantumAdapter.PacketBounds F Cemb C3 → QuantumAdapter.G3 F → QuantumAdapter.QREG F
+'QuantumAdapter.Directions.galerkin_implies_quantum_of_packetBounds' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Directions.feffermanB_implies_quantum_of_analyticLaws : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν)
+  (Cemb C3 : ℝ),
+  QuantumAdapter.GalerkinAnalyticLaws F →
+    QuantumAdapter.PacketBounds F Cemb C3 → NSEMaxwell.Classical.FeffermanB ν → QuantumAdapter.QREG F
+'QuantumAdapter.Directions.feffermanB_implies_quantum_of_analyticLaws' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Directions.quantum_implies_galerkin_of_packetBounds : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν)
+  (Cemb C3 : ℝ),
+  QuantumAdapter.PacketBounds F Cemb C3 →
+    QuantumAdapter.InitialProjectionBounds → QuantumAdapter.QREG F → QuantumAdapter.G3 F
+'QuantumAdapter.Directions.quantum_implies_galerkin_of_packetBounds' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Directions.galerkin_implies_feffermanB_of_analyticLaws : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν),
+  QuantumAdapter.GalerkinAnalyticLaws F → QuantumAdapter.G3 F → NSEMaxwell.Classical.FeffermanB ν
+'QuantumAdapter.Directions.galerkin_implies_feffermanB_of_analyticLaws' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Directions.quantum_implies_feffermanB_of_analyticLaws : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν)
+  (Cemb C3 : ℝ),
+  QuantumAdapter.GalerkinAnalyticLaws F →
+    QuantumAdapter.PacketBounds F Cemb C3 →
+      QuantumAdapter.InitialProjectionBounds → QuantumAdapter.QREG F → NSEMaxwell.Classical.FeffermanB ν
+'QuantumAdapter.Directions.quantum_implies_feffermanB_of_analyticLaws' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.feffermanB_iff_qreg_of_analytic_bounds : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (Cemb C3 : ℝ),
+  QuantumAdapter.GalerkinAnalyticLaws F →
+    QuantumAdapter.PacketBounds F Cemb C3 →
+      QuantumAdapter.InitialProjectionBounds → (NSEMaxwell.Classical.FeffermanB ν ↔ QuantumAdapter.QREG F)
+'QuantumAdapter.feffermanB_iff_qreg_of_analytic_bounds' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.exactQuantumEquivalence_of_analytic_bounds : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (Cemb C3 : ℝ),
+  QuantumAdapter.GalerkinAnalyticLaws F →
+    QuantumAdapter.PacketBounds F Cemb C3 →
+      QuantumAdapter.InitialProjectionBounds → QuantumAdapter.ExactQuantumEquivalence F
+'QuantumAdapter.exactQuantumEquivalence_of_analytic_bounds' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.exact_quantum_conditional_root : ∀ (ν : ℝ),
+  LT.lt.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν) (Cemb C3 : ℝ),
+      QuantumAdapter.GalerkinAnalyticLaws F →
+        QuantumAdapter.PacketBounds F Cemb C3 →
+          QuantumAdapter.InitialProjectionBounds → (NSEMaxwell.Classical.FeffermanB ν ↔ QuantumAdapter.QREG F)
+'QuantumAdapter.exact_quantum_conditional_root' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]

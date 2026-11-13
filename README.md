@@ -48,6 +48,40 @@ existence proposition for arbitrary data.
 [Cached Linux verification](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43447885685) ·
 [Native source package](Auxillary/releases/NSEB_IFF_CM_3fca9683.zip)
 
+## Canonical Gaussian quantum equivalence
+
+```text
+QUANTUM_STATUS = A_TIER (679 obligation declarations; 581 theorems)
+QUANTUM_ROOT_STATUS = UNCONDITIONAL_CLOSURE_OF_CANONICAL_GAUSSIAN_EQUIVALENCE
+QUANTUM_ROOT = QuantumAdapter.Obligations.NSE_B_IFF_CANONICAL_QUANTUM
+QUANTUM_PROOF_COMMIT = 3c2a8f5435b4e95e779222b37637f12a57d1eea9
+QUANTUM_EVIDENCE_PUBLICATION = c23237c8d229820bd2e9aa0a26191ae81b47b20b
+QUANTUM_OBLIGATIONS = P1--P7 / DISCHARGED
+QUANTUM_H3_TAME_CONSTANT = 512
+MERGED_SOURCE_COMPILER_VALIDATION = PENDING
+LOCAL_LEAN_EXECUTIONS = 0
+```
+
+[Quantum_adapter](Quantum_adapter/) contains the concrete full-mean phase,
+Born/L2/transport definitions, and canonical flow. [B <-> Quantum](B%20%3C-%3E%20Quantum/)
+contains the ordered forward and reverse proofs. The exact root states
+`∀ (ν : ℝ) (hν : 0 < ν), FeffermanB ν ↔ QREG (closedPhaseFlow hν)`. Its seven analytic
+obligations are constructed; the root supplies no proof of either arbitrary-data
+existence proposition separately. The certified H3 constant is 512; a stronger
+constant of 16 is not part of this certificate.
+
+[Exact obligation report](Auxillary/quantum/obligations/NSE_QUANTUM_P1_P7_A_TIER.txt) ·
+[Root source](Quantum_adapter/QuantumAdapter/Obligations/Closure.lean) ·
+[Retained evidence](Auxillary/quantum/obligations/evidence/3c2a8f5435b4e95e779222b37637f12a57d1eea9/) ·
+[Certified-source CI: PASS](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43469332973) ·
+[Windows replay package](Auxillary/quantum/obligations/exports/NSE_QUANTUM_P1_P7_WINDOWS_REPLAY.zip).
+
+This quantum certificate binds the immutable proof commit above. The Maxwell
+and classical mechanics certificates below retain their own recorded source
+commits. External compilation and fresh theorem audits of the combined merge
+candidate remain pending. The Windows replay launcher is source-prepared;
+the recorded matching compiler evidence is native Linux.
+
 ## Repository structure
 
 | Directory | Scope |
@@ -232,3 +266,4 @@ RENAME_VALIDATION = PASS_CACHED_EXTERNAL_LINUX
 ## Native Windows download
 
 [CLASSICAL_MECHANICS_WINDOWS.zip](Auxillary/releases/CLASSICAL_MECHANICS_WINDOWS.zip) contains the exact native source closure, both A-tier scope records, the B-tier reference, the 62-theorem Linux certificate, and `run.cmd` for cached external Windows Lean 4.34.0-rc1 validation. All 47 mapped source files are byte-identical to the source snapshot; Windows compiler execution is not inferred from the Linux evidence.
+

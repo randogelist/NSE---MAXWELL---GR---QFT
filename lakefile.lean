@@ -45,3 +45,17 @@ lean_lib FourierHodgeLaws_inhabitant where
 @[default_target]
 lean_lib NSEMaxwell where
   srcDir := "Fefferman_adapter"
+
+
+lean_lib QuantumAdapter where
+  srcDir := "Quantum_adapter"
+
+lean_lib NSEQuantumForward where
+  srcDir := "B <-> Quantum/=>"
+
+lean_lib NSEQuantumReverse where
+  srcDir := "B <-> Quantum/<="
+
+lean_lib NSEQuantumBridge where
+  srcDir := "Quantum_adapter"
+

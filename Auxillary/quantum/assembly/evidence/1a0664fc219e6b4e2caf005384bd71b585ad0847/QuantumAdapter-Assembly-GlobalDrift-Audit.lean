@@ -1,0 +1,19 @@
+import QuantumAdapter.Assembly.GlobalDrift
+set_option pp.universes true
+set_option pp.fullNames true
+#check @QuantumAdapter.Assembly.local_drift_solutions_unique
+#print axioms QuantumAdapter.Assembly.local_drift_solutions_unique
+#check @QuantumAdapter.Assembly.local_drift_solutions_piecewise
+#print axioms QuantumAdapter.Assembly.local_drift_solutions_piecewise
+#check @QuantumAdapter.Assembly.local_drift_energy0_bound_abs
+#print axioms QuantumAdapter.Assembly.local_drift_energy0_bound_abs
+#check @QuantumAdapter.Assembly.exists_uniform_local_drift_solutions_on_ball
+#print axioms QuantumAdapter.Assembly.exists_uniform_local_drift_solutions_on_ball
+#check @QuantumAdapter.Assembly.exists_drift_solution_on_arbitrary_interval
+#print axioms QuantumAdapter.Assembly.exists_drift_solution_on_arbitrary_interval
+#check @QuantumAdapter.Assembly.exists_complete_drift_orbit
+#print axioms QuantumAdapter.Assembly.exists_complete_drift_orbit
+#check @QuantumAdapter.Assembly.exists_unique_complete_drift_orbit
+#print axioms QuantumAdapter.Assembly.exists_unique_complete_drift_orbit
+#check @QuantumAdapter.Assembly.contDiff_complete_drift_orbit
+#print axioms QuantumAdapter.Assembly.contDiff_complete_drift_orbit

@@ -1,0 +1,307 @@
+QuantumAdapter.Assembly.sum_fullModes_eq_sum_coordinates : ∀ (N : ℕ) (f : SingularClosure.Frequency → Fin 3 → ℝ),
+  Eq.{1} (∑ k ∈ QuantumAdapter.fullModes N, ∑ i, f k i) (∑ ki, f (↑ki.1) ki.2)
+'QuantumAdapter.Assembly.sum_fullModes_eq_sum_coordinates' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.phaseCoeff_mode : ∀ (N : ℕ) (q : QuantumAdapter.Phase N) (ki : QuantumAdapter.PhaseIndex N),
+  Eq.{1} (QuantumAdapter.phaseCoeff q (↑ki.1) ki.2) (WithLp.ofLp.{0} (↑q) ki)
+'QuantumAdapter.Assembly.phaseCoeff_mode' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.energy0_eq_norm_sq : ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+  Eq.{1} (QuantumAdapter.energy0 N q) (HPow.hPow.{0, 0, 0} (Norm.norm.{0} q) 2)
+'QuantumAdapter.Assembly.energy0_eq_norm_sq' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.weightedCoordinates_apply : ∀ (N : ℕ) (q : QuantumAdapter.Phase N)
+  (ki : QuantumAdapter.PhaseIndex N),
+  Eq.{1} (WithLp.ofLp.{0} ((QuantumAdapter.Assembly.weightedCoordinates N) q) ki)
+    (HSMul.hSMul.{0, 0, 0} (√(QuantumAdapter.h3Weight ↑ki.1)) (WithLp.ofLp.{0} (↑q) ki))
+'QuantumAdapter.Assembly.weightedCoordinates_apply' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.continuous_weightedCoordinates : ∀ (N : ℕ),
+  Continuous.{0, 0} ⇑(QuantumAdapter.Assembly.weightedCoordinates N)
+'QuantumAdapter.Assembly.continuous_weightedCoordinates' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.weightedCoordinates_norm_sq : ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+  Eq.{1} (HPow.hPow.{0, 0, 0} (Norm.norm.{0} ((QuantumAdapter.Assembly.weightedCoordinates N) q)) 2)
+    (QuantumAdapter.energy3 N q)
+'QuantumAdapter.Assembly.weightedCoordinates_norm_sq' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.sqrt_energy3_eq_norm : ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+  Eq.{1} (√(QuantumAdapter.energy3 N q)) (Norm.norm.{0} ((QuantumAdapter.Assembly.weightedCoordinates N) q))
+'QuantumAdapter.Assembly.sqrt_energy3_eq_norm' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.continuous_energy3 : ∀ (N : ℕ), Continuous.{0, 0} (QuantumAdapter.energy3 N)
+'QuantumAdapter.Assembly.continuous_energy3' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.continuous_sqrt_energy3 : ∀ (N : ℕ), Continuous.{0, 0} fun q => √(QuantumAdapter.energy3 N q)
+'QuantumAdapter.Assembly.continuous_sqrt_energy3' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.sqrt_energy3_add_le : ∀ (N : ℕ) (q r : QuantumAdapter.Phase N),
+  LE.le.{0} (√(QuantumAdapter.energy3 N (HAdd.hAdd.{0, 0, 0} q r)))
+    (HAdd.hAdd.{0, 0, 0} √(QuantumAdapter.energy3 N q) √(QuantumAdapter.energy3 N r))
+'QuantumAdapter.Assembly.sqrt_energy3_add_le' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.sqrt_energy3_sub_le : ∀ (N : ℕ) (q r : QuantumAdapter.Phase N),
+  LE.le.{0} (√(QuantumAdapter.energy3 N (HSub.hSub.{0, 0, 0} q r)))
+    (HAdd.hAdd.{0, 0, 0} √(QuantumAdapter.energy3 N q) √(QuantumAdapter.energy3 N r))
+'QuantumAdapter.Assembly.sqrt_energy3_sub_le' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.sqrt_energy3_le_add : ∀ (N : ℕ) (q r : QuantumAdapter.Phase N),
+  LE.le.{0} (√(QuantumAdapter.energy3 N q))
+    (HAdd.hAdd.{0, 0, 0} √(QuantumAdapter.energy3 N (HSub.hSub.{0, 0, 0} q r)) √(QuantumAdapter.energy3 N r))
+'QuantumAdapter.Assembly.sqrt_energy3_le_add' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.abs_sqrt_energy3_sub_le : ∀ (N : ℕ) (q r : QuantumAdapter.Phase N),
+  LE.le.{0} (abs.{0} (HSub.hSub.{0, 0, 0} √(QuantumAdapter.energy3 N q) √(QuantumAdapter.energy3 N r)))
+    √(QuantumAdapter.energy3 N (HSub.hSub.{0, 0, 0} q r))
+'QuantumAdapter.Assembly.abs_sqrt_energy3_sub_le' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.cutoffLambda_nonneg : ∀ (N : ℕ), LE.le.{0} 0 (QuantumAdapter.Assembly.cutoffLambda N)
+'QuantumAdapter.Assembly.cutoffLambda_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.cutoffWeight_pos : ∀ (N : ℕ), LT.lt.{0} 0 (QuantumAdapter.Assembly.cutoffWeight N)
+'QuantumAdapter.Assembly.cutoffWeight_pos' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.laplaceSymbol_le_cutoffLambda : ∀ (N : ℕ) (k : SingularClosure.Frequency),
+  Membership.mem.{0, 0} (QuantumAdapter.fullModes N) k →
+    LE.le.{0} (QuantumAdapter.laplaceSymbol k) (QuantumAdapter.Assembly.cutoffLambda N)
+'QuantumAdapter.Assembly.laplaceSymbol_le_cutoffLambda' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.one_le_h3Weight : ∀ (k : SingularClosure.Frequency), LE.le.{0} 1 (QuantumAdapter.h3Weight k)
+'QuantumAdapter.Assembly.one_le_h3Weight' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.h3Weight_le_cutoffWeight : ∀ (N : ℕ) (k : SingularClosure.Frequency),
+  Membership.mem.{0, 0} (QuantumAdapter.fullModes N) k →
+    LE.le.{0} (QuantumAdapter.h3Weight k) (QuantumAdapter.Assembly.cutoffWeight N)
+'QuantumAdapter.Assembly.h3Weight_le_cutoffWeight' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.energy0_le_energy3 : ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+  LE.le.{0} (QuantumAdapter.energy0 N q) (QuantumAdapter.energy3 N q)
+'QuantumAdapter.Assembly.energy0_le_energy3' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.energy3_le_cutoffWeight_mul_energy0 : ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+  LE.le.{0} (QuantumAdapter.energy3 N q)
+    (HMul.hMul.{0, 0, 0} (QuantumAdapter.Assembly.cutoffWeight N) (QuantumAdapter.energy0 N q))
+'QuantumAdapter.Assembly.energy3_le_cutoffWeight_mul_energy0' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.dissipation_le_cutoffLambda_mul_energy0 : ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+  LE.le.{0} (QuantumAdapter.dissipation N q)
+    (HMul.hMul.{0, 0, 0} (QuantumAdapter.Assembly.cutoffLambda N) (QuantumAdapter.energy0 N q))
+'QuantumAdapter.Assembly.dissipation_le_cutoffLambda_mul_energy0' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.cutoffSobolevFactor_sq : ∀ (N : ℕ),
+  Eq.{1} (HPow.hPow.{0, 0, 0} (QuantumAdapter.cutoffSobolevFactor N) 2) (QuantumAdapter.Assembly.cutoffWeight N)
+'QuantumAdapter.Assembly.cutoffSobolevFactor_sq' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.energy3_le_cutoffSobolevFactor_sq_mul_norm_sq : ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+  LE.le.{0} (QuantumAdapter.energy3 N q)
+    (HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} (QuantumAdapter.cutoffSobolevFactor N) 2)
+      (HPow.hPow.{0, 0, 0} (Norm.norm.{0} q) 2))
+'QuantumAdapter.Assembly.energy3_le_cutoffSobolevFactor_sq_mul_norm_sq' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.norm_le_sqrt_energy3 : ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+  LE.le.{0} (Norm.norm.{0} q) √(QuantumAdapter.energy3 N q)
+'QuantumAdapter.Assembly.norm_le_sqrt_energy3' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.sqrt_energy3_le_cutoffSobolevFactor_mul_norm : ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+  LE.le.{0} (√(QuantumAdapter.energy3 N q))
+    (HMul.hMul.{0, 0, 0} (QuantumAdapter.cutoffSobolevFactor N) (Norm.norm.{0} q))
+'QuantumAdapter.Assembly.sqrt_energy3_le_cutoffSobolevFactor_mul_norm' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.fullModes_mono : ∀ {N M : ℕ},
+  LE.le.{0} N M → QuantumAdapter.fullModes N ⊆ QuantumAdapter.fullModes M
+'QuantumAdapter.Assembly.fullModes_mono' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.initialEnergyDensity_nonneg : ∀ (a : SingularClosure.Field) (k : SingularClosure.Frequency),
+  LE.le.{0} 0 (QuantumAdapter.Assembly.initialEnergyDensity a k)
+'QuantumAdapter.Assembly.initialEnergyDensity_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.initialPhaseData_energy3_eq_sum : ∀ (N : ℕ) (a : NSEMaxwell.Classical.Field)
+  (ha : NSEMaxwell.Classical.Data a),
+  Eq.{1} (QuantumAdapter.energy3 N (QuantumAdapter.initialPhaseData N a ha))
+    (∑ k ∈ QuantumAdapter.fullModes N, QuantumAdapter.Assembly.initialEnergyDensity a k)
+'QuantumAdapter.Assembly.initialPhaseData_energy3_eq_sum' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.initialPhaseData_energy3_mono : ∀ {N M : ℕ},
+  LE.le.{0} N M →
+    ∀ (a : NSEMaxwell.Classical.Field) (ha : NSEMaxwell.Classical.Data a),
+      LE.le.{0} (QuantumAdapter.energy3 N (QuantumAdapter.initialPhaseData N a ha))
+        (QuantumAdapter.energy3 M (QuantumAdapter.initialPhaseData M a ha))
+'QuantumAdapter.Assembly.initialPhaseData_energy3_mono' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.integral_unitCube_fderiv_eq_zero : ∀ (f : SingularClosure.Vec → ℂ),
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) f →
+    SingularClosure.SpatialPeriodic.{0} f →
+      ∀ (j : Fin 3),
+        Eq.{1}
+          (∫ (x : SingularClosure.Vec) in SingularClosure.unitCube,
+            (fderiv.{0, 0, 0} ℝ f x) (SingularClosure.unitVector j))
+          0
+'QuantumAdapter.Assembly.integral_unitCube_fderiv_eq_zero' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.datumFourierIntegrand_fderiv_coordinate : ∀ {a : SingularClosure.Field},
+  Differentiable.{0, 0, 0} ℝ a →
+    ∀ (k : SingularClosure.Frequency) (i j : Fin 3) (x : SingularClosure.Vec),
+      Eq.{1} ((fderiv.{0, 0, 0} ℝ (SingularClosure.datumFourierIntegrand a k i) x) (SingularClosure.unitVector j))
+        (HSub.hSub.{0, 0, 0}
+          (HMul.hMul.{0, 0, 0} (Star.star.{0} (SingularClosure.fourierCharacter k x))
+            ↑(WithLp.ofLp.{0} (SingularClosure.coordinateDerivative a j x) i))
+          (HMul.hMul.{0, 0, 0} (SingularClosure.derivativeSymbol j k) (SingularClosure.datumFourierIntegrand a k i x)))
+'QuantumAdapter.Assembly.datumFourierIntegrand_fderiv_coordinate' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.datumFourierCoeff_coordinateDerivative : ∀ (a : SingularClosure.Field),
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a →
+    SingularClosure.SpatialPeriodic.{0} a →
+      ∀ (k : SingularClosure.Frequency) (i j : Fin 3),
+        Eq.{1} (SingularClosure.datumFourierCoeff (SingularClosure.coordinateDerivative a j) k i)
+          (HMul.hMul.{0, 0, 0} (SingularClosure.derivativeSymbol j k) (SingularClosure.datumFourierCoeff a k i))
+'QuantumAdapter.Assembly.datumFourierCoeff_coordinateDerivative' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.h3Weight_eq_torusSobolevWeight_cube_sq : ∀ (k : SingularClosure.Frequency),
+  Eq.{1} (QuantumAdapter.h3Weight k)
+    (HPow.hPow.{0, 0, 0} (HPow.hPow.{0, 0, 0} (SingularClosure.torusSobolevWeight k) 3) 2)
+'QuantumAdapter.Assembly.h3Weight_eq_torusSobolevWeight_cube_sq' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.h3Coeff_eq_sobolevWeightedCoeff_sq : ∀ (c : SingularClosure.FourierCoeff)
+  (k : SingularClosure.Frequency) (i : Fin 3),
+  Eq.{1} (HMul.hMul.{0, 0, 0} (QuantumAdapter.h3Weight k) (Complex.normSq (c k i)))
+    (HPow.hPow.{0, 0, 0} (Norm.norm.{0} (SingularClosure.sobolevWeightedCoeff 3 c (Prod.mk.{0, 0} k i))) 2)
+'QuantumAdapter.Assembly.h3Coeff_eq_sobolevWeightedCoeff_sq' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.initialProjectionMajorant_nonneg : ∀ (a : SingularClosure.Field),
+  LE.le.{0} 0 (QuantumAdapter.Assembly.initialProjectionMajorant a)
+'QuantumAdapter.Assembly.initialProjectionMajorant_nonneg' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.initialEnergyDensity_le : ∀ (a : SingularClosure.Field),
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a →
+    SingularClosure.SpatialPeriodic.{0} a →
+      ∀ (k : SingularClosure.Frequency),
+        LE.le.{0} (QuantumAdapter.Assembly.initialEnergyDensity a k)
+          (HMul.hMul.{0, 0, 0}
+            (HMul.hMul.{0, 0, 0} 3 (HPow.hPow.{0, 0, 0} (SingularClosure.smoothDatumDecayConstant 3 a) 2))
+            (HPow.hPow.{0, 0, 0} (Inv.inv.{0} (SingularClosure.torusSobolevWeight k)) 4))
+'QuantumAdapter.Assembly.initialEnergyDensity_le' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.initialPhaseData_energy3_le_majorant : ∀ (N : ℕ) (a : NSEMaxwell.Classical.Field)
+  (ha : NSEMaxwell.Classical.Data a),
+  LE.le.{0} (QuantumAdapter.energy3 N (QuantumAdapter.initialPhaseData N a ha))
+    (QuantumAdapter.Assembly.initialProjectionMajorant a)
+'QuantumAdapter.Assembly.initialPhaseData_energy3_le_majorant' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.initialProjectionBounds : QuantumAdapter.InitialProjectionBounds
+'QuantumAdapter.Assembly.initialProjectionBounds' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.synthesis_coordinateDerivative : ∀ (N : ℕ) (q : QuantumAdapter.Phase N) (j : Fin 3),
+  Eq.{1} (SingularClosure.coordinateDerivative (QuantumAdapter.synthesis q) j)
+    (SingularClosure.finiteSynthesis N
+      (SingularClosure.spectralMultiplier (SingularClosure.derivativeSymbol j) (QuantumAdapter.phaseCoeff q)))
+'QuantumAdapter.Assembly.synthesis_coordinateDerivative' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.derivativeSymbol_norm_le_torusSobolevWeight : ∀ (j : Fin 3) (k : SingularClosure.Frequency),
+  LE.le.{0} (Norm.norm.{0} (SingularClosure.derivativeSymbol j k)) (SingularClosure.torusSobolevWeight k)
+'QuantumAdapter.Assembly.derivativeSymbol_norm_le_torusSobolevWeight' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.derivative_weighted_sq_le_h3Coeff : ∀ (c : SingularClosure.FourierCoeff)
+  (k : SingularClosure.Frequency) (i j : Fin 3),
+  LE.le.{0}
+    (HPow.hPow.{0, 0, 0}
+      (HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} (SingularClosure.torusSobolevWeight k) 2)
+        (Norm.norm.{0} (HMul.hMul.{0, 0, 0} (SingularClosure.derivativeSymbol j k) (c k i))))
+      2)
+    (HMul.hMul.{0, 0, 0} (QuantumAdapter.h3Weight k) (Complex.normSq (c k i)))
+'QuantumAdapter.Assembly.derivative_weighted_sq_le_h3Coeff' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.finiteSynthesis_component_norm_le : ∀ (N : ℕ) (c : SingularClosure.FourierCoeff)
+  (x : SingularClosure.Vec) (i : Fin 3),
+  LE.le.{0} (Norm.norm.{0} (WithLp.ofLp.{0} (SingularClosure.finiteSynthesis N c x) i))
+    (∑ k ∈ SingularClosure.cutoffModes N, Norm.norm.{0} (c k i))
+'QuantumAdapter.Assembly.finiteSynthesis_component_norm_le' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.derivative_component_sq_le : ∀ (N : ℕ) (q : QuantumAdapter.Phase N) (x : SingularClosure.Vec)
+  (i j : Fin 3),
+  LE.le.{0}
+    (HPow.hPow.{0, 0, 0}
+      (Norm.norm.{0} (WithLp.ofLp.{0} (SingularClosure.coordinateDerivative (QuantumAdapter.synthesis q) j x) i)) 2)
+    (HMul.hMul.{0, 0, 0} SingularClosure.latticeSobolevConstant (QuantumAdapter.energy3 N q))
+'QuantumAdapter.Assembly.derivative_component_sq_le' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.gradientEmbeddingConstant_pos : LT.lt.{0} 0 QuantumAdapter.Assembly.gradientEmbeddingConstant
+'QuantumAdapter.Assembly.gradientEmbeddingConstant_pos' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.gradientEmbeddingConstant_sq : Eq.{1}
+  (HPow.hPow.{0, 0, 0} QuantumAdapter.Assembly.gradientEmbeddingConstant 2)
+  (HMul.hMul.{0, 0, 0} 9 SingularClosure.latticeSobolevConstant)
+'QuantumAdapter.Assembly.gradientEmbeddingConstant_sq' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.gradientSquare_nonneg : ∀ (N : ℕ) (q : QuantumAdapter.Phase N) (x : SingularClosure.Vec),
+  LE.le.{0} 0 (QuantumAdapter.gradientSquare q x)
+'QuantumAdapter.Assembly.gradientSquare_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.gradientSquare_le_energy3 : ∀ (N : ℕ) (q : QuantumAdapter.Phase N) (x : SingularClosure.Vec),
+  LE.le.{0} (QuantumAdapter.gradientSquare q x)
+    (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} 9 SingularClosure.latticeSobolevConstant) (QuantumAdapter.energy3 N q))
+'QuantumAdapter.Assembly.gradientSquare_le_energy3' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.sqrt_gradientSquare_le : ∀ (N : ℕ) (q : QuantumAdapter.Phase N) (x : SingularClosure.Vec),
+  LE.le.{0} (√(QuantumAdapter.gradientSquare q x))
+    (HMul.hMul.{0, 0, 0} QuantumAdapter.Assembly.gradientEmbeddingConstant √(QuantumAdapter.energy3 N q))
+'QuantumAdapter.Assembly.sqrt_gradientSquare_le' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.gradientObservable_range_bddAbove : ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+  BddAbove.{0} (Set.range.{0, 1} fun x => √(QuantumAdapter.gradientSquare q x))
+'QuantumAdapter.Assembly.gradientObservable_range_bddAbove' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.gradientObservable_nonneg : ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+  LE.le.{0} 0 (QuantumAdapter.gradientObservable q)
+'QuantumAdapter.Assembly.gradientObservable_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.gradientObservable_le_sqrt_energy3 : ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+  LE.le.{0} (QuantumAdapter.gradientObservable q)
+    (HMul.hMul.{0, 0, 0} QuantumAdapter.Assembly.gradientEmbeddingConstant √(QuantumAdapter.energy3 N q))
+'QuantumAdapter.Assembly.gradientObservable_le_sqrt_energy3' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.phaseCoeff_add : ∀ (N : ℕ) (q r : QuantumAdapter.Phase N),
+  Eq.{1} (QuantumAdapter.phaseCoeff (HAdd.hAdd.{0, 0, 0} q r))
+    (HAdd.hAdd.{0, 0, 0} (QuantumAdapter.phaseCoeff q) (QuantumAdapter.phaseCoeff r))
+'QuantumAdapter.Assembly.phaseCoeff_add' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.phaseCoeff_smul : ∀ (N : ℕ) (a : ℝ) (q : QuantumAdapter.Phase N),
+  Eq.{1} (QuantumAdapter.phaseCoeff (HSMul.hSMul.{0, 0, 0} a q)) (HSMul.hSMul.{0, 0, 0} a (QuantumAdapter.phaseCoeff q))
+'QuantumAdapter.Assembly.phaseCoeff_smul' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.gradientCoordinates_apply : ∀ (N : ℕ) (q : QuantumAdapter.Phase N) (x : SingularClosure.Vec)
+  (ji : Prod.{0, 0} (Fin 3) (Fin 3)),
+  Eq.{1} (WithLp.ofLp.{0} ((QuantumAdapter.Assembly.gradientCoordinates N x) q) ji)
+    (WithLp.ofLp.{0} (SingularClosure.coordinateDerivative (QuantumAdapter.synthesis q) ji.1 x) ji.2)
+'QuantumAdapter.Assembly.gradientCoordinates_apply' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.gradientCoordinates_norm_sq : ∀ (N : ℕ) (q : QuantumAdapter.Phase N) (x : SingularClosure.Vec),
+  Eq.{1} (HPow.hPow.{0, 0, 0} (Norm.norm.{0} ((QuantumAdapter.Assembly.gradientCoordinates N x) q)) 2)
+    (QuantumAdapter.gradientSquare q x)
+'QuantumAdapter.Assembly.gradientCoordinates_norm_sq' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.sqrt_gradientSquare_eq_norm : ∀ (N : ℕ) (q : QuantumAdapter.Phase N) (x : SingularClosure.Vec),
+  Eq.{1} (√(QuantumAdapter.gradientSquare q x)) (Norm.norm.{0} ((QuantumAdapter.Assembly.gradientCoordinates N x) q))
+'QuantumAdapter.Assembly.sqrt_gradientSquare_eq_norm' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.gradientObservable_le_add : ∀ (N : ℕ) (q r : QuantumAdapter.Phase N),
+  LE.le.{0} (QuantumAdapter.gradientObservable q)
+    (HAdd.hAdd.{0, 0, 0}
+      (HMul.hMul.{0, 0, 0} QuantumAdapter.Assembly.gradientEmbeddingConstant
+        √(QuantumAdapter.energy3 N (HSub.hSub.{0, 0, 0} q r)))
+      (QuantumAdapter.gradientObservable r))
+'QuantumAdapter.Assembly.gradientObservable_le_add' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.abs_gradientObservable_sub_le : ∀ (N : ℕ) (q r : QuantumAdapter.Phase N),
+  LE.le.{0} (abs.{0} (HSub.hSub.{0, 0, 0} (QuantumAdapter.gradientObservable q) (QuantumAdapter.gradientObservable r)))
+    (HMul.hMul.{0, 0, 0} QuantumAdapter.Assembly.gradientEmbeddingConstant
+      √(QuantumAdapter.energy3 N (HSub.hSub.{0, 0, 0} q r)))
+'QuantumAdapter.Assembly.abs_gradientObservable_sub_le' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.lipschitz_gradientObservable : ∀ (N : ℕ),
+  LipschitzWith.{0, 0} (QuantumAdapter.Assembly.gradientLipschitzConstant N) QuantumAdapter.gradientObservable
+'QuantumAdapter.Assembly.lipschitz_gradientObservable' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.continuous_gradientObservable : ∀ (N : ℕ), Continuous.{0, 0} QuantumAdapter.gradientObservable
+'QuantumAdapter.Assembly.continuous_gradientObservable' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.intervalIntegrable_gradientObservable : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ)
+  (q : QuantumAdapter.Phase N) (a b : ℝ),
+  IntervalIntegrable.{0} (fun t => QuantumAdapter.gradientObservable (F.map N t q))
+    MeasureTheory.MeasureSpace.volume.{0} a b
+'QuantumAdapter.Assembly.intervalIntegrable_gradientObservable' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

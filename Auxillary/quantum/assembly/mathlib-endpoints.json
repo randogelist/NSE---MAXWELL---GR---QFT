@@ -1,0 +1,132 @@
+{
+  "mathlib_revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "scope": "Selected exact endpoints used by the native assembly; complete imports and proof applications are in the audited source.",
+  "endpoints": [
+    {
+      "role": "Gaussian moments",
+      "declaration": "MeasureTheory.integral_fun_norm_addHaar",
+      "module": "Mathlib.MeasureTheory.Constructions.HaarToSphere",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Constructions/HaarToSphere.lean#L296"
+    },
+    {
+      "role": "Gaussian moment integrability",
+      "declaration": "MeasureTheory.integrable_fun_norm_addHaar",
+      "module": "Mathlib.MeasureTheory.Constructions.HaarToSphere",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Constructions/HaarToSphere.lean#L255"
+    },
+    {
+      "role": "Radial moment evaluation",
+      "declaration": "integral_rpow_mul_exp_neg_mul_rpow",
+      "module": "Mathlib.MeasureTheory.Integral.Gamma",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Gamma.lean#L43"
+    },
+    {
+      "role": "Second and fourth moments",
+      "declaration": "Real.Gamma_add_one",
+      "module": "Mathlib.Analysis.SpecialFunctions.Gamma.Basic",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/Gamma/Basic.lean#L410"
+    },
+    {
+      "role": "Gaussian radial integrability",
+      "declaration": "integrable_rpow_mul_exp_neg_mul_sq",
+      "module": "Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/Gaussian/GaussianIntegral.lean#L97"
+    },
+    {
+      "role": "Born probability",
+      "declaration": "MeasureTheory.ofReal_integral_eq_lintegral_ofReal",
+      "module": "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Bochner/Basic.lean#L702"
+    },
+    {
+      "role": "Native weighted integrability",
+      "declaration": "MeasureTheory.integrable_withDensity_iff",
+      "module": "Mathlib.MeasureTheory.Function.L1Space.Integrable",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Function/L1Space/Integrable.lean#L846"
+    },
+    {
+      "role": "Born expectation transfer",
+      "declaration": "MeasureTheory.integral_withDensity_eq_integral_toReal_smul",
+      "module": "Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Bochner/ContinuousLinearMap.lean#L317"
+    },
+    {
+      "role": "Affine-square integration",
+      "declaration": "MeasureTheory.integral_add",
+      "module": "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Bochner/Basic.lean#L237"
+    },
+    {
+      "role": "Joint low-cost selection",
+      "declaration": "MeasureTheory.exists_le_integral",
+      "module": "Mathlib.MeasureTheory.Integral.Average",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Average.lean#L597"
+    },
+    {
+      "role": "Expected orbit cost",
+      "declaration": "MeasureTheory.integral_integral_swap",
+      "module": "Mathlib.MeasureTheory.Integral.Prod",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/Prod.lean#L482"
+    },
+    {
+      "role": "Time cost monotonicity",
+      "declaration": "intervalIntegral.integral_mono_interval",
+      "module": "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/IntervalIntegral/Basic.lean#L1405"
+    },
+    {
+      "role": "Central cost bound",
+      "declaration": "intervalIntegral.integral_mono_on",
+      "module": "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/IntervalIntegral/Basic.lean#L1432"
+    },
+    {
+      "role": "Mean-independent derivative",
+      "declaration": "hasFDerivAt_const_add_iff",
+      "module": "Mathlib.Analysis.Calculus.FDeriv.Add",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Add.lean"
+    },
+    {
+      "role": "Product almost-everywhere time support",
+      "declaration": "MeasureTheory.Measure.ae_prod_iff_ae_ae",
+      "module": "Mathlib.MeasureTheory.Measure.Prod",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Measure/Prod.lean#L445"
+    },
+    {
+      "role": "C1 autonomous local existence",
+      "declaration": "IsPicardLindelof.of_time_independent",
+      "module": "Mathlib.Analysis.ODE.PicardLindelof",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/PicardLindelof.lean#L662"
+    },
+    {
+      "role": "C1 actual local orbits",
+      "declaration": "IsPicardLindelof.exists_eq_forall_mem_Icc_hasDerivWithinAt",
+      "module": "Mathlib.Analysis.ODE.ExistUnique",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/ExistUnique.lean#L57"
+    },
+    {
+      "role": "C1 local uniqueness",
+      "declaration": "ODE_solution_unique_of_eventually",
+      "module": "Mathlib.Analysis.ODE.ExistUnique",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/ExistUnique.lean#L312"
+    },
+    {
+      "role": "C1 smooth orbit time dependence",
+      "declaration": "ODE.contDiffOn_enat_Icc_of_hasDerivWithinAt",
+      "module": "Mathlib.Analysis.ODE.PicardLindelof",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/PicardLindelof.lean#L560"
+    },
+    {
+      "role": "C1/C2 compact-ball Lipschitz constant",
+      "declaration": "ContDiffOn.exists_lipschitzOnWith",
+      "module": "Mathlib.Analysis.Calculus.ContDiff.RCLike",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/RCLike.lean#L149"
+    },
+    {
+      "role": "C2 initial-data dependence",
+      "declaration": "dist_le_of_trajectories_ODE_of_mem",
+      "module": "Mathlib.Analysis.ODE.Gronwall",
+      "source": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/Gronwall.lean#L208"
+    }
+  ]
+}

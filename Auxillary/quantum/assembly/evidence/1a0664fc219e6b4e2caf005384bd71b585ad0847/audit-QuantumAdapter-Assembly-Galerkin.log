@@ -1,0 +1,133 @@
+QuantumAdapter.Assembly.allSobolev_nativeData : ∀ (c : SingularClosure.FourierCoeff),
+  (∀ (s : ℕ), Memℓp.{0, 0} (SingularClosure.sobolevWeightedCoeff s c) 2) →
+    SingularClosure.SpectralSolenoidal c → NSEMaxwell.Classical.Data (SingularClosure.smoothFourierSynthesis c)
+'QuantumAdapter.Assembly.allSobolev_nativeData' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.allSobolev_nativeData_and_coefficients : ∀ (c : SingularClosure.FourierCoeff),
+  (∀ (s : ℕ), Memℓp.{0, 0} (SingularClosure.sobolevWeightedCoeff s c) 2) →
+    SingularClosure.SpectralReality c →
+      SingularClosure.SpectralSolenoidal c →
+        NSEMaxwell.Classical.Data (SingularClosure.smoothFourierSynthesis c) ∧
+          Eq.{1} (SingularClosure.datumFourierCoeff (SingularClosure.smoothFourierSynthesis c)) c
+'QuantumAdapter.Assembly.allSobolev_nativeData_and_coefficients' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.energy3_continuous : ∀ (N : ℕ), Continuous.{0, 0} (QuantumAdapter.energy3 N)
+'QuantumAdapter.Assembly.energy3_continuous' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Assembly.phaseFlow_orbit_continuous : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ)
+  (q₀ : QuantumAdapter.Phase N), Continuous.{0, 0} fun t => F.map N t q₀
+'QuantumAdapter.Assembly.phaseFlow_orbit_continuous' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Assembly.centralEnergy_continuous : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ)
+  (a : NSEMaxwell.Classical.Field) (ha : NSEMaxwell.Classical.Data a),
+  Continuous.{0, 0} (QuantumAdapter.centralEnergy F N a ha)
+'QuantumAdapter.Assembly.centralEnergy_continuous' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Assembly.centralEnergy_bounded_on_Icc : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ)
+  (a : NSEMaxwell.Classical.Field) (ha : NSEMaxwell.Classical.Data a) (T : ℝ),
+  ∃ C, LE.le.{0} 0 C ∧ ∀ (t : ℝ), LE.le.{0} 0 t → LE.le.{0} t T → LE.le.{0} (QuantumAdapter.centralEnergy F N a ha t) C
+'QuantumAdapter.Assembly.centralEnergy_bounded_on_Icc' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.centralEnergy_finite_cutoffs_bounded : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν)
+  (a : NSEMaxwell.Classical.Field) (ha : NSEMaxwell.Classical.Data a) (T : ℝ) (K : ℕ),
+  ∃ C,
+    LE.le.{0} 0 C ∧
+      ∀ (N : ℕ),
+        LT.lt.{0} N K → ∀ (t : ℝ), LE.le.{0} 0 t → LE.le.{0} t T → LE.le.{0} (QuantumAdapter.centralEnergy F N a ha t) C
+'QuantumAdapter.Assembly.centralEnergy_finite_cutoffs_bounded' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.galerkinBoundAt_of_tail : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν)
+  (a : NSEMaxwell.Classical.Field) (ha : NSEMaxwell.Classical.Data a) (T : ℝ) (K : ℕ) (C : ℝ),
+  (∀ (N : ℕ),
+      LE.le.{0} K N →
+        ∀ (t : ℝ), LE.le.{0} 0 t → LE.le.{0} t T → LE.le.{0} (QuantumAdapter.centralEnergy F N a ha t) C) →
+    QuantumAdapter.GalerkinBoundAt F a ha T
+'QuantumAdapter.Assembly.galerkinBoundAt_of_tail' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.continuumFourierEnergy_nonneg : ∀ (a : NSEMaxwell.Classical.Field),
+  LE.le.{0} 0 (QuantumAdapter.Assembly.continuumFourierEnergy a)
+'QuantumAdapter.Assembly.continuumFourierEnergy_nonneg' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.galerkinBoundAt_of_uniform_energy_approximation : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν)
+  (a : NSEMaxwell.Classical.Field) (ha : NSEMaxwell.Classical.Data a) (u : NSEMaxwell.Classical.Velocity) (T : ℝ),
+  (∀ (t : ℝ),
+      Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → QuantumAdapter.Assembly.continuumFourierEnergySummable (u t)) →
+    ContinuousOn.{0, 0} (fun t => QuantumAdapter.Assembly.continuumFourierEnergy (u t)) (Set.Icc.{0} 0 T) →
+      (∃ K,
+          ∀ (N : ℕ),
+            LE.le.{0} K N →
+              ∀ (t : ℝ),
+                LE.le.{0} 0 t →
+                  LE.le.{0} t T →
+                    LE.le.{0}
+                      (abs.{0}
+                        (HSub.hSub.{0, 0, 0} (QuantumAdapter.centralEnergy F N a ha t)
+                          (QuantumAdapter.Assembly.continuumFourierEnergy (u t))))
+                      1) →
+        QuantumAdapter.GalerkinBoundAt F a ha T
+'QuantumAdapter.Assembly.galerkinBoundAt_of_uniform_energy_approximation' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.galerkinBoundAt_of_uniform_energy_convergence : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν)
+  (a : NSEMaxwell.Classical.Field) (ha : NSEMaxwell.Classical.Data a) (u : NSEMaxwell.Classical.Velocity) (T : ℝ),
+  (∀ (t : ℝ),
+      Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → QuantumAdapter.Assembly.continuumFourierEnergySummable (u t)) →
+    ContinuousOn.{0, 0} (fun t => QuantumAdapter.Assembly.continuumFourierEnergy (u t)) (Set.Icc.{0} 0 T) →
+      (∀ (ε : ℝ),
+          LT.lt.{0} 0 ε →
+            ∃ K,
+              ∀ (N : ℕ),
+                LE.le.{0} K N →
+                  ∀ (t : ℝ),
+                    LE.le.{0} 0 t →
+                      LE.le.{0} t T →
+                        LE.le.{0}
+                          (abs.{0}
+                            (HSub.hSub.{0, 0, 0} (QuantumAdapter.centralEnergy F N a ha t)
+                              (QuantumAdapter.Assembly.continuumFourierEnergy (u t))))
+                          ε) →
+        QuantumAdapter.GalerkinBoundAt F a ha T
+'QuantumAdapter.Assembly.galerkinBoundAt_of_uniform_energy_convergence' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.continuumFourierEnergy_le_of_centralEnergy_tendsto : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν)
+  (a : NSEMaxwell.Classical.Field) (ha : NSEMaxwell.Classical.Data a) (u : NSEMaxwell.Classical.Velocity) (t C : ℝ),
+  QuantumAdapter.Assembly.continuumFourierEnergySummable (u t) →
+    Filter.Tendsto.{0, 0} (fun N => QuantumAdapter.centralEnergy F N a ha t) Filter.atTop.{0}
+        (nhds.{0} (QuantumAdapter.Assembly.continuumFourierEnergy (u t))) →
+      (∀ (N : ℕ), LE.le.{0} 1 N → LE.le.{0} (QuantumAdapter.centralEnergy F N a ha t) C) →
+        LE.le.{0} (QuantumAdapter.Assembly.continuumFourierEnergy (u t)) C
+'QuantumAdapter.Assembly.continuumFourierEnergy_le_of_centralEnergy_tendsto' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.continuumFourierEnergy_bounded_before : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν)
+  (a : NSEMaxwell.Classical.Field) (ha : NSEMaxwell.Classical.Data a) (u : NSEMaxwell.Classical.Velocity) (T : ℝ),
+  LT.lt.{0} 0 T →
+    (∀ (S : ℝ), LT.lt.{0} 0 S → QuantumAdapter.GalerkinBoundAt F a ha S) →
+      (∀ (t : ℝ), LE.le.{0} 0 t → LT.lt.{0} t T → QuantumAdapter.Assembly.continuumFourierEnergySummable (u t)) →
+        (∀ (t : ℝ),
+            LE.le.{0} 0 t →
+              LT.lt.{0} t T →
+                Filter.Tendsto.{0, 0} (fun N => QuantumAdapter.centralEnergy F N a ha t) Filter.atTop.{0}
+                  (nhds.{0} (QuantumAdapter.Assembly.continuumFourierEnergy (u t)))) →
+          ∃ C,
+            LE.le.{0} 0 C ∧
+              ∀ (t : ℝ),
+                LE.le.{0} 0 t → LT.lt.{0} t T → LE.le.{0} (QuantumAdapter.Assembly.continuumFourierEnergy (u t)) C
+'QuantumAdapter.Assembly.continuumFourierEnergy_bounded_before' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.no_finite_fourierEnergy_blowup : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν)
+  (a : NSEMaxwell.Classical.Field) (ha : NSEMaxwell.Classical.Data a) (u : NSEMaxwell.Classical.Velocity) (T : ℝ),
+  LT.lt.{0} 0 T →
+    (∀ (S : ℝ), LT.lt.{0} 0 S → QuantumAdapter.GalerkinBoundAt F a ha S) →
+      (∀ (t : ℝ), LE.le.{0} 0 t → LT.lt.{0} t T → QuantumAdapter.Assembly.continuumFourierEnergySummable (u t)) →
+        (∀ (t : ℝ),
+            LE.le.{0} 0 t →
+              LT.lt.{0} t T →
+                Filter.Tendsto.{0, 0} (fun N => QuantumAdapter.centralEnergy F N a ha t) Filter.atTop.{0}
+                  (nhds.{0} (QuantumAdapter.Assembly.continuumFourierEnergy (u t)))) →
+          ¬∀ (C : ℝ),
+              ∃ t, LE.le.{0} 0 t ∧ LT.lt.{0} t T ∧ LT.lt.{0} C (QuantumAdapter.Assembly.continuumFourierEnergy (u t))
+'QuantumAdapter.Assembly.no_finite_fourierEnergy_blowup' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

@@ -1,0 +1,308 @@
+QuantumAdapter.Assembly.canonicalBornDensity_measurable : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+  Measurable.{0, 0} fun q => ENNReal.ofReal (QuantumAdapter.bornDensity.{0} (QuantumAdapter.canonicalPacket N q₀) q)
+'QuantumAdapter.Assembly.canonicalBornDensity_measurable' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.integrable_canonicalBornMeasure_iff : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N)
+  (f : QuantumAdapter.Phase N → ℝ),
+  MeasureTheory.Integrable.{0, 0} f (QuantumAdapter.Assembly.canonicalBornMeasure N q₀) ↔
+    MeasureTheory.Integrable.{0, 0}
+      (fun q => HMul.hMul.{0, 0, 0} (f q) (QuantumAdapter.bornDensity.{0} (QuantumAdapter.canonicalPacket N q₀) q))
+      (QuantumAdapter.phaseVolume N)
+'QuantumAdapter.Assembly.integrable_canonicalBornMeasure_iff' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.integral_canonicalBornMeasure : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N)
+  (f : QuantumAdapter.Phase N → ℝ),
+  Eq.{1} (∫ (q : QuantumAdapter.Phase N), f q ∂QuantumAdapter.Assembly.canonicalBornMeasure N q₀)
+    (∫ (q : QuantumAdapter.Phase N),
+      HMul.hMul.{0, 0, 0} (f q)
+        (QuantumAdapter.bornDensity.{0} (QuantumAdapter.canonicalPacket N q₀) q) ∂QuantumAdapter.phaseVolume N)
+'QuantumAdapter.Assembly.integral_canonicalBornMeasure' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.canonicalBornMeasure_centered_moment_integrable : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N)
+  (k : ℕ),
+  MeasureTheory.Integrable.{0, 0} (fun q => HPow.hPow.{0, 0, 0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} q q₀)) k)
+    (QuantumAdapter.Assembly.canonicalBornMeasure N q₀)
+'QuantumAdapter.Assembly.canonicalBornMeasure_centered_moment_integrable' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.packetDistance_nonneg : ∀ (N : ℕ) (q r : QuantumAdapter.Phase N),
+  LE.le.{0} 0 (QuantumAdapter.Assembly.packetDistance N q r)
+'QuantumAdapter.Assembly.packetDistance_nonneg' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.packetDistance_symm : ∀ (N : ℕ) (q r : QuantumAdapter.Phase N),
+  Eq.{1} (QuantumAdapter.Assembly.packetDistance N q r) (QuantumAdapter.Assembly.packetDistance N r q)
+'QuantumAdapter.Assembly.packetDistance_symm' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.packetDistance_integrable : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+  MeasureTheory.Integrable.{0, 0} (fun q => QuantumAdapter.Assembly.packetDistance N q q₀)
+    (QuantumAdapter.Assembly.canonicalBornMeasure N q₀)
+'QuantumAdapter.Assembly.packetDistance_integrable' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.packetDistance_sq_integrable : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+  MeasureTheory.Integrable.{0, 0} (fun q => HPow.hPow.{0, 0, 0} (QuantumAdapter.Assembly.packetDistance N q q₀) 2)
+    (QuantumAdapter.Assembly.canonicalBornMeasure N q₀)
+'QuantumAdapter.Assembly.packetDistance_sq_integrable' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.packetDistance_sq_mean : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+  Eq.{1}
+    (∫ (q : QuantumAdapter.Phase N),
+      HPow.hPow.{0, 0, 0} (QuantumAdapter.Assembly.packetDistance N q q₀)
+        2 ∂QuantumAdapter.Assembly.canonicalBornMeasure N q₀)
+    (Inv.inv.{0} (HPow.hPow.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} (↑N) 1) 2))
+'QuantumAdapter.Assembly.packetDistance_sq_mean' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.Assembly.packetDistance_sq_mean_le_quarter : ∀ (N : ℕ),
+  LE.le.{0} 1 N →
+    ∀ (q₀ : QuantumAdapter.Phase N),
+      LE.le.{0}
+        (∫ (q : QuantumAdapter.Phase N),
+          HPow.hPow.{0, 0, 0} (QuantumAdapter.Assembly.packetDistance N q q₀)
+            2 ∂QuantumAdapter.Assembly.canonicalBornMeasure N q₀)
+        (1 / 4)
+'QuantumAdapter.Assembly.packetDistance_sq_mean_le_quarter' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.sqrt_energy3_le_reference_add_packetDistance : ∀ (N : ℕ) (q r : QuantumAdapter.Phase N),
+  LE.le.{0} (√(QuantumAdapter.energy3 N q))
+    (HAdd.hAdd.{0, 0, 0} (√(QuantumAdapter.energy3 N r)) (QuantumAdapter.Assembly.packetDistance N q r))
+'QuantumAdapter.Assembly.sqrt_energy3_le_reference_add_packetDistance' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.packet_integral_sq_le.{u_1} : ∀ {α : Type u_1} [inst : MeasurableSpace.{u_1} α]
+  {μ : MeasureTheory.Measure.{u_1} α} [MeasureTheory.IsProbabilityMeasure.{u_1} μ] {f : α → ℝ},
+  MeasureTheory.Integrable.{0, u_1} f μ →
+    MeasureTheory.Integrable.{0, u_1} (fun x => HPow.hPow.{0, 0, 0} (f x) 2) μ →
+      LE.le.{0} (HPow.hPow.{0, 0, 0} (∫ (x : α), f x ∂μ) 2) (∫ (x : α), HPow.hPow.{0, 0, 0} (f x) 2 ∂μ)
+'QuantumAdapter.Assembly.packet_integral_sq_le' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Assembly.packet_integrable_sqrt.{u_1} : ∀ {α : Type u_1} [inst : MeasurableSpace.{u_1} α]
+  {μ : MeasureTheory.Measure.{u_1} α} [MeasureTheory.IsProbabilityMeasure.{u_1} μ] {e : α → ℝ},
+  MeasureTheory.Integrable.{0, u_1} e μ →
+    (∀ (x : α), LE.le.{0} 0 (e x)) → MeasureTheory.Integrable.{0, u_1} (fun x => √(e x)) μ
+'QuantumAdapter.Assembly.packet_integrable_sqrt' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Assembly.packet_integral_sqrt_le.{u_1} : ∀ {α : Type u_1} [inst : MeasurableSpace.{u_1} α]
+  {μ : MeasureTheory.Measure.{u_1} α} [MeasureTheory.IsProbabilityMeasure.{u_1} μ] {e : α → ℝ},
+  MeasureTheory.Integrable.{0, u_1} e μ →
+    (∀ (x : α), LE.le.{0} 0 (e x)) → LE.le.{0} (∫ (x : α), √(e x) ∂μ) √(∫ (x : α), e x ∂μ)
+'QuantumAdapter.Assembly.packet_integral_sqrt_le' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Assembly.packet_integral_distance_le_half.{u_1} : ∀ {α : Type u_1} [inst : MeasurableSpace.{u_1} α]
+  {μ : MeasureTheory.Measure.{u_1} α} [MeasureTheory.IsProbabilityMeasure.{u_1} μ] {d : α → ℝ},
+  MeasureTheory.Integrable.{0, u_1} d μ →
+    MeasureTheory.Integrable.{0, u_1} (fun x => HPow.hPow.{0, 0, 0} (d x) 2) μ →
+      LE.le.{0} (∫ (x : α), HPow.hPow.{0, 0, 0} (d x) 2 ∂μ) (1 / 4) → LE.le.{0} (∫ (x : α), d x ∂μ) (1 / 2)
+'QuantumAdapter.Assembly.packet_integral_distance_le_half' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.packet_integral_quadratic_bound.{u_1} : ∀ {α : Type u_1} [inst : MeasurableSpace.{u_1} α]
+  {μ : MeasureTheory.Measure.{u_1} α} [MeasureTheory.IsProbabilityMeasure.{u_1} μ] {e d : α → ℝ} {a b : ℝ},
+  MeasureTheory.Integrable.{0, u_1} e μ →
+    MeasureTheory.Integrable.{0, u_1} d μ →
+      MeasureTheory.Integrable.{0, u_1} (fun x => HPow.hPow.{0, 0, 0} (d x) 2) μ →
+        LE.le.{0} 0 a →
+          LE.le.{0} 0 b →
+            LE.le.{0} (∫ (x : α), HPow.hPow.{0, 0, 0} (d x) 2 ∂μ) (1 / 4) →
+              (∀ (x : α),
+                  LE.le.{0} (e x) (HPow.hPow.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} a (HMul.hMul.{0, 0, 0} b (d x))) 2)) →
+                LE.le.{0} (∫ (x : α), e x ∂μ) (HPow.hPow.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} a (HDiv.hDiv.{0, 0, 0} b 2)) 2)
+'QuantumAdapter.Assembly.packet_integral_quadratic_bound' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.exists_joint_packet_control.{u_1} : ∀ {α : Type u_1} [inst : MeasurableSpace.{u_1} α]
+  {μ : MeasureTheory.Measure.{u_1} α} [MeasureTheory.IsProbabilityMeasure.{u_1} μ] {g d : α → ℝ} {L : ℝ},
+  MeasureTheory.Integrable.{0, u_1} g μ →
+    MeasureTheory.Integrable.{0, u_1} (fun x => HPow.hPow.{0, 0, 0} (d x) 2) μ →
+      (∀ (x : α), LE.le.{0} 0 (g x)) →
+        LE.le.{0} (∫ (x : α), g x ∂μ) L →
+          LE.le.{0} (∫ (x : α), HPow.hPow.{0, 0, 0} (d x) 2 ∂μ) (1 / 4) →
+            ∃ x, LE.le.{0} (g x) (HAdd.hAdd.{0, 0, 0} L (1 / 4)) ∧ LE.le.{0} (d x) √(HAdd.hAdd.{0, 0, 0} L (1 / 4))
+'QuantumAdapter.Assembly.exists_joint_packet_control' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Assembly.PacketEstimatePrimitives.energy_conjugacy : ∀ {ν Cemb C3 : ℝ} {F : QuantumAdapter.PhaseFlow ν},
+  QuantumAdapter.Assembly.PacketEstimatePrimitives F Cemb C3 →
+    ∀ (N : ℕ),
+      LE.le.{0} 1 N →
+        ∀ (q₀ : QuantumAdapter.Phase N) (t : ℝ),
+          LE.le.{0} 0 t →
+            Eq.{1} (QuantumAdapter.quantumEnergy F N q₀ t)
+              (∫ (q : QuantumAdapter.Phase N),
+                QuantumAdapter.energy3 N (F.map N t q) ∂QuantumAdapter.Assembly.canonicalBornMeasure N q₀)
+'QuantumAdapter.Assembly.PacketEstimatePrimitives.energy_conjugacy' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.PacketEstimatePrimitives.relative : ∀ {ν Cemb C3 : ℝ} {F : QuantumAdapter.PhaseFlow ν},
+  QuantumAdapter.Assembly.PacketEstimatePrimitives F Cemb C3 →
+    ∀ (N : ℕ) (q r : QuantumAdapter.Phase N) (t : ℝ),
+      LE.le.{0} 0 t →
+        LE.le.{0} (√(QuantumAdapter.energy3 N (F.map N t q)))
+          (HAdd.hAdd.{0, 0, 0} (√(QuantumAdapter.energy3 N (F.map N t r)))
+            (HMul.hMul.{0, 0, 0} (QuantumAdapter.Assembly.packetDistance N q r)
+              (Real.exp (QuantumAdapter.Assembly.orbitGradientCost F N r t))))
+'QuantumAdapter.Assembly.PacketEstimatePrimitives.relative' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.PacketEstimatePrimitives.cost_nonneg : ∀ {ν Cemb C3 : ℝ} {F : QuantumAdapter.PhaseFlow ν},
+  QuantumAdapter.Assembly.PacketEstimatePrimitives F Cemb C3 →
+    ∀ (N : ℕ) (q : QuantumAdapter.Phase N) (t : ℝ),
+      LE.le.{0} 0 t → LE.le.{0} 0 (QuantumAdapter.Assembly.orbitGradientCost F N q t)
+'QuantumAdapter.Assembly.PacketEstimatePrimitives.cost_nonneg' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.PacketEstimatePrimitives.cost_mono : ∀ {ν Cemb C3 : ℝ} {F : QuantumAdapter.PhaseFlow ν},
+  QuantumAdapter.Assembly.PacketEstimatePrimitives F Cemb C3 →
+    ∀ (N : ℕ) (q : QuantumAdapter.Phase N) (t T : ℝ),
+      LE.le.{0} 0 t →
+        LE.le.{0} t T →
+          LE.le.{0} (QuantumAdapter.Assembly.orbitGradientCost F N q t)
+            (QuantumAdapter.Assembly.orbitGradientCost F N q T)
+'QuantumAdapter.Assembly.PacketEstimatePrimitives.cost_mono' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.PacketEstimatePrimitives.central_cost_bound : ∀ {ν Cemb C3 : ℝ}
+  {F : QuantumAdapter.PhaseFlow ν},
+  QuantumAdapter.Assembly.PacketEstimatePrimitives F Cemb C3 →
+    ∀ (N : ℕ),
+      LE.le.{0} 1 N →
+        ∀ (q₀ : QuantumAdapter.Phase N) (T C : ℝ),
+          LT.lt.{0} 0 T →
+            LE.le.{0} 0 C →
+              (∀ (t : ℝ), LE.le.{0} 0 t → LE.le.{0} t T → LE.le.{0} (QuantumAdapter.energy3 N (F.map N t q₀)) C) →
+                LE.le.{0} (QuantumAdapter.Assembly.orbitGradientCost F N q₀ T)
+                  (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} Cemb T) √C)
+'QuantumAdapter.Assembly.PacketEstimatePrimitives.central_cost_bound' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.PacketEstimatePrimitives.cost_integrable : ∀ {ν Cemb C3 : ℝ} {F : QuantumAdapter.PhaseFlow ν},
+  QuantumAdapter.Assembly.PacketEstimatePrimitives F Cemb C3 →
+    ∀ (N : ℕ),
+      LE.le.{0} 1 N →
+        ∀ (q₀ : QuantumAdapter.Phase N) (T : ℝ),
+          LT.lt.{0} 0 T →
+            MeasureTheory.Integrable.{0, 0} (fun q => QuantumAdapter.Assembly.orbitGradientCost F N q T)
+              (QuantumAdapter.Assembly.canonicalBornMeasure N q₀)
+'QuantumAdapter.Assembly.PacketEstimatePrimitives.cost_integrable' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.PacketEstimatePrimitives.mean_cost_bound : ∀ {ν Cemb C3 : ℝ} {F : QuantumAdapter.PhaseFlow ν},
+  QuantumAdapter.Assembly.PacketEstimatePrimitives F Cemb C3 →
+    ∀ (N : ℕ),
+      LE.le.{0} 1 N →
+        ∀ (q₀ : QuantumAdapter.Phase N) (T C : ℝ),
+          LT.lt.{0} 0 T →
+            LE.le.{0} 0 C →
+              (∀ (t : ℝ), LE.le.{0} 0 t → LE.le.{0} t T → LE.le.{0} (QuantumAdapter.quantumEnergy F N q₀ t) C) →
+                LE.le.{0}
+                  (∫ (q : QuantumAdapter.Phase N),
+                    QuantumAdapter.Assembly.orbitGradientCost F N q
+                      T ∂QuantumAdapter.Assembly.canonicalBornMeasure N q₀)
+                  (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} Cemb T) √C)
+'QuantumAdapter.Assembly.PacketEstimatePrimitives.mean_cost_bound' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.forwardPacketBound_of_primitives : ∀ {ν Cemb C3 : ℝ} {F : QuantumAdapter.PhaseFlow ν},
+  QuantumAdapter.Assembly.PacketEstimatePrimitives F Cemb C3 →
+    ∀ (N : ℕ),
+      LE.le.{0} 1 N →
+        ∀ (q₀ : QuantumAdapter.Phase N) (T C : ℝ),
+          LT.lt.{0} 0 T →
+            LE.le.{0} 0 C →
+              (∀ (t : ℝ), LE.le.{0} 0 t → LE.le.{0} t T → LE.le.{0} (QuantumAdapter.energy3 N (F.map N t q₀)) C) →
+                ∀ (t : ℝ),
+                  LE.le.{0} 0 t →
+                    LE.le.{0} t T →
+                      LE.le.{0} (QuantumAdapter.quantumEnergy F N q₀ t) (QuantumAdapter.forwardPacketBound Cemb T C)
+'QuantumAdapter.Assembly.forwardPacketBound_of_primitives' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.reversePacketBound_of_primitives : ∀ {ν Cemb C3 : ℝ} {F : QuantumAdapter.PhaseFlow ν},
+  QuantumAdapter.Assembly.PacketEstimatePrimitives F Cemb C3 →
+    ∀ (N : ℕ),
+      LE.le.{0} 1 N →
+        ∀ (q₀ : QuantumAdapter.Phase N) (T A C : ℝ),
+          LT.lt.{0} 0 T →
+            LE.le.{0} 0 A →
+              LE.le.{0} 0 C →
+                LE.le.{0} (QuantumAdapter.energy3 N q₀) (HPow.hPow.{0, 0, 0} A 2) →
+                  (∀ (t : ℝ), LE.le.{0} 0 t → LE.le.{0} t T → LE.le.{0} (QuantumAdapter.quantumEnergy F N q₀ t) C) →
+                    ∀ (t : ℝ),
+                      LE.le.{0} 0 t →
+                        LE.le.{0} t T →
+                          LE.le.{0} (QuantumAdapter.energy3 N (F.map N t q₀))
+                            (QuantumAdapter.reversePacketBound Cemb C3 T A C)
+'QuantumAdapter.Assembly.reversePacketBound_of_primitives' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.packetBounds_of_scalar_primitives : ∀ {ν Cemb C3 : ℝ} {F : QuantumAdapter.PhaseFlow ν},
+  QuantumAdapter.Assembly.PacketEstimatePrimitives F Cemb C3 → QuantumAdapter.PacketBounds F Cemb C3
+'QuantumAdapter.Assembly.packetBounds_of_scalar_primitives' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Assembly.canonicalBornMeasure_raw_moment_integrable : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N) (k : ℕ),
+  MeasureTheory.Integrable.{0, 0} (fun q => HPow.hPow.{0, 0, 0} (Norm.norm.{0} q) k)
+    (QuantumAdapter.Assembly.canonicalBornMeasure N q₀)
+'QuantumAdapter.Assembly.canonicalBornMeasure_raw_moment_integrable' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.packet_energy_integrable_of_nonneg_viscosity : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν),
+      (∀ (N : ℕ) (t : ℝ), Differentiable.{0, 0, 0} ℝ (F.map N t)) →
+        ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N) (t : ℝ),
+          LE.le.{0} 0 t →
+            MeasureTheory.Integrable.{0, 0} (fun q => QuantumAdapter.energy3 N (F.map N t q))
+              (QuantumAdapter.Assembly.canonicalBornMeasure N q₀)
+'QuantumAdapter.Assembly.packet_energy_integrable_of_nonneg_viscosity' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.packet_gradient_product_integrable : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν),
+      (∀ (N : ℕ), Measurable.{0, 0} fun z => F.map N z.1 z.2) →
+        ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N) (T : ℝ),
+          LT.lt.{0} 0 T →
+            MeasureTheory.Integrable.{0, 0} (fun z => QuantumAdapter.gradientObservable (F.map N z.1 z.2))
+              (MeasureTheory.Measure.prod.{0, 0}
+                (MeasureTheory.Measure.restrict.{0} MeasureTheory.MeasureSpace.volume.{0} (Set.Ioc.{0} 0 T))
+                (QuantumAdapter.Assembly.canonicalBornMeasure N q₀))
+'QuantumAdapter.Assembly.packet_gradient_product_integrable' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.packetEstimatePrimitives_of_jacobian : ∀ {ν C3 : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν),
+      (∀ (N : ℕ) (t : ℝ), Differentiable.{0, 0, 0} ℝ (F.map N t)) →
+        (∀ (N : ℕ) (t : ℝ) (q : QuantumAdapter.Phase N),
+            Eq.{1} (ContinuousLinearMap.det.{0, 0} (fderiv.{0, 0, 0} ℝ (F.map N t) q))
+              (Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N)) t))) →
+          LT.lt.{0} 0 C3 →
+            (∀ (N : ℕ) (q r : QuantumAdapter.Phase N) (t : ℝ),
+                LE.le.{0} 0 t →
+                  LE.le.{0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} (F.map N t q) (F.map N t r)))
+                    (HMul.hMul.{0, 0, 0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} q r))
+                      (Real.exp (QuantumAdapter.Assembly.orbitGradientCost F N r t)))) →
+              (∀ (N : ℕ) (q : QuantumAdapter.Phase N) (t : ℝ),
+                  LE.le.{0} 0 t →
+                    LE.le.{0} (√(QuantumAdapter.energy3 N (F.map N t q)))
+                      (HMul.hMul.{0, 0, 0} (√(QuantumAdapter.energy3 N q))
+                        (Real.exp (HMul.hMul.{0, 0, 0} C3 (QuantumAdapter.Assembly.orbitGradientCost F N q t))))) →
+                QuantumAdapter.Assembly.PacketEstimatePrimitives F QuantumAdapter.Assembly.gradientEmbeddingConstant C3
+'QuantumAdapter.Assembly.packetEstimatePrimitives_of_jacobian' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Assembly.packetBounds_of_jacobian : ∀ {ν C3 : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν),
+      (∀ (N : ℕ) (t : ℝ), Differentiable.{0, 0, 0} ℝ (F.map N t)) →
+        (∀ (N : ℕ) (t : ℝ) (q : QuantumAdapter.Phase N),
+            Eq.{1} (ContinuousLinearMap.det.{0, 0} (fderiv.{0, 0, 0} ℝ (F.map N t) q))
+              (Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N)) t))) →
+          LT.lt.{0} 0 C3 →
+            (∀ (N : ℕ) (q r : QuantumAdapter.Phase N) (t : ℝ),
+                LE.le.{0} 0 t →
+                  LE.le.{0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} (F.map N t q) (F.map N t r)))
+                    (HMul.hMul.{0, 0, 0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} q r))
+                      (Real.exp (QuantumAdapter.Assembly.orbitGradientCost F N r t)))) →
+              (∀ (N : ℕ) (q : QuantumAdapter.Phase N) (t : ℝ),
+                  LE.le.{0} 0 t →
+                    LE.le.{0} (√(QuantumAdapter.energy3 N (F.map N t q)))
+                      (HMul.hMul.{0, 0, 0} (√(QuantumAdapter.energy3 N q))
+                        (Real.exp (HMul.hMul.{0, 0, 0} C3 (QuantumAdapter.Assembly.orbitGradientCost F N q t))))) →
+                QuantumAdapter.PacketBounds F QuantumAdapter.Assembly.gradientEmbeddingConstant C3
+'QuantumAdapter.Assembly.packetBounds_of_jacobian' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]

@@ -1,0 +1,19 @@
+import QuantumAdapter.Assembly.Transport
+set_option pp.universes true
+set_option pp.fullNames true
+#check @QuantumAdapter.Assembly.phaseFlow_timeMap_inverse
+#print axioms QuantumAdapter.Assembly.phaseFlow_timeMap_inverse
+#check @QuantumAdapter.Assembly.phaseFlow_timeMap_bijective
+#print axioms QuantumAdapter.Assembly.phaseFlow_timeMap_bijective
+#check @QuantumAdapter.Assembly.phaseFlow_preimage_eq_inverse_image
+#print axioms QuantumAdapter.Assembly.phaseFlow_preimage_eq_inverse_image
+#check @QuantumAdapter.Assembly.phaseFlow_quasiMeasurePreserving
+#print axioms QuantumAdapter.Assembly.phaseFlow_quasiMeasurePreserving
+#check @QuantumAdapter.Assembly.phaseFlow_integralPullbackLaw_of_jacobian
+#print axioms QuantumAdapter.Assembly.phaseFlow_integralPullbackLaw_of_jacobian
+#check @QuantumAdapter.Assembly.phaseFlow_integrable_weighted_comp_of_jacobian
+#print axioms QuantumAdapter.Assembly.phaseFlow_integrable_weighted_comp_of_jacobian
+#check @QuantumAdapter.Assembly.phaseFlow_memLpPullbackLaw_of_jacobian
+#print axioms QuantumAdapter.Assembly.phaseFlow_memLpPullbackLaw_of_jacobian
+#check @QuantumAdapter.Assembly.phaseTransportLaws_of_jacobian
+#print axioms QuantumAdapter.Assembly.phaseTransportLaws_of_jacobian
