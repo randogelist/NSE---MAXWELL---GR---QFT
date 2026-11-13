@@ -18,6 +18,7 @@ open scoped Topology ContDiff
 
 noncomputable section
 
+set_option backward.isDefEq.respectTransparency false in
 /-- A continuous family of path-valued multilinear maps evaluates jointly continuously. -/
 theorem flow_multilinearPath_continuous_evaluation {T : ℝ}
     {X : Type*} [TopologicalSpace X] :
@@ -37,23 +38,19 @@ theorem flow_multilinearPath_continuous_evaluation {T : ℝ}
         ContinuousMultilinearMap.uncurry0_curry0] using hb
   | succ r ih =>
       intro L hL
+      let e := continuousMultilinearCurryLeftEquiv ℝ (fun _ : Fin (r + 1) => Vec) Vec
       have hc : Continuous (fun z : Icc (0 : ℝ) T × X =>
-          ((ContinuousMap.evalCLM ℝ z.1).compContinuousMultilinearMap (L z.2)).curryLeft) := by
+          e ((ContinuousMap.evalCLM ℝ z.1).compContinuousMultilinearMap (L z.2))) := by
         apply continuous_clm_apply.mpr
         intro h
         have hh : Continuous (fun x => (L x).curryLeft h) :=
-          ((continuousMultilinearCurryLeftEquiv ℝ (fun _ : Fin (r + 1) => Vec)
-            C(Icc (0 : ℝ) T, Vec)).continuous.comp hL).eval continuous_const
-        convert ih (fun x => (L x).curryLeft h) hh using 1
-        funext z
-        ext v
-        rfl
-      have hb := (continuousMultilinearCurryLeftEquiv ℝ
-        (fun _ : Fin (r + 1) => Vec) Vec).symm.continuous.comp hc
-      change Continuous (fun z : Icc (0 : ℝ) T × X =>
-        ((ContinuousMap.evalCLM ℝ z.1).compContinuousMultilinearMap
-          (L z.2)).curryLeft.uncurryLeft) at hb
-      simpa only [ContinuousMultilinearMap.uncurry_curryLeft] using hb
+          (ContinuousLinearMap.apply ℝ (Vec [×r]→L[ℝ] C(Icc (0 : ℝ) T, Vec)) h)
+            .continuous.comp
+              ((continuousMultilinearCurryLeftEquiv ℝ (fun _ : Fin (r + 1) => Vec)
+                C(Icc (0 : ℝ) T, Vec)).continuous.comp hL)
+        convert ih (fun x => (L x).curryLeft h) hh using 1 <;> rfl
+      have hb := e.symm.continuous.comp hc
+      simpa only [Function.comp_def, LinearIsometryEquiv.symm_apply_apply] using hb
 
 /-- The actual evaluated `r`th label derivative of a continuous-path family. -/
 def evaluatedFlowJet {T : ℝ} (Γ : Vec → C(Icc (0 : ℝ) T, Vec))
@@ -65,7 +62,8 @@ theorem evaluatedFlowJet_continuous {T : ℝ}
     {Γ : Vec → C(Icc (0 : ℝ) T, Vec)} (hΓ : ContDiff ℝ ∞ Γ) (r : ℕ) :
     Continuous (fun z : Icc (0 : ℝ) T × Vec => evaluatedFlowJet Γ r z.1 z.2) := by
   exact flow_multilinearPath_continuous_evaluation r (iteratedFDeriv ℝ r Γ)
-    (ContDiff.continuous_iteratedFDeriv (by simp) hΓ)
+    (ContDiff.continuous_iteratedFDeriv (n := ∞)
+      (ENat.natCast_le_of_coe_top_le_withTop le_rfl r) hΓ)
 
 /-- Differentiating an evaluated actual jet gives the curried next actual jet. -/
 theorem evaluatedFlowJet_hasFDerivAt {T : ℝ}
@@ -75,7 +73,8 @@ theorem evaluatedFlowJet_hasFDerivAt {T : ℝ}
       (evaluatedFlowJet Γ (r + 1) t a).curryLeft a := by
   let post := ContinuousLinearMap.compContinuousMultilinearMapL ℝ
     (fun _ : Fin r => Vec) C(Icc (0 : ℝ) T, Vec) Vec (ContinuousMap.evalCLM ℝ t)
-  have hd := ((ContDiff.differentiable_iteratedFDeriv (m := r) (by simp) hΓ) a).hasFDerivAt
+  have hd := ((ContDiff.differentiable_iteratedFDeriv (n := ∞) (m := r)
+    (ENat.natCast_lt_of_coe_top_le_withTop le_rfl r) hΓ) a).hasFDerivAt
   have he : post.comp (fderiv ℝ (iteratedFDeriv ℝ r Γ) a) =
       (evaluatedFlowJet Γ (r + 1) t a).curryLeft := by
     ext h v

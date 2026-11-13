@@ -59,7 +59,7 @@ theorem CLASSICAL_MECHANICS_MATERIAL_NATIVE {ν T : ℝ} (hT : 0 < T)
     (hdiv : ∀ t ∈ Icc (0 : ℝ) T, ∀ x : Vec, divergence (u t) x = 0) :
     ∃ η ρ : Velocity, MaterialPathOn T η ρ ∧
       ((∀ t ∈ Icc (0 : ℝ) T, ∀ x : Vec,
-        finiteMaterialAcceleration T u t x + gradient (p t) x = ν • laplacian (u t) x) ↔
+        finiteMaterialAcceleration T u t x + NSEMaxwell.Classical.gradient (p t) x = ν • laplacian (u t) x) ↔
         MaterialEquationOn ν T η (fun t a => p t (η t a))) := by
   obtain ⟨η, ρ, hη, hflow⟩ := L1_native hT hu hperiodic hdiv
   exact ⟨η, ρ, hη, CLASSICAL_MECHANICS_MATERIAL_OF_FLOW hT hu hp hη hflow⟩

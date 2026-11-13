@@ -77,7 +77,7 @@ theorem MATERIAL_EQUATION_OF_JOINT_REGULARITY {ν T : ℝ} (hT : 0 < T)
     (hregularity : JointFlowRegularity T u) :
     ∃ η ρ : Velocity, MaterialPathOn T η ρ ∧
       ((∀ t ∈ Icc (0 : ℝ) T, ∀ x : Vec,
-        finiteMaterialAcceleration T u t x + gradient (p t) x = ν • laplacian (u t) x) ↔
+        finiteMaterialAcceleration T u t x + NSEMaxwell.Classical.gradient (p t) x = ν • laplacian (u t) x) ↔
         MaterialEquationOn ν T η (fun t a => p t (η t a))) := by
   obtain ⟨η, ρ, hη, hflow⟩ := FLOW_REALIZATION_OF_JOINT_REGULARITY hT hu hperiodic hdiv hregularity
   exact ⟨η, ρ, hη, CLASSICAL_MECHANICS_MATERIAL_OF_FLOW hT hu hp hη hflow⟩

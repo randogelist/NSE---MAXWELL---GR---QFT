@@ -78,7 +78,8 @@ theorem flowPathPrimitiveLinear_bound (hT : 0 ≤ T) (γ : C(Icc (0 : ℝ) T, E)
       (fun r _ => γ.norm_coe_le_norm (projIcc 0 T hT r))
   change ‖∫ r in (0 : ℝ)..(t : ℝ), flowPathExtend hT γ r‖ ≤ T * ‖γ‖
   rw [sub_zero, abs_of_nonneg t.property.1] at hb
-  exact hb.trans (by nlinarith [t.property.2, norm_nonneg γ])
+  exact hb.trans (by
+    simpa only [mul_comm] using mul_le_mul_of_nonneg_left t.property.2 (norm_nonneg γ))
 
 /-- Actual bounded linear time integration on continuous paths. -/
 def flowPathPrimitive (hT : 0 ≤ T) :
@@ -91,8 +92,10 @@ theorem flowPathPrimitive_apply (hT : 0 ≤ T) (γ : C(Icc (0 : ℝ) T, E))
     flowPathPrimitive hT γ t = ∫ r in (0 : ℝ)..(t : ℝ), flowPathExtend hT γ r := rfl
 
 theorem flowPathPrimitive_norm_le (hT : 0 ≤ T) :
-    ‖flowPathPrimitive (E := E) hT‖ ≤ T :=
-  (flowPathPrimitiveLinear hT).mkContinuous_norm_le hT (flowPathPrimitiveLinear_bound hT)
+    ‖flowPathPrimitive (E := E) hT‖ ≤ T := by
+  apply (flowPathPrimitive (E := E) hT).opNorm_le_bound hT
+  intro γ
+  exact flowPathPrimitiveLinear_bound (E := E) hT γ
 
 /-- Volterra linearization with its actual continuous coefficient. -/
 def flowVolterra (hT : 0 ≤ T) (A : C(Icc (0 : ℝ) T, E →L[ℝ] E)) :
@@ -159,8 +162,10 @@ theorem flowVolterra_pow_norm_bound (hT : 0 ≤ T)
     (show 0 ≤ (((K : ℝ) * T) ^ n / (n.factorial : ℝ)) * ‖γ‖ by positivity)).mpr
   intro t
   apply (flowVolterra_pow_apply_bound hT A K hA γ n t).trans
-  gcongr
-  exact t.property.2
+  apply mul_le_mul_of_nonneg_right _ (norm_nonneg γ)
+  apply div_le_div_of_nonneg_right _ (Nat.cast_nonneg n.factorial)
+  exact pow_le_pow_left₀ (mul_nonneg K.coe_nonneg t.property.1)
+    (mul_le_mul_of_nonneg_left t.property.2 K.coe_nonneg) n
 
 /-- The actual Volterra residual derivative is invertible on every finite slab. -/
 theorem one_sub_flowVolterra_isInvertible (hT : 0 ≤ T)

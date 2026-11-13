@@ -118,13 +118,15 @@ theorem flowSpatialJet_superposition_contDiff {T : ℝ} (hT : 0 < T)
   choose K hK using fun r => flowSpatialJet_uniform_lipschitz hT hu hp (r + 1)
   apply flowPathSuperposition_contDiff_of_spatial_tower
     (fun r => Vec [×r]→L[ℝ] Vec) (flowSpatialJetMap hT hu) flowSpatialCurry
-    (fun r => ‖flowSpatialCurry r‖₊ * K r)
+    K
   · intro r t x
     have hd := ((flow_family_slice_contDiff (flowSpatialJet_contDiffOn hT hu r)
       t.property).differentiable (by simp) x).hasFDerivAt
     exact hd
   · intro r t
-    exact (flowSpatialCurry r).lipschitz.comp (hK r t t.property)
+    simpa only [one_mul, flowSpatialCurry, Function.comp_def] using
+      (continuousMultilinearCurryLeftEquiv ℝ (fun _ : Fin (r + 1) => Vec) Vec).lipschitz.comp
+        (hK r t t.property)
 
 /-- The actual velocity field restricted to the compact time domain. -/
 def flowVelocityMap {T : ℝ} {u : Velocity} (hu : SmoothVelocityOn T u) :
@@ -141,8 +143,7 @@ theorem periodic_velocity_superposition_contDiff {T : ℝ} (hT : 0 < T)
     ContDiff ℝ ∞ (flowPathSuperpositionTo (flowVelocityMap hu)) := by
   have hzero := flowSpatialJet_superposition_contDiff hT hu hp 0
   have hc := (flowPathPostcomposition (I := Icc (0 : ℝ) T)
-    (continuousMultilinearCurryFin0 ℝ Vec Vec).toContinuousLinearEquiv.toContinuousLinearMap)
-    .contDiff.comp hzero
+    (continuousMultilinearCurryFin0 ℝ Vec Vec).toContinuousLinearEquiv.toContinuousLinearMap).contDiff.comp hzero
   exact hc
 
 end

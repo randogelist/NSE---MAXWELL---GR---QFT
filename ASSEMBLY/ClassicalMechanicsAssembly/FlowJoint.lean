@@ -105,7 +105,8 @@ theorem flowLabelJet_hasFDerivAt {T : ℝ}
     HasFDerivAt (fun b => flowLabelJet η r (t, b))
       (flowLabelJet η (r + 1) (t, a)).curryLeft a := by
   have hs := flow_representative_slice_contDiff hΓ hrep ht
-  have hd := ((ContDiff.differentiable_iteratedFDeriv (m := r) (by simp) hs) a)
+  have hd := ((ContDiff.differentiable_iteratedFDeriv (n := ∞) (m := r)
+    (ENat.natCast_lt_of_coe_top_le_withTop le_rfl r) hs) a)
     .hasFDerivAt
   apply hd.congr_fderiv
   ext h v

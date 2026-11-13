@@ -62,7 +62,8 @@ theorem flow_time_remainder_of_integral {T : ℝ} {J P : ℝ × Vec → F}
   have hslice : ContinuousOn (fun r => P (r, z.2)) (uIcc t z.1) :=
     hP.comp (continuous_id.prodMk continuous_const).continuousOn
       (fun _ hr => uIcc_subset_Icc ht hz hr)
-  have hi := hslice.intervalIntegrable
+  have hi : IntervalIntegrable (fun r => P (r, z.2)) MeasureTheory.volume t z.1 :=
+    hslice.intervalIntegrable
   have heq : J z - J (t, z.2) - (z.1 - t) • P (t, a) =
       ∫ r in t..z.1, P (r, z.2) - P (t, a) := by
     rw [flow_integral_difference hP hbase hz ht z.2,
