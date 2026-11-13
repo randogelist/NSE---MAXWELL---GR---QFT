@@ -3,10 +3,18 @@
   "request": "CONTAIN_COMPLETE_NATIVE_DEPENDENCY_SOURCES",
   "branch": "codex/fefferman-b-maxwell",
   "base_commit": "7be280eb2bdaa782e9e3fe1592921fd53141df69",
-  "packages": ["Fefferman_adapter", "Maxwell_Endpoint"],
+  "packages": [
+    "Fefferman_adapter",
+    "Maxwell_Endpoint"
+  ],
   "scope": "All tracked native and supporting source files of the nine exact lockfile dependencies, plus the 39-module selected Methlib closure.",
   "compiler": "leanprover/lean4:v4.34.0-rc1",
   "upstream_writes": false,
   "local_lean_execution": false,
-  "publication": "One exact source-snapshot commit; external compilation and named axiom audits follow before the authorized merge to main."
+  "publication": "One exact source-snapshot commit; external compilation and named axiom audits follow before the authorized merge to main.",
+  "status": "SOURCE_CONTAINMENT_COMPLETE",
+  "source_snapshot_commit": "7b44270cc395e0b9314e231a43659d106e7c4d3a",
+  "source_generation_run": 43356709850,
+  "source_manifest_sha256": "ebf397468acdc80dc5615c2aca027182dc3b01d12741f966b8a1df6dbd9f23bf",
+  "external_compilation": "PENDING"
 }
