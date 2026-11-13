@@ -86,7 +86,9 @@ theorem flow_time_remainder_of_integral {T : ℝ} {J P : ℝ × Vec → F}
       exact (by simpa only [dist_eq_norm] using hp.le)
     _ ≤ c * ‖z - (t, a)‖ := by
       apply mul_le_mul_of_nonneg_left _ hc.le
-      simpa only [Real.norm_eq_abs] using norm_fst_le (z - (t, a))
+      rw [← Real.norm_eq_abs]
+      change ‖(z - (t, a)).1‖ ≤ ‖z - (t, a)‖
+      exact norm_fst_le (z - (t, a))
 
 /--
 Joint slab differentiability follows from the actual label derivative and

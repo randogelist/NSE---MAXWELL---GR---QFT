@@ -28,17 +28,25 @@ theorem flow_primitive_evaluated_jet {T : ℝ} (hT : 0 ≤ T)
     ((ContinuousMap.evalCLM ℝ t).comp (flowPathPrimitive hT)).compContinuousMultilinearMap
       (iteratedFDeriv ℝ r H a) =
       ∫ s in (0 : ℝ)..(t : ℝ), evaluatedFlowJet H r (projIcc 0 T hT s) a := by
+  have hproj : Continuous (fun s : ℝ => (projIcc 0 T hT s, a)) :=
+    (continuous_projIcc (a := (0 : ℝ)) (b := T) (h := hT)).prodMk continuous_const
   have hc : Continuous (fun s : ℝ => evaluatedFlowJet H r (projIcc 0 T hT s) a) :=
-    (evaluatedFlowJet_continuous hH r).comp
-      (continuous_projIcc.prodMk continuous_const)
+    (evaluatedFlowJet_continuous hH r).comp hproj
   have hi := hc.intervalIntegrable 0 (t : ℝ)
   ext m
   have hm := (ContinuousMultilinearMap.apply ℝ (fun _ : Fin r => Vec) Vec m)
     .intervalIntegral_comp_comm hi
   change flowPathPrimitive hT (iteratedFDeriv ℝ r H a m) t =
     (∫ s in (0 : ℝ)..(t : ℝ), evaluatedFlowJet H r (projIcc 0 T hT s) a) m
-  rw [flowPathPrimitive_apply, ← hm]
-  rfl
+  rw [flowPathPrimitive_apply]
+  calc
+    _ = ∫ s in (0 : ℝ)..(t : ℝ),
+        (ContinuousMultilinearMap.apply ℝ (fun _ : Fin r => Vec) Vec m)
+          (evaluatedFlowJet H r (projIcc 0 T hT s) a) := by
+      apply intervalIntegral.integral_congr
+      intro s hs
+      rfl
+    _ = _ := hm
 
 /-- The actual evaluated jets satisfy the differentiated Banach integral equation. -/
 theorem evaluatedFlowJet_integral_of_path_equation {T : ℝ} (hT : 0 ≤ T)
@@ -57,7 +65,7 @@ theorem evaluatedFlowJet_integral_of_path_equation {T : ℝ} (hT : 0 ≤ T)
     intro b
     have he := congrArg (fun p : C(Icc (0 : ℝ) T, Vec) => p t0) (hroot b)
     simpa [t0, flowPathPrimitive_apply] using he
-  have heq : (fun b => et (Γ b)) = (fun b => e0 (Γ b)) + (fun b => et (V (H b))) := by
+  have heq : et ∘ Γ = e0 ∘ Γ + (et.comp V) ∘ H := by
     funext b
     have he := congrArg (fun p : C(Icc (0 : ℝ) T, Vec) => p t) (hroot b)
     change Γ b t = Γ b t0 + flowPathPrimitive hT (H b) t
@@ -116,6 +124,8 @@ theorem flow_labelJet_integral_of_path_equation {T : ℝ} (hT : 0 < T)
   apply intervalIntegral.integral_congr
   intro s hs
   have hsT : s ∈ Icc (0 : ℝ) T := uIcc_subset_Icc ⟨le_rfl, hT.le⟩ ht hs
+  change evaluatedFlowJet H r (projIcc 0 T hT.le s) a =
+    iteratedFDeriv ℝ r (fun b => u s (η s b)) a
   rw [projIcc_of_mem hT.le hsT]
   exact (hforce s hsT).symm
 
