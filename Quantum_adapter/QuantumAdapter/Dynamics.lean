@@ -1,4 +1,4 @@
-import QuantumAdapter.FiniteModel
+import QuantumAdapter.Energy
 import QuantumAdapter.L2Transport
 import Mathlib.MeasureTheory.Measure.Haar.OfBasis
 

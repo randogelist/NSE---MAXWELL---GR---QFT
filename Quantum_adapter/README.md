@@ -13,3 +13,7 @@ The directional source bodies are ordered as FeffermanB -> G3 -> QREG, then QREG
 [Logical structure](LOGICAL_STRUCTURE.md) and [75-checkpoint manifest](checkpoint-manifest.json) preserve the original B-tier target. Full original checkpoints remain unresolved unless all of their exact bodies and external evidence are present.
 
 Audit/run infrastructure: [Auxillary/quantum](../Auxillary/quantum/). No local Lean execution.
+
+[Exact endpoint index](ENDPOINT_INDEX.md): pinned source declarations, native signatures, explicit premises, and unresolved scope.
+
+Additional native candidates: arbitrary-mean finite energy identity and complex L2 isometry equivalence under explicit transport laws. Strong continuity and selfadjoint generation remain unresolved.

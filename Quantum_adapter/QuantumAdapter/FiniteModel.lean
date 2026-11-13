@@ -28,8 +28,11 @@ def laplaceSymbol (k : Frequency) : ℝ :=
   (2 * Real.pi) ^ 2 * (galerkinFreqSq k : ℝ)
 
 theorem laplaceSymbol_nonneg (k : Frequency) : 0 ≤ laplaceSymbol k := by
+  have hfreq : (0 : ℤ) ≤ galerkinFreqSq k := by
+    unfold galerkinFreqSq
+    exact Finset.sum_nonneg (fun i hi => sq_nonneg (k i))
   have hk : (0 : ℝ) ≤ (galerkinFreqSq k : ℝ) := by
-    exact_mod_cast galerkinFreqSq_nonneg k
+    exact_mod_cast hfreq
   exact mul_nonneg (sq_nonneg _) hk
 
 def h3Weight (k : Frequency) : ℝ := (1 + laplaceSymbol k) ^ 3
