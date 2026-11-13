@@ -99,8 +99,17 @@ theorem gaussianJetConnectionDerivative_eq_native {h : Bulk → Tensor4} {z : Bu
   have hp (i a b : Fin 4) :
       AnalyticAt ℝ (fun y => bulkPartial (fun q => h q a b) i.succ y) z :=
     Assembly.analyticAt_bulkPartial (Assembly.analyticAt_matrix_entry hh a b) i.succ
-  have hs (e : Fin 4) := ((hp b e d).add (hp d e b)).sub (hp e b d)
-  have hprod (e : Fin 4) := (Assembly.analyticAt_matrix_entry hi a e).mul (hs e)
+  have hs (e : Fin 4) : AnalyticAt ℝ
+      (fun y => bulkPartial (fun q => h q e d) b.succ y +
+        bulkPartial (fun q => h q e b) d.succ y -
+        bulkPartial (fun q => h q b d) e.succ y) z :=
+    ((hp b e d).fun_add (hp d e b)).fun_sub (hp e b d)
+  have hprod (e : Fin 4) : AnalyticAt ℝ
+      (fun y => (h y)⁻¹ a e *
+        (bulkPartial (fun q => h q e d) b.succ y +
+          bulkPartial (fun q => h q e b) d.succ y -
+          bulkPartial (fun q => h q b d) e.succ y)) z :=
+    (Assembly.analyticAt_matrix_entry hi a e).fun_mul (hs e)
   symm
   unfold gaussianTangentialChristoffel
   rw [jet_bulkPartial_const_mul (Finset.analyticAt_fun_sum Finset.univ (fun e _ => hprod e))]
@@ -110,7 +119,7 @@ theorem gaussianJetConnectionDerivative_eq_native {h : Bulk → Tensor4} {z : Bu
   apply Finset.sum_congr rfl
   intro e he
   rw [Assembly.bulkPartial_mul (Assembly.analyticAt_matrix_entry hi a e) (hs e),
-    jet_bulkPartial_sub ((hp b e d).add (hp d e b)) (hp e b d),
+    jet_bulkPartial_sub ((hp b e d).fun_add (hp d e b)) (hp e b d),
     jet_bulkPartial_add (hp b e d) (hp d e b)]
   rw [gaussianJetInverseDerivative_eq_native hh hN hC]
   simp only [hC.metric, hC.spatial, hC.second,

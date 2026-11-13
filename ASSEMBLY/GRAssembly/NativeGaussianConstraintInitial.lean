@@ -19,12 +19,12 @@ theorem GaussianEvolutionGerm.eventually_at_boundary
   have hb : Tendsto (fun y : GaussianBase => bulkPoint 0 y.1 y.2)
       (𝓝 (t0, x0)) (𝓝 (bulkPoint 0 t0 x0)) := by
     exact Assembly.boundaryEmbed.continuous.continuousAt.tendsto
-  filter_upwards [hE.analytic.eventually_analyticAt.comp_tendsto hb,
-    (eventually_eventually_nhds.2 hE.symmetric).comp_tendsto hb,
-    (eventually_eventually_nhds.2 hE.nondegenerate).comp_tendsto hb,
+  filter_upwards [hb.eventually hE.analytic.eventually_analyticAt,
+    hb.eventually (eventually_eventually_nhds.2 hE.symmetric),
+    hb.eventually (eventually_eventually_nhds.2 hE.nondegenerate),
     eventually_eventually_nhds.2 hE.induced,
     eventually_eventually_nhds.2 hE.boundary_match,
-    (eventually_eventually_nhds.2 hE.tangential_vacuum).comp_tendsto hb]
+    hb.eventually (eventually_eventually_nhds.2 hE.tangential_vacuum)]
       with y ha hs hn hi hm ht
   exact ⟨ha, hs, hn, hi, hm, ht⟩
 
@@ -86,8 +86,10 @@ theorem gaussianResidualA_flat_of_tangential {h : Bulk → Tensor4} {z : Bulk}
   have hs12 := hs.apply 1 2
   have hs13 := hs.apply 1 3
   have hs23 := hs.apply 2 3
+  have h20 : (2 : Fin 4) ≠ 0 := by decide
+  have h30 : (3 : Fin 4) ≠ 0 := by decide
   norm_num [gaussianResidualA, lorentzTrace4, lorentzSquare4, Fin.sum_univ_four,
-    lorentzSign4] at hr ht0 ht1 ht2 ht3 ⊢
+    lorentzSign4, h20, h30] at hr ht0 ht1 ht2 ht3 ⊢
   simp only [hs01, hs02, hs03, hs12, hs13, hs23] at hr ht0 ht1 ht2 ht3 ⊢
   linear_combination ht0 - ht1 - ht2 - ht3 + hr
 

@@ -59,13 +59,15 @@ theorem gaussianDirectional_commute {f : E → F} {x : E}
 theorem gaussianDirectional_germ {f g : E → F} {x : E}
     (h : f =ᶠ[𝓝 x] g) (v : E) :
     gaussianDirectional f v =ᶠ[𝓝 x] gaussianDirectional g v := by
-  filter_upwards [h.fderiv] with y hy
+  filter_upwards [h.fderiv (𝕜 := ℝ)] with y hy
   exact congrArg (fun L : E →L[ℝ] F => L v) hy
 
 theorem gaussianTimeDerivative_clm (L : F →L[ℝ] G)
     {f : ℝ × E → F} {z : ℝ × E} (hf : DifferentiableAt ℝ f z) :
     ckTimeDerivative (fun y => L (f y)) z = L (ckTimeDerivative f z) := by
-  rw [ckTimeDerivative_eq_fderiv (L.differentiableAt.comp z hf),
+  have hLf : DifferentiableAt ℝ (fun y => L (f y)) z := by
+    simpa only [Function.comp_def] using L.differentiableAt.comp z hf
+  rw [ckTimeDerivative_eq_fderiv hLf,
     ckTimeDerivative_eq_fderiv hf]
   exact gaussianDirectional_clm L hf (1, 0)
 
@@ -109,14 +111,33 @@ end DirectionalCalculus
 
 theorem gaussianBulkCoordinates_radial : gaussianBulkCoordinates (1, 0) = bulkBasis 0 := by
   ext i
-  fin_cases i <;>
-    norm_num [gaussianBulkCoordinates, bulkPoint, bulkBasis, EuclideanSpace.single]
+  refine Fin.cases ?_ (fun j => ?_) i
+  · simp [gaussianBulkCoordinates_apply, bulkPoint_radial, bulkBasis, EuclideanSpace.single]
+  · refine Fin.cases ?_ (fun j => ?_) j
+    · simp [gaussianBulkCoordinates_apply, bulkPoint_time, bulkBasis, EuclideanSpace.single]
+    · simp [gaussianBulkCoordinates_apply, bulkPoint_spatial, bulkBasis, EuclideanSpace.single]
 
 theorem gaussianBulkCoordinates_tangent (a : Fin 4) :
     gaussianBulkCoordinates (0, gaussianBaseBasis a) = bulkBasis a.succ := by
-  fin_cases a <;> ext i <;> fin_cases i <;>
-    norm_num [gaussianBulkCoordinates, gaussianBaseBasis, bulkPoint, bulkBasis,
-      unitVector, EuclideanSpace.single]
+  refine Fin.cases ?_ (fun a => ?_) a
+  · ext i
+    refine Fin.cases ?_ (fun j => ?_) i
+    · simp [gaussianBulkCoordinates_apply, gaussianBaseBasis, bulkPoint_radial,
+        bulkBasis, EuclideanSpace.single]
+    · refine Fin.cases ?_ (fun j => ?_) j
+      · simp [gaussianBulkCoordinates_apply, gaussianBaseBasis, bulkPoint_time,
+          bulkBasis, EuclideanSpace.single]
+      · simp [gaussianBulkCoordinates_apply, gaussianBaseBasis, bulkPoint_spatial,
+          bulkBasis, EuclideanSpace.single]
+  · ext i
+    refine Fin.cases ?_ (fun j => ?_) i
+    · simp [gaussianBulkCoordinates_apply, gaussianBaseBasis, bulkPoint_radial,
+        bulkBasis, EuclideanSpace.single]
+    · refine Fin.cases ?_ (fun j => ?_) j
+      · simp [gaussianBulkCoordinates_apply, gaussianBaseBasis, bulkPoint_time,
+          bulkBasis, EuclideanSpace.single]
+      · simp [gaussianBulkCoordinates_apply, gaussianBaseBasis, bulkPoint_spatial,
+          bulkBasis, unitVector, EuclideanSpace.single]
 
 @[simp] theorem gaussianSplitCoordinates_bulkCoordinates (z : ℝ × GaussianBase) :
     gaussianSplitCoordinates (gaussianBulkCoordinates z) = z := by
@@ -136,7 +157,9 @@ theorem gaussianBulk_timeDerivative {F : Type*}
     (hf : DifferentiableAt ℝ f (gaussianBulkCoordinates z)) :
     ckTimeDerivative (fun q => f (gaussianBulkCoordinates q)) z =
       fderiv ℝ f (gaussianBulkCoordinates z) (bulkBasis 0) := by
-  rw [ckTimeDerivative_eq_fderiv (hf.comp z gaussianBulkCoordinates.differentiableAt)]
+  have hc : DifferentiableAt ℝ (fun q => f (gaussianBulkCoordinates q)) z := by
+    simpa only [Function.comp_def] using hf.comp z gaussianBulkCoordinates.differentiableAt
+  rw [ckTimeDerivative_eq_fderiv hc]
   change gaussianDirectional (fun q => f (gaussianBulkCoordinates q)) (1, 0) z = _
   rw [gaussianDirectional_comp_linear gaussianBulkCoordinates hf,
     gaussianBulkCoordinates_radial]
@@ -148,7 +171,9 @@ theorem gaussianBulk_spaceDerivative {F : Type*}
     (hf : DifferentiableAt ℝ f (gaussianBulkCoordinates z)) (a : Fin 4) :
     fderiv ℝ (fun y => f (gaussianBulkCoordinates (z.1, y))) z.2 (gaussianBaseBasis a) =
       fderiv ℝ f (gaussianBulkCoordinates z) (bulkBasis a.succ) := by
-  rw [gaussianSpaceDerivative_eq_full (hf.comp z gaussianBulkCoordinates.differentiableAt)]
+  have hc : DifferentiableAt ℝ (fun q => f (gaussianBulkCoordinates q)) z := by
+    simpa only [Function.comp_def] using hf.comp z gaussianBulkCoordinates.differentiableAt
+  rw [gaussianSpaceDerivative_eq_full hc]
   rw [gaussianDirectional_comp_linear gaussianBulkCoordinates hf,
     gaussianBulkCoordinates_tangent]
   rfl
@@ -246,8 +271,10 @@ theorem gaussianVelocityComponent_symmetric
     filter_upwards [hU.analytic.eventually_analyticAt, hU.equation] with z hz he
     change ckTimeDerivative (fun y => gaussianSymmetryDefect
       (gaussianStateVelocity (U y))) z = _
-    rw [gaussianTimeDerivative_clm gaussianSymmetryDefect
-      (gaussianStateVelocity.differentiableAt.comp z hz.differentiableAt),
+    have hv : DifferentiableAt ℝ (fun y => gaussianStateVelocity (U y)) z := by
+      simpa only [Function.comp_def] using
+        gaussianStateVelocity.differentiableAt.comp z hz.differentiableAt
+    rw [gaussianTimeDerivative_clm gaussianSymmetryDefect hv,
       gaussianTimeDerivative_clm gaussianStateVelocity hz.differentiableAt]
     change gaussianSymmetryDefect
       (gaussianStateVelocity (deriv (fun r => U (r, z.2)) z.1)) = _
@@ -307,7 +334,7 @@ theorem gaussianSpatialComponent_eq_metricDerivative
       (𝓝 (t0, x0)) (𝓝 (0, (t0, x0))) :=
     (continuous_const.prodMk continuous_id).continuousAt.tendsto
   have hi : ∀ᶠ y in 𝓝 (t0, x0), P (0, y) = gaussianDirectional h e (0, y) := by
-    filter_upwards [hU.initial, hiH.fderiv,
+    filter_upwards [hU.initial, hiH.fderiv (𝕜 := ℝ),
       hboundary.eventually hh.eventually_analyticAt] with y hy hdy hay
     have hd0 : fderiv ℝ (fun x => h (0, x)) y = 0 := by simpa using hdy
     have hd := gaussianSpaceDerivative_eq_full hay.differentiableAt (gaussianBaseBasis a)
@@ -424,7 +451,7 @@ theorem gaussianStateSolutionMetric_boundary_match
     (1 / 2 : ℝ) • gaussianStateSolutionVelocity U (bulkPoint 0 y.1 y.2) at he
   rw [he, hv]
   ext a b
-  simp only [Matrix.smul_apply, smul_eq_mul, nsmul_eq_mul]
+  simp only [two_smul, Matrix.add_apply, Matrix.smul_apply, smul_eq_mul]
   ring
 
 end

@@ -31,8 +31,10 @@ theorem gaussianStateSolutionVelocity_radial
     (gaussianSplit_tendsto t0 x0).eventually hU.equation] with z hz he
   change gaussianDirectional
       (fun q => gaussianVelocityComponent U (gaussianSplitCoordinates q)) (bulkBasis 0) z = _
-  rw [gaussianDirectional_comp_linear gaussianSplitCoordinates
-      (gaussianStateVelocity.differentiableAt.comp _ hz.differentiableAt),
+  have hv : DifferentiableAt ℝ (gaussianVelocityComponent U) (gaussianSplitCoordinates z) := by
+    simpa only [gaussianVelocityComponent, Function.comp_def] using
+      gaussianStateVelocity.differentiableAt.comp _ hz.differentiableAt
+  rw [gaussianDirectional_comp_linear gaussianSplitCoordinates hv,
     gaussianSplitCoordinates_radial]
   change gaussianDirectional (fun q => gaussianStateVelocity (U q))
     (1, 0) (gaussianSplitCoordinates z) = _
@@ -73,8 +75,11 @@ theorem gaussianStateSolutionJet_second_derivative
       (fun q => gaussianSpatialComponent U b (gaussianSplitCoordinates q))
       (bulkBasis a.succ) z
   rw [gaussianSpaceDerivative_eq_full hz.differentiableAt]
-  rw [gaussianDirectional_comp_linear gaussianSplitCoordinates
-      ((gaussianStateSpatial b).differentiableAt.comp _ hz.differentiableAt),
+  have hs : DifferentiableAt ℝ (gaussianSpatialComponent U b)
+      (gaussianSplitCoordinates z) := by
+    simpa only [gaussianSpatialComponent, Function.comp_def] using
+      (gaussianStateSpatial b).differentiableAt.comp _ hz.differentiableAt
+  rw [gaussianDirectional_comp_linear gaussianSplitCoordinates hs,
     gaussianSplitCoordinates_tangent]
   exact (gaussianDirectional_clm (gaussianStateSpatial b)
     hz.differentiableAt (0, gaussianBaseBasis a)).symm

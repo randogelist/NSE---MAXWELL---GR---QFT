@@ -31,14 +31,20 @@ theorem ckTimePrimitive_hasDerivAt (p : CKSeries (CKTimeSpace E) V)
   have hs : IsOpen s := isOpen_lt hc.norm continuous_const
   have hcont : ∀ t ∈ s, ContinuousAt f t := by
     intro t ht
-    exact (p.analyticAt ht).continuousAt.comp hc.continuousAt
+    have hpc : ContinuousAt p.eval (WithLp.toLp 1 (t, z.2)) :=
+      (p.analyticAt ht).continuousAt
+    exact hpc.comp (f := fun u : ℝ => WithLp.toLp 1 (u, z.2))
+      (hc.continuousAt (x := t))
   have hseg : ∀ t ∈ Set.uIcc (0 : ℝ) z.1, t ∈ s := by
     intro t ht
     have habs : |t| ≤ |z.1| := by simpa using abs_sub_left_of_mem_uIcc ht
+    have hz' : |z.1| + ‖z.2‖ < 1 := by
+      simpa only [WithLp.prod_norm_eq_of_L1, WithLp.toLp_fst,
+        WithLp.toLp_snd, Real.norm_eq_abs] using hz
     change ‖WithLp.toLp 1 (t, z.2)‖ < 1
-    rw [WithLp.prod_norm_eq_of_L1] at hz ⊢
+    rw [WithLp.prod_norm_eq_of_L1]
     simpa only [WithLp.toLp_fst, WithLp.toLp_snd, Real.norm_eq_abs] using
-      lt_of_le_of_lt (add_le_add_right habs ‖z.2‖) hz
+      lt_of_le_of_lt (add_le_add_right habs ‖z.2‖) hz'
   have hi : IntervalIntegrable f volume 0 z.1 :=
     (continuousOn_of_forall_continuousAt (fun t ht => hcont t (hseg t ht))).intervalIntegrable
   have hm : StronglyMeasurableAtFilter f (𝓝 z.1) volume :=
@@ -99,8 +105,9 @@ theorem ckSeriesSolution_initial_germ (ε : ℝ) (p : CKSeries (CKTimeSpace E) V
     simpa only [smul_zero] using (hc.continuousAt.tendsto :
       Tendsto (fun x : E => ε⁻¹ • x) (𝓝 0) (𝓝 (ε⁻¹ • (0 : E))))
   filter_upwards [ht.eventually (ckTimePrimitive_initial_germ p)] with x hx
-  simpa [ckSeriesSolution, ckInversePhysicalScale_apply, ckCoordinateEval] using
-    congrArg (fun v : V => ε ^ 2 • v) hx
+  change ε ^ 2 • ckCoordinateEval (timePrimitive E V p)
+    ((ε ^ 2)⁻¹ * 0, ε⁻¹ • x) = 0
+  rw [mul_zero, hx, smul_zero]
 
 theorem ckSeriesSolution_timeDerivative (ε : ℝ) (hε : ε ≠ 0)
     (p : CKSeries (CKTimeSpace E) V) {z : ℝ × E}
@@ -111,7 +118,8 @@ theorem ckSeriesSolution_timeDerivative (ε : ℝ) (hε : ε ≠ 0)
   have hscaled := hA.scomp z.1 ((hasDerivAt_id z.1).const_mul ((ε ^ 2)⁻¹))
   have hfinal := hscaled.const_smul (ε ^ 2)
   simpa [ckTimeDerivative, ckSeriesSolution, ckInversePhysicalScale_apply,
-    ckCoordinateEval, Function.comp_def, smul_smul, ← mul_assoc, hε, pow_ne_zero 2 hε]
+    ckCoordinateEval, Pi.smul_def, Function.comp_def, smul_smul,
+    ← mul_assoc, hε, pow_ne_zero 2 hε]
       using hfinal.deriv
 
 theorem ckSeriesSolution_spaceDerivative (ε : ℝ)
@@ -125,7 +133,8 @@ theorem ckSeriesSolution_spaceDerivative (ε : ℝ)
   have hx := (hasFDerivAt_id (𝕜 := ℝ) z.2).const_smul ε⁻¹
   have hscaled := hA.hasFDerivAt.comp z.2 hx
   simpa [ckSpaceDerivative, ckSeriesSolution, ckInversePhysicalScale_apply,
-    ckCoordinateEval, Function.comp_def] using (hscaled.const_smul (ε ^ 2)).fderiv
+    ckCoordinateEval, Pi.smul_def, Function.comp_def]
+      using (hscaled.const_smul (ε ^ 2)).fderiv
 
 theorem ckSeriesSolution_spaceDerivative_eq (ε : ℝ) (hε : ε ≠ 0)
     (p : CKSeries (CKTimeSpace E) V) {z : ℝ × E}
@@ -155,7 +164,7 @@ theorem ckScaledSolution_eq_timePrimitive {g : CKRHS E V}
       simpa only [smul_zero] using (hc.continuousAt.tendsto :
         Tendsto (fun x : E => ε • x) (𝓝 0) (𝓝 (ε • (0 : E))))
     filter_upwards [hx.eventually hw.initial, ckTimePrimitive_initial_germ p] with x hx hAx
-    simp only [ckScaledSolution, mul_zero, hx, hAx, smul_zero]
+    simp only [ckScaledSolution, Pi.smul_apply, mul_zero, hx, hAx, smul_zero]
   · have hcoord : Tendsto (WithLp.toLp 1 : ℝ × E → CKTimeSpace E) (𝓝 0) (𝓝 0) := by
       have he : ((WithLp.prodContinuousLinearEquiv 1 ℝ ℝ E).symm :
           (ℝ × E) → CKTimeSpace E) = WithLp.toLp 1 := by
@@ -173,8 +182,12 @@ theorem ckScaledSolution_eq_timePrimitive {g : CKRHS E V}
       hcoord.eventually hp, ckCoordinate_unitBall_eventually (E := E)] with z hzw hzp hz
     rw [ckScaledSolution_timeDerivative ε z hzw.curry_left.differentiableAt]
     have hAd := (ckTimePrimitive_hasDerivAt p hz).const_smul (ε ^ 2)
+    have hAd' : deriv
+        (fun t => ε ^ 2 • ckCoordinateEval (timePrimitive E V p) (t, z.2)) z.1 =
+        ε ^ 2 • ckCoordinateEval p z := by
+      simpa only [Pi.smul_def] using hAd.deriv
     change _ = deriv (fun t => ε ^ 2 • ckCoordinateEval (timePrimitive E V p) (t, z.2)) z.1
-    rw [hAd.deriv]
+    rw [hAd']
     exact congrArg (fun v : V => ε ^ 2 • v) hzp.symm
 
 theorem ckNormalizedSolution_eq_seriesSolution {g : CKRHS E V}

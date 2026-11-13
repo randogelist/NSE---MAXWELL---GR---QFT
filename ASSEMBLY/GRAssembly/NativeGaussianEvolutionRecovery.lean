@@ -100,7 +100,7 @@ theorem gaussianRecoveredState_initial {K : BoundaryTensor} {t0 : ℝ} {x0 : Vec
       (continuous_const.prodMk continuous_id).continuousAt.tendsto
   have hi : (fun y : GaussianBase => h (gaussianBulkCoordinates (0, y))) =ᶠ[𝓝 (t0, x0)]
       (fun _ => eta4Matrix) := hE.induced
-  filter_upwards [hE.induced, hE.boundary_match, hi.fderiv,
+  filter_upwards [hE.induced, hE.boundary_match, hi.fderiv (𝕜 := ℝ),
     hb.eventually hE.analytic.eventually_analyticAt,
     hb.eventually (eventually_eventually_nhds.2 hE.symmetric)] with y hym hyk hyd hya hys
   apply gaussianState_eq_of_components
@@ -115,7 +115,7 @@ theorem gaussianRecoveredState_initial {K : BoundaryTensor} {t0 : ℝ} {x0 : Vec
         (coordDeriv_tensor_symmetric hya hys 0).apply a b]
     rw [gaussianSymmetrize_eq_of_isSymm hk, ← hyk, gaussianSecondForm_eq_half_radial hya]
     ext a b
-    simp only [Matrix.smul_apply, smul_eq_mul, nsmul_eq_mul]
+    simp only [two_smul, Matrix.add_apply, Matrix.smul_apply, smul_eq_mul]
     ring
   · intro a
     have hd0 : fderiv ℝ (fun q : GaussianBase => h (gaussianBulkCoordinates (0, q))) y = 0 := by
