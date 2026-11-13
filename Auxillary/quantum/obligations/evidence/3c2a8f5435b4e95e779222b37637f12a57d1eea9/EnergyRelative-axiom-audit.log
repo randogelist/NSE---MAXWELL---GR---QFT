@@ -1,0 +1,55 @@
+QuantumAdapter.Obligations.phaseCoeff_drift_difference : ∀ (ν : ℝ) (N : ℕ) (q r : QuantumAdapter.Phase N)
+  (k : SingularClosure.Frequency),
+  Membership.mem.{0, 0} (QuantumAdapter.fullModes N) k →
+    ∀ (i : Fin 3),
+      Eq.{1}
+        (QuantumAdapter.phaseCoeff (HSub.hSub.{0, 0, 0} (QuantumAdapter.drift ν N q) (QuantumAdapter.drift ν N r)) k i)
+        (HSub.hSub.{0, 0, 0}
+          (HMul.hMul.{0, 0, 0} (Neg.neg.{0} ↑(HMul.hMul.{0, 0, 0} ν (QuantumAdapter.laplaceSymbol k)))
+            (QuantumAdapter.phaseCoeff (HSub.hSub.{0, 0, 0} q r) k i))
+          (SingularClosure.coefficientLeray k
+            (HSub.hSub.{0, 0, 0} (QuantumAdapter.fullTransport N (QuantumAdapter.phaseCoeff q) k)
+              (QuantumAdapter.fullTransport N (QuantumAdapter.phaseCoeff r) k))
+            i))
+'QuantumAdapter.Obligations.phaseCoeff_drift_difference' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Obligations.relative_drift_inner_identity : ∀ (ν : ℝ) (N : ℕ) (q r : QuantumAdapter.Phase N),
+  Eq.{1}
+    (Inner.inner.{0, 0} ℝ (HSub.hSub.{0, 0, 0} q r)
+      (HSub.hSub.{0, 0, 0} (QuantumAdapter.drift ν N q) (QuantumAdapter.drift ν N r)))
+    (HSub.hSub.{0, 0, 0} (HMul.hMul.{0, 0, 0} (Neg.neg.{0} ν) (QuantumAdapter.dissipation N (HSub.hSub.{0, 0, 0} q r)))
+      (∫ (x : SingularClosure.Vec) in SingularClosure.unitCube,
+        Inner.inner.{0, 0} ℝ (QuantumAdapter.synthesis (HSub.hSub.{0, 0, 0} q r) x)
+          (QuantumAdapter.Obligations.mixedConvection (QuantumAdapter.synthesis (HSub.hSub.{0, 0, 0} q r))
+            (QuantumAdapter.synthesis r) x)))
+'QuantumAdapter.Obligations.relative_drift_inner_identity' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Obligations.relative_drift_inner_le : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (N : ℕ) (q r : QuantumAdapter.Phase N),
+      LE.le.{0}
+        (Inner.inner.{0, 0} ℝ (HSub.hSub.{0, 0, 0} q r)
+          (HSub.hSub.{0, 0, 0} (QuantumAdapter.drift ν N q) (QuantumAdapter.drift ν N r)))
+        (HMul.hMul.{0, 0, 0} (QuantumAdapter.gradientObservable r)
+          (HPow.hPow.{0, 0, 0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} q r)) 2))
+'QuantumAdapter.Obligations.relative_drift_inner_le' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Obligations.phaseFlow_relative_energy_hasDerivAt : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ)
+  (q r : QuantumAdapter.Phase N) (t : ℝ),
+  HasDerivAt.{0, 0} (fun s => HPow.hPow.{0, 0, 0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} (F.map N s q) (F.map N s r))) 2)
+    (HMul.hMul.{0, 0, 0} 2
+      (Inner.inner.{0, 0} ℝ (HSub.hSub.{0, 0, 0} (F.map N t q) (F.map N t r))
+        (HSub.hSub.{0, 0, 0} (QuantumAdapter.drift ν N (F.map N t q)) (QuantumAdapter.drift ν N (F.map N t r)))))
+    t
+'QuantumAdapter.Obligations.phaseFlow_relative_energy_hasDerivAt' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Obligations.phaseFlow_relative_l2 : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (q r : QuantumAdapter.Phase N) (t : ℝ),
+      LE.le.{0} 0 t →
+        LE.le.{0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} (F.map N t q) (F.map N t r)))
+          (HMul.hMul.{0, 0, 0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} q r))
+            (Real.exp (QuantumAdapter.Assembly.orbitGradientCost F N r t)))
+'QuantumAdapter.Obligations.phaseFlow_relative_l2' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]

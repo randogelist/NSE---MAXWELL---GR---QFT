@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "status": "A_TIER_CANDIDATE",
-  "scope": "Exact declarations listed in module-targets.json and audit-targets.txt.",
-  "obligation_discharge": "REQUIRES_EXACT_SIGNATURE_AND_PREMISE_REVIEW",
+  "status": "A_TIER",
+  "scope": "Exact 679 declarations (581 theorems), including native P1--P7 and original root equivalence.",
+  "obligation_discharge": "EXACT_SIGNATURE_AND_PREMISE_REVIEW_PASS",
   "source_compiler": "leanprover/lean4:v4.34.0-rc1",
   "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
   "obligations": {
@@ -11,8 +11,8 @@
     "P3": "A_TIER",
     "P4": "A_TIER",
     "P5": "A_TIER",
-    "P6": "A_TIER_CANDIDATE",
-    "P7": "A_TIER_CANDIDATE"
+    "P6": "A_TIER",
+    "P7": "A_TIER"
   },
   "local_lean_executions": 0,
   "allowed_axioms": [
@@ -20,8 +20,10 @@
     "Classical.choice",
     "Quot.sound"
   ],
-  "verified_source_commit": "7f48b490d98c77fae7d26c0637c3105e06cffcba",
-  "verified_run_id": 43466945794,
-  "verified_artifact_id": 14058643467,
-  "root_status": "A_TIER_CANDIDATE"
+  "verified_source_commit": "3c2a8f5435b4e95e779222b37637f12a57d1eea9",
+  "verified_run_id": 43469332973,
+  "verified_artifact_id": 14060585378,
+  "root_status": "UNCONDITIONAL_CLOSURE",
+  "unresolved_adapter_premises": [],
+  "certificate_path": "Auxillary/quantum/obligations/evidence/3c2a8f5435b4e95e779222b37637f12a57d1eea9/verification.json"
 }

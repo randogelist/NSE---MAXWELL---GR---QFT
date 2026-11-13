@@ -3,13 +3,15 @@
 ```text
 BASE_BRANCH = codex/fefferman-b-maxwell
 BASE_COMMIT = 1de664f2ef5ddc11caef25ac2274278b4171ab6b
-QUANTUM_STATUS = A_TIER (204 selected declarations)
-QUANTUM_ROOT_STATUS = CONDITIONAL_FORMAL_CLOSURE
-QUANTUM_PROOF_COMMIT = 216217a88fc8039b5551738a0ce3b6bbe884e45d
+QUANTUM_STATUS = A_TIER (679 obligation declarations; 581 theorems)
+QUANTUM_ROOT_STATUS = UNCONDITIONAL_CLOSURE_OF_CANONICAL_GAUSSIAN_EQUIVALENCE
+QUANTUM_PROOF_COMMIT = 3c2a8f5435b4e95e779222b37637f12a57d1eea9
 LOCAL_LEAN_EXECUTIONS = 0
 ```
 
-[Quantum_adapter](Quantum_adapter/) contains the concrete full-mean phase, Born/L2/transport definitions and explicit analytic contracts. [B <-> Quantum](B%20%3C-%3E%20Quantum/) contains the ordered forward and reverse proof bodies. [Quantum audit](Auxillary/quantum/) preserves all unresolved premises and requires matching external cached compilation and theorem-level axiom evidence.
+[Quantum_adapter](Quantum_adapter/) contains the concrete full-mean phase, Born/L2/transport definitions and explicit analytic contracts. [B <-> Quantum](B%20%3C-%3E%20Quantum/) contains the ordered forward and reverse proof bodies. [Exact obligation report](Auxillary/quantum/obligations/NSE_QUANTUM_P1_P7_A_TIER.txt) records the constructed P1--P7 inhabitants, matching cached external Linux compilation, and standard-axiom audits. The root theorem is `QuantumAdapter.Obligations.NSE_B_IFF_CANONICAL_QUANTUM`; its only scalar premise is `0 < ν`. It establishes the equivalence with canonical Gaussian QREG.
+
+[Root source](Quantum_adapter/QuantumAdapter/Obligations/Closure.lean) · [Retained evidence](Auxillary/quantum/obligations/evidence/3c2a8f5435b4e95e779222b37637f12a57d1eea9/) · [External CI: PASS](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43469332973) · [Windows replay package](Auxillary/quantum/obligations/exports/NSE_QUANTUM_P1_P7_WINDOWS_REPLAY.zip). The Windows launcher is source-prepared; the matching compiler certificate is Linux.
 
 The original Maxwell package and its evidence remain unchanged below.
 

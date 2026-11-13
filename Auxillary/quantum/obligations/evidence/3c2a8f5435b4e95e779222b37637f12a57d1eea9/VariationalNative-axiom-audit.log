@@ -1,0 +1,77 @@
+@QuantumAdapter.Obligations.phaseFlowVariationalOperator : {ν : ℝ} →
+  QuantumAdapter.PhaseFlow ν →
+    (N : ℕ) →
+      QuantumAdapter.Phase N →
+        ℝ →
+          ContinuousLinearMap.{0, 0, 0, 0} (RingHom.id.{0} ℝ)
+            (ContinuousLinearMap.{0, 0, 0, 0} (RingHom.id.{0} ℝ) (QuantumAdapter.Phase N) (QuantumAdapter.Phase N))
+            (ContinuousLinearMap.{0, 0, 0, 0} (RingHom.id.{0} ℝ) (QuantumAdapter.Phase N) (QuantumAdapter.Phase N))
+'QuantumAdapter.Obligations.phaseFlowVariationalOperator' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Obligations.continuous_phaseFlowVariationalOperator : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ)
+  (q : QuantumAdapter.Phase N), Continuous.{0, 0} (QuantumAdapter.Obligations.phaseFlowVariationalOperator F N q)
+'QuantumAdapter.Obligations.continuous_phaseFlowVariationalOperator' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Obligations.exists_phaseFlowVariational : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ)
+  (q : QuantumAdapter.Phase N),
+  ∃ J,
+    Eq.{1} (J 0) (ContinuousLinearMap.id.{0, 0} ℝ (QuantumAdapter.Phase N)) ∧
+      ∀ (t : ℝ),
+        HasDerivAt.{0, 0} J
+          (ContinuousLinearMap.comp.{0, 0, 0, 0, 0, 0} (fderiv.{0, 0, 0} ℝ (QuantumAdapter.drift ν N) (F.map N t q))
+            (J t))
+          t
+'QuantumAdapter.Obligations.exists_phaseFlowVariational' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Obligations.phaseFlowVariational : {ν : ℝ} →
+  QuantumAdapter.PhaseFlow ν →
+    (N : ℕ) →
+      QuantumAdapter.Phase N →
+        ℝ → ContinuousLinearMap.{0, 0, 0, 0} (RingHom.id.{0} ℝ) (QuantumAdapter.Phase N) (QuantumAdapter.Phase N)
+'QuantumAdapter.Obligations.phaseFlowVariational' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Obligations.phaseFlowVariational_zero : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ)
+  (q : QuantumAdapter.Phase N),
+  Eq.{1} (QuantumAdapter.Obligations.phaseFlowVariational F N q 0)
+    (ContinuousLinearMap.id.{0, 0} ℝ (QuantumAdapter.Phase N))
+'QuantumAdapter.Obligations.phaseFlowVariational_zero' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Obligations.phaseFlowVariational_hasDerivAt : ∀ {ν : ℝ} (F : QuantumAdapter.PhaseFlow ν) (N : ℕ)
+  (q : QuantumAdapter.Phase N) (t : ℝ),
+  HasDerivAt.{0, 0} (QuantumAdapter.Obligations.phaseFlowVariational F N q)
+    (ContinuousLinearMap.comp.{0, 0, 0, 0, 0, 0} (fderiv.{0, 0, 0} ℝ (QuantumAdapter.drift ν N) (F.map N t q))
+      (QuantumAdapter.Obligations.phaseFlowVariational F N q t))
+    t
+'QuantumAdapter.Obligations.phaseFlowVariational_hasDerivAt' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Obligations.phaseFlow_timeMap_hasFDerivAt : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (t : ℝ) (q : QuantumAdapter.Phase N),
+      HasFDerivAt.{0, 0, 0} (F.map N t) (QuantumAdapter.Obligations.phaseFlowVariational F N q t) q
+'QuantumAdapter.Obligations.phaseFlow_timeMap_hasFDerivAt' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Obligations.phaseFlow_timeMap_differentiable : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν → ∀ (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (t : ℝ), Differentiable.{0, 0, 0} ℝ (F.map N t)
+'QuantumAdapter.Obligations.phaseFlow_timeMap_differentiable' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Obligations.fderiv_phaseFlow_timeMap : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (t : ℝ) (q : QuantumAdapter.Phase N),
+      Eq.{1} (fderiv.{0, 0, 0} ℝ (F.map N t) q) (QuantumAdapter.Obligations.phaseFlowVariational F N q t)
+'QuantumAdapter.Obligations.fderiv_phaseFlow_timeMap' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Obligations.phaseFlow_fderiv_hasDerivAt : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (q : QuantumAdapter.Phase N) (t : ℝ),
+      HasDerivAt.{0, 0} (fun s => fderiv.{0, 0, 0} ℝ (F.map N s) q)
+        (ContinuousLinearMap.comp.{0, 0, 0, 0, 0, 0} (fderiv.{0, 0, 0} ℝ (QuantumAdapter.drift ν N) (F.map N t q))
+          (fderiv.{0, 0, 0} ℝ (F.map N t) q))
+        t
+'QuantumAdapter.Obligations.phaseFlow_fderiv_hasDerivAt' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

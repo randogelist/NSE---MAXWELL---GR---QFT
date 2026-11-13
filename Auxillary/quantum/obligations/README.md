@@ -1,9 +1,11 @@
 # Native quantum obligations
 
+Verified source: `3c2a8f5435b4e95e779222b37637f12a57d1eea9`. External run [43469332973](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43469332973) passed all 77 modules, 581 theorems, and 679 declaration audits. P1--P7 and `QuantumAdapter.Obligations.NSE_B_IFF_CANONICAL_QUANTUM` use only `propext`, `Classical.choice`, and `Quot.sound`. The root equivalence has no remaining adapter premise. P5 uses the universal constant 512; the stronger constant 16 is not certified here. The full original CI artifact and exact endpoint logs are retained under `evidence/3c2a8f5435b4e95e779222b37637f12a57d1eea9/`.
+
 Compiler: `leanprover/lean4:v4.34.0-rc1`, external native Linux CI or native Windows replay.
 Mathlib: `de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11`.
 
-`module-targets.json` and `audit-targets.txt` enumerate the exact candidate
+`module-targets.json` and `audit-targets.txt` enumerate the exact registered
 declarations, including public definitions and abbreviations; theorem counts
 are recorded separately. `prepare_targets.py` inspects source only and never executes Lean.
 Use `--module QuantumAdapter.Obligations.NAME` repeatedly to select a ready

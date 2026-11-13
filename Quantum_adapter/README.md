@@ -1,37 +1,29 @@
 # Quantum adapter
 
-BASE = `codex/fefferman-b-maxwell` @ `1de664f2ef5ddc11caef25ac2274278b4171ab6b`.
+STATUS = A_TIER; ROOT = UNCONDITIONAL_CLOSURE_OF_EXACT_EQUIVALENCE.
 
-STATUS = A_TIER: 204 adapter declarations + 203 native assembly declarations.
-ROOT = CONDITIONAL_FORMAL_CLOSURE; UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED.
+```text
+THEOREM = QuantumAdapter.Obligations.NSE_B_IFF_CANONICAL_QUANTUM
+TYPE = forall nu > 0, FeffermanB nu iff QREG (closedPhaseFlow hnu)
+P1..P7 = DISCHARGED
+UNRESOLVED_ADAPTER_PREMISES = NONE
+SOURCE_COMMIT = 3c2a8f5435b4e95e779222b37637f12a57d1eea9
+MODULES = 77
+THEOREMS = 581 / 581 PASS_STANDARD_ONLY
+DECLARATIONS = 679 / 679 PASS_STANDARD_ONLY
+COMPILER = Lean 4.34.0-rc1; Linux x86_64
+AXIOMS = propext; Classical.choice; Quot.sound
+LOCAL_LEAN_EXECUTIONS = 0
+```
 
-Native assembly proof commit: `1a0664fc219e6b4e2caf005384bd71b585ad0847`.
-Cached external Linux Lean 4.34.0-rc1 and fresh standard-axiom audit: PASS.
+[Exact report](../Auxillary/quantum/obligations/NSE_QUANTUM_P1_P7_A_TIER.txt) · [Root source](QuantumAdapter/Obligations/Closure.lean) · [Retained compiler evidence](../Auxillary/quantum/obligations/evidence/3c2a8f5435b4e95e779222b37637f12a57d1eea9/) · [External CI](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43469332973).
 
-[Current exact root / premises / theorem index](../Auxillary/quantum/assembly/exports/exact_quantum_root_for_canonical_flow_A_TIER.txt)
-· [Native source](QuantumAdapter/Assembly.lean)
-· [Exact assembly evidence](../Auxillary/quantum/assembly/evidence/1a0664fc219e6b4e2caf005384bd71b585ad0847/).
+Native scope: intrinsic real Hilbert full Fourier phase; actual conjugate reality and solenoidality; arbitrary velocity mean; torus Fourier initial coefficients; original finite-width canonical Gaussian QREG; periodic pressure and joint smoothness through t=0.
 
-Native scope: intrinsic real Hilbert full Fourier phase; actual conjugate reality
-and solenoidality; zero mode and arbitrary velocity mean retained; torus Fourier
-initial coefficients; canonical finite-width Gaussian QREG.
+P1 supplies the exact drift trace. P2 and P3 supply initial-data differentiability and the Jacobian formula. P4 supplies relative L2 stability. P5 supplies a positive uniform H3 tame constant, instantiated by 512. P6 and P7 supply the native Galerkin stability and compactness implications. The existing Gaussian and packet estimates compose with these inhabitants into the root equivalence. The stronger quantitative constant 16 is not certified by this endpoint.
 
-Constructed: unique complete native orbits for nonnegative viscosity; smooth
-time dependence; bounded-ball Lipschitz time maps and joint continuity; initial
-Sobolev projection bounds; gradient embedding; Gaussian normalization/moments;
-transport and full multiplier/expectation domains from the explicit Jacobian
-hypotheses; forward/reverse packet estimates from the remaining energy inequalities.
+The conclusion is an equivalence; neither global regularity nor a selfadjoint quantum generator is a separate conclusion.
 
-Root: `QuantumAdapter.Assembly.exact_quantum_root_for_canonical_flow`.
-Explicit frontier: divergence; initial-data differentiability; Jacobian;
-relative L2 estimate; one positive uniform tame H3 constant; Galerkin stability;
-Galerkin compactness. No unconditional Navier–Stokes regularity or selfadjoint
-generator is asserted.
+[Cached external replay](../Auxillary/quantum/obligations/README.md) · [Windows replay ZIP](../Auxillary/quantum/obligations/exports/NSE_QUANTUM_P1_P7_WINDOWS_REPLAY.zip). Windows runtime verification remains external and pending; the certificate above is Linux.
 
-[Logical structure](LOGICAL_STRUCTURE.md), [75-checkpoint manifest](checkpoint-manifest.json),
-[historical endpoint index](ENDPOINT_INDEX.md), and [historical 204-target scope](QUANTUM_ADAPTER_A_TIER.txt)
-retain the earlier checkpoint. The current assembly report supplies the reduced
-premise inventory and the exact pinned Mathlib/Methlib entrypoints.
-
-[External replay](../Auxillary/quantum/assembly/README.md).
-Local Lean executions = 0. Proof bodies remain byte-identical to the audited commit.
+Historical checkpoints: [204-declaration adapter](QUANTUM_ADAPTER_A_TIER.txt), [203-declaration conditional assembly](../Auxillary/quantum/assembly/exports/exact_quantum_root_for_canonical_flow_A_TIER.txt), [logical structure](LOGICAL_STRUCTURE.md), [checkpoint manifest](checkpoint-manifest.json), and [endpoint index](ENDPOINT_INDEX.md). Their original evidence remains unchanged.

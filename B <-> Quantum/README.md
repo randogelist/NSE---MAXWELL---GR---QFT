@@ -20,3 +20,5 @@ Root: F3 + R3
 ```
 
 Source modules in => and <= contain the actual proof bodies. The root retains PhaseFlow, GalerkinAnalyticLaws, PacketBounds and InitialProjectionBounds explicitly. Their inhabitants and the selfadjoint quantum realization are not supplied by implication composition.
+
+The native inhabitants are now supplied by `QuantumAdapter.Obligations.Closure`. The exact canonical Gaussian equivalence is externally compiled and audited at `3c2a8f5435b4e95e779222b37637f12a57d1eea9`; P1--P7 are discharged. [Current closure report](../Auxillary/quantum/obligations/NSE_QUANTUM_P1_P7_A_TIER.txt). The selfadjoint-generator realization remains a separate theorem scope.

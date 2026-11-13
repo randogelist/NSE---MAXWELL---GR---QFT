@@ -1,0 +1,8 @@
+@QuantumAdapter.Obligations.phaseFlow_smooth_stability : ∀ {ν : ℝ},
+  LT.lt.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν) (a : NSEMaxwell.Classical.Field) (ha : NSEMaxwell.Classical.Data a)
+      (u : NSEMaxwell.Classical.Velocity) (p : NSEMaxwell.Classical.Pressure),
+      NSEMaxwell.Classical.NSSolution ν a u p → ∀ (T : ℝ), LT.lt.{0} 0 T → QuantumAdapter.GalerkinBoundAt F a ha T
+'QuantumAdapter.Obligations.phaseFlow_smooth_stability' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
