@@ -54,7 +54,12 @@ Both equation closure routes now depend only on L1. The historical
 `CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2` name is retained for compatibility.
 The standard-only aggregate import remains unchanged.
 
-Updated-module status: **A_TIER_CANDIDATE** pending matching external audit.
+Updated-module status: **A_TIER under L1 only**.
+[Cached Linux run 43379686374](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43379686374) passed all 43 standard-only
+assembly audits and the five exact literature-module audits. L2 and L2_native
+are standard-only; both closure roots have L1 as their sole analytic axiom.
 Exact contracts: [ASSEMBLY_LITERATURE_A_TIER.txt](../Auxillary/ASSEMBLY_LITERATURE_A_TIER.txt).
 L1 still requires a native flow construction; the target closure remains
 `CONDITIONAL_FORMAL_CLOSURE`.
+
+L1 construction register: [L1_FLOW_REALIZATION_ENTRYPOINTS.txt](../Auxillary/assembly/L1_FLOW_REALIZATION_ENTRYPOINTS.txt).

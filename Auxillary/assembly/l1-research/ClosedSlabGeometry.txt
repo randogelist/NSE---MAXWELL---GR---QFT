@@ -1,0 +1,513 @@
+L1_PROOF_ROUTE_RESEARCH
+======================
+MODE = READ_ONLY_PINNED_SOURCE_AUDIT
+LOCAL_LEAN_EXECUTIONS = 0
+MATHLIB_PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+MATHLIB_ROOT = /workspace/scratch/b600c6ffdae0/classical-repo/Fefferman_adapter/NativeSources/mathlib
+REFERENCE_TXT = /workspace/scratch/b600c6ffdae0/CLASSICAL_MECHANICS_FLOW_PIOLA_INPUTS_B_TIER.txt
+STATUS = MATHEMATICAL_ROUTE_SUPPORTED; NEW_NATIVE_BRIDGES_UNPROVED
+
+0. EXACT ROOT AND SCOPE
+-----------------------
+Current name: ClassicalMechanicsAssembly.Literature.L1.
+Source: ASSEMBLY/ClassicalMechanicsAssembly/LiteratureInputs.lean.
+
+  {T : R} -> 0<T -> {u : Velocity} ->
+  SmoothVelocityOn T u ->
+  (forall t in [0,T], SpatialPeriodic (u t)) ->
+  (forall t in [0,T], forall x, divergence (u t) x = 0) ->
+  exists eta rho,
+    MaterialPathOn T eta rho /\
+    forall t in [0,T], forall a,
+      materialVelocity T eta t a = u t (eta t a).
+
+MaterialPathOn fields: joint within-slab C-infinity eta and rho; mutual
+slice inverses; lattice equivariance of eta; eta(0)=id; det(D_a eta)=1.
+materialVelocity uses the actual derivWithin on [0,T].
+
+No NSE equation, pressure, viscosity, initial datum, smallness condition,
+zero-mean condition, or arbitrary-data NSE existence is present.
+Periodicity supplies global spatial bounds. Solenoidality supplies unit
+Jacobian. Neither hypothesis may be omitted from this exact target.
+
+L2 is mathematically independent of the missing flow-construction proof:
+the existing audited native diffusion theorem already realizes its exact
+contract. Replacing axiom L2 by that theorem leaves L1 unresolved.
+
+1. DEPENDENCY DECOMPOSITION
+---------------------------
+E01: closed-slab jets + spatial shift invariance
+  -> compact-cell bounds for u and its spatial derivatives.
+E02: bounds for u and D_x u
+  -> global spatial Lipschitz bound + whole-slab trajectories.
+E03: trajectory uniqueness
+  -> canonical eta=X(t;0,a), rho=X(0;t,x), inverse laws, eta(0)=id,
+     and lattice equivariance.
+E04 (PREFERRED CANDIDATE): first variation + parameter-linear Volterra
+  differentiation on the closed slab -> continuous spatial/mixed jets
+  -> actual joint within derivatives -> successor induction
+  -> joint within-slab C-infinity eta. The joint within derivative bridge
+  is an unproved native target; separate smoothness alone is insufficient.
+E05 (ALTERNATIVE): finite-order reflection extension of u at 0,T
+  -> finite-order open-domain version of E04 -> restrict and identify by
+  uniqueness -> joint within-slab C-infinity eta.
+E06: actual variational derivative F'=G F + polynomial determinant calculus
+  -> J'=J trace(G)=0, J(0)=1 -> det F=1.
+E07: forward within-slab C-infinity + E06 block invertibility + continuous
+  set-theoretic inverse -> within-slab inverse derivative + smooth induction
+  -> joint within-slab C-infinity rho.
+  Alternative: E05 open-neighborhood flows + ordinary local inverse theorem.
+E08: unique within-interval derivative
+  -> actual materialVelocity equality -> MaterialPathOn package.
+
+E04 is the principal missing analytic construction. E05 is a separate
+nontrivial native seam-gluing proof for the open-extension route; a direct
+within-slab forward-jet construction could avoid it. E07 has both a direct
+within-slab inverse bootstrap and an open inverse-function route. Neither
+route constructs the forward jointly smooth flow.
+
+2. PERIODIC CELL REDUCTION: EXACT ENDPOINTS
+------------------------------------------
+Paths in this register are relative to MATHLIB_ROOT. Ambient real normed
+spaces and their standard instances are used throughout.
+
+[P01] Function.Periodic
+  Mathlib/Algebra/Ring/Periodic.lean:45
+  def Periodic [Add alpha] (f : alpha -> beta) (c : alpha) : Prop :=
+    forall x, f (x+c)=f x.
+  SpatialPeriodic gives this separately for each unit vector.
+
+[P02] Function.Periodic.zsmul
+  Mathlib/Algebra/Ring/Periodic.lean:155
+  [AddGroup alpha] (h : Periodic f c) (n : Z) : Periodic f (n • c).
+[P03] Function.Periodic.add_period
+  Same file:97
+  [AddSemigroup alpha] (h1 : Periodic f c1) (h2 : Periodic f c2) :
+    Periodic f (c1+c2).
+[P04] Function.Periodic.sub_zsmul_eq
+  Same file:164
+  [AddGroup alpha] (h : Periodic f c) (n : Z) : f (x-n • c)=f x.
+  These reduce arbitrary labels to a cell by three integer coordinate shifts.
+
+[P05] Int.fract_nonneg
+  Mathlib/Algebra/Order/Floor/Ring.lean:386
+  (a : R) : 0 <= Int.fract a.
+[P06] Int.fract_lt_one
+  Same file:393
+  (a : R) : Int.fract a < 1.
+[P07] Int.fract_add_floor
+  Same file:313
+  (a : R) : Int.fract a + (Int.floor a : R) = a.
+  Specialize R=real. Define r_i=fract(x_i), k_i=floor(x_i).
+  Then x=r+sum_i k_i e_i and r belongs to the closed unit cube.
+
+[P08] isCompact_Icc
+  Mathlib/Topology/Order/Compact.lean:54-56
+  Export of CompactIccSpace.isCompact_Icc; real closed intervals compact.
+[P09] isCompact_univ_pi
+  Mathlib/Topology/Compactness/Compact.lean:1178
+  {s : forall i, Set (X i)} (h : forall i, IsCompact (s i)) :
+    IsCompact (Set.pi Set.univ s).
+[P10] PiLp.continuous_toLp
+  Mathlib/Analysis/Normed/Lp/PiLp.lean:545
+  [forall i, TopologicalSpace (beta i)] :
+    Continuous (@WithLp.toLp p (forall i, beta i)).
+  Use the continuous image of the ordinary Pi cube to obtain a compact
+  EuclideanSpace cube; no unsupported order instance on EuclideanSpace needed.
+[P11] IsCompact.prod
+  Mathlib/Topology/Compactness/Compact.lean:1077
+  (hs : IsCompact s) (ht : IsCompact t) : IsCompact (s ×ˢ t).
+  Thus [0,T] times the Euclidean cube is compact.
+
+[P12] IsCompact.exists_bound_of_continuousOn
+  Mathlib/Analysis/Normed/Group/Bounded.lean:96-97
+  Generated by @[to_additive IsCompact.exists_bound_of_continuousOn].
+  Additive specialization:
+    [TopologicalSpace alpha] (hs : IsCompact s)
+    (hf : ContinuousOn f s) : exists C, forall x in s, norm(f x)<=C.
+  The literal source declaration at line 97 has a terminal prime and the
+  multiplicative context. The additive name is generated, not absent.
+  Bounds can be increased to max(C,0), or any positive larger constant.
+
+[P13] lipschitzWith_of_nnnorm_fderiv_le
+  Mathlib/Analysis/Calculus/MeanValue.lean:516
+  {C : NNReal} (hf : Differentiable K f)
+  (bound : forall x, nnnorm(fderiv K f x)<=C) : LipschitzWith C f.
+  Real specialization; differentiability is global on each spatial slice.
+[P14] Convex.lipschitzOnWith_of_nnnorm_hasFDerivWithin_le
+  Same file:446
+  (hf : forall x in s, HasFDerivWithinAt f (f' x) s x)
+  (bound : forall x in s, nnnorm(f' x)<=C) (hs : Convex R s) :
+    LipschitzOnWith C f s.
+  Use s=univ or a closed ball after obtaining the same uniform derivative bound.
+
+3. CLOSED-SLAB JETS AND PERIODIC DERIVATIVES
+-------------------------------------------
+[J01] uniqueDiffOn_Icc
+  Mathlib/Analysis/Calculus/TangentCone/Real.lean:99
+  {a b : R} (hab : a<b) : UniqueDiffOn R (Icc a b).
+[J02] UniqueDiffOn.prod
+  Mathlib/Analysis/Calculus/TangentCone/Prod.lean:63
+  (hs : UniqueDiffOn K s) (ht : UniqueDiffOn K t) :
+    UniqueDiffOn K (s ×ˢ t).
+  Together with uniqueDiffOn_univ: unique within derivatives on the slab.
+
+[J03] ContDiffOn.continuousOn_iteratedFDerivWithin
+  Mathlib/Analysis/Calculus/ContDiff/Defs.lean:777
+  {m : Nat} (h : ContDiffOn K n f s) (hmn : m<=n)
+  (hs : UniqueDiffOn K s) :
+    ContinuousOn (iteratedFDerivWithin K m f s) s.
+[J04] ContDiffOn.differentiableOn_iteratedFDerivWithin
+  Same file:781
+  {m : Nat} (h : ContDiffOn K n f s) (hmn : m<n)
+  (hs : UniqueDiffOn K s) :
+    DifferentiableOn K (iteratedFDerivWithin K m f s) s.
+[J05] ContDiffOn.fderivWithin
+  Same file:904
+  (hf : ContDiffOn K n f s) (hs : UniqueDiffOn K s)
+  (hmn : m+1<=n) : ContDiffOn K m (fderivWithin K f s) s.
+[J06] ContDiffOn.continuousOn_fderivWithin
+  Same file:912
+  (h : ContDiffOn K n f s) (hs : UniqueDiffOn K s) (hn : 1<=n) :
+    ContinuousOn (fderivWithin K f s) s.
+
+[J07] iteratedFDerivWithin_comp_add_right
+  Mathlib/Analysis/Calculus/ContDiff/FTaylorSeries.lean:678
+  (n : Nat) (a x : E) :
+    iteratedFDerivWithin K n (fun z => f(z+a)) s x =
+      iteratedFDerivWithin K n f (a +ᵥ s) (x+a).
+[J08] iteratedFDerivWithin_congr
+  Same file:571
+  (hs : Set.EqOn f1 f s) (hx : x in s) (n : Nat) :
+    iteratedFDerivWithin K n f1 s x = iteratedFDerivWithin K n f s x.
+  For a=(0,e_i), the spacetime slab is translation-invariant. Input
+  periodicity is only on the slab, so use EqOn and J08, not global equality
+  of arbitrary extensions outside [0,T]. J07 then yields periodic jets.
+[J09] fderiv_comp_add_right
+  Mathlib/Analysis/Calculus/FDeriv/Add.lean:893
+  (a : E) : fderiv K (fun y => f(y+a)) x = fderiv K f (x+a).
+  Ordinary spatial-slice derivative version; no differentiability premise
+  is needed for this total-derivative identity.
+
+Native bridges already available:
+  ClassicalMechanics.finite_velocity_slice_smooth;
+  ClassicalMechanics.uniqueDiffOn_finiteSpacetime;
+  ClassicalMechanics.finite_spatial_restriction_fderiv;
+  ClassicalMechanics.finite_time_hasDerivWithinAt;
+  ClassicalMechanics.finite_time_restriction_fderiv.
+Higher-order restriction of spacetime within jets to spatial multilinear
+jets still needs native packaging. This is elementary chain-rule induction,
+not an extra analytic hypothesis. J03 + compactness + periodicity provide
+finite uniform derivative bounds at every fixed finite order.
+
+4. FINITE-ORDER REFLECTION AND SEAM GLUING
+-----------------------------------------
+For N>=1 choose lambda_j=-j, j=1,...,N+1, and solve
+  sum_j c_j lambda_j^k = 1, k=0,...,N.
+The existing coefficient formula
+  c_j = product_(l!=j) (1+l)/(l-j)
+is correct (Lagrange evaluation at 1).
+
+[G01] Matrix.det_vandermonde_ne_zero_iff
+  Mathlib/LinearAlgebra/Vandermonde.lean:232
+  [IsDomain R] {v : Fin n -> R} :
+    Matrix.det (Matrix.vandermonde v) != 0 <-> Function.Injective v.
+  Distinct nodes yield solvability; linear-system orientation/transposition
+  must match equations sum_j c_j lambda_j^k=1.
+
+Choose 0<delta<T/(N+1). Extend u on (-delta,T+delta) by
+  U_N(t,x)=sum_j c_j u(-j*t,x)                 for t<0;
+  U_N(t,x)=u(t,x)                             for 0<=t<=T;
+  U_N(t,x)=sum_j c_j u(T-j*(t-T),x)            for t>T.
+All sampled times lie in [0,T]. All derivatives with k time factors and
+m spatial factors, k+m<=N, have matching seam values by the moment equations.
+Full multilinear derivative matching follows by expanding every input vector
+(r,h) into its time and spatial parts; matching separate formal partial
+expressions alone is not the complete native Frechet-derivative proof.
+
+[G02] ContinuousOn.piecewise
+  Mathlib/Topology/Piecewise.lean:89
+  (ht : forall a in s intersect frontier(t), f a=g a)
+  (hf : ContinuousOn f (s intersect closure(t)))
+  (hg : ContinuousOn g (s intersect closure(complement(t)))) :
+    ContinuousOn (Set.piecewise t f g) s.
+  Apply to each candidate derivative field, with seam matching explicit.
+[G03] HasFDerivWithinAt.union
+  Mathlib/Analysis/Calculus/FDeriv/Basic.lean:353
+  (hs : HasFDerivWithinAt f f' s x)
+  (ht : HasFDerivWithinAt f f' t x) :
+    HasFDerivWithinAt f f' (s union t) x.
+[G04] HasFDerivWithinAt.hasFDerivAt
+  Same file:358
+  (h : HasFDerivWithinAt f f' s x) (hs : s in nhds x) :
+    HasFDerivAt f f' x.
+  Closed half-neighborhoods union to a neighborhood; G03+G04 turn matching
+  one-sided derivatives into an ordinary derivative at a seam.
+[G05] HasFDerivWithinAt.comp
+  Mathlib/Analysis/Calculus/FDeriv/Comp.lean:74
+  (hg : HasFDerivWithinAt g g' t (f x))
+  (hf : HasFDerivWithinAt f f' s x) (hst : Set.MapsTo f s t) :
+    HasFDerivWithinAt (g o f) (g'.comp f') s x.
+  Supplies the reflected-side jets from the original within-slab jets.
+
+[G06] contDiffOn_succ_iff_hasFDerivWithinAt_of_uniqueDiffOn
+  Mathlib/Analysis/Calculus/ContDiff/Defs.lean:875
+  (hs : UniqueDiffOn K s) :
+    ContDiffOn K (n+1) f s <-> (n=omega -> AnalyticOn K f s) /\
+      exists f', ContDiffOn K n f' s /\
+        forall x in s, HasFDerivWithinAt f (f' x) s x.
+  At finite n, the analytic side condition is vacuous. This supports seam
+  induction once G02-G05 establish the actual derivative field.
+[G07] contDiffOn_infty
+  Same file:549
+  ContDiffOn K infinity f s <-> forall n : Nat, ContDiffOn K n f s.
+[G08] ContDiffOn.congr / ContDiffOn.mono
+  Same file:565 / 571
+  Equality on s transports ContDiffOn; subset restriction preserves it.
+
+No ready-made finite-order reflection-extension or closed-half-space C^N
+seam theorem was located. ContDiffOn.union_of_isOpen (ContDiff/Basic:599)
+only joins open domains; it does not prove seam differentiability for closed
+halves. The construction above is a valid new native lemma target.
+
+For desired flow order N use U_(N+1), solve on I'=[a,b] with a<0<T<b inside
+its open domain, establish joint C^N flow on the interior of I', and identify
+its restriction with the original flow by uniqueness. A common C-infinity
+extension and a limit as N tends to infinity are unnecessary.
+For N=0, the existing joint-continuity flow endpoint suffices.
+When reusing the whole-slab ODE construction on I', replace radius B*T+1 by
+B*max(b,-a)+1 for initial time 0; this is an interval-parameter adaptation,
+not a new hypothesis. More generally use B*max(b-s,s-a)+1 at initial time s.
+
+5. DETERMINANT EVOLUTION WITHOUT CIRCULAR INVERTIBILITY
+-------------------------------------------------------
+Let F(t,a)=D_a eta(t,a), G(t,a)=D_xu(t,eta(t,a)).
+The variation proof must establish actual HasDerivWithinAt for entries of F:
+  F'=G F, F(0)=Id.
+Smoothness of eta alone does not identify this equation without differentiating
+its actual flow equation and commuting the established mixed derivatives.
+
+[D01] Matrix.det_fin_three
+  Mathlib/LinearAlgebra/Matrix/Determinant/Basic.lean:818
+  (A : Matrix (Fin 3) (Fin 3) R), [CommRing R] : det A equals the six
+  signed triple products of entries. No invertibility assumption.
+[D02] HasDerivWithinAt.mul
+  Mathlib/Analysis/Calculus/Deriv/Mul.lean:261
+  (hc : HasDerivWithinAt c c' s x) (hd : HasDerivWithinAt d d' s x) :
+    HasDerivWithinAt (c*d) (c'*d x+c x*d') s x.
+[D03] HasDerivWithinAt.sub
+  Mathlib/Analysis/Calculus/Deriv/Add.lean:351
+  Two within-derivative premises give derivative difference.
+[D04] Matrix.adjugate_fin_three
+  Mathlib/LinearAlgebra/Matrix/Adjugate.lean:383
+  Explicit signed two-by-two minors; no invertibility assumption.
+  D01-D04 + ring algebra prove the new native Jacobi polynomial lemma
+    J'=trace(adj(F)*F').
+  Global source search did not locate a directly packaged determinant
+  HasDerivAt/HasFDerivAt Jacobi formula. No absence theorem is asserted.
+
+[D05] Matrix.trace_mul_comm
+  Mathlib/LinearAlgebra/Matrix/Trace.lean:158
+  [AddCommMonoid R] [CommMagma R] (A : Matrix m n R) (B : Matrix n m R) :
+    trace(A*B)=trace(B*A).
+[D06] Matrix.trace_mul_cycle
+  Same file:161
+  [NonUnitalCommSemiring R] (A : Matrix m n R) (B : Matrix n p R)
+  (C : Matrix p m R) : trace(A*B*C)=trace(C*A*B).
+[D07] Matrix.trace_smul
+  Same file:68
+  [DistribSMul alpha R] (r : alpha) (A : Matrix n n R) :
+    trace(r • A)=r • trace A.
+[D08] Matrix.mul_adjugate / Matrix.adjugate_mul
+  Mathlib/LinearAlgebra/Matrix/Adjugate.lean:264 / 269
+  A*adj(A)=det(A) • Id; adj(A)*A=det(A) • Id.
+  Both polynomial identities hold at singular matrices.
+  Hence F'=GF implies J'=J trace(G). Solenoidality implies trace(G)=0.
+
+[D09] eq_of_derivWithin_eq
+  Mathlib/Analysis/Calculus/MeanValue.lean:386
+  (fdiff : DifferentiableOn R f (Icc a b))
+  (gdiff : DifferentiableOn R g (Icc a b))
+  (hderiv : EqOn (derivWithin f (Icc a b))
+                  (derivWithin g (Icc a b)) (Ico a b))
+  (hi : f a=g a) : forall y in Icc a b, f y=g y.
+  Apply f=J, g=1. This endpoint includes both endpoints of the closed slab.
+  The derivative equality is needed on [0,T), with continuity at T.
+
+6. JOINT INVERSE SMOOTHNESS
+---------------------------
+Set-theoretic inverse rho(t,x)=X(0;t,x) follows from nonautonomous flow
+composition. In general rho(t,x) is not eta(-t,x).
+
+For each finite N>=1 obtain an open-neighborhood C^N extension eta_N from
+Section 4 and let H_N(t,a)=(t,eta_N(t,a)). At a slab point the derivative is
+  (r,h) |-> (r, r*u(t,eta(t,a))+F(t,a)h).
+Its inverse is the explicit block linear map
+  (r,z) |-> (r, F(t,a)^(-1)(z-r*u(t,eta(t,a)))).
+Det F=1 proves inverse cancellation; no derivative of rho is assumed.
+
+[I01] LinearEquiv.toContinuousLinearEquiv
+  Mathlib/Topology/Algebra/Module/FiniteDimension.lean:367
+  [T2Space E] [T2Space F] [FiniteDimensional K E]
+  (e : E equiv_linear[K] F) : E equiv_continuous_linear[K] F.
+  An explicit block LinearEquiv may be converted using this endpoint.
+[I02] ContinuousLinearMap.toContinuousLinearEquivOfDetNeZero
+  Same file:476
+  [T2Space E] [FiniteDimensional K E]
+  (f : E ->L[K] E) (hf : f.det != 0) : E equiv_continuous_linear[K] E.
+  Alternative after proving determinant correspondence for coordinate matrices.
+
+[I03] ContDiffAt.to_localInverse
+  Mathlib/Analysis/Calculus/InverseFunctionTheorem/ContDiff.lean:66
+  [RCLike K], normed spaces, [CompleteSpace E], f' : E equivCL[K] F;
+  (hf : ContDiffAt K n f a)
+  (hf' : HasFDerivAt f (f' : E ->L[K] F) a) (hn : n!=0) :
+    ContDiffAt K n (hf.localInverse hf' hn) (f a).
+[I04] ContDiffAt.localInverse_apply_image
+  Same file:59
+  Same hypotheses: hf.localInverse hf' hn (f a)=a.
+[I05] HasStrictFDerivAt.eventually_right_inverse
+  Mathlib/Analysis/Calculus/InverseFunctionTheorem/FDeriv.lean:165
+  (hf : HasStrictFDerivAt f (f' : E ->L[K] F) a) :
+    eventually y near f(a), f(hf.localInverse f f' a y)=y.
+  ContDiffAt.localInverse uses the strict derivative produced from hf,hf',hn;
+  its definition is at ContDiff.lean:55.
+
+At target (t,x) in the slab choose a=rho(t,x). Apply I03 at (t,a).
+For nearby targets (s,y) still in the slab, I05 fixes the first inverse
+coordinate to s; eta_N(s,b)=y and eta_N=eta on the slab imply b=rho(s,y)
+by slice injectivity. Thus local inverse equality on the slab follows without
+prior continuity or differentiability of rho. Restrict and use G07.
+
+Do not apply HasStrictFDerivAt.localInverse_unique directly to arbitrary
+outside-slab extensions of rho: that lemma requires a left-inverse identity
+on an ordinary open neighborhood, whereas the canonical inverse laws are
+only known on the slab. The I05 argument avoids this extra premise.
+
+6A. PREFERRED DIRECT WITHIN-SLAB INVERSE BOOTSTRAP
+-------------------------------------------------
+This route removes the need for a separate off-slab extension in the inverse
+argument, provided the forward joint within-slab C-infinity theorem is proved.
+
+[I06] HasFDerivWithinAt.of_local_left_inverse
+  Mathlib/Analysis/Calculus/FDeriv/OfCompLeft.lean:179
+  Context: g:E->F, f:F->E, f':F equivCL[K] E;
+  (hg : Tendsto g (nhdsWithin s a) (nhdsWithin t (g a)))
+  (hf : HasFDerivWithinAt f (f' : F ->L[K] E) t (g a))
+  (ha : a in s)
+  (hfg : eventually x near a within s, f(g x)=x) :
+    HasFDerivWithinAt g (f'.symm : E ->L[K] F) s a.
+  This theorem accepts within derivatives directly; no open-neighborhood
+  extension and no previously differentiable inverse are required.
+  The continuity/filter-mapping premise hg remains essential.
+
+[I07] ContinuousLinearMap.IsInvertible.contDiffAt_map_inverse
+  Mathlib/Analysis/Calculus/ContDiff/Operations.lean:869
+  [CompleteSpace E] {e : E ->L[K] F} (he : e.IsInvertible) :
+    ContDiffAt K n ContinuousLinearMap.inverse e.
+[I08] contDiffAt_map_inverse
+  Same file:850
+  [CompleteSpace E] (e : E equivCL[K] F) :
+    ContDiffAt K n ContinuousLinearMap.inverse (e : E ->L[K] F).
+  These are smoothness of operator inversion, not smoothness of a flow.
+
+INVERSE CONTINUITY INPUT:
+For a uniform spatial Lipschitz bound K and velocity bound B, backward
+Gronwall and the inverse identities imply, for t,s in [0,T],
+  norm(rho(t,x)-rho(s,y))
+    <= exp(K*T)*(norm(x-y)+B*abs(t-s)).
+Proof: set b=rho(s,y), compare rho(t,x) with rho(t,eta(t,b))=b,
+use the inverse-slice Lipschitz bound exp(K*T), and
+  norm(eta(t,b)-eta(s,b))<=B*abs(t-s).
+This proves joint continuity before differentiability, including endpoints.
+Thus R(t,x)=(t,rho(t,x)) is ContinuousOn S, MapsTo S S, and satisfies
+H(R(z))=z, where H(t,a)=(t,eta(t,a)).
+
+BOOTSTRAP:
+Let Q=fderivWithin ℝ H S, the full spacetime within derivative of H.
+Forward joint C-infinity and J05 imply ContDiffOn real infinity Q S.
+The block formula and detF=1 make each Q(z) a continuous linear equivalence.
+Apply I06 to H,R at each z in S to obtain actual within derivative
+  D_within R(z)=ContinuousLinearMap.inverse (Q(R(z))).
+For n=0, R is ContDiffOn 0 by the continuity estimate.
+Assume R is ContDiffOn n. Composition of Q with R, followed by I07 at each
+invertible Q(R(z)), makes this derivative field ContDiffOn n.
+G06 gives ContDiffOn (n+1) R. G07 gives ContDiffOn infinity R.
+Projection to the second coordinate yields SmoothVelocityOn T rho.
+All compositions retain MapsTo S S. No differentiability of R is used to
+prove its initial continuity or the first derivative formula.
+
+The expression Q above is the full spacetime derivative of H, not D_a eta
+alone. Native implementation must preserve this distinction and supply the
+explicit block continuous linear equivalence. This route reduces the inverse
+step to within-calculus packaging after forward joint regularity; the main
+remaining analytic gap is forward label-dependent smoothness.
+
+7. AUDIT OF PRIOR B-TIER SECTIONS 2-3
+------------------------------------
+MATHEMATICAL_VERDICT = viable classical proof route; no false displayed
+identity or circular invertibility assumption found.
+
+F01/F02: correct provided higher-order slice-jet identification is supplied.
+Periodic derivative bounds are not direct consequences of compactness alone;
+translation invariance of the within jets must first be proved (J07-J08).
+
+F03: the recorded bounded-field Picard parameters are valid on [0,T].
+No K*T<1 condition is present in the cited Picard record. Reusing F03 on an
+extended interval requires the corresponding radius adaptation above.
+
+F05/F06: the Taylor-remainder argument avoids assuming differentiability of
+the flow. The parameter-linear Volterra lemma correctly uses continuity of
+W first and only then derives D_aW. However constructing the linear solver,
+uniform parameter remainder estimates, continuity of the differentiated
+solver, and the higher-variation partition induction remain substantial
+unimplemented native proofs. Existing differentiation-under-integral lemmas
+require the parameter derivative as an input; they cannot establish it by
+circularly differentiating the unproved flow.
+
+F07: finite-order reflected jets match. Ordinary C^N seam regularity follows
+by an actual derivative-gluing induction, not by equality of boundary values
+alone. The listed Mathlib endpoints support that induction but do not already
+contain it. U_(N+1) suffices for the finite-order argument. No new extension
+hypothesis or common infinite-order extension is required mathematically.
+
+F09: the polynomial Jacobi argument is valid at singular F; deriving det=1
+before inverse cancellation is noncircular. The actual time derivative of
+F must come from the variation proof. det_fin_three is an algebraic identity,
+not by itself a determinant derivative theorem.
+
+F10: localInverse requires ordinary ContDiffAt and a continuous linear
+equivalence derivative. F07 and the explicit block map discharge these.
+The local-to-canonical inverse identification must use the slab-restricted
+right-inverse argument above. No assumption of smooth initial-time dependence
+or preexisting smoothness of rho is needed.
+
+Section 3 Piola orientations and contractions are correct. Its former native
+implementation obligations are now discharged by the source-matched assembly
+run 43376636262 at d04698bae290672d5c0b0238ff4fa0d6c2ca9b6a. The old TXT is a
+historical B-tier snapshot; its statements that P03-P07 remain implementation
+work are stale with respect to that later audited source.
+
+8. MINIMAL MISSING NATIVE BRIDGE REGISTER
+----------------------------------------
+B1 periodic_spacetime_jets_and_uniform_bounds:
+  E01, higher slice jets, compact-cell reduction; moderate packaging.
+B2 parameter_linear_volterra_solution_and_derivative:
+  existence, uniqueness, parameter continuity, differentiability and uniform
+  remainder control; principal analytic gap.
+B3 jointly_contDiff_finite_order_flow:
+  B2 + first variation + higher multilinear induction + mixed derivatives;
+  principal analytic gap. Time smoothness of individual curves is insufficient.
+B4 finite_order_reflection_extension (OPEN-EXTENSION ROUTE ONLY):
+  moments + all multilinear seam jets + G02-G06; substantial boundary gap.
+  A direct within-slab joint derivative induction can instead target B3
+  without an off-slab extension; I06-I07 then avoid extension for rho.
+B5 determinant_of_actual_variation:
+  D01-D09 + native F'=GF; finite-dimensional calculus/algebra gap.
+B6 joint_inverse_and_MaterialPathOn_assembly:
+  preferred I06-I07 + inverse continuity + B3/B5 + actual derivWithin
+  identification; alternative I01-I05 + B4. Neither substitutes for B2/B3.
+
+NATIVE_L1_STATUS = UNRESOLVED until these proof bodies pass matching external
+compilation and theorem-level axiom audits. A B-tier derivation, endpoint
+registry, or theorem signature alone does not promote L1 to A-tier.

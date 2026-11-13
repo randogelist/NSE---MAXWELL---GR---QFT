@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "status": "A_TIER_CANDIDATE_AFTER_L2_AXIOM_REMOVAL",
-  "closure_status": "CONDITIONAL_FORMAL_CLOSURE_PENDING_MATCHING_AUDIT",
+  "status": "A_TIER_UNDER_L1_ONLY",
+  "closure_status": "CONDITIONAL_FORMAL_CLOSURE",
   "user_authorization": "2026-11-13: L2 removed from axioms; retain L1 only",
   "axiom_declarations": [
     "ClassicalMechanicsAssembly.Literature.L1"
@@ -16,9 +16,9 @@
   "external_platform": "native Linux / Ubuntu 24.04",
   "toolchain": "leanprover/lean4:v4.34.0-rc1",
   "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
-  "external_compilation": "PENDING_FOR_UPDATED_SOURCE",
+  "external_compilation": "PASS",
   "standard_43_axiom_audit": "PASS_STANDARD_ONLY",
-  "literature_5_axiom_audit": "PENDING_FOR_UPDATED_SOURCE",
+  "literature_5_axiom_audit": "PASS_EXACT_AUTHORIZED_AXIOMS",
   "literature_import_closure_modules": 22,
   "L2_native_axiom_audit": "PASS_STANDARD_ONLY",
   "dual_root_analytic_axioms": [
@@ -26,5 +26,15 @@
   ],
   "native_diffusion_root_analytic_axioms": [
     "ClassicalMechanicsAssembly.Literature.L1"
-  ]
+  ],
+  "source_commit": "f2030b012904c84d088ec2a6af407b4f81a314b5",
+  "external_run_id": 43379686374,
+  "external_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43379686374",
+  "external_artifact_id": 14016092956,
+  "artifact_sha256": "c9361450df283e6625c1a2292168e96a3648a2b254c0d475ae2928a9364f8daf",
+  "retained_evidence": "Auxillary/evidence/l1-only-linux-43379686374",
+  "source_input_matches": 346,
+  "L2_axiom_audit": "PASS_STANDARD_ONLY",
+  "literature_axiom_declaration_count": 1,
+  "literature_theorem_count": 4
 }
