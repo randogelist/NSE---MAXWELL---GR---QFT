@@ -1,0 +1,2859 @@
+{
+  "schema_version": 1,
+  "status": "PASS_STANDARD_ONLY",
+  "source_commit": "d241f2b700be66ab447cb1650770271e1b364b8a",
+  "source_manifest_sha256": "2e170563a63e264960afcc7cfc9e4aed952ff209e029ca696f9b034687d597a5",
+  "external_compiler_status": "PASS",
+  "expected_platform": "linux",
+  "external_platform": "linux",
+  "audit_command_status": "PASS",
+  "source_input_verification": "PASS",
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "theorems": [
+    {
+      "name": "NSEMaxwell.Classical.velocity_slice_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.pressure_slice_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.timeDerivative_congr_field",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.scalarTimeDerivative_congr_field",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.vectorL_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.scalarL_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.K_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.DG_zero_direction",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.NSSolution.slice_data",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.MaxwellSolution.slice_magnetic_data",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Constitutive.cross_add_left",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Constitutive.cross_add_right",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Constitutive.DG_add_of_K_curl",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Constitutive.DG_neg_of_K_curl",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Constitutive.ampere_factorization",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Constitutive.ampere_zero_of_faraday",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Constitutive.canonical_faraday_of_maxwell",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Residual.hodge_momentum_factorization",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "propext"
+      ],
+      "rendered_axioms": [
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Residual.momentum_factorization",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "propext"
+      ],
+      "rendered_axioms": [
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Residual.reconstructed_zero_iff",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "propext"
+      ],
+      "rendered_axioms": [
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Residual.factored_zero_iff",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "propext"
+      ],
+      "rendered_axioms": [
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Residual.momentum_pressure_change",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "propext"
+      ],
+      "rendered_axioms": [
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Residual.gradient_split_zero_iff",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "propext"
+      ],
+      "rendered_axioms": [
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Residual.ampere_factorization",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "propext"
+      ],
+      "rendered_axioms": [
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Residual.full_maxwell_iff_faraday",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "propext"
+      ],
+      "rendered_axioms": [
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Residual.momentum_zero_iff_full_maxwell",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "propext"
+      ],
+      "rendered_axioms": [
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.ExistenceTransport.forall_iff_of_data_equiv",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Quot.sound"
+      ],
+      "rendered_axioms": [
+        "Quot.sound.{u}"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.ExistenceTransport.forall_exists_iff_of_data_equiv",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Quot.sound"
+      ],
+      "rendered_axioms": [
+        "Quot.sound.{u}"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.ExistenceTransport.forall_nonempty_iff_of_solution_equiv",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Quot.sound"
+      ],
+      "rendered_axioms": [
+        "Quot.sound.{u}"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.MagneticPath.slice",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.momentum_zero_of_ns",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.canonical_momentum_factorization",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.maxwell_of_faraday",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.faraday_of_ns",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.maxwell_of_ns",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.ns_of_maxwell",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.feffermanB_iff_maxwellB_of_periodicAnalyticLaws",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.exact_equivalence_of_periodicAnalyticLaws",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.coordinateDerivative_neg",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.spatialCurl_neg",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.vectorL_neg",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.scalarL_neg",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.K_neg",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.DG_neg",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.DG_curl_neg",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Lamb.vector_coordinate_decomposition",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Lamb.convection_coordinate",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Lamb.kinetic_gradient_coordinate",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Lamb.lamb_identity_at",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Lamb.lamb_identity",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Lamb.lamb_identity_of_data",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Lamb.reconstructed_lamb_identity",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.gradient_pressure_decomposition",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.canonicalPressure_gradient",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.smooth_constant_velocity",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.smooth_constant_pressure",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.periodic_constant_velocity",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Classical.periodic_constant_pressure",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Constitutive.timeDerivative_eq_evolution_of_faraday",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Constitutive.ampere_zero_of_faraday_chain",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.MagneticPath.constant",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.PeriodicAnalyticLaws.curl_data",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.PeriodicAnalyticLaws.reconstruction_data",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.PeriodicAnalyticLaws.reconstruct_mean",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.canonical_momentum_split",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.canonical_momentum_zero_of_faraday",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.CurlCurl.coordinateDerivative_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.CurlCurl.spatialCurl_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.CurlCurl.secondCoordinate_symm",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.CurlCurl.curl_curl",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.CurlCurl.divergence_curl",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.CurlCurl.viscosity_identity_of_data",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.CurlCurl.reconstructed_viscosity_identity",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.fderiv_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.coordinateDerivative_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.spatialCurl_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.divergence_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.gradient_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.laplacian_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.integrableOn_unitCube_of_continuous",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.spatialMean_coordinateDerivative_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.spatialMean_apply",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.integral_coordinate_component_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.spatialMean_curl_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Spacetime.forwardSpacetime_eq_prod",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Spacetime.uniqueDiffOn_forwardSpacetime",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Spacetime.closure_interior_forwardSpacetime",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Spacetime.spatial_restriction_fderiv",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Spacetime.time_restriction_hasDerivWithinAt",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Spacetime.time_restriction_derivWithin",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Spacetime.directional_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Spacetime.directional_fderivWithin_apply",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Spacetime.time_slice_hasDerivWithinAt",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Spacetime.coordinateDerivative_eq_joint",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Spacetime.coordinateDerivative_trajectory_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Spacetime.timeDerivative_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Spacetime.curl_trajectory_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Spacetime.timeDerivative_coordinateDerivative",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Spacetime.time_component_hasDerivWithinAt",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Spacetime.timeDerivative_component",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Spacetime.timeDerivative_curl_commute",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FourierPeriodic.cosineKernel_add_unit_left",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FourierPeriodic.cosineKernel_symm",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FourierPeriodic.cosineKernel_add_unit_right",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FourierPeriodic.vectorL_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FourierPeriodic.scalarL_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FourierPeriodic.K_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FourierPeriodic.U_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FourierPeriodic.G_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FourierPeriodic.V_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FourierPeriodic.Q_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FourierPeriodic.DG_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FourierPeriodic.current_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FourierPeriodic.canonicalPressure_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FourierPeriodic.canonicalVelocity_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FourierPeriodic.canonicalElectric_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FourierPeriodic.canonicalCharge_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FourierPeriodic.canonicalCurrent_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FourierPeriodic.canonicalPressureTrajectory_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.isCompact_unitCube",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.integral_fderiv_unitVector_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.gradient_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.spatialMean_gradient_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.laplacian_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.spatialMean_laplacian_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.momentumFlux_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.momentumFlux_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.coordinateDerivative_momentumFlux",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.momentumFlux_divergence",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.convection_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.spatialMean_convection_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Spacetime.timeDerivative_periodic",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Spacetime.timeDerivative_divergence_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.DominatedWithin.hasDerivWithinAt_integral_of_dominated",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.LocalEvolution.cross_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.LocalEvolution.cross_trajectory_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.LocalEvolution.timeDerivative_cross",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.LocalEvolution.electric_time_chain_of_reconstruction",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.LocalEvolution.gradient_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.LocalEvolution.spatialCurl_add",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.LocalEvolution.spatialCurl_gradient",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.LocalEvolution.vorticity_residual",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.TemporalMean.local_uniform_time_bound",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.TemporalMean.mean_time_hasDerivWithinAt",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.TemporalMean.mean_time_derivWithin",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.TemporalMean.timeDerivative_mean_zero_of_constant_mean",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.spatialMean_timeDerivative_zero_of_constant_mean",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.spatialMean_timeDerivative_zero_of_equation",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.PeriodicIntegration.mean_conservation_of_equation",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.vorticity_regularity_proved",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.FourierHodgeLaws.canonical_regularity",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.FourierHodgeLaws.reconstruction_data",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.FourierHodgeLaws.reconstruct_mean",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.FourierHodgeLaws.reconstruction_time",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.mean_conservation_proved",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.FourierHodgeLaws.toPeriodicAnalyticLaws",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.Bridge.exact_equivalence_of_fourierHodgeLaws",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.CanonicalSmoothness.divergence_trajectory_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.CanonicalSmoothness.canonical_electric_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.CanonicalSmoothness.canonical_charge_smooth",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.CanonicalSmoothness.magnetic_curl_path",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.CanonicalSmoothness.magnetic_neg_path",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.CanonicalSmoothness.evolution_magnetic_path",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "NSEMaxwell.CanonicalSmoothness.canonical_current_smooth_of_velocity_smoothing",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "UnitAddTorus.mFourierCoeff_eq_integral",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "UnitAddTorus.hasSum_mFourier_series_apply_of_summable",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "contDiff_tsum",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    },
+    {
+      "name": "ZLattice.summable_norm_pow_inv",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "rendered_axioms": [
+        "Classical.choice.{u}",
+        "Quot.sound.{u}",
+        "propext"
+      ],
+      "unapproved_axioms": [],
+      "malformed_axioms": []
+    }
+  ],
+  "declared_formalization_scope": {
+    "schema_version": 1,
+    "source_status": "A_TIER_FOR_EXACT_CONDITIONAL_REDUCED_ROOT",
+    "exact_target": "NSEMaxwell.Classical.ExactEquivalence",
+    "exact_target_proved": false,
+    "unconditional_closure": false,
+    "local_lean_executions": 0,
+    "concrete_realization": {
+      "domain": "unit-periodic lifts on EuclideanSpace R (Fin 3)",
+      "smoothness": "joint ContDiffOn R infinity on nonnegative spacetime, including t=0",
+      "pressure": "periodic; unrestricted spatial-constant gauge",
+      "velocity_mean": "arbitrary",
+      "forcing": "zero",
+      "K": "curl of actual mean-zero inverse-Laplacian Fourier formula"
+    },
+    "open_analytic_obligations": [
+      "Concrete periodic velocity Hodge reconstruction including the harmonic mean",
+      "Concrete curl inversion on mean-zero divergence-free magnetic data",
+      "Joint canonical velocity/pressure smoothness through t=0 and velocity incompressibility",
+      "Concrete electric Hodge identity with the prescribed scalar Fourier potential"
+    ],
+    "promotion_rule": "Matching external compiler and theorem-level axiom evidence; semantic hypotheses audited separately.",
+    "prepared_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED",
+    "prepared_root_type": "NSEMaxwell.Bridge.FourierHodgeLaws -> NSEMaxwell.Classical.ExactEquivalence",
+    "conditional_root_status": "A_TIER",
+    "analytic_laws_inhabitant_provided": false,
+    "open_analytic_endpoints": [
+      "reconstruct_velocity",
+      "reconstruct_curl",
+      "canonical_smoothness",
+      "electric_hodge"
+    ],
+    "prepared_discharges": [
+      "operator_negation",
+      "Lamb_identity",
+      "pressure_gradient_decomposition",
+      "curl_curl_identity",
+      "divergence_curl_identity",
+      "viscosity_identity"
+    ],
+    "derived_from_remaining_endpoints": [
+      "curl_data",
+      "reconstruction_data",
+      "reconstruct_mean"
+    ],
+    "unnecessary_for_root": [
+      "K_residual_add",
+      "DG_residual_add",
+      "DG_curl_neg"
+    ],
+    "optional_off_solution_lemmas": "canonical_momentum_factorization retains its own hKAdd premise; the root does not depend on it.",
+    "audit_target_count": 170,
+    "external_evidence": {
+      "source_commit": "1bd2ee067d4aad3c265b32efd533ef270179e665",
+      "run_id": 43333835295,
+      "artifact_id": 13995999237,
+      "artifact_sha256": "0fb3739800b7d282576868d0b9b5fac4246b8c713c67c8ac7901cfb8dfd9fa47",
+      "source_manifest_sha256": "b3be4cfb54f92124268b4241625b8f60a3c66d9276179777223a388a46781628",
+      "directory": "evidence/windows-43333835295",
+      "platform": "native Windows",
+      "build": "PASS",
+      "lean_audit_command": "PASS",
+      "theorem_axiom_audit": "PASS_STANDARD_ONLY",
+      "audited_declarations": 170,
+      "project_declarations": 166,
+      "registered_mathlib_declarations": 4,
+      "lean_source_hashes_matching_delivery": 25
+    },
+    "continuation_candidate_modules": [
+      "PeriodicIntegration",
+      "Spacetime",
+      "FourierPeriodic",
+      "DominatedWithin",
+      "LocalEvolution",
+      "TemporalMean",
+      "MeanConservation",
+      "AnalyticReduction",
+      "CanonicalSmoothness"
+    ],
+    "prior_conditional_root_evidence": {
+      "source_commit": "0b793e57271073fb3b0206dcad99a2797d5f8211",
+      "run_id": 43318057281,
+      "artifact_id": 13990185678,
+      "artifact_sha256": "e5fc7ade2aed6f22c3deeb3a83170a6c53e72c317ab04647692a436f0f1b33e5",
+      "source_manifest_sha256": "cf68016d6739febf4580ce6bec82a5955a2e274cfd0a2ce28b9ff28a94e23c52",
+      "directory": "evidence/windows-43318057281",
+      "build": "PASS",
+      "lean_audit_command": "PASS",
+      "theorem_axiom_audit": "PASS_STANDARD_ONLY",
+      "audited_declarations": 74,
+      "lean_source_hashes_matching_delivery": 16
+    },
+    "additional_module_evidence": {
+      "source_commit": "1bd2ee067d4aad3c265b32efd533ef270179e665",
+      "run_id": 43333835295,
+      "artifact_id": 13995999237,
+      "artifact_sha256": "0fb3739800b7d282576868d0b9b5fac4246b8c713c67c8ac7901cfb8dfd9fa47",
+      "source_manifest_sha256": "b3be4cfb54f92124268b4241625b8f60a3c66d9276179777223a388a46781628",
+      "directory": "evidence/windows-43333835295",
+      "platform": "native Windows",
+      "build": "PASS",
+      "lean_audit_command": "PASS",
+      "theorem_axiom_audit": "PASS_STANDARD_ONLY",
+      "audited_declarations": 170,
+      "project_declarations": 166,
+      "registered_mathlib_declarations": 4,
+      "lean_source_hashes_matching_delivery": 25
+    },
+    "prepared_reduced_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED",
+    "prepared_reduced_root_type": "NSEMaxwell.Bridge.FourierHodgeLaws -> NSEMaxwell.Classical.ExactEquivalence",
+    "reduced_root_status": "A_TIER_FOR_EXACT_CONDITIONAL_IMPLICATION",
+    "reduced_open_analytic_endpoints": [
+      "reconstruct_velocity",
+      "reconstruct_curl",
+      "canonical_smoothness",
+      "electric_hodge"
+    ],
+    "prepared_endpoint_discharges": [
+      "vorticity_regularity",
+      "mean_conservation",
+      "vorticity_residual",
+      "reconstruction_time",
+      "electric_time_chain"
+    ],
+    "retained_canonical_smoothness_components": [
+      "velocity_smooth",
+      "pressure_smooth",
+      "velocity_divergence_free"
+    ],
+    "derived_canonical_components": [
+      "electric_smooth",
+      "charge_smooth",
+      "current_smooth",
+      "velocity_periodic",
+      "pressure_periodic",
+      "electric_periodic",
+      "charge_periodic",
+      "current_periodic"
+    ],
+    "original_conditional_root": {
+      "name": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE",
+      "type": "NSEMaxwell.Bridge.PeriodicAnalyticLaws -> NSEMaxwell.Classical.ExactEquivalence",
+      "status": "A_TIER_FOR_EXACT_CONDITIONAL_IMPLICATION",
+      "analytic_endpoints": [
+        "reconstruct_velocity",
+        "reconstruct_curl",
+        "vorticity_regularity",
+        "canonical_regularity",
+        "mean_conservation",
+        "vorticity_residual",
+        "reconstruction_time",
+        "electric_hodge",
+        "electric_time_chain"
+      ]
+    },
+    "registered_upstream_endpoints": [
+      "UnitAddTorus.mFourierCoeff_eq_integral",
+      "UnitAddTorus.hasSum_mFourier_series_apply_of_summable",
+      "contDiff_tsum",
+      "ZLattice.summable_norm_pow_inv"
+    ],
+    "registered_methlib_port_candidates": 7,
+    "formal_status": "CONDITIONAL_FORMAL_CLOSURE",
+    "active_ci_platform": "native Linux / Ubuntu 24.04",
+    "active_ci_validation": "PENDING_EXTERNAL_LINUX_RUN"
+  },
+  "semantic_discharge": "NOT_INFERRED_FROM_AXIOM_AUDIT",
+  "exact_root_promotion": "REQUIRES_SEPARATE_SCOPE_AND_PREMISE_REVIEW",
+  "errors": []
+}

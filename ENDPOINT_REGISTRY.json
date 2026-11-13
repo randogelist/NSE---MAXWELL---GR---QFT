@@ -72,7 +72,7 @@
       "implicit_context": "namespace UnitAddTorus; variable {d : Type*} [Fintype d]; local normalized Haar probability measure on UnitAddCircle. mFourierCoeff_eq_integral additionally has {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]; convergence theorem has {f : C(UnitAddTorus d, ℂ)}.",
       "target_status": "UPSTREAM_DECLARATION_AVAILABLE_ON_EXACT_TARGET_PIN",
       "port_required": false,
-      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: native Windows run43333835295, exact target compiler and Mathlib pin; Linux migration pending.",
+      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: external native Linux run43336709607, exact target compiler and Mathlib pin.",
       "helps": [
         "Cube-to-torus Fourier coefficient identification."
       ],
@@ -100,7 +100,7 @@
       "implicit_context": "namespace UnitAddTorus; variable {d : Type*} [Fintype d]; local normalized Haar probability measure on UnitAddCircle. mFourierCoeff_eq_integral additionally has {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]; convergence theorem has {f : C(UnitAddTorus d, ℂ)}.",
       "target_status": "UPSTREAM_DECLARATION_AVAILABLE_ON_EXACT_TARGET_PIN",
       "port_required": false,
-      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: native Windows run43333835295, exact target compiler and Mathlib pin; Linux migration pending.",
+      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: external native Linux run43336709607, exact target compiler and Mathlib pin.",
       "helps": [
         "Pointwise Fourier inversion for reconstruct_velocity and reconstruct_curl."
       ],
@@ -130,7 +130,7 @@
       "implicit_context": "{α 𝕜 E F : Type*} [NontriviallyNormedField 𝕜] [IsRCLikeNormedField 𝕜] [NormedAddCommGroup E] [NormedSpace 𝕜 E] [NormedAddCommGroup F] [CompleteSpace F] [NormedSpace 𝕜 F] {f : α → E → F} {v : ℕ → α → ℝ} {N : ℕ∞}.",
       "target_status": "UPSTREAM_DECLARATION_AVAILABLE_ON_EXACT_TARGET_PIN",
       "port_required": false,
-      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: native Windows run43333835295, exact target compiler and Mathlib pin; Linux migration pending.",
+      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: external native Linux run43336709607, exact target compiler and Mathlib pin.",
       "helps": [
         "Termwise smoothness for inverse Laplacian Fourier series.",
         "Potential route to joint spacetime smoothness in canonical_smoothness."
@@ -160,7 +160,7 @@
       "implicit_context": "namespace ZLattice; {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [FiniteDimensional ℝ E] (L : Submodule ℤ E) [DiscreteTopology L].",
       "target_status": "UPSTREAM_DECLARATION_AVAILABLE_ON_EXACT_TARGET_PIN",
       "port_required": false,
-      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: native Windows run43333835295, exact target compiler and Mathlib pin; Linux migration pending.",
+      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: external native Linux run43336709607, exact target compiler and Mathlib pin.",
       "helps": [
         "Summable three-dimensional lattice majorant once decay exponent exceeds three."
       ],
@@ -422,6 +422,23 @@
     "methlib_source_port_candidates": 7
   },
   "external_upstream_endpoint_audit": {
+    "source_commit": "d241f2b700be66ab447cb1650770271e1b364b8a",
+    "run_id": 43336709607,
+    "artifact_id": 13998740266,
+    "artifact_sha256": "76c772bea8d3a9879bcb3ced03e6c60e128c5fac8601df0b0e94ae58dce46b6d",
+    "source_manifest_sha256": "2e170563a63e264960afcc7cfc9e4aed952ff209e029ca696f9b034687d597a5",
+    "directory": "evidence/linux-43336709607",
+    "platform": "native Linux / Ubuntu 24.04",
+    "build": "PASS",
+    "lean_audit_command": "PASS",
+    "theorem_axiom_audit": "PASS_STANDARD_ONLY",
+    "audited_declarations": 170,
+    "project_declarations": 166,
+    "registered_mathlib_declarations": 4,
+    "lean_source_hashes_matching_delivery": 25,
+    "preserved_artifact_files": 60
+  },
+  "prior_upstream_windows_audit": {
     "source_commit": "1bd2ee067d4aad3c265b32efd533ef270179e665",
     "run_id": 43333835295,
     "artifact_id": 13995999237,

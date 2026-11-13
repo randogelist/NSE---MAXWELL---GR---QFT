@@ -1,0 +1,296 @@
+[
+  {
+    "executable": "lean",
+    "arguments": [
+      "--version"
+    ],
+    "log": "lean-version.log",
+    "started_at_utc": "2026-11-13T00:24:35.4731592Z",
+    "elapsed_seconds": 0.089,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/plausible",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "dependency-plausible-revision.log",
+    "started_at_utc": "2026-11-13T00:24:35.6217362Z",
+    "elapsed_seconds": 0.012,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/plausible",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "dependency-plausible-working-tree.log",
+    "started_at_utc": "2026-11-13T00:24:35.6351669Z",
+    "elapsed_seconds": 0.014,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/LeanSearchClient",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "dependency-LeanSearchClient-revision.log",
+    "started_at_utc": "2026-11-13T00:24:35.6537274Z",
+    "elapsed_seconds": 0.02,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/LeanSearchClient",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "dependency-LeanSearchClient-working-tree.log",
+    "started_at_utc": "2026-11-13T00:24:35.6762138Z",
+    "elapsed_seconds": 0.013,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/importGraph",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "dependency-importGraph-revision.log",
+    "started_at_utc": "2026-11-13T00:24:35.6922485Z",
+    "elapsed_seconds": 0.012,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/importGraph",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "dependency-importGraph-working-tree.log",
+    "started_at_utc": "2026-11-13T00:24:35.7066059Z",
+    "elapsed_seconds": 0.014,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/proofwidgets",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "dependency-proofwidgets-revision.log",
+    "started_at_utc": "2026-11-13T00:24:35.7222821Z",
+    "elapsed_seconds": 0.011,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/proofwidgets",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "dependency-proofwidgets-working-tree.log",
+    "started_at_utc": "2026-11-13T00:24:35.7348257Z",
+    "elapsed_seconds": 0.041,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/aesop",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "dependency-aesop-revision.log",
+    "started_at_utc": "2026-11-13T00:24:35.7776435Z",
+    "elapsed_seconds": 0.011,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/aesop",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "dependency-aesop-working-tree.log",
+    "started_at_utc": "2026-11-13T00:24:35.7902843Z",
+    "elapsed_seconds": 0.016,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/Qq",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "dependency-Qq-revision.log",
+    "started_at_utc": "2026-11-13T00:24:35.8103453Z",
+    "elapsed_seconds": 0.011,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/Qq",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "dependency-Qq-working-tree.log",
+    "started_at_utc": "2026-11-13T00:24:35.8231868Z",
+    "elapsed_seconds": 0.012,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/batteries",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "dependency-batteries-revision.log",
+    "started_at_utc": "2026-11-13T00:24:35.8381079Z",
+    "elapsed_seconds": 0.016,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/batteries",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "dependency-batteries-working-tree.log",
+    "started_at_utc": "2026-11-13T00:24:35.8571285Z",
+    "elapsed_seconds": 0.026,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/Cli",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "dependency-Cli-revision.log",
+    "started_at_utc": "2026-11-13T00:24:35.8855903Z",
+    "elapsed_seconds": 0.012,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/Cli",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "dependency-Cli-working-tree.log",
+    "started_at_utc": "2026-11-13T00:24:35.8993963Z",
+    "elapsed_seconds": 0.013,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/mathlib",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "dependency-mathlib-revision.log",
+    "started_at_utc": "2026-11-13T00:24:35.9137347Z",
+    "elapsed_seconds": 0.011,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/mathlib",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "dependency-mathlib-working-tree.log",
+    "started_at_utc": "2026-11-13T00:24:35.9268821Z",
+    "elapsed_seconds": 0.408,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/mathlib",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "mathlib-revision.log",
+    "started_at_utc": "2026-11-13T00:24:36.3416063Z",
+    "elapsed_seconds": 0.013,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/mathlib",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "mathlib-working-tree.log",
+    "started_at_utc": "2026-11-13T00:24:36.3560591Z",
+    "elapsed_seconds": 0.021,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "exe",
+      "cache",
+      "get",
+      "--cache-from=master,legacy",
+      "Mathlib"
+    ],
+    "log": "run-cache.log",
+    "started_at_utc": "2026-11-13T00:24:36.4062258Z",
+    "elapsed_seconds": 5.005,
+    "exit_code": 0
+  }
+]

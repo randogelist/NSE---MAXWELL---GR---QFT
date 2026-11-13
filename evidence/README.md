@@ -1,6 +1,38 @@
 # External compiler and theorem audit evidence
 
-## Current certified proof snapshot
+## Current certified Linux proof snapshot
+
+```text
+RUN = 43336709607
+AUDITED_SOURCE = d241f2b700be66ab447cb1650770271e1b364b8a
+COMPILER = Native Linux Lean 4.34.0-rc1
+TARGET = x86_64-unknown-linux-gnu
+COMPILER_COMMIT = 3447a668783dbce1a8fdb97101dd067687b2b418
+BUILD = PASS
+FRESH_THEOREM_AXIOM_AUDIT = PASS_STANDARD_ONLY
+AUDITED_DECLARATIONS = 170 / 170
+LEAN_SOURCE_HASHES_MATCH_DELIVERY = 25 / 25
+PRESERVED_ORIGINAL_ARTIFACT_FILES = 60
+LOCAL_LEAN_EXECUTIONS = 0
+EXACT_REDUCED_ROOT = FourierHodgeLaws -> ExactEquivalence
+FORMAL_STATUS = CONDITIONAL_FORMAL_CLOSURE
+UNCONDITIONAL_EQUIVALENCE = NOT_PROVED
+```
+
+[Successful Linux workflow](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43336709607)
+
+[Original Linux artifact](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43336709607/artifacts/13998740266)
+
+```text
+Artifact ZIP SHA256:
+76c772bea8d3a9879bcb3ced03e6c60e128c5fac8601df0b0e94ae58dce46b6d
+Source manifest SHA256:
+2e170563a63e264960afcc7cfc9e4aed952ff209e029ca696f9b034687d597a5
+```
+
+All files under `linux-43336709607/` preserve original artifact bytes. This publication changes evidence and status documentation; the 25 audited Lean inputs remain byte-identical.
+
+## Prior matching Windows proof snapshot
 
 ```text
 RUN = 43333835295
@@ -31,7 +63,7 @@ Source manifest SHA256:
 b3be4cfb54f92124268b4241625b8f60a3c66d9276179777223a388a46781628
 ```
 
-All files in `windows-43333835295/` preserve the original artifact bytes. The artifact contains its pre-run scope declaration. Subsequent promotion records are separate. The user-requested Linux migration changes the external execution platform; its new compiler and audit evidence remains pending.
+All files in `windows-43333835295/` preserve the original artifact bytes. The artifact contains its pre-run scope declaration. Subsequent promotion records are separate. The user-requested Linux migration changes the external execution platform; its new compiler and audit evidence is recorded above.
 
 ## Historical 74-target snapshot
 

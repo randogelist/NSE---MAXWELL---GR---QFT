@@ -28,7 +28,7 @@ ORIGINAL_NINE_ENDPOINT_ROOT = A_TIER
 REDUCED_FOUR_ENDPOINT_ROOT = A_TIER
 CURRENT_FORMAL_STATUS = CONDITIONAL_FORMAL_CLOSURE
 ACTIVE_CI_PLATFORM = NATIVE_LINUX_UBUNTU_24_04
-ACTIVE_LINUX_VALIDATION = PENDING
+ACTIVE_LINUX_VALIDATION = PASS_BUILD_AND170_FRESH_AUDITS
 EXACT_UNCONDITIONAL_TARGET = UNPROVED
 ANALYTIC_REALIZATION = OPEN
 LOCAL_LEAN_EXECUTIONS = 0
@@ -57,17 +57,19 @@ Initial-data admissibility and the reconstructed mean are derived from the retai
 
 The conditional proof constructs both solutions on the actual fields, with the initial-data maps `a ↦ (mean a, curl a)` and `(m, B₀) ↦ m + K B₀`, and reconstructs the explicit periodic pressure. The unconditional `ExactEquivalence` remains open.
 
-## Verified external evidence
+## Verified external Linux evidence
 
-[Native Windows run 43333835295](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43333835295): complete build and all **170/170** fresh theorem-level audits passed. Source: `1bd2ee067d4aad3c265b32efd533ef270179e665`. All **25/25** Lean input hashes match the current proof files. Evidence: `evidence/windows-43333835295/`.
+[Native Linux run 43336709607](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43336709607): complete build and **170/170** fresh theorem-level audits passed. Source: `d241f2b700be66ab447cb1650770271e1b364b8a`. All **25/25** Lean input hashes match the delivered proof files. Original artifact bytes: `evidence/linux-43336709607/` (60 files).
 
-Both the original root and the reduced root depend only on `propext`, `Classical.choice`, and `Quot.sound`. The four remaining analytic endpoints are explicit theorem hypotheses. No `sorryAx` or additional axiom identity occurs. The audit also covers the four registered target-pin Mathlib endpoints.
+The compiler is native Linux Lean `4.34.0-rc1`, target `x86_64-unknown-linux-gnu`, compiler commit `3447a668783dbce1a8fdb97101dd067687b2b418`. Both root declarations depend only on `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` or additional axiom identity occurs. The four remaining analytic endpoints are explicit theorem hypotheses; no inhabitant is supplied. The audit also covers the four registered target-pin Mathlib endpoints.
 
-The earlier 74-target certificate remains preserved under `evidence/windows-43318057281/`; it describes its own historical source snapshot.
+The independently successful 170-target Windows certificate remains under `evidence/windows-43333835295/`; the older 74-target certificate remains under `evidence/windows-43318057281/`. Each describes its own source snapshot.
 
-## Active Linux migration
+## Linux restart
 
-The requested active CI platform is external native Linux, Ubuntu 24.04. The preceding Windows run had already completed successfully; no active Windows run remained to cancel. The Linux workflow replaces the Windows workflow and starts a new platform-specific build/audit. No Lean proof source or theorem premise changes in this migration. Windows objects and previous audit output are not reused as Linux certification. Linux validation is pending.
+Active CI: external native Linux, Ubuntu 24.04. The preceding Windows run had already completed successfully before cancellation was requested. No active Windows run remained to cancel. The Linux workflow replaces the automatic Windows workflow; `run.cmd` remains available for external Windows use.
+
+The first Linux initialization preserved its compiler and dependency caches, then stopped before proof compilation on Unix dotfile metadata. `Get-Item -Force` corrected that platform issue. The cached Linux restart passed the complete project build and fresh audit. No Lean proof source or theorem premise changed during the migration.
 
 ## External compilation
 
@@ -102,7 +104,7 @@ The default `run.sh` and `run.cmd` perform both phases. The dependency preparati
 
 ## Registered reference endpoints
 
-[ENDPOINT_REGISTRY.json](ENDPOINT_REGISTRY.json) records eleven exact signatures with pinned source commits, blob hashes, compiler compatibility, and remaining definition-alignment obligations. Four declarations already exist in the exact target Mathlib and passed the fresh 170-target Windows audit; the same four remain in the Linux audit. Seven independent harmonic-analysis declarations from Methlib are registered for source porting; Lean 4.33.0 evidence cannot certify them under the target Lean 4.34.0-rc1 compiler.
+[ENDPOINT_REGISTRY.json](ENDPOINT_REGISTRY.json) records eleven exact signatures with pinned source commits, blob hashes, compiler compatibility, and remaining definition-alignment obligations. Four declarations already exist in the exact target Mathlib and passed the fresh 170-target Linux audit. Seven independent harmonic-analysis declarations from Methlib are registered for source porting; Lean 4.33.0 evidence cannot certify them under the target Lean 4.34.0-rc1 compiler.
 
 The Methlib candidates cover cube/torus coefficient transport, differentiation multipliers, polynomial decay, coefficient injectivity, smooth Fourier synthesis, coefficient recovery, and infinite-series pressure recovery. They do not supply an inhabitant of `FourierHodgeLaws` in this project. The original all-mean NSE proposition and the exact cosine-defined pressure remain fixed.
 

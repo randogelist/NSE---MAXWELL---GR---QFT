@@ -1,7 +1,7 @@
 CI_CACHE_AUDIT
-STATUS = CACHED_WINDOWS_BUILD_AND170_AUDIT_VERIFIED
+STATUS = CACHED_NATIVE_LINUX_BUILD_AND170_AUDIT_VERIFIED
 ACTIVE_CI_PLATFORM = NATIVE_LINUX_UBUNTU_24_04
-ACTIVE_LINUX_VALIDATION = PENDING
+ACTIVE_LINUX_VALIDATION = PASS_BUILD_AND170_FRESH_AUDITS
 LOCAL_LEAN_EXECUTIONS = 0
 WRITE_REPOSITORY = randogelist/NSE---MAXWELL---GR---QFT
 WRITE_BRANCH = codex/fefferman-b-maxwell
@@ -136,4 +136,30 @@ Linux entry point = run.sh; Windows entry point = run.cmd retained.
 Cache keys include OS and architecture; Windows objects are not restored on Linux.
 Compiler/dependency pins, exact Lean source, root premises and 170 audit targets
 are unchanged. The runner and verifier check the requested native platform and
-the actual compiler target triple. External Linux validation = PENDING.
+the actual compiler target triple. External Linux validation = PASS (run43336709607).
+
+LINUX_CERTIFICATE
+Source = d241f2b700be66ab447cb1650770271e1b364b8a.
+Run = 43336709607; Ubuntu 24.04; native Linux Lean 4.34.0-rc1.
+Compiler target = x86_64-unknown-linux-gnu.
+Compiler/dependency caches = exact hits after preserved initial preparation.
+Source-manifest enumeration = PASS, including hidden Unix repository files.
+Freshness exit = 3; serial incremental fallback = PASS.
+Complete library build = PASS.
+Fresh theorem audit = 170/170 PASS_STANDARD_ONLY.
+Delivered Lean source hashes = 25/25 matching the Linux compiler manifest.
+Evidence = evidence/linux-43336709607/ (60 original artifact files).
+Exit-zero warm path remains source-reviewed; no observed runtime claim is made.
+
+MEASURED_LINUX_CACHE_RESULT
+Compiler cache exact hit = 758735277 bytes.
+Dependency cache exact hit = 2959769594 bytes.
+Dependency reupload = 0 bytes.
+Official incremental Mathlib cache acquisition = 5.005 s.
+Dependency native commands = 5.801 s.
+Freshness check = 4.368 s; exit 3.
+Native build/audit commands = 207.698 s for the initially cold Linux project.
+Fresh 170-target theorem audit = 5.478 s.
+Evidence verification = 0.187 s.
+Preserved Linux project archive = 7433684 bytes.
+All measurements describe run43336709607, not a controlled cross-platform benchmark.

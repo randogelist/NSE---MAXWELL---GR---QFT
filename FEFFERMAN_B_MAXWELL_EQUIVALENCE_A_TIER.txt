@@ -5,7 +5,7 @@ MODE = A_TIER_DERIVATION
 CURRENT_REDUCED_ROOT_STATUS = A_TIER
 FORMAL_STATUS = CONDITIONAL_FORMAL_CLOSURE
 ACTIVE_CI_PLATFORM = NATIVE_LINUX_UBUNTU_24_04
-ACTIVE_LINUX_RUN_STATUS = PENDING
+ACTIVE_LINUX_RUN_STATUS = PASS_BUILD_AND170_FRESH_AUDITS
 EXACT_UNCONDITIONAL_TARGET_PROVED = FALSE
 LOCAL_LEAN_EXECUTIONS = 0
 LOCAL_LAKE_EXECUTIONS = 0
@@ -121,10 +121,12 @@ COMPILATION CONTRACT
   Allowed axiom identities: propext, Classical.choice, Quot.sound.
   Pending proof bodies are not promoted by prepared signatures or B-tier proofs.
 
-CURRENT MATCHING CERTIFICATE
-============================
-Audited source: 1bd2ee067d4aad3c265b32efd533ef270179e665.
-External run: 43333835295; native Windows Lean 4.34.0-rc1.
+CURRENT MATCHING LINUX CERTIFICATE
+==================================
+Audited source: d241f2b700be66ab447cb1650770271e1b364b8a.
+External run: 43336709607; native Linux Lean 4.34.0-rc1.
+Native target: x86_64-unknown-linux-gnu.
+Compiler commit: 3447a668783dbce1a8fdb97101dd067687b2b418.
 Complete project build: PASS.
 Fresh theorem-level axiom audit: 170/170 PASS_STANDARD_ONLY.
 Project declarations: 166; registered target-pin Mathlib declarations: 4.
@@ -134,10 +136,13 @@ sorryAx and unapproved axiom identities: absent.
 Exact reduced implication: FourierHodgeLaws -> ExactEquivalence.
 Remaining independent endpoints: H1,H2,H3,H4 above; H3 has three components.
 Unconditional ExactEquivalence: NOT_PROVED.
-Evidence: evidence/windows-43333835295/.
-Artifact: 13995999237.
-ZIP SHA256: 0fb3739800b7d282576868d0b9b5fac4246b8c713c67c8ac7901cfb8dfd9fa47.
-Manifest SHA256: b3be4cfb54f92124268b4241625b8f60a3c66d9276179777223a388a46781628.
+Evidence: evidence/linux-43336709607/ (60 original artifact files).
+Artifact: 13998740266.
+ZIP SHA256: 76c772bea8d3a9879bcb3ced03e6c60e128c5fac8601df0b0e94ae58dce46b6d.
+Manifest SHA256: 2e170563a63e264960afcc7cfc9e4aed952ff209e029ca696f9b034687d597a5.
+Prior matching 170-target Windows certificate: run43333835295,
+source1bd2ee067d4aad3c265b32efd533ef270179e665,
+evidence/windows-43333835295/ (58 original artifact files).
 
 USER-REQUESTED PLATFORM MIGRATION
 =================================
@@ -148,7 +153,10 @@ Lean proof source and exact theorem/premises remain unchanged.
 Linux proof objects have separate OS/architecture cache keys.
 Windows objects and prior theorem-audit logs are not substituted for Linux evidence.
 run.sh = external Linux entry; run.cmd = retained external Windows entry.
-Linux compiler and audit validation: PENDING.
+Initial Linux run43336121531: verified dependencies preserved; pre-build
+manifest enumeration failed on Unix hidden-file metadata. The -Force
+correction changed no Lean proof source. Cached Linux restart43336709607:
+complete build and 170/170 fresh audits PASS; 25/25 Lean source hashes match.
 
 PRIOR CERTIFIED SNAPSHOT
 =======================
