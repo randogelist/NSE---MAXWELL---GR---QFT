@@ -27,7 +27,7 @@
     "external_compilation": "PENDING",
     "theorem_axiom_audit": "PENDING",
     "counts": {
-      "adapter": 185,
+      "adapter": 190,
       "forward": 6,
       "reverse": 6
     }
@@ -37,5 +37,13 @@
     "sha256": "8a9b3720f7f60499c04cf2b79eb873ce2c34100b30d512914dd33b14b41e9284",
     "older_source_pins": "Mathlib db584cd6d46c92f209a44c0f1c829460d327499d; Methlib 09dfe94a1ef150e21d09df3013fbe09002ef139c; source-only support; not compilation at active pins"
   },
-  "native_nonzero_normalization_boundary": "actual constant constrained analytic periodic boundary for every rho; bulk realization unresolved"
+  "native_nonzero_normalization_boundary": "actual constant constrained analytic periodic boundary for every rho; bulk realization unresolved",
+  "derived_germ_obligations": [
+    "decode_lift",
+    "reverse_respects"
+  ],
+  "remaining_germ_obligations": [
+    "forward_respects",
+    "lift_decode"
+  ]
 }

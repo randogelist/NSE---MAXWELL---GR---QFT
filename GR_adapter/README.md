@@ -30,7 +30,7 @@ This statement is local in time and radius. The inherited `FeffermanB` is a glob
 | 1 | `GRAdapter/NativeBoundary.lean` | Actual constant constrained boundary for every rho; no bulk realization asserted |
 | 1 | `GRAdapter/Germs.lean` | Independent pressure-gauge and marked metric germ quotients |
 | 1 | `GRAdapter/CompletionSource.lean` | Actual source, scalar correction, lowering and completed boundary tensor |
-| 1 | `GRAdapter/Locality.lean` | Exact time-germ locality of decoded velocity and pressure, including the second time derivative |
+| 1 | `GRAdapter/Locality.lean` | Actual metric-jet and decoded-field germ locality; analytic pressure gauge; second time derivative locality |
 | 1 | `GRAdapter/Contracts.lean` | Explicit scalar/radial/reconstruction obligations and exact zero-stress deduction |
 | 2 | `NSEGRForward.lean` | Scalar completion → constrained boundary → actual radial vacuum → canonical sector; velocity recovery |
 | 3 | `NSEGRReverse.lean` | Actual metric → reconstructed analytic NSE; separate germ descent/inverse assembly |
@@ -42,7 +42,7 @@ The conditional root is `NSEGR.NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACT
 | `ScalarBoundaryCompletionLaws` | Actual analytic normalized scalar completion, constraints and boundary recovery for every supplied analytic NSE representative |
 | `AnalyticRadialExtensionLaws` | Actual analytic radial extension and vacuum constraint propagation, with allowed time-collar shrink |
 | `GeometricReconstructionLaws` | Analytic Poisson/Leray mapping, geometric constraints and exact reconstructed residual identity |
-| `GermInverseLaws` | Gauge descent, actual metric germ locality, and the lift-after-decode identity for the chosen completions |
+| `GermInverseLaws` | Forward gauge descent and the lift-after-decode identity for the chosen completions |
 
 All four premises remain visible. No inhabitants are supplied. Native tensor proofs and flat-vacuum semantics do not discharge them. The flat metric is explicitly proved to fail the nonzero-rho normalization.
 

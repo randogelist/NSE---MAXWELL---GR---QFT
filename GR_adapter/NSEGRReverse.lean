@@ -25,17 +25,13 @@ theorem GR_TO_NSE_OF_GEOMETRIC_RECONSTRUCTION
 
 /-- Gauge descent and analytic uniqueness are exact remaining proof obligations.
 This record has no supplied inhabitant. A standard-only axiom audit of the
-assembly below does not discharge any of these three fields. -/
+assembly below does not discharge either of these two fields. -/
 structure GermInverseLaws {ν ρ t0 : ℝ}
     (c : ScalarBoundaryCompletionLaws ν ρ t0) (r : AnalyticRadialExtensionLaws ρ t0)
     (h : GeometricReconstructionLaws ν ρ t0) : Prop where
   forward_respects : ∀ a b : NSERepresentative ν t0,
     SameFlowAt t0 a.velocity a.pressure b.velocity b.pressure →
       SameMetricAt t0 (forwardRepresentative c r a).metric (forwardRepresentative c r b).metric
-  reverse_respects : ∀ a b : CanonicalRepresentative ν ρ t0,
-    SameMetricAt t0 a.metric b.metric →
-      SameFlowAt t0 (reverseRepresentative h a).velocity (reverseRepresentative h a).pressure
-        (reverseRepresentative h b).velocity (reverseRepresentative h b).pressure
   lift_decode : ∀ a : CanonicalRepresentative ν ρ t0,
     SameMetricAt t0 (forwardRepresentative c r (reverseRepresentative h a)).metric a.metric
 
@@ -48,17 +44,16 @@ def forwardGerm {ν ρ t0 : ℝ}
     exact q.forward_respects a b hab)
 
 def reverseGerm {ν ρ t0 : ℝ}
-    (c : ScalarBoundaryCompletionLaws ν ρ t0) (r : AnalyticRadialExtensionLaws ρ t0)
-    (h : GeometricReconstructionLaws ν ρ t0) (q : GermInverseLaws c r h) :
+    (h : GeometricReconstructionLaws ν ρ t0) :
     GRgerm ν ρ t0 → NSEgerm ν t0 :=
   Quotient.map (reverseRepresentative h) (by
     intro a b hab
-    exact q.reverse_respects a b hab)
+    exact sameMetricAt_boundaryFields ρ hab)
 
 theorem reverseGerm_forwardGerm {ν ρ t0 : ℝ}
     (c : ScalarBoundaryCompletionLaws ν ρ t0) (r : AnalyticRadialExtensionLaws ρ t0)
     (h : GeometricReconstructionLaws ν ρ t0) (q : GermInverseLaws c r h)
-    (x : NSEgerm ν t0) : reverseGerm c r h q (forwardGerm c r h q x) = x := by
+    (x : NSEgerm ν t0) : reverseGerm h (forwardGerm c r h q x) = x := by
   refine Quotient.inductionOn x ?_
   intro a
   change NSEgerm.mk (reverseRepresentative h (forwardRepresentative c r a)) = NSEgerm.mk a
@@ -67,7 +62,7 @@ theorem reverseGerm_forwardGerm {ν ρ t0 : ℝ}
 theorem forwardGerm_reverseGerm {ν ρ t0 : ℝ}
     (c : ScalarBoundaryCompletionLaws ν ρ t0) (r : AnalyticRadialExtensionLaws ρ t0)
     (h : GeometricReconstructionLaws ν ρ t0) (q : GermInverseLaws c r h)
-    (x : GRgerm ν ρ t0) : forwardGerm c r h q (reverseGerm c r h q x) = x := by
+    (x : GRgerm ν ρ t0) : forwardGerm c r h q (reverseGerm h x) = x := by
   refine Quotient.inductionOn x ?_
   intro a
   change GRgerm.mk (forwardRepresentative c r (reverseRepresentative h a)) = GRgerm.mk a
@@ -78,9 +73,9 @@ def exactSectorEquivOfContracts {ν ρ t0 : ℝ}
     (h : GeometricReconstructionLaws ν ρ t0) (q : GermInverseLaws c r h) :
     NSEgerm ν t0 ≃ GRgerm ν ρ t0 where
   toFun := forwardGerm c r h q
-  invFun := reverseGerm c r h q
+  invFun := reverseGerm h
   left_inv := reverseGerm_forwardGerm c r h q
-  right_inv := forwardGerm_reverseGerm c r h q
+  right_inv := forwardGerm_reverseGerm h
 
 theorem NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS
     (ν ρ t0 : ℝ) (_hν : 0 < ν) (_hρ : ρ ≠ 0)

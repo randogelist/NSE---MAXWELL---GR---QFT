@@ -59,7 +59,7 @@ theorem origin_pressure_gauge_analytic
     hp.pressure_analytic (t, (0 : Vec)) ht.1
   have haq : AnalyticAt ℝ (fun z : ℝ × Vec => q z.1 z.2) (t, (0 : Vec)) :=
     hq.pressure_analytic (t, (0 : Vec)) ht.2
-  simpa only [Pi.sub_apply] using hap.curry_left.sub haq.curry_left
+  simpa only [Pi.sub_def] using hap.curry_left.sub haq.curry_left
 
 /-- On the actual analytic carriers, the timewise constant-pressure relation
 is exactly an analytic time-gauge relation on a common neighborhood. -/
@@ -80,6 +80,71 @@ theorem sameFlowAt_iff_analytic_pressure_gauge
     unfold SameFlowAt
     filter_upwards [heq] with t ht
     exact ⟨ht.1, a t, ht.2⟩
+
+
+/-- Spatial coordinates in the fixed bulk marking `(r,t,x1,x2,x3)`. -/
+def bulkSpatialCoordinates (z : Bulk) : Vec :=
+  WithLp.toLp 2 (fun i : Fin 3 => z i.succ.succ)
+
+theorem bulkPoint_coordinates (z : Bulk) :
+    bulkPoint (z 0) (z 1) (bulkSpatialCoordinates z) = z := by
+  apply PiLp.ext
+  intro i
+  refine Fin.cases ?_ (fun j => ?_) i
+  · rfl
+  · refine Fin.cases ?_ (fun k => ?_) j
+    · rfl
+    · rfl
+
+/-- The uniform full-spatial-slice germ induces the actual bulk germ at
+every spatial point. No regularity of either metric is used. -/
+theorem metric_eventuallyEq_of_fullSlices {r t : ℝ} {g h : Metric}
+    (hslice : ∀ᶠ rt : ℝ × ℝ in 𝓝 (r, t), ∀ x : Vec,
+      g (bulkPoint rt.1 rt.2 x) = h (bulkPoint rt.1 rt.2 x))
+    (x : Vec) : g =ᶠ[𝓝 (bulkPoint r t x)] h := by
+  have hcontinuous : Continuous (fun z : Bulk => (z 0, z 1)) := by
+    fun_prop
+  have hprojection : Tendsto (fun z : Bulk => (z 0, z 1))
+      (𝓝 (bulkPoint r t x)) (𝓝 (r, t)) := by
+    simpa only [bulkPoint_radial, bulkPoint_time] using
+      hcontinuous.tendsto (bulkPoint r t x)
+  filter_upwards [hprojection.eventually hslice] with z hz
+  simpa only [bulkPoint_coordinates] using hz (bulkSpatialCoordinates z)
+
+/-- Metric germs determine the actual normal first-jet tensor as a
+uniform full-spatial-slice time germ. Locality of `fderiv` requires no
+differentiability premise. -/
+theorem sameMetricAt_boundaryK {t0 : ℝ} {g h : Metric}
+    (hmetric : SameMetricAt t0 g h) :
+    boundaryK g =ᶠ[𝓝 t0] boundaryK h := by
+  have hslices : ∀ᶠ rt : ℝ × ℝ in 𝓝 ((0 : ℝ), t0),
+      ∀ᶠ rs : ℝ × ℝ in 𝓝 rt, ∀ x : Vec,
+        g (bulkPoint rs.1 rs.2 x) = h (bulkPoint rs.1 rs.2 x) :=
+    hmetric.eventually_nhds
+  have htime : Tendsto (fun t : ℝ => ((0 : ℝ), t))
+      (𝓝 t0) (𝓝 ((0 : ℝ), t0)) :=
+    (continuous_const.prodMk continuous_id).tendsto t0
+  filter_upwards [htime.eventually hslices] with t ht
+  funext x a b
+  have hbulk := metric_eventuallyEq_of_fullSlices ht x
+  have hcomponent :
+      (fun z : Bulk => g z (boundaryIndex a) (boundaryIndex b))
+        =ᶠ[𝓝 (bulkPoint 0 t x)]
+      (fun z : Bulk => h z (boundaryIndex a) (boundaryIndex b)) := by
+    filter_upwards [hbulk] with z hz
+    exact congrArg (fun M : BulkMatrix => M (boundaryIndex a) (boundaryIndex b)) hz
+  unfold boundaryK bulkPartial
+  rw [hcomponent.fderiv_eq (𝕜 := ℝ)]
+
+/-- Native descent of reconstructed fields to metric germs; this discharges
+the former `reverse_respects` law without an additional analytic hypothesis. -/
+theorem sameMetricAt_boundaryFields {t0 : ℝ} (ρ : ℝ) {g h : Metric}
+    (hmetric : SameMetricAt t0 g h) :
+    SameFlowAt t0 (boundaryVelocity (boundaryK g))
+      (boundaryPressure ρ (boundaryK g))
+      (boundaryVelocity (boundaryK h)) (boundaryPressure ρ (boundaryK h)) :=
+  boundaryFields_sameFlow_of_eventually_eq ρ (boundaryK g) (boundaryK h)
+    (sameMetricAt_boundaryK hmetric)
 
 
 end

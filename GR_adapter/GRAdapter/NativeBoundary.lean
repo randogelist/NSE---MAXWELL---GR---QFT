@@ -28,13 +28,22 @@ theorem normalizedBoundaryMatrix_symmetric (ρ : ℝ) :
     (normalizedBoundaryMatrix ρ).IsSymm := by
   change (normalizedBoundaryMatrix ρ).transpose = normalizedBoundaryMatrix ρ
   ext a b
-  fin_cases a <;> fin_cases b <;>
-    simp [normalizedBoundaryMatrix, boundaryBlock, Fin.cases, identity3, Matrix.transpose_apply]
+  refine Fin.cases ?_ (fun i => ?_) a
+  · refine Fin.cases ?_ (fun j => ?_) b
+    · rfl
+    · rfl
+  · refine Fin.cases ?_ (fun j => ?_) b
+    · rfl
+    · change -(ρ / 3) * identity3 j i = -(ρ / 3) * identity3 i j
+      by_cases h : i = j
+      · subst j
+        rfl
+      · simp [identity3, h, Ne.symm h]
 
 @[simp] theorem constantNormalizedBoundary_beta (ρ : ℝ) (t : ℝ) (x : Vec) :
     boundaryBeta (constantNormalizedBoundary ρ) t x = ρ := by
   simp [boundaryBeta, constantNormalizedBoundary, normalizedBoundaryMatrix,
-    spatialIndex4, boundaryBlock, identity3, Fin.sum_univ_succ] <;> ring
+    spatialIndex4] <;> ring
 
 @[simp] theorem constantNormalizedBoundary_beta_time (ρ t0 : ℝ) (x : Vec) :
     deriv (fun t : ℝ => boundaryBeta (constantNormalizedBoundary ρ) t x) t0 = 0 := by

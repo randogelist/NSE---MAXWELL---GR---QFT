@@ -43,6 +43,8 @@ GeometricReconstructionLaws ν ρ t0
 GermInverseLaws c r h
 ```
 
-`GermInverseLaws` has three individually visible fields: `forward_respects`, `reverse_respects`, `lift_decode`. No axiom declaration or law inhabitant is introduced.
+`GermInverseLaws` has two individually visible fields: `forward_respects`, `lift_decode`. No axiom declaration or law inhabitant is introduced.
 
 The decoded-left-inverse identity is derived from exact local boundary matching and pressure-derivative locality (`forward_pressure_gauge_recovery`); it is not an additional `GermInverseLaws` field.
+
+Native metric-jet locality derives reverse descent (`sameMetricAt_boundaryFields`); `reverseGerm` depends only on `GeometricReconstructionLaws`. The analytic pressure-gauge witness is established on the common positive-radius interval.
