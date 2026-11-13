@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "source_status": "A_TIER_FOR_AUDITED_CONTAINED_NATIVE_SOURCE_PACKAGES",
+  "source_status": "A_TIER_CANDIDATE_FOR_INTEGRATED_UNCONDITIONAL_ROOT",
   "exact_target": "NSEMaxwell.Classical.ExactEquivalence",
   "exact_target_proved": false,
   "unconditional_closure": false,
@@ -13,23 +13,13 @@
     "forcing": "zero",
     "K": "curl of actual mean-zero inverse-Laplacian Fourier formula"
   },
-  "open_analytic_obligations": [
-    "Concrete periodic velocity Hodge reconstruction including the harmonic mean",
-    "Concrete curl inversion on mean-zero divergence-free magnetic data",
-    "Joint canonical velocity/pressure smoothness through t=0 and velocity incompressibility",
-    "Concrete electric Hodge identity with the prescribed scalar Fourier potential"
-  ],
+  "open_analytic_obligations": [],
   "promotion_rule": "Matching external compiler and theorem-level axiom evidence; semantic hypotheses audited separately.",
-  "prepared_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED",
-  "prepared_root_type": "NSEMaxwell.Bridge.FourierHodgeLaws -> NSEMaxwell.Classical.ExactEquivalence",
+  "prepared_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_UNCONDITIONAL",
+  "prepared_root_type": "NSEMaxwell.Classical.ExactEquivalence",
   "conditional_root_status": "A_TIER",
-  "analytic_laws_inhabitant_provided": false,
-  "open_analytic_endpoints": [
-    "reconstruct_velocity",
-    "reconstruct_curl",
-    "canonical_smoothness",
-    "electric_hodge"
-  ],
+  "analytic_laws_inhabitant_provided": true,
+  "open_analytic_endpoints": [],
   "prepared_discharges": [
     "operator_negation",
     "Lamb_identity",
@@ -49,7 +39,7 @@
     "DG_curl_neg"
   ],
   "optional_off_solution_lemmas": "canonical_momentum_factorization retains its own hKAdd premise; the root does not depend on it.",
-  "audit_target_count": 236,
+  "audit_target_count": 400,
   "external_evidence": {
     "source_commit": "1de664f2ef5ddc11caef25ac2274278b4171ab6b",
     "run_id": 43359539373,
@@ -181,9 +171,9 @@
     "ZLattice.summable_norm_pow_inv"
   ],
   "registered_methlib_port_candidates": 7,
-  "formal_status": "CONDITIONAL_FORMAL_CLOSURE",
+  "formal_status": "A_TIER_CANDIDATE_PENDING_INTEGRATION_AUDIT",
   "active_ci_platform": "native Linux / Ubuntu 24.04",
-  "active_ci_validation": "PASS_NATIVE_LINUX_236_INTEGRATED_236_FEFFERMAN_62_MAXWELL_AUDITS",
+  "active_ci_validation": "PENDING_400_INTEGRATED_400_FEFFERMAN_62_MAXWELL",
   "prior_reduced_root_windows_evidence": {
     "source_commit": "1bd2ee067d4aad3c265b32efd533ef270179e665",
     "run_id": 43333835295,
@@ -518,5 +508,11 @@
         "dependency_source_downloads": 0
       }
     }
-  }
+  },
+  "remaining_validation": [
+    "integrated_400",
+    "isolated_fefferman_400",
+    "isolated_maxwell_62"
+  ],
+  "hodge_integration_provenance": "Auxillary/HODGE_INTEGRATION_PROVENANCE.json"
 }

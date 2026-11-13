@@ -1,20 +1,15 @@
 {
   "schema_version": 1,
   "package": "fefferman_adapter",
-  "source_status": "A_TIER_FOR_AUDITED_ISOLATED_NATIVE_PACKAGE",
+  "source_status": "A_TIER_CANDIDATE_FOR_INTEGRATED_UNCONDITIONAL_ROOT",
   "exact_target": "NSEMaxwell.Classical.ExactEquivalence",
   "exact_target_proved": false,
-  "prepared_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED",
-  "prepared_root_type": "NSEMaxwell.Bridge.FourierHodgeLaws -> NSEMaxwell.Classical.ExactEquivalence",
-  "formal_status": "CONDITIONAL_FORMAL_CLOSURE",
-  "analytic_laws_inhabitant_provided": false,
+  "prepared_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_UNCONDITIONAL",
+  "prepared_root_type": "NSEMaxwell.Classical.ExactEquivalence",
+  "formal_status": "A_TIER_CANDIDATE_PENDING_INTEGRATION_AUDIT",
+  "analytic_laws_inhabitant_provided": true,
   "unconditional_closure": false,
-  "open_analytic_endpoints": [
-    "reconstruct_velocity",
-    "reconstruct_curl",
-    "canonical_smoothness",
-    "electric_hodge"
-  ],
+  "open_analytic_endpoints": [],
   "concrete_realization": {
     "domain": "unit-periodic lifts on EuclideanSpace R (Fin 3)",
     "smoothness": "joint ContDiffOn R infinity on nonnegative spacetime, including t=0",
@@ -23,7 +18,7 @@
     "forcing": "zero",
     "K": "curl of actual mean-zero inverse-Laplacian Fourier formula"
   },
-  "audit_target_count": 236,
+  "audit_target_count": 400,
   "local_lean_executions": 0,
   "required_toolchain": "leanprover/lean4:v4.34.0-rc1",
   "required_mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
@@ -35,7 +30,9 @@
     "NSEMaxwellForward": "LocalDependencies/Forward",
     "NSEMaxwellReverse": "LocalDependencies/Reverse",
     "SingularClosure": "NativeSources/methlib",
-    "MethlibEndpoints": "."
+    "MethlibEndpoints": ".",
+    "FourierHodgeLaws": ".",
+    "FourierHodgeLaws_inhabitant": "."
   },
   "copied_project_declarations": "Original namespaces, theorem statements and proof bodies preserved.",
   "methlib_native_endpoints": {
@@ -118,5 +115,12 @@
     "isolated_dependency_source_checkouts": "independent; only compiled dependency objects may be shared"
   },
   "native_source_hydrator": "scripts/hydrate_native_sources.py",
-  "certified_source_commit": "1de664f2ef5ddc11caef25ac2274278b4171ab6b"
+  "certified_source_commit": "1de664f2ef5ddc11caef25ac2274278b4171ab6b",
+  "open_analytic_obligations": [],
+  "remaining_validation": [
+    "integrated_400",
+    "isolated_fefferman_400",
+    "isolated_maxwell_62"
+  ],
+  "hodge_integration_provenance": "../Auxillary/HODGE_INTEGRATION_PROVENANCE.json"
 }

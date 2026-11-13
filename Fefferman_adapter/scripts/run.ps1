@@ -36,13 +36,13 @@ $AdapterSourceRoot = "."
 $ForwardSourceRoot = "LocalDependencies/Forward"
 $ReverseSourceRoot = "LocalDependencies/Reverse"
 $MaxwellSourceRoot = "LocalDependencies/Maxwell"
-$ProjectSourceRoots = @("NSEMaxwell", $ForwardSourceRoot, $ReverseSourceRoot)
+$ProjectSourceRoots = @("NSEMaxwell", "FourierHodgeLaws", $ForwardSourceRoot, $ReverseSourceRoot)
 $MethlibSourceRoot = "NativeSources/methlib"
 $MethlibModuleOrder = "methlib-module-order.json"
 $ProjectRootSource = "NSEMaxwell.lean"
 $AuditSource = "NSEMaxwell/Audit.lean"
 $VerifierSource = "scripts/verify_audit.py"
-$AggregateTargets = @("MethlibEndpoints", "MaxwellEndpoint", "NSEMaxwell", "NSEMaxwellForward.Reduced", "NSEMaxwellReverse.Reduced")
+$AggregateTargets = @("MethlibEndpoints", "MaxwellEndpoint", "FourierHodgeLaws_inhabitant", "NSEMaxwell", "NSEMaxwellForward.Reduced", "NSEMaxwellReverse.Reduced")
 $ReportRoot = if ([IO.Path]::IsPathRooted($ReportDirectory)) {
     [IO.Path]::GetFullPath($ReportDirectory)
 } else {
@@ -65,6 +65,7 @@ $CommandTimings = [Collections.Generic.List[object]]::new()
 $RequiredInputs = @(
     "lean-toolchain", "lakefile.lean", "lake-manifest.json",
     "NSEMaxwell.lean", "NSEMaxwell/Audit.lean",
+    "FourierHodgeLaws_inhabitant.lean",
     "MethlibEndpoints.lean", "MethlibEndpoints/Audit.lean",
     "methlib-module-order.json", "methlib-audit-targets.txt",
     "audit-targets.txt", "cache-targets.txt", "formalization-status.json",
@@ -102,6 +103,9 @@ function Get-ProjectSourcePath {
     if ($Module -match '^NSEMaxwellReverse(?:\.|$)') {
         return Join-Path $ReverseSourceRoot $Relative
     }
+    if ($Module -match '^(?:FourierHodgeLaws(?:\.|$)|FourierHodgeLaws_inhabitant$)') {
+        return $Relative
+    }
     if ($Module -match '^NSEMaxwell(?:\.|$)') {
         return $Relative
     }
@@ -123,6 +127,7 @@ function Get-MethlibModuleOrder {
 
 function Get-ProjectLeanSources {
     Get-Item -LiteralPath $ProjectRootSource
+    Get-Item -LiteralPath "FourierHodgeLaws_inhabitant.lean"
     Get-Item -LiteralPath "MethlibEndpoints.lean"
     Get-Item -LiteralPath "MethlibEndpoints/Audit.lean"
     foreach ($Module in @(Get-MethlibModuleOrder)) {
@@ -541,10 +546,10 @@ try {
     $Evidence.source_manifest_sha256 = (Get-FileHash -LiteralPath $ManifestPath -Algorithm SHA256).Hash.ToLowerInvariant()
 
     $Evidence.stage = "BUILD"
-    # Bound concurrent heavy imports on each native platform without disabling Lean's
-    # asynchronous theorem elaboration. Every dependency precedes its consumer;
-    # each invocation reuses all already compiled and restored Lake artifacts.
-    $BuildModules = @(Get-MethlibModuleOrder) + @("MethlibEndpoints") + @(
+    # Validate the unchanged upstream closure in one normal Lake build, then
+    # schedule the new Hodge modules serially. Lean retains asynchronous theorem
+    # elaboration; every invocation validates ordinary cached dependency traces.
+    $UpstreamModules = @(Get-MethlibModuleOrder) + @("MethlibEndpoints") + @(
         "MaxwellEndpoint.Geometry",
         "MaxwellEndpoint.Constitutive",
         "MaxwellEndpoint.System",
@@ -575,10 +580,33 @@ try {
         "NSEMaxwell.CanonicalSmoothness",
         "NSEMaxwell.AnalyticReduction",
         "NSEMaxwellForward.Reduced",
-        "NSEMaxwellReverse.Reduced",
-        "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE"
+        "NSEMaxwellReverse.Reduced"
     )
+    # Order inherited from the externally certified 163-theorem Hodge run.
+    $HodgeModules = @(
+        "FourierHodgeLaws.ParameterIntegral",
+        "FourierHodgeLaws.CanonicalSmoothness",
+        "FourierHodgeLaws.TargetPrimitives",
+        "FourierHodgeLaws.FourierCoefficients",
+        "FourierHodgeLaws.CosineMultiplier",
+        "FourierHodgeLaws.CanonicalFromScalar",
+        "FourierHodgeLaws.ClosedHalfspaceSmooth",
+        "FourierHodgeLaws.ParameterCoefficients",
+        "FourierHodgeLaws.UniformCoefficientBounds",
+        "FourierHodgeLaws.ParameterSmoothing",
+        "FourierHodgeLaws.CanonicalInhabitant",
+        "FourierHodgeLaws.SpatialHodge",
+        "FourierHodgeLaws.ElectricHodge",
+        "FourierHodgeLaws.SpatialMultiplier",
+        "FourierHodgeLaws.PoissonFromCoefficients",
+        "FourierHodgeLaws.SpatialInhabitant",
+        "FourierHodgeLaws.Inhabitant",
+        "FourierHodgeLaws.ParameterJets"
+    )
+    $ClosureModules = @("FourierHodgeLaws_inhabitant", "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE")
+    $BuildModules = $UpstreamModules + $HodgeModules + $ClosureModules
     $Evidence.module_build_schedule = $BuildModules
+    $Evidence.upstream_aggregate_build_targets = $UpstreamModules
     $Evidence.module_build_concurrency = 1
     $Evidence.aggregate_build_targets = $AggregateTargets
     # The official no-build mode validates the ordinary transitive Lake traces.
@@ -596,14 +624,33 @@ try {
         Copy-Item (Join-Path $ReportRoot "run-build-freshness.log") (Join-Path $ReportRoot "run-build.log") -Force
     }
     elseif ($FreshnessExit -eq 3) {
-        $Evidence.build_strategy = "SERIAL_INCREMENTAL_REBUILD"
+        $Evidence.build_strategy = "CACHED_UPSTREAM_AGGREGATE_AND_SERIAL_INCREMENTAL_REBUILD"
         $Evidence.executed_module_builds = 0
         $FailedModules = [Collections.Generic.List[string]]::new()
         $SkippedModules = [Collections.Generic.List[string]]::new()
         $Evidence.failed_modules = @()
         $Evidence.skipped_modules = @()
+        $Evidence.current_build_module = "UPSTREAM_AGGREGATE"
         Write-JsonFile $ProvenancePath $Evidence
-        foreach ($Module in $BuildModules) {
+        Write-Host ("UPSTREAM_AGGREGATE_START: " + $UpstreamModules.Count)
+        $UpstreamExit = Invoke-NativeLogged "lake" (@("build") + $UpstreamModules) `
+            "run-build-upstream-aggregate.log" -AllowFailure
+        $Evidence.upstream_aggregate_exit_code = $UpstreamExit
+        $Evidence.upstream_aggregate_log_sha256 = (Get-FileHash `
+            -LiteralPath (Join-Path $ReportRoot "run-build-upstream-aggregate.log") `
+            -Algorithm SHA256).Hash.ToLowerInvariant()
+        Write-Host ("UPSTREAM_AGGREGATE_END: " + $UpstreamExit)
+        if ($UpstreamExit -eq 0) {
+            $PendingModules = $HodgeModules + $ClosureModules
+        }
+        else {
+            # Preserve independent diagnostics if the upstream aggregate fails.
+            $Evidence.build_strategy = "SERIAL_INCREMENTAL_REBUILD_AFTER_UPSTREAM_AGGREGATE_FAILURE"
+            $PendingModules = $BuildModules
+        }
+        Write-JsonFile $ProvenancePath $Evidence
+        foreach ($Module in $PendingModules) {
+            Write-Host ("MODULE_BUILD_START: " + $Module)
             $Evidence.current_build_module = $Module
             $ModuleLog = "run-build-" + $Module.Replace(".", "-") + ".log"
             $SourcePath = Get-ProjectSourcePath $Module
@@ -620,11 +667,13 @@ try {
                 [IO.File]::WriteAllText((Join-Path $ReportRoot $ModuleLog),
                     "SKIPPED_FAILED_DEPENDENCY: " + ($Blocked -join ", ") + [Environment]::NewLine, $Utf8NoBom)
                 Write-JsonFile $ProvenancePath $Evidence
+                Write-Host ("MODULE_BUILD_END: " + $Module + " BLOCKED_DEPENDENCY")
                 continue
             }
             Write-JsonFile $ProvenancePath $Evidence
             $Evidence.executed_module_builds += 1
             $ModuleExitCode = Invoke-NativeLogged "lake" @("build", $Module) $ModuleLog -AllowFailure
+            Write-Host ("MODULE_BUILD_END: " + $Module + " " + $ModuleExitCode)
             if ($ModuleExitCode -ne 0) {
                 $FailedModules.Add($Module)
                 $Evidence.failed_modules = @($FailedModules.ToArray())

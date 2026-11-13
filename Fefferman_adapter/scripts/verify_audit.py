@@ -348,7 +348,7 @@ def verify(args: argparse.Namespace) -> dict[str, object]:
             manifest_errors.append(f"Source input changed during compilation: {relative}")
     required = {
         "lean-toolchain", "lakefile.lean", "lake-manifest.json",
-        "NSEMaxwell.lean", "NSEMaxwell/Audit.lean",
+        "NSEMaxwell.lean", "NSEMaxwell/Audit.lean", "FourierHodgeLaws_inhabitant.lean",
         "audit-targets.txt", "cache-targets.txt", "formalization-status.json",
         "scripts/run.ps1", "scripts/verify_audit.py", "scripts/verify_native_sources.py",
         "scripts/hydrate_native_sources.py",
@@ -364,7 +364,7 @@ def verify(args: argparse.Namespace) -> dict[str, object]:
         "LocalDependencies/Reverse/NSEMaxwellReverse/Reduced.lean",
     }
     for source_root in (
-        "NSEMaxwell", "MethlibEndpoints", "NativeSources/methlib/SingularClosure",
+        "NSEMaxwell", "FourierHodgeLaws", "MethlibEndpoints", "NativeSources/methlib/SingularClosure",
         "LocalDependencies/Maxwell/MaxwellEndpoint",
         "LocalDependencies/Forward", "LocalDependencies/Reverse",
     ):

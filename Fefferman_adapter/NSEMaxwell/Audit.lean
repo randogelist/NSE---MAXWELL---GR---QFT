@@ -1,5 +1,6 @@
 import NSEMaxwell
 import MethlibEndpoints
+import FourierHodgeLaws_inhabitant
 
 set_option pp.universes true
 set_option pp.fullNames true
@@ -734,3 +735,497 @@ set_option pp.proofs false
 
 #check @SingularClosure.summable_torusSobolevWeight_inv_four
 #print axioms SingularClosure.summable_torusSobolevWeight_inv_four
+
+-- Concrete Fourier-Hodge declarations and exact premise-free equivalence.
+
+#check @NSEMaxwell.HodgeProof.spatialMean_contDiffOn_nat
+#print axioms NSEMaxwell.HodgeProof.spatialMean_contDiffOn_nat
+
+#check @NSEMaxwell.HodgeProof.spatialMean_contDiffOn
+#print axioms NSEMaxwell.HodgeProof.spatialMean_contDiffOn
+
+#check @NSEMaxwell.HodgeProof.spatialMean_scalar_embed
+#print axioms NSEMaxwell.HodgeProof.spatialMean_scalar_embed
+
+#check @NSEMaxwell.HodgeProof.scalarMean_contDiffOn
+#print axioms NSEMaxwell.HodgeProof.scalarMean_contDiffOn
+
+#check @NSEMaxwell.HodgeProof.spatialMean_trajectory_smooth
+#print axioms NSEMaxwell.HodgeProof.spatialMean_trajectory_smooth
+
+#check @NSEMaxwell.HodgeProof.scalarMean_trajectory_smooth
+#print axioms NSEMaxwell.HodgeProof.scalarMean_trajectory_smooth
+
+#check @NSEMaxwell.HodgeProof.kineticMean_trajectory_smooth
+#print axioms NSEMaxwell.HodgeProof.kineticMean_trajectory_smooth
+
+#check @NSEMaxwell.HodgeProof.canonicalVelocity_smooth_of_vectorL_smooth
+#print axioms NSEMaxwell.HodgeProof.canonicalVelocity_smooth_of_vectorL_smooth
+
+#check @NSEMaxwell.HodgeProof.canonicalVelocity_divergence_free_of_vectorL_smooth
+#print axioms NSEMaxwell.HodgeProof.canonicalVelocity_divergence_free_of_vectorL_smooth
+
+#check @NSEMaxwell.HodgeProof.canonicalPressure_smooth_of_scalarL_smooth
+#print axioms NSEMaxwell.HodgeProof.canonicalPressure_smooth_of_scalarL_smooth
+
+#check @NSEMaxwell.HodgeProof.canonical_smoothness_of_parameter_smoothing
+#print axioms NSEMaxwell.HodgeProof.canonical_smoothness_of_parameter_smoothing
+
+#check @NSEMaxwell.HodgeProof.H3_of_parameter_smoothing
+#print axioms NSEMaxwell.HodgeProof.H3_of_parameter_smoothing
+
+#check @NSEMaxwell.HodgeProof.native_unitVector
+#print axioms NSEMaxwell.HodgeProof.native_unitVector
+
+#check @NSEMaxwell.HodgeProof.native_unitCube
+#print axioms NSEMaxwell.HodgeProof.native_unitCube
+
+#check @NSEMaxwell.HodgeProof.native_spatialPeriodic_iff
+#print axioms NSEMaxwell.HodgeProof.native_spatialPeriodic_iff
+
+#check @NSEMaxwell.HodgeProof.native_spatialMean
+#print axioms NSEMaxwell.HodgeProof.native_spatialMean
+
+#check @NSEMaxwell.HodgeProof.native_coordinateDerivative
+#print axioms NSEMaxwell.HodgeProof.native_coordinateDerivative
+
+#check @NSEMaxwell.HodgeProof.native_divergence
+#print axioms NSEMaxwell.HodgeProof.native_divergence
+
+#check @NSEMaxwell.HodgeProof.native_gradient
+#print axioms NSEMaxwell.HodgeProof.native_gradient
+
+#check @NSEMaxwell.HodgeProof.native_laplacian
+#print axioms NSEMaxwell.HodgeProof.native_laplacian
+
+#check @NSEMaxwell.HodgeProof.scalarLift_component
+#print axioms NSEMaxwell.HodgeProof.scalarLift_component
+
+#check @NSEMaxwell.HodgeProof.scalarLift_contDiff
+#print axioms NSEMaxwell.HodgeProof.scalarLift_contDiff
+
+#check @NSEMaxwell.HodgeProof.scalarLift_periodic
+#print axioms NSEMaxwell.HodgeProof.scalarLift_periodic
+
+#check @NSEMaxwell.HodgeProof.datumFourierCoeff_scalarLift
+#print axioms NSEMaxwell.HodgeProof.datumFourierCoeff_scalarLift
+
+#check @NSEMaxwell.HodgeProof.inverseLaplacianSymbol_zero
+#print axioms NSEMaxwell.HodgeProof.inverseLaplacianSymbol_zero
+
+#check @NSEMaxwell.HodgeProof.inverseLaplacianSymbol_neg
+#print axioms NSEMaxwell.HodgeProof.inverseLaplacianSymbol_neg
+
+#check @NSEMaxwell.HodgeProof.inverseLaplacianSymbol_nonneg
+#print axioms NSEMaxwell.HodgeProof.inverseLaplacianSymbol_nonneg
+
+#check @NSEMaxwell.HodgeProof.inverseLaplacianSymbol_le_one
+#print axioms NSEMaxwell.HodgeProof.inverseLaplacianSymbol_le_one
+
+#check @NSEMaxwell.HodgeProof.inverseLaplacianSymbol_complex_norm_le_one
+#print axioms NSEMaxwell.HodgeProof.inverseLaplacianSymbol_complex_norm_le_one
+
+#check @NSEMaxwell.HodgeProof.inverseVectorCoeff_zero
+#print axioms NSEMaxwell.HodgeProof.inverseVectorCoeff_zero
+
+#check @NSEMaxwell.HodgeProof.inverseScalarCoeff_zero
+#print axioms NSEMaxwell.HodgeProof.inverseScalarCoeff_zero
+
+#check @NSEMaxwell.HodgeProof.scalarCoeff_neg
+#print axioms NSEMaxwell.HodgeProof.scalarCoeff_neg
+
+#check @NSEMaxwell.HodgeProof.inverseVectorCoeff_reality
+#print axioms NSEMaxwell.HodgeProof.inverseVectorCoeff_reality
+
+#check @NSEMaxwell.HodgeProof.inverseScalarCoeff_neg
+#print axioms NSEMaxwell.HodgeProof.inverseScalarCoeff_neg
+
+#check @NSEMaxwell.HodgeProof.scalarLift_coordinateDerivative
+#print axioms NSEMaxwell.HodgeProof.scalarLift_coordinateDerivative
+
+#check @NSEMaxwell.HodgeProof.datumFourierCoeff_coordinateDerivative
+#print axioms NSEMaxwell.HodgeProof.datumFourierCoeff_coordinateDerivative
+
+#check @NSEMaxwell.HodgeProof.scalarCoeff_coordinateDerivative
+#print axioms NSEMaxwell.HodgeProof.scalarCoeff_coordinateDerivative
+
+#check @NSEMaxwell.HodgeProof.rapid_datumFourierCoeff
+#print axioms NSEMaxwell.HodgeProof.rapid_datumFourierCoeff
+
+#check @NSEMaxwell.HodgeProof.rapid_scalarCoeff
+#print axioms NSEMaxwell.HodgeProof.rapid_scalarCoeff
+
+#check @NSEMaxwell.HodgeProof.rapid_mul_bounded
+#print axioms NSEMaxwell.HodgeProof.rapid_mul_bounded
+
+#check @NSEMaxwell.HodgeProof.rapid_inverseLaplacianCoeff
+#print axioms NSEMaxwell.HodgeProof.rapid_inverseLaplacianCoeff
+
+#check @NSEMaxwell.HodgeProof.rapid_inverseScalarCoeff
+#print axioms NSEMaxwell.HodgeProof.rapid_inverseScalarCoeff
+
+#check @NSEMaxwell.HodgeProof.inverseVectorCoeff_weighted_summable
+#print axioms NSEMaxwell.HodgeProof.inverseVectorCoeff_weighted_summable
+
+#check @NSEMaxwell.HodgeProof.inverseScalarCoeff_weighted_summable
+#print axioms NSEMaxwell.HodgeProof.inverseScalarCoeff_weighted_summable
+
+#check @NSEMaxwell.HodgeProof.fourierCharacter_mul_star
+#print axioms NSEMaxwell.HodgeProof.fourierCharacter_mul_star
+
+#check @NSEMaxwell.HodgeProof.cosineKernel_eq_character_re
+#print axioms NSEMaxwell.HodgeProof.cosineKernel_eq_character_re
+
+#check @NSEMaxwell.HodgeProof.scalar_cosine_integral
+#print axioms NSEMaxwell.HodgeProof.scalar_cosine_integral
+
+#check @NSEMaxwell.HodgeProof.scalar_cosine_summand
+#print axioms NSEMaxwell.HodgeProof.scalar_cosine_summand
+
+#check @NSEMaxwell.HodgeProof.scalarL_eq_realFourierSeries
+#print axioms NSEMaxwell.HodgeProof.scalarL_eq_realFourierSeries
+
+#check @NSEMaxwell.HodgeProof.vector_cosine_integral_component
+#print axioms NSEMaxwell.HodgeProof.vector_cosine_integral_component
+
+#check @NSEMaxwell.HodgeProof.vector_cosine_summand_component
+#print axioms NSEMaxwell.HodgeProof.vector_cosine_summand_component
+
+#check @NSEMaxwell.HodgeProof.vectorL_summable
+#print axioms NSEMaxwell.HodgeProof.vectorL_summable
+
+#check @NSEMaxwell.HodgeProof.vectorL_eq_smoothFourierSynthesis
+#print axioms NSEMaxwell.HodgeProof.vectorL_eq_smoothFourierSynthesis
+
+#check @NSEMaxwell.HodgeProof.vectorL_smooth
+#print axioms NSEMaxwell.HodgeProof.vectorL_smooth
+
+#check @NSEMaxwell.HodgeProof.datumFourierCoeff_vectorL
+#print axioms NSEMaxwell.HodgeProof.datumFourierCoeff_vectorL
+
+#check @NSEMaxwell.HodgeProof.scalarL_smooth
+#print axioms NSEMaxwell.HodgeProof.scalarL_smooth
+
+#check @NSEMaxwell.HodgeProof.vectorL_component
+#print axioms NSEMaxwell.HodgeProof.vectorL_component
+
+#check @NSEMaxwell.HodgeProof.scalarL_zero
+#print axioms NSEMaxwell.HodgeProof.scalarL_zero
+
+#check @NSEMaxwell.HodgeProof.vectorL_zero
+#print axioms NSEMaxwell.HodgeProof.vectorL_zero
+
+#check @NSEMaxwell.HodgeProof.vectorL_trajectory_smooth_of_scalar_parameter_smoothing
+#print axioms NSEMaxwell.HodgeProof.vectorL_trajectory_smooth_of_scalar_parameter_smoothing
+
+#check @NSEMaxwell.HodgeProof.canonical_smoothness_of_scalar_parameter_smoothing
+#print axioms NSEMaxwell.HodgeProof.canonical_smoothness_of_scalar_parameter_smoothing
+
+#check @NSEMaxwell.HodgeProof.H3_of_scalar_parameter_smoothing
+#print axioms NSEMaxwell.HodgeProof.H3_of_scalar_parameter_smoothing
+
+#check @NSEMaxwell.HodgeProof.hasFDerivWithinAt_closure_of_continuous_jets
+#print axioms NSEMaxwell.HodgeProof.hasFDerivWithinAt_closure_of_continuous_jets
+
+#check @NSEMaxwell.HodgeProof.contDiffOn_nat_of_compatible_jets
+#print axioms NSEMaxwell.HodgeProof.contDiffOn_nat_of_compatible_jets
+
+#check @NSEMaxwell.HodgeProof.contDiffOn_infty_of_compatible_jets
+#print axioms NSEMaxwell.HodgeProof.contDiffOn_infty_of_compatible_jets
+
+#check @NSEMaxwell.HodgeProof.contDiffOn_closure_of_continuous_jets
+#print axioms NSEMaxwell.HodgeProof.contDiffOn_closure_of_continuous_jets
+
+#check @NSEMaxwell.HodgeProof.isOpen_positiveSpacetime
+#print axioms NSEMaxwell.HodgeProof.isOpen_positiveSpacetime
+
+#check @NSEMaxwell.HodgeProof.convex_positiveSpacetime
+#print axioms NSEMaxwell.HodgeProof.convex_positiveSpacetime
+
+#check @NSEMaxwell.HodgeProof.closure_positiveSpacetime
+#print axioms NSEMaxwell.HodgeProof.closure_positiveSpacetime
+
+#check @NSEMaxwell.HodgeProof.contDiffOn_forwardSpacetime_of_continuous_jets
+#print axioms NSEMaxwell.HodgeProof.contDiffOn_forwardSpacetime_of_continuous_jets
+
+#check @NSEMaxwell.HodgeProof.cubeSlice_contDiff
+#print axioms NSEMaxwell.HodgeProof.cubeSlice_contDiff
+
+#check @NSEMaxwell.HodgeProof.cubeTimeDerivative_smooth
+#print axioms NSEMaxwell.HodgeProof.cubeTimeDerivative_smooth
+
+#check @NSEMaxwell.HodgeProof.cubeTime_hasDerivWithinAt
+#print axioms NSEMaxwell.HodgeProof.cubeTime_hasDerivWithinAt
+
+#check @NSEMaxwell.HodgeProof.cubeIntegral_local_uniform_time_bound
+#print axioms NSEMaxwell.HodgeProof.cubeIntegral_local_uniform_time_bound
+
+#check @NSEMaxwell.HodgeProof.cubeIntegral_hasDerivWithinAt
+#print axioms NSEMaxwell.HodgeProof.cubeIntegral_hasDerivWithinAt
+
+#check @NSEMaxwell.HodgeProof.cubeIntegral_derivWithin
+#print axioms NSEMaxwell.HodgeProof.cubeIntegral_derivWithin
+
+#check @NSEMaxwell.HodgeProof.cubeIntegral_contDiffOn_nat
+#print axioms NSEMaxwell.HodgeProof.cubeIntegral_contDiffOn_nat
+
+#check @NSEMaxwell.HodgeProof.cubeIntegral_contDiffOn
+#print axioms NSEMaxwell.HodgeProof.cubeIntegral_contDiffOn
+
+#check @NSEMaxwell.HodgeProof.scalarTimeDerivative_smooth
+#print axioms NSEMaxwell.HodgeProof.scalarTimeDerivative_smooth
+
+#check @NSEMaxwell.HodgeProof.scalarTimeDerivative_periodic
+#print axioms NSEMaxwell.HodgeProof.scalarTimeDerivative_periodic
+
+#check @NSEMaxwell.HodgeProof.scalarSpatialDerivative_smooth
+#print axioms NSEMaxwell.HodgeProof.scalarSpatialDerivative_smooth
+
+#check @NSEMaxwell.HodgeProof.scalarSpatialDerivative_periodic
+#print axioms NSEMaxwell.HodgeProof.scalarSpatialDerivative_periodic
+
+#check @NSEMaxwell.HodgeProof.scalarCoeff_integrand_smooth
+#print axioms NSEMaxwell.HodgeProof.scalarCoeff_integrand_smooth
+
+#check @NSEMaxwell.HodgeProof.scalarCoeff_contDiffOn
+#print axioms NSEMaxwell.HodgeProof.scalarCoeff_contDiffOn
+
+#check @NSEMaxwell.HodgeProof.scalarCoeff_hasDerivWithinAt
+#print axioms NSEMaxwell.HodgeProof.scalarCoeff_hasDerivWithinAt
+
+#check @NSEMaxwell.HodgeProof.scalarCoeff_derivWithin
+#print axioms NSEMaxwell.HodgeProof.scalarCoeff_derivWithin
+
+#check @NSEMaxwell.HodgeProof.scalarCoeff_hasDerivAt_pos
+#print axioms NSEMaxwell.HodgeProof.scalarCoeff_hasDerivAt_pos
+
+#check @NSEMaxwell.HodgeProof.scalarCoeff_trajectory_smooth
+#print axioms NSEMaxwell.HodgeProof.scalarCoeff_trajectory_smooth
+
+#check @NSEMaxwell.HodgeProof.datumFourierCoeff_contDiffOn
+#print axioms NSEMaxwell.HodgeProof.datumFourierCoeff_contDiffOn
+
+#check @NSEMaxwell.HodgeProof.datumFourierCoeff_hasDerivWithinAt
+#print axioms NSEMaxwell.HodgeProof.datumFourierCoeff_hasDerivWithinAt
+
+#check @NSEMaxwell.HodgeProof.compact_velocity_norm_bound
+#print axioms NSEMaxwell.HodgeProof.compact_velocity_norm_bound
+
+#check @NSEMaxwell.HodgeProof.compact_componentL1_bound
+#print axioms NSEMaxwell.HodgeProof.compact_componentL1_bound
+
+#check @NSEMaxwell.HodgeProof.iteratedCoordinateDerivative_trajectory_smooth
+#print axioms NSEMaxwell.HodgeProof.iteratedCoordinateDerivative_trajectory_smooth
+
+#check @NSEMaxwell.HodgeProof.uniform_fourierDecayConstant
+#print axioms NSEMaxwell.HodgeProof.uniform_fourierDecayConstant
+
+#check @NSEMaxwell.HodgeProof.uniform_datumFourierCoeff_moment_bound
+#print axioms NSEMaxwell.HodgeProof.uniform_datumFourierCoeff_moment_bound
+
+#check @NSEMaxwell.HodgeProof.scalarLift_trajectory_smooth
+#print axioms NSEMaxwell.HodgeProof.scalarLift_trajectory_smooth
+
+#check @NSEMaxwell.HodgeProof.scalarLift_trajectory_periodic
+#print axioms NSEMaxwell.HodgeProof.scalarLift_trajectory_periodic
+
+#check @NSEMaxwell.HodgeProof.uniform_scalarCoeff_moment_bound
+#print axioms NSEMaxwell.HodgeProof.uniform_scalarCoeff_moment_bound
+
+#check @NSEMaxwell.HodgeProof.uniform_inverseScalarCoeff_moment_bound
+#print axioms NSEMaxwell.HodgeProof.uniform_inverseScalarCoeff_moment_bound
+
+#check @NSEMaxwell.HodgeProof.inverseScalarCoeff_trajectory_smooth
+#print axioms NSEMaxwell.HodgeProof.inverseScalarCoeff_trajectory_smooth
+
+#check @NSEMaxwell.HodgeProof.inverseScalarSeriesTerm_continuousOn
+#print axioms NSEMaxwell.HodgeProof.inverseScalarSeriesTerm_continuousOn
+
+#check @NSEMaxwell.HodgeProof.inverseScalarSeries_continuousOn
+#print axioms NSEMaxwell.HodgeProof.inverseScalarSeries_continuousOn
+
+#check @NSEMaxwell.HodgeProof.inverseScalarSeriesTerm_hasFDerivAt
+#print axioms NSEMaxwell.HodgeProof.inverseScalarSeriesTerm_hasFDerivAt
+
+#check @NSEMaxwell.HodgeProof.inverseScalarSeriesTermDerivative_bound
+#print axioms NSEMaxwell.HodgeProof.inverseScalarSeriesTermDerivative_bound
+
+#check @NSEMaxwell.HodgeProof.phaseProjection_eq_sum
+#print axioms NSEMaxwell.HodgeProof.phaseProjection_eq_sum
+
+#check @NSEMaxwell.HodgeProof.inverseScalarSeriesTermDerivative_eq_partials
+#print axioms NSEMaxwell.HodgeProof.inverseScalarSeriesTermDerivative_eq_partials
+
+#check @NSEMaxwell.HodgeProof.inverseScalarSeriesTerm_summable
+#print axioms NSEMaxwell.HodgeProof.inverseScalarSeriesTerm_summable
+
+#check @NSEMaxwell.HodgeProof.inverseScalarSeriesTermDerivative_summable
+#print axioms NSEMaxwell.HodgeProof.inverseScalarSeriesTermDerivative_summable
+
+#check @NSEMaxwell.HodgeProof.tsum_inverseScalarSeriesTermDerivative
+#print axioms NSEMaxwell.HodgeProof.tsum_inverseScalarSeriesTermDerivative
+
+#check @NSEMaxwell.HodgeProof.inverseScalarSeriesDerivative_continuousOn
+#print axioms NSEMaxwell.HodgeProof.inverseScalarSeriesDerivative_continuousOn
+
+#check @NSEMaxwell.HodgeProof.inverseScalarSeries_hasFDerivAt_pos
+#print axioms NSEMaxwell.HodgeProof.inverseScalarSeries_hasFDerivAt_pos
+
+#check @NSEMaxwell.HodgeProof.inverseScalarSeries_hasFDerivWithinAt
+#print axioms NSEMaxwell.HodgeProof.inverseScalarSeries_hasFDerivWithinAt
+
+#check @NSEMaxwell.HodgeProof.inverseScalarSeries_contDiffOn_nat
+#print axioms NSEMaxwell.HodgeProof.inverseScalarSeries_contDiffOn_nat
+
+#check @NSEMaxwell.HodgeProof.inverseScalarSeries_contDiffOn
+#print axioms NSEMaxwell.HodgeProof.inverseScalarSeries_contDiffOn
+
+#check @NSEMaxwell.HodgeProof.scalarL_trajectory_smooth
+#print axioms NSEMaxwell.HodgeProof.scalarL_trajectory_smooth
+
+#check @NSEMaxwell.HodgeProof.vectorL_trajectory_smooth
+#print axioms NSEMaxwell.HodgeProof.vectorL_trajectory_smooth
+
+#check @NSEMaxwell.HodgeProof.canonical_smoothness
+#print axioms NSEMaxwell.HodgeProof.canonical_smoothness
+
+#check @NSEMaxwell.HodgeProof.h3_canonical_smoothness
+#print axioms NSEMaxwell.HodgeProof.h3_canonical_smoothness
+
+#check @NSEMaxwell.HodgeProof.coordinateDerivative_const_add
+#print axioms NSEMaxwell.HodgeProof.coordinateDerivative_const_add
+
+#check @NSEMaxwell.HodgeProof.divergence_const_add
+#print axioms NSEMaxwell.HodgeProof.divergence_const_add
+
+#check @NSEMaxwell.HodgeProof.spatialCurl_const_add
+#print axioms NSEMaxwell.HodgeProof.spatialCurl_const_add
+
+#check @NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.K_smooth
+#print axioms NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.K_smooth
+
+#check @NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.U_smooth
+#print axioms NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.U_smooth
+
+#check @NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.divergence_K
+#print axioms NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.divergence_K
+
+#check @NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.spatialMean_K
+#print axioms NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.spatialMean_K
+
+#check @NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.curl_K
+#print axioms NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.curl_K
+
+#check @NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.K_curl
+#print axioms NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.K_curl
+
+#check @NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.reconstruct_velocity
+#print axioms NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.reconstruct_velocity
+
+#check @NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.reconstruct_curl
+#print axioms NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.reconstruct_curl
+
+#check @NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.reconstruction_data
+#print axioms NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.reconstruction_data
+
+#check @NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.reconstruct_mean
+#print axioms NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.reconstruct_mean
+
+#check @NSEMaxwell.HodgeProof.spatialMean_lamb_zero
+#print axioms NSEMaxwell.HodgeProof.spatialMean_lamb_zero
+
+#check @NSEMaxwell.HodgeProof.G_smooth_of_velocity_smooth
+#print axioms NSEMaxwell.HodgeProof.G_smooth_of_velocity_smooth
+
+#check @NSEMaxwell.HodgeProof.spatialMean_G_of_reconstruction
+#print axioms NSEMaxwell.HodgeProof.spatialMean_G_of_reconstruction
+
+#check @NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.G_smooth
+#print axioms NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.G_smooth
+
+#check @NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.spatialMean_G
+#print axioms NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.spatialMean_G
+
+#check @NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.electric_hodge
+#print axioms NSEMaxwell.HodgeProof.SpatialInverseLaplacianLaws.electric_hodge
+
+#check @NSEMaxwell.HodgeProof.scalarL_summable
+#print axioms NSEMaxwell.HodgeProof.scalarL_summable
+
+#check @NSEMaxwell.HodgeProof.cosine_mul_integrable
+#print axioms NSEMaxwell.HodgeProof.cosine_mul_integrable
+
+#check @NSEMaxwell.HodgeProof.scalarL_add
+#print axioms NSEMaxwell.HodgeProof.scalarL_add
+
+#check @NSEMaxwell.HodgeProof.scalarL_sub
+#print axioms NSEMaxwell.HodgeProof.scalarL_sub
+
+#check @NSEMaxwell.HodgeProof.scalarL_finset_sum
+#print axioms NSEMaxwell.HodgeProof.scalarL_finset_sum
+
+#check @NSEMaxwell.HodgeProof.coordinateDerivative_vectorL_commute
+#print axioms NSEMaxwell.HodgeProof.coordinateDerivative_vectorL_commute
+
+#check @NSEMaxwell.HodgeProof.coordinate_component_periodic
+#print axioms NSEMaxwell.HodgeProof.coordinate_component_periodic
+
+#check @NSEMaxwell.HodgeProof.scalarL_coordinateComponent
+#print axioms NSEMaxwell.HodgeProof.scalarL_coordinateComponent
+
+#check @NSEMaxwell.HodgeProof.divergence_vectorL_commute
+#print axioms NSEMaxwell.HodgeProof.divergence_vectorL_commute
+
+#check @NSEMaxwell.HodgeProof.curl_vectorL_commute
+#print axioms NSEMaxwell.HodgeProof.curl_vectorL_commute
+
+#check @NSEMaxwell.HodgeProof.datumFourierCoeff_add
+#print axioms NSEMaxwell.HodgeProof.datumFourierCoeff_add
+
+#check @NSEMaxwell.HodgeProof.datumFourierCoeff_sub
+#print axioms NSEMaxwell.HodgeProof.datumFourierCoeff_sub
+
+#check @NSEMaxwell.HodgeProof.datumFourierCoeff_neg
+#print axioms NSEMaxwell.HodgeProof.datumFourierCoeff_neg
+
+#check @NSEMaxwell.HodgeProof.datumFourierCoeff_const
+#print axioms NSEMaxwell.HodgeProof.datumFourierCoeff_const
+
+#check @NSEMaxwell.HodgeProof.datumFourierCoeff_laplacian
+#print axioms NSEMaxwell.HodgeProof.datumFourierCoeff_laplacian
+
+#check @NSEMaxwell.HodgeProof.laplacianFrequency_mul_inverseLaplacianSymbol
+#print axioms NSEMaxwell.HodgeProof.laplacianFrequency_mul_inverseLaplacianSymbol
+
+#check @NSEMaxwell.HodgeProof.neg_laplacian_vectorL
+#print axioms NSEMaxwell.HodgeProof.neg_laplacian_vectorL
+
+#check @NSEMaxwell.HodgeProof.spatialInverseLaplacianLaws
+#print axioms NSEMaxwell.HodgeProof.spatialInverseLaplacianLaws
+
+#check @NSEMaxwell.HodgeProof.h1_reconstruct_velocity
+#print axioms NSEMaxwell.HodgeProof.h1_reconstruct_velocity
+
+#check @NSEMaxwell.HodgeProof.h2_reconstruct_curl
+#print axioms NSEMaxwell.HodgeProof.h2_reconstruct_curl
+
+#check @NSEMaxwell.HodgeProof.h4_electric_hodge
+#print axioms NSEMaxwell.HodgeProof.h4_electric_hodge
+
+#check @NSEMaxwell.HodgeProof.fourierHodgeLaws_of_parameter_smoothing
+#print axioms NSEMaxwell.HodgeProof.fourierHodgeLaws_of_parameter_smoothing
+
+#check @NSEMaxwell.HodgeProof.exact_equivalence_of_parameter_smoothing
+#print axioms NSEMaxwell.HodgeProof.exact_equivalence_of_parameter_smoothing
+
+#check @NSEMaxwell.HodgeProof.fourierHodgeLaws_inhabitant
+#print axioms NSEMaxwell.HodgeProof.fourierHodgeLaws_inhabitant
+
+#check @NSEMaxwell.HodgeProof.exact_equivalence_native
+#print axioms NSEMaxwell.HodgeProof.exact_equivalence_native
+
+#check @NSEMaxwell.HodgeProof.contDiffOn_tsum_closure_of_compatible_jets
+#print axioms NSEMaxwell.HodgeProof.contDiffOn_tsum_closure_of_compatible_jets
+
+#check @NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_UNCONDITIONAL
+#print axioms NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_UNCONDITIONAL

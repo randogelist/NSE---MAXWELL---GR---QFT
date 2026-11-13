@@ -475,6 +475,7 @@ def verify(package_root: Path, dependency_root: Path | None, source_only: bool) 
 
     if (root / "NSEMaxwell/Audit.lean").is_file():
         project_roots = [(root, "NSEMaxwell"), (root, "MethlibEndpoints"),
+                         (root, "FourierHodgeLaws"), (root, "FourierHodgeLaws_inhabitant"),
                          (root / "LocalDependencies/Maxwell", "MaxwellEndpoint"),
                          (root / "LocalDependencies/Forward", "NSEMaxwellForward"),
                          (root / "LocalDependencies/Reverse", "NSEMaxwellReverse")]
@@ -486,8 +487,9 @@ def verify(package_root: Path, dependency_root: Path | None, source_only: bool) 
     for directory, prefix in project_roots:
         require(not directory.is_symlink() and contained(directory.resolve(), root),
                 f"Linked or escaping project source root: {directory}")
-        paths = [directory / f"{prefix}.lean"]
+        paths = [] if prefix == "FourierHodgeLaws" else [directory / f"{prefix}.lean"]
         paths += sorted((directory / prefix).rglob("*.lean"))
+        require(paths, f"Empty project source root: {directory / prefix}")
         for path in paths:
             rel = path.relative_to(directory).as_posix()
             raw = file_bytes(directory, rel, "100644")

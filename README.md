@@ -1,5 +1,17 @@
 # Fefferman B ↔ constrained Maxwell
 
+```text
+HODGE_INTEGRATION = PREPARED_FROM_CERTIFIED_METHLIB_SOURCES
+CANONICAL_ROOT = NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_UNCONDITIONAL
+CURRENT_INTEGRATED_STATUS = A_TIER_CANDIDATE
+REQUIRED_EXTERNAL_AUDITS = 400 integrated / 400 Fefferman / 62 Maxwell
+SOURCE_BYTE_IDENTITY = 19/19
+```
+
+The integration source and its new canonical wrapper await matching external validation.
+The existing source certificates below retain their original scope and source commits.
+
+
 ## Repository structure
 
 | Directory | Scope |

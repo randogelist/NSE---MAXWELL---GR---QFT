@@ -1,5 +1,17 @@
 # Fefferman adapter
 
+```text
+HODGE_INTEGRATION = PREPARED_FROM_CERTIFIED_METHLIB_SOURCES
+CANONICAL_ROOT = NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_UNCONDITIONAL
+CURRENT_INTEGRATED_STATUS = A_TIER_CANDIDATE
+REQUIRED_EXTERNAL_AUDITS = 400 integrated / 400 Fefferman / 62 Maxwell
+SOURCE_BYTE_IDENTITY = 19/19
+```
+
+The integration source and its new canonical wrapper await matching external validation.
+The existing source certificates below retain their original scope and source commits.
+
+
 ## Standalone native package
 
 [PACKAGE.md](PACKAGE.md) specifies the independent package. All 35 project modules are contained here, including ten byte-identical copies under [LocalDependencies/](LocalDependencies/) of the canonical Maxwell and directional sources. Complete Mathlib and eight companion dependency snapshots reside in [NativeSources/](NativeSources/). The selected 39-module Methlib closure is native Lean source, compiled through [MethlibEndpoints.lean](MethlibEndpoints.lean) and included in the 236-target package audit.

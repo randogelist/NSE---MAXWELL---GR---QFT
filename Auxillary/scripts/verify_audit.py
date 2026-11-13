@@ -342,6 +342,7 @@ def verify(args: argparse.Namespace) -> dict[str, object]:
     required = {
         "lean-toolchain", "lakefile.lean", "lake-manifest.json",
         "Fefferman_adapter/NSEMaxwell.lean",
+        "Fefferman_adapter/FourierHodgeLaws_inhabitant.lean",
         "Fefferman_adapter/NSEMaxwell/Audit.lean",
         "Auxillary/audit-targets.txt", "Auxillary/formalization-status.json",
         "Auxillary/scripts/run.ps1",
@@ -366,7 +367,8 @@ def verify(args: argparse.Namespace) -> dict[str, object]:
         "Maxwell_Endpoint/native-sources.json", "Maxwell_Endpoint/scripts/verify_native_sources.py",
     }
     for source_root in (
-        "Fefferman_adapter/NSEMaxwell", "B <-> Maxwell/=>", "B <-> Maxwell/<=",
+        "Fefferman_adapter/NSEMaxwell", "Fefferman_adapter/FourierHodgeLaws",
+        "B <-> Maxwell/=>", "B <-> Maxwell/<=",
         "Fefferman_adapter/NativeSources/methlib/SingularClosure", "Fefferman_adapter/MethlibEndpoints",
         "Maxwell_Endpoint/MaxwellEndpoint",
     ):
