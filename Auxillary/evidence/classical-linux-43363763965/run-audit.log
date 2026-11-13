@@ -1,0 +1,128 @@
+ClassicalMechanics.CLASSICAL_MECHANICS_ADAPTER : ClassicalMechanics.GlobalExactEquivalence ∧
+  ClassicalMechanics.FiniteExactEquivalence
+'ClassicalMechanics.CLASSICAL_MECHANICS_ADAPTER' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanics.nseSolution_iff_newtonianSolution : ∀ {ν : ℝ} {a : NSEMaxwell.Classical.Field}
+  {u : NSEMaxwell.Classical.Velocity} {p : NSEMaxwell.Classical.Pressure},
+  NSEMaxwell.Classical.NSSolution ν a u p ↔ ClassicalMechanics.NewtonianSolution ν a u p
+'ClassicalMechanics.nseSolution_iff_newtonianSolution' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+ClassicalMechanics.feffermanB_iff_newtonianB : ∀ (ν : ℝ),
+  NSEMaxwell.Classical.FeffermanB ν ↔ ClassicalMechanics.NewtonianB ν
+'ClassicalMechanics.feffermanB_iff_newtonianB' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanics.global_exact_equivalence : ClassicalMechanics.GlobalExactEquivalence
+'ClassicalMechanics.global_exact_equivalence' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanics.nseSolutionOn_iff_newtonianSolutionOn : ∀ {ν T : ℝ} {a : NSEMaxwell.Classical.Field}
+  {u : NSEMaxwell.Classical.Velocity} {p : NSEMaxwell.Classical.Pressure},
+  ClassicalMechanics.NSSolutionOn ν a T u p ↔ ClassicalMechanics.NewtonianSolutionOn ν a T u p
+'ClassicalMechanics.nseSolutionOn_iff_newtonianSolutionOn' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+ClassicalMechanics.finite_solution_sets_eq : ∀ (ν : ℝ) (a : NSEMaxwell.Classical.Field) (T : ℝ),
+  Eq.{1} (Set.ofPred.{0} fun s => ClassicalMechanics.NSSolutionOn ν a T s.1 s.2)
+    (Set.ofPred.{0} fun s => ClassicalMechanics.NewtonianSolutionOn ν a T s.1 s.2)
+'ClassicalMechanics.finite_solution_sets_eq' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanics.finite_existence_iff : ∀ (ν : ℝ) (a : NSEMaxwell.Classical.Field) (T : ℝ),
+  (∃ u p, ClassicalMechanics.NSSolutionOn ν a T u p) ↔ ∃ u p, ClassicalMechanics.NewtonianSolutionOn ν a T u p
+'ClassicalMechanics.finite_existence_iff' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanics.finite_exact_equivalence : ClassicalMechanics.FiniteExactEquivalence
+'ClassicalMechanics.finite_exact_equivalence' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanics.finite_velocity_slice_smooth : ∀ {T : ℝ} {u : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.SmoothVelocityOn T u →
+    ∀ {t : ℝ}, Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) (u t)
+'ClassicalMechanics.finite_velocity_slice_smooth' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanics.finite_pressure_slice_smooth : ∀ {T : ℝ} {p : NSEMaxwell.Classical.Pressure},
+  ClassicalMechanics.SmoothPressureOn T p →
+    ∀ {t : ℝ}, Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) (p t)
+'ClassicalMechanics.finite_pressure_slice_smooth' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanics.newtonianB_implies_maxwellB_of_fourierHodgeLaws : NSEMaxwell.Bridge.FourierHodgeLaws →
+  ∀ (ν c : ℝ), LT.lt.{0} 0 ν → LT.lt.{0} 0 c → ClassicalMechanics.NewtonianB ν → NSEMaxwell.Classical.MaxwellB ν c
+'ClassicalMechanics.newtonianB_implies_maxwellB_of_fourierHodgeLaws' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+ClassicalMechanics.maxwellB_implies_newtonianB_of_fourierHodgeLaws : NSEMaxwell.Bridge.FourierHodgeLaws →
+  ∀ (ν c : ℝ), LT.lt.{0} 0 ν → LT.lt.{0} 0 c → NSEMaxwell.Classical.MaxwellB ν c → ClassicalMechanics.NewtonianB ν
+'ClassicalMechanics.maxwellB_implies_newtonianB_of_fourierHodgeLaws' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+ClassicalMechanics.newtonianB_iff_maxwellB_of_fourierHodgeLaws : NSEMaxwell.Bridge.FourierHodgeLaws →
+  ∀ (ν c : ℝ), LT.lt.{0} 0 ν → LT.lt.{0} 0 c → (ClassicalMechanics.NewtonianB ν ↔ NSEMaxwell.Classical.MaxwellB ν c)
+'ClassicalMechanics.newtonianB_iff_maxwellB_of_fourierHodgeLaws' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+ClassicalMechanics.strain_symmetric : ∀ (a : NSEMaxwell.Classical.Field) (x : NSEMaxwell.Classical.Vec) (i j : Fin 3),
+  Eq.{1} (ClassicalMechanics.strain a x i j) (ClassicalMechanics.strain a x j i)
+'ClassicalMechanics.strain_symmetric' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanics.newtonianStress_constitutive : ∀ (ν : ℝ) (a : NSEMaxwell.Classical.Field)
+  (p : NSEMaxwell.Classical.ScalarField) (x : NSEMaxwell.Classical.Vec) (i j : Fin 3),
+  Eq.{1} (ClassicalMechanics.newtonianStress ν a p x i j)
+    (HAdd.hAdd.{0, 0, 0} (HMul.hMul.{0, 0, 0} (Neg.neg.{0} (p x)) (ite.{1} (Eq.{1} i j) 1 0))
+      (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 ν) (ClassicalMechanics.strain a x i j)))
+'ClassicalMechanics.newtonianStress_constitutive' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanics.newtonianStress_symmetric : ∀ (ν : ℝ) (a : NSEMaxwell.Classical.Field)
+  (p : NSEMaxwell.Classical.ScalarField) (x : NSEMaxwell.Classical.Vec) (i j : Fin 3),
+  Eq.{1} (ClassicalMechanics.newtonianStress ν a p x i j) (ClassicalMechanics.newtonianStress ν a p x j i)
+'ClassicalMechanics.newtonianStress_symmetric' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanics.newtonianStress_component_derivative : ∀ (ν : ℝ) {a : NSEMaxwell.Classical.Field}
+  {p : NSEMaxwell.Classical.ScalarField},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a →
+    ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) p →
+      ∀ (i j k : Fin 3) (x : NSEMaxwell.Classical.Vec),
+        Eq.{1}
+          ((fderiv.{0, 0, 0} ℝ (fun y => ClassicalMechanics.newtonianStress ν a p y i j) x)
+            (NSEMaxwell.Classical.unitVector k))
+          (HAdd.hAdd.{0, 0, 0}
+            (ite.{1} (Eq.{1} i j) (Neg.neg.{0} (WithLp.ofLp.{0} (NSEMaxwell.Classical.gradient p x) k)) 0)
+            (HMul.hMul.{0, 0, 0} ν
+              (HAdd.hAdd.{0, 0, 0} (WithLp.ofLp.{0} (NSEMaxwell.CurlCurl.secondCoordinate a k j x) i)
+                (WithLp.ofLp.{0} (NSEMaxwell.CurlCurl.secondCoordinate a k i x) j))))
+'ClassicalMechanics.newtonianStress_component_derivative' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+ClassicalMechanics.tensorDivergence_newtonianStress : ∀ (ν : ℝ) {a : NSEMaxwell.Classical.Field}
+  {p : NSEMaxwell.Classical.ScalarField},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a →
+    ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) p →
+      Eq.{1} (ClassicalMechanics.tensorDivergence (ClassicalMechanics.newtonianStress ν a p))
+        (HAdd.hAdd.{0, 0, 0}
+          (HAdd.hAdd.{0, 0, 0} (Neg.neg.{0} (NSEMaxwell.Classical.gradient p))
+            (HSMul.hSMul.{0, 0, 0} ν (NSEMaxwell.Classical.laplacian a)))
+          (HSMul.hSMul.{0, 0, 0} ν (NSEMaxwell.Classical.gradient (NSEMaxwell.Classical.divergence a))))
+'ClassicalMechanics.tensorDivergence_newtonianStress' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanics.tensorDivergence_newtonianStress_of_divergence_zero : ∀ (ν : ℝ) {a : NSEMaxwell.Classical.Field}
+  {p : NSEMaxwell.Classical.ScalarField},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a →
+    ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) p →
+      Eq.{1} (NSEMaxwell.Classical.divergence a) 0 →
+        Eq.{1} (ClassicalMechanics.tensorDivergence (ClassicalMechanics.newtonianStress ν a p))
+          (HAdd.hAdd.{0, 0, 0} (Neg.neg.{0} (NSEMaxwell.Classical.gradient p))
+            (HSMul.hSMul.{0, 0, 0} ν (NSEMaxwell.Classical.laplacian a)))
+'ClassicalMechanics.tensorDivergence_newtonianStress_of_divergence_zero' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanics.newtonianSolution_to_nseSolution : ∀ {ν : ℝ} {a : NSEMaxwell.Classical.Field}
+  {u : NSEMaxwell.Classical.Velocity} {p : NSEMaxwell.Classical.Pressure},
+  ClassicalMechanics.NewtonianSolution ν a u p → NSEMaxwell.Classical.NSSolution ν a u p
+'ClassicalMechanics.newtonianSolution_to_nseSolution' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanics.newtonianB_implies_feffermanB : ∀ (ν : ℝ),
+  ClassicalMechanics.NewtonianB ν → NSEMaxwell.Classical.FeffermanB ν
+'ClassicalMechanics.newtonianB_implies_feffermanB' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanics.newtonianSolutionOn_to_nseSolutionOn : ∀ {ν T : ℝ} {a : NSEMaxwell.Classical.Field}
+  {u : NSEMaxwell.Classical.Velocity} {p : NSEMaxwell.Classical.Pressure},
+  ClassicalMechanics.NewtonianSolutionOn ν a T u p → ClassicalMechanics.NSSolutionOn ν a T u p
+'ClassicalMechanics.newtonianSolutionOn_to_nseSolutionOn' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanics.nseSolution_to_newtonianSolution : ∀ {ν : ℝ} {a : NSEMaxwell.Classical.Field}
+  {u : NSEMaxwell.Classical.Velocity} {p : NSEMaxwell.Classical.Pressure},
+  NSEMaxwell.Classical.NSSolution ν a u p → ClassicalMechanics.NewtonianSolution ν a u p
+'ClassicalMechanics.nseSolution_to_newtonianSolution' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+ClassicalMechanics.feffermanB_implies_newtonianB : ∀ (ν : ℝ),
+  NSEMaxwell.Classical.FeffermanB ν → ClassicalMechanics.NewtonianB ν
+'ClassicalMechanics.feffermanB_implies_newtonianB' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanics.nseSolutionOn_to_newtonianSolutionOn : ∀ {ν T : ℝ} {a : NSEMaxwell.Classical.Field}
+  {u : NSEMaxwell.Classical.Velocity} {p : NSEMaxwell.Classical.Pressure},
+  ClassicalMechanics.NSSolutionOn ν a T u p → ClassicalMechanics.NewtonianSolutionOn ν a T u p
+'ClassicalMechanics.nseSolutionOn_to_newtonianSolutionOn' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

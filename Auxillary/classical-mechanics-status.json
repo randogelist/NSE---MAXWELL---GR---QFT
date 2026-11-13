@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "source_status": "A_TIER_CANDIDATE_NEW_EDGES_PRIOR_ADAPTER_AUDITED",
+  "root": "ClassicalMechanics.CLASSICAL_MECHANICS_ADAPTER",
+  "root_type": "GlobalExactEquivalence \u2227 FiniteExactEquivalence",
+  "native_scope": "actual local Newtonian Cauchy stress balance; global arbitrary pressure gauge and finite normalized-pressure scopes are separate",
+  "exact_target_proved": false,
+  "unconditional_closure": false,
+  "local_lean_executions": 0,
+  "audit_target_count": 62,
+  "base_branch": "codex/fefferman-b-maxwell",
+  "base_commit": "645980350328a0638fe04b3a265b9a63d2b9b4db",
+  "branch": "codex/classical-mechanics-material",
+  "lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "analytic_premises_first_adapter": [],
+  "conditional_maxwell_premise": "NSEMaxwell.Bridge.FourierHodgeLaws",
+  "full_B_tier_reference_root_proved": false,
+  "open_reference_obligations": [
+    "actual material flow existence/inverse/volume and transported differential operators",
+    "moving-region Newtonian momentum balance and Reynolds/divergence adapters",
+    "actual constrained variations and Lagrange-dAlembert equivalence",
+    "remaining ID01--ID57 exact formal targets in the proof-spine register"
+  ],
+  "external_evidence": null,
+  "promotion_rule": "matching external compiler and theorem-level axioms audit; all premises remain explicit",
+  "baseline_scopes_preserved": [
+    236,
+    236,
+    62
+  ],
+  "prior_external_evidence": {
+    "source_commit": "80edf82888080953e2a7c991769f0de69fe7166e",
+    "run_id": 43363763965,
+    "audit": "PASS_STANDARD_ONLY",
+    "targets": 25,
+    "directory": "Auxillary/evidence/classical-linux-43363763965"
+  },
+  "material_equation_root": "ClassicalMechanics.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW_AND_DIFFUSION",
+  "material_equation_premises": [
+    "T > 0",
+    "SmoothVelocityOn T u",
+    "SmoothPressureOn T p",
+    "MaterialPathOn T eta rho",
+    "materialVelocity = u composed with eta on Icc",
+    "pi = p composed with eta on Icc",
+    "materialDiffusion = laplacian u composed with eta on Icc"
+  ],
+  "candidate_unconditional_edges": [
+    "cofactor Piola identity",
+    "closed-slab material acceleration chain rule",
+    "pressure-gradient pullback from smooth path and pressure"
+  ]
+}
