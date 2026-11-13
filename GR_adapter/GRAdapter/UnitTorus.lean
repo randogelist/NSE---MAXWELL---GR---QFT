@@ -196,6 +196,28 @@ theorem spatialMean_apply {a : Field} (ha : Continuous a) (i : Fin 3) :
   exact ((PiLp.proj 2 (fun _ : Fin 3 => ℝ) (𝕜 := ℝ) i).integral_comp_comm
     (integrableOn_unitCube_of_continuous ha)).symm
 
+theorem spatialPartial_smooth {a : Field} (ha : ContDiff ℝ ∞ a) (i : Fin 3) :
+    ContDiff ℝ ∞ (spatialPartial a i) :=
+  (ha.fderiv_right (by simp)).clm_apply contDiff_const
+
+theorem integral_spatial_component_zero {a : Field}
+    (ha : ContDiff ℝ ∞ a) (hp : SpatialPeriodic a) (i j : Fin 3) :
+    (∫ x in unitCube, spatialPartial a i x j) = 0 := by
+  rw [← spatialMean_apply (spatialPartial_smooth ha i).continuous j,
+    spatialMean_spatialPartial_zero ha hp i]
+  rfl
+
+/-- The divergence of every smooth periodic vector field has zero actual mean. -/
+theorem scalarMean_divergence_zero {a : Field}
+    (ha : ContDiff ℝ ∞ a) (hp : SpatialPeriodic a) :
+    scalarMean (divergence a) = 0 := by
+  change (∫ x in unitCube, ∑ i : Fin 3, spatialPartial a i x i) = 0
+  rw [integral_finsetSum]
+  · exact Finset.sum_eq_zero (fun i _ => integral_spatial_component_zero ha hp i i)
+  · intro i _
+    exact integrableOn_unitCube_of_continuous
+      (((contDiff_piLp 2).mp (spatialPartial_smooth ha i) i).continuous)
+
 theorem gradient_smooth {f : ScalarField} (hf : ContDiff ℝ ∞ f) :
     ContDiff ℝ ∞ (gradient f) := by
   have hd : ContDiff ℝ ∞ (fderiv ℝ f) := hf.fderiv_right (by simp)
