@@ -94,7 +94,8 @@ theorem metricOfJoint_translate (f : GaussianJoint → BulkMatrix) (n : Frequenc
       bulkSpatialCoordinates (z - bulkPoint 0 0 (integerSpatialShift n)))
   congr 1
   apply Prod.ext
-  · simp [bulkPoint]
+  · change (z 0, z 1) = (z 0 - 0, z 1 - 0)
+    simp only [sub_zero]
   · ext i; rfl
 
 theorem bulkPartial_metric_germ {g h : Metric} {z : Bulk}

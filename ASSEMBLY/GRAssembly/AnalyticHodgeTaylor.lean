@@ -111,7 +111,11 @@ theorem analyticAt_of_iteratedFDeriv_bound (f : E → F) (x : E)
   refine ⟨p, (ρ : ℝ≥0∞), hrad, ?_, ?_⟩
   · exact_mod_cast hR
   · intro y hy
-    have hyR : ‖y‖ < R := by simpa [Metric.eball_coe, mem_ball, dist_zero_right, ρ] using hy
+    have hyR : ‖y‖ < R := by
+      have hnny : ‖y‖₊ < ρ := by
+        apply enorm_lt_coe.mp
+        simpa only [Metric.mem_eball, edist_eq_enorm_sub, sub_zero] using hy
+      exact_mod_cast hnny
     have hyr : ‖y‖ < r := hyR.trans_le hRr
     have hyden : ‖y‖ * (2 * A + 1) < 1 :=
       (mul_lt_mul_of_pos_right hyR hden).trans_le hRA
@@ -127,7 +131,7 @@ theorem analyticAt_of_iteratedFDeriv_bound (f : E → F) (x : E)
           (hp.mul_const (2 * (A * ‖y‖))).const_mul M
     refine squeeze_zero (fun n => norm_nonneg _) (fun n => ?_) hlim
     have hn : (n + 1 : ℝ) ≤ (2 : ℝ) ^ (n + 1) := by
-      exact_mod_cast (Nat.lt_two_pow_self (n + 1)).le
+      exact_mod_cast (show n + 1 ≤ 2 ^ (n + 1) from Nat.lt_two_pow_self.le)
     calc
       ‖(∑ k ∈ Finset.range (n + 1), p k (fun _ => y)) - f (x + y)‖
           = ‖f (x + y) - ∑ k ∈ Finset.range (n + 1),

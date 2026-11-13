@@ -37,7 +37,8 @@ theorem analyticAt_matrix_of_entries {n : ℕ} {E : Type*}
       AnalyticAt ℝ (fun y => Matrix.single a b (f y a b)) z := by
     let L : ℝ →L[ℝ] Matrix (Fin n) (Fin n) ℝ :=
       LinearMap.toContinuousLinearMap (Matrix.singleLinearMap ℝ a b)
-    have hc := (L.analyticAt (f z a b)).comp (hf a b)
+    have hc := (L.analyticAt (f z a b)).comp
+      (f := fun y : E => f y a b) (x := z) (hf a b)
     change AnalyticAt ℝ (fun y => L (f y a b)) z
     exact hc
   have hsum : AnalyticAt ℝ
@@ -83,6 +84,9 @@ def boundaryEmbed : (ℝ × Vec) →L[ℝ] Bulk :=
 @[simp] theorem boundaryEmbed_apply (z : ℝ × Vec) :
     boundaryEmbed z = bulkPoint 0 z.1 z.2 := rfl
 
+theorem boundaryEmbed_coe : (boundaryEmbed : (ℝ × Vec) → Bulk) =
+    (fun z => bulkPoint 0 z.1 z.2) := rfl
+
 theorem boundaryEmbed_time : boundaryEmbed (1, 0) = bulkBasis 1 := by
   apply PiLp.ext
   intro i
@@ -107,7 +111,8 @@ theorem boundaryPartial_restrict {f : Bulk → ℝ} {t : ℝ} {x : Vec}
     boundaryPartial (fun s y => f (bulkPoint 0 s y)) a t x =
       bulkPartial f a.succ (bulkPoint 0 t x) := by
   have hemb : AnalyticAt ℝ (fun z : ℝ × Vec => bulkPoint 0 z.1 z.2) (t, x) := by
-    simpa only [boundaryEmbed_apply] using (boundaryEmbed.analyticAt (t, x))
+    rw [← boundaryEmbed_coe]
+    exact boundaryEmbed.analyticAt (t, x)
   have hr : AnalyticAt ℝ (fun z : ℝ × Vec => f (bulkPoint 0 z.1 z.2)) (t, x) :=
     hf.comp (f := fun z : ℝ × Vec => bulkPoint 0 z.1 z.2) (x := (t, x)) hemb
   have hd := hf.differentiableAt.hasFDerivAt.comp (t, x)
@@ -120,7 +125,8 @@ theorem boundaryPartial_restrict {f : Bulk → ℝ} {t : ℝ} {x : Vec}
     rw [scalar_timeDerivative_eq_joint hr]
     change fderiv ℝ (fun z : ℝ × Vec => f (bulkPoint 0 z.1 z.2)) (t, x) (1, 0) = _
     rw [hd']
-    simpa only [ContinuousLinearMap.comp_apply, boundaryEmbed_time, bulkPartial]
+    simp only [ContinuousLinearMap.comp_apply, boundaryEmbed_time, bulkPartial]
+    rfl
   · change fderiv ℝ (fun y => f (bulkPoint 0 t y)) x (unitVector i) = _
     rw [scalar_spatialDerivative_eq_joint hr i]
     change fderiv ℝ (fun z : ℝ × Vec => f (bulkPoint 0 z.1 z.2)) (t, x)
@@ -148,7 +154,7 @@ theorem bulkPartial_tangent_zero {f : Bulk → ℝ} {t : ℝ} {x : Vec} {c : ℝ
     bulkPartial f a.succ (bulkPoint 0 t x) = 0 := by
   rw [← boundaryPartial_restrict hf]
   rw [boundaryPartial_congr (q := fun _ _ => c) he]
-  fin_cases a <;> simp [boundaryPartial]
+  fin_cases a <;> simp [boundaryPartial] <;> rfl
 
 theorem bulkPartial_radial_restrict {f : Bulk → ℝ} {t : ℝ} {x : Vec}
     (hf : AnalyticAt ℝ f (bulkPoint 0 t x)) :
@@ -161,11 +167,17 @@ theorem bulkPartial_radial_restrict {f : Bulk → ℝ} {t : ℝ} {x : Vec}
     intro i
     fin_cases i <;> simp [bulkPoint, bulkBasis, EuclideanSpace.single,
       PiLp.single_apply, PiLp.add_apply, PiLp.smul_apply] <;> rfl
-  have hd : HasDerivAt (fun r : ℝ => bulkPoint r t x) (bulkBasis 0) 0 := by
+  let L : ℝ →L[ℝ] Bulk := ContinuousLinearMap.toSpanSingleton ℝ (bulkBasis 0)
+  have hcurve : (fun r : ℝ => bulkPoint r t x) =
+      (fun r => L r + bulkPoint 0 t x) := by
     rw [he]
-    simpa only [one_smul] using
-      (((hasDerivAt_id (0 : ℝ)).smul_const (bulkBasis 0)).add_const (bulkPoint 0 t x))
-  exact (hf.differentiableAt.hasFDerivAt.comp_hasDerivAt 0 hd).deriv
+    rfl
+  have hd : HasFDerivAt (fun r : ℝ => bulkPoint r t x) L 0 := by
+    rw [hcurve]
+    exact L.hasFDerivAt.add_const (bulkPoint 0 t x)
+  have hc := (hf.differentiableAt.hasFDerivAt.comp 0 hd).hasDerivAt.deriv
+  simpa only [Function.comp_def, ContinuousLinearMap.comp_apply,
+    L, ContinuousLinearMap.toSpanSingleton_apply, one_smul, bulkPartial] using hc
 
 theorem analyticAt_matrix_inverse {h : Bulk → Tensor4} {z : Bulk}
     (hh : AnalyticAt ℝ h z) (hn : IsUnit (h z).det) :
@@ -207,9 +219,7 @@ theorem bulkPartial_inverse {h : Bulk → Tensor4} {z : Bulk}
       _ = matrixEntryCLM 4 a b (fderiv ℝ (fun y => (h y)⁻¹) z (bulkBasis i)) :=
         matrix_entry_fderiv (analyticAt_matrix_inverse hh hn).differentiableAt _ a b
       _ = _ := by
-        simpa only [ContinuousLinearMap.comp_apply, ContinuousLinearMap.neg_apply,
-          ContinuousLinearMap.mulLeftRight_apply, matrixEntryCLM_apply,
-          Matrix.neg_apply] using hv
+        convert hv using 1 <;> rfl
   rw [hc]
   simp only [ContinuousLinearMap.comp_apply, ContinuousLinearMap.neg_apply,
     ContinuousLinearMap.mulLeftRight_apply, Matrix.neg_apply,
@@ -254,8 +264,9 @@ theorem analyticAt_gaussianTangentialChristoffel {h : Bulk → Tensor4} {z : Bul
 @[simp] theorem eta4_inverse : eta4Matrix⁻¹ = eta4Matrix := by
   apply Matrix.inv_eq_right_inv
   ext a b
+  change (∑ c : Fin 4, eta4 a c * eta4 c b) = (1 : Tensor4) a b
   fin_cases a <;> fin_cases b <;>
-    norm_num [Matrix.mul_apply, Fin.sum_univ_succ, eta4Matrix, eta4, lorentzSign4,
+    norm_num [Fin.sum_univ_succ, eta4, lorentzSign4,
       Matrix.one_apply]
 
 theorem gaussianShape_at_flat {h : Bulk → Tensor4} {z : Bulk}

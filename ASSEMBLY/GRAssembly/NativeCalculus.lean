@@ -6,7 +6,7 @@ set_option autoImplicit false
 set_option Elab.async true
 set_option maxHeartbeats 1600000
 
-open Set Filter
+open Set Filter MeasureTheory
 open scoped Topology BigOperators ContDiff Matrix.Norms.Frobenius
 
 namespace NSEGR.Assembly
@@ -24,15 +24,19 @@ theorem analyticAt_tensor4_entry {f : ℝ × Vec → Tensor4} {z : ℝ × Vec}
 
 theorem analyticAt_tensor4_of_entries {f : ℝ × Vec → Tensor4} {z : ℝ × Vec}
     (hf : ∀ a b, AnalyticAt ℝ (fun y => f y a b) z) : AnalyticAt ℝ f z := by
-  have hs (a b : Fin 4) : AnalyticAt ℝ (fun y => Matrix.single a b (f y a b)) z :=
-    ((LinearMap.toContinuousLinearMap (Matrix.singleLinearMap ℝ a b)).analyticAt _).comp (hf a b)
+  have hs (a b : Fin 4) : AnalyticAt ℝ (fun y => Matrix.single a b (f y a b)) z := by
+    have hscale : AnalyticAt ℝ (fun y => f y a b • (Matrix.single a b (1 : ℝ) : Tensor4)) z :=
+      (hf a b).smul analyticAt_const
+    simpa only [Matrix.smul_single, smul_eq_mul, mul_one] using hscale
   have h : AnalyticAt ℝ (fun y => ∑ a : Fin 4, ∑ b : Fin 4, Matrix.single a b (f y a b)) z := by
     apply Finset.analyticAt_fun_sum
     intro a ha
     apply Finset.analyticAt_fun_sum
     intro b hb
     exact hs a b
-  simpa only [Matrix.sum_sum_single, Matrix.of_apply] using h
+  convert h using 1
+  funext y
+  exact Matrix.matrix_eq_sum_single (f y)
 
 theorem analyticAt_vec_of_components {f : ℝ × Vec → Vec} {z : ℝ × Vec}
     (hf : ∀ i, AnalyticAt ℝ (fun y => f y i) z) : AnalyticAt ℝ f z := by
@@ -80,13 +84,13 @@ theorem jointTime_sum {ι : Type*} (s : Finset ι) {f : ι → ℝ × Vec → �
     {z : ℝ × Vec} (hf : ∀ i ∈ s, AnalyticAt ℝ (f i) z) :
     jointTime (fun y => ∑ i ∈ s, f i y) z = ∑ i ∈ s, jointTime (f i) z := by
   simpa only [jointTime, Finset.sum_apply] using
-    (HasDerivAt.sum (fun i hi => (hf i hi).curry_left.differentiableAt.hasDerivAt)).deriv
+    (HasDerivAt.fun_sum (fun i hi => (hf i hi).curry_left.differentiableAt.hasDerivAt)).deriv
 
 theorem jointSpace_sum {ι : Type*} (s : Finset ι) {f : ι → ℝ × Vec → ℝ}
     {z : ℝ × Vec} (hf : ∀ i ∈ s, AnalyticAt ℝ (f i) z) (j : Fin 3) :
     jointSpace (fun y => ∑ i ∈ s, f i y) j z = ∑ i ∈ s, jointSpace (f i) j z := by
-  have h := HasFDerivAt.sum (fun i hi =>
-    ((hf i hi).comp (analyticAt_const.prod analyticAt_id)).differentiableAt.hasFDerivAt)
+  have h := HasFDerivAt.fun_sum (fun i hi =>
+    (hf i hi).curry_right.differentiableAt.hasFDerivAt)
   simpa only [jointSpace, Finset.sum_apply, ContinuousLinearMap.sum_apply] using
     congrArg (fun L : Vec →L[ℝ] ℝ => L (unitVector j)) h.fderiv
 

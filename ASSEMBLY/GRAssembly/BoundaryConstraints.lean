@@ -107,9 +107,12 @@ theorem gaussianVacuum_boundary_analytic {ρ t0 δ ε : ℝ} {g : Metric}
     (hg : GaussianVacuum ρ t0 δ ε g) :
     AnalyticOnNhd ℝ (fun z : ℝ × Vec => boundaryK g z.1 z.2) (spacetimeSlab t0 δ) := by
   intro z hz
+  have he : AnalyticAt ℝ (fun w : ℝ × Vec => bulkPoint 0 w.1 w.2) z := by
+    rw [← boundaryEmbed_coe]
+    exact boundaryEmbed.analyticAt z
   exact (analyticAt_gaussianSecondForm
     (gaussianVacuum_block_analytic hg (boundaryPoint_mem_collar hg hz z.2))).comp
-      (boundaryEmbed.analyticAt z)
+      (f := fun w : ℝ × Vec => bulkPoint 0 w.1 w.2) (x := z) he
 
 theorem gaussianVacuum_boundary_symmetric {ρ t0 δ ε : ℝ} {g : Metric}
     (hg : GaussianVacuum ρ t0 δ ε g) {t : ℝ} (ht : t ∈ timeInterval t0 δ) (x : Vec) :
@@ -206,7 +209,9 @@ theorem gaussianVacuum_shape_tangent {ρ t0 δ ε : ℝ} {g : Metric}
       (fun z => lorentzSign4 a * boundaryK g z.1 z.2 a b) := by
     filter_upwards [boundary_time_eventually (x := x) ht] with z hz'
     exact gaussianShape_at_flat (gaussianVacuum_block_flat hg hz' z.2) a b
-  rw [boundaryPartial_congr he]
+  rw [boundaryPartial_congr
+    (f := fun s y => gaussianShapeOperator (metricTangentialBlock g) (bulkPoint 0 s y) a b)
+    (q := fun s y => lorentzSign4 a * boundaryK g s y a b) he]
   exact boundaryPartial_const_mul
     (analyticAt_matrix_entry (gaussianVacuum_boundary_analytic hg (t, x) ht) a b)
       (lorentzSign4 a) c

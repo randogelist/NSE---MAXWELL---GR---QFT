@@ -31,13 +31,14 @@ theorem jointLinear_coordinate_expansion (L : (ℝ × Vec) →L[ℝ] ℝ) (d : �
   have hd : d = d.1 • ((1 : ℝ), (0 : Vec)) +
       ∑ j : Fin 3, d.2 j • ((0 : ℝ), unitVector j) := by
     apply Prod.ext
-    · simp
+    · simp [Fin.sum_univ_succ]
     · ext i
-      simp [unitVector, Finset.sum_apply, EuclideanSpace.single_apply]
+      fin_cases i <;> simp [unitVector, Fin.sum_univ_succ, EuclideanSpace.single,
+        Pi.single_apply]
   calc
     _ = L (d.1 • ((1 : ℝ), (0 : Vec)) +
         ∑ j : Fin 3, d.2 j • ((0 : ℝ), unitVector j)) := congrArg L hd
-    _ = _ := by simp
+    _ = _ := by simp only [map_add, map_sum, map_smul, smul_eq_mul]
 
 theorem joint_fderiv_time (F : ℝ × Vec → ℝ) (z : ℝ × Vec)
     (hF : DifferentiableAt ℝ F z) :
@@ -71,8 +72,9 @@ theorem joint_fderiv_periodic (F : ℝ × Vec → ℝ)
     SpatialPeriodic (fun x => fderiv ℝ F (t, x) d) := by
   intro x i
   have he : (fun z : ℝ × Vec => F (z + (0, unitVector i))) = F := by
-    funext z
-    simpa only [Prod.fst_add, Prod.snd_add, add_zero] using hp z.1 z.2 i
+    funext ⟨s, y⟩
+    change F (s + 0, y + unitVector i) = F (s, y)
+    simpa only [add_zero] using hp s y i
   have h := congrArg (fun K : (ℝ × Vec → ℝ) => fderiv ℝ K (t, x)) he
   simp only [fderiv_comp_add_right] at h
   simpa only [Prod.mk_add_mk, add_zero] using
@@ -110,7 +112,7 @@ theorem poissonInverse_fderiv_commute_global (F : ℝ × Vec → ℝ)
     have he : fourierScalarPartial (fun y => F (z.1, y)) j = P j := by
       funext y
       exact joint_fderiv_space F (z.1, y) (hF.differentiable (by simp) _) (unitVector j)
-    simpa only [he] using h
+    simpa only [he, H, fourierScalarPartial] using h
   have he : (fun y => fderiv ℝ F (z.1, y) d) =
       (fun y => d.1 * T y) + (fun y => ∑ j : Fin 3, d.2 j * P j y) := by
     funext y
@@ -133,7 +135,9 @@ theorem iteratedFDeriv_apply_smooth_global (F : ℝ × Vec → ℝ)
     (hF : ContDiff ℝ ∞ F) (n : ℕ) (v : Fin n → ℝ × Vec) :
     ContDiff ℝ ∞ (fun z => iteratedFDeriv ℝ n F z v) :=
   (ContinuousMultilinearMap.apply ℝ (fun _ : Fin n => ℝ × Vec) ℝ v).contDiff.comp
-    (hF.iteratedFDeriv_right (by simp))
+    (hF.iteratedFDeriv_right (by
+      change ((⊤ : ℕ∞) : WithTop ℕ∞) + ((n : ℕ∞) : WithTop ℕ∞) ≤ (⊤ : ℕ∞)
+      rw [← WithTop.coe_add, WithTop.top_add]))
 
 theorem iteratedFDeriv_slice_periodic_global (F : ℝ × Vec → ℝ)
     (hp : ∀ t, SpatialPeriodic (fun x => F (t, x))) (n : ℕ)
@@ -141,8 +145,9 @@ theorem iteratedFDeriv_slice_periodic_global (F : ℝ × Vec → ℝ)
     SpatialPeriodic (fun x => iteratedFDeriv ℝ n F (t, x) v) := by
   intro x i
   have he : (fun z : ℝ × Vec => F (z + (0, unitVector i))) = F := by
-    funext z
-    simpa only [Prod.fst_add, Prod.snd_add, add_zero] using hp z.1 z.2 i
+    funext ⟨s, y⟩
+    change F (s + 0, y + unitVector i) = F (s, y)
+    simpa only [add_zero] using hp s y i
   have h := congrArg (fun K : (ℝ × Vec → ℝ) => iteratedFDeriv ℝ n K (t, x)) he
   simp only [iteratedFDeriv_comp_add_right] at h
   simpa only [Prod.mk_add_mk, add_zero] using congrArg (fun L => L v) h
@@ -156,11 +161,14 @@ theorem poissonInverse_iteratedFDeriv_commute_global (F : ℝ × Vec → ℝ)
       poissonInverse (fun y => iteratedFDeriv ℝ n F (z.1, y) v) z.2 := by
   let H : ℝ × Vec → ℝ := fun w => poissonInverse (fun y => F (w.1, y)) w.2
   have hH : ContDiff ℝ ∞ H := poissonInverse_joint_smooth_global (fun t x => F (t, x)) hF hp
-  induction n generalizing v z with
+  induction n generalizing z with
   | zero => rfl
   | succ n ih =>
-      have hFn : ContDiff ℝ ∞ (iteratedFDeriv ℝ n F) := hF.iteratedFDeriv_right (by simp)
-      have hHn : ContDiff ℝ ∞ (iteratedFDeriv ℝ n H) := hH.iteratedFDeriv_right (by simp)
+      have hn : (∞ : WithTop ℕ∞) + (n : WithTop ℕ∞) ≤ ∞ := by
+        change ((⊤ : ℕ∞) : WithTop ℕ∞) + ((n : ℕ∞) : WithTop ℕ∞) ≤ (⊤ : ℕ∞)
+        rw [← WithTop.coe_add, WithTop.top_add]
+      have hFn : ContDiff ℝ ∞ (iteratedFDeriv ℝ n F) := hF.iteratedFDeriv_right hn
+      have hHn : ContDiff ℝ ∞ (iteratedFDeriv ℝ n H) := hH.iteratedFDeriv_right hn
       rw [(hHn.differentiable (by simp) z).iteratedFDeriv_succ_apply_left']
       have he : (fun w => iteratedFDeriv ℝ n H w (Fin.tail v)) =
           (fun w : ℝ × Vec => poissonInverse
@@ -240,7 +248,9 @@ theorem scalarSpatialIterate_iteratedFDeriv_global (F : ℝ × Vec → ℝ)
       rw [scalarSpatialIterate, ih]
       funext x
       have hFn : ContDiff ℝ ∞ (iteratedFDeriv ℝ (n + m) F) :=
-        hF.iteratedFDeriv_right (by simp)
+        hF.iteratedFDeriv_right (by
+          change ((⊤ : ℕ∞) : WithTop ℕ∞) + (((n + m : ℕ) : ℕ∞) : WithTop ℕ∞) ≤ (⊤ : ℕ∞)
+          rw [← WithTop.coe_add, WithTop.top_add])
       have happ := iteratedFDeriv_apply_smooth_global F hF (n + m)
         (prependSpatialDirections j m v)
       change fderiv ℝ (fun y => iteratedFDeriv ℝ (n + m) F (t, y)
@@ -256,8 +266,11 @@ theorem prependSpatialDirections_norm_prod {n : ℕ} (j : Fin 3) (m : ℕ)
   induction m with
   | zero => rfl
   | succ m ih =>
-      simpa [Nat.add_succ, prependSpatialDirections, Fin.prod_univ_succ,
-        Prod.norm_def, unitVector, PiLp.norm_single] using ih
+      have hu : ‖((0 : ℝ), unitVector j)‖ = 1 := by simp [Prod.norm_def, unitVector]
+      change (∏ i : Fin (n + m + 1),
+        ‖Fin.cons (0, unitVector j) (prependSpatialDirections j m v) i‖) = _
+      rw [Fin.prod_univ_succ]
+      simpa only [Fin.cons_zero, Fin.cons_succ, hu, one_mul] using ih
 
 theorem scalarSpatialIterate_iteratedFDeriv (f : Pressure) {I : Set ℝ}
     (hI : IsOpen I)

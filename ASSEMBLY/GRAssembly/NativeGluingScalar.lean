@@ -156,7 +156,8 @@ theorem scalar_periodic_cylinder_of_literatureCK
 
 theorem scalarLaplacian_spatial_sub (f : ScalarField) (c : Vec) (x : Vec) :
     scalarLaplacian (fun y => f (y - c)) x = scalarLaplacian f (x - c) := by
-  simp only [scalarLaplacian, fderiv_comp_sub]
+  exact congrArg (fun T : Tensor4 => T 0 0)
+    (scalarCompletionUpper_spatial_sub (fun _ => f) c 0 x)
 
 theorem scalarLaplacian_periodic_nativeGluing {f : ScalarField} (hf : SpatialPeriodic f) :
     SpatialPeriodic (scalarLaplacian f) := by

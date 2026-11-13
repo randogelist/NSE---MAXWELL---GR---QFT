@@ -56,7 +56,7 @@ theorem analyticHodge_open_slab_local_uniform_bound
   have hsub : closedBall t (R / 2) ⊆ I :=
     (closedBall_subset_ball (by linarith : R / 2 < R)).trans hRI
   have hK : IsCompact (closedBall t (R / 2) ×ˢ unitCube) :=
-    isCompact_closedBall.prod NSEGR.isCompact_unitCube
+    (isCompact_closedBall t (R / 2)).prod NSEGR.isCompact_unitCube
   have ha : AnalyticOnNhd ℝ (fun z : ℝ × Vec => f z.1 z.2)
       (closedBall t (R / 2) ×ˢ unitCube) :=
     hf.mono (fun _ hz => hsub hz.1)

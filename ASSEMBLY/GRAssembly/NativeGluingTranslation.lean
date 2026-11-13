@@ -30,8 +30,20 @@ theorem fderiv_spatialPeriodic_sub_integer {Y : Type*}
 theorem scalarCompletionUpper_spatial_sub (ψ : Pressure) (c : Vec) (t : ℝ) (x : Vec) :
     scalarCompletionUpper (fun s y => ψ s (y - c)) t x =
       scalarCompletionUpper ψ t (x - c) := by
-  simp only [scalarCompletionUpper, scalarLaplacian, scalarHessian,
-    gradient, scalarLocalTimeDerivative, fderiv_comp_sub]
+  have hH : scalarHessian (fun y => ψ t (y - c)) x = scalarHessian (ψ t) (x - c) := by
+    ext i j
+    simp only [scalarHessian, fderiv_comp_sub]
+    exact congrArg (fun L : Vec →L[ℝ] ℝ => L (unitVector i))
+      (fderiv_comp_sub (𝕜 := ℝ)
+        (f := fun y => fderiv ℝ (ψ t) y (unitVector j)) (x := x) c)
+  have hD : scalarLaplacian (fun y => ψ t (y - c)) x = scalarLaplacian (ψ t) (x - c) := by
+    rw [← trace3_scalarHessian, hH, trace3_scalarHessian]
+  have hG : gradient (scalarLocalTimeDerivative (fun s y => ψ s (y - c)) t) x =
+      gradient (scalarLocalTimeDerivative ψ t) (x - c) := by
+    ext i
+    exact congrArg (fun L : Vec →L[ℝ] ℝ => L (unitVector i))
+      (fderiv_comp_sub (𝕜 := ℝ) (f := scalarLocalTimeDerivative ψ t) (x := x) c)
+  simp only [scalarCompletionUpper, hH, hD, hG]
 
 theorem conservedSourceUpper_periodic_sub {ν ρ : ℝ} {u : Velocity} {p : Pressure}
     {t : ℝ} (hu : SpatialPeriodic (u t)) (hp : SpatialPeriodic (p t))
@@ -96,24 +108,40 @@ theorem bulkPartial_comp_sub (f : Bulk → ℝ) (c : Bulk) (i : Fin 5) (z : Bulk
 
 theorem christoffel_comp_sub (g : Metric) (c z : Bulk) (a b d : Fin 5) :
     christoffel (fun y => g (y - c)) z a b d = christoffel g (z - c) a b d := by
-  simp only [christoffel, inverseMetric, bulkPartial_comp_sub]
+  have hd (i j k : Fin 5) :
+      bulkPartial (fun y => g (y - c) i j) k z =
+        bulkPartial (fun y => g y i j) k (z - c) :=
+    bulkPartial_comp_sub (fun y => g y i j) c k z
+  simp only [christoffel, inverseMetric, hd]
 
 theorem ricci_comp_sub (g : Metric) (c z : Bulk) :
     ricci (fun y => g (y - c)) z = ricci g (z - c) := by
+  have hd (i j k l : Fin 5) :
+      bulkPartial (fun y => christoffel g (y - c) i j k) l z =
+        bulkPartial (fun y => christoffel g y i j k) l (z - c) :=
+    bulkPartial_comp_sub (fun y => christoffel g y i j k) c l z
   ext a b
-  simp only [ricci, christoffel_comp_sub, bulkPartial_comp_sub]
+  simp only [ricci, christoffel_comp_sub, hd]
 
 theorem bulkPoint_sub_spatial (r t : ℝ) (x c : Vec) :
     bulkPoint r t x - bulkPoint 0 0 c = bulkPoint r t (x - c) := by
   ext i
-  refine Fin.cases ?_ (fun j => ?_) i
-  · simp [bulkPoint]
-  · refine Fin.cases ?_ (fun j => ?_) j <;> simp [bulkPoint]
+  fin_cases i
+  · change r - 0 = r
+    exact sub_zero r
+  · change t - 0 = t
+    exact sub_zero t
+  · rfl
+  · rfl
+  · rfl
 
 theorem boundaryK_comp_spatial_sub (g : Metric) (c : Vec) (t : ℝ) (x : Vec) :
     boundaryK (fun z => g (z - bulkPoint 0 0 c)) t x = boundaryK g t (x - c) := by
   ext a b
-  simp only [boundaryK, bulkPartial_comp_sub, bulkPoint_sub_spatial]
+  unfold boundaryK
+  rw [bulkPartial_comp_sub
+    (fun y => g y (boundaryIndex a) (boundaryIndex b)) (bulkPoint 0 0 c) 0 (bulkPoint 0 t x),
+    bulkPoint_sub_spatial]
 
 end
 end NSEGR.Assembly
