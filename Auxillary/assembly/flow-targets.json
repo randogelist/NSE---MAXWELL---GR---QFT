@@ -261,6 +261,56 @@
         "ClassicalMechanicsAssembly.L1_native",
         "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE"
       ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowGlobalSlab",
+      "targets": [
+        "ClassicalMechanicsAssembly.finiteSpacetime_subset_forwardSpacetime",
+        "ClassicalMechanicsAssembly.global_smoothVelocityOn",
+        "ClassicalMechanicsAssembly.global_smoothPressureOn",
+        "ClassicalMechanicsAssembly.finiteTimeDerivative_eq_timeDerivative",
+        "ClassicalMechanicsAssembly.finiteMaterialAcceleration_eq_materialAcceleration",
+        "ClassicalMechanicsAssembly.global_equation_to_finite_equation",
+        "ClassicalMechanicsAssembly.finite_equations_to_global_equation",
+        "ClassicalMechanicsAssembly.global_equation_iff_finite_equations"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowMaterialCoherence",
+      "targets": [
+        "ClassicalMechanicsAssembly.material_path_hasDerivWithinAt",
+        "ClassicalMechanicsAssembly.material_flows_eq_on_subslab",
+        "ClassicalMechanicsAssembly.material_inverses_eq_on_subslab",
+        "ClassicalMechanicsAssembly.material_paths_coherent_on_overlap"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowMaterialFields",
+      "targets": [
+        "ClassicalMechanicsAssembly.material_pressure_pullback_smooth",
+        "ClassicalMechanicsAssembly.material_pressure_pullback_periodic",
+        "ClassicalMechanicsAssembly.material_initial_velocity_of_flow",
+        "ClassicalMechanicsAssembly.material_velocity_decode_of_flow",
+        "ClassicalMechanicsAssembly.material_pressure_decode_of_pullback",
+        "ClassicalMechanicsAssembly.material_velocity_smooth_of_flow",
+        "ClassicalMechanicsAssembly.material_velocity_periodic_of_flow"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowNSEBCM",
+      "targets": [
+        "ClassicalMechanicsAssembly.CMSolution",
+        "ClassicalMechanicsAssembly.CMB",
+        "ClassicalMechanicsAssembly.nseSolution_to_cmSolution",
+        "ClassicalMechanicsAssembly.cmSolution_to_nseSolution",
+        "ClassicalMechanicsAssembly.nseSolution_iff_cmSolution",
+        "ClassicalMechanicsAssembly.nse_cm_solution_sets_eq",
+        "ClassicalMechanicsAssembly.nseB_implies_cmB",
+        "ClassicalMechanicsAssembly.cmB_implies_nseB",
+        "ClassicalMechanicsAssembly.NSEB_IFF_CM",
+        "ClassicalMechanicsAssembly.NSEB_IFF_CM_POSITIVE",
+        "ClassicalMechanicsAssembly.newtonianB_iff_cmB"
+      ]
     }
   ]
 }
