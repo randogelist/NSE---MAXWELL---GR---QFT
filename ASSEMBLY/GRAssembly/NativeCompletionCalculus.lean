@@ -1,5 +1,5 @@
 import GRAssembly.NativeCalculus
-import GRAssembly.BoundaryConstraintsGeometry
+import GRAdapter.Contracts
 
 /-! Actual scalar correction conservation and boundary admissibility. -/
 set_option autoImplicit false
@@ -120,9 +120,19 @@ theorem boundaryPartial_add_native {f q : Pressure} {t : ℝ} {x : Vec}
     (hq : AnalyticAt ℝ (fun z : ℝ × Vec => q z.1 z.2) (t,x)) (a : Fin 4) :
     boundaryPartial (fun s y => f s y + q s y) a t x =
       boundaryPartial f a t x + boundaryPartial q a t x := by
-  rw [boundaryPartial_eq_joint (hf.add hq), boundaryPartial_eq_joint hf,
-    boundaryPartial_eq_joint hq, fderiv_fun_add hf.differentiableAt hq.differentiableAt]
-  rfl
+  refine Fin.cases ?_ (fun i => ?_) a
+  · exact jointTime_add hf hq
+  · exact jointSpace_add hf hq i
+
+theorem boundaryPartial_const_mul_native {f : Pressure} {t : ℝ} {x : Vec}
+    (hf : AnalyticAt ℝ (fun z : ℝ × Vec => f z.1 z.2) (t,x)) (c : ℝ) (a : Fin 4) :
+    boundaryPartial (fun s y => c * f s y) a t x = c * boundaryPartial f a t x := by
+  refine Fin.cases ?_ (fun i => ?_) a
+  · simpa only [boundaryPartial, Fin.cases_zero, smul_eq_mul] using
+      (hf.curry_left.differentiableAt.hasDerivAt.const_smul c).deriv
+  · have h := (hf.curry_right.differentiableAt.hasFDerivAt.const_smul c).fderiv
+    simpa only [boundaryPartial, Fin.cases_succ, smul_eq_mul, ContinuousLinearMap.smul_apply] using
+      congrArg (fun L : Vec →L[ℝ] ℝ => L (unitVector i)) h
 
 theorem traceReverse_lower_codazzi {T : BoundaryTensor} {t : ℝ} {x : Vec}
     (hT : ∀ a b, AnalyticAt ℝ (fun z : ℝ × Vec => T z.1 z.2 a b) (t,x))
@@ -141,7 +151,7 @@ theorem traceReverse_lower_codazzi {T : BoundaryTensor} {t : ℝ} {x : Vec}
     linarith
   change (∑ a : Fin 4, lorentzSign4 a * boundaryPartial
     (fun s y => K s y a b - lorentzTrace4 (K s y) * eta4 a b) a t x) = _
-  simp_rw [he, boundaryPartial_const_mul (hT _ b)]
+  simp_rw [he, boundaryPartial_const_mul_native (hT _ b)]
   rw [upperDivergence, Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro a ha

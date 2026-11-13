@@ -243,11 +243,14 @@ def main() -> int:
                 return
             require(module not in visiting, "Cyclic assembly imports: " + module)
             visiting.add(module)
-            for dependency in sorted(dependencies(module) & selected_modules):
+            # Traverse import-only aggregators as well as named audit modules.
+            # Their selected descendants must precede any importing root.
+            for dependency in sorted(dependencies(module)):
                 visit(dependency)
             visiting.remove(module)
             visited.add(module)
-            ordered_modules.append(module)
+            if module in selected_modules:
+                ordered_modules.append(module)
 
         for module in sorted(selected_modules):
             visit(module)

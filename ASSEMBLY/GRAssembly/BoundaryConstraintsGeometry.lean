@@ -3,6 +3,7 @@ import GRAssembly.BoundaryConstraintsJets
 set_option autoImplicit false
 set_option Elab.async true
 set_option maxHeartbeats 3200000
+set_option backward.isDefEq.respectTransparency false
 
 namespace NSEGR.Assembly
 open Set Filter
@@ -36,13 +37,19 @@ theorem bulkPartial_shape_at_flat {h : Bulk → Tensor4} {z : Bulk}
   have hk := analyticAt_gaussianSecondForm hh
   change bulkPartial (fun y => ∑ c : Fin 4,
     (h y)⁻¹ a c * gaussianSecondForm h y c b) 0 z = _
-  rw [bulkPartial_sum (fun c => (analyticAt_matrix_entry hi a c).mul
-    (analyticAt_matrix_entry hk c b))]
-  simp_rw [bulkPartial_mul (analyticAt_matrix_entry hi _ _)
-    (analyticAt_matrix_entry hk _ _), bulkPartial_inverse_at_flat hh hn he]
+  rw [bulkPartial_sum
+    (f := fun c y => (h y)⁻¹ a c * gaussianSecondForm h y c b)
+    (fun c => (analyticAt_matrix_entry hi a c).mul
+      (analyticAt_matrix_entry hk c b)) 0]
+  have hprod (c : Fin 4) :
+      bulkPartial (fun y => (h y)⁻¹ a c * gaussianSecondForm h y c b) 0 z =
+        bulkPartial (fun y => (h y)⁻¹ a c) 0 z * gaussianSecondForm h z c b +
+        (h z)⁻¹ a c * bulkPartial (fun y => gaussianSecondForm h y c b) 0 z :=
+    bulkPartial_mul (analyticAt_matrix_entry hi a c) (analyticAt_matrix_entry hk c b) 0
+  simp_rw [hprod, bulkPartial_inverse_at_flat hh hn he]
   rw [he, eta4_inverse]
   fin_cases a <;> fin_cases b <;>
-    norm_num [eta4Matrix, eta4, lorentzSign4, Fin.sum_univ_succ] <;> ring
+    norm_num [eta4Matrix, eta4, lorentzSign4, Fin.sum_univ_four] <;> ring
 
 theorem gaussian_normal_flat {h : Bulk → Tensor4} {z : Bulk}
     (hh : AnalyticAt ℝ h z) (hn : IsUnit (h z).det) (he : h z = eta4Matrix)
@@ -54,14 +61,13 @@ theorem gaussian_normal_flat {h : Bulk → Tensor4} {z : Bulk}
   rw [ricci_gaussian_normal]
   unfold gaussianNormalRicciComponent
   simp_rw [bulkPartial_shape_at_flat hh hn he, gaussianShape_at_flat he]
-  have hs01 := congrArg (fun M : Tensor4 => M 0 1) hs
-  have hs02 := congrArg (fun M : Tensor4 => M 0 2) hs
-  have hs03 := congrArg (fun M : Tensor4 => M 0 3) hs
-  have hs12 := congrArg (fun M : Tensor4 => M 1 2) hs
-  have hs13 := congrArg (fun M : Tensor4 => M 1 3) hs
-  have hs23 := congrArg (fun M : Tensor4 => M 2 3) hs
-  simp only [Matrix.transpose_apply] at hs01 hs02 hs03 hs12 hs13 hs23
-  norm_num [lorentzSquare4, Fin.sum_univ_succ, lorentzSign4]
+  have hs01 := hs.apply 0 1
+  have hs02 := hs.apply 0 2
+  have hs03 := hs.apply 0 3
+  have hs12 := hs.apply 1 2
+  have hs13 := hs.apply 1 3
+  have hs23 := hs.apply 2 3
+  norm_num [lorentzSquare4, Fin.sum_univ_four, lorentzSign4]
   simp only [hs01, hs02, hs03, hs12, hs13, hs23]
   ring
 
@@ -82,9 +88,9 @@ theorem gaussian_tangential_flat {h : Bulk → Tensor4} {z : Bulk}
   simp only [hc, hdc, sub_self, Finset.sum_const_zero, add_zero,
     zero_mul, mul_zero, gaussianShape_at_flat he]
   have hsym (i j : Fin 4) : gaussianSecondForm h z j i = gaussianSecondForm h z i j :=
-    congrArg (fun M : Tensor4 => M i j) hs
+    hs.apply i j
   simp_rw [hsym b, hsym a]
-  simp only [lorentzTrace4, Fin.sum_univ_succ, lorentzSign4]
+  simp only [lorentzTrace4, Fin.sum_univ_four, lorentzSign4]
   norm_num
   ring
 
@@ -105,14 +111,13 @@ theorem gaussian_hamiltonian_flat {h : Bulk → Tensor4} {z : Bulk}
   have ht2 := ht 2
   have ht3 := ht 3
   rw [hv] at ht0 ht1 ht2 ht3
-  have hs01 := congrArg (fun M : Tensor4 => M 0 1) hs
-  have hs02 := congrArg (fun M : Tensor4 => M 0 2) hs
-  have hs03 := congrArg (fun M : Tensor4 => M 0 3) hs
-  have hs12 := congrArg (fun M : Tensor4 => M 1 2) hs
-  have hs13 := congrArg (fun M : Tensor4 => M 1 3) hs
-  have hs23 := congrArg (fun M : Tensor4 => M 2 3) hs
-  simp only [Matrix.transpose_apply] at hs01 hs02 hs03 hs12 hs13 hs23
-  norm_num [lorentzTrace4, lorentzSquare4, Fin.sum_univ_succ, lorentzSign4]
+  have hs01 := hs.apply 0 1
+  have hs02 := hs.apply 0 2
+  have hs03 := hs.apply 0 3
+  have hs12 := hs.apply 1 2
+  have hs13 := hs.apply 1 3
+  have hs23 := hs.apply 2 3
+  norm_num [lorentzTrace4, lorentzSquare4, Fin.sum_univ_four, lorentzSign4]
     at hr ht0 ht1 ht2 ht3 ⊢
   simp only [hs01, hs02, hs03, hs12, hs13, hs23] at hr ht0 ht1 ht2 ht3 ⊢
   nlinarith [hr, ht0, ht1, ht2, ht3]
@@ -133,16 +138,17 @@ theorem boundaryPartial_sub {f q : Pressure} {t : ℝ} {x : Vec}
     (hq : AnalyticAt ℝ (fun z : ℝ × Vec => q z.1 z.2) (t, x)) (a : Fin 4) :
     boundaryPartial (fun s y => f s y - q s y) a t x =
       boundaryPartial f a t x - boundaryPartial q a t x := by
-  rw [boundaryPartial_eq_joint (hf.sub hq), boundaryPartial_eq_joint hf,
-    boundaryPartial_eq_joint hq]
+  rw [boundaryPartial_eq_joint (f := fun s y => f s y - q s y) (hf.sub hq),
+    boundaryPartial_eq_joint (f := f) hf, boundaryPartial_eq_joint (f := q) hq]
   simp only [fderiv_fun_sub hf.differentiableAt hq.differentiableAt,
     ContinuousLinearMap.sub_apply]
 
 theorem boundaryPartial_const_mul {f : Pressure} {t : ℝ} {x : Vec}
     (hf : AnalyticAt ℝ (fun z : ℝ × Vec => f z.1 z.2) (t, x)) (c : ℝ) (a : Fin 4) :
     boundaryPartial (fun s y => c * f s y) a t x = c * boundaryPartial f a t x := by
-  rw [boundaryPartial_eq_joint (analyticAt_const.mul hf), boundaryPartial_eq_joint hf]
-  rw [fderiv_fun_mul differentiableAt_const hf.differentiableAt]
+  rw [boundaryPartial_eq_joint (f := fun s y => c * f s y) (analyticAt_const.mul hf),
+    boundaryPartial_eq_joint (f := f) hf]
+  rw [fderiv_fun_mul (differentiableAt_const c) hf.differentiableAt]
   simp
 
 theorem boundaryPartial_sum {n : ℕ} {f : Fin n → Pressure} {t : ℝ} {x : Vec}
@@ -153,15 +159,16 @@ theorem boundaryPartial_sum {n : ℕ} {f : Fin n → Pressure} {t : ℝ} {x : Ve
     apply Finset.analyticAt_fun_sum
     intro b hb
     exact hf b
-  rw [boundaryPartial_eq_joint ha]
+  rw [boundaryPartial_eq_joint (f := fun s y => ∑ b, f b s y) ha]
   rw [fderiv_fun_sum (fun b _ => (hf b).differentiableAt)]
   simp only [ContinuousLinearMap.sum_apply]
-  simp_rw [boundaryPartial_eq_joint (hf _)]
+  apply Finset.sum_congr rfl
+  intro b hb
+  exact (boundaryPartial_eq_joint (f := f b) (hf b) a).symm
 
 theorem lorentzTrace4_eq_sum (K : Tensor4) :
     lorentzTrace4 K = ∑ a : Fin 4, lorentzSign4 a * K a a := by
-  norm_num [lorentzTrace4, Fin.sum_univ_succ, lorentzSign4]
-  ring
+  norm_num [lorentzTrace4, Fin.sum_univ_four, lorentzSign4] <;> ring
 
 theorem analyticAt_boundaryTrace {K : BoundaryTensor} {t : ℝ} {x : Vec}
     (hK : AnalyticAt ℝ (fun z : ℝ × Vec => K z.1 z.2) (t, x)) :
@@ -176,11 +183,21 @@ theorem boundaryCodazzi_expanded {K : BoundaryTensor} {t : ℝ} {x : Vec}
       (∑ b : Fin 4, lorentzSign4 b * boundaryPartial (fun s y => K s y b a) b t x) -
       ∑ b : Fin 4, lorentzSign4 b * boundaryPartial (fun s y => K s y b b) a t x := by
   have ht := analyticAt_boundaryTrace hK
-  have hmul (s : ℝ) (y : Vec) (b : Fin 4) :
-      lorentzTrace4 (K s y) * eta4 b a = eta4 b a * lorentzTrace4 (K s y) := mul_comm _ _
+  have hd (b : Fin 4) :
+      boundaryPartial (fun s y => K s y b a - lorentzTrace4 (K s y) * eta4 b a) b t x =
+        boundaryPartial (fun s y => K s y b a) b t x -
+          eta4 b a * boundaryPartial (fun s y => lorentzTrace4 (K s y)) b t x := by
+    have he : (fun s y => K s y b a - lorentzTrace4 (K s y) * eta4 b a) =
+        (fun s y => K s y b a - eta4 b a * lorentzTrace4 (K s y)) := by
+      funext s y
+      ring
+    rw [he, boundaryPartial_sub
+      (f := fun s y => K s y b a)
+      (q := fun s y => eta4 b a * lorentzTrace4 (K s y))
+      (analyticAt_matrix_entry hK b a) (analyticAt_const.mul ht),
+      boundaryPartial_const_mul (f := fun s y => lorentzTrace4 (K s y)) ht]
   unfold boundaryCodazzi
-  simp_rw [hmul, boundaryPartial_sub (analyticAt_matrix_entry hK _ _) (analyticAt_const.mul ht),
-    boundaryPartial_const_mul ht]
+  simp_rw [hd]
   simp only [mul_sub, Finset.sum_sub_distrib]
   congr 1
   have htrace : (fun s y => lorentzTrace4 (K s y)) =
@@ -190,11 +207,15 @@ theorem boundaryCodazzi_expanded {K : BoundaryTensor} {t : ℝ} {x : Vec}
   have htder (c : Fin 4) :
       boundaryPartial (fun s y => lorentzTrace4 (K s y)) c t x =
         ∑ b : Fin 4, lorentzSign4 b * boundaryPartial (fun s y => K s y b b) c t x := by
-    rw [htrace, boundaryPartial_sum (fun b => analyticAt_const.mul
-      (analyticAt_matrix_entry hK b b))]
-    simp_rw [boundaryPartial_const_mul (analyticAt_matrix_entry hK _ _)]
+    rw [htrace, boundaryPartial_sum
+      (f := fun b s y => lorentzSign4 b * K s y b b)
+      (fun b => analyticAt_const.mul (analyticAt_matrix_entry hK b b))]
+    apply Finset.sum_congr rfl
+    intro b hb
+    exact boundaryPartial_const_mul (f := fun s y => K s y b b)
+      (analyticAt_matrix_entry hK b b) (lorentzSign4 b) c
   simp_rw [htder]
-  fin_cases a <;> norm_num [eta4, lorentzSign4, Fin.sum_univ_succ] <;> ring
+  fin_cases a <;> norm_num [eta4, lorentzSign4, Fin.sum_univ_four] <;> ring
 
 end
 end NSEGR.Assembly

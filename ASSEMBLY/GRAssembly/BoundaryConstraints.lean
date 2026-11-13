@@ -140,9 +140,9 @@ theorem gaussianVacuum_boundary_periodic {ρ t0 δ ε : ℝ} {g : Metric}
     exact congrArg (fun M : BulkMatrix => M a.succ b.succ) (hg.periodic r hr t ht x i)
   have hd := he.deriv_eq
   rw [bulkPartial_radial_restrict (analyticAt_matrix_entry
-      (hg.analytic _ (boundaryPoint_mem_collar hg ht (x + unitVector i))) _ _),
+      (hg.analytic _ (boundaryPoint_mem_collar hg ht (x + unitVector i))) a.succ b.succ),
     bulkPartial_radial_restrict (analyticAt_matrix_entry
-      (hg.analytic _ (boundaryPoint_mem_collar hg ht x)) _ _)] at hd
+      (hg.analytic _ (boundaryPoint_mem_collar hg ht x)) a.succ b.succ)] at hd
   change (1 / 2 : ℝ) * bulkPartial (fun z => g z a.succ b.succ) 0
       (bulkPoint 0 t (x + unitVector i)) =
     (1 / 2 : ℝ) * bulkPartial (fun z => g z a.succ b.succ) 0 (bulkPoint 0 t x)
@@ -187,6 +187,8 @@ theorem gaussianVacuum_boundary_hamiltonian {ρ t0 δ ε : ℝ} {g : Metric}
     (hg : GaussianVacuum ρ t0 δ ε g) {t : ℝ} (ht : t ∈ timeInterval t0 δ) (x : Vec) :
     boundaryHamiltonian (boundaryK g) t x = 0 := by
   have hz := boundaryPoint_mem_collar hg ht x
+  change lorentzSquare4 (gaussianSecondForm (metricTangentialBlock g) (bulkPoint 0 t x)) -
+    (lorentzTrace4 (gaussianSecondForm (metricTangentialBlock g) (bulkPoint 0 t x))) ^ 2 = 0
   exact gaussian_hamiltonian_flat (gaussianVacuum_block_analytic hg hz)
     (gaussianVacuum_block_unit_germ hg hz) (gaussianVacuum_block_flat hg ht x)
     (gaussianVacuum_boundary_symmetric hg ht x)

@@ -104,8 +104,18 @@ theorem gaussianGluingLaw_germ_of_literature
     hp.eventually hg.vacuum, hp.eventually (near_eta4_of_gaussianGerm hg),
     hb.eventually hg.induced, hb.eventually hg.boundary_match]
     with z ht ha hs hn hrr hrb hv hnear hi hm
-  simp only [metricOfJoint_jointMetric]
-  exact ⟨ht, ha, hs, hn, hrr, hrb, hv, hnear, fun _ => hi, fun _ => hm⟩
+  refine ⟨ht, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
+  · simpa only [metricOfJoint_jointMetric] using ha
+  · simpa only [metricOfJoint_jointMetric] using hs
+  · simpa only [metricOfJoint_jointMetric] using hn
+  · simpa only [metricOfJoint_jointMetric] using hrr
+  · simpa only [metricOfJoint_jointMetric] using hrb
+  · simpa only [metricOfJoint_jointMetric] using hv
+  · simpa only [metricOfJoint_jointMetric] using hnear
+  · intro _
+    simpa only [metricOfJoint_jointMetric] using hi
+  · intro _
+    simpa only [metricOfJoint_jointMetric] using hm
 
 theorem literatureGaussianGerm_of_gluingLaw
     {K : BoundaryTensor} {t0 δ : ℝ} {f : GaussianJoint → BulkMatrix} {x0 : Vec}

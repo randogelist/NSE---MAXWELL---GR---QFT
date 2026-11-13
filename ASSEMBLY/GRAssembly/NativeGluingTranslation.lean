@@ -44,6 +44,7 @@ theorem scalarCompletionUpper_spatial_sub (ψ : Pressure) (c : Vec) (t : ℝ) (x
     exact congrArg (fun L : Vec →L[ℝ] ℝ => L (unitVector i))
       (fderiv_comp_sub (𝕜 := ℝ) (f := scalarLocalTimeDerivative ψ t) (x := x) c)
   simp only [scalarCompletionUpper, hH, hD, hG]
+  rfl
 
 theorem conservedSourceUpper_periodic_sub {ν ρ : ℝ} {u : Velocity} {p : Pressure}
     {t : ℝ} (hu : SpatialPeriodic (u t)) (hp : SpatialPeriodic (p t))

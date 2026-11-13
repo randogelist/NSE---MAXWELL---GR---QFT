@@ -54,9 +54,9 @@ theorem boundaryAdmissible_beta_time {ρ t0 δ : ℝ} {K : BoundaryTensor}
       Fin.sum_univ_succ]
     <;> ring
   have hmix (i : Fin 3) :
-      (fun s y => K s y i.succ 0 - lorentzTrace4 (K s y) * eta4 i.succ 0) =
-        fun s y => K s y i.succ 0 := by
-    funext s y
+      (fun y => K t y i.succ 0 - lorentzTrace4 (K t y) * eta4 i.succ 0) =
+        fun y => K t y i.succ 0 := by
+    funext y
     simp [eta4, Fin.succ_ne_zero]
   have hs (i : Fin 3) : (fun y => K t y i.succ 0) =
       fun y => K t y 0 i.succ := by
@@ -69,9 +69,11 @@ theorem boundaryAdmissible_beta_time {ρ t0 δ : ℝ} {K : BoundaryTensor}
       ((boundaryAdmissible_raw_smooth hK ht).differentiable (by simp) x) _ i
   have hc := hK.momentum_constraint t ht x 0
   rw [boundaryCodazzi, Fin.sum_univ_succ, hdiag] at hc
-  simp only [hmix, boundaryPartial, Fin.cases_zero, Fin.cases_succ,
-    lorentzSign4, if_pos rfl, Fin.succ_ne_zero, if_false, one_mul,
-    deriv.neg, neg_mul, neg_neg, hs, hd] at hc
+  have hneg : deriv (fun s => -boundaryBeta K s x) t =
+      -deriv (fun s => boundaryBeta K s x) t := deriv.neg
+  simp only [boundaryPartial, Fin.cases_zero, Fin.cases_succ,
+    lorentzSign4, Fin.succ_ne_zero, ite_true, ite_false, one_mul,
+    hmix, hneg, neg_one_mul, neg_neg, hs, hd] at hc
   change scalarLocalTimeDerivative (boundaryBeta K) t x +
     divergence (boundaryRawVelocity K t) x = 0 at hc
   linarith
@@ -132,11 +134,12 @@ theorem boundaryAdmissible_rawVelocity_time {ρ t0 δ : ℝ} {K : BoundaryTensor
     rw [tensorDivergence_add A J x hAa hJa,
       tensorDivergence_isotropic f x hfa]
   have hg : gradient f x = gradient (fun y => K t y 0 0) x + gradient (boundaryBeta K t) x := by
+    have hd : HasFDerivAt f (fderiv ℝ (fun y => K t y 0 0) x +
+        fderiv ℝ (boundaryBeta K t) x) x := hka.hasFDerivAt.add hba.hasFDerivAt
     apply PiLp.ext
     intro i
-    change fderiv ℝ f x (unitVector i) = _
-    rw [fderiv_add hka hba]
-    rfl
+    simpa only [gradient, PiLp.toLp_apply, PiLp.add_apply, ContinuousLinearMap.add_apply] using
+      congrArg (fun L : Vec →L[ℝ] ℝ => L (unitVector i)) hd.fderiv
   have hflux (i j : Fin 3) :
       (fun y => K t y i.succ j.succ - lorentzTrace4 (K t y) * eta4 i.succ j.succ) =
         fun y => T y j i := by
@@ -151,13 +154,14 @@ theorem boundaryAdmissible_rawVelocity_time {ρ t0 δ : ℝ} {K : BoundaryTensor
       (fun s => K s x 0 j.succ - lorentzTrace4 (K s x) * eta4 0 j.succ) =
         fun s => boundaryRawVelocity K s x j := by
     funext s
-    simp [eta4, Fin.succ_ne_zero, Ne.symm (Fin.succ_ne_zero j), boundaryRawVelocity]
+    simp [eta4, Fin.succ_ne_zero, Ne.symm (Fin.succ_ne_zero j), boundaryRawVelocity,
+      spatialIndex4]
   apply PiLp.ext
   intro j
   have hc := hK.momentum_constraint t ht x j.succ
   rw [boundaryCodazzi, Fin.sum_univ_succ] at hc
   simp only [boundaryPartial, Fin.cases_zero, Fin.cases_succ, lorentzSign4,
-    if_pos rfl, Fin.succ_ne_zero, if_false, one_mul, htime, hflux] at hc
+    Fin.succ_ne_zero, ite_true, ite_false, one_mul, neg_one_mul, htime, hflux] at hc
   rw [velocity_coordinate_timeDerivative
     (boundaryAdmissible_raw_analytic hK (t, x) ht) j] at hc
   change -localTimeDerivative (boundaryRawVelocity K) t x j + tensorDivergence T x j = 0 at hc

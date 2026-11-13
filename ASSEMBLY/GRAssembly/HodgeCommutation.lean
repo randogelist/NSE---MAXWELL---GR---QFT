@@ -137,7 +137,8 @@ theorem iteratedFDeriv_apply_smooth_global (F : ℝ × Vec → ℝ)
   (ContinuousMultilinearMap.apply ℝ (fun _ : Fin n => ℝ × Vec) ℝ v).contDiff.comp
     (hF.iteratedFDeriv_right (by
       change ((⊤ : ℕ∞) : WithTop ℕ∞) + ((n : ℕ∞) : WithTop ℕ∞) ≤ (⊤ : ℕ∞)
-      rw [← WithTop.coe_add, WithTop.top_add]))
+      rw [← WithTop.coe_add]
+      exact WithTop.coe_le_coe.mpr le_top))
 
 theorem iteratedFDeriv_slice_periodic_global (F : ℝ × Vec → ℝ)
     (hp : ∀ t, SpatialPeriodic (fun x => F (t, x))) (n : ℕ)
@@ -166,7 +167,8 @@ theorem poissonInverse_iteratedFDeriv_commute_global (F : ℝ × Vec → ℝ)
   | succ n ih =>
       have hn : (∞ : WithTop ℕ∞) + (n : WithTop ℕ∞) ≤ ∞ := by
         change ((⊤ : ℕ∞) : WithTop ℕ∞) + ((n : ℕ∞) : WithTop ℕ∞) ≤ (⊤ : ℕ∞)
-        rw [← WithTop.coe_add, WithTop.top_add]
+        rw [← WithTop.coe_add]
+        exact WithTop.coe_le_coe.mpr le_top
       have hFn : ContDiff ℝ ∞ (iteratedFDeriv ℝ n F) := hF.iteratedFDeriv_right hn
       have hHn : ContDiff ℝ ∞ (iteratedFDeriv ℝ n H) := hH.iteratedFDeriv_right hn
       rw [(hHn.differentiable (by simp) z).iteratedFDeriv_succ_apply_left']
@@ -250,7 +252,8 @@ theorem scalarSpatialIterate_iteratedFDeriv_global (F : ℝ × Vec → ℝ)
       have hFn : ContDiff ℝ ∞ (iteratedFDeriv ℝ (n + m) F) :=
         hF.iteratedFDeriv_right (by
           change ((⊤ : ℕ∞) : WithTop ℕ∞) + (((n + m : ℕ) : ℕ∞) : WithTop ℕ∞) ≤ (⊤ : ℕ∞)
-          rw [← WithTop.coe_add, WithTop.top_add])
+          rw [← WithTop.coe_add]
+          exact WithTop.coe_le_coe.mpr le_top)
       have happ := iteratedFDeriv_apply_smooth_global F hF (n + m)
         (prependSpatialDirections j m v)
       change fderiv ℝ (fun y => iteratedFDeriv ℝ (n + m) F (t, y)
@@ -268,7 +271,8 @@ theorem prependSpatialDirections_norm_prod {n : ℕ} (j : Fin 3) (m : ℕ)
   | succ m ih =>
       have hu : ‖((0 : ℝ), unitVector j)‖ = 1 := by simp [Prod.norm_def, unitVector]
       change (∏ i : Fin (n + m + 1),
-        ‖Fin.cons (0, unitVector j) (prependSpatialDirections j m v) i‖) = _
+        ‖(Fin.cons ((0 : ℝ), unitVector j) (prependSpatialDirections j m v) :
+          Fin (n + m + 1) → ℝ × Vec) i‖) = _
       rw [Fin.prod_univ_succ]
       simpa only [Fin.cons_zero, Fin.cons_succ, hu, one_mul] using ih
 
