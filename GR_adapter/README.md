@@ -68,3 +68,17 @@ Cached native Lean 4.34.0-rc1 [run 43365946484](https://github.com/randogelist/N
 [Windows-safe standalone package](../Auxillary/GR/exports/GR_adapter_4.34.0-rc1.zip): extract both sibling folders and run `GR_adapter/run.cmd`. The package contains all project Lean files, pinned dependency configuration, the B-tier derivation and retained evidence. Dependency objects are restored by the cache runner; external compiler/dependency installation is required.
 
 The root is **CONDITIONAL_FORMAL_CLOSURE**. Scalar completion, radial extension, reconstruction, and the two remaining forward germ laws have no supplied inhabitants. `UNCONDITIONAL_CLOSURE` remains open.
+
+## Literature-chain construction
+
+The three precise source signatures are in `GRAdapter/LiteratureInputs.lean`.
+The native source-to-root target remains open; these signatures contain no
+project contract fields and have no native inhabitants.
+
+`UnitTorus`, `ScalarNormalForm`, `ScalarAnalytic`, `GaussianMetric`,
+`GermUniformity`, `FourierBridge`, `ReconstructionAlgebra`, and
+`ReconstructionCalculus` contain the explicit lower edges. Their exact scope
+and unresolved adapters are recorded in [GR_LITERATURE_CHAIN_A_TIER.txt](GR_LITERATURE_CHAIN_A_TIER.txt).
+Compilation and theorem-level audits of this source revision are pending.
+The literature derivation and input signatures are recorded in
+[the B-tier chain](Derivation/NSE_GR_MISSING_PIECES_LITERATURE_CHAIN_B_TIER.txt).

@@ -120,7 +120,8 @@ theorem boundary_eq_completedBoundary_of_zero_stress
         rw [hΔ]
         ring
       · rw [lowerTensor4_time_space]
-        have hη : eta4 0 j.succ = 0 := by simp [eta4]
+        have hη : eta4 0 j.succ = 0 := by
+          simp [eta4, (Fin.succ_ne_zero j).symm]
         rw [hη]
         change -(boundaryVelocity K t x j +
           -gradient (scalarLocalTimeDerivative (boundaryPotential K) t) x j) =

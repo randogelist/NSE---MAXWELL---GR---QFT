@@ -1,0 +1,66 @@
+GR_LITERATURE_CHAIN_A_TIER
+VERSION = 0.1.0
+MODE = A_TIER_DERIVATION
+STATUS = A_TIER_CANDIDATE
+ROOT_STATUS = OPEN
+LOCAL_LEAN_EXECUTIONS = 0
+NEW_GLOBAL_AXIOMS = 0
+COMPILER = Lean 4.34.0-rc1
+MATHLIB = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+BRANCH = codex/gr-adapter
+
+TARGET
+  forall ell : LiteratureInputs,
+  forall nu rho t0 : R, nu>0 -> rho!=0 ->
+    Nonempty (NSEgerm nu t0 equiv GRgerm nu rho t0).
+TARGET_DECLARATION = NOT_YET_CONSTRUCTED
+
+LITERATURE INPUTS
+  LI01 = LiteratureAnalyticCKInput
+  LI02 = LiteratureGaussianJetInput
+  LI03 = LiteratureSmoothFourierInput
+  Source signatures are actual analytic/function/derivative/curvature/integral
+  propositions. No axiom declaration and no native input inhabitant is supplied.
+  Source-field extraction theorems do not discharge any literature input.
+
+NATIVE CHAIN EDGES
+  ScalarAnalytic: actual scalarJetRHS analyticity at every noncharacteristic jet.
+  GermUniformity: compact-torus point germs -> full-slice metric germ equality.
+  UnitTorus: actual unit volume; periodic FTC; zero gradient/divergence means;
+    periodicity of actual cosine Poisson and Leray expressions.
+  ScalarNormalForm: exact finite scalar Hamiltonian expansion; noncharacteristic
+    coefficient; rational solver iff; specialization to actual completedBoundary.
+  GaussianMetric: native diag(1,H) operations/inverse; actual Christoffels;
+    boundaryK identification; LorentzianAt from an explicit 4D congruence.
+  FourierBridge: exact cosine/complex Fourier normalization; actual Poisson
+    series summability from LI03 plus smooth periodic data.
+  ReconstructionAlgebra: actual full tensor recovery under symmetry, div=0,
+    Delta q=beta-rho, w=u-grad(q_t), F=0; residual algebra from named identities.
+  ReconstructionCalculus: actual pressure gradient from ordinary differentiability;
+    residual assembly with Codazzi, Hodge-time and stress-divergence identities.
+
+REMAINING MATHEMATICAL-TO-NATIVE ADAPTERS
+  A. Apply CK to the actual scalar system; derive compatibility; periodic gluing;
+     constraints and recovery; inhabit ScalarBoundaryCompletionLaws.
+  B. Point-local Gaussian literature input -> one periodic analytic Lorentzian
+     collar with native matrix congruence; inhabit AnalyticRadialExtensionLaws.
+  C. Derive native Gaussian Ricci/Codazzi and analytic Fourier/Poisson/Leray
+     calculus on the supplied entire time interval; inhabit GeometricReconstructionLaws.
+  D. Complete scalar/radial uniqueness and pressure-gauge transport;
+     inhabit GermInverseLaws and substitute all four inhabitants into the root.
+
+EXISTING ROOT
+  NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS
+  remains conditional on c, r, h, q. An axiom audit does not discharge these
+  hypotheses. No new theorem solely from LiteratureInputs is claimed.
+
+SCOPE
+  Existing two-sided jointly analytic periodic NSE germs;
+  fixed-Gaussian marked vacuum GR5 with actual STF constitutive constraint;
+  nu>0, rho!=0. No arbitrary-data global smooth Fefferman-B theorem.
+
+REPLAY
+  Windows-safe export: GR_adapter\run.cmd
+  External Linux repository: bash GR_adapter/run.sh
+  Preserve compatible compiler, dependency and project caches.
+  Native Windows replay is a separate external verification from Linux CI.

@@ -16,6 +16,9 @@ open scoped BigOperators Matrix.Norms.Frobenius
 namespace NSEGR
 noncomputable section
 
+/-- The existing four-dimensional Lorentz coefficients, with an explicit matrix carrier. -/
+def eta4Matrix : Tensor4 := eta4
+
 /-- The exact matrix `diag(1,H)` in the fixed radial-first marking. -/
 def gaussianMatrix (H : Tensor4) : BulkMatrix := fun a b =>
   Fin.cases (Fin.cases (1 : ℝ) (fun _ : Fin 4 => 0) b)
@@ -92,7 +95,7 @@ theorem gaussianMatrix_inverse (A : Tensor4) (hA : IsUnit A.det) :
   · refine Fin.cases ?_ (fun j => ?_) b
     · norm_num [eta5, gaussianMatrix]
     · change (0 : ℝ) = eta5 0 j.succ
-      simp [eta5, Matrix.diagonal_apply]
+      exact (Matrix.diagonal_apply_ne _ (Ne.symm (Fin.succ_ne_zero j))).symm
   · refine Fin.cases ?_ (fun j => ?_) b
     · change (0 : ℝ) = eta5 i.succ 0
       simp [eta5, Matrix.diagonal_apply]
@@ -125,12 +128,14 @@ theorem inverseMetric_gaussian (h : Bulk → Tensor4) (z : Bulk)
 /-- Lifting an explicit tangential Lorentz factor is actual bulk congruence. -/
 theorem gaussianMetric_lorentzian_of_congruence
     (h : Bulk → Tensor4) (z : Bulk) (C : Tensor4)
-    (hC : IsUnit C.det) (hh : h z = C.transpose * (eta4 : Tensor4) * C) :
+    (hC : IsUnit C.det) (hh : h z = C.transpose * eta4Matrix * C) :
     LorentzianAt (gaussianMetric h) z := by
   refine ⟨gaussianMatrix C, gaussianMatrix_isUnit_det C hC, ?_⟩
   change gaussianMatrix (h z) = (gaussianMatrix C).transpose * eta5 * gaussianMatrix C
-  rw [hh, ← gaussianMatrix_transpose, ← gaussianMatrix_eta4,
-    gaussianMatrix_mul, gaussianMatrix_mul]
+  rw [hh, ← gaussianMatrix_transpose, ← gaussianMatrix_eta4]
+  change gaussianMatrix (C.transpose * eta4Matrix * C) =
+    gaussianMatrix C.transpose * gaussianMatrix eta4Matrix * gaussianMatrix C
+  rw [gaussianMatrix_mul, gaussianMatrix_mul]
 
 @[simp] theorem bulkPartial_gaussian_rr
     (h : Bulk → Tensor4) (i : Fin 5) (z : Bulk) :

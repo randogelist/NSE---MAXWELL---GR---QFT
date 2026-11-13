@@ -103,11 +103,25 @@ theorem scalar_hamiltonian_expansion (ρ : ℝ) (u : Fin 3 → ℝ)
       sourceHamiltonian4 (boundaryBlock ρ u A) + 2 * (ρ + trace3 Q) * s +
         4 * vectorDot3 u b + 2 * frobeniusInner3 A Q -
         2 * vectorSq3 b + frobeniusSq3 Q - (trace3 Q) ^ 2 := by
-  rw [scalarCompletedUpper_eq_block]
-  rw [sourceHamiltonian4_boundaryBlock]
-  rw [sourceHamiltonian4_boundaryBlock]
-  rw [vectorSq3_sub, trace3_scalarSpatialJet, frobeniusSq3_scalarSpatialJet]
-  ring
+  let M : Tensor3 := fun i j => A i j + Q i j + (s - trace3 Q) * identity3 i j
+  have htrM : trace3 M = trace3 A + trace3 Q + 3 * (s - trace3 Q) :=
+    trace3_scalarSpatialJet A Q s
+  have hsqM : frobeniusSq3 M =
+      frobeniusSq3 A + 2 * frobeniusInner3 A Q + frobeniusSq3 Q +
+        2 * (s - trace3 Q) * (trace3 A + trace3 Q) + 3 * (s - trace3 Q) ^ 2 :=
+    frobeniusSq3_scalarSpatialJet A Q s
+  calc
+    sourceHamiltonian4 (scalarCompletedUpper ρ u A Q b s) =
+        sourceHamiltonian4 (boundaryBlock (ρ + trace3 Q) (fun i => u i - b i) M) :=
+      congrArg sourceHamiltonian4 (scalarCompletedUpper_eq_block ρ u A Q b s)
+    _ = (ρ + trace3 Q) ^ 2 - 2 * vectorSq3 (fun i => u i - b i) + frobeniusSq3 M -
+        (-(ρ + trace3 Q) + trace3 M) ^ 2 / 3 :=
+      sourceHamiltonian4_boundaryBlock (ρ + trace3 Q) (fun i => u i - b i) M
+    _ = sourceHamiltonian4 (boundaryBlock ρ u A) + 2 * (ρ + trace3 Q) * s +
+        4 * vectorDot3 u b + 2 * frobeniusInner3 A Q -
+        2 * vectorSq3 b + frobeniusSq3 Q - (trace3 Q) ^ 2 := by
+      rw [htrM, hsqM, vectorSq3_sub, sourceHamiltonian4_boundaryBlock]
+      ring
 
 /-- The expansion remains exact after the native lowering of both indices. -/
 theorem scalar_hamiltonian_expansion_lowered (ρ : ℝ) (u : Fin 3 → ℝ)

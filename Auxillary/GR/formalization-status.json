@@ -52,5 +52,33 @@
     "lift_decode"
   ],
   "native_declarations_status": "A_TIER",
-  "unconditional_root_status": "OPEN"
+  "unconditional_root_status": "OPEN",
+  "literature_chain": {
+    "status": "A_TIER_CANDIDATE",
+    "inputs": [
+      "LiteratureAnalyticCKInput",
+      "LiteratureGaussianJetInput",
+      "LiteratureSmoothFourierInput"
+    ],
+    "input_native_inhabitants": "OPEN",
+    "target": "LiteratureInputs -> forall nu rho t0, 0 < nu -> rho != 0 -> ExactSectorEquivalence nu rho t0",
+    "target_native_theorem": "NOT_CONSTRUCTED",
+    "four_project_contract_inhabitants": "OPEN",
+    "proved_source_edges_pending_external_audit": [
+      "unit-cell measure and periodic FTC",
+      "exact scalar Hamiltonian normal form",
+      "Gaussian block inverse and Christoffels",
+      "exact cosine/Fourier normalization",
+      "Poisson summability from LI03",
+      "conditional full tensor reconstruction"
+    ],
+    "remaining": [
+      "scalar CK application, compatibility and periodic gluing",
+      "joint analytic Fourier parameter calculus and Poisson/Leray inversion",
+      "Gaussian Ricci/Codazzi transfer, collar assembly and Lorentz factor",
+      "derive all four project contracts and substitute into exact root"
+    ],
+    "local_lean_executions": 0,
+    "new_global_axioms": 0
+  }
 }

@@ -14,3 +14,6 @@ import GRAdapter.ScalarNormalForm
 import GRAdapter.GaussianMetric
 import GRAdapter.ReconstructionAlgebra
 import GRAdapter.FourierBridge
+import GRAdapter.ScalarAnalytic
+import GRAdapter.GermUniformity
+import GRAdapter.ReconstructionCalculus
