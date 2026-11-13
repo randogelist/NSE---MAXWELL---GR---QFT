@@ -1,4 +1,16 @@
-# Current matching layout certificate
+# Auxillary evidence location
+
+```text
+ARTIFACT_RELOCATION          = BYTE_EXACT
+LEAN_INPUTS_UNCHANGED        = 30 / 30
+PRIOR_CERTIFIED_SOURCE       = be8376a08573a7789e36b68c2bc48178aa6f53c3
+PRIOR_CERTIFIED_RUN          = 43345557147
+AUXILLARY_LAYOUT_VALIDATION = PENDING_CACHED_EXTERNAL_LINUX_RUN
+```
+
+Certificate subdirectories preserve their original artifact bytes and embedded source paths. The `Auxillary/` runner relocation has a separate pending external validation; the unchanged Lean proof sources retain the certificate below.
+
+# Matching unchanged proof-source certificate
 
 [linux-43345557147/](linux-43345557147/) contains all 65 original artifact files from [native Linux run 43345557147](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147).
 
@@ -12,7 +24,7 @@ FORMAL_STATUS = CONDITIONAL_FORMAL_CLOSURE
 HODGE_INHABITANT = NOT_SUPPLIED
 ```
 
-All new directional endpoints and the reduced root have only the approved foundational axioms. Historical manifests retain their original paths. The current source manifest records the new adapter and directional paths. The runner's CRLF checkout normalization for `run.cmd` is governed by `.gitattributes`; all Lean source matches are byte-exact.
+All new directional endpoints and the reduced root have only the approved foundational axioms. Historical manifests retain their original paths. The run 43345557147 source manifest records the adapter and directional source paths before the auxiliary-file relocation. The runner's CRLF checkout normalization for `run.cmd` is governed by `.gitattributes`; all Lean source matches are byte-exact.
 
 # External evidence after directory reorganization
 

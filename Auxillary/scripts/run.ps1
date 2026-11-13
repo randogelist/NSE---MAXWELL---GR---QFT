@@ -36,7 +36,7 @@ $ReverseSourceRoot = "B <-> Maxwell/<="
 $ProjectSourceRoots = @($AdapterSourceRoot, $ForwardSourceRoot, $ReverseSourceRoot)
 $ProjectRootSource = "$AdapterSourceRoot/NSEMaxwell.lean"
 $AuditSource = "$AdapterSourceRoot/NSEMaxwell/Audit.lean"
-$VerifierSource = "$AdapterSourceRoot/scripts/verify_audit.py"
+$VerifierSource = "Auxillary/scripts/verify_audit.py"
 $AggregateTargets = @("NSEMaxwell", "NSEMaxwellForward.Reduced", "NSEMaxwellReverse.Reduced")
 $ReportRoot = Join-Path $RepoRoot $ReportDirectory
 $null = New-Item -ItemType Directory -Path $ReportRoot -Force
@@ -164,8 +164,8 @@ try {
     $null = Get-Command "lake" -ErrorAction Stop
     $null = Get-Command "git" -ErrorAction Stop
     foreach ($Required in @(
-        $ProjectRootSource, $AuditSource, "audit-targets.txt",
-        "formalization-status.json", $VerifierSource, "lake-manifest.json",
+        $ProjectRootSource, $AuditSource, "Auxillary/audit-targets.txt",
+        "Auxillary/formalization-status.json", $VerifierSource, "lake-manifest.json",
         "$ForwardSourceRoot/NSEMaxwellForward.lean",
         "$ForwardSourceRoot/NSEMaxwellForward/Reduced.lean",
         "$ReverseSourceRoot/NSEMaxwellReverse.lean",
@@ -175,7 +175,7 @@ try {
             throw "Required input is absent: $Required"
         }
     }
-    $EntryPoint = if ($NativePlatform -eq "linux") { "run.sh" } else { "run.cmd" }
+    $EntryPoint = if ($NativePlatform -eq "linux") { "Auxillary/run.sh" } else { "Auxillary/run.cmd" }
     if (-not (Test-Path -LiteralPath $EntryPoint -PathType Leaf)) {
         throw "Required platform entry point is absent: $EntryPoint"
     }
@@ -272,8 +272,8 @@ try {
 
     $Evidence.stage = "CACHE"
     $CacheTargets = [Collections.Generic.HashSet[string]]::new()
-    if (Test-Path "cache-targets.txt") {
-        foreach ($Line in Get-Content "cache-targets.txt") {
+    if (Test-Path "Auxillary/cache-targets.txt") {
+        foreach ($Line in Get-Content "Auxillary/cache-targets.txt") {
             $Target = $Line.Trim()
             if ($Target -and -not $Target.StartsWith("#")) {
                 $null = $CacheTargets.Add($Target)
@@ -297,7 +297,7 @@ try {
     }
     $SortedTargets = @($CacheTargets | Sort-Object)
     if ($SortedTargets.Count -eq 0) {
-        throw "No Mathlib cache targets found; supply cache-targets.txt."
+        throw "No Mathlib cache targets found; supply Auxillary/cache-targets.txt."
     }
     foreach ($Target in $SortedTargets) {
         if ($Target -notmatch '^Mathlib(?:\.[A-Za-z0-9_]+)*$') {
@@ -395,13 +395,13 @@ try {
     }
     foreach ($Required in @(
         "lean-toolchain", "lake-manifest.json", $ProjectRootSource,
-        $AuditSource, "audit-targets.txt", "formalization-status.json",
-        "$AdapterSourceRoot/scripts/run.ps1", $VerifierSource, "run.cmd"
+        $AuditSource, "Auxillary/audit-targets.txt", "Auxillary/formalization-status.json",
+        "Auxillary/scripts/run.ps1", $VerifierSource, "Auxillary/run.cmd"
     )) {
         $null = $Inputs.Add($Required)
     }
     $null = $Inputs.Add($EntryPoint)
-    foreach ($Optional in @("lakefile.lean", "lakefile.toml", "cache-targets.txt")) {
+    foreach ($Optional in @("lakefile.lean", "lakefile.toml", "Auxillary/cache-targets.txt")) {
         if (Test-Path -LiteralPath $Optional -PathType Leaf) { $null = $Inputs.Add($Optional) }
     }
     $SourceFiles = @(
@@ -540,12 +540,12 @@ try {
         $VerifierSource,
         "--expected-platform", $NativePlatform,
         "--root", $RepoRoot,
-        "--targets", "audit-targets.txt",
+        "--targets", "Auxillary/audit-targets.txt",
         "--audit-source", $AuditSource,
         "--log", (Join-Path $ReportRoot "run-audit.log"),
         "--manifest", $ManifestPath,
         "--provenance", $ProvenancePath,
-        "--scope", "formalization-status.json",
+        "--scope", "Auxillary/formalization-status.json",
         "--output", (Join-Path $ReportRoot "audit-summary.json")
     )
     $null = Invoke-NativeLogged $PythonExecutable $VerifierArguments "audit-verifier.log"

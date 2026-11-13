@@ -23,10 +23,10 @@ NSEMaxwell.Classical.FeffermanB (ν : ℝ) : Prop :=
 | [NSEMaxwell/](NSEMaxwell/) | Shared derivative, periodic integration, mean, vorticity, and constitutive calculus |
 | [Endpoints/](Endpoints/) | Selected Mathlib/Methlib source copies and index |
 | [NSEMaxwell/Audit.lean](NSEMaxwell/Audit.lean) | Exact signature and theorem-level axiom audit commands |
-| [scripts/](scripts/) | External runner and evidence verifier |
-| [evidence/](evidence/) | Retained external compiler evidence |
 
 The module root remains `NSEMaxwell`; Lake maps it to this physical directory.
+
+External runners, verification infrastructure, and retained compiler evidence reside in [Auxillary/](../Auxillary/).
 
 ## Copied endpoint boundary
 
@@ -51,4 +51,4 @@ The directional base modules import `NSEMaxwell.AnalyticContracts`. Their separa
 
 ## Matching external certificate
 
-[Native Linux run 43345557147](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147): build PASS; 174/174 named audits PASS_STANDARD_ONLY; 30/30 Lean input hashes match the delivered source. [Audit summary](evidence/linux-43345557147/audit-summary.json). The conditional directions are A-tier; the Hodge inhabitant remains deferred.
+[Native Linux run 43345557147](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147): build PASS; 174/174 named audits PASS_STANDARD_ONLY; 30/30 Lean input hashes match the delivered source. [Audit summary](../Auxillary/evidence/linux-43345557147/audit-summary.json). The conditional directions are A-tier; the Hodge inhabitant remains deferred. Validation of the relocated auxiliary runner paths is pending a cached external native Linux run.

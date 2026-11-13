@@ -1,4 +1,35 @@
-CURRENT SOURCE-LAYOUT MIGRATION (2026-11-13)
+AUXILLARY INFRASTRUCTURE RELOCATION (2026-11-13)
+===============================================
+
+Entry point: Auxillary/run.sh
+Historical Windows entry point: Auxillary/run.cmd
+Runner: Auxillary/scripts/run.ps1
+Verifier: Auxillary/scripts/verify_audit.py
+Audit targets: Auxillary/audit-targets.txt
+Cache targets: Auxillary/cache-targets.txt
+Status: Auxillary/formalization-status.json
+Evidence: Auxillary/evidence/
+Workflow discovery: .github/workflows/lean-linux.yml
+Lake/compiler configuration: repository root, unchanged.
+
+LEAN_INPUTS_UNCHANGED = 30 / 30
+PRIOR_CERTIFIED_SOURCE = be8376a08573a7789e36b68c2bc48178aa6f53c3
+PRIOR_CERTIFIED_RUN = 43345557147
+AUXILLARY_LAYOUT_VALIDATION = PENDING_CACHED_EXTERNAL_LINUX_RUN
+LOCAL_LEAN_EXECUTIONS = 0
+
+Latest verified dependency fallback:
+  nse-deps-v2-Linux-X64-78b8e6dd5376bcb08d2c5af93549e74beae76ba7d0f24dc089ab851faa254f79
+Latest verified project fallback:
+  nse-project-v2-Linux-X64-78b8e6dd5376bcb08d2c5af93549e74beae76ba7d0f24dc089ab851faa254f79-f3c64b586dd589b35fbe9757b9e8e727d108313c48994542910f87312b72be76
+Provenance: successful native Linux run 43345557147, job 131623961132.
+
+Compiler/dependency/project caches remain preserved. Normal pinned-revision
+checks and Lake traces validate reuse. All 174 named theorem audits execute
+fresh. The exact theorem, hypotheses, and allowed axioms remain unchanged.
+Historical cache records below retain their original execution paths.
+
+PREVIOUS SOURCE-LAYOUT MIGRATION (2026-11-13)
 ===========================================
 
 Active module roots:

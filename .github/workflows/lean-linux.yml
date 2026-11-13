@@ -72,16 +72,17 @@ jobs:
             .lake/packages
             .lake/config
             .mathlib-download-cache
-          key: nse-deps-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'cache-targets.txt') }}
-          # Exact pinned predecessor cache, observed in Linux run 43337888436.
-          # The source-layout change updates Lake configuration, not dependency pins.
+          key: nse-deps-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}
+          # Exact pinned predecessor caches, observed in runs 43345557147 and 43337888436.
+          # The Auxillary relocation preserves dependency pins and all Lean sources.
           restore-keys: |
+            nse-deps-v2-Linux-X64-78b8e6dd5376bcb08d2c5af93549e74beae76ba7d0f24dc089ab851faa254f79
             nse-deps-v2-Linux-X64-61a962499c8eb2ab9217aea818efc9c8df3fc4c21642b7007e74a1a069a24416
 
       - name: Verify pinned dependencies and fetch missing official Linux cache objects
         id: dependencies
         shell: bash
-        run: bash run.sh -Phase Dependencies
+        run: bash Auxillary/run.sh -Phase Dependencies
 
       - name: Preserve verified dependencies before proof compilation
         if: steps.dependencies.outcome == 'success' && steps.deps-cache.outputs.cache-hit != 'true'
@@ -98,14 +99,15 @@ jobs:
         uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: .lake/build
-          key: nse-project-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'cache-targets.txt') }}-${{ hashFiles('Fefferman_B_adapter/**/*.lean', 'B <-> Maxwell/**/*.lean') }}
+          key: nse-project-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-${{ hashFiles('Fefferman_B_adapter/**/*.lean', 'B <-> Maxwell/**/*.lean') }}
           restore-keys: |
-            nse-project-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'cache-targets.txt') }}-
+            nse-project-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-
+            nse-project-v2-Linux-X64-78b8e6dd5376bcb08d2c5af93549e74beae76ba7d0f24dc089ab851faa254f79-f3c64b586dd589b35fbe9757b9e8e727d108313c48994542910f87312b72be76
             nse-project-v2-Linux-X64-61a962499c8eb2ab9217aea818efc9c8df3fc4c21642b7007e74a1a069a24416-fc4dca293fc153a8f267633a5b81c65f4a9fe682d0c7c79f3abe80d4a3b6c323
 
       - name: Compile and audit on native Linux
         shell: bash
-        run: bash run.sh -Phase BuildAudit
+        run: bash Auxillary/run.sh -Phase BuildAudit
 
       - name: Preserve matching compiler and theorem evidence
         if: always()

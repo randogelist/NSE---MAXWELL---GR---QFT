@@ -299,9 +299,9 @@ def verify(args: argparse.Namespace) -> dict[str, object]:
         "lean-toolchain", "lakefile.lean", "lake-manifest.json",
         "Fefferman_B_adapter/NSEMaxwell.lean",
         "Fefferman_B_adapter/NSEMaxwell/Audit.lean",
-        "audit-targets.txt", "formalization-status.json",
-        "Fefferman_B_adapter/scripts/run.ps1",
-        "Fefferman_B_adapter/scripts/verify_audit.py", "run.cmd",
+        "Auxillary/audit-targets.txt", "Auxillary/formalization-status.json",
+        "Auxillary/scripts/run.ps1",
+        "Auxillary/scripts/verify_audit.py", "Auxillary/run.cmd",
         "B <-> Maxwell/=>/NSEMaxwellForward.lean",
         "B <-> Maxwell/=>/NSEMaxwellForward/Reduced.lean",
         "B <-> Maxwell/<=/NSEMaxwellReverse.lean",
@@ -319,7 +319,7 @@ def verify(args: argparse.Namespace) -> dict[str, object]:
             for path in directory.rglob("*.lean") if path.is_file()
         )
     if expected_platform == "linux":
-        required.add("run.sh")
+        required.add("Auxillary/run.sh")
     for relative in sorted(required - paths_seen):
         manifest_errors.append(f"Source manifest omits required input: {relative}")
     errors.extend(manifest_errors)

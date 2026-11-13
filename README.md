@@ -4,23 +4,25 @@
 
 | Directory | Scope |
 |---|---|
-| [Fefferman_B_adapter/](Fefferman_B_adapter/) | Exact Lean statements, shared calculus, copied Mathlib/Methlib endpoints, compiler/audit infrastructure, retained evidence |
+| [Fefferman_B_adapter/](Fefferman_B_adapter/) | Exact Lean statements, shared calculus, copied Mathlib/Methlib endpoints |
 | [B <-> Maxwell/](B%20%3C-%3E%20Maxwell/) | Equivalence derivations and the two directional proof directories |
+| [Auxillary/](Auxillary/) | External runners, audit/cache targets, status, cache documentation, retained compiler evidence |
 | [B <-> Maxwell/=>/](B%20%3C-%3E%20Maxwell/%3D%3E/) | Fefferman B ⇒ constrained Maxwell: actual forward proof bodies |
 | [B <-> Maxwell/<=/](B%20%3C-%3E%20Maxwell/%3C%3D/) | Constrained Maxwell ⇒ Fefferman B: actual reverse proof bodies |
 
-The two mathematical top-level folders have the literal requested names. `.github/` contains GitHub Actions infrastructure. Root files provide Lake configuration, compiler selection, audit targets, status, and entry points.
+The three top-level content folders have the literal requested names. `.github/` retains GitHub Actions discovery. Root files retain Lake configuration, compiler selection, repository instructions, and Git metadata. Auxiliary entry points, target lists, status, and evidence reside in `Auxillary/`.
 
 ```text
 LAYOUT_PLATFORM             = LINUX / POSIX
-CURRENT_LAYOUT_VALIDATION   = PASS_CACHED_NATIVE_LINUX_BUILD_AND174_AUDITS
+PROOF_SOURCE_VALIDATION     = PASS_CACHED_NATIVE_LINUX_BUILD_AND174_AUDITS
+AUXILLARY_LAYOUT_VALIDATION = PENDING_CACHED_EXTERNAL_LINUX_RUN
 REGISTERED_AUDIT_TARGETS     = 174
 LOCAL_LEAN_EXECUTIONS        = 0
 HODGE_LEAN_INHABITANT        = NOT_SUPPLIED
 HODGE_B_TIER_DERIVATION      = COMPLETE
 ```
 
-Literal `<` and `>` directory names require a POSIX checkout. Active compiler: external native Linux Lean `4.34.0-rc1`. Historical Windows evidence and `run.cmd` remain recorded; native Windows checkout compatibility is not asserted for this literal layout.
+Literal `<` and `>` directory names require a POSIX checkout. Active compiler: external native Linux Lean `4.34.0-rc1`. Historical Windows evidence and `Auxillary/run.cmd` remain recorded; native Windows checkout compatibility is not asserted for this literal layout.
 
 ## Exact statement
 
@@ -85,7 +87,7 @@ The `.lean.txt` copies are reference sources. The active Mathlib implementation 
 ## Cached external validation
 
 ```bash
-bash run.sh
+bash Auxillary/run.sh
 ```
 
 ```text
@@ -100,10 +102,12 @@ Allowed axioms    = propext, Classical.choice, Quot.sound
 
 The freshness check and final build explicitly include both reduced direction modules. Source manifests cover all three source roots. No cache cleaning is performed.
 
-[formalization-status.json](formalization-status.json) records scope and evidence. [Retained evidence](Fefferman_B_adapter/evidence/) preserves prior compiler artifacts byte-for-byte; each certificate identifies its original source commit and layout.
+[formalization-status.json](Auxillary/formalization-status.json) records scope and evidence. [Retained evidence](Auxillary/evidence/) preserves prior compiler artifacts byte-for-byte; each certificate identifies its original source commit and layout.
 
-## Matching layout certificate
+## Matching proof-source certificate
 
 [Native Linux run 43345557147](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147) passed the reorganized build and all **174/174** named theorem audits. Certified proof-source commit: `be8376a08573a7789e36b68c2bc48178aa6f53c3`. All **30/30** Lean input hashes match the delivered sources. All four new directional declarations and the exact reduced root have only `propext`, `Classical.choice`, and `Quot.sound` in their axiom dependencies.
 
-[Permanent evidence](Fefferman_B_adapter/evidence/linux-43345557147/) preserves all 65 artifact files. Compiler, dependency, and project cache restorations are recorded in the run. Formal status: **CONDITIONAL_FORMAL_CLOSURE**; the `FourierHodgeLaws` premise remains explicit.
+[Permanent evidence](Auxillary/evidence/linux-43345557147/) preserves all 65 artifact files. Compiler, dependency, and project cache restorations are recorded in the run. Formal status: **CONDITIONAL_FORMAL_CLOSURE**; the `FourierHodgeLaws` premise remains explicit.
+
+The `Auxillary/` relocation preserves all 30 Lean source inputs byte-for-byte. Validation of the relocated runner paths is pending a cached external native Linux run; the certificate above identifies the unchanged proof sources and its original runner layout.

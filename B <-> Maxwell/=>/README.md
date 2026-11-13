@@ -88,7 +88,7 @@ ACTIVE_LEAN_HASH_MATCH = 30 / 30
 
 Both forward endpoints passed matching external compilation and named theorem-level axiom audits. Their axiom sets are contained in `{propext, Classical.choice, Quot.sound}`. The `PeriodicAnalyticLaws` and `FourierHodgeLaws` parameters remain explicit.
 
-[Audit summary](../../Fefferman_B_adapter/evidence/linux-43345557147/audit-summary.json) · [Source manifest](../../Fefferman_B_adapter/evidence/linux-43345557147/source-manifest.json) · [External run](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147)
+[Audit summary](../../Auxillary/evidence/linux-43345557147/audit-summary.json) · [Source manifest](../../Auxillary/evidence/linux-43345557147/source-manifest.json) · [External run](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147)
 
 ```text
 UNCONDITIONAL_LEAN_H_INHABITANT = NOT_SUPPLIED

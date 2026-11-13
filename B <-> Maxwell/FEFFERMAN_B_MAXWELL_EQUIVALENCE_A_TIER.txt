@@ -7,6 +7,7 @@ FORMAL_STATUS = CONDITIONAL_FORMAL_CLOSURE
 PRIOR_CONDITIONAL_ROOT = A_TIER_AT_ITS_RECORDED_SOURCE_COMMIT
 UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED
 LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+AUXILLARY_LAYOUT_VALIDATION = PENDING_CACHED_EXTERNAL_LINUX_RUN
 
 EXACT ROOT
 ----------
@@ -87,7 +88,7 @@ PRIOR EVIDENCE
 --------------
 Native Linux run 43336709607, source d241f2b700be66ab447cb1650770271e1b364b8a:
 170/170 named audits passed; original proof source and artifact hashes remain
-recorded in ../Fefferman_B_adapter/evidence/linux-43336709607/.
+recorded in ../Auxillary/evidence/linux-43336709607/.
 Those artifacts retain their original bytes and original source-layout paths.
 They are historical evidence. A matching new-layout certificate is recorded below.
 
@@ -106,7 +107,7 @@ Native Linux run: 43345557147
 Artifact: 14001701854
 Artifact SHA256: d33c336a8cef9758cdbf87f5b96ed9ad2dd6e5fdad84caf231b7b13e677b36ca
 Source-manifest SHA256: 60017409175d8b7570f39e8e0890ca38b76f99cddde5cde4db958233db464d0f
-Directory: ../Fefferman_B_adapter/evidence/linux-43345557147/
+Directory: ../Auxillary/evidence/linux-43345557147/
 Build: PASS
 Named theorem audits: 174/174 PASS_STANDARD_ONLY
 Project declarations: 170
@@ -126,3 +127,11 @@ normal pinned-revision checks and Lake traces validated reuse.
 The run.cmd Git blob uses LF; its .gitattributes checkout uses CRLF. That
 normalization matches the recorded run manifest. All 30 Lean source hashes
 match directly, without normalization.
+
+AUXILLARY RELOCATION
+--------------------
+External runner: ../Auxillary/run.sh
+Status registry: ../Auxillary/formalization-status.json
+All 30 Lean inputs remain byte-identical to the certified source above.
+Original evidence artifacts retain their bytes and embedded historical paths.
+The relocated runner paths require the pending cached external Linux validation.
