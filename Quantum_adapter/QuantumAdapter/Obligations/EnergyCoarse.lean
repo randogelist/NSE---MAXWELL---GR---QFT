@@ -10,11 +10,17 @@ namespace QuantumAdapter.Obligations
 noncomputable section
 open SingularClosure
 
+private theorem nonneg_fin3_entry_le (f : Fin 3 → ℝ)
+    (hf : ∀ i, 0 ≤ f i) (i : Fin 3) : f i ≤ ∑ j : Fin 3, f j := by
+  exact Finset.single_le_sum (fun j _ => hf j) (Finset.mem_univ i)
+
 theorem norm_synthesis_first_le (N : ℕ) (q : Phase N) (i : Fin 3) (x : Vec) :
     ‖synthesis (phaseDerivative N i q) x‖ ≤ gradientObservable q := by
   have h : ‖synthesis (phaseDerivative N i q) x‖^2 ≤ gradientSquare q x := by
     rw [synthesis_phaseDerivative]
-    exact Finset.single_le_sum (fun j hj => sq_nonneg _) (Finset.mem_univ i)
+    exact nonneg_fin3_entry_le
+      (fun j : Fin 3 => ‖coordinateDerivative (synthesis q) j x‖ ^ 2)
+      (fun j => sq_nonneg _) i
   have hs : ‖synthesis (phaseDerivative N i q) x‖ ≤ Real.sqrt (gradientSquare q x) :=
     (sq_le_sq₀ (norm_nonneg _) (Real.sqrt_nonneg _)).mp
       (by rwa [Real.sq_sqrt (Assembly.gradientSquare_nonneg N q x)])
@@ -26,28 +32,36 @@ theorem norm_synthesis_second_le (N : ℕ) (q : Phase N) (i j : Fin 3) (x : Vec)
       Real.sqrt (gradientSecondDensity N q x) := by
   apply (sq_le_sq₀ (norm_nonneg _) (Real.sqrt_nonneg _)).mp
   rw [Real.sq_sqrt (gradientSecondDensity_nonneg N q x)]
-  exact (Finset.single_le_sum (fun l hl => sq_nonneg _) (Finset.mem_univ j)).trans
-    (Finset.single_le_sum
-      (fun k hk => Finset.sum_nonneg (fun l hl => sq_nonneg _)) (Finset.mem_univ i))
+  let f : Fin 3 → Fin 3 → ℝ := fun a b =>
+    ‖synthesis (phaseDerivative N b (phaseDerivative N a q)) x‖ ^ 2
+  change f i j ≤ ∑ a : Fin 3, ∑ b : Fin 3, f a b
+  exact (nonneg_fin3_entry_le (f i) (fun b => sq_nonneg _) j).trans
+    (nonneg_fin3_entry_le (fun a => ∑ b : Fin 3, f a b)
+      (fun a => Finset.sum_nonneg (fun b _ => sq_nonneg _)) i)
 
 theorem norm_synthesis_third_le (N : ℕ) (q : Phase N) (i j k : Fin 3) (x : Vec) :
     ‖synthesis (phaseDerivative N k (phaseDerivative N j (phaseDerivative N i q))) x‖ ≤
       Real.sqrt (gradientThirdDensity N q x) := by
   apply (sq_le_sq₀ (norm_nonneg _) (Real.sqrt_nonneg _)).mp
   rw [Real.sq_sqrt (gradientThirdDensity_nonneg N q x)]
-  exact (Finset.single_le_sum (fun l hl => sq_nonneg _) (Finset.mem_univ k)).trans
-    ((Finset.single_le_sum
-      (fun l hl => Finset.sum_nonneg (fun m hm => sq_nonneg _)) (Finset.mem_univ j)).trans
-      (Finset.single_le_sum (fun l hl => Finset.sum_nonneg (fun m hm =>
-        Finset.sum_nonneg (fun n hn => sq_nonneg _))) (Finset.mem_univ i)))
+  let f : Fin 3 → Fin 3 → Fin 3 → ℝ := fun a b c =>
+    ‖synthesis (phaseDerivative N c (phaseDerivative N b (phaseDerivative N a q))) x‖ ^ 2
+  change f i j k ≤ ∑ a : Fin 3, ∑ b : Fin 3, ∑ c : Fin 3, f a b c
+  exact (nonneg_fin3_entry_le (f i j) (fun c => sq_nonneg _) k).trans
+    ((nonneg_fin3_entry_le (fun b => ∑ c : Fin 3, f i b c)
+      (fun b => Finset.sum_nonneg (fun c _ => sq_nonneg _)) j).trans
+      (nonneg_fin3_entry_le (fun a => ∑ b : Fin 3, ∑ c : Fin 3, f a b c)
+        (fun a => Finset.sum_nonneg (fun b _ =>
+          Finset.sum_nonneg (fun c _ => sq_nonneg _))) i))
 
 theorem sqrt_gradient_first_le_second (N : ℕ) (q : Phase N) (i : Fin 3) (x : Vec) :
     Real.sqrt (gradientSquare (phaseDerivative N i q) x) ≤
       Real.sqrt (gradientSecondDensity N q x) := by
   apply Real.sqrt_le_sqrt
   rw [gradientSecondDensity_eq_sum_gradientSquare]
-  exact Finset.single_le_sum
-    (fun j hj => Assembly.gradientSquare_nonneg N _ x) (Finset.mem_univ i)
+  exact nonneg_fin3_entry_le
+    (fun j : Fin 3 => gradientSquare (phaseDerivative N j q) x)
+    (fun j => Assembly.gradientSquare_nonneg N (phaseDerivative N j q) x) i
 
 theorem sqrt_gradient_second_le_third (N : ℕ) (q : Phase N) (i j : Fin 3) (x : Vec) :
     Real.sqrt (gradientSquare (phaseDerivative N j (phaseDerivative N i q)) x) ≤
@@ -57,10 +71,12 @@ theorem sqrt_gradient_second_le_third (N : ℕ) (q : Phase N) (i j : Fin 3) (x :
   have hs : gradientSquare (phaseDerivative N j (phaseDerivative N i q)) x ≤
       gradientSecondDensity N (phaseDerivative N i q) x := by
     rw [gradientSecondDensity_eq_sum_gradientSquare]
-    exact Finset.single_le_sum (fun l hl => Assembly.gradientSquare_nonneg N _ x)
-      (Finset.mem_univ j)
-  exact hs.trans (Finset.single_le_sum
-    (fun l hl => gradientSecondDensity_nonneg N _ x) (Finset.mem_univ i))
+    exact nonneg_fin3_entry_le
+      (fun l : Fin 3 => gradientSquare (phaseDerivative N l (phaseDerivative N i q)) x)
+      (fun l => Assembly.gradientSquare_nonneg N (phaseDerivative N l (phaseDerivative N i q)) x) j
+  exact hs.trans (nonneg_fin3_entry_le
+    (fun l : Fin 3 => gradientSecondDensity N (phaseDerivative N l q) x)
+    (fun l => gradientSecondDensity_nonneg N (phaseDerivative N l q) x) i)
 
 theorem norm_second_phase_sq_le (N : ℕ) (q : Phase N) (i j : Fin 3) :
     ‖phaseDerivative N j (phaseDerivative N i q)‖^2 ≤ frequencyEnergy 2 N q := by
@@ -68,9 +84,12 @@ theorem norm_second_phase_sq_le (N : ℕ) (q : Phase N) (i j : Fin 3) :
       ‖phaseDerivative N b (phaseDerivative N a q)‖^2) = frequencyEnergy 2 N q := by
     simp_rw [← frequencyEnergy_zero N, frequencyEnergy_derivative_sum]
   rw [← hs]
-  exact (Finset.single_le_sum (fun b hb => sq_nonneg _) (Finset.mem_univ j)).trans
-    (Finset.single_le_sum (fun a ha => Finset.sum_nonneg (fun b hb => sq_nonneg _))
-      (Finset.mem_univ i))
+  let f : Fin 3 → Fin 3 → ℝ := fun a b =>
+    ‖phaseDerivative N b (phaseDerivative N a q)‖ ^ 2
+  change f i j ≤ ∑ a : Fin 3, ∑ b : Fin 3, f a b
+  exact (nonneg_fin3_entry_le (f i) (fun b => sq_nonneg _) j).trans
+    (nonneg_fin3_entry_le (fun a => ∑ b : Fin 3, f a b)
+      (fun a => Finset.sum_nonneg (fun b _ => sq_nonneg _)) i)
 
 theorem norm_third_phase_sq_le (N : ℕ) (q : Phase N) (i j k : Fin 3) :
     ‖phaseDerivative N k (phaseDerivative N j (phaseDerivative N i q))‖^2 ≤
@@ -80,11 +99,15 @@ theorem norm_third_phase_sq_le (N : ℕ) (q : Phase N) (i j k : Fin 3) :
         frequencyEnergy 3 N q := by
     simp_rw [← frequencyEnergy_zero N, frequencyEnergy_derivative_sum]
   rw [← hs]
-  exact (Finset.single_le_sum (fun c hc => sq_nonneg _) (Finset.mem_univ k)).trans
-    ((Finset.single_le_sum (fun b hb => Finset.sum_nonneg (fun c hc => sq_nonneg _))
-      (Finset.mem_univ j)).trans (Finset.single_le_sum (fun a ha =>
-        Finset.sum_nonneg (fun b hb => Finset.sum_nonneg (fun c hc => sq_nonneg _)))
-          (Finset.mem_univ i)))
+  let f : Fin 3 → Fin 3 → Fin 3 → ℝ := fun a b c =>
+    ‖phaseDerivative N c (phaseDerivative N b (phaseDerivative N a q))‖ ^ 2
+  change f i j k ≤ ∑ a : Fin 3, ∑ b : Fin 3, ∑ c : Fin 3, f a b c
+  exact (nonneg_fin3_entry_le (f i j) (fun c => sq_nonneg _) k).trans
+    ((nonneg_fin3_entry_le (fun b => ∑ c : Fin 3, f i b c)
+      (fun b => Finset.sum_nonneg (fun c _ => sq_nonneg _)) j).trans
+      (nonneg_fin3_entry_le (fun a => ∑ b : Fin 3, ∑ c : Fin 3, f a b c)
+        (fun a => Finset.sum_nonneg (fun b _ =>
+          Finset.sum_nonneg (fun c _ => sq_nonneg _))) i))
 
 theorem trilinear_le_of_square_density (N : ℕ) (z a b : Phase N) (G : ℝ)
     (H : Vec → ℝ) (hG : 0 ≤ G) (hH : Continuous H) (hH0 : ∀ x, 0 ≤ H x)

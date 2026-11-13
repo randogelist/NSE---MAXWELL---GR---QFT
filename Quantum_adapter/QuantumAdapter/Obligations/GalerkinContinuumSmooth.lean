@@ -141,7 +141,8 @@ theorem fourierJetTerm_hasFDerivWithinAt
     (ContinuousLinearMap.fst ℝ ℝ Vec).hasFDerivAt.hasFDerivWithinAt
     (fun y hy => hy)
   have hx := (fourierCharacter_hasFDerivAt k z.2).comp_hasFDerivWithinAt z
-    (ContinuousLinearMap.snd ℝ ℝ Vec).hasFDerivAt.hasFDerivWithinAt
+    ((ContinuousLinearMap.snd ℝ ℝ Vec).hasFDerivAt.hasFDerivWithinAt
+      (s := forwardSpacetime))
   have h := hx.mul (ht.const_mul (fourierWordSymbol a.spatial k))
   convert! h using 1
   · rfl
@@ -245,7 +246,8 @@ theorem smoothFourierSynthesis_timeTower_contDiffOn
   have hs := Complex.reCLM.contDiff.comp_contDiffOn
     (fourierJetSynthesis_contDiffOn hd hb ⟨n, [], i⟩)
   simpa only [smoothFourierSynthesis, fourierJetSynthesis, fourierJetTerm,
-    fourierWordSymbol_nil, one_mul, scalarFourierSeries, Function.comp_apply] using! hs
+    fourierWordSymbol_nil, one_mul, scalarFourierSeries, Function.comp_def,
+    Complex.reCLM_apply] using! hs
 
 /-- The same summed derivative on the whole forward halfspace, localized only in time. -/
 theorem fourierJetSynthesis_hasFDerivWithinAt
@@ -257,8 +259,8 @@ theorem fourierJetSynthesis_hasFDerivWithinAt
       forwardSpacetime z := by
   have hT : 0 < z.1 + 1 := by change 0 ≤ z.1 at hz; linarith
   have hzT : z.1 < z.1 + 1 := by linarith
-  apply (fourierJetSynthesis_hasFDerivWithinAt_slab hd hb a (z.1 + 1) hT z ⟨hz, hzT⟩).
-    mono_of_mem_nhdsWithin
+  apply (fourierJetSynthesis_hasFDerivWithinAt_slab hd hb a (z.1 + 1) hT z
+    ⟨hz, hzT⟩).mono_of_mem_nhdsWithin
   exact inter_mem self_mem_nhdsWithin
     (mem_nhdsWithin_of_mem_nhds ((isOpen_lt continuous_fst continuous_const).mem_nhds hzT))
 
@@ -269,9 +271,10 @@ theorem fourierJetSynthesis_hasDerivWithinAt_time
     HasDerivWithinAt (fun s => fourierJetSynthesis d a (s, x))
       (fourierJetSynthesis d (fourierJetStep none a) (t, x)) (Ici (0 : ℝ)) t := by
   have hj := fourierJetSynthesis_hasFDerivWithinAt hd hb a (t, x) ht
-  have hi := (hasFDerivAt_id t).prodMk (hasFDerivAt_const x t)
-  have hc := hj.comp t hi.hasFDerivWithinAt (fun s hs => hs)
-  simpa [Function.comp_def, Fintype.sum_option, spacetimeCoordinate] using! hc.hasDerivWithinAt
+  have hi : HasDerivAt (fun s : ℝ => (s, x)) (1, 0) t :=
+    (hasDerivAt_id t).prodMk (hasDerivAt_const t x)
+  have hc := hj.comp_hasDerivWithinAt t hi.hasDerivWithinAt (fun s hs => hs)
+  simpa [Function.comp_def, Fintype.sum_option, spacetimeCoordinate] using! hc
 
 /-- The literal right-time derivative of the synthesized field is the next tower level. -/
 theorem smoothFourierSynthesis_timeTower_hasDerivWithinAt
@@ -289,10 +292,8 @@ theorem smoothFourierSynthesis_timeTower_hasDerivWithinAt
       (smoothFourierSynthesis (d (n + 1) t) x i) (Ici (0 : ℝ)) t := by
     simpa only [smoothFourierSynthesis, fourierJetSynthesis, fourierJetTerm,
       fourierJetStep, fourierWordSymbol_nil, one_mul, scalarFourierSeries,
-      Complex.reCLM_apply, Function.comp_apply] using! hr
-  convert! hr'.hasFDerivWithinAt using 1
-  ext r
-  simp
+      Complex.reCLM_apply, Function.comp_def] using! hr
+  convert! hr'.hasFDerivWithinAt using 1 <;> ext r <;> simp
 
 theorem timeDerivative_smoothFourierSynthesis_timeTower
     {d : ℕ → ℝ → FourierCoeff} (hd : FourierTimeTowerDerivative d)

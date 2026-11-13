@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""NON-PROMOTING external source elaboration; never emits project object files."""
+"""NON-PROMOTING external elaboration; the concatenation emits no object files."""
 from __future__ import annotations
 import argparse
 import hashlib

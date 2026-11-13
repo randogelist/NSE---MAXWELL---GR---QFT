@@ -81,6 +81,6 @@ The separate diagnostic workflow elaborates a temporary concatenation of
 original candidate bodies with explicit per-file scopes and a source-line
 map. Internal imports are removed; no admissions, axioms, or stub bodies are
 inserted. Ordinary Lean error recovery may produce cascading diagnostics.
-These results never establish A_TIER and never emit project object files.
+These results never establish A_TIER; the concatenated diagnostic emits no object files.
 Its timeout applies only to the independent diagnostic process group.
 No local Lean execution is part of the preparation workflow.

@@ -13,6 +13,7 @@ bound. The residual convergence is an explicitly separate derived edge.
 
 set_option autoImplicit false
 set_option Elab.async true
+set_option backward.isDefEq.respectTransparency false
 
 open Set Filter
 open scoped BigOperators Topology ContDiff
@@ -101,9 +102,11 @@ theorem galerkinBoundAt_of_reference_residual_bound
   have hzero (N : ℕ) : E N 0 = 0 := referenceError_sobolevEnergy_initial F h ha 3 N
   have hestimate (N : ℕ) (t : ℝ) (ht : t ∈ Ico (0 : ℝ) T)
       (he : E N t ≤ 1) : referenceErrorRate F h ha N t ≤ A * E N t + δ N := by
+    change referenceErrorRate F h ha N t ≤
+      (referenceErrorGrowth ν R + 1) * sobolevEnergy 3 N (referenceError F h ha N t) + δ N
     exact (referenceErrorRate_le hν F h ha N t R ht.1 he
       (href N t ht.1 ht.2.le)).trans
-      (add_le_add_left (hres N t ht.1 ht.2.le) _)
+      (add_le_add le_rfl (hres N t ht.1 ht.2.le))
   obtain ⟨K, hK⟩ := stopped_energy_uniform_small E (referenceErrorRate F h ha)
     A T δ hA hcont hder hzero hestimate hδ 1 zero_lt_one
   apply galerkinBoundAt_of_reference_error_tail F h ha T K (Real.sqrt R) 1
@@ -112,7 +115,7 @@ theorem galerkinBoundAt_of_reference_residual_bound
     rw [Real.sq_sqrt hR]
     simpa only [sobolevEnergy_three] using href N t ht htT
   · intro N hN t ht htT
-    simpa only [one_pow, sobolevEnergy_three] using hK N hN t ⟨ht, htT⟩
+    simpa only [E, one_pow, sobolevEnergy_three] using hK N hN t ⟨ht, htT⟩
 
 end
 end QuantumAdapter.Obligations

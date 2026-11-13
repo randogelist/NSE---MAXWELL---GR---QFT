@@ -31,7 +31,7 @@ theorem torusSobolev_norm_sq_eq_tsum_density (s : ℕ) (c : TorusSobolev s) :
 /-- The full smooth coefficient norm has the same explicit majorant as its finite cutoffs. -/
 theorem smoothDatumSobolev_norm_sq_le (s : ℕ) (a : Field)
     (ha : ContDiff ℝ ∞ a) (hp : SpatialPeriodic a) :
-    ‖(⟨datumFourierCoeff a, SMOOTH_DATUM_MEM_TORUS_SOBOLEV s a ha hp⟩ : TorusSobolev s)‖ ^ 2 ≤
+    ‖smoothDatumSobolev s a ha hp‖ ^ 2 ≤
       initialSobolevMajorant s a := by
   rw [torusSobolev_norm_sq_eq_tsum_density]
   calc
@@ -103,8 +103,7 @@ theorem retained_weight_tenth_sum_le (N : ℕ) (hN : 1 ≤ N) :
       simpa only [mul_pow, ← pow_mul] using hpow
     have hcancel : torusSobolevWeight k ^ 14 * (torusSobolevWeight k)⁻¹ ^ 4 =
         torusSobolevWeight k ^ 10 := by
-      field_simp [(torusSobolevWeight_pos k).ne']
-      ring
+      field_simp [(torusSobolevWeight_pos k).ne'] <;> ring
     rw [← hcancel]
     exact mul_le_mul_of_nonneg_right h14 (by positivity)
   have hs : (∑ k ∈ fullModes N, (torusSobolevWeight k)⁻¹ ^ 4) ≤ latticeSobolevConstant := by

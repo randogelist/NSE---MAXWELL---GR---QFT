@@ -54,6 +54,7 @@ theorem SmoothVelocity.convection {u : Velocity} (h : SmoothVelocity u) :
       (forwardSpatialDerivative_smooth h j)
   apply hsum.congr
   intro z hz
+  change SingularClosure.convection (u z.1) z.2 = _
   rw [convection_eq_sum_coordinateDerivative]
   apply Finset.sum_congr rfl
   intro j hj
@@ -106,7 +107,8 @@ theorem physicalPressureTimeTower_bounds {u : Velocity} (h : SmoothVelocity u)
     calc
       _ ≤ torusSobolevWeight ki.1 ^ m *
           (∑ j : Fin 3, ‖datumFourierCoeff (physicalTimeJet n u t) ki.1 j‖) :=
-        mul_le_mul_of_nonneg_left (pressureFromTransport_norm_le _ _) (by positivity)
+        mul_le_mul_of_nonneg_left (pressureFromTransport_norm_le _ _)
+          (pow_nonneg (torusSobolevWeight_pos ki.1).le m)
       _ = ∑ j : Fin 3, torusSobolevWeight ki.1 ^ m *
           ‖datumFourierCoeff (physicalTimeJet n u t) ki.1 j‖ := Finset.mul_sum ..
       _ ≤ ∑ _j : Fin 3, C * (torusSobolevWeight ki.1)⁻¹ ^ 2 :=
@@ -125,10 +127,10 @@ theorem infiniteTransportPressure_joint_smooth {u : Velocity} (h : SmoothVelocit
   have hs := Complex.reCLM.contDiff.comp_contDiffOn
     (fourierJetSynthesis_contDiffOn (physicalPressureTimeTower_derivative h)
       (physicalPressureTimeTower_bounds h hp) ⟨0, [], 0⟩)
-  simpa only [fourierJetSynthesis, fourierJetTerm, fourierWordSymbol_nil,
+  simpa only [SmoothPressure, fourierJetSynthesis, fourierJetTerm, fourierWordSymbol_nil,
     physicalPressureTimeTower, physicalTimeJet, one_mul, infiniteTransportPressure,
     realFourierSeries, scalarFourierSeries, infinitePressureCoefficient,
-    Function.comp_apply] using! hs
+    Function.comp_def, Complex.reCLM_apply] using! hs
 
 def physicalConvectionPressure (u : Velocity) : Pressure :=
   fun t => infiniteTransportPressure (datumFourierCoeff (SingularClosure.convection (u t)))

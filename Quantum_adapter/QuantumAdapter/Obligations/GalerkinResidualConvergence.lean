@@ -12,6 +12,8 @@ bounds every cutoff and every time in the finite interval.
 -/
 set_option autoImplicit false
 set_option Elab.async true
+set_option maxHeartbeats 800000
+set_option backward.isDefEq.respectTransparency false
 open Set Filter
 open scoped BigOperators Topology ContDiff
 namespace QuantumAdapter.Obligations
@@ -77,7 +79,14 @@ theorem referenceResidual_h3_inverse_square_bound (h : NSSolution ν a u p)
       referenceResidual_h3_le_h0_tail h N t ht
     _ ≤ 1728 * C0 * (((N : ℝ)⁻¹) ^ 16 * C8) *
         ((1 + 4 * Real.pi ^ 2) ^ 7 * (N : ℝ) ^ 14 * latticeSobolevConstant) := by
-      gcongr <;> assumption
+      have hm : 1728 * ‖referenceSobolevAt h 0 t ht‖ ^ 2 *
+          ‖phaseSobolev 0 N (referenceProjection h N t) - referenceSobolevAt h 0 t ht‖ ^ 2 ≤
+          1728 * C0 * (((N : ℝ)⁻¹) ^ 16 * C8) :=
+        mul_le_mul (mul_le_mul_of_nonneg_left h0 (by norm_num)) htai
+          (sq_nonneg _) (mul_nonneg (by norm_num) hC0)
+      exact mul_le_mul hm hfreq
+        (Finset.sum_nonneg (fun k hk => pow_nonneg (torusSobolevWeight_pos k).le _))
+        (mul_nonneg (mul_nonneg (by norm_num) hC0) (mul_nonneg (by positivity) hC8))
     _ = _ := by
       field_simp [hNr.ne']
       ring
@@ -100,7 +109,7 @@ theorem NSSolution.referenceResidual_vanishes_uniformly (h : NSSolution ν a u p
   by_cases hN : N = 0
   · subst N
     rw [referenceResidualPhase_zero_cutoff, sobolevEnergy_zero]
-    simp only [δ, Nat.cast_zero, inv_zero, zero_pow (by norm_num : 2 ≠ 0), mul_zero]
+    simp only [δ, Nat.cast_zero, inv_zero, zero_pow (by norm_num : 2 ≠ 0), mul_zero, le_refl]
   · exact referenceResidual_h3_inverse_square_bound h N (by omega) t ht C0 C8
       hC0 hC8 (hb0 t ht htT) (hb8 t ht htT)
 

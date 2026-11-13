@@ -64,7 +64,8 @@ theorem orderedPairing_two_convection_le (N : ℕ) (q : Phase N) :
       27 * gradientObservable q * frequencyEnergy 2 N q := by
   have h := Finset.sum_le_sum (s := Finset.univ) (fun i hi =>
     Finset.sum_le_sum (s := Finset.univ) (fun j hj => second_commutator_bound N q i j))
-  simp only [Finset.sum_const, Finset.card_univ, Fintype.card_fin, nsmul_eq_mul] at h
+  norm_num only [Finset.sum_const, Finset.card_univ, Fintype.card_fin, nsmul_eq_mul,
+    Nat.cast_ofNat] at h
   simpa only [orderedPairing] using (show
     (∑ i : Fin 3, ∑ j : Fin 3, inner ℝ (phaseDerivative N j (phaseDerivative N i q))
       (phaseDerivative N j (phaseDerivative N i (bilinearConvection N q q)))) ≤
@@ -76,7 +77,8 @@ theorem orderedPairing_three_convection_le (N : ℕ) (q : Phase N) :
   have h := Finset.sum_le_sum (s := Finset.univ) (fun i hi =>
     Finset.sum_le_sum (s := Finset.univ) (fun j hj =>
       Finset.sum_le_sum (s := Finset.univ) (fun k hk => third_commutator_bound N q i j k)))
-  simp only [Finset.sum_const, Finset.card_univ, Fintype.card_fin, nsmul_eq_mul] at h
+  norm_num only [Finset.sum_const, Finset.card_univ, Fintype.card_fin, nsmul_eq_mul,
+    Nat.cast_ofNat] at h
   simp only [orderedPairing]
   nlinarith [h]
 

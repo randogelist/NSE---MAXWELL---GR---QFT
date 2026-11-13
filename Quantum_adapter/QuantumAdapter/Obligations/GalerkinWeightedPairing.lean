@@ -53,7 +53,6 @@ theorem sobolevWeighted_inner_bilinearConvection (s N : ℕ)
       (phaseCoeff_solenoidal e k))
   simp only [Complex.re_sum] at hp
   rw [hp]
-  ring
 
 end
 end QuantumAdapter.Obligations

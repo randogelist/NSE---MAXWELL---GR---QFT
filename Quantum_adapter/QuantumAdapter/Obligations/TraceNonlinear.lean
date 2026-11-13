@@ -37,13 +37,17 @@ theorem drift_zero_viscosity_fderiv_mean_orthogonal
     (N : ℕ) (m : Vec) (h : Phase N) :
     inner ℝ h (fderiv ℝ (drift 0 N) (meanPhase N m) h) = 0 := by
   rw [drift_zero_viscosity_fderiv_apply]
-  apply quadratic_energy_linearization_orthogonal (bilinearConvectionCLM N)
-  · intro z
+  have he : ∀ z : Phase N, inner ℝ z (bilinearConvectionCLM N z z) = 0 := by
+    intro z
     simpa only [bilinearConvectionCLM_apply, bilinearConvection_self] using
       inner_self_drift_zero N z
-  · intro z
+  have hm : ∀ z : Phase N, inner ℝ (meanPhase N m) (bilinearConvectionCLM N z z) = 0 := by
+    intro z
     simpa only [bilinearConvectionCLM_apply, bilinearConvection_self] using
       inner_mean_drift_zero 0 N m z
+  simpa only [bilinearConvectionCLM_apply] using
+    quadratic_energy_linearization_orthogonal (bilinearConvectionCLM N)
+      he (meanPhase N m) hm h
 
 theorem driftDivergence_zero_viscosity_mean (N : ℕ) (m : Vec) :
     driftDivergence 0 N (meanPhase N m) = 0 := by

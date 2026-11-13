@@ -11,6 +11,7 @@ reference H3 bound, independently of the Galerkin cutoff.
 
 set_option autoImplicit false
 set_option Elab.async true
+set_option backward.isDefEq.respectTransparency false
 
 open scoped BigOperators
 
@@ -25,8 +26,8 @@ theorem drift_reference_error_expansion (ν : ℝ) (N : ℕ) (e v : Phase N) :
     drift ν N (e + v) - drift ν N v =
       bilinearConvection N e e + bilinearConvection N e v + bilinearConvection N v e -
         ν • phaseLaplacian N e := by
-  rw [drift_eq_inviscid_sub_laplacian, drift_eq_inviscid_sub_laplacian,
-    ← bilinearConvection_self, ← bilinearConvection_self,
+  rw [drift_eq_inviscid_sub_laplacian ν N (e + v), drift_eq_inviscid_sub_laplacian ν N v,
+    ← bilinearConvection_self N (e + v), ← bilinearConvection_self N v,
     bilinearConvection_add_left, bilinearConvection_add_right,
     bilinearConvection_add_right, map_add, smul_add]
   abel
@@ -67,9 +68,9 @@ theorem weighted_bilinear_h3_rate_le (ν : ℝ) (hν : 0 < ν)
       rw [hcoef]
       have hfirst : 3 * (ν / 9) = ν / 3 := by ring
       rw [hfirst]
-      exact add_le_add_left
-        (mul_le_mul_of_nonneg_left henergy
-          (div_nonneg (mul_nonneg (by norm_num) latticeSobolevConstant_pos.le) hν.le)) _
+      have hK : 0 ≤ 10368 * latticeSobolevConstant / ν :=
+        div_nonneg (mul_nonneg (by norm_num) latticeSobolevConstant_pos.le) hν.le
+      exact add_le_add le_rfl (mul_le_mul_of_nonneg_left henergy hK)
 
 /-- Coefficient for the stopped native reference-error estimate. -/
 def referenceErrorGrowth (ν R : ℝ) : ℝ :=

@@ -16,6 +16,7 @@ Hilbert-space identity, including the one-sided initial derivative.
 
 set_option autoImplicit false
 set_option Elab.async true
+set_option backward.isDefEq.respectTransparency false
 
 open Set Filter
 open scoped BigOperators Topology ContDiff
@@ -111,7 +112,9 @@ theorem referenceResidualPhase_coeff (h : NSSolution ν a u p) (N : ℕ)
         projectedTransportCoefficient k i (referenceSobolevAt h 0 t ht)
           (referenceSobolevAt h 0 t ht)
       else 0 := by
-  rw [referenceResidualPhase, phaseCoeff_sub, referenceDerivativePhase_coeff,
+  rw [referenceResidualPhase, phaseCoeff_sub]
+  simp only [Pi.sub_apply]
+  rw [referenceDerivativePhase_coeff,
     phaseCoeff_drift_eq_projectedTransport]
   by_cases hk : k ∈ fullModes N
   · rw [if_pos hk, if_pos hk, if_pos hk,
@@ -128,10 +131,13 @@ theorem referenceError_hasDerivWithinAt (F : PhaseFlow ν) (h : NSSolution ν a 
         drift ν N (referenceProjection h N t) - referenceResidualPhase h N t ht) (Ici 0) t := by
   have hd := (F.orbit_derivative N (initialPhaseData N a ha) t).hasDerivWithinAt.sub
     (referenceProjection_hasDerivWithinAt h N t ht)
-  convert hd using 1
-  · rfl
-  · unfold referenceResidualPhase
+  have hr : drift ν N (F.map N t (initialPhaseData N a ha)) -
+      drift ν N (referenceProjection h N t) - referenceResidualPhase h N t ht =
+      drift ν N (F.map N t (initialPhaseData N a ha)) - referenceDerivativePhase h N t ht := by
+    unfold referenceResidualPhase
     abel
+  rw [hr]
+  simpa only [referenceError, Pi.sub_apply] using! hd
 
 /-- Exact Hs error-energy differentiation in the finite constrained Hilbert space. -/
 theorem referenceError_sobolevEnergy_hasDerivWithinAt (F : PhaseFlow ν)
@@ -142,8 +148,9 @@ theorem referenceError_sobolevEnergy_hasDerivWithinAt (F : PhaseFlow ν)
           (drift ν N (F.map N t (initialPhaseData N a ha)) -
             drift ν N (referenceProjection h N t) - referenceResidualPhase h N t ht)))
       (Ici 0) t := by
-  have hd := ((sobolevWeightedPhaseCLM s N).hasFDerivAt.comp_hasDerivWithinAt t
-    (referenceError_hasDerivWithinAt F h ha N t ht)).norm_sq
+  have hd := HasDerivWithinAt.norm_sq (F := Phase N)
+    ((sobolevWeightedPhaseCLM s N).hasFDerivAt.comp_hasDerivWithinAt t
+      (referenceError_hasDerivWithinAt F h ha N t ht))
   simpa only [Function.comp_def, sobolevWeightedPhase_norm_sq] using hd
 
 end

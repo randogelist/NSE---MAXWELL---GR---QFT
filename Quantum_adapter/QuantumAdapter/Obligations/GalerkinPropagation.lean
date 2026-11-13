@@ -51,13 +51,14 @@ theorem sobolevEnergy_drift_rate_le_of_h3_bound (ν C : ℝ) (hν : 0 < ν)
         (sobolevWeightedPhaseCLM m N (drift 0 N q)) -
       2*ν*sobolevDissipation m N q ≤
       (ν+sobolevViscousConstant m/ν*C)*sobolevEnergy m N q := by
-  have h2 : sobolevEnergy 2 N q ≤ C :=
-    (by simpa only [sobolevEnergy_three] using
-      sobolevEnergy_mono (by omega : 2 ≤ 3) N q).trans hC
+  have h23 : sobolevEnergy 2 N q ≤ energy3 N q := by
+    simpa only [sobolevEnergy_three] using
+      sobolevEnergy_mono (by omega : 2 ≤ 3) N q
+  have h2 : sobolevEnergy 2 N q ≤ C := h23.trans hC
   exact (sobolevEnergy_drift_rate_le ν hν m N q).trans
     (mul_le_mul_of_nonneg_right
-      (add_le_add_left (mul_le_mul_of_nonneg_left h2
-        (div_nonneg (sobolevViscousConstant_pos m).le hν.le)) ν)
+      (add_le_add le_rfl (mul_le_mul_of_nonneg_left h2
+        (div_nonneg (sobolevViscousConstant_pos m).le hν.le)))
       (sobolevEnergy_nonneg m N q))
 
 /-- All Sobolev orders are propagated on the given finite horizon from its actual H3 bound. -/

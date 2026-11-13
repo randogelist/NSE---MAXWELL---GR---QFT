@@ -42,7 +42,7 @@ theorem realityAverage_single_at_mode (N : ℕ) (ki : PhaseIndex N) (z : ℂ)
   funext j
   simp only [realityAverage, ambientSingle_coeff]
   have hn := frequency_neg_ne_self hk
-  simp [hn, Pi.single_apply]
+  by_cases hj : j = ki.2 <;> simp [hn, Pi.single_apply, hj]
 
 theorem frequencySquare_complex_eq_real (k : Frequency) :
     (∑ j : Fin 3, (k j : ℂ) ^ 2) = ((galerkinFreqSq k : ℝ) : ℂ) := by
@@ -120,7 +120,8 @@ theorem phaseLaplacian_trace (N : ℕ) :
   change LinearMap.trace ℝ (AmbientPhase N) (ambientLaplacianRetraction N) = _
   rw [ambient_real_trace_formula]
   simp_rw [ambientLaplacianRetraction_real_diagonal]
-  rw [← sum_fullModes_eq_sum_coordinates]
+  rw [← sum_fullModes_eq_sum_coordinates N (fun k i =>
+    laplaceSymbol k * (1 - (k i : ℝ) ^ 2 / (galerkinFreqSq k : ℝ)))]
   unfold finiteLaplaceTrace
   apply Finset.sum_congr rfl
   intro k hk

@@ -14,10 +14,10 @@ open SingularClosure QuantumAdapter.Assembly
 theorem scalar_young_div (δ a b : ℝ) (hδ : 0 < δ) :
     2*a*b ≤ δ*a^2+b^2/δ := by
   calc
-    _ = (2*δ*a*b)/δ := by field_simp; ring
+    _ = (2*δ*a*b)/δ := by field_simp <;> ring
     _ ≤ (δ^2*a^2+b^2)/δ :=
       div_le_div_of_nonneg_right (by nlinarith [sq_nonneg (δ*a-b)]) hδ.le
-    _ = _ := by field_simp; ring
+    _ = _ := by field_simp <;> ring
 
 theorem fullBilinearTransport_eq_tensor_divergence (N : ℕ) (q r : Phase N)
     (k : Frequency) (i : Fin 3) :
@@ -152,7 +152,7 @@ theorem weightedTransportPairing_young (m N : ℕ) (e q r : Phase N)
       _ = _ := by simp; ring
   simp only [Finset.sum_add_distrib] at hstart
   rw [he] at hstart
-  exact hstart.trans (add_le_add_left hp _)
+  exact hstart.trans (add_le_add le_rfl hp)
 
 end
 end QuantumAdapter.Obligations

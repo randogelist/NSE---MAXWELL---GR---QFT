@@ -74,7 +74,7 @@ theorem NSSolution.timeDerivative_fourier_solenoidal (h : NSSolution ν a u p)
       (∑ i : Fin 3, (k i : ℂ) * datumFourierCoeff (timeDerivative u t) k i)
       (Ici 0) t :=
     hd.congr_of_mem (fun r hr => (hz r hr).symm) ht
-  simpa only [derivWithin_const] using
+  simpa only [derivWithin_fun_const, Pi.zero_apply] using
     (hconst.derivWithin (uniqueDiffOn_Ici 0 t ht)).symm
 
 end

@@ -106,7 +106,7 @@ theorem referenceResidual_h3_le_h0_tail (h : NSSolution ν a u p)
       1728 * ‖referenceSobolevAt h 0 t ht‖ ^ 2 *
         ‖phaseSobolev 0 N (referenceProjection h N t) - referenceSobolevAt h 0 t ht‖ ^ 2 *
           ∑ k ∈ fullModes N, torusSobolevWeight k ^ 10 := by
-  have h := referenceResidual_sobolevEnergy_le_h0_difference h 3 N t ht
+  have hbase := referenceResidual_sobolevEnergy_le_h0_difference h 3 N t ht
   have hv := reference_phaseSobolev_norm_le h 0 N t ht
   have hD : (‖phaseSobolev 0 N (referenceProjection h N t)‖ +
       ‖referenceSobolevAt h 0 t ht‖) ^ 2 ≤ 4 * ‖referenceSobolevAt h 0 t ht‖ ^ 2 := by
@@ -115,7 +115,7 @@ theorem referenceResidual_h3_le_h0_tail (h : NSSolution ν a u p)
   have hsum : 0 ≤ ∑ k ∈ fullModes N, torusSobolevWeight k ^ 10 :=
     Finset.sum_nonneg (fun k hk => pow_nonneg (torusSobolevWeight_pos k).le _)
   calc
-    _ ≤ _ := h
+    _ ≤ _ := hbase
     _ = 432 * (‖phaseSobolev 0 N (referenceProjection h N t)‖ +
         ‖referenceSobolevAt h 0 t ht‖) ^ 2 *
       ‖phaseSobolev 0 N (referenceProjection h N t) - referenceSobolevAt h 0 t ht‖ ^ 2 *

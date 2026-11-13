@@ -4,6 +4,7 @@ import QuantumAdapter.Obligations.FourierConvolutionLimits
 /-! The actual coefficient limit has the prescribed initial trace and the native NSE evolution. -/
 set_option autoImplicit false
 set_option Elab.async true
+set_option backward.isDefEq.respectTransparency false
 open Set Filter
 open scoped BigOperators Topology
 namespace QuantumAdapter.Obligations
@@ -17,7 +18,8 @@ theorem initialPhaseData_coefficient_tendsto (φ : ℕ → ℕ) (hφ : StrictMon
       atTop (𝓝 (datumFourierCoeff a k i)) := by
   apply tendsto_const_nhds.congr'
   filter_upwards [eventually_frequency_mem_fullModes φ hφ k] with j hj
-  simp only [initialPhaseData,initialPhase_coeff,if_pos hj]
+  exact ((initialPhase_coeff (φ j+1) a ha.smooth ha.periodic ha.divergence_free k i).trans
+    (if_pos hj)).symm
 
 /-- Every analytic input here is exactly the original P7 premise. -/
 theorem native_continuum_tower_exists {ν : ℝ} (hν : 0 < ν) (F : PhaseFlow ν)
@@ -31,7 +33,8 @@ theorem native_continuum_tower_exists {ν : ℝ} (hν : 0 < ν) (F : PhaseFlow �
   obtain ⟨d,φ,hφ,hd,hb,hreal,hlim⟩ := native_time_tower_exists hν F a ha h3
   refine ⟨d,hd,hb,hreal,?_,?_⟩
   · funext k i
-    have h := (hlim 0 k i 0).tendsto_at (show (0:ℝ)∈Icc (0:ℝ) (0:ℝ) by simp)
+    have hz : (0:ℝ) ∈ Icc (0:ℝ) ((0:ℕ):ℝ) := by norm_num
+    have h := (hlim 0 k i 0).tendsto_at hz
     simp only [phaseTimeJet_zero,F.map_zero] at h
     exact tendsto_nhds_unique h (initialPhaseData_coefficient_tendsto φ hφ a ha k i)
   · intro t ht

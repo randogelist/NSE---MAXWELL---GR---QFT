@@ -26,13 +26,13 @@ theorem infiniteTransport_eq_fullTransportCoefficients (c : TorusSobolev 0) :
   exact (divergenceTransportCoefficient_apply k i c c).symm
 
 theorem gradient_contDiff_of_contDiff (p : Vec → ℝ) (hp : ContDiff ℝ ∞ p) :
-    ContDiff ℝ ∞ (gradient p) := by
+    ContDiff ℝ ∞ (SingularClosure.gradient p) := by
   apply (contDiff_piLp 2).2
   intro i
   exact (contDiff_infty_iff_fderiv.mp hp).2.clm_apply contDiff_const
 
 theorem gradient_periodic_of_periodic (p : Vec → ℝ) (hp : SpatialPeriodic p) :
-    SpatialPeriodic (gradient p) := by
+    SpatialPeriodic (SingularClosure.gradient p) := by
   intro x j
   have heq : (fun y : Vec => p (y + unitVector j)) = p := funext (fun y => hp y j)
   have hd := congrArg (fun f : Vec → ℝ => fderiv ℝ f x) heq
@@ -66,7 +66,7 @@ theorem timeTower_native_equation
     (t : ℝ) (ht : 0 ≤ t) (hevo : d 1 t = nativeFourierRhs ν (d 0 t)) (x : Vec) :
     timeDerivative (fun r => smoothFourierSynthesis (d 0 r)) t x +
         convection (smoothFourierSynthesis (d 0 t)) x +
-        gradient (physicalConvectionPressure (fun r => smoothFourierSynthesis (d 0 r)) t) x =
+        SingularClosure.gradient (physicalConvectionPressure (fun r => smoothFourierSynthesis (d 0 r)) t) x =
       ν • laplacian (smoothFourierSynthesis (d 0 t)) x := by
   let c : TorusSobolev 0 := ⟨d 0 t, hb.mem_sobolev 0 0 t ht⟩
   have hc (m : ℕ) : Memℓp (sobolevWeightedCoeff m c.val) 2 := hb.mem_sobolev 0 m t ht
@@ -84,7 +84,7 @@ theorem timeTower_native_equation
   have hlc := (laplacian_contDiff_of_contDiff _ hdata.1.smooth).continuous
   have hlp := laplacian_periodic_of_periodic _ hdata.1.periodic
   have hfield : smoothFourierSynthesis (d 1 t) + convection (smoothFourierSynthesis (d 0 t)) +
-      gradient (fullTransportPressure c) = ν • laplacian (smoothFourierSynthesis (d 0 t)) := by
+      SingularClosure.gradient (fullTransportPressure c) = ν • laplacian (smoothFourierSynthesis (d 0 t)) := by
     apply datumFourierCoeff_injective_continuous_periodic _ _
       ((hdata₁.1.smooth.continuous.add hcc).add hgc) (hlc.const_smul ν)
       (spatialPeriodic_add_fields (spatialPeriodic_add_fields hdata₁.1.periodic hcp) hgp)

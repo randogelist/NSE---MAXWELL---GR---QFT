@@ -122,7 +122,12 @@ theorem eventually_frequency_mem_fullModes (φ : ℕ → ℕ) (hφ : StrictMono 
     exact zero_mem_fullModes _
   · apply Finset.mem_insert_of_mem
     apply mem_cutoffModes_of_freqSq_le hk
-    have hφn := hφ.nat_self_le n
+    have hφn : n ≤ φ n := by
+      induction n with
+      | zero => exact Nat.zero_le _
+      | succ n ih =>
+        have hstep := hφ (Nat.lt_succ_self n)
+        omega
     have hMN : M ≤ φ n+1 := by omega
     have hc : (M:ℤ) ≤ ((φ n+1:ℕ):ℤ) := by exact_mod_cast hMN
     have hz : (1:ℤ) ≤ ((φ n+1:ℕ):ℤ) := by exact_mod_cast (show 1≤φ n+1 by omega)

@@ -10,7 +10,7 @@ energy differentiation and the exact next-order dissipation difference.
 set_option autoImplicit false
 set_option Elab.async true
 set_option maxHeartbeats 2000000
-set_option synthInstance.maxHeartbeats 200000
+set_option synthInstance.maxHeartbeats 2000000
 set_option backward.isDefEq.respectTransparency false
 
 open scoped BigOperators ContDiff
