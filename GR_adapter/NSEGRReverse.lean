@@ -75,7 +75,7 @@ def exactSectorEquivOfContracts {ν ρ t0 : ℝ}
   toFun := forwardGerm c r h q
   invFun := reverseGerm h
   left_inv := reverseGerm_forwardGerm c r h q
-  right_inv := forwardGerm_reverseGerm h
+  right_inv := forwardGerm_reverseGerm c r h q
 
 theorem NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_NAMED_CONTRACTS
     (ν ρ t0 : ℝ) (_hν : 0 < ν) (_hρ : ρ ≠ 0)
