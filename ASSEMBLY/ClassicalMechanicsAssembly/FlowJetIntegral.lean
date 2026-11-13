@@ -32,7 +32,9 @@ theorem flow_primitive_evaluated_jet {T : ℝ} (hT : 0 ≤ T)
     (continuous_projIcc (a := (0 : ℝ)) (b := T) (h := hT)).prodMk continuous_const
   have hc : Continuous (fun s : ℝ => evaluatedFlowJet H r (projIcc 0 T hT s) a) :=
     (evaluatedFlowJet_continuous hH r).comp hproj
-  have hi := hc.intervalIntegrable 0 (t : ℝ)
+  have hi : IntervalIntegrable
+      (fun s : ℝ => evaluatedFlowJet H r (projIcc 0 T hT s) a)
+      MeasureTheory.volume 0 (t : ℝ) := hc.intervalIntegrable 0 (t : ℝ)
   ext m
   have hm := (ContinuousMultilinearMap.apply ℝ (fun _ : Fin r => Vec) Vec m)
     .intervalIntegral_comp_comm hi

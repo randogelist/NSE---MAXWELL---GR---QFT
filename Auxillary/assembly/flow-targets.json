@@ -224,7 +224,7 @@
       ]
     },
     {
-      "module": "ClassicalMechanicsAssembly.FlowJoint",
+      "module": "ClassicalMechanicsAssembly.FlowJointJets",
       "targets": [
         "ClassicalMechanicsAssembly.flow_contDiffOn_multilinear_apply",
         "ClassicalMechanicsAssembly.flowLabelJet",
@@ -235,7 +235,12 @@
         "ClassicalMechanicsAssembly.flowLabelJet_hasFDerivAt",
         "ClassicalMechanicsAssembly.flowForcingJet_eq_partition_sum",
         "ClassicalMechanicsAssembly.flowForcingJet_contDiffOn",
-        "ClassicalMechanicsAssembly.smoothVelocityOn_of_path_jet_integrals",
+        "ClassicalMechanicsAssembly.smoothVelocityOn_of_path_jet_integrals"
+      ]
+    },
+    {
+      "module": "ClassicalMechanicsAssembly.FlowJoint",
+      "targets": [
         "ClassicalMechanicsAssembly.constructed_flow_smooth"
       ]
     },
