@@ -1,0 +1,43 @@
+⚠ [8708/8712] Replayed NSEMaxwell.Kinematics
+warning: NSEMaxwell/Kinematics.lean:92:19: This simp argument is unused:
+  coordinateDerivative
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [laplacian]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8709/8712] Replayed NSEMaxwell.CurlCurl
+warning: NSEMaxwell/CurlCurl.lean:94:13: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sub_apply` to `sub_apply x`).
+warning: NSEMaxwell/CurlCurl.lean:188:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+⚠ [8710/8712] Replayed NSEMaxwell.Lamb
+warning: NSEMaxwell/Lamb.lean:33:45: This simp argument is unused:
+  PiLp.single_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [unitVector, EuclideanSpace.single, smul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: NSEMaxwell/Lamb.lean:65:17: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: NSEMaxwell/Lamb.lean:65:49: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+⚠ [8711/8712] Replayed NSEMaxwell.PeriodicIntegration
+warning: NSEMaxwell/PeriodicIntegration.lean:96:4: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: NSEMaxwell/PeriodicIntegration.lean:129:20: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: NSEMaxwell/PeriodicIntegration.lean:136:24: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: NSEMaxwell/PeriodicIntegration.lean:152:20: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: NSEMaxwell/PeriodicIntegration.lean:285:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: NSEMaxwell/PeriodicIntegration.lean:285:44: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+Build completed successfully (8712 jobs).

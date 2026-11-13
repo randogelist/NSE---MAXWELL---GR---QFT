@@ -2,7 +2,7 @@
 """Verify external compiler provenance and exact theorem-level axiom records.
 
 This verifier never executes Lean. It does not infer analytic premise discharge
-from an axiom audit. The external native Windows runner supplies compiler output.
+from an axiom audit. The external native Windows or Linux runner supplies compiler output.
 """
 
 from __future__ import annotations
@@ -161,7 +161,32 @@ def arguments() -> argparse.Namespace:
         "provenance", "scope", "output",
     ):
         parser.add_argument(f"--{name}", required=True, type=Path)
+    parser.add_argument(
+        "--expected-platform", choices=("windows", "linux"), default="windows",
+        help="Required native compiler platform; the default preserves historical Windows audits.",
+    )
     return parser.parse_args()
+
+
+def platform_errors(provenance: dict[str, object], expected_platform: str) -> list[str]:
+    """Check native-host flags and the actual Lean target, retaining legacy Windows evidence."""
+    if expected_platform not in {"windows", "linux"}:
+        raise ValueError("Unsupported expected compiler platform.")
+    errors: list[str] = []
+    actual_platform = provenance.get("external_platform")
+    if actual_platform is None and provenance.get("external_native_windows") is True:
+        actual_platform = "windows"
+    if actual_platform != expected_platform:
+        errors.append(f"External native {expected_platform} compiler provenance is required.")
+    windows = provenance.get("external_native_windows") is True
+    linux = provenance.get("external_native_linux") is True
+    if (windows, linux) != (expected_platform == "windows", expected_platform == "linux"):
+        errors.append("Native platform flags are absent, inconsistent, or do not match the requested platform.")
+    version = str(provenance.get("actual_lean_version", ""))
+    target = re.search(r"version 4\.34\.0-rc1,\s*([^,\s]+)", version)
+    if target is None or f"-{expected_platform}-" not in target.group(1):
+        errors.append("The actual Lean compiler target does not match the required native platform.")
+    return errors
 
 
 def verify(args: argparse.Namespace) -> dict[str, object]:
@@ -184,9 +209,8 @@ def verify(args: argparse.Namespace) -> dict[str, object]:
     if not isinstance(scope, dict) or not scope:
         raise ValueError("Declared formalization scope must be a nonempty JSON object.")
 
-    errors: list[str] = []
-    if provenance.get("external_native_windows") is not True:
-        errors.append("External native Windows compiler evidence is required.")
+    expected_platform = getattr(args, "expected_platform", "windows")
+    errors: list[str] = platform_errors(provenance, expected_platform)
     if provenance.get("requested_toolchain") != EXPECTED_LEAN:
         errors.append("Unexpected requested Lean toolchain.")
     if not re.search(
@@ -276,6 +300,8 @@ def verify(args: argparse.Namespace) -> dict[str, object]:
         "NSEMaxwell/Audit.lean", "audit-targets.txt", "formalization-status.json",
         "scripts/run.ps1", "scripts/verify_audit.py", "run.cmd",
     }
+    if expected_platform == "linux":
+        required.add("run.sh")
     for relative in sorted(required - paths_seen):
         manifest_errors.append(f"Source manifest omits required input: {relative}")
     errors.extend(manifest_errors)
@@ -286,6 +312,10 @@ def verify(args: argparse.Namespace) -> dict[str, object]:
         "source_commit": provenance.get("source_commit"),
         "source_manifest_sha256": manifest_hash,
         "external_compiler_status": provenance.get("build_status"),
+        "expected_platform": expected_platform,
+        "external_platform": provenance.get("external_platform") or (
+            "windows" if provenance.get("external_native_windows") is True else None
+        ),
         "audit_command_status": provenance.get("audit_command_status"),
         "source_input_verification": "FAIL" if manifest_errors else "PASS",
         "allowed_axioms": sorted(ALLOWED_AXIOMS),

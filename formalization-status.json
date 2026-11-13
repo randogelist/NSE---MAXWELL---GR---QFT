@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "source_status": "A_TIER_CANDIDATE_FOR_ADDITIONAL_ANALYTIC_DISCHARGES",
+  "source_status": "A_TIER_FOR_EXACT_CONDITIONAL_REDUCED_ROOT",
   "exact_target": "NSEMaxwell.Classical.ExactEquivalence",
   "exact_target_proved": false,
   "unconditional_closure": false,
@@ -19,10 +19,10 @@
     "Joint canonical velocity/pressure smoothness through t=0 and velocity incompressibility",
     "Concrete electric Hodge identity with the prescribed scalar Fourier potential"
   ],
-  "promotion_rule": "Matching native-Windows compiler and theorem-level axiom evidence; semantic hypotheses audited separately.",
+  "promotion_rule": "Matching external compiler and theorem-level axiom evidence; semantic hypotheses audited separately.",
   "prepared_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED",
   "prepared_root_type": "NSEMaxwell.Bridge.FourierHodgeLaws -> NSEMaxwell.Classical.ExactEquivalence",
-  "conditional_root_status": "A_TIER_CANDIDATE",
+  "conditional_root_status": "A_TIER",
   "analytic_laws_inhabitant_provided": false,
   "open_analytic_endpoints": [
     "reconstruct_velocity",
@@ -51,17 +51,20 @@
   "optional_off_solution_lemmas": "canonical_momentum_factorization retains its own hKAdd premise; the root does not depend on it.",
   "audit_target_count": 170,
   "external_evidence": {
-    "source_commit": "0b793e57271073fb3b0206dcad99a2797d5f8211",
-    "run_id": 43318057281,
-    "artifact_id": 13990185678,
-    "artifact_sha256": "e5fc7ade2aed6f22c3deeb3a83170a6c53e72c317ab04647692a436f0f1b33e5",
-    "source_manifest_sha256": "cf68016d6739febf4580ce6bec82a5955a2e274cfd0a2ce28b9ff28a94e23c52",
-    "directory": "evidence/windows-43318057281",
+    "source_commit": "1bd2ee067d4aad3c265b32efd533ef270179e665",
+    "run_id": 43333835295,
+    "artifact_id": 13995999237,
+    "artifact_sha256": "0fb3739800b7d282576868d0b9b5fac4246b8c713c67c8ac7901cfb8dfd9fa47",
+    "source_manifest_sha256": "b3be4cfb54f92124268b4241625b8f60a3c66d9276179777223a388a46781628",
+    "directory": "evidence/windows-43333835295",
+    "platform": "native Windows",
     "build": "PASS",
     "lean_audit_command": "PASS",
     "theorem_axiom_audit": "PASS_STANDARD_ONLY",
-    "audited_declarations": 74,
-    "lean_source_hashes_matching_delivery": 16
+    "audited_declarations": 170,
+    "project_declarations": 166,
+    "registered_mathlib_declarations": 4,
+    "lean_source_hashes_matching_delivery": 25
   },
   "continuation_candidate_modules": [
     "PeriodicIntegration",
@@ -87,10 +90,25 @@
     "audited_declarations": 74,
     "lean_source_hashes_matching_delivery": 16
   },
-  "additional_module_evidence": "PENDING_EXTERNAL_NATIVE_WINDOWS",
+  "additional_module_evidence": {
+    "source_commit": "1bd2ee067d4aad3c265b32efd533ef270179e665",
+    "run_id": 43333835295,
+    "artifact_id": 13995999237,
+    "artifact_sha256": "0fb3739800b7d282576868d0b9b5fac4246b8c713c67c8ac7901cfb8dfd9fa47",
+    "source_manifest_sha256": "b3be4cfb54f92124268b4241625b8f60a3c66d9276179777223a388a46781628",
+    "directory": "evidence/windows-43333835295",
+    "platform": "native Windows",
+    "build": "PASS",
+    "lean_audit_command": "PASS",
+    "theorem_axiom_audit": "PASS_STANDARD_ONLY",
+    "audited_declarations": 170,
+    "project_declarations": 166,
+    "registered_mathlib_declarations": 4,
+    "lean_source_hashes_matching_delivery": 25
+  },
   "prepared_reduced_root": "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED",
   "prepared_reduced_root_type": "NSEMaxwell.Bridge.FourierHodgeLaws -> NSEMaxwell.Classical.ExactEquivalence",
-  "reduced_root_status": "A_TIER_CANDIDATE",
+  "reduced_root_status": "A_TIER_FOR_EXACT_CONDITIONAL_IMPLICATION",
   "reduced_open_analytic_endpoints": [
     "reconstruct_velocity",
     "reconstruct_curl",
@@ -141,5 +159,8 @@
     "contDiff_tsum",
     "ZLattice.summable_norm_pow_inv"
   ],
-  "registered_methlib_port_candidates": 7
+  "registered_methlib_port_candidates": 7,
+  "formal_status": "CONDITIONAL_FORMAL_CLOSURE",
+  "active_ci_platform": "native Linux / Ubuntu 24.04",
+  "active_ci_validation": "PENDING_EXTERNAL_LINUX_RUN"
 }

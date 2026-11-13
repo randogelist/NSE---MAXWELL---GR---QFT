@@ -1,15 +1,31 @@
 [CmdletBinding()]
 param(
-    [string]$ReportDirectory = "artifacts/external-windows",
+    [string]$ReportDirectory = "",
     [string]$PythonExecutable = "",
+    [ValidateSet("Auto", "Windows", "Linux")]
+    [string]$ExpectedPlatform = "Auto",
     [ValidateSet("All", "Dependencies", "BuildAudit")]
     [string]$Phase = "All"
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
-if ($env:OS -ne "Windows_NT") {
-    throw "EXTERNAL_NATIVE_WINDOWS_REQUIRED"
+if ($env:OS -eq "Windows_NT") {
+    $NativePlatform = "windows"
+}
+elseif ([Runtime.InteropServices.RuntimeInformation]::IsOSPlatform(
+    [Runtime.InteropServices.OSPlatform]::Linux)) {
+    $NativePlatform = "linux"
+}
+else {
+    throw "EXTERNAL_NATIVE_WINDOWS_OR_LINUX_REQUIRED"
+}
+if (($ExpectedPlatform -ne "Auto") -and
+    ($ExpectedPlatform.ToLowerInvariant() -ne $NativePlatform)) {
+    throw "The native platform does not match -ExpectedPlatform."
+}
+if (-not $ReportDirectory) {
+    $ReportDirectory = "artifacts/external-" + $NativePlatform
 }
 
 $RepoRoot = Split-Path -Parent $PSScriptRoot
@@ -88,7 +104,9 @@ $ProvenancePath = Join-Path $ReportRoot "run-provenance.json"
 $Evidence = [ordered]@{
     schema_version = 1
     started_at_utc = [DateTime]::UtcNow.ToString("o")
-    external_native_windows = $true
+    external_platform = $NativePlatform
+    external_native_windows = ($NativePlatform -eq "windows")
+    external_native_linux = ($NativePlatform -eq "linux")
     os = [Environment]::OSVersion.VersionString
     powershell_version = $PSVersionTable.PSVersion.ToString()
     processor_count = [Environment]::ProcessorCount
@@ -121,6 +139,10 @@ try {
             throw "Required input is absent: $Required"
         }
     }
+    $EntryPoint = if ($NativePlatform -eq "linux") { "run.sh" } else { "run.cmd" }
+    if (-not (Test-Path -LiteralPath $EntryPoint -PathType Leaf)) {
+        throw "Required platform entry point is absent: $EntryPoint"
+    }
 
     $PythonPrefix = @()
     if ($PythonExecutable) {
@@ -128,6 +150,9 @@ try {
     }
     elseif (Get-Command "python" -ErrorAction SilentlyContinue) {
         $PythonExecutable = "python"
+    }
+    elseif (Get-Command "python3" -ErrorAction SilentlyContinue) {
+        $PythonExecutable = "python3"
     }
     elseif (Get-Command "py" -ErrorAction SilentlyContinue) {
         $PythonExecutable = "py"
@@ -148,6 +173,9 @@ try {
     # Elan may print installation diagnostics on a cold compiler cache. Only
     # the actual version record participates in dependency preparation reuse.
     $Version = $VersionLines[0].Trim()
+    if ($Version -notmatch (",\s*[^,\s]*-" + $NativePlatform + "-[^,\s]*,")) {
+        throw "The Lean compiler target does not match the native platform."
+    }
     $Evidence.actual_lean_version = $Version
 
     $Evidence.stage = "DEPENDENCY_RESOLUTION"
@@ -242,6 +270,7 @@ try {
         }
     }
     $DependencyInputLines = @(
+        "platform=" + $NativePlatform
         "toolchain=" + $ExpectedToolchain
         "compiler=" + $Version
         foreach ($InputPath in @("lean-toolchain", "lakefile.lean", "lake-manifest.json")) {
@@ -287,6 +316,7 @@ try {
         Write-JsonFile $PreparationPath ([ordered]@{
             schema_version = 1
             status = "PASS"
+            external_platform = $NativePlatform
             dependency_fingerprint = $DependencyFingerprint
             dependency_inputs = $DependencyInputLines
             cache_targets = $SortedTargets
@@ -335,6 +365,7 @@ try {
     )) {
         $null = $Inputs.Add($Required)
     }
+    $null = $Inputs.Add($EntryPoint)
     foreach ($Optional in @("lakefile.lean", "lakefile.toml", "cache-targets.txt")) {
         if (Test-Path -LiteralPath $Optional -PathType Leaf) { $null = $Inputs.Add($Optional) }
     }
@@ -360,7 +391,7 @@ try {
     $Evidence.source_manifest_sha256 = (Get-FileHash -LiteralPath $ManifestPath -Algorithm SHA256).Hash.ToLowerInvariant()
 
     $Evidence.stage = "BUILD"
-    # Bound concurrent heavy imports on native Windows without disabling Lean's
+    # Bound concurrent heavy imports on each native platform without disabling Lean's
     # asynchronous theorem elaboration. Every dependency precedes its consumer;
     # each invocation reuses all already compiled and restored Lake artifacts.
     $BuildModules = @(
@@ -463,6 +494,7 @@ try {
     Write-JsonFile $ProvenancePath $Evidence
     $VerifierArguments = $PythonPrefix + @(
         "scripts/verify_audit.py",
+        "--expected-platform", $NativePlatform,
         "--root", $RepoRoot,
         "--targets", "audit-targets.txt",
         "--audit-source", "NSEMaxwell/Audit.lean",

@@ -24,15 +24,17 @@ J = c² curl B − DG[B](−curl G[B])
 ## Status
 
 ```text
-ORIGINAL_NINE_ENDPOINT_ROOT = A_TIER_AT_HISTORICAL_SNAPSHOT
-REDUCED_FOUR_ENDPOINT_ROOT = A_TIER_CANDIDATE
-CURRENT_FORMAL_STATUS = PENDING_MATCHING_EXTERNAL_EVIDENCE
+ORIGINAL_NINE_ENDPOINT_ROOT = A_TIER
+REDUCED_FOUR_ENDPOINT_ROOT = A_TIER
+CURRENT_FORMAL_STATUS = CONDITIONAL_FORMAL_CLOSURE
+ACTIVE_CI_PLATFORM = NATIVE_LINUX_UBUNTU_24_04
+ACTIVE_LINUX_VALIDATION = PENDING
 EXACT_UNCONDITIONAL_TARGET = UNPROVED
 ANALYTIC_REALIZATION = OPEN
 LOCAL_LEAN_EXECUTIONS = 0
 ```
 
-The historical externally compiled and audited concrete root has type:
+The original externally compiled and audited concrete root has type:
 
 ```lean
 NSEMaxwell.Bridge.PeriodicAnalyticLaws → NSEMaxwell.Classical.ExactEquivalence
@@ -57,38 +59,50 @@ The conditional proof constructs both solutions on the actual fields, with the i
 
 ## Verified external evidence
 
-[Native Windows run 43318057281](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43318057281): complete build, Lean audit, and all 74 theorem-level checks passed. The audited source is `0b793e57271073fb3b0206dcad99a2797d5f8211`; its 16 Lean input hashes identify that historical snapshot; they do not certify the new continuation sources. Original evidence is preserved under `evidence/windows-43318057281/`.
+[Native Windows run 43333835295](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43333835295): complete build and all **170/170** fresh theorem-level audits passed. Source: `1bd2ee067d4aad3c265b32efd533ef270179e665`. All **25/25** Lean input hashes match the current proof files. Evidence: `evidence/windows-43333835295/`.
 
-The audited root depends on `propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx` or additional axiom identity occurs. The original audit establishes the nine-premise implication. The new four-premise reduction requires its own matching compiler and axiom evidence.
+Both the original root and the reduced root depend only on `propext`, `Classical.choice`, and `Quot.sound`. The four remaining analytic endpoints are explicit theorem hypotheses. No `sorryAx` or additional axiom identity occurs. The audit also covers the four registered target-pin Mathlib endpoints.
+
+The earlier 74-target certificate remains preserved under `evidence/windows-43318057281/`; it describes its own historical source snapshot.
+
+## Active Linux migration
+
+The requested active CI platform is external native Linux, Ubuntu 24.04. The preceding Windows run had already completed successfully; no active Windows run remained to cancel. The Linux workflow replaces the Windows workflow and starts a new platform-specific build/audit. No Lean proof source or theorem premise changes in this migration. Windows objects and previous audit output are not reused as Linux certification. Linux validation is pending.
 
 ## External compilation
 
-Required: native Windows; Git; an elan-managed `lake` executable on `PATH`; Python 3.9 or later. The selected toolchain is pinned by the runner.
+Required: external Linux or Windows; Git; an elan-managed `lake`; Python 3.9 or later. Linux uses PowerShell Core (`pwsh`). The selected toolchain is pinned by the runner.
+
+```bash
+bash run.sh
+```
+
+Retained Windows entry point:
 
 ```cmd
 run.cmd
 ```
 
-Compiler: native Windows Lean `4.34.0-rc1`.
+Compiler: native Lean `4.34.0-rc1`; active CI: Ubuntu 24.04.
 
 Mathlib: `de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11`.
 
-The runner retains compiler, dependency, and project caches. Dependency keys contain the exact compiler/configuration/lockfile/cache-scope hashes; project keys additionally contain the Lean source hashes. `.lake/packages`, `.lake/config`, and compressed Mathlib archives share the stable dependency cache. `.lake/build` has its own incremental project cache. A one-time migration restores the previous combined cache.
+The runner retains compiler, dependency, and project caches. Dependency keys contain the exact compiler/configuration/lockfile/cache-scope hashes; project keys additionally contain the Lean source hashes. `.lake/packages`, `.lake/config`, and compressed Mathlib archives share the stable dependency cache. `.lake/build` has its own incremental project cache. The Windows migration preserved its earlier combined cache. Linux keys include their own OS and architecture; no Windows cache is restored in Linux CI.
 
 Nine dependency revisions are locked and checked. The workflow verifies and preserves dependencies before proof compilation, then reuses Lake's dependency traces for individual module builds. Project modules remain sequential to bound memory use; native theorem elaboration remains enabled. Partial successful objects survive unrelated failures. The complete library build and fresh exact-signature/axiom audit remain mandatory.
 
-```cmd
-run.cmd -Phase Dependencies
-run.cmd -Phase BuildAudit
+```bash
+bash run.sh -Phase Dependencies
+bash run.sh -Phase BuildAudit
 ```
 
-The default `run.cmd` performs both phases. The dependency preparation fingerprint authorizes dependency acquisition reuse only. It cannot promote a theorem or reuse an old theorem audit. Source hashes, the resolved lockfile, command timings, compiler logs, and fresh audit evidence are recorded. See [CI_CACHE_AUDIT.txt](CI_CACHE_AUDIT.txt).
+The default `run.sh` and `run.cmd` perform both phases. The dependency preparation fingerprint authorizes dependency acquisition reuse only. It cannot promote a theorem or reuse an old theorem audit. Source hashes, the resolved lockfile, command timings, compiler logs, and fresh audit evidence are recorded. See [CI_CACHE_AUDIT.txt](CI_CACHE_AUDIT.txt).
 
 `lake build --no-build NSEMaxwell` validates ordinary transitive build traces in one Lake process. Exit `0` reuses the current library objects and proceeds to the fresh audit. Exit `3` invokes the sequential incremental rebuild. Other failures reject the run. No `--old` option or cached theorem-audit seal is used.
 
 ## Registered reference endpoints
 
-[ENDPOINT_REGISTRY.json](ENDPOINT_REGISTRY.json) records eleven exact signatures with pinned source commits, blob hashes, compiler compatibility, and remaining definition-alignment obligations. Four declarations already exist in the exact target Mathlib and are included in the fresh audit. Seven independent harmonic-analysis declarations from Methlib are registered for source porting; Lean 4.33.0 evidence cannot certify them under the target Lean 4.34.0-rc1 compiler.
+[ENDPOINT_REGISTRY.json](ENDPOINT_REGISTRY.json) records eleven exact signatures with pinned source commits, blob hashes, compiler compatibility, and remaining definition-alignment obligations. Four declarations already exist in the exact target Mathlib and passed the fresh 170-target Windows audit; the same four remain in the Linux audit. Seven independent harmonic-analysis declarations from Methlib are registered for source porting; Lean 4.33.0 evidence cannot certify them under the target Lean 4.34.0-rc1 compiler.
 
 The Methlib candidates cover cube/torus coefficient transport, differentiation multipliers, polynomial decay, coefficient injectivity, smooth Fourier synthesis, coefficient recovery, and infinite-series pressure recovery. They do not supply an inhabitant of `FourierHodgeLaws` in this project. The original all-mean NSE proposition and the exact cosine-defined pressure remain fixed.
 

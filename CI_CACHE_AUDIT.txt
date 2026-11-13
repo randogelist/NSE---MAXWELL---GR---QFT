@@ -1,5 +1,7 @@
 CI_CACHE_AUDIT
-STATUS = A_TIER_CANDIDATE_FOR_CURRENT_PROOF_SOURCE
+STATUS = CACHED_WINDOWS_BUILD_AND170_AUDIT_VERIFIED
+ACTIVE_CI_PLATFORM = NATIVE_LINUX_UBUNTU_24_04
+ACTIVE_LINUX_VALIDATION = PENDING
 LOCAL_LEAN_EXECUTIONS = 0
 WRITE_REPOSITORY = randogelist/NSE---MAXWELL---GR---QFT
 WRITE_BRANCH = codex/fefferman-b-maxwell
@@ -99,8 +101,11 @@ No cache clean, lake clean, or cache get!.
 VERIFICATION
 External run 43332604152 confirms legacy cache migration, nine pinned dependency
 checks, committed-lockfile preservation and official cache preparation PASS.
-Freshness fast path and registered upstream endpoints = PENDING_EXTERNAL_RUN
-Root theorem promotion = PENDING_MATCHING_BUILD_AND_THEOREM_AUDIT
+External run 43333835295: complete build and 170/170 fresh audits PASS.
+Freshness exit=3; serial incremental fallback PASS.
+Freshness exit=0 branch = NOT_YET_OBSERVED.
+Registered upstream endpoint audits = 4/4 PASS_STANDARD_ONLY.
+Root theorem promotion = A_TIER_FOR_EXACT_CONDITIONAL_IMPLICATION
 Unconditional exact equivalence = NOT_PROVED
 
 ENDPOINT_REGISTRATION
@@ -110,3 +115,25 @@ Mathlib exact-target-pin endpoints = 4; added to the fresh theorem audit.
 Methlib source-port candidates = 7; no matching target-compiler proof claimed.
 Theorem audit targets = 166 project endpoints + 4 pinned upstream endpoints.
 Independent harmonic-analysis lemmas only; adjusted NSE roots are excluded.
+
+MEASURED_SPLIT_CACHE_RESULT
+Run = 43333835295; source = 1bd2ee067d4aad3c265b32efd533ef270179e665.
+Dependency cache = exact hit; dependency reupload = 0 bytes.
+Dependency archive restored = 2953487292 bytes.
+Project archive restored = 7440089 bytes.
+Project archive uploaded = 7468677 bytes; save duration = 1.189 s.
+Project cache restore = 0.533 s.
+Freshness check = 8.198 s; fresh theorem audit = 25.956 s.
+These measurements identify actual operations; differing proof edits prevent a
+controlled total-runtime speedup comparison.
+
+LINUX_MIGRATION
+User request = 2026-11-13.
+Windows run 43333835295 was already completed successfully; activeWindowsRuns=0.
+Workflow = .github/workflows/lean-linux.yml; Ubuntu 24.04; native-linux job.
+Old automatic Windows workflow = removed.
+Linux entry point = run.sh; Windows entry point = run.cmd retained.
+Cache keys include OS and architecture; Windows objects are not restored on Linux.
+Compiler/dependency pins, exact Lean source, root premises and 170 audit targets
+are unchanged. The runner and verifier check the requested native platform and
+the actual compiler target triple. External Linux validation = PENDING.

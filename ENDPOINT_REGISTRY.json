@@ -6,7 +6,8 @@
     "lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
     "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
     "theorem_scope": "Frozen FB(ν) ↔ MB(ν,c), with remaining FourierHodgeLaws endpoints unchanged.",
-    "branch": "codex/fefferman-b-maxwell"
+    "branch": "codex/fefferman-b-maxwell",
+    "active_ci_platform": "native Linux / Ubuntu 24.04"
   },
   "reference": {
     "repository": "randogelist/Methlib",
@@ -71,7 +72,7 @@
       "implicit_context": "namespace UnitAddTorus; variable {d : Type*} [Fintype d]; local normalized Haar probability measure on UnitAddCircle. mFourierCoeff_eq_integral additionally has {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]; convergence theorem has {f : C(UnitAddTorus d, ℂ)}.",
       "target_status": "UPSTREAM_DECLARATION_AVAILABLE_ON_EXACT_TARGET_PIN",
       "port_required": false,
-      "matching_project_endpoint_audit": "REGISTERED_IN_AUDIT_LEAN; PENDING_MATCHING_EXTERNAL_RUN",
+      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: native Windows run43333835295, exact target compiler and Mathlib pin; Linux migration pending.",
       "helps": [
         "Cube-to-torus Fourier coefficient identification."
       ],
@@ -99,7 +100,7 @@
       "implicit_context": "namespace UnitAddTorus; variable {d : Type*} [Fintype d]; local normalized Haar probability measure on UnitAddCircle. mFourierCoeff_eq_integral additionally has {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]; convergence theorem has {f : C(UnitAddTorus d, ℂ)}.",
       "target_status": "UPSTREAM_DECLARATION_AVAILABLE_ON_EXACT_TARGET_PIN",
       "port_required": false,
-      "matching_project_endpoint_audit": "REGISTERED_IN_AUDIT_LEAN; PENDING_MATCHING_EXTERNAL_RUN",
+      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: native Windows run43333835295, exact target compiler and Mathlib pin; Linux migration pending.",
       "helps": [
         "Pointwise Fourier inversion for reconstruct_velocity and reconstruct_curl."
       ],
@@ -129,7 +130,7 @@
       "implicit_context": "{α 𝕜 E F : Type*} [NontriviallyNormedField 𝕜] [IsRCLikeNormedField 𝕜] [NormedAddCommGroup E] [NormedSpace 𝕜 E] [NormedAddCommGroup F] [CompleteSpace F] [NormedSpace 𝕜 F] {f : α → E → F} {v : ℕ → α → ℝ} {N : ℕ∞}.",
       "target_status": "UPSTREAM_DECLARATION_AVAILABLE_ON_EXACT_TARGET_PIN",
       "port_required": false,
-      "matching_project_endpoint_audit": "REGISTERED_IN_AUDIT_LEAN; PENDING_MATCHING_EXTERNAL_RUN",
+      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: native Windows run43333835295, exact target compiler and Mathlib pin; Linux migration pending.",
       "helps": [
         "Termwise smoothness for inverse Laplacian Fourier series.",
         "Potential route to joint spacetime smoothness in canonical_smoothness."
@@ -159,7 +160,7 @@
       "implicit_context": "namespace ZLattice; {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [FiniteDimensional ℝ E] (L : Submodule ℤ E) [DiscreteTopology L].",
       "target_status": "UPSTREAM_DECLARATION_AVAILABLE_ON_EXACT_TARGET_PIN",
       "port_required": false,
-      "matching_project_endpoint_audit": "REGISTERED_IN_AUDIT_LEAN; PENDING_MATCHING_EXTERNAL_RUN",
+      "matching_project_endpoint_audit": "PASS_STANDARD_ONLY: native Windows run43333835295, exact target compiler and Mathlib pin; Linux migration pending.",
       "helps": [
         "Summable three-dimensional lattice majorant once decay exponent exceeds three."
       ],
@@ -419,5 +420,21 @@
     "total": 11,
     "mathlib_exact_pin": 4,
     "methlib_source_port_candidates": 7
+  },
+  "external_upstream_endpoint_audit": {
+    "source_commit": "1bd2ee067d4aad3c265b32efd533ef270179e665",
+    "run_id": 43333835295,
+    "artifact_id": 13995999237,
+    "artifact_sha256": "0fb3739800b7d282576868d0b9b5fac4246b8c713c67c8ac7901cfb8dfd9fa47",
+    "source_manifest_sha256": "b3be4cfb54f92124268b4241625b8f60a3c66d9276179777223a388a46781628",
+    "directory": "evidence/windows-43333835295",
+    "platform": "native Windows",
+    "build": "PASS",
+    "lean_audit_command": "PASS",
+    "theorem_axiom_audit": "PASS_STANDARD_ONLY",
+    "audited_declarations": 170,
+    "project_declarations": 166,
+    "registered_mathlib_declarations": 4,
+    "lean_source_hashes_matching_delivery": 25
   }
 }

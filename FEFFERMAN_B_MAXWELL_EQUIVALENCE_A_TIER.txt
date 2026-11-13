@@ -2,7 +2,10 @@ CONTINUATION: CONCRETE ANALYTIC ENDPOINT REDUCTION
 ================================================
 
 MODE = A_TIER_DERIVATION
-CURRENT_REDUCED_ROOT_STATUS = A_TIER_CANDIDATE
+CURRENT_REDUCED_ROOT_STATUS = A_TIER
+FORMAL_STATUS = CONDITIONAL_FORMAL_CLOSURE
+ACTIVE_CI_PLATFORM = NATIVE_LINUX_UBUNTU_24_04
+ACTIVE_LINUX_RUN_STATUS = PENDING
 EXACT_UNCONDITIONAL_TARGET_PROVED = FALSE
 LOCAL_LEAN_EXECUTIONS = 0
 LOCAL_LAKE_EXECUTIONS = 0
@@ -109,13 +112,43 @@ DETERMINISTIC PROOF CHAIN
 
 COMPILATION CONTRACT
 --------------------
-  Native Windows; pinned Lean and Mathlib; restored compiler/dependency/project
-  caches; sequential module builds; native theorem elaboration; complete final
-  build and theorem-level axiom audit.
+  External Linux CI (current request); native Windows entry point retained.
+  Pinned Lean and Mathlib; restored platform-specific compiler/dependency/project
+  caches; transitive Lake freshness check; serial incremental fallback; native
+  theorem elaboration; complete target validation and fresh theorem-level audit.
   Independent modules continue after an earlier failed module. Dependents of a
   failed module are skipped. Any failure rejects the build before promotion.
   Allowed axiom identities: propext, Classical.choice, Quot.sound.
   Pending proof bodies are not promoted by prepared signatures or B-tier proofs.
+
+CURRENT MATCHING CERTIFICATE
+============================
+Audited source: 1bd2ee067d4aad3c265b32efd533ef270179e665.
+External run: 43333835295; native Windows Lean 4.34.0-rc1.
+Complete project build: PASS.
+Fresh theorem-level axiom audit: 170/170 PASS_STANDARD_ONLY.
+Project declarations: 166; registered target-pin Mathlib declarations: 4.
+Current Lean source hashes matching this certificate: 25/25.
+Both root axiom sets: {propext, Classical.choice, Quot.sound}.
+sorryAx and unapproved axiom identities: absent.
+Exact reduced implication: FourierHodgeLaws -> ExactEquivalence.
+Remaining independent endpoints: H1,H2,H3,H4 above; H3 has three components.
+Unconditional ExactEquivalence: NOT_PROVED.
+Evidence: evidence/windows-43333835295/.
+Artifact: 13995999237.
+ZIP SHA256: 0fb3739800b7d282576868d0b9b5fac4246b8c713c67c8ac7901cfb8dfd9fa47.
+Manifest SHA256: b3be4cfb54f92124268b4241625b8f60a3c66d9276179777223a388a46781628.
+
+USER-REQUESTED PLATFORM MIGRATION
+=================================
+2026-11-13: active CI changed to external native Linux, Ubuntu 24.04.
+The Windows run had already completed successfully before cancellation was requested.
+No active Windows run remained to cancel. No Windows rerun is requested.
+Lean proof source and exact theorem/premises remain unchanged.
+Linux proof objects have separate OS/architecture cache keys.
+Windows objects and prior theorem-audit logs are not substituted for Linux evidence.
+run.sh = external Linux entry; run.cmd = retained external Windows entry.
+Linux compiler and audit validation: PENDING.
 
 PRIOR CERTIFIED SNAPSHOT
 =======================
@@ -354,7 +387,7 @@ structure PeriodicAnalyticLaws : Prop where
   A clean axiom list does not discharge theorem hypotheses.
   Neither global existence statement is proved by the equivalence alone.
 
-10. CURRENT VALIDATION
+10. HISTORICAL VALIDATION AT THE PRIOR SNAPSHOT
 
   Initial external run 43307765291: source elaboration failures; repaired.
   Second external run 43309624311: Kinematics, Constitutive, Pressure and
