@@ -45,7 +45,10 @@ P2
   SPINE = complete continuous linear ODE -> fundamental matrix
           -> quadratic Taylor remainder -> Frechet derivative
   TIME = ALL_REAL
-  STATUS = A_TIER_CANDIDATE
+  STATUS = A_TIER
+  FIRST_VERIFIED_COMMIT = bf4c44d10a7ebf73379feb228ea206e5a3952b50
+  EXTERNAL_RUN = 43461082246
+  AXIOMS = propext; Classical.choice; Quot.sound
 
 P3
   MODULE = QuantumAdapter.Obligations.JacobianNative
@@ -54,7 +57,10 @@ P3
            det(fderiv Real (F.map N t) q) = exp(-phaseDecayRate nu N*t)
   SPINE = actual variational equation -> singular-safe determinant derivative
           -> constant-trace scalar ODE
-  STATUS = A_TIER_CANDIDATE
+  STATUS = A_TIER
+  FIRST_VERIFIED_COMMIT = bf4c44d10a7ebf73379feb228ea206e5a3952b50
+  EXTERNAL_RUN = 43461082246
+  AXIOMS = propext; Classical.choice; Quot.sound
 
 P4
   MODULE = QuantumAdapter.Obligations.EnergyRelative
@@ -121,7 +127,10 @@ ASSEMBLY
 EVIDENCE
   EXACT_ROOT_COMPILER_PASS = PENDING
   EXACT_ROOT_AXIOM_AUDIT = PENDING
-  EXACT_OBLIGATION_PROMOTIONS = PENDING
+  EXACT_OBLIGATION_PROMOTIONS = P2; P3
+  VERIFIED_RUN_06 = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43461082246
+  VERIFIED_ARTIFACT_06 = 14056561860
+  VERIFIED_ARTIFACT_06_SHA256 = fa26de16e38d658da907538d20612b6e394d880a7bb276e13300c79b53fe79b5
   SOURCE_COMMIT = PENDING_FINAL_MATCHING_EXTERNAL_RUN
   FINAL_REGRESSION = PENDING
 

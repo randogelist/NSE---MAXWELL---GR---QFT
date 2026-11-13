@@ -30,15 +30,14 @@ theorem phaseFlow_h3_tame {ν : ℝ} (hν : 0 ≤ ν) (F : PhaseFlow ν)
   let dy : ℝ → ℝ := fun s => 2 * h3Pairing N (F.map N s q) (drift ν N (F.map N s q))
   let g : ℝ → ℝ := fun s => gradientObservable (F.map N s q)
   have hg : Continuous g := (Assembly.continuous_gradientObservable N).comp
-    (Assembly.phaseFlow_orbit_continuous F N q)
+    (continuous_iff_continuousAt.mpr (fun s => (F.orbit_derivative N q s).continuousAt))
   have hd (s : ℝ) : HasDerivAt y (dy s) s := phaseFlow_energy3_hasDerivAt F N q s
   have hb := sqrt_energy_growth_bound y dy g 512 hg hd
     (fun s hs => energy3_nonneg N (F.map N s q)) (by
       intro s hs
       have hh := h3Pairing_drift_le hν N (F.map N s q)
-      change 2 * h3Pairing N _ _ ≤ (2 * 512) * g s * y s
-      dsimp [g, y]
-      linarith) ht
+      have hh2 := mul_le_mul_of_nonneg_left hh (by norm_num : 0 ≤ (2 : ℝ))
+      simpa only [dy, g, y, mul_assoc] using hh2) ht
   simpa only [y, g, F.map_zero, Assembly.orbitGradientCost] using hb
 
 end

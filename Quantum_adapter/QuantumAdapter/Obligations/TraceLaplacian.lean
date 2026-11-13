@@ -109,6 +109,9 @@ theorem drift_fderiv_viscosity_split (ν : ℝ) (N : ℕ) (q : Phase N) :
   have h0 := ((contDiff_drift 0 N).differentiable (by simp) q).hasFDerivAt
   have hA := ((phaseLaplacianCLM N).hasFDerivAt (x := q)).const_smul ν
   have hd := h0.sub hA
+  change HasFDerivAt
+    (fun z : Phase N => drift 0 N z - ν • phaseLaplacianCLM N z)
+    (fderiv ℝ (drift 0 N) q - ν • phaseLaplacianCLM N) q at hd
   have heq : (fun z : Phase N => drift 0 N z - ν • phaseLaplacianCLM N z) =
       drift ν N := by
     funext z

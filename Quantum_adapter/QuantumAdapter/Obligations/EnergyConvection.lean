@@ -19,8 +19,10 @@ theorem fullBilinearTransport_reality (N : ℕ) (a b : FourierCoeff)
     (∑ j : Fin 3, a p j * derivativeSymbol j (q - p)) * b (q - p) i
   have hterm (p : Frequency) : term (-k) (-p) = star (term k p) := by
     have hsub : -k - -p = -(k - p) := by abel
+    have har (j : Fin 3) : a (-p) j = star (a p j) := ha p j
+    have hbr : b (-(k - p)) i = star (b (k - p) i) := hb (k - p) i
     dsimp [term]
-    simp only [hsub, ha, hb, derivativeSymbol_reality, Complex.star_def, map_mul, map_sum]
+    simp only [hsub, har, hbr, derivativeSymbol_reality, Complex.star_def, map_mul, map_sum]
   change (∑ p ∈ fullModes N, term (-k) p) = star (∑ p ∈ fullModes N, term k p)
   rw [star_sum]
   apply Finset.sum_nbij' (fun p => -p) (fun p => -p)

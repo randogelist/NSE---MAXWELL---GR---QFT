@@ -276,7 +276,7 @@ theorem periodic_tensor_interpolation (f : Vec → E) (hf : ContDiff ℝ ∞ f)
   by_cases hz : Real.sqrt A = 0
   · simpa only [hz] using hright
   · have hsAp : 0 < Real.sqrt A := lt_of_le_of_ne hsA0 (Ne.symm hz)
-    have hprod : Real.sqrt A * Real.sqrt A ≤ (4 * M * Real.sqrt B) * Real.sqrt A := by
+    have hprod : Real.sqrt A * Real.sqrt A ≤ Real.sqrt A * (4 * M * Real.sqrt B) := by
       nlinarith
     exact (mul_le_mul_iff_right₀ hsAp).mp hprod
 

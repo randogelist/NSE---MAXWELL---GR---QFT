@@ -15,7 +15,8 @@ open Set Filter MeasureTheory
 open scoped BigOperators Topology ContDiff
 
 namespace QuantumAdapter.Obligations
-open SingularClosure QuantumAdapter.Assembly NSEMaxwell.Classical
+open SingularClosure QuantumAdapter.Assembly
+open NSEMaxwell.Classical (SmoothVelocity SmoothPressure)
 noncomputable section
 
 def physicalTimeJet : ℕ → Velocity → Velocity

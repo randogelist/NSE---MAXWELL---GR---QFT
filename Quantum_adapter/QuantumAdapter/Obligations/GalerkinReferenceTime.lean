@@ -7,7 +7,8 @@ set_option Elab.async true
 open Set Filter MeasureTheory
 open scoped BigOperators Topology ContDiff
 namespace QuantumAdapter.Obligations
-open SingularClosure QuantumAdapter.Assembly NSEMaxwell.Classical
+open SingularClosure QuantumAdapter.Assembly
+open NSEMaxwell.Classical (NSSolution Data SmoothVelocity)
 noncomputable section
 variable {ν : ℝ} {a : Field} {u : Velocity} {p : Pressure}
 

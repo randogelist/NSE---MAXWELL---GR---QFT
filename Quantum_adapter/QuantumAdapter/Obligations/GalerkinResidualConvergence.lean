@@ -16,7 +16,8 @@ open Set Filter
 open scoped BigOperators Topology ContDiff
 namespace QuantumAdapter.Obligations
 noncomputable section
-open SingularClosure QuantumAdapter.Assembly NSEMaxwell.Classical
+open SingularClosure QuantumAdapter.Assembly
+open NSEMaxwell.Classical (NSSolution Data SmoothVelocity)
 
 /-- The zero cutoff contains the mean and no other frequency. -/
 theorem fullModes_zero_mem_iff (k : Frequency) : k ∈ fullModes 0 ↔ k = 0 := by

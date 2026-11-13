@@ -16,7 +16,8 @@ open Set Filter MeasureTheory
 open scoped BigOperators Topology ContDiff
 
 namespace QuantumAdapter.Obligations
-open SingularClosure QuantumAdapter.Assembly NSEMaxwell.Classical
+open SingularClosure QuantumAdapter.Assembly
+open NSEMaxwell.Classical (Data NSSolution SmoothVelocity)
 noncomputable section
 
 theorem infiniteTransport_eq_fullTransportCoefficients (c : TorusSobolev 0) :

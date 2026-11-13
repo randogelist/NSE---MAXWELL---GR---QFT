@@ -8,7 +8,7 @@ set_option backward.isDefEq.respectTransparency false
 open Set Filter MeasureTheory
 open scoped BigOperators Topology ContDiff
 namespace QuantumAdapter.Obligations
-open SingularClosure QuantumAdapter.Assembly NSEMaxwell.Classical
+open SingularClosure QuantumAdapter.Assembly
 noncomputable section
 
 theorem uniqueDiffOn_forwardSpacetime : UniqueDiffOn ℝ forwardSpacetime := by

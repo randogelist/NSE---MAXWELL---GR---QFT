@@ -105,16 +105,15 @@ theorem phaseFlow_relative_l2 {ν : ℝ} (hν : 0 ≤ ν) (F : PhaseFlow ν)
     (drift ν N (F.map N s q) - drift ν N (F.map N s r))
   let g : ℝ → ℝ := fun s => gradientObservable (F.map N s r)
   have hg : Continuous g := (Assembly.continuous_gradientObservable N).comp
-    (Assembly.phaseFlow_orbit_continuous F N r)
+    (continuous_iff_continuousAt.mpr (fun s => (F.orbit_derivative N r s).continuousAt))
   have hd (s : ℝ) : HasDerivAt y (dy s) s :=
     phaseFlow_relative_energy_hasDerivAt F N q r s
   have hb := sqrt_energy_growth_bound y dy g 1 hg hd
     (fun s hs => sq_nonneg _) (by
       intro s hs
       have hh := relative_drift_inner_le hν N (F.map N s q) (F.map N s r)
-      change 2 * inner ℝ _ _ ≤ (2 * 1) * g s * y s
-      dsimp [g, y]
-      linarith) ht
+      have hh2 := mul_le_mul_of_nonneg_left hh (by norm_num : 0 ≤ (2 : ℝ))
+      simpa only [dy, g, y, mul_assoc, one_mul] using hh2) ht
   simpa only [y, g, F.map_zero, Real.sqrt_sq (norm_nonneg _), one_mul,
     Assembly.orbitGradientCost] using hb
 

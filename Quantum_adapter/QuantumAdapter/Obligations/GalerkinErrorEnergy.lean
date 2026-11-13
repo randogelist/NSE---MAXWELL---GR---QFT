@@ -118,7 +118,7 @@ theorem drift_reference_error_h3_rate_le (ν : ℝ) (hν : 0 < ν)
     change _ ≤ (ν / 3) * D + K * (Q * V + V * Q) at hright
     nlinarith
   rw [drift_reference_error_expansion, map_sub, map_add, map_add, map_smul,
-    inner_sub_right, inner_add_right, inner_add_right, inner_smul_right,
+    inner_sub_right, inner_add_right, inner_add_right, real_inner_smul_right,
     sobolevWeighted_inner_laplacian, sobolevDissipation_eq_energy_succ_sub]
   change 2 * (_ + _ + _ - ν * (D - Q)) ≤ referenceErrorGrowth ν R * Q
   unfold referenceErrorGrowth

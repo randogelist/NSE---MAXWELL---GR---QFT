@@ -46,6 +46,7 @@ theorem ambientEndomorphism_resolution (N : ℕ)
         (ambientImagCoordinate N ki).smulRight (f (ambientSingle N ki Complex.I))) := by
   apply LinearMap.ext
   intro q
+  simp only [LinearMap.sum_apply, LinearMap.add_apply, LinearMap.smulRight_apply]
   change f q = ∑ ki : PhaseIndex N,
     ((q ki).re • f (ambientSingle N ki 1) + (q ki).im • f (ambientSingle N ki Complex.I))
   calc

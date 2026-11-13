@@ -13,7 +13,8 @@ open Set
 open scoped BigOperators Topology
 namespace QuantumAdapter.Obligations
 noncomputable section
-open SingularClosure QuantumAdapter.Assembly NSEMaxwell.Classical
+open SingularClosure QuantumAdapter.Assembly
+open NSEMaxwell.Classical (NSSolution Data SmoothVelocity)
 
 /-- Actual quadratic difference, before taking any norm. -/
 theorem projectedTransportCoefficient_difference (k : Frequency) (i : Fin 3)

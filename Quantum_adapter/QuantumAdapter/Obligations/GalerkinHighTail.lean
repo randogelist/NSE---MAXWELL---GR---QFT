@@ -15,7 +15,8 @@ open Set Filter
 open scoped BigOperators Topology ENNReal ContDiff
 namespace QuantumAdapter.Obligations
 noncomputable section
-open SingularClosure QuantumAdapter.Assembly NSEMaxwell.Classical
+open SingularClosure QuantumAdapter.Assembly
+open NSEMaxwell.Classical (NSSolution Data SmoothVelocity)
 
 theorem torusSobolev_norm_sq_eq_tsum_density (s : ℕ) (c : TorusSobolev s) :
     ‖c‖ ^ 2 = ∑' k : Frequency, sobolevEnergyDensity s c.val k := by

@@ -38,7 +38,7 @@ theorem orderedPairing_smul_right (m N : ℕ) (q a : Phase N) (s : ℝ) :
   induction m generalizing q a with
   | zero =>
     change inner ℝ q (s • a) = s * inner ℝ q a
-    simp only [inner_smul_right]
+    exact real_inner_smul_right q a s
   | succ m ih => simp only [orderedPairing, phaseDerivative_smul, ih, Finset.mul_sum]
 
 theorem h3Pairing_self (N : ℕ) (q : Phase N) :

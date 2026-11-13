@@ -21,7 +21,8 @@ open scoped BigOperators Topology ContDiff
 
 namespace QuantumAdapter.Obligations
 
-open SingularClosure QuantumAdapter.Assembly NSEMaxwell.Classical
+open SingularClosure QuantumAdapter.Assembly
+open NSEMaxwell.Classical (NSSolution Data SmoothVelocity)
 
 noncomputable section
 
@@ -44,9 +45,9 @@ theorem NSSolution.pressure_spatial_smooth (h : NSSolution ν a u p)
 
 /-- Smooth gradient slices justify the actual pressure Fourier integrals. -/
 theorem NSSolution.pressure_gradient_continuous (h : NSSolution ν a u p)
-    (t : ℝ) (ht : 0 ≤ t) : Continuous (gradient (p t)) := by
+    (t : ℝ) (ht : 0 ≤ t) : Continuous (SingularClosure.gradient (p t)) := by
   have hs := h.pressure_spatial_smooth t ht
-  have hg : ContDiff ℝ ∞ (gradient (p t)) := by
+  have hg : ContDiff ℝ ∞ (SingularClosure.gradient (p t)) := by
     apply (contDiff_piLp 2).2
     intro i
     exact (contDiff_infty_iff_fderiv.mp hs).2.clm_apply contDiff_const
@@ -72,9 +73,9 @@ theorem NSSolution.fourier_equation (h : NSSolution ν a u p)
     (t : ℝ) (ht : 0 ≤ t) (k : Frequency) (i : Fin 3) :
     datumFourierCoeff (timeDerivative u t) k i +
         datumFourierCoeff (convection (u t)) k i +
-        datumFourierCoeff (gradient (p t)) k i =
+        datumFourierCoeff (SingularClosure.gradient (p t)) k i =
       -((ν * laplaceSymbol k : ℝ) : ℂ) * datumFourierCoeff (u t) k i := by
-  have hf : timeDerivative u t + convection (u t) + gradient (p t) =
+  have hf : timeDerivative u t + convection (u t) + SingularClosure.gradient (p t) =
       ν • laplacian (u t) := funext (h.equation t ht)
   have hc := congrArg datumFourierCoeff hf
   have hdt := h.timeDerivative_spatial_continuous t ht
@@ -102,7 +103,7 @@ theorem NSSolution.projected_fourier_equation (h : NSSolution ν a u p)
   have hp := coefficientLeray_datumFourierCoeff_gradient (p t)
     (h.pressure_spatial_smooth t ht) (h.pressure_periodic t ht) k
   have hvec : datumFourierCoeff (timeDerivative u t) k +
-      datumFourierCoeff (convection (u t)) k + datumFourierCoeff (gradient (p t)) k =
+      datumFourierCoeff (convection (u t)) k + datumFourierCoeff (SingularClosure.gradient (p t)) k =
         fun j => -((ν * laplaceSymbol k : ℝ) : ℂ) * datumFourierCoeff (u t) k j := by
     funext j
     exact h.fourier_equation t ht k j

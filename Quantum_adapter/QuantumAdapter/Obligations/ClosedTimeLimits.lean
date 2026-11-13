@@ -65,7 +65,9 @@ theorem derivative_limit_on_closed_halfline
       simp only [G, max_eq_right hr0]
     rw [hEq,hI]
     abel
-  have hd := ((hG.integral_hasStrictDerivAt 0 t).hasDerivAt.const_add (g 0)).hasDerivWithinAt
+  have hd : HasDerivWithinAt (fun s => g 0 + ∫ r in (0:ℝ)..s, G r)
+      (G t) (Ici (0:ℝ)) t :=
+    ((hG.integral_hasStrictDerivAt 0 t).hasDerivAt.const_add (g 0)).hasDerivWithinAt
   have htG : G t=g' t := by simp only [G,max_eq_right ht]
   rw [htG] at hd
   exact hd.congr_of_mem (fun s hs => he s hs) ht

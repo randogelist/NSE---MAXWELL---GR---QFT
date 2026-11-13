@@ -1,0 +1,138 @@
+CLOWNFIESTA | QUANTUM_ADAPTER | EXACT SCOPE AND PROMOTION AUDIT
+WORKFLOW=YOU_ARE_GOODWORKFLOWFRONTIER
+MODE=A_TIER_DERIVATION
+ASSEMBLY_STATUS=A_TIER_CANDIDATE
+AUDIT_KIND=SOURCE_SIGNATURE_AND_DEPENDENCY_REVIEW
+PROMOTION_STATUS=REQUIRES_MATCHING_EXTERNAL_COMPILER_AND_EXACT_ROOT_AXIOM_EVIDENCE
+NO_LOCAL_LEAN=true
+
+NAMESPACE=QuantumAdapter.Obligations
+
+ROOT
+NSE_B_IFF_CANONICAL_QUANTUM {ν : ℝ} (hν : 0 < ν) :
+  NSEMaxwell.Classical.FeffermanB ν ↔ QREG (closedPhaseFlow hν)
+
+closedPhaseFlow hν :=
+  canonicalPhaseFlow hν.le (fun N q => native_drift_divergence ν N q)
+
+ROOT_PREMISES={ν : ℝ, 0 < ν}
+ROOT_CONCLUSION=EQUIVALENCE
+ROOT_CONCLUSION_NOT_ESTABLISHED_SEPARATELY={FeffermanB ν, QREG (closedPhaseFlow hν)}
+
+P1 | TraceSpectral.lean
+native_drift_divergence (ν : ℝ) (N : ℕ) (q : Phase N) :
+  driftDivergence ν N q = -phaseDecayRate ν N
+
+P2 | VariationalNative.lean
+phaseFlow_timeMap_differentiable {ν : ℝ} (hν : 0 ≤ ν)
+  (F : PhaseFlow ν) (N : ℕ) (t : ℝ) :
+  Differentiable ℝ (F.map N t)
+
+P3 | JacobianNative.lean
+phaseFlow_jacobian {ν : ℝ} (hν : 0 ≤ ν)
+  (F : PhaseFlow ν) (N : ℕ) (t : ℝ) (q : Phase N) :
+  (fderiv ℝ (F.map N t) q).det = Real.exp (-(phaseDecayRate ν N) * t)
+
+P4 | EnergyRelative.lean
+phaseFlow_relative_l2 {ν : ℝ} (hν : 0 ≤ ν) (F : PhaseFlow ν)
+  (N : ℕ) (q r : Phase N) (t : ℝ) (ht : 0 ≤ t) :
+  ‖F.map N t q - F.map N t r‖ ≤
+    ‖q - r‖ * Real.exp (Assembly.orbitGradientCost F N r t)
+
+P5 | EnergyTame.lean
+phaseFlow_h3_tame {ν : ℝ} (hν : 0 ≤ ν) (F : PhaseFlow ν)
+  (N : ℕ) (q : Phase N) (t : ℝ) (ht : 0 ≤ t) :
+  Real.sqrt (energy3 N (F.map N t q)) ≤
+    Real.sqrt (energy3 N q) *
+      Real.exp (512 * Assembly.orbitGradientCost F N q t)
+
+P5_CONSTANT=512
+P5_MULTIPLICATIVE_PREFACTOR=1
+P5_CONSTANT_DEPENDENCE=NONE_ON_{ν,N,q,t}
+P5_SCOPE=ORIGINAL_POSITIVE_UNIVERSAL_CONSTANT_ENDPOINT
+P5_B_TIER_CONSTANT_16=NOT_THE_CONSTANT_ASSERTED_BY_THIS_LEAN_ENDPOINT
+
+P6 | GalerkinForward.lean
+phaseFlow_smooth_stability {ν : ℝ} (hν : 0 < ν) (F : PhaseFlow ν)
+  (a : Field) (ha : Data a) (u : Velocity) (p : Pressure)
+  (h : NSSolution ν a u p) (T : ℝ) (hT : 0 < T) :
+  GalerkinBoundAt F a ha T
+
+P7 | GalerkinReverse.lean
+phaseFlow_compactness {ν : ℝ} (hν : 0 < ν) (F : PhaseFlow ν)
+  (a : Field) (ha : Data a)
+  (h3 : ∀ T : ℝ, 0 < T → GalerkinBoundAt F a ha T) :
+  ∃ (u : Velocity) (p : Pressure), NSSolution ν a u p
+
+ORIGINAL_NATIVE_PREDICATES
+Data a = {smooth, periodic, divergence_free}
+VELOCITY_MEAN_CONSTRAINT=NONE
+FULL_MODE_ZERO_FREQUENCY=RETAINED
+GalerkinBoundAt F a ha T =
+  ∃ C : ℝ, 0 ≤ C ∧ ∀ N : ℕ, 1 ≤ N →
+    ∀ t : ℝ, 0 ≤ t → t ≤ T → centralEnergy F N a ha t ≤ C
+
+NSSolution ν a u p =
+  velocity_smooth : SmoothVelocity u
+  pressure_smooth : SmoothPressure p
+  velocity_periodic : PeriodicVelocity u
+  pressure_periodic : PeriodicPressure p
+  divergence_free : ∀ t, 0 ≤ t → ∀ x, divergence (u t) x = 0
+  equation : ∀ t, 0 ≤ t → ∀ x,
+    timeDerivative u t x + convection (u t) x + gradient (p t) x =
+      ν • laplacian (u t) x
+  initial : u 0 = a
+
+forwardSpacetime = {z : ℝ × Vec | 0 ≤ z.1}
+SmoothVelocity u = ContDiffOn ℝ ∞ (fun z => u z.1 z.2) forwardSpacetime
+SmoothPressure p = ContDiffOn ℝ ∞ (fun z => p z.1 z.2) forwardSpacetime
+timeDerivative u t x = derivWithin (fun s => u s x) (Ici 0) t
+INITIAL_BOUNDARY=t=0_INCLUDED_IN_SMOOTHNESS_AND_EQUATION
+BACKWARD_PDE_EXTENSION_PREMISE=NONE
+PRESSURE_GAUGE=CONSTRUCTED_ZERO_MEAN_GAUGE_PERMITTED_BY_NATIVE_ENDPOINT
+
+DEPENDENCY_AND_PREMISE_AUDIT
+P1 + complete native finite orbits → closedPhaseFlow
+P2 → genuine fderiv variational equation → P3
+P4 + P5 + native embedding/projection bounds → actual packet estimates
+P6 : supplied native NSSolution → actual reference Fourier residual → GalerkinBoundAt
+P7 : supplied all-horizon GalerkinBoundAt → actual all-order finite time jets
+  → one countable coefficient subsequence → coefficient derivative tower
+  → closed-domain Fourier series differentiation → jointly smooth velocity
+  → actual physical convection time jets and Fourier integrals
+  → jointly smooth pressure → Fourier injectivity → all seven NSSolution fields
+P6_P7_CONTRACT_ASSEMBLY=ACYCLIC
+P7_TO_P6_DEPENDENCY=NONE_ON_THE_P6_IMPLICATION
+PRESSURE_REGULARITY_INPUT=DERIVED_FROM_JOINT_VELOCITY_SMOOTHNESS
+NATIVE_GALERKIN_ANALYTIC_LAWS=CONSTRUCTED_FROM_P6_AND_P7
+NEW_ANALYTIC_PREMISES=NONE_IN_FINAL_ROOT_OR_P1_TO_P7_ENDPOINTS
+NEW_CERTIFICATE_WITNESS_CHECKER_OR_ADMISSION_PREMISES=NONE_IN_FINAL_ROOT
+INTERMEDIATE_TOWER_HYPOTHESES=DISCHARGED_BY_native_continuum_tower_exists
+INITIAL_PROJECTION_BOUND=CONSTRUCTED_BY_Assembly.initialProjectionBounds
+SOURCE_SCOPE_REVIEW=PASS
+
+EXTERNAL_PROMOTION_GATES
+G1 = exact external platform and native Lean 4.34.0-rc1 compiler identity
+G2 = pinned Mathlib and every locked dependency revision
+G3 = verified dependency-cache preparation fingerprint
+G4 = exact checked-out source commit and tracked proof/configuration blob hashes
+G5 = successful current-source Lake build and transitive --no-build freshness check
+G6 = recorded compiled-module SHA256 values; no artifact mutation during audit
+G7 = fresh #check @declaration and #print axioms declaration for every exact target
+G8 = exact unique axiom-record names; no missing, duplicate, or extra target records
+G9 = no compiler error, no sorryAx, no unapproved axiom
+G10 = unchanged proof/configuration source bytes after external build and audit
+G11 = exact root signature and premise review; no promotion from record declarations alone
+G12 = matching source-manifest evidence for every promoted theorem and final root
+
+ALLOWED_STANDARD_AXIOMS={propext, Classical.choice, Quot.sound}
+CACHE_REUSE_ALONE≠A_TIER
+PREPARED_SOURCE≠A_TIER
+OPAQUE_SIGNATURE_WITHOUT_ACCEPTED_BODY≠PROVED_ENDPOINT
+MODULE_BUILD_WITHOUT_EXACT_AXIOM_AUDIT≠A_TIER
+MATCHING_BUILD_AND_EXACT_AXIOM_AUDIT_AND_SCOPE_REVIEW→PROMOTION_ELIGIBILITY
+SOURCE_AUDIT_DOES_NOT_ASSIGN_FINAL_A_TIER_STATUS
+
+FORMAL_CLOSURE_TARGET=EXACT_EQUIVALENCE_FROM_ITS_ORIGINAL_EXPLICIT_PREMISES
+UNCONDITIONAL_CLOSURE_TARGET=ALL_ADAPTER_OBLIGATIONS_DISCHARGED_FOR_THAT_EQUIVALENCE
+UNCONDITIONAL_NAVIER_STOKES_GLOBAL_EXISTENCE_CLAIM=NONE

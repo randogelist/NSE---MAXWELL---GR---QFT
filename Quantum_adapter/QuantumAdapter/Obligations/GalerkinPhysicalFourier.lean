@@ -69,8 +69,10 @@ theorem datumFourierCoeff_laplacian (a : Field)
   have heq : laplacian a = ∑ j : Fin 3, coordinateDerivative (coordinateDerivative a j) j := by
     funext x
     simp only [laplacian, coordinateDerivative, Finset.sum_apply]
-  rw [heq, datumFourierCoeff_finset_sum Finset.univ _ (fun j hj =>
-    (iteratedCoordinateDerivative_smooth j 1 (coordinateDerivative a j) (hd j)).continuous)]
+  have hc (j : Fin 3) : Continuous (coordinateDerivative (coordinateDerivative a j) j) :=
+    (iteratedCoordinateDerivative_smooth j 1 (coordinateDerivative a j) (hd j)).continuous
+  rw [heq, datumFourierCoeff_finset_sum Finset.univ
+    (fun j => coordinateDerivative (coordinateDerivative a j) j) (fun j hj => hc j)]
   simp_rw [SingularClosure.datumFourierCoeff_coordinateDerivative _ _ (hd _) (hdp _),
     SingularClosure.datumFourierCoeff_coordinateDerivative _ _ ha hp]
   exact sum_double_derivativeMultiplier (datumFourierCoeff a)
@@ -87,7 +89,8 @@ def scalarDatumFourierCoeff (p : Vec → ℝ) (k : Frequency) : ℂ :=
 
 theorem datumFourierCoeff_gradient (p : Vec → ℝ)
     (hp : ContDiff ℝ ∞ p) (hper : SpatialPeriodic p) (k : Frequency) (i : Fin 3) :
-    datumFourierCoeff (gradient p) k i = derivativeSymbol i k * scalarDatumFourierCoeff p k := by
+    datumFourierCoeff (SingularClosure.gradient p) k i =
+      derivativeSymbol i k * scalarDatumFourierCoeff p k := by
   let a : Field := fun x => WithLp.toLp 2 (fun _ : Fin 3 => p x)
   have ha : ContDiff ℝ ∞ a := (contDiff_piLp 2).2 (fun _ => hp)
   have hap : SpatialPeriodic a := by
@@ -113,6 +116,7 @@ theorem coefficientLeray_frequency_mul (k : Frequency) (z : ℂ) :
     coefficientLeray k (fun i => (k i : ℂ) * z) = 0 := by
   by_cases hk : k = 0
   · subst k
+    funext i
     simp [coefficientLeray]
   · have hd := frequencySquare_ne_zero k hk
     have hsum : (∑ j : Fin 3, (k j : ℂ) * ((k j : ℂ) * z)) =
@@ -127,8 +131,8 @@ theorem coefficientLeray_frequency_mul (k : Frequency) (z : ℂ) :
 
 theorem coefficientLeray_datumFourierCoeff_gradient (p : Vec → ℝ)
     (hp : ContDiff ℝ ∞ p) (hper : SpatialPeriodic p) (k : Frequency) :
-    coefficientLeray k (datumFourierCoeff (gradient p) k) = 0 := by
-  have heq : datumFourierCoeff (gradient p) k =
+    coefficientLeray k (datumFourierCoeff (SingularClosure.gradient p) k) = 0 := by
+  have heq : datumFourierCoeff (SingularClosure.gradient p) k =
       fun i => (k i : ℂ) * (((2 * Real.pi : ℝ) : ℂ) * Complex.I * scalarDatumFourierCoeff p k) := by
     funext i
     rw [datumFourierCoeff_gradient p hp hper]
