@@ -34,9 +34,8 @@ theorem poissonInverse_hasDerivAt_global (f : Pressure)
       (hf.comp (contDiff_id.prodMk contDiff_const)).differentiable (by simp)
     have he := (hd t).hasDerivAt.comp_of_eq 1
       (((hasDerivAt_id (1 : ℝ)).sub_const 1).add_const t) (by simp)
-    have he' : HasDerivAt (fun s => g s y) (scalarLocalTimeDerivative f t y) 1 := by
-      simpa only [g, Function.comp_def, mul_one, scalarLocalTimeDerivative] using he
-    exact he'.deriv
+    rw [mul_one] at he
+    exact he.deriv
   have h := poissonInverse_hasDerivAt_pos g hg hgp (t := 1) zero_lt_one x
   rw [hD] at h
   have he := h.comp_of_eq t
@@ -58,9 +57,8 @@ theorem scalarMean_hasDerivAt_global (f : Pressure)
       (hf.comp (contDiff_id.prodMk contDiff_const)).differentiable (by simp)
     have he := (hd t).hasDerivAt.comp_of_eq 1
       (((hasDerivAt_id (1 : ℝ)).sub_const 1).add_const t) (by simp)
-    have he' : HasDerivAt (fun s => g s y) (scalarLocalTimeDerivative f t y) 1 := by
-      simpa only [g, Function.comp_def, mul_one, scalarLocalTimeDerivative] using he
-    exact he'.deriv
+    rw [mul_one] at he
+    exact he.deriv
   have h := scalarMean_hasDerivAt_pos g hg (t := 1) zero_lt_one
   rw [hD] at h
   have he := h.comp_of_eq t
@@ -81,8 +79,10 @@ theorem cutoff_mul_contDiff (f : Pressure) {I : Set ℝ} (hI : IsOpen I)
   · have hzero : χ =ᶠ[𝓝 z.1] 0 := notMem_tsupport_iff_eventuallyEq.mp hz
     have hz' : ∀ᶠ y : ℝ × Vec in 𝓝 z, χ y.1 = 0 :=
       continuousAt_fst.tendsto.eventually hzero
-    exact contDiffAt_const.congr_of_eventuallyEq
-      (hz'.mono (fun y hy => by simp only [hy, zero_mul, Pi.zero_apply]))
+    have hconst : ContDiffAt ℝ ∞ (fun _ : ℝ × Vec => (0 : ℝ)) z :=
+      contDiffAt_const
+    exact hconst.congr_of_eventuallyEq
+      (hz'.mono (fun y hy => by simp only [hy, zero_mul]))
 
 /-- A smooth periodic slab has a global smooth periodic extension near any
 chosen time, with equality of full spatial slices on one common neighborhood. -/
@@ -125,7 +125,9 @@ theorem poissonInverse_hasDerivAt_local (f : Pressure) {I : Set ℝ}
   obtain ⟨g, hg, hgp, heq⟩ := exists_smooth_periodic_extension f hI hf hp ht
   have hD : scalarLocalTimeDerivative g t = scalarLocalTimeDerivative f t := by
     funext y
-    exact (heq.mono (fun s hs => congrFun hs y)).deriv_eq
+    have hy : (fun s : ℝ => g s y) =ᶠ[𝓝 t] (fun s : ℝ => f s y) :=
+      heq.mono (fun s hs => congrFun hs y)
+    exact hy.deriv_eq
   have h := poissonInverse_hasDerivAt_global g hg hgp t x
   rw [hD] at h
   exact h.congr_of_eventuallyEq
@@ -150,7 +152,9 @@ theorem scalarMean_hasDerivAt_local (f : Pressure) {I : Set ℝ}
   obtain ⟨g, hg, hgp, heq⟩ := exists_smooth_periodic_extension f hI hf hp ht
   have hD : scalarLocalTimeDerivative g t = scalarLocalTimeDerivative f t := by
     funext y
-    exact (heq.mono (fun s hs => congrFun hs y)).deriv_eq
+    have hy : (fun s : ℝ => g s y) =ᶠ[𝓝 t] (fun s : ℝ => f s y) :=
+      heq.mono (fun s hs => congrFun hs y)
+    exact hy.deriv_eq
   have h := scalarMean_hasDerivAt_global g hg t
   rw [hD] at h
   exact h.congr_of_eventuallyEq

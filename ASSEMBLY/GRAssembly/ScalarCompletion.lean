@@ -116,8 +116,9 @@ theorem nseSpatialSource3_divergence
     fun i j => hp.mul_const _
   have hs : ∀ i j, DifferentiableAt ℝ (fun y => strain (u t) y i j) x :=
     fun i j => (strain_component_smooth hu i j).differentiable (by simp) x
+  let I : TensorField := fun y i j => p t y * identity3 i j
   have heq : nseSpatialSource3 ν u p t = fun y =>
-      (velocityOuter (u t y) + ((fun i j => p t y * identity3 i j) : Tensor3)) -
+      (velocityOuter (u t y) + I y) -
         ν • strain (u t) y := by
     rfl
   rw [heq, tensorDivergence_sub _ _ x (fun i j => (ho i j).add (hi i j))

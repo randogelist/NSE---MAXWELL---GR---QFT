@@ -80,10 +80,13 @@ theorem source_plus_completion_pressure_gauge {ν ρ t : ℝ} {u : Velocity}
   have ht := scalarSecondTimeDerivative_gauge hψ ha
   rw [ha2] at ht
   ext i j
+  change conservedSourceUpper ν ρ u (fun s y => p s y + γ s) t x i j +
+      scalarCompletionUpper (fun s y => ψ s y - a s) t x i j =
+    conservedSourceUpper ν ρ u p t x i j + scalarCompletionUpper ψ t x i j
   refine Fin.cases ?_ (fun i => ?_) i <;>
     refine Fin.cases ?_ (fun j => ?_) j
   all_goals
-    simp only [Pi.add_apply, conservedSourceUpper, scalarCompletionUpper,
+    simp only [conservedSourceUpper, scalarCompletionUpper,
       boundaryBlock_time_time, boundaryBlock_time_space, boundaryBlock_space_time,
       boundaryBlock_space_space, scalarLaplacian_sub_constant,
       scalarHessian_sub_constant, hg, ht]
@@ -113,9 +116,11 @@ theorem normalized_pressure_gauge_completion
             completedBoundary ν ρ u p ψ z.1 z.2 := by
   obtain ⟨a, ha, ha0, ha1, ha2⟩ := analytic_double_primitive_of_literatureCK input hγ
   refine ⟨a, ha, ha0, ha1, ?_⟩
+  have hfst : Tendsto (fun z : ℝ × Vec => z.1) (𝓝 (t0, x0)) (𝓝 t0) :=
+    continuous_fst.continuousAt.tendsto
   have ht : ∀ᶠ z : ℝ × Vec in 𝓝 (t0, x0),
       AnalyticAt ℝ a z.1 ∧ deriv (deriv a) z.1 = γ z.1 :=
-    continuous_fst.continuousAt.tendsto.eventually (ha.eventually_analyticAt.and ha2)
+    hfst.eventually (ha.eventually_analyticAt.and ha2)
   filter_upwards [hψ.eventually_analyticAt, ht] with z hz hzt
   exact completedBoundary_pressure_gauge hz hzt.1 hzt.2
 
