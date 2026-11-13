@@ -364,7 +364,7 @@ theorem synthesis_coordinateDerivative (N : ℕ) (q : Phase N) (j : Fin 3) :
     (by simp) x).hasFDerivAt
   have hs : HasFDerivAt (fun y => meanVector q + finiteSynthesis N (phaseCoeff q) y)
       (fderiv ℝ (finiteSynthesis N (phaseCoeff q)) x) x := by
-    simpa only [zero_add] using (hasFDerivAt_const (meanVector q) x).add hd
+    exact (hasFDerivAt_const_add_iff (meanVector q)).mpr hd
   rw [synthesis_eq_mean_add_source, hs.fderiv]
 
 /-- Each physical derivative multiplier is bounded by the exact Sobolev weight. -/

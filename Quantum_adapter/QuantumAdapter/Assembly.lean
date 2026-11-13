@@ -2,6 +2,8 @@ import QuantumAdapter.Assembly.Flow
 import QuantumAdapter.Assembly.CanonicalFlow
 import QuantumAdapter.Assembly.CompleteFlow
 import QuantumAdapter.Assembly.FlowContinuity
+import QuantumAdapter.Assembly.FlowDependence
+import QuantumAdapter.Assembly.GlobalDrift
 import QuantumAdapter.Assembly.Fourier
 import QuantumAdapter.Assembly.Galerkin
 import QuantumAdapter.Assembly.Gaussian

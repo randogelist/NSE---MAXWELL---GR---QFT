@@ -7,7 +7,11 @@ from pathlib import Path
 import re
 
 NAME = re.compile(r"[A-Za-z_][A-Za-z0-9_']*(?:\.[A-Za-z_][A-Za-z0-9_']*)*\Z")
-ORDER = {x: i for i, x in enumerate(("Flow", "Fourier", "Galerkin", "Gaussian", "Transport", "PacketEstimates"))}
+ORDER = {x: i for i, x in enumerate((
+    "Flow", "Fourier", "Galerkin", "Gaussian", "Transport", "CompleteFlow",
+    "GlobalDrift", "CanonicalFlow", "FlowContinuity", "FlowDependence",
+    "Admissibility", "PacketEstimates",
+))}
 
 def without_comments(text):
     # Preserve line boundaries; nested Lean block comments are allowed.

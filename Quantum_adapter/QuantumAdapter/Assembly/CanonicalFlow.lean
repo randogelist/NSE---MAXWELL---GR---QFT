@@ -1,4 +1,5 @@
 import QuantumAdapter.Assembly.Flow
+import QuantumAdapter.Assembly.GlobalDrift
 
 /-!
 Deterministic construction of the native flow record from complete actual
@@ -77,6 +78,22 @@ theorem phaseFlow_eq_constructed
       q 0 = q₀ ∧ ∀ t, HasDerivAt q (drift ν N (q t)) t)
     (divergence : ∀ N q, driftDivergence ν N q = -phaseDecayRate ν N)
     (F : PhaseFlow ν) : F = phaseFlowOfCompleteOrbits complete divergence :=
+  phaseFlow_unique F _
+
+/-- Complete actual orbits are native; the real divergence identity remains explicit. -/
+def canonicalPhaseFlow (hν : 0 ≤ ν)
+    (divergence : ∀ N q, driftDivergence ν N q = -phaseDecayRate ν N) :
+    PhaseFlow ν :=
+  phaseFlowOfCompleteOrbits (exists_complete_drift_orbit hν) divergence
+
+theorem nonempty_phaseFlow_of_divergence (hν : 0 ≤ ν)
+    (divergence : ∀ N q, driftDivergence ν N q = -phaseDecayRate ν N) :
+    Nonempty (PhaseFlow ν) :=
+  ⟨canonicalPhaseFlow hν divergence⟩
+
+theorem phaseFlow_eq_canonical (hν : 0 ≤ ν)
+    (divergence : ∀ N q, driftDivergence ν N q = -phaseDecayRate ν N)
+    (F : PhaseFlow ν) : F = canonicalPhaseFlow hν divergence :=
   phaseFlow_unique F _
 
 end
