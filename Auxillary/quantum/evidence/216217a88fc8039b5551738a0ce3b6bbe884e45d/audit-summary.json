@@ -1,0 +1,2084 @@
+{
+  "schema_version": 1,
+  "status": "PASS_STANDARD_ONLY",
+  "source_commit": "216217a88fc8039b5551738a0ce3b6bbe884e45d",
+  "source_manifest_sha256": "fa26c54d13823d366799d4d41644bab54cb59a64eb2cc8dab0dfb782a254267f",
+  "compiler": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+  "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "theorem_count": 204,
+  "theorems": [
+    {
+      "name": "QuantumAdapter.fullModes",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.Mode",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.PhaseIndex",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.AmbientPhase",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.zero_mem_fullModes",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.fullModes_neg_mem",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.fullModes_neg_mem_iff",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.extendCoeff",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.extendCoeff_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.extendCoeff_add",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.extendCoeff_real_smul",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.extendCoeff_injective",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.phaseSubmodule",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.Phase",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.phaseCoeff",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.phaseCoeff_reality",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.phaseCoeff_solenoidal",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.phaseCoeff_support",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.phaseCoeff_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.meanAmbient",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.meanAmbient_coeff",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.meanAmbient_mem",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.meanPhase",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.meanPhase_coeff",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.meanPhase_injective",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.phase_finrank_pos",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.datumFourierCoeff_solenoidal",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.initialAmbient",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.initialAmbient_coeff",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.initialAmbient_mem",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.initialPhase",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.initialPhase_coeff",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.initialPhase_mean",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.initialPhaseData",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.initialPhaseData_mean",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.laplaceSymbol",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.laplaceSymbol_nonneg",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.h3Weight",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.h3Weight_pos",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.energy3",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.energy3_nonneg",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.energy3_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.synthesis",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.meanVector",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.synthesis_eq_mean_add_source",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.synthesis_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.gradientSquare",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.gradientObservable",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.fullTransport",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.fullTransport_eq_source_add_mean",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.fullTransport_eq_source_of_mean_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.fullTransport_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.fullTransport_zero_fun",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.rawRhs",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.rawRhs_mean",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.rawRhs_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.RawRhsTangent",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.drift",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.drift_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.drift_eq_rawRhs_of_tangent",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.IsTrajectory",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.zero_isTrajectory",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.cotangentHamiltonian",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.cotangent_momentum_increment",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.cotangent_hasFDerivAt_momentum",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.cotangent_fderiv_momentum",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.cotangent_zero_momentum",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.cotangent_zero_configuration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.fullTransport_zero_frequency",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.fullTransport_reality",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.frequencySquare_ne_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.coefficientLeray_solenoidal",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.rawRhs_coeff",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.rawRhs_all_modes",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.rawRhs_reality",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.rawRhs_solenoidal",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.rawRhs_tangent",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.drift_eq_rawRhs",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.drift_mean",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.fullTransport_complex_energy_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.fullLerayTransport_complex_energy_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.fullLerayTransport_real_energy_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.energy0",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.dissipation",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.energy0_nonneg",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.dissipation_nonneg",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.rawRhs_energy_rate",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.rawRhs_energy_rate_nonpos",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.phaseCoordinate",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.phaseCoordinate_apply",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.IsTrajectory.coefficient_hasDerivWithinAt",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.IsTrajectory.energy0_identity",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.IsTrajectory.energy0_antitoneOn",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.IsTrajectory.energy0_le_initial",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.Wave",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.bornDensity",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.expectation",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.WaveAdmissible",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.ObservableIntegrable",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.MultiplierDomain",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.bornDensity_nonneg",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.bornDensity_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.bornDensity_const_mul",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.bornDensity_unit_phase",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.WaveAdmissible.density_integrable",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.not_waveAdmissible_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.WaveAdmissible.toL2",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.WaveAdmissible.coe_toL2",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.expectation_congr_ae",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.WaveAdmissible.expectation_toL2",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.expectation_nonneg",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.expectation_const_mul_wave",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.expectation_unit_phase",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.expectation_const",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.expectation_mono",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.expectation_add",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.expectation_le_bound",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.bound_le_expectation",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.halfDensityPullback",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.halfDensityPullback_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.halfDensityPullback_add",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.halfDensityPullback_inverse",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.bornDensity_halfDensityPullback",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.IntegralPullbackLaw",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.MemLpPullbackLaw",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.WaveAdmissible.halfDensityPullback",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.expectation_halfDensityPullback",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.memLp_bornDensity_integrable",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.memLp_toLp_norm_sq",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.WaveAdmissible.norm_toL2",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.halfDensityPullback_toLp_norm",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.halfDensityPullback_congr_ae",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.l2Pullback",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.l2Pullback_coe",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.l2Pullback_toLp",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.l2Pullback_norm",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.l2Pullback_add_vectors",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.l2Pullback_smul",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.l2PullbackIsometry",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.l2Pullback_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.l2Pullback_add_times",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.l2PullbackEquiv",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.l2PullbackEquiv_apply",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.l2PullbackEquiv_symm_apply",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.phaseDimension",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.phaseVolume",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.QuantumHilbert",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.cutoffSobolevFactor",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.cutoffSobolevFactor_pos",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.canonicalScale",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.canonicalScale_pos",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.gaussianAmplitude",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.gaussianAmplitude_pos",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.canonicalPacket",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.canonicalPacket_im",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.canonicalPacket_center",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.canonicalPacket_re_pos",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.finiteLaplaceTrace",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.finiteLaplaceTrace_nonneg",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.phaseDecayRate",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.driftDivergence",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.PhaseFlow",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.transport",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.transportedPacket",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.quantumEnergy",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.quantumAdmissible",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.quantumEnergy_nonneg",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.transport_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.transportedPacket_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.transport_add",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.transport_inverse",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.phaseFlow_isTrajectory",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.hamiltonianExpression",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.HamiltonianTestDomain",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.hamiltonianExpression_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.PhaseTransportLaws",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.quantumUnitary",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.quantumUnitary_zero",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.quantumUnitary_add",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.transport_waveAdmissible",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.quantumEnergy_conjugacy",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.centralEnergy",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.packetEnergy",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.GalerkinBoundAt",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.G3",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.QREG",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.forwardPacketBound",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.packetGradientBudget",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.reversePacketBound",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.forwardPacketBound_nonneg",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.reversePacketBound_nonneg",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.PacketBounds",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.InitialProjectionBounds",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.GalerkinAnalyticLaws",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.ExactQuantumEquivalence",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.Directions.feffermanB_implies_galerkin_of_analyticLaws",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.Directions.galerkin_implies_quantum_of_packetBounds",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.Directions.feffermanB_implies_quantum_of_analyticLaws",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.Directions.quantum_implies_galerkin_of_packetBounds",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.Directions.galerkin_implies_feffermanB_of_analyticLaws",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.Directions.quantum_implies_feffermanB_of_analyticLaws",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.feffermanB_iff_qreg_of_analytic_bounds",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.exactQuantumEquivalence_of_analytic_bounds",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "QuantumAdapter.exact_quantum_conditional_root",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    }
+  ],
+  "declared_formalization_scope": {
+    "schema_version": 1,
+    "status": "A_TIER_CANDIDATE",
+    "base_branch": "codex/fefferman-b-maxwell",
+    "base_commit": "1de664f2ef5ddc11caef25ac2274278b4171ab6b",
+    "branch": "codex/quantum-adapter-from-maxwell",
+    "compiler": "leanprover/lean4:v4.34.0-rc1",
+    "execution": "cached external native Linux",
+    "local_lean_executions": 0,
+    "exact_root": "QuantumAdapter.exact_quantum_conditional_root",
+    "root_statement": "forall nu>0, forall F:PhaseFlow nu,Cemb,C3, GalerkinAnalyticLaws F -> PacketBounds F Cemb C3 -> InitialProjectionBounds -> (NSEMaxwell.Classical.FeffermanB nu <-> QuantumAdapter.QREG F)",
+    "root_premises": [
+      "PhaseFlow nu",
+      "GalerkinAnalyticLaws F",
+      "PacketBounds F Cemb C3",
+      "InitialProjectionBounds"
+    ],
+    "additional_unresolved_realization": [
+      "complete actual finite flow and drift divergence inhabitant",
+      "Gaussian normalization and full multiplier domains for all evolved packets",
+      "actual integral and MemLp pullback laws",
+      "selfadjoint closed Hamiltonian and its exact L2 unitary realization",
+      "concrete physical Sobolev/analytic estimates instantiating all four root hypotheses"
+    ],
+    "universal_regularity": "NOT_PROVED",
+    "full_txt_root_R1_R24": "NOT_FORMALIZED",
+    "target_count": 204,
+    "modules": 14,
+    "criterion": "canonical Gaussian QREG_Gauss, named QuantumAdapter.QREG"
+  },
+  "semantic_discharge": "NOT_INFERRED_FROM_AXIOM_AUDIT",
+  "exact_root_promotion": "REQUIRES_SCOPE_AND_PREMISE_REVIEW",
+  "errors": []
+}

@@ -36,7 +36,7 @@ the velocity mean nor the regularity class may be replaced.
 | Order | Native target | Exact analytic frontier |
 |---:|---|---|
 | 0 | Full finite Fourier phase; reality and solenoidality; constant modes | Actual real Hilbert phase, Fourier/physical energy agreement |
-| 1 | Canonical cotangent function and transport differential expression | Actual tangent drift equality (native proof bodies prepared in Tangency.lean; external validation pending), complete flow, divergence trace |
+| 1 | Canonical cotangent function and transport differential expression | Actual tangent drift equality (native Tangency.lean bodies externally compiled and standard-only audited at 216217a88fc8039b5551738a0ce3b6bbe884e45d), complete flow, divergence trace |
 | 2 | Complex states; Born density; actual energy expectation | Normalization, moment integrability, actual operator domains |
 | 3 | Galerkin scalar bound ⇒ packet expectation bound | Quantitative forward packet estimate |
 | 4 | Packet expectation bound ⇒ Galerkin scalar bound | Quantitative converse estimate/reference selection |

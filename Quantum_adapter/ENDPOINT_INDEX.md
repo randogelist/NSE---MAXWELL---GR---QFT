@@ -1,6 +1,6 @@
 # Quantum-adapter endpoint index
 
-`STATUS = A_TIER_CANDIDATE` for the native declarations below until matching external compilation and theorem-level axiom-audit evidence exists. `SOURCE_VERIFIED` denotes inspection of the pinned upstream declaration; it does not denote successful elaboration of the new caller. No local Lean execution is part of this index.
+`STATUS = A_TIER` for the 204 selected native declarations at proof commit `216217a88fc8039b5551738a0ce3b6bbe884e45d`; `ROOT = CONDITIONAL_FORMAL_CLOSURE`. [Matching external evidence](../Auxillary/quantum/evidence/216217a88fc8039b5551738a0ce3b6bbe884e45d/). `SOURCE_VERIFIED` denotes inspection of the pinned upstream declaration; it does not denote successful elaboration of the new caller. No local Lean execution is part of this index.
 
 `SCOPE =` actual arbitrary-mean Fourier phase, actual finite drift, actual Gaussian functions, actual Born expectations, conditional complex-L2 transport, and ordered conditional regularity implications.
 

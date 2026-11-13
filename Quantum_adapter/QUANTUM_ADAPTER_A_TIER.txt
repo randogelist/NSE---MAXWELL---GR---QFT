@@ -1,23 +1,77 @@
 QUANTUM_ADAPTER
 MODE=A_TIER_DERIVATION
-STATUS=A_TIER_CANDIDATE
+STATUS=A_TIER
+ROOT_STATUS=CONDITIONAL_FORMAL_CLOSURE
+MARKERS=!! SELECTED_NATIVE_DECLARATIONS; !!! CONDITIONAL_ROOT
+UNCONDITIONAL_CLOSURE=FALSE
 LOCAL_LEAN_EXECUTIONS=0
-EXTERNAL_COMPILER=Lean 4.34.0-rc1 native Linux
+
+BASE_BRANCH=codex/fefferman-b-maxwell
 BASE_COMMIT=1de664f2ef5ddc11caef25ac2274278b4171ab6b
+BRANCH=codex/quantum-adapter-from-maxwell
+PROOF_COMMIT=216217a88fc8039b5551738a0ce3b6bbe884e45d
+EXTERNAL_RUN=43367057140
+EXTERNAL_RUN_STATUS=SUCCESS
+EXTERNAL_COMPILER=Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)
+MATHLIB_COMMIT=de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+MODULES=14
+NAMED_AUDIT_TARGETS=204/204 PASS_STANDARD_ONLY
+APPROVED_AXIOMS=propext, Classical.choice, Quot.sound
+UNAPPROVED_AXIOMS=0
+SOURCE_HASH_CHECK=15/15 Lean inputs, including lakefile.lean
+INHERITED_AUDITS=236/236 integrated; 62/62 Maxwell; 236/236 Fefferman
 
-Exact implemented source: Phase, FiniteModel, Tangency, Energy, Born, Transport, L2Norm, L2Transport, Dynamics, RegularityContracts; forward/reverse implication modules; deterministic NSEQuantumBridge assembly.
-
-Root: forall nu>0,F:PhaseFlow nu,Cemb,C3,
- GalerkinAnalyticLaws F -> PacketBounds F Cemb C3 -> InitialProjectionBounds ->
+EXACT_ROOT=QuantumAdapter.exact_quantum_conditional_root
+forall nu:Real, 0<nu -> forall F:PhaseFlow nu, forall Cemb C3:Real,
+ GalerkinAnalyticLaws F -> PacketBounds F Cemb C3 ->
+ InitialProjectionBounds ->
  (NSEMaxwell.Classical.FeffermanB nu <-> QuantumAdapter.QREG F).
 
-Every quantified analytic structure remains unresolved until its actual inhabitant passes the matching external kernel. Structural definition, exact-type printing and axiom audit do not discharge hypotheses.
+CRITERION=canonical finite-width Gaussian QREG_Gauss (R7 specialization)
+CLASSICAL_ENDPOINT=native FeffermanB; unforced; T^3; arbitrary velocity mean;
+ smoothness through t=0; periodic pressure with arbitrary gauge.
 
-The quantum function expressions and L2 representatives do not by themselves establish a selfadjoint generator. The full B-tier R1-R24 root is not claimed formalized.
+ORDERED_EDGES
+F1: FeffermanB -> G3 [GalerkinAnalyticLaws].
+F2: G3 -> QREG [PacketBounds].
+F3: F1; F2.
+R1: QREG -> G3 [PacketBounds, InitialProjectionBounds].
+R2: G3 -> FeffermanB [GalerkinAnalyticLaws].
+R3: R1; R2.
+ROOT: F3 AND R3.
 
-Matching source/hash/compiler/theorem axiom evidence: PENDING.
-Allowed axioms: propext, Classical.choice, Quot.sound.
-No sorry/admit/unsafe/native_decide/custom axiom is authorized.
+NATIVE_SCOPE
+Full constrained real Hilbert Fourier phase; zero mode retained.
+Actual Fourier initial coefficients; solenoidality; mean dictionary.
+Full convolution, Leray tangency, raw drift identity.
+Actual coefficient energy derivative = -2*nu*dissipation; nu>=0 -> decay.
+Cotangent Hamiltonian and momentum derivative.
+Actual complex Born density, L2 representatives and multiplier-domain predicate.
+IntegralPullbackLaw AND MemLpPullbackLaw AND flow group laws
+ -> actual complex L2 linear isometry equivalence U(t), inverse U(-t).
+Actual intrinsic phase Haar measure; canonical Gaussian formula; positive scale.
+Actual differential Hamiltonian expression; explicit smooth compact test predicate.
 
-External Linux: bash Auxillary/run.sh, then bash Auxillary/quantum/run.sh.
-The repository contains literal angle-bracket directories; native Windows checkout is not asserted. Auxillary/quantum/run.cmd is an explicit WSL/Linux launcher, not a Windows Lean evidence claim.
+UNRESOLVED_ROOT_INPUTS
+PhaseFlow nu: no complete actual-flow inhabitant supplied.
+GalerkinAnalyticLaws F: stability and compactness not discharged.
+PacketBounds F Cemb C3: actual packet estimates/admissibility not discharged.
+InitialProjectionBounds: uniform initial Sobolev projection bound not discharged.
+
+ADDITIONAL_UNRESOLVED_QUANTUM_REALIZATION
+Actual flow divergence/Jacobian derivation and PhaseTransportLaws inhabitant.
+Gaussian normalization, moments and evolved full multiplier domains.
+Strongly continuous Hilbert group; dense symmetric operator; selfadjoint generator.
+Physical real-Fourier isometry/dimension/frame; original full predicate dictionaries.
+FULL_ORIGINAL_CP00_CP74=NOT_FORMALIZED (no full-card promotion)
+FULL_ORIGINAL_R1_R24=NOT_FORMALIZED
+UNIVERSAL_NSE_REGULARITY=NOT_PROVED
+
+EVIDENCE=Auxillary/quantum/evidence/216217a88fc8039b5551738a0ce3b6bbe884e45d/
+Raw external audit, exact type/axioms, source manifest, compiler/dependency identity,
+ordered stage logs and separate scope-review.json are retained.
+Evidence/documentation commits do not alter the tested Lean source bytes.
+
+RUN=bash Auxillary/run.sh; bash Auxillary/quantum/run.sh
+RUN_CMD=Auxillary/quantum/run.cmd (explicit WSL/Linux launcher)
+NATIVE_WINDOWS_COMPILER_EVIDENCE=NOT_CLAIMED

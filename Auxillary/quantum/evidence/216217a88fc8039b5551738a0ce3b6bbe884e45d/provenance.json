@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "scope": "quantum_adapter_and_ordered_implications",
+  "started_at_utc": "2026-11-13T04:42:44.709378+00:00",
+  "requested_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "requested_mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "external_platform": "linux",
+  "source_commit": "216217a88fc8039b5551738a0ce3b6bbe884e45d",
+  "build_status": "PASS",
+  "audit_command_status": "PASS",
+  "theorem_axiom_audit_status": "PASS_STANDARD_ONLY",
+  "semantic_discharge": "NOT_INFERRED_FROM_AXIOM_AUDIT",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "log": "source-commit.log",
+      "elapsed_seconds": 0.002
+    },
+    {
+      "argv": [
+        "lean",
+        "--version"
+      ],
+      "exit_code": 0,
+      "log": "lean-version.txt",
+      "elapsed_seconds": 0.036
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        ".lake/packages/mathlib",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "log": "mathlib-revision.txt",
+      "elapsed_seconds": 0.002
+    },
+    {
+      "argv": [
+        "lake",
+        "build",
+        "--no-build",
+        "QuantumAdapter.Phase",
+        "QuantumAdapter.FiniteModel",
+        "QuantumAdapter.Tangency",
+        "QuantumAdapter.Energy",
+        "QuantumAdapter.Born",
+        "QuantumAdapter.Transport",
+        "QuantumAdapter.L2Norm",
+        "QuantumAdapter.L2Transport",
+        "QuantumAdapter.Dynamics",
+        "QuantumAdapter.RegularityContracts",
+        "QuantumAdapter",
+        "NSEQuantumForward",
+        "NSEQuantumReverse",
+        "NSEQuantumBridge"
+      ],
+      "exit_code": 3,
+      "log": "run-build-freshness.log",
+      "elapsed_seconds": 3.456
+    },
+    {
+      "argv": [
+        "lake",
+        "build",
+        "QuantumAdapter.Phase",
+        "QuantumAdapter.FiniteModel",
+        "QuantumAdapter.Tangency",
+        "QuantumAdapter.Energy",
+        "QuantumAdapter.Born",
+        "QuantumAdapter.Transport",
+        "QuantumAdapter.L2Norm",
+        "QuantumAdapter.L2Transport",
+        "QuantumAdapter.Dynamics",
+        "QuantumAdapter.RegularityContracts",
+        "QuantumAdapter"
+      ],
+      "exit_code": 0,
+      "log": "build-adapter.log",
+      "elapsed_seconds": 14.966
+    },
+    {
+      "argv": [
+        "lake",
+        "build",
+        "NSEQuantumForward"
+      ],
+      "exit_code": 0,
+      "log": "build-forward.log",
+      "elapsed_seconds": 6.845
+    },
+    {
+      "argv": [
+        "lake",
+        "build",
+        "NSEQuantumReverse"
+      ],
+      "exit_code": 0,
+      "log": "build-reverse.log",
+      "elapsed_seconds": 6.754
+    },
+    {
+      "argv": [
+        "lake",
+        "build",
+        "NSEQuantumBridge"
+      ],
+      "exit_code": 0,
+      "log": "build-assembly.log",
+      "elapsed_seconds": 6.853
+    },
+    {
+      "argv": [
+        "lake",
+        "env",
+        "lean",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/external-linux/quantum/QuantumAudit.lean"
+      ],
+      "exit_code": 0,
+      "log": "run-audit.log",
+      "elapsed_seconds": 3.97
+    }
+  ],
+  "actual_lean_version": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+  "actual_mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "dependency_cache_mode": "REUSE_VERIFIED_REPOSITORY_DEPENDENCY_PHASE",
+  "inherited_root_evidence": {
+    "dependency-preparation.json": "e595c349919b26de10854d2aff8e42b91da5fcb1b82397a583f06e49a80c1085",
+    "source-manifest.json": "32015c8551406354388ab8fc4d801be1ca659c28f37aeb2e5941eed7f0e35284",
+    "audit-summary.json": "35797c6051832903d13b6fed49a64550c3757ef5b4cb0dd479fb2fd8a9b29a17"
+  },
+  "module_schedule": [
+    {
+      "module": "QuantumAdapter.Phase",
+      "path": "Quantum_adapter/QuantumAdapter/Phase.lean",
+      "stage": "adapter"
+    },
+    {
+      "module": "QuantumAdapter.FiniteModel",
+      "path": "Quantum_adapter/QuantumAdapter/FiniteModel.lean",
+      "stage": "adapter"
+    },
+    {
+      "module": "QuantumAdapter.Tangency",
+      "path": "Quantum_adapter/QuantumAdapter/Tangency.lean",
+      "stage": "adapter"
+    },
+    {
+      "module": "QuantumAdapter.Energy",
+      "path": "Quantum_adapter/QuantumAdapter/Energy.lean",
+      "stage": "adapter"
+    },
+    {
+      "module": "QuantumAdapter.Born",
+      "path": "Quantum_adapter/QuantumAdapter/Born.lean",
+      "stage": "adapter"
+    },
+    {
+      "module": "QuantumAdapter.Transport",
+      "path": "Quantum_adapter/QuantumAdapter/Transport.lean",
+      "stage": "adapter"
+    },
+    {
+      "module": "QuantumAdapter.L2Norm",
+      "path": "Quantum_adapter/QuantumAdapter/L2Norm.lean",
+      "stage": "adapter"
+    },
+    {
+      "module": "QuantumAdapter.L2Transport",
+      "path": "Quantum_adapter/QuantumAdapter/L2Transport.lean",
+      "stage": "adapter"
+    },
+    {
+      "module": "QuantumAdapter.Dynamics",
+      "path": "Quantum_adapter/QuantumAdapter/Dynamics.lean",
+      "stage": "adapter"
+    },
+    {
+      "module": "QuantumAdapter.RegularityContracts",
+      "path": "Quantum_adapter/QuantumAdapter/RegularityContracts.lean",
+      "stage": "adapter"
+    },
+    {
+      "module": "QuantumAdapter",
+      "path": "Quantum_adapter/QuantumAdapter.lean",
+      "stage": "adapter"
+    },
+    {
+      "module": "NSEQuantumForward",
+      "path": "B <-> Quantum/=>/NSEQuantumForward.lean",
+      "stage": "forward"
+    },
+    {
+      "module": "NSEQuantumReverse",
+      "path": "B <-> Quantum/<=/NSEQuantumReverse.lean",
+      "stage": "reverse"
+    },
+    {
+      "module": "NSEQuantumBridge",
+      "path": "Quantum_adapter/NSEQuantumBridge.lean",
+      "stage": "assembly"
+    }
+  ],
+  "source_manifest_sha256": "fa26c54d13823d366799d4d41644bab54cb59a64eb2cc8dab0dfb782a254267f",
+  "freshness_check_exit_code": 3,
+  "executed_module_builds": 14,
+  "executed_stage_builds": 4,
+  "build_strategy": "STAGED_INCREMENTAL_REBUILD",
+  "current_stage": "assembly",
+  "current_modules": [
+    "NSEQuantumBridge"
+  ],
+  "generated_audit_source_sha256": "6a7d4d9d8fc894de91640bd83365b03a5d766bdbdd558df1e0d890698c94febc",
+  "stage": "COMPLETE",
+  "completed_at_utc": "2026-11-13T04:43:29.250938+00:00"
+}

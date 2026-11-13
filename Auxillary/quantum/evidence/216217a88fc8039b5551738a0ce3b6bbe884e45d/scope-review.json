@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "proof_commit": "216217a88fc8039b5551738a0ce3b6bbe884e45d",
+  "repository": "randogelist/NSE---MAXWELL---GR---QFT",
+  "run_id": 43367057140,
+  "job_id": 131693841554,
+  "run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43367057140",
+  "artifact_id": 14011806145,
+  "artifact_zip_sha256": "a101b716c5d87745ca9af9c5a437086fd23051146691ba8cb690ff4d0208a8d2",
+  "artifact_zip_digest_verified": true,
+  "selected_named_targets": 204,
+  "native_build_modules": 14,
+  "verified_lean_inputs": [
+    {
+      "path": "B <-> Quantum/<=/NSEQuantumReverse.lean",
+      "sha256": "74429597d46b1688ede8b9a1451ac8a1164c6a5f7d23d66ae0549c0b9019e74a",
+      "git_blob_sha": "c0a9abcefb9f2894bc7961242411c9605c781eee"
+    },
+    {
+      "path": "B <-> Quantum/=>/NSEQuantumForward.lean",
+      "sha256": "5bfae4c9f0796814eec2b7cae9f9473b72f3b0c1ac087cbcb1d7ad04821a25a6",
+      "git_blob_sha": "642248150514b29b52d7331375d4de0c1c23668d"
+    },
+    {
+      "path": "Quantum_adapter/NSEQuantumBridge.lean",
+      "sha256": "7413332c9ddfff103a0c310fc34e12942a9e98406e3e46ba5ecb357eb96ea54d",
+      "git_blob_sha": "8853a88c70d0cf09a3991aee8527ef5692f7d386"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter.lean",
+      "sha256": "c00ab01d0990faa0fa49969a6409d45b132661a4358d62c58a5228d6593b3c19",
+      "git_blob_sha": "f4fa3c3c1169e275cc627c505b749ef6c7b9f9d3"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Born.lean",
+      "sha256": "acf93a20740141d4b6b6fc1f33533fad5e201b8674b2ff83177ee9d8cc05f59d",
+      "git_blob_sha": "9d2153e0f03501a3d500c1a97c6d5e87dc039bb1"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Dynamics.lean",
+      "sha256": "f6bc8dca65ffd2e8f035926ad11b5a6e7c0af2c7ed77da94bd304c30aec33e30",
+      "git_blob_sha": "199d5e39073e98e57a8ef9b36d589addd17a067a"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Energy.lean",
+      "sha256": "3e9d398deaf1c726299cbf2680c7d0d266ff9edcaef5dc199129d4c284e037b3",
+      "git_blob_sha": "4a82d484bf92e349cb0aadc63408d6596bed3b3b"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/FiniteModel.lean",
+      "sha256": "d588ffdbe0d7c31e0e0ac9a1ae6b5d100110e04b66c77433cbbde5d59d53d829",
+      "git_blob_sha": "f215ccd003ca5cae9ab8883a0088879f554b7d22"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/L2Norm.lean",
+      "sha256": "8b2880330764386e39717b3a03b5c8264b94e81b60714e19319a8e8e6bf72fb4",
+      "git_blob_sha": "1958e0c9f7e6a640cc8b292488a617492813d037"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/L2Transport.lean",
+      "sha256": "fa38627d137f49f3ef8a5327eb965559c60785c228f76b6f2676bc9f8a6a785d",
+      "git_blob_sha": "18f421661ce60321bf1a4497e71c2ce5c78beb5e"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Phase.lean",
+      "sha256": "73aa0f6ba283501015444befeb8dc42c0d68d816714e06e2e766694065b5e1cd",
+      "git_blob_sha": "4508721c9fb33999c9055f22208812dba28bd139"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/RegularityContracts.lean",
+      "sha256": "9e61a871b314983b94fc59c79f4ad53f69cf6a65658635d69c1fc7fa4f7d2d86",
+      "git_blob_sha": "4d366cce233a1d08fc58d6444c39fb805e625b77"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Tangency.lean",
+      "sha256": "8d94af8dd71d422c741a88c122201c0a038a6481078d3a44251ec753286bb731",
+      "git_blob_sha": "ed90b52b9c51c9391f146be4bc7204b3188513f2"
+    },
+    {
+      "path": "Quantum_adapter/QuantumAdapter/Transport.lean",
+      "sha256": "4f61453f99c689f077f8d9dab1cdb8d0593042601b377b6b503a9278e4d8b187",
+      "git_blob_sha": "509b5b05fcc346522b2d0d87867ea2412aff2fc9"
+    },
+    {
+      "path": "lakefile.lean",
+      "sha256": "1eaae3fea3c41983aa7cd3a001700811231f5e8f3175a994fb46767c60b8370a",
+      "git_blob_sha": "e9eb65b8f9d60cc03ced8f461a93dee63f529017"
+    }
+  ],
+  "native_selected_scope": "A_TIER",
+  "exact_root": "QuantumAdapter.exact_quantum_conditional_root",
+  "root_scope": "CONDITIONAL_FORMAL_CLOSURE",
+  "unconditional_closure": false,
+  "unresolved_root_inputs": [
+    "PhaseFlow nu",
+    "GalerkinAnalyticLaws F",
+    "PacketBounds F Cemb C3",
+    "InitialProjectionBounds"
+  ],
+  "full_original_R1_R24": "NOT_FORMALIZED",
+  "full_original_checkpoint_promotions": 0,
+  "local_lean_executions": 0,
+  "axiom_review": "PASS_STANDARD_ONLY",
+  "scope_review": "EXACT_COMPILED_TYPE_AND_EXPLICIT_PREMISES_REVIEWED",
+  "raw_file_sha256": {
+    "QuantumAudit.lean": "6a7d4d9d8fc894de91640bd83365b03a5d766bdbdd558df1e0d890698c94febc",
+    "audit-summary.json": "26ed171ef9a4dbe8270b484745f389d8fb29651b84e2eea90a791bd11cf3bcac",
+    "build-adapter.log": "951887b6577388f6cffa98328816aa96c21360123f3b71f0a33519b4d8a3dc1d",
+    "build-assembly.log": "efc0efb4b881cce35b7a0b3af203f1ebcf820775fe1161dac90fa456e5e14ae2",
+    "build-forward.log": "f5a3bae12a0c48d54eacf1b7a2391fe14d3d42d21d4e91aad0525cc7bad9f6a5",
+    "build-reverse.log": "5a17e18fdda43edbcd53016400ac218068fa304853858a3bae944b81b0234994",
+    "inherited-audits/fefferman-standalone.json": "51a9b9bd74c21383f0f43724c7e704ec2bedd4b228e30356ed13b24207fc2a1d",
+    "inherited-audits/integrated.json": "35797c6051832903d13b6fed49a64550c3757ef5b4cb0dd479fb2fd8a9b29a17",
+    "inherited-audits/maxwell-standalone.json": "2feeb937dd4f3fde5c0341e9bba6c9129730554165380dd0a1c7b8ab67490ff2",
+    "lean-version.txt": "6cd69c5752c644291ede2418997a70e9994409d30b15fe5ef14a1be60f27f8ef",
+    "mathlib-revision.txt": "45319df962db10a4cdbd4747247efadca3d49e40557f5c83ec7dad63a043992a",
+    "provenance.json": "6068587b07cbfb3ee1d6a14eb4fa041f5aff0375ffea08a6d7924832fb8f3720",
+    "run-audit.log": "98b2a2d10c94ff5a57bed5607dbce3b36e0d4b907c4d2a2efbcaf538abe692ce",
+    "run-build-freshness.log": "98f6b08e4b1a3c424ee2a2069a92e3d0b9e69ade57affbbe4f63b62a886a25e5",
+    "source-commit.log": "3bcdbcc270c6f9345bff1f372d6e896e5a4bb02aacb1cf464927941470283d9d",
+    "source-manifest.json": "fa26c54d13823d366799d4d41644bab54cb59a64eb2cc8dab0dfb782a254267f"
+  }
+}

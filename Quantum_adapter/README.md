@@ -2,7 +2,9 @@
 
 BASE = codex/fefferman-b-maxwell @ 1de664f2ef5ddc11caef25ac2274278b4171ab6b.
 
-STATUS = A_TIER_CANDIDATE; cached external native Linux Lean 4.34.0-rc1 pending.
+STATUS = A_TIER (204 selected declarations); ROOT = CONDITIONAL_FORMAL_CLOSURE.
+
+Cached external native Linux Lean 4.34.0-rc1: PASS. Proof commit `216217a88fc8039b5551738a0ce3b6bbe884e45d`.
 
 Native phase: intrinsic real Hilbert subspace of all finite Fourier coefficients, including k=0, with actual conjugate reality and solenoidality. Initial coefficients are actual torus integrals; arbitrary velocity mean is retained.
 
@@ -17,3 +19,5 @@ Audit/run infrastructure: [Auxillary/quantum](../Auxillary/quantum/). No local L
 [Exact endpoint index](ENDPOINT_INDEX.md): pinned source declarations, native signatures, explicit premises, and unresolved scope.
 
 Additional native candidates: arbitrary-mean finite energy identity and complex L2 isometry equivalence under explicit transport laws. Strong continuity and selfadjoint generation remain unresolved.
+
+[Exact external evidence](../Auxillary/quantum/evidence/216217a88fc8039b5551738a0ce3b6bbe884e45d/) · [Native checkpoint fragments](NATIVE_CHECKPOINT_PROGRESS.md) · [A-tier scope](QUANTUM_ADAPTER_A_TIER.txt).
