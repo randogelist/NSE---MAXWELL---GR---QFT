@@ -17,7 +17,7 @@
   "extraction_kind": "ADAPTED_TO_ADDITIVE_GENERATOR_BODY",
   "original_declaration": "theorem tprod_inv : ∏'[L] b, (f b)⁻¹ = (∏'[L] b, f b)⁻¹ :=\n  ((Homeomorph.inv α).isClosedEmbedding.map_tprod f (g := MulEquiv.inv α)).symm",
   "generated_additive_declaration": "theorem _root_.GRTemp.ML049.endpoint : ∑'[L] b, -(f b) = -(∑'[L] b, f b) :=\n  ((Homeomorph.neg α).isClosedEmbedding.map_tsum f (g := AddEquiv.neg α)).symm",
-  "source_context": "open Filter Finset Function\nopen scoped Topology\nvariable {α β : Type*} {L : SummationFilter β}\n  [AddCommGroup α] [TopologicalSpace α] [IsTopologicalAddGroup α] [T2Space α]\n  {f : β → α}\n",
+  "source_context": "open Filter Finset Function\nopen scoped Topology\nvariable {α β : Type*} {L : SummationFilter β}\n  [AddCommGroup α] [TopologicalSpace α] [IsTopologicalAddGroup α]\n  {f : β → α}\nvariable [T2Space α]\n",
   "status": "A_TIER_CANDIDATE",
   "source_verified": true,
   "proof_body_verified": true,
@@ -26,6 +26,7 @@
   "uses": [
     "GC01"
   ],
-  "endpoint_sha256": "65abfad7ef9566adcddb9944bb8e0f5887be3d753988a2ba074ee6ab1b23b513",
-  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean."
+  "endpoint_sha256": "163232f562c12405e5cd67fcdafb1daadd2a6aab3e01d1d073363e2237b15f18",
+  "limitation": "One isolated exported endpoint; imported definitions and helper lemmas remain required. Exact type equality and axiom audit await external cached Lean.",
+  "context_revision": "Exact upstream section-variable binder order restored; proof body unchanged."
 }

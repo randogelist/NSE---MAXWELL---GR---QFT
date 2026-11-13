@@ -23,7 +23,8 @@ open Set Metric TopologicalSpace Function Asymptotics Filter
 open scoped Topology NNReal
 variable {α 𝕜 E F : Type*} [NontriviallyNormedField 𝕜] [IsRCLikeNormedField 𝕜]
   [NormedAddCommGroup E] [NormedSpace 𝕜 E] [NormedAddCommGroup F] [CompleteSpace F]
-  [NormedSpace 𝕜 F] {u : α → ℝ}
+  {u : α → ℝ}
+variable [NormedSpace 𝕜 F]
 variable {f : α → E → F} {f' : α → E → E →L[𝕜] F}
   {g : α → 𝕜 → F} {g' : α → 𝕜 → F}
   {s : Set E} {t : Set 𝕜} {x₀ x : E} {y₀ y : 𝕜}

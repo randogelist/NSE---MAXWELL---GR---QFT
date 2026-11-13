@@ -23,7 +23,8 @@ open Complex MeasureTheory Metric Set Topology
 open scoped Interval
 variable {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]
 namespace Complex
-variable [CompleteSpace E] {c : ℂ} {r : ℝ} {f : ℂ → E}
+variable {c : ℂ} {r : ℝ} {f : ℂ → E}
+variable [CompleteSpace E]
 
 theorem _root_.GRTemp.ML038.endpoint (hf : DifferentiableOn ℂ f (ball c r)) :
     IsExactOn f (ball c r) :=

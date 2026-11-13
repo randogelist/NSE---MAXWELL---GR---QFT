@@ -210,6 +210,7 @@ def main() -> int:
         source = "\n".join("import " + x["module"] for x in selected)
         source += "\nset_option pp.universes false\nopen Lean Meta Elab Command\n"
         for entry in selected:
+            source += "#check @" + entry["source_name"] + "\n"
             source += "#check @" + entry["name"] + "\n#print axioms " + entry["name"] + "\n"
             source += f'''run_cmd Lean.Elab.Command.liftTermElabM do
   let cutInfo ← Lean.getConstInfo `{entry["name"]}

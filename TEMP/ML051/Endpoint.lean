@@ -22,9 +22,10 @@ noncomputable section
 
 open Filter Asymptotics Set
 open scoped ENNReal Topology
+universe u v
 variable {𝕜 : Type*} [NontriviallyNormedField 𝕜]
-variable {E F : Type*} [NormedAddCommGroup E] [NormedSpace 𝕜 E]
-  [NormedAddCommGroup F] [NormedSpace 𝕜 F]
+variable {E : Type u} [NormedAddCommGroup E] [NormedSpace 𝕜 E]
+variable {F : Type v} [NormedAddCommGroup F] [NormedSpace 𝕜 F]
 variable {f : E → F} {x : E}
 
 theorem _root_.GRTemp.ML051.endpoint [CompleteSpace F] (h : AnalyticAt 𝕜 f x) :

@@ -23,7 +23,8 @@ noncomputable section
 open Matrix
 namespace Matrix
 namespace PosDef
-variable {n K : Type*} [Fintype n] [Field K] [PartialOrder K] [StarRing K]
+variable {n : Type*} [Fintype n]
+variable {K : Type*} [Field K] [PartialOrder K] [StarRing K]
 
 theorem _root_.GRTemp.ML057.endpoint [DecidableEq n] {M : Matrix n n K} (hM : M.PosDef) : IsUnit M := by
   by_contra h

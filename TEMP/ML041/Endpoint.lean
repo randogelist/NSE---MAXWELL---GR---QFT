@@ -21,9 +21,10 @@ noncomputable section
 
 open MeasureTheory Set Filter Function Asymptotics
 open scoped Topology ENNReal Interval NNReal
-variable {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
+variable {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
 namespace intervalIntegral
-variable {f : ℝ → E} {a b : ℝ}
+variable {a b : ℝ}
+variable [CompleteSpace E] {f : ℝ → E}
 
 theorem _root_.GRTemp.ML041.endpoint (hderiv : ∀ x ∈ [[a, b]], DifferentiableAt ℝ f x)
     (hint : IntervalIntegrable (deriv f) volume a b) : ∫ y in a..b, deriv f y = f b - f a :=

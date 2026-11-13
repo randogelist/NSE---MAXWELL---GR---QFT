@@ -25,8 +25,8 @@ open scoped Pointwise
 variable {𝕜 E F : Type*} [NontriviallyNormedField 𝕜]
   [NormedAddCommGroup E] [NormedSpace 𝕜 E]
   [NormedAddCommGroup F] [NormedSpace 𝕜 F]
-variable {f g : E → F} {s : Set E} {x : E}
-variable [CompleteSpace F]
+variable [CompleteSpace F] {f : E → F} {p : FormalMultilinearSeries 𝕜 E F} {s : Set E}
+  {x y : E} {r : ℝ≥0∞}
 
 theorem _root_.GRTemp.ML017.endpoint (h : AnalyticAt 𝕜 f x) :
     ∀ᶠ y in 𝓝 x, AnalyticAt 𝕜 f y :=

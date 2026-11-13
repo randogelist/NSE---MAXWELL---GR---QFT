@@ -22,9 +22,10 @@ noncomputable section
 
 open Set Fin Filter Function
 open scoped NNReal Topology ContDiff
-variable {𝕜 : Type*} [NontriviallyNormedField 𝕜]
-variable {E F : Type*} [NormedAddCommGroup E] [NormedSpace 𝕜 E]
-  [NormedAddCommGroup F] [NormedSpace 𝕜 F]
+universe u uE uF
+variable {𝕜 : Type u} [NontriviallyNormedField 𝕜]
+variable {E : Type uE} [NormedAddCommGroup E] [NormedSpace 𝕜 E]
+variable {F : Type uF} [NormedAddCommGroup F] [NormedSpace 𝕜 F]
 variable {f : E → F} {x : E} {n : ℕ∞ω}
 
 theorem _root_.GRTemp.ML052.endpoint [CompleteSpace F] (h : AnalyticAt 𝕜 f x) :

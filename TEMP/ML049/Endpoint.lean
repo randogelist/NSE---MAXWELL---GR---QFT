@@ -22,8 +22,9 @@ noncomputable section
 open Filter Finset Function
 open scoped Topology
 variable {α β : Type*} {L : SummationFilter β}
-  [AddCommGroup α] [TopologicalSpace α] [IsTopologicalAddGroup α] [T2Space α]
+  [AddCommGroup α] [TopologicalSpace α] [IsTopologicalAddGroup α]
   {f : β → α}
+variable [T2Space α]
 
 theorem _root_.GRTemp.ML049.endpoint : ∑'[L] b, -(f b) = -(∑'[L] b, f b) :=
   ((Homeomorph.neg α).isClosedEmbedding.map_tsum f (g := AddEquiv.neg α)).symm
