@@ -1,0 +1,33 @@
+{
+  "status": "PASS_SEMANTIC_SCOPE_REVIEW",
+  "source_commit": "adb4dcdc31c211add64946b817e9edba2c1b9146",
+  "root_source_sha256": "0c7893920d665757b1baa2575956a66197d9efb3501888852c73e4bf567e95da",
+  "exact_root": "forall nu>0, FeffermanB nu iff CMB nu",
+  "unchanged": [
+    "NSEMaxwell.Classical.FeffermanB",
+    "Data",
+    "NSSolution",
+    "MaterialPathOn",
+    "MaterialEquationOn"
+  ],
+  "quantifier_order": "forall a, Data a -> exists u p, global kinematics and forall T>0, exists eta rho, actual material equations",
+  "eulerian_momentum_assumed_in_CMSolution": false,
+  "analytic_admissions": [],
+  "time_zero_included": true,
+  "terminal_time_included": true,
+  "arbitrary_mean_preserved": true,
+  "arbitrary_pressure_gauge_preserved": true,
+  "coherence": "derived via actual ODE uniqueness",
+  "forward": "native L1 plus literal Piola equation transport on each positive slab",
+  "reverse": "actual slab equations imply global equation using T=t+1 and within-derivative equality",
+  "solution_set_scope": "common global velocity/pressure pairs; not raw material witness tuples",
+  "excluded_claims": [
+    "proof of FeffermanB alone",
+    "proof of CMB alone",
+    "moving-region integral balance",
+    "Lagrange-dAlembert formulation"
+  ],
+  "local_lean_executions": 0,
+  "external_promotion": "PASS_MATCHING_EXTERNAL_COMPILER_AND_STANDARD_ONLY_AXIOM_AUDIT",
+  "external_run_id": 43447885685
+}

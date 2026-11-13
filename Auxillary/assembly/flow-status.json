@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "status": "A_TIER_CANDIDATE_FOR_NEW_NSEB_CM_ROOT",
-  "scope": "Existing exact L1 retains source-matched A_TIER; new global NSE-B/material-CM equivalence and supporting edges require matching fresh external audits.",
+  "status": "A_TIER",
+  "scope": "Exact native L1, material-equation transport, and global NSE-B/material-CM equivalence over common global smooth fields; separate matching audit records retained.",
   "registry": "Auxillary/assembly/flow-targets.json",
   "approved_axioms": [
     "propext",
@@ -67,7 +67,18 @@
   },
   "native_flow_modules": 22,
   "registered_native_declarations": 199,
-  "NSEB_CM_status": "A_TIER_CANDIDATE",
+  "NSEB_CM_status": "A_TIER; UNCONDITIONAL_CLOSURE_OF_EXACT_EQUIVALENCE",
   "NSEB_CM_exact_root": "ClassicalMechanicsAssembly.NSEB_IFF_CM",
-  "NSEB_CM_scope": "Global unforced periodic arbitrary-mean NSE-B iff material classical-mechanics existence over common smooth global fields, actual identity-normalized finite-slab flows and material momentum balance. Arbitrary pressure gauge; no NSE existence theorem or variational equivalence asserted."
+  "NSEB_CM_scope": "Global unforced periodic arbitrary-mean NSE-B iff material classical-mechanics existence over common smooth global fields, actual identity-normalized finite-slab flows and material momentum balance. Arbitrary pressure gauge; no NSE existence theorem or variational equivalence asserted.",
+  "NSEB_CM_evidence": {
+    "source_commit": "adb4dcdc31c211add64946b817e9edba2c1b9146",
+    "external_run_id": 43447885685,
+    "external_artifact_id": 14049487046,
+    "artifact_sha256": "186e44d64b7a038b32dcdf57df43f036f5ffe56dd357751b9e0c5671d4bad8a8",
+    "retained_evidence": "Auxillary/evidence/nseb-cm-linux-43447885685",
+    "native_source_count": 54,
+    "fresh_audit_count": 247,
+    "new_audit_count": 30,
+    "status": "PASS_STANDARD_ONLY"
+  }
 }

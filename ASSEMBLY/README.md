@@ -72,3 +72,31 @@ moving-region balance, and full solution-set bijection remain outside this scope
 
 Historical literature certificates and research/derivation records remain
 preserved with their original source-specific status explicitly marked historical.
+
+## Global NSE-B and material classical mechanics
+
+`ClassicalMechanicsAssembly.NSEB_IFF_CM` proves
+`forall nu : R, FeffermanB nu iff CMB nu`;
+`NSEB_IFF_CM_POSITIVE` retains the positive-viscosity specialization.
+The pointwise theorem identifies `NSSolution nu a u p` and
+`CMSolution nu a u p` for the same global velocity and pressure.
+
+`CMB` retains global smooth periodic incompressible kinematics and the initial
+datum, with a single pair `(u,p)` chosen before every finite-slab flow witness.
+Momentum balance is imposed by the literal material-coordinate equation.
+Native L1 supplies each flow; native Piola transport supplies both directions;
+ODE uniqueness proves overlap coherence. Material field regularity, initial
+velocity, and exact decoding are derived. Pressure gauge and velocity mean
+remain arbitrary. No global NSE existence assertion, full moving-region
+integral law, or Lagrange-d'Alembert theorem follows from this equivalence.
+
+Status: **A_TIER / UNCONDITIONAL_CLOSURE of the exact equivalence**.
+[Cached Linux run 43447885685](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43447885685)
+passed **247/247** named audits: 43 assembly, 199 native, and 5 compatibility.
+The new four modules contribute 30 audited declarations; the exact root
+imports 54 source-matched native modules. Approved axioms only:
+`propext`, `Classical.choice`, `Quot.sound`.
+
+[Exact source](ClassicalMechanicsAssembly/FlowNSEBCM.lean) ·
+[Certificate](../Auxillary/assembly/NSEB_IFF_CM_A_TIER.txt) ·
+[Retained evidence](../Auxillary/evidence/nseb-cm-linux-43447885685/).
