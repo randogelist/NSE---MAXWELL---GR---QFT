@@ -62,6 +62,13 @@ def audit_records(log: str, targets: list[str]) -> list[dict]:
     return result
 
 
+def failed_assembly_modules(log: str, selected_modules: set[str]) -> set[str]:
+    """Conservatively retain explicit compiler failures from a shared DAG run."""
+    paths = re.findall(r"(?m)^error:\s+(?:\S*/)?(GRAssembly/[A-Za-z0-9_./]+)"
+                       r"\.lean:\d+:\d+:", ANSI.sub("", log))
+    return {path.replace("/", ".") for path in paths} & selected_modules
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--package-root", type=Path, required=True)
@@ -279,6 +286,7 @@ def main() -> int:
         # One Lake process owns the build directory and schedules its dependency
         # graph. Exact audits remain ordered, with no signature-only promotion.
         dag_build_pass = False
+        dag_failures: set[str] = set()
         if args.dag_build:
             dag_modules = list(dict.fromkeys(module for _, module, _ in stages))
             try:
@@ -290,6 +298,11 @@ def main() -> int:
                 # stages to distinguish actual failures from blocked imports.
                 provenance["dag_prebuild"] = "PARTIAL; CACHED_ORDERED_RECHECK"
                 provenance["dag_prebuild_error"] = str(error)
+                dag_log = report / "dag-build.log"
+                if dag_log.is_file():
+                    dag_failures = failed_assembly_modules(dag_log.read_text(encoding="utf-8"),
+                                                          set(dag_modules))
+                provenance["dag_explicit_compiler_failures"] = sorted(dag_failures)
             persist()
         stage_summaries = []
         failed_stages = []
@@ -307,6 +320,16 @@ def main() -> int:
                 provenance["failed_stages"] = failed_stages
                 persist()
                 print("BLOCKED_MODULE=" + module + "; DEPENDENCIES=" + ",".join(blocked), flush=True)
+                continue
+            if module in dag_failures:
+                entry = {"stage": stage, "module": module, "status": "FAIL",
+                         "error": "Explicit compiler error in shared DAG build; log=dag-build.log"}
+                failed_stages.append(entry)
+                write_json(report / (stage + "-summary.json"), entry)
+                provenance["failed_stages"] = failed_stages
+                persist()
+                print("DAG_FAILED_MODULE=" + module, flush=True)
+                require(args.keep_going, entry["error"])
                 continue
             try:
                 if not dag_build_pass:

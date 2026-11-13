@@ -7,6 +7,7 @@ import GRAssembly.PressureGauge
 set_option autoImplicit false
 set_option Elab.async true
 set_option maxHeartbeats 2400000
+set_option backward.isDefEq.respectTransparency false
 
 open Set Filter MeasureTheory
 open scoped Topology BigOperators ContDiff Matrix.Norms.Frobenius
@@ -37,7 +38,7 @@ theorem leray_sub_native (a b : Field) (ha : ContDiff ℝ ∞ a) (hb : ContDiff 
   apply PiLp.ext
   intro i
   simp only [Pi.sub_apply, PiLp.sub_apply, gradient, PiLp.toLp_apply]
-  rw [fderiv_fun_sub (hGa.differentiable (by simp) x) (hGb.differentiable (by simp) x)]
+  rw [fderiv_sub (hGa.differentiable (by simp) x) (hGb.differentiable (by simp) x)]
   simp only [ContinuousLinearMap.sub_apply]
   ring
 
@@ -70,6 +71,7 @@ theorem completedBoundary_potential_recovery {ν ρ t0 δ : ℝ} {u : Velocity} 
   have he : (fun x => boundaryBeta (completedBoundary ν ρ u p ψ) t x - ρ) =
       scalarLaplacian (ψ t) := by
     funext x
+    change boundaryBeta (completedBoundary ν ρ u p ψ) t x - ρ = scalarLaplacian (ψ t) x
     rw [completedBoundary_beta ν ρ u p ψ t x (hn.divergence_free t ht x)]
     ring
   rw [he]
@@ -83,7 +85,8 @@ theorem completedBoundary_stress_zero {ν ρ t0 δ : ℝ} {u : Velocity} {p ψ :
     {t : ℝ} (ht : t ∈ timeInterval t0 δ) (x : Vec) :
     boundaryStress ν (completedBoundary ν ρ u p ψ) t x = 0 := by
   let K := completedBoundary ν ρ u p ψ
-  have hv := completedBoundary_velocity_recovery hn hψ hper ht
+  have hv : boundaryVelocity K t = u t :=
+    completedBoundary_velocity_recovery (ρ := ρ) hn hψ hper ht
   have hq := completedBoundary_potential_recovery hn hψ hper hK ht
   have hT : boundarySpatialTensor K t x + velocityOuter (boundaryVelocity K t x) +
       scalarHessian (boundaryPotential K t) x - ν • strain (boundaryVelocity K t) x =

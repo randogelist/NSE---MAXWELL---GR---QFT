@@ -75,7 +75,7 @@ theorem bulkPartial_shape_at_flat {h : Bulk → Tensor4} {z : Bulk}
       lorentzSign4 a * bulkPartial (fun y => gaussianSecondForm h y a b) 0 z := by
     classical
     rw [Finset.sum_eq_single a]
-    · simp only [eta4Matrix, eta4, if_pos rfl]
+    · simp only [eta4Matrix, eta4, ite_true]
     · intro c hc hca
       simp only [eta4Matrix, eta4, if_neg (Ne.symm hca), zero_mul]
     · intro ha

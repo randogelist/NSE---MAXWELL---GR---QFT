@@ -68,6 +68,21 @@ jobs:
           use-mathlib-cache: 'false'
           use-github-cache: 'false'
 
+      - name: Verify shared GR dependency cache identity
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          assembly = Path('ASSEMBLY')
+          adapter = Path('GR_adapter')
+          assert (assembly / 'lean-toolchain').read_bytes() == (adapter / 'lean-toolchain').read_bytes()
+          assembly_lock = json.loads((assembly / 'lake-manifest.json').read_text())
+          adapter_lock = json.loads((adapter / 'lake-manifest.json').read_text())
+          assert assembly_lock['packages'] == adapter_lock['packages']
+          print('SHARED_DEPENDENCY_IDENTITY=PASS')
+          PY
+
       - name: Restore pinned dependency and download caches
         id: dependencies-cache
         uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
@@ -75,7 +90,7 @@ jobs:
           path: |
             .lake/packages
             .mathlib-download-cache
-          key: nse-gr-assembly-deps-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('ASSEMBLY/lean-toolchain', 'ASSEMBLY/lake-manifest.json') }}
+          key: nse-gr-deps-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('GR_adapter/lean-toolchain', 'GR_adapter/lake-manifest.json') }}
           restore-keys: |
             nse-gr-assembly-deps-v1-${{ runner.os }}-${{ runner.arch }}-
             nse-temp-deps-v1-${{ runner.os }}-${{ runner.arch }}-
