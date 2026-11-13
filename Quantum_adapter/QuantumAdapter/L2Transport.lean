@@ -25,7 +25,7 @@ theorem halfDensityPullback_congr_ae
     (hψχ : ψ =ᵐ[μ] χ) (t : ℝ) :
     halfDensityPullback κ Φ t ψ =ᵐ[μ] halfDensityPullback κ Φ t χ := by
   have hzero : (hψ.sub hχ).toLp (ψ - χ) = 0 := by
-    rw [MemLp.toLp_sub, hψ.toLp_congr hχ hψχ, sub_self]
+    rw [MemLp.toLp_sub hψ hχ, hψ.toLp_congr hχ hψχ, sub_self]
   have hnorm :
       ‖(hLp t (ψ - χ) (hψ.sub hχ)).toLp
         (halfDensityPullback κ Φ t (ψ - χ))‖ = 0 := by
