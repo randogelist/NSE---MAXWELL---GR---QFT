@@ -1569,57 +1569,29 @@
     ]
   },
   {
-    "name": "NSEGR.Assembly.factorialTaylor_remainder_bound",
-    "module": "GRAssembly.AnalyticHodgeTaylor",
+    "name": "NSEGR.Assembly.poissonInverse_iteratedFDeriv_bound_eight",
+    "module": "GRAssembly.AnalyticHodge",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.analyticAt_of_iteratedFDeriv_bound",
-    "module": "GRAssembly.AnalyticHodgeTaylor",
+    "name": "NSEGR.Assembly.poissonInverse_joint_analytic_on_open_slab",
+    "module": "GRAssembly.AnalyticHodge",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.analyticShiftMajorant",
-    "module": "GRAssembly.AnalyticHodgeSeries",
-    "kind": "def",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.analyticShiftMajorant_summable",
-    "module": "GRAssembly.AnalyticHodgeSeries",
+    "name": "NSEGR.Assembly.scalarMean_analytic_on_open_slab",
+    "module": "GRAssembly.AnalyticHodge",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.changeOrigin_uniform_coefficient_bound",
-    "module": "GRAssembly.AnalyticHodgeSeries",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.HasFPowerSeriesOnBall.norm_iteratedFDeriv_le_factorial",
-    "module": "GRAssembly.AnalyticHodgeSeries",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.analyticAt_exists_uniform_iteratedFDeriv_bound",
-    "module": "GRAssembly.AnalyticHodgeSeries",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.analyticOnNhd_compact_uniform_iteratedFDeriv_bound",
-    "module": "GRAssembly.AnalyticHodgeSeries",
+    "name": "NSEGR.Assembly.leray_joint_analytic_on_open_slab",
+    "module": "GRAssembly.AnalyticHodge",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
@@ -1655,6 +1627,489 @@
   {
     "name": "NSEGR.Assembly.scalarMean_analytic_of_poissonInverse_analytic",
     "module": "GRAssembly.AnalyticHodgeCalculus",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.analyticHodge_factorial_shift_bound",
+    "module": "GRAssembly.AnalyticHodgeInput",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.analyticHodge_absorb_fixed_loss",
+    "module": "GRAssembly.AnalyticHodgeInput",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.analyticHodge_order_monotone",
+    "module": "GRAssembly.AnalyticHodgeInput",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.analyticHodge_open_slab_local_uniform_bound",
+    "module": "GRAssembly.AnalyticHodgeInput",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.analyticShiftMajorant",
+    "module": "GRAssembly.AnalyticHodgeSeries",
+    "kind": "def",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.analyticShiftMajorant_summable",
+    "module": "GRAssembly.AnalyticHodgeSeries",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.changeOrigin_uniform_coefficient_bound",
+    "module": "GRAssembly.AnalyticHodgeSeries",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.analyticHodge_norm_iteratedFDeriv_le_factorial",
+    "module": "GRAssembly.AnalyticHodgeSeries",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.analyticAt_exists_uniform_iteratedFDeriv_bound",
+    "module": "GRAssembly.AnalyticHodgeSeries",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.analyticOnNhd_compact_uniform_iteratedFDeriv_bound",
+    "module": "GRAssembly.AnalyticHodgeSeries",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.factorialTaylor_remainder_bound",
+    "module": "GRAssembly.AnalyticHodgeTaylor",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.analyticAt_of_iteratedFDeriv_bound",
+    "module": "GRAssembly.AnalyticHodgeTaylor",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.metricTangentialBlock",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "def",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.bulkCollar_isOpen",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryPoint_mem_collar",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundary_time_eventually",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussianVacuum_block_analytic",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussianVacuum_eq_gaussian",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussianVacuum_eq_gaussian_germ",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussianVacuum_block_unit",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussianVacuum_block_unit_germ",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.christoffel_congr_germ",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.ricci_congr_germ",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussianVacuum_block_vacuum",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryK_eq_block",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussianVacuum_boundary_analytic",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussianVacuum_boundary_symmetric",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussianVacuum_boundary_periodic",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussianVacuum_block_flat",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussianVacuum_block_tangent_zero",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussianVacuum_connection_zero",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussianVacuum_connection_tangent_zero",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussianVacuum_boundary_hamiltonian",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussianVacuum_shape_tangent",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussianVacuum_boundary_codazzi",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussianVacuum_boundaryAdmissible",
+    "module": "GRAssembly.BoundaryConstraints",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.bulkPartial_mul",
+    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.bulkPartial_sum",
+    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.bulkPartial_shape_at_flat",
+    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussian_normal_flat",
+    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussian_tangential_flat",
+    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussian_hamiltonian_flat",
+    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryDirection",
+    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "kind": "def",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryPartial_eq_joint",
+    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryPartial_sub",
+    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryPartial_const_mul",
+    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryPartial_sum",
+    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.lorentzTrace4_eq_sum",
+    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.analyticAt_boundaryTrace",
+    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryCodazzi_expanded",
+    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.matrixEntryCLM",
+    "module": "GRAssembly.BoundaryConstraintsJets",
+    "kind": "def",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.analyticAt_matrix_entry",
+    "module": "GRAssembly.BoundaryConstraintsJets",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.analyticAt_matrix_of_entries",
+    "module": "GRAssembly.BoundaryConstraintsJets",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.matrix_entry_fderiv",
+    "module": "GRAssembly.BoundaryConstraintsJets",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryEmbed",
+    "module": "GRAssembly.BoundaryConstraintsJets",
+    "kind": "def",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryEmbed_time",
+    "module": "GRAssembly.BoundaryConstraintsJets",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryEmbed_space",
+    "module": "GRAssembly.BoundaryConstraintsJets",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.analyticAt_bulkPartial",
+    "module": "GRAssembly.BoundaryConstraintsJets",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryPartial_restrict",
+    "module": "GRAssembly.BoundaryConstraintsJets",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryPartial_congr",
+    "module": "GRAssembly.BoundaryConstraintsJets",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.bulkPartial_tangent_zero",
+    "module": "GRAssembly.BoundaryConstraintsJets",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.bulkPartial_radial_restrict",
+    "module": "GRAssembly.BoundaryConstraintsJets",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.analyticAt_matrix_inverse",
+    "module": "GRAssembly.BoundaryConstraintsJets",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.bulkPartial_inverse",
+    "module": "GRAssembly.BoundaryConstraintsJets",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.analyticAt_gaussianSecondForm",
+    "module": "GRAssembly.BoundaryConstraintsJets",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.analyticAt_gaussianShape",
+    "module": "GRAssembly.BoundaryConstraintsJets",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.analyticAt_gaussianTangentialChristoffel",
+    "module": "GRAssembly.BoundaryConstraintsJets",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussianShape_at_flat",
+    "module": "GRAssembly.BoundaryConstraintsJets",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.bulkPartial_inverse_at_flat",
+    "module": "GRAssembly.BoundaryConstraintsJets",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
@@ -1739,6 +2194,132 @@
   {
     "name": "NSEGR.Assembly.poissonInverse_norm_le_eight",
     "module": "GRAssembly.HodgeBounds",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.poissonInverse_const_mul",
+    "module": "GRAssembly.HodgeCommutation",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.poissonInverse_add",
+    "module": "GRAssembly.HodgeCommutation",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.jointLinear_coordinate_expansion",
+    "module": "GRAssembly.HodgeCommutation",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.joint_fderiv_time",
+    "module": "GRAssembly.HodgeCommutation",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.joint_fderiv_space",
+    "module": "GRAssembly.HodgeCommutation",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.joint_fderiv_smooth",
+    "module": "GRAssembly.HodgeCommutation",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.joint_fderiv_periodic",
+    "module": "GRAssembly.HodgeCommutation",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.poissonInverse_fderiv_commute_global",
+    "module": "GRAssembly.HodgeCommutation",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.iteratedFDeriv_apply_smooth_global",
+    "module": "GRAssembly.HodgeCommutation",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.iteratedFDeriv_slice_periodic_global",
+    "module": "GRAssembly.HodgeCommutation",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.poissonInverse_iteratedFDeriv_commute_global",
+    "module": "GRAssembly.HodgeCommutation",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.fullSlice_iteratedFDeriv_eq",
+    "module": "GRAssembly.HodgeCommutation",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.iteratedFDeriv_slice_smooth_periodic",
+    "module": "GRAssembly.HodgeCommutation",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.poissonInverse_iteratedFDeriv_commute",
+    "module": "GRAssembly.HodgeCommutation",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.prependSpatialDirections",
+    "module": "GRAssembly.HodgeCommutation",
+    "kind": "def",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.scalarSpatialIterate_iteratedFDeriv_global",
+    "module": "GRAssembly.HodgeCommutation",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.prependSpatialDirections_norm_prod",
+    "module": "GRAssembly.HodgeCommutation",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.scalarSpatialIterate_iteratedFDeriv",
+    "module": "GRAssembly.HodgeCommutation",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
@@ -1863,267 +2444,232 @@
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.scalarNormalGerm_of_hamiltonian",
-    "module": "GRAssembly.NativeInverse",
+    "name": "NSEGR.Assembly.scalarMean_sub_const_native",
+    "module": "GRAssembly.NativeCalculus",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.completedBoundary_scalarNormalGerm",
-    "module": "GRAssembly.NativeInverse",
+    "name": "NSEGR.Assembly.poissonInverse_neg_native",
+    "module": "GRAssembly.NativeCalculus",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.scalarLocalTimeDerivative_congr_eventually",
-    "module": "GRAssembly.NativeInverse",
+    "name": "NSEGR.Assembly.poissonInverse_sub_native",
+    "module": "GRAssembly.NativeCompletion",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.completedBoundary_congr_eventually",
-    "module": "GRAssembly.NativeInverse",
+    "name": "NSEGR.Assembly.leray_sub_native",
+    "module": "GRAssembly.NativeCompletion",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.completedBoundary_input_congr_slice",
-    "module": "GRAssembly.NativeInverse",
+    "name": "NSEGR.Assembly.completedBoundary_velocity_recovery",
+    "module": "GRAssembly.NativeCompletion",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.forward_respects_of_literature",
-    "module": "GRAssembly.NativeInverse",
+    "name": "NSEGR.Assembly.completedBoundary_potential_recovery",
+    "module": "GRAssembly.NativeCompletion",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.matrixEntryCLM",
-    "module": "GRAssembly.BoundaryConstraintsJets",
-    "kind": "def",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.analyticAt_matrix_entry",
-    "module": "GRAssembly.BoundaryConstraintsJets",
+    "name": "NSEGR.Assembly.completedBoundary_stress_zero",
+    "module": "GRAssembly.NativeCompletion",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.analyticAt_matrix_of_entries",
-    "module": "GRAssembly.BoundaryConstraintsJets",
+    "name": "NSEGR.Assembly.completedBoundary_pressure_recovery",
+    "module": "GRAssembly.NativeCompletion",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.matrix_entry_fderiv",
-    "module": "GRAssembly.BoundaryConstraintsJets",
+    "name": "NSEGR.Assembly.localNSE_restrict_native",
+    "module": "GRAssembly.NativeCompletion",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.boundaryEmbed",
-    "module": "GRAssembly.BoundaryConstraintsJets",
-    "kind": "def",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.boundaryEmbed_time",
-    "module": "GRAssembly.BoundaryConstraintsJets",
+    "name": "NSEGR.Assembly.scalarBoundaryCompletionLaws_of_literatureCK",
+    "module": "GRAssembly.NativeCompletion",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.boundaryEmbed_space",
-    "module": "GRAssembly.BoundaryConstraintsJets",
+    "name": "NSEGR.Assembly.jointSpace_isotropic_sum",
+    "module": "GRAssembly.NativeCompletionCalculus",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.analyticAt_bulkPartial",
-    "module": "GRAssembly.BoundaryConstraintsJets",
+    "name": "NSEGR.Assembly.jointSpace_hessian_divergence",
+    "module": "GRAssembly.NativeCompletionCalculus",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.boundaryPartial_restrict",
-    "module": "GRAssembly.BoundaryConstraintsJets",
+    "name": "NSEGR.Assembly.scalarCompletionUpper_conserved",
+    "module": "GRAssembly.NativeCompletionCalculus",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.boundaryPartial_congr",
-    "module": "GRAssembly.BoundaryConstraintsJets",
+    "name": "NSEGR.Assembly.analyticAt_conservedSourceUpper_entry",
+    "module": "GRAssembly.NativeCompletionCalculus",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.bulkPartial_tangent_zero",
-    "module": "GRAssembly.BoundaryConstraintsJets",
+    "name": "NSEGR.Assembly.analyticAt_scalarCompletionUpper_entry",
+    "module": "GRAssembly.NativeCompletionCalculus",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.analyticAt_matrix_inverse",
-    "module": "GRAssembly.BoundaryConstraintsJets",
+    "name": "NSEGR.Assembly.analyticAt_completedBoundary",
+    "module": "GRAssembly.NativeCompletionCalculus",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.bulkPartial_inverse",
-    "module": "GRAssembly.BoundaryConstraintsJets",
+    "name": "NSEGR.Assembly.boundaryPartial_add_native",
+    "module": "GRAssembly.NativeCompletionCalculus",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.analyticAt_gaussianSecondForm",
-    "module": "GRAssembly.BoundaryConstraintsJets",
+    "name": "NSEGR.Assembly.traceReverse_lower_codazzi",
+    "module": "GRAssembly.NativeCompletionCalculus",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.analyticAt_gaussianShape",
-    "module": "GRAssembly.BoundaryConstraintsJets",
+    "name": "NSEGR.Assembly.completedBoundary_codazzi",
+    "module": "GRAssembly.NativeCompletionCalculus",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.analyticAt_gaussianTangentialChristoffel",
-    "module": "GRAssembly.BoundaryConstraintsJets",
+    "name": "NSEGR.Assembly.completedBoundary_symmetric",
+    "module": "GRAssembly.NativeCompletionCalculus",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.gaussianShape_at_flat",
-    "module": "GRAssembly.BoundaryConstraintsJets",
+    "name": "NSEGR.Assembly.scalarLocalTimeDerivative_periodic_on_interval",
+    "module": "GRAssembly.NativeCompletionCalculus",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.bulkPartial_inverse_at_flat",
-    "module": "GRAssembly.BoundaryConstraintsJets",
+    "name": "NSEGR.Assembly.scalarHessian_periodic_native",
+    "module": "GRAssembly.NativeCompletionCalculus",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.bulkPartial_mul",
-    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "name": "NSEGR.Assembly.completedBoundary_periodic",
+    "module": "GRAssembly.NativeCompletionCalculus",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.bulkPartial_sum",
-    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "name": "NSEGR.Assembly.completedBoundary_admissible",
+    "module": "GRAssembly.NativeCompletionCalculus",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.bulkPartial_shape_at_flat",
-    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "name": "NSEGR.Assembly.boundaryAdmissible_entry_analytic",
+    "module": "GRAssembly.NativeConservation",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.gaussian_normal_flat",
-    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "name": "NSEGR.Assembly.boundaryAdmissible_beta_analytic",
+    "module": "GRAssembly.NativeConservation",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.gaussian_tangential_flat",
-    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "name": "NSEGR.Assembly.boundaryAdmissible_raw_analytic",
+    "module": "GRAssembly.NativeConservation",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.gaussian_hamiltonian_flat",
-    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "name": "NSEGR.Assembly.boundaryAdmissible_beta_periodic",
+    "module": "GRAssembly.NativeConservation",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.boundaryDirection",
-    "module": "GRAssembly.BoundaryConstraintsGeometry",
-    "kind": "def",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.boundaryPartial_eq_joint",
-    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "name": "NSEGR.Assembly.boundaryAdmissible_raw_periodic",
+    "module": "GRAssembly.NativeConservation",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.boundaryPartial_sub",
-    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "name": "NSEGR.Assembly.boundaryAdmissible_raw_smooth",
+    "module": "GRAssembly.NativeConservation",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.boundaryPartial_const_mul",
-    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "name": "NSEGR.Assembly.boundaryAdmissible_beta_time",
+    "module": "GRAssembly.NativeConservation",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.boundaryPartial_sum",
-    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "name": "NSEGR.Assembly.boundaryAdmissible_beta_mean",
+    "module": "GRAssembly.NativeConservation",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.lorentzTrace4_eq_sum",
-    "module": "GRAssembly.BoundaryConstraintsGeometry",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.analyticAt_boundaryTrace",
-    "module": "GRAssembly.BoundaryConstraintsGeometry",
-    "kind": "theorem",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.boundaryCodazzi_expanded",
-    "module": "GRAssembly.BoundaryConstraintsGeometry",
+    "name": "NSEGR.Assembly.boundaryAdmissible_rawVelocity_time",
+    "module": "GRAssembly.NativeConservation",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
@@ -2166,6 +2712,230 @@
   {
     "name": "NSEGR.Assembly.positive_timeInterval_subset",
     "module": "GRAssembly.NativeGluingAtlas",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.GaussianGluingLaw",
+    "module": "GRAssembly.NativeGluingGaussian",
+    "kind": "structure",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.GaussianGluingLaw.congr",
+    "module": "GRAssembly.NativeGluingGaussian",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.GaussianGluingLaw.translate",
+    "module": "GRAssembly.NativeGluingGaussian",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gaussianGluingLaw_germ_of_literature",
+    "module": "GRAssembly.NativeGluingGaussian",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.literatureGaussianGerm_of_gluingLaw",
+    "module": "GRAssembly.NativeGluingGaussian",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.lorentzian_of_gaussianGluingLaw",
+    "module": "GRAssembly.NativeGluingGaussian",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.radialExtensionResult_of_literatureGaussian",
+    "module": "GRAssembly.NativeGluingGaussian",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.analyticRadialExtensionLaws_of_literatureGaussian",
+    "module": "GRAssembly.NativeGluingGaussian",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.GaussianJoint",
+    "module": "GRAssembly.NativeGluingGaussianCoordinates",
+    "kind": "abbrev",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.bulkFromJoint",
+    "module": "GRAssembly.NativeGluingGaussianCoordinates",
+    "kind": "def",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.jointFromBulk",
+    "module": "GRAssembly.NativeGluingGaussianCoordinates",
+    "kind": "def",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.jointMetric",
+    "module": "GRAssembly.NativeGluingGaussianCoordinates",
+    "kind": "def",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.metricOfJoint",
+    "module": "GRAssembly.NativeGluingGaussianCoordinates",
+    "kind": "def",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.metricOfJoint_germ",
+    "module": "GRAssembly.NativeGluingGaussianCoordinates",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.jointMetric_germ",
+    "module": "GRAssembly.NativeGluingGaussianCoordinates",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.metricOfJoint_translate",
+    "module": "GRAssembly.NativeGluingGaussianCoordinates",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.bulkPartial_metric_germ",
+    "module": "GRAssembly.NativeGluingGaussianCoordinates",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.christoffel_metric_germ",
+    "module": "GRAssembly.NativeGluingGaussianCoordinates",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.ricci_metric_germ",
+    "module": "GRAssembly.NativeGluingGaussianCoordinates",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryK_metric_germ",
+    "module": "GRAssembly.NativeGluingGaussianCoordinates",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.gluingMetricEntry",
+    "module": "GRAssembly.NativeGluingGaussianCoordinates",
+    "kind": "def",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.near_eta4_of_gaussianGerm",
+    "module": "GRAssembly.NativeGluingGaussianCoordinates",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.scalarNormalGerm_of_hamiltonian_nativeGluing",
+    "module": "GRAssembly.NativeGluingScalar",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.ScalarGluingLaw",
+    "module": "GRAssembly.NativeGluingScalar",
+    "kind": "structure",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.ScalarGluingLaw.congr",
+    "module": "GRAssembly.NativeGluingScalar",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.ScalarGluingLaw.translate",
+    "module": "GRAssembly.NativeGluingScalar",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.scalarGluingLaw_germ_of_normal",
+    "module": "GRAssembly.NativeGluingScalar",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.scalarNormalGerm_of_gluingLaw",
+    "module": "GRAssembly.NativeGluingScalar",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.scalar_periodic_cylinder_of_literatureCK",
+    "module": "GRAssembly.NativeGluingScalar",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.scalarLaplacian_spatial_sub",
+    "module": "GRAssembly.NativeGluingScalar",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.scalarLaplacian_periodic_nativeGluing",
+    "module": "GRAssembly.NativeGluingScalar",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.scalar_periodic_normal_cylinder_of_literatureCK",
+    "module": "GRAssembly.NativeGluingScalar",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
@@ -2262,50 +3032,204 @@
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.scalarNormalGerm_of_hamiltonian_nativeGluing",
-    "module": "GRAssembly.NativeGluingScalar",
+    "name": "NSEGR.Assembly.scalarNormalGerm_of_hamiltonian",
+    "module": "GRAssembly.NativeInverse",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.ScalarGluingLaw",
-    "module": "GRAssembly.NativeGluingScalar",
-    "kind": "structure",
-    "gc": [],
-    "status": "A_TIER_CANDIDATE"
-  },
-  {
-    "name": "NSEGR.Assembly.ScalarGluingLaw.congr",
-    "module": "GRAssembly.NativeGluingScalar",
+    "name": "NSEGR.Assembly.completedBoundary_scalarNormalGerm",
+    "module": "GRAssembly.NativeInverse",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.ScalarGluingLaw.translate",
-    "module": "GRAssembly.NativeGluingScalar",
+    "name": "NSEGR.Assembly.scalarLocalTimeDerivative_congr_eventually",
+    "module": "GRAssembly.NativeInverse",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.scalarGluingLaw_germ_of_normal",
-    "module": "GRAssembly.NativeGluingScalar",
+    "name": "NSEGR.Assembly.completedBoundary_congr_eventually",
+    "module": "GRAssembly.NativeInverse",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.scalarNormalGerm_of_gluingLaw",
-    "module": "GRAssembly.NativeGluingScalar",
+    "name": "NSEGR.Assembly.completedBoundary_input_congr_slice",
+    "module": "GRAssembly.NativeInverse",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
   {
-    "name": "NSEGR.Assembly.scalar_periodic_cylinder_of_literatureCK",
-    "module": "GRAssembly.NativeGluingScalar",
+    "name": "NSEGR.Assembly.forward_respects_of_literature",
+    "module": "GRAssembly.NativeInverse",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.canonical_scalarNormalGerm",
+    "module": "GRAssembly.NativeInverseCanonical",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.canonical_chosenBoundary_eventually",
+    "module": "GRAssembly.NativeInverseCanonical",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.lift_decode_of_literature",
+    "module": "GRAssembly.NativeInverseCanonical",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.germInverseLaws_of_literature",
+    "module": "GRAssembly.NativeInverseCanonical",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_velocity_analytic",
+    "module": "GRAssembly.NativeReconstruction",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_solenoidal",
+    "module": "GRAssembly.NativeReconstruction",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_potential_eq",
+    "module": "GRAssembly.NativeReconstruction",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_potential_eq_eventually",
+    "module": "GRAssembly.NativeReconstruction",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_potential_analytic",
+    "module": "GRAssembly.NativeReconstruction",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_potential_laplacian",
+    "module": "GRAssembly.NativeReconstruction",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_potential_time",
+    "module": "GRAssembly.NativeReconstruction",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_potential_initial",
+    "module": "GRAssembly.NativeReconstruction",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_potential_time_initial",
+    "module": "GRAssembly.NativeReconstruction",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_raw_recovery",
+    "module": "GRAssembly.NativeReconstruction",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.canonical_boundary_exact_completion",
+    "module": "GRAssembly.NativeReconstruction",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_hodge_time",
+    "module": "GRAssembly.NativeReconstruction",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.scalarLocalTimeDerivative_periodic_native",
+    "module": "GRAssembly.NativeReconstruction",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_pressure_analytic",
+    "module": "GRAssembly.NativeReconstruction",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_decoded_pair",
+    "module": "GRAssembly.NativeReconstruction",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.boundaryAdmissible_residual",
+    "module": "GRAssembly.NativeReconstruction",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.geometricReconstructionLaws_native",
+    "module": "GRAssembly.NativeReconstruction",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.nativeLawPackages_of_literatureInputs",
+    "module": "GRAssembly.RootClosure",
+    "kind": "theorem",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.Assembly.NSE_GR_EXACT_SECTOR_EQUIVALENCE_OF_LITERATURE_INPUTS",
+    "module": "GRAssembly.RootClosure",
     "kind": "theorem",
     "gc": [],
     "status": "A_TIER_CANDIDATE"

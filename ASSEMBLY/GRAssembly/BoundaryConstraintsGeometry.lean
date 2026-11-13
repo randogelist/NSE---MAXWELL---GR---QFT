@@ -26,7 +26,7 @@ theorem bulkPartial_sum {n : ℕ} {f : Fin n → Bulk → ℝ} {z : Bulk}
   simp only [ContinuousLinearMap.sum_apply]
 
 theorem bulkPartial_shape_at_flat {h : Bulk → Tensor4} {z : Bulk}
-    (hh : AnalyticAt ℝ h z) (hn : IsUnit (h z).det) (he : h z = eta4)
+    (hh : AnalyticAt ℝ h z) (hn : IsUnit (h z).det) (he : h z = eta4Matrix)
     (a b : Fin 4) :
     bulkPartial (fun y => gaussianShapeOperator h y a b) 0 z =
       lorentzSign4 a * bulkPartial (fun y => gaussianSecondForm h y a b) 0 z -
@@ -41,14 +41,11 @@ theorem bulkPartial_shape_at_flat {h : Bulk → Tensor4} {z : Bulk}
   simp_rw [bulkPartial_mul (analyticAt_matrix_entry hi _ _)
     (analyticAt_matrix_entry hk _ _), bulkPartial_inverse_at_flat hh hn he]
   rw [he, eta4_inverse]
-  simp only [Finset.sum_add_distrib]
-  simp only [eta4]
-  simp
-  rw [Finset.mul_sum]
-  ring
+  fin_cases a <;> fin_cases b <;>
+    norm_num [eta4Matrix, eta4, lorentzSign4, Fin.sum_univ_succ] <;> ring
 
 theorem gaussian_normal_flat {h : Bulk → Tensor4} {z : Bulk}
-    (hh : AnalyticAt ℝ h z) (hn : IsUnit (h z).det) (he : h z = eta4)
+    (hh : AnalyticAt ℝ h z) (hn : IsUnit (h z).det) (he : h z = eta4Matrix)
     (hs : (gaussianSecondForm h z).IsSymm) :
     ricci (gaussianMetric h) z 0 0 =
       -(∑ a : Fin 4, lorentzSign4 a *
@@ -65,11 +62,11 @@ theorem gaussian_normal_flat {h : Bulk → Tensor4} {z : Bulk}
   have hs23 := congrArg (fun M : Tensor4 => M 2 3) hs
   simp only [Matrix.transpose_apply] at hs01 hs02 hs03 hs12 hs13 hs23
   norm_num [lorentzSquare4, Fin.sum_univ_succ, lorentzSign4]
-  rw [hs01, hs02, hs03, hs12, hs13, hs23]
+  simp only [hs01, hs02, hs03, hs12, hs13, hs23]
   ring
 
 theorem gaussian_tangential_flat {h : Bulk → Tensor4} {z : Bulk}
-    (hn : ∀ᶠ y in 𝓝 z, IsUnit (h y).det) (he : h z = eta4)
+    (hn : ∀ᶠ y in 𝓝 z, IsUnit (h y).det) (he : h z = eta4Matrix)
     (hs : (gaussianSecondForm h z).IsSymm)
     (hc : ∀ a b c : Fin 4, gaussianTangentialChristoffel h z a b c = 0)
     (hdc : ∀ a b c d : Fin 4,
@@ -93,7 +90,7 @@ theorem gaussian_tangential_flat {h : Bulk → Tensor4} {z : Bulk}
 
 theorem gaussian_hamiltonian_flat {h : Bulk → Tensor4} {z : Bulk}
     (hh : AnalyticAt ℝ h z) (hn : ∀ᶠ y in 𝓝 z, IsUnit (h y).det)
-    (he : h z = eta4) (hs : (gaussianSecondForm h z).IsSymm)
+    (he : h z = eta4Matrix) (hs : (gaussianSecondForm h z).IsSymm)
     (hc : ∀ a b c : Fin 4, gaussianTangentialChristoffel h z a b c = 0)
     (hdc : ∀ a b c d : Fin 4,
       bulkPartial (fun y => gaussianTangentialChristoffel h y a b c) d.succ z = 0)
@@ -117,7 +114,7 @@ theorem gaussian_hamiltonian_flat {h : Bulk → Tensor4} {z : Bulk}
   simp only [Matrix.transpose_apply] at hs01 hs02 hs03 hs12 hs13 hs23
   norm_num [lorentzTrace4, lorentzSquare4, Fin.sum_univ_succ, lorentzSign4]
     at hr ht0 ht1 ht2 ht3 ⊢
-  rw [hs01, hs02, hs03, hs12, hs13, hs23] at hr ht0 ht1 ht2 ht3 ⊢
+  simp only [hs01, hs02, hs03, hs12, hs13, hs23] at hr ht0 ht1 ht2 ht3 ⊢
   nlinarith [hr, ht0, ht1, ht2, ht3]
 
 def boundaryDirection (a : Fin 4) : ℝ × Vec :=
@@ -138,8 +135,8 @@ theorem boundaryPartial_sub {f q : Pressure} {t : ℝ} {x : Vec}
       boundaryPartial f a t x - boundaryPartial q a t x := by
   rw [boundaryPartial_eq_joint (hf.sub hq), boundaryPartial_eq_joint hf,
     boundaryPartial_eq_joint hq]
-  rw [fderiv_fun_sub hf.differentiableAt hq.differentiableAt]
-  rfl
+  simp only [fderiv_fun_sub hf.differentiableAt hq.differentiableAt,
+    ContinuousLinearMap.sub_apply]
 
 theorem boundaryPartial_const_mul {f : Pressure} {t : ℝ} {x : Vec}
     (hf : AnalyticAt ℝ (fun z : ℝ × Vec => f z.1 z.2) (t, x)) (c : ℝ) (a : Fin 4) :
@@ -179,11 +176,8 @@ theorem boundaryCodazzi_expanded {K : BoundaryTensor} {t : ℝ} {x : Vec}
       (∑ b : Fin 4, lorentzSign4 b * boundaryPartial (fun s y => K s y b a) b t x) -
       ∑ b : Fin 4, lorentzSign4 b * boundaryPartial (fun s y => K s y b b) a t x := by
   have ht := analyticAt_boundaryTrace hK
-  have hmul (b : Fin 4) :
-      (fun s y => lorentzTrace4 (K s y) * eta4 b a) =
-        (fun s y => eta4 b a * lorentzTrace4 (K s y)) := by
-    funext s y
-    ring
+  have hmul (s : ℝ) (y : Vec) (b : Fin 4) :
+      lorentzTrace4 (K s y) * eta4 b a = eta4 b a * lorentzTrace4 (K s y) := mul_comm _ _
   unfold boundaryCodazzi
   simp_rw [hmul, boundaryPartial_sub (analyticAt_matrix_entry hK _ _) (analyticAt_const.mul ht),
     boundaryPartial_const_mul ht]

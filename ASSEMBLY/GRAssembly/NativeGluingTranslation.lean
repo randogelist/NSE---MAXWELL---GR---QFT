@@ -25,7 +25,7 @@ theorem fderiv_spatialPeriodic_sub_integer {Y : Type*}
     fderiv ℝ f (x - integerSpatialShift n) = fderiv ℝ f x := by
   have he : (fun y => f (y - integerSpatialShift n)) = f :=
     funext (spatialPeriodic_sub_integer hf n)
-  rw [← fderiv_comp_sub, he]
+  rw [← fderiv_comp_sub (integerSpatialShift n), he]
 
 theorem scalarCompletionUpper_spatial_sub (ψ : Pressure) (c : Vec) (t : ℝ) (x : Vec) :
     scalarCompletionUpper (fun s y => ψ s (y - c)) t x =

@@ -20,7 +20,11 @@ def spatialTranslate {S Y : Type*} (f : S × Vec → Y) (n : Frequency) : S × V
 def gluingSpatialBox : Set Vec := {x | ∀ j : Fin 3, (-1 : ℝ) < x j ∧ x j < 2}
 
 theorem gluingSpatialBox_isOpen : IsOpen gluingSpatialBox := by
-  change IsOpen (⋂ j : Fin 3, {x : Vec | (-1 : ℝ) < x j ∧ x j < 2})
+  have hset : gluingSpatialBox =
+      ⋂ j : Fin 3, {x : Vec | (-1 : ℝ) < x j ∧ x j < 2} := by
+    ext x
+    simp only [gluingSpatialBox, mem_setOf_eq, mem_iInter]
+  rw [hset]
   apply isOpen_iInter_of_finite
   intro j
   exact isOpen_Ioo.preimage (PiLp.continuous_apply 2 (fun _ : Fin 3 => ℝ) j)
@@ -78,8 +82,9 @@ theorem periodic_law_of_unique_local_germs
     exact mem_iUnion_of_mem (⟨i, hit⟩ : I) hxi
   have hrecenter (i : I) {x : Vec} (hx : x ∈ closure (P i)) :
       ∀ᶠ z in 𝓝 (s0, x), Law (f i.val) z := by
-    filter_upwards [((hV i.val).mem_nhds (hsV i.val)).prodMk_nhds
-      ((hO i.val).mem_nhds (hmargin i hx))] with z hz
+    have hs : ∀ᶠ s in 𝓝 s0, s ∈ V i.val := (hV i.val).mem_nhds (hsV i.val)
+    have hx' : ∀ᶠ y in 𝓝 x, y ∈ O i.val := (hO i.val).mem_nhds (hmargin i hx)
+    filter_upwards [hs.prodMk_nhds hx'] with z hz
     exact hsource i.val hz
   have hoverlap : ∀ i j (a : BoundedLatticeShift),
       ∀ x ∈ compactLatticeOverlap P i j a,
@@ -112,10 +117,11 @@ theorem positive_timeInterval_subset {t0 δ : ℝ} {W : Set ℝ}
     (hδ : 0 < δ) (hW : W ∈ 𝓝 t0) :
     ∃ d : ℝ, 0 < d ∧ d ≤ δ ∧ timeInterval t0 d ⊆ W := by
   obtain ⟨a, b, ht, hab⟩ := mem_nhds_iff_exists_Ioo_subset.mp hW
+  have hta : 0 < t0 - a := sub_pos.mpr ht.1
+  have hbt : 0 < b - t0 := sub_pos.mpr ht.2
   let d := min δ (min (t0 - a) (b - t0)) / 2
   have hd : 0 < d := by
-    dsimp [d]
-    positivity
+    exact half_pos (lt_min hδ (lt_min hta hbt))
   refine ⟨d, hd, ?_, ?_⟩
   · have hm : min δ (min (t0 - a) (b - t0)) ≤ δ := min_le_left _ _
     dsimp [d]
@@ -127,6 +133,7 @@ theorem positive_timeInterval_subset {t0 δ : ℝ} {W : Set ℝ}
     have hmb : min δ (min (t0 - a) (b - t0)) ≤ b - t0 :=
       (min_le_right _ _).trans (min_le_right _ _)
     change t0 - d < t ∧ t < t0 + d at htt
+    rcases htt with ⟨httl, httr⟩
     constructor <;> dsimp [d] at * <;> linarith
 
 end

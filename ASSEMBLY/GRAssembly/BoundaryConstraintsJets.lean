@@ -34,9 +34,12 @@ theorem analyticAt_matrix_of_entries {n : ℕ} {E : Type*}
     (hf : ∀ a b, AnalyticAt ℝ (fun y => f y a b) z) :
     AnalyticAt ℝ f z := by
   have hsingle (a b : Fin n) :
-      AnalyticAt ℝ (fun y => Matrix.single a b (f y a b)) z :=
-    ((LinearMap.toContinuousLinearMap
-      (Matrix.singleLinearMap ℝ a b)).analyticAt _).comp (hf a b)
+      AnalyticAt ℝ (fun y => Matrix.single a b (f y a b)) z := by
+    let L : ℝ →L[ℝ] Matrix (Fin n) (Fin n) ℝ :=
+      LinearMap.toContinuousLinearMap (Matrix.singleLinearMap ℝ a b)
+    have hc := (L.analyticAt (f z a b)).comp (hf a b)
+    change AnalyticAt ℝ (fun y => L (f y a b)) z
+    exact hc
   have hsum : AnalyticAt ℝ
       (fun y => ∑ a : Fin n, ∑ b : Fin n, Matrix.single a b (f y a b)) z := by
     apply Finset.analyticAt_fun_sum
@@ -44,7 +47,12 @@ theorem analyticAt_matrix_of_entries {n : ℕ} {E : Type*}
     apply Finset.analyticAt_fun_sum
     intro b hb
     exact hsingle a b
-  simpa only [Matrix.sum_sum_single, Matrix.of_apply] using hsum
+  have he : (fun y => ∑ a : Fin n, ∑ b : Fin n,
+      Matrix.single a b (f y a b)) = f := by
+    funext y
+    exact (Matrix.matrix_eq_sum_single (f y)).symm
+  rw [he] at hsum
+  exact hsum
 
 theorem matrix_entry_fderiv {n : ℕ} {E : Type*}
     [NormedAddCommGroup E] [NormedSpace ℝ E]
@@ -79,7 +87,7 @@ theorem boundaryEmbed_time : boundaryEmbed (1, 0) = bulkBasis 1 := by
   apply PiLp.ext
   intro i
   fin_cases i <;> simp [boundaryEmbed, bulkPoint, bulkBasis,
-    EuclideanSpace.single, PiLp.single_apply]
+    EuclideanSpace.single, PiLp.single_apply] <;> rfl
 
 theorem boundaryEmbed_space (i : Fin 3) :
     boundaryEmbed (0, unitVector i) = bulkBasis i.succ.succ := by
@@ -87,7 +95,7 @@ theorem boundaryEmbed_space (i : Fin 3) :
   intro j
   fin_cases i <;> fin_cases j <;>
     simp [boundaryEmbed, bulkPoint, bulkBasis, unitVector,
-      EuclideanSpace.single, PiLp.single_apply]
+      EuclideanSpace.single, PiLp.single_apply] <;> rfl
 
 theorem analyticAt_bulkPartial {f : Bulk → ℝ} {z : Bulk}
     (hf : AnalyticAt ℝ f z) (i : Fin 5) :
@@ -98,21 +106,26 @@ theorem boundaryPartial_restrict {f : Bulk → ℝ} {t : ℝ} {x : Vec}
     (hf : AnalyticAt ℝ f (bulkPoint 0 t x)) (a : Fin 4) :
     boundaryPartial (fun s y => f (bulkPoint 0 s y)) a t x =
       bulkPartial f a.succ (bulkPoint 0 t x) := by
+  have hemb : AnalyticAt ℝ (fun z : ℝ × Vec => bulkPoint 0 z.1 z.2) (t, x) := by
+    simpa only [boundaryEmbed_apply] using (boundaryEmbed.analyticAt (t, x))
   have hr : AnalyticAt ℝ (fun z : ℝ × Vec => f (bulkPoint 0 z.1 z.2)) (t, x) :=
-    hf.comp (boundaryEmbed.analyticAt (t, x))
+    hf.comp (f := fun z : ℝ × Vec => bulkPoint 0 z.1 z.2) (x := (t, x)) hemb
   have hd := hf.differentiableAt.hasFDerivAt.comp (t, x)
     (boundaryEmbed.hasFDerivAt)
+  have hd' : fderiv ℝ (fun z : ℝ × Vec => f (bulkPoint 0 z.1 z.2)) (t, x) =
+      (fderiv ℝ f (bulkPoint 0 t x)).comp boundaryEmbed := by
+    simpa only [Function.comp_def, boundaryEmbed_apply] using hd.fderiv
   refine Fin.cases ?_ (fun i => ?_) a
   · change deriv (fun s => f (bulkPoint 0 s x)) t = _
     rw [scalar_timeDerivative_eq_joint hr]
     change fderiv ℝ (fun z : ℝ × Vec => f (bulkPoint 0 z.1 z.2)) (t, x) (1, 0) = _
-    rw [hd.fderiv]
+    rw [hd']
     simpa only [ContinuousLinearMap.comp_apply, boundaryEmbed_time, bulkPartial]
   · change fderiv ℝ (fun y => f (bulkPoint 0 t y)) x (unitVector i) = _
     rw [scalar_spatialDerivative_eq_joint hr i]
     change fderiv ℝ (fun z : ℝ × Vec => f (bulkPoint 0 z.1 z.2)) (t, x)
       (0, unitVector i) = _
-    rw [hd.fderiv]
+    rw [hd']
     simpa only [ContinuousLinearMap.comp_apply, boundaryEmbed_space, bulkPartial]
 
 theorem boundaryPartial_congr {f q : Pressure} {t : ℝ} {x : Vec}
@@ -134,16 +147,36 @@ theorem bulkPartial_tangent_zero {f : Bulk → ℝ} {t : ℝ} {x : Vec} {c : ℝ
       (fun _ => c)) (a : Fin 4) :
     bulkPartial f a.succ (bulkPoint 0 t x) = 0 := by
   rw [← boundaryPartial_restrict hf]
-  rw [boundaryPartial_congr he]
+  rw [boundaryPartial_congr (q := fun _ _ => c) he]
   fin_cases a <;> simp [boundaryPartial]
+
+theorem bulkPartial_radial_restrict {f : Bulk → ℝ} {t : ℝ} {x : Vec}
+    (hf : AnalyticAt ℝ f (bulkPoint 0 t x)) :
+    deriv (fun r : ℝ => f (bulkPoint r t x)) 0 =
+      bulkPartial f 0 (bulkPoint 0 t x) := by
+  have he : (fun r : ℝ => bulkPoint r t x) =
+      (fun r => r • bulkBasis 0 + bulkPoint 0 t x) := by
+    funext r
+    apply PiLp.ext
+    intro i
+    fin_cases i <;> simp [bulkPoint, bulkBasis, EuclideanSpace.single,
+      PiLp.single_apply, PiLp.add_apply, PiLp.smul_apply] <;> rfl
+  have hd : HasDerivAt (fun r : ℝ => bulkPoint r t x) (bulkBasis 0) 0 := by
+    rw [he]
+    simpa only [one_smul] using
+      (((hasDerivAt_id (0 : ℝ)).smul_const (bulkBasis 0)).add_const (bulkPoint 0 t x))
+  exact (hf.differentiableAt.hasFDerivAt.comp_hasDerivAt 0 hd).deriv
 
 theorem analyticAt_matrix_inverse {h : Bulk → Tensor4} {z : Bulk}
     (hh : AnalyticAt ℝ h z) (hn : IsUnit (h z).det) :
     AnalyticAt ℝ (fun y => (h y)⁻¹) z := by
   have hu : IsUnit (h z) := (h z).isUnit_iff_isUnit_det.mpr hn
   have hi : AnalyticAt ℝ (fun H : Tensor4 => H⁻¹) (h z) := by
-    simpa only [← Matrix.nonsing_inv_eq_ringInverse, IsUnit.unit_spec]
-      using (analyticAt_inverse (𝕜 := ℝ) hu.unit)
+    have he : (fun H : Tensor4 => H⁻¹) = Ring.inverse := by
+      funext H
+      exact Matrix.nonsing_inv_eq_ringInverse H
+    rw [he]
+    simpa only [IsUnit.unit_spec] using (analyticAt_inverse (𝕜 := ℝ) hu.unit)
   exact hi.comp hh
 
 theorem bulkPartial_inverse {h : Bulk → Tensor4} {z : Bulk}
@@ -155,16 +188,29 @@ theorem bulkPartial_inverse {h : Bulk → Tensor4} {z : Bulk}
   have hu : IsUnit (h z) := (h z).isUnit_iff_isUnit_det.mpr hn
   have hi0 : HasFDerivAt (fun H : Tensor4 => H⁻¹)
       (-ContinuousLinearMap.mulLeftRight ℝ Tensor4 (h z)⁻¹ (h z)⁻¹) (h z) := by
-    simpa only [← Matrix.nonsing_inv_eq_ringInverse, Matrix.coe_units_inv,
-      IsUnit.unit_spec] using (hasFDerivAt_ringInverse (𝕜 := ℝ) hu.unit)
+    have he : (fun H : Tensor4 => H⁻¹) = Ring.inverse := by
+      funext H
+      exact Matrix.nonsing_inv_eq_ringInverse H
+    rw [he]
+    simpa only [Matrix.coe_units_inv, IsUnit.unit_spec]
+      using (hasFDerivAt_ringInverse (𝕜 := ℝ) hu.unit)
   have hi := hi0.comp z hh.differentiableAt.hasFDerivAt
   have hi' : HasFDerivAt (fun y => (h y)⁻¹)
       ((-ContinuousLinearMap.mulLeftRight ℝ Tensor4 (h z)⁻¹ (h z)⁻¹).comp
         (fderiv ℝ h z)) z := by
     exact hi
-  unfold bulkPartial
-  rw [matrix_entry_fderiv (analyticAt_matrix_inverse hh hn).differentiableAt,
-    hi'.fderiv]
+  have hv := congrArg (fun L : Bulk →L[ℝ] Tensor4 =>
+    matrixEntryCLM 4 a b (L (bulkBasis i))) hi'.fderiv
+  have hc : bulkPartial (fun y => (h y)⁻¹ a b) i z =
+      -((h z)⁻¹ * (fderiv ℝ h z (bulkBasis i)) * (h z)⁻¹) a b := by
+    calc
+      _ = matrixEntryCLM 4 a b (fderiv ℝ (fun y => (h y)⁻¹) z (bulkBasis i)) :=
+        matrix_entry_fderiv (analyticAt_matrix_inverse hh hn).differentiableAt _ a b
+      _ = _ := by
+        simpa only [ContinuousLinearMap.comp_apply, ContinuousLinearMap.neg_apply,
+          ContinuousLinearMap.mulLeftRight_apply, matrixEntryCLM_apply,
+          Matrix.neg_apply] using hv
+  rw [hc]
   simp only [ContinuousLinearMap.comp_apply, ContinuousLinearMap.neg_apply,
     ContinuousLinearMap.mulLeftRight_apply, Matrix.neg_apply,
     Matrix.mul_apply, Finset.sum_mul]
@@ -174,7 +220,8 @@ theorem bulkPartial_inverse {h : Bulk → Tensor4} {z : Bulk}
   intro c hc
   apply Finset.sum_congr rfl
   intro d hd
-  rw [matrix_entry_fderiv hh.differentiableAt]
+  exact congrArg (fun q : ℝ => (h z)⁻¹ a c * q * (h z)⁻¹ d b)
+    (matrix_entry_fderiv hh.differentiableAt (bulkBasis i) c d).symm
 
 theorem analyticAt_gaussianSecondForm {h : Bulk → Tensor4} {z : Bulk}
     (hh : AnalyticAt ℝ h z) : AnalyticAt ℝ (gaussianSecondForm h) z := by
@@ -204,28 +251,28 @@ theorem analyticAt_gaussianTangentialChristoffel {h : Bulk → Tensor4} {z : Bul
       (analyticAt_bulkPartial (analyticAt_matrix_entry hh d b) c.succ)).sub
         (analyticAt_bulkPartial (analyticAt_matrix_entry hh b c) d.succ))
 
-@[simp] theorem eta4_inverse : (eta4 : Tensor4)⁻¹ = eta4 := by
+@[simp] theorem eta4_inverse : eta4Matrix⁻¹ = eta4Matrix := by
   apply Matrix.inv_eq_right_inv
   ext a b
   fin_cases a <;> fin_cases b <;>
-    norm_num [Matrix.mul_apply, Fin.sum_univ_succ, eta4, lorentzSign4,
+    norm_num [Matrix.mul_apply, Fin.sum_univ_succ, eta4Matrix, eta4, lorentzSign4,
       Matrix.one_apply]
 
 theorem gaussianShape_at_flat {h : Bulk → Tensor4} {z : Bulk}
-    (he : h z = eta4) (a b : Fin 4) :
+    (he : h z = eta4Matrix) (a b : Fin 4) :
     gaussianShapeOperator h z a b = lorentzSign4 a * gaussianSecondForm h z a b := by
-  simp only [gaussianShapeOperator, he, eta4_inverse, eta4]
-  simp
+  simp only [gaussianShapeOperator, he, eta4_inverse]
+  fin_cases a <;> fin_cases b <;>
+    norm_num [eta4Matrix, eta4, lorentzSign4, Fin.sum_univ_succ]
 
 theorem bulkPartial_inverse_at_flat {h : Bulk → Tensor4} {z : Bulk}
-    (hh : AnalyticAt ℝ h z) (hn : IsUnit (h z).det) (he : h z = eta4)
+    (hh : AnalyticAt ℝ h z) (hn : IsUnit (h z).det) (he : h z = eta4Matrix)
     (a b : Fin 4) :
     bulkPartial (fun y => (h y)⁻¹ a b) 0 z =
       -2 * lorentzSign4 a * lorentzSign4 b * gaussianSecondForm h z a b := by
   rw [bulkPartial_inverse hh hn, he, eta4_inverse]
-  simp only [eta4]
-  simp [gaussianSecondForm]
-  ring
+  fin_cases a <;> fin_cases b <;>
+    norm_num [eta4Matrix, eta4, lorentzSign4, Fin.sum_univ_succ, gaussianSecondForm] <;> ring
 
 end
 end NSEGR.Assembly

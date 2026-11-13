@@ -44,6 +44,7 @@ theorem analyticHodge_scalarLaplacian_joint {f : Pressure} {z : ℝ × Vec}
   apply analyticAt_fin3_sum
   intro i
   exact analyticHodge_scalarSpatialPartial_joint
+    (f := fun t x => fderiv ℝ (f t) x (unitVector i))
     (analyticHodge_scalarSpatialPartial_joint hf i) i
 
 /-- The mean is recovered from the actual inverse identity; this helper does
@@ -60,7 +61,8 @@ theorem scalarMean_analytic_of_poissonInverse_analytic
     (hf (t, 0) ht).curry_left
   have hla : AnalyticAt ℝ
       (fun s => scalarLaplacian (poissonInverse (f s)) (0 : Vec)) t :=
-    (analyticHodge_scalarLaplacian_joint (hG (t, 0) ht)).curry_left
+    (analyticHodge_scalarLaplacian_joint (f := fun s => poissonInverse (f s))
+      (z := (t, 0)) (hG (t, 0) ht)).curry_left
   apply (hfa.sub hla).congr
   filter_upwards [hI.mem_nhds ht] with s hs
   have hfs : ContDiff ℝ ∞ (f s) := by

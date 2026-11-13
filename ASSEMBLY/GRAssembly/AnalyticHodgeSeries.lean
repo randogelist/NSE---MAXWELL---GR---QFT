@@ -39,18 +39,19 @@ theorem changeOrigin_uniform_coefficient_bound (p : FormalMultilinearSeries ℝ 
     ‖p.changeOrigin h n‖₊ * r ^ n ≤
       ∑' j : ℕ, analyticShiftMajorant p r j * r ^ j := by
   have hr' : (r : ℝ≥0∞) < p.radius :=
-    (le_add_of_nonneg_right (show (0 : ℝ≥0∞) ≤ r from zero_le _)).trans_lt hr
+    (le_add_of_nonneg_right (show (0 : ℝ≥0∞) ≤ r by positivity)).trans_lt hr
   have hh' : (‖h‖₊ : ℝ≥0∞) < p.radius :=
     (ENNReal.coe_le_coe.mpr hh).trans_lt hr'
   have hb : ‖p.changeOrigin h n‖₊ ≤ analyticShiftMajorant p r n := by
     refine (p.nnnorm_changeOrigin_le n hh').trans ?_
     exact (p.changeOriginSeries_summable_aux₂ hh' n).tsum_le_tsum
-      (fun s => mul_le_mul_left' (pow_le_pow_left' hh s.1) _)
+      (fun s => mul_le_mul_of_nonneg_left (pow_le_pow_left₀ (by positivity) hh s.1)
+        (by positivity))
       (p.changeOriginSeries_summable_aux₂ hr' n)
-  exact (mul_le_mul_right' hb _).trans
+  exact (mul_le_mul_of_nonneg_right hb (by positivity)).trans
     ((analyticShiftMajorant_summable p hr).le_tsum' n)
 
-theorem HasFPowerSeriesOnBall.norm_iteratedFDeriv_le_factorial
+theorem analyticHodge_norm_iteratedFDeriv_le_factorial
     {f : E → F} {p : FormalMultilinearSeries ℝ E F} {x : E} {r : ℝ≥0∞}
     (hf : HasFPowerSeriesOnBall f p x r) (n : ℕ) :
     ‖iteratedFDeriv ℝ n f x‖ ≤ (n.factorial : ℝ) * ‖p n‖ := by
@@ -65,7 +66,10 @@ theorem HasFPowerSeriesOnBall.norm_iteratedFDeriv_le_factorial
     _ ≤ ∑ _σ : Equiv.Perm (Fin n), ‖p n‖ * ∏ i, ‖v i‖ := by
       apply Finset.sum_le_sum
       intro σ _
-      simpa only [Equiv.prod_comp] using (p n).le_opNorm (fun i => v (σ i))
+      calc
+        _ ≤ ‖p n‖ * ∏ i, ‖v (σ i)‖ := (p n).le_opNorm (fun i => v (σ i))
+        _ = ‖p n‖ * ∏ i, ‖v i‖ := by
+          rw [Equiv.prod_comp σ (fun i => ‖v i‖)]
     _ = ((n.factorial : ℝ) * ‖p n‖) * ∏ i, ‖v i‖ := by
       simp only [Finset.sum_const, Finset.card_univ, Fintype.card_perm,
         Fintype.card_fin, nsmul_eq_mul]
@@ -82,11 +86,16 @@ theorem analyticAt_exists_uniform_iteratedFDeriv_bound
   have hspos : 0 < s := ENNReal.coe_pos.1 hs0
   let r : ℝ≥0 := s / 3
   have hrpos : 0 < r := by dsimp [r]; positivity
-  have hrrs : r + r < s := by dsimp [r]; nlinarith
+  have hrrs : r + r < s := by
+    have hsposR : 0 < (s : ℝ) := by exact_mod_cast hspos
+    have h : (s : ℝ) / 3 + (s : ℝ) / 3 < (s : ℝ) := by linarith
+    exact_mod_cast h
   have hrr : (r + r : ℝ≥0∞) < p.radius := by
     have h : ((r + r : ℝ≥0) : ℝ≥0∞) < (s : ℝ≥0∞) :=
       ENNReal.coe_lt_coe.mpr hrrs
-    exact (by simpa only [ENNReal.coe_add] using h).trans (hsR.trans_le hp.r_le)
+    have h' : (r + r : ℝ≥0∞) < (s : ℝ≥0∞) := by
+      simpa only [ENNReal.coe_add] using h
+    exact h'.trans (hsR.trans_le hp.r_le)
   let M : ℝ≥0 := (∑' j : ℕ, analyticShiftMajorant p r j * r ^ j) + 1
   have hMpos : 0 < M := by dsimp [M]; positivity
   refine ⟨(r : ℝ), (M : ℝ), (r : ℝ)⁻¹, by exact_mod_cast hrpos,
@@ -112,7 +121,7 @@ theorem analyticAt_exists_uniform_iteratedFDeriv_bound
     exact_mod_cast hprod
   calc
     ‖iteratedFDeriv ℝ n f y‖ ≤ (n.factorial : ℝ) * ‖p.changeOrigin (y - x) n‖ :=
-      hpy.norm_iteratedFDeriv_le_factorial n
+      analyticHodge_norm_iteratedFDeriv_le_factorial hpy n
     _ ≤ (n.factorial : ℝ) * ((M : ℝ) / (r : ℝ) ^ n) :=
       mul_le_mul_of_nonneg_left hb (by positivity)
     _ = (M : ℝ) * ((r : ℝ)⁻¹) ^ n * (n.factorial : ℝ) := by
@@ -148,7 +157,13 @@ theorem analyticOnNhd_compact_uniform_iteratedFDeriv_bound
     have h := Finset.single_le_sum (fun i _ => (hA i).le) hx
     dsimp [A']
     linarith
-  exact (hb x n y hxy).trans (by gcongr)
+  have hMx0 : 0 ≤ M x := (hM x).le
+  have hAx0 : 0 ≤ A x := (hA x).le
+  have hMp : 0 ≤ M' := hMx0.trans hMx
+  exact (hb x n y hxy).trans
+    (mul_le_mul_of_nonneg_right
+      (mul_le_mul hMx (pow_le_pow_left₀ hAx0 hAx n) (pow_nonneg hAx0 n) hMp)
+      (by positivity))
 
 end
 end NSEGR.Assembly

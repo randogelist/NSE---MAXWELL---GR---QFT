@@ -194,6 +194,10 @@ def main() -> int:
             requested = set(args.module)
             require(requested <= {x["module"] for x in inventory}, "Unknown selected assembly module")
             selected = [x for x in inventory if x["module"] in requested]
+        certified_base_path = support / "certified-base-targets.json"
+        certified_base_names = set(json.loads(certified_base_path.read_text()))
+        require(len(certified_base_names) == 171, "Expected the frozen 171 assembly base targets")
+        require(certified_base_names <= {x["name"] for x in inventory}, "Missing certified base target")
         scope = json.loads((support / "formalization-status.json").read_text())
         scope.update({"selected_modules": sorted({x["module"] for x in selected}),
                       "selected_new_target_count": len(selected), "full_new_target_count": len(inventory),
@@ -210,6 +214,7 @@ def main() -> int:
             inputs.add(source_root / "lean-toolchain")
         inputs.update([package / "run.cmd", package / "run.sh", Path(__file__).resolve(),
                        support / "audit-targets.json", support / "formalization-status.json",
+                       certified_base_path,
                        repo / "Auxillary/GR/audit-targets.json", repo / "Auxillary/TEMP/audit-targets.json"])
         manifest = {"source_commit": args.source_commit,
                     "source_roots": ["ASSEMBLY", "GR_adapter", "TEMP"],
@@ -220,10 +225,50 @@ def main() -> int:
                   ("forward", "NSEGRForward", baseline["forward"]),
                   ("reverse", "NSEGRReverse", baseline["reverse"]),
                   ("cutouts", "TempEndpoints", [x["name"] for x in cutouts])]
+        selected_modules = {x["module"] for x in selected}
+        module_dependencies = {}
+
+        def dependencies(module):
+            if module not in module_dependencies:
+                source = package / (module.replace(".", "/") + ".lean")
+                direct = set(re.findall(r"^import\s+(GRAssembly(?:\.\S+)?)\s*$",
+                                         source.read_text(), re.MULTILINE)) if source.is_file() else set()
+                module_dependencies[module] = direct
+            return module_dependencies[module]
+
+        ordered_modules, visiting, visited = [], set(), set()
+
+        def visit(module):
+            if module in visited:
+                return
+            require(module not in visiting, "Cyclic assembly imports: " + module)
+            visiting.add(module)
+            for dependency in sorted(dependencies(module) & selected_modules):
+                visit(dependency)
+            visiting.remove(module)
+            visited.add(module)
+            ordered_modules.append(module)
+
+        for module in sorted(selected_modules):
+            visit(module)
+
+        def dependency_closure(module, seen=None):
+            seen = set() if seen is None else seen
+            for dependency in dependencies(module):
+                if dependency not in seen:
+                    seen.add(dependency)
+                    dependency_closure(dependency, seen)
+            return seen
+
         if args.module or args.individual_modules:
-            for number, module in enumerate(sorted({x["module"] for x in selected}), 1):
-                stages.append((f"assembly-{number:03d}", module,
-                               [x["name"] for x in selected if x["module"] == module]))
+            base_selected = [x["name"] for x in selected if x["name"] in certified_base_names]
+            if base_selected:
+                stages.append(("assembly-certified-base", "GRAssembly.CertifiedBase", base_selected))
+            for number, module in enumerate(ordered_modules, 1):
+                module_names = [x["name"] for x in selected if x["module"] == module
+                                and x["name"] not in certified_base_names]
+                if module_names:
+                    stages.append((f"assembly-{number:03d}", module, module_names))
         else:
             stages.append(("assembly", "GRAssembly", [x["name"] for x in selected]))
         stage_summaries = []
@@ -232,6 +277,17 @@ def main() -> int:
             require(bool(names), "Empty named stage: " + stage)
             require(len(set(names)) == len(names) and all(SOURCE_NAME.fullmatch(n) for n in names),
                     "Invalid named stage: " + stage)
+            blocked = [item["module"] for item in failed_stages
+                       if item["module"] in dependency_closure(module)]
+            if blocked:
+                entry = {"stage": stage, "module": module, "status": "BLOCKED_BY_FAILED_DEPENDENCY",
+                         "dependencies": blocked}
+                failed_stages.append(entry)
+                write_json(report / (stage + "-summary.json"), entry)
+                provenance["failed_stages"] = failed_stages
+                persist()
+                print("BLOCKED_MODULE=" + module + "; DEPENDENCIES=" + ",".join(blocked), flush=True)
+                continue
             try:
                 run(["lake", "build", module], stage + "-build.log")
                 audit = report / (stage.replace("-", "_").title() + "Audit.lean")

@@ -174,7 +174,7 @@ theorem poissonInverse_norm_le_eight (f : ScalarField)
       _ ≤ _ := by simpa only [one_mul] using scalarCoeff_norm_le_eight f hf hp B hzero height k
   have hsum : (∑' k, ‖NSEMaxwell.HodgeProof.inverseScalarCoeff f k‖) ≤ A * ∑' k, w k := by
     calc
-      _ ≤ ∑' k, A * w k := tsum_le_tsum hcoeff hc.summable_norm (hw.mul_left A)
+      _ ≤ ∑' k, A * w k := hc.summable_norm.tsum_le_tsum hcoeff (hw.mul_left A)
       _ = _ := tsum_mul_left
   have hnorm : ‖poissonInverse f x‖ ≤ ∑' k, ‖NSEMaxwell.HodgeProof.inverseScalarCoeff f k‖ := by
     rw [poissonInverse_eq_neg_scalarL, Pi.neg_apply, norm_neg,

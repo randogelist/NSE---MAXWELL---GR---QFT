@@ -11,7 +11,7 @@ set_option maxHeartbeats 1200000
 
 namespace NSEGR.Assembly
 open Set Filter Metric
-open scoped Topology BigOperators ContDiff
+open scoped Topology BigOperators ContDiff NNReal ENNReal
 noncomputable section
 
 variable {E F : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
@@ -32,7 +32,8 @@ theorem factorialTaylor_remainder_bound (f : E → F) (x y : E)
       (mul_le_of_le_one_left (norm_nonneg y) ht.2).trans_lt hy
   have hcd (t : ℝ) (ht : t ∈ Icc (0 : ℝ) 1) :
       ContDiffAt ℝ (n + 1) f (x + t • y) :=
-    ((hf _ (hmem t ht)).contDiffAt (isOpen_ball.mem_nhds (hmem t ht))).of_le (by simp)
+    ((hf _ (hmem t ht)).contDiffAt (isOpen_ball.mem_nhds (hmem t ht))).of_le
+      (by exact_mod_cast (le_top : (n + 1 : ℕ∞) ≤ ⊤))
   have heq := map_add_eq_sum_add_integral_iteratedFDeriv hcd
   have hfac : (n.factorial : ℝ) ≠ 0 := by exact_mod_cast Nat.factorial_ne_zero n
   have hfacnonneg : 0 ≤ (n.factorial : ℝ)⁻¹ := by positivity
@@ -50,7 +51,7 @@ theorem factorialTaylor_remainder_bound (f : E → F) (x y : E)
     have ht' : t ∈ Icc (0 : ℝ) 1 := ⟨ht.1.le, ht.2⟩
     have hpow : |(1 - t)^n| ≤ 1 := by
       rw [abs_of_nonneg (pow_nonneg (sub_nonneg.mpr ht.2) n)]
-      exact pow_le_one₀ (sub_nonneg.mpr ht.2) (by linarith)
+      exact pow_le_one₀ (sub_nonneg.mpr ht.2) (by linarith [ht.1])
     have hmap : ‖iteratedFDeriv ℝ (n + 1) f (x + t • y) (fun _ => y)‖ ≤ C := by
       calc
         _ ≤ ‖iteratedFDeriv ℝ (n + 1) f (x + t • y)‖ * ‖y‖ ^ (n + 1) := by

@@ -46,7 +46,8 @@ theorem completedBoundary_scalarNormalGerm
     {ν ρ t0 : ℝ} {n : NSERepresentative ν t0}
     (c : CompletedBoundary ν ρ t0 n) (hρ : ρ ≠ 0) (x0 : Vec) :
     ScalarNormalGerm ν ρ n.velocity n.pressure t0 x0 c.potential := by
-  have ht := timeInterval_mem_nhds t0 c.timeRadius c.admissible.radius_pos
+  have ht : ∀ᶠ t in 𝓝 t0, t ∈ timeInterval t0 c.timeRadius :=
+    timeInterval_mem_nhds t0 c.timeRadius c.admissible.radius_pos
   apply scalarNormalGerm_of_hamiltonian hρ
     (c.potential_analytic (t0, x0) ht.self_of_nhds)
     (Eventually.of_forall c.potential_initial)
@@ -99,10 +100,14 @@ theorem forward_respects_of_literature
       (forwardRepresentative c r b).metric := by
   let ca := chosenBoundary c a
   let cb := chosenBoundary c b
-  have hta := timeInterval_mem_nhds t0 a.radius a.solution.radius_pos
-  have htb := timeInterval_mem_nhds t0 b.radius b.solution.radius_pos
-  have htca := timeInterval_mem_nhds t0 ca.timeRadius ca.admissible.radius_pos
-  have htcb := timeInterval_mem_nhds t0 cb.timeRadius cb.admissible.radius_pos
+  have hta : ∀ᶠ t in 𝓝 t0, t ∈ timeInterval t0 a.radius :=
+    timeInterval_mem_nhds t0 a.radius a.solution.radius_pos
+  have htb : ∀ᶠ t in 𝓝 t0, t ∈ timeInterval t0 b.radius :=
+    timeInterval_mem_nhds t0 b.radius b.solution.radius_pos
+  have htca : ∀ᶠ t in 𝓝 t0, t ∈ timeInterval t0 ca.timeRadius :=
+    timeInterval_mem_nhds t0 ca.timeRadius ca.admissible.radius_pos
+  have htcb : ∀ᶠ t in 𝓝 t0, t ∈ timeInterval t0 cb.timeRadius :=
+    timeInterval_mem_nhds t0 cb.timeRadius cb.admissible.radius_pos
   obtain ⟨γ, hγ, hflow⟩ := (sameFlowAt_iff_analytic_pressure_gauge
     a.solution.toAnalyticPeriodicPair b.solution.toAnalyticPeriodicPair).1 hab
   have hγ0 : AnalyticAt ℝ γ t0 := hγ t0 ⟨hta.self_of_nhds, htb.self_of_nhds⟩
@@ -111,7 +116,8 @@ theorem forward_respects_of_literature
   have hKgauge : completedBoundary ν ρ a.velocity a.pressure φ =ᶠ[𝓝 t0] cb.tensor := by
     filter_upwards [htcb, hflow, hA.eventually_analyticAt, hA2] with t ht hf ha ha2
     have hp : a.pressure t = (fun s x => b.pressure s x + γ s) t := funext hf.2
-    rw [completedBoundary_input_congr_slice hf.1 hp]
+    rw [completedBoundary_input_congr_slice (ν := ν) (ρ := ρ) (ψ := φ)
+      (q := fun s x => b.pressure s x + γ s) hf.1 hp]
     funext x
     calc
       completedBoundary ν ρ b.velocity (fun s x => b.pressure s x + γ s) φ t x =
