@@ -41,7 +41,9 @@ theorem hasFDerivAt_of_quadratic_remainder
     ‖f (x + h) - f x - J h‖ ≤ C * ‖h‖ ^ 2 := hh
     _ ≤ |C| * ‖h‖ ^ 2 :=
       mul_le_mul_of_nonneg_right (le_abs_self C) (sq_nonneg _)
-    _ ≤ ε * ‖h‖ := by nlinarith
+    _ ≤ ε * ‖h‖ := by
+      have hp := mul_le_mul_of_nonneg_right hmul.le hn
+      nlinarith [sq_nonneg ‖h‖]
 
 /-- The scalar Gronwall majorant is linear in a zero-initial-data source. -/
 theorem gronwallBound_zero_source_mul (K ε c t : ℝ) :
@@ -152,9 +154,11 @@ theorem continuous_native_variational_coefficient
 /-- Every finite native orbit segment has a finite variational-coefficient bound. -/
 theorem native_variational_coefficient_bounded
     {ν : ℝ} (F : PhaseFlow ν) (N : ℕ) (q : Phase N) (a b : ℝ) :
-    ∃ K : ℝ, ∀ t ∈ Icc a b, ‖fderiv ℝ (drift ν N) (F.map N t q)‖ ≤ K :=
-  isCompact_Icc.exists_bound_of_continuousOn
+    ∃ K : ℝ, ∀ t ∈ Icc a b, ‖fderiv ℝ (drift ν N) (F.map N t q)‖ ≤ K := by
+  obtain ⟨K, hK⟩ := (isCompact_Icc : IsCompact (Icc a b)).exists_bound_of_continuousOn
+    (f := fun t : ℝ => fderiv ℝ (drift ν N) (F.map N t q))
     (continuous_native_variational_coefficient F N q).continuousOn
+  exact ⟨K, hK⟩
 
 /-- The initial native time map has the identity derivative. -/
 theorem phaseFlow_zero_hasFDerivAt

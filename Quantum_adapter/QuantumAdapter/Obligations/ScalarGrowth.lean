@@ -32,7 +32,11 @@ theorem scalar_growth_bound
       (fun r => Real.exp (-K r) * y r)
       (Real.exp (-K s) * (y' s - g s * y s)) s := by
     have h := ((hK s).neg.exp).fun_mul (hy s)
-    convert h using 1 <;> ring
+    have he : (Real.exp (-K s) * (-g s)) * y s +
+        Real.exp (-K s) * y' s =
+        Real.exp (-K s) * (y' s - g s * y s) := by ring
+    rw [he] at h
+    exact h
   have hc : Continuous (fun r => Real.exp (-K r) * y r) :=
     continuous_iff_continuousAt.mpr (fun s => (hw s).continuousAt)
   have ha : AntitoneOn (fun r => Real.exp (-K r) * y r) (Ici (0 : ℝ)) := by
@@ -42,6 +46,7 @@ theorem scalar_growth_bound
     apply mul_nonpos_of_nonneg_of_nonpos (Real.exp_nonneg _)
     exact sub_nonpos.mpr (hineq s (interior_subset hs))
   have hb := ha (show (0 : ℝ) ∈ Ici (0 : ℝ) by simp) ht ht
+  change Real.exp (-K t) * y t ≤ Real.exp (-K 0) * y 0 at hb
   have hK0 : K 0 = 0 := by simp [K]
   rw [hK0, neg_zero, Real.exp_zero, one_mul] at hb
   calc

@@ -65,7 +65,8 @@ theorem sobolevEnergyDensity_mono {s r : ℕ} (hsr : s ≤ r)
   apply Finset.sum_le_sum
   intro i hi
   rw [sobolevWeightedCoeff_norm_eq, sobolevWeightedCoeff_norm_eq]
-  apply pow_le_pow_left₀ (by positivity)
+  apply pow_le_pow_left₀ (mul_nonneg
+    (pow_nonneg (torusSobolevWeight_pos k).le s) (norm_nonneg _))
   exact mul_le_mul_of_nonneg_right
     (pow_le_pow_right₀ (torusSobolevWeight_one_le k) hsr) (norm_nonneg _)
 
@@ -83,8 +84,11 @@ theorem weighted_coordinate_sq_le_sobolevEnergy (s N : ℕ) (q : Phase N)
     ‖sobolevWeightedCoeff s (phaseCoeff q) (k, i)‖ ^ 2 ≤ sobolevEnergy s N q := by
   have hi : ‖sobolevWeightedCoeff s (phaseCoeff q) (k, i)‖ ^ 2 ≤
       sobolevEnergyDensity s (phaseCoeff q) k :=
-    Finset.single_le_sum (fun j hj => sq_nonneg _) (Finset.mem_univ i)
-  exact hi.trans (Finset.single_le_sum
+    Finset.single_le_sum (s := Finset.univ)
+      (f := fun j : Fin 3 => ‖sobolevWeightedCoeff s (phaseCoeff q) (k, j)‖ ^ 2)
+      (fun j hj => sq_nonneg _) (Finset.mem_univ i)
+  exact hi.trans (Finset.single_le_sum (s := fullModes N)
+    (f := sobolevEnergyDensity s (phaseCoeff q))
     (fun l hl => sobolevEnergyDensity_nonneg s _ l) hk)
 
 /-- Off-support coefficients are zero, so the same bound holds at every frequency. -/
@@ -140,7 +144,8 @@ theorem initialPhaseData_sobolevEnergy_eq_sum (s N : ℕ)
   intro i hi
   have hc := (initialPhase_coeff N a ha.smooth ha.periodic ha.divergence_free k i).trans
     (if_pos hk)
-  simp only [sobolevWeightedCoeff, hc]
+  simpa only [sobolevWeightedCoeff, initialPhaseData] using
+    congrArg (fun z : ℂ => ‖(torusSobolevWeight k : ℂ) ^ s * z‖ ^ 2) hc
 
 theorem initialPhaseData_sobolevEnergy_le_majorant (s N : ℕ)
     (a : NSEMaxwell.Classical.Field) (ha : NSEMaxwell.Classical.Data a) :
@@ -169,8 +174,7 @@ theorem initial_all_sobolev_bounds (a : NSEMaxwell.Classical.Field)
 theorem sobolevEnergyDensity_summable (s : ℕ) (c : FourierCoeff)
     (hc : Memℓp (sobolevWeightedCoeff s c) 2) :
     Summable (sobolevEnergyDensity s c) := by
-  exact Summable.finset_sum Finset.univ
-    (fun i hi => sobolev_component_square_summable s c hc i)
+  exact summable_sum (fun i hi => sobolev_component_square_summable s c hc i)
 
 theorem smooth_datum_sobolevEnergyDensity_summable (s : ℕ) (a : Field)
     (ha : ContDiff ℝ ∞ a) (hp : SpatialPeriodic a) :

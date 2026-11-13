@@ -36,6 +36,7 @@ theorem translatedAmbient_mem (N : ℕ) (x : Vec) (q : Phase N) :
   · intro k i
     rw [translatedAmbient_coeff, translatedAmbient_coeff]
     rw [fourierCharacter_neg, phaseCoeff_reality q k i, star_mul]
+    exact mul_comm _ _
   · intro k
     simp_rw [translatedAmbient_coeff]
     calc
@@ -74,7 +75,7 @@ theorem fourierCharacter_add_space (k : Frequency) (x y : Vec) :
     fourierCharacter k (x + y) = fourierCharacter k x * fourierCharacter k y := by
   unfold fourierCharacter
   simp only [PiLp.add_apply, mul_add, Finset.sum_add_distrib]
-  rw [mul_add, Complex.ofReal_add, add_mul, Complex.exp_add]
+  rw [Complex.ofReal_add, add_mul, Complex.exp_add]
 
 theorem fourierCharacter_neg_space (k : Frequency) (x : Vec) :
     fourierCharacter k (-x) * fourierCharacter k x = 1 := by
@@ -102,9 +103,11 @@ def phaseTranslationEquiv (N : ℕ) (x : Vec) : Phase N ≃ₗ[ℝ] Phase N wher
   __ := phaseTranslation N x
   invFun := phaseTranslation N (-x)
   left_inv q := by
+    change phaseTranslation N (-x) (phaseTranslation N x q) = q
     rw [← phaseTranslation_add]
     simp only [neg_add_cancel, phaseTranslation_zero]
   right_inv q := by
+    change phaseTranslation N x (phaseTranslation N (-x) q) = q
     rw [← phaseTranslation_add]
     simp only [add_neg_cancel, phaseTranslation_zero]
 

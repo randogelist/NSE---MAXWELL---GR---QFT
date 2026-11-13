@@ -10,18 +10,20 @@ than an inverse-matrix formula.
 
 set_option autoImplicit false
 set_option Elab.async true
+set_option backward.isDefEq.respectTransparency false
 
 namespace QuantumAdapter.Obligations
 
 noncomputable section
 
-open scoped BigOperators Polynomial
+open scoped BigOperators Polynomial Matrix.Norms.Elementwise
 
 variable {ι : Type*} [Fintype ι] [DecidableEq ι]
 
 theorem matrix_det_differentiable :
     Differentiable ℝ (Matrix.det : Matrix ι ι ℝ → ℝ) := by
   classical
+  change Differentiable ℝ (fun M : Matrix ι ι ℝ => M.det)
   simp_rw [Matrix.det_apply']
   fun_prop
 
@@ -82,8 +84,8 @@ theorem endomorphismMatrixCLM_apply (b : Module.Basis ι ℝ E) (A : E →L[ℝ]
 theorem endomorphismMatrixCLM_comp (b : Module.Basis ι ℝ E) (A J : E →L[ℝ] E) :
     endomorphismMatrixCLM b (A.comp J) =
       endomorphismMatrixCLM b A * endomorphismMatrixCLM b J := by
-  simp only [endomorphismMatrixCLM_apply, ContinuousLinearMap.toLinearMap_comp,
-    LinearMap.toMatrix_comp]
+  change LinearMap.toMatrix b b (A.toLinearMap.comp J.toLinearMap) = _
+  exact LinearMap.toMatrix_comp b b b A.toLinearMap J.toLinearMap
 
 theorem endomorphismMatrixCLM_det (b : Module.Basis ι ℝ E) (A : E →L[ℝ] E) :
     (endomorphismMatrixCLM b A).det = A.det := by
