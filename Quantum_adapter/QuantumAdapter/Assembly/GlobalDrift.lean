@@ -160,6 +160,7 @@ theorem exists_uniform_local_drift_solutions_on_ball (ν : ℝ) (N : ℕ) (R : �
   intro t ht
   exact (hq t (Ioo_subset_Icc_self ht)).hasDerivAt (Icc_mem_nhds ht.1 ht.2)
 
+set_option maxHeartbeats 1000000 in
 /-- The native ODE has a solution on every prescribed finite symmetric interval. -/
 theorem exists_drift_solution_on_arbitrary_interval {ν : ℝ} (hν : 0 ≤ ν)
     (N : ℕ) (q₀ : Phase N) (T : ℝ) :
@@ -233,7 +234,9 @@ theorem exists_drift_solution_on_arbitrary_interval {ν : ℝ} (hν : 0 ≤ ν)
     · exact Or.inl ⟨hlow, ht.2⟩
     · apply Or.inr
       constructor
-      · dsimp [U, τ] at *; linarith
+      · have htlow := ht.1
+        dsimp [U, τ] at htlow ⊢
+        linarith
       · linarith
   let qext : ℝ → Phase N := piecewise (Ioo (-U) a) qmid qright
   have hext₀ : qext 0 = q₀ := by
@@ -255,7 +258,9 @@ theorem exists_drift_solution_on_arbitrary_interval {ν : ℝ} (hν : 0 ≤ ν)
     · apply Or.inr
       constructor
       · linarith
-      · dsimp [U, τ] at *; linarith
+      · have hthigh := ht.2
+        dsimp [U, τ] at hthigh ⊢
+        linarith
   have hUS : U ∈ S := ⟨qext, hext₀, hext⟩
   have hUA : U ≤ A := le_csSup hbdd hUS
   dsimp [U] at hUA
