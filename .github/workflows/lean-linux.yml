@@ -117,6 +117,10 @@ jobs:
         shell: bash
         run: bash Auxillary/quantum/run.sh --source-commit "$GITHUB_SHA"
 
+      - name: Compile and audit native Quantum assembly declarations
+        shell: bash
+        run: bash Auxillary/quantum/assembly/run.sh --source-commit "$GITHUB_SHA"
+
       - name: Prepare the independent Maxwell package from tracked sources
         shell: bash
         run: |
