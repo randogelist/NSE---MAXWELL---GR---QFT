@@ -110,6 +110,10 @@ theorem continuous_phaseFlow_uncurry_of_timeMaps {ν : ℝ} (hν : 0 ≤ ν)
     filter_upwards [(tendsto_order.mp htime).2 1 zero_lt_one,
       (tendsto_order.mp hspace).2 1 zero_lt_one,
       (tendsto_order.mp htotal).2 ε hε] with p hpt hpq hpε
+    change dist (F.map N (p.1 - p₀.1) p.2) p₀.2 < ε
+    change dist p.1 p₀.1 < 1 at hpt
+    change dist p.2 p₀.2 < 1 at hpq
+    change (C : ℝ) * dist p.1 p₀.1 + dist p.2 p₀.2 < ε at hpε
     have hpbound : ‖p.2‖ ≤ ‖p₀.2‖ + 1 := by
       have hnorm := norm_le_norm_sub_add p.2 p₀.2
       rw [← dist_eq_norm] at hnorm
@@ -118,12 +122,12 @@ theorem continuous_phaseFlow_uncurry_of_timeMaps {ν : ℝ} (hν : 0 ≤ ν)
     have hsmall : dist (F.map N (p.1 - p₀.1) p.2) p.2 ≤
         (C : ℝ) * |p.1 - p₀.1| :=
       phaseFlow_small_time_dist F N hC hpbound hpt'
-    calc
-      dist (F.map N (p.1 - p₀.1) p.2) p₀.2
-          ≤ dist (F.map N (p.1 - p₀.1) p.2) p.2 + dist p.2 p₀.2 :=
-            dist_triangle _ _ _
-      _ ≤ (C : ℝ) * |p.1 - p₀.1| + dist p.2 p₀.2 := add_le_add_right hsmall _
-      _ < ε := by simpa only [Real.dist_eq] using hpε
+    have htriangle : dist (F.map N (p.1 - p₀.1) p.2) p₀.2 ≤
+        dist (F.map N (p.1 - p₀.1) p.2) p.2 + dist p.2 p₀.2 :=
+      dist_triangle (F.map N (p.1 - p₀.1) p.2) p.2 p₀.2
+    have hscalar : (C : ℝ) * |p.1 - p₀.1| + dist p.2 p₀.2 < ε := by
+      simpa only [Real.dist_eq] using hpε
+    linarith only [htriangle, hsmall, hscalar]
   have hout := (hc p₀.1).continuousAt.tendsto.comp hs
   have heq : (fun p : ℝ × Phase N => F.map N p.1 p.2) =
       (fun p : ℝ × Phase N => F.map N p₀.1 (F.map N (p.1 - p₀.1) p.2)) := by

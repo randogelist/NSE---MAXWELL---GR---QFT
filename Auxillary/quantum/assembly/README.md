@@ -33,8 +33,10 @@ source blobs and SHA-256 source manifest. Cached Lake objects are reused through
 ordinary `lake build --no-build` freshness checks and incremental `lake build`.
 No cache cleanup or forced cache download occurs.
 
-Each module is attempted independently even after another module fails. Each
-successful module receives a fresh audit importing that module and issuing one
+Each independent module is attempted even after another module fails. Modules
+depending on a failed assembly build are explicitly marked blocked, without
+repeating the failed build or importing a stale object. Each successful module
+receives a fresh audit importing that module and issuing one
 `#check @name` and one `#print axioms name` per explicit target. Failed builds are
 never audited using stale objects. Missing, duplicated, unexpected, malformed,
 `sorryAx`, or unapproved axiom records fail the aggregate audit. Only `propext`,

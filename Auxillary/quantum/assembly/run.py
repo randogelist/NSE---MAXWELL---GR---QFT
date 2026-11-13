@@ -45,7 +45,7 @@ def main():
         "requested_mathlib_commit": MATHLIB, "external_platform": platform.system().lower(),
         "stage": "PREPARATION", "commands": [], "module_results": [],
         "semantic_discharge": "NOT_INFERRED_FROM_AXIOM_AUDIT",
-        "build_strategy": "INDEPENDENT_INCREMENTAL_MODULE_BUILDS_COLLECT_ALL_ERRORS",
+        "build_strategy": "INCREMENTAL_MODULE_BUILDS_SKIP_KNOWN_FAILED_DEPENDENCIES",
     }
     env = dict(os.environ, ELAN_TOOLCHAIN=TOOLCHAIN, MATHLIB_NO_CACHE_ON_UPDATE="1")
     env.pop("LEAN_PATH", None)
@@ -189,6 +189,23 @@ def main():
         prov["source_manifest_sha256"] = sha256(report / "source-manifest.json")
         prov["stage"] = "BUILD_AND_AUDIT"
 
+        module_names = {item["module"] for item in modules}
+        dependencies = {}
+        for item in modules:
+            imported = set()
+            for line in file(item["path"]).read_text().splitlines():
+                if line.startswith("import "):
+                    imported.update(line.split("--", 1)[0].split()[1:])
+            dependencies[item["module"]] = imported & module_names
+        def ancestors(name, visited=None):
+            visited = set() if visited is None else visited
+            for dependency in dependencies[name]:
+                if dependency not in visited:
+                    visited.add(dependency)
+                    ancestors(dependency, visited)
+            return visited
+        failed_builds = set()
+
         for item in modules:
             name, decls = item["module"], item["audit_targets"]
             stem = name.replace(".", "-")
@@ -196,6 +213,18 @@ def main():
             results.append(result)
             prov["module_results"] = results
             save()
+            blocked = sorted(ancestors(name) & failed_builds)
+            if blocked:
+                result["build_status"] = "BLOCKED_BY_FAILED_DEPENDENCY"
+                result["audit_status"] = "SKIPPED_DEPENDENCY_FAILURE"
+                result["failed_dependencies"] = blocked
+                failed_builds.add(name)
+                errors.append(f"{name}: blocked by failed dependencies {blocked}")
+                declaration_results.extend({"name": d, "module": name,
+                    "status": "SKIPPED_DEPENDENCY_FAILURE"} for d in decls)
+                print(f"BLOCKED {name}: {', '.join(blocked)}", flush=True)
+                save()
+                continue
             code, _ = run(["lake", "build", "--no-build", name], "freshness-" + stem + ".log")
             result["freshness_exit_code"] = code
             if code == 3:
@@ -203,6 +232,7 @@ def main():
             result["build_exit_code"] = code
             result["build_status"] = "PASS" if code == 0 else "FAIL"
             if code:
+                failed_builds.add(name)
                 result["audit_status"] = "SKIPPED_BUILD_FAILURE"
                 errors.append(f"{name}: build failed ({code})")
                 declaration_results.extend({"name": d, "module": name, "status": "SKIPPED_BUILD_FAILURE"} for d in decls)
