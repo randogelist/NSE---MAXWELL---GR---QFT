@@ -36,6 +36,12 @@ lean_lib ClassicalMechanics where
 lean_lib ClassicalMechanicsAssembly where
   srcDir := "ASSEMBLY"
 
+lean_lib FourierHodgeLaws where
+  srcDir := "Fefferman_adapter"
+
+lean_lib FourierHodgeLaws_inhabitant where
+  srcDir := "Fefferman_adapter"
+
 @[default_target]
 lean_lib NSEMaxwell where
   srcDir := "Fefferman_adapter"

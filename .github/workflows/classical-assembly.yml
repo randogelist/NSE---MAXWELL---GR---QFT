@@ -111,6 +111,7 @@ jobs:
           key: nse-deps-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}
           # Exact previously verified dependency locks; sources are checked again.
           restore-keys: |
+            nse-deps-v2-Linux-X64-6c235d0bb687ec9b22a0bceed8952795ab0e10605ca31480e6e5b47df0c1ec84
             nse-deps-v2-Linux-X64-0fcb7bcc7e55bc5e79e91e2cad12ccc5de76f8b2a18f51c798bbe2107711efee
             nse-deps-v2-Linux-X64-1e0a11bbe2f771dc625218fed552a5e8c9ad571990c5e9674d1e2921162b35c5
             nse-deps-v2-Linux-X64-9b51ac59a9bf389c36d0ee08f81eebfa504c2a733df8c25b1187266979e41203
@@ -139,6 +140,7 @@ jobs:
           restore-keys: |
             nse-assembly-project-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-
             nse-project-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-
+            nse-assembly-project-v1-Linux-X64-0fcb7bcc7e55bc5e79e91e2cad12ccc5de76f8b2a18f51c798bbe2107711efee-
             nse-project-v2-Linux-X64-0fcb7bcc7e55bc5e79e91e2cad12ccc5de76f8b2a18f51c798bbe2107711efee-
             nse-project-v2-Linux-X64-1e0a11bbe2f771dc625218fed552a5e8c9ad571990c5e9674d1e2921162b35c5-
 

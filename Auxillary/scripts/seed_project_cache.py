@@ -72,14 +72,16 @@ def module_roots(package: str, *, canonical: bool) -> dict[str, str]:
         roots = {"MaxwellEndpoint": "Maxwell_Endpoint", "MethlibEndpoints": "Fefferman_adapter",
                  "SingularClosure": "Fefferman_adapter/NativeSources/methlib"}
         if package == "Fefferman_adapter":
-            roots.update({"NSEMaxwell": "Fefferman_adapter", "NSEMaxwellForward": "B <-> Maxwell/=>",
+            roots.update({"NSEMaxwell": "Fefferman_adapter", "FourierHodgeLaws": "Fefferman_adapter",
+                          "FourierHodgeLaws_inhabitant": "Fefferman_adapter", "NSEMaxwellForward": "B <-> Maxwell/=>",
                           "NSEMaxwellReverse": "B <-> Maxwell/<="})
     else:
         roots = {"MethlibEndpoints": "", "SingularClosure": "NativeSources/methlib"}
         if package == "Maxwell_Endpoint":
             roots["MaxwellEndpoint"] = ""
         else:
-            roots.update({"NSEMaxwell": "", "MaxwellEndpoint": "LocalDependencies/Maxwell",
+            roots.update({"NSEMaxwell": "", "FourierHodgeLaws": "",
+                          "FourierHodgeLaws_inhabitant": "", "MaxwellEndpoint": "LocalDependencies/Maxwell",
                           "NSEMaxwellForward": "LocalDependencies/Forward",
                           "NSEMaxwellReverse": "LocalDependencies/Reverse"})
     return roots
