@@ -49,7 +49,7 @@
     "DG_curl_neg"
   ],
   "optional_off_solution_lemmas": "canonical_momentum_factorization retains its own hKAdd premise; the root does not depend on it.",
-  "audit_target_count": 166,
+  "audit_target_count": 170,
   "external_evidence": {
     "source_commit": "0b793e57271073fb3b0206dcad99a2797d5f8211",
     "run_id": 43318057281,
@@ -134,5 +134,12 @@
       "electric_hodge",
       "electric_time_chain"
     ]
-  }
+  },
+  "registered_upstream_endpoints": [
+    "UnitAddTorus.mFourierCoeff_eq_integral",
+    "UnitAddTorus.hasSum_mFourier_series_apply_of_summable",
+    "contDiff_tsum",
+    "ZLattice.summable_norm_pow_inv"
+  ],
+  "registered_methlib_port_candidates": 7
 }

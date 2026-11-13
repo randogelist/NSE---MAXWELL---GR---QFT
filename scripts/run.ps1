@@ -389,46 +389,69 @@ try {
     )
     $Evidence.module_build_schedule = $BuildModules
     $Evidence.module_build_concurrency = 1
-    $FailedModules = [Collections.Generic.List[string]]::new()
-    $SkippedModules = [Collections.Generic.List[string]]::new()
+    # The official no-build mode validates the ordinary transitive Lake traces.
+    # Exit 0 certifies freshness; exit 3 requests the bounded compilation path.
+    # No cached theorem-audit output participates in either branch.
+    $FreshnessExit = Invoke-NativeLogged "lake" @(
+        "build", "--no-build", "NSEMaxwell"
+    ) "run-build-freshness.log" -AllowFailure
+    $Evidence.freshness_check_exit_code = $FreshnessExit
     $Evidence.failed_modules = @()
     $Evidence.skipped_modules = @()
-    Write-JsonFile $ProvenancePath $Evidence
-    foreach ($Module in $BuildModules) {
-        $Evidence.current_build_module = $Module
-        $ModuleLog = "run-build-" + $Module.Replace(".", "-") + ".log"
-        $SourcePath = $Module.Replace(".", "/") + ".lean"
-        $Dependencies = @()
-        foreach ($Line in Get-Content -LiteralPath $SourcePath) {
-            if ($Line -match '^import\s+(.+)$') {
-                $Dependencies += $Matches[1].Trim().Split(' ', [StringSplitOptions]::RemoveEmptyEntries)
+    if ($FreshnessExit -eq 0) {
+        $Evidence.build_strategy = "LAKE_TRANSITIVE_TRACE_VERIFIED_WARM_REUSE"
+        $Evidence.executed_module_builds = 0
+        $Evidence.current_build_module = "NSEMaxwell"
+        Copy-Item (Join-Path $ReportRoot "run-build-freshness.log") (Join-Path $ReportRoot "run-build.log") -Force
+    }
+    elseif ($FreshnessExit -eq 3) {
+        $Evidence.build_strategy = "SERIAL_INCREMENTAL_REBUILD"
+        $Evidence.executed_module_builds = 0
+        $FailedModules = [Collections.Generic.List[string]]::new()
+        $SkippedModules = [Collections.Generic.List[string]]::new()
+        $Evidence.failed_modules = @()
+        $Evidence.skipped_modules = @()
+        Write-JsonFile $ProvenancePath $Evidence
+        foreach ($Module in $BuildModules) {
+            $Evidence.current_build_module = $Module
+            $ModuleLog = "run-build-" + $Module.Replace(".", "-") + ".log"
+            $SourcePath = $Module.Replace(".", "/") + ".lean"
+            $Dependencies = @()
+            foreach ($Line in Get-Content -LiteralPath $SourcePath) {
+                if ($Line -match '^import\s+(.+)$') {
+                    $Dependencies += $Matches[1].Trim().Split(' ', [StringSplitOptions]::RemoveEmptyEntries)
+                }
+            }
+            $Blocked = @($Dependencies | Where-Object { $FailedModules.Contains($_) -or $SkippedModules.Contains($_) })
+            if ($Blocked.Count -gt 0) {
+                $SkippedModules.Add($Module)
+                $Evidence.skipped_modules = @($SkippedModules.ToArray())
+                [IO.File]::WriteAllText((Join-Path $ReportRoot $ModuleLog),
+                    "SKIPPED_FAILED_DEPENDENCY: " + ($Blocked -join ", ") + [Environment]::NewLine, $Utf8NoBom)
+                Write-JsonFile $ProvenancePath $Evidence
+                continue
+            }
+            Write-JsonFile $ProvenancePath $Evidence
+            $Evidence.executed_module_builds += 1
+            $ModuleExitCode = Invoke-NativeLogged "lake" @("build", $Module) $ModuleLog -AllowFailure
+            if ($ModuleExitCode -ne 0) {
+                $FailedModules.Add($Module)
+                $Evidence.failed_modules = @($FailedModules.ToArray())
+                Write-JsonFile $ProvenancePath $Evidence
             }
         }
-        $Blocked = @($Dependencies | Where-Object { $FailedModules.Contains($_) -or $SkippedModules.Contains($_) })
-        if ($Blocked.Count -gt 0) {
-            $SkippedModules.Add($Module)
-            $Evidence.skipped_modules = @($SkippedModules.ToArray())
-            [IO.File]::WriteAllText((Join-Path $ReportRoot $ModuleLog),
-                "SKIPPED_FAILED_DEPENDENCY: " + ($Blocked -join ", ") + [Environment]::NewLine, $Utf8NoBom)
+        if ($FailedModules.Count -gt 0) {
+            $Evidence.build_status = "FAIL"
             Write-JsonFile $ProvenancePath $Evidence
-            continue
+            throw ("Lean module failures: " + ($FailedModules -join ", "))
         }
+        $Evidence.current_build_module = "NSEMaxwell"
         Write-JsonFile $ProvenancePath $Evidence
-        $ModuleExitCode = Invoke-NativeLogged "lake" @("build", $Module) $ModuleLog -AllowFailure
-        if ($ModuleExitCode -ne 0) {
-            $FailedModules.Add($Module)
-            $Evidence.failed_modules = @($FailedModules.ToArray())
-            Write-JsonFile $ProvenancePath $Evidence
-        }
+        $null = Invoke-NativeLogged "lake" @("build", "NSEMaxwell") "run-build.log"
     }
-    if ($FailedModules.Count -gt 0) {
-        $Evidence.build_status = "FAIL"
-        Write-JsonFile $ProvenancePath $Evidence
-        throw ("Lean module failures: " + ($FailedModules -join ", "))
+    else {
+        throw "Lake freshness validation failed with exit code $FreshnessExit."
     }
-    $Evidence.current_build_module = "NSEMaxwell"
-    Write-JsonFile $ProvenancePath $Evidence
-    $null = Invoke-NativeLogged "lake" @("build", "NSEMaxwell") "run-build.log"
     $Evidence.build_status = "PASS"
 
     $Evidence.stage = "AXIOM_AUDIT"

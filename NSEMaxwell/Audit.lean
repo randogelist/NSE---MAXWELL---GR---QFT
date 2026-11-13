@@ -516,3 +516,16 @@ set_option pp.proofs false
 
 #check @NSEMaxwell.CanonicalSmoothness.canonical_current_smooth_of_velocity_smoothing
 #print axioms NSEMaxwell.CanonicalSmoothness.canonical_current_smooth_of_velocity_smoothing
+
+-- Pinned upstream endpoints registered for the remaining Fourier/Hodge bridge.
+#check @UnitAddTorus.mFourierCoeff_eq_integral
+#print axioms UnitAddTorus.mFourierCoeff_eq_integral
+
+#check @UnitAddTorus.hasSum_mFourier_series_apply_of_summable
+#print axioms UnitAddTorus.hasSum_mFourier_series_apply_of_summable
+
+#check @contDiff_tsum
+#print axioms contDiff_tsum
+
+#check @ZLattice.summable_norm_pow_inv
+#print axioms ZLattice.summable_norm_pow_inv

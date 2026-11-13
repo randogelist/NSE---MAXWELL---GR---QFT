@@ -121,7 +121,11 @@ theorem FourierHodgeLaws.reconstruction_time
   have h := laws.reconstruct_velocity
     (timeDerivative (canonicalVelocity m B) t) hdata
   rw [hmean, hcurl] at h
-  simpa only [U, zero_add] using h.symm
+  funext x
+  have hx := congrFun h.symm x
+  change timeDerivative (canonicalVelocity m B) t x =
+    (0 : Vec) + K (timeDerivative B t) x at hx
+  simpa only [zero_add] using hx
 
 /-- Actual mean conservation, including the unrestricted harmonic velocity mode. -/
 theorem mean_conservation_proved

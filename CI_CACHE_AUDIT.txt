@@ -17,6 +17,9 @@ https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c71
 https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/HILBERT-SUPERIORITY-PNT/serial/verify_stage.py
 https://github.com/leanprover/lean4/blob/v4.34.0-rc1/src/lake/Lake/Load/Config.lean
 https://github.com/leanprover/lean4/blob/v4.34.0-rc1/src/lake/Lake/Load/Resolve.lean
+https://github.com/leanprover/lean4/blob/v4.34.0-rc1/src/lake/Lake/Build/Common.lean
+https://github.com/leanprover/lean4/blob/v4.34.0-rc1/src/lake/Lake/Build/Run.lean
+https://github.com/leanprover/lean4/blob/v4.34.0-rc1/src/lake/Lake/CLI/Help.lean
 https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Cache/IO.lean
 https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Cache/Requests.lean
 
@@ -71,12 +74,18 @@ Preparation reuse never authorizes theorem-audit reuse or proof promotion.
 Raw compiler logs and per-command timings are retained.
 
 BUILD_INVARIANTS
+FreshnessCheck := lake build --no-build NSEMaxwell
+FreshnessExit=0 => ordinary transitive traces validate the complete library;
+                   reuse project objects; execute the fresh theorem audit.
+FreshnessExit=3 => execute the serial incremental module schedule and final build.
+FreshnessExit outside {0,3} => fail with the original Lake diagnostic.
+No --old flag: transitive dependency validation remains enabled.
 Module concurrency = 1; Lean asynchronous theorem elaboration remains enabled.
 Lake dependency traces determine project-object freshness.
 Independent modules remain eligible after an unrelated module failure.
 Failed dependencies block dependent modules.
 Any module failure rejects the complete build.
-Final umbrella build and every registered theorem audit remain mandatory.
+Complete umbrella target validation and every registered theorem audit remain mandatory.
 Same-repository push/PR duplication is suppressed.
 Evidence upload precedes project-cache preservation.
 
@@ -88,6 +97,16 @@ No whole-dependency reupload solely because project Lean sources changed.
 No cache clean, lake clean, or cache get!.
 
 VERIFICATION
-Current optimized workflow = PENDING_EXTERNAL_NATIVE_WINDOWS
+External run 43332604152 confirms legacy cache migration, nine pinned dependency
+checks, committed-lockfile preservation and official cache preparation PASS.
+Freshness fast path and registered upstream endpoints = PENDING_EXTERNAL_RUN
 Root theorem promotion = PENDING_MATCHING_BUILD_AND_THEOREM_AUDIT
 Unconditional exact equivalence = NOT_PROVED
+
+ENDPOINT_REGISTRATION
+Registry = ENDPOINT_REGISTRY.json
+Entries = 11
+Mathlib exact-target-pin endpoints = 4; added to the fresh theorem audit.
+Methlib source-port candidates = 7; no matching target-compiler proof claimed.
+Theorem audit targets = 166 project endpoints + 4 pinned upstream endpoints.
+Independent harmonic-analysis lemmas only; adjusted NSE roots are excluded.
