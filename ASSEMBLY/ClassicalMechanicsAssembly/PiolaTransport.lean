@@ -105,9 +105,9 @@ theorem tensor_product_pullback_component_derivative {e : Field} {Q : StressFiel
     (a : Vec) (i α : Fin 3) :
     fderiv ℝ (fun y => (Q (e y) * cofactorGradient e y) i α) a (unitVector α) =
       ∑ j : Fin 3,
-        (∑ k : Fin 3, fderiv ℝ (fun x => Q x i j) (e a) (unitVector k) *
+        ((∑ k : Fin 3, fderiv ℝ (fun x => Q x i j) (e a) (unitVector k) *
           materialGradientMatrix e a k α) * cofactorGradient e a j α +
-        Q (e a) i j * fderiv ℝ (fun y => cofactorGradient e y j α) a (unitVector α) := by
+        Q (e a) i j * fderiv ℝ (fun y => cofactorGradient e y j α) a (unitVector α)) := by
   have hcomp (j : Fin 3) : DifferentiableAt ℝ (fun y => Q (e y) i j) a := by
     simpa only [Function.comp_def] using
       (hQ i j (e a)).comp a (he.differentiable (by simp) a)
@@ -133,18 +133,18 @@ theorem piola_finite_contraction
     (hcontract : ∀ k j : Fin 3,
       (∑ α : Fin 3, F k α * C j α) = J * (if k = j then 1 else 0))
     (hdiv : ∀ j : Fin 3, (∑ α : Fin 3, dc j α) = 0) :
-    (∑ α : Fin 3, ∑ j : Fin 3,
-      (∑ k : Fin 3, d j k * F k α) * C j α + q j * dc j α) =
-        J * ∑ j : Fin 3, d j j := by
+    (∑ α : Fin 3, (∑ j : Fin 3,
+      ((∑ k : Fin 3, d j k * F k α) * C j α + q j * dc j α))) =
+        J * (∑ j : Fin 3, d j j) := by
   calc
-    (∑ α : Fin 3, ∑ j : Fin 3,
-      (∑ k : Fin 3, d j k * F k α) * C j α + q j * dc j α) =
-        (∑ j : Fin 3, ∑ k : Fin 3,
-          d j k * (∑ α : Fin 3, F k α * C j α)) +
-          ∑ j : Fin 3, q j * (∑ α : Fin 3, dc j α) := by
+    (∑ α : Fin 3, (∑ j : Fin 3,
+      ((∑ k : Fin 3, d j k * F k α) * C j α + q j * dc j α))) =
+        (∑ j : Fin 3, (∑ k : Fin 3,
+          d j k * (∑ α : Fin 3, F k α * C j α))) +
+          (∑ j : Fin 3, q j * (∑ α : Fin 3, dc j α)) := by
             simp only [Fin.sum_univ_three]
             ring
-    _ = J * ∑ j : Fin 3, d j j := by
+    _ = J * (∑ j : Fin 3, d j j) := by
       simp_rw [hcontract, hdiv]
       simp [Fin.sum_univ_three] <;> ring
 
