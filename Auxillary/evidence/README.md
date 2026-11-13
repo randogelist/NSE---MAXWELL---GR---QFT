@@ -1,5 +1,9 @@
 # Fefferman adapter rename certificate
 
+## Current unconditional equivalence certificate
+
+[Run 43373061238](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43373061238), source `c4c7bcdca6e652905107bb1a3102ed50d94c2e6b`: 400 integrated, 400 isolated Fefferman and 62 isolated Maxwell named audits passed. The canonical root has type `NSEMaxwell.Classical.ExactEquivalence` with no analytic-law argument and only standard axioms. [Complete original evidence](linux-43373061238/) and [scope review](linux-43373061238/scope-review.json) are retained. All older sections below describe their historical source commits.
+
 [Run 43353327242](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43353327242), source `8fd783b4d977fdb1a31cf4716023148ddfa26af9`: 226/226 integrated and 52/52 isolated audits passed; 37/37 integrated and 7/7 standalone Lean input hashes match. Both scopes reused trace-validated cached objects with zero module rebuilds. The 35 proof-module files remain byte-identical under the directory rename.
 
 [linux-43353327242/](linux-43353327242/) preserves all73 original artifact files. [Integrated audit](linux-43353327242/audit-summary.json); [isolated audit](linux-43353327242/standalone/audit-summary.json).

@@ -23,5 +23,9 @@ lean_lib SingularClosure where
 
 lean_lib MethlibEndpoints
 
+lean_lib FourierHodgeLaws
+
+lean_lib FourierHodgeLaws_inhabitant
+
 @[default_target]
 lean_lib NSEMaxwell

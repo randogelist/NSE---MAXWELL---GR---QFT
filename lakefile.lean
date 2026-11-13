@@ -24,6 +24,12 @@ lean_lib SingularClosure where
 lean_lib MethlibEndpoints where
   srcDir := "Fefferman_adapter"
 
+lean_lib FourierHodgeLaws where
+  srcDir := "Fefferman_adapter"
+
+lean_lib FourierHodgeLaws_inhabitant where
+  srcDir := "Fefferman_adapter"
+
 @[default_target]
 lean_lib NSEMaxwell where
   srcDir := "Fefferman_adapter"

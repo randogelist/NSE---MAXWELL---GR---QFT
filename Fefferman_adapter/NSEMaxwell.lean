@@ -19,6 +19,7 @@ import NSEMaxwell.ExistenceTransport
 import NSEMaxwell.AnalyticBridge
 import NSEMaxwell.CanonicalSmoothness
 import NSEMaxwell.AnalyticReduction
+import FourierHodgeLaws_inhabitant
 import NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE
 import NSEMaxwellForward.Reduced
 import NSEMaxwellReverse.Reduced

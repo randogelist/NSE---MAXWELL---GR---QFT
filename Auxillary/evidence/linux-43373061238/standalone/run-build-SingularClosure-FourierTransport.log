@@ -1,0 +1,63 @@
+⚠ [8708/8718] Replayed SingularClosure.HilbertChannels
+warning: NativeSources/methlib/SingularClosure/HilbertChannels.lean:92:14: This simp argument is unused:
+  hB
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hA, hAB]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8711/8718] Replayed SingularClosure.GalerkinAlgebra
+warning: NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean:163:37: `if_false` has been deprecated: Use `ite_false` instead
+warning: NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean:258:37: `if_false` has been deprecated: Use `ite_false` instead
+warning: NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean:267:8: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Complex.mul_re, Complex.mul_im, Complex.normSq_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8713/8718] Replayed SingularClosure.LerayPressure
+warning: NativeSources/methlib/SingularClosure/LerayPressure.lean:53:37: `if_false` has been deprecated: Use `ite_false` instead
+warning: NativeSources/methlib/SingularClosure/LerayPressure.lean:102:60: `if_false` has been deprecated: Use `ite_false` instead
+⚠ [8714/8718] Replayed SingularClosure.TorusSobolev
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:181:38: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:188:74: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:301:37: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:326:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:327:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:366:12: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:369:12: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:422:13: `ContinuousLinearMap.sum_apply` has been deprecated: Use `sum_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sum_apply` to `sum_apply x`).
+warning: NativeSources/methlib/SingularClosure/TorusSobolev.lean:460:23: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sub_apply` to `sub_apply x`).
+⚠ [8717/8718] Replayed SingularClosure.PhysicalProjection
+warning: NativeSources/methlib/SingularClosure/PhysicalProjection.lean:34:48: `ContinuousLinearMap.sum_apply` has been deprecated: Use `sum_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sum_apply` to `sum_apply x`).
+warning: NativeSources/methlib/SingularClosure/PhysicalProjection.lean:35:4: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: NativeSources/methlib/SingularClosure/PhysicalProjection.lean:44:48: This simp argument is unused:
+  mul_ite
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [fourierPhaseCLM, unitVector, apply_ite]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: NativeSources/methlib/SingularClosure/PhysicalProjection.lean:114:25: `ContinuousLinearMap.sum_apply` has been deprecated: Use `sum_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sum_apply` to `sum_apply x`).
+warning: NativeSources/methlib/SingularClosure/PhysicalProjection.lean:115:4: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+✔ [8718/8718] Built SingularClosure.FourierTransport (4.4s)
+Build completed successfully (8718 jobs).

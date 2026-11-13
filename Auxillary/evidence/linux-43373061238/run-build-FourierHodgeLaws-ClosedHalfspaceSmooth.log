@@ -1,0 +1,17 @@
+⚠ [8713/8716] Replayed NSEMaxwell.Kinematics
+warning: Fefferman_adapter/NSEMaxwell/Kinematics.lean:92:19: This simp argument is unused:
+  coordinateDerivative
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [laplacian]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8714/8716] Replayed NSEMaxwell.CurlCurl
+warning: Fefferman_adapter/NSEMaxwell/CurlCurl.lean:94:13: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sub_apply` to `sub_apply x`).
+warning: Fefferman_adapter/NSEMaxwell/CurlCurl.lean:188:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+✔ [8716/8716] Built FourierHodgeLaws.ClosedHalfspaceSmooth (4.1s)
+Build completed successfully (8716 jobs).
