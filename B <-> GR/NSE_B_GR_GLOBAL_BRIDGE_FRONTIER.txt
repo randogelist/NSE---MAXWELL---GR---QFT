@@ -1,0 +1,207 @@
+NSE_B_GR_GLOBAL_BRIDGE_FRONTIER
+=============================
+
+REQUESTED_TARGET = literal global FeffermanB <-> an independently specified GRB.
+GLOBAL_TARGET_STATUS = OPEN.
+GLOBAL_A_TIER = NOT_ESTABLISHED.
+GLOBAL_B_TIER_COMPLETION = NOT_ESTABLISHED.
+GLOBAL_FORMAL_CLOSURE = NOT_ESTABLISHED.
+GLOBAL_UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED.
+GRB_SPECIFICATION_STATUS = CANDIDATE; NOT_FROZEN; NOT_FORMALIZED_HERE.
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0.
+
+1. EXACT EXISTING GLOBAL NSE ENDPOINT
+
+NSEMaxwell.Classical.FeffermanB nu :=
+  forall a : Field, Data a ->
+    exists u : Velocity, exists p : Pressure, NSSolution nu a u p.
+
+SOURCE = Fefferman_adapter/NSEMaxwell/Classical.lean.
+GEOMETRY_SOURCE = Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean.
+
+Data a = jointly unconstrained in velocity mean; smooth, unit-periodic,
+  divergence-free spatial datum.
+NSSolution = unforced periodic three-dimensional NSE at every t >= 0;
+  a single global u,p; joint C-infinity regularity through t = 0; u(0) = a.
+timeDerivative = derivWithin in Ici 0; right derivative at t = 0.
+PRESSURE_GAUGE = arbitrary spatially constant smooth function of time.
+REPLACEMENT_BY_ANALYTIC_DATA_OR_MEAN_ZERO_DATA = FORBIDDEN.
+
+2. EXISTING CERTIFIED LOCAL ROOT
+
+NSEGR.NativeLiterature.NSE_GR_NATIVE_LITERATURE_CLOSURE :
+  forall nu rho t0 : Real, 0 < nu -> rho != 0 ->
+    Nonempty (NSEGR.NSEgerm nu t0 ~= NSEGR.GRgerm nu rho t0).
+
+LOCAL_STATUS = !!!! UNCONDITIONAL_CLOSURE.
+LOCAL_SCOPE = local jointly analytic unit-periodic NSE germs modulo pressure
+  gauge / normalized marked five-dimensional Gaussian vacuum-sector germs.
+LOCAL_CERTIFIED_SOURCE = d5231111cbdbe8a9c686b52ae4224554d4fba48a.
+LOCAL_EXTERNAL_RUN = 43509144981.
+LOCAL_AXIOMS = {propext, Classical.choice, Quot.sound}.
+
+ROOT_SOURCE = ASSEMBLY/GRAssembly/NSE_GR_NATIVE_LITERATURE_CLOSURE.lean.
+ROOT_DEFINITION = GR_adapter/GRAdapter/Contracts.lean: ExactSectorEquivalence.
+LOCAL_FIELDS = GR_adapter/GRAdapter/Fields.lean: AnalyticPeriodicPair, LocalNSE.
+LOCAL_GEOMETRY = GR_adapter/GRAdapter/Sector.lean:
+  GaussianVacuum, CanonicalRepresentative.
+LOCAL_CERTIFICATE = Auxillary/GR/Closure/Native/EXTERNAL_CERTIFICATE.json.
+
+LOCAL_ROOT => GLOBAL_FEFFERMAN_B_IFF_GR = NOT_A_VALID_DIRECT_COMPOSITION.
+
+3. INITIAL-TIME ANALYTICITY OBSTRUCTION
+
+For a canonical GR collar centered at t0 = 0, native reconstruction gives an
+analytic boundary velocity near t = 0. Exact initial matching then requires
+the spatial datum a to be real analytic. Data a does not impose this condition.
+
+MATHEMATICAL_SCOPE_EXAMPLE (not a newly audited Lean theorem):
+  a(x) = e_1 * sum_{k >= 1} exp(-sqrt(k)) * cos(2*pi*k*x_2).
+  u(t,x) = e_1 * sum_{k >= 1}
+    exp(-sqrt(k) - 4*pi^2*nu*k^2*t) * cos(2*pi*k*x_2), t >= 0.
+  p = 0; nu > 0.
+
+Every polynomially weighted Fourier series converges at t = 0; a and the
+forward shear are C-infinity in their respective spatial/closed-forward
+domains. The shear has zero divergence and zero convection and solves the
+heat equation. The coefficients exp(-sqrt(k)) do not have exponential decay,
+so a is not real analytic. An analytic GR realization centered at zero with
+decoded initial velocity a cannot represent this datum.
+
+CONSEQUENCE = a universal datumwise realization through analytic collars at
+  t = 0 cannot implement the literal FeffermanB domain.
+NO_CLAIM = a resolution of arbitrary-data global NSE existence.
+
+4. CANDIDATE INDEPENDENT GEOMETRIC FAMILY ENDPOINT
+
+PARAMETERS = nu > 0, rho != 0.
+CANDIDATE_NAME = GRFamilyB(nu,rho).
+OPTIONAL_GRB_SPECIALIZATION = GRB(nu) := GRFamilyB(nu,1).
+SELECTION_OR_FREEZING_OF_THIS_CANDIDATE = NOT_PERFORMED.
+
+For every a satisfying the original Data predicate, require a family of actual
+metrics g_i with positive time centers t_i and radii delta_i, epsilon_i, where:
+
+G1. I_i = (t_i-delta_i,t_i+delta_i) is contained in (0,infinity), and the I_i
+    cover (0,infinity).
+G2. GaussianVacuum rho t_i delta_i epsilon_i g_i holds with its actual
+    analytic Lorentzian metric, Gaussian gauge, flat induced boundary,
+    coordinate Ricci = 0, and original center normalization.
+G3. boundaryStress nu (boundaryK g_i) = 0 throughout the boundary slab I_i.
+G4. Define solely from the metric jet:
+      V_i(t,x) = boundaryVelocity (boundaryK g_i) t x;
+      P_i(t,x) = boundaryPressure rho (boundaryK g_i) t x;
+      Q_i(t,x) = P_i(t,x) - P_i(t,0).
+    On overlaps, require V_i = V_j and Q_i = Q_j.
+G5. The compatible fields admit a single global pair U,Q with
+      SmoothVelocity U; SmoothPressure Q;
+      PeriodicVelocity U; PeriodicPressure Q;
+      U|I_i = V_i; Q|I_i = Q_i; U(0) = a.
+    Smoothness is the original joint C-infinity condition on t >= 0.
+
+QUANTIFIER_REQUIREMENT = one global boundary pair U,Q for each datum;
+  no replacement by unrelated solutions chosen separately on finite horizons.
+INDEPENDENCE = geometric admission refers to actual metrics, curvature,
+  boundary operators, overlap equalities, and kinematic initial traces.
+EXCLUDED_FROM_ADMISSION = NSSolution; FeffermanB; the image of an encoding map;
+  an assumed global equivalence; an assumed global existence theorem.
+GEOMETRIC_OBJECT = boundary-coherent family of local vacuum collars.
+GLOBAL_METRIC_GLUING_OR_ISOMETRIC_TRANSITIONS = NOT_ASSERTED.
+
+5. FORWARD DEPENDENCY CHAIN
+
+FeffermanB nu
+  -> for each original datum a, one global smooth NSSolution nu a u p
+  -> [P2] a smooth pressure gauge q, with the same spatial gradient as p,
+       and joint positive-time analyticity of u,q
+  -> [P1,P3] local analytic NSE representatives on slabs contained in t > 0
+  -> [LOCAL_NATIVE_ROOT] normalized actual vacuum collars
+  -> [P3,P4] smaller open slabs with exact velocity recovery and normalized
+       pressure recovery; compatible decoded boundary fields
+  -> candidate GRFamilyB(nu,rho), with the original smooth trace u(0) = a.
+
+PRESSURE_CORRECTION = arbitrary smooth time gauges need not be analytic.
+  The forward port must supply an analytic positive-time representative of
+  the pressure class, for example normalized by q(t,0) = 0; it must preserve
+  the gradient and closed-forward smoothness. Analyticity of an arbitrary
+  supplied pressure p must not be assumed.
+
+6. REVERSE DEPENDENCY CHAIN
+
+candidate GRFamilyB(nu,rho)
+  -> [LOCAL_NATIVE_RECONSTRUCTION] LocalNSE on each positive-time slab
+  -> [P1,P4] pressure-gauge invariance and locality of actual derivatives
+       transfer the local equations to the single glued boundary pair U,Q
+  -> NSE and divergence-free identities at every t > 0
+  -> [P5] continuity of the actual residual and divergence through t = 0
+       gives the equations there with the right-time-derivative convention
+  -> NSSolution nu a U Q
+  -> literal FeffermanB nu.
+
+7. REQUIRED GLOBAL PORTS / SOURCE ANCHORS
+
+P1. SOURCE_CALCULI_AND_INTERIOR_TIME_DERIVATIVE_BRIDGE -- OPEN.
+    Compare the concrete spatial operators and periodicity conventions in
+    Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean and
+    GR_adapter/GRAdapter/Fields.lean.
+    Prove equality of derivWithin(Ici 0) and deriv at each t > 0.
+    No reinterpretation of the right derivative at t = 0 is permitted.
+
+P2. POSITIVE_TIME_ANALYTIC_REALIZATION -- OPEN; substantive missing port.
+    Input: nu > 0 and an actual NSSolution nu a u p.
+    Output: a closed-forward smooth periodic pressure gauge q, gradient q =
+    gradient p, with u,q jointly analytic for t > 0.
+    SOURCE_INSPECTION = no matching native endpoint found in the current
+      NSE/GR construction.
+    Existing analytic-to-smooth anchor:
+      ASSEMBLY/GRAssembly/NativeCalculus.lean:
+        NSEGR.Assembly.analyticOnNhd_slab_slice_smooth.
+    Reversing that implication is invalid.
+
+P3. GLOBAL_TO_LOCAL_RESTRICTION_AND_RECOVERY_SHRINKING -- OPEN AS GLOBAL PORT.
+    Source: GR_adapter/NSEGRForward.lean:
+      NSEGR.forwardRepresentative;
+      NSEGR.forward_velocity_recovery;
+      NSEGR.forward_pressure_gauge_recovery.
+    Recovery is local near the center; intersect the recovered neighborhood
+    with the metric time interval and (0,infinity) before defining a chart.
+
+P4. BOUNDARY_OVERLAP_AND_PRESSURE_GAUGE_ASSEMBLY -- OPEN AS GLOBAL PORT.
+    Source: GR_adapter/NSEGRReverse.lean:
+      NSEGR.reverseRepresentative;
+      NSEGR.GR_TO_NSE_OF_GEOMETRIC_RECONSTRUCTION.
+    Source: GR_adapter/GRAdapter/Locality.lean:
+      NSEGR.sameMetricAt_boundaryFields.
+    Source: ASSEMBLY/GRAssembly/NativeReconstruction.lean:
+      NSEGR.Assembly.geometricReconstructionLaws_native.
+    Normalize pressure by subtraction of its value at the spatial origin;
+    pressure-gauge recovery then yields exact equality of normalized fields.
+
+P5. CLOSED_INITIAL_TRACE_AND_PDE_EXTENSION -- OPEN.
+    Use the candidate's original SmoothVelocity/SmoothPressure predicates and
+    exact initial datum. Prove continuity of spatial derivative expressions
+    and the right-time-derivative residual on the closed forward domain.
+    Extend positive-time zero identities to zero by continuity.
+
+P6. SINGLE_GLOBAL_METRIC_CONTINUATION -- OPEN; only needed for a stronger
+    endpoint demanding one metric or actual metric transition maps.
+    Source: GR_adapter/GRAdapter/GaussianUniqueness.lean:
+      NSEGR.gaussianVacuum_sameMetricAt_of_literatureJet.
+    This gives fixed-marking uniqueness for matching boundary tensor germs.
+    It does not identify independent lifts normalized at different centers.
+    Center-by-center normalization alone does not supply overlap isometries,
+    a global radial collar, or continuation of the scalar completion.
+
+8. EXISTING NATIVE INPUT DISCHARGE / GLOBAL STATUS
+
+ASSEMBLY/GRAssembly/RootClosure.lean:
+  NSEGR.Assembly.nativeLawPackages_of_literatureInputs constructs c,r,h,q.
+ASSEMBLY/GRAssembly/NSE_GR_NATIVE_LITERATURE_CLOSURE.lean:
+  NSEGR.NativeLiterature.literatureInputs_native supplies all local inputs.
+
+LOCAL_ANALYTIC_EQUIVALENCE = CERTIFIED.
+GLOBAL_POSITIVE_TIME_ANALYTIC_BRIDGE = OPEN.
+GLOBAL_BOUNDARY_FAMILY_ASSEMBLY = OPEN.
+GLOBAL_FEFFERMAN_B_IFF_GR = OPEN.
+DIRECTORY_LAYOUT_OR_LOCAL_WRAPPER_CREATION => GLOBAL_PROMOTION = INVALID.
+

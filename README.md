@@ -8,6 +8,7 @@ ROOT = NSEGR.NativeLiterature.NSE_GR_NATIVE_LITERATURE_CLOSURE
 TYPE = forall nu rho t0 : Real, 0 < nu -> rho != 0 ->
        Nonempty (NSEGR.NSEgerm nu t0 ≃ NSEGR.GRgerm nu rho t0)
 SCOPE = local jointly analytic periodic NSE / normalized marked five-dimensional Gaussian vacuum sector
+GLOBAL_FEFFERMAN_B_IFF_GR = OPEN
 SOURCE = d5231111cbdbe8a9c686b52ae4224554d4fba48a
 EXTERNAL_RUN = 43509144981
 EXACT_AUDITS = 1549 / 1549 PASS_STANDARD_ONLY
@@ -17,6 +18,7 @@ FOUNDATIONAL_AXIOMS = {propext, Classical.choice, Quot.sound}
 LOCAL_LEAN_EXECUTIONS = 0
 ```
 
+[Ordered GR implication directory](B%20%3C-%3E%20GR/) ·
 [Exact theorem](ASSEMBLY/GRAssembly/NSE_GR_NATIVE_LITERATURE_CLOSURE.lean) ·
 [A-tier report](Auxillary/GR/Closure/Native/NSE_GR_NATIVE_LITERATURE_CLOSURE_A_TIER.txt) ·
 [Certificate](Auxillary/GR/Closure/Native/EXTERNAL_CERTIFICATE.json) ·

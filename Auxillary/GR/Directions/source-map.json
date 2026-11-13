@@ -1,0 +1,31 @@
+{
+  "format": 1,
+  "requested_global_target": "forall nu rho : Real, 0 < nu -> rho != 0 -> (NSEMaxwell.Classical.FeffermanB nu iff GRB nu rho)",
+  "global_target_status": "OPEN_NOT_ESTABLISHED",
+  "GRB_endpoint_status": "NOT_YET_FORMALIZED; candidate geometric family specified in frontier record",
+  "available_root": "NSEGR.NativeLiterature.NSE_GR_NATIVE_LITERATURE_CLOSURE",
+  "available_root_scope": "local jointly analytic periodic NSE germs / normalized marked five-dimensional Gaussian vacuum-sector germs",
+  "proof_source_commit": "d5231111cbdbe8a9c686b52ae4224554d4fba48a",
+  "proof_run": 43509144981,
+  "source_manifest": "Auxillary/GR/Closure/Native/evidence/d5231111cbdbe8a9c686b52ae4224554d4fba48a/source-manifest.json",
+  "source_manifest_sha256": "555bccdb3b8db857077fdd41f409e1c8135933bb1f4bdd6e1366a0c48b747734",
+  "layout_policy": "byte-identical source mirrors; original canonical compilation paths retained",
+  "new_lean_declarations": 0,
+  "files": [
+    {
+      "canonical": "GR_adapter/NSEGRForward.lean",
+      "mirror": "B <-> GR/=>/NSEGRForward.lean",
+      "sha256": "dc18c71718fccb0f84d5c09cfc7edac38db1dc880ed208545ae9d12744f45d79"
+    },
+    {
+      "canonical": "GR_adapter/NSEGRReverse.lean",
+      "mirror": "B <-> GR/<=/NSEGRReverse.lean",
+      "sha256": "db46006337f381557294fbe368fbba0decc0d5fa0763156a2900410064a0af63"
+    },
+    {
+      "canonical": "GR_adapter/Derivation/NSE_GR_EXACT_SECTOR_EQUIVALENCE_B_TIER.txt",
+      "mirror": "B <-> GR/NSE_GR_EXACT_SECTOR_EQUIVALENCE_B_TIER.txt",
+      "sha256": "8a9b3720f7f60499c04cf2b79eb873ce2c34100b30d512914dd33b14b41e9284"
+    }
+  ]
+}

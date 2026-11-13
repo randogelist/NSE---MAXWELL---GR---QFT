@@ -1,0 +1,42 @@
+name: GR direction source identity
+
+on:
+  push:
+    branches: [main, 'codex/**']
+    paths:
+      - 'B <-> GR/**'
+      - 'Auxillary/GR/**'
+      - 'Auxillary/TEMP/audit-targets.json'
+      - 'GR_adapter/**'
+      - 'ASSEMBLY/**'
+      - 'TEMP/**'
+      - '.github/workflows/gr-directions.yml'
+      - '.gitattributes'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'B <-> GR/**'
+      - 'Auxillary/GR/**'
+      - 'Auxillary/TEMP/audit-targets.json'
+      - 'GR_adapter/**'
+      - 'ASSEMBLY/**'
+      - 'TEMP/**'
+      - '.github/workflows/gr-directions.yml'
+      - '.gitattributes'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-identity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check out the exact source or PR merge commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Verify direction mirrors and retained certified inputs
+        run: python3 Auxillary/GR/Directions/verify_source_identity.py
