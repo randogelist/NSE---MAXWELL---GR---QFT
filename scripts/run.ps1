@@ -376,7 +376,9 @@ try {
                 [ordered]@{
                     path = $Relative
                     sha256 = (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash.ToLowerInvariant()
-                    size_bytes = (Get-Item -LiteralPath $Path).Length
+                    # Unix dotfiles carry PowerShell's Hidden attribute even
+                    # when their exact literal path is supplied.
+                    size_bytes = (Get-Item -LiteralPath $Path -Force).Length
                 }
             }
         }
@@ -516,6 +518,11 @@ try {
 }
 catch {
     $Evidence.failure = $_.Exception.Message
+    $Evidence.failure_error_id = $_.FullyQualifiedErrorId
+    $Evidence.failure_stack_trace = $_.ScriptStackTrace
+    $Evidence.failure_position = if ($_.InvocationInfo) {
+        $_.InvocationInfo.PositionMessage
+    } else { $null }
     $Evidence.completed_at_utc = [DateTime]::UtcNow.ToString("o")
     Write-JsonFile $ProvenancePath $Evidence
     Write-Host ("EXTERNAL_RUN=FAIL: " + $_.Exception.Message)
