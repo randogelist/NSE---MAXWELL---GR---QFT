@@ -122,8 +122,7 @@ theorem coefficientLeray_frequency_mul (k : Frequency) (z : ℂ) :
       ring
     funext i
     simp only [coefficientLeray, if_neg hk, hsum, Pi.zero_apply]
-    field_simp [hd]
-    ring
+    field_simp [hd] <;> ring
 
 theorem coefficientLeray_datumFourierCoeff_gradient (p : Vec → ℝ)
     (hp : ContDiff ℝ ∞ p) (hper : SpatialPeriodic p) (k : Frequency) :

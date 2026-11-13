@@ -58,7 +58,7 @@ theorem tensorDir_periodic {f : Vec → E} (hf : Differentiable ℝ f)
   have hd := (hf (x + unitVector l)).hasFDerivAt.comp x
     ((hasFDerivAt_id x).add_const (unitVector l))
   have hd' : HasFDerivAt f (fderiv ℝ f (x + unitVector l)) x := by
-    simpa only [Function.comp_def, ContinuousLinearMap.comp_id, heq] using hd
+    simpa only [Function.comp_def, id_eq, ContinuousLinearMap.comp_id, heq] using hd
   exact congrArg (fun A : Vec →L[ℝ] E => A (unitVector j)) hd'.fderiv.symm
 
 theorem tensorGradSq_periodic {f : Vec → E} (hf : Differentiable ℝ f)
@@ -88,7 +88,8 @@ theorem tensorDir_norm_sq {f : Vec → E} (hf : Differentiable ℝ f)
     tensorDir (fun y => ‖f y‖ ^ 2) j x = 2 * inner ℝ (f x) (tensorDir f j x) := by
   unfold tensorDir
   rw [(hf x).hasFDerivAt.norm_sq.fderiv]
-  rfl
+  simp only [ContinuousLinearMap.smul_apply, ContinuousLinearMap.comp_apply,
+    innerSL_apply_apply, two_smul, two_mul]
 
 theorem tensorDir_gradSq {f : Vec → E} (hf : ContDiff ℝ ∞ f)
     (j : Fin 3) (x : Vec) :
@@ -99,7 +100,7 @@ theorem tensorDir_gradSq {f : Vec → E} (hf : ContDiff ℝ ∞ f)
   change fderiv ℝ (fun y => ∑ l : Fin 3, ‖tensorDir f l y‖ ^ 2) x (unitVector j) = _
   rw [hs.fderiv]
   simp only [ContinuousLinearMap.sum_apply, ContinuousLinearMap.smul_apply,
-    ContinuousLinearMap.comp_apply, innerSL_apply, smul_eq_mul, ← Finset.mul_sum,
+    ContinuousLinearMap.comp_apply, innerSL_apply_apply, two_smul, ← two_mul, ← Finset.mul_sum,
     tensorDir]
 
 theorem integral_unitCube_tensorDir_real_eq_zero (f : Vec → ℝ)
@@ -109,7 +110,7 @@ theorem integral_unitCube_tensorDir_real_eq_zero (f : Vec → ℝ)
   have hg : ContDiff ℝ ∞ g := Complex.ofRealCLM.contDiff.comp hf
   have hgp : SpatialPeriodic g := fun x l => congrArg Complex.ofReal (hp x l)
   have hzero := integral_unitCube_directionalDerivative_eq_zero g hg hgp j
-  have hpoint (x : Vec) : fderiv ℝ g x (unitVector j) = (tensorDir f j x : ℂ) := by
+  have hpoint (x : Vec) : fderiv ℝ g x (unitVector j) = ((tensorDir f j x : ℝ) : ℂ) := by
     rw [(Complex.ofRealCLM.hasFDerivAt.comp x
       ((hf.differentiable (by simp)) x).hasFDerivAt).fderiv]
     rfl
@@ -117,8 +118,8 @@ theorem integral_unitCube_tensorDir_real_eq_zero (f : Vec → ℝ)
     isCompact_unitCube (μ := volume)
   have hreal := congrArg Complex.re hzero
   simp_rw [hpoint] at hreal
-  have hcomm : (∫ x in unitCube, (tensorDir f j x : ℂ)) =
-      ((∫ x in unitCube, tensorDir f j x) : ℂ) :=
+  have hcomm : (∫ x in unitCube, ((tensorDir f j x : ℝ) : ℂ)) =
+      (((∫ x in unitCube, tensorDir f j x) : ℝ) : ℂ) :=
     Complex.ofRealCLM.integral_comp_comm hi
   rw [hcomm] at hreal
   simpa only [Complex.ofRealCLM_apply, Complex.ofReal_re, Complex.zero_re] using hreal
@@ -161,7 +162,8 @@ theorem tensorFlux_divergence {f : Vec → E} (hf : ContDiff ℝ ∞ f) (x : Vec
         (2 * ∑ l : Fin 3, inner ℝ (tensorDir f l x) (tensorDir (tensorDir f l) j x)) +
       tensorGradSq f x *
         (inner ℝ (f x) (tensorDir (tensorDir f j) j x) + ‖tensorDir f j x‖ ^ 2) := by
-    rw [tensorFlux, tensorDir_mul
+    change tensorDir (fun y => inner ℝ (f y) (tensorDir f j y) * tensorGradSq f y) j x = _
+    rw [tensorDir_mul
       ((hf.inner ℝ (tensorDir_contDiff hf j)).differentiable (by simp))
       ((tensorGradSq_contDiff hf).differentiable (by simp)), tensorDir_gradSq hf,
       tensorDir_inner (hf.differentiable (by simp))
@@ -190,10 +192,12 @@ theorem tensor_interpolation_integral_identity {f : Vec → E} (hf : ContDiff �
         isCompact_unitCube)]
     simp only [hz, Finset.sum_const_zero]
   simp_rw [tensorFlux_divergence hf] at hsum
-  rw [integral_add
-    (((tensorGradSq_contDiff hf).continuous.pow 2).continuousOn.integrableOn_compact
-      isCompact_unitCube)
-    ((tensorRemainder_continuous hf).continuousOn.integrableOn_compact isCompact_unitCube)] at hsum
+  have hGI : IntegrableOn (fun x => tensorGradSq f x ^ 2) unitCube volume :=
+    ((tensorGradSq_contDiff hf).continuous.pow 2).continuousOn.integrableOn_compact isCompact_unitCube
+  have hRI : IntegrableOn (tensorRemainder f) unitCube volume :=
+    (tensorRemainder_continuous hf).continuousOn.integrableOn_compact isCompact_unitCube
+  rw [integral_add (f := fun x => tensorGradSq f x ^ 2) (g := tensorRemainder f)
+    (μ := volume.restrict unitCube) hGI hRI] at hsum
   linarith
 
 /-- Continuous scalar functions on the cube have every finite integral norm. -/
@@ -238,8 +242,10 @@ theorem periodic_tensor_interpolation (f : Vec → E) (hf : ContDiff ℝ ∞ f)
   have hG := (tensorGradSq_contDiff hf).continuous
   have hH := (tensorHessSq_contDiff hf).continuous
   have hS : Continuous (fun x => Real.sqrt (tensorHessSq f x)) := hH.sqrt
-  have hR := (tensorRemainder_continuous hf).continuousOn.integrableOn_compact isCompact_unitCube
-  have hI := (hG.mul hS).continuousOn.integrableOn_compact isCompact_unitCube
+  have hR : IntegrableOn (tensorRemainder f) unitCube volume :=
+    (tensorRemainder_continuous hf).continuousOn.integrableOn_compact isCompact_unitCube
+  have hI : IntegrableOn (fun x => tensorGradSq f x * Real.sqrt (tensorHessSq f x)) unitCube volume :=
+    (hG.mul hS).continuousOn.integrableOn_compact isCompact_unitCube
   have hpoint (x : Vec) : -tensorRemainder f x ≤
       (4 * M) * (tensorGradSq f x * Real.sqrt (tensorHessSq f x)) := by
     calc

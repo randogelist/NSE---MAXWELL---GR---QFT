@@ -65,14 +65,14 @@ def declarations(path):
                 raise ValueError(f"Unmatched end at {path}:{number}")
             stack.pop()
             continue
-        m = re.match(r"((?:(?:private|protected|noncomputable|unsafe|partial)\s+)*)(?:theorem|lemma)\s+([^\s:(\[{]+)", line)
+        m = re.match(r"((?:(?:private|protected|noncomputable|unsafe|partial)\s+)*)(theorem|lemma|def|abbrev)\s+([^\s:(\[{]+)", line)
         if m and "private" not in m[1].split():
-            name = m[2]
+            kind, name = m[2], m[3]
             prefix = ".".join(n for k, n in stack if k == "namespace")
             name = name.removeprefix("_root_.") if name.startswith("_root_.") else (prefix + "." if prefix else "") + name
             if not NAME.fullmatch(name):
                 raise ValueError(f"Unsupported declaration name at {path}:{number}: {name}")
-            found.append(name)
+            found.append({"name": name, "kind": kind})
     if stack:
         raise ValueError(f"Unclosed namespace/section in {path}")
     return found
@@ -104,7 +104,7 @@ def main():
             continue
         if module in by_name:
             raise ValueError("Duplicate module: " + module)
-        by_name[module] = {"module": module, "path": path.relative_to(root).as_posix(), "audit_targets": selected}
+        by_name[module] = {"module": module, "path": path.relative_to(root).as_posix(), "audit_targets": [d["name"] for d in selected], "declaration_kinds": {d["name"]: d["kind"] for d in selected}}
         imported = set()
         for line in body.splitlines():
             if line.startswith("import "):
@@ -128,7 +128,7 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     (out / "module-targets.json").write_text(json.dumps(modules, indent=2) + "\n")
     (out / "audit-targets.txt").write_text("\n".join(names) + "\n")
-    print(json.dumps({"status": "STATIC_CANDIDATE_REQUIRES_REVIEW", "modules": len(modules), "declarations": len(names), "empty_modules_excluded": empty, "lean_executions": 0}))
+    print(json.dumps({"status": "STATIC_CANDIDATE_REQUIRES_REVIEW", "modules": len(modules), "declarations": len(names), "theorems": sum(k in {"theorem", "lemma"} for m in modules for k in m["declaration_kinds"].values()), "empty_modules_excluded": empty, "lean_executions": 0}))
 
 if __name__ == "__main__":
     main()

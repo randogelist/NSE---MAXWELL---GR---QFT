@@ -1,4 +1,5 @@
-import QuantumAdapter.Obligations.TraceViscous
+import QuantumAdapter.Obligations.TraceLaplacian
+import QuantumAdapter.Obligations.EnergyBilinear
 import QuantumAdapter.Assembly.GlobalDrift
 import Mathlib.Analysis.Calculus.Deriv.Mul
 

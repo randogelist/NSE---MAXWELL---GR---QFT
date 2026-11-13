@@ -33,7 +33,9 @@ theorem abs_inner_bilinearConvection_le_integral (N : ℕ) (q a b : Phase N) :
   have hi : IntegrableOn (fun x => |inner ℝ (synthesis q x)
       (mixedConvection (synthesis a) (synthesis b) x)|) unitCube :=
     (hq.inner hm).abs.continuousOn.integrableOn_compact isCompact_unitCube
-  have hr := ((hq.norm.mul ha.norm).mul (synthesis_gradientSquare_continuous N b).sqrt).continuousOn.integrableOn_compact isCompact_unitCube
+  have hr : IntegrableOn (fun x => ‖synthesis q x‖ * ‖synthesis a x‖ *
+      Real.sqrt (gradientSquare b x)) unitCube :=
+    ((hq.norm.mul ha.norm).mul (synthesis_gradientSquare_continuous N b).sqrt).continuousOn.integrableOn_compact isCompact_unitCube
   rw [inner_bilinearConvection_eq_integral, abs_neg]
   calc
     _ ≤ ∫ x in unitCube,
@@ -52,7 +54,9 @@ theorem inner_bilinearConvection_le_of_pointwise (N : ℕ) (q a b : Phase N)
     inner ℝ q (bilinearConvection N a b) ≤ ∫ x in unitCube, H x := by
   have hq := (synthesis_contDiff N q).continuous
   have ha := (synthesis_contDiff N a).continuous
-  have hr := ((hq.norm.mul ha.norm).mul (synthesis_gradientSquare_continuous N b).sqrt).continuousOn.integrableOn_compact isCompact_unitCube
+  have hr : IntegrableOn (fun x => ‖synthesis q x‖ * ‖synthesis a x‖ *
+      Real.sqrt (gradientSquare b x)) unitCube :=
+    ((hq.norm.mul ha.norm).mul (synthesis_gradientSquare_continuous N b).sqrt).continuousOn.integrableOn_compact isCompact_unitCube
   exact (le_abs_self _).trans ((abs_inner_bilinearConvection_le_integral N q a b).trans
     (integral_mono hr (hH.continuousOn.integrableOn_compact isCompact_unitCube) hbound))
 

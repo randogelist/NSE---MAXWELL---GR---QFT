@@ -1,4 +1,5 @@
 import QuantumAdapter.Obligations.EnergyCoarse
+import QuantumAdapter.Obligations.EnergyOrdered
 
 /-! Finite ordered commutator assembly for the native H3 energy. -/
 set_option autoImplicit false
@@ -8,40 +9,6 @@ open scoped BigOperators ContDiff
 namespace QuantumAdapter.Obligations
 noncomputable section
 open SingularClosure
-
-def orderedPairing : ℕ → (N : ℕ) → Phase N → Phase N → ℝ
-  | 0, _, q, r => inner ℝ q r
-  | m + 1, N, q, r => ∑ i : Fin 3,
-      orderedPairing m N (phaseDerivative N i q) (phaseDerivative N i r)
-
-def h3Pairing (N : ℕ) (q r : Phase N) : ℝ :=
-  orderedPairing 0 N q r + 3 * orderedPairing 1 N q r +
-    3 * orderedPairing 2 N q r + orderedPairing 3 N q r
-
-theorem orderedPairing_self (m N : ℕ) (q : Phase N) :
-    orderedPairing m N q q = frequencyEnergy m N q := by
-  induction m generalizing q with
-  | zero => simp only [orderedPairing, real_inner_self_eq_norm_sq, frequencyEnergy_zero]
-  | succ m ih =>
-    simp_rw [orderedPairing, ih]
-    exact frequencyEnergy_derivative_sum m N q
-
-theorem orderedPairing_add_right (m N : ℕ) (q a b : Phase N) :
-    orderedPairing m N q (a + b) =
-      orderedPairing m N q a + orderedPairing m N q b := by
-  induction m generalizing q a b with
-  | zero => exact inner_add_right _ _ _
-  | succ m ih => simp only [orderedPairing, phaseDerivative_add, ih, Finset.sum_add_distrib]
-
-theorem orderedPairing_smul_right (m N : ℕ) (q a : Phase N) (s : ℝ) :
-    orderedPairing m N q (s • a) = s * orderedPairing m N q a := by
-  induction m generalizing q a with
-  | zero => exact inner_smul_right _ _ _
-  | succ m ih => simp only [orderedPairing, phaseDerivative_smul, ih, Finset.mul_sum]
-
-theorem h3Pairing_self (N : ℕ) (q : Phase N) :
-    h3Pairing N q q = energy3 N q := by
-  simp only [h3Pairing, orderedPairing_self, energy3_eq_frequencyEnergy]
 
 theorem first_commutator_bound (N : ℕ) (q : Phase N) (i : Fin 3) :
     inner ℝ (phaseDerivative N i q)

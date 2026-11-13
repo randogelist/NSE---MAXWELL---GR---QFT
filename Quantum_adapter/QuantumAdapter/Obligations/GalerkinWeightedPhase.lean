@@ -1,5 +1,6 @@
 import QuantumAdapter.Obligations.GalerkinSobolev
-import QuantumAdapter.Obligations.TraceViscous
+import QuantumAdapter.Obligations.TraceLaplacian
+import QuantumAdapter.Obligations.EnergyBilinear
 
 /-!
 All integral Sobolev multipliers on the actual real Fourier phase, with exact

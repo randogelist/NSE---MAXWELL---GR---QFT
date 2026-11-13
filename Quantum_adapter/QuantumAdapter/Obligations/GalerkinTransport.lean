@@ -1,7 +1,7 @@
 import QuantumAdapter.Obligations.GalerkinLimits
 import QuantumAdapter.Assembly.Flow
 import SingularClosure.FourierTransport
-import Mathlib.Analysis.Normed.Operator.Bilinear
+import SingularClosure.InfiniteFourierPressure
 
 /-!
 # Cutoff-independent fixed-frequency transport for the full native phase
@@ -90,21 +90,71 @@ theorem projectedTransportCoefficient_apply (k : Frequency) (i : Fin 3)
       ContinuousLinearMap.sum_apply, smul_eq_mul]
     ring
 
+/-- Explicit fixed-frequency bound for the native H0 divergence convolution. -/
+theorem divergenceTransportCoefficient_norm_le (k : Frequency) (i : Fin 3)
+    (c d : TorusSobolev 0) :
+    ‖divergenceTransportCoefficient k i c d‖ ≤
+      3 * torusSobolevWeight k * (‖c‖ * ‖d‖) := by
+  rw [divergenceTransportCoefficient_apply]
+  calc
+    _ ≤ ∑ j : Fin 3, ‖derivativeSymbol j k * fourierTensorCoefficient k j i c d‖ :=
+      norm_sum_le _ _
+    _ ≤ ∑ j : Fin 3, torusSobolevWeight k * (‖c‖ * ‖d‖) := by
+      apply Finset.sum_le_sum
+      intro j hj
+      rw [norm_mul]
+      exact mul_le_mul (derivativeSymbol_norm_le_torusSobolevWeight j k)
+        (fourierTensorCoefficient_norm_le k j i c d) (norm_nonneg _)
+        (torusSobolevWeight_pos k).le
+    _ = _ := by simp; ring
+
+/-- A polynomial fixed-frequency bound avoids choosing a topology on nested operator spaces. -/
+def projectedTransportMajorant (k : Frequency) : ℝ := 12 * torusSobolevWeight k ^ 2
+
+theorem projectedTransportMajorant_nonneg (k : Frequency) :
+    0 ≤ projectedTransportMajorant k := by unfold projectedTransportMajorant; positivity
+
+theorem projectedTransportCoefficient_norm_le (k : Frequency) (i : Fin 3)
+    (c d : TorusSobolev 0) :
+    ‖projectedTransportCoefficient k i c d‖ ≤
+      projectedTransportMajorant k * (‖c‖ * ‖d‖) := by
+  let b : Fin 3 → ℂ := fun j => divergenceTransportCoefficient k j c d
+  let M := ‖c‖ * ‖d‖
+  have hM : 0 ≤ M := mul_nonneg (norm_nonneg _) (norm_nonneg _)
+  have hb (j : Fin 3) : ‖b j‖ ≤ 3 * torusSobolevWeight k * M :=
+    divergenceTransportCoefficient_norm_le k j c d
+  have hsum : (∑ j : Fin 3, ‖b j‖) ≤ 9 * torusSobolevWeight k * M := by
+    calc
+      _ ≤ ∑ j : Fin 3, 3 * torusSobolevWeight k * M :=
+        Finset.sum_le_sum (fun j hj => hb j)
+      _ = _ := by simp; ring
+  have hrecover : coefficientLeray k b i = b i + derivativeSymbol i k * pressureFromTransport k b := by
+    have h := pressure_derivativeSymbol_recovery k b i
+    linear_combination -h
+  rw [projectedTransportCoefficient_apply]
+  change ‖coefficientLeray k b i‖ ≤ projectedTransportMajorant k * M
+  rw [hrecover]
+  calc
+    _ ≤ ‖b i‖ + ‖derivativeSymbol i k‖ * ‖pressureFromTransport k b‖ := by
+      simpa only [norm_mul] using norm_add_le (b i) (derivativeSymbol i k * pressureFromTransport k b)
+    _ ≤ 3 * torusSobolevWeight k * M +
+        torusSobolevWeight k * (9 * torusSobolevWeight k * M) :=
+      add_le_add (hb i) (mul_le_mul (derivativeSymbol_norm_le_torusSobolevWeight i k)
+        ((pressureFromTransport_norm_le k b).trans hsum) (norm_nonneg _)
+        (torusSobolevWeight_pos k).le)
+    _ ≤ projectedTransportMajorant k * M := by
+      have hw := torusSobolevWeight_one_le k
+      have h := mul_nonneg hM (mul_nonneg (torusSobolevWeight_pos k).le (sub_nonneg.mpr hw))
+      unfold projectedTransportMajorant
+      nlinarith
+
 /-- The projected nonlinear coefficient has a cutoff-independent H0-square bound. -/
 theorem projectedTransportCoefficient_norm_le_energy0 (N : ℕ) (q : Phase N)
     (k : Frequency) (i : Fin 3) :
     ‖projectedTransportCoefficient k i (phaseSobolev 0 N q) (phaseSobolev 0 N q)‖ ≤
-      ‖projectedTransportCoefficient k i‖ * energy0 N q := by
-  calc
-    _ ≤ ‖projectedTransportCoefficient k i (phaseSobolev 0 N q)‖ *
-        ‖phaseSobolev 0 N q‖ :=
-      (projectedTransportCoefficient k i (phaseSobolev 0 N q)).le_opNorm _
-    _ ≤ (‖projectedTransportCoefficient k i‖ * ‖phaseSobolev 0 N q‖) *
-        ‖phaseSobolev 0 N q‖ :=
-      mul_le_mul_of_nonneg_right
-        ((projectedTransportCoefficient k i).le_opNorm _) (norm_nonneg _)
-    _ = ‖projectedTransportCoefficient k i‖ * energy0 N q := by
-      rw [mul_assoc, ← pow_two, phaseSobolev_norm_sq, sobolevEnergy_zero_order]
+      projectedTransportMajorant k * energy0 N q := by
+  simpa only [← pow_two, phaseSobolev_norm_sq, sobolevEnergy_zero_order] using
+    projectedTransportCoefficient_norm_le k i (phaseSobolev 0 N q) (phaseSobolev 0 N q)
 
 /-- Exact coefficient ODE in the common infinite-dimensional coefficient coordinates. -/
 theorem phaseCoeff_drift_eq_projectedTransport (ν : ℝ) (N : ℕ) (q : Phase N)
@@ -118,19 +168,20 @@ theorem phaseCoeff_drift_eq_projectedTransport (ν : ℝ) (N : ℕ) (q : Phase N
   rw [drift_eq_rawRhs, rawRhs_all_modes]
   congr 1
   rw [projectedTransportCoefficient_apply]
-  exact congrArg (fun v : Fin 3 → ℂ => coefficientLeray k v i)
-    (funext (fun j => fullTransport_eq_divergenceTransport_phase N q k j))
+  rw [show fullTransport N (phaseCoeff q) k =
+      (fun j => divergenceTransportCoefficient k j (phaseSobolev 0 N q) (phaseSobolev 0 N q)) from
+    funext (fun j => fullTransport_eq_divergenceTransport_phase N q k j)]
 
 /-- Explicit fixed-output coefficient derivative bound; it is independent of N. -/
 def coefficientDriftMajorant (ν C : ℝ) (k : Frequency) (i : Fin 3) : ℝ :=
-  |ν| * laplaceSymbol k * Real.sqrt C + ‖projectedTransportCoefficient k i‖ * C
+  |ν| * laplaceSymbol k * Real.sqrt C + projectedTransportMajorant k * C
 
 theorem coefficientDriftMajorant_nonneg (ν C : ℝ) (hC : 0 ≤ C)
     (k : Frequency) (i : Fin 3) : 0 ≤ coefficientDriftMajorant ν C k i := by
   unfold coefficientDriftMajorant
   exact add_nonneg
     (mul_nonneg (mul_nonneg (abs_nonneg _) (laplaceSymbol_nonneg _)) (Real.sqrt_nonneg _))
-    (mul_nonneg (norm_nonneg _) hC)
+    (mul_nonneg (projectedTransportMajorant_nonneg k) hC)
 
 theorem phaseCoeff_drift_norm_le (ν : ℝ) (N : ℕ) (q : Phase N)
     (C : ℝ) (hC : 0 ≤ C) (hbound : energy0 N q ≤ C)
@@ -147,14 +198,14 @@ theorem phaseCoeff_drift_norm_le (ν : ℝ) (N : ℕ) (q : Phase N)
           ‖projectedTransportCoefficient k i (phaseSobolev 0 N q) (phaseSobolev 0 N q)‖ :=
         norm_sub_le _ _
       _ ≤ (|ν| * laplaceSymbol k) * Real.sqrt C +
-          ‖projectedTransportCoefficient k i‖ * C := by
+          projectedTransportMajorant k * C := by
         apply add_le_add
         · rw [norm_mul, norm_neg, Complex.norm_real, Real.norm_eq_abs,
             abs_mul, abs_of_nonneg (laplaceSymbol_nonneg k)]
           exact mul_le_mul_of_nonneg_left hcoef
             (mul_nonneg (abs_nonneg _) (laplaceSymbol_nonneg _))
         · exact (projectedTransportCoefficient_norm_le_energy0 N q k i).trans
-            (mul_le_mul_of_nonneg_left hbound (norm_nonneg _))
+            (mul_le_mul_of_nonneg_left hbound (projectedTransportMajorant_nonneg k))
       _ = _ := rfl
   · simpa only [norm_zero] using coefficientDriftMajorant_nonneg ν C hC k i
 

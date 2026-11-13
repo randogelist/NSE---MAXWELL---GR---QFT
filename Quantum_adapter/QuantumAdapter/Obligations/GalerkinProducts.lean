@@ -23,6 +23,7 @@ theorem laplaceSymbol_split_bound (k p : Frequency) :
     intro i hi
     have he : (k i : ℝ) = (p i : ℝ) + ((k-p) i : ℝ) := by
       simp [Pi.sub_apply]
+    rw [he]
     nlinarith [sq_nonneg ((p i : ℝ) - ((k-p) i : ℝ))]
   have h := mul_le_mul_of_nonneg_left hsum (sq_nonneg (2 * Real.pi))
   simpa [laplaceSymbol, galerkinFreqSq, mul_add, mul_left_comm, mul_assoc] using h
@@ -120,7 +121,9 @@ theorem componentSobolevEnergy_le (s N : ℕ) (q : Phase N) (i : Fin 3) :
     componentSobolevEnergy s N q i ≤ sobolevEnergy s N q := by
   apply Finset.sum_le_sum
   intro k hk
-  exact Finset.single_le_sum (fun j hj => sq_nonneg _) (Finset.mem_univ i)
+  exact Finset.single_le_sum (s := Finset.univ)
+    (f := fun j : Fin 3 => ‖sobolevWeightedCoeff s (phaseCoeff q) (k,j)‖^2)
+    (fun j hj => sq_nonneg _) (Finset.mem_univ i)
 
 /-- One literal tensor coefficient product has the Hm tame estimate. -/
 theorem fullTensorProduct_energy_bound (m N : ℕ) (q r : Phase N) (i j : Fin 3) :

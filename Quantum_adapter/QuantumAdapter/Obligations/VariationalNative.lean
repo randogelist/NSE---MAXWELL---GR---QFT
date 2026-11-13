@@ -6,6 +6,7 @@ set_option autoImplicit false
 set_option Elab.async true
 set_option maxHeartbeats 4000000
 set_option synthInstance.maxHeartbeats 400000
+set_option backward.isDefEq.respectTransparency false
 
 open Set Filter Metric
 open scoped Topology ContDiff
@@ -81,8 +82,8 @@ theorem phaseFlow_timeMap_hasFDerivAt {ν : ℝ} (hν : 0 ≤ ν)
   have hJzero : J 0 = ContinuousLinearMap.id ℝ (Phase N) := by
     simp only [J, mul_zero, phaseFlowVariational_zero]
   have hJ (s : ℝ) : HasDerivAt J ((fderiv ℝ b (Φ s q)).comp (J s)) s := by
-    have hd := (phaseFlowVariational_hasDerivAt F N q (σ * s)).scomp s
-      (hasDerivAt_const_mul σ)
+    have hd := HasDerivAt.scomp (F := Phase N →L[ℝ] Phase N) (𝕜 := ℝ) (𝕜' := ℝ) s
+      (phaseFlowVariational_hasDerivAt F N q (σ * s)) (hasDerivAt_const_mul σ)
     have hdb : fderiv ℝ b (Φ s q) =
         σ • fderiv ℝ (drift ν N) (Φ s q) :=
       (((Assembly.contDiff_drift ν N).differentiable (by simp) (Φ s q)).hasFDerivAt.const_smul σ).fderiv
@@ -96,7 +97,7 @@ theorem phaseFlow_timeMap_hasFDerivAt {ν : ℝ} (hν : 0 ≤ ν)
       calc
         ‖y‖ = ‖(y - q) + q‖ := by congr 1; abel
         _ ≤ ‖y - q‖ + ‖q‖ := norm_add_le _ _
-        _ ≤ R₀ := by dsimp [R₀]; linarith
+        _ ≤ R₀ := (add_le_add_right hdiff ‖q‖).trans_eq (add_comm 1 ‖q‖)
     have htime : |σ * s| ≤ T := by
       rw [abs_mul, hσ, one_mul, abs_of_nonneg hs.1]
       exact hs.2
@@ -104,7 +105,8 @@ theorem phaseFlow_timeMap_hasFDerivAt {ν : ℝ} (hν : 0 ≤ ν)
       (abs_nonneg t) hy0 htime
   have h := flow_hasFDerivAt_of_variational_on_bounded_tube b hb Φ hzero hΦ q
     (abs_nonneg t) htube J hJzero hJ
-  simpa only [Φ, J, hσt] using h
+  have hσabs : σ * |t| = t := hσt
+  simpa only [Φ, J, hσabs] using h
 
 /-- P2: all actual native time maps are differentiable, including negative times. -/
 theorem phaseFlow_timeMap_differentiable {ν : ℝ} (hν : 0 ≤ ν)

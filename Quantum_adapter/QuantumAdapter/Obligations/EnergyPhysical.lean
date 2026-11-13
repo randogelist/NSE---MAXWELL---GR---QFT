@@ -169,7 +169,8 @@ theorem synthesis_relative_transport_integral (N : ℕ) (q r : Phase N) :
   have hi : IntegrableOn (fun x => inner ℝ (synthesis q x)
       (mixedConvection (synthesis q) (synthesis r) x)) unitCube :=
     (hq.inner hm).continuousOn.integrableOn_compact isCompact_unitCube
-  have he := (hq.norm.pow 2).continuousOn.integrableOn_compact isCompact_unitCube
+  have he : IntegrableOn (fun x => ‖synthesis q x‖^2) unitCube :=
+    (hq.norm.pow 2).continuousOn.integrableOn_compact isCompact_unitCube
   have h := integral_mono hi.neg (he.const_mul (gradientObservable r))
     (fun x => synthesis_relative_transport_pointwise N q r x)
   rw [integral_neg, integral_const_mul, integral_synthesis_norm_sq] at h

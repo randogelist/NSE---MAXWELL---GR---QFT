@@ -4,7 +4,8 @@ Compiler: `leanprover/lean4:v4.34.0-rc1`, external native Linux CI or native Win
 Mathlib: `de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11`.
 
 `module-targets.json` and `audit-targets.txt` enumerate the exact candidate
-declarations. `prepare_targets.py` inspects source only and never executes Lean.
+declarations, including public definitions and abbreviations; theorem counts
+are recorded separately. `prepare_targets.py` inspects source only and never executes Lean.
 Use `--module QuantumAdapter.Obligations.NAME` repeatedly to select a ready
 batch; all selected obligation dependencies must also be selected.
 

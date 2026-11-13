@@ -1,4 +1,5 @@
 import QuantumAdapter.Obligations.TraceTranslation
+import QuantumAdapter.Obligations.TraceLaplacian
 
 /-! Translation conjugacy of the actual native drift and its real divergence. -/
 
@@ -62,18 +63,6 @@ theorem coefficientLeray_complex_mul (k : Frequency) (a : ℂ)
     rw [hs]
     ring
 
-theorem drift_coeff_formula (ν : ℝ) (N : ℕ) (q : Phase N)
-    (k : Frequency) (i : Fin 3) :
-    phaseCoeff (drift ν N q) k i =
-      if k ∈ fullModes N then
-        if k = 0 then 0 else
-          -((ν * laplaceSymbol k : ℝ) : ℂ) * phaseCoeff q k i -
-            coefficientLeray k (fullTransport N (phaseCoeff q) k) i
-      else 0 := by
-  change extendCoeff (drift ν N q).val k i = _
-  rw [drift_eq_rawRhs]
-  exact rawRhs_coeff ν N q k i
-
 theorem drift_phaseTranslation (ν : ℝ) (N : ℕ) (x : Vec) (q : Phase N) :
     drift ν N (phaseTranslation N x q) = phaseTranslation N x (drift ν N q) := by
   apply Subtype.ext
@@ -125,6 +114,7 @@ theorem driftDivergence_phaseTranslation (ν : ℝ) (N : ℕ) (x : Vec) (q : Pha
     have hh := congrArg (fun A : Phase N →L[ℝ] Phase N => A (T.symm r)) hd
     simpa only [ContinuousLinearMap.comp_apply, ContinuousLinearMap.coe_coe, T,
       ContinuousLinearEquiv.coe_coe, ContinuousLinearEquiv.apply_symm_apply,
+      ContinuousLinearEquiv.coe_toLinearEquiv, ContinuousLinearEquiv.coe_symm_toLinearEquiv,
       LinearEquiv.conj_apply, LinearMap.comp_apply, LinearEquiv.coe_coe] using hh
   rw [hconj]
   exact LinearMap.trace_conj' _ _

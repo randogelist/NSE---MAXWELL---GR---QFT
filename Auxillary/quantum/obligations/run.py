@@ -130,7 +130,7 @@ def main():
         spec.loader.exec_module(verifier)
         audit_targets = verifier.parse_targets(file(HERE + "/audit-targets.txt"))
         modules = json.loads(file(HERE + "/module-targets.json").read_text(encoding="utf-8"))
-        flat, seen = [], set()
+        flat, seen, declaration_kinds = [], set(), {}
         if not isinstance(modules, list) or not modules:
             raise ValueError("Nonempty explicit module targets required.")
         for item in modules:
@@ -141,6 +141,10 @@ def main():
                 raise ValueError(f"Duplicate module or inconsistent source path: {name}")
             if not isinstance(decls, list) or not decls or any(not NAME.fullmatch(d) for d in decls):
                 raise ValueError(f"Nonempty explicit audit declarations required: {name}")
+            kinds = item.get("declaration_kinds", {d: "theorem" for d in decls})
+            if set(kinds) != set(decls) or any(k not in {"theorem", "lemma", "def", "abbrev"} for k in kinds.values()):
+                raise ValueError("Declaration kinds must match exact targets: " + name)
+            declaration_kinds.update(kinds)
             file(path)
             seen.add(name)
             flat.extend(decls)
@@ -256,7 +260,7 @@ def main():
                 failed_builds.add(name)
                 errors.append(f"{name}: blocked by failed dependencies {blocked}")
                 declaration_results.extend({"name": d, "module": name,
-                    "status": "SKIPPED_DEPENDENCY_FAILURE"} for d in decls)
+                    "status": "SKIPPED_DEPENDENCY_FAILURE", "kind": declaration_kinds[d]} for d in decls)
                 print(f"BLOCKED {name}: {', '.join(blocked)}", flush=True)
                 save()
                 continue
@@ -271,7 +275,7 @@ def main():
                 failed_builds.add(name)
                 result["audit_status"] = "SKIPPED_BUILD_FAILURE"
                 errors.append(f"{name}: build failed ({code})")
-                declaration_results.extend({"name": d, "module": name, "status": "SKIPPED_BUILD_FAILURE"} for d in decls)
+                declaration_results.extend({"name": d, "module": name, "status": "SKIPPED_BUILD_FAILURE", "kind": declaration_kinds[d]} for d in decls)
                 save()
                 continue
             audit = "import " + name + "\nset_option pp.universes true\nset_option pp.fullNames true\n"
@@ -292,14 +296,14 @@ def main():
                     rows = records.get(declaration, [])
                     if len(rows) != 1:
                         module_errors.append(f"{declaration}: expected one record, found {len(rows)}")
-                        declaration_results.append({"name": declaration, "module": name, "status": "MISSING_OR_DUPLICATE"})
+                        declaration_results.append({"name": declaration, "module": name, "status": "MISSING_OR_DUPLICATE", "kind": declaration_kinds[declaration]})
                         continue
                     axioms = sorted({verifier.normalize_axiom_name(a) for a in rows[0]})
                     bad = sorted(set(axioms) - verifier.ALLOWED_AXIOMS)
                     if bad:
                         module_errors.append(f"{declaration}: unapproved axioms {bad}")
                     declaration_results.append({"name": declaration, "module": name,
-                        "status": "PASS_STANDARD_ONLY" if not bad and not code else "FAIL", "axioms": axioms, "unapproved_axioms": bad})
+                        "status": "PASS_STANDARD_ONLY" if not bad and not code else "FAIL", "kind": declaration_kinds[declaration], "axioms": axioms, "unapproved_axioms": bad})
             except Exception as error:
                 module_errors.append(f"Axiom parser rejected output: {error}")
             result["audit_status"] = "FAIL" if module_errors else "PASS_STANDARD_ONLY"
@@ -316,10 +320,13 @@ def main():
         summary = {"schema_version": 1, "status": status, "source_commit": head,
             "compiler": version, "mathlib_commit": MATHLIB,
             "source_manifest_sha256": sha256(report / "source-manifest.json"),
-            "module_count": len(modules), "theorem_count": len(audit_targets), "modules": results,
+            "module_count": len(modules), "declaration_count": len(audit_targets),
+            "theorem_count": sum(k in {"theorem", "lemma"} for k in declaration_kinds.values()), "modules": results,
             "root_module_included": "QuantumAdapter.Obligations" in seen,
             "obligation_discharge": "REQUIRES_EXACT_SIGNATURE_SCOPE_REVIEW",
-            "theorems": declaration_results, "declared_formalization_scope": scope, "errors": errors,
+            "declarations": declaration_results,
+            "theorems": [d for d in declaration_results if d.get("kind", "theorem") in {"theorem", "lemma"}],
+            "declared_formalization_scope": scope, "errors": errors,
             "semantic_discharge": "NOT_INFERRED_FROM_AXIOM_AUDIT", "exact_root_promotion": "REQUIRES_SCOPE_AND_PREMISE_REVIEW"}
         write_json(report / "audit-summary.json", summary)
         prov["stage"], prov["theorem_axiom_audit_status"], prov["completed_at_utc"] = "COMPLETE", status, now()
@@ -330,7 +337,9 @@ def main():
         prov["stage"], prov["failure"], prov["completed_at_utc"] = "FAILED", f"{type(error).__name__}: {error}", now()
         save()
         write_json(report / "audit-summary.json", {"schema_version": 1, "status": "FAIL", "source_commit": prov["source_commit"],
-            "modules": results, "theorems": declaration_results, "errors": [*errors, prov["failure"]],
+            "modules": results, "declarations": declaration_results,
+            "theorems": [d for d in declaration_results if d.get("kind", "theorem") in {"theorem", "lemma"}],
+            "errors": [*errors, prov["failure"]],
             "semantic_discharge": "NOT_INFERRED_FROM_AXIOM_AUDIT"})
         print(prov["failure"], file=sys.stderr)
         return 1
