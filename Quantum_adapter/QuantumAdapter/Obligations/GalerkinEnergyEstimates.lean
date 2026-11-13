@@ -1,3 +1,4 @@
+import SingularClosure.FourierTransport
 import QuantumAdapter.Obligations.GalerkinProducts
 import QuantumAdapter.Obligations.EnergyConvection
 import QuantumAdapter.Obligations.GalerkinWeightedPhase
