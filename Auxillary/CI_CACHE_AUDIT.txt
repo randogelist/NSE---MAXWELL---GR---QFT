@@ -1,0 +1,289 @@
+ADAPTER DIRECTORY RENAME (2026-11-13)
+====================================
+
+Active adapter root = Fefferman_adapter.
+Former adapter root = Fefferman_B_adapter.
+Lean declaration names, proof bodies, hypotheses and dependency pins unchanged.
+Lake source directory, runner/verifier paths, project-cache globs and indexes updated.
+Latest verified dependency/project fallbacks from run43351199370 retained first.
+Standalone Maxwell cache key inputs unchanged.
+Rename validation = PASS_CACHED_EXTERNAL_LINUX (run43353327242).
+Source = 8fd783b4d977fdb1a31cf4716023148ddfa26af9.
+Integrated226/226 and isolated52/52 fresh audits PASS_STANDARD_ONLY.
+Both scopes: transitive trace freshness exit0; module rebuilds0.
+Root dependency/project caches restored from verified9b51 predecessor keys.
+Standalone project cache exact hit. New root dependency key=1e0a11bbe2f771dc625218fed552a5e8c9ad571990c5e9674d1e2921162b35c5.
+Original artifact files preserved=73.
+Local Lean/Lake/elan executions = 0.
+
+HISTORICAL CERTIFICATES AND CACHE RECORDS FOLLOW
+===============================================
+
+NATIVE MAXWELL PACKAGE CACHE CERTIFICATE (2026-11-13)
+====================================================
+
+Source = 7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6.
+External native Linux run = 43351199370; job = 131642414974.
+Integrated build/audit = PASS; 226/226 fresh exact targets.
+Isolated package build/audit = PASS; 52/52 fresh exact targets.
+Matched Lean source inputs = 37 integrated, 7 standalone.
+Original artifact files preserved = 109.
+Native Maxwell theorem endpoints = 23; standard axioms only.
+
+Compiler cache = exact hit.
+Root dependency/project caches = verified previous pinned caches restored.
+Root incremental schedule = 32 module build invocations; no recompilation-count inference.
+Independent package sources = 18; source hashes and import closure verified.
+Shared package cache = verified root .lake/packages only.
+Standalone project cache = initial miss; four native module build invocations.
+Standalone project objects = separate .lake/build; preserved after PASS.
+Every theorem audit executed fresh. No local Lean/Lake/elan invocation.
+
+Saved root dependency cache:
+ nse-deps-v2-Linux-X64-9b51ac59a9bf389c36d0ee08f81eebfa504c2a733df8c25b1187266979e41203
+Saved root project cache:
+ nse-project-v2-Linux-X64-9b51ac59a9bf389c36d0ee08f81eebfa504c2a733df8c25b1187266979e41203-5a1aca4898000db4f1f98f887cf1a5b2548ed4bc4bf43edc34b73fdff48fd97f
+Saved independent Maxwell project cache:
+ nse-maxwell-standalone-v1-Linux-X64-9eeb2f7971e6c5a8e1f40433fb0d4794678971899b7110d4d6492da4bd235320-a0f932838aa1bae18b0308603ebdd32393edded04c4850de9ed65aecc5667132
+
+Native instantiation does not discharge the four FourierHodgeLaws fields.
+Exact equivalence remains conditional on their explicit inhabitant.
+
+HISTORICAL CACHE RECORDS FOLLOW
+==============================
+
+AUXILLARY INFRASTRUCTURE RELOCATION (2026-11-13)
+===============================================
+
+Entry point: Auxillary/run.sh
+Historical Windows entry point: Auxillary/run.cmd
+Runner: Auxillary/scripts/run.ps1
+Verifier: Auxillary/scripts/verify_audit.py
+Audit targets: Auxillary/audit-targets.txt
+Cache targets: Auxillary/cache-targets.txt
+Status: Auxillary/formalization-status.json
+Evidence: Auxillary/evidence/
+Workflow discovery: .github/workflows/lean-linux.yml
+Lake/compiler configuration: repository root, unchanged.
+
+LEAN_INPUTS_UNCHANGED = 30 / 30
+PRIOR_CERTIFIED_SOURCE = be8376a08573a7789e36b68c2bc48178aa6f53c3
+PRIOR_CERTIFIED_RUN = 43345557147
+AUXILLARY_LAYOUT_VALIDATION = PASS_CACHED_NATIVE_LINUX_BUILD_AND174_FRESH_AUDITS
+LOCAL_LEAN_EXECUTIONS = 0
+
+CURRENT AUXILLARY LAYOUT CERTIFICATE
+Source: b02425040a217a94855cfa52934e303f12fe80de
+Run: 43348914489; job: 131634937490
+Native Linux Lean 4.34.0-rc1; pinned Mathlib unchanged.
+Build validation: PASS; fresh named audits: 174/174 PASS_STANDARD_ONLY.
+Lean inputs: 30/30 byte-matching; recorded source inputs: 289 verified.
+Compiler/dependency/project cache restores: exact hits.
+Lake transitive trace freshness exit: 0.
+Build strategy: LAKE_TRANSITIVE_TRACE_VERIFIED_WARM_REUSE.
+Executed module builds: 0; theorem audit executed fresh.
+Evidence: Auxillary/evidence/linux-43348914489/; 38 original artifact files.
+The exit-zero warm reuse path is now externally observed. Earlier observations
+below remain scoped to their original runs.
+
+Latest verified dependency fallback:
+  nse-deps-v2-Linux-X64-78b8e6dd5376bcb08d2c5af93549e74beae76ba7d0f24dc089ab851faa254f79
+Latest verified project fallback:
+  nse-project-v2-Linux-X64-78b8e6dd5376bcb08d2c5af93549e74beae76ba7d0f24dc089ab851faa254f79-f3c64b586dd589b35fbe9757b9e8e727d108313c48994542910f87312b72be76
+Provenance: successful native Linux run 43345557147, job 131623961132.
+
+Compiler/dependency/project caches remain preserved. Normal pinned-revision
+checks and Lake traces validate reuse. All 174 named theorem audits execute
+fresh. The exact theorem, hypotheses, and allowed axioms remain unchanged.
+Historical cache records below retain their original execution paths.
+
+PREVIOUS SOURCE-LAYOUT MIGRATION (2026-11-13)
+===========================================
+
+Active module roots:
+  NSEMaxwell -> Fefferman_B_adapter
+  NSEMaxwellForward -> B <-> Maxwell/=>
+  NSEMaxwellReverse -> B <-> Maxwell/<=
+
+External native Linux only for this literal POSIX path layout.
+Registered audit targets: 174. Fresh source/axiom validation remains required.
+Pinned compiler and all dependency revisions remain unchanged.
+
+Verified previous dependency cache fallback:
+  nse-deps-v2-Linux-X64-61a962499c8eb2ab9217aea818efc9c8df3fc4c21642b7007e74a1a069a24416
+Verified previous project cache fallback:
+  nse-project-v2-Linux-X64-61a962499c8eb2ab9217aea818efc9c8df3fc4c21642b7007e74a1a069a24416-fc4dca293fc153a8f267633a5b81c65f4a9fe682d0c7c79f3abe80d4a3b6c323
+Provenance: successful native Linux run 43337888436, job 131598611127.
+
+The fallback objects remain provisional until normal pinned dependency and
+Lake trace checks pass. No theorem-audit seal is reused. No cache is cleaned.
+Active scripts: Fefferman_B_adapter/scripts/run.ps1 and verify_audit.py.
+
+HISTORICAL CACHE DESIGN RECORD FOLLOWS
+====================================
+
+CI_CACHE_AUDIT
+STATUS = CACHED_NATIVE_LINUX_BUILD_AND170_AUDIT_VERIFIED
+ACTIVE_CI_PLATFORM = NATIVE_LINUX_UBUNTU_24_04
+ACTIVE_LINUX_VALIDATION = PASS_BUILD_AND170_FRESH_AUDITS
+LOCAL_LEAN_EXECUTIONS = 0
+WRITE_REPOSITORY = randogelist/NSE---MAXWELL---GR---QFT
+WRITE_BRANCH = codex/fefferman-b-maxwell
+METHLIB_MUTATIONS = 0
+
+REFERENCE_REVISION
+Methlib = e9cf90726b8544a268469ebc8fa6634e9c713e07
+Lean = leanprover/lean4:v4.34.0-rc1
+Mathlib = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+
+REFERENCE_IMPLEMENTATIONS
+https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/.github/workflows/h12-small-closure.yml
+https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/.github/workflows/h12-sigma-zero-small.yml
+https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/ci/build_critical.py
+https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/HILBERT-SUPERIORITY-PNT/serial/verify_stage.py
+https://github.com/leanprover/lean4/blob/v4.34.0-rc1/src/lake/Lake/Load/Config.lean
+https://github.com/leanprover/lean4/blob/v4.34.0-rc1/src/lake/Lake/Load/Resolve.lean
+https://github.com/leanprover/lean4/blob/v4.34.0-rc1/src/lake/Lake/Build/Common.lean
+https://github.com/leanprover/lean4/blob/v4.34.0-rc1/src/lake/Lake/Build/Run.lean
+https://github.com/leanprover/lean4/blob/v4.34.0-rc1/src/lake/Lake/CLI/Help.lean
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Cache/IO.lean
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Cache/Requests.lean
+
+OBSERVED_BASELINE
+External run = 43328182628
+Source = dc2acfb2092c0a45d21d02bb5f98bfb41cdb3fc8
+Compiler-cache restore = 42.56 s
+Combined-cache restore = 74.44 s
+Native runner = 374.50 s
+Combined-cache save = 87.27 s
+Combined-cache archive = approximately 2.959 GB
+Total job = 596.45 s
+Baseline proof build = FAIL; timings are not a successful-proof comparison.
+Untracked root lockfile caused dependency resolution on every fresh runner.
+Post-update cache acquisition and explicit cache acquisition were duplicated.
+
+APPLIED_CACHE_PARTITION
+Compiler := ~/.elan
+Dependencies := .lake/packages + .lake/config + .mathlib-download-cache
+Project := .lake/build
+
+DependencyKey := H(OS, architecture, lean-toolchain, lakefile.lean,
+                   lake-manifest.json, cache-targets.txt)
+ProjectKey := (DependencyKey, H(NSEMaxwell.lean, NSEMaxwell/**/*.lean))
+DependencyRestore := exact key only
+ProjectRestore := exact key OR same-dependency prefix
+LegacyMigration := original combined-cache paths and original restore prefix
+DependencySave := after successful preparation, before project compilation
+ProjectSave := after success OR failure, preserving checked partial objects
+
+PINNING
+Root lockfile contains nine exact Git revisions.
+Root lockfile construction follows pinned Lake Resolve.writeManifest semantics:
+  eight Mathlib-manifest dependencies inherited=true;
+  direct Mathlib dependency inherited=false;
+  root fixedToolchain=false.
+Every dependency checkout revision and tracked working tree is checked.
+Lockfile SHA256 is checked before and after dependency preparation.
+Resolved lockfile bytes are included in external evidence.
+
+EXECUTION
+MATHLIB_NO_CACHE_ON_UPDATE = 1
+run.cmd                         := Dependencies ; Build ; FreshAudit
+run.cmd -Phase Dependencies     := ValidatePins ; OfficialIncrementalCacheGet
+run.cmd -Phase BuildAudit       := RevalidatePins ; ValidatePreparation ;
+                                   IncrementalBuild ; FreshAudit
+
+PreparationFingerprint := H(actual compiler version, pinned input hashes,
+                             sorted Mathlib cache targets)
+Preparation reuse authorizes dependency acquisition reuse only.
+Preparation reuse never authorizes theorem-audit reuse or proof promotion.
+Raw compiler logs and per-command timings are retained.
+
+BUILD_INVARIANTS
+FreshnessCheck := lake build --no-build NSEMaxwell
+FreshnessExit=0 => ordinary transitive traces validate the complete library;
+                   reuse project objects; execute the fresh theorem audit.
+FreshnessExit=3 => execute the serial incremental module schedule and final build.
+FreshnessExit outside {0,3} => fail with the original Lake diagnostic.
+No --old flag: transitive dependency validation remains enabled.
+Module concurrency = 1; Lean asynchronous theorem elaboration remains enabled.
+Lake dependency traces determine project-object freshness.
+Independent modules remain eligible after an unrelated module failure.
+Failed dependencies block dependent modules.
+Any module failure rejects the complete build.
+Complete umbrella target validation and every registered theorem audit remain mandatory.
+Same-repository push/PR duplication is suppressed.
+Evidence upload precedes project-cache preservation.
+
+EXCLUDED_SHORTCUTS
+No guessed Lake -j/--jobs option.
+No native_decide, sorryAx, unapproved axioms, or proof admissions.
+No promotion from cache presence or a cached audit seal.
+No whole-dependency reupload solely because project Lean sources changed.
+No cache clean, lake clean, or cache get!.
+
+VERIFICATION
+External run 43332604152 confirms legacy cache migration, nine pinned dependency
+checks, committed-lockfile preservation and official cache preparation PASS.
+External run 43333835295: complete build and 170/170 fresh audits PASS.
+Freshness exit=3; serial incremental fallback PASS.
+Freshness exit=0 branch = NOT_YET_OBSERVED.
+Registered upstream endpoint audits = 4/4 PASS_STANDARD_ONLY.
+Root theorem promotion = A_TIER_FOR_EXACT_CONDITIONAL_IMPLICATION
+Unconditional exact equivalence = NOT_PROVED
+
+ENDPOINT_REGISTRATION
+Registry = ENDPOINT_REGISTRY.json
+Entries = 11
+Mathlib exact-target-pin endpoints = 4; added to the fresh theorem audit.
+Methlib source-port candidates = 7; no matching target-compiler proof claimed.
+Theorem audit targets = 166 project endpoints + 4 pinned upstream endpoints.
+Independent harmonic-analysis lemmas only; adjusted NSE roots are excluded.
+
+MEASURED_SPLIT_CACHE_RESULT
+Run = 43333835295; source = 1bd2ee067d4aad3c265b32efd533ef270179e665.
+Dependency cache = exact hit; dependency reupload = 0 bytes.
+Dependency archive restored = 2953487292 bytes.
+Project archive restored = 7440089 bytes.
+Project archive uploaded = 7468677 bytes; save duration = 1.189 s.
+Project cache restore = 0.533 s.
+Freshness check = 8.198 s; fresh theorem audit = 25.956 s.
+These measurements identify actual operations; differing proof edits prevent a
+controlled total-runtime speedup comparison.
+
+LINUX_MIGRATION
+User request = 2026-11-13.
+Windows run 43333835295 was already completed successfully; activeWindowsRuns=0.
+Workflow = .github/workflows/lean-linux.yml; Ubuntu 24.04; native-linux job.
+Old automatic Windows workflow = removed.
+Linux entry point = run.sh; Windows entry point = run.cmd retained.
+Cache keys include OS and architecture; Windows objects are not restored on Linux.
+Compiler/dependency pins, exact Lean source, root premises and 170 audit targets
+are unchanged. The runner and verifier check the requested native platform and
+the actual compiler target triple. External Linux validation = PASS (run43336709607).
+
+LINUX_CERTIFICATE
+Source = d241f2b700be66ab447cb1650770271e1b364b8a.
+Run = 43336709607; Ubuntu 24.04; native Linux Lean 4.34.0-rc1.
+Compiler target = x86_64-unknown-linux-gnu.
+Compiler/dependency caches = exact hits after preserved initial preparation.
+Source-manifest enumeration = PASS, including hidden Unix repository files.
+Freshness exit = 3; serial incremental fallback = PASS.
+Complete library build = PASS.
+Fresh theorem audit = 170/170 PASS_STANDARD_ONLY.
+Delivered Lean source hashes = 25/25 matching the Linux compiler manifest.
+Evidence = evidence/linux-43336709607/ (60 original artifact files).
+Exit-zero warm path remains source-reviewed; no observed runtime claim is made.
+
+MEASURED_LINUX_CACHE_RESULT
+Compiler cache exact hit = 758735277 bytes.
+Dependency cache exact hit = 2959769594 bytes.
+Dependency reupload = 0 bytes.
+Official incremental Mathlib cache acquisition = 5.005 s.
+Dependency native commands = 5.801 s.
+Freshness check = 4.368 s; exit 3.
+Native build/audit commands = 207.698 s for the initially cold Linux project.
+Fresh 170-target theorem audit = 5.478 s.
+Evidence verification = 0.187 s.
+Preserved Linux project archive = 7433684 bytes.
+All measurements describe run43336709607, not a controlled cross-platform benchmark.

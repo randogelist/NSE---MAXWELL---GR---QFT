@@ -1,0 +1,663 @@
+{
+  "schema_version": 1,
+  "kind": "PINNED_NATIVE_METHLIB_SOURCE_CLOSURE",
+  "upstream_repository": "randogelist/Methlib",
+  "upstream_commit": "e9cf90726b8544a268469ebc8fa6634e9c713e07",
+  "upstream_package": "regularity-B-assembly/Singular-Axiomatic-closure",
+  "upstream_lean_toolchain": "leanprover/lean4:v4.33.0",
+  "upstream_mathlib_commit": "db584cd6d46c92f209a44c0f1c829460d327499d",
+  "target_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "target_mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "native_source_root": "NativeSources/methlib",
+  "source_module_count": 39,
+  "source_bytes": 324890,
+  "source_modifications": [],
+  "seeds": [
+    "SingularClosure.PeriodicFourierRealization",
+    "SingularClosure.InitialCutoffBounds",
+    "SingularClosure.FourierDecay",
+    "SingularClosure.FourierSeriesCalculus",
+    "SingularClosure.SobolevSmoothRealization",
+    "SingularClosure.PeriodicFourierInjective",
+    "SingularClosure.InfiniteFourierPressure",
+    "SingularClosure.LatticeSobolevSummability"
+  ],
+  "topological_order": [
+    "SingularClosure.SixChannels",
+    "SingularClosure.HilbertChannels",
+    "SingularClosure.Contracts",
+    "SingularClosure.CoordinateAverage",
+    "SingularClosure.Galerkin",
+    "SingularClosure.Admission",
+    "SingularClosure.PhysicalChannels",
+    "SingularClosure.PhysicalEnstrophy",
+    "SingularClosure.CoordinateAverageOrthogonal",
+    "SingularClosure.FourierIntegral",
+    "SingularClosure.PeriodicCover",
+    "SingularClosure.PeriodicFourierRealization",
+    "SingularClosure.PhysicalProjection",
+    "SingularClosure.PhysicalParseval",
+    "SingularClosure.GalerkinAlgebra",
+    "SingularClosure.GalerkinEnergy",
+    "SingularClosure.FiniteParseval",
+    "SingularClosure.FiniteHessian",
+    "SingularClosure.EnstrophyInequality",
+    "SingularClosure.PhysicalBilinear",
+    "SingularClosure.InitialFourier",
+    "SingularClosure.InitialCutoffBounds",
+    "SingularClosure.FourierDecay",
+    "SingularClosure.GalerkinReality",
+    "SingularClosure.LerayPressure",
+    "SingularClosure.FourierPressure",
+    "SingularClosure.FourierSeriesCalculus",
+    "SingularClosure.TorusSobolev",
+    "SingularClosure.LatticeSobolevSummability",
+    "SingularClosure.SobolevSmoothRealization",
+    "SingularClosure.PeriodicFourierInjective",
+    "SingularClosure.GalerkinEnergyIntegral",
+    "SingularClosure.PhysicalEnergy",
+    "SingularClosure.PeriodicPoincare",
+    "SingularClosure.SobolevL2Realization",
+    "SingularClosure.FourierTransport",
+    "SingularClosure.SmoothDatumSobolev",
+    "SingularClosure.FourierProduct",
+    "SingularClosure.InfiniteFourierPressure"
+  ],
+  "selected_endpoints": [
+    {
+      "id": "T01",
+      "name": "SingularClosure.torusDatumComponent_fourierCoeff",
+      "role": "core"
+    },
+    {
+      "id": "T02",
+      "name": "SingularClosure.datumFourierCoeff_coordinateDerivative",
+      "role": "core"
+    },
+    {
+      "id": "T03",
+      "name": "SingularClosure.FOURIER_POLYNOMIAL_DECAY",
+      "role": "core"
+    },
+    {
+      "id": "T04",
+      "name": "SingularClosure.scalarFourierSeries_contDiff",
+      "role": "core"
+    },
+    {
+      "id": "T05",
+      "name": "SingularClosure.scalarFourierSeries_coefficient",
+      "role": "core"
+    },
+    {
+      "id": "T06",
+      "name": "SingularClosure.datumFourierCoeff_injective_continuous_periodic",
+      "role": "core"
+    },
+    {
+      "id": "T07",
+      "name": "SingularClosure.infiniteTransportPressure_recovery",
+      "role": "optional_pressure_route"
+    },
+    {
+      "id": "T08",
+      "name": "SingularClosure.datumFourierCoeff_smoothFourierSynthesis",
+      "role": "optional_real_synthesis"
+    },
+    {
+      "id": "T09",
+      "name": "SingularClosure.smoothFourierSynthesis_coordinateDerivative",
+      "role": "optional_real_synthesis"
+    },
+    {
+      "id": "T10",
+      "name": "SingularClosure.summable_torusSobolevWeight_inv_four",
+      "role": "reference_only_lattice_helper"
+    }
+  ],
+  "external_namespaces": [
+    "Mathlib"
+  ],
+  "files": [
+    {
+      "module": "SingularClosure.Admission",
+      "path": "SingularClosure/Admission.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/Admission.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/Admission.lean",
+      "upstream_git_blob_sha": "b28f8ae19042a947a1c46a7eaf6f9afc306844f7",
+      "sha256": "cd8e62a4f88a33b14d3a699b2431e801d590bcadf02d03b2e67ef3ebb5dc63ca",
+      "bytes": 2934,
+      "imports": [
+        "SingularClosure.Galerkin"
+      ]
+    },
+    {
+      "module": "SingularClosure.Contracts",
+      "path": "SingularClosure/Contracts.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/Contracts.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/Contracts.lean",
+      "upstream_git_blob_sha": "7d64a61a47bedb2bd7a2801641c5959178837f04",
+      "sha256": "4c59cbf26fd4196529a4865ac09404d18015228c737055c2674cbcc4a5fd18f7",
+      "bytes": 6043,
+      "imports": [
+        "Mathlib"
+      ]
+    },
+    {
+      "module": "SingularClosure.CoordinateAverage",
+      "path": "SingularClosure/CoordinateAverage.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/CoordinateAverage.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/CoordinateAverage.lean",
+      "upstream_git_blob_sha": "3dba0b8286fcc034907a6438c5a4c0417169c3fd",
+      "sha256": "3cdfd38ab7cc38805c04dfcba99bdbea711753c00cb2215d030d622514685076",
+      "bytes": 6071,
+      "imports": [
+        "SingularClosure.Contracts"
+      ]
+    },
+    {
+      "module": "SingularClosure.CoordinateAverageOrthogonal",
+      "path": "SingularClosure/CoordinateAverageOrthogonal.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/CoordinateAverageOrthogonal.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/CoordinateAverageOrthogonal.lean",
+      "upstream_git_blob_sha": "e5c0c5aeb8fa605712a252e0a8969c8d7b56600f",
+      "sha256": "0021524a73fb9c7d0ff4a9b9efe359f6479f649202c8d573c59d5e2718996ab9",
+      "bytes": 9554,
+      "imports": [
+        "SingularClosure.CoordinateAverage",
+        "SingularClosure.PhysicalEnstrophy"
+      ]
+    },
+    {
+      "module": "SingularClosure.EnstrophyInequality",
+      "path": "SingularClosure/EnstrophyInequality.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/EnstrophyInequality.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/EnstrophyInequality.lean",
+      "upstream_git_blob_sha": "fdc12e4676295ea43d0e2f8d1f0592e0c545200e",
+      "sha256": "903678f104e8f312e0c7b2ed5f7846109931cea773b8a989df7ab14de2a93c17",
+      "bytes": 4633,
+      "imports": [
+        "SingularClosure.GalerkinEnergy"
+      ]
+    },
+    {
+      "module": "SingularClosure.FiniteHessian",
+      "path": "SingularClosure/FiniteHessian.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/FiniteHessian.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FiniteHessian.lean",
+      "upstream_git_blob_sha": "d8ce599d5e40f4e40a372c179e428c73f2f970a4",
+      "sha256": "1c2cc4c469bf1ccd75c3842ce9d17b72aba34866dd926c10d3ba98446fcd8b7d",
+      "bytes": 5552,
+      "imports": [
+        "SingularClosure.FiniteParseval"
+      ]
+    },
+    {
+      "module": "SingularClosure.FiniteParseval",
+      "path": "SingularClosure/FiniteParseval.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/FiniteParseval.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FiniteParseval.lean",
+      "upstream_git_blob_sha": "d519f88b4af3e354c0af670e19db69bc3ec3724f",
+      "sha256": "63c51f81c008bf435d39b92710860dded6a9e09537a8056aeb425bd5769f5997",
+      "bytes": 10498,
+      "imports": [
+        "SingularClosure.PhysicalParseval",
+        "SingularClosure.GalerkinEnergy"
+      ]
+    },
+    {
+      "module": "SingularClosure.FourierDecay",
+      "path": "SingularClosure/FourierDecay.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/FourierDecay.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierDecay.lean",
+      "upstream_git_blob_sha": "df80f021be4266f97f40045289f42203e1caabc2",
+      "sha256": "8e9ccc5d7f43105c19eb4726dc6de30a97edfdad52945e96551ad20559526c45",
+      "bytes": 8503,
+      "imports": [
+        "SingularClosure.InitialCutoffBounds"
+      ]
+    },
+    {
+      "module": "SingularClosure.FourierIntegral",
+      "path": "SingularClosure/FourierIntegral.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/FourierIntegral.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierIntegral.lean",
+      "upstream_git_blob_sha": "7e5ee2ef060d2fc6530ddc64aac313342caa07ff",
+      "sha256": "8ecd56d311006a4db14bbe41a9d920d1760412f2ead5f3684239b85f0ad5290e",
+      "bytes": 3944,
+      "imports": [
+        "SingularClosure.PhysicalEnstrophy"
+      ]
+    },
+    {
+      "module": "SingularClosure.FourierPressure",
+      "path": "SingularClosure/FourierPressure.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/FourierPressure.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierPressure.lean",
+      "upstream_git_blob_sha": "7d624acfec7e58d3f3719aeb14b9d310c2d5af73",
+      "sha256": "841c510c2133581789aa99c747d1315849abadabb7a2df019648a1ae5cd4b2fb",
+      "bytes": 8589,
+      "imports": [
+        "SingularClosure.FourierIntegral",
+        "SingularClosure.PhysicalProjection",
+        "SingularClosure.GalerkinReality",
+        "SingularClosure.LerayPressure"
+      ]
+    },
+    {
+      "module": "SingularClosure.FourierProduct",
+      "path": "SingularClosure/FourierProduct.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/FourierProduct.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierProduct.lean",
+      "upstream_git_blob_sha": "7a691a0c85bc7c1fb2fb8b76c1a1711b89e44155",
+      "sha256": "3b8ff49814d3496cdd6abb2b77d2ccf222c2d0ba93d0a225fb4bd2704aa1c9a4",
+      "bytes": 11306,
+      "imports": [
+        "SingularClosure.FourierTransport",
+        "SingularClosure.SobolevSmoothRealization",
+        "SingularClosure.SmoothDatumSobolev"
+      ]
+    },
+    {
+      "module": "SingularClosure.FourierSeriesCalculus",
+      "path": "SingularClosure/FourierSeriesCalculus.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/FourierSeriesCalculus.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSeriesCalculus.lean",
+      "upstream_git_blob_sha": "96486c8c4d9f7b3128bc69b74b2127a363acb372",
+      "sha256": "074ce0aa9a379ac5f378b57a0da44d95b54769e53689057337f9262f0579b846",
+      "bytes": 9867,
+      "imports": [
+        "SingularClosure.FourierPressure",
+        "SingularClosure.FourierDecay",
+        "Mathlib.Analysis.Calculus.SmoothSeries",
+        "Mathlib.Analysis.Calculus.ContDiff.FiniteDimension",
+        "Mathlib.MeasureTheory.Integral.DominatedConvergence"
+      ]
+    },
+    {
+      "module": "SingularClosure.FourierTransport",
+      "path": "SingularClosure/FourierTransport.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/FourierTransport.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierTransport.lean",
+      "upstream_git_blob_sha": "20bb72957e2ba90af0bfedf5a951062ba6eb4684",
+      "sha256": "bcfbb39cc4f0c44819a304d329a2506b0392f569ec3e6c30b16af69445af5f46",
+      "bytes": 11490,
+      "imports": [
+        "SingularClosure.SobolevL2Realization",
+        "SingularClosure.PhysicalProjection"
+      ]
+    },
+    {
+      "module": "SingularClosure.Galerkin",
+      "path": "SingularClosure/Galerkin.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/Galerkin.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/Galerkin.lean",
+      "upstream_git_blob_sha": "8ba283677fe19e33333b8169afbc39ba3ead1c54",
+      "sha256": "e1ac5c944bab2667b02ae6c75b46f63605354b8c928c56298aee0e28b043a6fa",
+      "bytes": 6444,
+      "imports": [
+        "SingularClosure.Contracts",
+        "SingularClosure.SixChannels"
+      ]
+    },
+    {
+      "module": "SingularClosure.GalerkinAlgebra",
+      "path": "SingularClosure/GalerkinAlgebra.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/GalerkinAlgebra.lean",
+      "upstream_git_blob_sha": "2db76563813ace44d18df11d0092dd9dd7933ca3",
+      "sha256": "f361277b03794598be46b2c5faaee641d3d0772a4c75eab543fd86aa0ea088a8",
+      "bytes": 12133,
+      "imports": [
+        "SingularClosure.Galerkin"
+      ]
+    },
+    {
+      "module": "SingularClosure.GalerkinEnergy",
+      "path": "SingularClosure/GalerkinEnergy.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/GalerkinEnergy.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/GalerkinEnergy.lean",
+      "upstream_git_blob_sha": "e6501bff17d1fa9aa48166e85a1ddfafc7c221ae",
+      "sha256": "1f0e5b8a62e9d65bd7161efdfe539793157e8edbe94434d0c43b7af4644d5c02",
+      "bytes": 10885,
+      "imports": [
+        "SingularClosure.GalerkinAlgebra"
+      ]
+    },
+    {
+      "module": "SingularClosure.GalerkinEnergyIntegral",
+      "path": "SingularClosure/GalerkinEnergyIntegral.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/GalerkinEnergyIntegral.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/GalerkinEnergyIntegral.lean",
+      "upstream_git_blob_sha": "1710ba30f76683f9bbfe4d9c3e60eb7785259114",
+      "sha256": "49b7de259b4a30dd3975e120ad2766917c6de5b3722bd54eff5100f123d7d8a9",
+      "bytes": 3779,
+      "imports": [
+        "SingularClosure.GalerkinEnergy"
+      ]
+    },
+    {
+      "module": "SingularClosure.GalerkinReality",
+      "path": "SingularClosure/GalerkinReality.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/GalerkinReality.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/GalerkinReality.lean",
+      "upstream_git_blob_sha": "3ae23263fad711565812a58bac4dd4f922fb06f5",
+      "sha256": "48dcb88fd3b82c93a8227432d4e909f4834434b51e24dfd9f2bdcc6f6d03cbe4",
+      "bytes": 2520,
+      "imports": [
+        "SingularClosure.GalerkinEnergy"
+      ]
+    },
+    {
+      "module": "SingularClosure.HilbertChannels",
+      "path": "SingularClosure/HilbertChannels.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/HilbertChannels.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/HilbertChannels.lean",
+      "upstream_git_blob_sha": "92538be4320e594b9b0473d1453a9a2afe9ac5e3",
+      "sha256": "363e4a068a835c2d67c13ad9eed8cf313ea9b402959aab343d40e379238c4f09",
+      "bytes": 12035,
+      "imports": [
+        "SingularClosure.SixChannels",
+        "Mathlib.Analysis.Fourier.AddCircleMulti"
+      ]
+    },
+    {
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "path": "SingularClosure/InfiniteFourierPressure.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/InfiniteFourierPressure.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InfiniteFourierPressure.lean",
+      "upstream_git_blob_sha": "b26b4c4e3277ca063365011c9e6ae6d7fc7aa768",
+      "sha256": "8afcd5d69497cfc1c782b0f9809051938675f61b03b13bc4591ade6761f95a15",
+      "bytes": 13771,
+      "imports": [
+        "SingularClosure.SobolevSmoothRealization",
+        "SingularClosure.PeriodicPoincare",
+        "SingularClosure.FourierProduct"
+      ]
+    },
+    {
+      "module": "SingularClosure.InitialCutoffBounds",
+      "path": "SingularClosure/InitialCutoffBounds.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/InitialCutoffBounds.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InitialCutoffBounds.lean",
+      "upstream_git_blob_sha": "dadf69927b1858ab267cd1d1c5c629abdcf1dd33",
+      "sha256": "f9f7eec7c6f8fa46f45ce4bc5942ff9627fe532e377780d5701f144ffd833c30",
+      "bytes": 9827,
+      "imports": [
+        "SingularClosure.PhysicalBilinear",
+        "SingularClosure.InitialFourier"
+      ]
+    },
+    {
+      "module": "SingularClosure.InitialFourier",
+      "path": "SingularClosure/InitialFourier.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/InitialFourier.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InitialFourier.lean",
+      "upstream_git_blob_sha": "c8f4073b788f8e055502c8e9b8574cbab9355402",
+      "sha256": "acc40e4e4acd8ffa46fdd6ea1a46ac38fa4196bb329cc2856be04c183aaa4b6e",
+      "bytes": 11225,
+      "imports": [
+        "SingularClosure.FourierIntegral",
+        "SingularClosure.PhysicalProjection"
+      ]
+    },
+    {
+      "module": "SingularClosure.LatticeSobolevSummability",
+      "path": "SingularClosure/LatticeSobolevSummability.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/LatticeSobolevSummability.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/LatticeSobolevSummability.lean",
+      "upstream_git_blob_sha": "256ed4881539d214137116a01483050831dbd48f",
+      "sha256": "34634888f8a8601ebb6a5c40f57d2b4a19b0f77295a0c37aeb59fbbd6ea09203",
+      "bytes": 5521,
+      "imports": [
+        "SingularClosure.TorusSobolev",
+        "Mathlib.Algebra.Module.ZLattice.Summable"
+      ]
+    },
+    {
+      "module": "SingularClosure.LerayPressure",
+      "path": "SingularClosure/LerayPressure.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/LerayPressure.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/LerayPressure.lean",
+      "upstream_git_blob_sha": "5bfcf093f2862b7490d7fef01792f5ab1499551b",
+      "sha256": "fb20ecd6a63415920817de69141c2b6ce23ce1967c2d52c4c9415ceaaf744a27",
+      "bytes": 4327,
+      "imports": [
+        "SingularClosure.GalerkinAlgebra"
+      ]
+    },
+    {
+      "module": "SingularClosure.PeriodicCover",
+      "path": "SingularClosure/PeriodicCover.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/PeriodicCover.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PeriodicCover.lean",
+      "upstream_git_blob_sha": "a9425368b5a17e56bb469401b2fbae106e0ad1b1",
+      "sha256": "9d6f0d78c7a043ef7d8a7db1c3d5f647a84492ff6c3843d85527638990f7929f",
+      "bytes": 6432,
+      "imports": [
+        "SingularClosure.PhysicalEnstrophy"
+      ]
+    },
+    {
+      "module": "SingularClosure.PeriodicFourierInjective",
+      "path": "SingularClosure/PeriodicFourierInjective.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/PeriodicFourierInjective.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PeriodicFourierInjective.lean",
+      "upstream_git_blob_sha": "66acbb7c899060320f7aaf1d481ed1d28d41d9e6",
+      "sha256": "2da981fc1a5db3b5b796fa11a687fe6e993a54938d83bc74513e0220c4f80e81",
+      "bytes": 4441,
+      "imports": [
+        "SingularClosure.PeriodicFourierRealization",
+        "Mathlib.MeasureTheory.Measure.OpenPos",
+        "Mathlib.Topology.Separation.Hausdorff"
+      ]
+    },
+    {
+      "module": "SingularClosure.PeriodicFourierRealization",
+      "path": "SingularClosure/PeriodicFourierRealization.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/PeriodicFourierRealization.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PeriodicFourierRealization.lean",
+      "upstream_git_blob_sha": "cb8f865f3531fe9d4239c2bcc074f06d148d9d60",
+      "sha256": "f4118fd9507488f5bf8cd3df2c1f174f245a32928b118eeb967017865edd2871",
+      "bytes": 7948,
+      "imports": [
+        "SingularClosure.HilbertChannels",
+        "SingularClosure.CoordinateAverageOrthogonal",
+        "SingularClosure.FourierIntegral",
+        "SingularClosure.PeriodicCover"
+      ]
+    },
+    {
+      "module": "SingularClosure.PeriodicPoincare",
+      "path": "SingularClosure/PeriodicPoincare.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/PeriodicPoincare.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PeriodicPoincare.lean",
+      "upstream_git_blob_sha": "4a24fc413939247ffcbca5471004f9ff3de953b3",
+      "sha256": "f296d6b876aee593424a7d78c524a7afc42824e9efb8bafa29e90bcaaa7e3202",
+      "bytes": 4751,
+      "imports": [
+        "SingularClosure.PhysicalEnergy",
+        "SingularClosure.EnstrophyInequality"
+      ]
+    },
+    {
+      "module": "SingularClosure.PhysicalBilinear",
+      "path": "SingularClosure/PhysicalBilinear.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/PhysicalBilinear.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PhysicalBilinear.lean",
+      "upstream_git_blob_sha": "97b76bf8e8964a03b3ea13f2099900dd75865cd6",
+      "sha256": "6062c88611b7b2d8885d62272d2be88a95cbec37335a1129a636e84b564b3262",
+      "bytes": 13097,
+      "imports": [
+        "SingularClosure.FiniteHessian",
+        "SingularClosure.EnstrophyInequality"
+      ]
+    },
+    {
+      "module": "SingularClosure.PhysicalChannels",
+      "path": "SingularClosure/PhysicalChannels.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/PhysicalChannels.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PhysicalChannels.lean",
+      "upstream_git_blob_sha": "51143ae4f06ee8bb6f2d0a7886a83a92ee913de3",
+      "sha256": "0d522433e0a511a1c0f41b25947a05ece9780cacbe6809d105fdbb8991dca89f",
+      "bytes": 6166,
+      "imports": [
+        "SingularClosure.Galerkin"
+      ]
+    },
+    {
+      "module": "SingularClosure.PhysicalEnergy",
+      "path": "SingularClosure/PhysicalEnergy.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/PhysicalEnergy.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PhysicalEnergy.lean",
+      "upstream_git_blob_sha": "399eded3a28a452ed4c41591d3fb4201f98edc30",
+      "sha256": "79652e7198f23154071200893e97111c232bd4581f8544c50fbb6f7f0671ae73",
+      "bytes": 2779,
+      "imports": [
+        "SingularClosure.FiniteParseval",
+        "SingularClosure.GalerkinEnergyIntegral"
+      ]
+    },
+    {
+      "module": "SingularClosure.PhysicalEnstrophy",
+      "path": "SingularClosure/PhysicalEnstrophy.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/PhysicalEnstrophy.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PhysicalEnstrophy.lean",
+      "upstream_git_blob_sha": "23c2cf54b457b402952c1f70108807fdf49114f1",
+      "sha256": "720eaee5f18ea728c366880aeb05ced52bd9167369103cb19450991f74e08614",
+      "bytes": 11413,
+      "imports": [
+        "SingularClosure.Admission",
+        "SingularClosure.PhysicalChannels"
+      ]
+    },
+    {
+      "module": "SingularClosure.PhysicalParseval",
+      "path": "SingularClosure/PhysicalParseval.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/PhysicalParseval.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PhysicalParseval.lean",
+      "upstream_git_blob_sha": "4f1d24f4b206c7a988ebcd191a54e789826ea0f5",
+      "sha256": "5785d4892b4d869c19532547247eea3848d670f23b3f93a7c7288233b6cd9338",
+      "bytes": 12070,
+      "imports": [
+        "SingularClosure.FourierIntegral",
+        "SingularClosure.PhysicalProjection"
+      ]
+    },
+    {
+      "module": "SingularClosure.PhysicalProjection",
+      "path": "SingularClosure/PhysicalProjection.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/PhysicalProjection.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PhysicalProjection.lean",
+      "upstream_git_blob_sha": "3e5946e86c86461f479900a33c4b69d3c65e32f0",
+      "sha256": "8ad95865c4dcec61caae216aa8fd09043f2e0e760a128752d00aee5aa82c4287",
+      "bytes": 8251,
+      "imports": [
+        "SingularClosure.PhysicalChannels"
+      ]
+    },
+    {
+      "module": "SingularClosure.SixChannels",
+      "path": "SingularClosure/SixChannels.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/SixChannels.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SixChannels.lean",
+      "upstream_git_blob_sha": "d39d32cba53e57ab7a8bd458eff1725d1a810e6f",
+      "sha256": "1c7f53956d9a766a3c8e4e781aa850a26351761ef0086c7ffd10047762854eab",
+      "bytes": 5991,
+      "imports": [
+        "Mathlib"
+      ]
+    },
+    {
+      "module": "SingularClosure.SmoothDatumSobolev",
+      "path": "SingularClosure/SmoothDatumSobolev.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/SmoothDatumSobolev.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SmoothDatumSobolev.lean",
+      "upstream_git_blob_sha": "c8e9c99280050ab80558cc2d05c491f5f9e400b9",
+      "sha256": "533948ef73136fc1fe995e073063860044bd3e4d63081f2ba0c49383c51e4466",
+      "bytes": 7380,
+      "imports": [
+        "SingularClosure.FourierDecay",
+        "SingularClosure.LatticeSobolevSummability"
+      ]
+    },
+    {
+      "module": "SingularClosure.SobolevL2Realization",
+      "path": "SingularClosure/SobolevL2Realization.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/SobolevL2Realization.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevL2Realization.lean",
+      "upstream_git_blob_sha": "9d02e54557b68b934e877823242801a8a6c3e514",
+      "sha256": "e6d03d9d4fb08d7f1e5fb0ba38b64c309c62b8656c67b8d66c9ba8ffee2f6b69",
+      "bytes": 7522,
+      "imports": [
+        "SingularClosure.HilbertChannels",
+        "SingularClosure.TorusSobolev"
+      ]
+    },
+    {
+      "module": "SingularClosure.SobolevSmoothRealization",
+      "path": "SingularClosure/SobolevSmoothRealization.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevSmoothRealization.lean",
+      "upstream_git_blob_sha": "197414ab411a8c65a82b936e00e77322c33bf8a1",
+      "sha256": "9cc5097590bede10a43dcb711b869cd2c65ad955cf1636bc41ca5f4f29bf6ead",
+      "bytes": 12785,
+      "imports": [
+        "SingularClosure.FourierSeriesCalculus",
+        "SingularClosure.LatticeSobolevSummability"
+      ]
+    },
+    {
+      "module": "SingularClosure.TorusSobolev",
+      "path": "SingularClosure/TorusSobolev.lean",
+      "package_relative_path": "NativeSources/methlib/SingularClosure/TorusSobolev.lean",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/TorusSobolev.lean",
+      "upstream_git_blob_sha": "694c3996939724b61bd096c4dbf7967fe61e33ac",
+      "sha256": "7e30008b592ff6124d10d0e6306e96f3528395bcee13fd11df3d1a6497834389",
+      "bytes": 22413,
+      "imports": [
+        "SingularClosure.GalerkinEnergy",
+        "SingularClosure.LerayPressure",
+        "Mathlib.Analysis.InnerProductSpace.l2Space",
+        "Mathlib.Analysis.Normed.Operator.Compact.FiniteDimension"
+      ]
+    }
+  ],
+  "provenance_files": [
+    {
+      "path": "upstream/lakefile.toml",
+      "package_relative_path": "NativeSources/methlib/upstream/lakefile.toml",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/lakefile.toml",
+      "upstream_git_blob_sha": "c1bdfa5969bdad82a3c1053ee6376b4c442347a4",
+      "sha256": "d4a4061cf9e1c3a049cac853d66e03e3a651440d3736ac6a149953233b10c3eb",
+      "bytes": 347
+    },
+    {
+      "path": "upstream/lake-manifest.json",
+      "package_relative_path": "NativeSources/methlib/upstream/lake-manifest.json",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/lake-manifest.json",
+      "upstream_git_blob_sha": "5f6664136213061c7fba9bcbaddff77f8039629f",
+      "sha256": "adcdf38e0e6317c5e0deca9a62706acf9f7a4cacbb704399a80a4e35fdceeece",
+      "bytes": 3575
+    },
+    {
+      "path": "upstream/lean-toolchain",
+      "package_relative_path": "NativeSources/methlib/upstream/lean-toolchain",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/lean-toolchain",
+      "upstream_git_blob_sha": "025e59548e48cf71f2744154e2890beefe30a258",
+      "sha256": "302cd63c54178885b89e669f33b38f12f4dd7ae7e5cac537b3203e3768d8fb2b",
+      "bytes": 25
+    },
+    {
+      "path": "third_party/leray-hopf-LICENSE",
+      "package_relative_path": "NativeSources/methlib/third_party/leray-hopf-LICENSE",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/third_party/leray-hopf-LICENSE",
+      "upstream_git_blob_sha": "7e835b2fa9088746d47a7734fff82c4da14a40a6",
+      "sha256": "9818ec66553209eebf329d4bf4bc6c992e1ac340bd3314c25ee478b8ce2a7bac",
+      "bytes": 11360
+    }
+  ],
+  "certification": "Matching external compilation and named axiom audits are recorded by the containing package; source copying alone confers no proof promotion.",
+  "scope": "Original SingularClosure names and bodies. No substitution of Fefferman_B_0_adjust for the frozen arbitrary-mean target. No AX6Statement inhabitant or FourierHodgeLaws inhabitant is supplied.",
+  "license_status": "No root Methlib license file was present in the complete pinned repository tree. Original source notices and package third_party/leray-hopf-LICENSE are preserved."
+}

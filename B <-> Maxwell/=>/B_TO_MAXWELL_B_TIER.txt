@@ -1,0 +1,307 @@
+B_TO_MAXWELL_B_TIER
+==================
+
+MODE = B_TIER_DERIVATION
+DIRECTION = FeffermanB -> MaxwellB
+MATHEMATICAL_STATUS = B_TIER
+RESTRUCTURED_LEAN_SOURCE_STATUS = A_TIER_FOR_EXACT_CONDITIONAL_ENDPOINTS
+MATCHING_LAYOUT_EXTERNAL_COMPILER_AND_AXIOM_AUDIT = PASS_STANDARD_ONLY
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+
+THEOREM:
+
+  !  forall nu>0, forall c>0,
+       FeffermanB(nu) -> MaxwellB(nu,c).
+
+LOGICAL_SCOPE:
+  The theorem transfers an assumed global NSE existence statement to the
+  specified constrained-Maxwell existence statement. It does not supply
+  either existence premise independently.
+
+1. EXACT OBJECTS
+---------------
+
+V=EuclideanSpace R (Fin 3), Q=[0,1]^3, S=[0,infinity) x V.
+Volume is standard Euclidean Lebesgue measure, vol(Q)=1, and
+<f>=integral_Q f. Spatial periodicity has period one in each coordinate.
+Joint smoothness is exactly ContDiffOn R infinity on S. The time derivative
+at zero is derivWithin on [0,infinity), not a two-sided derivative.
+
+Data(a): a is smooth, spatially periodic, and div a=0.
+MagneticData(B0): Data(B0) and <B0>=0.
+
+The frozen inverse Laplacian is the actual cosine-integral operator
+
+  Lf(x)=sum'_k lambda(k) integral_Q cos(2*pi*k.(x-y)) f(y) dy,
+  lambda(0)=0,
+  lambda(k)=1/(4*pi^2*|k|^2) for k!=0.
+
+Scalar/vector instances are scalarL/vectorL, with the actual real Bochner
+integral for the vector case. Define
+
+  KB=curl(LB),
+  U_m[B]=m+KB,
+  G[B]=B cross U_m[B]+nu curl B,
+  V[B]=-curl G[B],
+  Q[B]=div G[B],
+  DG[B](b)=b cross U_m[B]+B cross Kb+nu curl b,
+  J[B]=c^2 curl B-DG[B](V[B]).
+
+FeffermanB(nu) states that every Data(a) has a globally defined solution
+(u,p), jointly smooth on S and periodic in space, satisfying
+
+  div u=0,
+  u_t+(u.grad)u+grad p=nu Delta u,
+  u(0)=a.
+
+The pressure p is spatially periodic. The mean of a is unrestricted.
+
+MaxwellB(nu,c) states that every m in V and every MagneticData(B0) have
+jointly smooth spatially periodic B,E,rho,J on S, with B(0)=B0, <B(t)>=0,
+and
+
+  div B=0,     B_t+curl E=0,
+  div E=rho,   E_t-c^2 curl B=-J,
+
+together with E=G[B], rho=Q[B], and J=J[B]. These constitutive equations
+are part of the exact target.
+
+2. SHARED FOURIER/HODGE RESULTS
+------------------------------
+
+Reference: ../FOURIER_HODGE_COMPOSITION_B_TIER.txt, C01-C12.
+
+For every smooth periodic field f, the shared derivation establishes
+
+  -Delta Lf=f-<f>,
+  partial_j Lf=L(partial_j f),
+  <Lf>=0,
+  K(curl F)=F-<F>+grad L(div F).
+
+The actual cosine definition is identified with its complex Fourier
+multiplier by
+
+  integral_Q cos(2*pi*k.(x-y)) f(y) dy
+    = Re(exp(2*pi*i*k.x) fhat(k)).
+
+Polynomial coefficient decay and rank-three lattice summability justify
+every infinite sum and derivative interchange. The full integer lattice
+contains both k and -k; no additional factor two enters the definition.
+
+Consequences for admissible fields:
+
+  U_<a>[curl a]=a,                                    (H1)
+  curl(U_m[B])=B,  div(U_m[B])=0,  <U_m[B]>=m.        (H2)
+
+The shared parameter theorem also establishes: if F is jointly smooth on
+S and spatially periodic, then (t,x)->L(F(t,.))(x) is jointly smooth on S
+and D_t L(F(t))=L(D_t F(t)). Hence
+
+  D_t K(F(t))=K(D_t F(t)).                            (TC)
+
+This follows from compact-time uniform Fourier bounds, interior series
+differentiation, the Mathlib derivative-extension endpoint on the closure
+of (0,infinity) x V, and finite-order smoothness induction. No analyticity,
+negative-time extension, or uniform infinite-time estimate is assumed.
+
+3. F01: RECONSTRUCT THE INITIAL VELOCITY
+--------------------------------------
+
+Assume FeffermanB(nu). Fix c>0, arbitrary m, and MagneticData(B0). Put
+
+  a=U_m[B0]=m+KB0.
+
+Spatial smoothness, periodicity, and H2 give
+
+  Data(a),  curl a=B0,  <a>=m.
+
+Apply the assumed FeffermanB proposition to a. Obtain an NSSolution (u,p)
+with u(0)=a. The choice of a uses the independent mean m; no mean-zero
+restriction is imposed on the reconstructed velocity datum.
+
+4. F02: VORTICITY PATH AND INITIAL CONDITION
+------------------------------------------
+
+Set B(t)=curl(u(t)). Actual spatial differentiation preserves the joint
+smoothness on S and spatial periodicity. Equality of mixed partials gives
+div(curl u)=0. Integration of periodic coordinate derivatives gives
+<curl u>=0. Thus B is a MagneticPath:
+
+  B jointly smooth on S,
+  B(t) periodic,
+  div B(t)=0,
+  <B(t)>=0.
+
+At t=0,
+
+  B(0)=curl(u(0))=curl a=B0.
+
+All assertions include the time boundary because the inherited spatial
+derivative fields are smooth within S.
+
+5. F03: CONSERVATION OF THE HARMONIC VELOCITY MODE
+------------------------------------------------
+
+For each component i,
+
+  integral_Q (u.grad)u_i
+    =sum_j integral_Q [partial_j(u_j*u_i)-u_i*partial_j u_j]
+    =-integral_Q u_i*div u
+    =0.
+
+Opposite boundary faces cancel in every total derivative. Likewise the
+means of grad p and Delta u vanish, using periodicity of p and u. Joint
+smoothness on compact time slabs justifies differentiation under the cube
+integral, including the right derivative at zero. Integrating the NSE gives
+
+  D_t<u(t)>=0.
+
+The fundamental theorem on every compact interval [0,T] therefore yields
+
+  <u(t)>=<u(0)>=<a>=m  for every t>=0.
+
+Each u(t) satisfies Data, so H1 gives the actual reconstruction
+
+  u(t)=U_m[curl u(t)]=U_m[B(t)].                       (R)
+
+6. F04: FARADAY FROM THE NSE
+---------------------------
+
+Write e=|u|^2/2. The pointwise Lamb identity and curl-curl identity give
+
+  (u.grad)u=B cross u+grad e,
+  curl B=grad div u-Delta u=-Delta u.
+
+Substitution in the NSE, followed by (R), gives
+
+  u_t+G[B]+grad(p+e)=0.
+
+Spatial curl commutes with the actual within time derivative; the input
+mixed derivatives commute in the positive-time interior and extend
+continuously to zero. Since curl grad=0,
+
+  B_t+curl G[B]=0,
+  B_t=V[B].                                          (F)
+
+Set E(t)=G[B(t)]. Then (F) is exactly B_t+curl E=0.
+
+7. F05: GAUSS AND AMPERE WITH THE FROZEN CURRENT
+---------------------------------------------
+
+Define
+
+  rho(t)=Q[B(t)]=div G[B(t)],
+  J(t)=c^2 curl B(t)-DG[B(t)](V[B(t)]).
+
+The electric Gauss law div E=rho holds by definition. The magnetic Gauss
+law was established in F02.
+
+From (R) and (TC),
+
+  u_t=K(B_t).
+
+The product rule and commutation with spatial curl therefore give
+
+  E_t
+    =B_t cross u+B cross u_t+nu curl B_t
+    =B_t cross U_m[B]+B cross K(B_t)+nu curl B_t
+    =DG[B](B_t)
+    =DG[B](V[B]),
+
+using (F). Rearrangement yields
+
+  E_t-c^2 curl B=-J.
+
+Thus Ampere uses exactly the prescribed current; no independent source
+field is inserted into the Maxwell existence statement.
+
+8. F06: CANONICAL REGULARITY AND PERIODICITY
+------------------------------------------
+
+The parameter theorem gives smooth U_m[B] on S. Products and actual
+spatial derivatives give smooth E=G[B], rho=div G[B], and V=-curl G[B].
+Apply the same parameter theorem to the smooth periodic trajectory V;
+then K(V) is smooth. The explicit formula
+
+  DG[B](V)=V cross U_m[B]+B cross K(V)+nu curl V
+
+shows joint smoothness of J. Integer Fourier characters make L and K
+periodic in x, and products and spatial derivatives preserve periodicity.
+All required fields are therefore smooth and periodic through t=0.
+
+This regularity calculation uses neither a global uniform time bound nor
+analyticity. It is reconstruction of a supplied NSE solution, not a new
+global evolution argument.
+
+9. F07: EXISTENTIAL AND UNIVERSAL ASSEMBLY
+----------------------------------------
+
+For the arbitrary pair (m,B0), the fields constructed above satisfy every
+component of MaxwellSolution(nu,c,m,B0): regularity, periodicity, magnetic
+mean zero, both Gauss laws, Faraday, Ampere, all constitutive identities,
+and B(0)=B0. Hence MaxwellB(nu,c).
+
+Since nu>0 and c>0 were arbitrary,
+
+  !  forall nu>0, forall c>0,
+       FeffermanB(nu) -> MaxwellB(nu,c).
+
+10. LEAN ENDPOINTS AND CERTIFICATION BOUNDARY
+--------------------------------------------
+
+Active directional source:
+  NSEMaxwellForward.lean
+
+Base conditional endpoint:
+  NSEMaxwell.Bridge.feffermanB_implies_maxwellB_of_periodicAnalyticLaws
+  (laws : PeriodicAnalyticLaws) (nu c : R) :
+    FeffermanB nu -> MaxwellB nu c.
+
+Reduced directional source:
+  NSEMaxwellForward/Reduced.lean
+
+Reduced conditional endpoint:
+  NSEMaxwell.Bridge.feffermanB_implies_maxwellB_of_fourierHodgeLaws
+  (laws : FourierHodgeLaws) (nu c : R) :
+    FeffermanB nu -> MaxwellB nu c.
+
+The actual construction proofs retain their declaration names:
+  momentum_zero_of_ns,
+  maxwell_of_faraday,
+  faraday_of_ns,
+  maxwell_of_ns.
+
+The B-tier analytic bodies are recorded in the shared derivation. Their
+Lean realization is not supplied by source relocation. Both exact
+conditional forward endpoints passed matching external cached native Linux
+Lean 4.34.0-rc1 compilation and named theorem-level axiom audits:
+
+  AUDITED_SOURCE_COMMIT = be8376a08573a7789e36b68c2bc48178aa6f53c3
+  EXTERNAL_RUN = 43345557147
+  ARTIFACT = 14001701854
+  NAMED_AUDIT_RESULTS = 174/174 PASS_STANDARD_ONLY
+  ACTIVE_LEAN_SOURCE_HASH_MATCHES = 30/30
+  EVIDENCE_DIRECTORY = ../../Auxillary/evidence/linux-43345557147
+
+The resulting A_TIER status applies to the implications with their explicit
+PeriodicAnalyticLaws or FourierHodgeLaws parameters. It does not supply an
+unconditional Lean inhabitant of FourierHodgeLaws.
+
+Only propext, Classical.choice, and Quot.sound are approved foundational
+axioms. A successful audit leaves explicit FourierHodgeLaws hypotheses
+explicit; it does not construct their inhabitant.
+
+DEPENDENCY_INDEX:
+  F01: shared C01-C07; M01,M02,M05,M07; T01-T05.
+  F02: concrete spacetime calculus, div curl, periodic integration.
+  F03: actual cube-mean differentiation and periodic NSE integration.
+  F04: concrete Lamb/curl-curl and mixed-derivative calculus.
+  F05: shared C08-C09; M06,M08,M09,M10; actual product/curl rules.
+  F06: shared C09-C10; the same parameter-smoothness endpoints.
+  F07: the frozen MaxwellSolution constructor and universal quantifiers.
+
+Shared source signatures and copied endpoints are indexed in the
+Fefferman_adapter directory. This directional TXT changes no frozen
+definition, theorem hypothesis, source pin, or Maxwell constitutive law.
+
+END OF FORWARD B-TIER DERIVATION

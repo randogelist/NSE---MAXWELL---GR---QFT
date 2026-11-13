@@ -1,0 +1,178 @@
+FEFFERMAN_B_MAXWELL_EQUIVALENCE_A_TIER
+====================================
+
+CURRENT_SOURCE_STATUS = A_TIER_FOR_EXACT_CONDITIONAL_DIRECTIONS_AND_ROOT
+MATCHING_EXTERNAL_COMPILER_AUDIT = PASS_STANDARD_ONLY
+FORMAL_STATUS = CONDITIONAL_FORMAL_CLOSURE
+PRIOR_CONDITIONAL_ROOT = A_TIER_AT_ITS_RECORDED_SOURCE_COMMIT
+UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+AUXILLARY_LAYOUT_VALIDATION = PASS_CACHED_NATIVE_LINUX_BUILD_AND174_FRESH_AUDITS
+
+EXACT ROOT
+----------
+NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED :
+  NSEMaxwell.Bridge.FourierHodgeLaws ->
+  NSEMaxwell.Classical.ExactEquivalence
+
+ExactEquivalence = forall nu>0, forall c>0,
+  FeffermanB(nu) iff MaxwellB(nu,c).
+
+The concrete definition remains in
+  ../Fefferman_adapter/NSEMaxwell/Classical.lean.
+Its bytes are unchanged from the prior audited layout.
+
+DIRECTIONAL ENDPOINTS
+--------------------
+NSEMaxwell.Bridge.feffermanB_implies_maxwellB_of_periodicAnalyticLaws
+NSEMaxwell.Bridge.maxwellB_implies_feffermanB_of_periodicAnalyticLaws
+NSEMaxwell.Bridge.feffermanB_implies_maxwellB_of_fourierHodgeLaws
+NSEMaxwell.Bridge.maxwellB_implies_feffermanB_of_fourierHodgeLaws
+
+The first two preserve the existing iff branch proof bodies. The reduced
+versions compose those directions with laws.toPeriodicAnalyticLaws. Every
+analytic-law hypothesis remains explicit.
+
+PHYSICAL SOURCE MAP
+-------------------
+../Fefferman_adapter/NSEMaxwell/AnalyticContracts.lean
+  Shared concrete objects, assumptions, and data reconstruction helpers.
+=>/NSEMaxwellForward.lean
+  momentum_zero_of_ns, maxwell_of_faraday, faraday_of_ns, maxwell_of_ns,
+  and the forward existence implication.
+<=/NSEMaxwellReverse.lean
+  canonical momentum split/factorization/cancellation, ns_of_maxwell,
+  and the reverse existence implication.
+=>/NSEMaxwellForward/Reduced.lean
+<=/NSEMaxwellReverse/Reduced.lean
+  The respective four-Hodge-field implication wrappers.
+../Fefferman_adapter/NSEMaxwell/AnalyticBridge.lean
+  Compatibility assembly of the two directions.
+
+PRESERVED SCOPE
+---------------
+Unforced three-dimensional unit-periodic fields; arbitrary velocity mean;
+periodic pressure; joint ContDiffOn R infinity through t=0; actual cube
+integrals and derivatives; exact cosine-integral reconstruction; constrained
+Maxwell electric field, charge and current.
+
+The exact Fefferman-B proposition is defined in Lean. No standalone proof of
+FeffermanB(nu) is asserted by its definition or by the conditional equivalence.
+
+REMAINING FORMAL PREMISE
+-----------------------
+FourierHodgeLaws consists of:
+  reconstruct_velocity
+  reconstruct_curl
+  canonical_smoothness
+  electric_hodge
+
+The complete mathematical B-tier derivation is
+  FOURIER_HODGE_COMPOSITION_B_TIER.txt.
+No target-native Lean inhabitant is supplied. The copied endpoint sources
+in ../Fefferman_adapter/Endpoints remain references pending integration.
+
+EXTERNAL VALIDATION CONTRACT
+----------------------------
+Compiler: native Linux Lean 4.34.0-rc1, Ubuntu 24.04.
+Mathlib: de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
+Registered named audit targets: 226 (including the native Maxwell endpoint).
+Allowed axioms: propext, Classical.choice, Quot.sound.
+
+The active build explicitly includes both reduced directional modules.
+Compiler, dependency and project caches are preserved. Exact verified legacy
+cache keys permit reuse across the source-layout change. Normal Lake traces
+validate reuse; the named theorem audit is fresh.
+
+PRIOR EVIDENCE
+--------------
+Native Linux run 43336709607, source d241f2b700be66ab447cb1650770271e1b364b8a:
+170/170 named audits passed; original proof source and artifact hashes remain
+recorded in ../Auxillary/evidence/linux-43336709607/.
+Those artifacts retain their original bytes and original source-layout paths.
+They are historical evidence. A matching new-layout certificate is recorded below.
+
+PROMOTION
+---------
+Matching successful external compilation and named theorem-level axiom audit
+are necessary for the current source layout. Audit success does not discharge
+FourierHodgeLaws. CONDITIONAL_FORMAL_CLOSURE applies only to the exact audited
+implication. UNCONDITIONAL_CLOSURE requires the remaining H inhabitant and all
+other analytic/certificate/semantic premises to be discharged.
+
+MATCHING REORGANIZED-LAYOUT CERTIFICATE
+--------------------------------------
+Source commit: be8376a08573a7789e36b68c2bc48178aa6f53c3
+Native Linux run: 43345557147
+Artifact: 14001701854
+Artifact SHA256: d33c336a8cef9758cdbf87f5b96ed9ad2dd6e5fdad84caf231b7b13e677b36ca
+Source-manifest SHA256: 60017409175d8b7570f39e8e0890ca38b76f99cddde5cde4db958233db464d0f
+Directory: ../Auxillary/evidence/linux-43345557147/
+Build: PASS
+Named theorem audits: 174/174 PASS_STANDARD_ONLY
+Project declarations: 170
+Registered Mathlib declarations: 4
+Matching Lean source inputs: 30/30
+Preserved original artifact files: 65
+
+All four directional endpoints and the exact reduced root depend only on
+propext, Classical.choice and Quot.sound. The certified type retains its
+PeriodicAnalyticLaws or FourierHodgeLaws argument. No Hodge inhabitant is
+supplied; unconditional Lean closure is not established.
+
+Compiler, dependency and project cache restorations succeeded. The exact
+verified predecessor cache keys supplied the dependency/project migration;
+normal pinned-revision checks and Lake traces validated reuse.
+
+The run.cmd Git blob uses LF; its .gitattributes checkout uses CRLF. That
+normalization matches the recorded run manifest. All 30 Lean source hashes
+match directly, without normalization.
+
+AUXILLARY RELOCATION
+--------------------
+External runner: ../Auxillary/run.sh
+Status registry: ../Auxillary/formalization-status.json
+All 30 Lean inputs remain byte-identical to the certified source above.
+Original evidence artifacts retain their bytes and embedded historical paths.
+The relocated runner paths passed cached native Linux run43348914489.
+Source commit: b02425040a217a94855cfa52934e303f12fe80de
+Evidence directory: ../Auxillary/evidence/linux-43348914489/
+Build: PASS; fresh named audits: 174/174 PASS_STANDARD_ONLY.
+Matching Lean input hashes: 30/30; verified recorded source inputs: 289.
+Compiler/dependency/project caches: exact hits.
+Lake transitive trace freshness exit: 0; executed module rebuilds: 0.
+Build strategy: LAKE_TRANSITIVE_TRACE_VERIFIED_WARM_REUSE.
+Original artifact files: 38.
+Artifact SHA256: 4d1bfce16808246fe1190bea523358dc0d150efafa0c7b59f338670b85df86df
+Source-manifest SHA256: 1d230d04d0796b21b806b552b4bb9ca14debd25c00e65a75ef670cdf0477d6cd
+Auxillary/run.cmd uses the expected CRLF checkout normalization.
+The exact conditional theorem and unresolved Hodge premise are unchanged.
+
+NATIVE MAXWELL EXTRACTION
+-------------------------
+Concrete Maxwell definitions: ../Maxwell_Endpoint/MaxwellEndpoint/System.lean.
+Shared geometry: ../Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean.
+Constitutive operators: ../Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean.
+All 51 original declaration bodies and both directional proof bodies are preserved.
+Current integrated/isolated validation: PASS_CACHED_NATIVE_LINUX.
+Historical certificates above retain their original source scope.
+
+Native extraction certificate: run43351199370.
+Source: 7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6.
+Integrated named audits: 226/226 PASS_STANDARD_ONLY.
+Standalone native audits: 52/52 PASS_STANDARD_ONLY.
+Matching Lean input hashes: integrated37/37; standalone7/7.
+Evidence: ../Auxillary/evidence/linux-43351199370/.
+The exact conditional root and all four directional endpoints remain A_TIER.
+FourierHodgeLaws remains explicit; unconditional equivalence remains unproved.
+
+ADAPTER DIRECTORY RENAME CERTIFICATE
+--------------------------------------
+Current adapter directory: Fefferman_adapter.
+Source: 8fd783b4d977fdb1a31cf4716023148ddfa26af9.
+Run: 43353327242. Integrated audits226/226; isolated audits52/52.
+Matching Lean hashes: integrated37/37; standalone7/7.
+Both scopes: LAKE_TRANSITIVE_TRACE_VERIFIED_WARM_REUSE; zero module rebuilds.
+All35 proof-module file bytes, declarations and premises preserved.
+Evidence: ../Auxillary/evidence/linux-43353327242/.
+Previous certificates above retain their original source-commit scope.

@@ -1,0 +1,879 @@
+FOURIER_HODGE_COMPOSITION_B_TIER
+================================
+
+MODE = B_TIER_DERIVATION
+DATE = 2026-11-13
+THEOREM = FOURIER_HODGE_COMPOSITION
+MATHEMATICAL_STATUS = B_TIER
+NEW_LEAN_PROOF_STATUS = NOT_FORMALIZED
+NEW_A_TIER_PROMOTION = NONE
+HODGE_LEAN_INTEGRATION = DEFERRED
+DIRECTIONAL_SOURCE_LAYOUT = SEPARATED_IN_REQUESTED_FOLDERS
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+
+TARGET_REPOSITORY = randogelist/NSE---MAXWELL---GR---QFT
+TARGET_BRANCH = codex/fefferman-b-maxwell
+FROZEN_TARGET_COMMIT = 63f53e4c31d09cd1325f032d7456d2d2eb4386b3
+TARGET_LEAN = leanprover/lean4:v4.34.0-rc1
+TARGET_MATHLIB = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+METHLIB_REFERENCE = e9cf90726b8544a268469ebc8fa6634e9c713e07
+METHLIB_SOURCE_LEAN = leanprover/lean4:v4.33.0
+METHLIB_SOURCE_MATHLIB = db584cd6d46c92f209a44c0f1c829460d327499d
+
+ROOT_CONCLUSION:
+
+  !  forall nu > 0, forall c > 0,
+       FeffermanB(nu) <-> MaxwellB(nu,c).
+
+INTERMEDIATE_CONCLUSION:
+
+  !  NSEMaxwell.Bridge.FourierHodgeLaws.
+
+The exclamation mark denotes a mathematical B-tier derivation recorded in
+this document. Neither conclusion receives an A-tier promotion here. The
+existing externally audited Lean theorem proves FourierHodgeLaws ->
+ExactEquivalence; a Lean inhabitant of FourierHodgeLaws remains to be built.
+
+
+0. EXACT SCOPE AND DEFINITIONS
+-----------------------------
+
+Let V = EuclideanSpace R (Fin 3), Q = [0,1]^3, and
+S = [0,infinity) x V. Volume is the standard Euclidean Lebesgue measure.
+The volume of Q is one. Write <f> = integral_Q f.
+
+All spatially periodic fields have period one in each coordinate. All spatial
+derivatives are actual Frechet derivatives in the standard coordinate frame.
+Time derivatives at t=0 are derivatives within [0,infinity). Joint smoothness
+means exactly ContDiffOn R infinity on S. No analytic regularity, uniform
+bound over the entire time half-line, or smooth negative-time continuation
+is assumed. Total functions outside S may have arbitrary values.
+
+Data(a) means that a:V->V is smooth, spatially periodic, and div a=0.
+MagneticData(B) means Data(B) and <B>=0. There is no condition <a>=0.
+MagneticPath(B) means joint smoothness on S, and, for every t>=0,
+spatial periodicity, div B(t)=0, and <B(t)>=0.
+
+For k in Z^3, put |k|^2=sum_j k_j^2 and define
+
+  lambda(0)=0,
+  lambda(k)=1/(4*pi^2*|k|^2)                         (k != 0),
+
+  Lf(x)=sum'_k lambda(k)
+          integral_Q cos(2*pi*k.(x-y)) f(y) dy.
+
+For real scalar f this is precisely Classical.scalarL. Componentwise for
+real vector f it is precisely Classical.vectorL. The vector definition uses
+the real Bochner integral and scalar multiplication. These are the frozen
+total definitions; convergence and every identity used below are proved on
+the stated smooth periodic class.
+
+Define the frozen operators
+
+  K B = curl(LB),
+  U_m[B] = m + K B,
+  G_nu,m[B] = B cross U_m[B] + nu curl B,
+  V_nu,m[B] = -curl(G_nu,m[B]),
+  Q_nu,m[B] = div(G_nu,m[B]),
+  h_nu,m[B] = L(Q_nu,m[B]),
+
+  DG_nu,m[B](b)
+    = b cross U_m[B] + B cross Kb + nu curl b,
+
+  J_nu,c,m[B] = c^2 curl B - DG_nu,m[B](V_nu,m[B]),
+
+  p_nu,m[B](x)
+    = h_nu,m[B](x) - |U_m[B](x)|^2/2
+      + <|U_m[B]|^2>/2.
+
+The exact four-field target is
+
+  H1: Data(a) -> U_<a>[curl a] = a.
+
+  H2: MagneticData(B) -> curl(U_m[B]) = B, for every m.
+
+  H3: MagneticPath(B) -> CanonicalSmoothness(nu,c,m,B),
+      for every real nu,c and every m.
+
+      CanonicalSmoothness consists of:
+        joint smoothness of U_m[B(t)] on S;
+        joint smoothness of p_nu,m[B(t)] on S;
+        div(U_m[B(t)])=0 at every t>=0.
+
+  H4: MagneticData(B) ->
+        G_nu,m[B] + grad(h_nu,m[B]) = K(curl(G_nu,m[B])),
+      for every real nu and every m.
+
+These are the literal fields of NSEMaxwell.Bridge.FourierHodgeLaws.
+
+FeffermanB(nu) is the frozen existence statement: every Data(a) admits a
+globally defined jointly smooth spatially periodic velocity u and periodic
+pressure p on S, with u(0)=a, div u=0, and
+
+  u_t + (u.grad)u + grad p = nu Delta u.                (NS)
+
+MaxwellB(nu,c) is the frozen constrained-Maxwell existence statement: for
+every m and MagneticData(B0), jointly smooth spatially periodic fields
+B,E,rho,J exist on S, with B(0)=B0, <B(t)>=0, and
+
+  div B=0,       B_t+curl E=0,
+  div E=rho,     E_t-c^2 curl B=-J,                    (MX)
+
+subject to the exact constitutive identities
+
+  E=G_nu,m[B],  rho=Q_nu,m[B],  J=J_nu,c,m[B].
+
+The theorem is an equivalence of these two existence propositions. It does
+not assert either global existence proposition separately.
+
+
+1. SELECTED PUBLIC ENDPOINTS AND THEIR BOUNDARIES
+-----------------------------------------------
+
+All signatures, file paths, exact source pins, imports, source-byte hashes,
+raw download URLs, and audit statuses are recorded in ../Fefferman_adapter/Endpoints/ENDPOINTS.json.
+
+Mathlib core endpoints:
+
+  M01 UnitAddTorus.mFourierCoeff_eq_integral
+      Torus coefficient = fundamental-domain integral.
+  M02 UnitAddTorus.hasSum_mFourier_series_apply_of_summable
+      Pointwise Fourier inversion under absolute summability.
+  M03 UnitAddTorus.mFourierBasis_repr
+      Hilbert-basis representation agrees with Fourier coefficients.
+  M04 ContinuousMap.toLp_injective
+      Continuous functions are determined by their Lp representatives under
+      the specified full-support measure assumptions.
+  M05 ZLattice.summable_norm_pow_inv
+      Inverse powers are summable above the lattice rank.
+  M06 hasFDerivAt_tsum_of_isPreconnected
+      Differentiate a sum on an open preconnected set under a summable
+      uniform derivative bound and one-point summability.
+  M07 contDiff_tsum
+      Smoothness of a sum from summable bounds on all required derivatives.
+  M08 hasFDerivWithinAt_closure_of_tendsto_fderiv
+      Extend derivatives to the closure of a convex open set from their
+      continuous limits.
+  M09 contDiffOn_succ_iff_hasFDerivWithinAt_of_uniqueDiffOn
+      Finite-order smoothness induction using a continuous derivative field.
+  M10 contDiffOn_infty
+      All finite orders imply the exact order-infinity smoothness predicate.
+
+Methlib source-port candidates, in namespace SingularClosure:
+
+  T01 torusDatumComponent_fourierCoeff
+      Actual Euclidean cube/torus coefficient bridge.
+  T02 datumFourierCoeff_coordinateDerivative
+      Actual spatial derivative gives the Fourier derivative multiplier.
+  T03 FOURIER_POLYNOMIAL_DECAY
+      Arbitrary polynomial coefficient decay from smooth periodic input.
+  T04 scalarFourierSeries_contDiff
+      Smooth spatial synthesis from RapidScalarFourier.
+  T05 scalarFourierSeries_coefficient
+      Coefficient recovery for summable scalar synthesis.
+  T06 datumFourierCoeff_injective_continuous_periodic
+      Continuous periodic vector-field coefficient injectivity.
+
+Four optional endpoints are M11 contDiffOn_of_locally_contDiffOn,
+T07 infiniteTransportPressure_recovery,
+T08 datumFourierCoeff_smoothFourierSynthesis, and
+T09 smoothFourierSynthesis_coordinateDerivative.
+
+M12 UnitAddTorus.mFourierCoeff_toLp is an auxiliary endpoint for the exact
+M03/M04 injectivity chain. T10 summable_torusSobolevWeight_inv_four is a
+reference implementation of the rank-three lattice adapter.
+
+The core selection contains alternative implementations of individual steps;
+it is not an assertion that every selected declaration is logically necessary
+in a minimal proof. The direct route below uses M02 for inversion. M03, M04,
+M12 and T06 supply an alternative coefficient-uniqueness route. The spatial
+identities yield H4 directly; T07 supplies an independently useful pressure
+route after its mean and exact-pressure adapters are discharged.
+
+At the target compiler/pin, M01, M02, M05 and M07 already have retained named
+external theorem-level audits. The remaining selected names have source
+evidence here, but no new matching named audit is claimed. Methlib source
+proofs require transport from Lean 4.33.0 to 4.34.0-rc1 and the current
+definitions. The staged source snapshots are unmodified reference files,
+not a dependency-closed Lean package and not imported target modules.
+
+
+2. C01: CUBE, TORUS, AND COORDINATE MEASURE
+-----------------------------------------
+
+Let f be a smooth spatially periodic scalar component. Unit coordinate
+periodicity implies integer-translation periodicity: substitution at x-e_j
+gives negative unit translations, and induction gives every integer shift.
+Thus f descends to a continuous function on T^3=(R/Z)^3. Continuity follows
+from the quotient topology. Complexify the scalar values when necessary.
+
+The standard coordinate basis of V is orthonormal, so Euclidean Lebesgue
+measure becomes product Lebesgue measure in these coordinates. The coordinate
+linear bijection V -> (Fin 3 -> R) is measure preserving for these measures.
+The default Pi norm is the maximum norm, so no isometry to that norm is used;
+norm equivalence suffices whenever norms occur.
+
+The closed cube [0,1]^3 and the half-open cube (0,1]^3 differ only on finitely
+many coordinate hyperplanes. Each hyperplane is null by Fubini and the nullity
+of real singletons. Hence the integrals below agree on these domains.
+
+Define
+
+  e_k(x)=exp(2*pi*i*k.x),
+  fhat(k)=integral_Q e_{-k}(y) f(y) dy.
+
+The product torus character equals e_k because a product of the coordinate
+exponentials is the exponential of their sum. M01 with fundamental-domain
+base point zero therefore identifies fhat with the Mathlib torus coefficient.
+This proves the mathematical adapter corresponding to T01 for the exact
+frozen aliases, actual volume, and actual cube.
+
+
+3. C02: DERIVATIVE COEFFICIENTS AND RAPID DECAY
+--------------------------------------------
+
+For each coordinate j, integration by parts and Fubini give
+
+  (partial_j f)^hat(k) = 2*pi*i*k_j*fhat(k).             (3.1)
+
+The boundary terms cancel because f and e_{-k} have equal values on opposite
+faces. The integrands are continuous on the compact cube. Differentiating
+the spatial periodicity identity shows that all derivatives of f are also
+periodic. Iteration proves
+
+  (partial^alpha f)^hat(k)=(2*pi*i*k)^alpha*fhat(k).     (3.2)
+
+These are the actual-derivative statements represented by T02.
+
+For each integer q>=0, set
+
+  A_q(f)=integral_Q |(1-Delta)^q f| < infinity.
+
+Equation (3.2), linearity, and the binomial expansion imply
+
+  ((1-Delta)^q f)^hat(k)
+      =(1+4*pi^2*|k|^2)^q*fhat(k).
+
+Taking norms in the integral gives the explicit bound
+
+  |fhat(k)| <= A_q(f)*(1+4*pi^2*|k|^2)^(-q).           (3.3)
+
+This includes k=0. Finiteness of A_q follows from the original smoothness
+hypothesis and compactness; rapid decay is not a new assumption.
+
+T03 provides a reusable coordinate-power alternative. Its decay denominator
+is 1+sum_j(2*pi*|k_j|)^m, with finite constant C_m(f) assembled from L1 norms
+of f and its m-th coordinate derivatives. For a scalar f, apply the source
+vector theorem to the smooth periodic embedding x -> (f(x),0,0) and take
+component zero; its signature requires no divergence-free condition.
+For k!=0, some j satisfies
+|k_j|>=|k|/sqrt(3); hence that endpoint yields
+
+  |fhat(k)| <= C_m(f)*(sqrt(3)/(2*pi))^m*|k|^(-m).
+
+For vector-valued f, apply these estimates to the three components and add
+the component bounds. Both routes prove arbitrary polynomial decay directly
+from Data-level regularity. No all-order Sobolev hypothesis is retained.
+
+
+4. C03: WEIGHTED ABSOLUTE SUMMABILITY
+------------------------------------
+
+For n>=1, the number of lattice points with max_j |k_j|=n is
+
+  (2n+1)^3-(2n-1)^3=24*n^2+2 <= 26*n^2.
+
+Since |k|>=max_j |k_j|, comparison with sum_n n^(2-s) proves
+
+  sum_k (1+|k|)^(-s) < infinity                       (s>3).
+
+M05 is the public formal endpoint for this lattice fact. Its use requires
+the standard embedding of Z^3 as a discrete lattice in V, rank three, and
+separation of the zero term. T10 records the corresponding implementation on
+the Pi coordinate space with its maximum norm; the stated norm comparison
+transports its summability bound to the Euclidean norm.
+
+For every integer r>=0, choose q with 2*q>r+3 in (3.3). Comparison proves
+
+  sum_k (1+|k|)^r*|fhat(k)| < infinity.                (4.1)
+
+Alternatively choose m=r+4 in the T03 bound; for k!=0, |k|>=1, so
+(1+|k|)^r<=2^r*|k|^r and the summand is bounded by a constant times |k|^-4.
+The zero coefficient is a single finite term.
+
+The norm of the real-to-complex phase functional x -> 2*pi*i*k.x is
+2*pi*|k| in Euclidean coordinates. Thus (4.1) supplies the literal
+RapidScalarFourier hypothesis of T04 and the weaker absolute-summability
+hypothesis of T05. If a Pi maximum norm appears in an adapter, finite-
+dimensional norm equivalence changes constants only.
+
+
+5. C04: INVERSION AND COEFFICIENT UNIQUENESS
+-----------------------------------------
+
+The descended torus function is continuous, and (4.1) with r=0 gives absolute
+summability of its Fourier coefficients. M02 and the C01 coefficient adapter
+therefore give, for every x,
+
+  f(x)=sum_k e_k(x)*fhat(k).                            (5.1)
+
+The bound |e_k(x)|=1 also proves uniform absolute convergence on all V.
+
+An alternative equality route uses M12 to identify the continuous torus
+coefficients with those of its L2 representative, then M03 and injectivity
+of the Hilbert-basis representation to obtain equality in L2. Normalized
+Haar measure on the torus has full support; M04 upgrades equality of the
+continuous L2 representatives to pointwise equality. T06 is the corresponding
+source-port implementation for real periodic vector fields. This alternative
+requires no l1 premise merely to infer equality from equal coefficients.
+
+
+6. C05: IDENTIFICATION OF THE EXACT COSINE OPERATOR
+-------------------------------------------------
+
+Suppose f is real-valued. Complex conjugation commutes with its finite
+coefficient integral, giving
+
+  fhat(-k)=conjugate(fhat(k)).                          (6.1)
+
+For every k,x, before any infinite summation,
+
+  integral_Q cos(2*pi*k.(x-y))*f(y) dy
+       = Re(e_k(x)*fhat(k)).                           (6.2)
+
+The multiplier lambda is bounded on the integer lattice: it vanishes at zero
+and is at most 1/(4*pi^2) otherwise. Thus (4.1) proves absolute convergence
+of sum_k lambda(k)*e_k(x)*fhat(k). Continuous linearity of real part gives
+
+  Lf(x)=Re(sum_k lambda(k)*e_k(x)*fhat(k)).             (6.3)
+
+Conjugating the sum and reindexing by k -> -k leaves it unchanged, using
+(6.1), e_{-k}=conjugate(e_k), and lambda(-k)=lambda(k). The complex sum is
+therefore real. After its identification with a real number,
+
+  Lf(x)=sum_k lambda(k)*e_k(x)*fhat(k).                 (6.4)
+
+The frozen sum includes all k in Z^3. A nonzero pair {k,-k} contributes
+2*Re(lambda(k)*e_k*fhat(k)) to both sides. There is no additional factor two.
+
+The argument applies componentwise to the actual vector Bochner integral.
+Consequently vectorL agrees with the real synthesis of the vector sequence
+k -> lambda(k)*fhat(k). This is equality with the frozen definition, rather
+than a replacement of that definition by an abstract inverse operator.
+
+
+7. C06: SMOOTHNESS, POISSON, AND COMMUTATION
+-----------------------------------------
+
+For every spatial multi-index alpha,
+
+  |partial^alpha[lambda(k)*e_k(x)*fhat(k)]|
+    <= lambda(k)*(2*pi*|k|)^|alpha|*|fhat(k)|,
+
+with zero contribution at k=0. Equation (4.1) gives a summable majorant,
+uniformly in x, for every derivative order. The same bound holds for the
+iterated Frechet derivative, up to a fixed finite-dimensional constant.
+M07 yields spatial smoothness. M06, successively applied to the derivative
+series, justifies termwise differentiation of every order. T04 and T09
+provide source-port alternatives to these concrete series calculations.
+
+Uniform absolute convergence on Q permits termwise integration. The product
+of the three one-dimensional integer exponential integrals gives
+
+  integral_Q e_k = 1 if k=0, and 0 otherwise.
+
+Thus character orthogonality proves
+
+  (Lf)^hat(k)=lambda(k)*fhat(k),
+  <Lf>=0.                                              (7.1)
+
+This is T05 at the scalar level and T08 after conjugate-symmetry transport
+at the real-vector level.
+
+Since -Delta e_k=4*pi^2*|k|^2*e_k, termwise differentiation and (5.1) give
+
+  -Delta Lf=f-<f>.                                     (7.2)
+
+For every j, expansions (3.1) and (6.4) have identical differentiated
+coefficients; therefore
+
+  partial_j Lf=L(partial_j f).                          (7.3)
+
+Consequently, with scalar/vector operators distinguished by their codomains,
+
+  div(LF)=L(div F),
+  curl(LF)=L(curl F),
+  grad(Lf)=L(grad f).                                  (7.4)
+
+Linearity follows from linearity of the integrals and addition/scaling of
+absolutely summable series. Every invocation is within the smooth periodic
+class. No linearity claim for arbitrary totalized nonsummable series is used.
+Periodicity follows termwise from the integer characters, or from (6.2).
+
+
+8. C07: GENERAL HODGE IDENTITY; H1 AND H2
+---------------------------------------
+
+For every smooth periodic vector F, equality of mixed partials gives
+div(curl LF)=0. Integrating each coordinate derivative of a periodic field
+over Q gives zero, so <curl LF>=0. Thus
+
+  div(KF)=0,  <KF>=0.
+
+Using (7.2), (7.4), and the concrete curl-curl identity,
+
+  K(curl F)
+    = curl(curl(LF))
+    = grad(div(LF))-Delta(LF)
+    = grad(L(div F))+F-<F>.                            (8.1)
+
+The same calculation yields curl(KF) equal to this expression. Equivalently,
+
+  F=<F>+K(curl F)-grad(L(div F)).                       (8.2)
+
+The harmonic component <F> is present explicitly.
+
+If Data(a), then div a=0 and L0=0, so (8.1) yields
+
+  U_<a>[curl a]=<a>+a-<a>=a.                           (H1)
+
+If MagneticData(B), then div B=0 and <B>=0. Therefore, for every m,
+
+  curl(U_m[B])=curl(m)+curl(KB)=B,                     (H2)
+  div(U_m[B])=0,
+  <U_m[B]>=m.                                         (8.3)
+
+The reconstructed field is smooth and periodic. These conclusions retain
+arbitrary m and impose no velocity mean-zero restriction.
+
+
+9. C08: TIME-DEPENDENT COEFFICIENTS AND UNIFORM DECAY
+--------------------------------------------------
+
+A stronger parameter theorem suffices for H3:
+
+  If F is jointly C-infinity on S and spatially periodic for t>=0, then
+  (t,x) -> L(F(t,.))(x) is jointly C-infinity on S.      (PL)
+
+The scalar and vector statements require neither div F=0 nor <F>=0.
+
+The half-space S has UniqueDiffOn R. Iterating within Frechet derivatives
+of F gives continuous smooth directional jets on S. Restricting spatial
+directions gives ordinary spatial derivatives of the slices; restricting
+the temporal direction gives the actual right time derivatives at zero.
+Write F_r=D_t^r F. The project endpoints directional_smooth,
+spatial_restriction_fderiv, and time_restriction_hasDerivWithinAt implement
+these restrictions for the exact domain.
+
+All spatial derivatives of all F_r are continuous on S. They are periodic:
+differentiate the translation identities at positive time, then pass to
+zero by continuity. Mixed derivatives commute in the positive-time interior
+by Schwarz's theorem and at zero by continuity from that interior. Their
+boundary values are therefore unambiguous within derivatives.
+
+For each scalar component define
+
+  b_r(t,k)=integral_Q e_{-k}(y)*F_r(t,y) dy.
+
+For finite T>0, F_r and F_(r+1) are bounded on [0,T] x Q. The time
+mean-value inequality gives a Lipschitz bound C*|s-t| uniformly in y.
+The character has modulus one. A constant majorant is integrable over Q;
+the existing project endpoint
+
+  NSEMaxwell.DominatedWithin.hasDerivWithinAt_integral_of_dominated
+
+therefore gives, including at zero,
+
+  D_t b_r(t,k)=b_(r+1)(t,k).                           (9.1)
+
+Dominated convergence gives continuity of b_r. This proves all coefficient
+time derivatives by induction. At an arbitrary time t choose T>t, so the
+compact-interval estimates provide the required local bounds.
+
+For r,N>=0 put
+
+  M_(T,r,N)=sup_{[0,T] x Q}|(1-Delta_y)^N F_r(t,y)|.
+
+Compactness and the input jets make M finite. Applying periodic integration
+by parts at every fixed t gives
+
+  (1+4*pi^2*|k|^2)^N*b_r(t,k)
+    = integral_Q e_{-k}(y)*(1-Delta_y)^N F_r(t,y) dy.
+
+Since Q has volume one,
+
+  sup_{0<=t<=T}|b_r(t,k)|
+    <= M_(T,r,N)*(1+4*pi^2*|k|^2)^(-N).                (9.2)
+
+This derives the time-uniform rapid bound from the original MagneticPath-
+level regularity. The constants may depend on T,r,N. No infinite-time
+uniformity or additional rapid-decay premise enters the theorem.
+
+
+10. C09: ALL FOURIER JETS AND THE BOUNDARY t=0
+--------------------------------------------
+
+Define the candidate complex mixed derivatives
+
+  Phi_(r,alpha)(t,x)
+    = sum_k lambda(k)*(2*pi*i*k)^alpha*b_r(t,k)*e_k(x).
+
+At k=0 the summand is zero. For k!=0, (9.2) gives the uniform bound
+
+  C_(T,r,N,alpha)*(1+|k|)^(-2*N-2+|alpha|).
+
+Choose 2*N>|alpha|+1. The decay exponent then exceeds three, so C03/M05
+gives a summable majorant. Every displayed series converges absolutely and
+uniformly on [0,T] x V. In particular every candidate derivative is continuous
+on S. Time localization suffices; the modulus-one characters give global
+uniformity in the spatial variable.
+
+For completeness, these candidates define full multilinear Frechet jets,
+not merely separate partial derivatives. Number the spacetime coordinates
+0,1,2,3, with coordinate 0 temporal. For an ordered tuple
+I=(i_1,...,i_q), let r(I) count its zeros and let alpha(I) count its spatial
+indices. Set
+
+  J_q(z)(v_1,...,v_q)
+    = sum_{I in {0,1,2,3}^q}
+        Phi_(r(I),alpha(I))(z)*product_j (v_j)_(i_j).
+
+For q=0, the canonical identification of zero-linear maps with scalar values
+gives J_0=Phi_(0,0). Finite coordinate expansion bounds the operator norm
+of every Fourier summand of J_q by a finite sum of the summable majorants
+already proved. Hence J_q is a continuous multilinear-map-valued function
+on S for every q.
+
+On each convex open slab (0,T) x V, (9.1) and ordinary character calculus
+differentiate each summand. The derivative bounds and one-point summability
+satisfy M06. Apply M06 successively to the jet series to obtain
+
+  D J_q = curry(J_(q+1)) on O=(0,infinity) x V.         (10.1)
+
+Here currying means that the new derivative direction is placed in the
+first slot. The jets are symmetric because their coordinate coefficients
+depend only on the counts r(I),alpha(I). The order of slot insertion does
+not change the result.
+
+Every J_q and J_(q+1) is continuous on S=closure(O). Consequently J_q is
+continuous within O at every point of closure(O), and (10.1) has the limit
+curry(J_(q+1)(z)) as y tends to z within O. The set O is convex and open.
+Thus every hypothesis of the public endpoint M08 is satisfied, giving
+
+  HasFDerivWithinAt J_q (curry(J_(q+1)(z))) S z
+       for every z in S.                              (10.2)
+
+This proves the full within Frechet derivative at t=0 as well as at positive
+time. No extension theorem or negative-time values are required.
+
+For every natural n prove simultaneously for every q that J_q is C^n on S.
+For n=0 this is the established continuity. For the induction step, use the
+induction hypothesis for J_(q+1), continuous linearity of currying, (10.2),
+UniqueDiffOn(S), and M09. The implication involving n=omega in M09 is
+vacuous for finite n; no analyticity premise is introduced. Finally M10
+gives ContDiffOn R infinity for J_0 on S.
+
+Taking real parts componentwise is continuous linear. C05 identifies the
+real part of J_0 with the exact scalarL/vectorL formula on S. Smoothness
+within S depends only on values on S. This proves (PL), including t=0,
+for the actual total definitions regardless of their negative-time values.
+
+The same argument, or (9.1) applied to k=0 and finite-order induction,
+proves smoothness of t -> <F(t,.)>. Its lift to S has zero spatial jets.
+The proof also establishes D_t L(F(t))=L(D_t F(t)) and the corresponding
+identity for K by differentiating the series and the spatial curl.
+
+
+11. C10: CANONICAL SMOOTHNESS H3
+-------------------------------
+
+Let MagneticPath(B). Apply (PL) to B and set
+
+  A(t,x)=L(B(t,.))(x),
+  u(t,x)=m+curl_x A(t,x).
+
+The trajectory A is jointly smooth. Actual spatial differentiation preserves
+joint smoothness on S, so u is jointly smooth. For every t>=0,
+
+  div u=div(curl A)=0.
+
+This argument uses neither H1, H2, nor H4.
+
+Products, cross products, norm-square polynomials, and actual spatial
+derivatives preserve joint smoothness. Hence
+
+  G=B cross u+nu curl B,
+  Q=div G,
+  e=|u|^2/2
+
+are jointly smooth on S and periodic in x. Apply scalar (PL) to Q to obtain
+joint smoothness of h=LQ. The final paragraph of C09 proves smoothness of
+the actual cube mean <e(t,.)>. Thus
+
+  p(t,x)=h(t,x)-e(t,x)+<e(t,.)>
+
+is jointly smooth on S. This is precisely the frozen canonical pressure:
+linearity of the finite integral gives <e>=<|u|^2>/2. Equation (7.1) gives
+<h>=0 and therefore <p>=0, fixing the scalar gauge exactly.
+
+All three fields of CanonicalSmoothness are now proved, for every real
+nu,c and every m. The parameter c does not occur in these three fields.
+
+  MagneticPath(B) -> CanonicalSmoothness(nu,c,m,B).    (H3)
+
+The existing canonical-field calculus then gives smooth E,rho,J. Directly,
+V=-curl G is smooth periodic; (PL) makes K(V) smooth; the explicit polynomial
+and spatial derivative formula for DG[B](V) therefore makes J smooth. All
+spatial periodicity follows from C06 and differentiation of periodic fields.
+
+
+12. C11: ELECTRIC HODGE H4 AND EXACT PRESSURE
+-------------------------------------------
+
+Let MagneticData(B), m arbitrary, and u=U_m[B]. By H2 and C07,
+curl u=B and div u=0. The concrete Lamb identity is
+
+  B cross u=(u.grad)u-grad(|u|^2/2).
+
+For every component i, periodic integration by parts gives
+
+  integral_Q (u.grad)u_i
+    = sum_j integral_Q [partial_j(u_j*u_i)-u_i*partial_j u_j]
+    = -integral_Q u_i*div u
+    = 0.
+
+The integrated total derivatives vanish by equality of opposite face values.
+Likewise the mean of every periodic gradient and curl vanishes. Therefore
+
+  <G>=<(u.grad)u-grad(|u|^2/2)+nu curl B>=0.           (12.1)
+
+Apply (8.1) to G. Since h=L(div G), (12.1) gives
+
+  G+grad h=K(curl G).                                 (H4)
+
+The sign is plus. The mean-zero conclusion (12.1) is derived, including
+for arbitrary m and every real nu.
+
+Optional endpoint T07 supplies the same nonzero-mode pressure recovery via
+the coefficient Leray projection
+
+  P_0 b=b,
+  P_k b=b-k*(k.b)/|k|^2                         (k!=0).
+
+Indeed the coefficients of G+grad L(div G) are P_k Ghat(k), including its
+zero mode Ghat(0). The coefficients of K(curl G) are P_k Ghat(k) for k!=0
+and zero for k=0. Thus (12.1) is exactly the missing zero-mode adapter.
+The full Leray projection retains constants; the frozen K curl removes them.
+
+To identify the scalar potential itself, its coefficients are
+
+  hhat(0)=0,
+  hhat(k)=lambda(k)*2*pi*i*(k.Ghat(k))
+         = i*(k.Ghat(k))/(2*pi*|k|^2)             (k!=0).
+
+The T07 pressure has the same gradient multiplier and zero coefficient at
+zero. For k!=0, at least one k_j is nonzero, so its derivative-symbol
+identity fixes this scalar coefficient. Coefficient injectivity then gives
+equality to the frozen h. Equivalently, a smooth periodic mean-zero harmonic
+function has every Fourier coefficient zero by (3.2) and (5.1), proving
+uniqueness of the mean-zero solution of -Delta h=div G.
+
+Equality of gradients without the mean-zero condition would not identify
+the exact frozen scalar potential. The direct C06/C11 route already fixes
+both the coefficients and the gauge; T07 is optional.
+
+
+13. C12: ASSEMBLY OF FourierHodgeLaws
+-----------------------------------
+
+The dependence order is acyclic:
+
+  C01 -> C02 -> C03 -> C04 -> C05 -> C06 -> C07 -> H1,H2;
+  C01,C02,C03,C05 -> C08 -> C09 -> C10 -> H3;
+  C06,C07,H2 -> C11 -> H4;
+  H1,H2,H3,H4 -> FourierHodgeLaws.
+
+Each field is derived from the exact hypotheses in its signature. No field
+is invoked to prove itself. H3 follows from the stronger (PL), independent
+of the reconstruction and electric Hodge fields. The mathematical chain
+introduces no unresolved rapid-decay, Fourier-inversion, boundary-extension,
+pressure-gauge, harmonic-mode, or global-evolution premise.
+
+Thus the four mathematical proofs form an inhabitant of the proposition
+described by the existing structure:
+
+  !  NSEMaxwell.Bridge.FourierHodgeLaws.
+
+This is a B-tier conclusion. Its Lean construction and external audit remain
+future integration work.
+
+
+14. C13: COMPOSITION WITH THE EXACT ROOT EQUIVALENCE
+-------------------------------------------------
+
+The existing externally audited target endpoint is
+
+  NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED :
+    NSEMaxwell.Bridge.FourierHodgeLaws ->
+    NSEMaxwell.Classical.ExactEquivalence.
+
+Its intermediate endpoint is
+NSEMaxwell.Bridge.FourierHodgeLaws.toPeriodicAnalyticLaws.
+Composing the mathematical conclusion C12 with this exact implication yields
+the stated B-tier root theorem. The direct mathematical verification follows
+to make the composition and its quantifiers explicit.
+
+14.1. Data correspondence.
+
+Given Data(a), put m=<a> and B0=curl a. Smoothness and periodicity pass to
+curl; div(curl a)=0 and <curl a>=0. Thus MagneticData(B0), and H1 gives
+U_m[B0]=a.
+
+Given arbitrary m and MagneticData(B0), put a=U_m[B0]. C07 gives Data(a),
+curl a=B0 and <a>=m. These two transformations are inverse on the admissible
+data spaces. The independent mean m is retained.
+
+14.2. Mean conservation for an NSE solution.
+
+Integrating (NS), the convection mean vanishes by div u=0 and periodicity;
+the pressure gradient and Laplacian means also vanish. Differentiation under
+the cube integral, justified by joint smoothness and compactness as in C08,
+gives D_t<u(t)>=0. The fundamental theorem on each compact time interval,
+including the continuous value at zero, yields
+
+  <u(t)>=<u(0)>=m.
+
+This uses actual periodic pressure, so no nonperiodic affine pressure force
+is introduced. The project already proves this exact mean-conservation step.
+
+14.3. NSE -> constrained Maxwell.
+
+Assume FeffermanB(nu), fix c>0, arbitrary m and MagneticData(B0). Choose
+a=U_m[B0] and an NSE solution (u,p) for a. Define B=curl u. Then B is a
+MagneticPath, B(0)=B0, and H1 plus mean conservation gives u=U_m[B] on S.
+
+Let e=|u|^2/2. The curl-curl identity with div u=0 gives curl B=-Delta u.
+The Lamb identity rewrites (NS) as
+
+  u_t+G_nu,m[B]+grad(p+e)=0.
+
+Commuting actual spatial and time derivatives, and using curl grad=0, gives
+
+  B_t=-curl G_nu,m[B]=V_nu,m[B].
+
+Set E=G[B], rho=div G[B], J=c^2 curl B-DG[B](V[B]). Smoothness and
+periodicity follow from H3 and its canonical consequences. Gauss and Faraday
+follow from these definitions and the preceding identity. C09 differentiates
+the reconstruction to give u_t=K(B_t); the product rule therefore gives
+
+  E_t=B_t cross u+B cross K(B_t)+nu curl B_t
+     =DG[B](B_t)=DG[B](V[B]).
+
+Hence E_t-c^2 curl B=-J, exactly the frozen Ampere equation. All constitutive
+identities hold by construction, proving MaxwellB(nu,c).
+
+14.4. Constrained Maxwell -> NSE.
+
+Assume MaxwellB(nu,c), and fix Data(a). Put m=<a>, B0=curl a and obtain the
+specified Maxwell solution. Its hypotheses make B a MagneticPath. Set
+
+  u=U_m[B],
+  h=L(div G[B]),
+  p=h-|u|^2/2+<|u|^2>/2.
+
+H3 gives the exact required joint smoothness and divergence constraint;
+periodicity follows from the frozen Fourier definitions. H1 and B(0)=B0
+give u(0)=a. Faraday and the constitutive E give B_t=-curl G[B]. C09 yields
+
+  u_t=K(B_t)=-K(curl G[B])=-G[B]-grad h,
+
+where H4 gives the final equality. H2 gives curl u=B, so curl B=-Delta u.
+Using the Lamb identity and the spatial constancy of the pressure mean term,
+
+  u_t+(u.grad)u+grad p
+    =-G-grad h+(u.grad)u+grad h-grad(|u|^2/2)
+    =-nu curl B
+    =nu Delta u.
+
+Thus (u,p) is an NSSolution for a, proving FeffermanB(nu).
+
+14.5. Quantifiers and conclusion.
+
+The reconstruction and analytic identities hold for all real nu,c where
+they occur. Restricting to the frozen positive parameters gives exactly
+
+  !  forall nu>0, forall c>0,
+       FeffermanB(nu) <-> MaxwellB(nu,c).
+
+No step proves the existence of an NSE or Maxwell solution without the
+corresponding existence premise in its direction. The equivalence therefore
+does not resolve the global regularity/existence problem itself.
+
+
+15. FUTURE LEAN INTEGRATION AND PROMOTION BOUNDARY
+------------------------------------------------
+
+The prospective adapter contracts and dependency order are recorded in
+INTEGRATION_PLAN.md. Their mathematical bodies are C01-C12 above. They are
+not newly compiled declarations. The next integration can retain the existing
+root theorem and provide a concrete FourierHodgeLaws value beneath it.
+
+The temporary source files have extension .lean.txt: their bytes equal the
+pinned upstream .lean files, but they are reference snapshots outside the
+Lean module graph. Complete import lists are recorded. Importing whole old
+Methlib modules can pull unrelated Galerkin/NSE contracts; selected harmonic-
+analysis proof bodies should instead be transported into target-native
+modules, with their exact premises audited.
+
+The intended later proof order is endpoint signatures, independent proved
+edge theorems, native Lean asynchronous elaboration where safe, and a
+deterministic final constructor/chain. A signature or pending body supplies
+no proof. Source snapshots and this mathematical derivation do not discharge
+Lean metavariables or an analytic premise in the certified project.
+
+Future compilation policy:
+
+  external native Linux, Lean 4.34.0-rc1;
+  exact pinned Mathlib dependency and retained caches;
+  no local Lean, Lake, or elan execution;
+  no clean, cache clean, or cache get!;
+  no sorry, admit, unproved opaque body, new axiom, unsafe proof construction,
+    or native_decide proof axiom;
+  theorem-level audits allowing only propext, Classical.choice, Quot.sound.
+
+The exact root can receive A_TIER only after the supplied H inhabitant and
+the final root compile externally with matching theorem-level axiom evidence.
+UNCONDITIONAL_CLOSURE additionally requires every admission, certificate,
+witness, semantic, and analytic premise to be discharged. This staging
+operation establishes neither of those formal promotions.
+
+
+16. PINNED REFERENCES
+--------------------
+
+Target definitions and four obligations:
+https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/63f53e4c31d09cd1325f032d7456d2d2eb4386b3/NSEMaxwell/Classical.lean
+https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/63f53e4c31d09cd1325f032d7456d2d2eb4386b3/NSEMaxwell/AnalyticReduction.lean
+
+Previously certified implication and external evidence:
+https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/63f53e4c31d09cd1325f032d7456d2d2eb4386b3/NSEMaxwell/FEFFERMAN_B_MAXWELL_EQUIVALENCE.lean
+https://github.com/randogelist/NSE---MAXWELL---GR---QFT/tree/63f53e4c31d09cd1325f032d7456d2d2eb4386b3/evidence/linux-43336709607
+
+Mathlib Fourier and lattice endpoints:
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Fourier/AddCircleMulti.lean
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Algebra/Module/ZLattice/Summable.lean
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Function/LpSpace/ContinuousFunctions.lean
+
+Mathlib differentiation and boundary endpoints:
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/SmoothSeries.lean
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Extend.lean
+https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Defs.lean
+
+Methlib selected source namespace:
+https://github.com/randogelist/Methlib/tree/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure
+
+Every selected declaration's exact file and direct raw URL are supplied in
+../Fefferman_adapter/Endpoints/ENDPOINTS.json. Upstream author/copyright notices remain in the byte-exact
+snapshots. ../Fefferman_adapter/Endpoints/SHA256SUMS records the current endpoint-reference payload. The prior staging receipt remains preserved at its original commit.
+
+END OF B-TIER DERIVATION

@@ -1,0 +1,276 @@
+name: Cached Linux Lean and theorem audit
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nse-lean-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  native-linux:
+    if: ${{ !contains(github.event.head_commit.message || '', '[source-snapshot]') && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.repository) }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      ELAN_TOOLCHAIN: leanprover/lean4:v4.34.0-rc1
+      MATHLIB_CACHE_DIR: ${{ github.workspace }}/.mathlib-download-cache
+      MATHLIB_NO_CACHE_ON_UPDATE: '1'
+    steps:
+      - name: Check out the exact source commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Record the external Linux runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/external-linux
+          uname -a > artifacts/external-linux/runner-system.txt
+          df -h . > artifacts/external-linux/runner-disk.txt
+          command -v pwsh
+
+      - name: Set up Python for the evidence verifier
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+
+      - name: Restore the pinned Linux compiler
+        id: elan-cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ~/.elan
+          key: nse-compiler-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}
+
+      - name: Activate the cached compiler path
+        shell: bash
+        run: echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Install the pinned native Linux toolchain on a compiler-cache miss
+        if: steps.elan-cache.outputs.cache-hit != 'true'
+        uses: leanprover/lean-action@fe408643ea7367d8c0404a8be3975bb145f5fb64
+        with:
+          auto-config: 'false'
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'false'
+          use-github-cache: 'false'
+
+      - name: Restore the pinned Linux dependency cache
+        id: deps-cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: |
+            .lake/packages
+            .lake/config
+            .mathlib-download-cache
+          key: nse-deps-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}
+          # Verified predecessor caches; dependency commits are unchanged.
+          # The latest warm source/layout certificate is run 43353327242.
+          restore-keys: |
+            nse-deps-v2-Linux-X64-1e0a11bbe2f771dc625218fed552a5e8c9ad571990c5e9674d1e2921162b35c5
+            nse-deps-v2-Linux-X64-9b51ac59a9bf389c36d0ee08f81eebfa504c2a733df8c25b1187266979e41203
+            nse-deps-v2-Linux-X64-78b8e6dd5376bcb08d2c5af93549e74beae76ba7d0f24dc089ab851faa254f79
+            nse-deps-v2-Linux-X64-61a962499c8eb2ab9217aea818efc9c8df3fc4c21642b7007e74a1a069a24416
+
+      - name: Verify pinned dependencies and fetch missing official Linux cache objects
+        id: dependencies
+        shell: bash
+        run: bash Auxillary/run.sh -Phase Dependencies
+
+      - name: Preserve verified dependencies before proof compilation
+        if: steps.dependencies.outcome == 'success' && steps.deps-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: |
+            .lake/packages
+            .lake/config
+            .mathlib-download-cache
+          key: ${{ steps.deps-cache.outputs.cache-primary-key }}
+
+      - name: Restore incremental Linux project objects for the same dependency lock
+        id: project-cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: .lake/build
+          key: nse-project-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-${{ hashFiles('Fefferman_adapter/NSEMaxwell.lean', 'Fefferman_adapter/NSEMaxwell/**/*.lean', 'Fefferman_adapter/MethlibEndpoints.lean', 'Fefferman_adapter/MethlibEndpoints/**/*.lean', 'Fefferman_adapter/NativeSources/methlib/SingularClosure/**/*.lean', 'B <-> Maxwell/**/*.lean', 'Maxwell_Endpoint/MaxwellEndpoint.lean', 'Maxwell_Endpoint/MaxwellEndpoint/**/*.lean') }}
+          restore-keys: |
+            nse-project-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-
+            nse-project-v2-Linux-X64-1e0a11bbe2f771dc625218fed552a5e8c9ad571990c5e9674d1e2921162b35c5-5a1aca4898000db4f1f98f887cf1a5b2548ed4bc4bf43edc34b73fdff48fd97f
+            nse-project-v2-Linux-X64-9b51ac59a9bf389c36d0ee08f81eebfa504c2a733df8c25b1187266979e41203-5a1aca4898000db4f1f98f887cf1a5b2548ed4bc4bf43edc34b73fdff48fd97f
+            nse-project-v2-Linux-X64-78b8e6dd5376bcb08d2c5af93549e74beae76ba7d0f24dc089ab851faa254f79-f3c64b586dd589b35fbe9757b9e8e727d108313c48994542910f87312b72be76
+            nse-project-v2-Linux-X64-61a962499c8eb2ab9217aea818efc9c8df3fc4c21642b7007e74a1a069a24416-fc4dca293fc153a8f267633a5b81c65f4a9fe682d0c7c79f3abe80d4a3b6c323
+
+      - name: Compile and audit on native Linux
+        shell: bash
+        run: bash Auxillary/run.sh -Phase BuildAudit
+
+      - name: Prepare the independent Maxwell package from tracked sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          python Auxillary/scripts/isolate_maxwell_endpoint.py prepare \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --destination "$RUNNER_TEMP/nse-maxwell-endpoint" \
+            --report-directory "$GITHUB_WORKSPACE/artifacts/external-linux" \
+            --source-commit "$GITHUB_SHA"
+
+      - name: Restore independent Maxwell project objects
+        id: maxwell-project-cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ runner.temp }}/nse-maxwell-endpoint/.lake/build
+          key: nse-maxwell-standalone-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('Maxwell_Endpoint/lean-toolchain', 'Maxwell_Endpoint/lakefile.lean', 'Maxwell_Endpoint/lake-manifest.json', 'Maxwell_Endpoint/cache-targets.txt') }}-${{ hashFiles('Maxwell_Endpoint/MaxwellEndpoint.lean', 'Maxwell_Endpoint/MaxwellEndpoint/**/*.lean', 'Maxwell_Endpoint/MethlibEndpoints.lean', 'Maxwell_Endpoint/MethlibEndpoints/**/*.lean', 'Maxwell_Endpoint/NativeSources/methlib/SingularClosure/**/*.lean') }}-seeded-v1
+          restore-keys: |
+            nse-maxwell-standalone-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('Maxwell_Endpoint/lean-toolchain', 'Maxwell_Endpoint/lakefile.lean', 'Maxwell_Endpoint/lake-manifest.json', 'Maxwell_Endpoint/cache-targets.txt') }}-
+            nse-maxwell-standalone-v1-Linux-X64-9eeb2f7971e6c5a8e1f40433fb0d4794678971899b7110d4d6492da4bd235320-a0f932838aa1bae18b0308603ebdd32393edded04c4850de9ed65aecc5667132
+
+      - name: Seed missing Maxwell_Endpoint objects from the matching audited root build
+        shell: bash
+        run: |
+          set -euo pipefail
+          python Auxillary/scripts/seed_project_cache.py \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --destination "$RUNNER_TEMP/nse-maxwell-endpoint" \
+            --package-name Maxwell_Endpoint \
+            --report-directory "$GITHUB_WORKSPACE/artifacts/external-linux" \
+            --source-commit "$GITHUB_SHA"
+
+      - name: Compile and audit the standalone Maxwell endpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash "$RUNNER_TEMP/nse-maxwell-endpoint/run.sh" \
+            -SourceCommit "$GITHUB_SHA" \
+            -ReportDirectory "$GITHUB_WORKSPACE/artifacts/external-linux/standalone"
+
+      - name: Verify independent source closure and fresh Maxwell audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python Auxillary/scripts/isolate_maxwell_endpoint.py verify \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --destination "$RUNNER_TEMP/nse-maxwell-endpoint" \
+            --report-directory "$GITHUB_WORKSPACE/artifacts/external-linux" \
+            --source-commit "$GITHUB_SHA"
+
+      - name: Prepare the independent Fefferman package from tracked sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          python Auxillary/scripts/isolate_maxwell_endpoint.py prepare \
+            --package-name Fefferman_adapter \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --destination "$RUNNER_TEMP/nse-fefferman-adapter" \
+            --report-directory "$GITHUB_WORKSPACE/artifacts/external-linux" \
+            --source-commit "$GITHUB_SHA"
+
+      - name: Restore independent Fefferman project objects
+        id: fefferman-project-cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ runner.temp }}/nse-fefferman-adapter/.lake/build
+          key: nse-fefferman-standalone-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('Fefferman_adapter/lean-toolchain', 'Fefferman_adapter/lakefile.lean', 'Fefferman_adapter/lake-manifest.json', 'Fefferman_adapter/cache-targets.txt') }}-${{ hashFiles('Fefferman_adapter/NSEMaxwell.lean', 'Fefferman_adapter/NSEMaxwell/**/*.lean', 'Fefferman_adapter/LocalDependencies/**/*.lean', 'Fefferman_adapter/MethlibEndpoints.lean', 'Fefferman_adapter/MethlibEndpoints/**/*.lean', 'Fefferman_adapter/NativeSources/methlib/SingularClosure/**/*.lean') }}
+          restore-keys: |
+            nse-fefferman-standalone-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('Fefferman_adapter/lean-toolchain', 'Fefferman_adapter/lakefile.lean', 'Fefferman_adapter/lake-manifest.json', 'Fefferman_adapter/cache-targets.txt') }}-
+
+      - name: Seed missing Fefferman_adapter objects from the matching audited root build
+        shell: bash
+        run: |
+          set -euo pipefail
+          python Auxillary/scripts/seed_project_cache.py \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --destination "$RUNNER_TEMP/nse-fefferman-adapter" \
+            --package-name Fefferman_adapter \
+            --report-directory "$GITHUB_WORKSPACE/artifacts/external-linux" \
+            --source-commit "$GITHUB_SHA"
+
+      - name: Compile and audit the standalone Fefferman adapter
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash "$RUNNER_TEMP/nse-fefferman-adapter/run.sh" \
+            -SourceCommit "$GITHUB_SHA" \
+            -ReportDirectory "$GITHUB_WORKSPACE/artifacts/external-linux/fefferman-standalone"
+
+      - name: Verify independent Fefferman closure and fresh axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python Auxillary/scripts/isolate_maxwell_endpoint.py verify \
+            --package-name Fefferman_adapter \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --destination "$RUNNER_TEMP/nse-fefferman-adapter" \
+            --report-directory "$GITHUB_WORKSPACE/artifacts/external-linux" \
+            --source-commit "$GITHUB_SHA"
+
+      - name: Preserve matching compiler and theorem evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: native-linux-lean-${{ github.sha }}-${{ github.run_attempt }}
+          path: artifacts/external-linux/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Identify reusable Linux cache directories
+        id: cache-directories
+        if: always()
+        shell: bash
+        run: |
+          if test -x "$HOME/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/lean"; then
+            echo "compiler-exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "compiler-exists=false" >> "$GITHUB_OUTPUT"
+          fi
+          if test -d .lake/build; then
+            echo "project-exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "project-exists=false" >> "$GITHUB_OUTPUT"
+          fi
+          if test -d "$RUNNER_TEMP/nse-fefferman-adapter/.lake/build"; then
+            echo "fefferman-project-exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "fefferman-project-exists=false" >> "$GITHUB_OUTPUT"
+          fi
+          if test -d "$RUNNER_TEMP/nse-maxwell-endpoint/.lake/build"; then
+            echo "maxwell-project-exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "maxwell-project-exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Preserve the Linux compiler cache after success or failure
+        if: always() && steps.elan-cache.outputs.cache-hit != 'true' && steps.cache-directories.outputs.compiler-exists == 'true' && steps.elan-cache.outputs.cache-primary-key != ''
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ~/.elan
+          key: ${{ steps.elan-cache.outputs.cache-primary-key }}
+
+      - name: Preserve incremental Linux project objects after success or failure
+        if: always() && steps.project-cache.outcome == 'success' && steps.project-cache.outputs.cache-hit != 'true' && steps.cache-directories.outputs.project-exists == 'true' && steps.project-cache.outputs.cache-primary-key != ''
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: .lake/build
+          key: ${{ steps.project-cache.outputs.cache-primary-key }}
+
+      - name: Preserve independent Maxwell project objects after success or failure
+        if: always() && steps.maxwell-project-cache.outcome == 'success' && steps.maxwell-project-cache.outputs.cache-hit != 'true' && steps.cache-directories.outputs.maxwell-project-exists == 'true' && steps.maxwell-project-cache.outputs.cache-primary-key != ''
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ runner.temp }}/nse-maxwell-endpoint/.lake/build
+          key: ${{ steps.maxwell-project-cache.outputs.cache-primary-key }}
+
+      - name: Preserve independent Fefferman project objects after success or failure
+        if: always() && steps.fefferman-project-cache.outcome == 'success' && steps.fefferman-project-cache.outputs.cache-hit != 'true' && steps.cache-directories.outputs.fefferman-project-exists == 'true' && steps.fefferman-project-cache.outputs.cache-primary-key != ''
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ runner.temp }}/nse-fefferman-adapter/.lake/build
+          key: ${{ steps.fefferman-project-cache.outputs.cache-primary-key }}

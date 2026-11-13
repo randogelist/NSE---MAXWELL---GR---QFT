@@ -1,0 +1,647 @@
+{
+  "schema_version": 1,
+  "algorithm": "SHA256",
+  "source_commit": "d241f2b700be66ab447cb1650770271e1b364b8a",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "a0ce1c076b95ed043c556a61a1ee9a66acddca500325e65b188c964abe13374a",
+      "size_bytes": 193
+    },
+    {
+      "path": ".github/workflows/lean-linux.yml",
+      "sha256": "5321ae0ad8d7894610850820459e0b3528932e0a5dfd0908ececa0c836784334",
+      "size_bytes": 5770
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "a4e2f18d0c0309e3f88d3c1ebcec58c786c1ea1bc64d7dd3408fb825bf43ae30",
+      "size_bytes": 62
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "da89fdc0843d8cfe32e8cc283694856e05e693d13ad86dcef413766e1d5c448d",
+      "size_bytes": 1503
+    },
+    {
+      "path": "audit-targets.txt",
+      "sha256": "057ff5d50fd4288faf0a3ceb25d60435ae378aac5475e28b5c64986aa9fb699c",
+      "size_bytes": 8198
+    },
+    {
+      "path": "cache-targets.txt",
+      "sha256": "6534bc4fa124679c91833cded1886eceb5f8b55ce4217c7e2748c8430b37d5f2",
+      "size_bytes": 78
+    },
+    {
+      "path": "CI_CACHE_AUDIT.txt",
+      "sha256": "c0745ad5d38180437b702ea812a801142026831b1bdf7f8eba240185a071a2d7",
+      "size_bytes": 7232
+    },
+    {
+      "path": "docs/FEFFERMAN_B_MAXWELL_EQUIVALENCE_B_TIER.txt",
+      "sha256": "4630e965bc8da4aeac96bcb4c4a5b917dbd835573cd7d2c075639427ee2aff54",
+      "size_bytes": 27806
+    },
+    {
+      "path": "ENDPOINT_REGISTRY.json",
+      "sha256": "d10b0e937a981104e2dbc3235cae703d1aba77016e64efbbbfa5c6cfc7495c04",
+      "size_bytes": 27622
+    },
+    {
+      "path": "evidence/README.md",
+      "sha256": "c3e62a9abebf7a9e7370c8fde819774ad927eb9300df2369c1bc4fbd883a347b",
+      "size_bytes": 2522
+    },
+    {
+      "path": "evidence/windows-43318057281/audit-summary.json",
+      "sha256": "facde3f42a6962662774a254fa16ec8512e6b973bfaba2c70ffe2dc6019e922a",
+      "size_bytes": 30931
+    },
+    {
+      "path": "evidence/windows-43318057281/audit-verifier.log",
+      "sha256": "4108b8229efa37f82de441954895c1aef41bd6d25774580526c504a3a76f6b1b",
+      "size_bytes": 155
+    },
+    {
+      "path": "evidence/windows-43318057281/lean-version.log",
+      "sha256": "f96616d5b54be3c2598eaa3296d48791639e986ee064645831a0c04b041349fd",
+      "size_bytes": 410
+    },
+    {
+      "path": "evidence/windows-43318057281/mathlib-revision.log",
+      "sha256": "b25c7fd9616e57ff6e958e4cb1fa6b289acd53256669e2793bbc2eaa2dbc18d7",
+      "size_bytes": 42
+    },
+    {
+      "path": "evidence/windows-43318057281/mathlib-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "evidence/windows-43318057281/run-audit.log",
+      "sha256": "4a967d9ee67a8ac29289079696ff3150950f66efcbde7b5f1d0b7880ce7bd7f5",
+      "size_bytes": 60806
+    },
+    {
+      "path": "evidence/windows-43318057281/run-build-NSEMaxwell-Ampere.log",
+      "sha256": "3ac9208dac77d705c065078f8129f43e6ff8ca3f808c56c86316d8b1f6455d76",
+      "size_bytes": 346
+    },
+    {
+      "path": "evidence/windows-43318057281/run-build-NSEMaxwell-AnalyticBridge.log",
+      "sha256": "de06378f7e7a4259a4fd3f6defb0142453b1a6155a68fd226dd0a4f75e1d5dd5",
+      "size_bytes": 1750
+    },
+    {
+      "path": "evidence/windows-43318057281/run-build-NSEMaxwell-Classical.log",
+      "sha256": "23628f317e4af6298f3bc11d015ecdf1f54bbb403d1c41907faf7e31493636af",
+      "size_bytes": 43
+    },
+    {
+      "path": "evidence/windows-43318057281/run-build-NSEMaxwell-ConstantPaths.log",
+      "sha256": "c0e0d3112f59239414d132e7d64a866d467495faf0e47bb370e996d90cc19c58",
+      "size_bytes": 346
+    },
+    {
+      "path": "evidence/windows-43318057281/run-build-NSEMaxwell-Constitutive.log",
+      "sha256": "c0e0d3112f59239414d132e7d64a866d467495faf0e47bb370e996d90cc19c58",
+      "size_bytes": 346
+    },
+    {
+      "path": "evidence/windows-43318057281/run-build-NSEMaxwell-CurlCurl.log",
+      "sha256": "195bb1abfa254c80fcc220ea46c02cb73d289b6f0db7251a28db7a8192dd11b8",
+      "size_bytes": 911
+    },
+    {
+      "path": "evidence/windows-43318057281/run-build-NSEMaxwell-ExistenceTransport.log",
+      "sha256": "4a40bdd508d603ba488038db104c5d1cedea53118f76bce554946aeafc494827",
+      "size_bytes": 42
+    },
+    {
+      "path": "evidence/windows-43318057281/run-build-NSEMaxwell-FEFFERMAN_B_MAXWELL_EQUIVALENCE.log",
+      "sha256": "6966b153fe5a9a9b7c4f1c129f88615ad5096449970fba600193769f27abc0c0",
+      "size_bytes": 1750
+    },
+    {
+      "path": "evidence/windows-43318057281/run-build-NSEMaxwell-Kinematics.log",
+      "sha256": "02be17f549ad8acc5ad6b059e9676ffe1fe33efd22d43da4661ab30a3111552e",
+      "size_bytes": 346
+    },
+    {
+      "path": "evidence/windows-43318057281/run-build-NSEMaxwell-Lamb.log",
+      "sha256": "86c23ae0b5617b41b0a70c9c9f7df78c5bdff6036935780b4e8dbfa32d2c88f9",
+      "size_bytes": 882
+    },
+    {
+      "path": "evidence/windows-43318057281/run-build-NSEMaxwell-Negation.log",
+      "sha256": "3ac9208dac77d705c065078f8129f43e6ff8ca3f808c56c86316d8b1f6455d76",
+      "size_bytes": 346
+    },
+    {
+      "path": "evidence/windows-43318057281/run-build-NSEMaxwell-Pressure.log",
+      "sha256": "c0e0d3112f59239414d132e7d64a866d467495faf0e47bb370e996d90cc19c58",
+      "size_bytes": 346
+    },
+    {
+      "path": "evidence/windows-43318057281/run-build-NSEMaxwell-Residual.log",
+      "sha256": "f9a66620165d74318d1caf0df853e9415a032603c4957677ee9f6434c186b918",
+      "size_bytes": 42
+    },
+    {
+      "path": "evidence/windows-43318057281/run-build.log",
+      "sha256": "fb9dce45c020e148faaab4b7b78283c8468b6b89cc7c56de69d6a90229b1de88",
+      "size_bytes": 1750
+    },
+    {
+      "path": "evidence/windows-43318057281/run-cache.log",
+      "sha256": "ac433e8063ecba2d68437c467637729641f40975f05a15f2fc2ba72b7f94e9b6",
+      "size_bytes": 142
+    },
+    {
+      "path": "evidence/windows-43318057281/run-provenance.json",
+      "sha256": "38cce2a95814904979ad73df7ff5e8c815443ee47dd5b74fc7a6c357e13bbb4a",
+      "size_bytes": 2685
+    },
+    {
+      "path": "evidence/windows-43318057281/source-commit.log",
+      "sha256": "38a5a08690ed0d88bdbad1ffa4c2157643df0abda93f509f220df1074cd1d884",
+      "size_bytes": 42
+    },
+    {
+      "path": "evidence/windows-43318057281/source-manifest.json",
+      "sha256": "cf68016d6739febf4580ce6bec82a5955a2e274cfd0a2ce28b9ff28a94e23c52",
+      "size_bytes": 7569
+    },
+    {
+      "path": "evidence/windows-43318057281/tracked-files.log",
+      "sha256": "3ef5d7da52913d9ad9ab4fc8396f27bce349748fbf1f585ff7874b9c7158ae67",
+      "size_bytes": 730
+    },
+    {
+      "path": "evidence/windows-43318057281/working-tree.log",
+      "sha256": "553892eca1ad99396d2572885666c86bfcc0f0e33dc32e6fef07f763fa4b6705",
+      "size_bytes": 23
+    },
+    {
+      "path": "evidence/windows-43333835295/audit-summary.json",
+      "sha256": "de008222e6f7db247e4394ababfe830526095e31c0cb526bf789a141f90dce8a",
+      "size_bytes": 72914
+    },
+    {
+      "path": "evidence/windows-43333835295/audit-verifier.log",
+      "sha256": "4108b8229efa37f82de441954895c1aef41bd6d25774580526c504a3a76f6b1b",
+      "size_bytes": 155
+    },
+    {
+      "path": "evidence/windows-43333835295/command-timings-BuildAudit.json",
+      "sha256": "91e7b6f088a204332b0070cb197848230939c73575cd85203526b3c78185e626",
+      "size_bytes": 21101
+    },
+    {
+      "path": "evidence/windows-43333835295/command-timings-Dependencies.json",
+      "sha256": "161d04460b3885230b74eebf20e7dca425de440ea87070b8f2f389c57e15a60d",
+      "size_bytes": 9992
+    },
+    {
+      "path": "evidence/windows-43333835295/dependency-aesop-revision.log",
+      "sha256": "bffd4a0c82331582d34b017704ea734b831915e0c8d3823a7f8836fb7be84125",
+      "size_bytes": 42
+    },
+    {
+      "path": "evidence/windows-43333835295/dependency-aesop-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "evidence/windows-43333835295/dependency-batteries-revision.log",
+      "sha256": "7e3475f3fab39bd0544eb684169eaf2a9a4bf8f78708aef58ed4e24bbb6fef8c",
+      "size_bytes": 42
+    },
+    {
+      "path": "evidence/windows-43333835295/dependency-batteries-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "evidence/windows-43333835295/dependency-Cli-revision.log",
+      "sha256": "d8197562373507cedeec47a7b8a40f55f97dae94ff72fe1d682bc18ce3417cd5",
+      "size_bytes": 42
+    },
+    {
+      "path": "evidence/windows-43333835295/dependency-Cli-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "evidence/windows-43333835295/dependency-importGraph-revision.log",
+      "sha256": "a2868dc1537016231bdd0a4608fac5b5cf95180d93a2cef86199c719ab8067b3",
+      "size_bytes": 42
+    },
+    {
+      "path": "evidence/windows-43333835295/dependency-importGraph-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "evidence/windows-43333835295/dependency-LeanSearchClient-revision.log",
+      "sha256": "39223ce870e9c46f87cb8d0b10d1b07aff41f89cd47f88301c0738b505960652",
+      "size_bytes": 42
+    },
+    {
+      "path": "evidence/windows-43333835295/dependency-LeanSearchClient-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "evidence/windows-43333835295/dependency-mathlib-revision.log",
+      "sha256": "b25c7fd9616e57ff6e958e4cb1fa6b289acd53256669e2793bbc2eaa2dbc18d7",
+      "size_bytes": 42
+    },
+    {
+      "path": "evidence/windows-43333835295/dependency-mathlib-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "evidence/windows-43333835295/dependency-plausible-revision.log",
+      "sha256": "18c81ed595728ed0ee0e85cb446c9f5d24ecd252dc0f9fe270871aba3bd7dff5",
+      "size_bytes": 42
+    },
+    {
+      "path": "evidence/windows-43333835295/dependency-plausible-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "evidence/windows-43333835295/dependency-preparation.json",
+      "sha256": "1d7c91461176201877008080ec3f95d488cda46e78595b4f8b8f65fb1472d545",
+      "size_bytes": 3116
+    },
+    {
+      "path": "evidence/windows-43333835295/dependency-proofwidgets-revision.log",
+      "sha256": "c6dbfcac29f33bcd8f246f92ce4b66f3f850c5b78e48d8bb19c39665948c4974",
+      "size_bytes": 42
+    },
+    {
+      "path": "evidence/windows-43333835295/dependency-proofwidgets-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "evidence/windows-43333835295/dependency-Qq-revision.log",
+      "sha256": "5b8b73b9c9995a0f283c35aef34bcfc13c29dd4a90c2d22058f79fee2b240c08",
+      "size_bytes": 42
+    },
+    {
+      "path": "evidence/windows-43333835295/dependency-Qq-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "evidence/windows-43333835295/lean-version.log",
+      "sha256": "6a098116fece853fba3315aeef75b58076105609df2625ea7c30d762579b8eff",
+      "size_bytes": 109
+    },
+    {
+      "path": "evidence/windows-43333835295/mathlib-revision.log",
+      "sha256": "b25c7fd9616e57ff6e958e4cb1fa6b289acd53256669e2793bbc2eaa2dbc18d7",
+      "size_bytes": 42
+    },
+    {
+      "path": "evidence/windows-43333835295/mathlib-working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "evidence/windows-43333835295/resolved-lake-manifest.json",
+      "sha256": "69c22ad5678fd37f874d60dd5c604bfd96a2604fcb788a054764d6f1e346a939",
+      "size_bytes": 3549
+    },
+    {
+      "path": "evidence/windows-43333835295/run-audit.log",
+      "sha256": "bc6d813a5ac9cd9917ac5b90ee38a7736fbcf67787ab7799983c180c172fb68d",
+      "size_bytes": 112466
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-freshness.log",
+      "sha256": "37f8c0a74fe4b5d40931c459f9dbd6475da7fbd5f68eb074e2a5bbeaac2639b4",
+      "size_bytes": 4560
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-Ampere.log",
+      "sha256": "3ac9208dac77d705c065078f8129f43e6ff8ca3f808c56c86316d8b1f6455d76",
+      "size_bytes": 346
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-AnalyticBridge.log",
+      "sha256": "de06378f7e7a4259a4fd3f6defb0142453b1a6155a68fd226dd0a4f75e1d5dd5",
+      "size_bytes": 1750
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-AnalyticReduction.log",
+      "sha256": "b6439f7a4191dc0d4b4250ba52e6b321238d5727f5830a64cc568620c48d56d3",
+      "size_bytes": 4480
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-CanonicalSmoothness.log",
+      "sha256": "3d94f53f66e1da54156ead64b4d7f25c77efd807a08b7cc51319454b0a911def",
+      "size_bytes": 3926
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-Classical.log",
+      "sha256": "23628f317e4af6298f3bc11d015ecdf1f54bbb403d1c41907faf7e31493636af",
+      "size_bytes": 43
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-ConstantPaths.log",
+      "sha256": "c0e0d3112f59239414d132e7d64a866d467495faf0e47bb370e996d90cc19c58",
+      "size_bytes": 346
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-Constitutive.log",
+      "sha256": "c0e0d3112f59239414d132e7d64a866d467495faf0e47bb370e996d90cc19c58",
+      "size_bytes": 346
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-CurlCurl.log",
+      "sha256": "195bb1abfa254c80fcc220ea46c02cb73d289b6f0db7251a28db7a8192dd11b8",
+      "size_bytes": 911
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-DominatedWithin.log",
+      "sha256": "f3492db10bd029719e58e2d14e7b98eafb5e5cdae0f97d90ab45de5340daf298",
+      "size_bytes": 539
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-ExistenceTransport.log",
+      "sha256": "4a40bdd508d603ba488038db104c5d1cedea53118f76bce554946aeafc494827",
+      "size_bytes": 42
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-FEFFERMAN_B_MAXWELL_EQUIVALENCE.log",
+      "sha256": "eb99be58ab4c374eea4afdc35f7cbcf128ca16184089341a24ee5b2703446456",
+      "size_bytes": 4494
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-FourierPeriodic.log",
+      "sha256": "fdda2e026fd852a3f804e9df8a4886fcdb14a57e6bb49304a1c06f09e1f4978b",
+      "size_bytes": 2852
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-Kinematics.log",
+      "sha256": "02be17f549ad8acc5ad6b059e9676ffe1fe33efd22d43da4661ab30a3111552e",
+      "size_bytes": 346
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-Lamb.log",
+      "sha256": "86c23ae0b5617b41b0a70c9c9f7df78c5bdff6036935780b4e8dbfa32d2c88f9",
+      "size_bytes": 882
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-LocalEvolution.log",
+      "sha256": "be0b9ed832d831d798ed4acd7891314bb0e2a25e64c74aff26a0cf655ef91956",
+      "size_bytes": 2824
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-MeanConservation.log",
+      "sha256": "66c8ad4e59dd007e8bc6def7b713727c105771f4f2d86e74059588d22832a1f2",
+      "size_bytes": 3348
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-Negation.log",
+      "sha256": "3ac9208dac77d705c065078f8129f43e6ff8ca3f808c56c86316d8b1f6455d76",
+      "size_bytes": 346
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-PeriodicIntegration.log",
+      "sha256": "5094ee4f824bdd223bd778f17b84a3ec83170d333c3ae7fe0338a0aa3a39db8b",
+      "size_bytes": 2852
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-Pressure.log",
+      "sha256": "c0e0d3112f59239414d132e7d64a866d467495faf0e47bb370e996d90cc19c58",
+      "size_bytes": 346
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-Residual.log",
+      "sha256": "f9a66620165d74318d1caf0df853e9415a032603c4957677ee9f6434c186b918",
+      "size_bytes": 42
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-Spacetime.log",
+      "sha256": "45f8a9edf258edf208ae5cef124dbeeb72d130ec9e31d11ed1b001620f10005c",
+      "size_bytes": 911
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build-NSEMaxwell-TemporalMean.log",
+      "sha256": "a5c11f295f1cfae6fec252648ed921b77764c3250fbed8d3f6b3d520afe6c80a",
+      "size_bytes": 3348
+    },
+    {
+      "path": "evidence/windows-43333835295/run-build.log",
+      "sha256": "f13629a2310e036fabb925377a53c4212230f7915714971fa039fdde89c7e387",
+      "size_bytes": 4462
+    },
+    {
+      "path": "evidence/windows-43333835295/run-cache.log",
+      "sha256": "ac433e8063ecba2d68437c467637729641f40975f05a15f2fc2ba72b7f94e9b6",
+      "size_bytes": 142
+    },
+    {
+      "path": "evidence/windows-43333835295/run-provenance.json",
+      "sha256": "371887e5c029ed28f52a8ce2920fee0d8ac39a4f6de56e6a5706cae4c5daef40",
+      "size_bytes": 5457
+    },
+    {
+      "path": "evidence/windows-43333835295/source-commit.log",
+      "sha256": "ccfaec4aa023df980fcdb95e57c1327f28cc7053c15d319da0e5e4332004393a",
+      "size_bytes": 42
+    },
+    {
+      "path": "evidence/windows-43333835295/source-manifest.json",
+      "sha256": "b3be4cfb54f92124268b4241625b8f60a3c66d9276179777223a388a46781628",
+      "size_bytes": 18089
+    },
+    {
+      "path": "evidence/windows-43333835295/tracked-files.log",
+      "sha256": "1ffe0a76df1e9b6367a85ce5b6502684eb789ad2b904d7fcefe58356c8e33545",
+      "size_bytes": 2635
+    },
+    {
+      "path": "evidence/windows-43333835295/working-tree.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "FEFFERMAN_B_MAXWELL_EQUIVALENCE_A_TIER.txt",
+      "sha256": "c7f76b422bdf2c5995eb95f3c0df74e67056018436592237e1768c98f3c0fe2c",
+      "size_bytes": 18599
+    },
+    {
+      "path": "formalization-status.json",
+      "sha256": "2f6d11da57f46555819167fabb24b74e7f25c8332eb59af19af8ff2badb3c038",
+      "size_bytes": 6190
+    },
+    {
+      "path": "lake-manifest.json",
+      "sha256": "69c22ad5678fd37f874d60dd5c604bfd96a2604fcb788a054764d6f1e346a939",
+      "size_bytes": 3549
+    },
+    {
+      "path": "lakefile.lean",
+      "sha256": "f6d5d717bf22471aa965e75f3e34f64cedde8c4a1352e93f13a57aad6b26df5b",
+      "size_bytes": 272
+    },
+    {
+      "path": "lean-toolchain",
+      "sha256": "cdbc6c372a2b37ad94430a6cec69cedfa4d36f255bfd968773fd91bf7a1746bf",
+      "size_bytes": 29
+    },
+    {
+      "path": "NSEMaxwell.lean",
+      "sha256": "c562a87df782ec7224310373669c39a2412b5fbe6817129b34048a69e75743ec",
+      "size_bytes": 703
+    },
+    {
+      "path": "NSEMaxwell/Ampere.lean",
+      "sha256": "e1ee9e880e2c50360fea276a49fe3ca4c05c8104fa7b29740877cde3d30bc648",
+      "size_bytes": 1637
+    },
+    {
+      "path": "NSEMaxwell/AnalyticBridge.lean",
+      "sha256": "29803cdc64cba70d2d709d734f9c2350a1de31bbc4ccf4182f57b922d94a9bd3",
+      "size_bytes": 17093
+    },
+    {
+      "path": "NSEMaxwell/AnalyticReduction.lean",
+      "sha256": "2813f7dd8035681265656a3b6bb2476dbd30e928dc8a737bcb7e3277a8ae77ba",
+      "size_bytes": 7983
+    },
+    {
+      "path": "NSEMaxwell/Audit.lean",
+      "sha256": "ed324f905e47c0f8f6cd1af3e8ce40b7e444d70272c9ab15415fd4976c69a5ef",
+      "size_bytes": 20987
+    },
+    {
+      "path": "NSEMaxwell/CanonicalSmoothness.lean",
+      "sha256": "d63f7555c73d78141e53d86b463848e2594d01a6dcf8a0b3c026ac8de79dd021",
+      "size_bytes": 4535
+    },
+    {
+      "path": "NSEMaxwell/Classical.lean",
+      "sha256": "00f6b60fd1f6f30bad57c80644579ca404babf5af4edcce06c4edc0ce8b91925",
+      "size_bytes": 9187
+    },
+    {
+      "path": "NSEMaxwell/ConstantPaths.lean",
+      "sha256": "14ddfa21be65dcb38ec3f9b2a5c62463de3846fd44c23b32a27ac0f083c206cf",
+      "size_bytes": 1025
+    },
+    {
+      "path": "NSEMaxwell/Constitutive.lean",
+      "sha256": "d7f1d613a094b2d7679d27d621286ac98e4998a67529f74c4614dcff4f1b4d81",
+      "size_bytes": 6932
+    },
+    {
+      "path": "NSEMaxwell/CurlCurl.lean",
+      "sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+      "size_bytes": 12995
+    },
+    {
+      "path": "NSEMaxwell/DominatedWithin.lean",
+      "sha256": "d42ff10c78decd35907a1574e37a86de5fe87b32ad0c5e4ed4ed83997ea7766b",
+      "size_bytes": 4522
+    },
+    {
+      "path": "NSEMaxwell/ExistenceTransport.lean",
+      "sha256": "998d18cb2914c1613c8a484b9d2df2e499480abde6caee09592e3e5db6ba4156",
+      "size_bytes": 2178
+    },
+    {
+      "path": "NSEMaxwell/FEFFERMAN_B_MAXWELL_EQUIVALENCE.lean",
+      "sha256": "61c84e691c54d61bdfb0526858b519381014156eef99d9f66b7d6c0fcc982501",
+      "size_bytes": 828
+    },
+    {
+      "path": "NSEMaxwell/FourierPeriodic.lean",
+      "sha256": "1d49a7d1ead33dd2eb0ab6dd2d90d1dddeefe032d0bd1773f305c85c974591ef",
+      "size_bytes": 5329
+    },
+    {
+      "path": "NSEMaxwell/Kinematics.lean",
+      "sha256": "0aefff77048a6ccaa1a2757912bbfec63852f5285489e617cf98fc7336f4a505",
+      "size_bytes": 6563
+    },
+    {
+      "path": "NSEMaxwell/Lamb.lean",
+      "sha256": "8ff4187b618df7a1936e43ddab8562ffb3d01c7cd666e3fc1ec2eb765f8ae2f8",
+      "size_bytes": 4681
+    },
+    {
+      "path": "NSEMaxwell/LocalEvolution.lean",
+      "sha256": "6ada4c7209bfcf163490fdd13d4ebb2381feed274b5ccec447025cac75f3a680",
+      "size_bytes": 9639
+    },
+    {
+      "path": "NSEMaxwell/MeanConservation.lean",
+      "sha256": "3bf93c76cfd27a1644c2a1f760b28a1710e62aa607202c1ddc81188a2f922da6",
+      "size_bytes": 4089
+    },
+    {
+      "path": "NSEMaxwell/Negation.lean",
+      "sha256": "4763b648a80780e3e8694b8953b249823a5349cfd52d3dbb7e0695781a1f531d",
+      "size_bytes": 1966
+    },
+    {
+      "path": "NSEMaxwell/PeriodicIntegration.lean",
+      "sha256": "1e5ab9beb9eeb11fbf595ff4fbdad263ebd4f38e17f02f3ed53e687bfb03664c",
+      "size_bytes": 14200
+    },
+    {
+      "path": "NSEMaxwell/Pressure.lean",
+      "sha256": "c46ba912d016697050c20c7effbe82d463d233469641c886dbb5a89cb1503677",
+      "size_bytes": 2128
+    },
+    {
+      "path": "NSEMaxwell/Residual.lean",
+      "sha256": "4c88782f4ced9cc84a9584a235adad8fba69f1d24e318e49238f884484ae7754",
+      "size_bytes": 7753
+    },
+    {
+      "path": "NSEMaxwell/Spacetime.lean",
+      "sha256": "ebea01c7422186aaa0ec4c72c26774ee32f96291756be7775ba40f569eb89c57",
+      "size_bytes": 10914
+    },
+    {
+      "path": "NSEMaxwell/TemporalMean.lean",
+      "sha256": "cf6a9d1afa1303db16e882cf52fc4e4db26842cf128a0a6fc050ac80735f5de6",
+      "size_bytes": 4515
+    },
+    {
+      "path": "README.md",
+      "sha256": "4f687bdee2cf1d9533863a208fe968c4a4fcdeb5bcd90054734034e17913bb76",
+      "size_bytes": 10361
+    },
+    {
+      "path": "run.cmd",
+      "sha256": "c087427e9e474a160fbd6b38e42b641dbe801afeb566751914c198ddc0c1d444",
+      "size_bytes": 177
+    },
+    {
+      "path": "run.sh",
+      "sha256": "61d8e2439c5d5c61081aac083ac79e9fbaad0f656c53f559635aa2e841d50bec",
+      "size_bytes": 206
+    },
+    {
+      "path": "scripts/run.ps1",
+      "sha256": "ab9ed1539fe6487ea8e41de306ec7d0d149d7afdfb12d76c2e185e2b9cd40876",
+      "size_bytes": 23731
+    },
+    {
+      "path": "scripts/verify_audit.py",
+      "sha256": "2acdbddcca02676bf848d2ff23cc080c5d3ca0e46496dbdfa9aafcd6ba6167be",
+      "size_bytes": 14886
+    }
+  ]
+}

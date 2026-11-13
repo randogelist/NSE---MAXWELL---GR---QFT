@@ -1,0 +1,502 @@
+MAXWELL_ENDPOINT
+================
+
+MODE = A_TIER_DERIVATION
+STATUS = A_TIER_FOR_EXACT_NATIVE_THEOREMS
+ROOT_EXTERNAL_VALIDATION = PASS_BUILD_AND236_FRESH_STANDARD_ONLY_AUDITS
+ISOLATED_EXTERNAL_VALIDATION = PASS_BUILD_AND62_FRESH_STANDARD_ONLY_AUDITS
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+PROMOTION = MATCHING_EXTERNAL_COMPILER_AND_NAMED_AXIOM_AUDIT_REQUIRED
+STANDALONE_AUDIT_TARGETS = 62
+NATIVE_THEOREMS = 23
+NATIVE_DEFINITION_TYPE_TARGETS = 29
+INTEGRATED_AUDIT_TARGETS = 236
+
+1. EXACT NATIVE OBJECTS
+----------------------
+
+Namespace retained: NSEMaxwell.Classical.
+Project module root: MaxwellEndpoint.
+
+Vec := EuclideanSpace R (Fin 3).
+Field := Vec -> Vec.
+ScalarField := Vec -> R.
+Velocity := R -> Field.
+Pressure := R -> ScalarField.
+Frequency := Fin 3 -> Z.
+
+Q := {x : Vec | forall i, 0 <= x_i and x_i <= 1}.
+spatialMean(a) := integral_Q a(x) dx.
+scalarMean(f) := integral_Q f(x) dx.
+
+coordinateDerivative(a,i,x) := fderiv R a x (unitVector i).
+div, grad, curl, Laplacian and cross product retain their exact coordinate
+formulas. timeDerivative uses derivWithin on Ici(0).
+
+SmoothVelocity(u) :=
+  ContDiffOn R infinity ((t,x) |-> u(t,x)) {(t,x) | 0 <= t}.
+SmoothPressure has the identical joint smoothness domain and order.
+SpatialPeriodic(f) := forall x,i, f(x + unitVector i) = f(x).
+
+Data(a) := smooth(a) and periodic(a) and div(a)=0.
+MagneticData(B0) := Data(B0) and spatialMean(B0)=0.
+The velocity mean m is arbitrary.
+
+2. FROZEN FOURIER AND CONSTITUTIVE DEFINITIONS
+--------------------------------------------
+
+lambda(0) := 0.
+lambda(k) := (4*pi^2*sum_i k_i^2)^(-1), k != 0.
+C_k(x,y) := cos(2*pi*sum_i k_i*(x_i-y_i)).
+
+vectorL(a)(x) := tsum_k lambda(k) * integral_Q C_k(x,y) * a(y) dy.
+scalarL(f)(x) := tsum_k lambda(k) * integral_Q C_k(x,y) * f(y) dy.
+
+K(B) := curl(vectorL(B)).
+U_m[B] := m + K(B).
+G_nu,m[B] := B cross U_m[B] + nu*curl(B).
+V_nu,m[B] := -curl(G_nu,m[B]).
+Q_nu,m[B] := div(G_nu,m[B]).
+DG_nu,m[B](h) := h cross U_m[B] + B cross K(h) + nu*curl(h).
+J_nu,c,m[B] := c^2*curl(B) - DG_nu,m[B](V_nu,m[B]).
+
+Canonical velocity, electric, charge, current and pressure trajectories retain
+the original definition bodies. The canonical pressure is
+  scalarL(Q[B]) - |U_m[B]|^2/2 + scalarMean(|U_m[B]|^2)/2.
+
+All expressions are actual Lean definitions over Mathlib derivatives,
+Lebesgue integrals and infinite sums. Total definability does not prove
+convergence, Poisson identities, Hodge inversion or smooth parameter dependence.
+
+3. EXACT MAXWELL SOLUTION PREDICATE
+---------------------------------
+
+MaxwellSolution(nu,c,m,B0,B,E,rho,J) consists of:
+
+  SmoothVelocity(B), SmoothVelocity(E), SmoothPressure(rho), SmoothVelocity(J);
+  periodicity of B,E,rho,J for every t >= 0;
+  spatialMean(B(t)) = 0 for every t >= 0;
+  div(B(t))(x) = 0;
+  timeDerivative(B)(t,x) + curl(E(t))(x) = 0;
+  div(E(t))(x) = rho(t,x);
+  timeDerivative(E)(t,x) - c^2*curl(B(t))(x) = -J(t,x);
+  E(t) = G_nu,m[B(t)];
+  rho(t) = Q_nu,m[B(t)];
+  J(t) = J_nu,c,m[B(t)];
+  B(0) = B0.
+
+Every differential equation above is quantified over all t >= 0 and all x.
+The original structure field order and definition body are preserved.
+
+Exact proposition:
+
+  MaxwellB(nu,c) :=
+    forall m : Vec, forall B0 : Field,
+    MagneticData(B0) ->
+      exists B E : Velocity, exists rho : Pressure, exists J : Velocity,
+        MaxwellSolution(nu,c,m,B0,B,E,rho,J).
+
+This proposition is defined for every real nu,c. The equivalence root retains
+its existing restrictions nu > 0 and c > 0.
+
+4. CONCRETE NATIVE INSTANCE
+--------------------------
+
+Exact implemented and externally certified witness declarations:
+
+  MaxwellEndpoint.zero_solution (nu c : R) (m : Vec) :
+    MaxwellSolution nu c m (0 : Field)
+      (0 : Velocity) (0 : Velocity) (0 : Pressure) (0 : Velocity).
+
+  MaxwellEndpoint.zero_datum_global_instance (nu c : R) (m : Vec) :
+    MagneticData (0 : Field) and
+      exists B E : Velocity, exists rho : Pressure, exists J : Velocity,
+        MaxwellSolution nu c m (0 : Field) B E rho J.
+
+  MaxwellEndpoint.U_zero (m : Vec) :
+    U m (0 : Field) = (fun _ : Vec => m).
+
+Mathematical construction:
+  constant derivatives vanish;
+  zero fields are smooth and periodic;
+  integrals and Fourier sums with zero integrands vanish;
+  vectorL(0)=0, K(0)=0, U_m[0]=m;
+  G[0]=0, V[0]=0, Q[0]=0, DG[0](0)=0, J[0]=0;
+  every Maxwell equation, constitutive field and initial condition follows.
+
+The complete proof bodies are in MaxwellEndpoint/Native.lean. Their exact
+names are registered in audit-targets.txt and MaxwellEndpoint/Audit.lean.
+Matching native Linux compiler and named axiom-audit records passed in
+run 43351199370; all 23 exact native theorem names are certified.
+No arbitrary-data global-existence claim follows from this witness.
+
+Additional projection endpoints:
+  equations_of_solution: a MaxwellSolution implies all four native equations;
+  constitutive_fields_of_solution: the exact three constitutive identities;
+  magnetic_evolution_of_solution: timeDerivative B t = V nu m (B t), t >= 0;
+  electric_evolution_of_solution:
+    timeDerivative E t = DG nu m (B t) (V nu m (B t)), t >= 0.
+
+These four endpoints explicitly assume the actual MaxwellSolution predicate.
+maxwellB_iff_native is the exact definitional unfolding equivalence for
+MaxwellB nu c. It supplies no independent existence proof.
+
+5. SOURCE AND DEPENDENCY CLOSURE
+-------------------------------
+
+Geometry.lean -> Constitutive.lean -> System.lean -> Native.lean.
+MaxwellEndpoint.lean imports the native implementation.
+Audit.lean imports the aggregate and names the registered declarations.
+
+The Maxwell implementation imports MaxwellEndpoint.* and pinned Mathlib.
+The additional MethlibEndpoints aggregate imports the contained selected
+SingularClosure closure; its ten endpoints are separately audited.
+No Fefferman_adapter or directional proof source is required by the isolated
+Maxwell endpoint package.
+
+The adapter Classical.lean imports MaxwellEndpoint and retains the original
+NSSolution, FeffermanB and ExactEquivalence declarations. Existing declaration
+names remain valid throughout the two implication directions.
+
+Compiler: leanprover/lean4:v4.34.0-rc1.
+Mathlib: de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
+Dependency manifest: nine exact Git revisions, inherited from the approved pin.
+External native Linux entry point: bash Maxwell_Endpoint/run.sh.
+Standalone run.cmd is supplied for the corresponding external native runner.
+
+6. VALIDATION CONTRACT
+----------------------
+
+Required evidence:
+  (a) complete repository integration build;
+  (b) isolated Maxwell_Endpoint package build;
+  (c) fresh named theorem-level axiom audits for both scopes;
+  (d) matching compiler, dependency revisions and source hashes;
+  (e) explicit semantic-premise review.
+
+Allowed foundational axioms:
+  propext;
+  Classical.choice;
+  Quot.sound.
+
+Excluded:
+  sorryAx, admit, new unapproved axioms, unproved opaque bodies,
+  unsafe proof construction and native_decide proof axioms.
+
+Cache objects remain subject to ordinary Lake trace validation.
+Compiler/dependency/project caches are retained.
+The isolated package retains separate build objects.
+Cached audit output does not establish a fresh certificate.
+No local Lean, Lake or elan execution is permitted.
+
+7. UNRESOLVED ROOT OBLIGATIONS
+-----------------------------
+
+The following FourierHodgeLaws fields remain undischargeable by packaging alone:
+  reconstruct_velocity;
+  reconstruct_curl;
+  canonical_smoothness;
+  electric_hodge.
+
+The retained equivalence theorem has exact type:
+
+  NSEMaxwell.Bridge.FourierHodgeLaws ->
+  NSEMaxwell.Classical.ExactEquivalence.
+
+Native-model instantiation does not supply an inhabitant of FourierHodgeLaws.
+Native zero-field existence does not prove MaxwellB(nu,c) for arbitrary data.
+The full unconditional NSE-Maxwell equivalence is not promoted by this package.
+
+8. INITIAL NATIVE CERTIFICATION RECORD
+-----------------------
+
+INITIAL_PACKAGE = A_TIER_FOR_EXACT_NATIVE_THEOREMS.
+INITIAL_MATCHING_EXTERNAL_RUN = 43351199370.
+INITIAL_JOB = 131642414974.
+INITIAL_SOURCE_COMMIT = 7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6.
+INITIAL_NAMED_AXIOM_AUDIT = PASS_STANDARD_ONLY.
+COMPILER = Lean 4.34.0-rc1, x86_64-unknown-linux-gnu.
+COMPILER_COMMIT = 3447a668783dbce1a8fdb97101dd067687b2b418.
+MATHLIB_COMMIT = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0.
+
+Integrated scope:
+  Named audits: 226 / 226 PASS_STANDARD_ONLY.
+  Matching Lean input hashes: 37 / 37.
+  Source-manifest inputs: 346 at the recorded compiled source commit.
+  Source-manifest SHA256:
+    69abcd877f16956cce0b5fe0fc323465aded436bc8369aa674e86cee31a9445e
+  Build strategy: SERIAL_INCREMENTAL_REBUILD.
+  Scheduled module-build invocations: 32; this is not a recompilation count.
+
+Isolated endpoint scope:
+  Named audits: 52 / 52 PASS_STANDARD_ONLY.
+  Matching Lean input hashes: 7 / 7.
+  Source files independently verified: 18.
+  Source-manifest SHA256:
+    489e25cd64350c06ca232223ceda96205194b071c72134fe0f8eb58f22eef322
+  Isolation-manifest SHA256:
+    bf59ab37f6f265f1fa5eefc293330b65163e9dabe11b37ef0e6d933da9772eed
+  Isolation: PASS.
+  Shared dependency cache: TRUE.
+  Shared project-object cache: FALSE.
+  First isolated project-cache lookup: MISS.
+  Native module builds: 4; independent project cache preserved afterward.
+
+Artifact ID: 14003922945.
+Original artifact files preserved: 109.
+Artifact SHA256:
+  4da8e2720886ff08fd905a6e3b94ec579dcf0027411bd07e2c275dc7d282a2fb
+
+Run:
+  https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43351199370
+Artifact:
+  https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43351199370/artifacts/14003922945
+Retained evidence:
+  ../Auxillary/evidence/linux-43351199370/
+Integrated audit:
+  ../Auxillary/evidence/linux-43351199370/audit-summary.json
+Isolated audit:
+  ../Auxillary/evidence/linux-43351199370/standalone/audit-summary.json
+
+Every audited axiom dependency belongs to:
+  propext, Classical.choice, Quot.sound.
+No sorryAx or unapproved axiom occurs in either named audit.
+The .cmd inputs use the declared CRLF checkout normalization; all Lean input
+hashes match byte-for-byte without normalization.
+
+The 23 exact native theorem endpoints are A_TIER. In particular, zero_solution
+and zero_datum_global_instance are unconditional for every real nu,c and every
+m : Vec. The actual arbitrary-data MaxwellB proposition remains unproved.
+The integrated reduced bridge remains A_TIER for the exact implication
+FourierHodgeLaws -> ExactEquivalence, hence CONDITIONAL_FORMAL_CLOSURE.
+No FourierHodgeLaws inhabitant or unconditional equivalence is supplied.
+
+Historical certificates retain their recorded source scope and original
+artifact bytes. This certificate identifies its compiled source snapshot;
+subsequent documentation/evidence publication preserves the Lean/build inputs.
+
+9. EXACT NATIVE THEOREM SIGNATURES
+---------------------------------
+
+Namespace: MaxwellEndpoint. All 23 declarations below passed the matching
+external native Linux compiler and both named standard-only axiom audits.
+
+theorem equations_of_solution
+    (ν c : ℝ) (m : Vec) (B₀ : Field)
+    (B E : Velocity) (ρ : Pressure) (J : Velocity)
+    (h : MaxwellSolution ν c m B₀ B E ρ J) :
+    MaxwellEquations c B E ρ J
+
+theorem constitutive_fields_of_solution
+    (ν c : ℝ) (m : Vec) (B₀ : Field)
+    (B E : Velocity) (ρ : Pressure) (J : Velocity)
+    (h : MaxwellSolution ν c m B₀ B E ρ J) :
+    ∀ t : ℝ, 0 ≤ t →
+      E t = G ν m (B t) ∧
+      ρ t = Q ν m (B t) ∧
+      J t = current ν c m (B t)
+
+theorem magnetic_evolution_of_solution
+    (ν c : ℝ) (m : Vec) (B₀ : Field)
+    (B E : Velocity) (ρ : Pressure) (J : Velocity)
+    (h : MaxwellSolution ν c m B₀ B E ρ J)
+    (t : ℝ) (ht : 0 ≤ t) :
+    timeDerivative B t = V ν m (B t)
+
+theorem electric_evolution_of_solution
+    (ν c : ℝ) (m : Vec) (B₀ : Field)
+    (B E : Velocity) (ρ : Pressure) (J : Velocity)
+    (h : MaxwellSolution ν c m B₀ B E ρ J)
+    (t : ℝ) (ht : 0 ≤ t) :
+    timeDerivative E t = DG ν m (B t) (V ν m (B t))
+
+theorem maxwellB_iff_native (ν c : ℝ) :
+    MaxwellB ν c ↔
+      ∀ (m : Vec) (B₀ : Field), MagneticData B₀ →
+        ∃ (B E : Velocity) (ρ : Pressure) (J : Velocity),
+          MaxwellSolution ν c m B₀ B E ρ J
+
+theorem coordinateDerivative_zero (i : Fin 3) :
+    coordinateDerivative (0 : Field) i = 0
+
+theorem divergence_zero : divergence (0 : Field) = 0
+
+theorem spatialCurl_zero : spatialCurl (0 : Field) = 0
+
+theorem cross_zero_left (a : Vec) : cross 0 a = 0
+
+theorem cross_zero_right (a : Vec) : cross a 0 = 0
+
+theorem vectorL_zero : vectorL (0 : Field) = 0
+
+theorem scalarL_zero : scalarL (0 : ScalarField) = 0
+
+theorem K_zero : K (0 : Field) = 0
+
+theorem U_zero (m : Vec) :
+    U m (0 : Field) = (fun _ : Vec => m)
+
+theorem G_zero (ν : ℝ) (m : Vec) : G ν m (0 : Field) = 0
+
+theorem V_zero (ν : ℝ) (m : Vec) : V ν m (0 : Field) = 0
+
+theorem Q_zero (ν : ℝ) (m : Vec) : Q ν m (0 : Field) = 0
+
+theorem DG_zero (ν : ℝ) (m : Vec) (B : Field) :
+    DG ν m B (0 : Field) = 0
+
+theorem current_zero (ν c : ℝ) (m : Vec) :
+    current ν c m (0 : Field) = 0
+
+theorem timeDerivative_zero : timeDerivative (0 : Velocity) = 0
+
+theorem magneticData_zero : MagneticData (0 : Field)
+
+theorem zero_solution (ν c : ℝ) (m : Vec) :
+    MaxwellSolution ν c m (0 : Field)
+      (0 : Velocity) (0 : Velocity) (0 : Pressure) (0 : Velocity)
+
+theorem zero_datum_global_instance (ν c : ℝ) (m : Vec) :
+    MagneticData (0 : Field) ∧
+      ∃ (B E : Velocity) (ρ : Pressure) (J : Velocity),
+        MaxwellSolution ν c m (0 : Field) B E ρ J
+
+10. NATIVE AUDIT REGISTRATION
+-----------------------------
+
+The 52 Maxwell-native names (plus ten Methlib names below):
+
+NSEMaxwell.Classical.Vec
+NSEMaxwell.Classical.Field
+NSEMaxwell.Classical.Velocity
+NSEMaxwell.Classical.Pressure
+NSEMaxwell.Classical.unitCube
+NSEMaxwell.Classical.SpatialPeriodic
+NSEMaxwell.Classical.spatialMean
+NSEMaxwell.Classical.coordinateDerivative
+NSEMaxwell.Classical.divergence
+NSEMaxwell.Classical.spatialCurl
+NSEMaxwell.Classical.timeDerivative
+NSEMaxwell.Classical.SmoothVelocity
+NSEMaxwell.Classical.SmoothPressure
+NSEMaxwell.Classical.Data
+NSEMaxwell.Classical.MagneticData
+NSEMaxwell.Classical.inverseLaplacianSymbol
+NSEMaxwell.Classical.cosineKernel
+NSEMaxwell.Classical.vectorL
+NSEMaxwell.Classical.scalarL
+NSEMaxwell.Classical.K
+NSEMaxwell.Classical.U
+NSEMaxwell.Classical.G
+NSEMaxwell.Classical.V
+NSEMaxwell.Classical.Q
+NSEMaxwell.Classical.DG
+NSEMaxwell.Classical.current
+NSEMaxwell.Classical.MaxwellSolution
+NSEMaxwell.Classical.MaxwellB
+MaxwellEndpoint.MaxwellEquations
+MaxwellEndpoint.equations_of_solution
+MaxwellEndpoint.constitutive_fields_of_solution
+MaxwellEndpoint.magnetic_evolution_of_solution
+MaxwellEndpoint.electric_evolution_of_solution
+MaxwellEndpoint.maxwellB_iff_native
+MaxwellEndpoint.coordinateDerivative_zero
+MaxwellEndpoint.divergence_zero
+MaxwellEndpoint.spatialCurl_zero
+MaxwellEndpoint.cross_zero_left
+MaxwellEndpoint.cross_zero_right
+MaxwellEndpoint.vectorL_zero
+MaxwellEndpoint.scalarL_zero
+MaxwellEndpoint.K_zero
+MaxwellEndpoint.U_zero
+MaxwellEndpoint.G_zero
+MaxwellEndpoint.V_zero
+MaxwellEndpoint.Q_zero
+MaxwellEndpoint.DG_zero
+MaxwellEndpoint.current_zero
+MaxwellEndpoint.timeDerivative_zero
+MaxwellEndpoint.magneticData_zero
+MaxwellEndpoint.zero_solution
+MaxwellEndpoint.zero_datum_global_instance
+
+ADAPTER DIRECTORY RENAME CERTIFICATE
+--------------------------------------
+Current adapter directory: Fefferman_adapter.
+Source: 8fd783b4d977fdb1a31cf4716023148ddfa26af9.
+Run: 43353327242. Integrated audits226/226; isolated audits52/52.
+Matching Lean hashes: integrated37/37; standalone7/7.
+Both scopes: LAKE_TRANSITIVE_TRACE_VERIFIED_WARM_REUSE; zero module rebuilds.
+All35 proof-module file bytes, declarations and premises preserved.
+Evidence: ../Auxillary/evidence/linux-43353327242/.
+Previous certificates above retain their original source-commit scope.
+
+ADDITIONAL NATIVE METHLIB AUDIT REGISTRATION
+------------------------------------------
+SingularClosure.torusDatumComponent_fourierCoeff
+SingularClosure.datumFourierCoeff_coordinateDerivative
+SingularClosure.FOURIER_POLYNOMIAL_DECAY
+SingularClosure.scalarFourierSeries_contDiff
+SingularClosure.scalarFourierSeries_coefficient
+SingularClosure.datumFourierCoeff_injective_continuous_periodic
+SingularClosure.infiniteTransportPressure_recovery
+SingularClosure.datumFourierCoeff_smoothFourierSynthesis
+SingularClosure.smoothFourierSynthesis_coordinateDerivative
+SingularClosure.summable_torusSobolevWeight_inv_four
+
+CONTAINED NATIVE SOURCE CERTIFICATE
+----------------------------------
+SOURCE_COMMIT = 1de664f2ef5ddc11caef25ac2274278b4171ab6b
+EXTERNAL_RUN = 43359539373
+EXTERNAL_JOB = 131669505081
+ARTIFACT_ID = 14008727271
+ARTIFACT_FILES = 242
+ARTIFACT_SHA256 = e3c5b60b16610af15c6f40454698e35c81228a1b44c5bf490d41a852cf354482
+COMPILER = Lean 4.34.0-rc1, x86_64-unknown-linux-gnu
+COMPILER_COMMIT = 3447a668783dbce1a8fdb97101dd067687b2b418
+INTEGRATED_AUDIT = 236 / 236 PASS_STANDARD_ONLY
+ISOLATED_FEFFERMAN_AUDIT = 236 / 236 PASS_STANDARD_ONLY
+ISOLATED_MAXWELL_AUDIT = 62 / 62 PASS_STANDARD_ONLY
+MATCHING_INTEGRATED_SOURCE_FILES = 20353 / 20353
+MATCHING_FEFFERMAN_SOURCE_FILES = 9968 / 9968
+MATCHING_MAXWELL_SOURCE_FILES = 9914 / 9914
+MATCHING_INTEGRATED_LEAN_INPUTS = 19160 / 19160
+MATCHING_FEFFERMAN_LEAN_INPUTS = 9592 / 9592
+MATCHING_MAXWELL_LEAN_INPUTS = 9563 / 9563
+COMPLETE_UPSTREAM_SNAPSHOTS_PER_PACKAGE = 9
+UPSTREAM_FILES_PER_PACKAGE = 9842
+UPSTREAM_LEAN_FILES_PER_PACKAGE = 9515
+MATHLIB_LEAN_FILES_PER_PACKAGE = 8853
+NATIVE_METHLIB_MODULES_PER_PACKAGE = 39
+TARGET_COMPILER_METHLIB_ENDPOINT_AUDITS = 10 / 10 PASS_STANDARD_ONLY
+MISSING_REACHABLE_IMPORTS = 0
+AMBIGUOUS_REACHABLE_IMPORTS = 0
+COMPILER_PROVIDED_LIBRARIES = Init, Lean, Std, Lake
+ROOT_COMPILER_DEPENDENCY_PROJECT_CACHES = EXACT_HITS
+ROOT_MODULE_BUILD_INVOCATIONS = 0
+FEFFERMAN_MODULE_BUILD_INVOCATIONS = 72
+MAXWELL_MODULE_BUILD_INVOCATIONS = 44
+MODULE_BUILD_INVOCATION_COUNTS != recompilation_counts
+ISOLATED_DEPENDENCY_SOURCE_CHECKOUTS = independently reconstructed
+ISOLATED_DEPENDENCY_SOURCE_DOWNLOADS = 0
+ISOLATED_DEPENDENCY_COMPILED_OBJECTS = reused
+ISOLATED_PROJECT_CACHE_SEED = physical copies of matching audited root objects
+SUBSEQUENT_STANDALONE_VALIDATION = ordinary Lake traces + fresh named audits
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+ALLOWED_AXIOMS = propext, Classical.choice, Quot.sound
+FORMAL_STATUS = CONDITIONAL_FORMAL_CLOSURE
+FOURIER_HODGE_LAWS_INHABITANT = NOT_SUPPLIED
+ARBITRARY_DATA_FEFFERMANB = NOT_PROVED
+ARBITRARY_DATA_MAXWELLB = NOT_PROVED
+UNCONDITIONAL_EQUIVALENCE = NOT_PROVED
+
+RUN_URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43359539373
+EVIDENCE_DIRECTORY = ../Auxillary/evidence/linux-43359539373/
+INTEGRATED_AUDIT_FILE = ../Auxillary/evidence/linux-43359539373/audit-summary.json
+FEFFERMAN_AUDIT_FILE = ../Auxillary/evidence/linux-43359539373/fefferman-standalone/audit-summary.json
+MAXWELL_AUDIT_FILE = ../Auxillary/evidence/linux-43359539373/standalone/audit-summary.json
+
+SOURCE_MANIFEST_SCOPE = compiled source commit above
+SUBSEQUENT_DOCUMENTATION_EVIDENCE_PUBLICATION = certified Lean/build/audit inputs preserved
+SOURCE_PRESENCE != certification_of_every_upstream_test_or_declaration
+METHLIB_ENDPOINT_CERTIFICATION != discharge_of_exact_Hodge_alignment

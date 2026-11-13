@@ -1,0 +1,680 @@
+[
+  {
+    "executable": "lean",
+    "arguments": [
+      "--version"
+    ],
+    "log": "lean-version.log",
+    "started_at_utc": "2026-11-13T01:33:35.5715911Z",
+    "elapsed_seconds": 1.557,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/plausible",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "dependency-plausible-revision.log",
+    "started_at_utc": "2026-11-13T01:33:37.1656937Z",
+    "elapsed_seconds": 0.007,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/plausible",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "dependency-plausible-working-tree.log",
+    "started_at_utc": "2026-11-13T01:33:37.1738785Z",
+    "elapsed_seconds": 0.007,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/LeanSearchClient",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "dependency-LeanSearchClient-revision.log",
+    "started_at_utc": "2026-11-13T01:33:37.1846291Z",
+    "elapsed_seconds": 0.005,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/LeanSearchClient",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "dependency-LeanSearchClient-working-tree.log",
+    "started_at_utc": "2026-11-13T01:33:37.1912754Z",
+    "elapsed_seconds": 0.005,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/importGraph",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "dependency-importGraph-revision.log",
+    "started_at_utc": "2026-11-13T01:33:37.1979457Z",
+    "elapsed_seconds": 0.005,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/importGraph",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "dependency-importGraph-working-tree.log",
+    "started_at_utc": "2026-11-13T01:33:37.2044458Z",
+    "elapsed_seconds": 0.005,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/proofwidgets",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "dependency-proofwidgets-revision.log",
+    "started_at_utc": "2026-11-13T01:33:37.2113744Z",
+    "elapsed_seconds": 0.005,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/proofwidgets",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "dependency-proofwidgets-working-tree.log",
+    "started_at_utc": "2026-11-13T01:33:37.2177423Z",
+    "elapsed_seconds": 0.005,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/aesop",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "dependency-aesop-revision.log",
+    "started_at_utc": "2026-11-13T01:33:37.2245769Z",
+    "elapsed_seconds": 0.005,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/aesop",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "dependency-aesop-working-tree.log",
+    "started_at_utc": "2026-11-13T01:33:37.2308452Z",
+    "elapsed_seconds": 0.005,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/Qq",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "dependency-Qq-revision.log",
+    "started_at_utc": "2026-11-13T01:33:37.2378387Z",
+    "elapsed_seconds": 0.005,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/Qq",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "dependency-Qq-working-tree.log",
+    "started_at_utc": "2026-11-13T01:33:37.2443138Z",
+    "elapsed_seconds": 0.005,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/batteries",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "dependency-batteries-revision.log",
+    "started_at_utc": "2026-11-13T01:33:37.2509774Z",
+    "elapsed_seconds": 0.005,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/batteries",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "dependency-batteries-working-tree.log",
+    "started_at_utc": "2026-11-13T01:33:37.2574589Z",
+    "elapsed_seconds": 0.006,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/Cli",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "dependency-Cli-revision.log",
+    "started_at_utc": "2026-11-13T01:33:37.2647467Z",
+    "elapsed_seconds": 0.005,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/Cli",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "dependency-Cli-working-tree.log",
+    "started_at_utc": "2026-11-13T01:33:37.2712951Z",
+    "elapsed_seconds": 0.005,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/mathlib",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "dependency-mathlib-revision.log",
+    "started_at_utc": "2026-11-13T01:33:37.2781374Z",
+    "elapsed_seconds": 0.005,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/mathlib",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "dependency-mathlib-working-tree.log",
+    "started_at_utc": "2026-11-13T01:33:37.2846054Z",
+    "elapsed_seconds": 0.012,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/mathlib",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "mathlib-revision.log",
+    "started_at_utc": "2026-11-13T01:33:37.3025867Z",
+    "elapsed_seconds": 0.005,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "-C",
+      ".lake/packages/mathlib",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "mathlib-working-tree.log",
+    "started_at_utc": "2026-11-13T01:33:37.3338628Z",
+    "elapsed_seconds": 0.012,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "source-commit.log",
+    "started_at_utc": "2026-11-13T01:33:37.3721956Z",
+    "elapsed_seconds": 0.005,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "status",
+      "--porcelain"
+    ],
+    "log": "working-tree.log",
+    "started_at_utc": "2026-11-13T01:33:37.3797395Z",
+    "elapsed_seconds": 0.034,
+    "exit_code": 0
+  },
+  {
+    "executable": "git",
+    "arguments": [
+      "ls-files"
+    ],
+    "log": "tracked-files.log",
+    "started_at_utc": "2026-11-13T01:33:37.4151811Z",
+    "elapsed_seconds": 0.029,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "--no-build",
+      "NSEMaxwell",
+      "NSEMaxwellForward.Reduced",
+      "NSEMaxwellReverse.Reduced"
+    ],
+    "log": "run-build-freshness.log",
+    "started_at_utc": "2026-11-13T01:33:37.6083357Z",
+    "elapsed_seconds": 3.759,
+    "exit_code": 3
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.Classical"
+    ],
+    "log": "run-build-NSEMaxwell-Classical.log",
+    "started_at_utc": "2026-11-13T01:33:41.3930150Z",
+    "elapsed_seconds": 3.605,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.Kinematics"
+    ],
+    "log": "run-build-NSEMaxwell-Kinematics.log",
+    "started_at_utc": "2026-11-13T01:33:45.0003280Z",
+    "elapsed_seconds": 3.393,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.Constitutive"
+    ],
+    "log": "run-build-NSEMaxwell-Constitutive.log",
+    "started_at_utc": "2026-11-13T01:33:48.3958801Z",
+    "elapsed_seconds": 3.397,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.Negation"
+    ],
+    "log": "run-build-NSEMaxwell-Negation.log",
+    "started_at_utc": "2026-11-13T01:33:51.7949131Z",
+    "elapsed_seconds": 3.393,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.Lamb"
+    ],
+    "log": "run-build-NSEMaxwell-Lamb.log",
+    "started_at_utc": "2026-11-13T01:33:55.1907236Z",
+    "elapsed_seconds": 3.407,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.Pressure"
+    ],
+    "log": "run-build-NSEMaxwell-Pressure.log",
+    "started_at_utc": "2026-11-13T01:33:58.5991307Z",
+    "elapsed_seconds": 3.417,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.ConstantPaths"
+    ],
+    "log": "run-build-NSEMaxwell-ConstantPaths.log",
+    "started_at_utc": "2026-11-13T01:34:02.0180844Z",
+    "elapsed_seconds": 3.41,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.Ampere"
+    ],
+    "log": "run-build-NSEMaxwell-Ampere.log",
+    "started_at_utc": "2026-11-13T01:34:05.4301770Z",
+    "elapsed_seconds": 3.437,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.CurlCurl"
+    ],
+    "log": "run-build-NSEMaxwell-CurlCurl.log",
+    "started_at_utc": "2026-11-13T01:34:08.9537180Z",
+    "elapsed_seconds": 3.391,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.PeriodicIntegration"
+    ],
+    "log": "run-build-NSEMaxwell-PeriodicIntegration.log",
+    "started_at_utc": "2026-11-13T01:34:12.3485774Z",
+    "elapsed_seconds": 3.399,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.Spacetime"
+    ],
+    "log": "run-build-NSEMaxwell-Spacetime.log",
+    "started_at_utc": "2026-11-13T01:34:15.7496073Z",
+    "elapsed_seconds": 3.395,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.FourierPeriodic"
+    ],
+    "log": "run-build-NSEMaxwell-FourierPeriodic.log",
+    "started_at_utc": "2026-11-13T01:34:19.1467900Z",
+    "elapsed_seconds": 3.396,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.DominatedWithin"
+    ],
+    "log": "run-build-NSEMaxwell-DominatedWithin.log",
+    "started_at_utc": "2026-11-13T01:34:22.5443792Z",
+    "elapsed_seconds": 3.388,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.LocalEvolution"
+    ],
+    "log": "run-build-NSEMaxwell-LocalEvolution.log",
+    "started_at_utc": "2026-11-13T01:34:25.9345447Z",
+    "elapsed_seconds": 3.397,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.TemporalMean"
+    ],
+    "log": "run-build-NSEMaxwell-TemporalMean.log",
+    "started_at_utc": "2026-11-13T01:34:29.3341933Z",
+    "elapsed_seconds": 3.39,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.MeanConservation"
+    ],
+    "log": "run-build-NSEMaxwell-MeanConservation.log",
+    "started_at_utc": "2026-11-13T01:34:32.7258108Z",
+    "elapsed_seconds": 3.402,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.Residual"
+    ],
+    "log": "run-build-NSEMaxwell-Residual.log",
+    "started_at_utc": "2026-11-13T01:34:36.1305608Z",
+    "elapsed_seconds": 0.595,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.ExistenceTransport"
+    ],
+    "log": "run-build-NSEMaxwell-ExistenceTransport.log",
+    "started_at_utc": "2026-11-13T01:34:36.7281445Z",
+    "elapsed_seconds": 0.485,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.AnalyticContracts"
+    ],
+    "log": "run-build-NSEMaxwell-AnalyticContracts.log",
+    "started_at_utc": "2026-11-13T01:34:37.2152837Z",
+    "elapsed_seconds": 7.484,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwellForward"
+    ],
+    "log": "run-build-NSEMaxwellForward.log",
+    "started_at_utc": "2026-11-13T01:34:44.7017293Z",
+    "elapsed_seconds": 6.408,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwellReverse"
+    ],
+    "log": "run-build-NSEMaxwellReverse.log",
+    "started_at_utc": "2026-11-13T01:34:51.1112473Z",
+    "elapsed_seconds": 6.396,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.AnalyticBridge"
+    ],
+    "log": "run-build-NSEMaxwell-AnalyticBridge.log",
+    "started_at_utc": "2026-11-13T01:34:57.5085935Z",
+    "elapsed_seconds": 6.196,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.CanonicalSmoothness"
+    ],
+    "log": "run-build-NSEMaxwell-CanonicalSmoothness.log",
+    "started_at_utc": "2026-11-13T01:35:03.7064786Z",
+    "elapsed_seconds": 6.493,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.AnalyticReduction"
+    ],
+    "log": "run-build-NSEMaxwell-AnalyticReduction.log",
+    "started_at_utc": "2026-11-13T01:35:10.2013328Z",
+    "elapsed_seconds": 6.492,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwellForward.Reduced"
+    ],
+    "log": "run-build-NSEMaxwellForward-Reduced.log",
+    "started_at_utc": "2026-11-13T01:35:16.6948745Z",
+    "elapsed_seconds": 6.288,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwellReverse.Reduced"
+    ],
+    "log": "run-build-NSEMaxwellReverse-Reduced.log",
+    "started_at_utc": "2026-11-13T01:35:22.9840718Z",
+    "elapsed_seconds": 6.195,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE"
+    ],
+    "log": "run-build-NSEMaxwell-FEFFERMAN_B_MAXWELL_EQUIVALENCE.log",
+    "started_at_utc": "2026-11-13T01:35:29.1808394Z",
+    "elapsed_seconds": 6.29,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "build",
+      "NSEMaxwell",
+      "NSEMaxwellForward.Reduced",
+      "NSEMaxwellReverse.Reduced"
+    ],
+    "log": "run-build.log",
+    "started_at_utc": "2026-11-13T01:35:35.4735344Z",
+    "elapsed_seconds": 5.995,
+    "exit_code": 0
+  },
+  {
+    "executable": "lake",
+    "arguments": [
+      "env",
+      "lean",
+      "-R",
+      "Fefferman_B_adapter",
+      "Fefferman_B_adapter/NSEMaxwell/Audit.lean"
+    ],
+    "log": "run-audit.log",
+    "started_at_utc": "2026-11-13T01:35:41.4703011Z",
+    "elapsed_seconds": 3.534,
+    "exit_code": 0
+  },
+  {
+    "executable": "python",
+    "arguments": [
+      "Fefferman_B_adapter/scripts/verify_audit.py",
+      "--expected-platform",
+      "linux",
+      "--root",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT",
+      "--targets",
+      "audit-targets.txt",
+      "--audit-source",
+      "Fefferman_B_adapter/NSEMaxwell/Audit.lean",
+      "--log",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/external-linux/run-audit.log",
+      "--manifest",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/external-linux/source-manifest.json",
+      "--provenance",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/external-linux/run-provenance.json",
+      "--scope",
+      "formalization-status.json",
+      "--output",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/external-linux/audit-summary.json"
+    ],
+    "log": "audit-verifier.log",
+    "started_at_utc": "2026-11-13T01:35:45.0074154Z",
+    "elapsed_seconds": 0.195,
+    "exit_code": 0
+  }
+]

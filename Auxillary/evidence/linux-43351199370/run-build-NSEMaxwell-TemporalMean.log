@@ -1,0 +1,51 @@
+⚠ [8713/8719] Replayed NSEMaxwell.DominatedWithin
+warning: Fefferman_B_adapter/NSEMaxwell/DominatedWithin.lean:28:0: automatically included section variable(s) unused in theorem `NSEMaxwell.DominatedWithin.hasDerivWithinAt_integral_of_dominated`:
+  [CompleteSpace E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8714/8719] Replayed NSEMaxwell.Kinematics
+warning: Fefferman_B_adapter/NSEMaxwell/Kinematics.lean:92:19: This simp argument is unused:
+  coordinateDerivative
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [laplacian]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8715/8719] Replayed NSEMaxwell.CurlCurl
+warning: Fefferman_B_adapter/NSEMaxwell/CurlCurl.lean:94:13: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sub_apply` to `sub_apply x`).
+warning: Fefferman_B_adapter/NSEMaxwell/CurlCurl.lean:188:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+⚠ [8717/8719] Replayed NSEMaxwell.Lamb
+warning: Fefferman_B_adapter/NSEMaxwell/Lamb.lean:33:45: This simp argument is unused:
+  PiLp.single_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [unitVector, EuclideanSpace.single, smul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_B_adapter/NSEMaxwell/Lamb.lean:65:17: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: Fefferman_B_adapter/NSEMaxwell/Lamb.lean:65:49: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+⚠ [8718/8719] Replayed NSEMaxwell.PeriodicIntegration
+warning: Fefferman_B_adapter/NSEMaxwell/PeriodicIntegration.lean:96:4: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: Fefferman_B_adapter/NSEMaxwell/PeriodicIntegration.lean:129:20: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Fefferman_B_adapter/NSEMaxwell/PeriodicIntegration.lean:136:24: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Fefferman_B_adapter/NSEMaxwell/PeriodicIntegration.lean:152:20: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Fefferman_B_adapter/NSEMaxwell/PeriodicIntegration.lean:285:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: Fefferman_B_adapter/NSEMaxwell/PeriodicIntegration.lean:285:44: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+✔ [8719/8719] Built NSEMaxwell.TemporalMean (4.8s)
+Build completed successfully (8719 jobs).

@@ -1,0 +1,70 @@
+⚠ [8708/8726] Replayed NSEMaxwell.Kinematics
+warning: NSEMaxwell/Kinematics.lean:92:19: This simp argument is unused:
+  coordinateDerivative
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [laplacian]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8711/8726] Replayed NSEMaxwell.Lamb
+warning: NSEMaxwell/Lamb.lean:33:45: This simp argument is unused:
+  PiLp.single_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [unitVector, EuclideanSpace.single, smul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: NSEMaxwell/Lamb.lean:65:17: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: NSEMaxwell/Lamb.lean:65:49: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+⚠ [8715/8726] Replayed NSEMaxwell.CurlCurl
+warning: NSEMaxwell/CurlCurl.lean:94:13: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sub_apply` to `sub_apply x`).
+warning: NSEMaxwell/CurlCurl.lean:188:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+⚠ [8718/8726] Replayed NSEMaxwell.LocalEvolution
+warning: NSEMaxwell/LocalEvolution.lean:65:67: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: NSEMaxwell/LocalEvolution.lean:66:67: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: NSEMaxwell/LocalEvolution.lean:67:67: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: NSEMaxwell/LocalEvolution.lean:176:4: Unused tactic linter: `change
+  timeDerivative u t +
+          ((fun x => cross (spatialCurl (u t) x) (u t x)) +
+            NSEMaxwell.Classical.gradient (fun x : Vec => ‖u t x‖ ^ 2 / 2)) +
+        NSEMaxwell.Classical.gradient (p t) -
+      -(ν • spatialCurl (spatialCurl (u t))) =
+    _` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+⚠ [8719/8726] Replayed NSEMaxwell.PeriodicIntegration
+warning: NSEMaxwell/PeriodicIntegration.lean:96:4: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: NSEMaxwell/PeriodicIntegration.lean:129:20: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: NSEMaxwell/PeriodicIntegration.lean:136:24: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: NSEMaxwell/PeriodicIntegration.lean:152:20: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: NSEMaxwell/PeriodicIntegration.lean:285:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: NSEMaxwell/PeriodicIntegration.lean:285:44: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+⚠ [8720/8726] Replayed NSEMaxwell.DominatedWithin
+warning: NSEMaxwell/DominatedWithin.lean:28:0: automatically included section variable(s) unused in theorem `NSEMaxwell.DominatedWithin.hasDerivWithinAt_integral_of_dominated`:
+  [CompleteSpace E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8726/8726] Built NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE (4.0s)
+Build completed successfully (8726 jobs).

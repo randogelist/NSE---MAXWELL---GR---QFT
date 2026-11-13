@@ -1,0 +1,70 @@
+# Fefferman B ↔ constrained Maxwell
+
+```text
+TARGET = forall nu > 0, forall c > 0, FeffermanB nu iff MaxwellB nu c
+```
+
+## Direction folders
+
+| Folder | Implication | Active proof root |
+|---|---|---|
+| [=>/](%3D%3E/) | Fefferman B ⇒ Maxwell | [NSEMaxwellForward.lean](%3D%3E/NSEMaxwellForward.lean) |
+| [<=/](%3C%3D/) | Maxwell ⇒ Fefferman B | [NSEMaxwellReverse.lean](%3C%3D/NSEMaxwellReverse.lean) |
+
+These are the two direct child directories. The full derivation and integration contracts are files at this level.
+
+## Shared adapter
+
+[Fefferman_adapter/](../Fefferman_adapter/) supplies the exact Lean statement, shared calculus, explicit analytic premises, and copied public endpoints.
+
+```text
+AnalyticContracts
+  -> NSEMaxwellForward / NSEMaxwellReverse
+  -> AnalyticBridge
+  -> AnalyticReduction
+  -> reduced directional endpoints and exact conditional root.
+```
+
+The existing `NSEMaxwell.Bridge` declaration namespace is retained across the directional libraries.
+
+## Derivations and formal boundary
+
+| File | Scope |
+|---|---|
+| [FOURIER_HODGE_COMPOSITION_B_TIER.txt](FOURIER_HODGE_COMPOSITION_B_TIER.txt) | Complete B-tier derivation of the four Hodge fields and both implications |
+| [FEFFERMAN_B_MAXWELL_EQUIVALENCE_B_TIER.txt](FEFFERMAN_B_MAXWELL_EQUIVALENCE_B_TIER.txt) | Earlier exact equivalence derivation |
+| [FEFFERMAN_B_MAXWELL_EQUIVALENCE_A_TIER.txt](FEFFERMAN_B_MAXWELL_EQUIVALENCE_A_TIER.txt) | Exact conditional theorem, premise boundary, compiler evidence status |
+| [INTEGRATION_PLAN.md](INTEGRATION_PLAN.md) | Deferred target-native Hodge adapter contracts |
+
+```text
+B_TIER_HODGE_COMPOSITION      = COMPLETE
+LEAN_DIRECTION_SEPARATION    = IMPLEMENTED
+PRIOR_PROOF_SOURCE_CERTIFICATION = PASS_BUILD_AND174_STANDARD_ONLY_AUDITS
+PRIOR_AUXILLARY_LAYOUT_VALIDATION = PASS_CACHED_NATIVE_LINUX_BUILD_AND174_FRESH_AUDITS
+LEAN_HODGE_INHABITANT        = NOT_SUPPLIED
+UNCONDITIONAL_LEAN_CLOSURE   = NOT_ESTABLISHED
+```
+
+The Lean directions retain their explicit `PeriodicAnalyticLaws` or `FourierHodgeLaws` premise. The equivalence does not constitute a standalone proof of global NSE existence.
+
+Matching certificate: [native Linux run 43345557147](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147), proof-source commit `be8376a08573a7789e36b68c2bc48178aa6f53c3`. The exact conditional directional endpoints and conditional reduced root are A-tier. [Retained audit summary](../Auxillary/evidence/linux-43345557147/audit-summary.json).
+
+Prior auxiliary-layout certificate: [native Linux run 43348914489](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43348914489), source `b02425040a217a94855cfa52934e303f12fe80de`; 174/174 fresh audits, 30/30 matching Lean input hashes. [Prior audit summary](../Auxillary/evidence/linux-43348914489/audit-summary.json).
+
+## Native Maxwell source dependency
+
+The exact Maxwell definitions and common physical operators reside in [Maxwell_Endpoint/](../Maxwell_Endpoint/). The adapter imports this independent native library. Declaration names, original definition bodies, and both directional proof bodies are preserved.
+
+```text
+CURRENT_NATIVE_EXTRACTION_VALIDATION = PASS_226_INTEGRATED_AND52_ISOLATED_AUDITS
+INTEGRATED_AUDIT_TARGETS = 226
+ISOLATED_MAXWELL_AUDIT_TARGETS = 52
+```
+
+Matching native extraction: [run 43351199370](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43351199370), source `7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6`; [integrated audit](../Auxillary/evidence/linux-43351199370/audit-summary.json). The exact implication `FourierHodgeLaws → ExactEquivalence` remains A-tier with the same explicit analytic premise.
+
+## Adapter rename certificate
+
+[Run 43353327242](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43353327242), source `8fd783b4d977fdb1a31cf4716023148ddfa26af9`: 226/226 integrated and 52/52 isolated audits passed; 37/37 integrated and 7/7 standalone Lean input hashes match. Both scopes reused trace-validated cached objects with zero module rebuilds. The 35 proof-module files remain byte-identical under the directory rename.
+
+[Matching evidence](../Auxillary/evidence/linux-43353327242/).
