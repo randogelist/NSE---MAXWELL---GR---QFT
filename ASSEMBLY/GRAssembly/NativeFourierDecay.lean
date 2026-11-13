@@ -68,7 +68,7 @@ theorem summable_productWeight (n : ℕ) :
         (fun l => inv_nonneg.mpr (frequencyWeight_pos l).le) productWeight_nonneg
       have hi := hp.comp_injective (frequencySplit m).injective
       exact hi.congr (fun k => by
-        simp [Function.comp_def, frequencySplit, productWeight, Fin.prod_univ_succ])
+        simp [Function.comp_def, frequencySplit, productWeight, Fin.prod_univ_succ, mul_comm])
 
 def coordinateHelmholtz (j : Fin n) (f : LiteratureSpace n → ℂ) :
     LiteratureSpace n → ℂ :=

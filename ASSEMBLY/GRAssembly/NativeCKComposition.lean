@@ -42,7 +42,8 @@ theorem ck_multilinear_diagonal_norm_bound (n : ℕ)
     (c : ContinuousMultilinearMap ℝ (fun _ : Fin (n + 1) => H) B)
     {s : ℝ} (hs : 0 ≤ s) {x : H} (hx : ‖x‖ ≤ s) :
     ‖c (fun _ => x)‖ ≤ (‖c‖ * (n + 1) * s ^ n) * ‖x‖ := by
-  simpa using ck_multilinear_diagonal_difference_bound n c hs hx
+  have hc₀ : c (fun _ => (0 : H)) = 0 := c.map_zero
+  simpa only [hc₀, sub_zero, norm_zero] using ck_multilinear_diagonal_difference_bound n c hs hx
     (show ‖(0 : H)‖ ≤ s by simpa using hs)
 
 /-- Actual sum of positive-degree multilinear diagonal evaluations. -/
@@ -105,8 +106,9 @@ theorem ck_summable_derivative_majorant_halfRadius
   have hshift : Summable (fun n => a (n + 1) * R ^ (n + 1)) :=
     (summable_nat_add_iff 1).2 hseries
   apply Summable.of_nonneg_of_le
-    (fun n => by positivity) _ (hshift.mul_left (1 / R))
+    (fun n => by have han := ha (n + 1); positivity) _ (hshift.mul_left (1 / R))
   intro n
+  have han := ha (n + 1)
   have hdegree : (n + 1 : ℝ) ≤ (2 : ℝ) ^ n := by
     exact_mod_cast n.lt_two_pow_self.succ_le
   calc

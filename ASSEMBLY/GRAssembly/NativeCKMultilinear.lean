@@ -27,12 +27,12 @@ def ckCurryLeftCLM (n : ℕ) : CKCoeff G H (n + 1) →L[ℝ] G →L[ℝ] CKCoeff
     .toContinuousLinearEquiv.toContinuousLinearMap
 
 theorem ckCurryZeroCLM_norm_le : ‖ckCurryZeroCLM (G := G) (H := H)‖ ≤ 1 := by
-  apply ContinuousLinearMap.opNorm_le_bound (by norm_num)
+  apply ContinuousLinearMap.opNorm_le_bound _ (by norm_num)
   intro a
   simpa only [one_mul] using le_of_eq ((continuousMultilinearCurryFin0 ℝ G H).norm_map a)
 
 theorem ckCurryLeftCLM_norm_le (n : ℕ) : ‖ckCurryLeftCLM (G := G) (H := H) n‖ ≤ 1 := by
-  apply ContinuousLinearMap.opNorm_le_bound (by norm_num)
+  apply ContinuousLinearMap.opNorm_le_bound _ (by norm_num)
   intro a
   simpa only [one_mul] using le_of_eq
     ((continuousMultilinearCurryLeftEquiv ℝ (fun _ : Fin (n + 1) => G) H).norm_map a)

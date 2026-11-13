@@ -69,7 +69,7 @@ def postcomposeCLM (L : F →L[ℝ] G) : CKSeries E F →L[ℝ] CKSeries E G :=
     postcomposeCLM L p = postcompose L p := rfl
 
 theorem norm_postcomposeCLM_le (L : F →L[ℝ] G) : ‖postcomposeCLM (E := E) L‖ ≤ ‖L‖ := by
-  apply ContinuousLinearMap.opNorm_le_bound (norm_nonneg L)
+  apply ContinuousLinearMap.opNorm_le_bound _ (norm_nonneg L)
   exact norm_postcompose_le L
 
 def single (n : ℕ) (a : CKCoeff E F n) (hzero : n = 0 → a = 0)

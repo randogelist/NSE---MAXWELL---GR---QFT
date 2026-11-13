@@ -237,11 +237,11 @@ theorem coordDeriv_bulkTranspose {f : Bulk → BulkMatrix} {z : Bulk}
     (hf : AnalyticAt ℝ f z) (i : Fin 5) :
     coordDeriv (fun y => (f y).transpose) i z = (coordDeriv f i z).transpose := by
   have hd := bulkTransposeCLM.hasFDerivAt.comp z hf.differentiableAt.hasFDerivAt
+  have he : (fun y => (f y).transpose) = bulkTransposeCLM ∘ f := by
+    funext y
+    rfl
   unfold coordDeriv
-  have hd' : fderiv ℝ (fun y => (f y).transpose) z =
-      bulkTransposeCLM.comp (fderiv ℝ f z) := by
-    simpa only [Function.comp_def] using hd.fderiv
-  rw [hd']
+  rw [he, hd.fderiv]
   rfl
 
 theorem coordDeriv_metric_compatibility {g : Metric} {z : Bulk}
@@ -261,9 +261,14 @@ theorem coordDeriv_metric_compatibility {g : Metric} {z : Bulk}
       with y hy hs hn
     exact metric_connection_compatible hy hs hn i
   rw [coordDeriv_congr_germ he j]
-  rw [coordDeriv_add ((analyticAt_bulkTranspose hΓ).mul hg) (hg.mul hΓ)]
-  rw [coordDeriv_matrix_mul (analyticAt_bulkTranspose hΓ) hg,
-    coordDeriv_matrix_mul hg hΓ, coordDeriv_bulkTranspose hΓ]
+  rw [coordDeriv_add
+    (f := fun y => (metricConnection g i y).transpose * g y)
+    (q := fun y => g y * metricConnection g i y)
+    ((analyticAt_bulkTranspose hΓ).mul hg) (hg.mul hΓ)]
+  rw [coordDeriv_matrix_mul (f := fun y => (metricConnection g i y).transpose)
+      (q := g) (analyticAt_bulkTranspose hΓ) hg,
+    coordDeriv_matrix_mul (f := g) (q := metricConnection g i) hg hΓ,
+    coordDeriv_bulkTranspose hΓ]
 
 /-- Curvature is skew with respect to the actual metric. This follows by
 differentiating native metric compatibility in both orders. -/

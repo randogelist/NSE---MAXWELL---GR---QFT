@@ -35,7 +35,7 @@ theorem ckBilinearCoeff_norm_le {n m : ℕ} (B : F →L[ℝ] G →L[ℝ] H)
   let K := (ContinuousLinearMap.compContinuousMultilinearMapL ℝ
     (fun _ : Fin m => E) G H).flip b
   have hK : ‖K‖ ≤ ‖b‖ := by
-    apply ContinuousLinearMap.opNorm_le_bound (norm_nonneg b)
+    apply ContinuousLinearMap.opNorm_le_bound _ (norm_nonneg b)
     intro L
     change ‖L.compContinuousMultilinearMap b‖ ≤ ‖b‖ * ‖L‖
     simpa only [mul_comm] using L.norm_compContinuousMultilinearMap_le b

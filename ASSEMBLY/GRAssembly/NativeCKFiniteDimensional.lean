@@ -11,6 +11,7 @@ is inserted by changing the finite-dimensional coordinate representation.
 set_option autoImplicit false
 set_option Elab.async true
 set_option maxHeartbeats 1600000
+set_option backward.isDefEq.respectTransparency false
 
 open Set Filter
 open scoped Topology ContDiff

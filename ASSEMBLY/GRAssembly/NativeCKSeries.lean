@@ -12,7 +12,7 @@ No existence or analytic-PDE law is included as a structure field.
 set_option autoImplicit false
 
 open Set Filter
-open scoped Topology BigOperators ENNReal
+open scoped Topology BigOperators NNReal ENNReal
 
 namespace NSEGR.NativeLiterature
 
@@ -108,10 +108,11 @@ def ckSymmetrizeCLM (n : ℕ) : CKCoeff E F n →L[ℝ] CKCoeff E F n :=
     ckSymmetrizeCLM E F n a = ckSymmetrize E F a := by
   simp [ckSymmetrizeCLM, ckSymmetrize, ContinuousMultilinearMap.domDomCongrₗᵢ]
 
+set_option maxHeartbeats 1000000 in
 theorem ckSymmetrizeCLM_norm_le (n : ℕ) : ‖ckSymmetrizeCLM E F n‖ ≤ 1 := by
-  apply ContinuousLinearMap.opNorm_le_bound (by norm_num)
+  apply ContinuousLinearMap.opNorm_le_bound (f := ckSymmetrizeCLM E F n) zero_le_one
   intro a
-  simpa using ckSymmetrize_norm_le E F a
+  simpa only [ckSymmetrizeCLM_apply, one_mul] using ckSymmetrize_norm_le E F a
 
 namespace CKSeries
 
@@ -140,7 +141,7 @@ theorem coeff_symm (p : CKSeries E F) (n : ℕ) (v : Fin n → E)
 @[ext] theorem ext {p q : CKSeries E F} (h : ∀ n, p.coeff n = q.coeff n) : p = q := by
   apply Subtype.ext
   apply lp.ext
-  exact h
+  exact funext h
 
 theorem hasSum_norm (p : CKSeries E F) : HasSum (fun n => ‖p.coeff n‖) ‖p‖ := by
   simpa [coeff] using lp.hasSum_norm (p := (1 : ℝ≥0∞)) (by norm_num) p.val

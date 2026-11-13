@@ -4033,6 +4033,41 @@
     "status": "A_TIER_CANDIDATE"
   },
   {
+    "name": "NSEGR.NativeLiterature.ckPrimitiveKernelCLM_diagonal",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckPrimitiveCoeffCLM_diagonal",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimeScale_norm_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.timePrimitive_eval_eq_scaled_integral",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.timePrimitive_eval_eq_integral",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKPrimitive",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
     "name": "NSEGR.NativeLiterature.ck_multilinear_diagonal_difference_bound",
     "kind": "theorem",
     "module": "GRAssembly.NativeCKComposition",
@@ -4498,6 +4533,174 @@
     "name": "NSEGR.NativeLiterature.CKSeries.eval_superposition",
     "kind": "theorem",
     "module": "GRAssembly.NativeCKMultilinear",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.linear",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKScaledMap",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.norm_linear",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKScaledMap",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.eval_linear",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKScaledMap",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.pair",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKScaledMap",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.norm_pair_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKScaledMap",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.pair_sub",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKScaledMap",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.CKSeries.eval_pair",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKScaledMap",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckCoefficientScale",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKScaledMap",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckCoefficientScale_norm_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKScaledMap",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckScaledJetUsing",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKScaledMap",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckScaledJetUsing_norm_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKScaledMap",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckScaledJetUsing_difference_le",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKScaledMap",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckScaledCoefficientMapUsing",
+    "kind": "def",
+    "module": "GRAssembly.NativeCKScaledMap",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckScaledCoefficientMapUsing_fixedPoint",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKScaledMap",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckScaledCoefficientMapUsing_exists_fixedPoint",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKScaledMap",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckAnalytic_superposition_data",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCKScaledMap",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckCoordinateEval",
+    "kind": "def",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckCoordinateEval_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckCoordinateEval_analyticAt_zero",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckCoordinate_unitBall_eventually",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimePrimitive_hasDerivAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimePrimitive_initial",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimePrimitive_initial_germ",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCK",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.ckTimePrimitive_timeDerivative_germ",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeCK",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   },
@@ -6147,9 +6350,254 @@
     "status": "A_TIER_CANDIDATE"
   },
   {
+    "name": "NSEGR.NativeLiterature.GaussianEvolutionStateSolution",
+    "kind": "abbrev",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianStateSolutionMetric",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianStateSolutionVelocity",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianStateSolutionSpatial",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianEta_determinant",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianEta_isUnit",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianEvolutionState_exists_unique",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianStateSolutionMetric_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianStateSolutionVelocity_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianStateSolutionSpatial_analyticAt",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianStateSolutionMetric_induced",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianStateSolutionVelocity_initial",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianStateSolutionMetric_nondegenerate",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
     "name": "NSEGR.NativeLiterature.GaussianEvolutionGerm",
     "kind": "structure",
     "module": "GRAssembly.NativeGaussianEvolution",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.analyticAt_gaussianBlockMetric",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianBlockMetric_symmetric",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianBlockMetric_unit",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianSecondForm_symmetric",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianRicci_symmetric_eventually",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianResidualA",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianResidualC",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianKappa",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianResidualDivergence",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.nativeRicciDivergence",
+    "kind": "def",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussian_scalarCurvature_eq_residual",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussian_scalarCurvature_derivative",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianRicciDivergence_split",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianCovariantRicci_rrr",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianCovariantRicci_rra",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianCovariantRicci_abr",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianCovariantRicci_abi",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianSecondForm_trace_contraction",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianShape_contraction",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianRicciDivergence_normal",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussianRicciDivergence_tangential",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
+    "gc": [],
+    "status": "A_TIER_CANDIDATE"
+  },
+  {
+    "name": "NSEGR.NativeLiterature.gaussian_constraint_evolution",
+    "kind": "theorem",
+    "module": "GRAssembly.NativeGaussianConstraintsPropagation",
     "gc": [],
     "status": "A_TIER_CANDIDATE"
   }

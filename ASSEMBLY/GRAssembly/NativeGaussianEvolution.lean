@@ -1,4 +1,5 @@
 import GRAssembly.NativeCKNormalization
+import GRAssembly.NativeCKFiniteDimensional
 import GRAssembly.GaussianConstraints
 import GRAssembly.BoundaryConstraintsJets
 import GRAssembly.NativeGluingGaussianCoordinates
@@ -13,6 +14,7 @@ evolution and initial data. No Gaussian existence premise is introduced here.
 set_option autoImplicit false
 set_option Elab.async true
 set_option maxHeartbeats 2400000
+set_option backward.isDefEq.respectTransparency false
 
 namespace NSEGR.NativeLiterature
 
@@ -263,6 +265,97 @@ theorem gaussianCKRHS_velocity_symmetric (J : CKJet GaussianBase GaussianState) 
 theorem gaussianCKRHS_spatial (J : CKJet GaussianBase GaussianState) (a : Fin 4) :
     gaussianStateSpatial a (gaussianCKRHS J) =
       gaussianStateVelocity (J.2.2 (gaussianBaseBasis a)) := rfl
+
+abbrev GaussianEvolutionStateSolution (K : BoundaryTensor) (t0 : ℝ) (x0 : Vec)
+    (U : ℝ × GaussianBase → GaussianState) : Prop :=
+  CKLocalSolution gaussianCKRHS (gaussianInitialState K) 0 (t0, x0) U
+
+def gaussianStateSolutionMetric (U : ℝ × GaussianBase → GaussianState) : Bulk → Tensor4 :=
+  fun z => gaussianStateMetric (U (gaussianSplitCoordinates z))
+
+def gaussianStateSolutionVelocity (U : ℝ × GaussianBase → GaussianState) : Bulk → Tensor4 :=
+  fun z => gaussianStateVelocity (U (gaussianSplitCoordinates z))
+
+def gaussianStateSolutionSpatial (U : ℝ × GaussianBase → GaussianState)
+    (a : Fin 4) : Bulk → Tensor4 :=
+  fun z => gaussianStateSpatial a (U (gaussianSplitCoordinates z))
+
+theorem gaussianEta_determinant : eta4Matrix.det = -1 := by
+  have he : eta4Matrix = Matrix.diagonal lorentzSign4 := by
+    ext a b
+    simp [eta4Matrix, eta4, Matrix.diagonal_apply]
+  rw [he, Matrix.det_diagonal]
+  norm_num [Fin.prod_univ_succ, lorentzSign4]
+
+theorem gaussianEta_isUnit : IsUnit eta4Matrix.det := by
+  rw [gaussianEta_determinant]
+  exact isUnit_neg.mpr isUnit_one
+
+theorem gaussianEvolutionState_exists_unique (input : LiteratureAnalyticCKInput)
+    (K : BoundaryTensor) (t0 : ℝ) (x0 : Vec)
+    (hK : AnalyticAt ℝ (fun y : GaussianBase => K y.1 y.2) (t0, x0)) :
+    ∃ U : ℝ × GaussianBase → GaussianState,
+      GaussianEvolutionStateSolution K t0 x0 U ∧
+        ∀ V : ℝ × GaussianBase → GaussianState,
+          GaussianEvolutionStateSolution K t0 x0 V → U =ᶠ[𝓝 (0, (t0, x0))] V := by
+  apply ckLocal_exists_unique_of_literatureCK input gaussianCKRHS
+    (gaussianInitialState K) 0 (t0, x0) (gaussianInitialState_analyticAt hK)
+  apply gaussianCKRHS_analyticAt
+  exact gaussianEta_isUnit
+
+theorem gaussianStateSolutionMetric_analyticAt {K : BoundaryTensor} {t0 : ℝ} {x0 : Vec}
+    {U : ℝ × GaussianBase → GaussianState}
+    (hU : GaussianEvolutionStateSolution K t0 x0 U) :
+    AnalyticAt ℝ (gaussianStateSolutionMetric U) (bulkPoint 0 t0 x0) := by
+  exact (gaussianStateMetric.analyticAt _).comp
+    (hU.analytic.comp (gaussianSplitCoordinates.analyticAt _))
+
+theorem gaussianStateSolutionVelocity_analyticAt {K : BoundaryTensor} {t0 : ℝ} {x0 : Vec}
+    {U : ℝ × GaussianBase → GaussianState}
+    (hU : GaussianEvolutionStateSolution K t0 x0 U) :
+    AnalyticAt ℝ (gaussianStateSolutionVelocity U) (bulkPoint 0 t0 x0) := by
+  exact (gaussianStateVelocity.analyticAt _).comp
+    (hU.analytic.comp (gaussianSplitCoordinates.analyticAt _))
+
+theorem gaussianStateSolutionSpatial_analyticAt {K : BoundaryTensor} {t0 : ℝ} {x0 : Vec}
+    {U : ℝ × GaussianBase → GaussianState}
+    (hU : GaussianEvolutionStateSolution K t0 x0 U) (a : Fin 4) :
+    AnalyticAt ℝ (gaussianStateSolutionSpatial U a) (bulkPoint 0 t0 x0) := by
+  exact ((gaussianStateSpatial a).analyticAt _).comp
+    (hU.analytic.comp (gaussianSplitCoordinates.analyticAt _))
+
+theorem gaussianStateSolutionMetric_induced {K : BoundaryTensor} {t0 : ℝ} {x0 : Vec}
+    {U : ℝ × GaussianBase → GaussianState}
+    (hU : GaussianEvolutionStateSolution K t0 x0 U) :
+    ∀ᶠ y in 𝓝 (t0, x0), gaussianStateSolutionMetric U (bulkPoint 0 y.1 y.2) = eta4Matrix := by
+  filter_upwards [hU.initial] with y hy
+  simpa only [gaussianStateSolutionMetric, gaussianSplitCoordinates_bulkPoint,
+    hy, gaussianInitialState] using
+    (show gaussianStateMetric (gaussianInitialState K y) = eta4Matrix from rfl)
+
+theorem gaussianStateSolutionVelocity_initial {K : BoundaryTensor} {t0 : ℝ} {x0 : Vec}
+    {U : ℝ × GaussianBase → GaussianState}
+    (hU : GaussianEvolutionStateSolution K t0 x0 U)
+    (hS : ∀ᶠ y in 𝓝 (t0, x0), (K y.1 y.2).IsSymm) :
+    ∀ᶠ y in 𝓝 (t0, x0),
+      gaussianStateSolutionVelocity U (bulkPoint 0 y.1 y.2) = 2 • K y.1 y.2 := by
+  filter_upwards [hU.initial, hS] with y hy hs
+  simp only [gaussianStateSolutionVelocity, gaussianSplitCoordinates_bulkPoint, hy]
+  change 2 • gaussianSymmetrize (K y.1 y.2) = 2 • K y.1 y.2
+  rw [gaussianSymmetrize_eq_of_isSymm hs]
+
+theorem gaussianStateSolutionMetric_nondegenerate {K : BoundaryTensor} {t0 : ℝ} {x0 : Vec}
+    {U : ℝ × GaussianBase → GaussianState}
+    (hU : GaussianEvolutionStateSolution K t0 x0 U) :
+    ∀ᶠ z in 𝓝 (bulkPoint 0 t0 x0), IsUnit (gaussianStateSolutionMetric U z).det := by
+  have hc : ContinuousAt (fun z => (gaussianStateSolutionMetric U z).det)
+      (bulkPoint 0 t0 x0) :=
+    Matrix.continuous_det.continuousAt.comp (gaussianStateSolutionMetric_analyticAt hU).continuousAt
+  have he := (gaussianStateSolutionMetric_induced hU).self_of_nhds
+  have hn : (gaussianStateSolutionMetric U (bulkPoint 0 t0 x0)).det ≠ 0 := by
+    rw [he, gaussianEta_determinant]
+    norm_num
+  exact (hc.eventually_ne hn).mono (fun z hz => isUnit_iff_ne_zero.mpr hz)
 
 /-- Only tangential Einstein equations are part of this evolution germ. -/
 structure GaussianEvolutionGerm (K : BoundaryTensor) (t0 : ℝ) (x0 : Vec)

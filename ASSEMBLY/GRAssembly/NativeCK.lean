@@ -1,5 +1,6 @@
 import GRAssembly.NativeCKNormalization
 import GRAssembly.NativeCKSeries
+import GRAssembly.NativeCKPrimitive
 import Mathlib.Analysis.Normed.Group.Tannery
 
 /-!
@@ -10,8 +11,9 @@ premise in the transport theorem is explicit; it is not an axiom declaration.
 
 set_option autoImplicit false
 set_option Elab.async true
+set_option backward.isDefEq.respectTransparency false
 
-open Set Filter
+open Set Filter MeasureTheory
 open scoped Topology ContDiff
 
 namespace NSEGR.NativeLiterature
@@ -23,6 +25,74 @@ variable [NormedAddCommGroup E] [NormedSpace ℝ E]
 variable [NormedAddCommGroup Z] [NormedSpace ℝ Z]
 variable [NormedAddCommGroup V] [NormedSpace ℝ V] [CompleteSpace V]
 
+def ckCoordinateEval (p : CKSeries (CKTimeSpace E) V) (z : ℝ × E) : V :=
+  p.eval (WithLp.toLp 1 z)
+
+theorem ckCoordinateEval_analyticAt (p : CKSeries (CKTimeSpace E) V)
+    {z : ℝ × E} (hz : ‖WithLp.toLp 1 z‖ < 1) :
+    AnalyticAt ℝ (ckCoordinateEval p) z :=
+  (p.analyticAt hz).comp
+    ((WithLp.prodContinuousLinearEquiv 1 ℝ ℝ E).symm.toContinuousLinearMap.analyticAt z)
+
+theorem ckCoordinateEval_analyticAt_zero (p : CKSeries (CKTimeSpace E) V) :
+    AnalyticAt ℝ (ckCoordinateEval p) 0 := by
+  apply ckCoordinateEval_analyticAt
+  simp
+
+theorem ckCoordinate_unitBall_eventually :
+    ∀ᶠ z : ℝ × E in 𝓝 0, ‖WithLp.toLp 1 z‖ < 1 := by
+  have ht := (WithLp.prodContinuousLinearEquiv 1 ℝ ℝ E).symm.continuous.norm.continuousAt
+  exact ht (by simpa using eventually_lt_nhds (by norm_num : (0 : ℝ) < 1))
+
+theorem ckTimePrimitive_hasDerivAt (p : CKSeries (CKTimeSpace E) V)
+    {z : ℝ × E} (hz : ‖WithLp.toLp 1 z‖ < 1) :
+    HasDerivAt (fun t : ℝ => ckCoordinateEval (timePrimitive E V p) (t, z.2))
+      (ckCoordinateEval p z) z.1 := by
+  let f : ℝ → V := fun t => p.eval (WithLp.toLp 1 (t, z.2))
+  let s : Set ℝ := {t | ‖WithLp.toLp 1 (t, z.2)‖ < 1}
+  have hc : Continuous (fun t : ℝ => WithLp.toLp 1 (t, z.2)) :=
+    (WithLp.prodContinuousLinearEquiv 1 ℝ ℝ E).symm.continuous.comp
+      (continuous_id.prodMk continuous_const)
+  have hs : IsOpen s := isOpen_lt hc.norm continuous_const
+  have hcont : ∀ t ∈ s, ContinuousAt f t := by
+    intro t ht
+    exact (p.analyticAt ht).continuousAt.comp hc.continuousAt
+  have hseg : ∀ t ∈ Set.uIcc (0 : ℝ) z.1, t ∈ s := by
+    intro t ht
+    have habs : |t| ≤ |z.1| := by simpa using abs_sub_left_of_mem_uIcc ht
+    change ‖WithLp.toLp 1 (t, z.2)‖ < 1
+    rw [WithLp.prod_norm_eq_of_L1] at hz ⊢
+    simpa only [WithLp.toLp_fst, WithLp.toLp_snd, Real.norm_eq_abs] using
+      lt_of_le_of_lt (add_le_add_right habs ‖z.2‖) hz
+  have hi : IntervalIntegrable f volume 0 z.1 :=
+    (continuousOn_of_forall_continuousAt (fun t ht => hcont t (hseg t ht))).intervalIntegrable
+  have hm : StronglyMeasurableAtFilter f (𝓝 z.1) volume :=
+    ContinuousAt.stronglyMeasurableAtFilter hs hcont z.1 hz
+  have hFTC := intervalIntegral.integral_hasDerivAt_right hi hm (hcont z.1 hz)
+  apply hFTC.congr_of_eventuallyEq
+  filter_upwards [hs.mem_nhds hz] with t ht
+  exact timePrimitive_eval_eq_integral E V p ht
+
+theorem ckTimePrimitive_initial (p : CKSeries (CKTimeSpace E) V)
+    {x : E} (hx : ‖x‖ < 1) : ckCoordinateEval (timePrimitive E V p) (0, x) = 0 := by
+  have hz : ‖WithLp.toLp 1 ((0 : ℝ), x)‖ < 1 := by
+    simpa [WithLp.prod_norm_eq_of_L1] using hx
+  rw [ckCoordinateEval, timePrimitive_eval_eq_integral E V p hz]
+  simp
+
+theorem ckTimePrimitive_initial_germ (p : CKSeries (CKTimeSpace E) V) :
+    ∀ᶠ x in 𝓝 (0 : E), ckCoordinateEval (timePrimitive E V p) (0, x) = 0 := by
+  have hb : ∀ᶠ x in 𝓝 (0 : E), ‖x‖ < 1 :=
+    continuous_norm.continuousAt (by simpa using eventually_lt_nhds (by norm_num : (0 : ℝ) < 1))
+  filter_upwards [hb] with x hx
+  exact ckTimePrimitive_initial p hx
+
+theorem ckTimePrimitive_timeDerivative_germ (p : CKSeries (CKTimeSpace E) V) :
+    ckTimeDerivative (ckCoordinateEval (timePrimitive E V p)) =ᶠ[𝓝 0]
+      ckCoordinateEval p := by
+  filter_upwards [ckCoordinate_unitBall_eventually (E := E)] with z hz
+  exact (ckTimePrimitive_hasDerivAt p hz).deriv
+
 /-- Physical coordinates for the anisotropic CK rescaling. -/
 def ckPhysicalScale (ε : ℝ) : CKTimeSpace E →L[ℝ] ℝ × E :=
   ((ε ^ 2) • WithLp.fstL 1 ℝ ℝ E).prod (ε • WithLp.sndL 1 ℝ ℝ E)
@@ -32,7 +102,7 @@ def ckPhysicalScale (ε : ℝ) : CKTimeSpace E →L[ℝ] ℝ × E :=
 
 theorem ckPhysicalScale_norm_le (ε : ℝ) (hε : 0 ≤ ε) (hε₁ : ε ≤ 1) :
     ‖ckPhysicalScale (E := E) ε‖ ≤ ε := by
-  apply ContinuousLinearMap.opNorm_le_bound hε
+  apply ContinuousLinearMap.opNorm_le_bound _ hε
   intro z
   rw [ckPhysicalScale_apply, Prod.norm_def]
   apply max_le

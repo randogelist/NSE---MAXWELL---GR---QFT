@@ -2,6 +2,7 @@ import GRAssembly.NativeCKSeries
 import Mathlib.Analysis.Calculus.Deriv.Mul
 import Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus
 import Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap
+import Mathlib.MeasureTheory.Integral.DominatedConvergence
 
 /-!
 Actual coefficient time primitives.  The finite-degree integral below is
@@ -214,7 +215,7 @@ theorem ckPrimitiveCoeffCLM_norm_apply_le [CompleteSpace F] {n : ℕ}
 
 theorem ckPrimitiveCoeffCLM_norm_le [CompleteSpace F] (n : ℕ) :
     ‖ckPrimitiveCoeffCLM E F n‖ ≤ (n + 1 : ℝ)⁻¹ := by
-  apply ContinuousLinearMap.opNorm_le_bound (by positivity)
+  apply ContinuousLinearMap.opNorm_le_bound (ckPrimitiveCoeffCLM E F n) (by positivity)
   exact ckPrimitiveCoeffCLM_norm_apply_le E F
 
 theorem ckPrimitiveCoeffCLM_symmetric [CompleteSpace F] {n : ℕ}
@@ -301,7 +302,83 @@ def timePrimitive [CompleteSpace F] :
     timePrimitive E F p = ckTimePrimitiveSeries E F p := rfl
 
 theorem timePrimitive_norm_le [CompleteSpace F] : ‖timePrimitive E F‖ ≤ (1 / 2 : ℝ) := by
-  exact ContinuousLinearMap.opNorm_le_bound (by norm_num) (ckTimePrimitiveSeries_norm_le E F)
+  exact ContinuousLinearMap.opNorm_le_bound (timePrimitive E F) (by norm_num)
+    (ckTimePrimitiveSeries_norm_le E F)
+
+theorem ckPrimitiveKernelCLM_diagonal {n : ℕ} (s : ℝ)
+    (a : CKCoeff (CKTimeSpace E) F n) (z : CKTimeSpace E) :
+    ckPrimitiveKernelCLM E F n s a (fun _ => z) =
+      z.fst • a (fun _ => ckTimeScale E s z) := by
+  rw [ckPrimitiveKernelCLM_apply]
+  simp only [Finset.sum_const, Finset.card_univ, Fintype.card_fin]
+  rw [← Nat.cast_smul_eq_nsmul ℝ, smul_smul]
+  have hn : (n + 1 : ℝ) ≠ 0 := by positivity
+  rw [inv_mul_cancel₀ hn, one_smul]
+
+theorem ckPrimitiveCoeffCLM_diagonal [CompleteSpace F] {n : ℕ}
+    (a : CKCoeff (CKTimeSpace E) F n) (z : CKTimeSpace E) :
+    ckPrimitiveCoeffCLM E F n a (fun _ => z) =
+      ∫ s in (0 : ℝ)..1, z.fst • a (fun _ => ckTimeScale E s z) := by
+  simp only [ckPrimitiveCoeffCLM, ContinuousLinearMap.comp_apply,
+    ckSymmetrizeCLM_apply, ckSymmetrize_diagonal]
+  rw [ckPrimitiveIntegral_apply]
+  apply intervalIntegral.integral_congr
+  intro s _
+  exact ckPrimitiveKernelCLM_diagonal E F s a z
+
+theorem ckTimeScale_norm_le {s : ℝ} (hs : s ∈ Set.Icc (0 : ℝ) 1)
+    (z : CKTimeSpace E) : ‖ckTimeScale E s z‖ ≤ ‖z‖ := by
+  rw [ckTimeScale_norm E s hs.1, WithLp.prod_norm_eq_of_L1]
+  simpa only [Real.norm_eq_abs, one_mul] using
+    add_le_add_right (mul_le_mul_of_nonneg_right hs.2 (abs_nonneg z.fst)) ‖z.snd‖
+
+theorem timePrimitive_eval_eq_scaled_integral [CompleteSpace F]
+    (p : CKSeries (CKTimeSpace E) F) {z : CKTimeSpace E} (hz : ‖z‖ < 1) :
+    (timePrimitive E F p).eval z =
+      ∫ s in (0 : ℝ)..1, z.fst • p.eval (ckTimeScale E s z) := by
+  let q := timePrimitive E F p
+  have hs (s : ℝ) (hs : s ∈ Ι (0 : ℝ) 1) : ‖ckTimeScale E s z‖ < 1 := by
+    have hs' : s ∈ Set.Icc (0 : ℝ) 1 := by
+      simpa only [Set.uIcc_of_le (by norm_num : (0 : ℝ) ≤ 1)] using
+        Set.uIoc_subset_uIcc hs
+    exact (ckTimeScale_norm_le E hs' z).trans_lt hz
+  have hc (n : ℕ) : Continuous (fun s : ℝ =>
+      z.fst • p.coeff n (fun _ => ckTimeScale E s z)) := by
+    apply Continuous.const_smul
+    exact (p.coeff n).continuous.comp
+      (continuous_pi fun _ => (ckTimeScale_continuous E).clm_apply continuous_const)
+  have hsum : HasSum (fun n => ∫ s in (0 : ℝ)..1,
+      z.fst • p.coeff n (fun _ => ckTimeScale E s z))
+      (∫ s in (0 : ℝ)..1, z.fst • p.eval (ckTimeScale E s z)) := by
+    apply intervalIntegral.hasSum_integral_of_dominated_convergence
+      (fun n _ => |z.fst| * ‖p.coeff n‖)
+      (fun n => (hc n).aestronglyMeasurable)
+    · intro n
+      exact Filter.Eventually.of_forall fun s hsm => by
+        rw [norm_smul, Real.norm_eq_abs]
+        apply mul_le_mul_of_nonneg_left _ (abs_nonneg z.fst)
+        exact (p.coeff n).unit_le_opNorm
+          ((pi_norm_le_iff_of_nonneg (by norm_num)).2 fun _ => (hs s hsm).le)
+    · exact Filter.Eventually.of_forall fun _ _ => p.summable_norm.mul_left |z.fst|
+    · exact intervalIntegrable_const
+    · exact Filter.Eventually.of_forall fun s hsm => (p.hasSum_eval (hs s hsm)).const_smul z.fst
+  have hshift : HasSum (fun n => q.coeff (n + 1) (fun _ => z))
+      (∫ s in (0 : ℝ)..1, z.fst • p.eval (ckTimeScale E s z)) := by
+    simpa only [q, timePrimitive_apply, ckTimePrimitiveSeries_coeff_succ,
+      ckPrimitiveCoeffCLM_diagonal] using hsum
+  have hfull : HasSum (fun n => q.coeff n (fun _ => z))
+      (∫ s in (0 : ℝ)..1, z.fst • p.eval (ckTimeScale E s z)) := by
+    simpa using hshift.zero_add
+  exact (q.hasSum_eval hz).unique hfull
+
+theorem timePrimitive_eval_eq_integral [CompleteSpace F]
+    (p : CKSeries (CKTimeSpace E) F) {z : CKTimeSpace E} (hz : ‖z‖ < 1) :
+    (timePrimitive E F p).eval z =
+      ∫ t in (0 : ℝ)..z.fst, p.eval (WithLp.toLp 1 (t, z.snd)) := by
+  rw [timePrimitive_eval_eq_scaled_integral E F p hz]
+  simp only [ckTimeScale_apply, intervalIntegral.integral_smul]
+  simpa using intervalIntegral.smul_integral_comp_mul_right
+    (fun t => p.eval (WithLp.toLp 1 (t, z.snd))) z.fst
 
 end
 

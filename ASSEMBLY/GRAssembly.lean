@@ -56,3 +56,5 @@ import GRAssembly.NativeFourier
 import GRAssembly.NativeGaussianMetricCurvature
 import GRAssembly.NativeGaussianContraction
 import GRAssembly.NativeGaussianEvolution
+import GRAssembly.NativeCKScaledMap
+import GRAssembly.NativeGaussianConstraintsPropagation

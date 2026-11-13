@@ -9,6 +9,7 @@ All operators are actual derivatives. No CK existence theorem is assumed.
 set_option autoImplicit false
 set_option Elab.async true
 set_option maxHeartbeats 1600000
+set_option backward.isDefEq.respectTransparency false
 
 open Set Filter
 open scoped Topology ContDiff
@@ -81,13 +82,14 @@ theorem ckTimeDerivative_eq_fderiv {w : ℝ × E → V} {z : ℝ × E}
     (hw : DifferentiableAt ℝ w z) :
     ckTimeDerivative w z = fderiv ℝ w z (1, 0) := by
   have hpath := (hasDerivAt_id z.1).prodMk (hasDerivAt_const z.1 z.2)
-  simpa only [ckTimeDerivative, Function.comp_apply, Prod.eta] using
+  simpa only [ckTimeDerivative, Function.comp_def, id_eq, Prod.eta] using
     (hw.hasFDerivAt.comp_hasDerivAt z.1 hpath).deriv
 
 theorem ckTimeDerivative_analyticAt {w : ℝ × E → V} {z : ℝ × E}
     (hw : AnalyticAt ℝ w z) : AnalyticAt ℝ (ckTimeDerivative w) z := by
   have h : AnalyticAt ℝ (fun y => fderiv ℝ w y (1, 0)) z :=
-    ((ContinuousLinearMap.apply ℝ V (1, 0)).analyticAt _).comp hw.fderiv
+    ((ContinuousLinearMap.apply ℝ V (1, (0 : E))).analyticAt _).comp
+      (f := fderiv ℝ w) hw.fderiv
   apply h.congr
   filter_upwards [hw.eventually_analyticAt] with y hy
   exact (ckTimeDerivative_eq_fderiv hy.differentiableAt).symm
@@ -95,10 +97,10 @@ theorem ckTimeDerivative_analyticAt {w : ℝ × E → V} {z : ℝ × E}
 theorem ckNormalizedSolution_timeDerivative_zero {g : CKRHS E V}
     {w : ℝ × E → V} (hw : CKNormalizedSolution g w) (hg₀ : g 0 = 0) :
     ckTimeDerivative w 0 = 0 := by
-  have hw₀ : w (0, 0) = 0 := hw.initial.eq_of_nhds
+  have hw₀ : w (0, 0) = 0 := Filter.Eventually.self_of_nhds hw.initial
   have hdx : fderiv ℝ (fun x => w (0, x)) 0 = 0 := by
-    simpa using hw.initial.fderiv_eq
-  have heq := hw.equation.eq_of_nhds
+    simpa using Filter.EventuallyEq.fderiv_eq (𝕜 := ℝ) hw.initial
+  have heq := Filter.Eventually.self_of_nhds hw.equation
   simpa [ckTimeDerivative, hw₀, hdx, hg₀] using heq
 
 /-- Equality of analytic time derivatives and initial germs determines the
@@ -115,6 +117,9 @@ theorem ckGerm_eq_of_timeDerivative_eq {w v : ℝ × E → V}
   have hp' : ∀ᶠ z in 𝓝 (0 : ℝ) ×ˢ 𝓝 (0 : E),
       AnalyticAt ℝ w z ∧ AnalyticAt ℝ v z ∧
         ckTimeDerivative w z = ckTimeDerivative v z := by
+    change ∀ᶠ z in 𝓝 ((0 : ℝ), (0 : E)),
+      AnalyticAt ℝ w z ∧ AnalyticAt ℝ v z ∧
+        ckTimeDerivative w z = ckTimeDerivative v z at hp
     simpa only [nhds_prod_eq] using hp
   obtain ⟨ε, hε, p, hpx, hrect⟩ := Metric.eventually_nhds_prod_iff.mp hp'
   change ∀ᶠ z in 𝓝 ((0 : ℝ), (0 : E)), w z = v z
@@ -132,7 +137,7 @@ theorem ckGerm_eq_of_timeDerivative_eq {w v : ℝ × E → V}
       (deriv (fun s => w (s, x))) (deriv (fun s => v (s, x))) := by
     intro s hs
     exact (hrect hs hx.1).2.2
-  exact (isOpen_ball.eqOn_of_deriv_eq (convex_ball (0 : ℝ) ε).isPreconnected
+  exact (Metric.isOpen_ball.eqOn_of_deriv_eq (convex_ball (0 : ℝ) ε).isPreconnected
     hwd hvd hdeq (by simpa using hε) hx.2) ht
 
 @[simp] theorem ckNormalizeJet_zero (F : CKRHS E V)
@@ -161,11 +166,10 @@ theorem ckNormalizeJet_analyticAt (F : CKRHS E V)
   have hxs : AnalyticAt ℝ (fun J : CKJet E V => x₀ + J.1.2) 0 :=
     analyticAt_const.add hx
   have hu : AnalyticAt ℝ (fun J : CKJet E V => u₀ (x₀ + J.1.2)) 0 :=
-    (show AnalyticAt ℝ u₀ (x₀ + (0 : CKJet E V).1.2) by simpa using hu₀).comp hxs
+    hu₀.comp_of_eq hxs (by simp)
   have hdu : AnalyticAt ℝ
       (fun J : CKJet E V => fderiv ℝ u₀ (x₀ + J.1.2)) 0 :=
-    (show AnalyticAt ℝ (fderiv ℝ u₀) (x₀ + (0 : CKJet E V).1.2) by
-      simpa using hu₀.fderiv).comp hxs
+    hu₀.fderiv.comp_of_eq hxs (by simp)
   exact ((analyticAt_const.add ht).prod hxs).prod
     (((hu.add (ht.smul analyticAt_const)).add hy).prod (hdu.add hz))
 
@@ -206,10 +210,9 @@ theorem ckNormalizeSolution_analyticAt (F : CKRHS E V)
     analyticAt_const.add analyticAt_fst
   have hua : AnalyticAt ℝ (fun z : ℝ × E =>
       u (t₀ + z.1, x₀ + z.2)) 0 :=
-    (show AnalyticAt ℝ u (t₀ + (0 : ℝ × E).1, x₀ + (0 : ℝ × E).2) by
-      simpa using hu).comp (hts.prod hxs)
+    hu.comp_of_eq (hts.prod hxs) (by simp)
   have hu₀a : AnalyticAt ℝ (fun z : ℝ × E => u₀ (x₀ + z.2)) 0 :=
-    (show AnalyticAt ℝ u₀ (x₀ + (0 : ℝ × E).2) by simpa using hu₀).comp hxs
+    hu₀.comp_of_eq hxs (by simp)
   exact (hua.sub hu₀a).sub (analyticAt_fst.smul analyticAt_const)
 
 theorem ckDenormalizeSolution_analyticAt (F : CKRHS E V)
@@ -223,7 +226,7 @@ theorem ckDenormalizeSolution_analyticAt (F : CKRHS E V)
     analyticAt_snd.sub analyticAt_const
   have hwa : AnalyticAt ℝ (fun z : ℝ × E =>
       w (z.1 - t₀, z.2 - x₀)) (t₀, x₀) :=
-    (show AnalyticAt ℝ w (t₀ - t₀, x₀ - x₀) by simpa using hw).comp (hts.prod hxs)
+    hw.comp_of_eq (hts.prod hxs) (by simp)
   exact ((hu₀.comp analyticAt_snd).add (hts.smul analyticAt_const)).add hwa
 
 theorem ckNormalizeSolution_timeDerivative (F : CKRHS E V)
@@ -289,6 +292,7 @@ theorem ckNormalizeSolution_jet (F : CKRHS E V)
         (u (t₀ + z.1, x₀ + z.2),
           fderiv ℝ (fun x => u (t₀ + z.1, x)) (x₀ + z.2))) := by
   rw [ckNormalizeSolution_spaceDerivative F u₀ t₀ x₀ z hu hu₀]
+  dsimp only [ckNormalizeJet]
   apply Prod.ext rfl
   apply Prod.ext
   · dsimp only [ckNormalizeJet, ckNormalizeSolution]

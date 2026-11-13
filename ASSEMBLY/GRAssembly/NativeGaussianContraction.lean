@@ -66,9 +66,12 @@ theorem MetricSkew.connectionDerivative {G R : Bulk → BulkMatrix} {z : Bulk}
       (fun _ => (0 : BulkMatrix)) := hS
   have hd := coordDeriv_congr_germ he i
   rw [coordDeriv_const,
-    coordDeriv_add ((analyticAt_bulkTranspose hR).mul hG) (hG.mul hR),
-    coordDeriv_matrix_mul (analyticAt_bulkTranspose hR) hG,
-    coordDeriv_matrix_mul hG hR, coordDeriv_bulkTranspose hR, hC] at hd
+    coordDeriv_add (f := fun y => (R y).transpose * G y)
+      (q := fun y => G y * R y) ((analyticAt_bulkTranspose hR).mul hG) (hG.mul hR),
+    coordDeriv_matrix_mul (f := fun y => (R y).transpose) (q := G)
+      (analyticAt_bulkTranspose hR) hG,
+    coordDeriv_matrix_mul (f := G) (q := R) hG hR,
+    coordDeriv_bulkTranspose hR, hC] at hd
   have h0 : (R z).transpose * G z + G z * R z = 0 := hS.self_of_nhds
   unfold MetricSkew
   have ha :
