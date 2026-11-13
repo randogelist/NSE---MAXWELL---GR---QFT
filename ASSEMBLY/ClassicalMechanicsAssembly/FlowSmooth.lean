@@ -96,8 +96,13 @@ theorem flow_hasFDerivWithinAt_of_time_remainder {T : ℝ}
         (ContinuousLinearMap.snd ℝ ℝ Vec) (t, a) :=
       (ContinuousLinearMap.snd ℝ ℝ Vec).hasFDerivAt
     simpa only [Function.comp_def] using hlabel.comp (t, a) hs
-  simpa only [Pi.add_apply, sub_add_cancel, flowJointDerivative] using
-    hg.add hl.hasFDerivWithinAt
+  have hsum := hg.add hl.hasFDerivWithinAt
+  have heq : ((fun z : ℝ × Vec => J z - J (t, z.2)) +
+      (fun z : ℝ × Vec => J (t, z.2))) = J := by
+    funext z
+    exact sub_add_cancel (J z) (J (t, z.2))
+  rw [heq] at hsum
+  exact hsum
 
 end JointDerivative
 

@@ -70,7 +70,8 @@ def flowPathPrimitiveLinear (hT : 0 ≤ T) :
 
 theorem flowPathPrimitiveLinear_bound (hT : 0 ≤ T) (γ : C(Icc (0 : ℝ) T, E)) :
     ‖flowPathPrimitiveLinear hT γ‖ ≤ T * ‖γ‖ := by
-  apply (ContinuousMap.norm_le _ (mul_nonneg hT (norm_nonneg _))).mpr
+  apply (ContinuousMap.norm_le (flowPathPrimitiveLinear hT γ)
+    (mul_nonneg hT (norm_nonneg γ))).mpr
   intro t
   have hb : ‖∫ r in (0 : ℝ)..(t : ℝ), flowPathExtend hT γ r‖ ≤ ‖γ‖ * |(t : ℝ) - 0| :=
     intervalIntegral.norm_integral_le_of_norm_le_const
@@ -151,9 +152,11 @@ theorem flowVolterra_pow_norm_bound (hT : 0 ≤ T)
     (A : C(Icc (0 : ℝ) T, E →L[ℝ] E)) (K : ℝ≥0)
     (hA : ∀ t : Icc (0 : ℝ) T, ‖A t‖ ≤ K) (n : ℕ) :
     ‖(flowVolterra hT A) ^ n‖ ≤ ((K : ℝ) * T) ^ n / (n.factorial : ℝ) := by
-  apply ContinuousLinearMap.opNorm_le_bound _ (by positivity)
+  apply ContinuousLinearMap.opNorm_le_bound ((flowVolterra hT A) ^ n)
+    (M := ((K : ℝ) * T) ^ n / (n.factorial : ℝ)) (by positivity)
   intro γ
-  apply (ContinuousMap.norm_le _ (by positivity)).mpr
+  apply (ContinuousMap.norm_le (((flowVolterra hT A) ^ n) γ)
+    (show 0 ≤ (((K : ℝ) * T) ^ n / (n.factorial : ℝ)) * ‖γ‖ by positivity)).mpr
   intro t
   apply (flowVolterra_pow_apply_bound hT A K hA γ n t).trans
   gcongr

@@ -315,9 +315,14 @@ theorem flowPathSuperposition_contDiff_succ
     ContDiff ℝ (n + 1) (flowPathSuperpositionTo u) := by
   apply contDiff_succ_iff_hasFDerivAt.mpr
   refine ⟨flowPathSuperpositionDerivative A, ?_, ?_⟩
-  · simpa only [Function.comp_def, flowPathMultiplicationLift_apply,
-      flowPathSuperpositionDerivative] using
-      (flowPathMultiplicationLift (I := I) (E := E) (F := F)).contDiff.comp hA
+  · have heq : flowPathSuperpositionDerivative A =
+        (flowPathMultiplicationLift (I := I) (E := E) (F := F)) ∘
+          flowPathSuperpositionTo A := by
+      funext γ
+      ext h t
+      rfl
+    rw [heq]
+    exact (flowPathMultiplicationLift (I := I) (E := E) (F := F)).contDiff.comp hA
   · exact flowPathSuperposition_hasFDerivAt u A M hM htaylor
 
 end SuperpositionCalculus

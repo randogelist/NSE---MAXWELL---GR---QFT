@@ -201,9 +201,9 @@ theorem trajectory_dist_le (h : SlabODEData T u B K)
       have hd := (trajectory_hasDerivWithinAt h s x (-r)
         ⟨(hmem r hr).1.le, (hmem r hr).2⟩).mono_of_mem_nhdsWithin
         (Icc_mem_nhdsLE_of_mem (hmem r hr))
-      convert HasFDerivWithinAt.comp_hasDerivWithinAt r hd
-        (hasDerivAt_neg r).hasDerivWithinAt
-        (fun q (hq : q ∈ Ici r) => mem_Iic.mpr (neg_le_neg (mem_Ici.mp hq))) using 1 <;> simp
+      simpa only [Function.comp_def, neg_one_smul] using
+        hd.scomp r (hasDerivAt_neg r).hasDerivWithinAt
+          (fun q (hq : q ∈ Ici r) => mem_Iic.mpr (neg_le_neg (mem_Ici.mp hq)))
     have hg := dist_le_of_trajectories_ODE_of_mem
       (s := fun _ => (univ : Set E)) (K := K) (δ := dist a b)
       (v := fun r x => -u (-r) x)
