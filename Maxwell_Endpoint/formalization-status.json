@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "source_status": "A_TIER_CANDIDATE",
+  "scope": "EXACT_CONCRETE_CONSTRAINED_MAXWELL_ENDPOINT_WITH_UNCONDITIONAL_ZERO_DATUM_INSTANCE",
+  "proposition": "NSEMaxwell.Classical.MaxwellB",
+  "solution_predicate": "NSEMaxwell.Classical.MaxwellSolution",
+  "equations": "MaxwellEndpoint.MaxwellEquations",
+  "native_instance": "MaxwellEndpoint.zero_solution",
+  "native_instance_type": "forall nu c : Real, forall m : Vec, MaxwellSolution nu c m 0 0 0 0 0",
+  "exact_proposition_proved": false,
+  "arbitrary_data_global_existence_proved": false,
+  "hodge_laws_inhabitant_supplied": false,
+  "definitions": "Actual Euclidean fderiv/derivWithin, Lebesgue cube integrals and frozen cosine Fourier tsum formulas.",
+  "domain": "unit-periodic lifts on EuclideanSpace Real (Fin 3)",
+  "smoothness": "joint ContDiffOn Real infinity on nonnegative spacetime, including t=0",
+  "independent_initial_data": [
+    "arbitrary harmonic velocity mean m",
+    "mean-zero divergence-free smooth periodic magnetic datum B0"
+  ],
+  "compiler": "leanprover/lean4:v4.34.0-rc1",
+  "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "audit_target_count": 52,
+  "native_theorem_count": 23,
+  "audited_definitions_and_types": 29,
+  "local_lean_executions": 0,
+  "standalone_imports": [
+    "Mathlib",
+    "MaxwellEndpoint.*"
+  ],
+  "parent_project_source_imports": [],
+  "external_validation": "PENDING_CACHED_NATIVE_LINUX_ROOT_AND_ISOLATED_PACKAGE",
+  "approved_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "conditional_reconstruction_contract": "NSEMaxwell.Bridge.FourierHodgeLaws remains outside the native package and unresolved.",
+  "theorem_endpoints": [
+    "MaxwellEndpoint.equations_of_solution",
+    "MaxwellEndpoint.constitutive_fields_of_solution",
+    "MaxwellEndpoint.magnetic_evolution_of_solution",
+    "MaxwellEndpoint.electric_evolution_of_solution",
+    "MaxwellEndpoint.maxwellB_iff_native",
+    "MaxwellEndpoint.coordinateDerivative_zero",
+    "MaxwellEndpoint.divergence_zero",
+    "MaxwellEndpoint.spatialCurl_zero",
+    "MaxwellEndpoint.cross_zero_left",
+    "MaxwellEndpoint.cross_zero_right",
+    "MaxwellEndpoint.vectorL_zero",
+    "MaxwellEndpoint.scalarL_zero",
+    "MaxwellEndpoint.K_zero",
+    "MaxwellEndpoint.U_zero",
+    "MaxwellEndpoint.G_zero",
+    "MaxwellEndpoint.V_zero",
+    "MaxwellEndpoint.Q_zero",
+    "MaxwellEndpoint.DG_zero",
+    "MaxwellEndpoint.current_zero",
+    "MaxwellEndpoint.timeDerivative_zero",
+    "MaxwellEndpoint.magneticData_zero",
+    "MaxwellEndpoint.zero_solution",
+    "MaxwellEndpoint.zero_datum_global_instance"
+  ]
+}

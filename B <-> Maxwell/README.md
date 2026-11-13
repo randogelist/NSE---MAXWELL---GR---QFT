@@ -39,8 +39,8 @@ The existing `NSEMaxwell.Bridge` declaration namespace is retained across the di
 ```text
 B_TIER_HODGE_COMPOSITION      = COMPLETE
 LEAN_DIRECTION_SEPARATION    = IMPLEMENTED
-PROOF_SOURCE_CERTIFICATION   = PASS_BUILD_AND174_STANDARD_ONLY_AUDITS
-AUXILLARY_LAYOUT_VALIDATION = PASS_CACHED_NATIVE_LINUX_BUILD_AND174_FRESH_AUDITS
+PRIOR_PROOF_SOURCE_CERTIFICATION = PASS_BUILD_AND174_STANDARD_ONLY_AUDITS
+PRIOR_AUXILLARY_LAYOUT_VALIDATION = PASS_CACHED_NATIVE_LINUX_BUILD_AND174_FRESH_AUDITS
 LEAN_HODGE_INHABITANT        = NOT_SUPPLIED
 UNCONDITIONAL_LEAN_CLOSURE   = NOT_ESTABLISHED
 ```
@@ -49,4 +49,14 @@ The Lean directions retain their explicit `PeriodicAnalyticLaws` or `FourierHodg
 
 Matching certificate: [native Linux run 43345557147](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147), proof-source commit `be8376a08573a7789e36b68c2bc48178aa6f53c3`. The exact conditional directional endpoints and conditional reduced root are A-tier. [Retained audit summary](../Auxillary/evidence/linux-43345557147/audit-summary.json).
 
-Current auxiliary-layout certificate: [native Linux run 43348914489](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43348914489), source `b02425040a217a94855cfa52934e303f12fe80de`; 174/174 fresh audits, 30/30 matching Lean input hashes. [Current audit summary](../Auxillary/evidence/linux-43348914489/audit-summary.json).
+Prior auxiliary-layout certificate: [native Linux run 43348914489](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43348914489), source `b02425040a217a94855cfa52934e303f12fe80de`; 174/174 fresh audits, 30/30 matching Lean input hashes. [Prior audit summary](../Auxillary/evidence/linux-43348914489/audit-summary.json).
+
+## Native Maxwell source dependency
+
+The exact Maxwell definitions and common physical operators reside in [Maxwell_Endpoint/](../Maxwell_Endpoint/). The adapter imports this independent native library. Declaration names, original definition bodies, and both directional proof bodies are preserved.
+
+```text
+CURRENT_NATIVE_EXTRACTION_VALIDATION = PENDING_CACHED_NATIVE_LINUX_ROOT_AND_ISOLATED_MAXWELL
+INTEGRATED_AUDIT_TARGETS = 226
+ISOLATED_MAXWELL_AUDIT_TARGETS = 52
+```

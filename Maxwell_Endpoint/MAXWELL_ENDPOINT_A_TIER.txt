@@ -1,0 +1,361 @@
+MAXWELL_ENDPOINT
+================
+
+MODE = A_TIER_DERIVATION
+STATUS = A_TIER_CANDIDATE
+ROOT_EXTERNAL_VALIDATION = PENDING_CACHED_NATIVE_LINUX
+ISOLATED_EXTERNAL_VALIDATION = PENDING_CACHED_NATIVE_LINUX
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+PROMOTION = MATCHING_EXTERNAL_COMPILER_AND_NAMED_AXIOM_AUDIT_REQUIRED
+STANDALONE_AUDIT_TARGETS = 52
+NATIVE_THEOREMS = 23
+NATIVE_DEFINITION_TYPE_TARGETS = 29
+INTEGRATED_AUDIT_TARGETS = 226
+
+1. EXACT NATIVE OBJECTS
+----------------------
+
+Namespace retained: NSEMaxwell.Classical.
+Project module root: MaxwellEndpoint.
+
+Vec := EuclideanSpace R (Fin 3).
+Field := Vec -> Vec.
+ScalarField := Vec -> R.
+Velocity := R -> Field.
+Pressure := R -> ScalarField.
+Frequency := Fin 3 -> Z.
+
+Q := {x : Vec | forall i, 0 <= x_i and x_i <= 1}.
+spatialMean(a) := integral_Q a(x) dx.
+scalarMean(f) := integral_Q f(x) dx.
+
+coordinateDerivative(a,i,x) := fderiv R a x (unitVector i).
+div, grad, curl, Laplacian and cross product retain their exact coordinate
+formulas. timeDerivative uses derivWithin on Ici(0).
+
+SmoothVelocity(u) :=
+  ContDiffOn R infinity ((t,x) |-> u(t,x)) {(t,x) | 0 <= t}.
+SmoothPressure has the identical joint smoothness domain and order.
+SpatialPeriodic(f) := forall x,i, f(x + unitVector i) = f(x).
+
+Data(a) := smooth(a) and periodic(a) and div(a)=0.
+MagneticData(B0) := Data(B0) and spatialMean(B0)=0.
+The velocity mean m is arbitrary.
+
+2. FROZEN FOURIER AND CONSTITUTIVE DEFINITIONS
+--------------------------------------------
+
+lambda(0) := 0.
+lambda(k) := (4*pi^2*sum_i k_i^2)^(-1), k != 0.
+C_k(x,y) := cos(2*pi*sum_i k_i*(x_i-y_i)).
+
+vectorL(a)(x) := tsum_k lambda(k) * integral_Q C_k(x,y) * a(y) dy.
+scalarL(f)(x) := tsum_k lambda(k) * integral_Q C_k(x,y) * f(y) dy.
+
+K(B) := curl(vectorL(B)).
+U_m[B] := m + K(B).
+G_nu,m[B] := B cross U_m[B] + nu*curl(B).
+V_nu,m[B] := -curl(G_nu,m[B]).
+Q_nu,m[B] := div(G_nu,m[B]).
+DG_nu,m[B](h) := h cross U_m[B] + B cross K(h) + nu*curl(h).
+J_nu,c,m[B] := c^2*curl(B) - DG_nu,m[B](V_nu,m[B]).
+
+Canonical velocity, electric, charge, current and pressure trajectories retain
+the original definition bodies. The canonical pressure is
+  scalarL(Q[B]) - |U_m[B]|^2/2 + scalarMean(|U_m[B]|^2)/2.
+
+All expressions are actual Lean definitions over Mathlib derivatives,
+Lebesgue integrals and infinite sums. Total definability does not prove
+convergence, Poisson identities, Hodge inversion or smooth parameter dependence.
+
+3. EXACT MAXWELL SOLUTION PREDICATE
+---------------------------------
+
+MaxwellSolution(nu,c,m,B0,B,E,rho,J) consists of:
+
+  SmoothVelocity(B), SmoothVelocity(E), SmoothPressure(rho), SmoothVelocity(J);
+  periodicity of B,E,rho,J for every t >= 0;
+  spatialMean(B(t)) = 0 for every t >= 0;
+  div(B(t))(x) = 0;
+  timeDerivative(B)(t,x) + curl(E(t))(x) = 0;
+  div(E(t))(x) = rho(t,x);
+  timeDerivative(E)(t,x) - c^2*curl(B(t))(x) = -J(t,x);
+  E(t) = G_nu,m[B(t)];
+  rho(t) = Q_nu,m[B(t)];
+  J(t) = J_nu,c,m[B(t)];
+  B(0) = B0.
+
+Every differential equation above is quantified over all t >= 0 and all x.
+The original structure field order and definition body are preserved.
+
+Exact proposition:
+
+  MaxwellB(nu,c) :=
+    forall m : Vec, forall B0 : Field,
+    MagneticData(B0) ->
+      exists B E : Velocity, exists rho : Pressure, exists J : Velocity,
+        MaxwellSolution(nu,c,m,B0,B,E,rho,J).
+
+This proposition is defined for every real nu,c. The equivalence root retains
+its existing restrictions nu > 0 and c > 0.
+
+4. CONCRETE NATIVE INSTANCE
+--------------------------
+
+Exact implemented witness declarations (external certification pending):
+
+  MaxwellEndpoint.zero_solution (nu c : R) (m : Vec) :
+    MaxwellSolution nu c m (0 : Field)
+      (0 : Velocity) (0 : Velocity) (0 : Pressure) (0 : Velocity).
+
+  MaxwellEndpoint.zero_datum_global_instance (nu c : R) (m : Vec) :
+    MagneticData (0 : Field) and
+      exists B E : Velocity, exists rho : Pressure, exists J : Velocity,
+        MaxwellSolution nu c m (0 : Field) B E rho J.
+
+  MaxwellEndpoint.U_zero (m : Vec) :
+    U m (0 : Field) = (fun _ : Vec => m).
+
+Mathematical construction:
+  constant derivatives vanish;
+  zero fields are smooth and periodic;
+  integrals and Fourier sums with zero integrands vanish;
+  vectorL(0)=0, K(0)=0, U_m[0]=m;
+  G[0]=0, V[0]=0, Q[0]=0, DG[0](0)=0, J[0]=0;
+  every Maxwell equation, constitutive field and initial condition follows.
+
+The complete proof bodies are in MaxwellEndpoint/Native.lean. Their exact
+names are registered in audit-targets.txt and MaxwellEndpoint/Audit.lean.
+Matching external compiler and named axiom-audit records remain pending.
+No arbitrary-data global-existence claim follows from this witness.
+
+Additional projection endpoints:
+  equations_of_solution: a MaxwellSolution implies all four native equations;
+  constitutive_fields_of_solution: the exact three constitutive identities;
+  magnetic_evolution_of_solution: timeDerivative B t = V nu m (B t), t >= 0;
+  electric_evolution_of_solution:
+    timeDerivative E t = DG nu m (B t) (V nu m (B t)), t >= 0.
+
+These four endpoints explicitly assume the actual MaxwellSolution predicate.
+maxwellB_iff_native is the exact definitional unfolding equivalence for
+MaxwellB nu c. It supplies no independent existence proof.
+
+5. SOURCE AND DEPENDENCY CLOSURE
+-------------------------------
+
+Geometry.lean -> Constitutive.lean -> System.lean -> Native.lean.
+MaxwellEndpoint.lean imports the native implementation.
+Audit.lean imports the aggregate and names the registered declarations.
+
+Project imports are restricted to MaxwellEndpoint.*.
+External mathematical imports are restricted to the pinned Mathlib package.
+No Fefferman_B_adapter or directional proof source is required by the isolated
+Maxwell endpoint package.
+
+The adapter Classical.lean imports MaxwellEndpoint and retains the original
+NSSolution, FeffermanB and ExactEquivalence declarations. Existing declaration
+names remain valid throughout the two implication directions.
+
+Compiler: leanprover/lean4:v4.34.0-rc1.
+Mathlib: de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
+Dependency manifest: nine exact Git revisions, inherited from the approved pin.
+External native Linux entry point: bash Maxwell_Endpoint/run.sh.
+Standalone run.cmd is supplied for the corresponding external native runner.
+
+6. VALIDATION CONTRACT
+----------------------
+
+Required evidence:
+  (a) complete repository integration build;
+  (b) isolated Maxwell_Endpoint package build;
+  (c) fresh named theorem-level axiom audits for both scopes;
+  (d) matching compiler, dependency revisions and source hashes;
+  (e) explicit semantic-premise review.
+
+Allowed foundational axioms:
+  propext;
+  Classical.choice;
+  Quot.sound.
+
+Excluded:
+  sorryAx, admit, new unapproved axioms, unproved opaque bodies,
+  unsafe proof construction and native_decide proof axioms.
+
+Cache objects remain subject to ordinary Lake trace validation.
+Compiler/dependency/project caches are retained.
+The isolated package retains separate build objects.
+Cached audit output does not establish a fresh certificate.
+No local Lean, Lake or elan execution is permitted.
+
+7. UNRESOLVED ROOT OBLIGATIONS
+-----------------------------
+
+The following FourierHodgeLaws fields remain undischargeable by packaging alone:
+  reconstruct_velocity;
+  reconstruct_curl;
+  canonical_smoothness;
+  electric_hodge.
+
+The retained equivalence theorem has exact type:
+
+  NSEMaxwell.Bridge.FourierHodgeLaws ->
+  NSEMaxwell.Classical.ExactEquivalence.
+
+Native-model instantiation does not supply an inhabitant of FourierHodgeLaws.
+Native zero-field existence does not prove MaxwellB(nu,c) for arbitrary data.
+The full unconditional NSE-Maxwell equivalence is not promoted by this package.
+
+8. CERTIFICATION RECORD
+-----------------------
+
+CURRENT_PACKAGE = A_TIER_CANDIDATE.
+CURRENT_MATCHING_EXTERNAL_RUN = PENDING.
+CURRENT_NAMED_AXIOM_AUDIT = PENDING.
+
+Historical repository certificates remain scoped to their recorded source
+commits. Their artifact bytes and embedded historical paths are preserved.
+Prepared code and documentation do not establish A_TIER.
+
+9. EXACT NATIVE THEOREM SIGNATURES
+---------------------------------
+
+Namespace: MaxwellEndpoint. All declarations remain A_TIER_CANDIDATE until
+matching external compilation and named axiom audits succeed.
+
+theorem equations_of_solution
+    (ν c : ℝ) (m : Vec) (B₀ : Field)
+    (B E : Velocity) (ρ : Pressure) (J : Velocity)
+    (h : MaxwellSolution ν c m B₀ B E ρ J) :
+    MaxwellEquations c B E ρ J
+
+theorem constitutive_fields_of_solution
+    (ν c : ℝ) (m : Vec) (B₀ : Field)
+    (B E : Velocity) (ρ : Pressure) (J : Velocity)
+    (h : MaxwellSolution ν c m B₀ B E ρ J) :
+    ∀ t : ℝ, 0 ≤ t →
+      E t = G ν m (B t) ∧
+      ρ t = Q ν m (B t) ∧
+      J t = current ν c m (B t)
+
+theorem magnetic_evolution_of_solution
+    (ν c : ℝ) (m : Vec) (B₀ : Field)
+    (B E : Velocity) (ρ : Pressure) (J : Velocity)
+    (h : MaxwellSolution ν c m B₀ B E ρ J)
+    (t : ℝ) (ht : 0 ≤ t) :
+    timeDerivative B t = V ν m (B t)
+
+theorem electric_evolution_of_solution
+    (ν c : ℝ) (m : Vec) (B₀ : Field)
+    (B E : Velocity) (ρ : Pressure) (J : Velocity)
+    (h : MaxwellSolution ν c m B₀ B E ρ J)
+    (t : ℝ) (ht : 0 ≤ t) :
+    timeDerivative E t = DG ν m (B t) (V ν m (B t))
+
+theorem maxwellB_iff_native (ν c : ℝ) :
+    MaxwellB ν c ↔
+      ∀ (m : Vec) (B₀ : Field), MagneticData B₀ →
+        ∃ (B E : Velocity) (ρ : Pressure) (J : Velocity),
+          MaxwellSolution ν c m B₀ B E ρ J
+
+theorem coordinateDerivative_zero (i : Fin 3) :
+    coordinateDerivative (0 : Field) i = 0
+
+theorem divergence_zero : divergence (0 : Field) = 0
+
+theorem spatialCurl_zero : spatialCurl (0 : Field) = 0
+
+theorem cross_zero_left (a : Vec) : cross 0 a = 0
+
+theorem cross_zero_right (a : Vec) : cross a 0 = 0
+
+theorem vectorL_zero : vectorL (0 : Field) = 0
+
+theorem scalarL_zero : scalarL (0 : ScalarField) = 0
+
+theorem K_zero : K (0 : Field) = 0
+
+theorem U_zero (m : Vec) :
+    U m (0 : Field) = (fun _ : Vec => m)
+
+theorem G_zero (ν : ℝ) (m : Vec) : G ν m (0 : Field) = 0
+
+theorem V_zero (ν : ℝ) (m : Vec) : V ν m (0 : Field) = 0
+
+theorem Q_zero (ν : ℝ) (m : Vec) : Q ν m (0 : Field) = 0
+
+theorem DG_zero (ν : ℝ) (m : Vec) (B : Field) :
+    DG ν m B (0 : Field) = 0
+
+theorem current_zero (ν c : ℝ) (m : Vec) :
+    current ν c m (0 : Field) = 0
+
+theorem timeDerivative_zero : timeDerivative (0 : Velocity) = 0
+
+theorem magneticData_zero : MagneticData (0 : Field)
+
+theorem zero_solution (ν c : ℝ) (m : Vec) :
+    MaxwellSolution ν c m (0 : Field)
+      (0 : Velocity) (0 : Velocity) (0 : Pressure) (0 : Velocity)
+
+theorem zero_datum_global_instance (ν c : ℝ) (m : Vec) :
+    MagneticData (0 : Field) ∧
+      ∃ (B E : Velocity) (ρ : Pressure) (J : Velocity),
+        MaxwellSolution ν c m (0 : Field) B E ρ J
+
+10. NATIVE AUDIT REGISTRATION
+-----------------------------
+
+All 52 registered names:
+
+NSEMaxwell.Classical.Vec
+NSEMaxwell.Classical.Field
+NSEMaxwell.Classical.Velocity
+NSEMaxwell.Classical.Pressure
+NSEMaxwell.Classical.unitCube
+NSEMaxwell.Classical.SpatialPeriodic
+NSEMaxwell.Classical.spatialMean
+NSEMaxwell.Classical.coordinateDerivative
+NSEMaxwell.Classical.divergence
+NSEMaxwell.Classical.spatialCurl
+NSEMaxwell.Classical.timeDerivative
+NSEMaxwell.Classical.SmoothVelocity
+NSEMaxwell.Classical.SmoothPressure
+NSEMaxwell.Classical.Data
+NSEMaxwell.Classical.MagneticData
+NSEMaxwell.Classical.inverseLaplacianSymbol
+NSEMaxwell.Classical.cosineKernel
+NSEMaxwell.Classical.vectorL
+NSEMaxwell.Classical.scalarL
+NSEMaxwell.Classical.K
+NSEMaxwell.Classical.U
+NSEMaxwell.Classical.G
+NSEMaxwell.Classical.V
+NSEMaxwell.Classical.Q
+NSEMaxwell.Classical.DG
+NSEMaxwell.Classical.current
+NSEMaxwell.Classical.MaxwellSolution
+NSEMaxwell.Classical.MaxwellB
+MaxwellEndpoint.MaxwellEquations
+MaxwellEndpoint.equations_of_solution
+MaxwellEndpoint.constitutive_fields_of_solution
+MaxwellEndpoint.magnetic_evolution_of_solution
+MaxwellEndpoint.electric_evolution_of_solution
+MaxwellEndpoint.maxwellB_iff_native
+MaxwellEndpoint.coordinateDerivative_zero
+MaxwellEndpoint.divergence_zero
+MaxwellEndpoint.spatialCurl_zero
+MaxwellEndpoint.cross_zero_left
+MaxwellEndpoint.cross_zero_right
+MaxwellEndpoint.vectorL_zero
+MaxwellEndpoint.scalarL_zero
+MaxwellEndpoint.K_zero
+MaxwellEndpoint.U_zero
+MaxwellEndpoint.G_zero
+MaxwellEndpoint.V_zero
+MaxwellEndpoint.Q_zero
+MaxwellEndpoint.DG_zero
+MaxwellEndpoint.current_zero
+MaxwellEndpoint.timeDerivative_zero
+MaxwellEndpoint.magneticData_zero
+MaxwellEndpoint.zero_solution
+MaxwellEndpoint.zero_datum_global_instance

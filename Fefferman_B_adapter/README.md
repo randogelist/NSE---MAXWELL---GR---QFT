@@ -10,13 +10,14 @@ NSEMaxwell.Classical.FeffermanB (ν : ℝ) : Prop :=
     ∃ (u : Velocity) (p : Pressure), NSSolution ν a u p
 ```
 
-`Data`, `NSSolution`, actual derivatives, periodicity, cube means, joint smoothness, and the unrestricted velocity mean retain their frozen definitions. A compiled proposition definition is distinct from a proof of that proposition.
+`NSSolution`, `FeffermanB`, and `ExactEquivalence` remain in this adapter. `Data`, actual derivatives, periodicity, cube means, joint smoothness, constitutive operators, and the constrained Maxwell statement are imported from [Maxwell_Endpoint/](../Maxwell_Endpoint/). Their original namespace and definition bodies are retained. A compiled proposition definition is distinct from a proof of that proposition.
 
 ## Contents
 
 | Path | Content |
 |---|---|
-| [NSEMaxwell/Classical.lean](NSEMaxwell/Classical.lean) | Exact Fefferman-B statement and concrete PDE definitions |
+| [NSEMaxwell/Classical.lean](NSEMaxwell/Classical.lean) | Exact NSE solution, Fefferman-B statement, and equivalence proposition |
+| [Maxwell_Endpoint/](../Maxwell_Endpoint/) | Imported native geometry, constitutive fields, and exact Maxwell statement |
 | [NSEMaxwell/AnalyticContracts.lean](NSEMaxwell/AnalyticContracts.lean) | Shared magnetic-path objects and explicit analytic contracts |
 | [NSEMaxwell/AnalyticReduction.lean](NSEMaxwell/AnalyticReduction.lean) | Four-field FourierHodgeLaws contract and reduction |
 | [NSEMaxwell/AnalyticBridge.lean](NSEMaxwell/AnalyticBridge.lean) | Compatibility assembly of the two directions |
@@ -49,6 +50,21 @@ Deferred Lean contracts: [INTEGRATION_PLAN.md](../B%20%3C-%3E%20Maxwell/INTEGRAT
 
 The directional base modules import `NSEMaxwell.AnalyticContracts`. Their separate reduced modules import `NSEMaxwell.AnalyticReduction`. The resulting module graph is acyclic.
 
-## Matching external certificate
+## Historical external certificates
 
-[Native Linux run 43345557147](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147): build PASS; 174/174 named audits PASS_STANDARD_ONLY; 30/30 Lean input hashes match the delivered source. [Audit summary](../Auxillary/evidence/linux-43345557147/audit-summary.json). The conditional directions are A-tier; the Hodge inhabitant remains deferred. The relocated auxiliary runner paths also passed [native Linux run 43348914489](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43348914489), source `b02425040a217a94855cfa52934e303f12fe80de`: 174/174 fresh audits, 30/30 matching Lean inputs, and zero module rebuilds after Lake trace validation. [Current audit summary](../Auxillary/evidence/linux-43348914489/audit-summary.json).
+[Native Linux run 43345557147](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147): build PASS; 174/174 named audits PASS_STANDARD_ONLY; 30/30 Lean input hashes matched that source snapshot. [Audit summary](../Auxillary/evidence/linux-43345557147/audit-summary.json). The conditional directions are A-tier; the Hodge inhabitant remains deferred. The relocated auxiliary runner paths also passed [native Linux run 43348914489](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43348914489), source `b02425040a217a94855cfa52934e303f12fe80de`: 174/174 fresh audits, 30/30 matching Lean inputs, and zero module rebuilds after Lake trace validation. [Retained audit summary](../Auxillary/evidence/linux-43348914489/audit-summary.json).
+
+## Current extraction status
+
+```text
+SOURCE_STATUS = A_TIER_CANDIDATE
+REGISTERED_ROOT_AUDIT_TARGETS = 226
+REGISTERED_MAXWELL_AUDIT_TARGETS = 52
+ROOT_EXTERNAL_VALIDATION = PENDING_CACHED_NATIVE_LINUX
+ISOLATED_MAXWELL_VALIDATION = PENDING_CACHED_NATIVE_LINUX
+HODGE_LEAN_INHABITANT = NOT_SUPPLIED
+```
+
+The native Maxwell package is upstream of this adapter in the import graph. The adapter and both implication directions retain their exact explicit hypotheses. Source extraction requires new matching external build and theorem-audit evidence.
+
+Native witness endpoints: `MaxwellEndpoint.zero_solution` and `MaxwellEndpoint.zero_datum_global_instance`; 23 native theorems and 29 concrete definition/type targets are registered for the isolated package audit. `MaxwellEndpoint.U_zero` preserves the arbitrary harmonic mean. External certification remains pending.

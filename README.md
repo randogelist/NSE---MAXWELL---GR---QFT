@@ -4,19 +4,23 @@
 
 | Directory | Scope |
 |---|---|
-| [Fefferman_B_adapter/](Fefferman_B_adapter/) | Exact Lean statements, shared calculus, copied Mathlib/Methlib endpoints |
+| [Fefferman_B_adapter/](Fefferman_B_adapter/) | Exact Fefferman-B statement, shared bridge calculus, copied Mathlib/Methlib endpoints |
+| [Maxwell_Endpoint/](Maxwell_Endpoint/) | Independent native Maxwell definitions, constructions, compiler configuration, and named audit |
 | [B <-> Maxwell/](B%20%3C-%3E%20Maxwell/) | Equivalence derivations and the two directional proof directories |
 | [Auxillary/](Auxillary/) | External runners, audit/cache targets, status, cache documentation, retained compiler evidence |
 | [B <-> Maxwell/=>/](B%20%3C-%3E%20Maxwell/%3D%3E/) | Fefferman B ⇒ constrained Maxwell: actual forward proof bodies |
 | [B <-> Maxwell/<=/](B%20%3C-%3E%20Maxwell/%3C%3D/) | Constrained Maxwell ⇒ Fefferman B: actual reverse proof bodies |
 
-The three top-level content folders have the literal requested names. `.github/` retains GitHub Actions discovery. Root files retain Lake configuration, compiler selection, repository instructions, and Git metadata. Auxiliary entry points, target lists, status, and evidence reside in `Auxillary/`.
+The four top-level content folders have the requested domain roles. `.github/` retains GitHub Actions discovery. Root files retain Lake configuration, compiler selection, repository instructions, and Git metadata. Auxiliary entry points, target lists, status, and evidence reside in `Auxillary/`.
 
 ```text
 LAYOUT_PLATFORM             = LINUX / POSIX
-PROOF_SOURCE_VALIDATION     = PASS_CACHED_NATIVE_LINUX_BUILD_AND174_AUDITS
-AUXILLARY_LAYOUT_VALIDATION = PASS_CACHED_NATIVE_LINUX_BUILD_AND174_FRESH_AUDITS
-REGISTERED_AUDIT_TARGETS     = 174
+CURRENT_SOURCE_STATUS      = A_TIER_CANDIDATE_PENDING_EXTERNAL_VALIDATION
+ROOT_EXTERNAL_VALIDATION    = PENDING_CACHED_NATIVE_LINUX
+ISOLATED_MAXWELL_VALIDATION  = PENDING_CACHED_NATIVE_LINUX
+PRIOR_CERTIFIED_RUN         = 43348914489
+REGISTERED_ROOT_TARGETS     = 226
+REGISTERED_MAXWELL_TARGETS  = 52
 LOCAL_LEAN_EXECUTIONS        = 0
 HODGE_LEAN_INHABITANT        = NOT_SUPPLIED
 HODGE_B_TIER_DERIVATION      = COMPLETE
@@ -50,6 +54,22 @@ E = G[B] = B × u + ν curl B
 ρ = div G[B]
 J = c² curl B − DG[B](−curl G[B])
 ```
+
+## Independent Maxwell endpoint
+
+[Maxwell_Endpoint/](Maxwell_Endpoint/) contains the actual `MaxwellSolution` and `MaxwellB` definitions, their complete local source dependencies, and an independent pinned Lake package. The namespace `NSEMaxwell.Classical` and the frozen definition bodies are retained. The adapter imports this endpoint.
+
+```text
+NATIVE_SOURCE_CLOSURE = Mathlib + MaxwellEndpoint.*
+NATIVE_ZERO_INSTANCE = MaxwellEndpoint.zero_solution
+NATIVE_ZERO_EXISTENCE = MaxwellEndpoint.zero_datum_global_instance
+NATIVE_THEOREM_COUNT = 23
+NATIVE_DEFINITION_TYPE_TARGET_COUNT = 29
+ROOT_BUILD_AND_AUDIT = PENDING_CACHED_EXTERNAL_LINUX
+ISOLATED_BUILD_AND_AUDIT = PENDING_CACHED_EXTERNAL_LINUX
+```
+
+[Native scope and certification contract](Maxwell_Endpoint/MAXWELL_ENDPOINT_A_TIER.txt). The candidate `zero_solution` theorem constructs the actual zero fields for every real `ν`, `c`, and arbitrary harmonic mean `m`. `zero_datum_global_instance` combines admissibility with that global witness. These endpoints do not prove the arbitrary-data existence proposition `MaxwellB`.
 
 ## Directional Lean endpoints
 
@@ -96,22 +116,24 @@ Dependency pins   = unchanged
 Compiler cache    = retained
 Dependency cache  = exact verified predecessor fallback + current key
 Project cache     = exact verified predecessor fallback + current key
-Theorem audit     = fresh; 174 exact target names
+Theorem audit     = fresh; 226 integrated targets + 52 standalone targets
 Allowed axioms    = propext, Classical.choice, Quot.sound
 ```
 
-The freshness check and final build explicitly include both reduced direction modules. Source manifests cover all three source roots. No cache cleaning is performed.
+The freshness check and final build include both reduced direction modules and the native Maxwell endpoint. Source manifests include the Maxwell, adapter, and two directional roots. Isolated package validation uses the Maxwell folder without other project source. No cache cleaning is performed.
 
 [formalization-status.json](Auxillary/formalization-status.json) records scope and evidence. [Retained evidence](Auxillary/evidence/) preserves prior compiler artifacts byte-for-byte; each certificate identifies its original source commit and layout.
 
 ## Prior matching proof-source certificate
 
-[Native Linux run 43345557147](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147) passed the reorganized build and all **174/174** named theorem audits. Certified proof-source commit: `be8376a08573a7789e36b68c2bc48178aa6f53c3`. All **30/30** Lean input hashes match the delivered sources. All four new directional declarations and the exact reduced root have only `propext`, `Classical.choice`, and `Quot.sound` in their axiom dependencies.
+[Native Linux run 43345557147](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43345557147) passed the reorganized build and all **174/174** named theorem audits. Certified proof-source commit: `be8376a08573a7789e36b68c2bc48178aa6f53c3`. All **30/30** Lean input hashes matched that certified source snapshot. All four new directional declarations and the exact reduced root have only `propext`, `Classical.choice`, and `Quot.sound` in their axiom dependencies.
 
 [Permanent evidence](Auxillary/evidence/linux-43345557147/) preserves all 65 artifact files. Compiler, dependency, and project cache restorations are recorded in the run. Formal status: **CONDITIONAL_FORMAL_CLOSURE**; the `FourierHodgeLaws` premise remains explicit.
 
-## Current Auxillary layout certificate
+## Prior Auxillary layout certificate
 
-[Native Linux run 43348914489](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43348914489) passed the relocated runner, build validation, and all **174/174 fresh** named theorem audits. Source commit: `b02425040a217a94855cfa52934e303f12fe80de`. All **30/30** Lean source hashes match; compiler, dependency, and project caches were exact hits. Lake's transitive trace freshness check returned `0`, yielding **zero module rebuilds** and a fresh theorem audit.
+[Native Linux run 43348914489](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43348914489) passed the relocated runner, build validation, and all **174/174 fresh** named theorem audits. Source commit: `b02425040a217a94855cfa52934e303f12fe80de`. All **30/30** Lean source hashes matched that source snapshot; compiler, dependency, and project caches were exact hits. Lake's transitive trace freshness check returned `0`, yielding **zero module rebuilds** and a fresh theorem audit.
 
-[Current evidence](Auxillary/evidence/linux-43348914489/) preserves all **38 original artifact files**. [Audit summary](Auxillary/evidence/linux-43348914489/audit-summary.json) records `PASS_STANDARD_ONLY`; the explicit `FourierHodgeLaws` premise remains unresolved. The certificate covers 289 source inputs, with the recorded CRLF checkout normalization for `Auxillary/run.cmd`.
+[Retained evidence](Auxillary/evidence/linux-43348914489/) preserves all **38 original artifact files**. [Audit summary](Auxillary/evidence/linux-43348914489/audit-summary.json) records `PASS_STANDARD_ONLY`; the explicit `FourierHodgeLaws` premise remains unresolved. The certificate covers 289 source inputs, with the recorded CRLF checkout normalization for `Auxillary/run.cmd`.
+
+The Maxwell source extraction requires the pending root and isolated-package compiler/audit certificates. Historical evidence remains scoped to its original source commit.

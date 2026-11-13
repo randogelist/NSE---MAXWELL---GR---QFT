@@ -76,7 +76,7 @@ EXTERNAL VALIDATION CONTRACT
 ----------------------------
 Compiler: native Linux Lean 4.34.0-rc1, Ubuntu 24.04.
 Mathlib: de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
-Registered named audit targets: 174.
+Registered named audit targets: 226 (including the native Maxwell endpoint).
 Allowed axioms: propext, Classical.choice, Quot.sound.
 
 The active build explicitly includes both reduced directional modules.
@@ -147,3 +147,12 @@ Artifact SHA256: 4d1bfce16808246fe1190bea523358dc0d150efafa0c7b59f338670b85df86d
 Source-manifest SHA256: 1d230d04d0796b21b806b552b4bb9ca14debd25c00e65a75ef670cdf0477d6cd
 Auxillary/run.cmd uses the expected CRLF checkout normalization.
 The exact conditional theorem and unresolved Hodge premise are unchanged.
+
+NATIVE MAXWELL EXTRACTION
+-------------------------
+Concrete Maxwell definitions: ../Maxwell_Endpoint/MaxwellEndpoint/System.lean.
+Shared geometry: ../Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean.
+Constitutive operators: ../Maxwell_Endpoint/MaxwellEndpoint/Constitutive.lean.
+All 51 original declaration bodies and both directional proof bodies are preserved.
+Current integrated/isolated validation: PENDING_CACHED_NATIVE_LINUX.
+Historical certificates above retain their original source scope.

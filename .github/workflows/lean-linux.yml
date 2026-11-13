@@ -74,7 +74,7 @@ jobs:
             .mathlib-download-cache
           key: nse-deps-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}
           # Exact pinned predecessor caches, observed in runs 43345557147 and 43337888436.
-          # The Auxillary relocation preserves dependency pins and all Lean sources.
+          # Native Maxwell extraction updates Lake configuration; dependency pins are unchanged.
           restore-keys: |
             nse-deps-v2-Linux-X64-78b8e6dd5376bcb08d2c5af93549e74beae76ba7d0f24dc089ab851faa254f79
             nse-deps-v2-Linux-X64-61a962499c8eb2ab9217aea818efc9c8df3fc4c21642b7007e74a1a069a24416
@@ -99,7 +99,7 @@ jobs:
         uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: .lake/build
-          key: nse-project-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-${{ hashFiles('Fefferman_B_adapter/**/*.lean', 'B <-> Maxwell/**/*.lean') }}
+          key: nse-project-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-${{ hashFiles('Fefferman_B_adapter/**/*.lean', 'B <-> Maxwell/**/*.lean', 'Maxwell_Endpoint/**/*.lean') }}
           restore-keys: |
             nse-project-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json', 'Auxillary/cache-targets.txt') }}-
             nse-project-v2-Linux-X64-78b8e6dd5376bcb08d2c5af93549e74beae76ba7d0f24dc089ab851faa254f79-f3c64b586dd589b35fbe9757b9e8e727d108313c48994542910f87312b72be76
@@ -108,6 +108,43 @@ jobs:
       - name: Compile and audit on native Linux
         shell: bash
         run: bash Auxillary/run.sh -Phase BuildAudit
+
+      - name: Prepare the independent Maxwell package from tracked sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          python Auxillary/scripts/isolate_maxwell_endpoint.py prepare \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --destination "$RUNNER_TEMP/nse-maxwell-endpoint" \
+            --report-directory "$GITHUB_WORKSPACE/artifacts/external-linux" \
+            --source-commit "$GITHUB_SHA"
+
+      - name: Restore independent Maxwell project objects
+        id: maxwell-project-cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ runner.temp }}/nse-maxwell-endpoint/.lake/build
+          key: nse-maxwell-standalone-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('Maxwell_Endpoint/lean-toolchain', 'Maxwell_Endpoint/lakefile.lean', 'Maxwell_Endpoint/lake-manifest.json', 'Maxwell_Endpoint/cache-targets.txt') }}-${{ hashFiles('Maxwell_Endpoint/MaxwellEndpoint.lean', 'Maxwell_Endpoint/MaxwellEndpoint/**/*.lean') }}
+          restore-keys: |
+            nse-maxwell-standalone-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('Maxwell_Endpoint/lean-toolchain', 'Maxwell_Endpoint/lakefile.lean', 'Maxwell_Endpoint/lake-manifest.json', 'Maxwell_Endpoint/cache-targets.txt') }}-
+
+      - name: Compile and audit the standalone Maxwell endpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash "$RUNNER_TEMP/nse-maxwell-endpoint/run.sh" \
+            -SourceCommit "$GITHUB_SHA" \
+            -ReportDirectory "$GITHUB_WORKSPACE/artifacts/external-linux/standalone"
+
+      - name: Verify independent source closure and fresh Maxwell audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python Auxillary/scripts/isolate_maxwell_endpoint.py verify \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --destination "$RUNNER_TEMP/nse-maxwell-endpoint" \
+            --report-directory "$GITHUB_WORKSPACE/artifacts/external-linux" \
+            --source-commit "$GITHUB_SHA"
 
       - name: Preserve matching compiler and theorem evidence
         if: always()
@@ -133,6 +170,11 @@ jobs:
           else
             echo "project-exists=false" >> "$GITHUB_OUTPUT"
           fi
+          if test -d "$RUNNER_TEMP/nse-maxwell-endpoint/.lake/build"; then
+            echo "maxwell-project-exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "maxwell-project-exists=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Preserve the Linux compiler cache after success or failure
         if: always() && steps.elan-cache.outputs.cache-hit != 'true' && steps.cache-directories.outputs.compiler-exists == 'true' && steps.elan-cache.outputs.cache-primary-key != ''
@@ -147,3 +189,10 @@ jobs:
         with:
           path: .lake/build
           key: ${{ steps.project-cache.outputs.cache-primary-key }}
+
+      - name: Preserve independent Maxwell project objects after success or failure
+        if: always() && steps.maxwell-project-cache.outcome == 'success' && steps.maxwell-project-cache.outputs.cache-hit != 'true' && steps.cache-directories.outputs.maxwell-project-exists == 'true' && steps.maxwell-project-cache.outputs.cache-primary-key != ''
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ runner.temp }}/nse-maxwell-endpoint/.lake/build
+          key: ${{ steps.maxwell-project-cache.outputs.cache-primary-key }}

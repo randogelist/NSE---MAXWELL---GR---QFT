@@ -72,7 +72,7 @@ and therefore all four Maxwell equations with the prescribed constitutive fields
 
 - [B_TO_MAXWELL_B_TIER.txt](B_TO_MAXWELL_B_TIER.txt): directional mathematical derivation.
 - [Shared Fourier–Hodge derivation](../FOURIER_HODGE_COMPOSITION_B_TIER.txt): C01–C12 discharge the mathematical analytic adapters; C13, §§14.1–14.3 compose the forward map.
-- [Concrete statement adapter](../../Fefferman_B_adapter/NSEMaxwell/Classical.lean): exact `FeffermanB`, `MaxwellB`, operators, and solution predicates.
+- [Concrete statement adapter](../../Fefferman_B_adapter/NSEMaxwell/Classical.lean): exact `FeffermanB` and the imported native Maxwell definitions.
 - [Common analytic contracts](../../Fefferman_B_adapter/NSEMaxwell/AnalyticContracts.lean): explicit local premises shared by the two directions.
 
 ## External certificate
@@ -95,3 +95,5 @@ UNCONDITIONAL_LEAN_H_INHABITANT = NOT_SUPPLIED
 PROMOTION_BASIS                = FRESH_EXTERNAL_COMPILER_AND_AXIOM_AUDIT
 EXTERNAL_VALIDATION_TARGET    = CACHED_NATIVE_LINUX_LEAN_4.34.0-rc1
 ```
+
+Native Maxwell implementation: [Maxwell_Endpoint/](../../Maxwell_Endpoint/); physical geometry, Fourier operators, Maxwell predicate, and native witnesses.

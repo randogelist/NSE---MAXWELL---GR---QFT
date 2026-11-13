@@ -306,9 +306,18 @@ def verify(args: argparse.Namespace) -> dict[str, object]:
         "B <-> Maxwell/=>/NSEMaxwellForward/Reduced.lean",
         "B <-> Maxwell/<=/NSEMaxwellReverse.lean",
         "B <-> Maxwell/<=/NSEMaxwellReverse/Reduced.lean",
+        "Maxwell_Endpoint/MaxwellEndpoint.lean",
+        "Maxwell_Endpoint/MaxwellEndpoint/Audit.lean",
+        "Maxwell_Endpoint/lakefile.lean", "Maxwell_Endpoint/lake-manifest.json",
+        "Maxwell_Endpoint/lean-toolchain", "Maxwell_Endpoint/audit-targets.txt",
+        "Maxwell_Endpoint/cache-targets.txt", "Maxwell_Endpoint/formalization-status.json",
+        "Maxwell_Endpoint/scripts/run.ps1", "Maxwell_Endpoint/scripts/verify_audit.py",
+        "Maxwell_Endpoint/run.sh", "Maxwell_Endpoint/run.cmd",
+        "Auxillary/scripts/isolate_maxwell_endpoint.py",
     }
     for source_root in (
         "Fefferman_B_adapter", "B <-> Maxwell/=>", "B <-> Maxwell/<=",
+        "Maxwell_Endpoint/MaxwellEndpoint",
     ):
         directory = root / source_root
         if not directory.is_dir():

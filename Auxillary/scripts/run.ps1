@@ -33,11 +33,12 @@ Set-Location -LiteralPath $RepoRoot
 $AdapterSourceRoot = "Fefferman_B_adapter"
 $ForwardSourceRoot = "B <-> Maxwell/=>"
 $ReverseSourceRoot = "B <-> Maxwell/<="
+$MaxwellSourceRoot = "Maxwell_Endpoint"
 $ProjectSourceRoots = @($AdapterSourceRoot, $ForwardSourceRoot, $ReverseSourceRoot)
 $ProjectRootSource = "$AdapterSourceRoot/NSEMaxwell.lean"
 $AuditSource = "$AdapterSourceRoot/NSEMaxwell/Audit.lean"
 $VerifierSource = "Auxillary/scripts/verify_audit.py"
-$AggregateTargets = @("NSEMaxwell", "NSEMaxwellForward.Reduced", "NSEMaxwellReverse.Reduced")
+$AggregateTargets = @("MaxwellEndpoint", "NSEMaxwell", "NSEMaxwellForward.Reduced", "NSEMaxwellReverse.Reduced")
 $ReportRoot = Join-Path $RepoRoot $ReportDirectory
 $null = New-Item -ItemType Directory -Path $ReportRoot -Force
 $ExpectedToolchain = "leanprover/lean4:v4.34.0-rc1"
@@ -57,6 +58,9 @@ $CommandTimings = [Collections.Generic.List[object]]::new()
 function Get-ProjectSourcePath {
     param([string]$Module)
     $Relative = $Module.Replace(".", "/") + ".lean"
+    if ($Module -match '^MaxwellEndpoint(?:\.|$)') {
+        return Join-Path $MaxwellSourceRoot $Relative
+    }
     if ($Module -match '^NSEMaxwellForward(?:\.|$)') {
         return Join-Path $ForwardSourceRoot $Relative
     }
@@ -76,6 +80,9 @@ function Get-ProjectLeanSources {
         }
         Get-ChildItem -LiteralPath $SourceRoot -Recurse -File -Filter "*.lean"
     }
+    # Enumerate native package sources without descending into its separate caches.
+    Get-Item -LiteralPath "$MaxwellSourceRoot/MaxwellEndpoint.lean"
+    Get-ChildItem -LiteralPath "$MaxwellSourceRoot/MaxwellEndpoint" -Recurse -File -Filter "*.lean"
 }
 
 function Write-JsonFile {
@@ -169,7 +176,14 @@ try {
         "$ForwardSourceRoot/NSEMaxwellForward.lean",
         "$ForwardSourceRoot/NSEMaxwellForward/Reduced.lean",
         "$ReverseSourceRoot/NSEMaxwellReverse.lean",
-        "$ReverseSourceRoot/NSEMaxwellReverse/Reduced.lean"
+        "$ReverseSourceRoot/NSEMaxwellReverse/Reduced.lean",
+        "$MaxwellSourceRoot/MaxwellEndpoint.lean",
+        "$MaxwellSourceRoot/MaxwellEndpoint/Audit.lean",
+        "$MaxwellSourceRoot/lakefile.lean", "$MaxwellSourceRoot/lake-manifest.json",
+        "$MaxwellSourceRoot/lean-toolchain", "$MaxwellSourceRoot/audit-targets.txt",
+        "$MaxwellSourceRoot/cache-targets.txt", "$MaxwellSourceRoot/formalization-status.json",
+        "$MaxwellSourceRoot/scripts/run.ps1", "$MaxwellSourceRoot/scripts/verify_audit.py",
+        "$MaxwellSourceRoot/run.sh", "$MaxwellSourceRoot/run.cmd"
     )) {
         if (-not (Test-Path -LiteralPath $Required -PathType Leaf)) {
             throw "Required input is absent: $Required"
@@ -396,7 +410,13 @@ try {
     foreach ($Required in @(
         "lean-toolchain", "lake-manifest.json", $ProjectRootSource,
         $AuditSource, "Auxillary/audit-targets.txt", "Auxillary/formalization-status.json",
-        "Auxillary/scripts/run.ps1", $VerifierSource, "Auxillary/run.cmd"
+        "Auxillary/scripts/run.ps1", $VerifierSource, "Auxillary/run.cmd",
+        "$MaxwellSourceRoot/lakefile.lean", "$MaxwellSourceRoot/lake-manifest.json",
+        "$MaxwellSourceRoot/lean-toolchain", "$MaxwellSourceRoot/audit-targets.txt",
+        "$MaxwellSourceRoot/cache-targets.txt", "$MaxwellSourceRoot/formalization-status.json",
+        "$MaxwellSourceRoot/scripts/run.ps1", "$MaxwellSourceRoot/scripts/verify_audit.py",
+        "$MaxwellSourceRoot/run.sh", "$MaxwellSourceRoot/run.cmd",
+        "Auxillary/scripts/isolate_maxwell_endpoint.py"
     )) {
         $null = $Inputs.Add($Required)
     }
@@ -432,6 +452,11 @@ try {
     # asynchronous theorem elaboration. Every dependency precedes its consumer;
     # each invocation reuses all already compiled and restored Lake artifacts.
     $BuildModules = @(
+        "MaxwellEndpoint.Geometry",
+        "MaxwellEndpoint.Constitutive",
+        "MaxwellEndpoint.System",
+        "MaxwellEndpoint.Native",
+        "MaxwellEndpoint",
         "NSEMaxwell.Classical",
         "NSEMaxwell.Kinematics",
         "NSEMaxwell.Constitutive",
