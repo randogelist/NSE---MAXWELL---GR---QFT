@@ -60,13 +60,14 @@ theorem allSobolev_nativeData_and_coefficients (c : SingularClosure.FourierCoeff
 /-- The actual finite H3 energy is continuous in its constrained phase. -/
 theorem energy3_continuous (N : ℕ) : Continuous (energy3 N) := by
   unfold energy3
-  apply continuous_finset_sum
+  apply continuous_finsetSum
   intro k hk
-  apply continuous_finset_sum
+  apply continuous_finsetSum
   intro i hi
-  simpa only [phaseCoordinate_apply, Complex.normSq_eq_norm_sq] using
-    (continuous_const : Continuous (fun _ : Phase N => h3Weight k)).mul
-      ((phaseCoordinate N k i).continuous.norm.pow 2)
+  have hterm : Continuous (fun q : Phase N =>
+      h3Weight k * ‖phaseCoordinate N k i q‖ ^ 2) := by
+    fun_prop
+  simpa only [phaseCoordinate_apply, Complex.normSq_eq_norm_sq] using hterm
 
 /-- Continuity is derived from the specified orbit derivative, not assumed. -/
 theorem phaseFlow_orbit_continuous (F : PhaseFlow ν) (N : ℕ)

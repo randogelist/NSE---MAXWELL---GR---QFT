@@ -57,7 +57,7 @@ theorem phaseFlow_preimage_eq_inverse_image (F : PhaseFlow ν) (N : ℕ)
 
 theorem phaseFlow_quasiMeasurePreserving (F : PhaseFlow ν)
     (hd : ∀ N t, Differentiable ℝ (F.map N t)) (N : ℕ) (t : ℝ) :
-    QuasiMeasurePreserving (F.map N t) (phaseVolume N) (phaseVolume N) := by
+    Measure.QuasiMeasurePreserving (F.map N t) (phaseVolume N) (phaseVolume N) := by
   letI : (phaseVolume N).IsAddHaarMeasure := by
     unfold phaseVolume
     infer_instance
@@ -83,8 +83,8 @@ theorem phaseFlow_integralPullbackLaw_of_jacobian (F : PhaseFlow ν)
         (fderiv ℝ (F.map N (-t)) q) Set.univ q := by
     intro q _
     exact (hd N (-t) q).hasFDerivAt.hasFDerivWithinAt
-  have himage : F.map N (-t) '' Set.univ = Set.univ :=
-    Set.image_univ.mpr (phaseFlow_timeMap_bijective F N (-t)).2
+  have himage : F.map N (-t) '' Set.univ = Set.univ := by
+    rw [Set.image_univ, Set.range_eq_univ.mpr (phaseFlow_timeMap_bijective F N (-t)).2]
   have hchange := integral_image_eq_integral_abs_det_fderiv_smul
     (phaseVolume N) MeasurableSet.univ hder
     (phaseFlow_timeMap_bijective F N (-t)).1.injOn f
@@ -108,8 +108,8 @@ theorem phaseFlow_integrable_weighted_comp_of_jacobian (F : PhaseFlow ν)
         (fderiv ℝ (F.map N (-t)) q) Set.univ q := by
     intro q _
     exact (hd N (-t) q).hasFDerivAt.hasFDerivWithinAt
-  have himage : F.map N (-t) '' Set.univ = Set.univ :=
-    Set.image_univ.mpr (phaseFlow_timeMap_bijective F N (-t)).2
+  have himage : F.map N (-t) '' Set.univ = Set.univ := by
+    rw [Set.image_univ, Set.range_eq_univ.mpr (phaseFlow_timeMap_bijective F N (-t)).2]
   have hchange := integrableOn_image_iff_integrableOn_abs_det_fderiv_smul
     (phaseVolume N) MeasurableSet.univ hder
     (phaseFlow_timeMap_bijective F N (-t)).1.injOn f

@@ -20,9 +20,18 @@ namespace QuantumAdapter
 
 noncomputable section
 
+local instance phaseGaussianMeasureSpace (N : ℕ) : MeasureSpace (Phase N) where
+  toMeasurableSpace := phaseMeasurableSpace N
+  volume := phaseVolume N
+
+local instance phaseGaussianHaar (N : ℕ) :
+    (volume : Measure (Phase N)).IsAddHaarMeasure := by
+  change (phaseVolume N).IsAddHaarMeasure
+  unfold phaseVolume
+  infer_instance
+
 theorem phaseVolume_eq_volume (N : ℕ) :
-    phaseVolume N = (volume : Measure (Phase N)) :=
-  (stdOrthonormalBasis ℝ (Phase N)).addHaar_eq_volume
+    phaseVolume N = (volume : Measure (Phase N)) := rfl
 
 theorem canonicalPacket_continuous (N : ℕ) (q₀ : Phase N) :
     Continuous (canonicalPacket N q₀) := by
@@ -76,7 +85,8 @@ theorem canonicalGaussian_integral (N : ℕ) (q₀ : Phase N) :
       congr 1
       ring
     _ = ∫ q : Phase N, Real.exp (-(2 * canonicalScale N ^ 2)⁻¹ * ‖q‖ ^ 2) :=
-      integral_sub_right_eq_self _ q₀
+      integral_sub_right_eq_self (μ := (volume : Measure (Phase N)))
+        (fun q : Phase N => Real.exp (-(2 * canonicalScale N ^ 2)⁻¹ * ‖q‖ ^ 2)) q₀
     _ = (Real.pi / (2 * canonicalScale N ^ 2)⁻¹) ^
         ((Module.finrank ℝ (Phase N) : ℝ) / 2) :=
       GaussianFourier.integral_rexp_neg_mul_sq_norm hb
@@ -148,8 +158,8 @@ theorem phaseGaussian_moment_formula (N : ℕ) {b : ℝ} (hb : 0 < b) (k : ℕ) 
     funext y
     rw [Real.rpow_natCast, Real.rpow_two, pow_add]
     ring
-  rw [hfun, integral_rpow_mul_exp_neg_mul_rpow (by norm_num : (0 : ℝ) < 2) hq hb,
-    hexp]
+  rw [hfun, integral_rpow_mul_exp_neg_mul_rpow (by norm_num : (0 : ℝ) < 2) hq hb]
+  simp_rw [hexp]
 
 theorem phaseGaussian_moment_integrable (N : ℕ) {b : ℝ} (hb : 0 < b) (k : ℕ) :
     Integrable (fun q : Phase N => ‖q‖ ^ k * Real.exp (-b * ‖q‖ ^ 2)) := by
@@ -235,7 +245,11 @@ theorem canonicalPacket_centered_moment (N : ℕ) (q₀ : Phase N) (k : ℕ) :
         ∫ q : Phase N, ‖q‖ ^ k * Real.exp (-(2 * canonicalScale N ^ 2)⁻¹ * ‖q‖ ^ 2) := by
   rw [phaseVolume_eq_volume]
   simp_rw [canonicalPacket_centered_integrand]
-  rw [integral_const_mul, integral_sub_right_eq_self]
+  rw [integral_const_mul]
+  congr 1
+  exact integral_sub_right_eq_self (μ := (volume : Measure (Phase N)))
+    (fun q : Phase N => ‖q‖ ^ k *
+      Real.exp (-(2 * canonicalScale N ^ 2)⁻¹ * ‖q‖ ^ 2)) q₀
 
 theorem canonicalPacket_centered_moment_integrable (N : ℕ) (q₀ : Phase N) (k : ℕ) :
     Integrable (fun q => ‖q - q₀‖ ^ k * bornDensity (canonicalPacket N q₀) q)

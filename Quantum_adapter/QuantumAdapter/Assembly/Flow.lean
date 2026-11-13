@@ -18,7 +18,7 @@ set_option autoImplicit false
 set_option Elab.async true
 
 open Set Filter
-open scoped BigOperators ContDiff Topology
+open scoped BigOperators ContDiff Topology NNReal
 
 namespace QuantumAdapter.Assembly
 
@@ -29,7 +29,12 @@ open SingularClosure
 /-- Actual coefficient evaluation is a smooth real-linear coordinate. -/
 theorem contDiff_phaseCoeff (N : ℕ) (k : Frequency) (i : Fin 3) :
     ContDiff ℝ ∞ (fun q : Phase N => phaseCoeff q k i) := by
-  simpa only [phaseCoordinate_apply] using (phaseCoordinate N k i).contDiff
+  have heq : (fun q : Phase N => phaseCoeff q k i) =
+      (phaseCoordinate N k i : Phase N → ℂ) := by
+    funext q
+    exact (phaseCoordinate_apply N k i q).symm
+  rw [heq]
+  exact (phaseCoordinate N k i).contDiff
 
 /-- Each actual finite convolution coefficient is smooth on the real phase. -/
 theorem contDiff_fullTransport (N : ℕ) (k : Frequency) (i : Fin 3) :
@@ -241,8 +246,17 @@ theorem phaseFlow_weighted_energy0_monotone {ν : ℝ} (hν : 0 ≤ ν)
       ((2 * ν * finiteLaplaceTrace N) * energy0 N (F.map N t q₀) -
         2 * ν * dissipation N (F.map N t q₀)))
   · intro t
-    convert (((hasDerivAt_id t).const_mul (2 * ν * finiteLaplaceTrace N)).exp).mul
-      (phaseFlow_energy0_hasDerivAt F N q₀ t) using 1 <;> ring
+    have hexp := (hasDerivAt_const_mul (x := t) (2 * ν * finiteLaplaceTrace N)).exp
+    have hp := hexp.fun_mul (phaseFlow_energy0_hasDerivAt F N q₀ t)
+    have hs : (Real.exp ((2 * ν * finiteLaplaceTrace N) * t) *
+          (2 * ν * finiteLaplaceTrace N)) * energy0 N (F.map N t q₀) +
+        Real.exp ((2 * ν * finiteLaplaceTrace N) * t) *
+          ((-2 * ν) * dissipation N (F.map N t q₀)) =
+        Real.exp ((2 * ν * finiteLaplaceTrace N) * t) *
+          ((2 * ν * finiteLaplaceTrace N) * energy0 N (F.map N t q₀) -
+            2 * ν * dissipation N (F.map N t q₀)) := by ring
+    rw [hs] at hp
+    exact hp
   · intro t
     apply mul_nonneg (Real.exp_nonneg _)
     have hb := mul_le_mul_of_nonneg_left
