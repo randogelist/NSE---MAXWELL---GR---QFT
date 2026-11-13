@@ -158,7 +158,13 @@ theorem scalarCK_gradient_compatibility
       deriv (fun t : ℝ => g (t, z.2) - scalarJointPartial f d (t, z.2)) z.1 = 0 := by
     filter_upwards [hf.eventually_analyticAt, hg.eventually_analyticAt,
       hdf.eventually_analyticAt, heq, hfv.fderiv (𝕜 := ℝ)] with z hfa hga hdfa hz hd
-    rw [deriv_sub hga.curry_left.differentiableAt hdfa.curry_left.differentiableAt]
+    have hsub :
+        deriv (fun t : ℝ => g (t, z.2) - scalarJointPartial f d (t, z.2)) z.1 =
+          deriv (fun t : ℝ => g (t, z.2)) z.1 -
+            deriv (fun t : ℝ => scalarJointPartial f d (t, z.2)) z.1 := by
+      simpa only [Pi.sub_def] using
+        deriv_sub hga.curry_left.differentiableAt hdfa.curry_left.differentiableAt
+    rw [hsub]
     rw [scalar_timeDerivative_eq_joint hga, scalar_timeDerivative_eq_joint hdfa]
     rw [scalarJointPartial_commute hfa d (1, 0)]
     have hd' := congrArg (fun L : (ℝ × Vec) →L[ℝ] ℝ => L d) hd
