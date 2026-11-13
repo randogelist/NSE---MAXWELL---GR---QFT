@@ -1,0 +1,44 @@
+import GRAssembly.NativeFourierDecay
+set_option pp.universes false
+#check @NSEGR.NativeLiterature.frequencyWeight
+#print axioms NSEGR.NativeLiterature.frequencyWeight
+#check @NSEGR.NativeLiterature.productWeight
+#print axioms NSEGR.NativeLiterature.productWeight
+#check @NSEGR.NativeLiterature.frequencyWeight_pos
+#print axioms NSEGR.NativeLiterature.frequencyWeight_pos
+#check @NSEGR.NativeLiterature.productWeight_nonneg
+#print axioms NSEGR.NativeLiterature.productWeight_nonneg
+#check @NSEGR.NativeLiterature.summable_inverse_frequencyWeight
+#print axioms NSEGR.NativeLiterature.summable_inverse_frequencyWeight
+#check @NSEGR.NativeLiterature.summable_productWeight
+#print axioms NSEGR.NativeLiterature.summable_productWeight
+#check @NSEGR.NativeLiterature.coordinateHelmholtz
+#print axioms NSEGR.NativeLiterature.coordinateHelmholtz
+#check @NSEGR.NativeLiterature.productHelmholtz
+#print axioms NSEGR.NativeLiterature.productHelmholtz
+#check @NSEGR.NativeLiterature.coordinateHelmholtz_contDiff
+#print axioms NSEGR.NativeLiterature.coordinateHelmholtz_contDiff
+#check @NSEGR.NativeLiterature.coordinateHelmholtz_periodic
+#print axioms NSEGR.NativeLiterature.coordinateHelmholtz_periodic
+#check @NSEGR.NativeLiterature.productHelmholtz_contDiff
+#print axioms NSEGR.NativeLiterature.productHelmholtz_contDiff
+#check @NSEGR.NativeLiterature.productHelmholtz_periodic
+#print axioms NSEGR.NativeLiterature.productHelmholtz_periodic
+#check @NSEGR.NativeLiterature.fourierCoefficient_sub
+#print axioms NSEGR.NativeLiterature.fourierCoefficient_sub
+#check @NSEGR.NativeLiterature.one_sub_derivativeSymbol_sq
+#print axioms NSEGR.NativeLiterature.one_sub_derivativeSymbol_sq
+#check @NSEGR.NativeLiterature.fourierCoefficient_coordinateHelmholtz
+#print axioms NSEGR.NativeLiterature.fourierCoefficient_coordinateHelmholtz
+#check @NSEGR.NativeLiterature.fourierCoefficient_productHelmholtz
+#print axioms NSEGR.NativeLiterature.fourierCoefficient_productHelmholtz
+#check @NSEGR.NativeLiterature.productDecayConstant
+#print axioms NSEGR.NativeLiterature.productDecayConstant
+#check @NSEGR.NativeLiterature.productDecayConstant_nonneg
+#print axioms NSEGR.NativeLiterature.productDecayConstant_nonneg
+#check @NSEGR.NativeLiterature.fourierCoefficient_product_decay
+#print axioms NSEGR.NativeLiterature.fourierCoefficient_product_decay
+#check @NSEGR.NativeLiterature.summable_norm_fourierCoefficient
+#print axioms NSEGR.NativeLiterature.summable_norm_fourierCoefficient
+#check @NSEGR.NativeLiterature.summable_norm_fourierCoefficient_partialWord
+#print axioms NSEGR.NativeLiterature.summable_norm_fourierCoefficient_partialWord

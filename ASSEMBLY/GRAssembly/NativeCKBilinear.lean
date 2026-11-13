@@ -4,6 +4,7 @@ import GRAssembly.NativeCKLift
 
 set_option autoImplicit false
 set_option Elab.async true
+set_option maxHeartbeats 1600000
 
 open Set Filter
 open scoped Topology BigOperators
@@ -48,7 +49,7 @@ theorem ckBilinearCoeff_norm_le {n m : ℕ} (B : F →L[ℝ] G →L[ℝ] H)
       K.norm_compContinuousMultilinearMap_le _
     _ ≤ ‖b‖ * (‖B‖ * ‖a‖) :=
       mul_le_mul hK (B.norm_compContinuousMultilinearMap_le a)
-        (norm_nonneg _) (norm_nonneg _)
+        (B.compContinuousMultilinearMap a).opNorm_nonneg b.opNorm_nonneg
     _ = ‖B‖ * ‖a‖ * ‖b‖ := by ring
 
 namespace CKSeries
@@ -60,10 +61,10 @@ def bilinearTerm (B : F →L[ℝ] G →L[ℝ] H)
     (by
       intro h
       have hn : nm.1 = 0 := by omega
-      have hm : nm.2 = 0 := by omega
+      have hp₀ : p.coeff nm.1 = 0 := by simpa only [hn] using p.coeff_zero
       apply ContinuousMultilinearMap.ext
       intro v
-      simp [ckSymmetrize, ckBilinearCoeff, hn, hm])
+      simp [ckSymmetrize, ckBilinearCoeff, hp₀])
     (ckSymmetrize_symmetric E H _)
 
 theorem norm_bilinearTerm_le (B : F →L[ℝ] G →L[ℝ] H)
@@ -93,7 +94,7 @@ theorem norm_bilinear_le (B : F →L[ℝ] G →L[ℝ] H)
     ‖bilinear B p q‖ ≤ ‖B‖ * ‖p‖ * ‖q‖ := by
   have hm := summable_mul_of_summable_norm p.summable_norm.norm q.summable_norm.norm
   have hs := (p.hasSum_norm.mul q.hasSum_norm hm).mul_left ‖B‖
-  simpa only [mul_assoc] using tsum_of_norm_bounded hs (norm_bilinearTerm_le B p q)
+  simpa only [bilinear, mul_assoc] using tsum_of_norm_bounded hs (norm_bilinearTerm_le B p q)
 
 theorem eval_bilinearTerm (B : F →L[ℝ] G →L[ℝ] H)
     (p : CKSeries E F) (q : CKSeries E G) (nm : ℕ × ℕ) {x : E} (hx : ‖x‖ < 1) :
@@ -161,8 +162,10 @@ theorem bilinear_smul_right (B : F →L[ℝ] G →L[ℝ] H)
 
 def bilinearCLM (B : F →L[ℝ] G →L[ℝ] H) :
     CKSeries E F →L[ℝ] CKSeries E G →L[ℝ] CKSeries E H :=
-  (LinearMap.mk₂ ℝ (bilinear B) (bilinear_add_left B) (bilinear_smul_left B)
-    (bilinear_add_right B) (bilinear_smul_right B)).mkContinuous₂ ‖B‖ (norm_bilinear_le B)
+  let M : CKSeries E F →ₗ[ℝ] CKSeries E G →ₗ[ℝ] CKSeries E H :=
+    LinearMap.mk₂ ℝ (bilinear B) (bilinear_add_left B) (bilinear_smul_left B)
+      (bilinear_add_right B) (bilinear_smul_right B)
+  M.mkContinuous₂ ‖B‖ (fun p q => norm_bilinear_le B p q)
 
 @[simp] theorem bilinearCLM_apply (B : F →L[ℝ] G →L[ℝ] H)
     (p : CKSeries E F) (q : CKSeries E G) :

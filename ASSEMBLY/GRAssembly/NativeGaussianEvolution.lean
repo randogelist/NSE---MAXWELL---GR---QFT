@@ -289,7 +289,7 @@ theorem gaussianEta_determinant : eta4Matrix.det = -1 := by
 
 theorem gaussianEta_isUnit : IsUnit eta4Matrix.det := by
   rw [gaussianEta_determinant]
-  exact isUnit_neg.mpr isUnit_one
+  exact isUnit_neg_one
 
 theorem gaussianEvolutionState_exists_unique (input : LiteratureAnalyticCKInput)
     (K : BoundaryTensor) (t0 : ℝ) (x0 : Vec)

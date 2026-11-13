@@ -1,0 +1,6 @@
+import GRAssembly.NativeFourier
+set_option pp.universes false
+#check @NSEGR.NativeLiterature.fourier_partialWord_hasSumUniformly
+#print axioms NSEGR.NativeLiterature.fourier_partialWord_hasSumUniformly
+#check @NSEGR.NativeLiterature.literatureSmoothFourierInput_native
+#print axioms NSEGR.NativeLiterature.literatureSmoothFourierInput_native

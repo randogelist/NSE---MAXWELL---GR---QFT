@@ -1,0 +1,72 @@
+import GRAssembly.NativeFourierTorus
+set_option pp.universes false
+#check @NSEGR.NativeLiterature.literaturePiToSpace
+#print axioms NSEGR.NativeLiterature.literaturePiToSpace
+#check @NSEGR.NativeLiterature.literaturePiToSpace_preimage_cube
+#print axioms NSEGR.NativeLiterature.literaturePiToSpace_preimage_cube
+#check @NSEGR.NativeLiterature.isCompact_literatureUnitCube
+#print axioms NSEGR.NativeLiterature.isCompact_literatureUnitCube
+#check @NSEGR.NativeLiterature.integrableOn_literatureUnitCube_of_continuous
+#print axioms NSEGR.NativeLiterature.integrableOn_literatureUnitCube_of_continuous
+#check @NSEGR.NativeLiterature.volume_literatureUnitCube
+#print axioms NSEGR.NativeLiterature.volume_literatureUnitCube
+#check @NSEGR.NativeLiterature.literatureUnitIntervalMeasure
+#print axioms NSEGR.NativeLiterature.literatureUnitIntervalMeasure
+#check @NSEGR.NativeLiterature.literatureUnitProductMeasure
+#print axioms NSEGR.NativeLiterature.literatureUnitProductMeasure
+#check @NSEGR.NativeLiterature.literatureUnitIntervalMeasure_probability
+#print axioms NSEGR.NativeLiterature.literatureUnitIntervalMeasure_probability
+#check @NSEGR.NativeLiterature.literatureUnitProductMeasure_probability
+#print axioms NSEGR.NativeLiterature.literatureUnitProductMeasure_probability
+#check @NSEGR.NativeLiterature.literaturePiCube_eq
+#print axioms NSEGR.NativeLiterature.literaturePiCube_eq
+#check @NSEGR.NativeLiterature.integral_literatureUnitCube_productMeasure
+#print axioms NSEGR.NativeLiterature.integral_literatureUnitCube_productMeasure
+#check @NSEGR.NativeLiterature.continuous_integrable_literatureUnitProduct
+#print axioms NSEGR.NativeLiterature.continuous_integrable_literatureUnitProduct
+#check @NSEGR.NativeLiterature.integral_literatureUnitCube_disintegrate
+#print axioms NSEGR.NativeLiterature.integral_literatureUnitCube_disintegrate
+#check @NSEGR.NativeLiterature.integral_literatureUnitCube_eq_piIoc
+#print axioms NSEGR.NativeLiterature.integral_literatureUnitCube_eq_piIoc
+#check @NSEGR.NativeLiterature.literatureIntegerShift
+#print axioms NSEGR.NativeLiterature.literatureIntegerShift
+#check @NSEGR.NativeLiterature.literatureIntegerShift_apply
+#print axioms NSEGR.NativeLiterature.literatureIntegerShift_apply
+#check @NSEGR.NativeLiterature.literaturePeriodic_integerShift
+#print axioms NSEGR.NativeLiterature.literaturePeriodic_integerShift
+#check @NSEGR.NativeLiterature.literatureTorusRepresentative
+#print axioms NSEGR.NativeLiterature.literatureTorusRepresentative
+#check @NSEGR.NativeLiterature.literatureTorusRepresentative_mem
+#print axioms NSEGR.NativeLiterature.literatureTorusRepresentative_mem
+#check @NSEGR.NativeLiterature.literatureTorusRepresentative_mk_of_mem
+#print axioms NSEGR.NativeLiterature.literatureTorusRepresentative_mk_of_mem
+#check @NSEGR.NativeLiterature.literatureTorusRepresentative_coe
+#print axioms NSEGR.NativeLiterature.literatureTorusRepresentative_coe
+#check @NSEGR.NativeLiterature.literatureTorusRepresentative_periodic
+#print axioms NSEGR.NativeLiterature.literatureTorusRepresentative_periodic
+#check @NSEGR.NativeLiterature.literatureTorusFunction
+#print axioms NSEGR.NativeLiterature.literatureTorusFunction
+#check @NSEGR.NativeLiterature.literatureTorusFunction_mk
+#print axioms NSEGR.NativeLiterature.literatureTorusFunction_mk
+#check @NSEGR.NativeLiterature.literatureCubeProjection
+#print axioms NSEGR.NativeLiterature.literatureCubeProjection
+#check @NSEGR.NativeLiterature.literatureCubeProjection_continuous
+#print axioms NSEGR.NativeLiterature.literatureCubeProjection_continuous
+#check @NSEGR.NativeLiterature.literatureCubeProjection_surjective
+#print axioms NSEGR.NativeLiterature.literatureCubeProjection_surjective
+#check @NSEGR.NativeLiterature.literatureCubeProjection_isQuotientMap
+#print axioms NSEGR.NativeLiterature.literatureCubeProjection_isQuotientMap
+#check @NSEGR.NativeLiterature.literatureTorusFunction_continuous
+#print axioms NSEGR.NativeLiterature.literatureTorusFunction_continuous
+#check @NSEGR.NativeLiterature.literatureTorusContinuous
+#print axioms NSEGR.NativeLiterature.literatureTorusContinuous
+#check @NSEGR.NativeLiterature.literatureCharacter_eq_mFourier
+#print axioms NSEGR.NativeLiterature.literatureCharacter_eq_mFourier
+#check @NSEGR.NativeLiterature.literatureCharacter_norm_eq_one
+#print axioms NSEGR.NativeLiterature.literatureCharacter_norm_eq_one
+#check @NSEGR.NativeLiterature.literatureTorusFunction_fourierCoeff
+#print axioms NSEGR.NativeLiterature.literatureTorusFunction_fourierCoeff
+#check @NSEGR.NativeLiterature.literatureFourier_hasSum_of_summable_norm
+#print axioms NSEGR.NativeLiterature.literatureFourier_hasSum_of_summable_norm
+#check @NSEGR.NativeLiterature.literatureFourier_hasSumUniformly_of_summable_norm
+#print axioms NSEGR.NativeLiterature.literatureFourier_hasSumUniformly_of_summable_norm

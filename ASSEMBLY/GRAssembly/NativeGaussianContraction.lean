@@ -320,11 +320,15 @@ the metric inverse and the Ricci-type matrix. -/
 theorem scalar_contraction_derivative_algebra (H S D A : BulkMatrix)
     (hH : H.IsSymm) (hS : S.IsSymm) :
     (∑ a : Fin 5, ∑ b : Fin 5,
-      (-(A * H) - H * A.transpose) a b * S a b + H a b * D a b) =
+      ((-(A * H) - H * A.transpose) a b * S a b + H a b * D a b)) =
     ∑ a : Fin 5, ∑ b : Fin 5, H a b * (D - A.transpose * S - S * A) a b := by
   simp only [Matrix.add_apply, Matrix.sub_apply, Matrix.neg_apply,
     Matrix.mul_apply, Matrix.transpose_apply, Fin.sum_univ_succ]
-  simp only [hH.apply, hS.apply]
+  simp only [hH.apply 0 1, hH.apply 0 2, hH.apply 0 3, hH.apply 0 4,
+    hH.apply 1 2, hH.apply 1 3, hH.apply 1 4, hH.apply 2 3, hH.apply 2 4,
+    hH.apply 3 4, hS.apply 0 1, hS.apply 0 2, hS.apply 0 3, hS.apply 0 4,
+    hS.apply 1 2, hS.apply 1 3, hS.apply 1 4, hS.apply 2 3, hS.apply 2 4,
+    hS.apply 3 4]
   ring
 
 theorem bulkPartial_scalarCurvature {g : Metric} {z : Bulk}
@@ -339,8 +343,8 @@ theorem bulkPartial_scalarCurvature {g : Metric} {z : Bulk}
     rw [Matrix.transpose_nonsing_inv, hS.self_of_nhds.eq]
   have hd : bulkPartial (scalarCurvature g) e z =
       ∑ a : Fin 5, ∑ b : Fin 5,
-        (coordDeriv (fun y => (g y)⁻¹) e z) a b * ricci g z a b +
-          (g z)⁻¹ a b * (coordDeriv (ricci g) e z) a b := by
+        ((coordDeriv (fun y => (g y)⁻¹) e z) a b * ricci g z a b +
+          (g z)⁻¹ a b * (coordDeriv (ricci g) e z) a b) := by
     unfold scalarCurvature inverseMetric
     rw [Assembly.bulkPartial_sum (fun a => by
       apply Finset.analyticAt_fun_sum

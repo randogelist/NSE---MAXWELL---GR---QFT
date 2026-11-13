@@ -46,6 +46,20 @@ theorem ck_scaled_tuple_budget {ε : ℝ} (hε : 0 ≤ ε) (hεone : ε ≤ 1) :
 
 variable {B : Type*} [NormedAddCommGroup B] [NormedSpace ℝ B] [CompleteSpace B]
 
+theorem ck_exists_scaling_budget_lt (s L δ : ℝ) (hs : 0 < s) (hL : 0 ≤ L)
+    (hδ : 0 < δ) :
+    ∃ ε : ℝ, 0 < ε ∧ ε < δ ∧ ε ≤ 1 ∧ 4 * ε ≤ s ∧
+      4 * L * ε ≤ 1 ∧ 2 * L * ε ≤ (1 / 4 : ℝ) := by
+  obtain ⟨ε₀, hε₀, hε₀₁, hε₀s, hself, hcontract⟩ := ck_exists_scaling_budget s L hs hL
+  let ε := min ε₀ (δ / 2)
+  have hεpos : 0 < ε := lt_min hε₀ (half_pos hδ)
+  have hεle : ε ≤ ε₀ := min_le_left _ _
+  have hεδ : ε < δ := (min_le_right ε₀ (δ / 2)).trans_lt (half_lt_self hδ)
+  refine ⟨ε, hεpos, hεδ, hεle.trans hε₀₁, ?_, ?_, ?_⟩
+  · linarith
+  · exact (mul_le_mul_of_nonneg_left hεle (by positivity : 0 ≤ 4 * L)).trans hself
+  · exact (mul_le_mul_of_nonneg_left hεle (by positivity : 0 ≤ 2 * L)).trans hcontract
+
 /-- Banach's theorem on the closed coefficient unit ball, with literal norm bounds. -/
 theorem ck_exists_unique_fixedPoint_closedUnitBall (Φ : B → B)
     (hself : ∀ x : B, ‖x‖ ≤ 1 → ‖Φ x‖ ≤ 1)

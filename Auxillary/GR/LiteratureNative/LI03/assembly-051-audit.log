@@ -1,0 +1,82 @@
+NSEGR.NativeLiterature.frequencyWeight : ℤ → ℝ
+'NSEGR.NativeLiterature.frequencyWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.productWeight : {n : ℕ} → NSEGR.LiteratureFrequency n → ℝ
+'NSEGR.NativeLiterature.productWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.NativeLiterature.frequencyWeight_pos : ∀ (l : ℤ), 0 < NSEGR.NativeLiterature.frequencyWeight l
+'NSEGR.NativeLiterature.frequencyWeight_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.productWeight_nonneg : ∀ {n : ℕ} (k : NSEGR.LiteratureFrequency n),
+  0 ≤ NSEGR.NativeLiterature.productWeight k
+'NSEGR.NativeLiterature.productWeight_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.NativeLiterature.summable_inverse_frequencyWeight : Summable fun l => (NSEGR.NativeLiterature.frequencyWeight l)⁻¹
+'NSEGR.NativeLiterature.summable_inverse_frequencyWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.NativeLiterature.summable_productWeight : ∀ (n : ℕ), Summable fun k => NSEGR.NativeLiterature.productWeight k
+'NSEGR.NativeLiterature.summable_productWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.coordinateHelmholtz : {n : ℕ} →
+  Fin n → (NSEGR.LiteratureSpace n → ℂ) → NSEGR.LiteratureSpace n → ℂ
+'NSEGR.NativeLiterature.coordinateHelmholtz' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.productHelmholtz : {n : ℕ} →
+  List (Fin n) → (NSEGR.LiteratureSpace n → ℂ) → NSEGR.LiteratureSpace n → ℂ
+'NSEGR.NativeLiterature.productHelmholtz' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.coordinateHelmholtz_contDiff : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  ContDiff ℝ (↑⊤) f → ∀ (j : Fin n), ContDiff ℝ (↑⊤) (NSEGR.NativeLiterature.coordinateHelmholtz j f)
+'NSEGR.NativeLiterature.coordinateHelmholtz_contDiff' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.coordinateHelmholtz_periodic : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  NSEGR.LiteraturePeriodic f → ∀ (j : Fin n), NSEGR.LiteraturePeriodic (NSEGR.NativeLiterature.coordinateHelmholtz j f)
+'NSEGR.NativeLiterature.coordinateHelmholtz_periodic' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.productHelmholtz_contDiff : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  ContDiff ℝ (↑⊤) f → ∀ (js : List (Fin n)), ContDiff ℝ (↑⊤) (NSEGR.NativeLiterature.productHelmholtz js f)
+'NSEGR.NativeLiterature.productHelmholtz_contDiff' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.productHelmholtz_periodic : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  NSEGR.LiteraturePeriodic f →
+    ∀ (js : List (Fin n)), NSEGR.LiteraturePeriodic (NSEGR.NativeLiterature.productHelmholtz js f)
+'NSEGR.NativeLiterature.productHelmholtz_periodic' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.fourierCoefficient_sub : ∀ {n : ℕ} {f g : NSEGR.LiteratureSpace n → ℂ},
+  Continuous f →
+    Continuous g →
+      ∀ (k : NSEGR.LiteratureFrequency n),
+        NSEGR.LiteratureFourierCoefficient (fun x => f x - g x) k =
+          NSEGR.LiteratureFourierCoefficient f k - NSEGR.LiteratureFourierCoefficient g k
+'NSEGR.NativeLiterature.fourierCoefficient_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.one_sub_derivativeSymbol_sq : ∀ {n : ℕ} (j : Fin n) (k : NSEGR.LiteratureFrequency n),
+  1 - NSEGR.NativeLiterature.derivativeSymbol j k ^ 2 = ↑(NSEGR.NativeLiterature.frequencyWeight (k j))
+'NSEGR.NativeLiterature.one_sub_derivativeSymbol_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.fourierCoefficient_coordinateHelmholtz : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  ContDiff ℝ (↑⊤) f →
+    NSEGR.LiteraturePeriodic f →
+      ∀ (j : Fin n) (k : NSEGR.LiteratureFrequency n),
+        NSEGR.LiteratureFourierCoefficient (NSEGR.NativeLiterature.coordinateHelmholtz j f) k =
+          ↑(NSEGR.NativeLiterature.frequencyWeight (k j)) * NSEGR.LiteratureFourierCoefficient f k
+'NSEGR.NativeLiterature.fourierCoefficient_coordinateHelmholtz' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@NSEGR.NativeLiterature.fourierCoefficient_productHelmholtz : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  ContDiff ℝ (↑⊤) f →
+    NSEGR.LiteraturePeriodic f →
+      ∀ (js : List (Fin n)) (k : NSEGR.LiteratureFrequency n),
+        NSEGR.LiteratureFourierCoefficient (NSEGR.NativeLiterature.productHelmholtz js f) k =
+          ↑(List.map (fun j => NSEGR.NativeLiterature.frequencyWeight (k j)) js).prod *
+            NSEGR.LiteratureFourierCoefficient f k
+'NSEGR.NativeLiterature.fourierCoefficient_productHelmholtz' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.productDecayConstant : {n : ℕ} → (NSEGR.LiteratureSpace n → ℂ) → ℝ
+'NSEGR.NativeLiterature.productDecayConstant' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.productDecayConstant_nonneg : ∀ {n : ℕ} (f : NSEGR.LiteratureSpace n → ℂ),
+  0 ≤ NSEGR.NativeLiterature.productDecayConstant f
+'NSEGR.NativeLiterature.productDecayConstant_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.fourierCoefficient_product_decay : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  ContDiff ℝ (↑⊤) f →
+    NSEGR.LiteraturePeriodic f →
+      ∀ (k : NSEGR.LiteratureFrequency n),
+        ‖NSEGR.LiteratureFourierCoefficient f k‖ ≤
+          NSEGR.NativeLiterature.productDecayConstant f * NSEGR.NativeLiterature.productWeight k
+'NSEGR.NativeLiterature.fourierCoefficient_product_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.summable_norm_fourierCoefficient : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  ContDiff ℝ (↑⊤) f → NSEGR.LiteraturePeriodic f → Summable fun k => ‖NSEGR.LiteratureFourierCoefficient f k‖
+'NSEGR.NativeLiterature.summable_norm_fourierCoefficient' depends on axioms: [propext, Classical.choice, Quot.sound]
+@NSEGR.NativeLiterature.summable_norm_fourierCoefficient_partialWord : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  ContDiff ℝ (↑⊤) f →
+    NSEGR.LiteraturePeriodic f →
+      ∀ (w : List (Fin n)),
+        Summable fun k => ‖NSEGR.LiteratureFourierWordMultiplier w k * NSEGR.LiteratureFourierCoefficient f k‖
+'NSEGR.NativeLiterature.summable_norm_fourierCoefficient_partialWord' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

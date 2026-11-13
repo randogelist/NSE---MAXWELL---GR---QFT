@@ -1,0 +1,12 @@
+@NSEGR.NativeLiterature.fourier_partialWord_hasSumUniformly : ∀ {n : ℕ} {f : NSEGR.LiteratureSpace n → ℂ},
+  ContDiff ℝ (↑⊤) f →
+    NSEGR.LiteraturePeriodic f →
+      ∀ (w : List (Fin n)),
+        HasSumUniformly
+          (fun k x =>
+            NSEGR.LiteratureFourierWordMultiplier w k * NSEGR.LiteratureFourierCoefficient f k *
+              NSEGR.LiteratureCharacter k x)
+          (NSEGR.LiteraturePartialWord w f)
+'NSEGR.NativeLiterature.fourier_partialWord_hasSumUniformly' depends on axioms: [propext, Classical.choice, Quot.sound]
+NSEGR.NativeLiterature.literatureSmoothFourierInput_native : NSEGR.LiteratureSmoothFourierInput
+'NSEGR.NativeLiterature.literatureSmoothFourierInput_native' depends on axioms: [propext, Classical.choice, Quot.sound]

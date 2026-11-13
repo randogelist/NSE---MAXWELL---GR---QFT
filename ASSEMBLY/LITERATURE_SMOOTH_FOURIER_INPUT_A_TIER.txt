@@ -1,0 +1,87 @@
+LITERATURE_SMOOTH_FOURIER_INPUT_A_TIER
+===================================
+
+OBLIGATION = LI03
+STATUS = A_TIER
+MARKER = !=!
+EXACT_ENDPOINT = NSEGR.NativeLiterature.literatureSmoothFourierInput_native
+EXACT_TYPE = NSEGR.LiteratureSmoothFourierInput
+UNRESOLVED_EXTERNAL_PREMISES = []
+
+SCOPE
+  forall n : Nat, 0 < n,
+  forall f : EuclideanSpace R (Fin n) -> C,
+  ContDiff R infinity f -> LiteraturePeriodic f ->
+  forall w : List (Fin n),
+    (forall k,
+      FourierCoefficient(PartialWord(w,f),k)
+      = FourierWordMultiplier(w,k) * FourierCoefficient(f,k))
+    and Summable(k |-> norm(FourierWordMultiplier(w,k)*FourierCoefficient(f,k)))
+    and HasSumUniformly
+      (k,x |-> FourierWordMultiplier(w,k)*FourierCoefficient(f,k)*Character(k,x))
+      (PartialWord(w,f)).
+
+  FourierCoefficient = actual Euclidean unit-cube Lebesgue integral.
+  PartialWord = iterated actual Frechet coordinate derivatives.
+  Character(k,x) = exp(2*pi*i*sum_j k_j*x_j).
+  Uniformity domain = entire EuclideanSpace R (Fin n).
+  Summation filter = finite frequency subsets ordered by inclusion.
+  Domain hypotheses = smoothness and unit periodicity.
+
+PROOF DEPENDENCIES
+  1. NativeFourierCalculus:
+     coordinate derivative identities; periodic integration by parts;
+     fourierCoefficient_partialWord.
+  2. NativeFourierDecay:
+     productHelmholtz = product_j(1 - D_j^2);
+     frequencyWeight(k) = 1 + (2*pi*k)^2;
+     summable product inverse weight;
+     summable_norm_fourierCoefficient_partialWord.
+  3. NativeFourierTorus:
+     Euclidean cube / product measure / unit additive torus identification;
+     actual coefficient identity; Mathlib Fourier reconstruction;
+     literatureFourier_hasSumUniformly_of_summable_norm.
+  4. NativeFourier:
+     fourier_partialWord_hasSumUniformly;
+     literal input constructor.
+
+  Native weight refines the B-tier presentation's normalized 1+k^2 weight.
+  Exact literal endpoint and domain hypotheses are unchanged.
+  No literature theorem is declared as an axiom or supplied as a premise.
+
+EXTERNAL EVIDENCE
+  source_commit = 6b1c6eeadc6c8cd2fba7dc0d86c855b0a48f384e
+  external_run = 43482782435
+  external_run_url = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43482782435
+  artifact_id = 14067565298
+  artifact_sha256 = 230efb624c587967962db607e033736a7b2c9e9d8470c54b0ea1dd55c12f6aa2
+  compiler = Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)
+  mathlib_commit = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+  source_manifest_sha256 = 54565ff914f311f17d404143ae6cae5a0c1bf83a6d948a09414d69cc73742109
+  audit_source_sha256 = f7cb57244cc3ece05929b165f7924f822eec8f8a3b005520aed5cb89d00a500f
+  audit_log_sha256 = b4f2c134110ef52f487ac522053f7985af82585729d5b42995db37cbcf0387d7
+  axioms = [Classical.choice, Quot.sound, propext]
+  Fourier named declaration audits = 81
+  Whole run status = PARTIAL_STANDARD_ONLY (independent CK/GR modules pending)
+  Exact LI03 endpoint audit = PASS_STANDARD_ONLY
+  local Lean executions = 0
+
+SOURCE SHA256
+  ASSEMBLY/GRAssembly/NativeFourierCalculus.lean
+    4208c281af70dc8f5011ceec7273771a73c651021f0bbcb968dc50fbaba0eac6
+  ASSEMBLY/GRAssembly/NativeFourierDecay.lean
+    a6272a4ebb5eced308407ffe9b6734af37e61dc41bc61bdba9cf45850057fcf0
+  ASSEMBLY/GRAssembly/NativeFourierTorus.lean
+    1edda5b7bcac87505417639fa8a79ce88018eab264c3fd347470cad21f4c340f
+  ASSEMBLY/GRAssembly/NativeFourier.lean
+    a998ec00dcdd4cea88059dfc29621b28cad135f19e1cf9c484453aae5515d049
+
+EXTERNAL WINDOWS REPLAY
+  From the repository checkout at the source commit:
+  ASSEMBLY\run.cmd --dag-build --individual-modules --keep-going --module GRAssembly.NativeFourierCalculus --module GRAssembly.NativeFourierDecay --module GRAssembly.NativeFourierTorus --module GRAssembly.NativeFourier
+  Exact toolchain + pinned Mathlib cached objects are required by run.cmd.
+
+SEPARATE OBLIGATIONS
+  LI01 = not promoted by this certificate.
+  LI02 = not promoted by this certificate.
+  Native NSE/GR root = not promoted by this certificate.

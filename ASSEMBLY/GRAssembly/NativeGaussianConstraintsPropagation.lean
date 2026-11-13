@@ -28,7 +28,7 @@ theorem analyticAt_gaussianBlockMetric {h : Bulk → Tensor4} {z : Bulk}
 theorem gaussianBlockMetric_symmetric {h : Bulk → Tensor4} {z : Bulk}
     (hS : (h z).IsSymm) : (gaussianMetric h z).IsSymm := by
   change (gaussianMatrix (h z)).transpose = gaussianMatrix (h z)
-  rw [gaussianMatrix_transpose, hS.eq]
+  rw [← gaussianMatrix_transpose, hS.eq]
 
 theorem gaussianBlockMetric_unit {h : Bulk → Tensor4} {z : Bulk}
     (hN : IsUnit (h z).det) : IsUnit (gaussianMetric h z).det := by

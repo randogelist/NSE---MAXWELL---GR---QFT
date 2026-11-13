@@ -50,9 +50,9 @@ theorem norm_pair_le (p : CKSeries E F) (q : CKSeries E G) : ‖pair p q‖ ≤ 
     _ ≤ 1 * ‖p‖ + 1 * ‖q‖ := by
       gcongr
       · exact (norm_postcompose_le _ _).trans
-          (mul_le_mul_of_nonneg_right ContinuousLinearMap.norm_inl_le_one (norm_nonneg p))
+          (mul_le_mul_of_nonneg_right (ContinuousLinearMap.norm_inl_le_one ℝ F G) (norm_nonneg p))
       · exact (norm_postcompose_le _ _).trans
-          (mul_le_mul_of_nonneg_right ContinuousLinearMap.norm_inr_le_one (norm_nonneg q))
+          (mul_le_mul_of_nonneg_right (ContinuousLinearMap.norm_inr_le_one ℝ F G) (norm_nonneg q))
     _ = _ := by ring
 
 theorem pair_sub (p₁ p₂ : CKSeries E F) (q₁ q₂ : CKSeries E G) :
@@ -159,11 +159,37 @@ theorem ckScaledJetUsing_difference_le
 
 variable [CompleteSpace E] [CompleteSpace V]
 
+theorem ckScaledJetUsing_eval
+    (A : CKSeries (CKTimeSpace E) V →L[ℝ] CKSeries (CKTimeSpace E) V)
+    (B : CKSeries (CKTimeSpace E) V →L[ℝ] CKSeries (CKTimeSpace E) (E →L[ℝ] V))
+    (ε : ℝ) (p : CKSeries (CKTimeSpace E) V)
+    {z : CKTimeSpace E} (hz : ‖z‖ < 1) :
+    (ckScaledJetUsing A B ε p).eval z =
+      (ckCoefficientScale ε z, (ε ^ 2 • (A p).eval z, ε • (B p).eval z)) := by
+  simp only [ckScaledJetUsing, CKSeries.eval_pair _ _ hz, CKSeries.eval_linear _ hz,
+    CKSeries.eval_smul _ _ hz]
+
 def ckScaledCoefficientMapUsing (c : FormalMultilinearSeries ℝ (CKJet E V) V)
     (A : CKSeries (CKTimeSpace E) V →L[ℝ] CKSeries (CKTimeSpace E) V)
     (B : CKSeries (CKTimeSpace E) V →L[ℝ] CKSeries (CKTimeSpace E) (E →L[ℝ] V))
     (ε : ℝ) (p : CKSeries (CKTimeSpace E) V) : CKSeries (CKTimeSpace E) V :=
   CKSeries.superposition c (ckScaledJetUsing A B ε p)
+
+theorem ckScaledCoefficientMapUsing_eval (g : CKRHS E V)
+    (c : FormalMultilinearSeries ℝ (CKJet E V) V) (hc₀ : c 0 = 0)
+    {s : ℝ} (hs : 0 ≤ s)
+    (hc : Summable (fun n => ‖c (n + 1)‖ * (n + 1) * s ^ n))
+    (hactual : ∀ y : CKJet E V, ‖y‖ ≤ s → c.sum y = g y)
+    (A : CKSeries (CKTimeSpace E) V →L[ℝ] CKSeries (CKTimeSpace E) V)
+    (B : CKSeries (CKTimeSpace E) V →L[ℝ] CKSeries (CKTimeSpace E) (E →L[ℝ] V))
+    (ε : ℝ) (p : CKSeries (CKTimeSpace E) V)
+    (hpjet : ‖ckScaledJetUsing A B ε p‖ ≤ s)
+    {z : CKTimeSpace E} (hz : ‖z‖ < 1) :
+    (ckScaledCoefficientMapUsing c A B ε p).eval z =
+      g (ckCoefficientScale ε z, (ε ^ 2 • (A p).eval z, ε • (B p).eval z)) := by
+  rw [ckScaledCoefficientMapUsing, CKSeries.eval_superposition c hc₀ hs hc hpjet hz,
+    hactual _ (((ckScaledJetUsing A B ε p).norm_eval_le hz).trans hpjet),
+    ckScaledJetUsing_eval A B ε p hz]
 
 theorem ckScaledCoefficientMapUsing_fixedPoint
     (c : FormalMultilinearSeries ℝ (CKJet E V) V)
@@ -228,6 +254,7 @@ theorem ckAnalytic_superposition_data {g : CKRHS E V}
     simpa only [Metric.mem_ball, dist_zero_right] using lt_of_le_of_lt hy (half_lt_self hRpos)
   have hsumy := (hr.mono hR₀ hR.le).hasSum hyR
   simpa only [FormalMultilinearSeries.sum, zero_add] using hsumy.tsum_eq
+
 
 end
 
