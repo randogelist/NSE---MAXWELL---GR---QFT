@@ -59,5 +59,31 @@ theorem nonempty_GRgerm_of_completion (ν ρ t0 : ℝ)
     Nonempty (GRgerm ν ρ t0) :=
   ⟨GRgerm.mk (forwardRepresentative c r (constantNSERepresentative ν t0 0 0))⟩
 
+
+/-- This conclusion uses the supplied radial extension's actual boundary match. -/
+theorem forward_boundary_match_eventually {ν ρ t0 : ℝ}
+    (c : ScalarBoundaryCompletionLaws ν ρ t0)
+    (r : AnalyticRadialExtensionLaws ρ t0) (n : NSERepresentative ν t0) :
+    boundaryK (forwardRepresentative c r n).metric =ᶠ[𝓝 t0]
+      (chosenBoundary c n).tensor := by
+  have hI := timeInterval_mem_nhds t0 (chosenExtension c r n).timeRadius
+    (chosenExtension c r n).geometry.time_radius_pos
+  filter_upwards [hI] with t ht
+  exact (chosenExtension c r n).boundary_match t ht
+
+/-- The entire decoded flow, including its pressure class, is recovered.
+The decoded-left-inverse property needs no additional inverse-law premise. -/
+theorem forward_pressure_gauge_recovery {ν ρ t0 : ℝ}
+    (c : ScalarBoundaryCompletionLaws ν ρ t0)
+    (r : AnalyticRadialExtensionLaws ρ t0) (n : NSERepresentative ν t0) :
+    SameFlowAt t0
+      (boundaryVelocity (boundaryK (forwardRepresentative c r n).metric))
+      (boundaryPressure ρ (boundaryK (forwardRepresentative c r n).metric))
+      n.velocity n.pressure := by
+  have hlocal := boundaryFields_sameFlow_of_eventually_eq ρ
+    (boundaryK (forwardRepresentative c r n).metric) (chosenBoundary c n).tensor
+    (forward_boundary_match_eventually c r n)
+  exact sameFlowAt_trans hlocal (chosenBoundary c n).pressure_recovery
+
 end
 end NSEGR

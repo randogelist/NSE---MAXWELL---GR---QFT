@@ -33,6 +33,7 @@ def spatialIndex4 (i : Fin 3) : Fin 4 := i.succ
 
 @[simp] theorem bulkPoint_time (r t : ℝ) (x : Vec) :
     bulkPoint r t x 1 = t := by
+  change bulkPoint r t x (0 : Fin 4).succ = t
   simp [bulkPoint, PiLp.toLp_apply]
 
 @[simp] theorem bulkPoint_spatial (r t : ℝ) (x : Vec) (i : Fin 3) :
@@ -89,28 +90,42 @@ def boundaryCodazzi (K : BoundaryTensor) (t : ℝ) (x : Vec) (b : Fin 4) : ℝ :
 
 theorem boundarySpatialTensor_congr_slice (K L : BoundaryTensor) (t : ℝ)
     (h : K t = L t) : boundarySpatialTensor K t = boundarySpatialTensor L t := by
-  simp only [boundarySpatialTensor, h]
+  funext x i j
+  change K t x (spatialIndex4 i) (spatialIndex4 j) =
+    L t x (spatialIndex4 i) (spatialIndex4 j)
+  rw [h]
 
 theorem boundaryBeta_congr_slice (K L : BoundaryTensor) (t : ℝ)
     (h : K t = L t) : boundaryBeta K t = boundaryBeta L t := by
-  simp only [boundaryBeta, h]
+  funext x
+  change -(∑ i : Fin 3, K t x (spatialIndex4 i) (spatialIndex4 i)) =
+    -(∑ i : Fin 3, L t x (spatialIndex4 i) (spatialIndex4 i))
+  rw [h]
 
 theorem boundaryRawVelocity_congr_slice (K L : BoundaryTensor) (t : ℝ)
     (h : K t = L t) : boundaryRawVelocity K t = boundaryRawVelocity L t := by
-  simp only [boundaryRawVelocity, h]
+  funext x
+  change WithLp.toLp 2 (fun i : Fin 3 => K t x 0 (spatialIndex4 i)) =
+    WithLp.toLp 2 (fun i : Fin 3 => L t x 0 (spatialIndex4 i))
+  rw [h]
 
 theorem boundaryVelocity_congr_slice (K L : BoundaryTensor) (t : ℝ)
     (h : K t = L t) : boundaryVelocity K t = boundaryVelocity L t := by
-  simp only [boundaryVelocity, boundaryRawVelocity, h]
+  change leray (boundaryRawVelocity K t) = leray (boundaryRawVelocity L t)
+  exact congrArg leray (boundaryRawVelocity_congr_slice K L t h)
 
 theorem boundaryPotential_congr_slice (K L : BoundaryTensor) (t : ℝ)
     (h : K t = L t) : boundaryPotential K t = boundaryPotential L t := by
-  simp only [boundaryPotential, boundaryBeta, h]
+  change poissonInverse (fun x => boundaryBeta K t x - scalarMean (boundaryBeta K t)) =
+    poissonInverse (fun x => boundaryBeta L t x - scalarMean (boundaryBeta L t))
+  rw [boundaryBeta_congr_slice K L t h]
 
 theorem boundaryStress_congr_slice (ν : ℝ) (K L : BoundaryTensor) (t : ℝ)
     (h : K t = L t) : boundaryStress ν K t = boundaryStress ν L t := by
-  simp only [boundaryStress, boundarySpatialTensor, boundaryVelocity,
-    boundaryRawVelocity, boundaryPotential, boundaryBeta, h]
+  funext x
+  unfold boundaryStress
+  rw [boundarySpatialTensor_congr_slice K L t h,
+    boundaryVelocity_congr_slice K L t h, boundaryPotential_congr_slice K L t h]
 
 theorem boundaryStress_trace_zero (ν : ℝ) (K : BoundaryTensor) (t : ℝ) (x : Vec) :
     trace3 (boundaryStress ν K t x) = 0 := by
@@ -154,7 +169,7 @@ theorem boundaryStress_viscosity_difference (ν μ : ℝ) (K : BoundaryTensor)
 
 @[simp] theorem boundaryPotential_zero : boundaryPotential (0 : BoundaryTensor) = 0 := by
   funext t x
-  simp [boundaryPotential]
+  simp [boundaryPotential, poissonInverse]
 
 @[simp] theorem velocityOuter_zero : velocityOuter (0 : Vec) = 0 := by
   ext i j

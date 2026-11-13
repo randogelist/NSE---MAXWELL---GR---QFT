@@ -5,5 +5,6 @@ import GRAdapter.Boundary
 import GRAdapter.Sector
 import GRAdapter.NativeBoundary
 import GRAdapter.Germs
+import GRAdapter.Locality
 import GRAdapter.CompletionSource
 import GRAdapter.Contracts

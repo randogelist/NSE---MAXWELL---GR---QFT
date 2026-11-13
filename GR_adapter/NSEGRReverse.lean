@@ -25,7 +25,7 @@ theorem GR_TO_NSE_OF_GEOMETRIC_RECONSTRUCTION
 
 /-- Gauge descent and analytic uniqueness are exact remaining proof obligations.
 This record has no supplied inhabitant. A standard-only axiom audit of the
-assembly below does not discharge any of these four fields. -/
+assembly below does not discharge any of these three fields. -/
 structure GermInverseLaws {ν ρ t0 : ℝ}
     (c : ScalarBoundaryCompletionLaws ν ρ t0) (r : AnalyticRadialExtensionLaws ρ t0)
     (h : GeometricReconstructionLaws ν ρ t0) : Prop where
@@ -36,9 +36,6 @@ structure GermInverseLaws {ν ρ t0 : ℝ}
     SameMetricAt t0 a.metric b.metric →
       SameFlowAt t0 (reverseRepresentative h a).velocity (reverseRepresentative h a).pressure
         (reverseRepresentative h b).velocity (reverseRepresentative h b).pressure
-  decode_lift : ∀ a : NSERepresentative ν t0,
-    SameFlowAt t0 (reverseRepresentative h (forwardRepresentative c r a)).velocity
-      (reverseRepresentative h (forwardRepresentative c r a)).pressure a.velocity a.pressure
   lift_decode : ∀ a : CanonicalRepresentative ν ρ t0,
     SameMetricAt t0 (forwardRepresentative c r (reverseRepresentative h a)).metric a.metric
 
@@ -65,7 +62,7 @@ theorem reverseGerm_forwardGerm {ν ρ t0 : ℝ}
   refine Quotient.inductionOn x ?_
   intro a
   change NSEgerm.mk (reverseRepresentative h (forwardRepresentative c r a)) = NSEgerm.mk a
-  exact NSEgerm.sound (q.decode_lift a)
+  exact NSEgerm.sound (forward_pressure_gauge_recovery c r a)
 
 theorem forwardGerm_reverseGerm {ν ρ t0 : ℝ}
     (c : ScalarBoundaryCompletionLaws ν ρ t0) (r : AnalyticRadialExtensionLaws ρ t0)

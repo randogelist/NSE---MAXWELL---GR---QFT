@@ -1,4 +1,4 @@
-import GRAdapter.Germs
+import GRAdapter.Locality
 import GRAdapter.CompletionSource
 
 /-!

@@ -179,13 +179,20 @@
     "NSEGR.convection_zero",
     "NSEGR.localTimeDerivative_zero",
     "NSEGR.scalarLocalTimeDerivative_zero",
-    "NSEGR.nseResidual_zero"
+    "NSEGR.nseResidual_zero",
+    "NSEGR.boundaryVelocity_congr_eventually",
+    "NSEGR.boundaryPressure_congr_eventually",
+    "NSEGR.boundaryFields_sameFlow_of_eventually_eq",
+    "NSEGR.origin_pressure_gauge_analytic",
+    "NSEGR.sameFlowAt_iff_analytic_pressure_gauge"
   ],
   "forward": [
     "NSEGR.forward_velocity_recovery",
     "NSEGR.NSE_TO_GR_OF_SCALAR_AND_RADIAL_COMPLETION",
     "NSEGR.nonempty_GRgerm_of_completion",
-    "NSEGR.forwardRepresentative"
+    "NSEGR.forwardRepresentative",
+    "NSEGR.forward_boundary_match_eventually",
+    "NSEGR.forward_pressure_gauge_recovery"
   ],
   "reverse": [
     "NSEGR.GR_TO_NSE_OF_GEOMETRIC_RECONSTRUCTION",
