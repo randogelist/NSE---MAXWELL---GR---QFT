@@ -83,5 +83,29 @@ theorem exact_quantum_root_of_native_dynamics {C3 : ℝ}
     (packetBounds_of_jacobian hν.le F hd hdet hC3 hrelative htame)
     initialProjectionBounds
 
+/-- Canonical complete native trajectories replace the flow-existence premise.
+The divergence, variational, relative-energy, tame-energy and continuum
+endpoints remain explicit hypotheses of the exact equivalence. -/
+theorem exact_quantum_root_for_canonical_flow
+    (hν : 0 < ν)
+    (divergence : ∀ N q, driftDivergence ν N q = -phaseDecayRate ν N) :
+    let F := canonicalPhaseFlow hν.le divergence
+    ∀ C3 : ℝ,
+      (∀ N t, Differentiable ℝ (F.map N t)) →
+      (∀ N t q, (fderiv ℝ (F.map N t) q).det =
+        Real.exp (-(phaseDecayRate ν N) * t)) →
+      0 < C3 →
+      (∀ N (q r : Phase N) t, 0 ≤ t →
+        ‖F.map N t q - F.map N t r‖ ≤
+          ‖q - r‖ * Real.exp (orbitGradientCost F N r t)) →
+      (∀ N (q : Phase N) t, 0 ≤ t →
+        Real.sqrt (energy3 N (F.map N t q)) ≤
+          Real.sqrt (energy3 N q) * Real.exp (C3 * orbitGradientCost F N q t)) →
+      GalerkinAnalyticLaws F →
+      (NSEMaxwell.Classical.FeffermanB ν ↔ QREG F) := by
+  dsimp only
+  intro C3 hd hdet hC3 hrelative htame laws
+  exact exact_quantum_root_of_native_dynamics hν _ hd hdet hC3 hrelative htame laws
+
 end
 end QuantumAdapter.Assembly

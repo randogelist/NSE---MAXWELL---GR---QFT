@@ -82,6 +82,7 @@ theorem phaseFlow_small_time_dist {ν : ℝ} (F : PhaseFlow ν) (N : ℕ)
   have h := (hC q hq).dist_le_mul t (abs_lt.mp ht) 0 (by norm_num)
   simpa only [F.map_zero, Real.dist_eq, sub_zero] using h
 
+set_option maxHeartbeats 800000 in
 /-- Fixed-time continuity plus native uniform energy control implies joint continuity. -/
 theorem continuous_phaseFlow_uncurry_of_timeMaps {ν : ℝ} (hν : 0 ≤ ν)
     (F : PhaseFlow ν) (N : ℕ)
@@ -112,9 +113,11 @@ theorem continuous_phaseFlow_uncurry_of_timeMaps {ν : ℝ} (hν : 0 ≤ ν)
     have hpbound : ‖p.2‖ ≤ ‖p₀.2‖ + 1 := by
       have hnorm := norm_le_norm_sub_add p.2 p₀.2
       rw [← dist_eq_norm] at hnorm
-      linarith
+      exact hnorm.trans (by simpa only [add_comm] using add_le_add_right hpq.le ‖p₀.2‖)
     have hpt' : |p.1 - p₀.1| < 1 := by simpa only [Real.dist_eq] using hpt
-    have hsmall := phaseFlow_small_time_dist F N hC hpbound hpt'
+    have hsmall : dist (F.map N (p.1 - p₀.1) p.2) p.2 ≤
+        (C : ℝ) * |p.1 - p₀.1| :=
+      phaseFlow_small_time_dist F N hC hpbound hpt'
     calc
       dist (F.map N (p.1 - p₀.1) p.2) p₀.2
           ≤ dist (F.map N (p.1 - p₀.1) p.2) p.2 + dist p.2 p₀.2 :=

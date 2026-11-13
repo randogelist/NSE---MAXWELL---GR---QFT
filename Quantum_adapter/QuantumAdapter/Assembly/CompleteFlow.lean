@@ -190,7 +190,7 @@ theorem local_drift_solution_has_backward_limit {ν : ℝ} (hν : 0 ≤ ν)
         Real.exp_zero, one_mul] using hm
     have he : Real.exp (-(d * t)) ≤ Real.exp (-(d * a)) := by
       apply Real.exp_le_exp.mpr
-      nlinarith
+      exact neg_le_neg (mul_le_mul_of_nonneg_left ht.1.le hd)
     exact hE.trans (mul_le_mul_of_nonneg_right he
       (mul_nonneg (Real.exp_nonneg _) (energy0_nonneg N (q c))))
   exact (local_drift_solution_endpoint_limits_of_energy_bound ν N hac
