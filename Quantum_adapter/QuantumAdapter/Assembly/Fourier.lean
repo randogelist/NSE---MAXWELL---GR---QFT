@@ -364,7 +364,7 @@ theorem synthesis_coordinateDerivative (N : ℕ) (q : Phase N) (j : Fin 3) :
     (by simp) x).hasFDerivAt
   have hs : HasFDerivAt (fun y => meanVector q + finiteSynthesis N (phaseCoeff q) y)
       (fderiv ℝ (finiteSynthesis N (phaseCoeff q)) x) x := by
-    simpa only [zero_add] using (hasFDerivAt_const x (meanVector q)).add hd
+    simpa only [zero_add] using (hasFDerivAt_const (meanVector q) x).add hd
   rw [synthesis_eq_mean_add_source, hs.fderiv]
 
 /-- Each physical derivative multiplier is bounded by the exact Sobolev weight. -/
@@ -433,11 +433,12 @@ theorem derivative_component_sq_le (N : ℕ) (q : Phase N)
           h3Weight k * Complex.normSq (phaseCoeff q k l) := by
         apply Finset.sum_le_sum
         intro k hk
-        apply Finset.single_le_sum
-        · intro l hl
-          rw [Complex.normSq_eq_norm_sq]
-          exact mul_nonneg (h3Weight_pos k).le (sq_nonneg _)
-        · exact Finset.mem_univ i
+        exact Finset.single_le_sum (s := Finset.univ)
+          (f := fun l : Fin 3 => h3Weight k * Complex.normSq (phaseCoeff q k l))
+          (fun l hl => by
+            rw [Complex.normSq_eq_norm_sq]
+            exact mul_nonneg (h3Weight_pos k).le (sq_nonneg _))
+          (Finset.mem_univ i)
       _ ≤ energy3 N q := by
         apply Finset.sum_le_sum_of_subset_of_nonneg
         · exact Finset.subset_insert 0 (cutoffModes N)
@@ -568,6 +569,8 @@ theorem gradientObservable_le_add (N : ℕ) (q r : Phase N) :
       gradientObservable r := by
   apply csSup_le (Set.range_nonempty _)
   rintro y ⟨x, rfl⟩
+  change Real.sqrt (gradientSquare q x) ≤
+    gradientEmbeddingConstant * Real.sqrt (energy3 N (q - r)) + gradientObservable r
   rw [sqrt_gradientSquare_eq_norm]
   calc
     _ ≤ ‖gradientCoordinates N x (q - r)‖ + ‖gradientCoordinates N x r‖ := by
@@ -589,7 +592,7 @@ theorem abs_gradientObservable_sub_le (N : ℕ) (q r : Phase N) :
   rw [hsymm] at hrq
   exact abs_le.mpr ⟨by linarith, by linarith⟩
 
-def gradientLipschitzConstant (N : ℕ) : ℝ≥0 :=
+def gradientLipschitzConstant (N : ℕ) : NNReal :=
   ⟨gradientEmbeddingConstant * cutoffSobolevFactor N,
     mul_nonneg gradientEmbeddingConstant_pos.le (cutoffSobolevFactor_pos N).le⟩
 

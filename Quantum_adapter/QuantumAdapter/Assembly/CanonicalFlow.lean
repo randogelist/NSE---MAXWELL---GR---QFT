@@ -44,8 +44,8 @@ theorem chosenCompleteOrbit_add
   have hleft (r : ℝ) :
       HasDerivAt (fun u => chosenCompleteOrbit complete N q₀ (u + s))
         (drift ν N (chosenCompleteOrbit complete N q₀ (r + s))) r := by
-    simpa only [one_smul] using
-      (chosenCompleteOrbit_derivative complete N q₀ (r + s)).comp r
+    simpa only [one_smul, Function.comp_def, id_eq] using
+      (chosenCompleteOrbit_derivative complete N q₀ (r + s)).scomp r
         ((hasDerivAt_id r).add_const s)
   have hright := chosenCompleteOrbit_derivative complete N
     (chosenCompleteOrbit complete N q₀ s)

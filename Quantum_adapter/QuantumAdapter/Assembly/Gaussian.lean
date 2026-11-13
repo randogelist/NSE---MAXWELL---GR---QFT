@@ -147,6 +147,7 @@ theorem phaseGaussian_moment_formula (N : ℕ) {b : ℝ} (hb : 0 < b) (k : ℕ) 
   rw [integral_fun_norm_addHaar (volume : Measure (Phase N))
     (fun y : ℝ => y ^ k * Real.exp (-b * y ^ 2))]
   simp only [nsmul_eq_mul, smul_eq_mul]
+  rw [← mul_assoc]
   change (phaseDimension N : ℝ) *
     (volume : Measure (Phase N)).real (Metric.ball 0 1) *
     (∫ y in Set.Ioi (0 : ℝ), y ^ (phaseDimension N - 1) *

@@ -91,7 +91,7 @@ theorem phaseFlow_integralPullbackLaw_of_jacobian (F : PhaseFlow ν)
   have hdet' (q : Phase N) :
       |(fderiv ℝ (F.map N (-t)) q).det| = Real.exp (phaseDecayRate ν N * t) := by
     rw [hdet, neg_mul_neg, abs_of_pos (Real.exp_pos _)]
-  simpa only [himage, integral_univ, hdet', smul_eq_mul] using hchange.symm
+  simpa only [himage, Measure.restrict_univ, hdet', smul_eq_mul] using hchange.symm
 
 theorem phaseFlow_integrable_weighted_comp_of_jacobian (F : PhaseFlow ν)
     (hd : ∀ N t, Differentiable ℝ (F.map N t))
