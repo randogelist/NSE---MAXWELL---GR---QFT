@@ -66,7 +66,9 @@ theorem GaussianGluingLaw.translate
     bulkPoint_sub_spatial _ _ _ _
   have ha : AnalyticAt ℝ (fun y => metricOfJoint f
       (y - bulkPoint 0 0 (integerSpatialShift n))) (bulkFromJoint z) := by
-    apply hf.analytic.comp_of_eq (analyticAt_id.sub analyticAt_const)
+    apply hf.analytic.comp_of_eq
+      (f := fun y : Bulk => y - bulkPoint 0 0 (integerSpatialShift n))
+      (x := bulkFromJoint z) (analyticAt_id.sub analyticAt_const)
     exact hp
   refine ⟨hf.time_mem, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩
   · simpa only [metricOfJoint_translate] using ha
@@ -186,7 +188,8 @@ theorem radialExtensionResult_of_literatureGaussian
     have he := literatureGaussianJet_unique input
       (boundaryAdmissible_literatureFlatBoundaryGerm hK x)
       (literatureGaussianGerm_of_gluingLaw hf) (literatureGaussianGerm_of_gluingLaw hg)
-    simpa only [jointMetric_metricOfJoint] using jointMetric_germ he
+    simpa only [jointMetric_metricOfJoint] using
+      (jointMetric_germ (z := (((0 : ℝ), t0), x)) he)
   obtain ⟨W, hW, hsW, f, hper, hlaw⟩ :=
     periodic_law_of_unique_local_germs (GaussianGluingLaw K t0 δ)
       hex hlocality (GaussianGluingLaw.translate hK) huniq eta5

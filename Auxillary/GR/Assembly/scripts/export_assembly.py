@@ -11,7 +11,7 @@ parser.add_argument('--output', type=Path, required=True)
 args = parser.parse_args()
 repo = Path(__file__).resolve().parents[4]
 paths = []
-for root in ['ASSEMBLY', 'GR_adapter', 'TEMP', 'Auxillary/GR/Assembly']:
+for root in ['ASSEMBLY', 'GR_adapter', 'TEMP', 'Auxillary/GR/Assembly', 'Auxillary/GR/Closure']:
     paths.extend(p for p in (repo / root).rglob('*') if p.is_file()
                  and not set(p.relative_to(repo).parts) &
                  {'.lake', '__pycache__', 'exports', 'evidence-current'})

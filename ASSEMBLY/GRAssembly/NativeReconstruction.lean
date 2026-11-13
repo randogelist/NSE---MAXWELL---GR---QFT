@@ -6,6 +6,7 @@ import GRAssembly.BoundaryConstraints
 set_option autoImplicit false
 set_option Elab.async true
 set_option maxHeartbeats 1600000
+set_option backward.isDefEq.respectTransparency false
 
 open Set Filter MeasureTheory
 open scoped Topology BigOperators ContDiff Matrix.Norms.Frobenius
@@ -184,8 +185,8 @@ theorem boundaryAdmissible_pressure_analytic {ρ t0 δ : ℝ} {K : BoundaryTenso
     ((EuclideanSpace.proj i).analyticAt _).comp hu)
   have hc : AnalyticAt ℝ (fun _ : ℝ × Vec => 2 * ρ) z := analyticAt_const
   have hi : AnalyticAt ℝ (fun _ : ℝ × Vec => (3 : ℝ)⁻¹) z := analyticAt_const
-  simpa only [boundaryPressure, div_eq_mul_inv, Pi.neg_apply, Pi.sub_apply,
-    Pi.add_apply, Pi.mul_apply] using
+  simpa only [boundaryPressure, div_eq_mul_inv, Pi.neg_def, Pi.sub_def,
+    Pi.add_def, Pi.mul_def] using
     (hk.neg.sub ((hc.add hs).mul hi)).sub (analyticAt_jointTime (analyticAt_jointTime hq))
 
 theorem boundaryAdmissible_decoded_pair {ρ t0 δ : ℝ} {K : BoundaryTensor}

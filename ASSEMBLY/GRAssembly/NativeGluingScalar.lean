@@ -65,12 +65,16 @@ theorem ScalarGluingLaw.translate
   have hm : AnalyticAt ℝ
       (fun w : ℝ × Vec => (w.1, w.2 - integerSpatialShift n)) z :=
     analyticAt_fst.prod (analyticAt_snd.sub analyticAt_const)
-  refine ⟨hf.time_mem, hf.analytic.comp hm, ?_, hf.initial, hf.time_initial⟩
+  have ha : AnalyticAt ℝ (spatialTranslate f n) z :=
+    hf.analytic.comp (f := fun w : ℝ × Vec => (w.1, w.2 - integerSpatialShift n))
+      (x := z) hm
+  refine ⟨hf.time_mem, ha, ?_, hf.initial, hf.time_initial⟩
   change boundaryHamiltonian (completedBoundary ν ρ u p
     (fun t x => f (t, x - integerSpatialShift n))) z.1 z.2 = 0
   unfold boundaryHamiltonian
-  rw [completedBoundary_spatial_sub
-    (hpair.periodic_velocity z.1 hf.time_mem) (hpair.periodic_pressure z.1 hf.time_mem)]
+  rw [completedBoundary_spatial_sub (ν := ν) (ρ := ρ)
+    (ψ := fun t x => f (t, x))
+    (hpair.periodic_velocity z.1 hf.time_mem) (hpair.periodic_pressure z.1 hf.time_mem) n z.2]
   exact hf.hamiltonian
 
 theorem scalarGluingLaw_germ_of_normal
@@ -192,14 +196,14 @@ theorem scalar_periodic_normal_cylinder_of_literatureCK
       (∀ t ∈ timeInterval t0 d, ∀ x,
         boundaryHamiltonian (completedBoundary ν ρ u p ψ) t x = 0) := by
   obtain ⟨d0, ψ, hd0, hd0δ, ha, hper, hi, hti, hH⟩ :=
-    scalar_periodic_cylinder_of_literatureCK input hρ hpair
+    scalar_periodic_cylinder_of_literatureCK (ν := ν) input hρ hpair
   have hnorm : 0 < |ρ| / 2 := half_pos (abs_pos.mpr hρ)
   have hlocal (x : Vec) (_hx : x ∈ unitCube) :
       ∀ᶠ z : ℝ × Vec in 𝓝 (t0, x),
         |scalarLaplacian (ψ z.1) z.2| < |ρ| / 2 := by
     have ht0 : t0 ∈ timeInterval t0 d0 := by constructor <;> linarith
     have hc := (analyticAt_scalarLaplacian_joint (ha (t0, x) ht0)).continuousAt.abs
-    apply hc.eventually
+    apply hc.eventually (p := fun y : ℝ => y < |ρ| / 2)
     apply gt_mem_nhds
     rw [scalarLaplacian_eq_zero_of_germ_zero (Eventually.of_forall hi), abs_zero]
     exact hnorm
@@ -216,7 +220,7 @@ theorem scalar_periodic_normal_cylinder_of_literatureCK
   have hnonchar (t : ℝ) (ht : t ∈ timeInterval t0 d) (x : Vec) :
       |ρ| / 2 < |ρ + scalarLaplacian (ψ t) x| := by
     have hb := hfull t ht x
-    have hab := abs_add (ρ + scalarLaplacian (ψ t) x) (-scalarLaplacian (ψ t) x)
+    have hab := abs_add_le (ρ + scalarLaplacian (ψ t) x) (-scalarLaplacian (ψ t) x)
     simp only [add_neg_cancel_right, abs_neg] at hab
     linarith
   refine ⟨d, ψ, hd, hdd0.trans hd0δ, ?_, ?_, hi, hti, hnonchar, ?_, ?_⟩

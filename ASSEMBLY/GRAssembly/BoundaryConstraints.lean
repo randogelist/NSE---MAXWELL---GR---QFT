@@ -4,6 +4,7 @@ import GRAdapter.Sector
 set_option autoImplicit false
 set_option Elab.async true
 set_option maxHeartbeats 3200000
+set_option backward.isDefEq.respectTransparency false
 
 namespace NSEGR.Assembly
 open Set Filter
@@ -21,6 +22,7 @@ theorem bulkCollar_isOpen (t0 δ ε : ℝ) : IsOpen (bulkCollar t0 δ ε) := by
 theorem boundaryPoint_mem_collar {ρ t0 δ ε : ℝ} {g : Metric}
     (hg : GaussianVacuum ρ t0 δ ε g) {t : ℝ} (ht : t ∈ timeInterval t0 δ) (x : Vec) :
     bulkPoint 0 t x ∈ bulkCollar t0 δ ε := by
+  change (0 : ℝ) ∈ Ioo (-ε) ε ∧ t ∈ timeInterval t0 δ
   exact ⟨⟨neg_lt_zero.mpr hg.radial_radius_pos, hg.radial_radius_pos⟩, ht⟩
 
 theorem boundary_time_eventually {t0 δ t : ℝ} {x : Vec}

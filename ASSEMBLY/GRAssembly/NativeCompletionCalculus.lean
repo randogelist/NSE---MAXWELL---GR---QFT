@@ -5,6 +5,7 @@ import GRAdapter.Contracts
 set_option autoImplicit false
 set_option Elab.async true
 set_option maxHeartbeats 2400000
+set_option backward.isDefEq.respectTransparency false
 open Set Filter MeasureTheory
 open scoped Topology BigOperators ContDiff Matrix.Norms.Frobenius
 namespace NSEGR.Assembly
@@ -14,7 +15,7 @@ theorem jointSpace_isotropic_sum {f : ℝ × Vec → ℝ} {z : ℝ × Vec}
     (j : Fin 3) :
     (∑ i : Fin 3, jointSpace (fun y => f y * identity3 i j) i z) = jointSpace f j z := by
   rw [Finset.sum_eq_single j]
-  · simp only [identity3, if_pos rfl, mul_one]
+  · simp only [identity3, ite_true, mul_one]
   · intro i hi hij
     simp [identity3, hij, jointSpace]
   · simp
@@ -51,7 +52,7 @@ theorem scalarCompletionUpper_conserved {ψ : Pressure} {t : ℝ} {x : Vec}
       (∑ i : Fin 3, fderiv ℝ (fun y => -fderiv ℝ (scalarLocalTimeDerivative ψ t)
         y (unitVector i)) x (unitVector i)) = 0
     rw [scalar_time_laplacian_commute hψ]
-    simp only [fderiv_neg, ContinuousLinearMap.neg_apply, Finset.sum_neg_distrib,
+    simp only [fderiv_fun_neg, ContinuousLinearMap.neg_apply, Finset.sum_neg_distrib,
       scalarLaplacian, add_neg_cancel]
   · rw [upperDivergence, Fin.sum_univ_succ]
     simp only [boundaryPartial, scalarCompletionUpper, boundaryBlock,
@@ -60,12 +61,19 @@ theorem scalarCompletionUpper_conserved {ψ : Pressure} {t : ℝ} {x : Vec}
       (∑ i : Fin 3, jointSpace (fun y => jointSpace (jointSpace f j) i y +
         (jointTime (jointTime f) y - L y) * identity3 i j) i (t, x)) = 0
     rw [jointTime_neg, jointTime_jointSpace hT j]
-    have hadd (i : Fin 3) := jointSpace_add
-      (analyticAt_jointSpace (analyticAt_jointSpace hψ j) i)
-      ((hTT.sub hL).mul (show AnalyticAt ℝ (fun _ : ℝ × Vec => identity3 i j) (t,x)
-        from analyticAt_const)) i
-    simp_rw [hadd]
-    rw [Finset.sum_add_distrib, jointSpace_hessian_divergence hψ j,
+    have hadd (i : Fin 3) :
+        jointSpace (fun y => jointSpace (jointSpace f j) i y +
+          (jointTime (jointTime f) y - L y) * identity3 i j) i (t,x) =
+        jointSpace (jointSpace (jointSpace f j) i) i (t,x) +
+          jointSpace (fun y => (jointTime (jointTime f) y - L y) * identity3 i j) i (t,x) :=
+      jointSpace_add (f := jointSpace (jointSpace f j) i)
+        (g := fun y => (jointTime (jointTime f) y - L y) * identity3 i j)
+        (analyticAt_jointSpace (analyticAt_jointSpace hψ j) i)
+        ((hTT.sub hL).mul (show AnalyticAt ℝ (fun _ : ℝ × Vec => identity3 i j) (t,x)
+          from analyticAt_const)) i
+    have hsum := Finset.sum_congr (s₁ := Finset.univ) (s₂ := Finset.univ) rfl
+      (fun i _ => hadd i)
+    rw [hsum, Finset.sum_add_distrib, jointSpace_hessian_divergence hψ j,
       jointSpace_isotropic_sum j, jointSpace_sub hTT hL j]
     change -jointSpace (jointTime (jointTime f)) j (t,x) +
       (jointSpace L j (t,x) + (jointSpace (jointTime (jointTime f)) j (t,x) -
@@ -112,7 +120,7 @@ theorem analyticAt_completedBoundary {ν ρ : ℝ} {u : Velocity} {p ψ : Pressu
   intro a b
   have hc : AnalyticAt ℝ (fun _ : ℝ × Vec => (3 : ℝ)⁻¹ * eta4 a b) z := analyticAt_const
   simpa only [completedBoundary, traceReverse4, lorentzTrace4, div_eq_mul_inv,
-    mul_assoc, Pi.sub_apply, Pi.mul_apply, Pi.add_apply, Pi.neg_apply] using
+    mul_assoc, Pi.sub_def, Pi.mul_def, Pi.add_def, Pi.neg_def] using
     (htr.mul hc).sub (hB a b)
 
 theorem boundaryPartial_add_native {f q : Pressure} {t : ℝ} {x : Vec}
@@ -129,8 +137,8 @@ theorem boundaryPartial_const_mul_native {f : Pressure} {t : ℝ} {x : Vec}
     boundaryPartial (fun s y => c * f s y) a t x = c * boundaryPartial f a t x := by
   refine Fin.cases ?_ (fun i => ?_) a
   · simpa only [boundaryPartial, Fin.cases_zero, smul_eq_mul] using
-      (hf.curry_left.differentiableAt.hasDerivAt.const_smul c).deriv
-  · have h := (hf.curry_right.differentiableAt.hasFDerivAt.const_smul c).fderiv
+      (deriv_fun_const_smul c hf.curry_left.differentiableAt)
+  · have h := fderiv_fun_const_smul hf.curry_right.differentiableAt c
     simpa only [boundaryPartial, Fin.cases_succ, smul_eq_mul, ContinuousLinearMap.smul_apply] using
       congrArg (fun L : Vec →L[ℝ] ℝ => L (unitVector i)) h
 
@@ -151,7 +159,12 @@ theorem traceReverse_lower_codazzi {T : BoundaryTensor} {t : ℝ} {x : Vec}
     linarith
   change (∑ a : Fin 4, lorentzSign4 a * boundaryPartial
     (fun s y => K s y a b - lorentzTrace4 (K s y) * eta4 a b) a t x) = _
-  simp_rw [he, boundaryPartial_const_mul_native (hT _ b)]
+  have hD (a : Fin 4) :
+      boundaryPartial (fun s y => (-lorentzSign4 a * lorentzSign4 b) * T s y a b) a t x =
+        (-lorentzSign4 a * lorentzSign4 b) * boundaryPartial (fun s y => T s y a b) a t x :=
+    boundaryPartial_const_mul_native (f := fun s y => T s y a b)
+      (hT a b) (-lorentzSign4 a * lorentzSign4 b) a
+  simp_rw [he, hD]
   rw [upperDivergence, Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro a ha
@@ -171,17 +184,24 @@ theorem completedBoundary_codazzi {ν ρ : ℝ} {u : Velocity} {p ψ : Pressure}
   have hS := conservedSourceUpper_conserved ν ρ u p t x hu hua
     (hpa.comp (analyticAt_const.prod analyticAt_id)).differentiableAt hdiv hmom b
   have hC := scalarCompletionUpper_conserved hψ b
-  have hT (a c : Fin 4) := (analyticAt_conservedSourceUpper_entry hua hpa a c).add
-    (analyticAt_scalarCompletionUpper_entry hψ a c)
+  have hT (a c : Fin 4) : AnalyticAt ℝ (fun z : ℝ × Vec =>
+      (conservedSourceUpper ν ρ u p z.1 z.2 + scalarCompletionUpper ψ z.1 z.2) a c) (t,x) :=
+    (analyticAt_conservedSourceUpper_entry (ν := ν) (ρ := ρ) hua hpa a c).add
+      (analyticAt_scalarCompletionUpper_entry hψ a c)
   rw [completedBoundary, traceReverse_lower_codazzi hT]
   have hd : upperDivergence (fun s y => conservedSourceUpper ν ρ u p s y +
       scalarCompletionUpper ψ s y) t x b =
       upperDivergence (conservedSourceUpper ν ρ u p) t x b +
         upperDivergence (scalarCompletionUpper ψ) t x b := by
     simp only [upperDivergence, Matrix.add_apply]
-    simp_rw [boundaryPartial_add_native (analyticAt_conservedSourceUpper_entry hua hpa _ b)
-      (analyticAt_scalarCompletionUpper_entry hψ _ b)]
-    exact Finset.sum_add_distrib
+    rw [← Finset.sum_add_distrib]
+    apply Finset.sum_congr rfl
+    intro a ha
+    exact boundaryPartial_add_native
+      (f := fun s y => conservedSourceUpper ν ρ u p s y a b)
+      (q := fun s y => scalarCompletionUpper ψ s y a b)
+      (analyticAt_conservedSourceUpper_entry (ν := ν) (ρ := ρ) hua hpa a b)
+      (analyticAt_scalarCompletionUpper_entry hψ a b) a
   rw [hd, hS, hC, add_zero, mul_zero]
 
 theorem completedBoundary_symmetric {ν ρ : ℝ} {u : Velocity} {p ψ : Pressure}
