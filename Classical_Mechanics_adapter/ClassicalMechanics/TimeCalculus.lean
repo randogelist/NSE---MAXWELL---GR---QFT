@@ -81,7 +81,7 @@ theorem finite_material_chain_rule {T : ℝ} (hT : 0 < T)
       fderivWithin ℝ (fun z : ℝ × Vec => u z.1 z.2)
           (finiteSpacetime T) (t, eta t) (1, u t (eta t)) =
         finiteMaterialAcceleration T u t (eta t) := by
-    rw [show (1, u t (eta t)) = (1, (0 : Vec)) + (0, u t (eta t)) by simp,
+    rw [show ((1 : ℝ), u t (eta t)) = (1, (0 : Vec)) + (0, u t (eta t)) by simp,
       map_add]
     rw [← finite_time_restriction_fderiv hT hu ht (eta t),
       ← finite_spatial_restriction_fderiv hu ht (eta t) (u t (eta t))]
