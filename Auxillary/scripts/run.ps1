@@ -30,7 +30,7 @@ if (-not $ReportDirectory) {
 
 $RepoRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 Set-Location -LiteralPath $RepoRoot
-$AdapterSourceRoot = "Fefferman_B_adapter"
+$AdapterSourceRoot = "Fefferman_adapter"
 $ForwardSourceRoot = "B <-> Maxwell/=>"
 $ReverseSourceRoot = "B <-> Maxwell/<="
 $MaxwellSourceRoot = "Maxwell_Endpoint"

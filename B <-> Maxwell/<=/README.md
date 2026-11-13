@@ -75,8 +75,8 @@ The initial reconstruction gives \(u(0)=a\), with arbitrary \(\langle a\rangle\)
 
 - [MAXWELL_TO_B_B_TIER.txt](MAXWELL_TO_B_B_TIER.txt): directional mathematical derivation.
 - [Shared Fourier–Hodge derivation](../FOURIER_HODGE_COMPOSITION_B_TIER.txt): C01–C12 discharge the mathematical analytic adapters; C13, §§14.1 and 14.4 compose the reverse map.
-- [Concrete statement adapter](../../Fefferman_B_adapter/NSEMaxwell/Classical.lean): exact Fefferman-B predicate and the imported native Maxwell definitions.
-- [Common analytic contracts](../../Fefferman_B_adapter/NSEMaxwell/AnalyticContracts.lean): explicit local premises shared by the two directions.
+- [Concrete statement adapter](../../Fefferman_adapter/NSEMaxwell/Classical.lean): exact Fefferman-B predicate and the imported native Maxwell definitions.
+- [Common analytic contracts](../../Fefferman_adapter/NSEMaxwell/AnalyticContracts.lean): explicit local premises shared by the two directions.
 
 ## External certificate
 

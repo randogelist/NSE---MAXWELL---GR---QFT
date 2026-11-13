@@ -1,4 +1,4 @@
-# Fefferman B adapter
+# Fefferman adapter
 
 ## Exact Lean statement
 

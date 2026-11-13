@@ -4,7 +4,7 @@
 
 | Directory | Scope |
 |---|---|
-| [Fefferman_B_adapter/](Fefferman_B_adapter/) | Exact Fefferman-B statement, shared bridge calculus, copied Mathlib/Methlib endpoints |
+| [Fefferman_adapter/](Fefferman_adapter/) | Exact Fefferman-B statement, shared bridge calculus, copied Mathlib/Methlib endpoints |
 | [Maxwell_Endpoint/](Maxwell_Endpoint/) | Independent native Maxwell definitions, constructions, compiler configuration, and named audit |
 | [B <-> Maxwell/](B%20%3C-%3E%20Maxwell/) | Equivalence derivations and the two directional proof directories |
 | [Auxillary/](Auxillary/) | External runners, audit/cache targets, status, cache documentation, retained compiler evidence |
@@ -30,7 +30,7 @@ Literal `<` and `>` directory names require a POSIX checkout. Active compiler: e
 
 ## Exact statement
 
-The definition occurs once, in [Classical.lean](Fefferman_B_adapter/NSEMaxwell/Classical.lean):
+The definition occurs once, in [Classical.lean](Fefferman_adapter/NSEMaxwell/Classical.lean):
 
 ```lean
 NSEMaxwell.Classical.FeffermanB (ν : ℝ) : Prop :=
@@ -80,7 +80,7 @@ NSEMaxwell.Bridge.feffermanB_implies_maxwellB_of_fourierHodgeLaws
 NSEMaxwell.Bridge.maxwellB_implies_feffermanB_of_fourierHodgeLaws
 ```
 
-Every declaration retains its explicit analytic premise. The direction roots contain the original construction proofs. [AnalyticContracts.lean](Fefferman_B_adapter/NSEMaxwell/AnalyticContracts.lean) contains their shared objects and assumptions. [AnalyticBridge.lean](Fefferman_B_adapter/NSEMaxwell/AnalyticBridge.lean) assembles the two directions; existing namespaces and theorem statements are preserved.
+Every declaration retains its explicit analytic premise. The direction roots contain the original construction proofs. [AnalyticContracts.lean](Fefferman_adapter/NSEMaxwell/AnalyticContracts.lean) contains their shared objects and assumptions. [AnalyticBridge.lean](Fefferman_adapter/NSEMaxwell/AnalyticBridge.lean) assembles the two directions; existing namespaces and theorem statements are preserved.
 
 The reduced root remains
 
@@ -94,7 +94,7 @@ The four Hodge fields have a complete mathematical derivation in [FOURIER_HODGE_
 
 ## Copied public endpoints
 
-[Fefferman_B_adapter/Endpoints/](Fefferman_B_adapter/Endpoints/) contains 22 selected declarations, 14 byte-exact source snapshots, signatures, imports, hashes, upstream URLs, and audit boundaries.
+[Fefferman_adapter/Endpoints/](Fefferman_adapter/Endpoints/) contains 22 selected declarations, 14 byte-exact source snapshots, signatures, imports, hashes, upstream URLs, and audit boundaries.
 
 ```text
 Mathlib pin = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
@@ -150,3 +150,12 @@ All registered axiom dependencies belong to `propext`, `Classical.choice`, and `
 [Integrated audit](Auxillary/evidence/linux-43351199370/audit-summary.json) · [Isolated audit](Auxillary/evidence/linux-43351199370/standalone/audit-summary.json) · [109 retained original artifact files](Auxillary/evidence/linux-43351199370/)
 
 The 23 native theorem endpoints are A-tier. The reduced bridge remains `FourierHodgeLaws → ExactEquivalence`, with **CONDITIONAL_FORMAL_CLOSURE**. Historical evidence remains scoped to its recorded source commit; the Hodge inhabitant and arbitrary-data global Maxwell existence remain unresolved.
+
+## Adapter directory rename
+
+```text
+ADAPTER_DIRECTORY = Fefferman_adapter
+FORMER_DIRECTORY = Fefferman_B_adapter
+PROOF_DECLARATIONS_AND_PREMISES = UNCHANGED
+RENAME_VALIDATION = PENDING_CACHED_EXTERNAL_LINUX
+```

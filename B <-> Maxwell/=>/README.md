@@ -72,8 +72,8 @@ and therefore all four Maxwell equations with the prescribed constitutive fields
 
 - [B_TO_MAXWELL_B_TIER.txt](B_TO_MAXWELL_B_TIER.txt): directional mathematical derivation.
 - [Shared Fourier–Hodge derivation](../FOURIER_HODGE_COMPOSITION_B_TIER.txt): C01–C12 discharge the mathematical analytic adapters; C13, §§14.1–14.3 compose the forward map.
-- [Concrete statement adapter](../../Fefferman_B_adapter/NSEMaxwell/Classical.lean): exact `FeffermanB` and the imported native Maxwell definitions.
-- [Common analytic contracts](../../Fefferman_B_adapter/NSEMaxwell/AnalyticContracts.lean): explicit local premises shared by the two directions.
+- [Concrete statement adapter](../../Fefferman_adapter/NSEMaxwell/Classical.lean): exact `FeffermanB` and the imported native Maxwell definitions.
+- [Common analytic contracts](../../Fefferman_adapter/NSEMaxwell/AnalyticContracts.lean): explicit local premises shared by the two directions.
 
 ## External certificate
 

@@ -206,11 +206,11 @@
     "snapshot_directory": "Auxillary/evidence/linux-43336709607"
   },
   "source_layout": {
-    "adapter": "Fefferman_B_adapter",
+    "adapter": "Fefferman_adapter",
     "forward": "B <-> Maxwell/=>",
     "reverse": "B <-> Maxwell/<=",
-    "statement": "Fefferman_B_adapter/NSEMaxwell/Classical.lean",
-    "copied_endpoints": "Fefferman_B_adapter/Endpoints",
+    "statement": "Fefferman_adapter/NSEMaxwell/Classical.lean",
+    "copied_endpoints": "Fefferman_adapter/Endpoints",
     "full_b_tier_derivation": "B <-> Maxwell/FOURIER_HODGE_COMPOSITION_B_TIER.txt",
     "literal_names_require_posix_checkout": true,
     "auxiliary": "Auxillary",
@@ -250,7 +250,7 @@
   "mathematical_hodge_derivation": "B_TIER_COMPLETE; LEAN_INHABITANT_DEFERRED",
   "certified_source_commit": "7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6",
   "certified_lean_source_inputs": 37,
-  "current_layout_validation": "PASS_NATIVE_MAXWELL_EXTRACTION_AND_ISOLATED_BUILD",
+  "current_layout_validation": "PENDING_CACHED_NATIVE_LINUX_ADAPTER_RENAME",
   "auxiliary_relocation": {
     "base_commit": "5f7f8f4866f0b99ebc0bc1869df1ef9e0a25dcef",
     "lean_source_inputs_unchanged": 30,
@@ -356,5 +356,14 @@
     "executed_module_builds": 0,
     "freshness_check_exit_code": 0,
     "source_manifest_inputs": 289
+  },
+  "adapter_rename": {
+    "from": "Fefferman_B_adapter",
+    "to": "Fefferman_adapter",
+    "base_commit": "b3e23ab296e254f77ccb6035ed83c4f69e5de35d",
+    "proof_bodies_unchanged": true,
+    "theorem_statements_unchanged": true,
+    "historical_evidence_bytes_preserved": true,
+    "validation": "PENDING"
   }
 }

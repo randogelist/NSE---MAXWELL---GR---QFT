@@ -297,8 +297,8 @@ def verify(args: argparse.Namespace) -> dict[str, object]:
             manifest_errors.append(f"Source input changed during compilation: {relative}")
     required = {
         "lean-toolchain", "lakefile.lean", "lake-manifest.json",
-        "Fefferman_B_adapter/NSEMaxwell.lean",
-        "Fefferman_B_adapter/NSEMaxwell/Audit.lean",
+        "Fefferman_adapter/NSEMaxwell.lean",
+        "Fefferman_adapter/NSEMaxwell/Audit.lean",
         "Auxillary/audit-targets.txt", "Auxillary/formalization-status.json",
         "Auxillary/scripts/run.ps1",
         "Auxillary/scripts/verify_audit.py", "Auxillary/run.cmd",
@@ -316,7 +316,7 @@ def verify(args: argparse.Namespace) -> dict[str, object]:
         "Auxillary/scripts/isolate_maxwell_endpoint.py",
     }
     for source_root in (
-        "Fefferman_B_adapter", "B <-> Maxwell/=>", "B <-> Maxwell/<=",
+        "Fefferman_adapter", "B <-> Maxwell/=>", "B <-> Maxwell/<=",
         "Maxwell_Endpoint/MaxwellEndpoint",
     ):
         directory = root / source_root

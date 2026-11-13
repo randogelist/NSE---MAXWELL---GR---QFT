@@ -36,7 +36,7 @@ ADAPTER_SOURCE_DEPENDENCY = NONE
 DIRECTIONAL_SOURCE_DEPENDENCY = NONE
 ```
 
-The original declaration names and definition bodies remain fixed. `Fefferman_B_adapter/NSEMaxwell/Classical.lean` imports this native endpoint and retains `NSSolution`, `FeffermanB`, and `ExactEquivalence`.
+The original declaration names and definition bodies remain fixed. `Fefferman_adapter/NSEMaxwell/Classical.lean` imports this native endpoint and retains `NSSolution`, `FeffermanB`, and `ExactEquivalence`.
 
 ## Exact constrained system
 

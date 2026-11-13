@@ -10,7 +10,7 @@
     "branch": "codex/fefferman-b-maxwell",
     "active_ci_platform": "native Linux / Ubuntu 24.04",
     "frozen_commit": "63f53e4c31d09cd1325f032d7456d2d2eb4386b3",
-    "source_layout": "Fefferman_B_adapter/NSEMaxwell"
+    "source_layout": "Fefferman_adapter/NSEMaxwell"
   },
   "reference": {
     "repository": "randogelist/Methlib",
@@ -32,7 +32,7 @@
   "proof_boundary": {
     "target": "NSEMaxwell.Bridge.FourierHodgeLaws; assembly yields NSEMaxwell.Classical.ExactEquivalence.",
     "exact_scope": "Frozen smooth unforced periodic 3D Fefferman B with arbitrary velocity mean, periodic pressure, joint C-infinity through t=0, and no analyticity requirement.",
-    "this_review": "Pinned source references relocated into Fefferman_B_adapter. Existing equivalence proof bodies are separated by direction; source ports and a concrete FourierHodgeLaws inhabitant remain deferred.",
+    "this_review": "Pinned source references relocated into Fefferman_adapter. Existing equivalence proof bodies are separated by direction; source ports and a concrete FourierHodgeLaws inhabitant remain deferred.",
     "named_audit_inheritance": "Only M01, M02, M05, M07 inherit the previously retained exact-target external named audit; all additional names require later external checks and theorem-level axiom audit.",
     "source_port_boundary": "Methlib source proof bodies are references, not target proof certificates. Toolchain changes from 4.33 to 4.34.0-rc1 and namespace/measure/operator adapters remain.",
     "snapshot_boundary": "Fourteen unmodified selected source files are stored as .lean.txt reference snapshots. Source imports are recorded. This is not a dependency-closed or imported Lean package; later integration extracts/ports the required harmonic-analysis proofs.",
@@ -1255,7 +1255,7 @@
     "The root agent owns final bundle staging, theorem TXT, repository edits and publication."
   ],
   "staging": {
-    "path": "Fefferman_B_adapter/Endpoints",
+    "path": "Fefferman_adapter/Endpoints",
     "integration": "HODGE_ADAPTER_IMPLEMENTATION_DEFERRED",
     "source_extension": ".lean.txt",
     "reference_package_dependency_closed": false,

@@ -20,4 +20,4 @@ lean_lib NSEMaxwellReverse where
 
 @[default_target]
 lean_lib NSEMaxwell where
-  srcDir := "Fefferman_B_adapter"
+  srcDir := "Fefferman_adapter"

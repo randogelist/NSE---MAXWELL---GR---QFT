@@ -19,7 +19,7 @@ ExactEquivalence = forall nu>0, forall c>0,
   FeffermanB(nu) iff MaxwellB(nu,c).
 
 The concrete definition remains in
-  ../Fefferman_B_adapter/NSEMaxwell/Classical.lean.
+  ../Fefferman_adapter/NSEMaxwell/Classical.lean.
 Its bytes are unchanged from the prior audited layout.
 
 DIRECTIONAL ENDPOINTS
@@ -35,7 +35,7 @@ analytic-law hypothesis remains explicit.
 
 PHYSICAL SOURCE MAP
 -------------------
-../Fefferman_B_adapter/NSEMaxwell/AnalyticContracts.lean
+../Fefferman_adapter/NSEMaxwell/AnalyticContracts.lean
   Shared concrete objects, assumptions, and data reconstruction helpers.
 =>/NSEMaxwellForward.lean
   momentum_zero_of_ns, maxwell_of_faraday, faraday_of_ns, maxwell_of_ns,
@@ -46,7 +46,7 @@ PHYSICAL SOURCE MAP
 =>/NSEMaxwellForward/Reduced.lean
 <=/NSEMaxwellReverse/Reduced.lean
   The respective four-Hodge-field implication wrappers.
-../Fefferman_B_adapter/NSEMaxwell/AnalyticBridge.lean
+../Fefferman_adapter/NSEMaxwell/AnalyticBridge.lean
   Compatibility assembly of the two directions.
 
 PRESERVED SCOPE
@@ -70,7 +70,7 @@ FourierHodgeLaws consists of:
 The complete mathematical B-tier derivation is
   FOURIER_HODGE_COMPOSITION_B_TIER.txt.
 No target-native Lean inhabitant is supplied. The copied endpoint sources
-in ../Fefferman_B_adapter/Endpoints remain references pending integration.
+in ../Fefferman_adapter/Endpoints remain references pending integration.
 
 EXTERNAL VALIDATION CONTRACT
 ----------------------------

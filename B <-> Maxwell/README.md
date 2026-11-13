@@ -15,7 +15,7 @@ These are the two direct child directories. The full derivation and integration 
 
 ## Shared adapter
 
-[Fefferman_B_adapter/](../Fefferman_B_adapter/) supplies the exact Lean statement, shared calculus, explicit analytic premises, and copied public endpoints.
+[Fefferman_adapter/](../Fefferman_adapter/) supplies the exact Lean statement, shared calculus, explicit analytic premises, and copied public endpoints.
 
 ```text
 AnalyticContracts
