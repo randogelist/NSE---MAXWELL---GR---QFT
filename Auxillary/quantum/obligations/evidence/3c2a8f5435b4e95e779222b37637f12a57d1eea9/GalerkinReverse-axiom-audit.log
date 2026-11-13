@@ -1,0 +1,75 @@
+QuantumAdapter.Obligations.infiniteTransport_eq_fullTransportCoefficients : ∀ (c : SingularClosure.TorusSobolev 0),
+  Eq.{1} (QuantumAdapter.Obligations.infiniteTransport ↑c) (SingularClosure.fullTransportCoefficients c)
+'QuantumAdapter.Obligations.infiniteTransport_eq_fullTransportCoefficients' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Obligations.gradient_contDiff_of_contDiff : ∀ (p : SingularClosure.Vec → ℝ),
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) p → ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) (SingularClosure.gradient p)
+'QuantumAdapter.Obligations.gradient_contDiff_of_contDiff' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Obligations.gradient_periodic_of_periodic : ∀ (p : SingularClosure.Vec → ℝ),
+  SingularClosure.SpatialPeriodic.{0} p → SingularClosure.SpatialPeriodic.{0} (SingularClosure.gradient p)
+'QuantumAdapter.Obligations.gradient_periodic_of_periodic' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Obligations.laplacian_contDiff_of_contDiff : ∀ (a : SingularClosure.Field),
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) a → ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) (SingularClosure.laplacian a)
+'QuantumAdapter.Obligations.laplacian_contDiff_of_contDiff' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Obligations.laplacian_periodic_of_periodic : ∀ (a : SingularClosure.Field),
+  SingularClosure.SpatialPeriodic.{0} a → SingularClosure.SpatialPeriodic.{0} (SingularClosure.laplacian a)
+'QuantumAdapter.Obligations.laplacian_periodic_of_periodic' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Obligations.spatialPeriodic_add_fields : ∀ {a b : SingularClosure.Field},
+  SingularClosure.SpatialPeriodic.{0} a →
+    SingularClosure.SpatialPeriodic.{0} b → SingularClosure.SpatialPeriodic.{0} (HAdd.hAdd.{0, 0, 0} a b)
+'QuantumAdapter.Obligations.spatialPeriodic_add_fields' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Obligations.timeTower_native_equation : ∀ (ν : ℝ) {d : ℕ → ℝ → SingularClosure.FourierCoeff},
+  QuantumAdapter.Obligations.FourierTimeTowerDerivative d →
+    QuantumAdapter.Obligations.FourierTimeTowerBounds d →
+      (∀ (n : ℕ) (t : ℝ),
+          LE.le.{0} 0 t → SingularClosure.SpectralReality (d n t) ∧ SingularClosure.SpectralSolenoidal (d n t)) →
+        ∀ (t : ℝ),
+          LE.le.{0} 0 t →
+            Eq.{1} (d 1 t) (QuantumAdapter.Obligations.nativeFourierRhs ν (d 0 t)) →
+              ∀ (x : SingularClosure.Vec),
+                Eq.{1}
+                  (HAdd.hAdd.{0, 0, 0}
+                    (HAdd.hAdd.{0, 0, 0}
+                      (SingularClosure.timeDerivative (fun r => SingularClosure.smoothFourierSynthesis (d 0 r)) t x)
+                      (SingularClosure.convection (SingularClosure.smoothFourierSynthesis (d 0 t)) x))
+                    (SingularClosure.gradient
+                      (QuantumAdapter.Obligations.physicalConvectionPressure
+                        (fun r => SingularClosure.smoothFourierSynthesis (d 0 r)) t)
+                      x))
+                  (HSMul.hSMul.{0, 0, 0} ν
+                    (SingularClosure.laplacian (SingularClosure.smoothFourierSynthesis (d 0 t)) x))
+'QuantumAdapter.Obligations.timeTower_native_equation' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.Obligations.timeTower_native_solution : ∀ (ν : ℝ) (a : SingularClosure.Field),
+  NSEMaxwell.Classical.Data a →
+    ∀ (d : ℕ → ℝ → SingularClosure.FourierCoeff),
+      QuantumAdapter.Obligations.FourierTimeTowerDerivative d →
+        QuantumAdapter.Obligations.FourierTimeTowerBounds d →
+          (∀ (n : ℕ) (t : ℝ),
+              LE.le.{0} 0 t → SingularClosure.SpectralReality (d n t) ∧ SingularClosure.SpectralSolenoidal (d n t)) →
+            Eq.{1} (d 0 0) (SingularClosure.datumFourierCoeff a) →
+              (∀ (t : ℝ), LE.le.{0} 0 t → Eq.{1} (d 1 t) (QuantumAdapter.Obligations.nativeFourierRhs ν (d 0 t))) →
+                NSEMaxwell.Classical.NSSolution ν a (fun t => SingularClosure.smoothFourierSynthesis (d 0 t))
+                  (QuantumAdapter.Obligations.physicalConvectionPressure fun t =>
+                    SingularClosure.smoothFourierSynthesis (d 0 t))
+'QuantumAdapter.Obligations.timeTower_native_solution' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Obligations.phaseFlow_compactness : ∀ {ν : ℝ},
+  LT.lt.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν) (a : SingularClosure.Field) (ha : NSEMaxwell.Classical.Data a),
+      (∀ (T : ℝ), LT.lt.{0} 0 T → QuantumAdapter.GalerkinBoundAt F a ha T) →
+        ∃ u p, NSEMaxwell.Classical.NSSolution ν a u p
+'QuantumAdapter.Obligations.phaseFlow_compactness' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]

@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "status": "PASS_STATIC_POLICY_AND_FAILURE_INJECTION",
+  "source_commit": "34b1fe1100f726d51955a7bf9ac5059d8069fb32",
+  "inputs": [
+    {
+      "path": "Auxillary/assembly/run_literature.py",
+      "sha256": "def0355b53bfcb57ef5b1ffa23ee999b1c186bdd9f57bc5420b85998f65c6261"
+    },
+    {
+      "path": "Auxillary/assembly/run_flow.py",
+      "sha256": "066271e75b318111b803c5c4f3067ca9a33c04be9ebe5721daa6f07e74f4ff2d"
+    },
+    {
+      "path": "Auxillary/assembly/literature-targets.json",
+      "sha256": "461afbc08bac15ae124068bde21ac4acda90c7e2a4bad8728e128a2150b623e4"
+    },
+    {
+      "path": ".github/workflows/classical-assembly.yml",
+      "sha256": "0fbd7ced8170306a841d682ec808eefc69e5f1ea16b57517be79535b37a4a90b"
+    },
+    {
+      "path": "Auxillary/scripts/verify_audit.py",
+      "sha256": "c9b3f83e86920a296c2ccb35325b49b7c2fa6fa8ed3c870cfbe10effb413868c"
+    }
+  ],
+  "workflow_order": [
+    "strict43",
+    "native169",
+    "compatibility5"
+  ],
+  "workflow_zero_based_step_indices": [
+    10,
+    12,
+    13
+  ],
+  "authorized_custom_axioms": [],
+  "target_count": 5,
+  "positive_case": "PASS_STANDARD_ONLY",
+  "negative_cases_rejected": 27,
+  "negative_cases": [
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.L1",
+      "axiom": "ClassicalMechanicsAssembly.Literature.L1",
+      "result": "REJECTED",
+      "reason": "Exact nonfoundational axiom mismatch for ClassicalMechanicsAssembly.Literature.L1: actual=['ClassicalMechanicsAssembly.Literature.L1']; expected=[]"
+    },
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.L1",
+      "axiom": "ClassicalMechanicsAssembly.Literature.L2",
+      "result": "REJECTED",
+      "reason": "Exact nonfoundational axiom mismatch for ClassicalMechanicsAssembly.Literature.L1: actual=['ClassicalMechanicsAssembly.Literature.L2']; expected=[]"
+    },
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.L1",
+      "axiom": "sorryAx",
+      "result": "REJECTED",
+      "reason": "Audit contains an admission or compiler error."
+    },
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.L1",
+      "axiom": "Unknown.admission",
+      "result": "REJECTED",
+      "reason": "Exact nonfoundational axiom mismatch for ClassicalMechanicsAssembly.Literature.L1: actual=['Unknown.admission']; expected=[]"
+    },
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.L2",
+      "axiom": "ClassicalMechanicsAssembly.Literature.L1",
+      "result": "REJECTED",
+      "reason": "Exact nonfoundational axiom mismatch for ClassicalMechanicsAssembly.Literature.L2: actual=['ClassicalMechanicsAssembly.Literature.L1']; expected=[]"
+    },
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.L2",
+      "axiom": "ClassicalMechanicsAssembly.Literature.L2",
+      "result": "REJECTED",
+      "reason": "Exact nonfoundational axiom mismatch for ClassicalMechanicsAssembly.Literature.L2: actual=['ClassicalMechanicsAssembly.Literature.L2']; expected=[]"
+    },
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.L2",
+      "axiom": "sorryAx",
+      "result": "REJECTED",
+      "reason": "Audit contains an admission or compiler error."
+    },
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.L2",
+      "axiom": "Unknown.admission",
+      "result": "REJECTED",
+      "reason": "Exact nonfoundational axiom mismatch for ClassicalMechanicsAssembly.Literature.L2: actual=['Unknown.admission']; expected=[]"
+    },
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.L2_native",
+      "axiom": "ClassicalMechanicsAssembly.Literature.L1",
+      "result": "REJECTED",
+      "reason": "Exact nonfoundational axiom mismatch for ClassicalMechanicsAssembly.Literature.L2_native: actual=['ClassicalMechanicsAssembly.Literature.L1']; expected=[]"
+    },
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.L2_native",
+      "axiom": "ClassicalMechanicsAssembly.Literature.L2",
+      "result": "REJECTED",
+      "reason": "Exact nonfoundational axiom mismatch for ClassicalMechanicsAssembly.Literature.L2_native: actual=['ClassicalMechanicsAssembly.Literature.L2']; expected=[]"
+    },
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.L2_native",
+      "axiom": "sorryAx",
+      "result": "REJECTED",
+      "reason": "Audit contains an admission or compiler error."
+    },
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.L2_native",
+      "axiom": "Unknown.admission",
+      "result": "REJECTED",
+      "reason": "Exact nonfoundational axiom mismatch for ClassicalMechanicsAssembly.Literature.L2_native: actual=['Unknown.admission']; expected=[]"
+    },
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2",
+      "axiom": "ClassicalMechanicsAssembly.Literature.L1",
+      "result": "REJECTED",
+      "reason": "Exact nonfoundational axiom mismatch for ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2: actual=['ClassicalMechanicsAssembly.Literature.L1']; expected=[]"
+    },
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2",
+      "axiom": "ClassicalMechanicsAssembly.Literature.L2",
+      "result": "REJECTED",
+      "reason": "Exact nonfoundational axiom mismatch for ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2: actual=['ClassicalMechanicsAssembly.Literature.L2']; expected=[]"
+    },
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2",
+      "axiom": "sorryAx",
+      "result": "REJECTED",
+      "reason": "Audit contains an admission or compiler error."
+    },
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2",
+      "axiom": "Unknown.admission",
+      "result": "REJECTED",
+      "reason": "Exact nonfoundational axiom mismatch for ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2: actual=['Unknown.admission']; expected=[]"
+    },
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1",
+      "axiom": "ClassicalMechanicsAssembly.Literature.L1",
+      "result": "REJECTED",
+      "reason": "Exact nonfoundational axiom mismatch for ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1: actual=['ClassicalMechanicsAssembly.Literature.L1']; expected=[]"
+    },
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1",
+      "axiom": "ClassicalMechanicsAssembly.Literature.L2",
+      "result": "REJECTED",
+      "reason": "Exact nonfoundational axiom mismatch for ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1: actual=['ClassicalMechanicsAssembly.Literature.L2']; expected=[]"
+    },
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1",
+      "axiom": "sorryAx",
+      "result": "REJECTED",
+      "reason": "Audit contains an admission or compiler error."
+    },
+    {
+      "kind": "injected_axiom",
+      "target": "ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1",
+      "axiom": "Unknown.admission",
+      "result": "REJECTED",
+      "reason": "Exact nonfoundational axiom mismatch for ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1: actual=['Unknown.admission']; expected=[]"
+    },
+    {
+      "kind": "mutated_policy",
+      "mutation": "authorize",
+      "result": "REJECTED",
+      "reason": "No custom axiom declarations are authorized; all five contracts must be native theorems."
+    },
+    {
+      "kind": "mutated_policy",
+      "mutation": "expected",
+      "result": "REJECTED",
+      "reason": "Exact axiom policy differs: ClassicalMechanicsAssembly.Literature.L1"
+    },
+    {
+      "kind": "mutated_policy",
+      "mutation": "kind",
+      "result": "REJECTED",
+      "reason": "Wrong declaration kind: ClassicalMechanicsAssembly.Literature.L1"
+    },
+    {
+      "kind": "mutated_policy",
+      "mutation": "omit",
+      "result": "REJECTED",
+      "reason": "Exactly five literature audit targets required."
+    },
+    {
+      "kind": "mutated_policy",
+      "mutation": "duplicate",
+      "result": "REJECTED",
+      "reason": "Exact ordered target declarations differ."
+    },
+    {
+      "kind": "mutated_output",
+      "mutation": "duplicate_axiom_record",
+      "result": "REJECTED",
+      "reason": "Expected one fresh axiom record: ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1"
+    },
+    {
+      "kind": "mutated_output",
+      "mutation": "missing_axiom_record",
+      "result": "REJECTED",
+      "reason": "Compiler axiom record set differs from the exact policy."
+    }
+  ],
+  "python_json_yaml_bash_syntax": "PASS",
+  "local_lean_executions": 0,
+  "scope": "Verifier and policy behavior only; this static certificate does not establish any Lean theorem."
+}

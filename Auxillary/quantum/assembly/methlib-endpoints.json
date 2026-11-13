@@ -1,0 +1,36 @@
+{
+  "source_commit": "1a0664fc219e6b4e2caf005384bd71b585ad0847",
+  "scope": "Vendored Methlib source used by the audited native assembly.",
+  "endpoints": [
+    {
+      "role": "C4",
+      "declaration": "SingularClosure.smooth_datum_weightedCoeff_sq_le",
+      "module": "SingularClosure.SmoothDatumSobolev",
+      "source": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/SmoothDatumSobolev.lean#L101"
+    },
+    {
+      "role": "C4,C5",
+      "declaration": "SingularClosure.summable_torusSobolevWeight_inv_four",
+      "module": "SingularClosure.LatticeSobolevSummability",
+      "source": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/LatticeSobolevSummability.lean#L66"
+    },
+    {
+      "role": "C4,C5",
+      "declaration": "SingularClosure.datumFourierCoeff_coordinateDerivative",
+      "module": "SingularClosure.InitialCutoffBounds",
+      "source": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialCutoffBounds.lean#L130"
+    },
+    {
+      "role": "native spatial realization",
+      "declaration": "SingularClosure.ALL_SOBOLEV_IMP_RAPID_SCALAR",
+      "module": "SingularClosure.SobolevSmoothRealization",
+      "source": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean#L81"
+    },
+    {
+      "role": "coefficient recovery",
+      "declaration": "SingularClosure.datumFourierCoeff_smoothFourierSynthesis",
+      "module": "SingularClosure.SobolevSmoothRealization",
+      "source": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean#L246"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+@ClassicalMechanicsAssembly.hasFDerivWithinAt_inverse_of_contDiffOn.{u_1,
+    u_2} : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup.{u_1} E] [inst_1 : NormedSpace.{0, u_1} ℝ E]
+  [CompleteSpace.{u_1} E] [inst_3 : NormedAddCommGroup.{u_2} F] [inst_4 : NormedSpace.{0, u_2} ℝ F] {s : Set.{u_1} E}
+  {t : Set.{u_2} F} {f : E → F} {g : F → E},
+  ContDiffOn.{0, u_1, u_2} ℝ (↑Top.top.{0}) f s →
+    ContinuousOn.{u_2, u_1} g t →
+      Set.MapsTo.{u_2, u_1} g t s →
+        (∀ (y : F), Membership.mem.{u_2, u_2} t y → Eq.{u_2 + 1} (f (g y)) y) →
+          (∀ (x : E),
+              Membership.mem.{u_1, u_1} s x →
+                ContinuousLinearMap.IsInvertible.{0, u_1, u_2} (fderivWithin.{0, u_1, u_2} ℝ f s x)) →
+            ∀ {y : F},
+              Membership.mem.{u_2, u_2} t y →
+                HasFDerivWithinAt.{0, u_2, u_1} g
+                  (ContinuousLinearMap.inverse.{0, u_1, u_2} (fderivWithin.{0, u_1, u_2} ℝ f s (g y))) t y
+'ClassicalMechanicsAssembly.hasFDerivWithinAt_inverse_of_contDiffOn' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.contDiffOn_inverse_of_contDiffOn.{u_1,
+    u_2} : ∀ {E : Type u_1} {F : Type u_2} [inst : NormedAddCommGroup.{u_1} E] [inst_1 : NormedSpace.{0, u_1} ℝ E]
+  [CompleteSpace.{u_1} E] [inst_3 : NormedAddCommGroup.{u_2} F] [inst_4 : NormedSpace.{0, u_2} ℝ F] {s : Set.{u_1} E}
+  {t : Set.{u_2} F} {f : E → F} {g : F → E},
+  UniqueDiffOn.{0, u_1} ℝ s →
+    UniqueDiffOn.{0, u_2} ℝ t →
+      ContDiffOn.{0, u_1, u_2} ℝ (↑Top.top.{0}) f s →
+        ContinuousOn.{u_2, u_1} g t →
+          Set.MapsTo.{u_2, u_1} g t s →
+            (∀ (y : F), Membership.mem.{u_2, u_2} t y → Eq.{u_2 + 1} (f (g y)) y) →
+              (∀ (x : E),
+                  Membership.mem.{u_1, u_1} s x →
+                    ContinuousLinearMap.IsInvertible.{0, u_1, u_2} (fderivWithin.{0, u_1, u_2} ℝ f s x)) →
+                ContDiffOn.{0, u_2, u_1} ℝ (↑Top.top.{0}) g t
+'ClassicalMechanicsAssembly.contDiffOn_inverse_of_contDiffOn' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+ClassicalMechanicsAssembly.spatial_fderiv_isInvertible_of_det_one : ∀ (v : NSEMaxwell.Classical.Field)
+  (a : NSEMaxwell.Classical.Vec),
+  Eq.{1} (Matrix.det.{0, 0} (ClassicalMechanics.materialGradientMatrix v a)) 1 →
+    ContinuousLinearMap.IsInvertible.{0, 0, 0} (fderiv.{0, 0, 0} ℝ v a)
+'ClassicalMechanicsAssembly.spatial_fderiv_isInvertible_of_det_one' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+ClassicalMechanicsAssembly.triangular_spacetime_isInvertible : ∀
+  (D :
+    ContinuousLinearMap.{0, 0, 0, 0} (RingHom.id.{0} ℝ) (Prod.{0, 0} ℝ NSEMaxwell.Classical.Vec)
+      NSEMaxwell.Classical.Vec)
+  (F : ContinuousLinearMap.{0, 0, 0, 0} (RingHom.id.{0} ℝ) NSEMaxwell.Classical.Vec NSEMaxwell.Classical.Vec),
+  ContinuousLinearMap.IsInvertible.{0, 0, 0} F →
+    (∀ (h : NSEMaxwell.Classical.Vec), Eq.{1} (D (Prod.mk.{0, 0} 0 h)) (F h)) →
+      ContinuousLinearMap.IsInvertible.{0, 0, 0}
+        (ContinuousLinearMap.prod.{0, 0, 0, 0} (ContinuousLinearMap.fst.{0, 0, 0} ℝ ℝ NSEMaxwell.Classical.Vec) D)
+'ClassicalMechanicsAssembly.triangular_spacetime_isInvertible' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowSpacetimeMap_fderivWithin_isInvertible : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {η : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T η →
+        (∀ (t : ℝ),
+            Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+              ∀ (a : NSEMaxwell.Classical.Vec),
+                Eq.{1} (Matrix.det.{0, 0} (ClassicalMechanics.deformationGradient η t a)) 1) →
+          ∀ (z : Prod.{0, 0} ℝ NSEMaxwell.Classical.Vec),
+            Membership.mem.{0, 0} (ClassicalMechanics.finiteSpacetime T) z →
+              ContinuousLinearMap.IsInvertible.{0, 0, 0}
+                (fderivWithin.{0, 0, 0} ℝ (ClassicalMechanicsAssembly.flowSpacetimeMap η)
+                  (ClassicalMechanics.finiteSpacetime T) z)
+'ClassicalMechanicsAssembly.flowSpacetimeMap_fderivWithin_isInvertible' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.inverse_flow_dist_le : ∀ {T : ℝ} {η ρ : NSEMaxwell.Classical.Velocity} {B C : NNReal},
+  (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → ∀ (a : NSEMaxwell.Classical.Vec), Eq.{1} (ρ t (η t a)) a) →
+    (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (η t (ρ t x)) x) →
+      (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → LipschitzWith.{0, 0} C (ρ t)) →
+        (∀ (t : ℝ),
+            Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+              ∀ (s : ℝ),
+                Membership.mem.{0, 0} (Set.Icc.{0} 0 T) s →
+                  ∀ (a : NSEMaxwell.Classical.Vec),
+                    LE.le.{0} (dist.{0} (η t a) (η s a)) (HMul.hMul.{0, 0, 0} (↑B) (dist.{0} t s))) →
+          ∀ {t s : ℝ},
+            Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+              Membership.mem.{0, 0} (Set.Icc.{0} 0 T) s →
+                ∀ (x y : NSEMaxwell.Classical.Vec),
+                  LE.le.{0} (dist.{0} (ρ t x) (ρ s y))
+                    (HMul.hMul.{0, 0, 0} (↑C)
+                      (HAdd.hAdd.{0, 0, 0} (dist.{0} x y) (HMul.hMul.{0, 0, 0} (↑B) (dist.{0} t s))))
+'ClassicalMechanicsAssembly.inverse_flow_dist_le' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.continuousOn_inverse_flow_of_estimate : ∀ {T : ℝ} {ρ : NSEMaxwell.Classical.Velocity}
+  {B C : NNReal},
+  (∀ (t : ℝ),
+      Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+        ∀ (s : ℝ),
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) s →
+            ∀ (x y : NSEMaxwell.Classical.Vec),
+              LE.le.{0} (dist.{0} (ρ t x) (ρ s y))
+                (HMul.hMul.{0, 0, 0} (↑C)
+                  (HAdd.hAdd.{0, 0, 0} (dist.{0} x y) (HMul.hMul.{0, 0, 0} (↑B) (dist.{0} t s))))) →
+    ContinuousOn.{0, 0} (fun z => ρ z.1 z.2) (ClassicalMechanics.finiteSpacetime T)
+'ClassicalMechanicsAssembly.continuousOn_inverse_flow_of_estimate' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.smoothVelocityOn_inverse_of_isInvertible : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {η ρ : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T η →
+        ContinuousOn.{0, 0} (fun z => ρ z.1 z.2) (ClassicalMechanics.finiteSpacetime T) →
+          (∀ (t : ℝ),
+              Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (η t (ρ t x)) x) →
+            (∀ (z : Prod.{0, 0} ℝ NSEMaxwell.Classical.Vec),
+                Membership.mem.{0, 0} (ClassicalMechanics.finiteSpacetime T) z →
+                  ContinuousLinearMap.IsInvertible.{0, 0, 0}
+                    (fderivWithin.{0, 0, 0} ℝ (ClassicalMechanicsAssembly.flowSpacetimeMap η)
+                      (ClassicalMechanics.finiteSpacetime T) z)) →
+              ClassicalMechanics.SmoothVelocityOn T ρ
+'ClassicalMechanicsAssembly.smoothVelocityOn_inverse_of_isInvertible' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.smoothVelocityOn_inverse : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {η ρ : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T η →
+        ContinuousOn.{0, 0} (fun z => ρ z.1 z.2) (ClassicalMechanics.finiteSpacetime T) →
+          (∀ (t : ℝ),
+              Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (η t (ρ t x)) x) →
+            (∀ (t : ℝ),
+                Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                  ∀ (a : NSEMaxwell.Classical.Vec),
+                    Eq.{1} (Matrix.det.{0, 0} (ClassicalMechanics.deformationGradient η t a)) 1) →
+              ClassicalMechanics.SmoothVelocityOn T ρ
+'ClassicalMechanicsAssembly.smoothVelocityOn_inverse' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.materialPathOn_of_smooth_inverse_data : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {η ρ : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T η →
+        ContinuousOn.{0, 0} (fun z => ρ z.1 z.2) (ClassicalMechanics.finiteSpacetime T) →
+          (∀ (t : ℝ),
+              Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → ∀ (a : NSEMaxwell.Classical.Vec), Eq.{1} (ρ t (η t a)) a) →
+            (∀ (t : ℝ),
+                Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (η t (ρ t x)) x) →
+              (∀ (t : ℝ),
+                  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                    ∀ (a : NSEMaxwell.Classical.Vec) (i : Fin 3),
+                      Eq.{1} (η t (HAdd.hAdd.{0, 0, 0} a (NSEMaxwell.Classical.unitVector i)))
+                        (HAdd.hAdd.{0, 0, 0} (η t a) (NSEMaxwell.Classical.unitVector i))) →
+                (Eq.{1} (η 0) fun a => a) →
+                  (∀ (t : ℝ),
+                      Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                        ∀ (a : NSEMaxwell.Classical.Vec),
+                          Eq.{1} (Matrix.det.{0, 0} (ClassicalMechanics.deformationGradient η t a)) 1) →
+                    ClassicalMechanics.MaterialPathOn T η ρ
+'ClassicalMechanicsAssembly.materialPathOn_of_smooth_inverse_data' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

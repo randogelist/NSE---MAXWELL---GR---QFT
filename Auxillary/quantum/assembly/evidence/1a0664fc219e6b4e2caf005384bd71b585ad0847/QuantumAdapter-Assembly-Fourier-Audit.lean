@@ -1,0 +1,125 @@
+import QuantumAdapter.Assembly.Fourier
+set_option pp.universes true
+set_option pp.fullNames true
+#check @QuantumAdapter.Assembly.sum_fullModes_eq_sum_coordinates
+#print axioms QuantumAdapter.Assembly.sum_fullModes_eq_sum_coordinates
+#check @QuantumAdapter.Assembly.phaseCoeff_mode
+#print axioms QuantumAdapter.Assembly.phaseCoeff_mode
+#check @QuantumAdapter.Assembly.energy0_eq_norm_sq
+#print axioms QuantumAdapter.Assembly.energy0_eq_norm_sq
+#check @QuantumAdapter.Assembly.weightedCoordinates_apply
+#print axioms QuantumAdapter.Assembly.weightedCoordinates_apply
+#check @QuantumAdapter.Assembly.continuous_weightedCoordinates
+#print axioms QuantumAdapter.Assembly.continuous_weightedCoordinates
+#check @QuantumAdapter.Assembly.weightedCoordinates_norm_sq
+#print axioms QuantumAdapter.Assembly.weightedCoordinates_norm_sq
+#check @QuantumAdapter.Assembly.sqrt_energy3_eq_norm
+#print axioms QuantumAdapter.Assembly.sqrt_energy3_eq_norm
+#check @QuantumAdapter.Assembly.continuous_energy3
+#print axioms QuantumAdapter.Assembly.continuous_energy3
+#check @QuantumAdapter.Assembly.continuous_sqrt_energy3
+#print axioms QuantumAdapter.Assembly.continuous_sqrt_energy3
+#check @QuantumAdapter.Assembly.sqrt_energy3_add_le
+#print axioms QuantumAdapter.Assembly.sqrt_energy3_add_le
+#check @QuantumAdapter.Assembly.sqrt_energy3_sub_le
+#print axioms QuantumAdapter.Assembly.sqrt_energy3_sub_le
+#check @QuantumAdapter.Assembly.sqrt_energy3_le_add
+#print axioms QuantumAdapter.Assembly.sqrt_energy3_le_add
+#check @QuantumAdapter.Assembly.abs_sqrt_energy3_sub_le
+#print axioms QuantumAdapter.Assembly.abs_sqrt_energy3_sub_le
+#check @QuantumAdapter.Assembly.cutoffLambda_nonneg
+#print axioms QuantumAdapter.Assembly.cutoffLambda_nonneg
+#check @QuantumAdapter.Assembly.cutoffWeight_pos
+#print axioms QuantumAdapter.Assembly.cutoffWeight_pos
+#check @QuantumAdapter.Assembly.laplaceSymbol_le_cutoffLambda
+#print axioms QuantumAdapter.Assembly.laplaceSymbol_le_cutoffLambda
+#check @QuantumAdapter.Assembly.one_le_h3Weight
+#print axioms QuantumAdapter.Assembly.one_le_h3Weight
+#check @QuantumAdapter.Assembly.h3Weight_le_cutoffWeight
+#print axioms QuantumAdapter.Assembly.h3Weight_le_cutoffWeight
+#check @QuantumAdapter.Assembly.energy0_le_energy3
+#print axioms QuantumAdapter.Assembly.energy0_le_energy3
+#check @QuantumAdapter.Assembly.energy3_le_cutoffWeight_mul_energy0
+#print axioms QuantumAdapter.Assembly.energy3_le_cutoffWeight_mul_energy0
+#check @QuantumAdapter.Assembly.dissipation_le_cutoffLambda_mul_energy0
+#print axioms QuantumAdapter.Assembly.dissipation_le_cutoffLambda_mul_energy0
+#check @QuantumAdapter.Assembly.cutoffSobolevFactor_sq
+#print axioms QuantumAdapter.Assembly.cutoffSobolevFactor_sq
+#check @QuantumAdapter.Assembly.energy3_le_cutoffSobolevFactor_sq_mul_norm_sq
+#print axioms QuantumAdapter.Assembly.energy3_le_cutoffSobolevFactor_sq_mul_norm_sq
+#check @QuantumAdapter.Assembly.norm_le_sqrt_energy3
+#print axioms QuantumAdapter.Assembly.norm_le_sqrt_energy3
+#check @QuantumAdapter.Assembly.sqrt_energy3_le_cutoffSobolevFactor_mul_norm
+#print axioms QuantumAdapter.Assembly.sqrt_energy3_le_cutoffSobolevFactor_mul_norm
+#check @QuantumAdapter.Assembly.fullModes_mono
+#print axioms QuantumAdapter.Assembly.fullModes_mono
+#check @QuantumAdapter.Assembly.initialEnergyDensity_nonneg
+#print axioms QuantumAdapter.Assembly.initialEnergyDensity_nonneg
+#check @QuantumAdapter.Assembly.initialPhaseData_energy3_eq_sum
+#print axioms QuantumAdapter.Assembly.initialPhaseData_energy3_eq_sum
+#check @QuantumAdapter.Assembly.initialPhaseData_energy3_mono
+#print axioms QuantumAdapter.Assembly.initialPhaseData_energy3_mono
+#check @QuantumAdapter.Assembly.integral_unitCube_fderiv_eq_zero
+#print axioms QuantumAdapter.Assembly.integral_unitCube_fderiv_eq_zero
+#check @QuantumAdapter.Assembly.datumFourierIntegrand_fderiv_coordinate
+#print axioms QuantumAdapter.Assembly.datumFourierIntegrand_fderiv_coordinate
+#check @QuantumAdapter.Assembly.datumFourierCoeff_coordinateDerivative
+#print axioms QuantumAdapter.Assembly.datumFourierCoeff_coordinateDerivative
+#check @QuantumAdapter.Assembly.h3Weight_eq_torusSobolevWeight_cube_sq
+#print axioms QuantumAdapter.Assembly.h3Weight_eq_torusSobolevWeight_cube_sq
+#check @QuantumAdapter.Assembly.h3Coeff_eq_sobolevWeightedCoeff_sq
+#print axioms QuantumAdapter.Assembly.h3Coeff_eq_sobolevWeightedCoeff_sq
+#check @QuantumAdapter.Assembly.initialProjectionMajorant_nonneg
+#print axioms QuantumAdapter.Assembly.initialProjectionMajorant_nonneg
+#check @QuantumAdapter.Assembly.initialEnergyDensity_le
+#print axioms QuantumAdapter.Assembly.initialEnergyDensity_le
+#check @QuantumAdapter.Assembly.initialPhaseData_energy3_le_majorant
+#print axioms QuantumAdapter.Assembly.initialPhaseData_energy3_le_majorant
+#check @QuantumAdapter.Assembly.initialProjectionBounds
+#print axioms QuantumAdapter.Assembly.initialProjectionBounds
+#check @QuantumAdapter.Assembly.synthesis_coordinateDerivative
+#print axioms QuantumAdapter.Assembly.synthesis_coordinateDerivative
+#check @QuantumAdapter.Assembly.derivativeSymbol_norm_le_torusSobolevWeight
+#print axioms QuantumAdapter.Assembly.derivativeSymbol_norm_le_torusSobolevWeight
+#check @QuantumAdapter.Assembly.derivative_weighted_sq_le_h3Coeff
+#print axioms QuantumAdapter.Assembly.derivative_weighted_sq_le_h3Coeff
+#check @QuantumAdapter.Assembly.finiteSynthesis_component_norm_le
+#print axioms QuantumAdapter.Assembly.finiteSynthesis_component_norm_le
+#check @QuantumAdapter.Assembly.derivative_component_sq_le
+#print axioms QuantumAdapter.Assembly.derivative_component_sq_le
+#check @QuantumAdapter.Assembly.gradientEmbeddingConstant_pos
+#print axioms QuantumAdapter.Assembly.gradientEmbeddingConstant_pos
+#check @QuantumAdapter.Assembly.gradientEmbeddingConstant_sq
+#print axioms QuantumAdapter.Assembly.gradientEmbeddingConstant_sq
+#check @QuantumAdapter.Assembly.gradientSquare_nonneg
+#print axioms QuantumAdapter.Assembly.gradientSquare_nonneg
+#check @QuantumAdapter.Assembly.gradientSquare_le_energy3
+#print axioms QuantumAdapter.Assembly.gradientSquare_le_energy3
+#check @QuantumAdapter.Assembly.sqrt_gradientSquare_le
+#print axioms QuantumAdapter.Assembly.sqrt_gradientSquare_le
+#check @QuantumAdapter.Assembly.gradientObservable_range_bddAbove
+#print axioms QuantumAdapter.Assembly.gradientObservable_range_bddAbove
+#check @QuantumAdapter.Assembly.gradientObservable_nonneg
+#print axioms QuantumAdapter.Assembly.gradientObservable_nonneg
+#check @QuantumAdapter.Assembly.gradientObservable_le_sqrt_energy3
+#print axioms QuantumAdapter.Assembly.gradientObservable_le_sqrt_energy3
+#check @QuantumAdapter.Assembly.phaseCoeff_add
+#print axioms QuantumAdapter.Assembly.phaseCoeff_add
+#check @QuantumAdapter.Assembly.phaseCoeff_smul
+#print axioms QuantumAdapter.Assembly.phaseCoeff_smul
+#check @QuantumAdapter.Assembly.gradientCoordinates_apply
+#print axioms QuantumAdapter.Assembly.gradientCoordinates_apply
+#check @QuantumAdapter.Assembly.gradientCoordinates_norm_sq
+#print axioms QuantumAdapter.Assembly.gradientCoordinates_norm_sq
+#check @QuantumAdapter.Assembly.sqrt_gradientSquare_eq_norm
+#print axioms QuantumAdapter.Assembly.sqrt_gradientSquare_eq_norm
+#check @QuantumAdapter.Assembly.gradientObservable_le_add
+#print axioms QuantumAdapter.Assembly.gradientObservable_le_add
+#check @QuantumAdapter.Assembly.abs_gradientObservable_sub_le
+#print axioms QuantumAdapter.Assembly.abs_gradientObservable_sub_le
+#check @QuantumAdapter.Assembly.lipschitz_gradientObservable
+#print axioms QuantumAdapter.Assembly.lipschitz_gradientObservable
+#check @QuantumAdapter.Assembly.continuous_gradientObservable
+#print axioms QuantumAdapter.Assembly.continuous_gradientObservable
+#check @QuantumAdapter.Assembly.intervalIntegrable_gradientObservable
+#print axioms QuantumAdapter.Assembly.intervalIntegrable_gradientObservable

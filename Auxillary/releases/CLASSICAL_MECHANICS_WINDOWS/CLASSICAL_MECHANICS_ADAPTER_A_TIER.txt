@@ -1,0 +1,70 @@
+CLASSICAL_MECHANICS_ADAPTER
+MODE = A_TIER_DERIVATION
+STATUS = A_TIER; MARKER = !!!!; SCOPE = EXACT_LOCAL_CAUCHY_ROOT
+BASE_BRANCH = codex/fefferman-b-maxwell
+BASE_COMMIT = 1de664f2ef5ddc11caef25ac2274278b4171ab6b
+BRANCH = codex/classical-mechanics-adapter
+
+EXACT_ROOT = ClassicalMechanics.CLASSICAL_MECHANICS_ADAPTER
+EXACT_TYPE = GlobalExactEquivalence ∧ FiniteExactEquivalence
+
+GLOBAL_COMPONENT:
+  forall nu>0, FeffermanB nu iff NewtonianB nu.
+  Same actual fields, datum, arbitrary velocity mean, periodic pressure
+  with unrestricted scalar gauge, joint smoothness through t=0.
+
+FINITE_COMPONENT:
+  forall nu>0, T>0, a, Data a, u,p,
+  NSSolutionOn nu a T u p iff NewtonianSolutionOn nu a T u p.
+  Actual derivWithin on Icc 0 T; joint closed-slab ContDiffOn;
+  pressure mean zero; identical fields, datum and temporal interval.
+
+NEWTONIAN_ENDPOINT = literal local Cauchy balance:
+  materialAcceleration = tensorDivergence (newtonianStress nu u p).
+CONSTITUTION = sigma_ij=-p delta_ij+2nu strain_ij.
+DERIVED_IDENTITY = div sigma=-grad p+nu Delta u+nu grad(div u).
+INCOMPRESSIBILITY = div u=0 removes the final term by actual differentiation.
+ANALYTIC_ADMISSIONS_FIRST_ADAPTER = none.
+
+SEQUENTIAL_IMPLICATIONS:
+  NSSolution -> NewtonianSolution;
+  NewtonianSolution -> NSSolution;
+  FeffermanB <-> NewtonianB;
+  NSSolutionOn <-> NewtonianSolutionOn;
+  NewtonianB -> MaxwellB, under explicit FourierHodgeLaws;
+  MaxwellB -> NewtonianB, under explicit FourierHodgeLaws.
+
+AUDIT_TARGETS = 62 exact named theorems, including the preserved first 25.
+AUDIT_SOURCE = Classical_Mechanics_adapter/ClassicalMechanics/Audit.lean.
+ALLOWED_FOUNDATIONAL_AXIOMS = propext, Classical.choice, Quot.sound.
+FORBIDDEN = sorryAx, added axioms, unproved opaque bodies, unsafe proof construction.
+COMPILER = leanprover/lean4:v4.34.0-rc1; external native Linux.
+MATHLIB = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
+CACHE_POLICY = retain and verify compiler, dependency and project caches;
+               fresh named theorem audit even after full object reuse.
+LOCAL_LEAN_EXECUTIONS = 0.
+EXTERNAL_COMPILER_EVIDENCE = PASS; source 699ae6cac2d9ccf57d0781b64b8e7804a5f827ea; run 43370108226.
+THEOREM_LEVEL_AXIOM_EVIDENCE = PASS_STANDARD_ONLY; 62/62.
+A_TIER = ESTABLISHED_FOR_EXACT_NAMED_THEOREMS.
+FORMAL_CLOSURE = ESTABLISHED_FOR_CLASSICAL_MECHANICS_ADAPTER.
+UNCONDITIONAL_CLOSURE = ESTABLISHED_FOR_LOCAL_CAUCHY_EQUIVALENCE_ONLY.
+
+REFERENCE_ROOT_SCOPE_GUARD:
+  The full B-tier E=N ~=M ~=D and E~=V target additionally includes
+  moving-region momentum balance, actual material diffeomorphisms,
+  volume-preserving flow, transformed operators and constrained variations.
+  Those exact adapter bodies remain pending. A native local-Cauchy
+  theorem does not promote the larger reference theorem.
+
+MAXWELL_SCOPE_GUARD:
+  FourierHodgeLaws remains a named analytic premise of the Maxwell
+  composition. Its axiom audit does not supply an inhabitant.
+
+STRUCTURAL_REGISTER = Auxillary/classical-mechanics-proof-spine.json.
+COMPLETE_B_TIER_REFERENCE = Auxillary/derivations/NSE_CLASSICAL_MECHANICS_EQUIVALENCE_B_TIER.txt.
+CURRENT_STATUS_RECORD = Auxillary/classical-mechanics-status.json.
+
+CURRENT_BRANCH = codex/classical-mechanics-material.
+CURRENT_BASE_COMMIT = 645980350328a0638fe04b3a265b9a63d2b9b4db.
+CURRENT_EVIDENCE = Auxillary/evidence/classical-linux-43370108226/.
+MATERIAL_EQUATION_ROOT = CONDITIONAL_FORMAL_CLOSURE, separate scoped report.

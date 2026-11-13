@@ -1,0 +1,17 @@
+import QuantumAdapter.Assembly.CanonicalFlow
+set_option pp.universes true
+set_option pp.fullNames true
+#check @QuantumAdapter.Assembly.chosenCompleteOrbit_zero
+#print axioms QuantumAdapter.Assembly.chosenCompleteOrbit_zero
+#check @QuantumAdapter.Assembly.chosenCompleteOrbit_derivative
+#print axioms QuantumAdapter.Assembly.chosenCompleteOrbit_derivative
+#check @QuantumAdapter.Assembly.chosenCompleteOrbit_add
+#print axioms QuantumAdapter.Assembly.chosenCompleteOrbit_add
+#check @QuantumAdapter.Assembly.nonempty_phaseFlow_of_completeOrbits
+#print axioms QuantumAdapter.Assembly.nonempty_phaseFlow_of_completeOrbits
+#check @QuantumAdapter.Assembly.phaseFlow_eq_constructed
+#print axioms QuantumAdapter.Assembly.phaseFlow_eq_constructed
+#check @QuantumAdapter.Assembly.nonempty_phaseFlow_of_divergence
+#print axioms QuantumAdapter.Assembly.nonempty_phaseFlow_of_divergence
+#check @QuantumAdapter.Assembly.phaseFlow_eq_canonical
+#print axioms QuantumAdapter.Assembly.phaseFlow_eq_canonical

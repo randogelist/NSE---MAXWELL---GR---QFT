@@ -1,0 +1,3 @@
+QuantumAdapter.Obligations.native_drift_divergence : ∀ (ν : ℝ) (N : ℕ) (q : QuantumAdapter.Phase N),
+  Eq.{1} (QuantumAdapter.driftDivergence ν N q) (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N))
+'QuantumAdapter.Obligations.native_drift_divergence' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]

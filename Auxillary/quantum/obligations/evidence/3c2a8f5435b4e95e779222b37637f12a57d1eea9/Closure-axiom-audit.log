@@ -1,0 +1,17 @@
+@QuantumAdapter.Obligations.closedPhaseFlow : {ν : ℝ} → LT.lt.{0} 0 ν → QuantumAdapter.PhaseFlow ν
+'QuantumAdapter.Obligations.closedPhaseFlow' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Obligations.native_GalerkinAnalyticLaws : ∀ {ν : ℝ},
+  LT.lt.{0} 0 ν → ∀ (F : QuantumAdapter.PhaseFlow ν), QuantumAdapter.GalerkinAnalyticLaws F
+'QuantumAdapter.Obligations.native_GalerkinAnalyticLaws' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Obligations.closedPhaseFlow_transportLaws : ∀ {ν : ℝ} (hν : LT.lt.{0} 0 ν),
+  QuantumAdapter.PhaseTransportLaws (QuantumAdapter.Obligations.closedPhaseFlow hν)
+'QuantumAdapter.Obligations.closedPhaseFlow_transportLaws' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@QuantumAdapter.Obligations.NSE_B_IFF_CANONICAL_QUANTUM : ∀ {ν : ℝ} (hν : LT.lt.{0} 0 ν),
+  NSEMaxwell.Classical.FeffermanB ν ↔ QuantumAdapter.QREG (QuantumAdapter.Obligations.closedPhaseFlow hν)
+'QuantumAdapter.Obligations.NSE_B_IFF_CANONICAL_QUANTUM' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

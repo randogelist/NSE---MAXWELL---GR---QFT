@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "status": "PASS_NATIVE_COMPATIBILITY_AND_EXACT_LEGACY_TYPES",
+  "source_commit": "34b1fe1100f726d51955a7bf9ac5059d8069fb32",
+  "baseline_source_commit": "ff3c809f241ff14c7b9556b858bb423e1f9630d0",
+  "external_run_id": 43401581626,
+  "external_artifact_id": 14025577567,
+  "external_artifact_sha256": "6aa19eb4bc04edb133950e8bf754efc37948c730a2655fab29c71430c9dbfabd",
+  "source_match_certificate_sha256": "70e716cc845b1eb4c96bd6fd3ce71c270472fc213136120c0d504b42a1b697ef",
+  "baseline_native_root_certificate_sha256": "cb51379eef2168b23e1b4139784aa790da1a2acc84e243d17d84fc7113112b51",
+  "strict_assembly_declarations": 43,
+  "native_flow_declarations": 169,
+  "compatibility_theorems": 5,
+  "total_fresh_standard_only_records": 217,
+  "authorized_custom_axioms": [],
+  "compatibility_source_input_count": 377,
+  "compatibility_import_closure_count": 48,
+  "compatibility_source_inputs_match": true,
+  "compatibility_current_import_closure_match": true,
+  "exact_L1_native_matches_original_L1": true,
+  "legacy_root_types_and_bodies_unchanged": true,
+  "native_root_imports_literature_module": false,
+  "compatibility_axiom_records": [
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.L1",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "foundational_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "nonfoundational_axioms": [],
+      "expected_nonfoundational_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.L2",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "foundational_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "nonfoundational_axioms": [],
+      "expected_nonfoundational_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.L2_native",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "foundational_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "nonfoundational_axioms": [],
+      "expected_nonfoundational_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "foundational_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "nonfoundational_axioms": [],
+      "expected_nonfoundational_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "foundational_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "nonfoundational_axioms": [],
+      "expected_nonfoundational_axioms": []
+    }
+  ],
+  "preserved_elaborated_types": [
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.L1",
+      "status": "EXACT_ELABORATED_TYPE_UNCHANGED",
+      "normalized_type_sha256": "198141251a964897e24bba1db0a1c7525311b06d45cd771deb53547f9f0dc766",
+      "normalized_type": "\u2200 {T : \u211d}, LT.lt.{0} 0 T \u2192 \u2200 {u : NSEMaxwell.Classical.Velocity}, ClassicalMechanics.SmoothVelocityOn T u \u2192 (\u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) \u2192 (\u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 \u2200 (x : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.divergence (u t) x) 0) \u2192 \u2203 \u03b7 \u03c1, ClassicalMechanics.MaterialPathOn T \u03b7 \u03c1 \u2227 \u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 \u2200 (a : NSEMaxwell.Classical.Vec), Eq.{1} (ClassicalMechanics.materialVelocity T \u03b7 t a) (u t (\u03b7 t a))"
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.L2",
+      "status": "EXACT_ELABORATED_TYPE_UNCHANGED",
+      "normalized_type_sha256": "cb1af0ae460d64cb33b24d377d3424bbe5126e02aeeefdb41e0fc37cb155fbef",
+      "normalized_type": "\u2200 {T : \u211d} {u \u03b7 \u03c1 : NSEMaxwell.Classical.Velocity}, ClassicalMechanics.SmoothVelocityOn T u \u2192 ClassicalMechanics.MaterialPathOn T \u03b7 \u03c1 \u2192 (\u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 \u2200 (a : NSEMaxwell.Classical.Vec), Eq.{1} (ClassicalMechanics.materialVelocity T \u03b7 t a) (u t (\u03b7 t a))) \u2192 \u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 \u2200 (a : NSEMaxwell.Classical.Vec), Eq.{1} (ClassicalMechanics.materialDiffusion T \u03b7 t a) (NSEMaxwell.Classical.laplacian (u t) (\u03b7 t a))"
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.L2_native",
+      "status": "EXACT_ELABORATED_TYPE_UNCHANGED",
+      "normalized_type_sha256": "cb1af0ae460d64cb33b24d377d3424bbe5126e02aeeefdb41e0fc37cb155fbef",
+      "normalized_type": "\u2200 {T : \u211d} {u \u03b7 \u03c1 : NSEMaxwell.Classical.Velocity}, ClassicalMechanics.SmoothVelocityOn T u \u2192 ClassicalMechanics.MaterialPathOn T \u03b7 \u03c1 \u2192 (\u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 \u2200 (a : NSEMaxwell.Classical.Vec), Eq.{1} (ClassicalMechanics.materialVelocity T \u03b7 t a) (u t (\u03b7 t a))) \u2192 \u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 \u2200 (a : NSEMaxwell.Classical.Vec), Eq.{1} (ClassicalMechanics.materialDiffusion T \u03b7 t a) (NSEMaxwell.Classical.laplacian (u t) (\u03b7 t a))"
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2",
+      "status": "EXACT_ELABORATED_TYPE_UNCHANGED",
+      "normalized_type_sha256": "b4dbcbf547b53c8c87894633a43fd70db7c0c4eb38229ae80705e9157fa55c88",
+      "normalized_type": "\u2200 {\u03bd T : \u211d}, LT.lt.{0} 0 T \u2192 \u2200 {u : NSEMaxwell.Classical.Velocity} {p : NSEMaxwell.Classical.Pressure}, ClassicalMechanics.SmoothVelocityOn T u \u2192 ClassicalMechanics.SmoothPressureOn T p \u2192 (\u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) \u2192 (\u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 \u2200 (x : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.divergence (u t) x) 0) \u2192 \u2203 \u03b7 \u03c1, ClassicalMechanics.MaterialPathOn T \u03b7 \u03c1 \u2227 (\u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 \u2200 (a : NSEMaxwell.Classical.Vec), Eq.{1} (ClassicalMechanics.materialVelocity T \u03b7 t a) (u t (\u03b7 t a))) \u2227 ((\u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 \u2200 (x : NSEMaxwell.Classical.Vec), Eq.{1} (HAdd.hAdd.{0, 0, 0} (ClassicalMechanics.finiteMaterialAcceleration T u t x) (NSEMaxwell.Classical.gradient (p t) x)) (HSMul.hSMul.{0, 0, 0} \u03bd (NSEMaxwell.Classical.laplacian (u t) x))) \u2194 ClassicalMechanics.MaterialEquationOn \u03bd T \u03b7 fun t a => p t (\u03b7 t a))"
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1",
+      "status": "EXACT_ELABORATED_TYPE_UNCHANGED",
+      "normalized_type_sha256": "b4dbcbf547b53c8c87894633a43fd70db7c0c4eb38229ae80705e9157fa55c88",
+      "normalized_type": "\u2200 {\u03bd T : \u211d}, LT.lt.{0} 0 T \u2192 \u2200 {u : NSEMaxwell.Classical.Velocity} {p : NSEMaxwell.Classical.Pressure}, ClassicalMechanics.SmoothVelocityOn T u \u2192 ClassicalMechanics.SmoothPressureOn T p \u2192 (\u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) \u2192 (\u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 \u2200 (x : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.divergence (u t) x) 0) \u2192 \u2203 \u03b7 \u03c1, ClassicalMechanics.MaterialPathOn T \u03b7 \u03c1 \u2227 (\u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 \u2200 (a : NSEMaxwell.Classical.Vec), Eq.{1} (ClassicalMechanics.materialVelocity T \u03b7 t a) (u t (\u03b7 t a))) \u2227 ((\u2200 (t : \u211d), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t \u2192 \u2200 (x : NSEMaxwell.Classical.Vec), Eq.{1} (HAdd.hAdd.{0, 0, 0} (ClassicalMechanics.finiteMaterialAcceleration T u t x) (NSEMaxwell.Classical.gradient (p t) x)) (HSMul.hSMul.{0, 0, 0} \u03bd (NSEMaxwell.Classical.laplacian (u t) x))) \u2194 ClassicalMechanics.MaterialEquationOn \u03bd T \u03b7 fun t a => p t (\u03b7 t a))"
+    }
+  ],
+  "local_lean_executions": 0,
+  "scope": "Finite positive slab; supplied smooth spatially periodic divergence-free velocity; constructed normalized material path and equation equivalence with literal pressure pullback. Original explicit premises retained. Arbitrary-data NSE existence and full solution-set bijection are not asserted."
+}

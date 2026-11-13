@@ -1,0 +1,37 @@
+⚠ [8713/8744] Replayed NSEMaxwell.Kinematics
+warning: Fefferman_adapter/NSEMaxwell/Kinematics.lean:92:19: This simp argument is unused:
+  coordinateDerivative
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [laplacian]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8714/8744] Replayed NSEMaxwell.CurlCurl
+warning: Fefferman_adapter/NSEMaxwell/CurlCurl.lean:94:13: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sub_apply` to `sub_apply x`).
+warning: Fefferman_adapter/NSEMaxwell/CurlCurl.lean:188:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+✖ [8715/8744] Building ClassicalMechanics.Stress
+error: target is out-of-date and needs to be rebuilt
+✖ [8721/8744] Building NSEMaxwell.Constitutive
+error: target is out-of-date and needs to be rebuilt
+✖ [8723/8744] Building NSEMaxwell.Lamb
+error: target is out-of-date and needs to be rebuilt
+✖ [8724/8744] Building NSEMaxwell.Pressure
+error: target is out-of-date and needs to be rebuilt
+✖ [8726/8744] Building NSEMaxwell.ConstantPaths
+error: target is out-of-date and needs to be rebuilt
+✖ [8731/8744] Building NSEMaxwell.Spacetime
+error: target is out-of-date and needs to be rebuilt
+✖ [8734/8744] Building NSEMaxwell.DominatedWithin
+error: target is out-of-date and needs to be rebuilt
+Some required targets logged failures:
+- ClassicalMechanics.Stress
+- NSEMaxwell.Constitutive
+- NSEMaxwell.Lamb
+- NSEMaxwell.Pressure
+- NSEMaxwell.ConstantPaths
+- NSEMaxwell.Spacetime
+- NSEMaxwell.DominatedWithin

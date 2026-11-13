@@ -1,0 +1,194 @@
+L1_FLOW_REALIZATION
+===================
+
+STATUS = A_TIER
+CLOSURE = UNCONDITIONAL_CLOSURE_WITHIN_STATED_FINITE_SLAB_SCOPE
+MARKER = !!!!
+EXACT_ROOT = ClassicalMechanicsAssembly.L1_native
+COMPATIBILITY_L1 = ClassicalMechanicsAssembly.Literature.L1; NATIVE_THEOREM
+SOURCE = ASSEMBLY/ClassicalMechanicsAssembly/FlowRealization.lean
+EXTERNAL_SOURCE = 34b1fe1100f726d51955a7bf9ac5059d8069fb32
+EXTERNAL_RUN = 43401581626
+EXTERNAL_RUN_URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43401581626
+EXTERNAL_ARTIFACT = 14025577567
+ARTIFACT_SHA256 = 6aa19eb4bc04edb133950e8bf754efc37948c730a2655fab29c71430c9dbfabd
+EXTERNAL_PLATFORM = cached native Linux / Ubuntu 24.04
+LEAN = leanprover/lean4:v4.34.0-rc1
+MATHLIB = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+METHLIB = e9cf90726b8544a268469ebc8fa6634e9c713e07
+APPROVED_FOUNDATIONS = propext, Classical.choice, Quot.sound
+CUSTOM_AXIOMS = NONE
+UNRESOLVED_LITERATURE_INPUTS = NONE
+L1_AXIOM_REMOVAL = COMPLETE; EXACT_ORIGINAL_TYPE_PRESERVED
+L2 = NATIVE_THEOREM; EXACT_ORIGINAL_TYPE_PRESERVED
+STRICT_ASSEMBLY = 43/43 PASS_STANDARD_ONLY
+NATIVE_FLOW = 18/18 modules; 169/169 declarations PASS_STANDARD_ONLY
+COMPATIBILITY = 5/5 PASS_STANDARD_ONLY; ORIGINAL_TYPES_UNCHANGED
+LEGACY_ROOT_PROOF_BODIES = UNCHANGED; FLOW_ODE_CONJUNCT_PRESERVED
+TOTAL_FRESH_THEOREM_AUDITS = 217/217 PASS_STANDARD_ONLY
+LOCAL_LEAN_EXECUTIONS = 0
+MATHLIB_USAGE_INDEX = Auxillary/assembly/L1_NATIVE_MATHLIB_ENDPOINTS.txt
+MATHLIB_USAGE_SCOPE = 21 selected Mathlib + 1 direct Methlib entry; exact call sites and pinned hashes.
+RETAINED_EVIDENCE = Auxillary/evidence/native-compat-linux-43401581626
+TYPE_CERTIFICATE = Auxillary/evidence/native-compat-linux-43401581626/native-compatibility-type-certificate.json
+TYPE_CERTIFICATE_SHA256 = 71ee30ff1eab4c8cb870a5bdaa0e37752c36f3caf2c566b9ba867bd81a773ece
+
+EXACT SCOPE
+-----------
+I := [0,T]; E := EuclideanSpace R (Fin 3); S := I x E.
+
+T > 0;
+u : R -> E -> E;
+ContDiffOn R infinity (fun (t,x) => u(t,x)) S;
+forall t in I, SpatialPeriodic (u t);
+forall t in I, forall x, divergence (u t) x = 0
+
+imply
+
+exists eta rho : R -> E -> E,
+  MaterialPathOn T eta rho
+  and forall t in I, forall a,
+    derivWithin (fun s => eta(s,a)) I t = u(t,eta(t,a)).
+
+MaterialPathOn fields:
+  joint smoothness of eta and rho on S;
+  rho(t,eta(t,a))=a;
+  eta(t,rho(t,x))=x;
+  eta(t,a+e_i)=eta(t,a)+e_i;
+  eta(0,a)=a;
+  det(D_a eta(t,a))=1.
+
+Both temporal endpoints are included. No time-length smallness, spatial-mean
+restriction, pressure, viscosity, NSE existence, or off-slab extension premise.
+
+NATIVE PROOF SPINE
+------------------
+FlowBounds:
+  coordinate periodicity -> integer lattice periodicity -> compact cell bounds
+  -> global spatial Lipschitz constant.
+
+FlowTrajectories:
+  actual whole-slab Picard existence -> boundary-inclusive ODE uniqueness
+  -> cocycle, inverse laws, lattice equivariance, Gronwall estimates.
+
+FlowBanach + FlowSpatialJets:
+  actual spatial derivative tower -> uniform quadratic remainders
+  -> C-infinity actual superposition map on C(I,E).
+
+FlowVolterra:
+  actual integral operator L_A;
+  ||L_A^n|| <= (K*T)^n/n!;
+  sum_n L_A^n = (1-L_A)^(-1).
+
+FlowPathSolutions + FlowImplicit:
+  actual path equation Gamma(a)=const(a)+V(N(Gamma(a)));
+  actual integral uniqueness;
+  partial derivative of the exact residual = 1-L_A;
+  Banach implicit function theorem -> Gamma in C-infinity(E,C(I,E)).
+
+FlowPathJets + FlowJetIntegral:
+  evaluation of actual Banach label derivatives;
+  fixed bounded linear maps commute with iterated derivatives;
+  actual tensor-valued differentiated time-integral equations.
+
+FlowSmooth + FlowJetTime + FlowJointJets + FlowJoint:
+  continuous actual label jets;
+  actual finite ordered-partition composition formula;
+  uniform time remainder;
+  simultaneous finite-order induction -> joint C-infinity on S.
+
+FlowJacobian + FlowVariational:
+  actual mixed derivatives -> F'=D_xu(t,eta)F;
+  polynomial determinant derivative -> J'=trace(D_xu)J=0;
+  J(0)=1 -> J=1, without prior invertibility.
+
+FlowInverse + FlowConstruction:
+  backward stability and time estimates -> joint inverse continuity;
+  J=1 -> invertible triangular spacetime derivative;
+  within-set inverse calculus -> joint inverse smoothness;
+  assemble all seven MaterialPathOn fields.
+
+FlowRealization:
+  exact L1_native;
+  native Eulerian/material equivalence via the existing native diffusion chain.
+
+MATHLIB ENTRYPOINTS USED
+-----------------------
+IsCompact.exists_bound_of_continuousOn
+lipschitzWith_of_nnnorm_fderiv_le
+IsPicardLindelof.exists_eq_forall_mem_Icc_hasDerivWithinAt₀
+ODE_solution_unique_of_mem_Icc_left
+ODE_solution_unique_of_mem_Icc_right
+dist_le_of_trajectories_ODE_of_mem
+Real.summable_pow_div_factorial
+Summable.one_sub_mul_tsum_pow
+Summable.tsum_pow_mul_one_sub
+ContinuousLinearMap.IsInvertible.of_inverse
+ContDiffAt.contDiffAt_implicitFunction
+ContDiffAt.eventually_apply_implicitFunction
+ContinuousLinearMap.iteratedFDeriv_comp_left
+ContinuousLinearMap.intervalIntegral_comp_comm
+IsBoundedLinearMap.contDiff
+MultilinearMap.mkContinuousLinear_norm_le
+iteratedFDeriv_comp
+contDiffOn_succ_iff_hasFDerivWithinAt_of_uniqueDiffOn
+contDiffOn_infty
+ContDiffWithinAt.isSymmSndFDerivWithinAt
+HasFDerivWithinAt.of_local_left_inverse
+
+METHLIB ENTRYPOINT USED
+----------------------
+SingularClosure.spatialPeriodic_integerShift
+
+VERIFICATION CONTRACT
+---------------------
+Auxillary/run_flow.sh
+Auxillary/assembly/run_flow.py
+Auxillary/assembly/flow-targets.json
+
+Every registered declaration receives a fresh #check and #print axioms.
+Independent modules retain their individual audit results if another module
+fails. Dependents of a failed module are explicitly BLOCKED.
+
+Prepared source is not a kernel proof. Only matching external compilation
+and exact theorem-level standard-foundation-only audits promote a target.
+Partial module audits do not discharge L1.
+
+EXACT_NATIVE_EVIDENCE
+{
+  "source_commit": "34b1fe1100f726d51955a7bf9ac5059d8069fb32",
+  "external_run_id": 43401581626,
+  "external_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43401581626",
+  "external_artifact_id": 14025577567,
+  "artifact_sha256": "6aa19eb4bc04edb133950e8bf754efc37948c730a2655fab29c71430c9dbfabd",
+  "report_directory": "Auxillary/evidence/native-compat-linux-43401581626/flow/FlowRealization",
+  "audit_summary_sha256": "81f361c5bc85b9e0879b5f2be6c2209decdbca77072bd8a0a3e94b7c35911456",
+  "source_manifest_sha256": "e168ab16a0709eab67f44f62d868d098679b143af3efdf2223b6085026ebec9b",
+  "import_closure_sha256": "658eb04fed096e4a6506ccc07aa285d58d12494101a60afd42b954d3aa215c11",
+  "native_module_count": 46,
+  "exact_roots": [
+    "ClassicalMechanicsAssembly.L1_native",
+    "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE"
+  ],
+  "status": "PASS_STANDARD_ONLY",
+  "type_preservation_certificate": "Auxillary/evidence/native-compat-linux-43401581626/native-compatibility-type-certificate.json",
+  "type_preservation_certificate_sha256": "71ee30ff1eab4c8cb870a5bdaa0e37752c36f3caf2c566b9ba867bd81a773ece"
+}
+
+EXACT_COMPATIBILITY_EVIDENCE
+{
+  "source_commit": "34b1fe1100f726d51955a7bf9ac5059d8069fb32",
+  "external_run_id": 43401581626,
+  "external_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43401581626",
+  "external_artifact_id": 14025577567,
+  "artifact_sha256": "6aa19eb4bc04edb133950e8bf754efc37948c730a2655fab29c71430c9dbfabd",
+  "retained_evidence": "Auxillary/evidence/native-compat-linux-43401581626",
+  "report_directory": "Auxillary/evidence/native-compat-linux-43401581626/literature",
+  "audit_summary_sha256": "79633bd6d5d8f980ec946bfa1a6615aa00341f3d07d29a94dd4bfedced9059e7",
+  "source_manifest_sha256": "bec154f73f0422530f80d3bf6f913602a446bc3ced26a532edff6685c1d590bb",
+  "type_preservation_certificate": "Auxillary/evidence/native-compat-linux-43401581626/native-compatibility-type-certificate.json",
+  "type_preservation_certificate_sha256": "71ee30ff1eab4c8cb870a5bdaa0e37752c36f3caf2c566b9ba867bd81a773ece",
+  "status": "PASS_STANDARD_ONLY",
+  "theorem_count": 5,
+  "exact_original_contracts_preserved": true
+}

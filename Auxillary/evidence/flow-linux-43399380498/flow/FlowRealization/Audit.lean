@@ -1,0 +1,10 @@
+import ClassicalMechanicsAssembly.FlowRealization
+
+set_option pp.universes true
+
+#check @ClassicalMechanicsAssembly.jointFlowRegularity_of_smooth_periodic
+#print axioms ClassicalMechanicsAssembly.jointFlowRegularity_of_smooth_periodic
+#check @ClassicalMechanicsAssembly.L1_native
+#print axioms ClassicalMechanicsAssembly.L1_native
+#check @ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE
+#print axioms ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE

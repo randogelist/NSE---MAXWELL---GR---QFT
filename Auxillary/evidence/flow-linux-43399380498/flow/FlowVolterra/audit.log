@@ -1,0 +1,90 @@
+@ClassicalMechanicsAssembly.flowPathExtend_continuous.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [NormedSpace.{0, u_1} ℝ E] [CompleteSpace.{u_1} E] {T : ℝ} (hT : LE.le.{0} 0 T)
+  (γ : ContinuousMap.{0, u_1} (↑(Set.Icc.{0} 0 T)) E),
+  Continuous.{0, u_1} (ClassicalMechanicsAssembly.flowPathExtend.{u_1} hT γ)
+'ClassicalMechanicsAssembly.flowPathExtend_continuous' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathExtend_of_mem.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [NormedSpace.{0, u_1} ℝ E] [CompleteSpace.{u_1} E] {T : ℝ} (hT : LE.le.{0} 0 T)
+  (γ : ContinuousMap.{0, u_1} (↑(Set.Icc.{0} 0 T)) E) (t : ℝ) (ht : Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t),
+  Eq.{u_1 + 1} (ClassicalMechanicsAssembly.flowPathExtend.{u_1} hT γ t) (γ (Subtype.mk.{1} t ht))
+'ClassicalMechanicsAssembly.flowPathExtend_of_mem' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathPrimitiveMap_apply.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} (hT : LE.le.{0} 0 T)
+  (γ : ContinuousMap.{0, u_1} (↑(Set.Icc.{0} 0 T)) E) (t : ↑(Set.Icc.{0} 0 T)),
+  Eq.{u_1 + 1} ((ClassicalMechanicsAssembly.flowPathPrimitiveMap.{u_1} hT γ) t)
+    (∫ (r : ℝ) in 0..↑t, ClassicalMechanicsAssembly.flowPathExtend.{u_1} hT γ r)
+'ClassicalMechanicsAssembly.flowPathPrimitiveMap_apply' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathPrimitiveLinear_bound.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} (hT : LE.le.{0} 0 T)
+  (γ : ContinuousMap.{0, u_1} (↑(Set.Icc.{0} 0 T)) E),
+  LE.le.{0} (norm.{u_1} ((ClassicalMechanicsAssembly.flowPathPrimitiveLinear.{u_1} hT) γ))
+    (HMul.hMul.{0, 0, 0} T (norm.{u_1} γ))
+'ClassicalMechanicsAssembly.flowPathPrimitiveLinear_bound' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathPrimitive_apply.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} (hT : LE.le.{0} 0 T)
+  (γ : ContinuousMap.{0, u_1} (↑(Set.Icc.{0} 0 T)) E) (t : ↑(Set.Icc.{0} 0 T)),
+  Eq.{u_1 + 1} (((ClassicalMechanicsAssembly.flowPathPrimitive.{u_1} hT) γ) t)
+    (∫ (r : ℝ) in 0..↑t, ClassicalMechanicsAssembly.flowPathExtend.{u_1} hT γ r)
+'ClassicalMechanicsAssembly.flowPathPrimitive_apply' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowPathPrimitive_norm_le.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} (hT : LE.le.{0} 0 T),
+  LE.le.{0} (norm.{u_1} (ClassicalMechanicsAssembly.flowPathPrimitive.{u_1} hT)) T
+'ClassicalMechanicsAssembly.flowPathPrimitive_norm_le' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowVolterra_apply.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} (hT : LE.le.{0} 0 T)
+  (A : ContinuousMap.{0, u_1} (↑(Set.Icc.{0} 0 T)) (ContinuousLinearMap.{0, 0, u_1, u_1} (RingHom.id.{0} ℝ) E E))
+  (γ : ContinuousMap.{0, u_1} (↑(Set.Icc.{0} 0 T)) E) (t : ↑(Set.Icc.{0} 0 T)),
+  Eq.{u_1 + 1} (((ClassicalMechanicsAssembly.flowVolterra.{u_1} hT A) γ) t)
+    (∫ (r : ℝ) in 0..↑t, (A (Set.projIcc.{0} 0 T hT r)) (γ (Set.projIcc.{0} 0 T hT r)))
+'ClassicalMechanicsAssembly.flowVolterra_apply' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowVolterra_pow_apply_bound.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} (hT : LE.le.{0} 0 T)
+  (A : ContinuousMap.{0, u_1} (↑(Set.Icc.{0} 0 T)) (ContinuousLinearMap.{0, 0, u_1, u_1} (RingHom.id.{0} ℝ) E E))
+  (K : NNReal),
+  (∀ (t : ↑(Set.Icc.{0} 0 T)), LE.le.{0} (norm.{u_1} (A t)) ↑K) →
+    ∀ (γ : ContinuousMap.{0, u_1} (↑(Set.Icc.{0} 0 T)) E) (n : ℕ) (t : ↑(Set.Icc.{0} 0 T)),
+      LE.le.{0} (norm.{u_1} (((HPow.hPow.{u_1, 0, u_1} (ClassicalMechanicsAssembly.flowVolterra.{u_1} hT A) n) γ) t))
+        (HMul.hMul.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (HMul.hMul.{0, 0, 0} ↑K ↑t) n) ↑n.factorial)
+          (norm.{u_1} γ))
+'ClassicalMechanicsAssembly.flowVolterra_pow_apply_bound' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flowVolterra_pow_norm_bound.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ} (hT : LE.le.{0} 0 T)
+  (A : ContinuousMap.{0, u_1} (↑(Set.Icc.{0} 0 T)) (ContinuousLinearMap.{0, 0, u_1, u_1} (RingHom.id.{0} ℝ) E E))
+  (K : NNReal),
+  (∀ (t : ↑(Set.Icc.{0} 0 T)), LE.le.{0} (norm.{u_1} (A t)) ↑K) →
+    ∀ (n : ℕ),
+      LE.le.{0} (norm.{u_1} (HPow.hPow.{u_1, 0, u_1} (ClassicalMechanicsAssembly.flowVolterra.{u_1} hT A) n))
+        (HDiv.hDiv.{0, 0, 0} (HPow.hPow.{0, 0, 0} (HMul.hMul.{0, 0, 0} (↑K) T) n) ↑n.factorial)
+'ClassicalMechanicsAssembly.flowVolterra_pow_norm_bound' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.one_sub_flowVolterra_isInvertible.{u_1} : ∀ {E : Type u_1}
+  [inst : NormedAddCommGroup.{u_1} E] [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ}
+  (hT : LE.le.{0} 0 T)
+  (A : ContinuousMap.{0, u_1} (↑(Set.Icc.{0} 0 T)) (ContinuousLinearMap.{0, 0, u_1, u_1} (RingHom.id.{0} ℝ) E E))
+  (K : NNReal),
+  (∀ (t : ↑(Set.Icc.{0} 0 T)), LE.le.{0} (norm.{u_1} (A t)) ↑K) →
+    ContinuousLinearMap.IsInvertible.{0, u_1, u_1}
+      (HSub.hSub.{u_1, u_1, u_1} 1 (ClassicalMechanicsAssembly.flowVolterra.{u_1} hT A))
+'ClassicalMechanicsAssembly.one_sub_flowVolterra_isInvertible' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.one_sub_flowVolterra_isInvertible_of_continuous_coefficient.{u_1} : ∀ {E : Type u_1}
+  [inst : NormedAddCommGroup.{u_1} E] [inst_1 : NormedSpace.{0, u_1} ℝ E] [inst_2 : CompleteSpace.{u_1} E] {T : ℝ}
+  (hT : LE.le.{0} 0 T)
+  (A : ContinuousMap.{0, u_1} (↑(Set.Icc.{0} 0 T)) (ContinuousLinearMap.{0, 0, u_1, u_1} (RingHom.id.{0} ℝ) E E)),
+  ContinuousLinearMap.IsInvertible.{0, u_1, u_1}
+    (HSub.hSub.{u_1, u_1, u_1} 1 (ClassicalMechanicsAssembly.flowVolterra.{u_1} hT A))
+'ClassicalMechanicsAssembly.one_sub_flowVolterra_isInvertible_of_continuous_coefficient' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

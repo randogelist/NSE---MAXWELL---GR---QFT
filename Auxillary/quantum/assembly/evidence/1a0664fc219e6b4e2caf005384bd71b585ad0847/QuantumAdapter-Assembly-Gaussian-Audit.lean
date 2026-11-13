@@ -1,0 +1,41 @@
+import QuantumAdapter.Assembly.Gaussian
+set_option pp.universes true
+set_option pp.fullNames true
+#check @QuantumAdapter.phaseVolume_eq_volume
+#print axioms QuantumAdapter.phaseVolume_eq_volume
+#check @QuantumAdapter.canonicalPacket_continuous
+#print axioms QuantumAdapter.canonicalPacket_continuous
+#check @QuantumAdapter.canonicalPacket_bornDensity
+#print axioms QuantumAdapter.canonicalPacket_bornDensity
+#check @QuantumAdapter.gaussianAmplitude_sq
+#print axioms QuantumAdapter.gaussianAmplitude_sq
+#check @QuantumAdapter.canonicalGaussian_integral
+#print axioms QuantumAdapter.canonicalGaussian_integral
+#check @QuantumAdapter.canonicalPacket_normalized
+#print axioms QuantumAdapter.canonicalPacket_normalized
+#check @QuantumAdapter.canonicalPacket_density_integrable
+#print axioms QuantumAdapter.canonicalPacket_density_integrable
+#check @QuantumAdapter.canonicalPacket_memLp
+#print axioms QuantumAdapter.canonicalPacket_memLp
+#check @QuantumAdapter.canonicalPacket_waveAdmissible
+#print axioms QuantumAdapter.canonicalPacket_waveAdmissible
+#check @QuantumAdapter.canonicalPacket_norm_toL2
+#print axioms QuantumAdapter.canonicalPacket_norm_toL2
+#check @QuantumAdapter.phaseGaussian_moment_formula
+#print axioms QuantumAdapter.phaseGaussian_moment_formula
+#check @QuantumAdapter.phaseGaussian_moment_integrable
+#print axioms QuantumAdapter.phaseGaussian_moment_integrable
+#check @QuantumAdapter.phaseGaussian_second_moment
+#print axioms QuantumAdapter.phaseGaussian_second_moment
+#check @QuantumAdapter.phaseGaussian_fourth_moment
+#print axioms QuantumAdapter.phaseGaussian_fourth_moment
+#check @QuantumAdapter.canonicalPacket_centered_integrand
+#print axioms QuantumAdapter.canonicalPacket_centered_integrand
+#check @QuantumAdapter.canonicalPacket_centered_moment
+#print axioms QuantumAdapter.canonicalPacket_centered_moment
+#check @QuantumAdapter.canonicalPacket_centered_moment_integrable
+#print axioms QuantumAdapter.canonicalPacket_centered_moment_integrable
+#check @QuantumAdapter.canonicalPacket_second_moment
+#print axioms QuantumAdapter.canonicalPacket_second_moment
+#check @QuantumAdapter.canonicalPacket_fourth_moment
+#print axioms QuantumAdapter.canonicalPacket_fourth_moment

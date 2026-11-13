@@ -1,0 +1,39 @@
+@ClassicalMechanicsAssembly.flow_multilinearPath_continuous_evaluation.{u_1} : ∀ {T : ℝ} {X : Type u_1}
+  [inst : TopologicalSpace.{u_1} X] (r : ℕ)
+  (L : X → NSEMaxwell.Classical.Vec [×r]→L[ℝ] ContinuousMap.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec),
+  Continuous.{u_1, 0} L →
+    Continuous.{u_1, 0} fun z =>
+      ContinuousLinearMap.compContinuousMultilinearMap.{0, 0, 0, 0, 0} (ContinuousMap.evalCLM.{0, 0, 0} ℝ z.1) (L z.2)
+'ClassicalMechanicsAssembly.flow_multilinearPath_continuous_evaluation' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.evaluatedFlowJet : {T : ℝ} →
+  (NSEMaxwell.Classical.Vec → ContinuousMap.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec) →
+    (r : ℕ) → ↑(Set.Icc.{0} 0 T) → NSEMaxwell.Classical.Vec → ClassicalMechanicsAssembly.FlowJet r
+'ClassicalMechanicsAssembly.evaluatedFlowJet' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.evaluatedFlowJet_continuous : ∀ {T : ℝ}
+  {Γ : NSEMaxwell.Classical.Vec → ContinuousMap.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) Γ →
+    ∀ (r : ℕ), Continuous.{0, 0} fun z => ClassicalMechanicsAssembly.evaluatedFlowJet Γ r z.1 z.2
+'ClassicalMechanicsAssembly.evaluatedFlowJet_continuous' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.evaluatedFlowJet_hasFDerivAt : ∀ {T : ℝ}
+  {Γ : NSEMaxwell.Classical.Vec → ContinuousMap.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec},
+  ContDiff.{0, 0, 0} ℝ (↑Top.top.{0}) Γ →
+    ∀ (r : ℕ) (t : ↑(Set.Icc.{0} 0 T)) (a : NSEMaxwell.Classical.Vec),
+      HasFDerivAt.{0, 0, 0} (ClassicalMechanicsAssembly.evaluatedFlowJet Γ r t)
+        (ContinuousMultilinearMap.curryLeft.{0, 0, 0}
+          (ClassicalMechanicsAssembly.evaluatedFlowJet Γ (HAdd.hAdd.{0, 0, 0} r 1) t a))
+        a
+'ClassicalMechanicsAssembly.evaluatedFlowJet_hasFDerivAt' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.evaluatedFlowJet_zero : ∀ {T : ℝ}
+  (Γ : NSEMaxwell.Classical.Vec → ContinuousMap.{0, 0} (↑(Set.Icc.{0} 0 T)) NSEMaxwell.Classical.Vec)
+  (t : ↑(Set.Icc.{0} 0 T)) (a : NSEMaxwell.Classical.Vec),
+  Eq.{1}
+    ((continuousMultilinearCurryFin0.{0, 0, 0} ℝ NSEMaxwell.Classical.Vec NSEMaxwell.Classical.Vec)
+      (ClassicalMechanicsAssembly.evaluatedFlowJet Γ 0 t a))
+    ((Γ a) t)
+'ClassicalMechanicsAssembly.evaluatedFlowJet_zero' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]

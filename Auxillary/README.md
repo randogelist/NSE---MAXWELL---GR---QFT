@@ -9,7 +9,7 @@
 | [scripts/run.ps1](scripts/run.ps1) | Pinned dependency verification, cached compilation, source manifests |
 | [scripts/verify_audit.py](scripts/verify_audit.py) | Exact named axioms, compiler provenance, and source-hash verification |
 | [scripts/isolate_maxwell_endpoint.py](scripts/isolate_maxwell_endpoint.py) | Independent Fefferman/Maxwell package isolation and source verification |
-| [audit-targets.txt](audit-targets.txt) | 236 exact integrated audit targets |
+| [audit-targets.txt](audit-targets.txt) | 400 exact integrated audit targets |
 | [cache-targets.txt](cache-targets.txt) | Pinned Mathlib cache target list |
 | [formalization-status.json](formalization-status.json) | Exact theorem scope, explicit premises, external certification |
 | [CI_CACHE_AUDIT.txt](CI_CACHE_AUDIT.txt) | Cache design and validation history |
@@ -21,18 +21,34 @@
 bash Auxillary/run.sh
 ```
 
-The independent [Maxwell package](../Maxwell_Endpoint/) contains its own native runner. CI additionally compiles an isolated copy containing only that package and the pinned mathematical dependencies.
+The independent [Fefferman package](../Fefferman_adapter/) and [Maxwell package](../Maxwell_Endpoint/) contain native runners. CI compiles each isolated package from its contained source closure with pinned dependencies and fresh theorem audits.
 
 ```text
 COMPILER = LEAN_4.34.0-rc1_NATIVE_LINUX
-INTEGRATED_AUDIT_TARGETS = 236
-ISOLATED_FEFFERMAN_AUDIT_TARGETS = 236
+INTEGRATED_AUDIT_TARGETS = 400
+ISOLATED_FEFFERMAN_AUDIT_TARGETS = 400
 ISOLATED_MAXWELL_AUDIT_TARGETS = 62
 NATIVE_MAXWELL_THEOREMS = 23
-CURRENT_VALIDATION = PENDING_NATIVE_SOURCE_PACKAGE_AUDITS
+CURRENT_VALIDATION = PASS_THREE_SCOPES
+EXTERNAL_RUN = 43373061238
+CERTIFIED_SOURCE = c4c7bcdca6e652905107bb1a3102ed50d94c2e6b
+CANONICAL_ROOT = NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_UNCONDITIONAL
+CURRENT_FORMAL_STATUS = UNCONDITIONAL_CLOSURE
 LOCAL_LEAN_EXECUTIONS = 0
-HODGE_LEAN_INHABITANT = NOT_SUPPLIED
+HODGE_LEAN_INHABITANT = NSEMaxwell.HodgeProof.fourierHodgeLaws_inhabitant
+HODGE_SOURCE_BYTE_IDENTITY = 19/19
+HODGE_THEOREM_AUDITS = 163
+NEW_CANONICAL_WRAPPER_AUDITS = 1
+ARBITRARY_DATA_GLOBAL_EXISTENCE = OPEN
 ```
+
+## Current integration certificate
+
+[Run 43373061238](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43373061238), source `c4c7bcdca6e652905107bb1a3102ed50d94c2e6b`: 400/400 integrated, 400/400 isolated Fefferman, and 62/62 isolated Maxwell fresh audits passed with only `propext`, `Classical.choice`, and `Quot.sound`. [Matching evidence](../Auxillary/evidence/linux-43373061238) records source hashes, native compiler provenance, package isolation, and named axiom results.
+
+The root type is `NSEMaxwell.Classical.ExactEquivalence`, with no analytic-law premise. The 19 Hodge source files match Methlib `f927f1e31196f0be71b2581dc85f6e3fd19e0746` byte-for-byte. Their 163 theorem audits and the one canonical wrapper audit extend the prior 236-target inventory to 400. Arbitrary-data global existence for either side remains open.
+
+Compiler, dependency, compressed Mathlib, and project caches are retained. Exact pins and ordinary Lake transitive traces govern reuse; audit results are regenerated. Historical evidence below remains unchanged and applies only to its original runs and source commits.
 
 ## Prior auxiliary-layout certificate
 

@@ -1,0 +1,76 @@
+@ClassicalMechanicsAssembly.material_path_hasDerivWithinAt : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u η ρ : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.MaterialPathOn T η ρ →
+        (∀ (t : ℝ),
+            Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+              ∀ (a : NSEMaxwell.Classical.Vec), Eq.{1} (ClassicalMechanics.materialVelocity T η t a) (u t (η t a))) →
+          ∀ {t : ℝ},
+            Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+              ∀ (a : NSEMaxwell.Classical.Vec),
+                HasDerivWithinAt.{0, 0} (fun s => η s a) (u t (η t a)) (Set.Icc.{0} 0 T) t
+'ClassicalMechanicsAssembly.material_path_hasDerivWithinAt' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.material_flows_eq_on_subslab : ∀ {R T S : ℝ},
+  LT.lt.{0} 0 R →
+    LE.le.{0} R T →
+      LE.le.{0} R S →
+        ∀ {u η ρ θ σ : NSEMaxwell.Classical.Velocity},
+          ClassicalMechanics.SmoothVelocityOn R u →
+            (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 R) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+              ClassicalMechanics.MaterialPathOn T η ρ →
+                ClassicalMechanics.MaterialPathOn S θ σ →
+                  (∀ (t : ℝ),
+                      Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                        ∀ (a : NSEMaxwell.Classical.Vec),
+                          Eq.{1} (ClassicalMechanics.materialVelocity T η t a) (u t (η t a))) →
+                    (∀ (t : ℝ),
+                        Membership.mem.{0, 0} (Set.Icc.{0} 0 S) t →
+                          ∀ (a : NSEMaxwell.Classical.Vec),
+                            Eq.{1} (ClassicalMechanics.materialVelocity S θ t a) (u t (θ t a))) →
+                      ∀ (t : ℝ),
+                        Membership.mem.{0, 0} (Set.Icc.{0} 0 R) t →
+                          ∀ (a : NSEMaxwell.Classical.Vec), Eq.{1} (η t a) (θ t a)
+'ClassicalMechanicsAssembly.material_flows_eq_on_subslab' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.material_inverses_eq_on_subslab : ∀ {R T S : ℝ},
+  LE.le.{0} R T →
+    LE.le.{0} R S →
+      ∀ {η ρ θ σ : NSEMaxwell.Classical.Velocity},
+        ClassicalMechanics.MaterialPathOn T η ρ →
+          ClassicalMechanics.MaterialPathOn S θ σ →
+            (∀ (t : ℝ),
+                Membership.mem.{0, 0} (Set.Icc.{0} 0 R) t → ∀ (a : NSEMaxwell.Classical.Vec), Eq.{1} (η t a) (θ t a)) →
+              ∀ (t : ℝ),
+                Membership.mem.{0, 0} (Set.Icc.{0} 0 R) t → ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (ρ t x) (σ t x)
+'ClassicalMechanicsAssembly.material_inverses_eq_on_subslab' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.material_paths_coherent_on_overlap : ∀ {T S : ℝ},
+  LT.lt.{0} 0 T →
+    LT.lt.{0} 0 S →
+      ∀ {u η ρ θ σ : NSEMaxwell.Classical.Velocity},
+        ClassicalMechanics.SmoothVelocityOn (min.{0} T S) u →
+          (∀ (t : ℝ),
+              Membership.mem.{0, 0} (Set.Icc.{0} 0 (min.{0} T S)) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+            ClassicalMechanics.MaterialPathOn T η ρ →
+              ClassicalMechanics.MaterialPathOn S θ σ →
+                (∀ (t : ℝ),
+                    Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                      ∀ (a : NSEMaxwell.Classical.Vec),
+                        Eq.{1} (ClassicalMechanics.materialVelocity T η t a) (u t (η t a))) →
+                  (∀ (t : ℝ),
+                      Membership.mem.{0, 0} (Set.Icc.{0} 0 S) t →
+                        ∀ (a : NSEMaxwell.Classical.Vec),
+                          Eq.{1} (ClassicalMechanics.materialVelocity S θ t a) (u t (θ t a))) →
+                    (∀ (t : ℝ),
+                        Membership.mem.{0, 0} (Set.Icc.{0} 0 (min.{0} T S)) t →
+                          ∀ (a : NSEMaxwell.Classical.Vec), Eq.{1} (η t a) (θ t a)) ∧
+                      ∀ (t : ℝ),
+                        Membership.mem.{0, 0} (Set.Icc.{0} 0 (min.{0} T S)) t →
+                          ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (ρ t x) (σ t x)
+'ClassicalMechanicsAssembly.material_paths_coherent_on_overlap' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

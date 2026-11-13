@@ -1,0 +1,15 @@
+import QuantumAdapter.Assembly
+set_option pp.universes true
+set_option pp.fullNames true
+#check @QuantumAdapter.Assembly.native_initial_packet_triangle
+#print axioms QuantumAdapter.Assembly.native_initial_packet_triangle
+#check @QuantumAdapter.Assembly.transportedPacket_waveAdmissible_of_jacobian
+#print axioms QuantumAdapter.Assembly.transportedPacket_waveAdmissible_of_jacobian
+#check @QuantumAdapter.Assembly.exact_quantum_root_of_scalar_primitives
+#print axioms QuantumAdapter.Assembly.exact_quantum_root_of_scalar_primitives
+#check @QuantumAdapter.Assembly.exact_quantum_root_with_transport
+#print axioms QuantumAdapter.Assembly.exact_quantum_root_with_transport
+#check @QuantumAdapter.Assembly.exact_quantum_root_of_native_dynamics
+#print axioms QuantumAdapter.Assembly.exact_quantum_root_of_native_dynamics
+#check @QuantumAdapter.Assembly.exact_quantum_root_for_canonical_flow
+#print axioms QuantumAdapter.Assembly.exact_quantum_root_for_canonical_flow

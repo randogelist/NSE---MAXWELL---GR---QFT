@@ -1,0 +1,283 @@
+[
+  {
+    "module": "QuantumAdapter.Assembly.Flow",
+    "path": "Quantum_adapter/QuantumAdapter/Assembly/Flow.lean",
+    "audit_targets": [
+      "QuantumAdapter.Assembly.contDiff_phaseCoeff",
+      "QuantumAdapter.Assembly.contDiff_fullTransport",
+      "QuantumAdapter.Assembly.contDiff_lerayTransport",
+      "QuantumAdapter.Assembly.contDiff_rawRhs",
+      "QuantumAdapter.Assembly.contDiff_drift",
+      "QuantumAdapter.Assembly.exists_local_drift_solution",
+      "QuantumAdapter.Assembly.drift_locally_lipschitz",
+      "QuantumAdapter.Assembly.drift_solutions_eventuallyEq",
+      "QuantumAdapter.Assembly.drift_solutions_unique",
+      "QuantumAdapter.Assembly.phaseFlow_map_unique",
+      "QuantumAdapter.Assembly.phaseFlow_unique",
+      "QuantumAdapter.Assembly.phaseFlow_zero",
+      "QuantumAdapter.Assembly.phaseFlow_energy0_hasDerivAt",
+      "QuantumAdapter.Assembly.phaseFlow_energy0_antitone",
+      "QuantumAdapter.Assembly.laplaceSymbol_le_finiteLaplaceTrace",
+      "QuantumAdapter.Assembly.dissipation_le_finiteLaplaceTrace_mul_energy0",
+      "QuantumAdapter.Assembly.phaseFlow_energy0_le_initial",
+      "QuantumAdapter.Assembly.phaseFlow_weighted_energy0_monotone",
+      "QuantumAdapter.Assembly.phaseFlow_energy0_backward_bound"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Assembly.Fourier",
+    "path": "Quantum_adapter/QuantumAdapter/Assembly/Fourier.lean",
+    "audit_targets": [
+      "QuantumAdapter.Assembly.sum_fullModes_eq_sum_coordinates",
+      "QuantumAdapter.Assembly.phaseCoeff_mode",
+      "QuantumAdapter.Assembly.energy0_eq_norm_sq",
+      "QuantumAdapter.Assembly.weightedCoordinates_apply",
+      "QuantumAdapter.Assembly.continuous_weightedCoordinates",
+      "QuantumAdapter.Assembly.weightedCoordinates_norm_sq",
+      "QuantumAdapter.Assembly.sqrt_energy3_eq_norm",
+      "QuantumAdapter.Assembly.continuous_energy3",
+      "QuantumAdapter.Assembly.continuous_sqrt_energy3",
+      "QuantumAdapter.Assembly.sqrt_energy3_add_le",
+      "QuantumAdapter.Assembly.sqrt_energy3_sub_le",
+      "QuantumAdapter.Assembly.sqrt_energy3_le_add",
+      "QuantumAdapter.Assembly.abs_sqrt_energy3_sub_le",
+      "QuantumAdapter.Assembly.cutoffLambda_nonneg",
+      "QuantumAdapter.Assembly.cutoffWeight_pos",
+      "QuantumAdapter.Assembly.laplaceSymbol_le_cutoffLambda",
+      "QuantumAdapter.Assembly.one_le_h3Weight",
+      "QuantumAdapter.Assembly.h3Weight_le_cutoffWeight",
+      "QuantumAdapter.Assembly.energy0_le_energy3",
+      "QuantumAdapter.Assembly.energy3_le_cutoffWeight_mul_energy0",
+      "QuantumAdapter.Assembly.dissipation_le_cutoffLambda_mul_energy0",
+      "QuantumAdapter.Assembly.cutoffSobolevFactor_sq",
+      "QuantumAdapter.Assembly.energy3_le_cutoffSobolevFactor_sq_mul_norm_sq",
+      "QuantumAdapter.Assembly.norm_le_sqrt_energy3",
+      "QuantumAdapter.Assembly.sqrt_energy3_le_cutoffSobolevFactor_mul_norm",
+      "QuantumAdapter.Assembly.fullModes_mono",
+      "QuantumAdapter.Assembly.initialEnergyDensity_nonneg",
+      "QuantumAdapter.Assembly.initialPhaseData_energy3_eq_sum",
+      "QuantumAdapter.Assembly.initialPhaseData_energy3_mono",
+      "QuantumAdapter.Assembly.integral_unitCube_fderiv_eq_zero",
+      "QuantumAdapter.Assembly.datumFourierIntegrand_fderiv_coordinate",
+      "QuantumAdapter.Assembly.datumFourierCoeff_coordinateDerivative",
+      "QuantumAdapter.Assembly.h3Weight_eq_torusSobolevWeight_cube_sq",
+      "QuantumAdapter.Assembly.h3Coeff_eq_sobolevWeightedCoeff_sq",
+      "QuantumAdapter.Assembly.initialProjectionMajorant_nonneg",
+      "QuantumAdapter.Assembly.initialEnergyDensity_le",
+      "QuantumAdapter.Assembly.initialPhaseData_energy3_le_majorant",
+      "QuantumAdapter.Assembly.initialProjectionBounds",
+      "QuantumAdapter.Assembly.synthesis_coordinateDerivative",
+      "QuantumAdapter.Assembly.derivativeSymbol_norm_le_torusSobolevWeight",
+      "QuantumAdapter.Assembly.derivative_weighted_sq_le_h3Coeff",
+      "QuantumAdapter.Assembly.finiteSynthesis_component_norm_le",
+      "QuantumAdapter.Assembly.derivative_component_sq_le",
+      "QuantumAdapter.Assembly.gradientEmbeddingConstant_pos",
+      "QuantumAdapter.Assembly.gradientEmbeddingConstant_sq",
+      "QuantumAdapter.Assembly.gradientSquare_nonneg",
+      "QuantumAdapter.Assembly.gradientSquare_le_energy3",
+      "QuantumAdapter.Assembly.sqrt_gradientSquare_le",
+      "QuantumAdapter.Assembly.gradientObservable_range_bddAbove",
+      "QuantumAdapter.Assembly.gradientObservable_nonneg",
+      "QuantumAdapter.Assembly.gradientObservable_le_sqrt_energy3",
+      "QuantumAdapter.Assembly.phaseCoeff_add",
+      "QuantumAdapter.Assembly.phaseCoeff_smul",
+      "QuantumAdapter.Assembly.gradientCoordinates_apply",
+      "QuantumAdapter.Assembly.gradientCoordinates_norm_sq",
+      "QuantumAdapter.Assembly.sqrt_gradientSquare_eq_norm",
+      "QuantumAdapter.Assembly.gradientObservable_le_add",
+      "QuantumAdapter.Assembly.abs_gradientObservable_sub_le",
+      "QuantumAdapter.Assembly.lipschitz_gradientObservable",
+      "QuantumAdapter.Assembly.continuous_gradientObservable",
+      "QuantumAdapter.Assembly.intervalIntegrable_gradientObservable"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Assembly.Galerkin",
+    "path": "Quantum_adapter/QuantumAdapter/Assembly/Galerkin.lean",
+    "audit_targets": [
+      "QuantumAdapter.Assembly.allSobolev_nativeData",
+      "QuantumAdapter.Assembly.allSobolev_nativeData_and_coefficients",
+      "QuantumAdapter.Assembly.energy3_continuous",
+      "QuantumAdapter.Assembly.phaseFlow_orbit_continuous",
+      "QuantumAdapter.Assembly.centralEnergy_continuous",
+      "QuantumAdapter.Assembly.centralEnergy_bounded_on_Icc",
+      "QuantumAdapter.Assembly.centralEnergy_finite_cutoffs_bounded",
+      "QuantumAdapter.Assembly.galerkinBoundAt_of_tail",
+      "QuantumAdapter.Assembly.continuumFourierEnergy_nonneg",
+      "QuantumAdapter.Assembly.galerkinBoundAt_of_uniform_energy_approximation",
+      "QuantumAdapter.Assembly.galerkinBoundAt_of_uniform_energy_convergence",
+      "QuantumAdapter.Assembly.continuumFourierEnergy_le_of_centralEnergy_tendsto",
+      "QuantumAdapter.Assembly.continuumFourierEnergy_bounded_before",
+      "QuantumAdapter.Assembly.no_finite_fourierEnergy_blowup"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Assembly.Gaussian",
+    "path": "Quantum_adapter/QuantumAdapter/Assembly/Gaussian.lean",
+    "audit_targets": [
+      "QuantumAdapter.phaseVolume_eq_volume",
+      "QuantumAdapter.canonicalPacket_continuous",
+      "QuantumAdapter.canonicalPacket_bornDensity",
+      "QuantumAdapter.gaussianAmplitude_sq",
+      "QuantumAdapter.canonicalGaussian_integral",
+      "QuantumAdapter.canonicalPacket_normalized",
+      "QuantumAdapter.canonicalPacket_density_integrable",
+      "QuantumAdapter.canonicalPacket_memLp",
+      "QuantumAdapter.canonicalPacket_waveAdmissible",
+      "QuantumAdapter.canonicalPacket_norm_toL2",
+      "QuantumAdapter.phaseGaussian_moment_formula",
+      "QuantumAdapter.phaseGaussian_moment_integrable",
+      "QuantumAdapter.phaseGaussian_second_moment",
+      "QuantumAdapter.phaseGaussian_fourth_moment",
+      "QuantumAdapter.canonicalPacket_centered_integrand",
+      "QuantumAdapter.canonicalPacket_centered_moment",
+      "QuantumAdapter.canonicalPacket_centered_moment_integrable",
+      "QuantumAdapter.canonicalPacket_second_moment",
+      "QuantumAdapter.canonicalPacket_fourth_moment"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Assembly.Transport",
+    "path": "Quantum_adapter/QuantumAdapter/Assembly/Transport.lean",
+    "audit_targets": [
+      "QuantumAdapter.Assembly.phaseFlow_timeMap_inverse",
+      "QuantumAdapter.Assembly.phaseFlow_timeMap_bijective",
+      "QuantumAdapter.Assembly.phaseFlow_preimage_eq_inverse_image",
+      "QuantumAdapter.Assembly.phaseFlow_quasiMeasurePreserving",
+      "QuantumAdapter.Assembly.phaseFlow_integralPullbackLaw_of_jacobian",
+      "QuantumAdapter.Assembly.phaseFlow_integrable_weighted_comp_of_jacobian",
+      "QuantumAdapter.Assembly.phaseFlow_memLpPullbackLaw_of_jacobian",
+      "QuantumAdapter.Assembly.phaseTransportLaws_of_jacobian"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Assembly.CompleteFlow",
+    "path": "Quantum_adapter/QuantumAdapter/Assembly/CompleteFlow.lean",
+    "audit_targets": [
+      "QuantumAdapter.Assembly.energy0_hasDerivAt_of_drift",
+      "QuantumAdapter.Assembly.local_energy0_antitoneOn",
+      "QuantumAdapter.Assembly.local_weighted_energy0_monotoneOn",
+      "QuantumAdapter.Assembly.drift_bounded_on_closedBall",
+      "QuantumAdapter.Assembly.local_drift_solution_lipschitz_of_norm_bound",
+      "QuantumAdapter.Assembly.local_drift_solution_endpoint_limits_of_norm_bound",
+      "QuantumAdapter.Assembly.local_drift_solution_endpoint_limits_of_energy_bound",
+      "QuantumAdapter.Assembly.local_drift_solution_has_forward_limit",
+      "QuantumAdapter.Assembly.local_drift_solution_has_backward_limit",
+      "QuantumAdapter.Assembly.exists_uniform_local_drift_solutions",
+      "QuantumAdapter.Assembly.local_drift_solution_forward_limit_restart"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Assembly.GlobalDrift",
+    "path": "Quantum_adapter/QuantumAdapter/Assembly/GlobalDrift.lean",
+    "audit_targets": [
+      "QuantumAdapter.Assembly.local_drift_solutions_unique",
+      "QuantumAdapter.Assembly.local_drift_solutions_piecewise",
+      "QuantumAdapter.Assembly.local_drift_energy0_bound_abs",
+      "QuantumAdapter.Assembly.exists_uniform_local_drift_solutions_on_ball",
+      "QuantumAdapter.Assembly.exists_drift_solution_on_arbitrary_interval",
+      "QuantumAdapter.Assembly.exists_complete_drift_orbit",
+      "QuantumAdapter.Assembly.exists_unique_complete_drift_orbit",
+      "QuantumAdapter.Assembly.contDiff_complete_drift_orbit"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Assembly.CanonicalFlow",
+    "path": "Quantum_adapter/QuantumAdapter/Assembly/CanonicalFlow.lean",
+    "audit_targets": [
+      "QuantumAdapter.Assembly.chosenCompleteOrbit_zero",
+      "QuantumAdapter.Assembly.chosenCompleteOrbit_derivative",
+      "QuantumAdapter.Assembly.chosenCompleteOrbit_add",
+      "QuantumAdapter.Assembly.nonempty_phaseFlow_of_completeOrbits",
+      "QuantumAdapter.Assembly.phaseFlow_eq_constructed",
+      "QuantumAdapter.Assembly.nonempty_phaseFlow_of_divergence",
+      "QuantumAdapter.Assembly.phaseFlow_eq_canonical"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Assembly.FlowContinuity",
+    "path": "Quantum_adapter/QuantumAdapter/Assembly/FlowContinuity.lean",
+    "audit_targets": [
+      "QuantumAdapter.Assembly.phaseFlow_energy0_bound_unit",
+      "QuantumAdapter.Assembly.phaseFlow_uniform_time_lipschitz",
+      "QuantumAdapter.Assembly.phaseFlow_small_time_dist",
+      "QuantumAdapter.Assembly.continuous_phaseFlow_uncurry_of_timeMaps",
+      "QuantumAdapter.Assembly.continuous_phaseFlow_uncurry_of_differentiable",
+      "QuantumAdapter.Assembly.measurable_phaseFlow_uncurry_of_differentiable"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Assembly.FlowDependence",
+    "path": "Quantum_adapter/QuantumAdapter/Assembly/FlowDependence.lean",
+    "audit_targets": [
+      "QuantumAdapter.Assembly.phaseFlow_energy0_bound_abs",
+      "QuantumAdapter.Assembly.phaseFlow_timeMap_lipschitzOn_closedBall",
+      "QuantumAdapter.Assembly.continuous_phaseFlow_timeMap",
+      "QuantumAdapter.Assembly.continuous_phaseFlow_uncurry",
+      "QuantumAdapter.Assembly.measurable_phaseFlow_uncurry"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Assembly.Admissibility",
+    "path": "Quantum_adapter/QuantumAdapter/Assembly/Admissibility.lean",
+    "audit_targets": [
+      "QuantumAdapter.Assembly.norm_pow_le_centered",
+      "QuantumAdapter.Assembly.canonicalPacket_bornDensity_continuous",
+      "QuantumAdapter.Assembly.canonicalPacket_raw_moment_integrable",
+      "QuantumAdapter.Assembly.canonicalPacket_observableIntegrable_of_quadratic_bound",
+      "QuantumAdapter.Assembly.canonicalPacket_multiplierDomain_of_quadratic_bound",
+      "QuantumAdapter.Assembly.phaseFlow_energy3_le_quadratic",
+      "QuantumAdapter.Assembly.transportedPacket_quantumAdmissible_of_jacobian"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Assembly.PacketEstimates",
+    "path": "Quantum_adapter/QuantumAdapter/Assembly/PacketEstimates.lean",
+    "audit_targets": [
+      "QuantumAdapter.Assembly.canonicalBornDensity_measurable",
+      "QuantumAdapter.Assembly.integrable_canonicalBornMeasure_iff",
+      "QuantumAdapter.Assembly.integral_canonicalBornMeasure",
+      "QuantumAdapter.Assembly.canonicalBornMeasure_centered_moment_integrable",
+      "QuantumAdapter.Assembly.packetDistance_nonneg",
+      "QuantumAdapter.Assembly.packetDistance_symm",
+      "QuantumAdapter.Assembly.packetDistance_integrable",
+      "QuantumAdapter.Assembly.packetDistance_sq_integrable",
+      "QuantumAdapter.Assembly.packetDistance_sq_mean",
+      "QuantumAdapter.Assembly.packetDistance_sq_mean_le_quarter",
+      "QuantumAdapter.Assembly.sqrt_energy3_le_reference_add_packetDistance",
+      "QuantumAdapter.Assembly.packet_integral_sq_le",
+      "QuantumAdapter.Assembly.packet_integrable_sqrt",
+      "QuantumAdapter.Assembly.packet_integral_sqrt_le",
+      "QuantumAdapter.Assembly.packet_integral_distance_le_half",
+      "QuantumAdapter.Assembly.packet_integral_quadratic_bound",
+      "QuantumAdapter.Assembly.exists_joint_packet_control",
+      "QuantumAdapter.Assembly.PacketEstimatePrimitives.energy_conjugacy",
+      "QuantumAdapter.Assembly.PacketEstimatePrimitives.relative",
+      "QuantumAdapter.Assembly.PacketEstimatePrimitives.cost_nonneg",
+      "QuantumAdapter.Assembly.PacketEstimatePrimitives.cost_mono",
+      "QuantumAdapter.Assembly.PacketEstimatePrimitives.central_cost_bound",
+      "QuantumAdapter.Assembly.PacketEstimatePrimitives.cost_integrable",
+      "QuantumAdapter.Assembly.PacketEstimatePrimitives.mean_cost_bound",
+      "QuantumAdapter.Assembly.forwardPacketBound_of_primitives",
+      "QuantumAdapter.Assembly.reversePacketBound_of_primitives",
+      "QuantumAdapter.Assembly.packetBounds_of_scalar_primitives",
+      "QuantumAdapter.Assembly.canonicalBornMeasure_raw_moment_integrable",
+      "QuantumAdapter.Assembly.packet_energy_integrable_of_nonneg_viscosity",
+      "QuantumAdapter.Assembly.packet_gradient_product_integrable",
+      "QuantumAdapter.Assembly.packetEstimatePrimitives_of_jacobian",
+      "QuantumAdapter.Assembly.packetBounds_of_jacobian"
+    ]
+  },
+  {
+    "module": "QuantumAdapter.Assembly",
+    "path": "Quantum_adapter/QuantumAdapter/Assembly.lean",
+    "audit_targets": [
+      "QuantumAdapter.Assembly.native_initial_packet_triangle",
+      "QuantumAdapter.Assembly.transportedPacket_waveAdmissible_of_jacobian",
+      "QuantumAdapter.Assembly.exact_quantum_root_of_scalar_primitives",
+      "QuantumAdapter.Assembly.exact_quantum_root_with_transport",
+      "QuantumAdapter.Assembly.exact_quantum_root_of_native_dynamics",
+      "QuantumAdapter.Assembly.exact_quantum_root_for_canonical_flow"
+    ]
+  }
+]

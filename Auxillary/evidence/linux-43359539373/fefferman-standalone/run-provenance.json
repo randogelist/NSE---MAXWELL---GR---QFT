@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-11-13T03:41:52.8040388Z",
+  "external_platform": "linux",
+  "external_native_windows": false,
+  "external_native_linux": true,
+  "os": "Unix 7.0.0.1017",
+  "powershell_version": "7.6.9",
+  "processor_count": 4,
+  "requested_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "requested_mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_commit": "1de664f2ef5ddc11caef25ac2274278b4171ab6b",
+  "source_commit_origin": "EXPLICIT_SOURCE_COMMIT",
+  "supplied_source_commit": "1de664f2ef5ddc11caef25ac2274278b4171ab6b",
+  "package_root": "/home/runner/work/_temp/nse-fefferman-adapter",
+  "github_run_id": "43359539373",
+  "github_run_attempt": "1",
+  "github_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+  "stage": "COMPLETE",
+  "phase": "All",
+  "build_status": "PASS",
+  "audit_command_status": "PASS",
+  "theorem_axiom_audit_status": "PASS_STANDARD_ONLY",
+  "exact_root_promotion": "NOT_AUTOMATIC",
+  "actual_lean_version": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+  "native_source_hydration": {
+    "report": "native-source-hydration.json",
+    "sha256": "3f0dc2329744a572e3d06997f6e0bf4c5ccfbcd62aa2def8ed018bf3281d4017"
+  },
+  "dependency_revisions": [
+    {
+      "name": "plausible",
+      "revision": "38e9c3ce15cbb63c92e90bb9a92e4eb82131f669"
+    },
+    {
+      "name": "LeanSearchClient",
+      "revision": "2bc7cf064315b26bc38dac2e9612fb581be9b75f"
+    },
+    {
+      "name": "importGraph",
+      "revision": "978b7ec9fbbf9a535114f1de8fe5b3778b358870"
+    },
+    {
+      "name": "proofwidgets",
+      "revision": "99e8adeea3c3cd86b6b79ba01a1383bf2d31d055"
+    },
+    {
+      "name": "aesop",
+      "revision": "c1c4362a130f12e632d252180a6c2a31d8fd4726"
+    },
+    {
+      "name": "Qq",
+      "revision": "3b55e9d00c6b0018e5d984eb011b6f93c09bd163"
+    },
+    {
+      "name": "batteries",
+      "revision": "01bc479e7432594821ba3fb0ca465211941de86d"
+    },
+    {
+      "name": "Cli",
+      "revision": "af8bc067a4cc6c6df472a68909a3f40b1c76c43e"
+    },
+    {
+      "name": "mathlib",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11"
+    }
+  ],
+  "lockfile_sha256": "c65f87be5261198f37bc78390759f5a4afa745696ee2e53e8c83e2705609f37d",
+  "actual_mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "native_source_closure": [
+    {
+      "package": ".",
+      "report": "native-source-closure.json",
+      "sha256": "e757ad01157cc027caec1230e54b8e4b1ec8df06d123de804b5e1c0707cd0606"
+    }
+  ],
+  "cache_mode": "OFFICIAL_INCREMENTAL_CACHE_GET",
+  "cache_targets": [
+    "Mathlib"
+  ],
+  "dependency_cache_status": "VERIFIED",
+  "dependency_preparation_sha256": "b5dde5b875d9762606ce35dc10621b84d3cb505d48097648de1967fe7a1a31d2",
+  "source_manifest_sha256": "d7502754e8967c3e05a79090565ee6195ab11b27bb5b6ae1de053c24de35a8d9",
+  "module_build_schedule": [
+    "SingularClosure.SixChannels",
+    "SingularClosure.HilbertChannels",
+    "SingularClosure.Contracts",
+    "SingularClosure.CoordinateAverage",
+    "SingularClosure.Galerkin",
+    "SingularClosure.Admission",
+    "SingularClosure.PhysicalChannels",
+    "SingularClosure.PhysicalEnstrophy",
+    "SingularClosure.CoordinateAverageOrthogonal",
+    "SingularClosure.FourierIntegral",
+    "SingularClosure.PeriodicCover",
+    "SingularClosure.PeriodicFourierRealization",
+    "SingularClosure.PhysicalProjection",
+    "SingularClosure.PhysicalParseval",
+    "SingularClosure.GalerkinAlgebra",
+    "SingularClosure.GalerkinEnergy",
+    "SingularClosure.FiniteParseval",
+    "SingularClosure.FiniteHessian",
+    "SingularClosure.EnstrophyInequality",
+    "SingularClosure.PhysicalBilinear",
+    "SingularClosure.InitialFourier",
+    "SingularClosure.InitialCutoffBounds",
+    "SingularClosure.FourierDecay",
+    "SingularClosure.GalerkinReality",
+    "SingularClosure.LerayPressure",
+    "SingularClosure.FourierPressure",
+    "SingularClosure.FourierSeriesCalculus",
+    "SingularClosure.TorusSobolev",
+    "SingularClosure.LatticeSobolevSummability",
+    "SingularClosure.SobolevSmoothRealization",
+    "SingularClosure.PeriodicFourierInjective",
+    "SingularClosure.GalerkinEnergyIntegral",
+    "SingularClosure.PhysicalEnergy",
+    "SingularClosure.PeriodicPoincare",
+    "SingularClosure.SobolevL2Realization",
+    "SingularClosure.FourierTransport",
+    "SingularClosure.SmoothDatumSobolev",
+    "SingularClosure.FourierProduct",
+    "SingularClosure.InfiniteFourierPressure",
+    "MethlibEndpoints",
+    "MaxwellEndpoint.Geometry",
+    "MaxwellEndpoint.Constitutive",
+    "MaxwellEndpoint.System",
+    "MaxwellEndpoint.Native",
+    "MaxwellEndpoint",
+    "NSEMaxwell.Classical",
+    "NSEMaxwell.Kinematics",
+    "NSEMaxwell.Constitutive",
+    "NSEMaxwell.Negation",
+    "NSEMaxwell.Lamb",
+    "NSEMaxwell.Pressure",
+    "NSEMaxwell.ConstantPaths",
+    "NSEMaxwell.Ampere",
+    "NSEMaxwell.CurlCurl",
+    "NSEMaxwell.PeriodicIntegration",
+    "NSEMaxwell.Spacetime",
+    "NSEMaxwell.FourierPeriodic",
+    "NSEMaxwell.DominatedWithin",
+    "NSEMaxwell.LocalEvolution",
+    "NSEMaxwell.TemporalMean",
+    "NSEMaxwell.MeanConservation",
+    "NSEMaxwell.Residual",
+    "NSEMaxwell.ExistenceTransport",
+    "NSEMaxwell.AnalyticContracts",
+    "NSEMaxwellForward",
+    "NSEMaxwellReverse",
+    "NSEMaxwell.AnalyticBridge",
+    "NSEMaxwell.CanonicalSmoothness",
+    "NSEMaxwell.AnalyticReduction",
+    "NSEMaxwellForward.Reduced",
+    "NSEMaxwellReverse.Reduced",
+    "NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE"
+  ],
+  "module_build_concurrency": 1,
+  "aggregate_build_targets": [
+    "MethlibEndpoints",
+    "MaxwellEndpoint",
+    "NSEMaxwell",
+    "NSEMaxwellForward.Reduced",
+    "NSEMaxwellReverse.Reduced"
+  ],
+  "freshness_check_exit_code": 3,
+  "failed_modules": [],
+  "skipped_modules": [],
+  "build_strategy": "SERIAL_INCREMENTAL_REBUILD",
+  "executed_module_builds": 72,
+  "current_build_module": "NSEMaxwell",
+  "completed_at_utc": "2026-11-13T03:53:06.3533416Z"
+}

@@ -1,0 +1,269 @@
+VERIFIED MATHLIB / METHLIB ENDPOINT REGISTER — P1..P7
+=================================================================
+Mathlib revision: de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+Native/vendor revision: 1a0664fc219e6b4e2caf005384bd71b585ad0847
+Verification: exact source statements inspected; no Lean execution in this task.
+Status: SOURCE_VERIFIED endpoints; application to the new chain is B_TIER.
+The 36 entries below are actual declaration groups (24 Mathlib, 12 Methlib).
+Newly derived native edges
+in the main document are not represented as existing Mathlib/Methlib theorems.
+Additional determinant multilinear endpoints are indexed in the P1-P3 section.
+
+The boundary, consistency, limit, and native-trace entries ML14--ML24 follow the Methlib register.
+
+Pins:
+  ML: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/
+  MT: https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/
+
+[ML01] LinearMap.trace_eq_sum_inner
+MODULE: Mathlib.Analysis.InnerProductSpace.Trace
+USES: P1
+CONTRACT: Finite orthonormal basis b in an RCLike inner-product space; T linear. trace(T)=sum_i inner(b_i,T b_i).
+NATIVE ADAPTER / LIMITATION: Real Phase N basis, derivative identification and nonlinear cancellation are native calculations.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/InnerProductSpace/Trace.lean#L27
+
+[ML02] LinearMap.trace_smulRight
+MODULE: Mathlib.LinearAlgebra.Trace
+USES: P1 actual native spectral multiplicity proof
+CONTRACT: Commutative scalar ring; finite free module M; linear f:M->R and x:M. trace(f.smulRight x)=f x.
+NATIVE ADAPTER / LIMITATION: TraceSpectrum.lean supplies the ambient real Fourier rank-one resolution and projection calculation. This endpoint itself only evaluates rank-one trace.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Trace.lean#L272
+
+[ML03] HasDerivAt.norm_sq; HasDerivWithinAt.norm_sq
+MODULE: Mathlib.Analysis.InnerProductSpace.Calculus
+USES: P4,P5,P6
+CONTRACT: Real inner-product space. HasDerivAt f f' t implies derivative of ||f||² equals 2 inner(f(t),f'); within-set variant at L223.
+NATIVE ADAPTER / LIMITATION: Coefficient energy/physical L2 isometry and projected transport cancellation remain native.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/InnerProductSpace/Calculus.lean#L215
+
+[ML04] Continuous.integral_hasStrictDerivAt
+MODULE: Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus
+USES: P2,P4,P5,P6
+CONTRACT: Complete real normed target; continuous f. The map b->integral_a^b f has strict derivative f(b).
+NATIVE ADAPTER / LIMITATION: Supremum-gradient continuity must be established before the integrating-factor specialization. Continuous primitive does not supply a differential inequality.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/MeasureTheory/Integral/IntervalIntegral/FundThmCalculus.lean#L656
+
+[ML05] antitoneOn_of_hasDerivWithinAt_nonpos
+MODULE: Mathlib.Analysis.Calculus.Deriv.MeanValue
+USES: P2,P4,P5,P6
+CONTRACT: Convex real domain D; f continuous on D; within derivatives on interior(D) nonpositive. Conclusion AntitoneOn f D.
+NATIVE ADAPTER / LIMITATION: Apply to E(t) exp(-integral_0^t a); preserves E=0, avoids division by energy; native E'<=aE must be derived first.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/Deriv/MeanValue.lean#L496
+
+[ML06] Finset.sum_mul_sq_le_sq_mul_sq
+MODULE: Mathlib.Algebra.Order.BigOperators.Ring.Finset
+USES: P4,P5,P6,P7
+CONTRACT: Real specialization: (sum_s f_i g_i)^2 <= (sum_s f_i^2)(sum_s g_i^2).
+NATIVE ADAPTER / LIMITATION: Finite Cauchy-Schwarz; no lattice summability, convolution estimate or Sobolev interpolation is supplied.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Algebra/Order/BigOperators/Ring/Finset.lean#L159
+
+[ML07] UnitAddTorus.hasSum_sq_mFourierCoeff
+MODULE: Mathlib.Analysis.Fourier.AddCircleMulti
+USES: P1,P4,P5,P6,P7
+CONTRACT: Finite dimension index d; f in scalar complex L2 of normalized unit torus. HasSum (||FourierCoeff f k||²) (integral ||f||²).
+NATIVE ADAPTER / LIMITATION: Native Vec/cube/real component and multiplier identifications are required. Finite native orthogonality MT03 can avoid quotient-measure conversions.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Fourier/AddCircleMulti.lean#L301
+
+[ML08] UnitAddTorus.hasSum_mFourier_series_L2
+MODULE: Mathlib.Analysis.Fourier.AddCircleMulti
+USES: P6,P7
+CONTRACT: f in scalar complex L2 of normalized unit torus. Fourier series converges to f in L2.
+NATIVE ADAPTER / LIMITATION: Weighted Hs and uniform derivative convergence follow only after the paper's tail estimates; this is not a Galerkin PDE convergence theorem.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Fourier/AddCircleMulti.lean#L286
+
+[ML09] IsCompact.tendsto_subseq
+MODULE: Mathlib.Topology.Sequences
+USES: P7
+CONTRACT: FirstCountableTopology X; compact s; x_n in s. There exist a in s and strictly increasing phi with x(phi(n))->a.
+NATIVE ADAPTER / LIMITATION: Apply to bounded finite-dimensional Fourier coordinates at countably many times; diagonal choice, equicontinuity and weighted Fourier tails are native.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Sequences.lean#L298
+
+[ML10] Equicontinuous.tendsto_uniformFun_iff_pi
+MODULE: Mathlib.Topology.UniformSpace.Ascoli
+USES: P7
+CONTRACT: Compact domain X, uniform target alpha, equicontinuous family F_i. Along any filter, uniform-function convergence to f iff pointwise-function convergence to f.
+NATIVE ADAPTER / LIMITATION: Does not construct a subsequence by itself; use ML09 and the explicit countable diagonal argument first.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/UniformSpace/Ascoli.lean#L166
+
+[ML11] hasFDerivAt_of_tendstoLocallyUniformlyOn
+MODULE: Mathlib.Analysis.Calculus.UniformLimitsDeriv
+USES: P7
+CONTRACT: Nontrivial index filter; open s; derivative maps converge locally uniformly on s; every f_n has stated derivatives; f_n converge pointwise to g. Then g has the limiting derivative.
+NATIVE ADAPTER / LIMITATION: Open-domain theorem does not prove time derivative at t=0. Boundary passage requires one-sided integral identities/FTC; joint C-infinity on a closed half-space is an additional native assembly.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/UniformLimitsDeriv.lean#L397
+
+[ML12] IsPicardLindelof.of_contDiffAt_one
+MODULE: Mathlib.Analysis.ODE.PicardLindelof
+USES: P2
+CONTRACT: Real normed-space autonomous field C1 at x0 yields positive local time, positive state radius and bounded/Lipschitz Picard-Lindelof data.
+NATIVE ADAPTER / LIMITATION: No differentiability in initial data is asserted. The variational equation/remainder argument supplies P2.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/PicardLindelof.lean#L675
+
+[ML13] ODE_solution_unique_of_eventually
+MODULE: Mathlib.Analysis.ODE.ExistUnique
+USES: P2,P3
+CONTRACT: Eventually near t0: same time-dependent field uniformly Lipschitz on state sets, both curves solve it and stay in those sets, equal at t0. Then curves eventually agree.
+NATIVE ADAPTER / LIMITATION: Global signed-time uniqueness is obtained by continuation; local uniqueness does not supply flow derivatives.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/ExistUnique.lean#L312
+
+[MT01] SingularClosure.integral_unitCube_divergence_eq_zero
+MODULE: SingularClosure.InitialFourier
+USES: P1,P4,P5
+CONTRACT: f_i:Vec->C, each smooth and f_i(x+e_i)=f_i(x). Integral over native unitCube of sum_i D_i f_i is zero.
+NATIVE ADAPTER / LIMITATION: Requires only coordinate-periodicity of the corresponding flux component. Produces native periodic integration by parts after product differentiation; no mean-zero hypothesis.
+SOURCE: https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialFourier.lean#L134
+
+[MT02] SingularClosure.datumFourierCoeff_coordinateDerivative
+MODULE: SingularClosure.InitialCutoffBounds
+USES: P5,P6,P7
+CONTRACT: Smooth spatially periodic field a. FourierCoeff(D_j a)=spectralMultiplier(derivativeSymbol j)(FourierCoeff a).
+NATIVE ADAPTER / LIMITATION: Iterate for ordered derivatives and identify derivativeSymbol=2*pi*i*k_j. No convergence of Galerkin trajectories is included.
+SOURCE: https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialCutoffBounds.lean#L130
+
+[MT03] SingularClosure.INTEGRAL_FOURIER_CHARACTER_ORTHOGONALITY
+MODULE: SingularClosure.FourierIntegral
+USES: P1,P4,P5,P6,P7
+CONTRACT: All integer frequencies k,l: integral_unitCube conj(chi_k) chi_l = if k=l then1 else0.
+NATIVE ADAPTER / LIMITATION: Expand finite sums for exact native real-vector Parseval and cosine/sine normalization; no mean-zero restriction.
+SOURCE: https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierIntegral.lean#L90
+
+[MT04] SingularClosure.coefficientLeray_pairing
+MODULE: SingularClosure.GalerkinAlgebra
+USES: P1,P4,P5,P6,P7
+CONTRACT: For k and complex vectors c,v with sum_i k_i c_i=0: sum_i conj(c_i) P_k(v)_i=sum_i conj(c_i)v_i.
+NATIVE ADAPTER / LIMITATION: Includes k=0 via identity branch. Self-adjointness/norm contraction and derivative commutation need the displayed modewise projection calculation.
+SOURCE: https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean#L250
+
+[MT05] SingularClosure.coefficientNonlinearPower_eq_zero
+MODULE: SingularClosure.GalerkinEnergy
+USES: P4,P5 (historical zero-mean building block)
+CONTRACT: c supported in cutoffModes N, conjugate reality c(-k)=conj c(k), modewise solenoidality. coefficientNonlinearPower N c=0.
+NATIVE ADAPTER / LIMITATION: This old cutoff excludes k=0. Apply only after mean separation or use native fullModes transport cancellation. It is not a direct arbitrary-mean P4/P5 theorem.
+SOURCE: https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinEnergy.lean#L188
+
+[MT06] SingularClosure.SMOOTH_DATUM_MEM_TORUS_SOBOLEV
+MODULE: SingularClosure.SmoothDatumSobolev
+USES: P6,P7
+CONTRACT: For each integer s>=0 and smooth spatially periodic a: Mem-l2(sobolevWeightedCoeff s (datumFourierCoeff a)).
+NATIVE ADAPTER / LIMITATION: No mean-zero restriction. Supplies every weighted initial norm; finite projection norms and tails follow by summation.
+SOURCE: https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/SmoothDatumSobolev.lean#L111
+
+[MT07] SingularClosure.summable_torusSobolevWeight_inv_four
+MODULE: SingularClosure.LatticeSobolevSummability
+USES: P5(all orders),P6,P7
+CONTRACT: Summable over Frequency of (torusSobolevWeight k)^(-4).
+NATIVE ADAPTER / LIMITATION: Weight is sqrt(1+4*pi²|k|²). Additional powers/multipliers bounded by this summable majorant yield embedding and C-infinity tail bounds.
+SOURCE: https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/LatticeSobolevSummability.lean#L66
+
+[MT08] SingularClosure.ALL_SOBOLEV_IMP_RAPID_SCALAR
+MODULE: SingularClosure.SobolevSmoothRealization
+USES: P7
+CONTRACT: All integral Fourier Sobolev weighted coefficient sequences are in l2; for each velocity component the scalar sequence is RapidScalarFourier.
+NATIVE ADAPTER / LIMITATION: Spatial rapid decay only. Uniform-in-time rapid bounds and time differentiation follow from the paper's estimates, not this theorem.
+SOURCE: https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean#L81
+
+[MT09] SingularClosure.smoothFourierSynthesis_contDiff
+MODULE: SingularClosure.SobolevSmoothRealization
+USES: P7
+CONTRACT: Every component coefficient sequence RapidScalarFourier => native smoothFourierSynthesis is ContDiff R infinity.
+NATIVE ADAPTER / LIMITATION: No pressure, PDE, joint-time smoothness or strong initial trace is supplied.
+SOURCE: https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean#L99
+
+[MT10] SingularClosure.datumFourierCoeff_smoothFourierSynthesis
+MODULE: SingularClosure.SobolevSmoothRealization
+USES: P7
+CONTRACT: Rapid scalar coefficients plus SpectralReality => actual integral Fourier coefficients of native smooth synthesis equal original coefficients.
+NATIVE ADAPTER / LIMITATION: Retains arbitrary zero mode. Native ALL_SOBOLEV_SMOOTH_PHYSICAL_REALIZATION also requires mean zero, so do not apply that bundled theorem unmodified here.
+SOURCE: https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean#L246
+
+[MT11] SingularClosure.finite_l1_sq_le_H2_sq
+MODULE: SingularClosure.LatticeSobolevSummability
+USES: P5(all orders),P6,P7
+CONTRACT: Any finite frequency set and complex sequence: (sum|a_k|)^2 <= latticeSobolevConstant * sum(rho_k² |a_k|)^2.
+NATIVE ADAPTER / LIMITATION: Supports Fourier l1-l2 product estimates with explicit lattice constant; derivative factors must be assigned correctly and cannot be dropped.
+SOURCE: https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/LatticeSobolevSummability.lean#L100
+
+[MT12] SingularClosure.smoothFourierSynthesis_coordinateDerivative
+MODULE: SingularClosure.SobolevSmoothRealization
+USES: P7
+CONTRACT: Rapid scalar coefficients imply D_j(smooth synthesis c)=smooth synthesis(spectralMultiplier derivativeSymbol_j c).
+NATIVE ADAPTER / LIMITATION: Higher derivatives require iterated rapid-decay stability; joint-time derivative identification remains separate.
+SOURCE: https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/1a0664fc219e6b4e2caf005384bd71b585ad0847/Fefferman_adapter/NativeSources/methlib/SingularClosure/SobolevSmoothRealization.lean#L112
+
+[ML14] contDiffOn_infty
+MODULE: Mathlib.Analysis.Calculus.ContDiff.Defs
+USES: P7 closed initial boundary
+CONTRACT: ContDiffOn R infinity f s iff forall n:Nat, ContDiffOn R n f s.
+NATIVE ADAPTER / LIMITATION: P67[D5] constructs all finite joint within-derivative orders by uniform-limit integral identities; this equivalence packages them as native SmoothVelocity/Pressure. It does not prove those derivatives.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Defs.lean#L549
+
+[ML15] uniqueDiffOn_Ici
+MODULE: Mathlib.Analysis.Calculus.TangentCone.Real
+USES: P7 time derivative at t=0
+CONTRACT: forall a:R, UniqueDiffOn R (Ici a).
+NATIVE ADAPTER / LIMITATION: Specialize a=0 and t>=0 to identify the one-sided native time derivative; joint spacetime smoothness is separately proved by P67[D5].
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/TangentCone/Real.lean#L87
+
+[ML16] HasDerivWithinAt.derivWithin
+MODULE: Mathlib.Analysis.Calculus.Deriv.Basic
+USES: P7 exact equation at t=0
+CONTRACT: HasDerivWithinAt f f' s t and UniqueDiffWithinAt R s t imply derivWithin f s t=f'.
+NATIVE ADAPTER / LIMITATION: Apply after the limiting integral equation supplies the actual right derivative. It does not infer initial-time derivatives from positive-time regularity alone.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/Deriv/Basic.lean#L444
+
+[ML17] Summable.tsum_prod
+MODULE: Mathlib.Topology.Algebra.InfiniteSum.Constructions
+USES: P6 high-frequency tails; P7 summability bookkeeping
+CONTRACT: For a summable family f on beta x gamma in a complete T0 uniform additive commutative group (in particular R or C), tsum_p f(p) = tsum_b tsum_c f(b,c). The declaration is generated by @[to_additive Summable.tsum_prod] on Multipliable.tprod_prod.
+NATIVE ADAPTER / LIMITATION: Absolute/summable majorants must already be proved; rearranging the sum does not prove a Fourier tail estimate.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Algebra/InfiniteSum/Constructions.lean#L254
+
+[ML18] PiLp.hasFDerivAt_toLp
+MODULE: Mathlib.Analysis.Calculus.FDeriv.WithLp
+USES: P6 reference-phase differentiation; native finite tensor packing
+CONTRACT: A finite index type, normed coordinate spaces over a nontrivially normed field, and Fact(1<=p). The derivative of WithLp.toLp p is the inverse PiLp continuous linear equivalence. Native specialization: p=2 and finite real/complex coordinates.
+NATIVE ADAPTER / LIMITATION: Converts already established coordinate derivatives into the actual Euclidean normed state; it supplies no coordinate derivative or coefficient integral identity.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/WithLp.lean#L87
+
+[ML19] hasDerivWithinAt_pi
+MODULE: Mathlib.Analysis.Calculus.Deriv.Prod
+USES: P6 finite coefficient derivative; P7 boundary derivative packaging
+CONTRACT: For an arbitrary index type and normed coordinate spaces, HasDerivWithinAt phi phi' s x iff every coordinate i has derivative phi'(i) within s at x. The product topology is used; the native application is finite.
+NATIVE ADAPTER / LIMITATION: Coordinatewise derivative existence is a premise; at t=0 the common set remains Ici 0.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/Deriv/Prod.lean#L81
+
+[ML20] HasDerivWithinAt.mono_of_mem_nhdsWithin
+MODULE: Mathlib.Analysis.Calculus.Deriv.Basic
+USES: P6/P7 local time intervals and the closed initial boundary
+CONTRACT: A derivative within t at x and t in nhdsWithin s x yield the same derivative within s at x.
+NATIVE ADAPTER / LIMITATION: The neighborhood membership must be established. This theorem cannot turn one-sided data into a two-sided derivative without that membership.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/Deriv/Basic.lean#L377
+
+[ML21] tendsto_inv_atTop_zero
+MODULE: Mathlib.Topology.Algebra.Order.Field
+USES: P6 cutoff-tail limit
+CONTRACT: In a linearly ordered semifield with its order topology, r |-> r^(-1) tends to 0 along atTop. Native specialization: positive real cutoff factors.
+NATIVE ADAPTER / LIMITATION: The cutoff factor must first be proved to tend to +infinity, and the residual must first be bounded by that reciprocal.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Algebra/Order/Field.lean#L74
+
+[ML22] tendsto_tsum_of_dominated_convergence
+MODULE: Mathlib.Analysis.Normed.Group.Tannery
+USES: P7 fixed-frequency nonlinear convolution limits
+CONTRACT: A complete normed additive commutative group, a summable real majorant bound(k), pointwise-in-k convergence f(n,k)->g(k), and eventually forall k norm(f(n,k))<=bound(k). Then the corresponding infinite sums converge.
+NATIVE ADAPTER / LIMITATION: The actual Sobolev coefficient bound and summable lattice majorant are native proof obligations. Neither convolution summability nor the limit PDE is supplied by Tannery's theorem alone.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Group/Tannery.lean#L40
+
+[ML23] real_inner_smul_right
+MODULE: Mathlib.Analysis.InnerProductSpace.Basic
+USES: P4/P5 exact real energy pairings and ordered derivative sums
+CONTRACT: A real inner-product space; inner R x (r smul y)=r*inner R x y for all x,y,r.
+NATIVE ADAPTER / LIMITATION: This is scalar bilinearity only. Transport cancellation, energy differentiation, and the uniform Sobolev estimate must still be derived separately.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/InnerProductSpace/Basic.lean#L118
+
+[ML24] LinearMap.trace_comp_comm'
+MODULE: Mathlib.LinearAlgebra.Trace
+USES: P1 actual spectral multiplicity via ambient projection
+CONTRACT: Finite free modules M,N over a commutative ring R; linear maps f:M->N and g:N->M. trace_M(g comp f)=trace_N(f comp g).
+NATIVE ADAPTER / LIMITATION: The inclusion/projection maps, restricted derivative identities, and real ambient coordinate multiplicities are proved in native TraceSpectrum.lean. No transverse Fourier basis is postulated.
+SOURCE: https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/LinearAlgebra/Trace.lean#L265
+

@@ -1,0 +1,10 @@
+⚠ [8713/8713] Built SingularClosure.FourierIntegral (4.4s)
+warning: NativeSources/methlib/SingularClosure/FourierIntegral.lean:55:32: This simp argument is unused:
+  div_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [fourier_coe_apply, ← Complex.exp_sum]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: NativeSources/methlib/SingularClosure/FourierIntegral.lean:72:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+Build completed successfully (8713 jobs).

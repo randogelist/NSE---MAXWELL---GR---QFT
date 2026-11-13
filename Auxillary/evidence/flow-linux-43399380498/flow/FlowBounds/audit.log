@@ -1,0 +1,50 @@
+@ClassicalMechanicsAssembly.flow_integer_period.{u_1} : ∀ {E : Type u_1} {f : NSEMaxwell.Classical.Vec → E},
+  NSEMaxwell.Classical.SpatialPeriodic.{u_1} f →
+    ∀ (z : Fin 3 → ℤ), Function.Periodic.{0, u_1} f (SingularClosure.integerShift z)
+'ClassicalMechanicsAssembly.flow_integer_period' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flow_periodic_cell_representative.{u_1} : ∀ {E : Type u_1}
+  {f : NSEMaxwell.Classical.Vec → E},
+  NSEMaxwell.Classical.SpatialPeriodic.{u_1} f →
+    ∀ (x : NSEMaxwell.Classical.Vec),
+      ∃ y, Membership.mem.{0, 0} NSEMaxwell.Classical.unitCube y ∧ Eq.{u_1 + 1} (f y) (f x)
+'ClassicalMechanicsAssembly.flow_periodic_cell_representative' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flow_periodic_uniform_bound.{u_1} : ∀ {E : Type u_1} [inst : NormedAddCommGroup.{u_1} E]
+  {T : ℝ} {f : ℝ → NSEMaxwell.Classical.Vec → E},
+  ContinuousOn.{0, u_1} (fun z => f z.1 z.2) (ClassicalMechanics.finiteSpacetime T) →
+    (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{u_1} (f t)) →
+      ∃ B,
+        ∀ (t : ℝ),
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+            ∀ (x : NSEMaxwell.Classical.Vec), LE.le.{0} (norm.{u_1} (f t x)) ↑B
+'ClassicalMechanicsAssembly.flow_periodic_uniform_bound' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flow_spatial_fderiv_continuousOn : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ContinuousOn.{0, 0} (fun z => fderiv.{0, 0, 0} ℝ (u z.1) z.2) (ClassicalMechanics.finiteSpacetime T)
+'ClassicalMechanicsAssembly.flow_spatial_fderiv_continuousOn' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.periodic_velocity_uniform_bounds : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        (∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → NSEMaxwell.Classical.SpatialPeriodic.{0} (u t)) →
+          ∃ B K,
+            (∀ (t : ℝ),
+                Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                  ∀ (x : NSEMaxwell.Classical.Vec), LE.le.{0} (norm.{0} (u t x)) ↑B) ∧
+              ∀ (t : ℝ), Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t → LipschitzWith.{0, 0} K (u t)
+'ClassicalMechanicsAssembly.periodic_velocity_uniform_bounds' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.flow_velocity_time_continuousOn : ∀ {T : ℝ} {u : NSEMaxwell.Classical.Velocity},
+  ClassicalMechanics.SmoothVelocityOn T u →
+    ∀ (x : NSEMaxwell.Classical.Vec), ContinuousOn.{0, 0} (fun t => u t x) (Set.Icc.{0} 0 T)
+'ClassicalMechanicsAssembly.flow_velocity_time_continuousOn' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]

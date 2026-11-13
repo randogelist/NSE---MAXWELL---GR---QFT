@@ -1,0 +1,80 @@
+CLASSICAL_MECHANICS_ASSEMBLY_A_TIER
+
+STATUS = A_TIER
+ROOT_CLOSURE = CONDITIONAL_FORMAL_CLOSURE
+COMPILER = external native Linux Ubuntu 24.04, Lean 4.34.0-rc1
+COMPILER_COMMIT = 3447a668783dbce1a8fdb97101dd067687b2b418
+MATHLIB_PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+AUDITED_SOURCE_COMMIT = d04698bae290672d5c0b0238ff4fa0d6c2ca9b6a
+EXTERNAL_RUN = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43376636262
+ARTIFACT_ID = 14014388642
+ARTIFACT_SHA256 = 748c85b8b52fd84857c05158f4de03a7d5fd1350c791b6dad482bc9db096550c
+LOCAL_LEAN_EXECUTIONS = 0
+COMPILER_DEPENDENCY_PROJECT_CACHES = RESTORED
+
+SELECTED_NATIVE_DECLARATIONS = 25 existing theorems
+NATIVE_EXPORT_REFERENCE_CHECKS = 25 / 25 PASS
+ADDITIONAL_PROOF_THEOREMS = 18 / 18 PASS
+THEOREM_LEVEL_AXIOM_AUDITS = 43 / 43 PASS_STANDARD_ONLY
+APPROVED_AXIOMS = propext; Classical.choice; Quot.sound
+SORRY_OR_UNAPPROVED_AXIOMS = 0
+CURRENT_SOURCE_INPUT_MATCHES = 335 / 335 at verification before retention metadata update
+LOCAL_IMPORT_CLOSURE = 21 source-matched modules
+
+EXACT_NATIVE_TARGET_LIST = Auxillary/assembly-native-targets.txt
+SOURCE_REGISTRY = Auxillary/assembly-native-registry.json
+NEW_PROOF_TARGET_LIST = Auxillary/assembly-proof-targets.txt
+NATIVE_IMPORT_ROOT = ClassicalMechanicsAssembly
+RETAINED_EVIDENCE = Auxillary/evidence/assembly-linux-43376636262
+SOURCE_CERTIFICATE = Auxillary/evidence/assembly-linux-43376636262/source-match-certificate.json
+SIGNATURES_AND_AXIOMS = Auxillary/evidence/assembly-linux-43376636262/audit.log
+
+!! DIFFUSION_ROOT =
+  ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_DIFFUSION_REALIZATION
+!!! EQUATION_ROOT =
+  ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW
+
+Exact diffusion premises:
+  SmoothVelocityOn T u; MaterialPathOn T eta rho;
+  forall t in [0,T], forall a,
+    materialVelocity T eta t a = u t (eta t a).
+Conclusion:
+  forall t in [0,T], forall a,
+    materialDiffusion T eta t a = laplacian (u t) (eta t a).
+
+Exact equation premises:
+  T>0; SmoothVelocityOn T u; SmoothPressureOn T p;
+  MaterialPathOn T eta rho;
+  forall t in [0,T], forall a,
+    materialVelocity T eta t a = u t (eta t a).
+Define pi(t,a) = p(t,eta(t,a)).
+Conclusion:
+  [forall t in [0,T], forall x,
+    finiteMaterialAcceleration T u t x + gradient (p t) x
+      = nu * laplacian (u t) x]
+  <-> MaterialEquationOn nu T eta pi.
+Here nu * laplacian denotes scalar multiplication of the velocity vector.
+
+Native derivation:
+  Frechet product/chain rules + div(cofactor(D eta)) = 0
+  + (D eta) * transpose(cofactor(D eta)) = det(D eta) I
+  -> div_a[(Q o eta) cofactor(D eta)]
+       = det(D eta) (div_x Q) o eta.
+  V = u o eta; A = inverse(D eta); det(D eta)=1
+  -> D V A transpose(A) = (D u o eta) cofactor(D eta)
+  -> div_a[D V A transpose(A)] = (Delta u) o eta.
+  Derived diffusion + native acceleration/gradient pullbacks
+  + material-path surjectivity
+  -> both equation implications -> exact equation equivalence.
+
+DIFFUSION_ADMISSION = DISCHARGED
+LITERAL_PRESSURE_PULLBACK = DEFINED
+FLOW_EXISTENCE = OPEN
+Unresolved native construction:
+  smooth periodic solenoidal u -> exists eta rho, MaterialPathOn and flow ODE.
+This supplied-flow equation equivalence does not establish a full solution-set
+bijection, arbitrary-data NSE existence, or UNCONDITIONAL_CLOSURE of those roots.
+
+Evidence retention updates only documentation, status, registry certification
+metadata and audit records. The 21 imported native source files, endpoint target
+lists, Lake/toolchain pins and runner bodies match the audited source commit.

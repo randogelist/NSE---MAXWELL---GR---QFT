@@ -1,0 +1,83 @@
+HISTORICAL_CHECKPOINT = 216217a88fc8039b5551738a0ce3b6bbe884e45d
+CURRENT_NATIVE_INPUT_STATUS = ../Auxillary/quantum/assembly/exports/exact_quantum_root_for_canonical_flow_A_TIER.txt
+CURRENT_NATIVE_PROOF_COMMIT = 1a0664fc219e6b4e2caf005384bd71b585ad0847
+CURRENT_NATIVE_ASSEMBLY = 203/203 PASS_STANDARD_ONLY; CONDITIONAL_FORMAL_CLOSURE.
+The unresolved-input inventory below records the historical checkpoint only.
+
+QUANTUM_ADAPTER
+MODE=A_TIER_DERIVATION
+STATUS=A_TIER
+ROOT_STATUS=CONDITIONAL_FORMAL_CLOSURE
+MARKERS=!! SELECTED_NATIVE_DECLARATIONS; !!! CONDITIONAL_ROOT
+UNCONDITIONAL_CLOSURE=FALSE
+LOCAL_LEAN_EXECUTIONS=0
+
+BASE_BRANCH=codex/fefferman-b-maxwell
+BASE_COMMIT=1de664f2ef5ddc11caef25ac2274278b4171ab6b
+BRANCH=codex/quantum-adapter-from-maxwell
+PROOF_COMMIT=216217a88fc8039b5551738a0ce3b6bbe884e45d
+EXTERNAL_RUN=43367057140
+EXTERNAL_RUN_STATUS=SUCCESS
+EXTERNAL_COMPILER=Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)
+MATHLIB_COMMIT=de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+MODULES=14
+NAMED_AUDIT_TARGETS=204/204 PASS_STANDARD_ONLY
+APPROVED_AXIOMS=propext, Classical.choice, Quot.sound
+UNAPPROVED_AXIOMS=0
+SOURCE_HASH_CHECK=15/15 Lean inputs, including lakefile.lean
+INHERITED_AUDITS=236/236 integrated; 62/62 Maxwell; 236/236 Fefferman
+
+EXACT_ROOT=QuantumAdapter.exact_quantum_conditional_root
+forall nu:Real, 0<nu -> forall F:PhaseFlow nu, forall Cemb C3:Real,
+ GalerkinAnalyticLaws F -> PacketBounds F Cemb C3 ->
+ InitialProjectionBounds ->
+ (NSEMaxwell.Classical.FeffermanB nu <-> QuantumAdapter.QREG F).
+
+CRITERION=canonical finite-width Gaussian QREG_Gauss (R7 specialization)
+CLASSICAL_ENDPOINT=native FeffermanB; unforced; T^3; arbitrary velocity mean;
+ smoothness through t=0; periodic pressure with arbitrary gauge.
+
+ORDERED_EDGES
+F1: FeffermanB -> G3 [GalerkinAnalyticLaws].
+F2: G3 -> QREG [PacketBounds].
+F3: F1; F2.
+R1: QREG -> G3 [PacketBounds, InitialProjectionBounds].
+R2: G3 -> FeffermanB [GalerkinAnalyticLaws].
+R3: R1; R2.
+ROOT: F3 AND R3.
+
+NATIVE_SCOPE
+Full constrained real Hilbert Fourier phase; zero mode retained.
+Actual Fourier initial coefficients; solenoidality; mean dictionary.
+Full convolution, Leray tangency, raw drift identity.
+Actual coefficient energy derivative = -2*nu*dissipation; nu>=0 -> decay.
+Cotangent Hamiltonian and momentum derivative.
+Actual complex Born density, L2 representatives and multiplier-domain predicate.
+IntegralPullbackLaw AND MemLpPullbackLaw AND flow group laws
+ -> actual complex L2 linear isometry equivalence U(t), inverse U(-t).
+Actual intrinsic phase Haar measure; canonical Gaussian formula; positive scale.
+Actual differential Hamiltonian expression; explicit smooth compact test predicate.
+
+UNRESOLVED_ROOT_INPUTS
+PhaseFlow nu: no complete actual-flow inhabitant supplied.
+GalerkinAnalyticLaws F: stability and compactness not discharged.
+PacketBounds F Cemb C3: actual packet estimates/admissibility not discharged.
+InitialProjectionBounds: uniform initial Sobolev projection bound not discharged.
+
+ADDITIONAL_UNRESOLVED_QUANTUM_REALIZATION
+Actual flow divergence/Jacobian derivation and PhaseTransportLaws inhabitant.
+Gaussian normalization, moments and evolved full multiplier domains.
+Strongly continuous Hilbert group; dense symmetric operator; selfadjoint generator.
+Physical real-Fourier isometry/dimension/frame; original full predicate dictionaries.
+FULL_ORIGINAL_CP00_CP74=NOT_FORMALIZED (no full-card promotion)
+FULL_ORIGINAL_R1_R24=NOT_FORMALIZED
+UNIVERSAL_NSE_REGULARITY=NOT_PROVED
+
+EVIDENCE=Auxillary/quantum/evidence/216217a88fc8039b5551738a0ce3b6bbe884e45d/
+Raw external audit, exact type/axioms, source manifest, compiler/dependency identity,
+ordered stage logs and separate scope-review.json are retained.
+Evidence/documentation commits do not alter the tested Lean source bytes.
+
+RUN=bash Auxillary/run.sh; bash Auxillary/quantum/run.sh
+RUN_CMD=Auxillary/quantum/run.cmd (explicit WSL/Linux launcher)
+NATIVE_WINDOWS_COMPILER_EVIDENCE=NOT_CLAIMED

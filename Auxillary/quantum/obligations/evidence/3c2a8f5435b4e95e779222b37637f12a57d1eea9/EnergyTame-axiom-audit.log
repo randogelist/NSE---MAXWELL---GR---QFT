@@ -1,0 +1,15 @@
+@QuantumAdapter.Obligations.h3Pairing_drift_le : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (N : ℕ) (q : QuantumAdapter.Phase N),
+      LE.le.{0} (QuantumAdapter.Obligations.h3Pairing N q (QuantumAdapter.drift ν N q))
+        (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} 512 (QuantumAdapter.gradientObservable q))
+          (QuantumAdapter.energy3 N q))
+'QuantumAdapter.Obligations.h3Pairing_drift_le' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@QuantumAdapter.Obligations.phaseFlow_h3_tame : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (q : QuantumAdapter.Phase N) (t : ℝ),
+      LE.le.{0} 0 t →
+        LE.le.{0} (√(QuantumAdapter.energy3 N (F.map N t q)))
+          (HMul.hMul.{0, 0, 0} (√(QuantumAdapter.energy3 N q))
+            (Real.exp (HMul.hMul.{0, 0, 0} 512 (QuantumAdapter.Assembly.orbitGradientCost F N q t))))
+'QuantumAdapter.Obligations.phaseFlow_h3_tame' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]

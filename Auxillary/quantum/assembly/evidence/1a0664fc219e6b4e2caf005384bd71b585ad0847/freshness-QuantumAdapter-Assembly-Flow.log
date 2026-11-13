@@ -1,0 +1,161 @@
+⚠ [8713/8729] Replayed SingularClosure.FourierIntegral
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierIntegral.lean:55:32: This simp argument is unused:
+  div_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [fourier_coe_apply, ← Complex.exp_sum]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierIntegral.lean:72:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+⚠ [8714/8729] Replayed SingularClosure.PhysicalProjection
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalProjection.lean:34:48: `ContinuousLinearMap.sum_apply` has been deprecated: Use `sum_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sum_apply` to `sum_apply x`).
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalProjection.lean:35:4: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalProjection.lean:44:48: This simp argument is unused:
+  mul_ite
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [fourierPhaseCLM, unitVector, apply_ite]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalProjection.lean:114:25: `ContinuousLinearMap.sum_apply` has been deprecated: Use `sum_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sum_apply` to `sum_apply x`).
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalProjection.lean:115:4: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+⚠ [8715/8729] Replayed SingularClosure.InitialFourier
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialFourier.lean:200:13: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/InitialFourier.lean:200:44: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+⚠ [8716/8729] Replayed SingularClosure.GalerkinAlgebra
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean:163:37: `if_false` has been deprecated: Use `ite_false` instead
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean:258:37: `if_false` has been deprecated: Use `ite_false` instead
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinAlgebra.lean:267:8: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Complex.mul_re, Complex.mul_im, Complex.normSq_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8718/8729] Replayed SingularClosure.GalerkinReality
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinReality.lean:26:52: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [coefficientLeray, hk, neg_ne_zero.mpr hk, map_sum, mul_comm, mul_left_comm, mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinReality.lean:27:6: This simp argument is unused:
+  map_sum
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [coefficientLeray, hk, neg_ne_zero.mpr hk, Complex.star_def, mul_comm, mul_left_comm, mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinReality.lean:27:25: This simp argument is unused:
+  mul_left_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [coefficientLeray, hk, neg_ne_zero.mpr hk, Complex.star_def, map_sum, mul_comm, mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinReality.lean:27:40: This simp argument is unused:
+  mul_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [coefficientLeray, hk, neg_ne_zero.mpr hk, Complex.star_def, map_sum, mul_comm, mul_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinReality.lean:46:33: This simp argument is unused:
+  map_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.star_def, Complex.conj_ofReal, Complex.conj_I, Pi.neg_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinReality.lean:47:6: This simp argument is unused:
+  Pi.neg_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.star_def, map_mul, Complex.conj_ofReal, Complex.conj_I]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinReality.lean:72:24: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [galerkinFreqSq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8720/8729] Replayed QuantumAdapter.Phase
+warning: Quantum_adapter/QuantumAdapter/Phase.lean:245:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Quantum_adapter/QuantumAdapter/Phase.lean:245:21: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Quantum_adapter/QuantumAdapter/Phase.lean:247:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Quantum_adapter/QuantumAdapter/Phase.lean:247:21: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Quantum_adapter/QuantumAdapter/Phase.lean:252:17: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Quantum_adapter/QuantumAdapter/Phase.lean:272:26: `if_pos` has been deprecated: Use `ite_eq_left` instead
+⚠ [8721/8729] Replayed QuantumAdapter.FiniteModel
+warning: Quantum_adapter/QuantumAdapter/FiniteModel.lean:137:18: This simp argument is unused:
+  hk
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [rawRhs, fullTransport_zero_fun, coefficientLeray_zero]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8722/8729] Replayed QuantumAdapter.Tangency
+warning: Quantum_adapter/QuantumAdapter/Tangency.lean:62:33: This simp argument is unused:
+  map_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.star_def, Complex.conj_ofReal, Complex.conj_I, Pi.neg_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Quantum_adapter/QuantumAdapter/Tangency.lean:63:6: This simp argument is unused:
+  Pi.neg_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Complex.star_def, map_mul, Complex.conj_ofReal, Complex.conj_I]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Quantum_adapter/QuantumAdapter/Tangency.lean:91:14: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Quantum_adapter/QuantumAdapter/Tangency.lean:100:33: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Quantum_adapter/QuantumAdapter/Tangency.lean:114:22: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Quantum_adapter/QuantumAdapter/Tangency.lean:136:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Quantum_adapter/QuantumAdapter/Tangency.lean:136:19: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Quantum_adapter/QuantumAdapter/Tangency.lean:141:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Quantum_adapter/QuantumAdapter/Tangency.lean:142:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Quantum_adapter/QuantumAdapter/Tangency.lean:142:19: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Quantum_adapter/QuantumAdapter/Tangency.lean:149:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Quantum_adapter/QuantumAdapter/Tangency.lean:149:19: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Quantum_adapter/QuantumAdapter/Tangency.lean:152:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Quantum_adapter/QuantumAdapter/Tangency.lean:152:21: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Quantum_adapter/QuantumAdapter/Tangency.lean:159:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Quantum_adapter/QuantumAdapter/Tangency.lean:159:19: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Quantum_adapter/QuantumAdapter/Tangency.lean:158:43: This simp argument is unused:
+  Complex.star_def
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [laplaceSymbol, galerkinFreqSq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Quantum_adapter/QuantumAdapter/Tangency.lean:167:15: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Quantum_adapter/QuantumAdapter/Tangency.lean:171:17: `if_neg` has been deprecated: Use `ite_eq_right` instead
+⚠ [8723/8729] Replayed QuantumAdapter.Energy
+warning: Quantum_adapter/QuantumAdapter/Energy.lean:156:26: `if_pos` has been deprecated: Use `ite_eq_left` instead
+⚠ [8729/8729] Replayed QuantumAdapter.Assembly.Flow
+warning: Quantum_adapter/QuantumAdapter/Assembly/Flow.lean:58:37: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Quantum_adapter/QuantumAdapter/Assembly/Flow.lean:60:33: `if_neg` has been deprecated: Use `ite_eq_right` instead
+warning: Quantum_adapter/QuantumAdapter/Assembly/Flow.lean:79:15: `if_pos` has been deprecated: Use `ite_eq_left` instead
+warning: Quantum_adapter/QuantumAdapter/Assembly/Flow.lean:81:15: `if_neg` has been deprecated: Use `ite_eq_right` instead
+All targets up-to-date (8729 jobs).

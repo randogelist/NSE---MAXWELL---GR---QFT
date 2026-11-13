@@ -1,0 +1,30 @@
+import ClassicalMechanicsAssembly.FlowSpatialJets
+
+set_option pp.universes true
+
+#check @ClassicalMechanicsAssembly.flow_family_slice_contDiff
+#print axioms ClassicalMechanicsAssembly.flow_family_slice_contDiff
+#check @ClassicalMechanicsAssembly.flow_family_fderiv_contDiffOn
+#print axioms ClassicalMechanicsAssembly.flow_family_fderiv_contDiffOn
+#check @ClassicalMechanicsAssembly.flow_family_uniform_lipschitz
+#print axioms ClassicalMechanicsAssembly.flow_family_uniform_lipschitz
+#check @ClassicalMechanicsAssembly.flowSpatialJet
+#print axioms ClassicalMechanicsAssembly.flowSpatialJet
+#check @ClassicalMechanicsAssembly.flowSpatialJet_contDiffOn
+#print axioms ClassicalMechanicsAssembly.flowSpatialJet_contDiffOn
+#check @ClassicalMechanicsAssembly.flowSpatialJet_periodic
+#print axioms ClassicalMechanicsAssembly.flowSpatialJet_periodic
+#check @ClassicalMechanicsAssembly.flowSpatialJet_uniform_bound
+#print axioms ClassicalMechanicsAssembly.flowSpatialJet_uniform_bound
+#check @ClassicalMechanicsAssembly.flowSpatialJet_uniform_lipschitz
+#print axioms ClassicalMechanicsAssembly.flowSpatialJet_uniform_lipschitz
+#check @ClassicalMechanicsAssembly.flowSpatialJetMap
+#print axioms ClassicalMechanicsAssembly.flowSpatialJetMap
+#check @ClassicalMechanicsAssembly.flowSpatialCurry
+#print axioms ClassicalMechanicsAssembly.flowSpatialCurry
+#check @ClassicalMechanicsAssembly.flowSpatialJet_superposition_contDiff
+#print axioms ClassicalMechanicsAssembly.flowSpatialJet_superposition_contDiff
+#check @ClassicalMechanicsAssembly.flowVelocityMap
+#print axioms ClassicalMechanicsAssembly.flowVelocityMap
+#check @ClassicalMechanicsAssembly.periodic_velocity_superposition_contDiff
+#print axioms ClassicalMechanicsAssembly.periodic_velocity_superposition_contDiff

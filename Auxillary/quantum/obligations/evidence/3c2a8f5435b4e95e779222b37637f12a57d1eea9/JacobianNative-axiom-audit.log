@@ -1,0 +1,6 @@
+@QuantumAdapter.Obligations.phaseFlow_jacobian : ∀ {ν : ℝ},
+  LE.le.{0} 0 ν →
+    ∀ (F : QuantumAdapter.PhaseFlow ν) (N : ℕ) (t : ℝ) (q : QuantumAdapter.Phase N),
+      Eq.{1} (ContinuousLinearMap.det.{0, 0} (fderiv.{0, 0, 0} ℝ (F.map N t) q))
+        (Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} (QuantumAdapter.phaseDecayRate ν N)) t))
+'QuantumAdapter.Obligations.phaseFlow_jacobian' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]

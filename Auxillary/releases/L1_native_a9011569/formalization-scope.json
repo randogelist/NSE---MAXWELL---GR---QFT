@@ -1,0 +1,25 @@
+{
+  "export_status": "EXPORTED_SOURCE_ONLY",
+  "theorem_status_record": "L1_native_A_TIER.txt",
+  "portable_windows_validation": "REQUIRES_MATCHING_EXTERNAL_RUN",
+  "root_module": "ClassicalMechanicsAssembly.FlowRealization",
+  "root_targets": [
+    "ClassicalMechanicsAssembly.jointFlowRegularity_of_smooth_periodic",
+    "ClassicalMechanicsAssembly.L1_native",
+    "ClassicalMechanicsAssembly.CLASSICAL_MECHANICS_MATERIAL_NATIVE"
+  ],
+  "flow_scope": "For T>0 and a supplied smooth periodic divergence-free velocity on [0,T], construct a normalized smooth material path and inverse realizing its ODE.",
+  "equation_scope": "For the same velocity and a supplied smooth pressure, the exact Eulerian and pulled-back material equations are equivalent; viscosity is arbitrary.",
+  "excluded_claims": [
+    "Arbitrary-data NSE existence",
+    "Global-in-time NSE regularity",
+    "Full moving-region balance",
+    "Solution-set bijection"
+  ],
+  "approved_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "analytic_premise_discharge": "Not inferred from an axiom audit."
+}

@@ -1,0 +1,882 @@
+L1_MATHLIB_ODE_RESEARCH
+MODE = B_TIER_DERIVATION_RESEARCH_INPUT.
+SCOPE = exact O_FLOW / ClassicalMechanicsAssembly.Literature.L1.
+MATHLIB_PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11.
+LOCAL_LEAN_EXECUTIONS = 0.
+REPOSITORY_LEAN_MODIFICATIONS = 0.
+NEW_NATIVE_THEOREMS_PROVED_BY_THIS_REPORT = 0.
+SOURCE_INSPECTION_IS_NOT_EXTERNAL_COMPILER_OR_AXIOM_AUDIT_EVIDENCE.
+
+0. RESULT
+
+Verified native ODE results provide closed-interval existence, Lipschitz
+dependence on the initial label, joint continuity in label and time, uniqueness,
+and C^n regularity of each individual time trajectory. They do not, by their
+stated conclusions, provide C^n or C-infinity joint initial-label/time regularity.
+No matching native joint-smooth ODE flow theorem was verified in the searched
+pinned sources. A search failure is not a proof of absence from every namespace.
+
+The central new Lean obligation is the differentiability/smoothness of the
+solution family with respect to its initial label. Its mathematical proof must
+establish the variational equations by uniform remainder estimates; formal
+differentiation of an as-yet-undifferentiated flow is circular.
+
+Newly verified simplification: inverse smoothness can be proved entirely within
+the closed slab. HasFDerivWithinAt.of_local_left_inverse, smoothness of inversion
+of invertible continuous linear maps, and finite ContDiffOn induction remove
+the need for a collar extension or an open inverse-function theorem in that
+part of the proof. Forward joint smoothness can likewise be developed directly
+within the slab. Thus the previous finite-reflection construction is a valid
+alternative, not a mandatory L1 dependency.
+
+Newly verified alternative: ContDiffAt.contDiffAt_implicitFunction supports
+smooth dependence of a Banach-space Volterra equation. It is not a ready-made
+ODE smooth-dependence theorem: path-space superposition smoothness, the Volterra
+linearization and its invertibility remain native obligations.
+
+1. EXACT ENDPOINT AND BOUNDARY CONVENTIONS
+
+Source: ASSEMBLY/ClassicalMechanicsAssembly/LiteratureInputs.lean.
+Exact input/output contract:
+
+axiom L1 {T : ℝ} (hT : 0 < T) {u : Velocity}
+    (hu : SmoothVelocityOn T u)
+    (hperiodic : ∀ t ∈ Icc (0 : ℝ) T, SpatialPeriodic (u t))
+    (hdiv : ∀ t ∈ Icc (0 : ℝ) T, ∀ x : Vec,
+      NSEMaxwell.Classical.divergence (u t) x = 0) :
+    ∃ η ρ : Velocity,
+      MaterialPathOn T η ρ ∧
+      ∀ t ∈ Icc (0 : ℝ) T, ∀ a : Vec,
+        materialVelocity T η t a = u t (η t a)
+
+The report proposes proving this same type as a theorem, without changing L1.
+The literal source declaration above is an existing axiom, not a new assumption
+introduced by this research report.
+
+I := [0,T]. S := I × R^3 = ClassicalMechanics.finiteSpacetime T.
+SmoothVelocityOn T u is ContDiffOn R infinity ((t,x) ↦ u(t,x)) S.
+MaterialPathOn requires jointly smooth eta and rho on S, both inverse laws,
+integer-unit lattice equivariance of eta, eta(0,a)=a, and det(D_a eta)=1.
+materialVelocity is derivWithin [0,T] in time, including t=0 and t=T.
+No off-slab smoothness of the total function u is available. No NSE solution,
+pressure, mean-zero condition, global-in-time extension, or smooth dependence
+on the starting time is a premise or required conclusion.
+
+2. EXISTING MF01--MF33: VERIFIED REGISTER AND RELEVANCE
+
+All 33 entries are checked against the pinned local files below: qualified
+name as registered; literal header; source line; file SHA256; Git blob hash.
+The extraction terminates only at a top-level ':=', not at named arguments.
+Existing ambient binders must still be supplied; headers do not repeat them.
+
+MF01  KEEP: exact Picard-Lindelof record; no K*T<1 premise.
+MF02  KEEP: full closed-interval trajectory, including one-sided endpoints.
+MF03  KEEP: uniform-in-time local label Lipschitz dependence.
+MF04  KEEP: joint label/time continuity; order is E × R, swap for S.
+MF05  SUPPORT: derivative of the Picard integral, not parameter smoothness.
+MF06  KEEP: native integral equation for an established ODE trajectory.
+MF07  RECLASSIFY: time-only smoothness; never joint label/time smoothness.
+MF08  KEEP: rightward uniqueness including interval endpoints.
+MF09  KEEP: leftward uniqueness; essential for inverse trajectories.
+MF10  KEEP: uniform variational remainder control by Gronwall.
+MF11  KEEP: explicit label Lipschitz estimate exp(K*|t-s|).
+MF12  KEEP: spatial derivative bound -> global spatial Lipschitz bound.
+MF13  KEEP: compact-cell boundedness of continuous scalar norm functions.
+MF14  SUPPORT: continuous within-domain jets; needs UniqueDiffOn and order bound.
+MF15  KEEP: regularity of fderivWithin; essential for direct inverse induction.
+MF16  KEEP: finite-order-to-infinity closure, no common C-infinity extension.
+MF17  ALTERNATIVE ONLY: open-neighborhood ContDiffAt inverse theorem. Inapplicable
+      to a bare slab endpoint until a suitable finite-order extension is proved.
+MF18  ALTERNATIVE ONLY: inverse equality at the base point; alone it does not
+      identify an inverse on a neighborhood. Use the partial-homeomorphism
+      inverse laws as well if this route is selected.
+MF19  ALTERNATIVE ONLY: first-derivative gluing, not an automatic C^m extension.
+MF20  KEEP: transfer of within-interval derivatives to local one-sided germs.
+MF21  KEEP: HasDerivWithinAt -> derivWithin under UniqueDiffWithinAt.
+MF22  KEEP: unique differentiability of [0,T] under T>0.
+MF23  KEEP: product unique differentiability for S.
+MF24  ALTERNATIVE ONLY: Vandermonde algebra for finite reflection coefficients.
+MF25  ALGEBRA SUPPORT: 3x3 determinant expansion, useful to prove the required
+      determinant derivative without assuming invertibility first.
+MF26  ALGEBRA SUPPORT: adjugate identity, valid before det is known nonzero.
+MF27  ALGEBRA SUPPORT: trace cyclicity for Liouville/Jacobi calculation.
+MF28  KEEP: zero within derivative -> constancy on a convex slab interval.
+MF29  SUPPORT ONLY: parameter differentiation under the integral assumes the
+      parameter derivative already exists; cannot itself establish the unknown
+      differentiability of the solution family. Uniform integrable domination
+      is an explicit hypothesis, not an automatic consequence of pointwise C^1.
+MF30  ROUTINE: congruence, not a new analytic edge.
+MF31  ROUTINE: restriction, not a new analytic edge.
+MF32  REDUNDANT SUPPORT: follows from MF15 at order 0; convenient continuity API.
+MF33  KEEP: finite successor criterion with an explicitly established derivative
+      field; the analytic side clause is vacuous when n is a natural number.
+
+Recommended minimal proof architecture drops MF17--MF19 and MF24 if the direct
+within-slab route in Sections 5--6 is used. Their literal declarations remain
+valid; only their status as mandatory dependencies changes.
+
+3. WHOLE-SLAB EXISTENCE AND UNIQUENESS: NATIVE INPUTS SUFFICE
+
+Spatial periodicity and compactness of I × [0,1]^3 yield B,K>=0 with
+  ||u(t,x)|| <= B,
+  ||D_x u(t,x)|| <= K,
+for all (t,x)∈S. Spatial differentiation of translation identities transports
+the derivative bound from the fundamental cell to all space. Each slice is
+smooth on all of R^3 by ClassicalMechanics.finite_velocity_slice_smooth.
+Mean value gives LipschitzWith K (u t) for each t∈I.
+
+For arbitrary starting time s∈I and center x0 set, in IsPicardLindelof,
+  tmin=0, tmax=T, t0=<s,hs>, r=1, a=B*T+1, L=B, spatial constant=K.
+All constants a,r,L,K are nonnegative reals. The only time-radius condition is
+  B*max(T-s,s) <= B*T = a-r.
+There is no K*T<1 premise. The native proof uses a contracting iterate, so
+the desired finite interval is handled directly, without maximal continuation.
+
+MF02 supplies a trajectory for every label; MF03/MF04 supply uniform local
+families near each label. Global classical choice is legitimate, but its local
+regularity must be transported from those families using uniqueness. Choices
+outside I are immaterial to the endpoint.
+
+MF08 and MF09 on [s,T] and [0,s] prove uniqueness from arbitrary s∈I.
+Their one-sided domains Ici t/Iic t are not global subsets of I. MF20 transfers
+the derivative using the relevant local nhdsWithin inclusion. Interior initial
+times can alternatively use ODE_solution_unique_of_mem_Icc (R04 below).
+
+Let X(t;s,a) be the resulting unique trajectory on I. Then
+  X(r;t,X(t;s,a))=X(r;s,a),   X(s;s,a)=a,
+  ||X(t;s,a)-a||<=B|t-s|,
+  ||X(t;s,a)-X(t;s,b)||<=exp(K|t-s|)||a-b||.
+Backward estimates follow by time reversal or by the corresponding leftward
+argument. Define eta(t,a)=X(t;0,a), rho(t,x)=X(0;t,x). The two inverse laws follow
+from the two-time identity, before any differentiability of rho is used.
+
+Periodicity gives X(t;s,a+e_i)=X(t;s,a)+e_i by ODE uniqueness.
+The PL within derivative and MF21/MF22 produce the literal materialVelocity
+equation. These steps require new adapters, not new analytic assumptions.
+
+4. WHAT THE STRONGEST SEARCHED FLOW RESULTS ACTUALLY PROVE
+
+4.1 IsPicardLindelof.exists_forall_mem_closedBall_eq_hasDerivWithinAt_lipschitzOnWith:
+    existence + initial data + within ODE + one spatial Lipschitz constant L'
+    valid at every t in the prescribed closed interval.
+4.2 IsPicardLindelof.exists_forall_mem_closedBall_eq_hasDerivWithinAt_continuousOn:
+    existence + within ODE + ContinuousOn of the label/time family.
+4.3 ODE.contDiffOn_enat_Icc_of_hasDerivWithinAt:
+    ContDiffOn of alpha : R -> E, for n : ENat. There is no label argument.
+4.4 ContDiffAt.exists_eventually_eq_hasDerivAt:
+    autonomous C^1 field; a selected local family satisfies the ODE eventually
+    in label/time. Conclusion includes neither continuity nor differentiability
+    of that family. The name/docstring 'flow' cannot supply those missing fields.
+4.5 Manifold exists_isMIntegralCurveAt_of_contMDiffAt_boundaryless:
+    one autonomous local trajectory from one point of a boundaryless manifold.
+4.6 Manifold exists_isMIntegralCurve_of_isMIntegralCurveOn:
+    one global autonomous trajectory from each point, PROVIDED a common epsilon
+    for local existence from every point is supplied. No parameter smoothness.
+    Time augmentation would need a smooth autonomous field on an appropriate
+    open manifold, which is not supplied off the slab. This route adds work.
+4.7 Dynamics.Flow:
+    a bundled continuous monoid action; it assumes continuity and action laws.
+    It is not an ODE constructor. Nonautonomous eta(t,a)=X(t;0,a) does not satisfy
+    eta(t+s,a)=eta(t,eta(s,a)) in general, so this bundle is not the L1 endpoint.
+
+Search scope: all six Analysis/ODE files; the four Geometry/Manifold/IntegralCurve
+files; Dynamics/Flow; global Analysis/Geometry/Dynamics searches for flow,
+integralCurve, ContDiff, ContMDiff, initial-parameter/smooth-dependence phrases;
+Calculus implicit-function, inverse, parametric-integral and contraction APIs.
+The closed-slab full joint C-infinity assertion remains unverified as an
+already-present native theorem.
+
+5. CORE MISSING NATIVE EDGE: JOINT FORWARD SMOOTHNESS
+
+The main intended target, with no changed L1 premises, is:
+
+PROPOSED_DECLARATION_NOT_COMPILED:
+theorem smoothVelocityOn_of_periodic_flow
+    {T : ℝ} (hT : 0 < T) {u eta : Velocity}
+    (hu : SmoothVelocityOn T u)
+    (hperiodic : ∀ t ∈ Icc (0 : ℝ) T, SpatialPeriodic (u t))
+    (hinit : ∀ a : Vec, eta 0 a = a)
+    (hode : ∀ t ∈ Icc (0 : ℝ) T, ∀ a : Vec,
+      HasDerivWithinAt (fun s => eta s a) (u t (eta t a))
+        (Icc (0 : ℝ) T) t) :
+    SmoothVelocityOn T eta
+
+Neither divergence-free nor det=1 is needed for this edge. Supplying an entire
+trajectory family does not supply its label derivatives; those must be proved.
+
+5.1 First variation, with no formal-differentiation assumption.
+Set A(t,a)=D_x u(t,eta(t,a)). Construct the unique continuous operator solution
+  F(t,a)=Id + integral_0^t A(s,a) F(s,a) ds.
+A uniform small-interval contraction or the Volterra factorial-series estimate
+constructs F on the whole finite slab. The existence theorem for bounded u
+does not automatically apply to the linear field A*F on an arbitrarily large
+ball: that field has linear growth. Use interval patching or a Volterra series
+for this auxiliary equation, with explicit bound ||F(t,a)||<=exp(Kt).
+
+For a label perturbation h let delta_h(t)=eta(t,a+h)-eta(t,a). The already-native
+Gronwall estimate gives sup_I ||delta_h|| <= exp(KT)||h||.
+Uniform continuity of D_x u on a compact neighborhood of the relevant
+trajectories supplies a modulus omega(r)->0 and the uniform Taylor remainder
+  ||u(t,z+d)-u(t,z)-D_xu(t,z)d|| <= omega(||d||)||d||.
+Thus R_h(t)=delta_h(t)-F(t,a)h satisfies R_h(0)=0 and
+  ||R_h'(t)|| <= K||R_h(t)|| +
+                omega(exp(KT)||h||) exp(KT)||h||.
+MF10 yields sup_I ||R_h||/||h|| -> 0. This proves the label HasFDerivAt,
+uniformly in time, rather than assuming it. A comparison of the F equations
+and uniform continuity of A gives joint continuity of F.
+
+The time derivative is already the within ODE derivative. The integral equation
+and uniform estimates yield the actual JOINT within derivative
+  D eta(t,a)(tau,h) = tau*u(t,eta(t,a)) + F(t,a)h
+on S. Separate partial derivatives without joint continuity do not suffice;
+the increment split and uniform remainder prove the joint derivative.
+MF33 with n=0 gives ContDiffOn R 1 eta S.
+
+5.2 Higher variations.
+For r>=2, introduce Y_r with zero initial value and the Volterra equation
+  d_t Y_r = A Y_r +
+    sum_{partitions P of {1,...,r}, |P|>=2}
+      D_x^{|P|}u(t,eta)[ Y_{|B_1|},...,Y_{|B_|P||} ].
+Set Y_1=F. Every inhomogeneous term at stage r involves lower Y_j.
+Periodic compact-cell bounds give every finite spatial jet bound; trajectory
+and variation bounds and Gronwall give uniform finite bounds for every Y_r.
+Apply the same difference-quotient/remainder argument at each stage to prove
+Y_r=D_a^r eta. This requires operator/multilinear-map norm estimates and
+continuity in labels. Merely writing the recurrence is not its Lean proof.
+
+Mixed time/label derivatives follow inductively from the ODE and these
+variational equations, using within-time derivatives at 0 and T. The joint
+derivative field at every finite stage is verified by the increment split.
+MF33 then builds each finite ContDiffOn order on S; MF16 gives infinity.
+This direct construction needs no exterior extension of u.
+
+5.3 Banach implicit-function alternative, precisely delimited.
+For a short interval J use the Banach space C(J,Vec), and set
+  Q(a,z)(t)=z(t)-a-integral_s^t u(r,z(r)) dr.
+On sufficiently small J, ||V||<1 for
+  V(w)(t)=integral_s^t D_xu(r,z(r))w(r) dr,
+so D_zQ=Id-V is invertible by a convergent Neumann series. The implicit-function
+APIs R05--R08 provide a C^n map a -> z once ContDiffAt of Q is proved.
+The proof of smoothness of the superposition map z -> (r -> u(r,z(r))) in the
+sup norm still requires uniform spatial Taylor estimates and multilinear
+operator construction. No matching C-infinity superposition endpoint was
+verified in the searched Calculus/ContinuousMap sources.
+Fixed-time evaluation is continuous linear and preserves label smoothness.
+Variable-time evaluation C(J,Vec)×J -> Vec is not generally differentiable;
+it cannot by itself supply joint time regularity. Use the ODE and joint jets,
+or a stronger path-space norm with its own calculus setup.
+The implicit theorem is ContDiffAt, not a within-set theorem. Applying it to
+time as a parameter at slab endpoints requires separate endpoint work. Using
+only the unrestricted initial label as parameter avoids that issue.
+Hence the alternative is a genuine implementation strategy, not a discharge
+of the smooth-dependence obligation by one library theorem.
+
+6. NEW DIRECT CLOSED-SLAB INVERSE SMOOTHNESS PROOF
+
+Assume Section 5 supplies SmoothVelocityOn eta and the determinant calculation
+below supplies det(D_a eta)=1. Both inverse laws already hold by uniqueness.
+Let H(t,a)=(t,eta(t,a)), G(t,x)=(t,rho(t,x)); both map S to S.
+
+6.1 Inverse continuity without differentiating a starting-time parameter.
+From the two-time law,
+  rho(t,x)=rho(s,X(s;t,x)).
+The fixed-s backward trajectory map has Lipschitz constant at most exp(KT).
+Together with the displacement bound, this yields
+  ||rho(t,x)-rho(s,y)|| <= exp(KT)*(||x-y||+B|t-s|).
+Thus G is ContinuousOn S, including the boundary. MapsTo G S S plus this
+continuity gives the exact Tendsto into nhdsWithin required by R09.
+
+6.2 First inverse derivative on the same slab.
+The derivative of H at (t,a) is the triangular continuous linear equivalence
+  (tau,h) -> (tau, tau*u(t,eta(t,a))+F(t,a)h),
+with inverse
+  (tau,k) -> (tau, F(t,a)^(-1)*(k-tau*u(t,eta(t,a)))).
+Invertibility follows from det(F)=1 and finite-dimensional linear algebra.
+Apply HasFDerivWithinAt.of_local_left_inverse with f=H, g=G, s=t=S.
+The required eventual equality H(G(z))=z holds on all S. The result is the
+within derivative D G(z)=(D H(G(z)))^(-1), at both slab endpoints as well.
+
+6.3 Higher inverse regularity without collar extension.
+Write M=fderivWithin R H S. MF15 gives ContDiffOn R infinity M S.
+Induct on n to prove ContDiffOn R n G S.
+Base: contDiffOn_zero and Section 6.1.
+Induction: if G is C^n, M∘G is C^n on S, because MapsTo G S S. At each point
+this map takes an invertible value. R10 states that inversion of continuous
+linear maps is ContDiffAt of every order at an invertible value. Composition
+gives a C^n derivative field z -> inverse(M(G(z))). Section 6.2 supplies the
+matching HasFDerivWithinAt. MF33 yields C^(n+1). MF16 gives C-infinity.
+Projection onto the spatial coordinate yields SmoothVelocityOn T rho.
+
+No two-sided smooth extension, local inverse construction, or smoothness in the
+starting-time variable is used in this proof. A new within-set inverse-smoothness
+adapter will still need to be implemented and externally audited.
+
+7. DETERMINANT AND FINAL RECORD
+
+Once the first variation is established, F'=D_xu(t,eta)F and F(0)=Id.
+For arbitrary square F, including singular F, the polynomial determinant rule is
+  (det F)'=trace(adj(F)*F').
+For the project's 3x3 matrix this can be derived directly from MF25 and the
+product rule, without invoking an unverified Mathlib determinant-calculus API.
+Then MF26/MF27 give
+  (det F)'=trace(F*adj(F)*D_xu)
+          =det(F)*trace(D_xu)
+          =det(F)*divergence(u)=0.
+MF28 and det(F(0))=1 prove determinant_one. Inverse matrices are introduced only
+after this step; no invertibility premise is smuggled into the determinant proof.
+Coordinate realization of the continuous linear map F must match exactly
+deformationGradient, whose i,j entry is coordinateDerivative (eta t) j a i.
+
+The L1 record is then assembled from: forward and inverse smoothness; the two
+inverse laws; lattice equivariance; identity initial map; determinant_one.
+The flow equation is the already-proved within ODE, converted by MF21.
+This is finite-slab particle-flow existence for a supplied smooth velocity.
+It asserts neither existence of an NSE velocity nor global-time continuation.
+
+8. PROPOSED NATIVE DECLARATION ORDER
+
+All labels below are planned names, not existing verified constants.
+
+P01 periodic_velocity_uniform_bounds:
+    hT, hu, hperiodic -> exists B K : NNReal, uniform field norm and global
+    spatial Lipschitz bounds on I. Higher-jet bounds are a separate lemma.
+P02 periodic_velocity_isPicardLindelof:
+    P01 + s∈I -> the literal PL record with radius B*T+1 and initial radius 1.
+P03 exists_closedSlab_trajectory_family:
+    hT,hu,hperiodic -> exists X(s,a,t), actual initial value and
+    HasDerivWithinAt on I for each s∈I and each a.
+P04 closedSlab_trajectory_unique_and_estimates:
+    P01 + actual ODE trajectories -> equality, two-time law, displacement,
+    exp(K*|t-s|) label estimate. These statements are independent of div u=0.
+P05 hasFDerivAt_closedSlab_flow_initialLabel:
+    actual family + P01 + C^1 u -> construction of F, its continuous dependence,
+    its variational ODE, and the label HasFDerivAt by uniform remainder estimates.
+P06 smoothVelocityOn_of_periodic_flow:
+    exact explicit signature in Section 5. This is the principal missing edge.
+P07 closedSlab_flow_determinant_one:
+    P05,P06,hdiv -> exact deformationGradient determinant_one.
+P08 smoothWithin_inverse_of_continuous_inverse:
+    UniqueDiffOn S, C-infinity H, continuous G mapping S to S,
+    H∘G=id on S, invertible within derivative of H at G(z)
+    -> ContDiffOn infinity G S; proof in Section 6 using R09/R10/MF33/MF16.
+P09 periodic_solenoidal_flow_materialPath:
+    P03--P08 plus lattice uniqueness -> MaterialPathOn and actual flow equation.
+P10 L1_native:
+    exact literal L1 type, theorem body P09; no L1 dependency, no new axiom.
+
+P01--P04, P07, P08 can be developed independently around the exact P05/P06
+signatures. No declaration is promoted merely by listing or preparing it.
+
+9. NEW VERIFIED SOURCE REGISTER: AMBIENT HYPOTHESES
+
+R01--R04: E is a real normed additive group/space; existence additionally
+requires CompleteSpace E. The vector field of R01--R03 is autonomous E->E.
+R04 is nonautonomous and uses spatial sets s(t) and NNReal Lipschitz K.
+R05--R08: scalar RCLike; E1,E2,F normed additive groups, scalar normed spaces,
+all complete. n : NatInfinityOmega; u : E1×E2; f : E1×E2 -> F.
+R09: nontrivially normed scalar; E,F normed spaces; f:F->E, g:E->F;
+f':F≃L E; a:E; s:Set E; t:Set F. CompleteSpace is not required for the
+first-derivative inverse rule.
+R10: nontrivially normed scalar; E,F normed spaces; E complete;
+n : NatInfinityOmega. Real finite-dimensional specialization satisfies these.
+R11: nontrivially normed scalar; E,F normed spaces; n-order context as in Defs.
+R12--R14: real normed model E; topological H; ModelWithCorners R E H; M with
+topology, charted-space and IsManifold I 1 M. BoundarylessManifold is explicit.
+R12 additionally CompleteSpace E. R13/R14 additionally T2Space M.
+v is autonomous and tangent-bundle-valued. No joint family regularity is present.
+
+[R01] ContDiffAt.exists_forall_mem_closedBall_exists_eq_forall_mem_Ioo_hasDerivAt
+PATH = Mathlib/Analysis/ODE/ExistUnique.lean
+LINE = 145
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+SHA256 = 86023ff0e079f574daf5b2085b8130164a96bbf8aebc92528ccddd2145fdc3b8
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/ExistUnique.lean#L145
+LITERAL_SIGNATURE_BEGIN
+theorem exists_forall_mem_closedBall_exists_eq_forall_mem_Ioo_hasDerivAt
+    (hf : ContDiffAt ℝ 1 f x₀) (t₀ : ℝ) :
+    ∃ r > (0 : ℝ), ∃ ε > (0 : ℝ), ∀ x ∈ closedBall x₀ r, ∃ α : ℝ → E, α t₀ = x ∧
+      ∀ t ∈ Ioo (t₀ - ε) (t₀ + ε), HasDerivAt α (f (α t)) t
+LITERAL_SIGNATURE_END
+
+[R02] ContDiffAt.exists_forall_mem_closedBall_exists_eq_forall_mem_Ioo_hasDerivAt₀
+PATH = Mathlib/Analysis/ODE/ExistUnique.lean
+LINE = 157
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+SHA256 = 86023ff0e079f574daf5b2085b8130164a96bbf8aebc92528ccddd2145fdc3b8
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/ExistUnique.lean#L157
+LITERAL_SIGNATURE_BEGIN
+theorem exists_forall_mem_closedBall_exists_eq_forall_mem_Ioo_hasDerivAt₀
+    (hf : ContDiffAt ℝ 1 f x₀) (t₀ : ℝ) :
+    ∃ α : ℝ → E, α t₀ = x₀ ∧ ∃ ε > (0 : ℝ),
+      ∀ t ∈ Ioo (t₀ - ε) (t₀ + ε), HasDerivAt α (f (α t)) t
+LITERAL_SIGNATURE_END
+
+[R03] ContDiffAt.exists_eventually_eq_hasDerivAt
+PATH = Mathlib/Analysis/ODE/ExistUnique.lean
+LINE = 168
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+SHA256 = 86023ff0e079f574daf5b2085b8130164a96bbf8aebc92528ccddd2145fdc3b8
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/ExistUnique.lean#L168
+LITERAL_SIGNATURE_BEGIN
+theorem exists_eventually_eq_hasDerivAt
+    (hf : ContDiffAt ℝ 1 f x₀) (t₀ : ℝ) :
+    ∃ α : E → ℝ → E, ∀ᶠ xt in 𝓝 x₀ ×ˢ 𝓝 t₀,
+      α xt.1 t₀ = xt.1 ∧ HasDerivAt (α xt.1) (f (α xt.1 xt.2)) xt.2
+LITERAL_SIGNATURE_END
+
+[R04] ODE_solution_unique_of_mem_Icc
+PATH = Mathlib/Analysis/ODE/ExistUnique.lean
+LINE = 252
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+SHA256 = 86023ff0e079f574daf5b2085b8130164a96bbf8aebc92528ccddd2145fdc3b8
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/ExistUnique.lean#L252
+LITERAL_SIGNATURE_BEGIN
+theorem ODE_solution_unique_of_mem_Icc
+    (hv : ∀ t ∈ Ioo a b, LipschitzOnWith K (v t) (s t))
+    (ht : t₀ ∈ Ioo a b)
+    (hf : ContinuousOn f (Icc a b))
+    (hf' : ∀ t ∈ Ioo a b, HasDerivAt f (v t (f t)) t)
+    (hfs : ∀ t ∈ Ioo a b, f t ∈ s t)
+    (hg : ContinuousOn g (Icc a b))
+    (hg' : ∀ t ∈ Ioo a b, HasDerivAt g (v t (g t)) t)
+    (hgs : ∀ t ∈ Ioo a b, g t ∈ s t)
+    (heq : f t₀ = g t₀) :
+    EqOn f g (Icc a b)
+LITERAL_SIGNATURE_END
+
+[R05] ContDiffAt.implicitFunction
+PATH = Mathlib/Analysis/Calculus/ImplicitContDiff.lean
+LINE = 55
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+SHA256 = 6c104281dd0e0efc9c47236b7fed89ef35869bfba6fa2791cba9891e2c0c5209
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ImplicitContDiff.lean#L55
+LITERAL_SIGNATURE_BEGIN
+noncomputable def implicitFunction
+    (cdf : ContDiffAt 𝕜 n f u) (pn : n ≠ 0) (if₂ : (fderiv 𝕜 f u ∘L .inr 𝕜 E₁ E₂).IsInvertible) :
+    E₁ → E₂
+LITERAL_SIGNATURE_END
+
+[R06] ContDiffAt.contDiffAt_implicitFunction
+PATH = Mathlib/Analysis/Calculus/ImplicitContDiff.lean
+LINE = 90
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+SHA256 = 6c104281dd0e0efc9c47236b7fed89ef35869bfba6fa2791cba9891e2c0c5209
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ImplicitContDiff.lean#L90
+LITERAL_SIGNATURE_BEGIN
+theorem contDiffAt_implicitFunction
+    (cdf : ContDiffAt 𝕜 n f u) (pn : n ≠ 0) (if₂ : (fderiv 𝕜 f u ∘L .inr 𝕜 E₁ E₂).IsInvertible) :
+    ContDiffAt 𝕜 n (cdf.implicitFunction pn if₂) u.1
+LITERAL_SIGNATURE_END
+
+[R07] ContDiffAt.eventually_apply_eq_iff_implicitFunction
+PATH = Mathlib/Analysis/Calculus/ImplicitContDiff.lean
+LINE = 77
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+SHA256 = 6c104281dd0e0efc9c47236b7fed89ef35869bfba6fa2791cba9891e2c0c5209
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ImplicitContDiff.lean#L77
+LITERAL_SIGNATURE_BEGIN
+theorem eventually_apply_eq_iff_implicitFunction
+    (cdf : ContDiffAt 𝕜 n f u) (pn : n ≠ 0) (if₂ : (fderiv 𝕜 f u ∘L .inr 𝕜 E₁ E₂).IsInvertible) :
+    ∀ᶠ v in 𝓝 u, f v = f u ↔ cdf.implicitFunction pn if₂ v.1 = v.2
+LITERAL_SIGNATURE_END
+
+[R08] ContDiffAt.hasStrictFDerivAt_implicitFunction
+PATH = Mathlib/Analysis/Calculus/ImplicitContDiff.lean
+LINE = 82
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+SHA256 = 6c104281dd0e0efc9c47236b7fed89ef35869bfba6fa2791cba9891e2c0c5209
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ImplicitContDiff.lean#L82
+LITERAL_SIGNATURE_BEGIN
+theorem hasStrictFDerivAt_implicitFunction
+    (cdf : ContDiffAt 𝕜 n f u) (pn : n ≠ 0) (if₂ : (fderiv 𝕜 f u ∘L .inr 𝕜 E₁ E₂).IsInvertible) :
+    HasStrictFDerivAt (cdf.implicitFunction pn if₂)
+      (-(fderiv 𝕜 f u ∘L .inr 𝕜 E₁ E₂).inverse ∘L (fderiv 𝕜 f u ∘L .inl 𝕜 E₁ E₂)) u.1
+LITERAL_SIGNATURE_END
+
+[R09] HasFDerivWithinAt.of_local_left_inverse
+PATH = Mathlib/Analysis/Calculus/FDeriv/OfCompLeft.lean
+LINE = 179
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+SHA256 = 44a11b2616ec132fcf119190ef16f6154b30750aa3f9254ee5b415517ca3d627
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/OfCompLeft.lean#L179
+LITERAL_SIGNATURE_BEGIN
+theorem HasFDerivWithinAt.of_local_left_inverse
+    (hg : Tendsto g (𝓝[s] a) (𝓝[t] (g a))) (hf : HasFDerivWithinAt f (f' : F →L[𝕜] E) t (g a))
+    (ha : a ∈ s) (hfg : ∀ᶠ x in 𝓝[s] a, f (g x) = x) :
+    HasFDerivWithinAt g (f'.symm : E →L[𝕜] F) s a
+LITERAL_SIGNATURE_END
+
+[R10] ContinuousLinearMap.IsInvertible.contDiffAt_map_inverse
+PATH = Mathlib/Analysis/Calculus/ContDiff/Operations.lean
+LINE = 869
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+SHA256 = 3ba61e517d6162ed2fd043f1deb48d80567c2470991d9b3ae99e7be1176eb1c2
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Operations.lean#L869
+LITERAL_SIGNATURE_BEGIN
+theorem ContinuousLinearMap.IsInvertible.contDiffAt_map_inverse [CompleteSpace E] {e : E →L[𝕜] F}
+    (he : e.IsInvertible) : ContDiffAt 𝕜 n inverse e
+LITERAL_SIGNATURE_END
+
+[R11] contDiffOn_zero
+PATH = Mathlib/Analysis/Calculus/ContDiff/Defs.lean
+LINE = 619
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+SHA256 = 5d2f01069c6265873a372d4aed746c5d3411073b8acb108a180d02a84c832dca
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Defs.lean#L619
+LITERAL_SIGNATURE_BEGIN
+theorem contDiffOn_zero : ContDiffOn 𝕜 0 f s ↔ ContinuousOn f s
+LITERAL_SIGNATURE_END
+
+[R12] exists_isMIntegralCurveAt_of_contMDiffAt_boundaryless
+PATH = Mathlib/Geometry/Manifold/IntegralCurve/ExistUnique.lean
+LINE = 119
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+SHA256 = 0838531e633b746b0aa1ed1198a7b5309cd653c2ff5e422583381a4641357d69
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Geometry/Manifold/IntegralCurve/ExistUnique.lean#L119
+LITERAL_SIGNATURE_BEGIN
+lemma exists_isMIntegralCurveAt_of_contMDiffAt_boundaryless
+    [CompleteSpace E] [BoundarylessManifold I M]
+    (hv : CMDiffAt 1 (fun x ↦ (⟨x, v x⟩ : TangentBundle I M)) x₀) :
+    ∃ γ : ℝ → M, γ t₀ = x₀ ∧ IsMIntegralCurveAt γ v t₀
+LITERAL_SIGNATURE_END
+
+[R13] isMIntegralCurveOn_Ioo_eqOn_of_contMDiff_boundaryless
+PATH = Mathlib/Geometry/Manifold/IntegralCurve/ExistUnique.lean
+LINE = 226
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+SHA256 = 0838531e633b746b0aa1ed1198a7b5309cd653c2ff5e422583381a4641357d69
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Geometry/Manifold/IntegralCurve/ExistUnique.lean#L226
+LITERAL_SIGNATURE_BEGIN
+theorem isMIntegralCurveOn_Ioo_eqOn_of_contMDiff_boundaryless [BoundarylessManifold I M]
+    (ht₀ : t₀ ∈ Ioo a b)
+    (hv : CMDiff 1 (fun x ↦ (⟨x, v x⟩ : TangentBundle I M)))
+    (hγ : IsMIntegralCurveOn γ v (Ioo a b)) (hγ' : IsMIntegralCurveOn γ' v (Ioo a b))
+    (h : γ t₀ = γ' t₀) : EqOn γ γ' (Ioo a b)
+LITERAL_SIGNATURE_END
+
+[R14] exists_isMIntegralCurve_of_isMIntegralCurveOn
+PATH = Mathlib/Geometry/Manifold/IntegralCurve/UniformTime.lean
+LINE = 162
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+SHA256 = 1e4aa4b0862f65ef0e6dd06cb5fa2d3761ab90f05f779e2c44e9db5dad95257c
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Geometry/Manifold/IntegralCurve/UniformTime.lean#L162
+LITERAL_SIGNATURE_BEGIN
+lemma exists_isMIntegralCurve_of_isMIntegralCurveOn [BoundarylessManifold I M]
+    {v : (x : M) → TangentSpace I x}
+    (hv : CMDiff 1 (fun x ↦ (⟨x, v x⟩ : TangentBundle I M)))
+    {ε : ℝ} (hε : 0 < ε) (h : ∀ x : M, ∃ γ : ℝ → M, γ 0 = x ∧ IsMIntegralCurveOn γ v (Ioo (-ε) ε))
+    (x : M) : ∃ γ : ℝ → M, γ 0 = x ∧ IsMIntegralCurve γ v
+LITERAL_SIGNATURE_END
+
+10. EXISTING REGISTER VERIFICATION AND SELECTED LITERAL INPUTS
+
+INPUT_ARTIFACT = CLASSICAL_MECHANICS_FLOW_PIOLA_INPUTS_B_TIER.txt
+INPUT_SHA256 = 1099738d0f44b756ff2836166298aec71c91f9585888c9439be46991ebe51e1b
+VERIFIED = 33/33 literal headers, declaration lines, file SHA256 hashes and Git blob hashes.
+No Lean process was invoked by this verification.
+
+MF01 | IsPicardLindelof | Mathlib/Analysis/ODE/PicardLindelof.lean:79 | PASS
+MF02 | IsPicardLindelof.exists_eq_forall_mem_Icc_hasDerivWithinAt | Mathlib/Analysis/ODE/ExistUnique.lean:57 | PASS
+MF03 | IsPicardLindelof.exists_forall_mem_closedBall_eq_hasDerivWithinAt_lipschitzOnWith | Mathlib/Analysis/ODE/ExistUnique.lean:79 | PASS
+MF04 | IsPicardLindelof.exists_forall_mem_closedBall_eq_hasDerivWithinAt_continuousOn | Mathlib/Analysis/ODE/ExistUnique.lean:114 | PASS
+MF05 | ODE.hasDerivWithinAt_picard_Icc | Mathlib/Analysis/ODE/PicardLindelof.lean:484 | PASS
+MF06 | ODE.picard_eq_of_hasDerivAt | Mathlib/Analysis/ODE/PicardLindelof.lean:502 | PASS
+MF07 | ODE.contDiffOn_enat_Icc_of_hasDerivWithinAt | Mathlib/Analysis/ODE/PicardLindelof.lean:560 | PASS
+MF08 | ODE_solution_unique_of_mem_Icc_right | Mathlib/Analysis/ODE/ExistUnique.lean:194 | PASS
+MF09 | ODE_solution_unique_of_mem_Icc_left | Mathlib/Analysis/ODE/ExistUnique.lean:209 | PASS
+MF10 | norm_le_gronwallBound_of_norm_deriv_right_le | Mathlib/Analysis/ODE/Gronwall.lean:134 | PASS
+MF11 | dist_le_of_trajectories_ODE_of_mem | Mathlib/Analysis/ODE/Gronwall.lean:208 | PASS
+MF12 | lipschitzWith_of_nnnorm_fderiv_le | Mathlib/Analysis/Calculus/MeanValue.lean:516 | PASS
+MF13 | IsCompact.bddAbove_image | Mathlib/Topology/Order/Compact.lean:334 | PASS
+MF14 | ContDiffOn.continuousOn_iteratedFDerivWithin | Mathlib/Analysis/Calculus/ContDiff/Defs.lean:777 | PASS
+MF15 | ContDiffOn.fderivWithin | Mathlib/Analysis/Calculus/ContDiff/Defs.lean:904 | PASS
+MF16 | contDiffOn_infty | Mathlib/Analysis/Calculus/ContDiff/Defs.lean:549 | PASS
+MF17 | ContDiffAt.to_localInverse | Mathlib/Analysis/Calculus/InverseFunctionTheorem/ContDiff.lean:66 | PASS
+MF18 | ContDiffAt.localInverse_apply_image | Mathlib/Analysis/Calculus/InverseFunctionTheorem/ContDiff.lean:59 | PASS
+MF19 | HasFDerivWithinAt.union | Mathlib/Analysis/Calculus/FDeriv/Basic.lean:353 | PASS
+MF20 | HasDerivWithinAt.mono_of_mem_nhdsWithin | Mathlib/Analysis/Calculus/Deriv/Basic.lean:377 | PASS
+MF21 | HasDerivWithinAt.derivWithin | Mathlib/Analysis/Calculus/Deriv/Basic.lean:444 | PASS
+MF22 | uniqueDiffOn_Icc | Mathlib/Analysis/Calculus/TangentCone/Real.lean:99 | PASS
+MF23 | UniqueDiffOn.prod | Mathlib/Analysis/Calculus/TangentCone/Prod.lean:63 | PASS
+MF24 | Matrix.det_vandermonde_ne_zero_iff | Mathlib/LinearAlgebra/Vandermonde.lean:232 | PASS
+MF25 | Matrix.det_fin_three | Mathlib/LinearAlgebra/Matrix/Determinant/Basic.lean:818 | PASS
+MF26 | Matrix.mul_adjugate | Mathlib/LinearAlgebra/Matrix/Adjugate.lean:264 | PASS
+MF27 | Matrix.trace_mul_cycle | Mathlib/LinearAlgebra/Matrix/Trace.lean:161 | PASS
+MF28 | Convex.is_const_of_fderivWithin_eq_zero | Mathlib/Analysis/Calculus/MeanValue.lean:559 | PASS
+MF29 | intervalIntegral.hasFDerivAt_integral_of_dominated_of_fderiv_le | Mathlib/Analysis/Calculus/ParametricIntervalIntegral.lean:56 | PASS
+MF30 | ContDiffOn.congr | Mathlib/Analysis/Calculus/ContDiff/Defs.lean:565 | PASS
+MF31 | ContDiffOn.mono | Mathlib/Analysis/Calculus/ContDiff/Defs.lean:571 | PASS
+MF32 | ContDiffOn.continuousOn_fderivWithin | Mathlib/Analysis/Calculus/ContDiff/Defs.lean:912 | PASS
+MF33 | contDiffOn_succ_iff_hasFDerivWithinAt_of_uniqueDiffOn | Mathlib/Analysis/Calculus/ContDiff/Defs.lean:875 | PASS
+
+The following strongest original inputs are repeated literally for standalone review.
+
+[MF01] IsPicardLindelof
+PATH = Mathlib/Analysis/ODE/PicardLindelof.lean
+LINE = 79
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+GIT_BLOB = a692cd5696e93c9bc84c79499323faa0313baf4a
+SHA256 = 660b3beec434d7c1d317160d31f101e8764b8d7eeba4953fcdc0698046092aab
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/PicardLindelof.lean#L79
+LITERAL_SIGNATURE_BEGIN
+structure IsPicardLindelof {E : Type*} [NormedAddCommGroup E]
+    (f : ℝ → E → E) {tmin tmax : ℝ} (t₀ : Icc tmin tmax) (x₀ : E) (a r L K : ℝ≥0) : Prop where
+  /-- The vector field at any time is Lipschitz with constant `K` within a closed ball. -/
+  lipschitzOnWith : ∀ t ∈ Icc tmin tmax, LipschitzOnWith K (f t) (closedBall x₀ a)
+  /-- The vector field is continuous in time within a closed ball. -/
+  continuousOn : ∀ x ∈ closedBall x₀ a, ContinuousOn (f · x) (Icc tmin tmax)
+  /-- `L` is an upper bound of the norm of the vector field. -/
+  norm_le : ∀ t ∈ Icc tmin tmax, ∀ x ∈ closedBall x₀ a, ‖f t x‖ ≤ L
+  /-- The time interval of validity -/
+  mul_max_le : L * max (tmax - t₀) (t₀ - tmin) ≤ a - r
+LITERAL_SIGNATURE_END
+
+[MF02] IsPicardLindelof.exists_eq_forall_mem_Icc_hasDerivWithinAt
+PATH = Mathlib/Analysis/ODE/ExistUnique.lean
+LINE = 57
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+GIT_BLOB = 2e12f90333b35050e95a026b9a7c9139a54b1b22
+SHA256 = 86023ff0e079f574daf5b2085b8130164a96bbf8aebc92528ccddd2145fdc3b8
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/ExistUnique.lean#L57
+LITERAL_SIGNATURE_BEGIN
+theorem exists_eq_forall_mem_Icc_hasDerivWithinAt
+    (hf : IsPicardLindelof f t₀ x₀ a r L K) (hx : x ∈ closedBall x₀ r) :
+    ∃ α : ℝ → E, α t₀ = x ∧
+      ∀ t ∈ Icc tmin tmax, HasDerivWithinAt α (f t (α t)) (Icc tmin tmax) t
+LITERAL_SIGNATURE_END
+
+[MF03] IsPicardLindelof.exists_forall_mem_closedBall_eq_hasDerivWithinAt_lipschitzOnWith
+PATH = Mathlib/Analysis/ODE/ExistUnique.lean
+LINE = 79
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+GIT_BLOB = 2e12f90333b35050e95a026b9a7c9139a54b1b22
+SHA256 = 86023ff0e079f574daf5b2085b8130164a96bbf8aebc92528ccddd2145fdc3b8
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/ExistUnique.lean#L79
+LITERAL_SIGNATURE_BEGIN
+theorem exists_forall_mem_closedBall_eq_hasDerivWithinAt_lipschitzOnWith
+    (hf : IsPicardLindelof f t₀ x₀ a r L K) :
+    ∃ α : E → ℝ → E, (∀ x ∈ closedBall x₀ r, α x t₀ = x ∧
+      ∀ t ∈ Icc tmin tmax, HasDerivWithinAt (α x) (f t (α x t)) (Icc tmin tmax) t) ∧
+      ∃ L' : ℝ≥0, ∀ t ∈ Icc tmin tmax, LipschitzOnWith L' (α · t) (closedBall x₀ r)
+LITERAL_SIGNATURE_END
+
+[MF04] IsPicardLindelof.exists_forall_mem_closedBall_eq_hasDerivWithinAt_continuousOn
+PATH = Mathlib/Analysis/ODE/ExistUnique.lean
+LINE = 114
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+GIT_BLOB = 2e12f90333b35050e95a026b9a7c9139a54b1b22
+SHA256 = 86023ff0e079f574daf5b2085b8130164a96bbf8aebc92528ccddd2145fdc3b8
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/ExistUnique.lean#L114
+LITERAL_SIGNATURE_BEGIN
+theorem exists_forall_mem_closedBall_eq_hasDerivWithinAt_continuousOn
+    (hf : IsPicardLindelof f t₀ x₀ a r L K) :
+    ∃ α : E × ℝ → E, (∀ x ∈ closedBall x₀ r, α ⟨x, t₀⟩ = x ∧
+      ∀ t ∈ Icc tmin tmax, HasDerivWithinAt (α ⟨x, ·⟩) (f t (α ⟨x, t⟩)) (Icc tmin tmax) t) ∧
+      ContinuousOn α (closedBall x₀ r ×ˢ Icc tmin tmax)
+LITERAL_SIGNATURE_END
+
+[MF06] ODE.picard_eq_of_hasDerivAt
+PATH = Mathlib/Analysis/ODE/PicardLindelof.lean
+LINE = 502
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+GIT_BLOB = a692cd5696e93c9bc84c79499323faa0313baf4a
+SHA256 = 660b3beec434d7c1d317160d31f101e8764b8d7eeba4953fcdc0698046092aab
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/PicardLindelof.lean#L502
+LITERAL_SIGNATURE_BEGIN
+lemma picard_eq_of_hasDerivAt {t : ℝ}
+    (hf : ContinuousOn (uncurry f) ((uIcc t₀ t) ×ˢ u))
+    (hα : ∀ t' ∈ uIcc t₀ t, HasDerivWithinAt α (f t' (α t')) (uIcc t₀ t) t')
+    (hmap : MapsTo α (uIcc t₀ t) u) :
+    picard f t₀ (α t₀) α t = α t
+LITERAL_SIGNATURE_END
+
+[MF07] ODE.contDiffOn_enat_Icc_of_hasDerivWithinAt
+PATH = Mathlib/Analysis/ODE/PicardLindelof.lean
+LINE = 560
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+GIT_BLOB = a692cd5696e93c9bc84c79499323faa0313baf4a
+SHA256 = 660b3beec434d7c1d317160d31f101e8764b8d7eeba4953fcdc0698046092aab
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/PicardLindelof.lean#L560
+LITERAL_SIGNATURE_BEGIN
+theorem contDiffOn_enat_Icc_of_hasDerivWithinAt {n : ℕ∞}
+    (hf : ContDiffOn ℝ n (uncurry f) ((Icc tmin tmax) ×ˢ u))
+    (hα : ∀ t ∈ Icc tmin tmax, HasDerivWithinAt α (f t (α t)) (Icc tmin tmax) t)
+    (hmem : MapsTo α (Icc tmin tmax) u) :
+    ContDiffOn ℝ n α (Icc tmin tmax)
+LITERAL_SIGNATURE_END
+
+[MF08] ODE_solution_unique_of_mem_Icc_right
+PATH = Mathlib/Analysis/ODE/ExistUnique.lean
+LINE = 194
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+GIT_BLOB = 2e12f90333b35050e95a026b9a7c9139a54b1b22
+SHA256 = 86023ff0e079f574daf5b2085b8130164a96bbf8aebc92528ccddd2145fdc3b8
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/ExistUnique.lean#L194
+LITERAL_SIGNATURE_BEGIN
+theorem ODE_solution_unique_of_mem_Icc_right
+    (hv : ∀ t ∈ Ico a b, LipschitzOnWith K (v t) (s t))
+    (hf : ContinuousOn f (Icc a b))
+    (hf' : ∀ t ∈ Ico a b, HasDerivWithinAt f (v t (f t)) (Ici t) t)
+    (hfs : ∀ t ∈ Ico a b, f t ∈ s t)
+    (hg : ContinuousOn g (Icc a b))
+    (hg' : ∀ t ∈ Ico a b, HasDerivWithinAt g (v t (g t)) (Ici t) t)
+    (hgs : ∀ t ∈ Ico a b, g t ∈ s t)
+    (ha : f a = g a) :
+    EqOn f g (Icc a b)
+LITERAL_SIGNATURE_END
+
+[MF09] ODE_solution_unique_of_mem_Icc_left
+PATH = Mathlib/Analysis/ODE/ExistUnique.lean
+LINE = 209
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+GIT_BLOB = 2e12f90333b35050e95a026b9a7c9139a54b1b22
+SHA256 = 86023ff0e079f574daf5b2085b8130164a96bbf8aebc92528ccddd2145fdc3b8
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/ExistUnique.lean#L209
+LITERAL_SIGNATURE_BEGIN
+theorem ODE_solution_unique_of_mem_Icc_left
+    (hv : ∀ t ∈ Ioc a b, LipschitzOnWith K (v t) (s t))
+    (hf : ContinuousOn f (Icc a b))
+    (hf' : ∀ t ∈ Ioc a b, HasDerivWithinAt f (v t (f t)) (Iic t) t)
+    (hfs : ∀ t ∈ Ioc a b, f t ∈ s t)
+    (hg : ContinuousOn g (Icc a b))
+    (hg' : ∀ t ∈ Ioc a b, HasDerivWithinAt g (v t (g t)) (Iic t) t)
+    (hgs : ∀ t ∈ Ioc a b, g t ∈ s t)
+    (hb : f b = g b) :
+    EqOn f g (Icc a b)
+LITERAL_SIGNATURE_END
+
+[MF10] norm_le_gronwallBound_of_norm_deriv_right_le
+PATH = Mathlib/Analysis/ODE/Gronwall.lean
+LINE = 134
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+GIT_BLOB = 114eb0afdc524a460dad9f4d05808d712562bd6d
+SHA256 = e156392ddd75bd594590f0216c31b1cf6271d2bfbd36f7d70f3f86c4c16c6899
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/Gronwall.lean#L134
+LITERAL_SIGNATURE_BEGIN
+theorem norm_le_gronwallBound_of_norm_deriv_right_le {f f' : ℝ → E} {δ K ε : ℝ} {a b : ℝ}
+    (hf : ContinuousOn f (Icc a b)) (hf' : ∀ x ∈ Ico a b, HasDerivWithinAt f (f' x) (Ici x) x)
+    (ha : ‖f a‖ ≤ δ) (bound : ∀ x ∈ Ico a b, ‖f' x‖ ≤ K * ‖f x‖ + ε) :
+    ∀ x ∈ Icc a b, ‖f x‖ ≤ gronwallBound δ K ε (x - a)
+LITERAL_SIGNATURE_END
+
+[MF11] dist_le_of_trajectories_ODE_of_mem
+PATH = Mathlib/Analysis/ODE/Gronwall.lean
+LINE = 208
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+GIT_BLOB = 114eb0afdc524a460dad9f4d05808d712562bd6d
+SHA256 = e156392ddd75bd594590f0216c31b1cf6271d2bfbd36f7d70f3f86c4c16c6899
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/ODE/Gronwall.lean#L208
+LITERAL_SIGNATURE_BEGIN
+theorem dist_le_of_trajectories_ODE_of_mem
+    (hv : ∀ t ∈ Ico a b, LipschitzOnWith K (v t) (s t))
+    (hf : ContinuousOn f (Icc a b))
+    (hf' : ∀ t ∈ Ico a b, HasDerivWithinAt f (v t (f t)) (Ici t) t)
+    (hfs : ∀ t ∈ Ico a b, f t ∈ s t)
+    (hg : ContinuousOn g (Icc a b)) (hg' : ∀ t ∈ Ico a b, HasDerivWithinAt g (v t (g t)) (Ici t) t)
+    (hgs : ∀ t ∈ Ico a b, g t ∈ s t) (ha : dist (f a) (g a) ≤ δ) :
+    ∀ t ∈ Icc a b, dist (f t) (g t) ≤ δ * exp (K * (t - a))
+LITERAL_SIGNATURE_END
+
+[MF15] ContDiffOn.fderivWithin
+PATH = Mathlib/Analysis/Calculus/ContDiff/Defs.lean
+LINE = 904
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+GIT_BLOB = aac7759c6a9585e2f80d63f3349039a29261d0e3
+SHA256 = 5d2f01069c6265873a372d4aed746c5d3411073b8acb108a180d02a84c832dca
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Defs.lean#L904
+LITERAL_SIGNATURE_BEGIN
+protected theorem ContDiffOn.fderivWithin (hf : ContDiffOn 𝕜 n f s) (hs : UniqueDiffOn 𝕜 s)
+    (hmn : m + 1 ≤ n) : ContDiffOn 𝕜 m (fderivWithin 𝕜 f s) s
+LITERAL_SIGNATURE_END
+
+[MF16] contDiffOn_infty
+PATH = Mathlib/Analysis/Calculus/ContDiff/Defs.lean
+LINE = 549
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+GIT_BLOB = aac7759c6a9585e2f80d63f3349039a29261d0e3
+SHA256 = 5d2f01069c6265873a372d4aed746c5d3411073b8acb108a180d02a84c832dca
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Defs.lean#L549
+LITERAL_SIGNATURE_BEGIN
+theorem contDiffOn_infty : ContDiffOn 𝕜 ∞ f s ↔ ∀ n : ℕ, ContDiffOn 𝕜 n f s
+LITERAL_SIGNATURE_END
+
+[MF20] HasDerivWithinAt.mono_of_mem_nhdsWithin
+PATH = Mathlib/Analysis/Calculus/Deriv/Basic.lean
+LINE = 377
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+GIT_BLOB = 99b298181811591362a2467cfd825017ac9d0fef
+SHA256 = da1d29570f45bd14f5a37aa5b024d46b3076a47f04e9315bf72cd65f6505d55b
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/Deriv/Basic.lean#L377
+LITERAL_SIGNATURE_BEGIN
+theorem HasDerivWithinAt.mono_of_mem_nhdsWithin (h : HasDerivWithinAt f f' t x) (hst : t ∈ 𝓝[s] x) :
+    HasDerivWithinAt f f' s x
+LITERAL_SIGNATURE_END
+
+[MF21] HasDerivWithinAt.derivWithin
+PATH = Mathlib/Analysis/Calculus/Deriv/Basic.lean
+LINE = 444
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+GIT_BLOB = 99b298181811591362a2467cfd825017ac9d0fef
+SHA256 = da1d29570f45bd14f5a37aa5b024d46b3076a47f04e9315bf72cd65f6505d55b
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/Deriv/Basic.lean#L444
+LITERAL_SIGNATURE_BEGIN
+theorem HasDerivWithinAt.derivWithin (h : HasDerivWithinAt f f' s x)
+    (hxs : UniqueDiffWithinAt 𝕜 s x) : derivWithin f s x = f'
+LITERAL_SIGNATURE_END
+
+[MF22] uniqueDiffOn_Icc
+PATH = Mathlib/Analysis/Calculus/TangentCone/Real.lean
+LINE = 99
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+GIT_BLOB = cae58175fd1a14a9715310280d1cc9ab67bcb49e
+SHA256 = b04706bef612b01bb51d3badd5ffbc6fab3874a7ca6a74135e0dbfb7f3f872df
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/TangentCone/Real.lean#L99
+LITERAL_SIGNATURE_BEGIN
+theorem uniqueDiffOn_Icc {a b : ℝ} (hab : a < b) : UniqueDiffOn ℝ (Icc a b)
+LITERAL_SIGNATURE_END
+
+[MF23] UniqueDiffOn.prod
+PATH = Mathlib/Analysis/Calculus/TangentCone/Prod.lean
+LINE = 63
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+GIT_BLOB = 40db340c888114f2bcf592e45a827ecf21128c1e
+SHA256 = 61b3055990b1dad514400014c81354fc25070af747c4ab80c3e2e25f599cf44f
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/TangentCone/Prod.lean#L63
+LITERAL_SIGNATURE_BEGIN
+theorem UniqueDiffOn.prod (hs : UniqueDiffOn 𝕜 s) (ht : UniqueDiffOn 𝕜 t) :
+    UniqueDiffOn 𝕜 (s ×ˢ t)
+LITERAL_SIGNATURE_END
+
+[MF29] intervalIntegral.hasFDerivAt_integral_of_dominated_of_fderiv_le
+PATH = Mathlib/Analysis/Calculus/ParametricIntervalIntegral.lean
+LINE = 56
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+GIT_BLOB = 6a44e04a88fffa136f8dbb0c8478f83837c7092e
+SHA256 = 67f55a565f3bcda00a0e5840b2d90b51290b3bea01e7861254cf58da95e0bc35
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ParametricIntervalIntegral.lean#L56
+LITERAL_SIGNATURE_BEGIN
+nonrec theorem hasFDerivAt_integral_of_dominated_of_fderiv_le
+    {F : H → ℝ → E} {F' : H → ℝ → H →L[𝕜] E} {x₀ : H} (hs : s ∈ 𝓝 x₀)
+    (hF_meas : ∀ᶠ x in 𝓝 x₀, AEStronglyMeasurable (F x) (μ.restrict (Ι a b)))
+    (hF_int : IntervalIntegrable (F x₀) μ a b)
+    (hF'_meas : AEStronglyMeasurable (F' x₀) (μ.restrict (Ι a b)))
+    (h_bound : ∀ᵐ t ∂μ, t ∈ Ι a b → ∀ x ∈ s, ‖F' x t‖ ≤ bound t)
+    (bound_integrable : IntervalIntegrable bound μ a b)
+    (h_diff : ∀ᵐ t ∂μ, t ∈ Ι a b → ∀ x ∈ s, HasFDerivAt (fun x => F x t) (F' x t) x) :
+    HasFDerivAt (fun x => ∫ t in a..b, F x t ∂μ) (∫ t in a..b, F' x₀ t ∂μ) x₀
+LITERAL_SIGNATURE_END
+
+[MF33] contDiffOn_succ_iff_hasFDerivWithinAt_of_uniqueDiffOn
+PATH = Mathlib/Analysis/Calculus/ContDiff/Defs.lean
+LINE = 875
+PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+GIT_BLOB = aac7759c6a9585e2f80d63f3349039a29261d0e3
+SHA256 = 5d2f01069c6265873a372d4aed746c5d3411073b8acb108a180d02a84c832dca
+URL = https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Defs.lean#L875
+LITERAL_SIGNATURE_BEGIN
+theorem contDiffOn_succ_iff_hasFDerivWithinAt_of_uniqueDiffOn (hs : UniqueDiffOn 𝕜 s) :
+    ContDiffOn 𝕜 (n + 1) f s ↔ (n = ω → AnalyticOn 𝕜 f s) ∧
+      ∃ f' : E → E →L[𝕜] F, ContDiffOn 𝕜 n f' s ∧ ∀ x, x ∈ s → HasFDerivWithinAt f (f' x) s x
+LITERAL_SIGNATURE_END
+
+END OF SOURCE RESEARCH. L1 REMAINS AN AXIOM UNTIL ITS EXACT NATIVE REPLACEMENT PASSES THE EXTERNAL COMPILER AND THEOREM-LEVEL AXIOM AUDIT.

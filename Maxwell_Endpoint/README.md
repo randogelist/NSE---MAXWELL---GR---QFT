@@ -4,8 +4,8 @@
 PACKAGE                       = Maxwell_Endpoint
 NATIVE_MODULE_ROOT            = MaxwellEndpoint
 EXISTING_DEFINITION_NAMESPACE = NSEMaxwell.Classical
-CURRENT_PACKAGE_STATUS        = A_TIER_CANDIDATE
-CURRENT_EXTERNAL_VALIDATION   = PENDING
+CURRENT_PACKAGE_STATUS        = A_TIER_FOR_EXACT_AUDITED_DECLARATIONS
+CURRENT_EXTERNAL_VALIDATION   = PASS_RUN_43359539373
 LOCAL_LEAN_EXECUTIONS         = 0
 STANDALONE_AUDIT_TARGETS       = 62
 NATIVE_MAXWELL_THEOREMS        = 23
@@ -36,8 +36,9 @@ INTEGRATED_AUDIT_TARGETS       = 236
 | [MAXWELL_ENDPOINT_A_TIER.txt](MAXWELL_ENDPOINT_A_TIER.txt) | Exact scope, proof boundary, and external certification record |
 
 ```text
-PROJECT_IMPORTS = MaxwellEndpoint.*
-EXTERNAL_IMPORTS = Mathlib
+NATIVE_IMPLEMENTATION_PROJECT_IMPORTS = MaxwellEndpoint.*
+NATIVE_IMPLEMENTATION_EXTERNAL_IMPORTS = Mathlib
+ADDITIONAL_AUDITED_SOURCE_CLOSURE = MethlibEndpoints + SingularClosure
 ADAPTER_SOURCE_DEPENDENCY = NONE
 DIRECTIONAL_SOURCE_DEPENDENCY = NONE
 ```
@@ -101,7 +102,7 @@ All names below have namespace `MaxwellEndpoint`.
 | `zero_solution` | Complete zero-field `MaxwellSolution`, for every real `ν`, `c`, and every `m : Vec` |
 | `zero_datum_global_instance` | Zero-datum admissibility and existence of the explicit global solution |
 
-The four solution projections retain their `MaxwellSolution` premise. The zero-field endpoints have no Hodge premise. [audit-targets.txt](audit-targets.txt) registers all **23 native theorems** and **29 concrete definition/type targets**; the integrated root audit registers **226 declarations**.
+The four solution projections retain their `MaxwellSolution` premise. The zero-field endpoints have no Hodge premise. [audit-targets.txt](audit-targets.txt) registers all **23 native theorems**, **29 concrete definition/type targets**, and **ten selected Methlib endpoints**; the integrated root audit registers **236 declarations**.
 
 ## External cached compilation
 
@@ -117,9 +118,30 @@ CACHE_POLICY = PRESERVE_COMPILER_DEPENDENCY_PROJECT_CACHES
 AUDIT_POLICY = FRESH_NAMED_DECLARATION_AUDIT
 ```
 
-The independent build uses this folder as its project source closure. Root integration and isolated-package compilation passed their separate validations. The isolated build reuses the verified dependency cache and keeps its own build objects.
+The independent build uses this folder as its project source closure. Root integration and isolated-package compilation passed their separate validations. The isolated build reconstructs its own dependency source checkouts, reuses verified dependency compilation objects, and maintains a separate project cache seeded by physical copies of matching audited root objects.
 
-## Matching external certificate
+## Contained native source certificate
+
+[Native Linux run 43359539373](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43359539373), source `1de664f2ef5ddc11caef25ac2274278b4171ab6b`:
+
+| Scope | Fresh named audits | Matching source files | Matching Lean inputs |
+|---|---:|---:|---:|
+| Integrated repository | 236/236 | 20,353/20,353 | 19,160/19,160 |
+| Isolated Fefferman | 236/236 | 9,968/9,968 | 9,592/9,592 |
+| Isolated Maxwell | 62/62 | 9,914/9,914 | 9,563/9,563 |
+
+All three builds and named axiom audits passed with only `propext`, `Classical.choice`, and `Quot.sound`. Each package contains **9,515 native Lean files** across nine complete pinned dependency snapshots, including **8,853 Mathlib Lean files**, plus the selected **39 Methlib modules**. The ten selected `SingularClosure` endpoints passed the target Lean `4.34.0-rc1` compiler and named audits. Every reachable non-compiler import is contained; missing and ambiguous modules are both zero. `Init`, `Lean`, `Std`, and `Lake` remain supplied by the pinned compiler distribution.
+
+The integrated build restored exact compiler, dependency, and project caches and passed ordinary Lake trace validation with zero module-build invocations. Standalone source checkouts were reconstructed from contained files with zero dependency-source downloads. Their separate project caches received physical copies of matching audited root objects; subsequent native build validation and fresh audits passed. Incremental module-build invocations: **72 Fefferman**, **44 Maxwell**; these counts do not assert recompilation counts. Dependency compilation objects were shared; dependency source checkouts and standalone project object directories were separate.
+
+Artifact `14008727271` contains **242 preserved files**; ZIP SHA256:
+`e3c5b60b16610af15c6f40454698e35c81228a1b44c5bf490d41a852cf354482`.
+
+The source manifests describe the compiled source commit. Documentation/evidence publication preserves all certified Lean sources, build configuration, runners, and audit inventories. The exact reduced implication remains **CONDITIONAL_FORMAL_CLOSURE**; `FourierHodgeLaws` remains an explicit unresolved premise, and arbitrary-data `FeffermanB`/`MaxwellB` existence is not proved.
+
+[Integrated audit](../Auxillary/evidence/linux-43359539373/audit-summary.json) · [Maxwell audit](../Auxillary/evidence/linux-43359539373/standalone/audit-summary.json) · [Retained evidence](../Auxillary/evidence/linux-43359539373/)
+
+## Initial native external certificate
 
 [Native Linux run 43351199370](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43351199370) certified source commit `7e2bcf918b6bade04200a72c377ce0f7c9a5bbc6`.
 

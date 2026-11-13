@@ -1,101 +1,93 @@
-# Deferred Lean integration contracts
+# Fourier–Hodge integration record
 
 ```text
-STATE              = SPECIFIED_MATHEMATICALLY
-IMPLEMENTATION     = DEFERRED
-COMPILER           = external native Linux / Lean 4.34.0-rc1
-DEPENDENCIES       = existing pinned Mathlib with retained caches
-SOURCE_LAYOUT      = Fefferman_adapter plus B <-> Maxwell/=> and /<=
+CANONICAL_ROOT = NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_UNCONDITIONAL
+ROOT_TYPE = NSEMaxwell.Classical.ExactEquivalence
+STATE = UNCONDITIONAL_CLOSURE
+EXTERNAL_RUN = 43373061238
+CERTIFIED_SOURCE = c4c7bcdca6e652905107bb1a3102ed50d94c2e6b
+AUDITS = 400 integrated / 400 isolated Fefferman / 62 isolated Maxwell
+COMPILER = external native Linux / Lean 4.34.0-rc1
+LOCAL_LEAN_EXECUTIONS = 0
 ```
 
-The names below are prospective adapter names. They are not assertions that compiled declarations already exist. Their mathematical bodies are the indicated sections of [FOURIER_HODGE_COMPOSITION_B_TIER.txt](FOURIER_HODGE_COMPOSITION_B_TIER.txt).
+This record identifies the native implementation of the obligations derived in [FOURIER_HODGE_COMPOSITION_B_TIER.txt](FOURIER_HODGE_COMPOSITION_B_TIER.txt). The mathematical derivation is retained unchanged. The original conditional APIs remain available; the canonical root supplies their proved four-field inhabitant.
 
-## 1. Spatial contracts
+## 1. Native source identity and scope
 
-| Proposed endpoint | Exact mathematical contract | Inputs | Derivation |
-|---|---|---|---|
-| `cube_fourierCoeff_eq_torus` | Actual coefficient integral over the frozen Euclidean closed cube equals the normalized torus coefficient | Continuous periodic input; coordinate-volume and null-face adapters | C01; M01/T01 |
-| `fourierCoeff_coordinateDerivative` | `coeff (∂ⱼ f) k = (2πikⱼ) * coeff f k` | Smooth periodic input; actual `fderiv` | C02; T02 |
-| `fourierCoeff_weighted_summable` | `∀ r : ℕ, ∑ₖ (1+|k|)^r |coeff f k| < ∞` | Smooth periodic input | C02–C03; T03/M05 |
-| `fourier_reconstruction` | Pointwise reconstruction of the input from its coefficients | Previous summability and cube/torus transport | C04; M02; alternative M03/M04/M12/T06 |
-| `scalarL_eq_real_multiplier` | Frozen `scalarL` equals the real complex-exponential synthesis with `λ(0)=0`, `λ(k)=(4π²|k|²)⁻¹` | Smooth periodic scalar input | C05 |
-| `vectorL_eq_real_multiplier` | Componentwise counterpart for the actual vector Bochner integral | Smooth periodic vector input | C05 |
-| `L_spatial_smooth` | Frozen scalar/vector `L` is smooth and periodic | Weighted coefficient summability | C06; M07/T04 |
-| `L_coefficient` | `coeff (L f) k = λ(k) * coeff f k`; `mean (L f)=0` | Previous synthesis identity and summability | C06; T05; optional T08 |
-| `L_poisson` | `-Δ(L f)=f-mean(f)` | Previous inversion and actual derivative calculation | C06 |
-| `L_commutes_coordinateDerivative` | `∂ⱼ(L f)=L(∂ⱼ f)` | Previous smoothness and multiplier calculation | C06; optional T09 |
-| `periodic_hodge_identity` | `K(curl F)=F-mean(F)+grad(L(div F))` | Smooth periodic F; actual curl-curl identity | C07 |
+The 19 files in `Fefferman_adapter/FourierHodgeLaws/` and `Fefferman_adapter/FourierHodgeLaws_inhabitant.lean` are byte-identical to the original Methlib source at `f927f1e31196f0be71b2581dc85f6e3fd19e0746`. All 163 Hodge theorem declarations are included in the named audit inventory. One repository-level canonical wrapper raises the original 236-target inventory to 400.
 
-The scalar/vector adapters must preserve `EuclideanSpace ℝ (Fin 3)`, the actual cube and volume, the sign of the derivative symbol, and the all-frequency cosine normalization. The coordinate map to a default Pi normed space is used as a linear/measure identification, not as an isometry to the maximum norm.
+The selected older `SingularClosure` dependency closure remains 39 native modules from Methlib `e9cf90726b8544a268469ebc8fa6634e9c713e07`. Its target-compiler endpoint certificate is run 43359539373. Its original Lean version and the historical `.lean.txt` reference copies do not change the compiler used to validate the current Hodge source.
 
-Linearity of `L` and `K` is proved on the smooth periodic class through summability. No unrestricted linearity of totalized nonsummable `tsum` is introduced.
+The frozen target preserves `EuclideanSpace ℝ (Fin 3)`, the actual cube and volume measure, the all-frequency cosine normalization, arbitrary velocity mean, periodic pressure, and joint smoothness through zero. The target is not replaced by an adjusted mean-zero global-existence proposition.
 
-## 2. Parameter and boundary contracts
+## 2. Spatial proof chain
 
-| Proposed endpoint | Exact mathematical contract | Inputs | Derivation |
-|---|---|---|---|
-| `fourierCoeff_time_derivative` | Actual within time derivative of the coefficient equals the coefficient of the actual within derivative | Joint `ContDiffOn ℝ ∞` on forward spacetime | C08; existing dominated-within integral theorem |
-| `fourierCoeff_uniform_rapid` | For each finite T,r,N, a finite bound `supₜ |∂ₜʳ coeff F(t) k| ≤ M (1+4π²|k|²)⁻ᴺ` on `[0,T]` | Compactness of input jets; periodic spatial integration by parts | C08 |
-| `parameter_fourier_jets` | All candidate mixed Fourier derivatives converge normally and form continuous multilinear jets on the forward half-space | Previous bounds; M05 | C09 |
-| `fourier_jets_interior_derivative` | `D Jq = curry J(q+1)` on positive-time spacetime | Summable uniform derivative bounds on open slabs | C09; M06 |
-| `fourier_jets_boundary_derivative` | Full `HasFDerivWithinAt` for every jet on the closed forward half-space | Interior identity; continuous jets; convexity and closure | C09; M08 |
-| `parameter_fourier_contDiffOn` | Exact `ContDiffOn ℝ ∞` for the summed trajectory on forward spacetime | Compatible continuous within jets; unique differentiation | C09; M09 at finite orders, then M10 |
-| `scalarL_trajectory_smooth` | Frozen scalar `L` preserves joint smoothness for every smooth spatially periodic trajectory | Exact cosine/multiplier identification | C09 |
-| `vectorL_trajectory_smooth` | Vector counterpart | Same, componentwise | C09 |
-| `scalarMean_trajectory_smooth` | The actual cube mean is smooth in time through zero | Coefficient time calculus at k=0 | C09–C10 |
+All unqualified theorem names in this section belong to `NSEMaxwell.HodgeProof`.
 
-The `L` trajectory lemmas have no divergence-free or mean-zero premise. This stronger contract prevents circular dependence through the four Hodge fields and applies directly to `Q = div G` and to the current-field reconstruction.
-
-Jet representation adapters include the canonical identification of arity-zero multilinear maps with scalar values and the continuous linear currying equivalences for higher arities. These transport the explicit finite-coordinate jets; they add no analytic premise.
-
-## 3. Final four endpoints
-
-| Existing field | Construction | Exact preserved condition |
+| Native module | Concrete endpoint or role | Mathematical derivation |
 |---|---|---|
-| `reconstruct_velocity` | Apply general Hodge with `div a=0`; restore `mean a` | Arbitrary velocity mean |
-| `reconstruct_curl` | Apply curl-curl/Poisson with `div B=0` and `mean B=0` | Arbitrary independent m |
-| `canonical_smoothness` | Parameter smoothness of `L`; actual spatial curl/divergence; smooth scalar mean | Joint `ContDiffOn ℝ ∞` through t=0; all three fields |
-| `electric_hodge` | Derive `mean G=0` from Lamb identity and periodic integration, then general Hodge | Exact `headPotential = scalarL (div G)` and plus gradient sign |
+| `TargetPrimitives` | Actual cube coefficients, inverse multiplier, native source adapters | C01–C03 |
+| `FourierCoefficients` | `scalarCoeff_coordinateDerivative`, rapid coefficient decay, inverse-coefficient weighted summability | C02–C03 |
+| `CosineMultiplier` | `scalarL_eq_realFourierSeries`, `vectorL_eq_smoothFourierSynthesis`, `vectorL_component`, actual spatial smoothness | C04–C06 |
+| `SpatialMultiplier` | `coordinateDerivative_vectorL_commute`, `divergence_vectorL_commute`, `curl_vectorL_commute` | C06 |
+| `PoissonFromCoefficients` | `neg_laplacian_vectorL` | C06 |
+| `SpatialHodge` | Curl-curl reconstruction, actual means, general Hodge identities | C07 |
+| `ElectricHodge` | Actual electric-field mean identity and electric Hodge assembly | C10 |
+| `SpatialInhabitant` | `spatialInverseLaplacianLaws`, H1, H2, H4 | C07–C10 |
 
-Optional T07 pressure integration additionally requires the exact scalar-potential and zero-mode adapters. Full Leray projection preserves the constant mode; `K ∘ curl` removes it. Equality for the electric field follows only after `mean G=0` is proved.
+Linearity and termwise calculus use the smooth periodic class and proved summability. No unrestricted linearity of a totalized nonsummable `tsum` is assumed. The coordinate-volume transport preserves the frozen Euclidean norm and measure.
 
-## 4. Deterministic final composition
+## 3. Parameter and boundary proof chain
 
-Prospective constructor:
+| Native module | Concrete endpoint or role | Exact retained boundary |
+|---|---|---|
+| `ParameterIntegral` | `scalarMean_trajectory_smooth`, `kineticMean_trajectory_smooth` | Actual cube mean; all nonnegative times |
+| `ParameterCoefficients` | `scalarCoeff_hasDerivWithinAt`, `scalarCoeff_contDiffOn`, smooth time/spatial derivative trajectories | Actual `derivWithin` on `Ici 0` |
+| `UniformCoefficientBounds` | `uniform_inverseScalarCoeff_moment_bound` and native coefficient bounds | Arbitrary compact nonnegative time intervals |
+| `ClosedHalfspaceSmooth` | `hasFDerivWithinAt_closure_of_continuous_jets` | Full derivative within the closed forward half-space |
+| `ParameterJets` | Generic summable jet calculus | Explicit summability hypotheses discharged by coefficient bounds |
+| `ParameterSmoothing` | `scalarL_trajectory_smooth`, `vectorL_trajectory_smooth` | Joint `ContDiffOn ℝ ∞` through `t = 0` |
+| `CanonicalSmoothness`, `CanonicalFromScalar`, `CanonicalInhabitant` | `canonical_smoothness`, `h3_canonical_smoothness` | Actual velocity, pressure, and divergence-free assertions |
 
-```text
-fourierHodgeLaws_proved : NSEMaxwell.Bridge.FourierHodgeLaws
-  := { reconstruct_velocity := proved H1,
-       reconstruct_curl := proved H2,
-       canonical_smoothness := proved H3,
-       electric_hodge := proved H4 }
+The actual parameter-smoothing proof establishes continuity of the Fourier sum and its derivative on compact slabs, differentiates on positive-time spacetime, extends the derivative to the closed half-space, and inducts over finite smoothness orders before passing to infinity. Its scalar/vector smoothing endpoints require only joint smoothness and spatial periodicity. No divergence-free, mean-zero, analyticity, or negative-time extension premise is added.
+
+## 4. Final endpoints and deterministic composition
+
+| Field | Native theorem | Preserved hypothesis or conclusion |
+|---|---|---|
+| H1: `reconstruct_velocity` | `h1_reconstruct_velocity` | Every `Data a`; reconstruction uses the actual arbitrary mean |
+| H2: `reconstruct_curl` | `h2_reconstruct_curl` | Every `MagneticData B`; independent arbitrary `m` |
+| H3: `canonical_smoothness` | `h3_canonical_smoothness` | Every `MagneticPath B`; all three canonical smoothness fields |
+| H4: `electric_hodge` | `h4_electric_hodge` | Exact `headPotential = scalarL (div G)` and plus-gradient sign |
+
+```lean
+NSEMaxwell.HodgeProof.fourierHodgeLaws_inhabitant :
+  NSEMaxwell.Bridge.FourierHodgeLaws
+
+NSEMaxwell.HodgeProof.exact_equivalence_native :
+  NSEMaxwell.Classical.ExactEquivalence
+
+NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_UNCONDITIONAL :
+  NSEMaxwell.Classical.ExactEquivalence
 ```
 
-Prospective root application:
+`fourierHodgeLaws_inhabitant` assembles H1–H4. `exact_equivalence_native` applies the existing exact reduction to this inhabitant. The canonical wrapper is that exact native equivalence theorem. No analytic-law argument remains in the root signature.
+
+## 5. Matching external certificate
+
+[Run 43373061238](https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43373061238), source `c4c7bcdca6e652905107bb1a3102ed50d94c2e6b`, passed native compilation, source verification, package isolation, and fresh named theorem audits: 400 integrated, 400 isolated Fefferman, and 62 isolated Maxwell targets. [Matching evidence](../Auxillary/evidence/linux-43373061238) records the exact inputs and results.
+
+Allowed axioms are `propext`, `Classical.choice`, and `Quot.sound`. The original Methlib Hodge certificate and prior 236-target repository certificates retain their original source/run scope. Existing compiler and dependency caches are reused only after pin and Lake trace verification; theorem audits execute fresh. No old evidence file is replaced.
+
+## 6. Mathematical conclusion
 
 ```text
-NSEMaxwell.FEFFERMAN_B_MAXWELL_EQUIVALENCE_REDUCED
-  fourierHodgeLaws_proved
-  : NSEMaxwell.Classical.ExactEquivalence
+EXACT_EQUIVALENCE = PROVED
+FOURIER_HODGE_FIELDS_H1_H2_H3_H4 = DISCHARGED
+ROOT_CERTIFICATE_WITNESS_CHECKER_ADMISSION_ANALYTIC_PREMISES = NONE
+ARBITRARY_DATA_FEFFERMAN_B_EXISTENCE = OPEN
+ARBITRARY_DATA_MAXWELL_B_EXISTENCE = OPEN
 ```
 
-The displayed forms specify proof dependencies. They are not `.lean` deliverables and do not establish `A_TIER_CANDIDATE` or `A_TIER` for the new constructor.
-
-## 5. Source-port boundary
-
-Mathlib endpoints are available at the target dependency pin. Selected Methlib files originate from Lean 4.33.0 and an older Mathlib pin. Their complete original imports are preserved in `../Fefferman_adapter/Endpoints/ENDPOINTS.json` and in the reference snapshots. Some imports reach Sobolev, Galerkin, or unrelated NSE modules.
-
-Integration should transport only the required harmonic-analysis definitions and proof bodies into target-native modules, maintaining their explicit hypotheses. The copied endpoint reference files do not constitute a standalone build. The existing conditional equivalence is compiled separately through the adapter and directional source roots. No source-package global-existence endpoint, adjusted mean-zero theorem, all-order Sobolev admission, or unspecified inverse-Laplacian operator is part of the selected root route.
-
-## 6. Compiler and audit gates
-
-1. Exact frozen target signatures and dependency pins.
-2. Existing compiler, dependency, compressed Mathlib download, and project caches retained.
-3. External native Linux compilation with Lean `4.34.0-rc1`; no local Lean/Lake/elan.
-4. Independent edge proofs elaborated asynchronously where the existing toolchain permits; pending signatures never count as proofs.
-5. Deterministic final constructor and root application.
-6. Named theorem-level axiom audits for every new edge, the H inhabitant, and the exact root; inherited upstream names audited as required.
-7. Allowed foundational axioms: `propext`, `Classical.choice`, `Quot.sound` only.
-8. Explicit accounting for every remaining theorem hypothesis; successful axiom audits do not discharge analytic premises.
-
-The existing cached workflow remains the later execution path. This staging does not trigger a proof-status promotion or modify the workflow.
+Unconditional closure applies to the exact equivalence. The root retains its quantified positive viscosity and positive wave-speed parameters and proves both implications. Neither arbitrary-data existence proposition is asserted independently.

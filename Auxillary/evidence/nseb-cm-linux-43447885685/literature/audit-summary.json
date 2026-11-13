@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "status": "PASS_STANDARD_ONLY",
+  "source_commit": "adb4dcdc31c211add64946b817e9edba2c1b9146",
+  "source_manifest_sha256": "6777ac3e7aab0741b14f506a950080287d9566bd4c55c1800ae5b3ceedb75048",
+  "axiom_policy_sha256": "461afbc08bac15ae124068bde21ac4acda90c7e2a4bad8728e128a2150b623e4",
+  "external_compiler_status": "PASS",
+  "audit_command_status": "PASS",
+  "source_input_verification": "PASS",
+  "expected_platform": "linux",
+  "actual_lean_version": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+  "mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "foundational_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "authorized_axiom_declarations": [],
+  "exact_nonfoundational_policy": true,
+  "targets": [
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.L1",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "foundational_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "nonfoundational_axioms": [],
+      "expected_nonfoundational_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.L2",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "foundational_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "nonfoundational_axioms": [],
+      "expected_nonfoundational_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.L2_native",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "foundational_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "nonfoundational_axioms": [],
+      "expected_nonfoundational_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1_L2",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "foundational_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "nonfoundational_axioms": [],
+      "expected_nonfoundational_axioms": []
+    },
+    {
+      "name": "ClassicalMechanicsAssembly.Literature.CLASSICAL_MECHANICS_MATERIAL_FROM_L1",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "foundational_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "nonfoundational_axioms": [],
+      "expected_nonfoundational_axioms": []
+    }
+  ],
+  "errors": [],
+  "standard_43_audit_summary_sha256": "84373cdbe954ad0e2157a34ea64e4b05a83f2c8454b2a70a6c482e1c90035a1c",
+  "standard_43_audit_status": "PASS_STANDARD_ONLY",
+  "semantic_discharge": "L1_AND_L2_NATIVE; NO_CUSTOM_AXIOMS; EXACT_SUPPLIED_VELOCITY_FINITE_SLAB_SCOPE",
+  "L2_elimination": "L1_L2_L2_NATIVE_AND_BOTH_COMPATIBILITY_ROOTS_STANDARD_ONLY",
+  "full_solution_set_bijection": "NOT_ASSERTED"
+}

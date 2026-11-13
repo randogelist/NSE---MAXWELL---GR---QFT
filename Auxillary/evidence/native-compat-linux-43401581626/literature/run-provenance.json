@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "stage": "COMPLETE",
+  "build_status": "PASS",
+  "audit_command_status": "PASS",
+  "theorem_axiom_audit_status": "PASS_STANDARD_ONLY",
+  "semantic_discharge": "L1_AND_L2_NATIVE; NO_CUSTOM_AXIOMS; EXACT_SUPPLIED_VELOCITY_FINITE_SLAB_SCOPE",
+  "started_at_utc": "2026-11-13T09:33:30.970390+00:00",
+  "external_platform": "linux",
+  "external_native_windows": false,
+  "external_native_linux": true,
+  "os": "Unix 7.0.0.1017",
+  "powershell_version": "7.6.9",
+  "processor_count": 4,
+  "requested_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "requested_mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_commit": "34b1fe1100f726d51955a7bf9ac5059d8069fb32",
+  "github_run_id": "43401581626",
+  "github_run_attempt": "1",
+  "github_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+  "phase": "LITERATURE_BUILD_AUDIT",
+  "exact_root_promotion": "NOT_AUTOMATIC",
+  "actual_lean_version": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+  "native_source_hydration": {
+    "report": "native-source-hydration.json",
+    "sha256": "4b952639efbd600c44c11f3793193b094463ddd122fdefc0d88934f4a371ed1d"
+  },
+  "dependency_revisions": [
+    {
+      "name": "plausible",
+      "revision": "38e9c3ce15cbb63c92e90bb9a92e4eb82131f669"
+    },
+    {
+      "name": "LeanSearchClient",
+      "revision": "2bc7cf064315b26bc38dac2e9612fb581be9b75f"
+    },
+    {
+      "name": "importGraph",
+      "revision": "978b7ec9fbbf9a535114f1de8fe5b3778b358870"
+    },
+    {
+      "name": "proofwidgets",
+      "revision": "99e8adeea3c3cd86b6b79ba01a1383bf2d31d055"
+    },
+    {
+      "name": "aesop",
+      "revision": "c1c4362a130f12e632d252180a6c2a31d8fd4726"
+    },
+    {
+      "name": "Qq",
+      "revision": "3b55e9d00c6b0018e5d984eb011b6f93c09bd163"
+    },
+    {
+      "name": "batteries",
+      "revision": "01bc479e7432594821ba3fb0ca465211941de86d"
+    },
+    {
+      "name": "Cli",
+      "revision": "af8bc067a4cc6c6df472a68909a3f40b1c76c43e"
+    },
+    {
+      "name": "mathlib",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11"
+    }
+  ],
+  "lockfile_sha256": "69c22ad5678fd37f874d60dd5c604bfd96a2604fcb788a054764d6f1e346a939",
+  "actual_mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "native_source_closure": [
+    {
+      "package": "Fefferman_adapter",
+      "report": "native-source-closure.json",
+      "sha256": "97b8926d1b1eb0959e7f4fa7be18fef770b8d6290d29f3f3824af22361b89ab4"
+    },
+    {
+      "package": "Maxwell_Endpoint",
+      "report": "native-source-closure-maxwell.json",
+      "sha256": "dcc363bb56f09e27da3ac577c04b0393ddab081d3cb748002683d8d546b17738"
+    }
+  ],
+  "cache_mode": "PRESERVED_OBJECTS_AND_OFFICIAL_INCREMENTAL_CACHE_GET",
+  "cache_targets": [
+    "Mathlib"
+  ],
+  "dependency_cache_status": "VERIFIED",
+  "dependency_preparation_sha256": "df20c30debf7bb3ffb36552392fe8bb18323657a305250ed206efabce3ec0f06",
+  "local_lean_executions": 0,
+  "baseline_builds": "NOT_INVOKED_BY_ASSEMBLY_RUNNER",
+  "parent_dependency_provenance_sha256": "e231c100daa3412b8996857f8e3ec1c93cd1376d3f43e2e63c49495bb907634f",
+  "native_endpoint_count": 0,
+  "additional_proof_target_count": 0,
+  "audit_target_count": 5,
+  "module_build_schedule": [
+    "ClassicalMechanicsAssembly.LiteratureInputs",
+    "ClassicalMechanicsAssembly.LiteratureClosure"
+  ],
+  "freshness_check_exit_code": 3,
+  "executed_module_builds": 2,
+  "build_strategy": "SERIAL_INCREMENTAL_LITERATURE_REBUILD",
+  "authorized_axiom_declaration_count": 0,
+  "literature_theorem_count": 5,
+  "standard_43_audit_summary_sha256": "fee9c8fb31e83789cd6c6e88742c1fcd2b4ca8c084d994a7d8d2f2b92d43524a",
+  "standard_43_source_manifest_sha256": "da084eb310f62dc0ac185082b31f0a0e849e357c444bc8426a792ea8fc146cdf",
+  "standard_43_provenance_sha256": "ec266beced4f78d8a5fcf9abab407170f13db2c30573f68db1948919c3167036",
+  "literature_policy_path": "Auxillary/assembly/literature-targets.json",
+  "literature_policy_sha256": "461afbc08bac15ae124068bde21ac4acda90c7e2a4bad8728e128a2150b623e4",
+  "shared_foundational_allowlist_unchanged": true,
+  "source_manifest_sha256": "bec154f73f0422530f80d3bf6f913602a446bc3ced26a532edff6685c1d590bb",
+  "generated_audit_sha256": "82046a64320b130e11b526f82d748b1994f1d86b386b79ab2f6f6eeb8fbee08c",
+  "import_closure_sha256": "a3a4e9f6f2a8de6b035d07fec25b9173805e8d167e1cc13b5be74156671263bd",
+  "current_build_module": "ClassicalMechanicsAssembly.LiteratureClosure",
+  "completed_at_utc": "2026-11-13T09:34:05.720680+00:00"
+}

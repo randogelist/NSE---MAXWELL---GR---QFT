@@ -24,6 +24,38 @@ lean_lib SingularClosure where
 lean_lib MethlibEndpoints where
   srcDir := "Fefferman_adapter"
 
+lean_lib ClassicalMechanicsForward where
+  srcDir := "B <-> ClassicalMechanics/=>"
+
+lean_lib ClassicalMechanicsReverse where
+  srcDir := "B <-> ClassicalMechanics/<="
+
+lean_lib ClassicalMechanics where
+  srcDir := "Classical_Mechanics_adapter"
+
+lean_lib ClassicalMechanicsAssembly where
+  srcDir := "ASSEMBLY"
+
+lean_lib FourierHodgeLaws where
+  srcDir := "Fefferman_adapter"
+
+lean_lib FourierHodgeLaws_inhabitant where
+  srcDir := "Fefferman_adapter"
+
 @[default_target]
 lean_lib NSEMaxwell where
   srcDir := "Fefferman_adapter"
+
+
+lean_lib QuantumAdapter where
+  srcDir := "Quantum_adapter"
+
+lean_lib NSEQuantumForward where
+  srcDir := "B <-> Quantum/=>"
+
+lean_lib NSEQuantumReverse where
+  srcDir := "B <-> Quantum/<="
+
+lean_lib NSEQuantumBridge where
+  srcDir := "Quantum_adapter"
+

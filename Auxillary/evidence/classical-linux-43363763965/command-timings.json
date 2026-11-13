@@ -1,0 +1,205 @@
+[
+  {
+    "command": [
+      "lean",
+      "--version"
+    ],
+    "log": "lean-version.log",
+    "started_at_utc": "2026-11-13T04:11:44.870106+00:00",
+    "elapsed_seconds": 0.042,
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      ".lake/packages/mathlib",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "mathlib-revision.log",
+    "started_at_utc": "2026-11-13T04:11:44.912976+00:00",
+    "elapsed_seconds": 0.002,
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "log": "source-commit.log",
+    "started_at_utc": "2026-11-13T04:11:44.915797+00:00",
+    "elapsed_seconds": 0.002,
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "git",
+      "status",
+      "--porcelain",
+      "--untracked-files=no"
+    ],
+    "log": "working-tree.log",
+    "started_at_utc": "2026-11-13T04:11:44.918548+00:00",
+    "elapsed_seconds": 0.427,
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "--no-build",
+      "ClassicalMechanics",
+      "ClassicalMechanicsForward",
+      "ClassicalMechanicsReverse"
+    ],
+    "log": "run-build-freshness.log",
+    "started_at_utc": "2026-11-13T04:11:45.423860+00:00",
+    "elapsed_seconds": 4.352,
+    "exit_code": 3
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanics.Stress"
+    ],
+    "log": "run-build-ClassicalMechanics-Stress.log",
+    "started_at_utc": "2026-11-13T04:11:49.777041+00:00",
+    "elapsed_seconds": 8.964,
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanics.Definitions"
+    ],
+    "log": "run-build-ClassicalMechanics-Definitions.log",
+    "started_at_utc": "2026-11-13T04:11:58.742715+00:00",
+    "elapsed_seconds": 7.973,
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanics.FiniteSlab"
+    ],
+    "log": "run-build-ClassicalMechanics-FiniteSlab.log",
+    "started_at_utc": "2026-11-13T04:12:06.717004+00:00",
+    "elapsed_seconds": 8.29,
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanicsForward"
+    ],
+    "log": "run-build-ClassicalMechanicsForward.log",
+    "started_at_utc": "2026-11-13T04:12:15.016770+00:00",
+    "elapsed_seconds": 8.097,
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanicsReverse"
+    ],
+    "log": "run-build-ClassicalMechanicsReverse.log",
+    "started_at_utc": "2026-11-13T04:12:23.115253+00:00",
+    "elapsed_seconds": 8.061,
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanics.Equivalence"
+    ],
+    "log": "run-build-ClassicalMechanics-Equivalence.log",
+    "started_at_utc": "2026-11-13T04:12:31.178184+00:00",
+    "elapsed_seconds": 8.085,
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanics.MaxwellBridge"
+    ],
+    "log": "run-build-ClassicalMechanics-MaxwellBridge.log",
+    "started_at_utc": "2026-11-13T04:12:39.264910+00:00",
+    "elapsed_seconds": 57.217,
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanics"
+    ],
+    "log": "run-build-ClassicalMechanics.log",
+    "started_at_utc": "2026-11-13T04:13:36.483073+00:00",
+    "elapsed_seconds": 7.966,
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "lake",
+      "build",
+      "ClassicalMechanics",
+      "ClassicalMechanicsForward",
+      "ClassicalMechanicsReverse"
+    ],
+    "log": "run-build.log",
+    "started_at_utc": "2026-11-13T04:13:44.450034+00:00",
+    "elapsed_seconds": 3.963,
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-R",
+      "Classical_Mechanics_adapter",
+      "Classical_Mechanics_adapter/ClassicalMechanics/Audit.lean"
+    ],
+    "log": "run-audit.log",
+    "started_at_utc": "2026-11-13T04:13:48.414420+00:00",
+    "elapsed_seconds": 4.726,
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+      "Auxillary/scripts/verify_audit.py",
+      "--expected-platform",
+      "linux",
+      "--root",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT",
+      "--targets",
+      "Auxillary/classical-mechanics-audit-targets.txt",
+      "--audit-source",
+      "Classical_Mechanics_adapter/ClassicalMechanics/Audit.lean",
+      "--log",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/external-linux/classical-mechanics/run-audit.log",
+      "--manifest",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/external-linux/classical-mechanics/source-manifest.json",
+      "--provenance",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/external-linux/classical-mechanics/run-provenance.json",
+      "--scope",
+      "Auxillary/classical-mechanics-status.json",
+      "--output",
+      "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/artifacts/external-linux/classical-mechanics/audit-summary.json"
+    ],
+    "log": "audit-verifier.log",
+    "started_at_utc": "2026-11-13T04:13:53.142212+00:00",
+    "elapsed_seconds": 0.129,
+    "exit_code": 0
+  }
+]

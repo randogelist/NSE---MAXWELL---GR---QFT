@@ -1,0 +1,192 @@
+CLASSICAL_MECHANICS_MATERIAL
+MODE = A_TIER_DERIVATION
+STATUS = A_TIER; CONDITIONAL_FORMAL_CLOSURE_FOR_EXACT_MATERIAL_ROOT
+BRANCH = codex/classical-mechanics-material
+BASE_BRANCH = codex/fefferman-b-maxwell
+BASE_COMMIT = 645980350328a0638fe04b3a265b9a63d2b9b4db
+IMPORTED_ADAPTER_COMMIT = 80edf82888080953e2a7c991769f0de69fe7166e
+AUDITED_SOURCE_COMMIT = 699ae6cac2d9ccf57d0781b64b8e7804a5f827ea
+
+1. MATCHING EXTERNAL EVIDENCE
+
+WORKFLOW_RUN = 43370108226; attempt 1
+RUN_URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43370108226
+ARTIFACT_ID = 14012451485
+ARTIFACT_SHA256 = 7f3826cb859a04814190e0091b5997e654f8661ae88443d3b5e81728f48ec554
+RETAINED_EVIDENCE = Auxillary/evidence/classical-linux-43370108226
+SOURCE_MANIFEST_SHA256 = 4463096e7f84349ac90a17cb25c60d9e989ae1152360071f6d9e337e2c746a72
+EXTERNAL_CLASSICAL_COMPILER = PASS
+THEOREM_LEVEL_AXIOM_AUDIT = 62/62 PASS_STANDARD_ONLY
+SOURCE_INPUT_VERIFICATION = PASS
+CURRENT_MECHANICS_LEAN_SOURCE_HASHES = 14/14 match the audited manifest
+ALLOWED_AXIOMS = propext; Classical.choice; Quot.sound
+UNAPPROVED_AXIOMS = none
+SORRYAX = absent
+EVIDENCE_SCOPE = classical-mechanics build and exact named theorem audits
+BASELINE_INTEGRATED_AND_STANDALONE_WORKFLOW_RESULT = not certified by this record
+
+The source commit and theorem signatures determine the certified scope.
+Axiom audits do not discharge explicit theorem hypotheses.
+
+2. EXACT AUDITED MATERIAL ROOT
+
+ROOT = ClassicalMechanics.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW_AND_DIFFUSION
+STATUS = A_TIER; CONDITIONAL_FORMAL_CLOSURE
+
+For arbitrary real nu,T, concrete fields u,eta,rho,p,pi, assume:
+  H1: T>0;
+  H2: SmoothVelocityOn T u;
+  H3: SmoothPressureOn T p;
+  H4: MaterialPathOn T eta rho;
+  H5: V(t,a)=u(t,eta(t,a)) for every t in [0,T], a;
+  H6: pi(t,a)=p(t,eta(t,a)) for every t in [0,T], a;
+  H7: Div_a ((D_a V) A A^T)(t,a)=(Delta_x u)(t,eta(t,a))
+      for every t in [0,T], a.
+
+Here:
+  V = derivWithin eta (Icc 0 T);
+  F = D_a eta;
+  A = F^{-1};
+  eta_tt = derivWithin V (Icc 0 T).
+
+Then:
+  [forall t in [0,T], x,
+     u_t+(u.grad)u+grad_x p = nu Delta_x u]
+  iff
+  [forall t in [0,T], a,
+     eta_tt+A^T grad_a pi = nu Div_a ((D_a V) A A^T)].
+
+H4 includes actual joint smoothness of eta and rho, two-sided pointwise
+inverse identities, unit-lattice equivariance, eta(0)=id and det F=1.
+Every derivative and matrix inverse above is a native concrete operation.
+The physical source scope nu>0 is a specialization of this exact theorem.
+
+DERIVED_WITHIN_ROOT_ASSEMBLY:
+  eta_tt=(u_t+(u.grad)u) composed with eta;
+  A^T grad_a pi=(grad_x p) composed with eta;
+  timewise surjectivity of eta.
+
+REMAINING_NAMED_ANALYTIC_INPUTS:
+  supplied smooth volume-preserving normalized path/inverse H4;
+  actual flow ODE H5;
+  actual transformed diffusion identity H7.
+PRESSURE_COORDINATE_INPUT = scalar pullback H6.
+These hypotheses remain explicit; no universal witness is introduced.
+
+ROOT_CONCLUSION_SCOPE = differential-equation equivalence.
+FULL_MATERIAL_SOLUTION_BIJECTION = NOT_ESTABLISHED.
+Pressure normalization, reconstructed divergence and smoothness, velocity
+periodicity, energy/dissipation transport and the full inverse solution maps
+are not inferred merely from the equation equivalence.
+
+3. NATIVE ID03 / ID04 SUBTHEOREMS
+
+ID03 STATUS = PARTIAL_A_TIER; complete identity group remains pending.
+
+ClassicalMechanics.cofactorGradient_eq_adjugate_transpose:
+  cof(Da)=(Da).adjugate.transpose.
+ClassicalMechanics.piola_identity:
+  ContDiff R infinity a -> Div(cof(Da))=0.
+ClassicalMechanics.tensorDivergence_adjugate_gradient:
+  ContDiff R infinity a -> Div((Da).adjugate.transpose)=0.
+ClassicalMechanics.cofactorGradient_eq_inverse_transpose_of_det_one:
+  det(Da)=1 -> cof(Da)=(Da)^{-T}.
+ClassicalMechanics.tensorDivergence_inverse_transpose_of_det_one:
+  smooth a + det(Da)=1 everywhere -> Div((Da)^{-T})=0.
+ClassicalMechanics.material_inverse_transpose_divergence_zero:
+  MaterialPathOn + t in [0,T] -> Div_a(A^T)=0.
+
+The cofactor Piola theorem requires actual spatial smoothness only.
+No Piola identity, invertibility or periodicity is assumed for that theorem.
+The inverse-transpose specialization retains its determinant-one hypothesis.
+Remaining ID03 scope: full transformed divergence for arbitrary tensors and
+its integration with the native viscous pullback. Div(A^T)=0 alone is not H7.
+
+ID04 STATUS = PARTIAL_A_TIER; complete identity group remains pending.
+
+ClassicalMechanics.finite_material_chain_rule:
+  actual closed-slab smooth u + supplied integral-curve derivative
+  -> derivative of u(t,eta(t)) equals D_tu(t,eta(t)).
+ClassicalMechanics.finite_flow_acceleration:
+  T>0 + smooth u,eta + actual flow ODE -> acceleration pullback.
+ClassicalMechanics.material_pressure_gradient_of_pullback:
+  actual pointwise differentiability + det F nonzero + scalar pullback
+  -> A^T grad_a pi=(grad_x p) composed with eta.
+ClassicalMechanics.material_pressure_gradient_pullback_on:
+  MaterialPathOn + smooth p + scalar pullback -> full-slab gradient identity.
+ClassicalMechanics.material_pullback_of_flow_and_diffusion:
+  H1--H7 -> MaterialPullbackIdentities; acceleration and pressure gradient
+  are derived by the preceding native theorems.
+
+Both temporal endpoints are included; no extension outside [0,T] is assumed.
+MaterialPullbackIdentities records velocity, scalar pressure, acceleration,
+pressure-gradient and diffusion pullbacks. Its fields are theorem arguments,
+not new axioms or typeclass instances.
+The residual and forward/reverse equation transport theorems are independently
+audited. Remaining ID04 scope: H7, full solution constraints and bijections.
+
+4. AUDITED FIRST ADAPTER AND PRESERVED SCOPE
+
+ROOT = ClassicalMechanics.CLASSICAL_MECHANICS_ADAPTER
+TYPE = GlobalExactEquivalence AND FiniteExactEquivalence
+ANALYTIC_ADMISSIONS_FOR_THIS_LOCAL_CAUCHY_ROOT = none
+CURRENT_AUDIT = PASS_STANDARD_ONLY at AUDITED_SOURCE_COMMIT
+PRIOR_AUDIT = 25/25 PASS_STANDARD_ONLY at IMPORTED_ADAPTER_COMMIT
+PRIOR_RUN = 43363763965
+PRIOR_EVIDENCE = Auxillary/evidence/classical-linux-43363763965
+
+GLOBAL_COMPONENT:
+  FeffermanB nu iff NewtonianB nu;
+  same concrete fields, initial datum, arbitrary velocity mean,
+  periodic pressure with unrestricted gauge, and smoothness through t=0.
+FINITE_COMPONENT:
+  NSSolutionOn nu a T u p iff NewtonianSolutionOn nu a T u p;
+  same actual within-Icc derivatives, closed-slab smoothness, datum,
+  fields and normalized pressure.
+NEWTONIAN_ENDPOINT = actual local Cauchy stress balance.
+STRESS = -p I + nu (Du+Du^T).
+DERIVED_IDENTITY = div stress=-grad p+nu Delta u+nu grad(div u).
+GLOBAL_EXISTENCE_OF_NSE = NOT_ASSERTED.
+
+5. FULL REFERENCE ROOT: REMAINING OBLIGATIONS
+
+REFERENCE = NSE_CLASSICAL_MECHANICS_EQUIVALENCE_B_TIER version 1.6.0.
+REFERENCE_ROOT = E=N; E~=M~=D; E~=V.
+FULL_REFERENCE_ROOT_A_TIER = NOT_ESTABLISHED.
+FULL_REFERENCE_UNCONDITIONAL_CLOSURE = NOT_ESTABLISHED.
+
+OPEN_FLOW: construct H4/H5 from supplied smooth Eulerian velocity;
+  normalized flow, smooth inverse, determinant propagation, measure transport.
+OPEN_PIOLA_TRANSPORT: full arbitrary-tensor divergence transformation and H7.
+OPEN_ALL_REGION_NEWTON: Reynolds transport, divergence theorem and
+  small-region localization for every smooth moving material region.
+  Source N is not replaced by local balance or whole-torus momentum alone.
+OPEN_PRESSURE_RECOVERY: temporal localization and unique jointly smooth
+  normalized pressure from all solenoidal tests, including spatial constants.
+OPEN_VARIATIONS: actual endpoint-fixed volume-preserving variations,
+  realization of every reduced test, delta u=w_t+[u,w], fixed-configuration
+  Rayleigh fibre derivative, and both Lagrange-d'Alembert correspondences.
+OPEN_ROOT_MAPS: full solution constraints, pressure gauge, energy,
+  dissipation, inverse maps and finite-time restriction compatibility.
+OPEN_GLOBAL_ASSEMBLY: compatible finite-slab exhaustion and gluing.
+The remaining ID01--ID57 register entries retain their exact pending scopes.
+
+MAXWELL_COMPOSITION_PREMISE = NSEMaxwell.Bridge.FourierHodgeLaws.
+The audited Newtonian/Maxwell implications retain this analytic hypothesis.
+No FourierHodgeLaws inhabitant follows from their standard-only axiom audits.
+
+6. REPRODUCIBILITY
+
+COMPILER = leanprover/lean4:v4.34.0-rc1; external native Linux
+LEAN_COMPILER_COMMIT = 3447a668783dbce1a8fdb97101dd067687b2b418
+MATHLIB = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+METHLIB_SOURCE_PIN = e9cf90726b8544a268469ebc8fa6634e9c713e07
+CACHE_MODE = REUSE_VERIFIED_DEPENDENCY_PHASE
+DEPENDENCY_CACHE_STATUS = VERIFIED
+BUILD_STRATEGY = SERIAL_INCREMENTAL_REBUILD; 13 named modules
+FRESH_THEOREM_AUDIT = PASS
+LOCAL_LEAN_EXECUTIONS = 0
+
+The source TXT's Lean 4.33.0/Windows catalog retains historical provenance.
+This record certifies only the actual active-pinned source and exact theorem
+premises above. It does not promote the entire historical B-tier derivation.

@@ -1,0 +1,567 @@
+{
+  "schema_version": 1,
+  "register": "N01--N17; NX01--NX08",
+  "endpoint_count": 25,
+  "status": "A_TIER: 25 canonical declarations and 25 assembly export/type checks externally validated",
+  "source_reference_commit": "391d6a2f8f856be3f43cb208254b7fa4a56fe95f",
+  "source_register_filename": "CLASSICAL_MECHANICS_FLOW_PIOLA_INPUTS_B_TIER.txt",
+  "source_register_sha256": "1099738d0f44b756ff2836166298aec71c91f9585888c9439be46991ebe51e1b",
+  "assembly_module": "ClassicalMechanicsAssembly.NativeEndpoints",
+  "assembly_source_path": "ASSEMBLY/ClassicalMechanicsAssembly/NativeEndpoints.lean",
+  "assembly_namespace": "ClassicalMechanicsAssembly.Native",
+  "alias_policy": "Lean export commands establish name-resolution aliases to canonical declarations; no copied bodies, no new axioms, no mathematical discovery claim. Each @alias = @original example checks elaborated reference/type compatibility with rfl. Proof irrelevance prevents treating these equality examples as independent proof-body identity certificates.",
+  "audit_policy": {
+    "canonical_target_count": 25,
+    "target_file": "Auxillary/assembly-native-targets.txt",
+    "aliases_are_additional_theorems": false,
+    "exact_reference_check": "25 examples in the assembly module; external elaboration checks reference/type compatibility with the original full implicit argument telescope. Export commands establish alias provenance. The equality examples do not independently certify proof-body identity because Lean has proof irrelevance.",
+    "axiom_check": "External runner emits #check @canonical_name and #print axioms canonical_name for every target.",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "promotion": "Only matching external source/compiler/axiom evidence can promote this assembly."
+  },
+  "dependency_registry_scope": "module_imports are exact source imports; direct_registered_source_references are proof-body textual references to other IDs in this 25-item register. They do not claim a complete kernel dependency graph.",
+  "endpoints": [
+    {
+      "id": "N01",
+      "original_name": "NSEMaxwell.CurlCurl.coordinateDerivative_smooth",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.coordinateDerivative_smooth",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+      "source_line": 29,
+      "source_module": "NSEMaxwell.CurlCurl",
+      "source_sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+      "source_git_blob": "aedf3033c1747392e4c3abe933ee8e08eff04f01",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Fefferman_adapter/NSEMaxwell/CurlCurl.lean#L29",
+      "literal_header": "theorem coordinateDerivative_smooth\n    {a : Field} (ha : ContDiff ℝ ∞ a) (i : Fin 3) :\n    ContDiff ℝ ∞ (coordinateDerivative a i)",
+      "literal_header_sha256": "3d2910d43f5f100842005faf759e71c24c4f077e39e7f740b04d07ef02fa8dae",
+      "dependencies": {
+        "module_imports": [
+          "NSEMaxwell.Kinematics"
+        ],
+        "direct_registered_source_references": []
+      }
+    },
+    {
+      "id": "N02",
+      "original_name": "NSEMaxwell.CurlCurl.coordinate_component_smooth",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.coordinate_component_smooth",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+      "source_line": 37,
+      "source_module": "NSEMaxwell.CurlCurl",
+      "source_sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+      "source_git_blob": "aedf3033c1747392e4c3abe933ee8e08eff04f01",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Fefferman_adapter/NSEMaxwell/CurlCurl.lean#L37",
+      "literal_header": "theorem coordinate_component_smooth\n    {a : Field} (ha : ContDiff ℝ ∞ a) (i j : Fin 3) :\n    ContDiff ℝ ∞ (fun x : Vec => coordinateDerivative a i x j)",
+      "literal_header_sha256": "854a81d3ab1b2b1e7747193ac20314012821f2ab2978190b413d64f5f4d594a9",
+      "dependencies": {
+        "module_imports": [
+          "NSEMaxwell.Kinematics"
+        ],
+        "direct_registered_source_references": [
+          "N01"
+        ]
+      }
+    },
+    {
+      "id": "N03",
+      "original_name": "NSEMaxwell.CurlCurl.fderiv_component_apply",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.fderiv_component_apply",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+      "source_line": 43,
+      "source_module": "NSEMaxwell.CurlCurl",
+      "source_sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+      "source_git_blob": "aedf3033c1747392e4c3abe933ee8e08eff04f01",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Fefferman_adapter/NSEMaxwell/CurlCurl.lean#L43",
+      "literal_header": "theorem fderiv_component_apply\n    {a : Field} {x : Vec} (ha : DifferentiableAt ℝ a x)\n    (v : Vec) (j : Fin 3) :\n    fderiv ℝ (fun y : Vec => a y j) x v = (fderiv ℝ a x v) j",
+      "literal_header_sha256": "34b2937bc5054a7ec91d126da40ee8362900492e5b45e6fa449fb56d66c05dc5",
+      "dependencies": {
+        "module_imports": [
+          "NSEMaxwell.Kinematics"
+        ],
+        "direct_registered_source_references": []
+      }
+    },
+    {
+      "id": "N04",
+      "original_name": "NSEMaxwell.CurlCurl.secondCoordinate_symm",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.secondCoordinate_symm",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+      "source_line": 66,
+      "source_module": "NSEMaxwell.CurlCurl",
+      "source_sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+      "source_git_blob": "aedf3033c1747392e4c3abe933ee8e08eff04f01",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Fefferman_adapter/NSEMaxwell/CurlCurl.lean#L66",
+      "literal_header": "theorem secondCoordinate_symm\n    {a : Field} (ha : ContDiff ℝ ∞ a) (i j : Fin 3) (x : Vec) :\n    secondCoordinate a i j x = secondCoordinate a j i x",
+      "literal_header_sha256": "de1b6f1c8c98470496d7302b5bbe9683cfa37dc3c804a1be96110f764339d21e",
+      "dependencies": {
+        "module_imports": [
+          "NSEMaxwell.Kinematics"
+        ],
+        "direct_registered_source_references": []
+      }
+    },
+    {
+      "id": "N05",
+      "original_name": "NSEMaxwell.CurlCurl.second_coordinate_component",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.second_coordinate_component",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+      "source_line": 73,
+      "source_module": "NSEMaxwell.CurlCurl",
+      "source_sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+      "source_git_blob": "aedf3033c1747392e4c3abe933ee8e08eff04f01",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Fefferman_adapter/NSEMaxwell/CurlCurl.lean#L73",
+      "literal_header": "theorem second_coordinate_component\n    {a : Field} (ha : ContDiff ℝ ∞ a) (i j k : Fin 3) (x : Vec) :\n    fderiv ℝ (fun y : Vec => coordinateDerivative a j y k) x (unitVector i) =\n      secondCoordinate a i j x k",
+      "literal_header_sha256": "955e38d9f6986ea8ccb89c2da99fe5f1947f870d9a5152a20d85a767e950c181",
+      "dependencies": {
+        "module_imports": [
+          "NSEMaxwell.Kinematics"
+        ],
+        "direct_registered_source_references": [
+          "N01",
+          "N03"
+        ]
+      }
+    },
+    {
+      "id": "N06",
+      "original_name": "NSEMaxwell.CurlCurl.laplacian_coordinate",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.laplacian_coordinate",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Fefferman_adapter/NSEMaxwell/CurlCurl.lean",
+      "source_line": 192,
+      "source_module": "NSEMaxwell.CurlCurl",
+      "source_sha256": "9f3745456951c42e3f44781ccf29ad880284226b274bc235703269d0718bf1fa",
+      "source_git_blob": "aedf3033c1747392e4c3abe933ee8e08eff04f01",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Fefferman_adapter/NSEMaxwell/CurlCurl.lean#L192",
+      "literal_header": "theorem laplacian_coordinate\n    {a : Field} (ha : ContDiff ℝ ∞ a) (x : Vec) (i : Fin 3) :\n    NSEMaxwell.Classical.laplacian a x i =\n      secondCoordinate a 0 0 x i + secondCoordinate a 1 1 x i +\n        secondCoordinate a 2 2 x i",
+      "literal_header_sha256": "17e6d1ae0ba354d357f2b7e6445ba3ad9f99f69339fc2faeda0b808f60fdf5ac",
+      "dependencies": {
+        "module_imports": [
+          "NSEMaxwell.Kinematics"
+        ],
+        "direct_registered_source_references": []
+      }
+    },
+    {
+      "id": "N07",
+      "original_name": "ClassicalMechanics.cofactorGradient_eq_adjugate_transpose",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.cofactorGradient_eq_adjugate_transpose",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean",
+      "source_line": 63,
+      "source_module": "ClassicalMechanics.Piola",
+      "source_sha256": "7074a13438808ca77c75d104fc6b21bb2a4bd33003a49050209e2cb474278cfa",
+      "source_git_blob": "087c84556fa53a61c93fa0e2f30bae387651ca00",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean#L63",
+      "literal_header": "theorem cofactorGradient_eq_adjugate_transpose (a : Field) (x : Vec) :\n    cofactorGradient a x = (spatialGradientMatrix a x).adjugate.transpose",
+      "literal_header_sha256": "1a5a306978c2cc6099fee441db1c87a29702dc069775629a99c23897a5bb156f",
+      "dependencies": {
+        "module_imports": [
+          "ClassicalMechanics.Stress"
+        ],
+        "direct_registered_source_references": []
+      }
+    },
+    {
+      "id": "N08",
+      "original_name": "ClassicalMechanics.piola_identity",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.piola_identity",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean",
+      "source_line": 71,
+      "source_module": "ClassicalMechanics.Piola",
+      "source_sha256": "7074a13438808ca77c75d104fc6b21bb2a4bd33003a49050209e2cb474278cfa",
+      "source_git_blob": "087c84556fa53a61c93fa0e2f30bae387651ca00",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean#L71",
+      "literal_header": "theorem piola_identity {a : Field} (ha : ContDiff ℝ ∞ a) :\n    tensorDivergence (cofactorGradient a) = 0",
+      "literal_header_sha256": "92ef1ed29304fd9ee2059977eac6208087134ce2c4e61ac6f8249b5f0da14898",
+      "dependencies": {
+        "module_imports": [
+          "ClassicalMechanics.Stress"
+        ],
+        "direct_registered_source_references": [
+          "N04",
+          "N17"
+        ]
+      }
+    },
+    {
+      "id": "N09",
+      "original_name": "ClassicalMechanics.tensorDivergence_adjugate_gradient",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.tensorDivergence_adjugate_gradient",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean",
+      "source_line": 85,
+      "source_module": "ClassicalMechanics.Piola",
+      "source_sha256": "7074a13438808ca77c75d104fc6b21bb2a4bd33003a49050209e2cb474278cfa",
+      "source_git_blob": "087c84556fa53a61c93fa0e2f30bae387651ca00",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean#L85",
+      "literal_header": "theorem tensorDivergence_adjugate_gradient\n    {a : Field} (ha : ContDiff ℝ ∞ a) :\n    tensorDivergence (fun x => (spatialGradientMatrix a x).adjugate.transpose) = 0",
+      "literal_header_sha256": "1c16ca1d36eca0e19fe5069ef3479566b776b446cf49f2df4d6ceef5c494f679",
+      "dependencies": {
+        "module_imports": [
+          "ClassicalMechanics.Stress"
+        ],
+        "direct_registered_source_references": [
+          "N07",
+          "N08"
+        ]
+      }
+    },
+    {
+      "id": "N10",
+      "original_name": "ClassicalMechanics.cofactorGradient_eq_inverse_transpose_of_det_one",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.cofactorGradient_eq_inverse_transpose_of_det_one",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean",
+      "source_line": 96,
+      "source_module": "ClassicalMechanics.Piola",
+      "source_sha256": "7074a13438808ca77c75d104fc6b21bb2a4bd33003a49050209e2cb474278cfa",
+      "source_git_blob": "087c84556fa53a61c93fa0e2f30bae387651ca00",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean#L96",
+      "literal_header": "theorem cofactorGradient_eq_inverse_transpose_of_det_one\n    (a : Field) (x : Vec) (hdet : (spatialGradientMatrix a x).det = 1) :\n    cofactorGradient a x = ((spatialGradientMatrix a x)⁻¹).transpose",
+      "literal_header_sha256": "770d68cb983499d0ad335793684c3392e1a04e1eab38e94a879a62335215cb78",
+      "dependencies": {
+        "module_imports": [
+          "ClassicalMechanics.Stress"
+        ],
+        "direct_registered_source_references": [
+          "N07"
+        ]
+      }
+    },
+    {
+      "id": "N11",
+      "original_name": "ClassicalMechanics.tensorDivergence_inverse_transpose_of_det_one",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.tensorDivergence_inverse_transpose_of_det_one",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean",
+      "source_line": 103,
+      "source_module": "ClassicalMechanics.Piola",
+      "source_sha256": "7074a13438808ca77c75d104fc6b21bb2a4bd33003a49050209e2cb474278cfa",
+      "source_git_blob": "087c84556fa53a61c93fa0e2f30bae387651ca00",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean#L103",
+      "literal_header": "theorem tensorDivergence_inverse_transpose_of_det_one\n    {a : Field} (ha : ContDiff ℝ ∞ a)\n    (hdet : ∀ x : Vec, (spatialGradientMatrix a x).det = 1) :\n    tensorDivergence (fun x => ((spatialGradientMatrix a x)⁻¹).transpose) = 0",
+      "literal_header_sha256": "c9875ded2d5138c42ae2314711322b343cdf0979841b690933ecb802f26aea57",
+      "dependencies": {
+        "module_imports": [
+          "ClassicalMechanics.Stress"
+        ],
+        "direct_registered_source_references": [
+          "N08",
+          "N10"
+        ]
+      }
+    },
+    {
+      "id": "N12",
+      "original_name": "ClassicalMechanics.scalar_fderiv_coordinate_expansion",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.scalar_fderiv_coordinate_expansion",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialGradient.lean",
+      "source_line": 25,
+      "source_module": "ClassicalMechanics.MaterialGradient",
+      "source_sha256": "ce3344c164eb1135355dd7ccaeeee0be012b41fd2f6eaf9ac7c2ca4ae2e2bab1",
+      "source_git_blob": "d2ea2e2308d5df75cc935db10c812b61a4d0b7ef",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Classical_Mechanics_adapter/ClassicalMechanics/MaterialGradient.lean#L25",
+      "literal_header": "theorem scalar_fderiv_coordinate_expansion (p : ScalarField) (x v : Vec) :\n    fderiv ℝ p x v =\n      ∑ j : Fin 3, v j * NSEMaxwell.Classical.gradient p x j",
+      "literal_header_sha256": "5767570d24cf26a0f2c4966849f8fa5a53411773a88b08bd3e188e83591a6b0d",
+      "dependencies": {
+        "module_imports": [
+          "ClassicalMechanics.Material",
+          "NSEMaxwell.Lamb"
+        ],
+        "direct_registered_source_references": []
+      }
+    },
+    {
+      "id": "N13",
+      "original_name": "ClassicalMechanics.gradient_comp_coordinate",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.gradient_comp_coordinate",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialGradient.lean",
+      "source_line": 33,
+      "source_module": "ClassicalMechanics.MaterialGradient",
+      "source_sha256": "ce3344c164eb1135355dd7ccaeeee0be012b41fd2f6eaf9ac7c2ca4ae2e2bab1",
+      "source_git_blob": "d2ea2e2308d5df75cc935db10c812b61a4d0b7ef",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Classical_Mechanics_adapter/ClassicalMechanics/MaterialGradient.lean#L33",
+      "literal_header": "theorem gradient_comp_coordinate {η : Field} {p : ScalarField} {a : Vec}\n    (hη : DifferentiableAt ℝ η a) (hp : DifferentiableAt ℝ p (η a))\n    (i : Fin 3) :\n    NSEMaxwell.Classical.gradient (fun y => p (η y)) a i =\n      ∑ j : Fin 3, materialGradientMatrix η a j i *\n        NSEMaxwell.Classical.gradient p (η a) j",
+      "literal_header_sha256": "8b2250ce056bdd4a61572d601b661e6e7b504ed8f47bfc86ee544f45ffcfb743",
+      "dependencies": {
+        "module_imports": [
+          "ClassicalMechanics.Material",
+          "NSEMaxwell.Lamb"
+        ],
+        "direct_registered_source_references": [
+          "N12"
+        ]
+      }
+    },
+    {
+      "id": "N14",
+      "original_name": "ClassicalMechanics.finite_velocity_slice_smooth",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.finite_velocity_slice_smooth",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean",
+      "source_line": 38,
+      "source_module": "ClassicalMechanics.FiniteSlab",
+      "source_sha256": "bc8d9d971175281c23de29e98d4a242f8c311813b40bed9dde0696f687ddf535",
+      "source_git_blob": "ba8a3fee849cb6b39f6be31116efb18437897aa2",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Classical_Mechanics_adapter/ClassicalMechanics/FiniteSlab.lean#L38",
+      "literal_header": "theorem finite_velocity_slice_smooth {T : ℝ} {u : Velocity}\n    (hu : SmoothVelocityOn T u) {t : ℝ} (ht : t ∈ Icc (0 : ℝ) T) :\n    ContDiff ℝ ∞ (u t)",
+      "literal_header_sha256": "ac68c6411f905c0f9efa291396516e9d297ba4fcbeb3709d3a975337467a526b",
+      "dependencies": {
+        "module_imports": [
+          "ClassicalMechanics.Definitions"
+        ],
+        "direct_registered_source_references": []
+      }
+    },
+    {
+      "id": "N15",
+      "original_name": "ClassicalMechanics.materialPullbackIdentities_of_flow",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.materialPullbackIdentities_of_flow",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Classical_Mechanics_adapter/ClassicalMechanics/Material.lean",
+      "source_line": 197,
+      "source_module": "ClassicalMechanics.Material",
+      "source_sha256": "301e57557d36f73dc3005661c871257a3af3a71b4c138bfd42c41302490d2700",
+      "source_git_blob": "0c5e76d7667518242c1aaf08a0198a81b63ff603",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Classical_Mechanics_adapter/ClassicalMechanics/Material.lean#L197",
+      "literal_header": "theorem materialPullbackIdentities_of_flow {T : ℝ} (hT : 0 < T)\n    {u η : Velocity} {p π : Pressure}\n    (hu : SmoothVelocityOn T u) (hη : SmoothVelocityOn T η)\n    (hflow : ∀ t ∈ Icc (0 : ℝ) T, ∀ a : Vec,\n      materialVelocity T η t a = u t (η t a))\n    (hp : ∀ t ∈ Icc (0 : ℝ) T, ∀ a : Vec, π t a = p t (η t a))\n    (hgrad : ∀ t ∈ Icc (0 : ℝ) T, ∀ a : Vec,\n      materialPressureGradient η π t a =\n        NSEMaxwell.Classical.gradient (p t) (η t a))\n    (hdiff : ∀ t ∈ Icc (0 : ℝ) T, ∀ a : Vec,\n      materialDiffusion T η t a = NSEMaxwell.Classical.laplacian (u t) (η t a)) :\n    MaterialPullbackIdentities T u p η π",
+      "literal_header_sha256": "e2ec4ee5086af9f0b0a55edccd86bda0027d42863a234e5c4884c73683851009",
+      "dependencies": {
+        "module_imports": [
+          "ClassicalMechanics.TimeCalculus"
+        ],
+        "direct_registered_source_references": [
+          "NX05"
+        ]
+      }
+    },
+    {
+      "id": "N16",
+      "original_name": "ClassicalMechanics.material_pressure_gradient_pullback_on",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.material_pressure_gradient_pullback_on",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialGradient.lean",
+      "source_line": 78,
+      "source_module": "ClassicalMechanics.MaterialGradient",
+      "source_sha256": "ce3344c164eb1135355dd7ccaeeee0be012b41fd2f6eaf9ac7c2ca4ae2e2bab1",
+      "source_git_blob": "d2ea2e2308d5df75cc935db10c812b61a4d0b7ef",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Classical_Mechanics_adapter/ClassicalMechanics/MaterialGradient.lean#L78",
+      "literal_header": "theorem material_pressure_gradient_pullback_on\n    {T : ℝ} {η ρ : Velocity} {p π : Pressure}\n    (hη : MaterialPathOn T η ρ) (hp : SmoothPressureOn T p)\n    (hπ : ∀ t ∈ Icc (0 : ℝ) T, ∀ a : Vec, π t a = p t (η t a)) :\n    ∀ t ∈ Icc (0 : ℝ) T, ∀ a : Vec,\n      materialPressureGradient η π t a =\n        NSEMaxwell.Classical.gradient (p t) (η t a)",
+      "literal_header_sha256": "f590a0622fbbbf25fd635e4f6f329027dc26df3e3906b96a2264f4a39a965dc8",
+      "dependencies": {
+        "module_imports": [
+          "ClassicalMechanics.Material",
+          "NSEMaxwell.Lamb"
+        ],
+        "direct_registered_source_references": [
+          "N14"
+        ]
+      }
+    },
+    {
+      "id": "N17",
+      "original_name": "ClassicalMechanics.coordinateMinor_derivative",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.coordinateMinor_derivative",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean",
+      "source_line": 29,
+      "source_module": "ClassicalMechanics.Piola",
+      "source_sha256": "7074a13438808ca77c75d104fc6b21bb2a4bd33003a49050209e2cb474278cfa",
+      "source_git_blob": "087c84556fa53a61c93fa0e2f30bae387651ca00",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Classical_Mechanics_adapter/ClassicalMechanics/Piola.lean#L29",
+      "literal_header": "theorem coordinateMinor_derivative\n    {a : Field} (ha : ContDiff ℝ ∞ a) (i j k r s : Fin 3) (x : Vec) :\n    fderiv ℝ (coordinateMinor a j k r s) x (unitVector i) =\n      secondCoordinate a i j x r * coordinateDerivative a k x s +\n        coordinateDerivative a j x r * secondCoordinate a i k x s -\n        (secondCoordinate a i k x r * coordinateDerivative a j x s +\n          coordinateDerivative a k x r * secondCoordinate a i j x s)",
+      "literal_header_sha256": "0a64ecbdef901869f4c21dbb5ebb46959d82220f1649bda7caf7859ffe0e932c",
+      "dependencies": {
+        "module_imports": [
+          "ClassicalMechanics.Stress"
+        ],
+        "direct_registered_source_references": [
+          "N02",
+          "N05"
+        ]
+      }
+    },
+    {
+      "id": "NX01",
+      "original_name": "ClassicalMechanics.uniqueDiffOn_finiteSpacetime",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.uniqueDiffOn_finiteSpacetime",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+      "source_line": 14,
+      "source_module": "ClassicalMechanics.TimeCalculus",
+      "source_sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+      "source_git_blob": "2ffc0c6d60c4c81a63e9bdcc2476882ada5d4aaf",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean#L14",
+      "literal_header": "theorem uniqueDiffOn_finiteSpacetime {T : ℝ} (hT : 0 < T) :\n    UniqueDiffOn ℝ (finiteSpacetime T)",
+      "literal_header_sha256": "811727b5a71d2f53f485b2993fb71ac4a67e2d9b380b4b239c496143c5201fd1",
+      "dependencies": {
+        "module_imports": [
+          "ClassicalMechanics.FiniteSlab"
+        ],
+        "direct_registered_source_references": []
+      }
+    },
+    {
+      "id": "NX02",
+      "original_name": "ClassicalMechanics.finite_spatial_restriction_fderiv",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.finite_spatial_restriction_fderiv",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+      "source_line": 22,
+      "source_module": "ClassicalMechanics.TimeCalculus",
+      "source_sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+      "source_git_blob": "2ffc0c6d60c4c81a63e9bdcc2476882ada5d4aaf",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean#L22",
+      "literal_header": "theorem finite_spatial_restriction_fderiv {T : ℝ} {u : Velocity}\n    (hu : SmoothVelocityOn T u) {t : ℝ} (ht : t ∈ Icc (0 : ℝ) T)\n    (x v : Vec) :\n    fderiv ℝ (u t) x v =\n      fderivWithin ℝ (fun z : ℝ × Vec => u z.1 z.2)\n        (finiteSpacetime T) (t, x) (0, v)",
+      "literal_header_sha256": "5003d59db5e4768d07695d14d5caee66ffe4352de337039ef247eb6340e81694",
+      "dependencies": {
+        "module_imports": [
+          "ClassicalMechanics.FiniteSlab"
+        ],
+        "direct_registered_source_references": []
+      }
+    },
+    {
+      "id": "NX03",
+      "original_name": "ClassicalMechanics.finite_time_hasDerivWithinAt",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.finite_time_hasDerivWithinAt",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+      "source_line": 34,
+      "source_module": "ClassicalMechanics.TimeCalculus",
+      "source_sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+      "source_git_blob": "2ffc0c6d60c4c81a63e9bdcc2476882ada5d4aaf",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean#L34",
+      "literal_header": "theorem finite_time_hasDerivWithinAt {T : ℝ} (hT : 0 < T)\n    {u : Velocity} (hu : SmoothVelocityOn T u)\n    {t : ℝ} (ht : t ∈ Icc (0 : ℝ) T) (x : Vec) :\n    HasDerivWithinAt (fun s : ℝ => u s x)\n      (finiteTimeDerivative T u t x) (Icc (0 : ℝ) T) t",
+      "literal_header_sha256": "70a27dd5daa41b1d4d9c581e77a4af1a1052af8e4b5fe755a9739853d6518d27",
+      "dependencies": {
+        "module_imports": [
+          "ClassicalMechanics.FiniteSlab"
+        ],
+        "direct_registered_source_references": []
+      }
+    },
+    {
+      "id": "NX04",
+      "original_name": "ClassicalMechanics.finite_time_restriction_fderiv",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.finite_time_restriction_fderiv",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+      "source_line": 48,
+      "source_module": "ClassicalMechanics.TimeCalculus",
+      "source_sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+      "source_git_blob": "2ffc0c6d60c4c81a63e9bdcc2476882ada5d4aaf",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean#L48",
+      "literal_header": "theorem finite_time_restriction_fderiv {T : ℝ} (hT : 0 < T)\n    {u : Velocity} (hu : SmoothVelocityOn T u)\n    {t : ℝ} (ht : t ∈ Icc (0 : ℝ) T) (x : Vec) :\n    finiteTimeDerivative T u t x =\n      fderivWithin ℝ (fun z : ℝ × Vec => u z.1 z.2)\n        (finiteSpacetime T) (t, x) (1, 0)",
+      "literal_header_sha256": "b695f2436aca4a0a05dc0b54fd81427bbd5a6e74a2eb108890cb51362252c26c",
+      "dependencies": {
+        "module_imports": [
+          "ClassicalMechanics.FiniteSlab"
+        ],
+        "direct_registered_source_references": []
+      }
+    },
+    {
+      "id": "NX05",
+      "original_name": "ClassicalMechanics.finite_flow_acceleration",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.finite_flow_acceleration",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean",
+      "source_line": 93,
+      "source_module": "ClassicalMechanics.TimeCalculus",
+      "source_sha256": "a7135edc92c83581b47835749620dd866c9f9652d4e319ba6923ce830727bcbc",
+      "source_git_blob": "2ffc0c6d60c4c81a63e9bdcc2476882ada5d4aaf",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Classical_Mechanics_adapter/ClassicalMechanics/TimeCalculus.lean#L93",
+      "literal_header": "theorem finite_flow_acceleration {T : ℝ} (hT : 0 < T)\n    {u eta : Velocity} (hu : SmoothVelocityOn T u) (heta : SmoothVelocityOn T eta)\n    (hflow : ∀ s ∈ Icc (0 : ℝ) T, ∀ a : Vec,\n      finiteTimeDerivative T eta s a = u s (eta s a))\n    {t : ℝ} (ht : t ∈ Icc (0 : ℝ) T) (a : Vec) :\n    finiteTimeDerivative T (finiteTimeDerivative T eta) t a =\n      finiteMaterialAcceleration T u t (eta t a)",
+      "literal_header_sha256": "205e8a217f9d366964481a1298d06bb27852de14be1e4cc73cbb6cde5e4c7ae3",
+      "dependencies": {
+        "module_imports": [
+          "ClassicalMechanics.FiniteSlab"
+        ],
+        "direct_registered_source_references": [
+          "NX03"
+        ]
+      }
+    },
+    {
+      "id": "NX06",
+      "original_name": "ClassicalMechanics.material_inverse_transpose_divergence_zero",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.material_inverse_transpose_divergence_zero",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialBridge.lean",
+      "source_line": 14,
+      "source_module": "ClassicalMechanics.MaterialBridge",
+      "source_sha256": "abba98bc75d21f5dd5d2f2c5c453d1ee31a03ebd3fdc30d767b9f5c20fd84c63",
+      "source_git_blob": "b0b3df7de8c86b82641e04869013f1666f1fa8a9",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Classical_Mechanics_adapter/ClassicalMechanics/MaterialBridge.lean#L14",
+      "literal_header": "theorem material_inverse_transpose_divergence_zero {T : ℝ} {η ρ : Velocity}\n    (hη : MaterialPathOn T η ρ) {t : ℝ} (ht : t ∈ Icc (0 : ℝ) T) :\n    tensorDivergence (fun a => (inverseDeformationGradient η t a).transpose) = 0",
+      "literal_header_sha256": "439a43fc86b966ff5df18577f31c25327b0494c7b7667ed33e6d6ca5e40c711f",
+      "dependencies": {
+        "module_imports": [
+          "ClassicalMechanics.MaterialGradient",
+          "ClassicalMechanics.Piola"
+        ],
+        "direct_registered_source_references": [
+          "N11",
+          "N14"
+        ]
+      }
+    },
+    {
+      "id": "NX07",
+      "original_name": "ClassicalMechanics.material_path_surjective",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.material_path_surjective",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Classical_Mechanics_adapter/ClassicalMechanics/Material.lean",
+      "source_line": 72,
+      "source_module": "ClassicalMechanics.Material",
+      "source_sha256": "301e57557d36f73dc3005661c871257a3af3a71b4c138bfd42c41302490d2700",
+      "source_git_blob": "0c5e76d7667518242c1aaf08a0198a81b63ff603",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Classical_Mechanics_adapter/ClassicalMechanics/Material.lean#L72",
+      "literal_header": "theorem material_path_surjective {T : ℝ} {η ρ : Velocity}\n    (h : MaterialPathOn T η ρ) {t : ℝ} (ht : t ∈ Icc (0 : ℝ) T) :\n    Function.Surjective (η t)",
+      "literal_header_sha256": "ce9c842dcd4d44e92d059e710eaca28c307ca861b3aa2cef288d90db09255d40",
+      "dependencies": {
+        "module_imports": [
+          "ClassicalMechanics.TimeCalculus"
+        ],
+        "direct_registered_source_references": []
+      }
+    },
+    {
+      "id": "NX08",
+      "original_name": "ClassicalMechanics.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW_AND_DIFFUSION",
+      "assembly_alias": "ClassicalMechanicsAssembly.Native.CLASSICAL_MECHANICS_MATERIAL_OF_FLOW_AND_DIFFUSION",
+      "alias_kind": "Lean export name-resolution alias to the original declaration",
+      "source_path": "Classical_Mechanics_adapter/ClassicalMechanics/MaterialBridge.lean",
+      "source_line": 37,
+      "source_module": "ClassicalMechanics.MaterialBridge",
+      "source_sha256": "abba98bc75d21f5dd5d2f2c5c453d1ee31a03ebd3fdc30d767b9f5c20fd84c63",
+      "source_git_blob": "b0b3df7de8c86b82641e04869013f1666f1fa8a9",
+      "source_reference_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/391d6a2f8f856be3f43cb208254b7fa4a56fe95f/Classical_Mechanics_adapter/ClassicalMechanics/MaterialBridge.lean#L37",
+      "literal_header": "theorem CLASSICAL_MECHANICS_MATERIAL_OF_FLOW_AND_DIFFUSION\n    {ν T : ℝ} (hT : 0 < T) {u η ρ : Velocity} {p π : Pressure}\n    (hu : SmoothVelocityOn T u) (hp : SmoothPressureOn T p)\n    (hη : MaterialPathOn T η ρ)\n    (hflow : ∀ t ∈ Icc (0 : ℝ) T, ∀ a : Vec,\n      materialVelocity T η t a = u t (η t a))\n    (hπ : ∀ t ∈ Icc (0 : ℝ) T, ∀ a : Vec, π t a = p t (η t a))\n    (hdiff : ∀ t ∈ Icc (0 : ℝ) T, ∀ a : Vec,\n      materialDiffusion T η t a = NSEMaxwell.Classical.laplacian (u t) (η t a)) :\n    (∀ t ∈ Icc (0 : ℝ) T, ∀ x : Vec,\n      finiteMaterialAcceleration T u t x + NSEMaxwell.Classical.gradient (p t) x =\n        ν • NSEMaxwell.Classical.laplacian (u t) x) ↔ MaterialEquationOn ν T η π",
+      "literal_header_sha256": "22e00e8c132e075b76c377645d246e7e3ec11135362ee55d10c00860d0645b78",
+      "dependencies": {
+        "module_imports": [
+          "ClassicalMechanics.MaterialGradient",
+          "ClassicalMechanics.Piola"
+        ],
+        "direct_registered_source_references": []
+      }
+    }
+  ],
+  "assembly_audited_source_commit": "d04698bae290672d5c0b0238ff4fa0d6c2ca9b6a",
+  "external_run_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43376636262",
+  "external_audit_evidence": "Auxillary/evidence/assembly-linux-43376636262/audit-summary.json"
+}

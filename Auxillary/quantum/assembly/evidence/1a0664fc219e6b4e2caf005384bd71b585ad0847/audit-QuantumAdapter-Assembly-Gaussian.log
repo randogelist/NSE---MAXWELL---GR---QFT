@@ -1,0 +1,150 @@
+QuantumAdapter.phaseVolume_eq_volume : ∀ (N : ℕ),
+  Eq.{1} (QuantumAdapter.phaseVolume N) MeasureTheory.MeasureSpace.volume.{0}
+'QuantumAdapter.phaseVolume_eq_volume' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.canonicalPacket_continuous : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+  Continuous.{0, 0} (QuantumAdapter.canonicalPacket N q₀)
+'QuantumAdapter.canonicalPacket_continuous' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.canonicalPacket_bornDensity : ∀ (N : ℕ) (q₀ q : QuantumAdapter.Phase N),
+  Eq.{1} (QuantumAdapter.bornDensity.{0} (QuantumAdapter.canonicalPacket N q₀) q)
+    (HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} (QuantumAdapter.gaussianAmplitude N) 2)
+      (Real.exp
+        (HDiv.hDiv.{0, 0, 0} (Neg.neg.{0} (HPow.hPow.{0, 0, 0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} q q₀)) 2))
+          (HMul.hMul.{0, 0, 0} 2 (HPow.hPow.{0, 0, 0} (QuantumAdapter.canonicalScale N) 2)))))
+'QuantumAdapter.canonicalPacket_bornDensity' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.gaussianAmplitude_sq : ∀ (N : ℕ),
+  Eq.{1} (HPow.hPow.{0, 0, 0} (QuantumAdapter.gaussianAmplitude N) 2)
+    (HPow.hPow.{0, 0, 0}
+      (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 Real.pi) (HPow.hPow.{0, 0, 0} (QuantumAdapter.canonicalScale N) 2))
+      (HDiv.hDiv.{0, 0, 0} (Neg.neg.{0} ↑(QuantumAdapter.phaseDimension N)) 2))
+'QuantumAdapter.gaussianAmplitude_sq' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.canonicalGaussian_integral : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+  Eq.{1}
+    (∫ (q : QuantumAdapter.Phase N),
+      Real.exp
+        (HDiv.hDiv.{0, 0, 0} (Neg.neg.{0} (HPow.hPow.{0, 0, 0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} q q₀)) 2))
+          (HMul.hMul.{0, 0, 0} 2 (HPow.hPow.{0, 0, 0} (QuantumAdapter.canonicalScale N) 2))))
+    (HPow.hPow.{0, 0, 0}
+      (HMul.hMul.{0, 0, 0} (HMul.hMul.{0, 0, 0} 2 Real.pi) (HPow.hPow.{0, 0, 0} (QuantumAdapter.canonicalScale N) 2))
+      (HDiv.hDiv.{0, 0, 0} (↑(QuantumAdapter.phaseDimension N)) 2))
+'QuantumAdapter.canonicalGaussian_integral' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.canonicalPacket_normalized : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+  Eq.{1}
+    (∫ (q : QuantumAdapter.Phase N),
+      QuantumAdapter.bornDensity.{0} (QuantumAdapter.canonicalPacket N q₀) q ∂QuantumAdapter.phaseVolume N)
+    1
+'QuantumAdapter.canonicalPacket_normalized' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.canonicalPacket_density_integrable : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+  MeasureTheory.Integrable.{0, 0} (QuantumAdapter.bornDensity.{0} (QuantumAdapter.canonicalPacket N q₀))
+    (QuantumAdapter.phaseVolume N)
+'QuantumAdapter.canonicalPacket_density_integrable' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.canonicalPacket_memLp : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+  MeasureTheory.MemLp.{0, 0} (QuantumAdapter.canonicalPacket N q₀) 2 (QuantumAdapter.phaseVolume N)
+'QuantumAdapter.canonicalPacket_memLp' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.canonicalPacket_waveAdmissible : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+  QuantumAdapter.WaveAdmissible.{0} (QuantumAdapter.phaseVolume N) (QuantumAdapter.canonicalPacket N q₀)
+'QuantumAdapter.canonicalPacket_waveAdmissible' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.canonicalPacket_norm_toL2 : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+  Eq.{1} (Norm.norm.{0} (QuantumAdapter.WaveAdmissible.toL2.{0} ⋯)) 1
+'QuantumAdapter.canonicalPacket_norm_toL2' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.phaseGaussian_moment_formula : ∀ (N : ℕ) {b : ℝ},
+  LT.lt.{0} 0 b →
+    ∀ (k : ℕ),
+      Eq.{1}
+        (∫ (q : QuantumAdapter.Phase N),
+          HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} (Norm.norm.{0} q) k)
+            (Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} b) (HPow.hPow.{0, 0, 0} (Norm.norm.{0} q) 2))))
+        (HMul.hMul.{0, 0, 0}
+          (HMul.hMul.{0, 0, 0} (↑(QuantumAdapter.phaseDimension N))
+            (MeasureTheory.Measure.real.{0} MeasureTheory.MeasureSpace.volume.{0} (Metric.ball.{0} 0 1)))
+          (HMul.hMul.{0, 0, 0}
+            (HMul.hMul.{0, 0, 0}
+              (HPow.hPow.{0, 0, 0} b
+                (HDiv.hDiv.{0, 0, 0} (Neg.neg.{0} (HAdd.hAdd.{0, 0, 0} ↑(QuantumAdapter.phaseDimension N) ↑k)) 2))
+              (1 / 2))
+            (Real.Gamma (HDiv.hDiv.{0, 0, 0} (HAdd.hAdd.{0, 0, 0} ↑(QuantumAdapter.phaseDimension N) ↑k) 2))))
+'QuantumAdapter.phaseGaussian_moment_formula' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.phaseGaussian_moment_integrable : ∀ (N : ℕ) {b : ℝ},
+  LT.lt.{0} 0 b →
+    ∀ (k : ℕ),
+      MeasureTheory.Integrable.{0, 0}
+        (fun q =>
+          HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} (Norm.norm.{0} q) k)
+            (Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} b) (HPow.hPow.{0, 0, 0} (Norm.norm.{0} q) 2))))
+        MeasureTheory.MeasureSpace.volume.{0}
+'QuantumAdapter.phaseGaussian_moment_integrable' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.phaseGaussian_second_moment : ∀ (N : ℕ) {b : ℝ},
+  LT.lt.{0} 0 b →
+    Eq.{1}
+      (∫ (q : QuantumAdapter.Phase N),
+        HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} (Norm.norm.{0} q) 2)
+          (Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} b) (HPow.hPow.{0, 0, 0} (Norm.norm.{0} q) 2))))
+      (HMul.hMul.{0, 0, 0} (HDiv.hDiv.{0, 0, 0} (↑(QuantumAdapter.phaseDimension N)) (HMul.hMul.{0, 0, 0} 2 b))
+        (∫ (q : QuantumAdapter.Phase N),
+          Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} b) (HPow.hPow.{0, 0, 0} (Norm.norm.{0} q) 2))))
+'QuantumAdapter.phaseGaussian_second_moment' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.phaseGaussian_fourth_moment : ∀ (N : ℕ) {b : ℝ},
+  LT.lt.{0} 0 b →
+    Eq.{1}
+      (∫ (q : QuantumAdapter.Phase N),
+        HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} (Norm.norm.{0} q) 4)
+          (Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} b) (HPow.hPow.{0, 0, 0} (Norm.norm.{0} q) 2))))
+      (HMul.hMul.{0, 0, 0}
+        (HDiv.hDiv.{0, 0, 0}
+          (HMul.hMul.{0, 0, 0} (↑(QuantumAdapter.phaseDimension N))
+            (HAdd.hAdd.{0, 0, 0} (↑(QuantumAdapter.phaseDimension N)) 2))
+          (HMul.hMul.{0, 0, 0} 4 (HPow.hPow.{0, 0, 0} b 2)))
+        (∫ (q : QuantumAdapter.Phase N),
+          Real.exp (HMul.hMul.{0, 0, 0} (Neg.neg.{0} b) (HPow.hPow.{0, 0, 0} (Norm.norm.{0} q) 2))))
+'QuantumAdapter.phaseGaussian_fourth_moment' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.canonicalPacket_centered_integrand : ∀ (N : ℕ) (q₀ q : QuantumAdapter.Phase N) (k : ℕ),
+  Eq.{1}
+    (HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} q q₀)) k)
+      (QuantumAdapter.bornDensity.{0} (QuantumAdapter.canonicalPacket N q₀) q))
+    (HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} (QuantumAdapter.gaussianAmplitude N) 2)
+      (HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} q q₀)) k)
+        (Real.exp
+          (HMul.hMul.{0, 0, 0}
+            (Neg.neg.{0}
+              (Inv.inv.{0} (HMul.hMul.{0, 0, 0} 2 (HPow.hPow.{0, 0, 0} (QuantumAdapter.canonicalScale N) 2))))
+            (HPow.hPow.{0, 0, 0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} q q₀)) 2)))))
+'QuantumAdapter.canonicalPacket_centered_integrand' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.canonicalPacket_centered_moment : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N) (k : ℕ),
+  Eq.{1}
+    (∫ (q : QuantumAdapter.Phase N),
+      HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} q q₀)) k)
+        (QuantumAdapter.bornDensity.{0} (QuantumAdapter.canonicalPacket N q₀) q) ∂QuantumAdapter.phaseVolume N)
+    (HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} (QuantumAdapter.gaussianAmplitude N) 2)
+      (∫ (q : QuantumAdapter.Phase N),
+        HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} (Norm.norm.{0} q) k)
+          (Real.exp
+            (HMul.hMul.{0, 0, 0}
+              (Neg.neg.{0}
+                (Inv.inv.{0} (HMul.hMul.{0, 0, 0} 2 (HPow.hPow.{0, 0, 0} (QuantumAdapter.canonicalScale N) 2))))
+              (HPow.hPow.{0, 0, 0} (Norm.norm.{0} q) 2)))))
+'QuantumAdapter.canonicalPacket_centered_moment' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.canonicalPacket_centered_moment_integrable : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N) (k : ℕ),
+  MeasureTheory.Integrable.{0, 0}
+    (fun q =>
+      HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} q q₀)) k)
+        (QuantumAdapter.bornDensity.{0} (QuantumAdapter.canonicalPacket N q₀) q))
+    (QuantumAdapter.phaseVolume N)
+'QuantumAdapter.canonicalPacket_centered_moment_integrable' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+QuantumAdapter.canonicalPacket_second_moment : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+  Eq.{1}
+    (∫ (q : QuantumAdapter.Phase N),
+      HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} q q₀)) 2)
+        (QuantumAdapter.bornDensity.{0} (QuantumAdapter.canonicalPacket N q₀) q) ∂QuantumAdapter.phaseVolume N)
+    (HMul.hMul.{0, 0, 0} (↑(QuantumAdapter.phaseDimension N)) (HPow.hPow.{0, 0, 0} (QuantumAdapter.canonicalScale N) 2))
+'QuantumAdapter.canonicalPacket_second_moment' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+QuantumAdapter.canonicalPacket_fourth_moment : ∀ (N : ℕ) (q₀ : QuantumAdapter.Phase N),
+  Eq.{1}
+    (∫ (q : QuantumAdapter.Phase N),
+      HMul.hMul.{0, 0, 0} (HPow.hPow.{0, 0, 0} (Norm.norm.{0} (HSub.hSub.{0, 0, 0} q q₀)) 4)
+        (QuantumAdapter.bornDensity.{0} (QuantumAdapter.canonicalPacket N q₀) q) ∂QuantumAdapter.phaseVolume N)
+    (HMul.hMul.{0, 0, 0}
+      (HMul.hMul.{0, 0, 0} (↑(QuantumAdapter.phaseDimension N))
+        (HAdd.hAdd.{0, 0, 0} (↑(QuantumAdapter.phaseDimension N)) 2))
+      (HPow.hPow.{0, 0, 0} (QuantumAdapter.canonicalScale N) 4))
+'QuantumAdapter.canonicalPacket_fourth_moment' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]

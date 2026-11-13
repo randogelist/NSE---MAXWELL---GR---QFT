@@ -1,0 +1,25 @@
+import QuantumAdapter.Assembly.CompleteFlow
+set_option pp.universes true
+set_option pp.fullNames true
+#check @QuantumAdapter.Assembly.energy0_hasDerivAt_of_drift
+#print axioms QuantumAdapter.Assembly.energy0_hasDerivAt_of_drift
+#check @QuantumAdapter.Assembly.local_energy0_antitoneOn
+#print axioms QuantumAdapter.Assembly.local_energy0_antitoneOn
+#check @QuantumAdapter.Assembly.local_weighted_energy0_monotoneOn
+#print axioms QuantumAdapter.Assembly.local_weighted_energy0_monotoneOn
+#check @QuantumAdapter.Assembly.drift_bounded_on_closedBall
+#print axioms QuantumAdapter.Assembly.drift_bounded_on_closedBall
+#check @QuantumAdapter.Assembly.local_drift_solution_lipschitz_of_norm_bound
+#print axioms QuantumAdapter.Assembly.local_drift_solution_lipschitz_of_norm_bound
+#check @QuantumAdapter.Assembly.local_drift_solution_endpoint_limits_of_norm_bound
+#print axioms QuantumAdapter.Assembly.local_drift_solution_endpoint_limits_of_norm_bound
+#check @QuantumAdapter.Assembly.local_drift_solution_endpoint_limits_of_energy_bound
+#print axioms QuantumAdapter.Assembly.local_drift_solution_endpoint_limits_of_energy_bound
+#check @QuantumAdapter.Assembly.local_drift_solution_has_forward_limit
+#print axioms QuantumAdapter.Assembly.local_drift_solution_has_forward_limit
+#check @QuantumAdapter.Assembly.local_drift_solution_has_backward_limit
+#print axioms QuantumAdapter.Assembly.local_drift_solution_has_backward_limit
+#check @QuantumAdapter.Assembly.exists_uniform_local_drift_solutions
+#print axioms QuantumAdapter.Assembly.exists_uniform_local_drift_solutions
+#check @QuantumAdapter.Assembly.local_drift_solution_forward_limit_restart
+#print axioms QuantumAdapter.Assembly.local_drift_solution_forward_limit_restart

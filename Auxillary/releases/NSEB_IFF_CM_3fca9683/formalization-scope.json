@@ -1,0 +1,30 @@
+{
+  "export_status": "EXPORTED_SOURCE_ONLY",
+  "theorem_status_record": "NSEB_IFF_CM_A_TIER.txt",
+  "portable_windows_validation": "REQUIRES_MATCHING_EXTERNAL_RUN",
+  "root_module": "ClassicalMechanicsAssembly.FlowNSEBCM",
+  "root_targets": [
+    "ClassicalMechanicsAssembly.nseSolution_iff_cmSolution",
+    "ClassicalMechanicsAssembly.nseB_implies_cmB",
+    "ClassicalMechanicsAssembly.cmB_implies_nseB",
+    "ClassicalMechanicsAssembly.NSEB_IFF_CM",
+    "ClassicalMechanicsAssembly.NSEB_IFF_CM_POSITIVE"
+  ],
+  "exact_root": "For every real viscosity nu, FeffermanB nu iff CMB nu.",
+  "positive_root": "For every positive viscosity nu, FeffermanB nu iff CMB nu.",
+  "solution_scope": "The same globally smooth periodic velocity u and pressure p, with arbitrary velocity mean and periodic pressure gauge, precede every finite-slab material-witness quantifier.",
+  "material_scope": "Actual MaterialPathOn, flow ODE and MaterialEquationOn for every T>0; native L1 constructs witnesses and native Piola transport supplies both directions.",
+  "excluded_claims": [
+    "Proof of FeffermanB or CMB alone",
+    "Global-in-time NSE regularity",
+    "Full moving-region balance",
+    "Lagrange-d'Alembert theorem",
+    "Bijection of raw material total-function witness tuples"
+  ],
+  "approved_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "analytic_premise_discharge": "Not inferred from an axiom audit."
+}

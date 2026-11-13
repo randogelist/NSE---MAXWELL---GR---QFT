@@ -1,0 +1,78 @@
+@ClassicalMechanicsAssembly.closure_interior_finiteSpacetime : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    Eq.{1} (closure.{0} (interior.{0} (ClassicalMechanics.finiteSpacetime T))) (ClassicalMechanics.finiteSpacetime T)
+'ClassicalMechanicsAssembly.closure_interior_finiteSpacetime' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.finite_spacetime_second_derivative_symmetric : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {η : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T η →
+        ∀ {t : ℝ},
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+            ∀ (a : NSEMaxwell.Classical.Vec),
+              IsSymmSndFDerivWithinAt.{0, 0, 0} ℝ (fun z => η z.1 z.2) (ClassicalMechanics.finiteSpacetime T)
+                (Prod.mk.{0, 0} t a)
+'ClassicalMechanicsAssembly.finite_spacetime_second_derivative_symmetric' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.finite_mixed_directional_hasDerivWithinAt : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {η : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T η →
+        ∀ {t : ℝ},
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+            ∀ (a v : NSEMaxwell.Classical.Vec),
+              HasDerivWithinAt.{0, 0} (fun s => (fderiv.{0, 0, 0} ℝ (η s) a) v)
+                ((fderiv.{0, 0, 0} ℝ (ClassicalMechanics.finiteTimeDerivative T η t) a) v) (Set.Icc.{0} 0 T) t
+'ClassicalMechanicsAssembly.finite_mixed_directional_hasDerivWithinAt' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.deformationGradient_hasDerivWithinAt : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {η : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T η →
+        ∀ {t : ℝ},
+          Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+            ∀ (a : NSEMaxwell.Classical.Vec),
+              HasDerivWithinAt.{0, 0} (fun s => ClassicalMechanics.deformationGradient η s a)
+                (ClassicalMechanics.materialGradientMatrix (ClassicalMechanics.finiteTimeDerivative T η t) a)
+                (Set.Icc.{0} 0 T) t
+'ClassicalMechanicsAssembly.deformationGradient_hasDerivWithinAt' depends on axioms: [propext,
+ Classical.choice.{u},
+ Quot.sound.{u}]
+@ClassicalMechanicsAssembly.FLOW_VARIATIONAL_ODE : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u η : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ClassicalMechanics.SmoothVelocityOn T η →
+          (∀ (t : ℝ),
+              Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                ∀ (a : NSEMaxwell.Classical.Vec),
+                  Eq.{1} (ClassicalMechanics.finiteTimeDerivative T η t a) (u t (η t a))) →
+            ∀ (t : ℝ),
+              Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                ∀ (a : NSEMaxwell.Classical.Vec),
+                  HasDerivWithinAt.{0, 0} (fun s => ClassicalMechanics.deformationGradient η s a)
+                    (HMul.hMul.{0, 0, 0} (ClassicalMechanics.materialGradientMatrix (u t) (η t a))
+                      (ClassicalMechanics.deformationGradient η t a))
+                    (Set.Icc.{0} 0 T) t
+'ClassicalMechanicsAssembly.FLOW_VARIATIONAL_ODE' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+@ClassicalMechanicsAssembly.FLOW_JACOBIAN_ONE : ∀ {T : ℝ},
+  LT.lt.{0} 0 T →
+    ∀ {u η : NSEMaxwell.Classical.Velocity},
+      ClassicalMechanics.SmoothVelocityOn T u →
+        ClassicalMechanics.SmoothVelocityOn T η →
+          (Eq.{1} (η 0) fun a => a) →
+            (∀ (t : ℝ),
+                Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                  ∀ (a : NSEMaxwell.Classical.Vec),
+                    Eq.{1} (ClassicalMechanics.finiteTimeDerivative T η t a) (u t (η t a))) →
+              (∀ (t : ℝ),
+                  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                    ∀ (x : NSEMaxwell.Classical.Vec), Eq.{1} (NSEMaxwell.Classical.divergence (u t) x) 0) →
+                ∀ (t : ℝ),
+                  Membership.mem.{0, 0} (Set.Icc.{0} 0 T) t →
+                    ∀ (a : NSEMaxwell.Classical.Vec),
+                      Eq.{1} (Matrix.det.{0, 0} (ClassicalMechanics.deformationGradient η t a)) 1
+'ClassicalMechanicsAssembly.FLOW_JACOBIAN_ONE' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
