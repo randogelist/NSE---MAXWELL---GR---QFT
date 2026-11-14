@@ -45,7 +45,7 @@ theorem AnalyticForwardTrajectory.pressure_analytic
     s.trajectory.solution s.velocity_analytic
   simpa only [s.trajectory.originNormalize_totalPressure] using h
 
-def AnalyticForwardTrajectory.positiveNSE
+theorem AnalyticForwardTrajectory.positiveNSE
     {ν : ℝ} {a : Field} (s : AnalyticForwardTrajectory ν a) :
     PositiveAnalyticNSE ν s.trajectory.totalVelocity s.trajectory.totalPressure :=
   positiveAnalyticNSE_of_nssolution s.trajectory.solution
@@ -104,11 +104,28 @@ def profileRepresentativeToAnalyticForward
   refine ⟨s, ?_⟩
   intro z hz
   apply (r.solution.velocity_analytic z hz).congr
-  filter_upwards [Ioi_mem_nhds hz] with w hw
+  change 0 < z.1 at hz
+  have hpos : ∀ᶠ w : ℝ × Vec in 𝓝 z, 0 < w.1 :=
+    continuous_fst.continuousAt.tendsto.eventually (Ioi_mem_nhds hz)
+  filter_upwards [hpos] with w hw
   change r.velocity w.1 w.2 = s.totalVelocity w.1 w.2
   rw [s.totalVelocity_eq hw.le]
   change r.velocity w.1 w.2 = profileBoundaryVelocity r w.1 w.2
   exact congrFun (profileBoundaryVelocity_positive r hw).symm w.2
+
+@[simp]
+theorem profileRepresentativeToAnalyticForward_velocity
+    {ν : ℝ} {a : Field} (ha : NSEMaxwell.Classical.Data a)
+    (r : PositiveProfileRepresentative ν a) (t : PositiveTime) :
+    (profileRepresentativeToAnalyticForward ha r).trajectory.velocity
+        t.val t.property.le = profileBoundaryVelocity r t.val := rfl
+
+@[simp]
+theorem profileRepresentativeToAnalyticForward_pressure
+    {ν : ℝ} {a : Field} (ha : NSEMaxwell.Classical.Data a)
+    (r : PositiveProfileRepresentative ν a) (t : PositiveTime) :
+    (profileRepresentativeToAnalyticForward ha r).trajectory.pressure
+        t.val t.property.le = originNormalize (profileBoundaryPressure r) t.val := rfl
 
 theorem analyticForwardToPositiveProfile_profileRepresentativeToAnalyticForward
     {ν : ℝ} {a : Field} (ha : NSEMaxwell.Classical.Data a)
@@ -119,11 +136,13 @@ theorem analyticForwardToPositiveProfile_profileRepresentativeToAnalyticForward
   apply (PositiveTimeProfile.eq_iff_positive _ _).mpr
   intro t
   constructor
-  · rw [analyticForwardToPositiveProfile_velocity]
-    change profileBoundaryVelocity r t.val = r.velocity t.val
+  · rw [analyticForwardToPositiveProfile_velocity,
+      profileRepresentativeToAnalyticForward_velocity,
+      PositiveTimeProfile.velocity_mk]
     exact profileBoundaryVelocity_positive r t.property
-  · rw [analyticForwardToPositiveProfile_pressure]
-    change originNormalize (profileBoundaryPressure r) t.val = r.pressure t.val
+  · rw [analyticForwardToPositiveProfile_pressure,
+      profileRepresentativeToAnalyticForward_pressure,
+      PositiveTimeProfile.pressure_mk]
     funext x
     change profileBoundaryPressure r t.val x -
       profileBoundaryPressure r t.val 0 = r.pressure t.val x
