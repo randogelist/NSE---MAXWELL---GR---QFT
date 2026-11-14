@@ -1,4 +1,4 @@
-import GRAssembly.Strengthening.AnalyticalFrontier.CheckpointFactorial
+import GRAssembly.Strengthening.AnalyticalFrontier.CheckpointFinal
 
 /-!
 Quantitative checkpoint immediately upstream of the exact factorial checkpoint.
@@ -60,6 +60,27 @@ theorem ANALYTICAL_POINTWISE_CHECKPOINT_of_quantitative
     ANALYTICAL_POINTWISE_CHECKPOINT :=
   ANALYTICAL_POINTWISE_CHECKPOINT_of_factorial
     (ANALYTICAL_FACTORIAL_CHECKPOINT_of_quantitative checkpoint)
+
+/-- Quantitative checkpoint to the exact universal positive-spacetime endpoint. -/
+theorem ANALYTICAL_POSITIVE_SPACETIME_CHECKPOINT_of_quantitative
+    (checkpoint : ANALYTICAL_QUANTITATIVE_FACTORIAL_CHECKPOINT) :
+    ANALYTICAL_POSITIVE_SPACETIME_CHECKPOINT :=
+  ANALYTICAL_POSITIVE_SPACETIME_CHECKPOINT_of_pointwise
+    (ANALYTICAL_POINTWISE_CHECKPOINT_of_quantitative checkpoint)
+
+/-- Quantitative checkpoint to the named analytic-selection frontier. -/
+theorem ANALYTICAL_OBLIGATION_FRONTIER_of_quantitative
+    (checkpoint : ANALYTICAL_QUANTITATIVE_FACTORIAL_CHECKPOINT) :
+    ANALYTICAL_OBLIGATION_FRONTIER :=
+  ANALYTICAL_OBLIGATION_FRONTIER_of_positiveSpacetimeCheckpoint
+    (ANALYTICAL_POSITIVE_SPACETIME_CHECKPOINT_of_quantitative checkpoint)
+
+/-- Quantitative checkpoint directly to the final `B ↔ GR` proposition. -/
+theorem NSE_GR_FINAL_B_EQUIVALENCE_of_quantitative
+    (checkpoint : ANALYTICAL_QUANTITATIVE_FACTORIAL_CHECKPOINT) :
+    NSE_GR_FINAL_B_EQUIVALENCE :=
+  NSE_GR_FINAL_B_EQUIVALENCE_OF_ANALYTICAL_OBLIGATION_FRONTIER
+    (ANALYTICAL_OBLIGATION_FRONTIER_of_quantitative checkpoint)
 
 end
 end NSEGR.Strengthening
