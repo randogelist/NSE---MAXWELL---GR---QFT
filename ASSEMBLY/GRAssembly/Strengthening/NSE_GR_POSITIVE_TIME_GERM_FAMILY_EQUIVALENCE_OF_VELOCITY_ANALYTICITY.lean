@@ -3,6 +3,7 @@ import GRAssembly.Strengthening.BoundaryEndpoint
 import GRAssembly.Strengthening.BEquivalence
 import GRAssembly.Strengthening.ChainFormulas
 import GRAssembly.Strengthening.InitialPDE
+import GRAssembly.Strengthening.ReverseChain
 
 /-!
 Conditional exact root: one named positive-time velocity analyticity endpoint.

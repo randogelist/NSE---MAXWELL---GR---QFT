@@ -148,7 +148,9 @@ theorem coefficientLeray_derivativeSymbol (k : SingularClosure.Frequency) (z : â
         Complex.ofReal_intCast]
       ring
     funext i
-    simp only [coefficientLeray, if_neg hk, hsum, Pi.zero_apply, derivativeSymbol,
+    simp only [coefficientLeray, if_neg hk, Pi.zero_apply]
+    rw [hsum]
+    simp only [derivativeSymbol,
       Complex.ofReal_mul, Complex.ofReal_ofNat, Complex.ofReal_intCast]
     field_simp [hden]
     ring

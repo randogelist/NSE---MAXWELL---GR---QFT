@@ -164,7 +164,7 @@ theorem localNSE_localTimeDerivative_smooth
   have hc : AnalyticAt ℝ (fun z : ℝ × Vec => u z.1 z.2 i) (t, x) := by
     let pr : Vec →L[ℝ] ℝ := EuclideanSpace.proj i
     change AnalyticAt ℝ (fun z : ℝ × Vec => pr (u z.1 z.2)) (t, x)
-    exact (pr.analyticAt (u t x)).comp (h.velocity_analytic (t, x) ht)
+    exact (pr.analyticAt (u t x)).comp_of_eq (h.velocity_analytic (t, x) ht) rfl
   exact ((Assembly.analyticAt_jointTime hc).comp
     (analyticAt_const.prod analyticAt_id)).contDiffAt
 
@@ -176,7 +176,7 @@ theorem localNSE_divergence_localTimeDerivative_zero
   have hf (i : Fin 3) (x : Vec) : AnalyticAt ℝ (f i) (t, x) := by
     let pr : Vec →L[ℝ] ℝ := EuclideanSpace.proj i
     change AnalyticAt ℝ (fun z : ℝ × Vec => pr (u z.1 z.2)) (t, x)
-    exact (pr.analyticAt (u t x)).comp (h.velocity_analytic (t, x) ht)
+    exact (pr.analyticAt (u t x)).comp_of_eq (h.velocity_analytic (t, x) ht) rfl
   have hdt := localNSE_localTimeDerivative_smooth h ht
   have htime (i : Fin 3) :
       (fun x => localTimeDerivative u t x i) =
