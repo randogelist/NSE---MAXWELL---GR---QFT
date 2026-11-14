@@ -1,11 +1,11 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "goal": "NSE_GR_POSITIVE_TIME_BIUNIQUE_CORRESPONDENCE",
   "goal_version": 1,
   "compiler": "leanprover/lean4:v4.34.0-rc1",
   "mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
-  "global_status": "CONDITIONAL_ON_ANALYTICAL_OBLIGATION_FRONTIER",
-  "promotion": "Exact compiled/audited relation-first core and deterministic final adapter; the explicit ANALYTICAL_OBLIGATION_FRONTIER premise remains.",
+  "global_status": "CONDITIONAL_ON_ANALYTICAL_FACTORIAL_CHECKPOINT",
+  "promotion": "Exact relation-first core, final adapter, and checkpoint chain are compiled/audited; the explicit ANALYTICAL_FACTORIAL_CHECKPOINT remains.",
   "modules": [
     {
       "module": "GRAssembly.Strengthening.RelationCarrier",
@@ -88,6 +88,47 @@
         "NSEGR.Strengthening.NSE_B_IFF_GR_BOUNDARY_FAMILY_OF_FINAL_CERTIFICATE",
         "NSEGR.Strengthening.NSE_GR_FINAL_B_EQUIVALENCE_OF_ANALYTICAL_OBLIGATION_FRONTIER",
         "NSEGR.Strengthening.NSE_GR_FINAL_B_EQUIVALENCE_OF_CERTIFICATE"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.AnalyticalFrontier.CheckpointDefinitions",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/AnalyticalFrontier/CheckpointDefinitions.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.ANALYTICAL_FACTORIAL_CHECKPOINT",
+        "NSEGR.Strengthening.ANALYTICAL_POINTWISE_CHECKPOINT",
+        "NSEGR.Strengthening.ANALYTICAL_POSITIVE_SPACETIME_CHECKPOINT"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.AnalyticalFrontier.CheckpointFactorial",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/AnalyticalFrontier/CheckpointFactorial.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.ANALYTICAL_POINTWISE_CHECKPOINT_of_factorial"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.AnalyticalFrontier.CheckpointSelection",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/AnalyticalFrontier/CheckpointSelection.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.ANALYTICAL_POSITIVE_SPACETIME_CHECKPOINT_of_pointwise",
+        "NSEGR.Strengthening.ANALYTICAL_OBLIGATION_FRONTIER_of_positiveSpacetimeCheckpoint",
+        "NSEGR.Strengthening.ANALYTICAL_OBLIGATION_FRONTIER_of_factorialCheckpoint"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.AnalyticalFrontier.CheckpointFinal",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/AnalyticalFrontier/CheckpointFinal.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.NSE_GR_FINAL_B_EQUIVALENCE_of_positiveSpacetimeCheckpoint",
+        "NSEGR.Strengthening.NSE_GR_FINAL_B_EQUIVALENCE_of_factorialCheckpoint"
       ],
       "kind": "declaration",
       "status": "A_TIER_CANDIDATE"
