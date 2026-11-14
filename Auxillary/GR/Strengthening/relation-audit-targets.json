@@ -1,11 +1,11 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "goal": "NSE_GR_POSITIVE_TIME_BIUNIQUE_CORRESPONDENCE",
   "goal_version": 1,
   "compiler": "leanprover/lean4:v4.34.0-rc1",
   "mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
-  "global_status": "CONDITIONAL_ON_ANALYTICAL_FACTORIAL_CHECKPOINT",
-  "promotion": "Exact relation-first core, final adapter, and checkpoint chain are compiled/audited; the explicit ANALYTICAL_FACTORIAL_CHECKPOINT remains.",
+  "global_status": "CONDITIONAL_ON_ANALYTICAL_QUANTITATIVE_FACTORIAL_CHECKPOINT",
+  "promotion": "Exact relation-first core, final adapter, and downstream analytical checkpoints are compiled/audited; the explicit quantitative factorial checkpoint remains.",
   "modules": [
     {
       "module": "GRAssembly.Strengthening.RelationCarrier",
@@ -129,6 +129,17 @@
       "audit_targets": [
         "NSEGR.Strengthening.NSE_GR_FINAL_B_EQUIVALENCE_of_positiveSpacetimeCheckpoint",
         "NSEGR.Strengthening.NSE_GR_FINAL_B_EQUIVALENCE_of_factorialCheckpoint"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.AnalyticalFrontier.CheckpointQuantitative",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/AnalyticalFrontier/CheckpointQuantitative.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.ANALYTICAL_QUANTITATIVE_FACTORIAL_CHECKPOINT",
+        "NSEGR.Strengthening.ANALYTICAL_FACTORIAL_CHECKPOINT_of_quantitative",
+        "NSEGR.Strengthening.ANALYTICAL_POINTWISE_CHECKPOINT_of_quantitative"
       ],
       "kind": "declaration",
       "status": "A_TIER_CANDIDATE"
