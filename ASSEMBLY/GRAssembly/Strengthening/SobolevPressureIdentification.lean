@@ -118,8 +118,9 @@ theorem pressureGradient_neg (p : ScalarField) : gradient (-p) = -gradient p := 
   funext x
   apply PiLp.ext
   intro i
-  simp only [gradient, Pi.neg_apply, fderiv_fun_neg, ContinuousLinearMap.neg_apply,
-    PiLp.toLp_apply, PiLp.neg_apply]
+  change fderiv ℝ (fun y => -p y) x (unitVector i) =
+    -(fderiv ℝ p x (unitVector i))
+  simp only [fderiv_fun_neg, ContinuousLinearMap.neg_apply]
 
 theorem normalizedQuadraticPressure_eq_fullTransportPressure
     (v : Field) (hv : ContDiff ℝ ∞ v) (hvper : SpatialPeriodic v)

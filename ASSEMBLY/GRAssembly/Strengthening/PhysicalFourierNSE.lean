@@ -120,16 +120,19 @@ theorem datumFourierCoeff_real_smul (ν : ℝ) (a : SingularClosure.Field) :
       star (fourierCharacter k x) * (a x i : ℂ)
   rw [← integral_const_mul]
   apply integral_congr_ae
-  exact Filter.Eventually.of_forall (fun x => by rw [Complex.ofReal_mul]; ring)
+  exact Filter.Eventually.of_forall (fun x => by
+    dsimp only
+    rw [Complex.ofReal_mul]
+    ring)
 
 theorem datumFourierCoeff_gradient_component
     (p : SingularClosure.Vec → ℝ) (hp : ContDiff ℝ ∞ p)
-    (hpp : SingularClosure.SpatialPeriodic p) (k : Frequency) (i : Fin 3) :
+    (hpp : SingularClosure.SpatialPeriodic p) (k : SingularClosure.Frequency) (i : Fin 3) :
     datumFourierCoeff (SingularClosure.gradient p) k i =
       derivativeSymbol i k * scalarCoeff p k := by
   exact scalarCoeff_coordinateDerivative p hp hpp i k
 
-theorem coefficientLeray_derivativeSymbol (k : Frequency) (z : ℂ) :
+theorem coefficientLeray_derivativeSymbol (k : SingularClosure.Frequency) (z : ℂ) :
     coefficientLeray k (fun i => derivativeSymbol i k * z) = 0 := by
   by_cases hk : k = 0
   · subst k
@@ -194,6 +197,9 @@ theorem physical_momentum_fullFourierRhs
   have hc : Continuous (SingularClosure.convection a) := (convection_contDiff a ha).continuous
   have hg : Continuous (SingularClosure.gradient p) :=
     (NSEMaxwell.PeriodicIntegration.gradient_smooth hp).continuous
+  have hlap : datumFourierCoeff (SingularClosure.laplacian a) =
+      laplacianCoefficient (datumFourierCoeff a) :=
+    NSEMaxwell.HodgeProof.datumFourierCoeff_laplacian a ha hpa
   have he : d + SingularClosure.convection a + SingularClosure.gradient p =
       ν • SingularClosure.laplacian a := funext heq
   have hf := congrArg datumFourierCoeff he
@@ -201,7 +207,7 @@ theorem physical_momentum_fullFourierRhs
       (hd.continuous.add hc) hg,
     datumFourierCoeff_add d (SingularClosure.convection a) hd.continuous hc,
     datumFourierCoeff_real_smul,
-    datumFourierCoeff_laplacian a ha hpa,
+    hlap,
     physicalFourierValue_convection_coeff a ha hpa hdiva] at hf
   have h := congrArg fourierLerayLinear hf
   rw [map_add, map_add, map_smul,

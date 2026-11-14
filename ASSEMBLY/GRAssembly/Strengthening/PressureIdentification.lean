@@ -47,16 +47,18 @@ theorem divergence_smul_smooth (c : ℝ) {v : Field}
     (hv : ContDiff ℝ ∞ v) : divergence (c • v) = c • divergence v := by
   funext x
   change (∑ i : Fin 3,
-    (fderiv ℝ (fun y => c • v y) x (unitVector i)) i) = _
+    (fderiv ℝ (fun y => c • v y) x (unitVector i)) i) =
+      c • (∑ i : Fin 3, (fderiv ℝ v x (unitVector i)) i)
   rw [fderiv_fun_const_smul (hv.differentiable (by simp) x) c]
   simp only [ContinuousLinearMap.smul_apply, PiLp.smul_apply,
     Finset.smul_sum]
-  rfl
 
 theorem divergence_neg_native (v : Field) :
     divergence (-v) = -divergence v := by
   funext x
-  simp only [divergence, spatialPartial, Pi.neg_apply, fderiv_fun_neg,
+  change (∑ i : Fin 3, (fderiv ℝ (fun y => -v y) x (unitVector i)) i) =
+    -(∑ i : Fin 3, (fderiv ℝ v x (unitVector i)) i)
+  simp only [fderiv_fun_neg,
     ContinuousLinearMap.neg_apply, PiLp.neg_apply, Finset.sum_neg_distrib]
 
 theorem divergence_laplacian_zero {v : Field}
@@ -90,9 +92,11 @@ theorem pressure_poisson_of_divergence_free_momentum
     NSEMaxwell.PeriodicIntegration.convection_smooth hv
   have hlap : ContDiff ℝ ∞ (laplacian v) :=
     NSEMaxwell.PeriodicIntegration.laplacian_smooth hv
+  have hdconv : ContDiff ℝ ∞ (d + convection v) := hd.add hconv
   have he := congrArg divergence hmom
-  rw [divergence_add_smooth (hd.add hconv) (gradient_smooth hp),
-    divergence_add_smooth hd hconv, hdivd, zero_add,
+  rw [divergence_add_smooth (v := d + convection v) (w := gradient p)
+      hdconv (gradient_smooth hp),
+    divergence_add_smooth (v := d) (w := convection v) hd hconv, hdivd, zero_add,
     divergence_gradient hp, divergence_smul_smooth ν hlap,
     divergence_laplacian_zero hv hdiv, smul_zero] at he
   rw [quadraticPressureSource_eq_neg_divergence_convection hv hdiv]
@@ -157,8 +161,10 @@ theorem localNSE_localTimeDerivative_smooth
   rw [heq]
   apply contDiff_iff_contDiffAt.mpr
   intro x
-  have hc : AnalyticAt ℝ (fun z : ℝ × Vec => u z.1 z.2 i) (t, x) :=
-    ((EuclideanSpace.proj i).analyticAt _).comp (h.velocity_analytic (t, x) ht)
+  have hc : AnalyticAt ℝ (fun z : ℝ × Vec => u z.1 z.2 i) (t, x) := by
+    let pr : Vec →L[ℝ] ℝ := EuclideanSpace.proj i
+    change AnalyticAt ℝ (fun z : ℝ × Vec => pr (u z.1 z.2)) (t, x)
+    exact (pr.analyticAt (u t x)).comp (h.velocity_analytic (t, x) ht)
   exact ((Assembly.analyticAt_jointTime hc).comp
     (analyticAt_const.prod analyticAt_id)).contDiffAt
 
@@ -167,8 +173,10 @@ theorem localNSE_divergence_localTimeDerivative_zero
     (h : LocalNSE ν τ δ u p) {t : ℝ} (ht : t ∈ timeInterval τ δ) :
     divergence (localTimeDerivative u t) = 0 := by
   let f : Fin 3 → ℝ × Vec → ℝ := fun i z => u z.1 z.2 i
-  have hf (i : Fin 3) (x : Vec) : AnalyticAt ℝ (f i) (t, x) :=
-    ((EuclideanSpace.proj i).analyticAt _).comp (h.velocity_analytic (t, x) ht)
+  have hf (i : Fin 3) (x : Vec) : AnalyticAt ℝ (f i) (t, x) := by
+    let pr : Vec →L[ℝ] ℝ := EuclideanSpace.proj i
+    change AnalyticAt ℝ (fun z : ℝ × Vec => pr (u z.1 z.2)) (t, x)
+    exact (pr.analyticAt (u t x)).comp (h.velocity_analytic (t, x) ht)
   have hdt := localNSE_localTimeDerivative_smooth h ht
   have htime (i : Fin 3) :
       (fun x => localTimeDerivative u t x i) =

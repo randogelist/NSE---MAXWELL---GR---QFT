@@ -7,6 +7,11 @@ on:
       - 'ASSEMBLY/GRAssembly/Strengthening/**'
       - 'TEMP/SingularClosure/**'
       - 'Auxillary/GR/Strengthening/**'
+      - '!Auxillary/GR/Strengthening/evidence/**'
+      - '!Auxillary/GR/Strengthening/*_A_TIER.txt'
+      - '!Auxillary/GR/Strengthening/a-tier-promotions.json'
+      - '!Auxillary/GR/Strengthening/integration-index.json'
+      - '!Auxillary/GR/Strengthening/intermediate-goals.json'
       - '.github/workflows/gr-strengthening.yml'
   workflow_dispatch:
 

@@ -23,7 +23,7 @@ theorem smoothTrajectoryTraceEndpoint (ν : ℝ) (a : Field) :
   · have h := physicalFourierValue_coeff m (s.totalVelocity 0)
       (NSEMaxwell.Classical.velocity_slice_smooth s.solution.velocity_smooth le_rfl)
       (s.solution.velocity_periodic 0 le_rfl)
-    simpa only [s.solution.initial] using h
+    simpa only [physicalFourierCurve, s.solution.initial] using h
   · exact physicalFourierCurve_initial_trace s.totalVelocity s.solution.velocity_smooth
       s.solution.velocity_periodic m
 
