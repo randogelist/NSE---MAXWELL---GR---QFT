@@ -861,7 +861,8 @@
         "NSEGR.Strengthening.trajectoryGRFamilyEquiv_inverse_pressure",
         "NSEGR.Strengthening.trajectoryGRFamilyEquiv_inverse_initial",
         "NSEGR.Strengthening.trajectoryGRFamilyEquiv_left_inverse",
-        "NSEGR.Strengthening.trajectoryGRFamilyEquiv_right_inverse"
+        "NSEGR.Strengthening.trajectoryGRFamilyEquiv_right_inverse",
+        "NSEGR.Strengthening.trajectoryGRFamilyEquiv_inverse_germ"
       ],
       "kind": "declaration",
       "status": "A_TIER_CANDIDATE"
@@ -898,7 +899,23 @@
       "path": "ASSEMBLY/GRAssembly/Strengthening/ReverseChain.lean",
       "audit_targets": [
         "NSEGR.Strengthening.gr_family_implies_nssolution",
-        "NSEGR.Strengthening.GR_BOUNDARY_FAMILY_IMPLIES_NSE_B"
+        "NSEGR.Strengthening.GR_BOUNDARY_FAMILY_IMPLIES_NSE_B",
+        "NSEGR.Strengthening.not_gr_family_of_no_nssolution",
+        "NSEGR.Strengthening.not_GRFamilyB_of_not_FeffermanB"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.BoundaryIdentities",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/BoundaryIdentities.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.profileBoundary_is_nssolution",
+        "NSEGR.Strengthening.profileBoundaryPressure_origin",
+        "NSEGR.Strengthening.profileBoundaryPressure_eq_quadratic",
+        "NSEGR.Strengthening.profileBoundaryPressure_initial",
+        "NSEGR.Strengthening.profileBoundaryVelocity_projected_equation",
+        "NSEGR.Strengthening.profileBoundaryVelocity_initial_right_derivative_leray"
       ],
       "kind": "declaration",
       "status": "A_TIER_CANDIDATE"

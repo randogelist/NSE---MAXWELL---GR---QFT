@@ -30,5 +30,19 @@ theorem GR_BOUNDARY_FAMILY_IMPLIES_NSE_B
   obtain ⟨g⟩ := hGR a ha
   exact gr_family_implies_nssolution ν ρ hρ a ha g
 
+theorem not_gr_family_of_no_nssolution
+    (ν ρ : ℝ) (hρ : ρ ≠ 0) (a : Field)
+    (ha : NSEMaxwell.Classical.Data a)
+    (hNo : ¬ ∃ (u : Velocity) (p : Pressure), NSEMaxwell.Classical.NSSolution ν a u p) :
+    ¬ Nonempty (GRForwardFamily ν ρ a) := by
+  rintro ⟨g⟩
+  exact hNo (gr_family_implies_nssolution ν ρ hρ a ha g)
+
+theorem not_GRFamilyB_of_not_FeffermanB
+    (ν ρ : ℝ) (hρ : ρ ≠ 0) (hNotB : ¬ NSEMaxwell.Classical.FeffermanB ν) :
+    ¬ GRFamilyB ν ρ := by
+  intro hGR
+  exact hNotB (GR_BOUNDARY_FAMILY_IMPLIES_NSE_B ν ρ hρ hGR)
+
 end
 end NSEGR.Strengthening

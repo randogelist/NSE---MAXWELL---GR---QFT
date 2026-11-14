@@ -24,14 +24,17 @@ theorem analyticAt_velocityOuter_divergence_joint
       (fun y : ℝ × Vec => tensorDivergence (fun x => velocityOuter (u y.1 x)) y.2) z := by
   apply Assembly.analyticAt_vec_of_components
   intro i
-  have hc (j : Fin 3) : AnalyticAt ℝ (fun y : ℝ × Vec => u y.1 y.2 j) z :=
-    ((EuclideanSpace.proj j).analyticAt _).comp hu
+  have hc (j : Fin 3) : AnalyticAt ℝ (fun y : ℝ × Vec => u y.1 y.2 j) z := by
+    let pr : Vec →L[ℝ] ℝ := EuclideanSpace.proj j
+    simpa only [pr, Function.comp_def] using
+      (pr.analyticAt (u z.1 z.2)).comp_of_eq hu rfl
   have hs : AnalyticAt ℝ
       (fun y : ℝ × Vec => ∑ j : Fin 3,
         fderiv ℝ (fun x : Vec => u y.1 x i * u y.1 x j) y.2 (unitVector j)) z := by
     apply analyticAt_fin3_sum
     intro j
-    exact Assembly.analyticHodge_scalarSpatialPartial_joint ((hc i).mul (hc j)) j
+    exact Assembly.analyticHodge_scalarSpatialPartial_joint
+      (f := fun t x => u t x i * u t x j) ((hc i).mul (hc j)) j
   simpa only [tensorDivergence, velocityOuter, PiLp.toLp_apply] using hs
 
 theorem analyticAt_quadraticPressureSource_joint
@@ -55,12 +58,14 @@ theorem quadraticPressureSource_periodic {v : Field}
     intro k _
     have hprod : SpatialPeriodic (fun y : Vec => v y i * v y k) := by
       intro y l
+      change v (y + unitVector l) i * v (y + unitVector l) k = v y i * v y k
       rw [hv y l]
     exact congrArg (fun L : Vec →L[ℝ] ℝ => L (unitVector k))
       (fderiv_periodic hprod x j)
   intro x j
   exact congrArg Neg.neg (divergence_periodic htransport x j)
 
+set_option maxHeartbeats 800000 in
 theorem normalizedQuadraticPressure_joint_analytic_on_open_slab
     {u : Velocity} {I : Set ℝ} (hI : IsOpen I)
     (hu : AnalyticOnNhd ℝ (fun z : ℝ × Vec => u z.1 z.2) {z | z.1 ∈ I})
@@ -69,11 +74,20 @@ theorem normalizedQuadraticPressure_joint_analytic_on_open_slab
       (fun z : ℝ × Vec => normalizedQuadraticPressure (u z.1) z.2) {z | z.1 ∈ I} := by
   have hsource : AnalyticOnNhd ℝ
       (fun z : ℝ × Vec => quadraticPressureSource (u z.1) z.2) {z | z.1 ∈ I} :=
-    fun z hz => analyticAt_quadraticPressureSource_joint (hu z hz)
-  have hpi := Assembly.poissonInverse_joint_analytic_on_open_slab
-    (fun t => quadraticPressureSource (u t)) hI hsource
-    (fun t ht => quadraticPressureSource_periodic (hper t ht))
+    fun z hz => analyticAt_quadraticPressureSource_joint (u := u) (z := z) (hu z hz)
+  have hsourceper : ∀ t ∈ I, SpatialPeriodic (quadraticPressureSource (u t)) :=
+    fun t ht => quadraticPressureSource_periodic (v := u t) (hper t ht)
+  have hpi : AnalyticOnNhd ℝ
+      (fun z : ℝ × Vec => quadraticPoissonPressure (u z.1) z.2) {z | z.1 ∈ I} := by
+    change AnalyticOnNhd ℝ
+      (fun z : ℝ × Vec => poissonInverse (quadraticPressureSource (u z.1)) z.2)
+      {z | z.1 ∈ I}
+    exact Assembly.poissonInverse_joint_analytic_on_open_slab
+      (fun t => quadraticPressureSource (u t)) (I := I) hI hsource hsourceper
   intro z hz
+  change AnalyticAt ℝ
+    (fun w : ℝ × Vec => quadraticPoissonPressure (u w.1) w.2 -
+      quadraticPoissonPressure (u w.1) 0) z
   have hmap : AnalyticAt ℝ (fun w : ℝ × Vec => (w.1, (0 : Vec))) z :=
     analyticAt_fst.prod analyticAt_const
   have hp0 : AnalyticAt ℝ
@@ -87,9 +101,11 @@ theorem nssolution_originNormalize_positive_analytic
     (hu : AnalyticOnNhd ℝ (fun z : ℝ × Vec => u z.1 z.2) positiveSpacetime) :
     AnalyticOnNhd ℝ (fun z : ℝ × Vec => originNormalize p z.1 z.2)
       positiveSpacetime := by
-  have hq := normalizedQuadraticPressure_joint_analytic_on_open_slab
-    (I := Ioi (0 : ℝ)) isOpen_Ioi hu
-    (fun t ht => h.velocity_periodic t ht.le)
+  have hq : AnalyticOnNhd ℝ
+      (fun z : ℝ × Vec => normalizedQuadraticPressure (u z.1) z.2) positiveSpacetime :=
+    normalizedQuadraticPressure_joint_analytic_on_open_slab
+      (u := u) (I := Ioi (0 : ℝ)) isOpen_Ioi hu
+      (fun t ht => h.velocity_periodic t ht.le)
   have hopen : IsOpen positiveSpacetime := isOpen_lt continuous_const continuous_fst
   intro z hz
   apply (hq z hz).congr

@@ -1,5 +1,6 @@
 import GRAssembly.Strengthening.SmoothingEndpoint
 import GRAssembly.Strengthening.BoundaryEndpoint
+import GRAssembly.Strengthening.BoundaryIdentities
 import GRAssembly.Strengthening.BEquivalence
 import GRAssembly.Strengthening.ChainFormulas
 import GRAssembly.Strengthening.InitialPDE

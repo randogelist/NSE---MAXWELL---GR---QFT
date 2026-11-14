@@ -48,6 +48,27 @@ theorem trajectoryGRFamilyEquiv_inverse_velocity {ν : ℝ} {a : Field}
   rw [Equiv.apply_symm_apply] at h
   exact h.symm
 
+theorem trajectoryGRFamilyEquiv_inverse_germ {ν : ℝ} {a : Field}
+    (ρ : ℝ) (hρ : ρ ≠ 0)
+    (hS : PositiveTimeSmoothingEndpoint ν a)
+    (hT : SmoothTrajectoryTraceEndpoint ν a)
+    (hE : PositiveProfileBoundaryEndpoint ν a)
+    (g : GRForwardFamily ν ρ a) (τ : PositiveTime) :
+    (nativeLocalEquiv ν ρ τ.val hρ).symm (g.val τ) =
+      NSEgerm.mk (positiveTimeNSERepresentative
+        (positiveAnalyticNSE_of_nssolution
+          ((trajectoryGRFamilyEquiv ρ hρ hS hT hE).symm g).solution
+          (hS ((trajectoryGRFamilyEquiv ρ hρ hS hT hE).symm g)).1
+          (hS ((trajectoryGRFamilyEquiv ρ hρ hS hT hE).symm g)).2)
+        τ.val τ.property) := by
+  let s := (trajectoryGRFamilyEquiv ρ hρ hS hT hE).symm g
+  have hglobal : (trajectoryGRFamilyEquiv ρ hρ hS hT hE s).val τ = g.val τ :=
+    congrArg (fun q : GRForwardFamily ν ρ a => q.val τ)
+      ((trajectoryGRFamilyEquiv ρ hρ hS hT hE).apply_symm_apply g)
+  rw [trajectoryGRFamilyEquiv_apply_germ] at hglobal
+  have h := congrArg (nativeLocalEquiv ν ρ τ.val hρ).symm hglobal
+  simpa only [Equiv.symm_apply_apply] using h.symm
+
 theorem normalizedForwardTrajectory_pressure_eq_quadratic
     {ν : ℝ} {a : Field} (s : NormalizedForwardTrajectory ν a)
     {t : ℝ} (ht : 0 ≤ t) :
