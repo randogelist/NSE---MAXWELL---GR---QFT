@@ -41,25 +41,25 @@ theorem analyticalWiener_eval_norm_le
   exact lp.norm_apply_le_norm
     (by norm_num : (1 : ℝ≥0∞) ≠ 0) c ki
 
-/-- One-frequency insertion as an isometric continuous linear map. -/
-def analyticalWienerSingle (ki : FourierIndex) :
-    ℂ →L[ℂ] AnalyticalWienerSequence :=
-  lp.singleContinuousLinearMap ℂ (fun _ : FourierIndex => ℂ) 1 ki
+/-- One-frequency insertion into the fixed `ℓ¹` carrier. -/
+def analyticalWienerSingle (ki : FourierIndex) (z : ℂ) :
+    AnalyticalWienerSequence :=
+  lp.single (E := fun _ : FourierIndex => ℂ) 1 ki z
 
 @[simp]
 theorem analyticalWienerSingle_norm
     (ki : FourierIndex) (z : ℂ) :
     ‖analyticalWienerSingle ki z‖ = ‖z‖ := by
-  change ‖lp.single (1 : ℝ≥0∞) ki z‖ = ‖z‖
-  exact lp.norm_single
-    (by norm_num : (0 : ℝ≥0∞) < 1) ki z
+  simpa only [analyticalWienerSingle] using
+    (lp.norm_single (E := fun _ : FourierIndex => ℂ)
+      (p := (1 : ℝ≥0∞))
+      (by norm_num : (0 : ℝ≥0∞) < 1) ki z)
 
 @[simp]
 theorem analyticalWienerSingle_eval_self
     (ki : FourierIndex) (z : ℂ) :
     analyticalWienerEval ki (analyticalWienerSingle ki z) = z := by
-  change lp.single (1 : ℝ≥0∞) ki z ki = z
-  exact lp.single_apply_self (1 : ℝ≥0∞) ki z
+  simp [analyticalWienerEval, analyticalWienerSingle]
 
 /-- Exact fixed-carrier interface consumed by the nonlinear Wiener stage. -/
 def ANALYTICAL_WIENER_CARRIER_CHECKPOINT : Prop :=
