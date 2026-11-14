@@ -1,11 +1,11 @@
 {
-  "schema_version": 6,
+  "schema_version": 7,
   "goal": "NSE_GR_POSITIVE_TIME_BIUNIQUE_CORRESPONDENCE",
   "goal_version": 1,
   "compiler": "leanprover/lean4:v4.34.0-rc1",
   "mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
-  "global_status": "CONDITIONAL_ON_ANALYTICAL_WIENER_REFINED_FUNCTIONAL_FRONTIER",
-  "promotion": "The relation-first root and the downstream quantitative chain are compiled/audited. The elementary fixed-sector, heat, contraction, and scalar-weight foundation is native; the remaining premise is the refined Wiener functional frontier.",
+  "global_status": "CONDITIONAL_ON_ANALYTICAL_WIENER_NONLINEAR_FRONTIER",
+  "promotion": "The relation-first root and downstream quantitative chain are compiled/audited. The elementary scalar/numerical and fixed l1 Wiener-carrier foundations are native; the remaining premise is the nonlinear Wiener functional frontier.",
   "modules": [
     {
       "module": "GRAssembly.Strengthening.RelationCarrier",
@@ -226,11 +226,43 @@
       "path": "ASSEMBLY/GRAssembly/Strengthening/AnalyticalFrontier/WienerElementaryFoundation.lean",
       "audit_targets": [
         "NSEGR.Strengthening.ANALYTICAL_WIENER_ELEMENTARY_FOUNDATION",
-        "NSEGR.Strengthening.ANALYTICAL_WIENER_ELEMENTARY_FOUNDATION_NATIVE",
+        "NSEGR.Strengthening.ANALYTICAL_WIENER_ELEMENTARY_FOUNDATION_NATIU",
         "NSEGR.Strengthening.ANALYTICAL_WIENER_REFINED_FUNCTIONAL_FRONTIER",
         "NSEGR.Strengthening.ANALYTICAL_QUANTITATIVE_FACTORIAL_CHECKPOINT_of_refinedWienerFrontier",
         "NSEGR.Strengthening.ANALYTICAL_OBLIGATION_FRONTIER_of_refinedWienerFrontier",
         "NSEGR.Strengthening.NSE_GR_FINAL_B_EQUIVALENCE_of_refinedWienerFrontier"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.AnalyticalFrontier.WienerCarrier",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/AnalyticalFrontier/WienerCarrier.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.AnalyticalWienerSequence",
+        "NSEGR.Strengthening.analyticalWienerSequence_complete",
+        "NSEGR.Strengthening.analyticalWienerEval",
+        "NSEGR.Strengthening.analyticalWienerEval_apply",
+        "NSEGR.Strengthening.analyticalWiener_eval_norm_le",
+        "NSEGR.Strengthening.analyticalWienerSingle",
+        "NSEGR.Strengthening.analyticalWienerSingle_norm",
+        "NSEGR.Strengthening.analyticalWienerSingle_eval_self",
+        "NSEGR.Strengthening.ANALYTICAL_WIENER_CARRIER_CHECKPOINT",
+        "NSEGR.Strengthening.ANALYTICAL_WIENER_CARRIER_CHECKPOINT_NATIVE"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.AnalyticalFrontier.WienerCarrierFoundation",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/AnalyticalFrontier/WienerCarrierFoundation.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.ANALYTICAL_WIENER_CARRIER_FOUNDATION",
+        "NSEGR.Strengthening.ANALYTICAL_WIENER_CARRIER_FOUNDATION_NATIVE",
+        "NSEGR.Strengthening.ANALYTICAL_WIENER_NONLINEAR_FRONTIER",
+        "NSEGR.Strengthening.ANALYTICAL_QUANTITATIVE_FACTORIAL_CHECKPOINT_of_wienerNonlinearFrontier",
+        "NSEGR.Strengthening.ANALYTICAL_OBLIGATION_FRONTIER_of_wienerNonlinearFrontier",
+        "NSEGR.Strengthening.NSE_GR_FINAL_B_EQUIVALENCE_of_wienerNonlinearFrontier"
       ],
       "kind": "declaration",
       "status": "A_TIER_CANDIDATE"
