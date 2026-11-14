@@ -49,7 +49,8 @@ theorem NSE_B_IFF_GR_BOUNDARY_FAMILY_OF_FINAL_CERTIFICATE
 
 theorem NSE_GR_FINAL_B_EQUIVALENCE_OF_CERTIFICATE
     (certificate : NSE_GR_FINAL_ANALYTIC_SELECTION_CERTIFICATE) :
-    NSE_GR_FINAL_B_EQUIVALENCE :=
+    ∀ (ν ρ : ℝ), 0 < ν → ρ ≠ 0 →
+      NSEMaxwell.Classical.FeffermanB ν ↔ GRFamilyB ν ρ :=
   fun ν ρ hν hρ =>
     NSE_B_IFF_GR_BOUNDARY_FAMILY_OF_FINAL_CERTIFICATE
       certificate ν ρ hν hρ
