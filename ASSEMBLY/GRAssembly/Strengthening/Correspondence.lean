@@ -62,13 +62,27 @@ theorem nseGRCorresponds_iff_equiv_eq
     NSEGRCorresponds hρ s γ ↔
       analyticForwardGRFamilyEquiv ν ρ hρ a ha s = γ := by
   rw [analyticForwardGRFamilyEquiv_apply]
+  change
+    (coherentFamilyEquiv ν ρ hρ a).symm γ =
+        analyticForwardNSEFamily s ↔
+      coherentFamilyEquiv ν ρ hρ a (analyticForwardNSEFamily s) = γ
   constructor
   · intro h
-    have h' := congrArg (coherentFamilyEquiv ν ρ hρ a) h
-    simpa using h'.symm
+    calc
+      coherentFamilyEquiv ν ρ hρ a (analyticForwardNSEFamily s) =
+          coherentFamilyEquiv ν ρ hρ a
+            ((coherentFamilyEquiv ν ρ hρ a).symm γ) :=
+        congrArg (coherentFamilyEquiv ν ρ hρ a) h.symm
+      _ = γ := (coherentFamilyEquiv ν ρ hρ a).apply_symm_apply γ
   · intro h
-    have h' := congrArg (coherentFamilyEquiv ν ρ hρ a).symm h
-    simpa using h'.symm
+    calc
+      (coherentFamilyEquiv ν ρ hρ a).symm γ =
+          (coherentFamilyEquiv ν ρ hρ a).symm
+            (coherentFamilyEquiv ν ρ hρ a (analyticForwardNSEFamily s)) :=
+        congrArg (coherentFamilyEquiv ν ρ hρ a).symm h.symm
+      _ = analyticForwardNSEFamily s :=
+        (coherentFamilyEquiv ν ρ hρ a).symm_apply_apply
+          (analyticForwardNSEFamily s)
 
 theorem nseGRCorresponds_source_existsUnique
     {ν ρ : ℝ} {a : Field} (hρ : ρ ≠ 0)
@@ -93,7 +107,7 @@ theorem nseGRCorresponds_target_existsUnique
   · intro s hs
     apply E.injective
     have h := (nseGRCorresponds_iff_equiv_eq hρ ha s γ).1 hs
-    simpa using h
+    simpa only [E] using h
 
 theorem NSE_GR_POSITIVE_TIME_BIUNIQUE_CORRESPONDENCE
     (ν ρ : ℝ) (_hν : 0 < ν) (hρ : ρ ≠ 0)
