@@ -4,8 +4,8 @@
   "goal_version": 1,
   "compiler": "leanprover/lean4:v4.34.0-rc1",
   "mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
-  "global_status": "CONDITIONAL_ON_POSITIVE_TIME_ANALYTIC_SELECTION",
-  "promotion": "Exact compiled/audited relation-first core; the final Fefferman-B equivalence retains one explicit analytic-selection premise.",
+  "global_status": "CONDITIONAL_ON_ONE_FINAL_ANALYTIC_SELECTION_CERTIFICATE",
+  "promotion": "Exact compiled/audited relation-first core and deterministic final adapter; one explicit analytic-selection certificate remains.",
   "modules": [
     {
       "module": "GRAssembly.Strengthening.RelationCarrier",
@@ -69,6 +69,20 @@
         "NSEGR.Strengthening.positiveTimeAnalyticSelection_of_velocityAnalyticity",
         "NSEGR.Strengthening.NSE_B_IFF_GR_BOUNDARY_FAMILY_OF_ANALYTIC_SELECTION",
         "NSEGR.Strengthening.GR_BOUNDARY_FAMILY_IMPLIES_NSE_B_RELATION_FIRST"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.FinalSelectionClosure",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/FinalSelectionClosure.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.NSE_GR_FINAL_ANALYTIC_SELECTION_CERTIFICATE",
+        "NSEGR.Strengthening.NSE_GR_FINAL_B_EQUIVALENCE",
+        "NSEGR.Strengthening.finalPositiveTimeAnalyticSelection_of_certificate",
+        "NSEGR.Strengthening.finalCertificate_of_velocityAnalyticity",
+        "NSEGR.Strengthening.NSE_B_IFF_GR_BOUNDARY_FAMILY_OF_FINAL_CERTIFICATE",
+        "NSEGR.Strengthening.NSE_GR_FINAL_B_EQUIVALENCE_OF_CERTIFICATE"
       ],
       "kind": "declaration",
       "status": "A_TIER_CANDIDATE"

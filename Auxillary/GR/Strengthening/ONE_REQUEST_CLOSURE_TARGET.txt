@@ -1,0 +1,41 @@
+NSE_GR_ONE_REQUEST_CLOSURE_TARGET
+=================================
+
+MODE = A_TIER_CANDIDATE
+BRANCH = STRENGTHENING-GR-FB
+
+SOLE REMAINING CERTIFICATE TYPE:
+
+  NSEGR.Strengthening.NSE_GR_FINAL_ANALYTIC_SELECTION_CERTIFICATE
+
+DEFINITION:
+
+  forall (nu : Real), 0 < nu ->
+    forall a : Field,
+      NSEMaxwell.Classical.Data a ->
+      Nonempty (NormalizedForwardTrajectory nu a) ->
+      Nonempty (AnalyticForwardTrajectory nu a).
+
+REQUIRED FUTURE INHABITANT:
+
+  theorem NSE_GR_FINAL_ANALYTIC_SELECTION_CERTIFICATE_native :
+      NSEGR.Strengthening.NSE_GR_FINAL_ANALYTIC_SELECTION_CERTIFICATE := by
+    ...
+
+DETERMINISTIC FINAL COMPOSITION:
+
+  NSEGR.Strengthening.NSE_GR_FINAL_B_EQUIVALENCE_OF_CERTIFICATE
+    NSE_GR_FINAL_ANALYTIC_SELECTION_CERTIFICATE_native
+
+RESULTING ROOT:
+
+  forall nu rho : Real,
+    0 < nu -> rho != 0 ->
+    NSEMaxwell.Classical.FeffermanB nu <->
+      NSEGR.Strengthening.GRFamilyB nu rho.
+
+The relation-first core, analytic-source/GR equivalence, analytic existence
+predicate equivalence, forgetful reverse implication, and final adapter are
+independent of this certificate. No initial-time analyticity, pressure trace,
+temporal trace, mean-zero condition, global bulk metric, or refoliation
+premise is introduced.
