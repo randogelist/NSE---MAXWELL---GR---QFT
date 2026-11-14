@@ -1,0 +1,201 @@
+ANALYTICAL_FRONTIER_CHECKPOINTS_A_TIER
+======================================
+
+MODE = A_TIER_DERIVATION
+STATUS = !!! CONDITIONAL_FORMAL_CLOSURE
+DATE = 2026-11-14
+
+REPOSITORY = randogelist/NSE---MAXWELL---GR---QFT
+BRANCH = STRENGTHENING-GR-FB
+PROOF_SOURCE_COMMIT = f886f21372c1d7b846c72441c9621e1581fb0938
+EXTERNAL_RUN = 43551631929
+EXTERNAL_RUN_ATTEMPT = 1
+EVIDENCE_ARTIFACT_ID = 14096877001
+EVIDENCE_ARTIFACT_SHA256 = d5b47a4589b9df32b466d6a6df498326704916979c8eda8458a1cef5637e16ce
+COMPILER = Lean 4.34.0-rc1, native x86_64 Linux
+COMPILER_COMMIT = 3447a668783dbce1a8fdb97101dd067687b2b418
+MATHLIB_COMMIT = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+SOURCE_INPUT_VERIFICATION = PASS
+MODULES = 9/9 PASS
+DECLARATIONS = 54/54 PASS_STANDARD_ONLY
+CHECKPOINT_DECLARATIONS = 9/9 PASS_STANDARD_ONLY
+SORRY_AX = 0
+UNAPPROVED_AXIOMS = 0
+ALLOWED_AXIOMS = {propext, Classical.choice, Quot.sound}
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+
+0. CHECKPOINT TYPES
+-------------------
+
+C0. ANALYTICAL_FACTORIAL_CHECKPOINT
+
+For every positive viscosity, admissible datum, supplied normalized forward
+trajectory, and positive spacetime point z, there exist r,M,A with
+
+  0<r, 0<=M, 0<=A,
+
+such that the velocity is C-infinity on ball(z,r) and
+
+  ||D^n u(w)|| <= M A^n n!
+
+for every n and every w in ball(z,r).
+
+This proposition is the sole unresolved analytic checkpoint. Its definition
+compiled and passed the exact theorem-level axiom audit. An audited definition
+does not constitute an inhabitant.
+
+C1. ANALYTICAL_POINTWISE_CHECKPOINT
+
+Every supplied normalized forward trajectory is jointly real analytic at
+every positive spacetime point.
+
+C2. ANALYTICAL_POSITIVE_SPACETIME_CHECKPOINT
+
+For every positive viscosity and admissible datum,
+
+  PositiveTimeVelocityAnalyticityEndpoint nu a.
+
+C3. ANALYTICAL_OBLIGATION_FRONTIER
+
+For every positive viscosity and admissible datum,
+
+  Nonempty (NormalizedForwardTrajectory nu a)
+    ->
+  Nonempty (AnalyticForwardTrajectory nu a).
+
+C4. NSE_GR_FINAL_B_EQUIVALENCE
+
+For every nu,rho,
+
+  0<nu -> rho!=0 ->
+  (FeffermanB nu <-> GRFamilyB nu rho).
+
+1. EXACT AUDITED CHAIN
+----------------------
+
+!=! C0 -> C1
+
+  ANALYTICAL_POINTWISE_CHECKPOINT_of_factorial :
+    ANALYTICAL_FACTORIAL_CHECKPOINT
+      ->
+    ANALYTICAL_POINTWISE_CHECKPOINT.
+
+The proof applies the previously certified endpoint
+
+  NSEGR.Assembly.analyticAt_of_iteratedFDeriv_bound
+
+at each positive spacetime point.
+
+!=! C1 -> C2
+
+  ANALYTICAL_POSITIVE_SPACETIME_CHECKPOINT_of_pointwise :
+    ANALYTICAL_POINTWISE_CHECKPOINT
+      ->
+    ANALYTICAL_POSITIVE_SPACETIME_CHECKPOINT.
+
+This is the exact conversion from pointwise AnalyticAt to the repository
+AnalyticOnNhd endpoint.
+
+!=! C2 -> C3
+
+  ANALYTICAL_OBLIGATION_FRONTIER_of_positiveSpacetimeCheckpoint :
+    ANALYTICAL_POSITIVE_SPACETIME_CHECKPOINT
+      ->
+    ANALYTICAL_OBLIGATION_FRONTIER.
+
+This uses the already audited datumwise selection adapter.
+
+!=! C0 -> C3
+
+  ANALYTICAL_OBLIGATION_FRONTIER_of_factorialCheckpoint :
+    ANALYTICAL_FACTORIAL_CHECKPOINT
+      ->
+    ANALYTICAL_OBLIGATION_FRONTIER.
+
+This is the deterministic composition C0 -> C1 -> C2 -> C3.
+
+!=! C2 -> C4
+
+  NSE_GR_FINAL_B_EQUIVALENCE_of_positiveSpacetimeCheckpoint :
+    ANALYTICAL_POSITIVE_SPACETIME_CHECKPOINT
+      ->
+    NSE_GR_FINAL_B_EQUIVALENCE.
+
+!=! C0 -> C4
+
+  NSE_GR_FINAL_B_EQUIVALENCE_of_factorialCheckpoint :
+    ANALYTICAL_FACTORIAL_CHECKPOINT
+      ->
+    NSE_GR_FINAL_B_EQUIVALENCE.
+
+This is the exact final checkpoint composition.
+
+2. FORMAL STATUS
+----------------
+
+The former single formal premise
+
+  ANALYTICAL_OBLIGATION_FRONTIER
+
+has been refined to the mathematically explicit local endpoint
+
+  ANALYTICAL_FACTORIAL_CHECKPOINT.
+
+Every implication after the factorial estimate is A_TIER. Therefore
+
+  !!! CONDITIONAL_FORMAL_CLOSURE
+
+holds with exactly one named unresolved checkpoint:
+
+  ANALYTICAL_FACTORIAL_CHECKPOINT.
+
+The current formal chain is
+
+  ANALYTICAL_FACTORIAL_CHECKPOINT
+    -> ANALYTICAL_POINTWISE_CHECKPOINT
+    -> ANALYTICAL_POSITIVE_SPACETIME_CHECKPOINT
+    -> ANALYTICAL_OBLIGATION_FRONTIER
+    -> NSE_GR_FINAL_B_EQUIVALENCE.
+
+No pressure-analyticity premise, initial-time analyticity premise, temporal
+trace premise, uniqueness premise, or velocity mean restriction is introduced.
+
+3. REMAINING PROMOTION TARGET
+-----------------------------
+
+The sole new inhabitant required for unconditional closure is
+
+  theorem ANALYTICAL_FACTORIAL_CHECKPOINT_NATIVE :
+      ANALYTICAL_FACTORIAL_CHECKPOINT := by
+    <formalize the fixed-A0 Wiener/Gevrey factorial-bound chain>
+
+The final root is then deterministic:
+
+  theorem NSE_GR_FINAL_B_EQUIVALENCE_NATIVE :
+      NSE_GR_FINAL_B_EQUIVALENCE :=
+    NSE_GR_FINAL_B_EQUIVALENCE_of_factorialCheckpoint
+      ANALYTICAL_FACTORIAL_CHECKPOINT_NATIVE.
+
+Promotion to
+
+  !!!! UNCONDITIONAL_CLOSURE
+
+requires the exact inhabitant and final root to pass the matching external
+compiler and theorem-level axiom audit with no sorryAx or unapproved axioms.
+
+4. FILES
+--------
+
+ASSEMBLY/GRAssembly/Strengthening/AnalyticalFrontier/
+  CheckpointDefinitions.lean
+  CheckpointFactorial.lean
+  CheckpointSelection.lean
+  CheckpointFinal.lean
+  Checkpoints.lean
+
+Audit registry:
+  Auxillary/GR/Strengthening/relation-audit-targets.json
+
+External evidence:
+  https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43551631929
+  artifact 14096877001
