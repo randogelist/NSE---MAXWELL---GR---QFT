@@ -105,9 +105,12 @@ theorem nseGRCorresponds_target_existsUnique
   · exact (nseGRCorresponds_iff_equiv_eq hρ ha (E.symm γ) γ).2
       (E.apply_symm_apply γ)
   · intro s hs
-    apply E.injective
     have h := (nseGRCorresponds_iff_equiv_eq hρ ha s γ).1 hs
-    simpa only [E] using h
+    have hE : E s = γ := by
+      simpa only [E] using h
+    calc
+      s = E.symm (E s) := (E.symm_apply_apply s).symm
+      _ = E.symm γ := congrArg E.symm hE
 
 theorem NSE_GR_POSITIVE_TIME_BIUNIQUE_CORRESPONDENCE
     (ν ρ : ℝ) (_hν : 0 < ν) (hρ : ρ ≠ 0)
