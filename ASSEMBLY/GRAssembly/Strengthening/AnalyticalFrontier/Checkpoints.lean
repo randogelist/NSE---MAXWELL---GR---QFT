@@ -3,6 +3,7 @@ import GRAssembly.Strengthening.AnalyticalFrontier.CheckpointQuantitative
 import GRAssembly.Strengthening.AnalyticalFrontier.FixedSectorGeometry
 import GRAssembly.Strengthening.AnalyticalFrontier.ScalarHeatEstimates
 import GRAssembly.Strengthening.AnalyticalFrontier.ContractionBudget
+import GRAssembly.Strengthening.AnalyticalFrontier.WienerNumericalFoundation
 
 /-!
 Aggregate import for the checkpointed analytical frontier.
