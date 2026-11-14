@@ -101,9 +101,13 @@ theorem nativeLocalEquiv_velocityAtCenter (ν ρ t0 : ℝ) (hρ : ρ ≠ 0)
   change GRgerm.velocityAtCenter (nativeLocalEquiv ν ρ t0 hρ (NSEgerm.mk a)) =
     NSEgerm.velocityAtCenter (NSEgerm.mk a)
   rw [nativeLocalEquiv_mk, GRgerm.velocityAtCenter_mk, NSEgerm.velocityAtCenter_mk]
-  exact (forward_velocity_recovery
+  have heq : boundaryVelocity (boundaryK (forwardRepresentative
+      (nativeLocalPackage ν ρ t0 hρ).completion
+      (nativeLocalPackage ν ρ t0 hρ).radial a).metric) =ᶠ[𝓝 t0] a.velocity :=
+    forward_velocity_recovery
     (nativeLocalPackage ν ρ t0 hρ).completion
-    (nativeLocalPackage ν ρ t0 hρ).radial a).eq_of_nhds
+    (nativeLocalPackage ν ρ t0 hρ).radial a
+  exact heq.eq_of_nhds
 
 theorem nativeLocalEquiv_symm_velocityAtCenter (ν ρ t0 : ℝ) (hρ : ρ ≠ 0)
     (g : GRgerm ν ρ t0) :

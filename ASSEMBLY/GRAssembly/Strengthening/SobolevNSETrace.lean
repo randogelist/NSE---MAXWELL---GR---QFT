@@ -78,7 +78,6 @@ theorem normalizedSobolevPressure_periodic
   rw [fullTransportPressure_periodic (U 0 t) x i]
 
 /-- No independent pressure trace is required by the actual quadratic pressure map. -/
-set_option maxHeartbeats 1000000 in
 theorem normalizedSobolevPressure_joint_smooth
     (U : ∀ m : ℕ, ℝ → TorusSobolev m)
     (hU : ∀ m, ContDiffOn ℝ ∞ (U m) (Ici (0 : ℝ)))
@@ -86,15 +85,18 @@ theorem normalizedSobolevPressure_joint_smooth
     ContDiffOn ℝ ∞
       (fun z : ℝ × SingularClosure.Vec => normalizedSobolevPressure U z.1 z.2)
       SingularClosure.forwardSpacetime := by
-  have hp := SOBOLEV_TRANSPORT_PRESSURE_JOINT_SMOOTH U hU hcoeff
-  have hz : ContDiffOn ℝ ∞
-      (fun z : ℝ × SingularClosure.Vec => (z.1, (0 : SingularClosure.Vec)))
+  have hp : ContDiffOn ℝ ∞
+      (fun z : ℝ × SingularClosure.Vec => fullTransportPressure (U 0 z.1) z.2)
       SingularClosure.forwardSpacetime :=
-    (contDiff_fst.prodMk contDiff_const).contDiffOn
+    SOBOLEV_TRANSPORT_PRESSURE_JOINT_SMOOTH U hU hcoeff
+  have hi : ContDiff ℝ ∞
+      (fun z : ℝ × SingularClosure.Vec => (z.1, (0 : SingularClosure.Vec))) :=
+    contDiff_fst.prodMk contDiff_const
   have hp0 : ContDiffOn ℝ ∞
       (fun z : ℝ × SingularClosure.Vec => fullTransportPressure (U 0 z.1) 0)
-      SingularClosure.forwardSpacetime :=
-    hp.comp hz (fun z h => h)
+      SingularClosure.forwardSpacetime := by
+    simpa only [Function.comp_def] using
+      hp.comp (s := SingularClosure.forwardSpacetime) hi.contDiffOn (fun z hz => hz)
   exact hp.sub hp0
 
 /-- The normalized physical pressure inherits joint smoothness from the velocity trace. -/

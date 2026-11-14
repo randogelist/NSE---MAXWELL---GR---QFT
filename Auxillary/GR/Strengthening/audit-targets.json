@@ -652,6 +652,139 @@
       ],
       "kind": "declaration",
       "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.SourceUniqueness",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/SourceUniqueness.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.smooth_velocity_eq_forward_of_positive",
+        "NSEGR.Strengthening.smooth_pressure_eq_forward_of_positive",
+        "NSEGR.Strengthening.nssolution_gradient_eq_of_eventuallyEq",
+        "NSEGR.Strengthening.nssolution_originNormalize_eq_of_eventuallyEq",
+        "NSEGR.Strengthening.nssolution_normalized_pressure_eq_of_positive_velocity_eq",
+        "NSEGR.Strengthening.NormalizedForwardTrajectory.eq_of_positive_velocity_eq",
+        "NSEGR.Strengthening.NormalizedForwardTrajectory.eq_iff_positive_velocity"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.PhysicalFourier",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/PhysicalFourier.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.physicalFourierTerm",
+        "NSEGR.Strengthening.physicalFourierValue",
+        "NSEGR.Strengthening.physicalFourierCurve",
+        "NSEGR.Strengthening.physicalFourierTerm_hasSum",
+        "NSEGR.Strengthening.physicalFourierValue_eq_smoothDatumSobolev",
+        "NSEGR.Strengthening.physicalFourierValue_coeff",
+        "NSEGR.Strengthening.physicalFourier_uniform_weighted_bound",
+        "NSEGR.Strengthening.physicalFourierTerm_continuousOn",
+        "NSEGR.Strengthening.physicalFourierCurve_continuousOn",
+        "NSEGR.Strengthening.physicalFourierCurve_initial_trace",
+        "NSEGR.Strengthening.physicalFourierTerm_hasDerivAt",
+        "NSEGR.Strengthening.physicalFourierCurve_hasDerivAt",
+        "NSEGR.Strengthening.physicalFourierCurve_hasDerivAt_of_positive_smooth"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.AnalyticPressure",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/AnalyticPressure.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.analyticAt_velocityOuter_divergence_joint",
+        "NSEGR.Strengthening.analyticAt_quadraticPressureSource_joint",
+        "NSEGR.Strengthening.quadraticPressureSource_periodic",
+        "NSEGR.Strengthening.normalizedQuadraticPressure_joint_analytic_on_open_slab",
+        "NSEGR.Strengthening.nssolution_originNormalize_positive_analytic",
+        "NSEGR.Strengthening.positiveAnalyticNSE_of_nssolution_velocity_analytic"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.ExactChain",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/ExactChain.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.PositiveTimeSmoothingEndpoint",
+        "NSEGR.Strengthening.SmoothTrajectoryTraceEndpoint",
+        "NSEGR.Strengthening.PositiveProfileBoundaryEndpoint",
+        "NSEGR.Strengthening.spatialPeriodic_forward_of_positive",
+        "NSEGR.Strengthening.smoothProfileExtension_is_nssolution",
+        "NSEGR.Strengthening.trajectoryToPositiveProfile",
+        "NSEGR.Strengthening.trajectoryToPositiveProfile_velocity",
+        "NSEGR.Strengthening.trajectoryToPositiveProfile_pressure",
+        "NSEGR.Strengthening.trajectoryToPositiveProfile_injective",
+        "NSEGR.Strengthening.trajectoryToPositiveProfile_surjective",
+        "NSEGR.Strengthening.trajectoryProfileEquiv",
+        "NSEGR.Strengthening.trajectoryGRFamilyEquiv",
+        "NSEGR.Strengthening.NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_ANALYTIC_ENDPOINTS",
+        "NSEGR.Strengthening.nssolution_nonempty_gr_family_iff_of_analytic_endpoints"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.TraceEndpoint",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/TraceEndpoint.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.smoothTrajectoryTraceEndpoint",
+        "NSEGR.Strengthening.NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_SMOOTHING_AND_BOUNDARY"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.PressureIdentification",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/PressureIdentification.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.quadraticPressureSource",
+        "NSEGR.Strengthening.quadraticPoissonPressure",
+        "NSEGR.Strengthening.normalizedQuadraticPressure",
+        "NSEGR.Strengthening.normalizedQuadraticPressure_zero",
+        "NSEGR.Strengthening.divergence_add_smooth",
+        "NSEGR.Strengthening.divergence_smul_smooth",
+        "NSEGR.Strengthening.divergence_neg_native",
+        "NSEGR.Strengthening.divergence_laplacian_zero",
+        "NSEGR.Strengthening.quadraticPressureSource_eq_neg_divergence_convection",
+        "NSEGR.Strengthening.pressure_poisson_of_divergence_free_momentum",
+        "NSEGR.Strengthening.quadraticPoissonPressure_eq_pressure_sub_mean",
+        "NSEGR.Strengthening.normalized_pressure_eq_quadraticPoisson",
+        "NSEGR.Strengthening.nssolution_normalized_pressure_eq_quadraticPoisson",
+        "NSEGR.Strengthening.localNSE_localTimeDerivative_smooth",
+        "NSEGR.Strengthening.localNSE_divergence_localTimeDerivative_zero",
+        "NSEGR.Strengthening.localNSE_normalized_pressure_eq_quadraticPoisson",
+        "NSEGR.Strengthening.positiveAnalyticNSE_normalized_pressure_eq_quadraticPoisson",
+        "NSEGR.Strengthening.PositiveTimeProfile.pressure_eq_quadraticPoisson",
+        "NSEGR.Strengthening.nseGerm_pressure_eq_quadraticPoisson",
+        "NSEGR.Strengthening.nseFamilyPressure_eq_quadraticPoisson",
+        "NSEGR.Strengthening.decodedGRFamily_pressure_eq_quadraticPoisson"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.PhysicalFourierNSE",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/PhysicalFourierNSE.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.datumFourierCoeff_solenoidal_of_divergence_free",
+        "NSEGR.Strengthening.physicalFourier_synthesis_eq",
+        "NSEGR.Strengthening.physicalFourierValue_synthesis_eq",
+        "NSEGR.Strengthening.physicalFourierValue_convection_coeff",
+        "NSEGR.Strengthening.datumFourierCoeff_real_smul",
+        "NSEGR.Strengthening.datumFourierCoeff_gradient_component",
+        "NSEGR.Strengthening.coefficientLeray_derivativeSymbol",
+        "NSEGR.Strengthening.fourierLeray_gradient_zero",
+        "NSEGR.Strengthening.fourierLeray_eq_of_solenoidal",
+        "NSEGR.Strengthening.laplacianCoefficient_solenoidal",
+        "NSEGR.Strengthening.physical_momentum_fullFourierRhs",
+        "NSEGR.Strengthening.physical_momentum_fourierSobolevRhs",
+        "NSEGR.Strengthening.positive_timeDerivative_slice_properties",
+        "NSEGR.Strengthening.physical_NSE_fourierSobolev_hasDerivAt"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
     }
   ]
 }

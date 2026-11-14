@@ -27,8 +27,10 @@ theorem localNSE_originNormalize {ν τ δ : ℝ} {u : Velocity} {p : Pressure}
     divergence_free := h.divergence_free
     momentum := ?_ }
   · intro z hz
+    have hmap : AnalyticAt ℝ (fun w : ℝ × Vec => (w.1, (0 : Vec))) z :=
+      analyticAt_fst.prod analyticAt_const
     have hp0 : AnalyticAt ℝ (fun w : ℝ × Vec => p w.1 0) z :=
-      (h.pressure_analytic (z.1, 0) hz).comp (analyticAt_fst.prod analyticAt_const)
+      (h.pressure_analytic (z.1, 0) hz).comp hmap
     exact (h.pressure_analytic z hz).sub hp0
   · intro t ht x i
     change p t (x + unitVector i) - p t 0 = p t x - p t 0
@@ -68,8 +70,9 @@ theorem localNSE_gradient_eq_of_eventuallyEq
     (hV : u =ᶠ[𝓝 t] v) : gradient (p t) = gradient (q t) := by
   have hs : u t = v t := hV.eq_of_nhds
   funext x
-  have hdt : localTimeDerivative u t x = localTimeDerivative v t x :=
-    (hV.mono (fun s hs' => congrFun hs' x)).deriv_eq
+  have hevent : (fun s : ℝ => u s x) =ᶠ[𝓝 t] (fun s : ℝ => v s x) :=
+    hV.mono (fun s hs' => congrFun hs' x)
+  have hdt : localTimeDerivative u t x = localTimeDerivative v t x := hevent.deriv_eq
   have hp := hn.momentum t htu x
   have hq := hm.momentum t htv x
   unfold nseResidual at hp hq
@@ -107,8 +110,12 @@ theorem continuousOn_forward_eq_zero_of_positive
     (hz : ∀ z ∈ positiveSpacetime, f z = 0) :
     ∀ z ∈ NSEMaxwell.Classical.forwardSpacetime, f z = 0 := by
   have he : EqOn f (fun _ => 0) positiveSpacetime := hz
-  exact he.of_subset_closure hf continuousOn_const (fun z hz' => le_of_lt hz')
-    (by rw [closure_positiveSpacetime]; exact Subset.rfl)
+  refine he.of_subset_closure hf continuousOn_const ?_ ?_
+  · intro z hz'
+    change 0 < z.1 at hz'
+    change 0 ≤ z.1
+    exact hz'.le
+  · rw [closure_positiveSpacetime]
 
 theorem forward_gradient_smooth {p : Pressure}
     (hp : NSEMaxwell.Classical.SmoothPressure p) :
