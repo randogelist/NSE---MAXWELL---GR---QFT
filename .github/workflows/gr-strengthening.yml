@@ -1,0 +1,174 @@
+name: Cached accelerated GR strengthening and exact audits
+
+on:
+  push:
+    branches: [STRENGTHENING-GR-FB]
+    paths:
+      - 'ASSEMBLY/GRAssembly/Strengthening/**'
+      - 'TEMP/SingularClosure/**'
+      - 'Auxillary/GR/Strengthening/**'
+      - '.github/workflows/gr-strengthening.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: gr-strengthening-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  native-linux:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      ELAN_TOOLCHAIN: leanprover/lean4:v4.34.0-rc1
+      MATHLIB_CACHE_DIR: ${{ github.workspace }}/.mathlib-download-cache
+      MATHLIB_NO_CACHE_ON_UPDATE: '1'
+      LEAN_NUM_THREADS: '4'
+    steps:
+      - name: Check out exact strengthening source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Set up external evidence runner
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+
+      - name: Restore pinned native compiler
+        id: compiler
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: ~/.elan
+          key: nse-compiler-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('ASSEMBLY/lean-toolchain') }}
+
+      - name: Activate compiler path
+        run: echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Install compiler only on cache miss
+        if: steps.compiler.outputs.cache-hit != 'true'
+        uses: leanprover/lean-action@fe408643ea7367d8c0404a8be3975bb145f5fb64
+        with:
+          auto-config: 'false'
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'false'
+          use-github-cache: 'false'
+
+      - name: Restore compatible dependency objects
+        id: dependencies-cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            .lake/packages
+            .mathlib-download-cache
+          key: nse-gr-deps-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('GR_adapter/lean-toolchain', 'GR_adapter/lake-manifest.json') }}
+          restore-keys: |
+            nse-gr-deps-v1-${{ runner.os }}-${{ runner.arch }}-
+            nse-gr-assembly-deps-v1-${{ runner.os }}-${{ runner.arch }}-
+            nse-temp-deps-v1-${{ runner.os }}-${{ runner.arch }}-
+            nse-deps-v2-Linux-X64-62fa5a5b098d88655e889cfd954f6dacc5ab22e345c88529d61d0c186831c83c
+            nse-deps-v2-Linux-X64-1e0a11bbe2f771dc625218fed552a5e8c9ad571990c5e9674d1e2921162b35c5
+
+      - name: Hydrate exact contained sources and link dependency cache
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p Auxillary/GR/Strengthening/evidence-current ASSEMBLY/.lake
+          python Fefferman_adapter/scripts/hydrate_native_sources.py \
+            --package-root "$GITHUB_WORKSPACE/Fefferman_adapter" \
+            --dependency-root "$GITHUB_WORKSPACE/.lake/packages" \
+            --report "$GITHUB_WORKSPACE/Auxillary/GR/Strengthening/evidence-current/native-source-hydration.json"
+          if test ! -e ASSEMBLY/.lake/packages; then ln -s ../../.lake/packages ASSEMBLY/.lake/packages; fi
+          test "$(realpath ASSEMBLY/.lake/packages)" = "$GITHUB_WORKSPACE/.lake/packages"
+
+      - name: Verify pins and acquire only missing official cached objects
+        id: dependencies
+        run: >-
+          bash ASSEMBLY/run.sh --phase dependencies
+          --report-directory "$GITHUB_WORKSPACE/Auxillary/GR/Strengthening/evidence-current"
+          --source-commit "$GITHUB_SHA"
+
+      - name: Preserve verified dependencies before proofs
+        if: steps.dependencies.outcome == 'success' && steps.dependencies-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            .lake/packages
+            .mathlib-download-cache
+          key: ${{ steps.dependencies-cache.outputs.cache-primary-key }}
+
+      - name: Restore incremental strengthening objects
+        id: project-cache
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: ASSEMBLY/.lake/build
+          key: nse-gr-strengthening-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('ASSEMBLY/lean-toolchain', 'ASSEMBLY/lakefile.lean', 'ASSEMBLY/lake-manifest.json') }}-${{ github.sha }}
+          restore-keys: |
+            nse-gr-strengthening-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('ASSEMBLY/lean-toolchain', 'ASSEMBLY/lakefile.lean', 'ASSEMBLY/lake-manifest.json') }}-
+
+      - name: Recover certified native GR compiled-object seed
+        if: steps.project-cache.outputs.cache-matched-key == ''
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: gr-assembly-build-43509144981-1
+          path: ${{ runner.temp }}/gr-native-seed
+          run-id: 43509144981
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify seed compatibility and preserve existing objects
+        if: steps.project-cache.outputs.cache-matched-key == ''
+        env:
+          CONFIG_HASH: ${{ hashFiles('ASSEMBLY/lean-toolchain', 'ASSEMBLY/lakefile.lean', 'ASSEMBLY/lake-manifest.json') }}
+          SEED_DIR: ${{ runner.temp }}/gr-native-seed
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          m=json.loads((Path(os.environ['SEED_DIR'])/'ci-checkpoint.json').read_text())
+          assert m['source_commit']=='d5231111cbdbe8a9c686b52ae4224554d4fba48a'
+          assert m['run_id']=='43509144981' and m['run_attempt']=='1'
+          assert m['os']=='Linux' and m['arch']=='X64'
+          assert m['toolchain']==Path('ASSEMBLY/lean-toolchain').read_text().strip()
+          assert m['config_hash']==os.environ['CONFIG_HASH']
+          print('COMPILED_OBJECT_SEED=COMPATIBLE; FRESH_BUILD_AND_AUDIT_REQUIRED')
+          PY
+          mkdir -p ASSEMBLY/.lake/build
+          rsync -a --ignore-existing "$SEED_DIR/" ASSEMBLY/.lake/build/
+
+      - name: Verify unchanged anchors and retained native certificates
+        run: |
+          python Auxillary/GR/Strengthening/verify_collection.py
+          python Auxillary/GR/Directions/verify_source_identity.py
+
+      - name: Parallel dependency build and exact theorem audits
+        id: proofs
+        run: python Auxillary/GR/Strengthening/run.py --source-commit "$GITHUB_SHA"
+
+      - name: Retain exact external evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: gr-strengthening-evidence-${{ github.sha }}-${{ github.run_attempt }}
+          path: Auxillary/GR/Strengthening/evidence-current/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Preserve compiler cache
+        if: always() && steps.compiler.outputs.cache-hit != 'true' && steps.dependencies.outcome == 'success'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: ~/.elan
+          key: ${{ steps.compiler.outputs.cache-primary-key }}
+
+      - name: Preserve successful and partial project objects
+        if: always() && steps.dependencies.outcome == 'success' && steps.proofs.outcome != 'skipped' && steps.project-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: ASSEMBLY/.lake/build
+          key: ${{ steps.project-cache.outputs.cache-primary-key }}
