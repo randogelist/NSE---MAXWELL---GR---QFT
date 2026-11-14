@@ -1,11 +1,11 @@
 {
-  "schema_version": 4,
+  "schema_version": 5,
   "goal": "NSE_GR_POSITIVE_TIME_BIUNIQUE_CORRESPONDENCE",
   "goal_version": 1,
   "compiler": "leanprover/lean4:v4.34.0-rc1",
   "mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
   "global_status": "CONDITIONAL_ON_ANALYTICAL_QUANTITATIVE_FACTORIAL_CHECKPOINT",
-  "promotion": "Exact relation-first core, final adapter, downstream checkpoints, and fixed-sector geometry are compiled/audited; the quantitative factorial checkpoint remains.",
+  "promotion": "Exact relation-first core and the downstream-upward checkpoint chain are compiled/audited through the quantitative factorial interface; fixed-sector, scalar heat, and contraction-budget support are included.",
   "modules": [
     {
       "module": "GRAssembly.Strengthening.RelationCarrier",
@@ -139,7 +139,10 @@
       "audit_targets": [
         "NSEGR.Strengthening.ANALYTICAL_QUANTITATIVE_FACTORIAL_CHECKPOINT",
         "NSEGR.Strengthening.ANALYTICAL_FACTORIAL_CHECKPOINT_of_quantitative",
-        "NSEGR.Strengthening.ANALYTICAL_POINTWISE_CHECKPOINT_of_quantitative"
+        "NSEGR.Strengthening.ANALYTICAL_POINTWISE_CHECKPOINT_of_quantitative",
+        "NSEGR.Strengthening.ANALYTICAL_POSITIVE_SPACETIME_CHECKPOINT_of_quantitative",
+        "NSEGR.Strengthening.ANALYTICAL_OBLIGATION_FRONTIER_of_quantitative",
+        "NSEGR.Strengthening.NSE_GR_FINAL_B_EQUIVALENCE_of_quantitative"
       ],
       "kind": "declaration",
       "status": "A_TIER_CANDIDATE"
@@ -155,6 +158,34 @@
         "NSEGR.Strengthening.analyticalFixedSector_norm_sq_lt",
         "NSEGR.Strengthening.ANALYTICAL_FIXED_SECTOR_GEOMETRY_CHECKPOINT",
         "NSEGR.Strengthening.ANALYTICAL_FIXED_SECTOR_GEOMETRY_CHECKPOINT_NATIVE"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.AnalyticalFrontier.ScalarHeatEstimates",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/AnalyticalFrontier/ScalarHeatEstimates.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.analyticalHeatExponent_le_quarter",
+        "NSEGR.Strengthening.analyticalHeatExp_le_exp_quarter",
+        "NSEGR.Strengthening.ANALYTICAL_SCALAR_HEAT_CHECKPOINT",
+        "NSEGR.Strengthening.ANALYTICAL_SCALAR_HEAT_CHECKPOINT_NATIVE"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.AnalyticalFrontier.ContractionBudget",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/AnalyticalFrontier/ContractionBudget.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.analyticalWienerRadius",
+        "NSEGR.Strengthening.analyticalWienerLipschitzBudget",
+        "NSEGR.Strengthening.analyticalWienerRadius_pos",
+        "NSEGR.Strengthening.analyticalWienerLipschitzBudget_pos",
+        "NSEGR.Strengthening.analyticalWiener_budget_mul_radius",
+        "NSEGR.Strengthening.analyticalWiener_two_budget_mul_radius",
+        "NSEGR.Strengthening.ANALYTICAL_CONTRACTION_BUDGET_CHECKPOINT",
+        "NSEGR.Strengthening.ANALYTICAL_CONTRACTION_BUDGET_CHECKPOINT_NATIVE"
       ],
       "kind": "declaration",
       "status": "A_TIER_CANDIDATE"
