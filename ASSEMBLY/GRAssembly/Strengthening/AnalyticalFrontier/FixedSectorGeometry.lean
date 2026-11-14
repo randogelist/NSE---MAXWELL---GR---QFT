@@ -26,7 +26,7 @@ theorem analyticalFixedSector_re_pos {T : ℝ} {z : ℂ}
 theorem analyticalFixedSector_real_mem {T h : ℝ}
     (hh : 0 < h) (hhT : h < T) :
     (h : ℂ) ∈ analyticalFixedSector T := by
-  simp only [analyticalFixedSector, Set.mem_setOf_eq, Complex.norm_real,
+  simp only [analyticalFixedSector, Set.mem_ofPred_eq, Complex.norm_real,
     Real.norm_eq_abs, abs_of_pos hh, Complex.ofReal_re]
   exact ⟨hh, hhT, by nlinarith⟩
 
@@ -35,7 +35,7 @@ theorem analyticalFixedSector_real_mul {T s : ℝ} {z : ℂ}
     (s : ℂ) * z ∈ analyticalFixedSector T := by
   rcases hz with ⟨hz0, hzT, hzre⟩
   have hnorm : ‖(s : ℂ) * z‖ = s * ‖z‖ := by
-    simp [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_pos hs]
+    simp [Complex.norm_real, Real.norm_eq_abs, abs_of_pos hs]
   refine ⟨?_, ?_, ?_⟩
   · rw [hnorm]
     exact mul_pos hs hz0
@@ -45,8 +45,10 @@ theorem analyticalFixedSector_real_mul {T s : ℝ} {z : ℂ}
         mul_le_mul_of_nonneg_right hs1 (norm_nonneg z)
       _ = ‖z‖ := one_mul _
       _ < T := hzT
-  · have h := mul_lt_mul_of_pos_left hzre hs
-    simpa [hnorm, Complex.mul_re, mul_assoc, mul_left_comm, mul_comm] using h
+  · rw [hnorm]
+    simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im,
+      zero_mul, sub_zero]
+    nlinarith [mul_lt_mul_of_pos_left hzre hs]
 
 theorem analyticalFixedSector_norm_sq_lt {T : ℝ} {z : ℂ}
     (hz : z ∈ analyticalFixedSector T) :
