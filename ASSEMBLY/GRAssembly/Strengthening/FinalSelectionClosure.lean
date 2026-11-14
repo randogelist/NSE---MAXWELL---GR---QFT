@@ -23,7 +23,7 @@ def NSE_GR_FINAL_ANALYTIC_SELECTION_CERTIFICATE : Prop :=
 /-- The final unconditional proposition to be obtained after the certificate. -/
 def NSE_GR_FINAL_B_EQUIVALENCE : Prop :=
   ∀ (ν ρ : ℝ), 0 < ν → ρ ≠ 0 →
-    NSEMaxwell.Classical.FeffermanB ν ↔ GRFamilyB ν ρ
+    (NSEMaxwell.Classical.FeffermanB ν ↔ GRFamilyB ν ρ)
 
 theorem finalPositiveTimeAnalyticSelection_of_certificate
     (certificate : NSE_GR_FINAL_ANALYTIC_SELECTION_CERTIFICATE)
@@ -49,11 +49,10 @@ theorem NSE_B_IFF_GR_BOUNDARY_FAMILY_OF_FINAL_CERTIFICATE
 
 theorem NSE_GR_FINAL_B_EQUIVALENCE_OF_CERTIFICATE
     (certificate : NSE_GR_FINAL_ANALYTIC_SELECTION_CERTIFICATE) :
-    ∀ (ν ρ : ℝ), 0 < ν → ρ ≠ 0 →
-      NSEMaxwell.Classical.FeffermanB ν ↔ GRFamilyB ν ρ :=
-  fun ν ρ hν hρ =>
-    NSE_B_IFF_GR_BOUNDARY_FAMILY_OF_FINAL_CERTIFICATE
-      certificate ν ρ hν hρ
+    NSE_GR_FINAL_B_EQUIVALENCE := by
+  intro ν ρ hν hρ
+  exact NSE_B_IFF_GR_BOUNDARY_FAMILY_OF_FINAL_CERTIFICATE
+    certificate ν ρ hν hρ
 
 end
 end NSEGR.Strengthening
