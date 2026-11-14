@@ -51,9 +51,9 @@ theorem NSE_GR_FINAL_B_EQUIVALENCE_OF_CERTIFICATE
     (certificate : NSE_GR_FINAL_ANALYTIC_SELECTION_CERTIFICATE) :
     NSE_GR_FINAL_B_EQUIVALENCE := by
   unfold NSE_GR_FINAL_B_EQUIVALENCE
-  intro ν ρ hν hρ
+  intro hν hρ
   exact NSE_B_IFF_GR_BOUNDARY_FAMILY_OF_FINAL_CERTIFICATE
-    certificate ν ρ hν hρ
+    certificate _ _ hν hρ
 
 end
 end NSEGR.Strengthening
