@@ -53,8 +53,10 @@ theorem normalizedForwardTrajectory_pressure_eq_quadratic
     {t : ℝ} (ht : 0 ≤ t) :
     s.pressure t ht = normalizedQuadraticPressure (s.velocity t ht) := by
   have h := nssolution_normalized_pressure_eq_quadraticPoisson s.solution ht
+  funext x
+  have hx := congrFun h x
   simpa only [originNormalize, s.totalPressure_zero ht, sub_zero,
-    s.totalPressure_eq ht, s.totalVelocity_eq ht] using h
+    s.totalPressure_eq ht, s.totalVelocity_eq ht] using hx
 
 theorem trajectoryGRFamilyEquiv_inverse_pressure {ν : ℝ} {a : Field}
     (ρ : ℝ) (hρ : ρ ≠ 0)

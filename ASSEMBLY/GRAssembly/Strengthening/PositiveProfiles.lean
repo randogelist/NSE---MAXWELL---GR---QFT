@@ -47,7 +47,8 @@ theorem NSEgerm.originPressureAtCenter_zero {ν t0 : ℝ} (n : NSEgerm ν t0) :
     NSEgerm.originPressureAtCenter n 0 = 0 := by
   refine Quotient.inductionOn n ?_
   intro r
-  simp
+  change r.pressure t0 0 - r.pressure t0 0 = 0
+  exact sub_self _
 
 namespace Strengthening
 

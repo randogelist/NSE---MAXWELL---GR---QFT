@@ -126,8 +126,9 @@ theorem physicalFourierCurve_continuousOn
   have hstate : ContinuousOn (physicalFourierCurve m u) (Icc (0 : ℝ) (t + 1)) :=
     (torusSobolevRepr m).symm.continuous.comp_continuousOn hseries
   apply (hstate t ⟨ht, by linarith⟩).mono_of_mem_nhdsWithin
-  have hupper : Iio (t + 1) ∈ 𝓝[Ici (0 : ℝ)] t :=
-    (Iio_mem_nhds (lt_add_one t)).filter_mono inf_le_left
+  have hupper_nhds : ∀ᶠ s in 𝓝 t, s < t + 1 := Iio_mem_nhds (lt_add_one t)
+  have hupper : ∀ᶠ s in 𝓝[Ici (0 : ℝ)] t, s < t + 1 :=
+    hupper_nhds.filter_mono inf_le_left
   filter_upwards [self_mem_nhdsWithin, hupper] with s hs hsu
   exact ⟨hs, hsu.le⟩
 
@@ -137,9 +138,8 @@ theorem physicalFourierCurve_initial_trace
     (hp : PeriodicVelocity u) (m : ℕ) :
     Tendsto (physicalFourierCurve m u) (𝓝[>] (0 : ℝ))
       (𝓝 (physicalFourierCurve m u 0)) := by
-  apply ContinuousWithinAt.mono (physicalFourierCurve_continuousOn u hu hp m 0 (by simp))
-  intro s hs
-  exact le_of_lt hs
+  change ContinuousWithinAt (physicalFourierCurve m u) (Ioi (0 : ℝ)) 0
+  exact (physicalFourierCurve_continuousOn u hu hp m 0 (by simp)).mono Ioi_subset_Ici_self
 
 theorem physicalFourierTerm_hasDerivAt
     (u : NSEMaxwell.Classical.Velocity) (hu : SmoothVelocity u)
@@ -173,8 +173,9 @@ theorem physicalFourierCurve_hasDerivAt
       hbase (show t ∈ Ioo (0 : ℝ) (t + 1) from ⟨ht, lt_add_one t⟩)
     simpa only [physicalFourierTerm, lp.norm_single (by norm_num : (0 : ℝ≥0∞) < 2)]
       using hM s ⟨hs.1.le, hs.2.le⟩ ki
-  exact ((torusSobolevRepr m).symm.toContinuousLinearEquiv.toContinuousLinearMap.restrictScalars ℝ)
-    .hasFDerivAt.comp_hasDerivAt t hseries
+  let L : FourierVectorSequence →L[ℝ] TorusSobolev m :=
+    (torusSobolevRepr m).symm.toContinuousLinearEquiv.toContinuousLinearMap.restrictScalars ℝ
+  exact L.hasFDerivAt.comp_hasDerivAt t hseries
 
 /-- Positive-time physical smoothness alone gives the norm derivative; no initial smoothness is assumed. -/
 theorem physicalFourierCurve_hasDerivAt_of_positive_smooth
@@ -211,7 +212,7 @@ theorem physicalFourierCurve_hasDerivAt_of_positive_smooth
       simpa only [Function.comp_def, v, sub_add_cancel, one_smul] using h
     exact (he.hasDerivWithinAt.derivWithin (uniqueDiffOn_Ici 0 t ht.le)).symm
   have h := (physicalFourierCurve_hasDerivAt v hv hpv m htc).scomp t hshift
-  simpa only [Function.comp_def, physicalFourierCurve, v, sub_add_cancel, one_smul, hdt] using h
+  simpa only [Function.comp_def, physicalFourierCurve, v, sub_add_cancel, one_smul, hdt] using! h
 
 end
 end NSEGR.Strengthening
