@@ -282,11 +282,11 @@ theorem positive_timeDerivative_slice_properties
   have hdt : NSEMaxwell.Classical.timeDerivative v (t - c) =
       NSEMaxwell.Classical.timeDerivative u t := by
     funext x
-    have h := ((time_slice_hasDerivWithinAt hv htc.le x).hasDerivAt (Ici_mem_nhds htc))
-      .comp t hshift
+    have hbase := (time_slice_hasDerivWithinAt hv htc.le x).hasDerivAt (Ici_mem_nhds htc)
+    have h := hbase.scomp t hshift
     have he : HasDerivAt (fun s : ℝ => u s x)
         (NSEMaxwell.Classical.timeDerivative v (t - c) x) t := by
-      simpa only [v, sub_add_cancel, one_smul] using h
+      simpa only [Function.comp_def, v, sub_add_cancel, one_smul] using h
     exact (he.hasDerivWithinAt.derivWithin (uniqueDiffOn_Ici 0 t ht.le)).symm
   rw [← hdt]
   exact ⟨velocity_slice_smooth (timeDerivative_smooth hv) htc.le,

@@ -785,6 +785,113 @@
       ],
       "kind": "declaration",
       "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.InitialPDE",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/InitialPDE.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.gradient_neg_native",
+        "NSEGR.Strengthening.normalizedQuadraticPressure_gradient",
+        "NSEGR.Strengthening.normalizedQuadraticPressure_leray_transport",
+        "NSEGR.Strengthening.nssolution_projected_equation",
+        "NSEGR.Strengthening.nssolution_initial_right_derivative_leray",
+        "NSEGR.Strengthening.nssolution_initial_originPressure",
+        "NSEGR.Strengthening.nssolution_initial_normalized_pressure"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.SmoothingEndpoint",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/SmoothingEndpoint.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.PositiveTimeVelocityAnalyticityEndpoint",
+        "NSEGR.Strengthening.NormalizedForwardTrajectory.originNormalize_totalPressure",
+        "NSEGR.Strengthening.positiveTimeSmoothingEndpoint_of_velocity_analyticity",
+        "NSEGR.Strengthening.positiveTimeVelocityAnalyticityEndpoint_of_smoothing",
+        "NSEGR.Strengthening.positiveTimeSmoothingEndpoint_iff_velocity_analyticity",
+        "NSEGR.Strengthening.trajectoryGRFamilyEquivOfVelocityAnalyticity",
+        "NSEGR.Strengthening.NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_VELOCITY_ANALYTICITY_AND_BOUNDARY",
+        "NSEGR.Strengthening.nssolution_nonempty_gr_family_iff_of_velocity_analyticity_and_boundary"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.BoundaryEndpoint",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/BoundaryEndpoint.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.profileSobolevCurve",
+        "NSEGR.Strengthening.profileSobolevCurve_coeff_pos",
+        "NSEGR.Strengthening.profileSobolevCurve_coeff_zero",
+        "NSEGR.Strengthening.profileSobolevCurve_trace",
+        "NSEGR.Strengthening.profileSobolevCurve_eq_physical",
+        "NSEGR.Strengthening.profileSobolevCurve_compatible",
+        "NSEGR.Strengthening.profileSobolevCurve_hasDerivAt",
+        "NSEGR.Strengthening.profileBoundaryVelocity",
+        "NSEGR.Strengthening.profileBoundaryPressure",
+        "NSEGR.Strengthening.profileBoundaryVelocity_smooth",
+        "NSEGR.Strengthening.profileBoundaryPressure_smooth",
+        "NSEGR.Strengthening.profileBoundaryVelocity_initial",
+        "NSEGR.Strengthening.profileBoundaryVelocity_positive",
+        "NSEGR.Strengthening.profileBoundaryPressure_positive",
+        "NSEGR.Strengthening.positiveProfileBoundaryEndpoint"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.BEquivalence",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/BEquivalence.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.GRFamilyB",
+        "NSEGR.Strengthening.NSE_B_IFF_GR_BOUNDARY_FAMILY_OF_ANALYTIC_ENDPOINTS"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.ChainFormulas",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/ChainFormulas.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.trajectoryGRFamilyEquiv_apply_germ",
+        "NSEGR.Strengthening.trajectoryGRFamilyEquiv_velocity",
+        "NSEGR.Strengthening.trajectoryGRFamilyEquiv_inverse_velocity",
+        "NSEGR.Strengthening.normalizedForwardTrajectory_pressure_eq_quadratic",
+        "NSEGR.Strengthening.trajectoryGRFamilyEquiv_inverse_pressure",
+        "NSEGR.Strengthening.trajectoryGRFamilyEquiv_inverse_initial",
+        "NSEGR.Strengthening.trajectoryGRFamilyEquiv_left_inverse",
+        "NSEGR.Strengthening.trajectoryGRFamilyEquiv_right_inverse"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_VELOCITY_ANALYTICITY",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_VELOCITY_ANALYTICITY.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.derivedBoundaryGRFamilyEquiv",
+        "NSEGR.Strengthening.NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_VELOCITY_ANALYTICITY",
+        "NSEGR.Strengthening.NSE_B_IFF_GR_BOUNDARY_FAMILY_OF_VELOCITY_ANALYTICITY"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.SobolevPressureIdentification",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/SobolevPressureIdentification.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.normalizedFullTransportPressure",
+        "NSEGR.Strengthening.physical_pressure_gradient_coeff",
+        "NSEGR.Strengthening.normalized_pressure_eq_fullTransportPressure",
+        "NSEGR.Strengthening.pressureGradient_neg",
+        "NSEGR.Strengthening.normalizedQuadraticPressure_eq_fullTransportPressure",
+        "NSEGR.Strengthening.nssolution_normalized_pressure_eq_fullTransportPressure",
+        "NSEGR.Strengthening.positiveAnalyticNSE_normalized_pressure_eq_fullTransportPressure",
+        "NSEGR.Strengthening.PositiveTimeProfile.pressure_eq_fullTransportPressure"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
     }
   ]
 }

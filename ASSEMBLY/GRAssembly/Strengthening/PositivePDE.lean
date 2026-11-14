@@ -30,7 +30,7 @@ theorem localNSE_originNormalize {ν τ δ : ℝ} {u : Velocity} {p : Pressure}
     have hmap : AnalyticAt ℝ (fun w : ℝ × Vec => (w.1, (0 : Vec))) z :=
       analyticAt_fst.prod analyticAt_const
     have hp0 : AnalyticAt ℝ (fun w : ℝ × Vec => p w.1 0) z :=
-      (h.pressure_analytic (z.1, 0) hz).comp hmap
+      (h.pressure_analytic (z.1, 0) hz).comp_of_eq hmap rfl
     exact (h.pressure_analytic z hz).sub hp0
   · intro t ht x i
     change p t (x + unitVector i) - p t 0 = p t x - p t 0

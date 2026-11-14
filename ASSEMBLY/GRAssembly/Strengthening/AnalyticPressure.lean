@@ -78,7 +78,7 @@ theorem normalizedQuadraticPressure_joint_analytic_on_open_slab
     analyticAt_fst.prod analyticAt_const
   have hp0 : AnalyticAt ℝ
       (fun w : ℝ × Vec => quadraticPoissonPressure (u w.1) 0) z :=
-    (hpi (z.1, 0) hz).comp hmap
+    (hpi (z.1, 0) hz).comp_of_eq hmap rfl
   exact (hpi z hz).sub hp0
 
 theorem nssolution_originNormalize_positive_analytic

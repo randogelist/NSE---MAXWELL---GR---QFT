@@ -22,7 +22,7 @@ set_option autoImplicit false
 set_option Elab.async true
 
 open Set Filter
-open scoped Topology ContDiff BigOperators
+open scoped Topology ContDiff BigOperators ENNReal
 open SingularClosure
 open NSEMaxwell.Classical NSEMaxwell.Spacetime NSEMaxwell.HodgeProof
 
@@ -76,9 +76,8 @@ theorem physicalFourier_uniform_weighted_bound
   have hMnon : ∀ ki, 0 ≤ M ki := fun ki => mul_nonneg hAnon (by positivity)
   have hMsum : Summable M := by
     apply (summable_prod_of_nonneg hMnon).2
-    refine ⟨fun _ => summable_fintype _, ?_⟩
-    simpa only [M, tsum_fintype, Finset.sum_const, Finset.card_univ,
-      Fintype.card_fin, nsmul_eq_mul] using
+    refine ⟨fun _ => Summable.of_finite, ?_⟩
+    simpa [M, tsum_fintype] using
       (summable_torusSobolevWeight_inv_four.mul_left A).mul_left (3 : ℝ)
   refine ⟨M, hMsum, hMnon, ?_⟩
   intro t ht ki
@@ -137,9 +136,10 @@ theorem physicalFourierCurve_initial_trace
     (u : NSEMaxwell.Classical.Velocity) (hu : SmoothVelocity u)
     (hp : PeriodicVelocity u) (m : ℕ) :
     Tendsto (physicalFourierCurve m u) (𝓝[>] (0 : ℝ))
-      (𝓝 (physicalFourierCurve m u 0)) :=
-  (physicalFourierCurve_continuousOn u hu hp m 0 (by simp)).mono
-    (fun _ ht => ht.le)
+      (𝓝 (physicalFourierCurve m u 0)) := by
+  apply ContinuousWithinAt.mono (physicalFourierCurve_continuousOn u hu hp m 0 (by simp))
+  intro s hs
+  exact le_of_lt hs
 
 theorem physicalFourierTerm_hasDerivAt
     (u : NSEMaxwell.Classical.Velocity) (hu : SmoothVelocity u)
@@ -194,7 +194,8 @@ theorem physicalFourierCurve_hasDerivAt_of_positive_smooth
         (fun z : ℝ × NSEMaxwell.Classical.Vec => (z.1 + c, z.2))
         NSEMaxwell.Classical.forwardSpacetime :=
       ((contDiff_fst.add contDiff_const).prodMk contDiff_snd).contDiffOn
-    exact hu.comp hg (fun z hz => add_pos_of_nonneg_of_pos hz hc)
+    exact hu.comp (s := NSEMaxwell.Classical.forwardSpacetime) hg
+      (fun z hz => add_pos_of_nonneg_of_pos hz hc)
   have hpv : PeriodicVelocity v := by
     intro s hs
     exact hp (s + c) (add_pos_of_nonneg_of_pos hs hc)
@@ -203,14 +204,14 @@ theorem physicalFourierCurve_hasDerivAt_of_positive_smooth
   have hdt : NSEMaxwell.Classical.timeDerivative v (t - c) =
       NSEMaxwell.Classical.timeDerivative u t := by
     funext x
-    have h := ((time_slice_hasDerivWithinAt hv htc.le x).hasDerivAt (Ici_mem_nhds htc))
-      .comp t hshift
+    have hbase := (time_slice_hasDerivWithinAt hv htc.le x).hasDerivAt (Ici_mem_nhds htc)
+    have h := hbase.scomp t hshift
     have he : HasDerivAt (fun s : ℝ => u s x)
         (NSEMaxwell.Classical.timeDerivative v (t - c) x) t := by
-      simpa only [v, sub_add_cancel, one_smul] using h
+      simpa only [Function.comp_def, v, sub_add_cancel, one_smul] using h
     exact (he.hasDerivWithinAt.derivWithin (uniqueDiffOn_Ici 0 t ht.le)).symm
-  have h := (physicalFourierCurve_hasDerivAt v hv hpv m htc).comp t hshift
-  simpa only [physicalFourierCurve, v, sub_add_cancel, one_smul, hdt] using h
+  have h := (physicalFourierCurve_hasDerivAt v hv hpv m htc).scomp t hshift
+  simpa only [Function.comp_def, physicalFourierCurve, v, sub_add_cancel, one_smul, hdt] using h
 
 end
 end NSEGR.Strengthening
