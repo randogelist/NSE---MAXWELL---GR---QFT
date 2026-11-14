@@ -1,0 +1,798 @@
+NSE_GR_POSITIVE_TIME_BIUNIQUE_CORRESPONDENCE_B_TIER
+====================================================
+
+MODE = B_TIER_DERIVATION
+STATUS = ! B_TIER
+DERIVATION_REVISION = 4_RELATION_FIRST
+COMPLETE_MATHEMATICAL_DERIVATION = YES
+NEW_LEAN_DECLARATIONS = 0
+NEW_EXTERNAL_LEAN_RUN = 0
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+A_TIER_PROMOTION = NONE
+
+REPOSITORY = randogelist/NSE---MAXWELL---GR---QFT
+BRANCH = STRENGTHENING-GR-FB
+
+PREVIOUS_PRIMARY_ROOT:
+  Nonempty
+    (NormalizedForwardTrajectory nu a ~= GRForwardFamily nu rho a),
+  obtained formally under the universal endpoint
+    PositiveTimeVelocityAnalyticityEndpoint nu a.
+
+ADJUSTED_PRIMARY_ROOT:
+  a biunique physical relation between
+    AnalyticForwardTrajectory nu a
+  and
+    GRForwardFamily nu rho a.
+
+The carrier equivalence is now a corollary of the relation theorem.
+The original Fefferman-B equivalence is factored through an analytic
+existence predicate. The remaining positive-time analyticity obligation is
+therefore separated from the geometric correspondence.
+
+
+0. PARAMETER AND VARIABLE CONVENTIONS
+-------------------------------------
+
+Fix
+
+  nu,rho : Real,
+  hnu : 0 < nu,
+  hrho : rho != 0,
+  a0 : Field,
+  ha0 : NSEMaxwell.Classical.Data a0.
+
+The initial datum is always denoted a0.
+
+Source elements are denoted
+
+  s,r : AnalyticForwardTrajectory nu a0.
+
+Target elements are denoted
+
+  gamma,zeta : GRForwardFamily nu rho a0.
+
+Thus the phrase
+
+  "for every a in the first input there exists one unique a' in the second"
+
+is represented without overloading the datum symbol by
+
+  forall s, exists! gamma, s ~ gamma.
+
+The converse totality and uniqueness statement is
+
+  forall gamma, exists! s, s ~ gamma.
+
+
+1. EXACT SOURCE CARRIER
+-----------------------
+
+The repository source carrier is
+
+  NormalizedForwardTrajectory nu a0.
+
+It is the quotient of normalized smooth forward NSE representatives by
+equality on all t >= 0. It retains no unconstrained negative-time data.
+Its pressure satisfies q(t,0)=0, and its underlying totalized pair satisfies
+the exact repository NSSolution predicate.
+
+Define the analytic source subtype
+
+  AnalyticForwardTrajectory nu a0
+    :=
+  { s : NormalizedForwardTrajectory nu a0 //
+      AnalyticOnNhd Real
+        (fun z : Real x Vec => s.totalVelocity z.1 z.2)
+        positiveSpacetime }.
+
+Equivalently,
+
+  s in AnalyticForwardTrajectory nu a0
+
+means:
+
+  (S1) s is a normalized smooth forward NSE trajectory;
+  (S2) its initial velocity is a0;
+  (S3) its velocity is jointly real analytic on
+         (0,infinity) x T3;
+  (S4) no analyticity is required at t=0.
+
+The normalized pressure is not added as a carrier premise. Existing pressure
+identification and analytic Poisson reconstruction give
+
+  velocity analytic on positiveSpacetime
+    =>
+  normalized pressure analytic on positiveSpacetime.
+
+Hence each analytic source element defines an actual positive analytic NSE
+pair and therefore an actual NSE germ at every positive center.
+
+
+2. EXACT TARGET CARRIER
+-----------------------
+
+The target remains the independently defined geometric carrier
+
+  GRForwardFamily nu rho a0.
+
+An element gamma consists of:
+
+  (G1) one GRgerm nu rho tau for every tau>0;
+  (G2) actual decoded-velocity coherence on a positive-time neighborhood
+       of each tau;
+  (G3) convergence of the decoded velocity to a0 in every spatial H^m.
+
+Each component is a marked analytic five-dimensional Gaussian vacuum-sector
+germ with the existing normalization, constitutive boundary condition,
+fixed foliation, and fixed normal orientation.
+
+The target is not defined as an encoding image.
+
+No single global bulk metric, global radial collar, arbitrary refoliation,
+or diffeomorphism quotient is asserted.
+
+
+3. SOURCE GERM
+--------------
+
+Let
+
+  sourcePositiveAnalyticNSE(s)
+
+be the positive-time analytic NSE object obtained from:
+
+  s.val.solution,
+  s.property,
+  normalized-pressure analyticity derived from s.property.
+
+For tau : PositiveTime, define
+
+  sourceGerm(s,tau)
+    :=
+  NSEgerm.mk
+    (positiveTimeNSERepresentative
+      sourcePositiveAnalyticNSE(s)
+      tau.val
+      tau.property).
+
+The definition is independent of representative choices because
+NormalizedForwardTrajectory is already a forward quotient and NSEgerm is
+the native local pressure-gauge quotient.
+
+
+4. PHYSICAL CORRESPONDENCE RELATION
+-----------------------------------
+
+Define
+
+  NSEGRCorresponds(hrho,s,gamma)
+    : Prop
+    :=
+  forall tau : PositiveTime,
+
+    (nativeLocalEquiv nu rho tau.val hrho).symm
+      (gamma.val tau)
+    =
+    sourceGerm(s,tau).
+
+Notation:
+
+  s ~ gamma
+
+means NSEGRCorresponds(hrho,s,gamma).
+
+This definition says that the actual native GR boundary decoder at every
+positive slice returns exactly the local analytic NSE germ of s.
+
+Equivalent forward form:
+
+  gamma.val tau
+    =
+  nativeLocalEquiv nu rho tau.val hrho (sourceGerm(s,tau)).
+
+Equivalent decoded-velocity consequence:
+
+  forall t>0,
+    grFamilyVelocity gamma.val t
+      =
+    s.val.velocity t.val t.property.le.
+
+The relation is not defined by reference to an arbitrary carrier bijection.
+It is the graph of the existing physical local lift and boundary decoder.
+
+
+5. LEFT TOTALITY: EVERY ANALYTIC NSE SOURCE HAS A MATCH
+------------------------------------------------------
+
+THEOREM L-TOTAL:
+
+  forall s : AnalyticForwardTrajectory nu a0,
+    exists gamma : GRForwardFamily nu rho a0,
+      s ~ gamma.
+
+DERIVATION.
+
+L1. Positive analytic profile.
+
+Use s.property for positive-time velocity analyticity.
+Use the existing normalized-pressure analytic theorem for pressure.
+Use smoothTrajectoryTraceEndpoint nu a0 for the actual all-Sobolev trace.
+
+This gives
+
+  p_s : PositiveTimeProfile nu a0.
+
+L2. Coherent native NSE family.
+
+Apply
+
+  profileToNSEFamily p_s
+
+to obtain
+
+  eta_s : NSEForwardFamily nu a0.
+
+At every positive center tau, eta_s.val tau is the native local germ of s.
+
+L3. Native geometric encoding.
+
+Define
+
+  gamma_s
+    :=
+  coherentFamilyEquiv nu rho hrho a0 eta_s.
+
+The existing coherent-family theorem transfers both local coherence and the
+initial trace.
+
+L4. Relation.
+
+For each tau,
+
+  decodeGRFamily
+    (encodeNSEFamily eta_s)
+  =
+  eta_s
+
+by the pointwise native left-inverse identity. Since eta_s.val tau is
+sourceGerm(s,tau),
+
+  (nativeLocalEquiv ...).symm (gamma_s.val tau)
+    =
+  sourceGerm(s,tau).
+
+Therefore
+
+  s ~ gamma_s.
+
+
+6. RIGHT UNIQUENESS: THE MATCHED GR FAMILY IS UNIQUE
+----------------------------------------------------
+
+THEOREM R-UNIQUE:
+
+  forall s gamma zeta,
+    s ~ gamma ->
+    s ~ zeta ->
+    gamma = zeta.
+
+DERIVATION.
+
+Assume hgamma : s ~ gamma and hzeta : s ~ zeta.
+For each tau,
+
+  D_tau(gamma_tau)
+    =
+  sourceGerm(s,tau)
+    =
+  D_tau(zeta_tau),
+
+where
+
+  D_tau := (nativeLocalEquiv nu rho tau.val hrho).symm.
+
+Because D_tau is an equivalence, it is injective. Hence
+
+  gamma.val tau = zeta.val tau.
+
+Function extensionality and grForwardFamily_ext yield
+
+  gamma = zeta.
+
+Combining Sections 5 and 6:
+
+  forall s : AnalyticForwardTrajectory nu a0,
+    exists! gamma : GRForwardFamily nu rho a0,
+      s ~ gamma.
+
+
+7. RIGHT TOTALITY: EVERY COHERENT GR FAMILY HAS A MATCH
+------------------------------------------------------
+
+THEOREM R-TOTAL:
+
+  forall gamma : GRForwardFamily nu rho a0,
+    exists s : AnalyticForwardTrajectory nu a0,
+      s ~ gamma.
+
+DERIVATION.
+
+R1. Decode to the coherent native NSE family.
+
+Set
+
+  eta_gamma
+    :=
+  (coherentFamilyEquiv nu rho hrho a0).symm gamma.
+
+Then
+
+  nseFamilyVelocity eta_gamma.val
+    =
+  grFamilyVelocity gamma.val.
+
+R2. Decode to the positive analytic NSE profile.
+
+Set
+
+  p_gamma
+    :=
+  nseFamilyToProfile eta_gamma.
+
+The local analytic NSE representatives supplied by family coherence prove
+that p_gamma is jointly analytic on positiveSpacetime, satisfies the actual
+NSE equations, and has spatial trace a0.
+
+R3. Smooth extension through t=0.
+
+Choose a representative r_gamma of p_gamma.
+The existing theorem
+
+  positiveProfileBoundaryEndpoint nu a0 ha0
+
+supplies actual fields u_gamma,q_gamma satisfying:
+
+  SmoothVelocity u_gamma,
+  SmoothPressure q_gamma,
+  u_gamma 0 = a0,
+
+and for every t>0,
+
+  u_gamma t = r_gamma.velocity t,
+  q_gamma t = r_gamma.pressure t.
+
+The theorem smoothProfileExtension_is_nssolution yields
+
+  NSSolution nu a0 u_gamma q_gamma.
+
+Normalize the pressure and form
+
+  s0_gamma
+    :=
+  normalizedTrajectoryOfNSSolution
+    (smoothProfileExtension_is_nssolution ...).
+
+R4. Positive-time analyticity witness.
+
+For t>0, s0_gamma has the same velocity as r_gamma.
+Since r_gamma.solution.velocity_analytic holds on positiveSpacetime,
+analyticity transfers by local equality.
+
+Hence
+
+  s_gamma : AnalyticForwardTrajectory nu a0.
+
+R5. Relation.
+
+For every tau, the coherent NSE family underlying p_gamma is eta_gamma.
+Therefore
+
+  sourceGerm(s_gamma,tau)
+    =
+  eta_gamma.val tau
+    =
+  (nativeLocalEquiv ...).symm (gamma.val tau).
+
+Thus
+
+  s_gamma ~ gamma.
+
+
+8. LEFT UNIQUENESS: THE MATCHED ANALYTIC SOURCE IS UNIQUE
+--------------------------------------------------------
+
+THEOREM L-UNIQUE:
+
+  forall s r gamma,
+    s ~ gamma ->
+    r ~ gamma ->
+    s = r.
+
+DERIVATION.
+
+For every tau,
+
+  sourceGerm(s,tau)
+    =
+  D_tau(gamma_tau)
+    =
+  sourceGerm(r,tau).
+
+Apply NSEgerm.velocityAtCenter at tau. This gives
+
+  s.val.velocity tau.val tau.property.le
+    =
+  r.val.velocity tau.val tau.property.le.
+
+Since tau was arbitrary,
+
+  forall t>0,
+    s.val.velocity t = r.val.velocity t.
+
+The existing source-uniqueness theorem
+
+  NormalizedForwardTrajectory.eq_of_positive_velocity_eq
+
+then gives
+
+  s.val = r.val.
+
+Subtype extensionality and proof irrelevance give
+
+  s = r.
+
+Combining Sections 7 and 8:
+
+  forall gamma : GRForwardFamily nu rho a0,
+    exists! s : AnalyticForwardTrajectory nu a0,
+      s ~ gamma.
+
+
+9. ADJUSTED PRIMARY THEOREM
+---------------------------
+
+THEOREM NAME:
+
+  NSE_GR_POSITIVE_TIME_BIUNIQUE_CORRESPONDENCE
+
+EXACT STATEMENT:
+
+  forall (nu rho : Real),
+    0 < nu ->
+    rho != 0 ->
+    forall (a0 : Field),
+      NSEMaxwell.Classical.Data a0 ->
+
+      (forall s : AnalyticForwardTrajectory nu a0,
+        exists! gamma : GRForwardFamily nu rho a0,
+          NSEGRCorresponds hrho s gamma)
+
+      /\
+
+      (forall gamma : GRForwardFamily nu rho a0,
+        exists! s : AnalyticForwardTrajectory nu a0,
+          NSEGRCorresponds hrho s gamma).
+
+STATUS:
+
+  ! B_TIER.
+
+UNRESOLVED MATHEMATICAL PREMISES OF THIS CORE THEOREM:
+
+  none.
+
+The analyticity requirement is an explicit field of the source carrier.
+The theorem makes no assertion that this carrier is nonempty.
+
+
+10. CANONICAL EQUIVALENCE COROLLARY
+-----------------------------------
+
+The biunique relation canonically determines mutually inverse maps:
+
+  Phi(s)
+    :=
+  the unique gamma satisfying s ~ gamma,
+
+  Psi(gamma)
+    :=
+  the unique s satisfying s ~ gamma.
+
+Uniqueness gives
+
+  Psi(Phi(s)) = s,
+  Phi(Psi(gamma)) = gamma.
+
+Therefore:
+
+THEOREM NAME:
+
+  NSE_GR_ANALYTIC_FORWARD_FAMILY_EQUIV
+
+STATEMENT:
+
+  forall nu>0, rho!=0, a0 with Data(a0),
+
+    AnalyticForwardTrajectory nu a0
+      ~=
+    GRForwardFamily nu rho a0.
+
+GRAPH CHARACTERIZATION:
+
+  forall s gamma,
+
+    NSE_GR_ANALYTIC_FORWARD_FAMILY_EQUIV(s) = gamma
+      <->
+    NSEGRCorresponds hrho s gamma.
+
+This graph characterization is the semantic strengthening over a bare
+Nonempty(A ~= B) theorem.
+
+
+11. EXISTENCE-PREDICATE FACTORIZATION
+-------------------------------------
+
+Define
+
+  AnalyticFeffermanB(nu)
+    :=
+  forall a0 : Field,
+    NSEMaxwell.Classical.Data a0 ->
+    Nonempty (AnalyticForwardTrajectory nu a0).
+
+The biunique correspondence gives:
+
+THEOREM NAME:
+
+  ANALYTIC_NSE_B_IFF_GR_BOUNDARY_FAMILY
+
+STATEMENT:
+
+  forall nu>0, rho!=0,
+
+    AnalyticFeffermanB(nu)
+      <->
+    GRFamilyB(nu,rho).
+
+FORWARD.
+
+Choose an analytic source s for each datum. Section 5 gives its unique
+geometric family.
+
+REVERSE.
+
+Choose a geometric family gamma for each datum. Section 7 gives its unique
+analytic source.
+
+
+12. RELATION TO LITERAL FEFFERMAN-B
+-----------------------------------
+
+There is an unconditional forgetful implication:
+
+  AnalyticFeffermanB(nu)
+    ->
+  NSEMaxwell.Classical.FeffermanB(nu).
+
+Indeed, an AnalyticForwardTrajectory contains a NormalizedForwardTrajectory,
+and the repository theorem
+
+  literal_nssolution_nonempty_normalized_source
+
+turns its nonemptiness into an actual NSSolution witness.
+
+Consequently,
+
+  GRFamilyB(nu,rho)
+    ->
+  AnalyticFeffermanB(nu)
+    ->
+  FeffermanB(nu).
+
+This preserves the already established unconditional reverse direction.
+
+The sole remaining bridge for the original proposition-level equivalence is:
+
+THEOREM NAME:
+
+  FEFFERMAN_B_IMPLIES_ANALYTIC_FEFFERMAN_B
+
+STATEMENT:
+
+  forall nu>0,
+
+    FeffermanB(nu)
+      ->
+    AnalyticFeffermanB(nu).
+
+Equivalent datumwise form:
+
+  forall a0,
+    Data(a0) ->
+    Nonempty (NormalizedForwardTrajectory nu a0) ->
+    Nonempty (AnalyticForwardTrajectory nu a0).
+
+Suggested endpoint name:
+
+  NSSOLUTION_NONEMPTY_IMPLIES_ANALYTIC_FORWARD_NONEMPTY.
+
+This existence-selection endpoint is strictly weaker in statement than
+
+  forall s : NormalizedForwardTrajectory nu a0,
+    velocity(s) is positive-time jointly analytic.
+
+The universal smoothing theorem remains a sufficient method of proving the
+selection endpoint, but it is no longer a premise of the core NSE/GR
+correspondence.
+
+
+13. FINAL FACTORIZATION
+-----------------------
+
+The adjusted theorem architecture is
+
+  FeffermanB(nu)
+    -- OPEN ANALYTIC SELECTION -->
+  AnalyticFeffermanB(nu)
+    -- ! B_TIER BIUNIQUE CORRESPONDENCE -->
+  GRFamilyB(nu,rho).
+
+The reverse chain is
+
+  GRFamilyB(nu,rho)
+    -- ! B_TIER BIUNIQUE CORRESPONDENCE -->
+  AnalyticFeffermanB(nu)
+    -- FORGETFUL -->
+  FeffermanB(nu).
+
+Thus:
+
+  CORE NSE/GR CORRESPONDENCE:
+    ! B_TIER, unconditional on the analytic source carrier.
+
+  ANALYTIC EXISTENCE <-> GR FAMILY EXISTENCE:
+    ! B_TIER.
+
+  ORIGINAL FeffermanB <-> GRFamilyB:
+    conditional only on
+      FEFFERMAN_B_IMPLIES_ANALYTIC_FEFFERMAN_B.
+
+No initial-time analyticity is introduced.
+No pressure trace premise is introduced.
+No temporal trace premise is introduced.
+No velocity mean restriction is introduced.
+
+
+14. EXISTING SOURCE ANCHORS
+---------------------------
+
+SOURCE CARRIER:
+  ASSEMBLY/GRAssembly/Strengthening/SourceCarrier.lean
+
+  NormalizedForwardTrajectory
+  NormalizedForwardTrajectory.solution
+  NormalizedForwardTrajectory.eq_iff_forward
+  literal_nssolution_nonempty_normalized_source
+  feffermanB_iff_normalized_source_nonempty
+
+SOURCE UNIQUENESS:
+  ASSEMBLY/GRAssembly/Strengthening/SourceUniqueness.lean
+
+  NormalizedForwardTrajectory.eq_of_positive_velocity_eq
+  nssolution_normalized_pressure_eq_of_positive_velocity_eq
+
+GEOMETRIC FAMILY:
+  ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean
+
+  GRForwardFamily
+  coherentFamilyEquiv
+  encodeNSEFamily
+  decodeGRFamily
+  decodeGRFamily_encodeNSEFamily
+  encodeNSEFamily_decodeGRFamily
+  grForwardFamily_ext
+
+POSITIVE PROFILE:
+  ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean
+
+  PositiveTimeProfile
+  profileToNSEFamily
+  nseFamilyToProfile
+  positiveProfileGRFamilyEquiv
+
+BOUNDARY EXTENSION:
+  ASSEMBLY/GRAssembly/Strengthening/BoundaryEndpoint.lean
+
+  positiveProfileBoundaryEndpoint
+  profileBoundaryVelocity_positive
+  profileBoundaryPressure_positive
+
+SOURCE/PROFILE EXTENSION:
+  ASSEMBLY/GRAssembly/Strengthening/ExactChain.lean
+
+  smoothProfileExtension_is_nssolution
+
+ANALYTIC PRESSURE:
+  ASSEMBLY/GRAssembly/Strengthening/AnalyticPressure.lean
+  ASSEMBLY/GRAssembly/Strengthening/SmoothingEndpoint.lean
+
+  nssolution_originNormalize_positive_analytic
+  positiveTimeSmoothingEndpoint_of_velocity_analyticity
+
+LOCAL PHYSICAL EQUIVALENCE:
+  ASSEMBLY/GRAssembly/Strengthening/GermEvaluation.lean
+  ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean
+  GR_adapter/NSEGRForward.lean
+  GR_adapter/NSEGRReverse.lean
+
+  nativeLocalEquiv
+  nativeLocalEquiv_left_inverse
+  nativeLocalEquiv_right_inverse
+  nativeLocalEquiv_velocityAtCenter
+  nativeLocalEquiv_symm_velocityAtCenter
+
+
+15. PROPOSED FORMALIZATION CUT
+------------------------------
+
+MODULE 1: RelationCarrier.lean
+
+  AnalyticForwardTrajectory
+  analyticForwardTrajectory_pressure_analytic
+  analyticForwardTrajectory_positiveNSE
+  analyticForwardTrajectory_sourceGerm
+
+MODULE 2: Correspondence.lean
+
+  NSEGRCorresponds
+  nseGRCorresponds_iff_forward
+  nseGRCorresponds_velocity
+  nseGRCorresponds_left_total
+  nseGRCorresponds_right_unique
+  nseGRCorresponds_right_total
+  nseGRCorresponds_left_unique
+  NSE_GR_POSITIVE_TIME_BIUNIQUE_CORRESPONDENCE
+
+MODULE 3: RelationEquiv.lean
+
+  nseGRAnalyticForwardFamilyEquiv
+  nseGRAnalyticForwardFamilyEquiv_graph
+  NSE_GR_ANALYTIC_FORWARD_FAMILY_EQUIV
+
+MODULE 4: AnalyticBEquivalence.lean
+
+  AnalyticFeffermanB
+  analyticFeffermanB_implies_feffermanB
+  ANALYTIC_NSE_B_IFF_GR_BOUNDARY_FAMILY
+  NSSOLUTION_NONEMPTY_IMPLIES_ANALYTIC_FORWARD_NONEMPTY
+  FEFFERMAN_B_IMPLIES_ANALYTIC_FEFFERMAN_B
+  NSE_B_IFF_GR_BOUNDARY_FAMILY
+
+The first three modules and the first three declarations of Module 4 form
+the relation-first core. The final two declarations remain the isolated
+positive-time analytic selection frontier.
+
+
+16. STATUS
+----------
+
+MATHEMATICAL CORE:
+  ! B_TIER.
+
+CORE_UNRESOLVED_CERTIFICATES:
+  none.
+
+ORIGINAL B-EQUIVALENCE REMAINING MATHEMATICAL ENDPOINT:
+  FEFFERMAN_B_IMPLIES_ANALYTIC_FEFFERMAN_B.
+
+LEAN STATUS:
+  A_TIER_CANDIDATE only.
+
+PROMOTION REQUIREMENT:
+  exact Lean source;
+  matching external Lean 4.34.0-rc1 compilation;
+  theorem-level axiom audit;
+  no sorryAx or unapproved axioms.
+
+No A-tier marker is assigned by this B-tier adjustment.
