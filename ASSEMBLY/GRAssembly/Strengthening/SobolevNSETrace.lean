@@ -78,6 +78,7 @@ theorem normalizedSobolevPressure_periodic
   rw [fullTransportPressure_periodic (U 0 t) x i]
 
 /-- No independent pressure trace is required by the actual quadratic pressure map. -/
+set_option maxHeartbeats 1000000 in
 theorem normalizedSobolevPressure_joint_smooth
     (U : ∀ m : ℕ, ℝ → TorusSobolev m)
     (hU : ∀ m, ContDiffOn ℝ ∞ (U m) (Ici (0 : ℝ)))

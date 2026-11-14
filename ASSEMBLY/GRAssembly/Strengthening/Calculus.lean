@@ -70,7 +70,12 @@ theorem originNormalize_gradient (p : Pressure) (t : ℝ) :
     NSEMaxwell.Classical.gradient (originNormalize p t) =
       NSEMaxwell.Classical.gradient (p t) := by
   funext x
-  simp only [NSEMaxwell.Classical.gradient, originNormalize, fderiv_sub_const]
+  change
+    WithLp.toLp 2 (fun i : Fin 3 =>
+      fderiv ℝ (fun y : Vec => p t y - p t 0) x (NSEMaxwell.Classical.unitVector i)) =
+    WithLp.toLp 2 (fun i : Fin 3 =>
+      fderiv ℝ (p t) x (NSEMaxwell.Classical.unitVector i))
+  simp only [fderiv_sub_const]
 
 theorem originNormalize_smooth {p : Pressure}
     (hp : NSEMaxwell.Classical.SmoothPressure p) :
@@ -82,7 +87,7 @@ theorem originNormalize_smooth {p : Pressure}
   have hzero : ContDiffOn ℝ ∞ (fun z : ℝ × Vec => p z.1 0)
       NSEMaxwell.Classical.forwardSpacetime := by
     simpa only [Function.comp_def] using
-      hp.comp hi.contDiffOn (fun z hz => hz)
+      hp.comp (s := NSEMaxwell.Classical.forwardSpacetime) hi.contDiffOn (fun z hz => hz)
   exact hp.sub hzero
 
 theorem originNormalize_periodic {p : Pressure}

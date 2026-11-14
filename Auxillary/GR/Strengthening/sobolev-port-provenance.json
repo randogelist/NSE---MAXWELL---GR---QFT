@@ -1,0 +1,463 @@
+{
+  "schema_version": 1,
+  "status": "A_TIER_CANDIDATE",
+  "compiler": "leanprover/lean4:v4.34.0-rc1",
+  "mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "upstream_M1_compiler": "leanprover/lean4:v4.33.0",
+  "upstream_M1_mathlib": "db584cd6d46c92f209a44c0f1c829460d327499d",
+  "local_lean_executions": 0,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "preserved_original_source_snapshots": true,
+  "root_analytic_premise_added": false,
+  "physical_G30_status": "UNRESOLVED: norm derivative of actual physical Fourier curve must be derived; interface hypothesis is not a discharge",
+  "modules": [
+    {
+      "module": "SingularClosure.FourierProduct",
+      "destination": "TEMP/SingularClosure/FourierProduct.lean",
+      "mode": "exact_M0_snapshot_hydration",
+      "upstream_commit": "e9cf90726b8544a268469ebc8fa6634e9c713e07",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierProduct.lean",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierProduct.lean",
+      "source_sha256": "3b8ff49814d3496cdd6abb2b77d2ccf222c2d0ba93d0a225fb4bd2704aa1c9a4",
+      "source_git_blob_sha": "7a691a0c85bc7c1fb2fb8b76c1a1711b89e44155",
+      "destination_sha256": "3b8ff49814d3496cdd6abb2b77d2ccf222c2d0ba93d0a225fb4bd2704aa1c9a4",
+      "byte_identical_to_source": true,
+      "direct_imports": [
+        "SingularClosure.FourierTransport",
+        "SingularClosure.SobolevSmoothRealization",
+        "SingularClosure.SmoothDatumSobolev"
+      ]
+    },
+    {
+      "module": "SingularClosure.FourierTransport",
+      "destination": "TEMP/SingularClosure/FourierTransport.lean",
+      "mode": "exact_M0_snapshot_hydration",
+      "upstream_commit": "e9cf90726b8544a268469ebc8fa6634e9c713e07",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierTransport.lean",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/FourierTransport.lean",
+      "source_sha256": "bcfbb39cc4f0c44819a304d329a2506b0392f569ec3e6c30b16af69445af5f46",
+      "source_git_blob_sha": "20bb72957e2ba90af0bfedf5a951062ba6eb4684",
+      "destination_sha256": "bcfbb39cc4f0c44819a304d329a2506b0392f569ec3e6c30b16af69445af5f46",
+      "byte_identical_to_source": true,
+      "direct_imports": [
+        "SingularClosure.SobolevL2Realization",
+        "SingularClosure.PhysicalProjection"
+      ]
+    },
+    {
+      "module": "SingularClosure.GalerkinEnergyIntegral",
+      "destination": "TEMP/SingularClosure/GalerkinEnergyIntegral.lean",
+      "mode": "exact_M0_snapshot_hydration",
+      "upstream_commit": "e9cf90726b8544a268469ebc8fa6634e9c713e07",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/GalerkinEnergyIntegral.lean",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/GalerkinEnergyIntegral.lean",
+      "source_sha256": "49b7de259b4a30dd3975e120ad2766917c6de5b3722bd54eff5100f123d7d8a9",
+      "source_git_blob_sha": "1710ba30f76683f9bbfe4d9c3e60eb7785259114",
+      "destination_sha256": "49b7de259b4a30dd3975e120ad2766917c6de5b3722bd54eff5100f123d7d8a9",
+      "byte_identical_to_source": true,
+      "direct_imports": [
+        "SingularClosure.GalerkinEnergy"
+      ]
+    },
+    {
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "destination": "TEMP/SingularClosure/InfiniteFourierPressure.lean",
+      "mode": "exact_M0_snapshot_hydration",
+      "upstream_commit": "e9cf90726b8544a268469ebc8fa6634e9c713e07",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InfiniteFourierPressure.lean",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/InfiniteFourierPressure.lean",
+      "source_sha256": "8afcd5d69497cfc1c782b0f9809051938675f61b03b13bc4591ade6761f95a15",
+      "source_git_blob_sha": "b26b4c4e3277ca063365011c9e6ae6d7fc7aa768",
+      "destination_sha256": "8afcd5d69497cfc1c782b0f9809051938675f61b03b13bc4591ade6761f95a15",
+      "byte_identical_to_source": true,
+      "direct_imports": [
+        "SingularClosure.SobolevSmoothRealization",
+        "SingularClosure.PeriodicPoincare",
+        "SingularClosure.FourierProduct"
+      ]
+    },
+    {
+      "module": "SingularClosure.PeriodicPoincare",
+      "destination": "TEMP/SingularClosure/PeriodicPoincare.lean",
+      "mode": "exact_M0_snapshot_hydration",
+      "upstream_commit": "e9cf90726b8544a268469ebc8fa6634e9c713e07",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PeriodicPoincare.lean",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PeriodicPoincare.lean",
+      "source_sha256": "f296d6b876aee593424a7d78c524a7afc42824e9efb8bafa29e90bcaaa7e3202",
+      "source_git_blob_sha": "4a24fc413939247ffcbca5471004f9ff3de953b3",
+      "destination_sha256": "f296d6b876aee593424a7d78c524a7afc42824e9efb8bafa29e90bcaaa7e3202",
+      "byte_identical_to_source": true,
+      "direct_imports": [
+        "SingularClosure.PhysicalEnergy",
+        "SingularClosure.EnstrophyInequality"
+      ]
+    },
+    {
+      "module": "SingularClosure.PhysicalEnergy",
+      "destination": "TEMP/SingularClosure/PhysicalEnergy.lean",
+      "mode": "exact_M0_snapshot_hydration",
+      "upstream_commit": "e9cf90726b8544a268469ebc8fa6634e9c713e07",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PhysicalEnergy.lean",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/PhysicalEnergy.lean",
+      "source_sha256": "79652e7198f23154071200893e97111c232bd4581f8544c50fbb6f7f0671ae73",
+      "source_git_blob_sha": "399eded3a28a452ed4c41591d3fb4201f98edc30",
+      "destination_sha256": "79652e7198f23154071200893e97111c232bd4581f8544c50fbb6f7f0671ae73",
+      "byte_identical_to_source": true,
+      "direct_imports": [
+        "SingularClosure.FiniteParseval",
+        "SingularClosure.GalerkinEnergyIntegral"
+      ]
+    },
+    {
+      "module": "SingularClosure.SobolevL2Realization",
+      "destination": "TEMP/SingularClosure/SobolevL2Realization.lean",
+      "mode": "exact_M0_snapshot_hydration",
+      "upstream_commit": "e9cf90726b8544a268469ebc8fa6634e9c713e07",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevL2Realization.lean",
+      "source_path": "Fefferman_adapter/NativeSources/methlib/SingularClosure/SobolevL2Realization.lean",
+      "source_sha256": "e6d03d9d4fb08d7f1e5fb0ba38b64c309c62b8656c67b8d66c9ba8ffee2f6b69",
+      "source_git_blob_sha": "9d02e54557b68b934e877823242801a8a6c3e514",
+      "destination_sha256": "e6d03d9d4fb08d7f1e5fb0ba38b64c309c62b8656c67b8d66c9ba8ffee2f6b69",
+      "byte_identical_to_source": true,
+      "direct_imports": [
+        "SingularClosure.HilbertChannels",
+        "SingularClosure.TorusSobolev"
+      ]
+    },
+    {
+      "module": "SingularClosure.SobolevScaleTimeSmooth",
+      "destination": "TEMP/SingularClosure/SobolevScaleTimeSmooth.lean",
+      "mode": "M1_minimal_import_port",
+      "upstream_commit": "4813604a46179c745b82f51bee51a186e9f4cc2d",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevScaleTimeSmooth.lean",
+      "upstream_raw_url": "https://raw.githubusercontent.com/randogelist/Methlib/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevScaleTimeSmooth.lean",
+      "source_sha256": "2b1ceb36eb83e97fe3dde94bd178c1d98f8478e36e651de7f33b9cadb8c81fa7",
+      "source_git_blob_sha": "784cf8dc760d3145a67c0f863fcc384d57bb4e12",
+      "destination_sha256": "253ce0430f40d162f79044c94ee649972eb3c331a5f1f5a063a10d49660ecfe1",
+      "byte_identical_to_source": false,
+      "declarations_and_proof_bodies_unchanged": true,
+      "source_imports": [
+        "SingularClosure.SobolevTrajectoryCalculus",
+        "Mathlib.Analysis.Calculus.ContDiff.Deriv",
+        "Mathlib.Analysis.Calculus.Deriv.Slope"
+      ],
+      "direct_imports": [
+        "SingularClosure.TorusSobolevReal",
+        "Mathlib.Analysis.Calculus.ContDiff.Deriv",
+        "Mathlib.Analysis.Calculus.Deriv.Slope"
+      ]
+    },
+    {
+      "module": "SingularClosure.SmoothEvaluation",
+      "destination": "TEMP/SingularClosure/SmoothEvaluation.lean",
+      "mode": "M1_minimal_import_port",
+      "upstream_commit": "4813604a46179c745b82f51bee51a186e9f4cc2d",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SmoothEvaluation.lean",
+      "upstream_raw_url": "https://raw.githubusercontent.com/randogelist/Methlib/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SmoothEvaluation.lean",
+      "source_sha256": "08fa183eaa7cd671cdc5b12262876aa9b8e6d53bde917a04b11497cd3f36c391",
+      "source_git_blob_sha": "d8df3ee740c5bbe91f04205bb6f93b7f9d746548",
+      "destination_sha256": "7f941b988bf28c25397a089033a93893ada61fb2d8483a18924feb41f8461895",
+      "byte_identical_to_source": false,
+      "declarations_and_proof_bodies_unchanged": true,
+      "source_imports": [
+        "SingularClosure.SobolevLimitBounds",
+        "SingularClosure.SobolevSmoothRealization",
+        "SingularClosure.SobolevTrajectoryCalculus"
+      ],
+      "direct_imports": [
+        "SingularClosure.SobolevCoefficient",
+        "SingularClosure.SobolevSmoothRealization",
+        "SingularClosure.TorusSobolevReal"
+      ]
+    },
+    {
+      "module": "SingularClosure.SobolevSpacetimeSmooth",
+      "destination": "TEMP/SingularClosure/SobolevSpacetimeSmooth.lean",
+      "mode": "exact_M1_copy",
+      "upstream_commit": "4813604a46179c745b82f51bee51a186e9f4cc2d",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevSpacetimeSmooth.lean",
+      "upstream_raw_url": "https://raw.githubusercontent.com/randogelist/Methlib/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevSpacetimeSmooth.lean",
+      "source_sha256": "b5782e553e9145f8ef339e2d89925030c126cbedc05a639ee1c889dc79ccc022",
+      "source_git_blob_sha": "8d969e2f3392d9cdc4b51477ed522ed94c0fbe48",
+      "destination_sha256": "b5782e553e9145f8ef339e2d89925030c126cbedc05a639ee1c889dc79ccc022",
+      "byte_identical_to_source": true,
+      "declarations_and_proof_bodies_unchanged": true,
+      "source_imports": [
+        "SingularClosure.SmoothEvaluation"
+      ],
+      "direct_imports": [
+        "SingularClosure.SmoothEvaluation"
+      ]
+    },
+    {
+      "module": "SingularClosure.LerayL2Contraction",
+      "destination": "TEMP/SingularClosure/LerayL2Contraction.lean",
+      "mode": "exact_M1_copy",
+      "upstream_commit": "4813604a46179c745b82f51bee51a186e9f4cc2d",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/LerayL2Contraction.lean",
+      "upstream_raw_url": "https://raw.githubusercontent.com/randogelist/Methlib/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/LerayL2Contraction.lean",
+      "source_sha256": "ad1d527620240d9c0e8754f80acc299b3f2c21eff186eb3c5180610ff73075a9",
+      "source_git_blob_sha": "bd8772077bbc762e93919ca02097c05491604bf8",
+      "destination_sha256": "ad1d527620240d9c0e8754f80acc299b3f2c21eff186eb3c5180610ff73075a9",
+      "byte_identical_to_source": true,
+      "declarations_and_proof_bodies_unchanged": true,
+      "source_imports": [
+        "SingularClosure.LerayPressure",
+        "SingularClosure.GalerkinReality",
+        "SingularClosure.FiniteParseval"
+      ],
+      "direct_imports": [
+        "SingularClosure.LerayPressure",
+        "SingularClosure.GalerkinReality",
+        "SingularClosure.FiniteParseval"
+      ]
+    },
+    {
+      "module": "SingularClosure.HighOrderProduct",
+      "destination": "TEMP/SingularClosure/HighOrderProduct.lean",
+      "mode": "M1_minimal_import_port",
+      "upstream_commit": "4813604a46179c745b82f51bee51a186e9f4cc2d",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/HighOrderProduct.lean",
+      "upstream_raw_url": "https://raw.githubusercontent.com/randogelist/Methlib/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/HighOrderProduct.lean",
+      "source_sha256": "8493ed8a927132f4cdc5831cc3bb4c68f1fda60d608a3261c61bf26621915ee0",
+      "source_git_blob_sha": "7227cbdc2c8970c8ccd667387369e4b38ed76ca5",
+      "destination_sha256": "977f9ec161f33231116186e6ced9a38938cce178f208d3632d2725863f42b0f6",
+      "byte_identical_to_source": false,
+      "declarations_and_proof_bodies_unchanged": true,
+      "source_imports": [
+        "SingularClosure.TorusGalerkinSobolev",
+        "SingularClosure.LatticeSobolevSummability"
+      ],
+      "direct_imports": [
+        "SingularClosure.SobolevMultiplierBasics",
+        "SingularClosure.LatticeSobolevSummability"
+      ]
+    },
+    {
+      "module": "SingularClosure.InfiniteScalarProduct",
+      "destination": "TEMP/SingularClosure/InfiniteScalarProduct.lean",
+      "mode": "exact_M1_copy",
+      "upstream_commit": "4813604a46179c745b82f51bee51a186e9f4cc2d",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InfiniteScalarProduct.lean",
+      "upstream_raw_url": "https://raw.githubusercontent.com/randogelist/Methlib/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InfiniteScalarProduct.lean",
+      "source_sha256": "1fc338e15652f8580536cfb8bcb4ed1506148a9cb822a6138e03729354d69187",
+      "source_git_blob_sha": "164e73d54c61226d120a064d5c05893571770da2",
+      "destination_sha256": "1fc338e15652f8580536cfb8bcb4ed1506148a9cb822a6138e03729354d69187",
+      "byte_identical_to_source": true,
+      "declarations_and_proof_bodies_unchanged": true,
+      "source_imports": [
+        "SingularClosure.HighOrderProduct"
+      ],
+      "direct_imports": [
+        "SingularClosure.HighOrderProduct"
+      ]
+    },
+    {
+      "module": "SingularClosure.FourierSobolevOperators",
+      "destination": "TEMP/SingularClosure/FourierSobolevOperators.lean",
+      "mode": "M1_minimal_import_port",
+      "upstream_commit": "4813604a46179c745b82f51bee51a186e9f4cc2d",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevOperators.lean",
+      "upstream_raw_url": "https://raw.githubusercontent.com/randogelist/Methlib/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevOperators.lean",
+      "source_sha256": "d65a481a2d8a0db940c2cb24346492ce0c0ecc81f861a0f6fd21418551b0a48f",
+      "source_git_blob_sha": "98bbd557c7014537ecb77d85475cd7b05c1cb1b5",
+      "destination_sha256": "d1e41d5502e0cd79945402e13e67ecb37b7b19d7d6ada7afee8ecd9978905146",
+      "byte_identical_to_source": false,
+      "declarations_and_proof_bodies_unchanged": true,
+      "source_imports": [
+        "SingularClosure.TorusGalerkinSobolev",
+        "SingularClosure.LerayL2Contraction"
+      ],
+      "direct_imports": [
+        "SingularClosure.SobolevMultiplierBasics",
+        "SingularClosure.LerayL2Contraction"
+      ]
+    },
+    {
+      "module": "SingularClosure.FourierSobolevProduct",
+      "destination": "TEMP/SingularClosure/FourierSobolevProduct.lean",
+      "mode": "M1_minimal_import_port",
+      "upstream_commit": "4813604a46179c745b82f51bee51a186e9f4cc2d",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevProduct.lean",
+      "upstream_raw_url": "https://raw.githubusercontent.com/randogelist/Methlib/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevProduct.lean",
+      "source_sha256": "bc37c72d3026d04831200724509128f0daa1f0d57e0f820a82ea273f8e52be20",
+      "source_git_blob_sha": "0648e014e3ae54a267b9a2bd32b485d280adc0bb",
+      "destination_sha256": "0855a997d22c88ab7d6e1f5f5752b817686c8b4520573f3273e3cdcc58887af1",
+      "byte_identical_to_source": false,
+      "declarations_and_proof_bodies_unchanged": true,
+      "source_imports": [
+        "SingularClosure.InfiniteScalarProduct",
+        "SingularClosure.FourierTransport",
+        "SingularClosure.FourierSobolevOperators",
+        "SingularClosure.HighOrderEstimate"
+      ],
+      "direct_imports": [
+        "SingularClosure.InfiniteScalarProduct",
+        "SingularClosure.FourierTransport",
+        "SingularClosure.FourierSobolevOperators",
+        "SingularClosure.SobolevMultiplierBasics"
+      ]
+    },
+    {
+      "module": "SingularClosure.FourierSobolevRhs",
+      "destination": "TEMP/SingularClosure/FourierSobolevRhs.lean",
+      "mode": "M1_minimal_import_port",
+      "upstream_commit": "4813604a46179c745b82f51bee51a186e9f4cc2d",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevRhs.lean",
+      "upstream_raw_url": "https://raw.githubusercontent.com/randogelist/Methlib/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevRhs.lean",
+      "source_sha256": "2e688e60bd78931a71e9da3fece53c073791f00977c1ca09aec36309cd3d1ca7",
+      "source_git_blob_sha": "d1744699f89f77177fb5cb598e67e04fbad28749",
+      "destination_sha256": "a855f1bfebd7ca3dfc8af8ced4a038dd1f8c786bb09ce5b17c20ca964c02eee9",
+      "byte_identical_to_source": false,
+      "declarations_and_proof_bodies_unchanged": true,
+      "source_imports": [
+        "SingularClosure.FourierSobolevProduct",
+        "SingularClosure.StrongCoefficientContracts",
+        "SingularClosure.SobolevTrajectoryCalculus",
+        "Mathlib.Analysis.Calculus.ContDiff.Operations"
+      ],
+      "direct_imports": [
+        "SingularClosure.FourierSobolevProduct",
+        "SingularClosure.FullFourierRhs",
+        "SingularClosure.TorusSobolevReal",
+        "Mathlib.Analysis.Calculus.ContDiff.Operations"
+      ]
+    },
+    {
+      "module": "SingularClosure.SobolevPressure",
+      "destination": "TEMP/SingularClosure/SobolevPressure.lean",
+      "mode": "exact_M1_copy",
+      "upstream_commit": "4813604a46179c745b82f51bee51a186e9f4cc2d",
+      "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevPressure.lean",
+      "upstream_raw_url": "https://raw.githubusercontent.com/randogelist/Methlib/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevPressure.lean",
+      "source_sha256": "e72c795a4db86870992cc07163be34919a7a8d48c05433336d16aec6827d1eca",
+      "source_git_blob_sha": "b277ceb27f4025cc872790a876e819a89cd8a991",
+      "destination_sha256": "e72c795a4db86870992cc07163be34919a7a8d48c05433336d16aec6827d1eca",
+      "byte_identical_to_source": true,
+      "declarations_and_proof_bodies_unchanged": true,
+      "source_imports": [
+        "SingularClosure.InfiniteFourierPressure",
+        "SingularClosure.FourierSobolevOperators",
+        "SingularClosure.SobolevSpacetimeSmooth",
+        "SingularClosure.FourierSobolevRhs"
+      ],
+      "direct_imports": [
+        "SingularClosure.InfiniteFourierPressure",
+        "SingularClosure.FourierSobolevOperators",
+        "SingularClosure.SobolevSpacetimeSmooth",
+        "SingularClosure.FourierSobolevRhs"
+      ]
+    },
+    {
+      "module": "SingularClosure.TorusSobolevReal",
+      "destination": "TEMP/SingularClosure/TorusSobolevReal.lean",
+      "mode": "M1_exact_declaration_extraction",
+      "sources": [
+        {
+          "upstream_commit": "4813604a46179c745b82f51bee51a186e9f4cc2d",
+          "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevTrajectoryCalculus.lean",
+          "upstream_raw_url": "https://raw.githubusercontent.com/randogelist/Methlib/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevTrajectoryCalculus.lean",
+          "source_sha256": "eb77fe810adaa0f195088ac3598acaa24828e2f3d07033af20ab43a3313f6519",
+          "source_git_blob_sha": "379952c8cabdfec26485e8b8240df6e355998f23",
+          "declarations": [
+            "SingularClosure.torusSobolevNormedSpaceReal",
+            "SingularClosure.torusSobolevRealScalarTower"
+          ],
+          "extracted_text_sha256": "86293f041887d3e6363711842e87df7cd6d5b50d2b15cd37d75d8d86d74f1969"
+        }
+      ],
+      "destination_sha256": "69e3eb429abae52dcec40a5e5ad5c78c008780de696ec71fe601e7c0a52c3b8f",
+      "declarations_and_proof_bodies_unchanged": true,
+      "direct_imports": [
+        "SingularClosure.TorusSobolev"
+      ]
+    },
+    {
+      "module": "SingularClosure.SobolevCoefficient",
+      "destination": "TEMP/SingularClosure/SobolevCoefficient.lean",
+      "mode": "M1_exact_declaration_extraction",
+      "sources": [
+        {
+          "upstream_commit": "4813604a46179c745b82f51bee51a186e9f4cc2d",
+          "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevLimitBounds.lean",
+          "upstream_raw_url": "https://raw.githubusercontent.com/randogelist/Methlib/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevLimitBounds.lean",
+          "source_sha256": "9ce34b76d3a0325b30f9f7e34daba9998c04d49150b3589ebcc2d7406aff1bf2",
+          "source_git_blob_sha": "9c9e579ab1d073c0efc25a8b9dcbd225642726f5",
+          "declarations": [
+            "SingularClosure.torusSobolevCoeff",
+            "SingularClosure.torusSobolevCoeff_apply",
+            "SingularClosure.torusSobolevCoeff_continuous"
+          ],
+          "extracted_text_sha256": "91a3baa65647ac1fa084f4164d4d4fffa416e2b134ab07976494f118ca2359ab"
+        }
+      ],
+      "destination_sha256": "826a4c23a2e04d0ee7b9ee8bbdb3d1d3fca0094a46243524f82b7a28eb83fae7",
+      "declarations_and_proof_bodies_unchanged": true,
+      "direct_imports": [
+        "SingularClosure.TorusSobolev"
+      ]
+    },
+    {
+      "module": "SingularClosure.SobolevMultiplierBasics",
+      "destination": "TEMP/SingularClosure/SobolevMultiplierBasics.lean",
+      "mode": "M1_exact_declaration_extraction",
+      "sources": [
+        {
+          "upstream_commit": "4813604a46179c745b82f51bee51a186e9f4cc2d",
+          "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/TorusGalerkinSobolev.lean",
+          "upstream_raw_url": "https://raw.githubusercontent.com/randogelist/Methlib/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/TorusGalerkinSobolev.lean",
+          "source_sha256": "ca33f9d5a8be2d0fdd0d355cdc98de0555a9026b304e5793159b8b13e1d704b4",
+          "source_git_blob_sha": "2ee17b11e2417a19a05a14a6b170e68397ce26f2",
+          "declarations": [
+            "SingularClosure.torusSobolevWeight_sq"
+          ],
+          "extracted_text_sha256": "8a6a6d6a6abe22a6abfb4504e4d2c6e00fcad139a665eeff8e28301a74b3f3a4"
+        },
+        {
+          "upstream_commit": "4813604a46179c745b82f51bee51a186e9f4cc2d",
+          "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/HighOrderEstimate.lean",
+          "upstream_raw_url": "https://raw.githubusercontent.com/randogelist/Methlib/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/HighOrderEstimate.lean",
+          "source_sha256": "86b602b3a55c5c1f63ccd5b14d8290a2a04fa84a3d00aea11c233d17d95f06ff",
+          "source_git_blob_sha": "28a4bb0df0006c7d1f506fe51cefb517d41527de",
+          "declarations": [
+            "SingularClosure.derivativeSymbol_norm_le_weight"
+          ],
+          "extracted_text_sha256": "834008670708149674395cb99c8538eb976cf1a96e407123060aa6e05e6a9fce"
+        }
+      ],
+      "destination_sha256": "f297e1efd09b0006be614d6cc33634ea752273321bcebaa40a2eeb798612d0de",
+      "declarations_and_proof_bodies_unchanged": true,
+      "direct_imports": [
+        "SingularClosure.TorusSobolev",
+        "SingularClosure.FiniteHessian"
+      ]
+    },
+    {
+      "module": "SingularClosure.FullFourierRhs",
+      "destination": "TEMP/SingularClosure/FullFourierRhs.lean",
+      "mode": "M1_exact_declaration_extraction",
+      "sources": [
+        {
+          "upstream_commit": "4813604a46179c745b82f51bee51a186e9f4cc2d",
+          "upstream_path": "regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/StrongCoefficientContracts.lean",
+          "upstream_raw_url": "https://raw.githubusercontent.com/randogelist/Methlib/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/StrongCoefficientContracts.lean",
+          "source_sha256": "642a3103808e9a4b5d04df48cecd1a183b294afbcccb6b0f787229794a984524",
+          "source_git_blob_sha": "e2d52d4c9e978ac9a5ced7fce412ff889df8d55d",
+          "declarations": [
+            "SingularClosure.fullFourierRhs"
+          ],
+          "extracted_text_sha256": "a4645f2dc55355a082821e6392adb30564e578920e4f9a1ceff04192ad3e84cd"
+        }
+      ],
+      "destination_sha256": "ba0059817b029718066cb6128c0a24ee48c77935cbb1b484a2079a25af54c99e",
+      "declarations_and_proof_bodies_unchanged": true,
+      "direct_imports": [
+        "SingularClosure.FourierTransport"
+      ]
+    }
+  ]
+}

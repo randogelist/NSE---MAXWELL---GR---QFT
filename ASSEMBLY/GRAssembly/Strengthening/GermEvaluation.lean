@@ -98,6 +98,8 @@ theorem nativeLocalEquiv_velocityAtCenter (ν ρ t0 : ℝ) (hρ : ρ ≠ 0)
       NSEgerm.velocityAtCenter n := by
   refine Quotient.inductionOn n ?_
   intro a
+  change GRgerm.velocityAtCenter (nativeLocalEquiv ν ρ t0 hρ (NSEgerm.mk a)) =
+    NSEgerm.velocityAtCenter (NSEgerm.mk a)
   rw [nativeLocalEquiv_mk, GRgerm.velocityAtCenter_mk, NSEgerm.velocityAtCenter_mk]
   exact (forward_velocity_recovery
     (nativeLocalPackage ν ρ t0 hρ).completion

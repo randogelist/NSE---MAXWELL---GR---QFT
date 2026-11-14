@@ -300,4 +300,3 @@ theorem FINITE_FOURIER_TAME_PRODUCT_BOUND (m : ℕ) :
 end
 
 end SingularClosure
-

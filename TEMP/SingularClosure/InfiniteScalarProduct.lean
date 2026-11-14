@@ -114,4 +114,3 @@ theorem INFINITE_SCALAR_FOURIER_PRODUCT_BOUND (m : ℕ) :
 end
 
 end SingularClosure
-

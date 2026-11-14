@@ -121,4 +121,3 @@ theorem integral_norm_sq_leray_le (N : ℕ) (c : FourierCoeff)
 end
 
 end SingularClosure
-
