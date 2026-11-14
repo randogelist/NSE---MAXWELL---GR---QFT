@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "goal": "NSE_GR_POSITIVE_TIME_BIUNIQUE_CORRESPONDENCE",
+  "goal_version": 1,
+  "compiler": "leanprover/lean4:v4.34.0-rc1",
+  "mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "global_status": "CONDITIONAL_ON_POSITIVE_TIME_ANALYTIC_SELECTION",
+  "promotion": "Exact compiled/audited relation-first core; the final Fefferman-B equivalence retains one explicit analytic-selection premise.",
+  "modules": [
+    {
+      "module": "GRAssembly.Strengthening.RelationCarrier",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/RelationCarrier.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.AnalyticForwardTrajectory",
+        "NSEGR.Strengthening.AnalyticForwardTrajectory.ext",
+        "NSEGR.Strengthening.AnalyticForwardTrajectory.pressure_analytic",
+        "NSEGR.Strengthening.AnalyticForwardTrajectory.positiveNSE",
+        "NSEGR.Strengthening.analyticForwardToPositiveProfile",
+        "NSEGR.Strengthening.analyticForwardToPositiveProfile_velocity",
+        "NSEGR.Strengthening.analyticForwardToPositiveProfile_pressure",
+        "NSEGR.Strengthening.analyticForwardToPositiveProfile_injective",
+        "NSEGR.Strengthening.profileRepresentativeToAnalyticForward",
+        "NSEGR.Strengthening.analyticForwardToPositiveProfile_profileRepresentativeToAnalyticForward",
+        "NSEGR.Strengthening.analyticForwardToPositiveProfile_surjective",
+        "NSEGR.Strengthening.analyticForwardProfileEquiv",
+        "NSEGR.Strengthening.analyticForwardProfileEquiv_apply"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.Correspondence",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/Correspondence.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.analyticForwardNSEFamily",
+        "NSEGR.Strengthening.analyticForwardGRFamilyEquiv",
+        "NSEGR.Strengthening.analyticForwardGRFamilyEquiv_apply",
+        "NSEGR.Strengthening.NSEGRCorresponds",
+        "NSEGR.Strengthening.nseGRCorresponds_iff_decode",
+        "NSEGR.Strengthening.nseGRCorresponds_iff_equiv_eq",
+        "NSEGR.Strengthening.nseGRCorresponds_source_existsUnique",
+        "NSEGR.Strengthening.nseGRCorresponds_target_existsUnique",
+        "NSEGR.Strengthening.NSE_GR_POSITIVE_TIME_BIUNIQUE_CORRESPONDENCE"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.RelationEquiv",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/RelationEquiv.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.NSE_GR_ANALYTIC_FORWARD_FAMILY_EQUIV",
+        "NSEGR.Strengthening.analyticForwardGRFamilyEquiv_graph"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.AnalyticBEquivalence",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/AnalyticBEquivalence.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.AnalyticFeffermanB",
+        "NSEGR.Strengthening.ANALYTIC_NSE_B_IFF_GR_BOUNDARY_FAMILY",
+        "NSEGR.Strengthening.analyticFeffermanB_implies_feffermanB",
+        "NSEGR.Strengthening.DatumwiseAnalyticSelection",
+        "NSEGR.Strengthening.PositiveTimeAnalyticSelection",
+        "NSEGR.Strengthening.datumwiseAnalyticSelection_implies_positiveTimeAnalyticSelection",
+        "NSEGR.Strengthening.datumwiseAnalyticSelection_of_velocityAnalyticity",
+        "NSEGR.Strengthening.positiveTimeAnalyticSelection_of_velocityAnalyticity",
+        "NSEGR.Strengthening.NSE_B_IFF_GR_BOUNDARY_FAMILY_OF_ANALYTIC_SELECTION",
+        "NSEGR.Strengthening.GR_BOUNDARY_FAMILY_IMPLIES_NSE_B_RELATION_FIRST"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    }
+  ]
+}
