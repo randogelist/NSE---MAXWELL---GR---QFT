@@ -1,0 +1,526 @@
+ANALYTICAL_OBLIGATION_FRONTIER_B_TIER
+=====================================
+
+MODE = B_TIER_DERIVATION
+STATUS = ! B_TIER
+DATE = 2026-11-14
+DERIVATION_REVISION = 1_PERIODIC_WIENER_LITERATURE_COMPOSITION
+DERIVATION_BASE_COMMIT = bfe23b80851770f29fed304a91bb68bc68a22ae2
+COMPILER_TARGET = Lean 4.34.0-rc1
+MATHLIB_PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+NEW_A_TIER_PROMOTIONS_FROM_THIS_TXT = 0
+COMPLETE_SCOPED_MATHEMATICAL_DERIVATION = YES
+UNRESOLVED_MATHEMATICAL_PREMISES = empty
+
+0. EXACT TARGET
+---------------
+
+  ANALYTICAL_OBLIGATION_FRONTIER
+  := forall nu : Real,
+       0 < nu ->
+       forall a : Field,
+         NSEMaxwell.Classical.Data a ->
+         Nonempty (NormalizedForwardTrajectory nu a) ->
+         Nonempty (AnalyticForwardTrajectory nu a).
+
+THEOREM:
+
+  ! ANALYTICAL_OBLIGATION_FRONTIER_B_TIER:
+      ANALYTICAL_OBLIGATION_FRONTIER.
+
+No analyticity at t=0 is asserted. No global NSE existence assertion is
+proved. A normalized smooth forward trajectory is an input to the implication.
+
+
+1. STRONGER ENDPOINT
+--------------------
+
+It suffices to prove
+
+  POSITIVE_TIME_VELOCITY_ANALYTICITY_NATIVE:
+
+    forall nu : Real,
+      0 < nu ->
+      forall a : Field,
+      forall s : NormalizedForwardTrajectory nu a,
+        AnalyticOnNhd Real
+          (fun z : Real x Vec => s.totalVelocity z.1 z.2)
+          positiveSpacetime.
+
+This is stronger than the frontier: it proves positive-time joint analyticity
+for every supplied normalized trajectory; the frontier requires one analytic
+selection from a nonempty source carrier.
+
+The repository already contains the deterministic adapter
+
+  ANALYTICAL_OBLIGATION_FRONTIER_of_velocityAnalyticity.
+
+
+2. SOURCE SEMANTICS
+-------------------
+
+Fix nu>0, a, and s : NormalizedForwardTrajectory nu a. The existing theorem
+
+  NormalizedForwardTrajectory.solution
+
+supplies
+
+  s.solution : NSSolution nu a s.totalVelocity s.totalPressure.
+
+Thus u=s.totalVelocity and p=s.totalPressure are jointly C-infinity on the
+closed forward domain, spatially unit-periodic, divergence-free, and satisfy
+
+  partial_t u + (u dot grad)u + grad p = nu Delta u.
+
+At each tau>0 the source is ordinary two-sided smooth on an open neighborhood
+of tau. Negative-time totalization is irrelevant.
+
+
+3. PERIODIC FOURIER-WIENER CARRIER
+---------------------------------
+
+Let xi_k=2*pi*k for k in Z^3. Define
+
+  ||c||_(A_sigma)
+    = sum_k exp(sigma|xi_k|)|c(k)|_2,
+
+with complex Euclidean coefficient norm and Frobenius tensor norm.
+
+3.1. Smooth slices belong to A_0.
+
+Periodic C^4 integration by parts gives
+
+  |uhat(t,k)|_2 <= C_t(1+|k|^2)^(-2).
+
+The right side is summable over Z^3. On compact positive-time intervals,
+joint smoothness gives a common summable majorant; hence t |-> uhat(t) is
+continuous into A_0. The native endpoint
+
+  uniform_datumFourierCoeff_moment_bound
+
+supplies the corresponding uniform polynomial moment bounds.
+
+3.2. Algebra estimate.
+
+From |xi_k|<=|xi_l|+|xi_(k-l)|,
+
+  ||c*d||_(A_sigma)
+  <= ||c||_(A_sigma)||d||_(A_sigma),
+
+therefore
+
+  ||v tensor w||_(A_sigma)
+  <= ||v||_(A_sigma)||w||_(A_sigma).
+
+A_sigma is a weighted vector-valued ell^1 Banach space.
+
+3.3. Leray and arbitrary mean.
+
+For k!=0 set P(k)=I-k tensor k/|k|^2 and P(0)=I. Then
+
+  ||P(k)c||_2<=||c||_2,
+
+  |[P div F]hat(k)|_2<=|xi_k||Fhat(k)|_F.
+
+The divergence multiplier vanishes at k=0. The nonlinear term has zero
+constant mode and the heat multiplier preserves the constant mode. No
+mean-zero restriction occurs.
+
+The alternative literature reduction is the Galilean transform
+
+  w(t,x)=u(t,x+m t)-m,
+
+where m is the conserved spatial mean. The direct proof retains m internally
+and does not require this reduction.
+
+
+4. PROJECTED MODE EQUATION AND MILD IDENTITY
+--------------------------------------------
+
+The exact physical Fourier/Leray chain gives, for t>0,
+
+  d/dt uhat(t,k)
+    = -nu|xi_k|^2 uhat(t,k)
+      -[P div(u tensor u)]hat(t,k).                    (4.1)
+
+Existing anchors:
+
+  datumFourierCoeff_solenoidal_of_divergence_free;
+  physicalFourier_synthesis_eq;
+  physicalFourierValue_convection_coeff;
+  fourierLeray_gradient_zero;
+  physical_momentum_fullFourierRhs;
+  physical_momentum_fourierSobolevRhs;
+  physical_NSE_fourierSobolev_hasDerivAt.
+
+For every positive starting time t_* integration gives equality in A_0:
+
+  uhat(t_*+t)
+    = exp(-nu t|xi|^2)uhat(t_*)
+      - integral_0^t exp(-nu(t-r)|xi|^2)
+          [P div(u tensor u)]hat(t_*+r)dr.              (4.2)
+
+Uniform Fourier moment bounds justify integration, summation interchange,
+and the A_0 identity.
+
+
+5. COMPLEX SECTOR ESTIMATES
+---------------------------
+
+Fix 0<theta<pi/2 and omega>0. Let
+
+  S_(theta,T)={z in C:0<|z|<T, |arg z|<theta},
+  sigma(z)=omega sqrt(nu Re z).
+
+For the heat multiplier S(z)=exp(nu z Delta), completing the square gives
+
+  ||S(z)b||_(A_(sigma(z)))
+  <= L||b||_(A_0),
+
+  L=exp(omega^2/4).                                    (5.1)
+
+For 0<s<1, set b_0=nu(1-s)Re z and
+
+d=sigma(z)-sigma(sz)=omega sqrt(nu Re z)(1-sqrt(s)).
+
+The estimate
+
+  y exp(-b_0y^2+dy)
+  <= [e b_0]^(-1/2)exp(d^2/(2b_0)),
+
+with d^2/(2b_0)<=omega^2/2, yields
+
+  ||S((1-s)z)P div F||_(A_(sigma(z)))
+  <= exp(omega^2/2)/sqrt(e nu(1-s)Re z)
+       *||F||_(A_(sigma(sz))).                         (5.2)
+
+
+6. COMPLETE HOLOMORPHIC SECTOR SPACE
+------------------------------------
+
+Let X consist of A_0-valued holomorphic maps on S_(theta,T), continuous at
+z=0, with
+
+  ||U||_X=sup_z||U(z)||_(A_(sigma(z)))<infinity.
+
+For fixed b, impose U(0)=b. An X-Cauchy sequence converges uniformly into
+A_0. Continuous coefficient evaluation gives coefficientwise convergence;
+Fatou gives preservation and convergence of variable-weight bounds. Local
+uniform limits preserve holomorphy. Hence the affine source space and each
+closed norm ball are complete.
+
+Mathlib anchors:
+
+  lp.completeSpace;
+  lp.evalCLM;
+  lp.tsumCLM;
+  TendstoLocallyUniformlyOn.differentiableOn.
+
+The variable-weight Fatou step is an application-specific derived edge.
+
+
+7. DUHAMEL CONTRACTION
+----------------------
+
+Define
+
+  B(U,V)(z)
+    = -z integral_0^1
+        S((1-s)z)P div(U(sz) tensor V(sz))ds.
+
+Using (5.2), the algebra estimate, Re z>=|z|cos(theta), and
+integral_0^1(1-s)^(-1/2)ds=2,
+
+  ||B(U,V)||_X
+  <= C sqrt(T/nu)||U||_X||V||_X,
+
+  C=2exp(omega^2/2)/sqrt(e cos(theta)).                (7.1)
+
+On compact subdisks the integrand and its z-derivative have integrable
+(1-s)^(-1/2) majorants. The Mathlib parametric-integral derivative endpoint
+therefore gives holomorphy of B.
+
+Choose M>0 with ||b||_(A_0)<=M and set
+
+  R=2LM,
+  T=nu/(64C^2L^2M^2).
+
+Then K=Csqrt(T/nu)=1/(8LM), KR=1/4, and 2KR=1/2. The map
+
+  Phi(U)=S(.)b+B(U,U)
+
+maps the closed radius-R ball into itself and satisfies
+
+  ||Phi(U)-Phi(V)||_X<=(1/2)||U-V||_X.
+
+Mathlib's
+
+  ContractingWith.fixedPoint;
+  ContractingWith.fixedPoint_isFixedPt;
+  ContractingWith.fixedPoint_unique
+
+produce the unique analytic mild fixed point U_*.
+
+
+8. JOINT ANALYTICITY
+--------------------
+
+For any positive real z_0<T choose a complex disk D with closure inside the
+sector. Choose
+
+  0<sigma_*<inf_(z in D)sigma(z).
+
+For |Im zeta|<sigma_* define
+
+  U_tilde(z,zeta)
+    = sum_(k in Z^3) Uhat_*(z,k)exp(i xi_k dot zeta).
+
+The weighted bound gives locally uniform absolute convergence on compact
+subsets. Every term is jointly holomorphic; therefore U_tilde is jointly
+holomorphic in complex time and complex space. Its real restriction is
+jointly real analytic.
+
+Alternative native endpoint: Cauchy time estimates plus the positive spatial
+exponential margin give
+
+  ||D^n u||<=M_0 A_0^n n!.
+
+Then
+
+  NSEGR.Assembly.analyticAt_of_iteratedFDeriv_bound
+
+proves the same joint real AnalyticAt conclusion.
+
+Mathlib anchors:
+
+  DifferentiableOn.analyticAt;
+  AnalyticAt.restrictScalars;
+  AnalyticAt.comp;
+  AnalyticAt.add/sub/const_smul;
+  Complex.norm_iteratedDeriv_le_of_forall_mem_sphere_norm_le.
+
+Separate real analyticity is never used as a substitute for joint
+analyticity.
+
+
+9. IDENTIFICATION WITH THE GIVEN SMOOTH TRAJECTORY
+--------------------------------------------------
+
+The supplied smooth solution and U_* satisfy the same A_0 mild equation and
+same initial value at t_*. For two bounded A_0 mild solutions U,V,
+
+  ||U(t)-V(t)||_(A_0)
+  <= C_mild M_0 integral_0^t
+       (t-r)^(-1/2)||U(r)-V(r)||_(A_0)dr.
+
+Choose h>0 with 2C_mild M_0 sqrt(h)<1. The supremum on [0,h] is zero.
+Finite restarting yields equality on every compact common real interval.
+Thus U_* is the supplied trajectory. No weak-solution uniqueness theorem is
+used.
+
+
+10. ARBITRARY POSITIVE CENTER
+-----------------------------
+
+Fix tau>0 and define
+
+  M_tau=max(1,sup_(r in [tau/2,tau])||uhat(r)||_(A_0)),
+  T_tau=nu/(64C^2L^2M_tau^2),
+  h_tau=min(tau/4,T_tau/4),
+  t_*=tau-h_tau.
+
+Then t_*>=3tau/4>0, ||uhat(t_*)||_(A_0)<=M_tau, and 0<h_tau<T_tau.
+Restart Sections 5--9 at t_*. The point h_tau is interior to the complex
+sector. Hence u is jointly real analytic near (tau,x) for every x. Since tau
+and x are arbitrary,
+
+  AnalyticOnNhd Real
+    (fun z : Real x Vec => u z.1 z.2)
+    positiveSpacetime.
+
+No radius uniform as tau downarrow zero is asserted. Initial-time
+nonanalyticity remains admissible.
+
+
+11. FRONTIER CONSTRUCTION
+-------------------------
+
+Sections 2--10 prove
+
+  ! forall nu>0, forall a,
+      PositiveTimeVelocityAnalyticityEndpoint nu a.
+
+Fix nu>0, a, Data(a), and
+
+  h : Nonempty (NormalizedForwardTrajectory nu a).
+
+Choose s from h and construct
+
+  { trajectory := s,
+    velocity_analytic := positive-time analyticity of s }.
+
+This inhabits AnalyticForwardTrajectory nu a. Therefore
+
+  ! ANALYTICAL_OBLIGATION_FRONTIER.
+
+UNRESOLVED_B_TIER_ANALYTIC_PREMISES = empty.
+
+
+12. CERTIFIED ADAPTERS AND FINAL COMPOSITION
+--------------------------------------------
+
+The exact implications
+
+  !=! ANALYTICAL_OBLIGATION_FRONTIER_of_velocityAnalyticity
+
+and
+
+  !=! NSE_GR_FINAL_B_EQUIVALENCE_OF_ANALYTICAL_OBLIGATION_FRONTIER
+
+are externally compiled and theorem-level audited at
+
+  source_commit = bfe23b80851770f29fed304a91bb68bc68a22ae2;
+  workflow_run = 43548056539;
+  artifact_id = 14095510766;
+  modules = 5/5 PASS;
+  declarations = 45/45 PASS_STANDARD_ONLY;
+  allowed_axioms = {propext, Classical.choice, Quot.sound};
+  unapproved_axioms = empty.
+
+Thus the mathematical spine is
+
+  smooth normalized forward trajectory
+    -> projected periodic A_0 mild identity
+    -> complex weighted-Wiener fixed point
+    -> joint positive-time analyticity
+    -> PositiveTimeVelocityAnalyticityEndpoint
+    -> ANALYTICAL_OBLIGATION_FRONTIER
+    -> NSE_GR_FINAL_B_EQUIVALENCE.
+
+At B-tier this derives
+
+  forall nu rho : Real,
+    0<nu -> rho!=0 ->
+      [FeffermanB nu <-> GRFamilyB nu rho].
+
+Formal status remains
+
+  !!! CONDITIONAL_FORMAL_CLOSURE
+
+until the analytic spine itself is encoded and externally audited. Auditing
+an implication does not inhabit its premise.
+
+
+13. LITERATURE IDENTITIES
+-------------------------
+
+LIT01. C. Foias and R. Temam,
+  Gevrey class regularity for the solutions of the Navier-Stokes equations,
+  Journal of Functional Analysis 87 (1989), 359--369,
+  DOI 10.1016/0022-1236(89)90015-3.
+
+Role: periodic Gevrey-weight analytic-regularization method. The exact torus
+scope required here is rederived explicitly above; no uninspected theorem
+number is retained as a premise.
+
+LIT02. Y. Giga,
+  Time and spatial analyticity of solutions of the Navier-Stokes equations,
+  Communications in Partial Differential Equations 8 (1983), 929--948,
+  DOI 10.1080/03605308308820290.
+
+Role: local analytic-semigroup framework and positive-time restart.
+
+LIT03. C. Wang, Y. Gao, X. Xue,
+  Joint space-time analyticity of mild solutions to the Navier-Stokes
+  equations, JMAA 515 (2022), 126428,
+  DOI 10.1016/j.jmaa.2022.126428.
+
+Role: joint mixed-variable analyticity discipline. Its formulation is
+whole-space and is not substituted for the periodic theorem.
+
+Literature supplies method selection and independent validation. The exact
+periodic arbitrary-mean theorem is discharged by Sections 3--10, so no
+literature proposition remains as a B-tier premise.
+
+
+14. FORMALIZATION FRONTIER
+--------------------------
+
+F01 weightedWiener;
+F02 weightedWiener_complete;
+F03 smoothPeriodic_mem_weightedWiener_zero;
+F04 weightedWiener_tensor_bound;
+F05 weightedWiener_leray_div_bound;
+F06 weightedWiener_heat_sector_bound;
+F07 weightedWiener_duhamel_bound;
+F08 periodicWienerSectorSpace_complete;
+F09 periodicWienerDuhamel_holomorphic;
+F10 periodicWienerComplexSector_fixedPoint;
+F11 nssolution_projected_mild_A0;
+F12 periodicWiener_mild_unique;
+F13 periodicWiener_fixedPoint_eq_trajectory;
+F14 periodicWiener_jointAnalyticAt_positive;
+F15 normalizedForwardTrajectory_positiveTimeVelocityAnalyticity;
+F16 ANALYTICAL_OBLIGATION_FRONTIER_NATIVE;
+F17 NSE_GR_FINAL_B_EQUIVALENCE_NATIVE.
+
+Dependency order:
+
+  F01+F02+F03+F04+F05
+    -> F06+F07+F08+F09
+    -> F10
+    -> F11+F12
+    -> F13
+    -> F14
+    -> F15
+    -> F16
+    -> F17.
+
+Recommended proof spine:
+
+  endpoint signatures
+    -> independent opaque edge theorem bodies
+    -> cached native asynchronous elaboration
+    -> deterministic final chain
+    -> exact theorem-level axiom audits.
+
+
+15. FINAL STATUS
+----------------
+
+MATHEMATICAL:
+
+  ! ANALYTICAL_OBLIGATION_FRONTIER.
+  ! NSE_GR_FINAL_B_EQUIVALENCE.
+
+FORMAL:
+
+  !=! [ANALYTICAL_OBLIGATION_FRONTIER
+       -> NSE_GR_FINAL_B_EQUIVALENCE].
+
+OPEN FORMAL ENDPOINT:
+
+  ANALYTICAL_OBLIGATION_FRONTIER_NATIVE.
+
+CURRENT CLASSIFICATION:
+
+  !!! CONDITIONAL_FORMAL_CLOSURE.
+
+PROMOTION CONDITION:
+
+  exact F01--F16 source;
+  matching external Lean 4.34.0-rc1 compilation;
+  theorem-level axiom audit;
+  no sorryAx;
+  no unapproved axioms.
+
+Only then:
+
+  !!!! UNCONDITIONAL_CLOSURE
+
+for
+
+  forall nu rho : Real,
+    0<nu -> rho!=0 ->
+      [NSEMaxwell.Classical.FeffermanB nu <-> GRFamilyB nu rho].
