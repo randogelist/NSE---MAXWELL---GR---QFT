@@ -1,0 +1,5241 @@
+{
+  "schema_version": 1,
+  "source_commit": "0cfe699254426e2c47a15fb5cf692551bdf84a72",
+  "github_run_id": "43532711276",
+  "github_run_attempt": "1",
+  "actual_lean_version": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+  "actual_mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_manifest_sha256": "4e83976e147e4b3e42db9349554b0e27b338b8839b7b73d3a8ebe2aca4c32a46",
+  "source_input_verification": "PASS",
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "modules": [
+    {
+      "module": "GRAssembly.Strengthening.Calculus",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/Calculus.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.spatialPartial_eq_coordinateDerivative",
+        "NSEGR.Strengthening.gradient_eq_classical",
+        "NSEGR.Strengthening.divergence_eq_classical",
+        "NSEGR.Strengthening.laplacian_eq_classical",
+        "NSEGR.Strengthening.convection_eq_classical",
+        "NSEGR.Strengthening.spatialPeriodic_iff_classical",
+        "NSEGR.Strengthening.timeDerivative_eq_localTimeDerivative",
+        "NSEGR.Strengthening.scalarTimeDerivative_eq_localTimeDerivative",
+        "NSEGR.Strengthening.nse_gr_calculus_agree_on_positive_time",
+        "NSEGR.Strengthening.originNormalize",
+        "NSEGR.Strengthening.originNormalize_zero",
+        "NSEGR.Strengthening.originNormalize_idempotent",
+        "NSEGR.Strengthening.originNormalize_gradient",
+        "NSEGR.Strengthening.originNormalize_smooth",
+        "NSEGR.Strengthening.originNormalize_periodic",
+        "NSEGR.Strengthening.nssolution_originNormalize",
+        "NSEGR.Strengthening.normalized_forward_pressure",
+        "NSEGR.Strengthening.positiveSpacetime",
+        "NSEGR.Strengthening.PositiveAnalyticNSE",
+        "NSEGR.Strengthening.positiveAnalyticNSE_of_nssolution",
+        "NSEGR.Strengthening.half_timeInterval_positive",
+        "NSEGR.Strengthening.positiveTimeNSERepresentative",
+        "NSEGR.Strengthening.positive_time_nse_representative"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "56f4f170b9f50830e15e1281873cbd1c60942905269d6c646f2f4429a8846f98",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-GRAssembly-Strengthening-Calculus.log",
+      "errors": []
+    },
+    {
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/SourceCarrier.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.nssolution_congr_forward",
+        "NSEGR.Strengthening.NormalizedTrajectoryRepresentative",
+        "NSEGR.Strengthening.NormalizedTrajectoryRepresentative.setoid",
+        "NSEGR.Strengthening.NormalizedForwardTrajectory",
+        "NSEGR.Strengthening.NormalizedForwardTrajectory.mk",
+        "NSEGR.Strengthening.NormalizedForwardTrajectory.sound",
+        "NSEGR.Strengthening.NormalizedForwardTrajectory.velocity",
+        "NSEGR.Strengthening.NormalizedForwardTrajectory.pressure",
+        "NSEGR.Strengthening.NormalizedForwardTrajectory.velocity_mk",
+        "NSEGR.Strengthening.NormalizedForwardTrajectory.pressure_mk",
+        "NSEGR.Strengthening.NormalizedForwardTrajectory.pressure_zero",
+        "NSEGR.Strengthening.NormalizedForwardTrajectory.initial",
+        "NSEGR.Strengthening.NormalizedForwardTrajectory.eq_iff_forward",
+        "NSEGR.Strengthening.NormalizedForwardTrajectory.totalVelocity",
+        "NSEGR.Strengthening.NormalizedForwardTrajectory.totalPressure",
+        "NSEGR.Strengthening.NormalizedForwardTrajectory.totalVelocity_eq",
+        "NSEGR.Strengthening.NormalizedForwardTrajectory.totalPressure_eq",
+        "NSEGR.Strengthening.NormalizedForwardTrajectory.solution",
+        "NSEGR.Strengthening.NormalizedForwardTrajectory.totalPressure_zero",
+        "NSEGR.Strengthening.normalizedTrajectoryOfNSSolution",
+        "NSEGR.Strengthening.literal_nssolution_nonempty_normalized_source",
+        "NSEGR.Strengthening.feffermanB_iff_normalized_source_nonempty"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "ffca0fa0085a47c3595c886377f688f2e71558fb2488e264a677545c8c2501f3",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-GRAssembly-Strengthening-SourceCarrier.log",
+      "errors": []
+    },
+    {
+      "module": "GRAssembly.Strengthening.GermEvaluation",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/GermEvaluation.lean",
+      "audit_targets": [
+        "NSEGR.sameFlowAt_center_velocity",
+        "NSEGR.NSEgerm.velocityAtCenter",
+        "NSEGR.NSEgerm.velocityAtCenter_mk",
+        "NSEGR.sameMetricAt_center_velocity",
+        "NSEGR.GRgerm.velocityAtCenter",
+        "NSEGR.GRgerm.velocityAtCenter_mk",
+        "NSEGR.Strengthening.NativeLocalPackage",
+        "NSEGR.Strengthening.nativeLocalPackage_nonempty",
+        "NSEGR.Strengthening.nativeLocalPackage",
+        "NSEGR.Strengthening.nativeLocalEquiv",
+        "NSEGR.Strengthening.nativeLocalEquiv_mk",
+        "NSEGR.Strengthening.nativeLocalEquiv_symm_mk",
+        "NSEGR.Strengthening.nativeLocalEquiv_velocityAtCenter",
+        "NSEGR.Strengthening.nativeLocalEquiv_symm_velocityAtCenter",
+        "NSEGR.Strengthening.nativeLocalEquiv_left_inverse",
+        "NSEGR.Strengthening.nativeLocalEquiv_right_inverse",
+        "NSEGR.Strengthening.forward_recovery_positive_interval"
+      ],
+      "build_status": "FAIL_OR_BLOCKED",
+      "audit_status": "SKIPPED_BUILD_FAILURE",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log"
+    },
+    {
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.PositiveTime",
+        "NSEGR.Strengthening.PositiveTimeNSEGermFamily",
+        "NSEGR.Strengthening.PositiveTimeGRGermFamily",
+        "NSEGR.Strengthening.nseFamilyVelocity",
+        "NSEGR.Strengthening.grFamilyVelocity",
+        "NSEGR.Strengthening.SpatialSmoothInitialTrace",
+        "NSEGR.Strengthening.spatialSmoothInitialTrace_congr",
+        "NSEGR.Strengthening.NSEVelocityCoherent",
+        "NSEGR.Strengthening.DecodedVelocityCoherent",
+        "NSEGR.Strengthening.NSEForwardFamily",
+        "NSEGR.Strengthening.GRForwardFamily",
+        "NSEGR.Strengthening.nseForwardFamily_ext",
+        "NSEGR.Strengthening.grForwardFamily_ext",
+        "NSEGR.Strengthening.coherence_interval_transfer",
+        "NSEGR.Strengthening.nse_coherence_any_representative",
+        "NSEGR.Strengthening.gr_coherence_any_representative",
+        "NSEGR.Strengthening.encodeNSEFamily",
+        "NSEGR.Strengthening.decodeGRFamily",
+        "NSEGR.Strengthening.encodeNSEFamily_velocity",
+        "NSEGR.Strengthening.decodeGRFamily_velocity",
+        "NSEGR.Strengthening.decodeGRFamily_encodeNSEFamily",
+        "NSEGR.Strengthening.encodeNSEFamily_decodeGRFamily",
+        "NSEGR.Strengthening.encodeNSEFamily_coherent",
+        "NSEGR.Strengthening.decodeGRFamily_coherent",
+        "NSEGR.Strengthening.encodeNSEFamily_trace",
+        "NSEGR.Strengthening.decodeGRFamily_trace",
+        "NSEGR.Strengthening.coherentFamilyEquiv",
+        "NSEGR.Strengthening.NSE_GR_COHERENT_FAMILY_EQUIVALENCE",
+        "NSEGR.Strengthening.coherentFamilyEquiv_velocity"
+      ],
+      "build_status": "FAIL_OR_BLOCKED",
+      "audit_status": "SKIPPED_BUILD_FAILURE",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log"
+    },
+    {
+      "module": "SingularClosure.TorusSobolevReal",
+      "path": "TEMP/SingularClosure/TorusSobolevReal.lean",
+      "audit_targets": [
+        "SingularClosure.torusSobolevNormedSpaceReal",
+        "SingularClosure.torusSobolevRealScalarTower"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "a1fc5ec0c42875393a736c3592cbbc8a0978eb6aeaf2f2783fd83c0b4b1d6d03",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-TorusSobolevReal.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.SobolevCoefficient",
+      "path": "TEMP/SingularClosure/SobolevCoefficient.lean",
+      "audit_targets": [
+        "SingularClosure.torusSobolevCoeff",
+        "SingularClosure.torusSobolevCoeff_apply",
+        "SingularClosure.torusSobolevCoeff_continuous"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "d42a32dedb9341a95bfd3c00b6cd07c683bd89edfe23eb81086272e31e889872",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-SobolevCoefficient.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.SobolevScaleTimeSmooth",
+      "path": "TEMP/SingularClosure/SobolevScaleTimeSmooth.lean",
+      "audit_targets": [
+        "SingularClosure.sobolevScale_contDiffOn_nat",
+        "SingularClosure.SOBOLEV_SCALE_TIME_SMOOTH"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "70c570378b3ce91bafc43a8a9e996e158a6b459668a2bd4c0fe4520692234bcd",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-SobolevScaleTimeSmooth.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.SmoothEvaluation",
+      "path": "TEMP/SingularClosure/SmoothEvaluation.lean",
+      "audit_targets": [
+        "SingularClosure.banachFourierSeries",
+        "SingularClosure.banachFourierSeries_summable",
+        "SingularClosure.banachFourierSeries_continuous",
+        "SingularClosure.banachFourierSeries_derivative_bound",
+        "SingularClosure.banachFourierSeries_hasFDerivAt",
+        "SingularClosure.banachFourierSeries_fderiv_apply",
+        "SingularClosure.banachFourierSeries_contDiff_nat",
+        "SingularClosure.torusSobolevCoeff_norm_le_inv_weight",
+        "SingularClosure.sobolevEvaluation_moment_le",
+        "SingularClosure.sobolevEvaluation_moment_summable",
+        "SingularClosure.sobolevScalarEvaluation",
+        "SingularClosure.sobolevScalarEvaluation_summable",
+        "SingularClosure.sobolevScalarEvaluation_apply",
+        "SingularClosure.sobolevScalarEvaluation_contDiff",
+        "SingularClosure.sobolevScalarEvaluation_real_contDiff",
+        "SingularClosure.sobolevPhysicalEvaluation",
+        "SingularClosure.sobolevPhysicalEvaluation_apply",
+        "SingularClosure.sobolevPhysicalEvaluation_contDiff",
+        "SingularClosure.sobolevScalarEvaluation4",
+        "SingularClosure.sobolevPhysicalEvaluation4"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "095f32bdb33731c9072c50bffddbcdb79ab925374302ec43bcf3d54b190f4d60",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-SmoothEvaluation.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.SobolevSpacetimeSmooth",
+      "path": "TEMP/SingularClosure/SobolevSpacetimeSmooth.lean",
+      "audit_targets": [
+        "SingularClosure.sobolevCurve_spacetime_contDiffOn_nat",
+        "SingularClosure.SOBOLEV_CURVES_JOINT_SPACETIME_SMOOTH"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "343d51b6e367e48cd3d094c9c730acf209392aed352afcdb2d91288f76411e52",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-SobolevSpacetimeSmooth.log",
+      "errors": []
+    },
+    {
+      "module": "GRAssembly.Strengthening.SobolevTrace",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/SobolevTrace.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.coefficientSobolevCurve",
+        "NSEGR.Strengthening.coefficientSobolevCurve_coeff",
+        "NSEGR.Strengthening.coefficientSobolevCurve_compatible",
+        "NSEGR.Strengthening.sobolev_forward_continuous",
+        "NSEGR.Strengthening.sobolev_right_boundary_equation",
+        "NSEGR.Strengthening.sobolev_forward_derivative_equation",
+        "NSEGR.Strengthening.sobolev_forward_time_smooth",
+        "NSEGR.Strengthening.sobolev_forward_joint_smooth",
+        "NSEGR.Strengthening.actual_field_forward_joint_smooth"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "41af2cea19b57cdb0a2d39c8d36365d5c433d1ac7908e9e0228d84c29e456c40",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-GRAssembly-Strengthening-SobolevTrace.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.FourierProduct",
+      "path": "TEMP/SingularClosure/FourierProduct.lean",
+      "audit_targets": [
+        "SingularClosure.scalarFourierSeries_product_coefficient",
+        "SingularClosure.physicalTensorColumn",
+        "SingularClosure.physicalTensorColumn_contDiff",
+        "SingularClosure.physicalTensorColumn_periodic",
+        "SingularClosure.physicalTensorColumn_coordinateDerivative",
+        "SingularClosure.convection_eq_tensor_divergence",
+        "SingularClosure.datumFourierCoeff_physicalTensorColumn",
+        "SingularClosure.fullTransportCoefficients",
+        "SingularClosure.smoothFourierSynthesis_convection_coeff",
+        "SingularClosure.convection_contDiff",
+        "SingularClosure.convection_periodic",
+        "SingularClosure.divergenceTransport_allSobolev",
+        "SingularClosure.divergenceTransport_rapid",
+        "SingularClosure.divergenceTransport_reality"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "b73eaee683d786073d221fc13c50bc1c31f3b0b5c154e69ee55f2154ebf1fae5",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-FourierProduct.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.FourierSobolevOperators",
+      "path": "TEMP/SingularClosure/FourierSobolevOperators.lean",
+      "audit_targets": [
+        "SingularClosure.torusSobolev_weightedCoeff_norm",
+        "SingularClosure.torusSobolev_weightedCoeff_norm_mono",
+        "SingularClosure.exists_torusSobolevLiftValue",
+        "SingularClosure.torusSobolevLiftValue",
+        "SingularClosure.torusSobolevLiftValue_coeff",
+        "SingularClosure.torusSobolevLiftLinear",
+        "SingularClosure.torusSobolevLiftLinear_coeff",
+        "SingularClosure.torusSobolevLower_mem",
+        "SingularClosure.torusSobolevLowerLinear",
+        "SingularClosure.torusSobolevLowerLinear_coeff",
+        "SingularClosure.torusSobolevLowerLinear_norm_le",
+        "SingularClosure.torusSobolevLower_bound",
+        "SingularClosure.torusSobolevLower",
+        "SingularClosure.torusSobolevLower_coeff",
+        "SingularClosure.torusSobolevLower_coeff_apply",
+        "SingularClosure.torusSobolevLower_norm_le",
+        "SingularClosure.torusSobolev_finite_weighted_sum_le",
+        "SingularClosure.torusSobolev_multiplier_weighted_norm_le",
+        "SingularClosure.fourierMultiplierLinear",
+        "SingularClosure.torusSobolevMultiplier_mem",
+        "SingularClosure.torusSobolevMultiplierLinear",
+        "SingularClosure.torusSobolevMultiplierLinear_coeff",
+        "SingularClosure.torusSobolevMultiplierLinear_norm_le",
+        "SingularClosure.torusSobolevMultiplier",
+        "SingularClosure.torusSobolevMultiplier_coeff",
+        "SingularClosure.torusSobolev_laplacian_multiplier_bound",
+        "SingularClosure.torusSobolevLaplacian",
+        "SingularClosure.torusSobolevLaplacian_coeff",
+        "SingularClosure.torusSobolevViscous",
+        "SingularClosure.torusSobolevViscous_coeff",
+        "SingularClosure.coefficientLeray_add_arg",
+        "SingularClosure.coefficientLeray_smul_arg",
+        "SingularClosure.torusSobolev_leray_mode_sum_le",
+        "SingularClosure.torusSobolev_leray_finite_sum_le",
+        "SingularClosure.fourierLerayLinear",
+        "SingularClosure.torusSobolevLeray_mem",
+        "SingularClosure.torusSobolevLerayLinear",
+        "SingularClosure.torusSobolevLerayLinear_coeff",
+        "SingularClosure.torusSobolevLerayLinear_norm_le",
+        "SingularClosure.torusSobolevLeray_bound",
+        "SingularClosure.torusSobolevLeray",
+        "SingularClosure.torusSobolevLeray_coeff",
+        "SingularClosure.torusSobolevLeray_norm_le"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "5247074f379e90a0f6106e49cf14ad2edec18d32f08b2d3cb670db7c296eb5b7",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-FourierSobolevOperators.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.FourierSobolevProduct",
+      "path": "TEMP/SingularClosure/FourierSobolevProduct.lean",
+      "audit_targets": [
+        "SingularClosure.torusSobolev_component_moment_sum_le",
+        "SingularClosure.sobolevDivergenceProductCoeff",
+        "SingularClosure.sobolevDivergenceProductCoeff_apply",
+        "SingularClosure.sobolev_tensor_coefficient_summable",
+        "SingularClosure.sobolevDivergenceProductCoeff_weighted_sq_le",
+        "SingularClosure.SOBOLEV_DIVERGENCE_PRODUCT_FINITE_BOUND",
+        "SingularClosure.SOBOLEV_DIVERGENCE_PRODUCT_MEM_NORM_BOUND",
+        "SingularClosure.sobolevDivergenceProductCoeff_mem",
+        "SingularClosure.sobolevDivergenceProduct",
+        "SingularClosure.sobolevDivergenceProduct_coeff",
+        "SingularClosure.SOBOLEV_DIVERGENCE_PRODUCT_NORM_BOUND"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "eb2b3f550c410830d92131bf663e66a44e980c3b627eda92a98d6ccfd3a16f02",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-FourierSobolevProduct.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.FourierSobolevRhs",
+      "path": "TEMP/SingularClosure/FourierSobolevRhs.lean",
+      "audit_targets": [
+        "SingularClosure.sobolevDivergenceProduct_add_left",
+        "SingularClosure.sobolevDivergenceProduct_add_right",
+        "SingularClosure.sobolevDivergenceProduct_smul_left",
+        "SingularClosure.sobolevDivergenceProduct_smul_right",
+        "SingularClosure.sobolevDivergenceProductLinear",
+        "SingularClosure.sobolevDivergenceProductBilinear",
+        "SingularClosure.sobolevDivergenceProductBilinear_apply",
+        "SingularClosure.sobolevDivergenceProduct_diagonal_contDiff",
+        "SingularClosure.fourierSobolevRhs",
+        "SingularClosure.fourierSobolevRhs_contDiff",
+        "SingularClosure.fourierSobolevRhs_coefficient_eq_fullRhs"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "9e63a12ed3d48c619cab2a247611a270655588cde427a9be4e02e92f28387611",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-FourierSobolevRhs.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.FourierTransport",
+      "path": "TEMP/SingularClosure/FourierTransport.lean",
+      "audit_targets": [
+        "SingularClosure.frequencyReflection",
+        "SingularClosure.reflectedFourierSequence",
+        "SingularClosure.reflectedFourierSequence_apply",
+        "SingularClosure.reflectedFourierSequence_norm",
+        "SingularClosure.fourierVectorComponent_norm_le",
+        "SingularClosure.sobolevComponentSequence",
+        "SingularClosure.sobolevComponentSequence_apply",
+        "SingularClosure.sobolevComponentSequence_norm_le",
+        "SingularClosure.fourierTensorCoefficient",
+        "SingularClosure.fourierTensorCoefficient_summable_norm",
+        "SingularClosure.fourierTensorCoefficient_summable",
+        "SingularClosure.fourierTensorCoefficient_norm_le",
+        "SingularClosure.fourierTensorCoefficient_add_left",
+        "SingularClosure.fourierTensorCoefficient_add_right",
+        "SingularClosure.fourierTensorCoefficient_smul_left",
+        "SingularClosure.fourierTensorCoefficient_smul_right",
+        "SingularClosure.fourierTensorLinear",
+        "SingularClosure.fourierTensorBilinear",
+        "SingularClosure.fourierTensorBilinear_apply",
+        "SingularClosure.divergenceTransportCoefficient",
+        "SingularClosure.divergenceTransportCoefficient_apply",
+        "SingularClosure.divergenceTransportCoefficient_continuous",
+        "SingularClosure.fourierTensorCoefficient_eq_sum",
+        "SingularClosure.derivativeSymbol_sub",
+        "SingularClosure.solenoidal_derivativeSymbol_sum",
+        "SingularClosure.coefficientTransport_eq_divergenceTransport"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "ac85faf2ba9cb2b6f92d25773797195b31efe7e7bd17f06fd8a91bafa960c93f",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-FourierTransport.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.FullFourierRhs",
+      "path": "TEMP/SingularClosure/FullFourierRhs.lean",
+      "audit_targets": [
+        "SingularClosure.fullFourierRhs"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "fe82fd3dd6872cf39ccb20c340d09e2c8608c5e1ade56aaec20eb97a953d0459",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-FullFourierRhs.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.GalerkinEnergyIntegral",
+      "path": "TEMP/SingularClosure/GalerkinEnergyIntegral.lean",
+      "audit_targets": [
+        "SingularClosure.GalerkinSolution.coefficientEnergy_continuousOn",
+        "SingularClosure.GalerkinSolution.coefficientDissipation_continuousOn",
+        "SingularClosure.GalerkinSolution.coefficientDissipation_intervalIntegrable",
+        "SingularClosure.GalerkinSolution.coefficientEnergy_integral_identity",
+        "SingularClosure.GalerkinSolution.coefficientEnergy_initial_eq",
+        "SingularClosure.GalerkinSolution.coefficientDissipation_integral_le"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "3eeabb405aff6c6d78ae0e716722f2f9aa8ed4953b1d01fb43843d977e520674",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-GalerkinEnergyIntegral.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.HighOrderProduct",
+      "path": "TEMP/SingularClosure/HighOrderProduct.lean",
+      "audit_targets": [
+        "SingularClosure.galerkinFreqSq_add_le",
+        "SingularClosure.torusSobolevWeight_add_sq_le",
+        "SingularClosure.torusSobolevWeight_add_le",
+        "SingularClosure.torusSobolevWeight_add_pow_le",
+        "SingularClosure.finite_sum_comp_le_of_support",
+        "SingularClosure.frequency_sub_right_injective",
+        "SingularClosure.frequency_sub_left_injective",
+        "SingularClosure.finite_real_convolution_young_left",
+        "SingularClosure.finite_real_convolution_young_right",
+        "SingularClosure.finiteScalarConvolution",
+        "SingularClosure.finiteScalarConvolution_weighted_norm_le",
+        "SingularClosure.finiteScalarConvolution_weighted_square_le",
+        "SingularClosure.FINITE_FOURIER_TAME_PRODUCT_BOUND"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "bde76b1daacd74be12ca03c528c3022df1aea651564d536d18365e9d2b892239",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-HighOrderProduct.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "path": "TEMP/SingularClosure/InfiniteFourierPressure.lean",
+      "audit_targets": [
+        "SingularClosure.frequency_coord_abs_le_freqSq",
+        "SingularClosure.pressureFromTransport_norm_le",
+        "SingularClosure.infinitePressureCoefficient",
+        "SingularClosure.infinitePressureCoefficient_zero",
+        "SingularClosure.infinitePressureCoefficient_rapid",
+        "SingularClosure.infinitePressureCoefficient_reality",
+        "SingularClosure.infiniteTransportPressure",
+        "SingularClosure.infiniteTransportPressure_contDiff",
+        "SingularClosure.infiniteTransportPressure_periodic",
+        "SingularClosure.infiniteTransportPressure_meanZero",
+        "SingularClosure.pressure_derivativeSymbol_recovery",
+        "SingularClosure.infiniteTransportPressure_gradient",
+        "SingularClosure.infiniteTransportPressure_recovery",
+        "SingularClosure.infinitePressureGradient_rapid",
+        "SingularClosure.infinitePressureGradient_reality",
+        "SingularClosure.infiniteTransportPressure_gradient_coeff",
+        "SingularClosure.infiniteTransportPressure_complex_series",
+        "SingularClosure.infiniteTransportPressure_coeff",
+        "SingularClosure.fullTransportPressure",
+        "SingularClosure.fullTransportPressure_coefficient_rapid",
+        "SingularClosure.fullTransportPressure_coefficient_reality",
+        "SingularClosure.fullTransportPressure_contDiff",
+        "SingularClosure.fullTransportPressure_periodic",
+        "SingularClosure.fullTransportPressure_meanZero",
+        "SingularClosure.fullTransportPressure_gradient_coeff",
+        "SingularClosure.INFINITE_TRANSPORT_PRESSURE_RECOVERY"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "08515cd55075a388e6c39766af7f90a64debe460f466e47dbf89d68ca4e564fd",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-InfiniteFourierPressure.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.InfiniteScalarProduct",
+      "path": "TEMP/SingularClosure/InfiniteScalarProduct.lean",
+      "audit_targets": [
+        "SingularClosure.scalarConvolution_weighted_square_partialSum_tendsto",
+        "SingularClosure.INFINITE_SCALAR_FOURIER_PRODUCT_BOUND"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "ff5cf5042dd5258afb426020dec7a7e2c506832f9e840613dd0551f749f86557",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-InfiniteScalarProduct.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.LerayL2Contraction",
+      "path": "TEMP/SingularClosure/LerayL2Contraction.lean",
+      "audit_targets": [
+        "SingularClosure.complex_normSq_split",
+        "SingularClosure.coefficientLeray_remainder_orthogonal",
+        "SingularClosure.coefficientLeray_energy_pythagoras",
+        "SingularClosure.coefficientLeray_energy_le",
+        "SingularClosure.lerayFourierCoeff",
+        "SingularClosure.lerayFourierCoeff_solenoidal",
+        "SingularClosure.lerayFourierCoeff_reality",
+        "SingularClosure.coefficientEnergy_leray_le",
+        "SingularClosure.coefficientWeightedEnergy_leray_le",
+        "SingularClosure.physicalEnergy_leray_le",
+        "SingularClosure.integral_norm_sq_leray_le"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "4de12227d048c31bb78972a134633a42bfa6753bac6c0c1046339482f851d26d",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-LerayL2Contraction.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.PeriodicPoincare",
+      "path": "TEMP/SingularClosure/PeriodicPoincare.lean",
+      "audit_targets": [
+        "SingularClosure.galerkinFreqSq_ge_one_of_ne_zero",
+        "SingularClosure.galerkinFreqSq_ge_one_of_mem",
+        "SingularClosure.fourierLaplacianSymbol_ge_four_pi_sq",
+        "SingularClosure.COEFFICIENT_POINCARE",
+        "SingularClosure.COEFFICIENT_GRADIENT_POINCARE",
+        "SingularClosure.FINITE_PHYSICAL_POINCARE",
+        "SingularClosure.FINITE_PHYSICAL_NORM_POINCARE",
+        "SingularClosure.GalerkinSolution.physicalPoincare"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "facdf29fdbed10d322ca96571f18efe2bc9fe533378843aefad3602252293118",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-PeriodicPoincare.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.PhysicalEnergy",
+      "path": "TEMP/SingularClosure/PhysicalEnergy.lean",
+      "audit_targets": [
+        "SingularClosure.physicalDissipation",
+        "SingularClosure.GalerkinSolution.physicalDissipation_eq",
+        "SingularClosure.GalerkinSolution.physicalEnergy_eq",
+        "SingularClosure.GalerkinSolution.velocity_initial",
+        "SingularClosure.GALERKIN_ENERGY_IDENTITY"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "6361b10845223dd7e89515b9e4b96f6f176fcf29d194bb131fedb3c4952a1046",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-PhysicalEnergy.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.SobolevL2Realization",
+      "path": "TEMP/SingularClosure/SobolevL2Realization.lean",
+      "audit_targets": [
+        "SingularClosure.fourierVectorSequence_summable_sq",
+        "SingularClosure.fourierVectorComponent",
+        "SingularClosure.fourierVectorComponent_apply",
+        "SingularClosure.fourierVectorComponent_add",
+        "SingularClosure.fourierVectorComponent_smul",
+        "SingularClosure.fourierVectorComponent_norm_sq",
+        "SingularClosure.fourierVectorComponent_sum_norm_sq",
+        "SingularClosure.fourierVectorL2Synthesis",
+        "SingularClosure.fourierVectorL2Synthesis_repr",
+        "SingularClosure.fourierVectorL2Synthesis_add",
+        "SingularClosure.fourierVectorL2Synthesis_smul",
+        "SingularClosure.fourierVectorL2Synthesis_norm_sq",
+        "SingularClosure.fourierVectorL2Synthesis_norm",
+        "SingularClosure.fourierVectorL2Isometry",
+        "SingularClosure.fourierVectorL2Synthesis_fourierCoeff",
+        "SingularClosure.torusSobolevL2",
+        "SingularClosure.torusSobolevL2_fourierCoeff",
+        "SingularClosure.torusSobolevL2_norm",
+        "SingularClosure.torusSobolevL2_isometry",
+        "SingularClosure.torusSobolevL2_eq_of_fourierCoeff"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "76202cff1346f9440e89008e75c54b69dc3d7bdb9a2fca6b6a9a293a653de422",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-SobolevL2Realization.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.SobolevMultiplierBasics",
+      "path": "TEMP/SingularClosure/SobolevMultiplierBasics.lean",
+      "audit_targets": [
+        "SingularClosure.torusSobolevWeight_sq",
+        "SingularClosure.derivativeSymbol_norm_le_weight"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "979ac1a7f6caf3aa85bd866b3f17156cff7139161e39dec718cb1e0aba5b2d43",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-SobolevMultiplierBasics.log",
+      "errors": []
+    },
+    {
+      "module": "SingularClosure.SobolevPressure",
+      "path": "TEMP/SingularClosure/SobolevPressure.lean",
+      "audit_targets": [
+        "SingularClosure.pressureFromTransport_add_arg",
+        "SingularClosure.pressureFromTransport_smul_arg",
+        "SingularClosure.pressureVectorCoeff",
+        "SingularClosure.pressureVectorCoeff_first",
+        "SingularClosure.pressureVectorCoeff_zero_mode",
+        "SingularClosure.pressureVectorCoeff_add",
+        "SingularClosure.pressureVectorCoeff_smul",
+        "SingularClosure.pressureFromTransport_norm_sq_le",
+        "SingularClosure.torusSobolev_pressure_mode_sum_le",
+        "SingularClosure.torusSobolev_pressure_finite_sum_le",
+        "SingularClosure.pressureFourierLinear",
+        "SingularClosure.torusSobolevPressure_mem",
+        "SingularClosure.torusSobolevPressureLinear",
+        "SingularClosure.torusSobolevPressureLinear_coeff",
+        "SingularClosure.torusSobolevPressureLinear_norm_le",
+        "SingularClosure.torusSobolevPressure",
+        "SingularClosure.torusSobolevPressure_coeff",
+        "SingularClosure.torusSobolevPressure_norm_sq_le",
+        "SingularClosure.smoothFourierSynthesis_pressureVector_first",
+        "SingularClosure.sobolevTransportPressureCurve",
+        "SingularClosure.sobolevTransportPressureCurve_contDiffOn",
+        "SingularClosure.sobolevTransportPressureCurve_coeff",
+        "SingularClosure.SOBOLEV_TRANSPORT_PRESSURE_JOINT_SMOOTH"
+      ],
+      "build_status": "PASS",
+      "audit_status": "PASS_STANDARD_ONLY",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log",
+      "olean_sha256": "8034f4218e2dc2b21a6f36834115e0bf951546f8542a68d8ec74cfc6b79008f4",
+      "freshness_exit_code": 0,
+      "audit_source": "Batch-Audit.lean",
+      "audit_source_sha256": "5a91e6aeefb7ecf55b7ccd9720fef6964d822355a296bdd3d8f1c939dc72faa5",
+      "audit_exit_code": 0,
+      "audit_log": "audit-SingularClosure-SobolevPressure.log",
+      "errors": []
+    },
+    {
+      "module": "GRAssembly.Strengthening.SobolevNSETrace",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/SobolevNSETrace.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.fourierNSE_right_boundary_equation",
+        "NSEGR.Strengthening.fourierNSE_forward_time_smooth",
+        "NSEGR.Strengthening.fourierNSE_forward_joint_smooth",
+        "NSEGR.Strengthening.normalizedSobolevPressure",
+        "NSEGR.Strengthening.normalizedSobolevPressure_origin",
+        "NSEGR.Strengthening.normalizedSobolevPressure_periodic",
+        "NSEGR.Strengthening.normalizedSobolevPressure_joint_smooth",
+        "NSEGR.Strengthening.fourierNSE_normalized_pressure_joint_smooth",
+        "NSEGR.Strengthening.actual_NSE_fields_forward_joint_smooth"
+      ],
+      "build_status": "FAIL_OR_BLOCKED",
+      "audit_status": "SKIPPED_BUILD_FAILURE",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log"
+    },
+    {
+      "module": "GRAssembly.Strengthening.PositivePDE",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/PositivePDE.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.localNSE_originNormalize",
+        "NSEGR.Strengthening.fderiv_eq_of_gradient_eq",
+        "NSEGR.Strengthening.originNormalize_eq_of_gradient_eq",
+        "NSEGR.Strengthening.localNSE_gradient_eq_of_eventuallyEq",
+        "NSEGR.Strengthening.localNSE_originNormalize_eq_of_eventuallyEq",
+        "NSEGR.Strengthening.closure_positiveSpacetime",
+        "NSEGR.Strengthening.continuousOn_forward_eq_zero_of_positive",
+        "NSEGR.Strengthening.forward_gradient_smooth",
+        "NSEGR.Strengthening.forward_convection_smooth",
+        "NSEGR.Strengthening.forward_laplacian_smooth",
+        "NSEGR.Strengthening.forward_divergence_smooth",
+        "NSEGR.Strengthening.forwardResidual",
+        "NSEGR.Strengthening.forwardResidual_smooth",
+        "NSEGR.Strengthening.forward_residual_zero_of_positive",
+        "NSEGR.Strengthening.forward_divergence_zero_of_positive",
+        "NSEGR.Strengthening.nssolution_of_positive_time_equations",
+        "NSEGR.Strengthening.nssolution_initial_right_derivative"
+      ],
+      "build_status": "FAIL_OR_BLOCKED",
+      "audit_status": "SKIPPED_BUILD_FAILURE",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log"
+    },
+    {
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+      "audit_targets": [
+        "NSEGR.sameFlowAt_center_origin_pressure",
+        "NSEGR.NSEgerm.originPressureAtCenter",
+        "NSEGR.NSEgerm.originPressureAtCenter_mk",
+        "NSEGR.NSEgerm.originPressureAtCenter_zero",
+        "NSEGR.Strengthening.PositiveProfileRepresentative.setoid",
+        "NSEGR.Strengthening.PositiveTimeProfile",
+        "NSEGR.Strengthening.PositiveTimeProfile.mk",
+        "NSEGR.Strengthening.PositiveTimeProfile.velocity",
+        "NSEGR.Strengthening.PositiveTimeProfile.pressure",
+        "NSEGR.Strengthening.PositiveTimeProfile.velocity_mk",
+        "NSEGR.Strengthening.PositiveTimeProfile.pressure_mk",
+        "NSEGR.Strengthening.PositiveTimeProfile.pressure_zero",
+        "NSEGR.Strengthening.PositiveTimeProfile.eq_iff_positive",
+        "NSEGR.Strengthening.positiveProfileRepresentativeToNSEFamily",
+        "NSEGR.Strengthening.positiveProfileRepresentativeToNSEFamily_respects",
+        "NSEGR.Strengthening.profileToNSEFamily",
+        "NSEGR.Strengthening.profileToNSEFamily_mk",
+        "NSEGR.Strengthening.profileToNSEFamily_velocity",
+        "NSEGR.Strengthening.profileToNSEFamily_pressure",
+        "NSEGR.Strengthening.profileToNSEFamily_injective",
+        "NSEGR.Strengthening.nseFamilyPressure",
+        "NSEGR.Strengthening.positiveVelocityTotal",
+        "NSEGR.Strengthening.positivePressureTotal",
+        "NSEGR.Strengthening.positiveVelocityTotal_at",
+        "NSEGR.Strengthening.positivePressureTotal_at",
+        "NSEGR.Strengthening.coherent_nse_family_pressure_match",
+        "NSEGR.Strengthening.positiveAnalyticNSE_of_local_representatives",
+        "NSEGR.Strengthening.coherent_nse_family_positiveAnalyticNSE",
+        "NSEGR.Strengthening.nseFamilyToProfileRepresentative",
+        "NSEGR.Strengthening.nseFamilyToProfile",
+        "NSEGR.Strengthening.profileToNSEFamily_nseFamilyToProfile",
+        "NSEGR.Strengthening.nseFamilyToProfile_profileToNSEFamily",
+        "NSEGR.Strengthening.profileNSEFamilyEquiv",
+        "NSEGR.Strengthening.POSITIVE_PROFILE_NSE_FAMILY_EQUIVALENCE",
+        "NSEGR.Strengthening.positiveProfileGRFamilyEquiv",
+        "NSEGR.Strengthening.POSITIVE_PROFILE_GR_FAMILY_EQUIVALENCE",
+        "NSEGR.Strengthening.PositiveProfileRepresentative"
+      ],
+      "build_status": "FAIL_OR_BLOCKED",
+      "audit_status": "SKIPPED_BUILD_FAILURE",
+      "cache_strategy": "BATCH_LAKE_BUILD_AND_SUCCESSFUL_TRANSITIVE_FRESHNESS_CHECK",
+      "batch_build_exit_code": 1,
+      "build_log": "build-batch.log"
+    }
+  ],
+  "declarations": [
+    {
+      "name": "NSEGR.sameFlowAt_center_velocity",
+      "module": "GRAssembly.Strengthening.GermEvaluation",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.NSEgerm.velocityAtCenter",
+      "module": "GRAssembly.Strengthening.GermEvaluation",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.NSEgerm.velocityAtCenter_mk",
+      "module": "GRAssembly.Strengthening.GermEvaluation",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.sameMetricAt_center_velocity",
+      "module": "GRAssembly.Strengthening.GermEvaluation",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.GRgerm.velocityAtCenter",
+      "module": "GRAssembly.Strengthening.GermEvaluation",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.GRgerm.velocityAtCenter_mk",
+      "module": "GRAssembly.Strengthening.GermEvaluation",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.NativeLocalPackage",
+      "module": "GRAssembly.Strengthening.GermEvaluation",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.nativeLocalPackage_nonempty",
+      "module": "GRAssembly.Strengthening.GermEvaluation",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.nativeLocalPackage",
+      "module": "GRAssembly.Strengthening.GermEvaluation",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.nativeLocalEquiv",
+      "module": "GRAssembly.Strengthening.GermEvaluation",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.nativeLocalEquiv_mk",
+      "module": "GRAssembly.Strengthening.GermEvaluation",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.nativeLocalEquiv_symm_mk",
+      "module": "GRAssembly.Strengthening.GermEvaluation",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.nativeLocalEquiv_velocityAtCenter",
+      "module": "GRAssembly.Strengthening.GermEvaluation",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.nativeLocalEquiv_symm_velocityAtCenter",
+      "module": "GRAssembly.Strengthening.GermEvaluation",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.nativeLocalEquiv_left_inverse",
+      "module": "GRAssembly.Strengthening.GermEvaluation",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.nativeLocalEquiv_right_inverse",
+      "module": "GRAssembly.Strengthening.GermEvaluation",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.forward_recovery_positive_interval",
+      "module": "GRAssembly.Strengthening.GermEvaluation",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.PositiveTime",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.PositiveTimeNSEGermFamily",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.PositiveTimeGRGermFamily",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.nseFamilyVelocity",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.grFamilyVelocity",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.SpatialSmoothInitialTrace",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.spatialSmoothInitialTrace_congr",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.NSEVelocityCoherent",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.DecodedVelocityCoherent",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.NSEForwardFamily",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.GRForwardFamily",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.nseForwardFamily_ext",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.grForwardFamily_ext",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.coherence_interval_transfer",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.nse_coherence_any_representative",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.gr_coherence_any_representative",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.encodeNSEFamily",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.decodeGRFamily",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.encodeNSEFamily_velocity",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.decodeGRFamily_velocity",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.decodeGRFamily_encodeNSEFamily",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.encodeNSEFamily_decodeGRFamily",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.encodeNSEFamily_coherent",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.decodeGRFamily_coherent",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.encodeNSEFamily_trace",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.decodeGRFamily_trace",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.coherentFamilyEquiv",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.NSE_GR_COHERENT_FAMILY_EQUIVALENCE",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.coherentFamilyEquiv_velocity",
+      "module": "GRAssembly.Strengthening.GermFamilies",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.fourierNSE_right_boundary_equation",
+      "module": "GRAssembly.Strengthening.SobolevNSETrace",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.fourierNSE_forward_time_smooth",
+      "module": "GRAssembly.Strengthening.SobolevNSETrace",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.fourierNSE_forward_joint_smooth",
+      "module": "GRAssembly.Strengthening.SobolevNSETrace",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.normalizedSobolevPressure",
+      "module": "GRAssembly.Strengthening.SobolevNSETrace",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.normalizedSobolevPressure_origin",
+      "module": "GRAssembly.Strengthening.SobolevNSETrace",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.normalizedSobolevPressure_periodic",
+      "module": "GRAssembly.Strengthening.SobolevNSETrace",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.normalizedSobolevPressure_joint_smooth",
+      "module": "GRAssembly.Strengthening.SobolevNSETrace",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.fourierNSE_normalized_pressure_joint_smooth",
+      "module": "GRAssembly.Strengthening.SobolevNSETrace",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.actual_NSE_fields_forward_joint_smooth",
+      "module": "GRAssembly.Strengthening.SobolevNSETrace",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.localNSE_originNormalize",
+      "module": "GRAssembly.Strengthening.PositivePDE",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.fderiv_eq_of_gradient_eq",
+      "module": "GRAssembly.Strengthening.PositivePDE",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.originNormalize_eq_of_gradient_eq",
+      "module": "GRAssembly.Strengthening.PositivePDE",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.localNSE_gradient_eq_of_eventuallyEq",
+      "module": "GRAssembly.Strengthening.PositivePDE",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.localNSE_originNormalize_eq_of_eventuallyEq",
+      "module": "GRAssembly.Strengthening.PositivePDE",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.closure_positiveSpacetime",
+      "module": "GRAssembly.Strengthening.PositivePDE",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.continuousOn_forward_eq_zero_of_positive",
+      "module": "GRAssembly.Strengthening.PositivePDE",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.forward_gradient_smooth",
+      "module": "GRAssembly.Strengthening.PositivePDE",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.forward_convection_smooth",
+      "module": "GRAssembly.Strengthening.PositivePDE",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.forward_laplacian_smooth",
+      "module": "GRAssembly.Strengthening.PositivePDE",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.forward_divergence_smooth",
+      "module": "GRAssembly.Strengthening.PositivePDE",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.forwardResidual",
+      "module": "GRAssembly.Strengthening.PositivePDE",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.forwardResidual_smooth",
+      "module": "GRAssembly.Strengthening.PositivePDE",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.forward_residual_zero_of_positive",
+      "module": "GRAssembly.Strengthening.PositivePDE",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.forward_divergence_zero_of_positive",
+      "module": "GRAssembly.Strengthening.PositivePDE",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.nssolution_of_positive_time_equations",
+      "module": "GRAssembly.Strengthening.PositivePDE",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.nssolution_initial_right_derivative",
+      "module": "GRAssembly.Strengthening.PositivePDE",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.sameFlowAt_center_origin_pressure",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.NSEgerm.originPressureAtCenter",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.NSEgerm.originPressureAtCenter_mk",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.NSEgerm.originPressureAtCenter_zero",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.PositiveProfileRepresentative.setoid",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.PositiveTimeProfile",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.PositiveTimeProfile.mk",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.PositiveTimeProfile.velocity",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.PositiveTimeProfile.pressure",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.PositiveTimeProfile.velocity_mk",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.PositiveTimeProfile.pressure_mk",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.PositiveTimeProfile.pressure_zero",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.PositiveTimeProfile.eq_iff_positive",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.positiveProfileRepresentativeToNSEFamily",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.positiveProfileRepresentativeToNSEFamily_respects",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.profileToNSEFamily",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.profileToNSEFamily_mk",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.profileToNSEFamily_velocity",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.profileToNSEFamily_pressure",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.profileToNSEFamily_injective",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.nseFamilyPressure",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.positiveVelocityTotal",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.positivePressureTotal",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.positiveVelocityTotal_at",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.positivePressureTotal_at",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.coherent_nse_family_pressure_match",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.positiveAnalyticNSE_of_local_representatives",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.coherent_nse_family_positiveAnalyticNSE",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.nseFamilyToProfileRepresentative",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.nseFamilyToProfile",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.profileToNSEFamily_nseFamilyToProfile",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.nseFamilyToProfile_profileToNSEFamily",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.profileNSEFamilyEquiv",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.POSITIVE_PROFILE_NSE_FAMILY_EQUIVALENCE",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.positiveProfileGRFamilyEquiv",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.POSITIVE_PROFILE_GR_FAMILY_EQUIVALENCE",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.PositiveProfileRepresentative",
+      "module": "GRAssembly.Strengthening.PositiveProfiles",
+      "kind": "declaration",
+      "status": "SKIPPED_BUILD_FAILURE"
+    },
+    {
+      "name": "NSEGR.Strengthening.spatialPartial_eq_coordinateDerivative",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.gradient_eq_classical",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.divergence_eq_classical",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.laplacian_eq_classical",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.convection_eq_classical",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.spatialPeriodic_iff_classical",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.timeDerivative_eq_localTimeDerivative",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.scalarTimeDerivative_eq_localTimeDerivative",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.nse_gr_calculus_agree_on_positive_time",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.originNormalize",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.originNormalize_zero",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.originNormalize_idempotent",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.originNormalize_gradient",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.originNormalize_smooth",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.originNormalize_periodic",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.nssolution_originNormalize",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.normalized_forward_pressure",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.positiveSpacetime",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.PositiveAnalyticNSE",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.positiveAnalyticNSE_of_nssolution",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.half_timeInterval_positive",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.positiveTimeNSERepresentative",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.positive_time_nse_representative",
+      "module": "GRAssembly.Strengthening.Calculus",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.nssolution_congr_forward",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.NormalizedTrajectoryRepresentative",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.NormalizedTrajectoryRepresentative.setoid",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.NormalizedForwardTrajectory",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.NormalizedForwardTrajectory.mk",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.NormalizedForwardTrajectory.sound",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.NormalizedForwardTrajectory.velocity",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.NormalizedForwardTrajectory.pressure",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.NormalizedForwardTrajectory.velocity_mk",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.NormalizedForwardTrajectory.pressure_mk",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.NormalizedForwardTrajectory.pressure_zero",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.NormalizedForwardTrajectory.initial",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.NormalizedForwardTrajectory.eq_iff_forward",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.NormalizedForwardTrajectory.totalVelocity",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.NormalizedForwardTrajectory.totalPressure",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.NormalizedForwardTrajectory.totalVelocity_eq",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.NormalizedForwardTrajectory.totalPressure_eq",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.NormalizedForwardTrajectory.solution",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.NormalizedForwardTrajectory.totalPressure_zero",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.normalizedTrajectoryOfNSSolution",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.literal_nssolution_nonempty_normalized_source",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.feffermanB_iff_normalized_source_nonempty",
+      "module": "GRAssembly.Strengthening.SourceCarrier",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevNormedSpaceReal",
+      "module": "SingularClosure.TorusSobolevReal",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevRealScalarTower",
+      "module": "SingularClosure.TorusSobolevReal",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevCoeff",
+      "module": "SingularClosure.SobolevCoefficient",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevCoeff_apply",
+      "module": "SingularClosure.SobolevCoefficient",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevCoeff_continuous",
+      "module": "SingularClosure.SobolevCoefficient",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevScale_contDiffOn_nat",
+      "module": "SingularClosure.SobolevScaleTimeSmooth",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.SOBOLEV_SCALE_TIME_SMOOTH",
+      "module": "SingularClosure.SobolevScaleTimeSmooth",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.banachFourierSeries",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.banachFourierSeries_summable",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.banachFourierSeries_continuous",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.banachFourierSeries_derivative_bound",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.banachFourierSeries_hasFDerivAt",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.banachFourierSeries_fderiv_apply",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.banachFourierSeries_contDiff_nat",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevCoeff_norm_le_inv_weight",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevEvaluation_moment_le",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevEvaluation_moment_summable",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevScalarEvaluation",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevScalarEvaluation_summable",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevScalarEvaluation_apply",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevScalarEvaluation_contDiff",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevScalarEvaluation_real_contDiff",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevPhysicalEvaluation",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevPhysicalEvaluation_apply",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevPhysicalEvaluation_contDiff",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevScalarEvaluation4",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevPhysicalEvaluation4",
+      "module": "SingularClosure.SmoothEvaluation",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevCurve_spacetime_contDiffOn_nat",
+      "module": "SingularClosure.SobolevSpacetimeSmooth",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.SOBOLEV_CURVES_JOINT_SPACETIME_SMOOTH",
+      "module": "SingularClosure.SobolevSpacetimeSmooth",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.coefficientSobolevCurve",
+      "module": "GRAssembly.Strengthening.SobolevTrace",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.coefficientSobolevCurve_coeff",
+      "module": "GRAssembly.Strengthening.SobolevTrace",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.coefficientSobolevCurve_compatible",
+      "module": "GRAssembly.Strengthening.SobolevTrace",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.sobolev_forward_continuous",
+      "module": "GRAssembly.Strengthening.SobolevTrace",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.sobolev_right_boundary_equation",
+      "module": "GRAssembly.Strengthening.SobolevTrace",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.sobolev_forward_derivative_equation",
+      "module": "GRAssembly.Strengthening.SobolevTrace",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.sobolev_forward_time_smooth",
+      "module": "GRAssembly.Strengthening.SobolevTrace",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.sobolev_forward_joint_smooth",
+      "module": "GRAssembly.Strengthening.SobolevTrace",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "NSEGR.Strengthening.actual_field_forward_joint_smooth",
+      "module": "GRAssembly.Strengthening.SobolevTrace",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.scalarFourierSeries_product_coefficient",
+      "module": "SingularClosure.FourierProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.physicalTensorColumn",
+      "module": "SingularClosure.FourierProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.physicalTensorColumn_contDiff",
+      "module": "SingularClosure.FourierProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.physicalTensorColumn_periodic",
+      "module": "SingularClosure.FourierProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.physicalTensorColumn_coordinateDerivative",
+      "module": "SingularClosure.FourierProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.convection_eq_tensor_divergence",
+      "module": "SingularClosure.FourierProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.datumFourierCoeff_physicalTensorColumn",
+      "module": "SingularClosure.FourierProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fullTransportCoefficients",
+      "module": "SingularClosure.FourierProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.smoothFourierSynthesis_convection_coeff",
+      "module": "SingularClosure.FourierProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.convection_contDiff",
+      "module": "SingularClosure.FourierProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.convection_periodic",
+      "module": "SingularClosure.FourierProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.divergenceTransport_allSobolev",
+      "module": "SingularClosure.FourierProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.divergenceTransport_rapid",
+      "module": "SingularClosure.FourierProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.divergenceTransport_reality",
+      "module": "SingularClosure.FourierProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolev_weightedCoeff_norm",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolev_weightedCoeff_norm_mono",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.exists_torusSobolevLiftValue",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLiftValue",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLiftValue_coeff",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLiftLinear",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLiftLinear_coeff",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLower_mem",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLowerLinear",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLowerLinear_coeff",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLowerLinear_norm_le",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLower_bound",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLower",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLower_coeff",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLower_coeff_apply",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLower_norm_le",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolev_finite_weighted_sum_le",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolev_multiplier_weighted_norm_le",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierMultiplierLinear",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevMultiplier_mem",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevMultiplierLinear",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevMultiplierLinear_coeff",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevMultiplierLinear_norm_le",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevMultiplier",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevMultiplier_coeff",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolev_laplacian_multiplier_bound",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLaplacian",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLaplacian_coeff",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevViscous",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevViscous_coeff",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.coefficientLeray_add_arg",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.coefficientLeray_smul_arg",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolev_leray_mode_sum_le",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolev_leray_finite_sum_le",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierLerayLinear",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLeray_mem",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLerayLinear",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLerayLinear_coeff",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLerayLinear_norm_le",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLeray_bound",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLeray",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLeray_coeff",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevLeray_norm_le",
+      "module": "SingularClosure.FourierSobolevOperators",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolev_component_moment_sum_le",
+      "module": "SingularClosure.FourierSobolevProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevDivergenceProductCoeff",
+      "module": "SingularClosure.FourierSobolevProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevDivergenceProductCoeff_apply",
+      "module": "SingularClosure.FourierSobolevProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolev_tensor_coefficient_summable",
+      "module": "SingularClosure.FourierSobolevProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevDivergenceProductCoeff_weighted_sq_le",
+      "module": "SingularClosure.FourierSobolevProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.SOBOLEV_DIVERGENCE_PRODUCT_FINITE_BOUND",
+      "module": "SingularClosure.FourierSobolevProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.SOBOLEV_DIVERGENCE_PRODUCT_MEM_NORM_BOUND",
+      "module": "SingularClosure.FourierSobolevProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevDivergenceProductCoeff_mem",
+      "module": "SingularClosure.FourierSobolevProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevDivergenceProduct",
+      "module": "SingularClosure.FourierSobolevProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevDivergenceProduct_coeff",
+      "module": "SingularClosure.FourierSobolevProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.SOBOLEV_DIVERGENCE_PRODUCT_NORM_BOUND",
+      "module": "SingularClosure.FourierSobolevProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevDivergenceProduct_add_left",
+      "module": "SingularClosure.FourierSobolevRhs",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevDivergenceProduct_add_right",
+      "module": "SingularClosure.FourierSobolevRhs",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevDivergenceProduct_smul_left",
+      "module": "SingularClosure.FourierSobolevRhs",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevDivergenceProduct_smul_right",
+      "module": "SingularClosure.FourierSobolevRhs",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevDivergenceProductLinear",
+      "module": "SingularClosure.FourierSobolevRhs",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevDivergenceProductBilinear",
+      "module": "SingularClosure.FourierSobolevRhs",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevDivergenceProductBilinear_apply",
+      "module": "SingularClosure.FourierSobolevRhs",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevDivergenceProduct_diagonal_contDiff",
+      "module": "SingularClosure.FourierSobolevRhs",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierSobolevRhs",
+      "module": "SingularClosure.FourierSobolevRhs",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierSobolevRhs_contDiff",
+      "module": "SingularClosure.FourierSobolevRhs",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierSobolevRhs_coefficient_eq_fullRhs",
+      "module": "SingularClosure.FourierSobolevRhs",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.frequencyReflection",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.reflectedFourierSequence",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.reflectedFourierSequence_apply",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.reflectedFourierSequence_norm",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierVectorComponent_norm_le",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevComponentSequence",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevComponentSequence_apply",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevComponentSequence_norm_le",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierTensorCoefficient",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierTensorCoefficient_summable_norm",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierTensorCoefficient_summable",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierTensorCoefficient_norm_le",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierTensorCoefficient_add_left",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierTensorCoefficient_add_right",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierTensorCoefficient_smul_left",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierTensorCoefficient_smul_right",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierTensorLinear",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierTensorBilinear",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierTensorBilinear_apply",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.divergenceTransportCoefficient",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.divergenceTransportCoefficient_apply",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.divergenceTransportCoefficient_continuous",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierTensorCoefficient_eq_sum",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.derivativeSymbol_sub",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.solenoidal_derivativeSymbol_sum",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.coefficientTransport_eq_divergenceTransport",
+      "module": "SingularClosure.FourierTransport",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fullFourierRhs",
+      "module": "SingularClosure.FullFourierRhs",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.GalerkinSolution.coefficientEnergy_continuousOn",
+      "module": "SingularClosure.GalerkinEnergyIntegral",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.GalerkinSolution.coefficientDissipation_continuousOn",
+      "module": "SingularClosure.GalerkinEnergyIntegral",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.GalerkinSolution.coefficientDissipation_intervalIntegrable",
+      "module": "SingularClosure.GalerkinEnergyIntegral",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.GalerkinSolution.coefficientEnergy_integral_identity",
+      "module": "SingularClosure.GalerkinEnergyIntegral",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.GalerkinSolution.coefficientEnergy_initial_eq",
+      "module": "SingularClosure.GalerkinEnergyIntegral",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.GalerkinSolution.coefficientDissipation_integral_le",
+      "module": "SingularClosure.GalerkinEnergyIntegral",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.galerkinFreqSq_add_le",
+      "module": "SingularClosure.HighOrderProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevWeight_add_sq_le",
+      "module": "SingularClosure.HighOrderProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevWeight_add_le",
+      "module": "SingularClosure.HighOrderProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevWeight_add_pow_le",
+      "module": "SingularClosure.HighOrderProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.finite_sum_comp_le_of_support",
+      "module": "SingularClosure.HighOrderProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.frequency_sub_right_injective",
+      "module": "SingularClosure.HighOrderProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.frequency_sub_left_injective",
+      "module": "SingularClosure.HighOrderProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.finite_real_convolution_young_left",
+      "module": "SingularClosure.HighOrderProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.finite_real_convolution_young_right",
+      "module": "SingularClosure.HighOrderProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.finiteScalarConvolution",
+      "module": "SingularClosure.HighOrderProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.finiteScalarConvolution_weighted_norm_le",
+      "module": "SingularClosure.HighOrderProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.finiteScalarConvolution_weighted_square_le",
+      "module": "SingularClosure.HighOrderProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.FINITE_FOURIER_TAME_PRODUCT_BOUND",
+      "module": "SingularClosure.HighOrderProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.frequency_coord_abs_le_freqSq",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.pressureFromTransport_norm_le",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.infinitePressureCoefficient",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.infinitePressureCoefficient_zero",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.infinitePressureCoefficient_rapid",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.infinitePressureCoefficient_reality",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.infiniteTransportPressure",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.infiniteTransportPressure_contDiff",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.infiniteTransportPressure_periodic",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.infiniteTransportPressure_meanZero",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.pressure_derivativeSymbol_recovery",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.infiniteTransportPressure_gradient",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.infiniteTransportPressure_recovery",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.infinitePressureGradient_rapid",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.infinitePressureGradient_reality",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.infiniteTransportPressure_gradient_coeff",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.infiniteTransportPressure_complex_series",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.infiniteTransportPressure_coeff",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fullTransportPressure",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fullTransportPressure_coefficient_rapid",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fullTransportPressure_coefficient_reality",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fullTransportPressure_contDiff",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fullTransportPressure_periodic",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fullTransportPressure_meanZero",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fullTransportPressure_gradient_coeff",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.INFINITE_TRANSPORT_PRESSURE_RECOVERY",
+      "module": "SingularClosure.InfiniteFourierPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.scalarConvolution_weighted_square_partialSum_tendsto",
+      "module": "SingularClosure.InfiniteScalarProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.INFINITE_SCALAR_FOURIER_PRODUCT_BOUND",
+      "module": "SingularClosure.InfiniteScalarProduct",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.complex_normSq_split",
+      "module": "SingularClosure.LerayL2Contraction",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.coefficientLeray_remainder_orthogonal",
+      "module": "SingularClosure.LerayL2Contraction",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.coefficientLeray_energy_pythagoras",
+      "module": "SingularClosure.LerayL2Contraction",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.coefficientLeray_energy_le",
+      "module": "SingularClosure.LerayL2Contraction",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.lerayFourierCoeff",
+      "module": "SingularClosure.LerayL2Contraction",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.lerayFourierCoeff_solenoidal",
+      "module": "SingularClosure.LerayL2Contraction",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.lerayFourierCoeff_reality",
+      "module": "SingularClosure.LerayL2Contraction",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.coefficientEnergy_leray_le",
+      "module": "SingularClosure.LerayL2Contraction",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.coefficientWeightedEnergy_leray_le",
+      "module": "SingularClosure.LerayL2Contraction",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.physicalEnergy_leray_le",
+      "module": "SingularClosure.LerayL2Contraction",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.integral_norm_sq_leray_le",
+      "module": "SingularClosure.LerayL2Contraction",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.galerkinFreqSq_ge_one_of_ne_zero",
+      "module": "SingularClosure.PeriodicPoincare",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.galerkinFreqSq_ge_one_of_mem",
+      "module": "SingularClosure.PeriodicPoincare",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierLaplacianSymbol_ge_four_pi_sq",
+      "module": "SingularClosure.PeriodicPoincare",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.COEFFICIENT_POINCARE",
+      "module": "SingularClosure.PeriodicPoincare",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.COEFFICIENT_GRADIENT_POINCARE",
+      "module": "SingularClosure.PeriodicPoincare",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.FINITE_PHYSICAL_POINCARE",
+      "module": "SingularClosure.PeriodicPoincare",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.FINITE_PHYSICAL_NORM_POINCARE",
+      "module": "SingularClosure.PeriodicPoincare",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.GalerkinSolution.physicalPoincare",
+      "module": "SingularClosure.PeriodicPoincare",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.physicalDissipation",
+      "module": "SingularClosure.PhysicalEnergy",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.GalerkinSolution.physicalDissipation_eq",
+      "module": "SingularClosure.PhysicalEnergy",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.GalerkinSolution.physicalEnergy_eq",
+      "module": "SingularClosure.PhysicalEnergy",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.GalerkinSolution.velocity_initial",
+      "module": "SingularClosure.PhysicalEnergy",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.GALERKIN_ENERGY_IDENTITY",
+      "module": "SingularClosure.PhysicalEnergy",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierVectorSequence_summable_sq",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierVectorComponent",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierVectorComponent_apply",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierVectorComponent_add",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierVectorComponent_smul",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierVectorComponent_norm_sq",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierVectorComponent_sum_norm_sq",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierVectorL2Synthesis",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierVectorL2Synthesis_repr",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierVectorL2Synthesis_add",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierVectorL2Synthesis_smul",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierVectorL2Synthesis_norm_sq",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierVectorL2Synthesis_norm",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierVectorL2Isometry",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.fourierVectorL2Synthesis_fourierCoeff",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevL2",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevL2_fourierCoeff",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevL2_norm",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevL2_isometry",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevL2_eq_of_fourierCoeff",
+      "module": "SingularClosure.SobolevL2Realization",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevWeight_sq",
+      "module": "SingularClosure.SobolevMultiplierBasics",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.derivativeSymbol_norm_le_weight",
+      "module": "SingularClosure.SobolevMultiplierBasics",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.pressureFromTransport_add_arg",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.pressureFromTransport_smul_arg",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.pressureVectorCoeff",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.pressureVectorCoeff_first",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.pressureVectorCoeff_zero_mode",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.pressureVectorCoeff_add",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.pressureVectorCoeff_smul",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.pressureFromTransport_norm_sq_le",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolev_pressure_mode_sum_le",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolev_pressure_finite_sum_le",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.pressureFourierLinear",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevPressure_mem",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevPressureLinear",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevPressureLinear_coeff",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevPressureLinear_norm_le",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevPressure",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevPressure_coeff",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.torusSobolevPressure_norm_sq_le",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.smoothFourierSynthesis_pressureVector_first",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevTransportPressureCurve",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevTransportPressureCurve_contDiffOn",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.sobolevTransportPressureCurve_coeff",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    },
+    {
+      "name": "SingularClosure.SOBOLEV_TRANSPORT_PRESSURE_JOINT_SMOOTH",
+      "module": "SingularClosure.SobolevPressure",
+      "kind": "declaration",
+      "status": "PASS_STANDARD_ONLY",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "unapproved_axioms": []
+    }
+  ],
+  "errors": [
+    "GRAssembly.Strengthening.GermEvaluation: no successful current-source freshness certificate",
+    "GRAssembly.Strengthening.GermFamilies: no successful current-source freshness certificate",
+    "GRAssembly.Strengthening.SobolevNSETrace: no successful current-source freshness certificate",
+    "GRAssembly.Strengthening.PositivePDE: no successful current-source freshness certificate",
+    "GRAssembly.Strengthening.PositiveProfiles: no successful current-source freshness certificate"
+  ],
+  "status": "PARTIAL_STANDARD_ONLY",
+  "global_root_status": "OPEN_UNTIL_EXACT_ROOT_AND_ALL_OBLIGATIONS_AUDITED",
+  "semantic_discharge": "NAMED_THEOREM_TYPES_AND_PREMISES_REQUIRE_SEPARATE_REVIEW"
+}

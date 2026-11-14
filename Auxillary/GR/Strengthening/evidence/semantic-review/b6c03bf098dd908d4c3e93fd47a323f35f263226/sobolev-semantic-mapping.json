@@ -1,0 +1,1453 @@
+{
+  "schema_version": 1,
+  "kind": "SEMANTIC_SCOPE_AND_PREMISE_MAP",
+  "owner": "/root/gr_a_sobolev",
+  "repository": "/workspace/scratch/bdb594519396/nse-gr",
+  "current_head": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+  "frozen_goal_source": {
+    "path": "B <-> GR/Strengthening/Derivation/NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_B_TIER.txt",
+    "sha256": "0038301225b531f80487faa5abf6fe947c8ca1b853f2ac576cc796c46d6d1d05"
+  },
+  "validation_policy": "Semantic coverage is independent of external compilation. A prior snapshot A-tier flag records only matching external build/freshness/theorem audit at that snapshot; it does not promote a current pending theorem or prove that its premises are discharged.",
+  "external_evidence": {
+    "directory": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence",
+    "verified_receipt": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+    "source_commit": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+    "github_run_id": "43535484155",
+    "actual_lean_version": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+    "actual_mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+    "source_input_verification": "PASS",
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "verified_declarations_in_entire_receipt": 527,
+    "current_pending_iteration": "CI8: BoundaryIdentities explicit exported pressure/PDE corollaries; no further source proofs added by this update."
+  },
+  "global_semantics": {
+    "mean": "UNRESTRICTED; zero Fourier mode retained",
+    "domain": "Positive-time joint smoothness/analyticity and closed-forward joint smooth extension, periodic R3 representatives of T3",
+    "trace": "Velocity-only actual all-Hm right trace",
+    "root_admissions_added_by_these_modules": [],
+    "unconditional_root_claim": false,
+    "generic_G04_topology_equivalence": "UNRESOLVED_FULL_FROZEN_SUBCLAUSE; not silently discharged by a specialized physical trajectory theorem"
+  },
+  "goals": [
+    {
+      "goal": "G04",
+      "frozen": {
+        "statement": "For every smooth periodic real field b, its actual Fourier coefficients define compatible elements of every TorusSobolev(m); synthesis recovers b pointwise. The squared norm is sum_k <2pi k>^(2m)|bhat(k)|^2, including k=0. Convergence in every H^m is equivalent to spatial C-infinity convergence.",
+        "mathematical_derivation": "Use generic smooth-datum membership, coefficient reality, rapid decay and the actual coefficient/synthesis inverse. Pointwise Fourier injectivity applies to continuous periodic fields. Weighted Cauchy--Schwarz gives H^m -> C^r for m>r+3/2; the finite derivative L2 expansion gives C^m -> H^m. No mean-zero packaged realization theorem is used.",
+        "source_path": "B <-> GR/Strengthening/Derivation/NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_B_TIER.txt"
+      },
+      "full_frozen_coverage": "PARTIAL_COMPONENT_COVERAGE; GENERAL_CONVERGENCE_TOPOLOGY_IFF_NOT_IMPLEMENTED",
+      "root_relevance": "The exact root uses the explicit all-Hm trace. The implemented root path uses actual smooth-trajectory trace and physical synthesis directly; it does not assume the missing general C-infinity-topology equivalence as a root premise.",
+      "components": [
+        {
+          "id": "G04.1",
+          "scope": "Actual Fourier coefficients of every smooth periodic real field belong to each native TorusSobolev(m).",
+          "coverage": "EXACT_NATIVE_ANCHOR_AND_ACTUAL_TOTAL_REALIZATION",
+          "endpoints": [
+            {
+              "qualified_name": "SingularClosure.SMOOTH_DATUM_MEM_TORUS_SOBOLEV",
+              "module": "SingularClosure.SmoothDatumSobolev",
+              "path": "TEMP/SingularClosure/SmoothDatumSobolev.lean",
+              "source_sha256": "533948ef73136fc1fe995e073063860044bd3e4d63081f2ba0c49383c51e4466",
+              "role": "native actual membership",
+              "explicit_premises": [
+                "m : Nat",
+                "a : real Field",
+                "ContDiff R infinity a",
+                "SpatialPeriodic a"
+              ],
+              "conclusion": "Mem lp 2 (sobolevWeightedCoeff m (datumFourierCoeff a))",
+              "external_validation": {
+                "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+                "run_id": "43535484155",
+                "module_build_status": "NOT_IN_THIS_AUDIT_BATCH",
+                "module_audit_status": "NOT_IN_THIS_AUDIT_BATCH",
+                "declaration_status": "NOT_IN_THIS_AUDIT_BATCH",
+                "axioms": null,
+                "unapproved_axioms": null,
+                "current_source_matches_snapshot_manifest": true,
+                "declaration_in_verified_receipt": false,
+                "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+                "promotion": "NO_PROMOTION_FROM_THIS_AUDIT"
+              }
+            },
+            {
+              "qualified_name": "NSEGR.Strengthening.physicalFourierValue_eq_smoothDatumSobolev",
+              "module": "GRAssembly.Strengthening.PhysicalFourier",
+              "path": "ASSEMBLY/GRAssembly/Strengthening/PhysicalFourier.lean",
+              "source_sha256": "37e4bf7720620776549bd0bb663ac5cda9a5f5c64bbd73d9a8905baab9dc46fb",
+              "role": "actual realization identification",
+              "explicit_premises": [
+                "m : Nat",
+                "a smooth and periodic"
+              ],
+              "conclusion": "physicalFourierValue m a = smoothDatumSobolev m a ha hp",
+              "external_validation": {
+                "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+                "run_id": "43535484155",
+                "module_build_status": "PASS",
+                "module_audit_status": "PASS_STANDARD_ONLY",
+                "declaration_status": "PASS_STANDARD_ONLY",
+                "axioms": [
+                  "Classical.choice",
+                  "Quot.sound",
+                  "propext"
+                ],
+                "unapproved_axioms": [],
+                "current_source_matches_snapshot_manifest": true,
+                "declaration_in_verified_receipt": true,
+                "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+                "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+              }
+            },
+            {
+              "qualified_name": "NSEGR.Strengthening.physicalFourierValue_coeff",
+              "module": "GRAssembly.Strengthening.PhysicalFourier",
+              "path": "ASSEMBLY/GRAssembly/Strengthening/PhysicalFourier.lean",
+              "source_sha256": "37e4bf7720620776549bd0bb663ac5cda9a5f5c64bbd73d9a8905baab9dc46fb",
+              "role": "actual coefficient identity",
+              "explicit_premises": [
+                "m : Nat",
+                "a smooth and periodic"
+              ],
+              "conclusion": "(physicalFourierValue m a).val = datumFourierCoeff a",
+              "external_validation": {
+                "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+                "run_id": "43535484155",
+                "module_build_status": "PASS",
+                "module_audit_status": "PASS_STANDARD_ONLY",
+                "declaration_status": "PASS_STANDARD_ONLY",
+                "axioms": [
+                  "Classical.choice",
+                  "Quot.sound",
+                  "propext"
+                ],
+                "unapproved_axioms": [],
+                "current_source_matches_snapshot_manifest": true,
+                "declaration_in_verified_receipt": true,
+                "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+                "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+              }
+            }
+          ]
+        },
+        {
+          "id": "G04.2",
+          "scope": "All Sobolev orders share the same actual coefficient sequence, including frequency zero.",
+          "coverage": "DERIVED_FROM_ACTUAL_COEFFICIENT_IDENTITY; generic coefficient compatibility is independently named",
+          "endpoints": [
+            {
+              "qualified_name": "NSEGR.Strengthening.coefficientSobolevCurve_compatible",
+              "module": "GRAssembly.Strengthening.SobolevTrace",
+              "path": "ASSEMBLY/GRAssembly/Strengthening/SobolevTrace.lean",
+              "source_sha256": "e4a20cb5f3f7806e8776fbd32e890192e256c0e1c304875c8fbdf8cbb2be14b0",
+              "role": "generic compatibility",
+              "explicit_premises": [
+                "c : R -> FourierCoeff",
+                "forall m t, sobolevWeightedCoeff m (c t) belongs to lp2"
+              ],
+              "conclusion": "forall m t, (coefficientSobolevCurve c hc m t).val = (coefficientSobolevCurve c hc 0 t).val",
+              "external_validation": {
+                "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+                "run_id": "43535484155",
+                "module_build_status": "PASS",
+                "module_audit_status": "PASS_STANDARD_ONLY",
+                "declaration_status": "PASS_STANDARD_ONLY",
+                "axioms": [
+                  "Classical.choice",
+                  "Quot.sound",
+                  "propext"
+                ],
+                "unapproved_axioms": [],
+                "current_source_matches_snapshot_manifest": true,
+                "declaration_in_verified_receipt": true,
+                "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+                "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+              }
+            }
+          ]
+        },
+        {
+          "id": "G04.3",
+          "scope": "Actual physical synthesis recovers every smooth periodic real field pointwise.",
+          "coverage": "EXACT_NEW_THEOREMS_A_TIER_SOURCE_MATCHED_CI7",
+          "endpoints": [
+            {
+              "qualified_name": "NSEGR.Strengthening.physicalFourier_synthesis_eq",
+              "module": "GRAssembly.Strengthening.PhysicalFourierNSE",
+              "path": "ASSEMBLY/GRAssembly/Strengthening/PhysicalFourierNSE.lean",
+              "source_sha256": "41a4304a08f85bb4e913f61e54645403b39398e4340e21fc8f24cc1b1909ddf0",
+              "role": "actual physical Fourier inverse",
+              "explicit_premises": [
+                "a smooth and periodic"
+              ],
+              "conclusion": "smoothFourierSynthesis (datumFourierCoeff a) = a",
+              "external_validation": {
+                "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+                "run_id": "43535484155",
+                "module_build_status": "PASS",
+                "module_audit_status": "PASS_STANDARD_ONLY",
+                "declaration_status": "PASS_STANDARD_ONLY",
+                "axioms": [
+                  "Classical.choice",
+                  "Quot.sound",
+                  "propext"
+                ],
+                "unapproved_axioms": [],
+                "current_source_matches_snapshot_manifest": true,
+                "declaration_in_verified_receipt": true,
+                "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+                "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+              }
+            },
+            {
+              "qualified_name": "NSEGR.Strengthening.physicalFourierValue_synthesis_eq",
+              "module": "GRAssembly.Strengthening.PhysicalFourierNSE",
+              "path": "ASSEMBLY/GRAssembly/Strengthening/PhysicalFourierNSE.lean",
+              "source_sha256": "41a4304a08f85bb4e913f61e54645403b39398e4340e21fc8f24cc1b1909ddf0",
+              "role": "actual Sobolev realization inverse",
+              "explicit_premises": [
+                "m : Nat",
+                "a smooth and periodic"
+              ],
+              "conclusion": "smoothFourierSynthesis (physicalFourierValue m a).val = a",
+              "external_validation": {
+                "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+                "run_id": "43535484155",
+                "module_build_status": "PASS",
+                "module_audit_status": "PASS_STANDARD_ONLY",
+                "declaration_status": "PASS_STANDARD_ONLY",
+                "axioms": [
+                  "Classical.choice",
+                  "Quot.sound",
+                  "propext"
+                ],
+                "unapproved_axioms": [],
+                "current_source_matches_snapshot_manifest": true,
+                "declaration_in_verified_receipt": true,
+                "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+                "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+              }
+            }
+          ]
+        },
+        {
+          "id": "G04.4",
+          "scope": "Squared Hm norm equals the full weighted coefficient square sum, including k=0.",
+          "coverage": "EXACT_NATIVE_ANCHOR",
+          "endpoints": [
+            {
+              "qualified_name": "SingularClosure.torusSobolev_norm_sq",
+              "module": "SingularClosure.TorusSobolev",
+              "path": "TEMP/SingularClosure/TorusSobolev.lean",
+              "source_sha256": "7e30008b592ff6124d10d0e6306e96f3528395bcee13fd11df3d1a6497834389",
+              "role": "literal Hilbert norm identity",
+              "explicit_premises": [
+                "m : Nat",
+                "c : TorusSobolev m"
+              ],
+              "conclusion": "norm(c)^2 = tsum_(k,i) (torusSobolevWeight(k)^m * norm(c.val k i))^2",
+              "external_validation": {
+                "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+                "run_id": "43535484155",
+                "module_build_status": "NOT_IN_THIS_AUDIT_BATCH",
+                "module_audit_status": "NOT_IN_THIS_AUDIT_BATCH",
+                "declaration_status": "NOT_IN_THIS_AUDIT_BATCH",
+                "axioms": null,
+                "unapproved_axioms": null,
+                "current_source_matches_snapshot_manifest": true,
+                "declaration_in_verified_receipt": false,
+                "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+                "promotion": "NO_PROMOTION_FROM_THIS_AUDIT"
+              }
+            }
+          ],
+          "normalization": "torusSobolevWeight(k)=sqrt(1+(2*pi)^2*galerkinFreqSq(k)); FourierIndex includes all integer frequencies and all three vector components."
+        },
+        {
+          "id": "G04.5",
+          "scope": "Convergence in every Hm is equivalent to spatial C-infinity convergence for the general family/filter.",
+          "coverage": "NOT_IMPLEMENTED_AS_THE_FROZEN_GENERAL_EQUIVALENCE",
+          "missing_exact_content": [
+            "A precise native C-infinity spatial convergence predicate/topology and quantifiers over the compared family/filter.",
+            "Both implications with uniform spatial derivative control: all-Hm convergence -> every-Cr convergence, and every-Cr convergence -> all-Hm convergence."
+          ],
+          "do_not_substitute": [
+            "All-Hm membership implies rapid decay and smooth synthesis.",
+            "Smooth positive/forward trajectories yield all-Hm continuous curves.",
+            "Pointwise coefficient convergence alone."
+          ]
+        },
+        {
+          "id": "G04.6",
+          "scope": "Actual forward-smooth physical trajectories have the exact all-Hm right trace used by the root.",
+          "coverage": "EXACT_REQUIRED_COMPONENT; stronger physical trajectory regularity is a literal premise, not a general topology equivalence",
+          "endpoints": [
+            {
+              "qualified_name": "NSEGR.Strengthening.physicalFourierCurve_initial_trace",
+              "module": "GRAssembly.Strengthening.PhysicalFourier",
+              "path": "ASSEMBLY/GRAssembly/Strengthening/PhysicalFourier.lean",
+              "source_sha256": "37e4bf7720620776549bd0bb663ac5cda9a5f5c64bbd73d9a8905baab9dc46fb",
+              "role": "actual forward trace",
+              "explicit_premises": [
+                "u : physical Velocity",
+                "SmoothVelocity u on forwardSpacetime",
+                "PeriodicVelocity u",
+                "m : Nat"
+              ],
+              "conclusion": "Tendsto (physicalFourierCurve m u) (nhdsWithin 0 (Ioi 0)) (nhds (physicalFourierCurve m u 0))",
+              "external_validation": {
+                "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+                "run_id": "43535484155",
+                "module_build_status": "PASS",
+                "module_audit_status": "PASS_STANDARD_ONLY",
+                "declaration_status": "PASS_STANDARD_ONLY",
+                "axioms": [
+                  "Classical.choice",
+                  "Quot.sound",
+                  "propext"
+                ],
+                "unapproved_axioms": [],
+                "current_source_matches_snapshot_manifest": true,
+                "declaration_in_verified_receipt": true,
+                "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+                "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+              }
+            },
+            {
+              "qualified_name": "NSEGR.Strengthening.smoothTrajectoryTraceEndpoint",
+              "module": "GRAssembly.Strengthening.TraceEndpoint",
+              "path": "ASSEMBLY/GRAssembly/Strengthening/TraceEndpoint.lean",
+              "source_sha256": "7ec33261720420d222be21b4b0fddee62465f0a5e7fdb93bd0f46cdfde94f717",
+              "role": "exact source trace endpoint",
+              "explicit_premises": [
+                "nu : R",
+                "a : Field"
+              ],
+              "conclusion": "SmoothTrajectoryTraceEndpoint nu a; quantified over every supplied NormalizedForwardTrajectory nu a",
+              "external_validation": {
+                "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+                "run_id": "43535484155",
+                "module_build_status": "PASS",
+                "module_audit_status": "PASS_STANDARD_ONLY",
+                "declaration_status": "PASS_STANDARD_ONLY",
+                "axioms": [
+                  "Classical.choice",
+                  "Quot.sound",
+                  "propext"
+                ],
+                "unapproved_axioms": [],
+                "current_source_matches_snapshot_manifest": true,
+                "declaration_in_verified_receipt": true,
+                "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+                "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+              }
+            }
+          ]
+        }
+      ],
+      "forbidden_inferences": [
+        "The generic convergence-topology equivalence is not established by the membership/synthesis/trace statements.",
+        "No source theorem has a velocity mean-zero requirement."
+      ]
+    },
+    {
+      "goal": "G30",
+      "frozen": {
+        "statement": "For the actual smooth positive-time field v with v_t=F(v), let U_m(t)=Fourier(v(t)) in TorusSobolev(m). Then HasDerivAt U_m (fourierSobolevRhs nu m (U_(m+2)(t))) t for every t>0.",
+        "mathematical_derivation": "On a compact cylinder around t, every spatial derivative through order m of the difference quotient minus v_t equals integral_0^1 [partial_x^alpha v_t(t+theta h)-partial_x^alpha v_t(t)]dtheta. Uniform continuity makes its C^m norm tend to zero. The C^m-to-H^m estimate and the defining Fourier Hilbert isometry give an actual norm derivative in TorusSobolev(m). Integration by parts, convolution and G05 identify it with the exact fourierSobolevRhs coefficient sequence. Coordinatewise coefficient derivatives alone would not discharge this goal.",
+        "source_path": "B <-> GR/Strengthening/Derivation/NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_B_TIER.txt"
+      },
+      "full_frozen_coverage": "EXACT_PHYSICAL_NORM_EQUATION_A_TIER_SOURCE_MATCHED_CI7",
+      "premise_flow": {
+        "literal_inputs": [
+          "u,p jointly ContDiffOn R infinity on {(t,x) | 0<t}",
+          "u(t),p(t) spatially periodic for every t>0",
+          "divergence(u(t))=0 for every t>0",
+          "actual physical momentum: timeDerivative(u)+convection(u)+gradient(p)=nu*laplacian(u) for every t>0",
+          "m : Nat; t>0; nu : R arbitrary"
+        ],
+        "supplied_by_profile": {
+          "joint_smoothness": "r.solution.velocity_analytic.contDiffOn_of_completeSpace and r.solution.pressure_analytic.contDiffOn_of_completeSpace",
+          "periodicity_and_divergence": "r.solution.velocity_periodic, pressure_periodic, divergence_free",
+          "momentum": "r.solution.momentum rewritten by nse_gr_calculus_agree_on_positive_time"
+        },
+        "additional_root_premises": []
+      },
+      "endpoints": [
+        {
+          "qualified_name": "NSEGR.Strengthening.physicalFourierCurve_hasDerivAt_of_positive_smooth",
+          "module": "GRAssembly.Strengthening.PhysicalFourier",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PhysicalFourier.lean",
+          "source_sha256": "37e4bf7720620776549bd0bb663ac5cda9a5f5c64bbd73d9a8905baab9dc46fb",
+          "role": "actual Banach norm derivative; support preceding the PDE identity",
+          "explicit_premises": [
+            "u jointly smooth on positiveSpacetime",
+            "u(t) spatially periodic for t>0",
+            "m : Nat",
+            "t>0"
+          ],
+          "conclusion": "HasDerivAt (physicalFourierCurve m u) (physicalFourierValue m (Classical.timeDerivative u t)) t",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.physical_momentum_fourierSobolevRhs",
+          "module": "GRAssembly.Strengthening.PhysicalFourierNSE",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PhysicalFourierNSE.lean",
+          "source_sha256": "41a4304a08f85bb4e913f61e54645403b39398e4340e21fc8f24cc1b1909ddf0",
+          "role": "actual physical momentum identifies the native nonlinear Sobolev vector field",
+          "explicit_premises": [
+            "a,d smooth periodic solenoidal real fields",
+            "p smooth periodic real scalar field",
+            "d+convection(a)+gradient(p)=nu*laplacian(a)",
+            "m : Nat"
+          ],
+          "conclusion": "physicalFourierValue m d = fourierSobolevRhs nu m (physicalFourierValue (m+2) a)",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.physical_NSE_fourierSobolev_hasDerivAt",
+          "module": "GRAssembly.Strengthening.PhysicalFourierNSE",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PhysicalFourierNSE.lean",
+          "source_sha256": "41a4304a08f85bb4e913f61e54645403b39398e4340e21fc8f24cc1b1909ddf0",
+          "role": "exact physical G30",
+          "explicit_premises": [
+            "u,p jointly ContDiffOn R infinity on {(t,x) | 0<t}",
+            "u(t),p(t) spatially periodic for every t>0",
+            "divergence(u(t))=0 for every t>0",
+            "actual physical momentum: timeDerivative(u)+convection(u)+gradient(p)=nu*laplacian(u) for every t>0",
+            "m : Nat; t>0; nu : R arbitrary"
+          ],
+          "conclusion": "HasDerivAt (physicalFourierCurve m u) (fourierSobolevRhs nu m (physicalFourierCurve (m+2) u t)) t",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileSobolevCurve_hasDerivAt",
+          "module": "GRAssembly.Strengthening.BoundaryEndpoint",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/BoundaryEndpoint.lean",
+          "source_sha256": "510494b94ebcd21c3815f52b2506c4473dfa644e906352464e2d99566a307bd5",
+          "role": "exact physical equation for the existing spatial-trace witnesses",
+          "explicit_premises": [
+            "r : PositiveProfileRepresentative nu a; this contains actual jointly analytic positive-time NSE, periodicity, incompressibility, actual momentum, origin-normalized pressure, and velocity-only all-Hm spatial trace",
+            "m : Nat",
+            "t>0"
+          ],
+          "conclusion": "HasDerivAt (profileSobolevCurve r m) (fourierSobolevRhs nu m (profileSobolevCurve r (m+2) t)) t",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        }
+      ],
+      "proof_route": "Uniform physical Fourier decay on compact time slabs supplies a summable lp2-valued derivative majorant; actual coefficient differentiation under the finite-torus integral and the Banach-valued tsum differentiation theorem yield a norm derivative. The native Hilbert isometry transports it. Actual integration by parts, untruncated product convolution, and literal Leray pressure-gradient elimination identify the derivative with fourierSobolevRhs.",
+      "relation_to_frozen_derivation": "The implementation uses dominated differentiation of the actual Hilbert-valued Fourier sum instead of the frozen proof sketch using a Cm-to-Hm difference-quotient estimate. The exact theorem, physical inputs, operator, and norm-derivative conclusion are unchanged.",
+      "explicit_nonpremises": [
+        "No HasDerivAt premise for the physical Fourier curve.",
+        "No supplied pressure-recovery contract.",
+        "No coefficientwise-to-norm inference without a summable majorant.",
+        "No spectral mean-zero condition.",
+        "No AX6 or trajectory-existence admission."
+      ],
+      "latest_diagnostic": "RESOLVED: CI7 compiled and audited the exact physical_NSE_fourierSobolev_hasDerivAt declaration with only approved foundational axioms; the hsum rewrite ordering fix passed."
+    },
+    {
+      "goal": "G31",
+      "frozen": {
+        "statement": "For any positive-time smooth NSE pair with the spatial trace in G22, put U_m(0)=Fourier(a). Each U_m is ContinuousOn(Ici 0), all U_m share one coefficient sequence at every forward time, and HasDerivWithinAt U_m (F_m(U_(m+2)(t))) (Ici 0) t holds for every t>=0.",
+        "mathematical_derivation": "Positive-time continuity follows from G30, and the boundary limit is the admitted H^m trace. Compatibility is definitional because every U_m is the same physical coefficient sequence. F_m is continuous, so deriv U_m(t)=F_m(U_(m+2)(t)) tends to F_m(U_(m+2)(0)). Apply hasDerivWithinAt_Ici_of_tendsto_deriv with s=Ioi 0. Its differentiability, continuity and derivative-limit premises have now been derived. Combine the boundary result with the positive-time derivative; uniqueDiffOn_Ici identifies the literal within derivative.",
+        "source_path": "B <-> GR/Strengthening/Derivation/NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_B_TIER.txt"
+      },
+      "full_frozen_coverage": "ALL_EXACT_GENERIC_COMPONENTS_AND_ACTUAL_PROFILE_INPUT_THEOREMS_A_TIER_SOURCE_MATCHED_CI7; bundled conjunction not separately declared",
+      "parent_premises": [
+        "Actual positive-time smooth periodic NSE pair.",
+        "Existing G22 velocity-only trace in every native Hm."
+      ],
+      "premise_flow": {
+        "trace": "profileSobolevCurve_trace selects precisely the existing r.spatial_trace witness; no replacement trace premise is introduced.",
+        "positive_norm_equation": "profileSobolevCurve_hasDerivAt derives it from actual physical G30.",
+        "coefficient_compatibility": "profileSobolevCurve_compatible derives it from datumFourierCoeff identity at t>0 and t=0.",
+        "rhs_continuity": "SingularClosure.fourierSobolevRhs_contDiff -> continuous.",
+        "additional_root_premises": []
+      },
+      "endpoints": [
+        {
+          "qualified_name": "NSEGR.Strengthening.profileSobolevCurve_coeff_zero",
+          "module": "GRAssembly.Strengthening.BoundaryEndpoint",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/BoundaryEndpoint.lean",
+          "source_sha256": "510494b94ebcd21c3815f52b2506c4473dfa644e906352464e2d99566a307bd5",
+          "role": "literal initial actual coefficient",
+          "explicit_premises": [
+            "r : PositiveProfileRepresentative nu a; this contains actual jointly analytic positive-time NSE, periodicity, incompressibility, actual momentum, origin-normalized pressure, and velocity-only all-Hm spatial trace",
+            "m : Nat"
+          ],
+          "conclusion": "(profileSobolevCurve r m 0).val = datumFourierCoeff a",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileSobolevCurve_trace",
+          "module": "GRAssembly.Strengthening.BoundaryEndpoint",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/BoundaryEndpoint.lean",
+          "source_sha256": "510494b94ebcd21c3815f52b2506c4473dfa644e906352464e2d99566a307bd5",
+          "role": "existing spatial trace",
+          "explicit_premises": [
+            "r : PositiveProfileRepresentative nu a; this contains actual jointly analytic positive-time NSE, periodicity, incompressibility, actual momentum, origin-normalized pressure, and velocity-only all-Hm spatial trace",
+            "m : Nat"
+          ],
+          "conclusion": "Tendsto (profileSobolevCurve r m) (nhdsWithin 0 (Ioi 0)) (nhds (profileSobolevCurve r m 0))",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileSobolevCurve_eq_physical",
+          "module": "GRAssembly.Strengthening.BoundaryEndpoint",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/BoundaryEndpoint.lean",
+          "source_sha256": "510494b94ebcd21c3815f52b2506c4473dfa644e906352464e2d99566a307bd5",
+          "role": "trace witness equals actual physical Fourier value for t>0",
+          "explicit_premises": [
+            "r : PositiveProfileRepresentative nu a; this contains actual jointly analytic positive-time NSE, periodicity, incompressibility, actual momentum, origin-normalized pressure, and velocity-only all-Hm spatial trace",
+            "m : Nat",
+            "t>0"
+          ],
+          "conclusion": "profileSobolevCurve r m t = physicalFourierCurve m r.velocity t",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileSobolevCurve_compatible",
+          "module": "GRAssembly.Strengthening.BoundaryEndpoint",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/BoundaryEndpoint.lean",
+          "source_sha256": "510494b94ebcd21c3815f52b2506c4473dfa644e906352464e2d99566a307bd5",
+          "role": "actual all-order forward compatibility",
+          "explicit_premises": [
+            "r : PositiveProfileRepresentative nu a; this contains actual jointly analytic positive-time NSE, periodicity, incompressibility, actual momentum, origin-normalized pressure, and velocity-only all-Hm spatial trace"
+          ],
+          "conclusion": "forall m t, 0<=t -> (profileSobolevCurve r m t).val = (profileSobolevCurve r 0 t).val",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.sobolev_forward_continuous",
+          "module": "GRAssembly.Strengthening.SobolevTrace",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/SobolevTrace.lean",
+          "source_sha256": "e4a20cb5f3f7806e8776fbd32e890192e256c0e1c304875c8fbdf8cbb2be14b0",
+          "role": "generic norm-curve boundary continuity",
+          "explicit_premises": [
+            "U,F",
+            "forall m, Tendsto (U m) (nhdsWithin 0 (Ioi 0)) (nhds (U m 0))",
+            "actual positive-time norm differential equation with F"
+          ],
+          "conclusion": "forall m, ContinuousOn (U m) (Ici 0)",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.sobolev_forward_derivative_equation",
+          "module": "GRAssembly.Strengthening.SobolevTrace",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/SobolevTrace.lean",
+          "source_sha256": "e4a20cb5f3f7806e8776fbd32e890192e256c0e1c304875c8fbdf8cbb2be14b0",
+          "role": "generic all-forward within derivative",
+          "explicit_premises": [
+            "U,F",
+            "forall m, Tendsto (U m) (nhdsWithin 0 (Ioi 0)) (nhds (U m 0))",
+            "forall m, Continuous (F m)",
+            "actual positive-time norm differential equation with F"
+          ],
+          "conclusion": "forall m t in Ici 0, HasDerivWithinAt (U m) (F m (U (m+2) t)) (Ici 0) t",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.fourierNSE_right_boundary_equation",
+          "module": "GRAssembly.Strengthening.SobolevNSETrace",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/SobolevNSETrace.lean",
+          "source_sha256": "c742a7f6c18960d8a598bd7f410311f2748a78988f3508aa503d7859f9695913",
+          "role": "literal NSE boundary norm equation",
+          "explicit_premises": [
+            "nu : R",
+            "U",
+            "forall m, Tendsto (U m) (nhdsWithin 0 (Ioi 0)) (nhds (U m 0))",
+            "forall m t, 0<t -> HasDerivAt (U m) (fourierSobolevRhs nu m (U (m+2) t)) t",
+            "m : Nat"
+          ],
+          "conclusion": "HasDerivWithinAt (U m) (fourierSobolevRhs nu m (U (m+2) 0)) (Ici 0) 0",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        }
+      ],
+      "full_statement_packaging": "No single new theorem bundles continuity, compatibility, and all-forward differential equation as one conjunction. Each exact generic component and the actual physical profile input theorem is independently audited; the boundary derivative invocation and its input discharge occur in the exact audited BoundaryEndpoint proof.",
+      "scope_qualification": "The dedicated physical aggregate uses the analytic PositiveProfileRepresentative carrier, hence derives positive smoothness. Generic SobolevTrace plus physical_NSE_fourierSobolev_hasDerivAt also supports the frozen merely-smooth positive-time version with its stated trace, without an analyticity assumption on that generic version.",
+      "boundary_mechanism": "hasDerivWithinAt_Ici_of_tendsto_deriv is applied only after differentiability on Ioi 0, the actual trace, and convergence of the actual derivative have been obtained."
+    },
+    {
+      "goal": "G32",
+      "frozen": {
+        "statement": "For every m, U_m is ContDiffOn Real infinity on Ici 0.",
+        "mathematical_derivation": "Instantiate SOBOLEV_SCALE_TIME_SMOOTH with the actual compatible U_m and F_m=fourierSobolevRhs nu m. G31 supplies continuity and the within-derivative equation at every forward time. The existing RHS theorem supplies smoothness of F_m:H^(m+2)->H^m. Its simultaneous induction in temporal order consumes two spatial orders per step, all of which are available. The differential-equation hypothesis is discharged; no trajectory existence is assumed by this invocation.",
+        "source_path": "B <-> GR/Strengthening/Derivation/NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_B_TIER.txt"
+      },
+      "full_frozen_coverage": "EXACT_SCALE_THEOREM_AND_LITERAL_NSE_SPECIALIZATION_A_TIER; ACTUAL_PHYSICAL_INPUT_THEOREMS_A_TIER_SOURCE_MATCHED_CI7",
+      "parent_premises": [
+        "G31 actual trace and positive norm equation; continuous RHS upgraded by its existing ContDiff theorem."
+      ],
+      "endpoints": [
+        {
+          "qualified_name": "SingularClosure.SOBOLEV_SCALE_TIME_SMOOTH",
+          "module": "SingularClosure.SobolevScaleTimeSmooth",
+          "path": "TEMP/SingularClosure/SobolevScaleTimeSmooth.lean",
+          "source_sha256": "253ce0430f40d162f79044c94ee649972eb3c331a5f1f5a063a10d49660ecfe1",
+          "role": "upstream all-time-order scale induction",
+          "explicit_premises": [
+            "U,F",
+            "all U_m continuous on Ici 0",
+            "all F_m ContDiff R infinity",
+            "all-forward within differential equation"
+          ],
+          "conclusion": "forall m, ContDiffOn R infinity (U m) (Ici 0)",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.sobolev_forward_time_smooth",
+          "module": "GRAssembly.Strengthening.SobolevTrace",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/SobolevTrace.lean",
+          "source_sha256": "e4a20cb5f3f7806e8776fbd32e890192e256c0e1c304875c8fbdf8cbb2be14b0",
+          "role": "boundary-complete generic scale invocation",
+          "explicit_premises": [
+            "U,F",
+            "forall m, Tendsto (U m) (nhdsWithin 0 (Ioi 0)) (nhds (U m 0))",
+            "forall m, ContDiff R infinity (F m)",
+            "positive-time norm equation"
+          ],
+          "conclusion": "forall m, ContDiffOn R infinity (U m) (Ici 0)",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.fourierNSE_forward_time_smooth",
+          "module": "GRAssembly.Strengthening.SobolevNSETrace",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/SobolevNSETrace.lean",
+          "source_sha256": "c742a7f6c18960d8a598bd7f410311f2748a78988f3508aa503d7859f9695913",
+          "role": "literal NSE specialization",
+          "explicit_premises": [
+            "nu : R",
+            "U",
+            "forall m, Tendsto (U m) (nhdsWithin 0 (Ioi 0)) (nhds (U m 0))",
+            "forall m t, 0<t -> HasDerivAt (U m) (fourierSobolevRhs nu m (U (m+2) t)) t"
+          ],
+          "conclusion": "forall m, ContDiffOn R infinity (U m) (Ici 0)",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        }
+      ],
+      "actual_profile_instantiation": "fourierNSE_forward_time_smooth nu (profileSobolevCurve r) (profileSobolevCurve_trace r) (fun m t ht => profileSobolevCurve_hasDerivAt r m ht)",
+      "additional_root_premises": [],
+      "coverage_limit": "The generic norm equation is a literal input of the generic support theorem. Its discharge for physical profiles is the separate exact G30 theorem and is not inferred from the support theorem audit."
+    },
+    {
+      "goal": "G33",
+      "frozen": {
+        "statement": "The extension vbar(t)=v(t) for t>0, vbar(0)=a is jointly ContDiffOn Real infinity on forwardSpacetime.",
+        "mathematical_derivation": "Apply the generic joint synthesis theorem to all smooth U_m and their coefficient compatibility from G31. G04 identifies this synthesized field with the original v at positive times and a at zero. ContDiffOn.congr transfers the conclusion to precisely vbar. The generic synthesis theorem has no SpectralMeanZero hypothesis.",
+        "source_path": "B <-> GR/Strengthening/Derivation/NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_B_TIER.txt"
+      },
+      "full_frozen_coverage": "EXACT_ACTUAL_BOUNDARY_VELOCITY_AND_INITIAL_POSITIVE_IDENTIFICATIONS_A_TIER_SOURCE_MATCHED_CI7",
+      "parent_premises": [
+        "r : PositiveProfileRepresentative nu a; this contains actual jointly analytic positive-time NSE, periodicity, incompressibility, actual momentum, origin-normalized pressure, and velocity-only all-Hm spatial trace",
+        "ha : NSEMaxwell.Classical.Data a = smooth(a) and periodic(a) and divergence_free(a); velocity mean unrestricted"
+      ],
+      "endpoints": [
+        {
+          "qualified_name": "SingularClosure.SOBOLEV_CURVES_JOINT_SPACETIME_SMOOTH",
+          "module": "SingularClosure.SobolevSpacetimeSmooth",
+          "path": "TEMP/SingularClosure/SobolevSpacetimeSmooth.lean",
+          "source_sha256": "b5782e553e9145f8ef339e2d89925030c126cbedc05a639ee1c889dc79ccc022",
+          "role": "upstream joint synthesis",
+          "explicit_premises": [
+            "all U_m ContDiffOn R infinity on Ici 0",
+            "forall m t, 0<=t -> (U m t).val = (U 0 t).val"
+          ],
+          "conclusion": "joint ContDiffOn R infinity of smoothFourierSynthesis(U_0(t)) on forwardSpacetime",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.fourierNSE_forward_joint_smooth",
+          "module": "GRAssembly.Strengthening.SobolevNSETrace",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/SobolevNSETrace.lean",
+          "source_sha256": "c742a7f6c18960d8a598bd7f410311f2748a78988f3508aa503d7859f9695913",
+          "role": "literal NSE boundary synthesis",
+          "explicit_premises": [
+            "nu : R",
+            "U",
+            "forall m, Tendsto (U m) (nhdsWithin 0 (Ioi 0)) (nhds (U m 0))",
+            "forall m t, 0<t -> HasDerivAt (U m) (fourierSobolevRhs nu m (U (m+2) t)) t",
+            "forall m t, 0<=t -> (U m t).val = (U 0 t).val"
+          ],
+          "conclusion": "joint ContDiffOn R infinity of smoothFourierSynthesis(U_0(t)) on forwardSpacetime",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.actual_field_forward_joint_smooth",
+          "module": "GRAssembly.Strengthening.SobolevTrace",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/SobolevTrace.lean",
+          "source_sha256": "e4a20cb5f3f7806e8776fbd32e890192e256c0e1c304875c8fbdf8cbb2be14b0",
+          "role": "pointwise congruence with any supplied physical extension",
+          "explicit_premises": [
+            "U,F,v",
+            "forall m, Tendsto (U m) (nhdsWithin 0 (Ioi 0)) (nhds (U m 0))",
+            "F smooth",
+            "positive norm equation",
+            "forall m t, 0<=t -> (U m t).val = (U 0 t).val",
+            "synthesis(U_0(t))(x)=v(t,x) for t>=0"
+          ],
+          "conclusion": "joint ContDiffOn R infinity v on forwardSpacetime",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileBoundaryVelocity_smooth",
+          "module": "GRAssembly.Strengthening.BoundaryEndpoint",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/BoundaryEndpoint.lean",
+          "source_sha256": "510494b94ebcd21c3815f52b2506c4473dfa644e906352464e2d99566a307bd5",
+          "role": "actual constructed physical velocity smooth through zero",
+          "explicit_premises": [
+            "r : PositiveProfileRepresentative nu a; this contains actual jointly analytic positive-time NSE, periodicity, incompressibility, actual momentum, origin-normalized pressure, and velocity-only all-Hm spatial trace"
+          ],
+          "conclusion": "Classical.SmoothVelocity (profileBoundaryVelocity r)",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileBoundaryVelocity_initial",
+          "module": "GRAssembly.Strengthening.BoundaryEndpoint",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/BoundaryEndpoint.lean",
+          "source_sha256": "510494b94ebcd21c3815f52b2506c4473dfa644e906352464e2d99566a307bd5",
+          "role": "literal initial datum",
+          "explicit_premises": [
+            "r : PositiveProfileRepresentative nu a; this contains actual jointly analytic positive-time NSE, periodicity, incompressibility, actual momentum, origin-normalized pressure, and velocity-only all-Hm spatial trace",
+            "ha : NSEMaxwell.Classical.Data a = smooth(a) and periodic(a) and divergence_free(a); velocity mean unrestricted"
+          ],
+          "conclusion": "profileBoundaryVelocity r 0 = a",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileBoundaryVelocity_positive",
+          "module": "GRAssembly.Strengthening.BoundaryEndpoint",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/BoundaryEndpoint.lean",
+          "source_sha256": "510494b94ebcd21c3815f52b2506c4473dfa644e906352464e2d99566a307bd5",
+          "role": "literal supplied positive field",
+          "explicit_premises": [
+            "r : PositiveProfileRepresentative nu a; this contains actual jointly analytic positive-time NSE, periodicity, incompressibility, actual momentum, origin-normalized pressure, and velocity-only all-Hm spatial trace",
+            "t>0"
+          ],
+          "conclusion": "profileBoundaryVelocity r t = r.velocity t",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        }
+      ],
+      "definition": "profileBoundaryVelocity r t x = smoothFourierSynthesis (profileSobolevCurve r 0 t).val x",
+      "identification_flow": "G04 actual synthesis identifies positive slices with r.velocity and the zero slice with a. The definition therefore provides exactly the frozen extension on the forward domain. Values at negative time are irrelevant to the source quotient and to ContDiffOn.",
+      "additional_root_premises": [],
+      "not_claimed": [
+        "Analyticity at t=0.",
+        "General G04 convergence-topology equivalence."
+      ]
+    },
+    {
+      "goal": "G34",
+      "frozen": {
+        "statement": "qbar(t)=Pi(vbar(t)), including qbar(0)=Pi(a), is jointly smooth on forwardSpacetime and agrees with the supplied normalized positive-time pressure.",
+        "mathematical_derivation": "Apply SOBOLEV_TRANSPORT_PRESSURE_JOINT_SMOOTH to the same all-order compatible U_m. Its literal pressure multiplier is composed with the actual divergence-product coefficients; substitution gives exactly the R(vbar tensor vbar) symbol in G05. Subtract the value at spatial origin using smooth composition and subtraction. Pressure uniqueness from G05 identifies the result at every positive time. No pressure trace is included in the target.",
+        "source_path": "B <-> GR/Strengthening/Derivation/NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_B_TIER.txt"
+      },
+      "full_frozen_coverage": "ACTUAL_BOUNDARY_PRESSURE_SMOOTHNESS_POSITIVE_IDENTIFICATION_AND_PHYSICAL_PI_COMPARISON_A_TIER_SOURCE_MATCHED_CI7; EXPORTED_ALL_FORWARD_AND_INITIAL_PI_IDENTITIES_CANDIDATE_CI8",
+      "parent_premises": [
+        "r : PositiveProfileRepresentative nu a; this contains actual jointly analytic positive-time NSE, periodicity, incompressibility, actual momentum, origin-normalized pressure, and velocity-only all-Hm spatial trace",
+        "ha : NSEMaxwell.Classical.Data a = smooth(a) and periodic(a) and divergence_free(a); velocity mean unrestricted"
+      ],
+      "endpoints": [
+        {
+          "qualified_name": "SingularClosure.SOBOLEV_TRANSPORT_PRESSURE_JOINT_SMOOTH",
+          "module": "SingularClosure.SobolevPressure",
+          "path": "TEMP/SingularClosure/SobolevPressure.lean",
+          "source_sha256": "e72c795a4db86870992cc07163be34919a7a8d48c05433336d16aec6827d1eca",
+          "role": "upstream actual transport-pressure smoothness",
+          "explicit_premises": [
+            "all U_m ContDiffOn R infinity on Ici 0",
+            "forall m t, 0<=t -> (U m t).val = (U 0 t).val"
+          ],
+          "conclusion": "joint ContDiffOn R infinity of fullTransportPressure(U_0(t)) on forwardSpacetime",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.normalizedSobolevPressure_joint_smooth",
+          "module": "GRAssembly.Strengthening.SobolevNSETrace",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/SobolevNSETrace.lean",
+          "source_sha256": "c742a7f6c18960d8a598bd7f410311f2748a78988f3508aa503d7859f9695913",
+          "role": "jointly smooth origin normalization",
+          "explicit_premises": [
+            "all U_m ContDiffOn R infinity on Ici 0",
+            "forall m t, 0<=t -> (U m t).val = (U 0 t).val"
+          ],
+          "conclusion": "joint ContDiffOn R infinity of normalizedSobolevPressure U on forwardSpacetime",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.normalizedSobolevPressure_origin",
+          "module": "GRAssembly.Strengthening.SobolevNSETrace",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/SobolevNSETrace.lean",
+          "source_sha256": "c742a7f6c18960d8a598bd7f410311f2748a78988f3508aa503d7859f9695913",
+          "role": "literal origin gauge",
+          "explicit_premises": [
+            "U",
+            "t : R"
+          ],
+          "conclusion": "normalizedSobolevPressure U t 0 = 0",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.fourierNSE_normalized_pressure_joint_smooth",
+          "module": "GRAssembly.Strengthening.SobolevNSETrace",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/SobolevNSETrace.lean",
+          "source_sha256": "c742a7f6c18960d8a598bd7f410311f2748a78988f3508aa503d7859f9695913",
+          "role": "NSE pressure smoothness from the velocity trace",
+          "explicit_premises": [
+            "nu : R",
+            "U",
+            "forall m, Tendsto (U m) (nhdsWithin 0 (Ioi 0)) (nhds (U m 0))",
+            "forall m t, 0<t -> HasDerivAt (U m) (fourierSobolevRhs nu m (U (m+2) t)) t",
+            "forall m t, 0<=t -> (U m t).val = (U 0 t).val"
+          ],
+          "conclusion": "joint ContDiffOn R infinity of normalizedSobolevPressure U on forwardSpacetime",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.normalizedQuadraticPressure_eq_fullTransportPressure",
+          "module": "GRAssembly.Strengthening.SobolevPressureIdentification",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/SobolevPressureIdentification.lean",
+          "source_sha256": "905fc355abf47a92d0131b40f79fd6092bdab2472f1dfa3fe722bd858c19cc22",
+          "role": "actual Poisson quadratic pressure equals actual Fourier transport pressure",
+          "explicit_premises": [
+            "v smooth periodic solenoidal"
+          ],
+          "conclusion": "normalizedQuadraticPressure v = normalizedFullTransportPressure (physicalFourierValue 0 v)",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.positiveAnalyticNSE_normalized_pressure_eq_fullTransportPressure",
+          "module": "GRAssembly.Strengthening.SobolevPressureIdentification",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/SobolevPressureIdentification.lean",
+          "source_sha256": "905fc355abf47a92d0131b40f79fd6092bdab2472f1dfa3fe722bd858c19cc22",
+          "role": "actual supplied positive NSE pressure identification",
+          "explicit_premises": [
+            "h : PositiveAnalyticNSE nu u p",
+            "t>0"
+          ],
+          "conclusion": "originNormalize p t = normalizedFullTransportPressure (physicalFourierValue 0 (u t))",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileBoundaryPressure_smooth",
+          "module": "GRAssembly.Strengthening.BoundaryEndpoint",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/BoundaryEndpoint.lean",
+          "source_sha256": "510494b94ebcd21c3815f52b2506c4473dfa644e906352464e2d99566a307bd5",
+          "role": "actual constructed pressure smooth through zero",
+          "explicit_premises": [
+            "r : PositiveProfileRepresentative nu a; this contains actual jointly analytic positive-time NSE, periodicity, incompressibility, actual momentum, origin-normalized pressure, and velocity-only all-Hm spatial trace"
+          ],
+          "conclusion": "Classical.SmoothPressure (profileBoundaryPressure r)",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileBoundaryPressure_positive",
+          "module": "GRAssembly.Strengthening.BoundaryEndpoint",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/BoundaryEndpoint.lean",
+          "source_sha256": "510494b94ebcd21c3815f52b2506c4473dfa644e906352464e2d99566a307bd5",
+          "role": "actual supplied normalized positive pressure",
+          "explicit_premises": [
+            "r : PositiveProfileRepresentative nu a; this contains actual jointly analytic positive-time NSE, periodicity, incompressibility, actual momentum, origin-normalized pressure, and velocity-only all-Hm spatial trace",
+            "t>0"
+          ],
+          "conclusion": "profileBoundaryPressure r t = r.pressure t",
+          "external_validation": {
+            "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+            "run_id": "43535484155",
+            "module_build_status": "PASS",
+            "module_audit_status": "PASS_STANDARD_ONLY",
+            "declaration_status": "PASS_STANDARD_ONLY",
+            "axioms": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "unapproved_axioms": [],
+            "current_source_matches_snapshot_manifest": true,
+            "declaration_in_verified_receipt": true,
+            "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+            "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+          }
+        }
+      ],
+      "definition": "profileBoundaryPressure r t x = fullTransportPressure (profileSobolevCurve r 0 t) x - fullTransportPressure (profileSobolevCurve r 0 t) 0",
+      "pi_definition": "normalizedQuadraticPressure(v)=origin-normalize(poissonInverse(-div tensorDivergence(v tensor v)))",
+      "initial_pi_identity_composition": [
+        "Subtype.ext with profileSobolevCurve_coeff_zero and physicalFourierValue_coeff gives profileSobolevCurve r 0 0 = physicalFourierValue 0 a.",
+        "Unfolding profileBoundaryPressure and normalizedSobolevPressure then identifies the zero slice with normalizedFullTransportPressure(physicalFourierValue 0 a).",
+        "normalizedQuadraticPressure_eq_fullTransportPressure a ha.smooth ha.periodic ha.divergence_free gives precisely profileBoundaryPressure r 0 = Pi(a).",
+        "At positive times, profileBoundaryPressure_positive and the actual NSE quadratic-pressure identity give Pi(r.velocity t); profileBoundaryVelocity_positive substitutes the constructed velocity."
+      ],
+      "initial_pi_identity_formal_status": "EXACT_NAMED_CANDIDATE_THEOREMS_IN_BoundaryIdentities; no new premise; CI8 pending.",
+      "additional_root_premises": [],
+      "explicit_nonpremises": [
+        "No pressure trace.",
+        "No temporal derivative trace.",
+        "No supplied equality of physical pressure with the multiplier.",
+        "No mean-zero velocity assumption."
+      ],
+      "new_exact_boundary_identity_candidates": [
+        {
+          "qualified_name": "NSEGR.Strengthening.profileBoundary_is_nssolution",
+          "module": "GRAssembly.Strengthening.BoundaryIdentities",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/BoundaryIdentities.lean",
+          "source_sha256": "e79314eee64cc0bae9b9d82e49d5df5a91c9b6e1cd5476763abbaabe092c7427",
+          "status": "A_TIER_CANDIDATE",
+          "explicit_premises": [
+            "ha : Classical.Data a",
+            "r : PositiveProfileRepresentative nu a"
+          ]
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileBoundaryPressure_eq_quadratic",
+          "module": "GRAssembly.Strengthening.BoundaryIdentities",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/BoundaryIdentities.lean",
+          "source_sha256": "e79314eee64cc0bae9b9d82e49d5df5a91c9b6e1cd5476763abbaabe092c7427",
+          "status": "A_TIER_CANDIDATE",
+          "explicit_premises": [
+            "ha : Classical.Data a",
+            "r : PositiveProfileRepresentative nu a",
+            "t>=0"
+          ]
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileBoundaryPressure_initial",
+          "module": "GRAssembly.Strengthening.BoundaryIdentities",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/BoundaryIdentities.lean",
+          "source_sha256": "e79314eee64cc0bae9b9d82e49d5df5a91c9b6e1cd5476763abbaabe092c7427",
+          "status": "A_TIER_CANDIDATE",
+          "explicit_premises": [
+            "ha : Classical.Data a",
+            "r : PositiveProfileRepresentative nu a"
+          ]
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileBoundaryVelocity_projected_equation",
+          "module": "GRAssembly.Strengthening.BoundaryIdentities",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/BoundaryIdentities.lean",
+          "source_sha256": "e79314eee64cc0bae9b9d82e49d5df5a91c9b6e1cd5476763abbaabe092c7427",
+          "status": "A_TIER_CANDIDATE",
+          "explicit_premises": [
+            "ha : Classical.Data a",
+            "r : PositiveProfileRepresentative nu a",
+            "t>=0"
+          ]
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileBoundaryVelocity_initial_right_derivative_leray",
+          "module": "GRAssembly.Strengthening.BoundaryIdentities",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/BoundaryIdentities.lean",
+          "source_sha256": "e79314eee64cc0bae9b9d82e49d5df5a91c9b6e1cd5476763abbaabe092c7427",
+          "status": "A_TIER_CANDIDATE",
+          "explicit_premises": [
+            "ha : Classical.Data a",
+            "r : PositiveProfileRepresentative nu a"
+          ]
+        }
+      ]
+    }
+  ],
+  "boundary_aggregate": {
+    "endpoint": {
+      "qualified_name": "NSEGR.Strengthening.positiveProfileBoundaryEndpoint",
+      "module": "GRAssembly.Strengthening.BoundaryEndpoint",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/BoundaryEndpoint.lean",
+      "source_sha256": "510494b94ebcd21c3815f52b2506c4473dfa644e906352464e2d99566a307bd5",
+      "role": "exact root boundary obligation discharge",
+      "explicit_premises": [
+        "nu : R",
+        "a : Field",
+        "ha : NSEMaxwell.Classical.Data a = smooth(a) and periodic(a) and divergence_free(a); velocity mean unrestricted"
+      ],
+      "conclusion": "PositiveProfileBoundaryEndpoint nu a",
+      "external_validation": {
+        "snapshot": "4e97a259d99ce44fde60da6ca15061526596cb1c",
+        "run_id": "43535484155",
+        "module_build_status": "PASS",
+        "module_audit_status": "PASS_STANDARD_ONLY",
+        "declaration_status": "PASS_STANDARD_ONLY",
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "unapproved_axioms": [],
+        "current_source_matches_snapshot_manifest": true,
+        "declaration_in_verified_receipt": true,
+        "receipt_path": "/workspace/scratch/bdb594519396/gr-btier-extension/ci7-evidence-verification.json",
+        "promotion": "A_TIER_SOURCE_MATCHED_CI7"
+      }
+    },
+    "meaning": "For every existing positive analytic NSE representative with the frozen spatial velocity trace, construct one actual jointly smooth forward velocity and pressure, with initial velocity a and equality to both positive-time fields. All positive norm-derivative and pressure-identification premises used internally are derived from the actual PDE.",
+    "coverage_vs_support": "The exact boundary aggregate is A_TIER with source-matched CI7 build/freshness/theorem-level axiom evidence. It derives the root boundary endpoint from Data a and the existing PositiveProfileRepresentative, with no additional root premise. Generic Sobolev norm support alone would not establish that discharge.",
+    "delegated_successor": "G35 and forward periodicity/PDE are supplied by PositivePDE and ExactChain.smoothProfileExtension_is_nssolution."
+  },
+  "remaining_naming_gaps": [
+    "General G04 C-infinity-convergence iff all-Hm-convergence theorem is not implemented.",
+    "G31 exact conjunction and G32 concrete profile specialization are available by direct named-theorem application but are not separately bundled under one new declaration."
+  ],
+  "status_record_guidance": [
+    "Record actual PhysicalFourier norm-calculus support separately from full physical G30, both now audited at CI7.",
+    "Record positiveProfileBoundaryEndpoint as the exact derived A_TIER boundary endpoint under Data a; its every internal analytic input is supplied by actual physical/profile theorems.",
+    "Do not label the entire frozen G04 closed from the covered realization and source-trace components; the general convergence topology iff remains unimplemented.",
+    "Boundary pressure traces and norm-derivative certificates are not unresolved root premises: the actual construction derives the latter and requires no independent pressure trace.",
+    "Keep BoundaryIdentities exported explicit Pi and initial projected derivative corollaries A_TIER_CANDIDATE until CI8 compilation and theorem-level audits match their source.",
+    "The full forward equivalence remains conditional on the independently named positive-time smoothing endpoint until that endpoint is discharged."
+  ],
+  "boundary_identity_candidate_audit_targets": "/workspace/scratch/bdb594519396/gr-btier-extension/boundary-identities-audit-targets.json",
+  "external_evidence_history": [
+    {
+      "directory": "/workspace/scratch/bdb594519396/gr-btier-extension/ci5-evidence",
+      "source_commit": "cc238b0adbcf9331d0dd60b11ae4d013ab4ed9d5",
+      "github_run_id": "43534406451",
+      "actual_lean_version": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+      "actual_mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+      "source_input_verification": "PASS",
+      "allowed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "current_pending_iteration": "CI7 after CI6 df4038bb diagnostic fix"
+    }
+  ]
+}

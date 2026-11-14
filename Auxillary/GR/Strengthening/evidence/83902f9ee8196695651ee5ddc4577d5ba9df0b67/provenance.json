@@ -1,0 +1,423 @@
+{
+  "schema_version": 1,
+  "source_commit": "83902f9ee8196695651ee5ddc4577d5ba9df0b67",
+  "github_run_id": "43533396814",
+  "github_run_attempt": "1",
+  "external_platform": "linux",
+  "requested_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "requested_compiler_commit": "3447a668783dbce1a8fdb97101dd067687b2b418",
+  "requested_mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "cache_policy": "PRESERVE_AND_REUSE_COMPATIBLE_OBJECTS",
+  "elaboration": "LAKE_PARALLEL_DAG_AND_NATIVE_ASYNC",
+  "audit": "FRESH_BATCH_EXACT_THEOREM_AXIOMS",
+  "started_at_utc": "2026-11-14T00:20:44.918123+00:00",
+  "commands": [
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "source-commit.log",
+      "exit_code": 0,
+      "seconds": 0.002,
+      "sha256": "4f66a2eaf2bfbda509b476aa5072d41af87d26ec98a97d8eb5992b7550737c03"
+    },
+    {
+      "command": [
+        "lean",
+        "--version"
+      ],
+      "log": "lean-version.log",
+      "exit_code": 0,
+      "seconds": 0.032,
+      "sha256": "6cd69c5752c644291ede2418997a70e9994409d30b15fe5ef14a1be60f27f8ef"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/plausible",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-plausible.log",
+      "exit_code": 0,
+      "seconds": 0.002,
+      "sha256": "5853b0b16747940f4a3cc79f5ae35475a93032aaaf6ae6b140b23dc03451bb90"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/plausible",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-clean-plausible.log",
+      "exit_code": 0,
+      "seconds": 0.002,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/LeanSearchClient",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-LeanSearchClient.log",
+      "exit_code": 0,
+      "seconds": 0.002,
+      "sha256": "22be59d23249e41039127a66d78b70b68a754ca8d4aa08f3930e39594601d1dd"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/LeanSearchClient",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-clean-LeanSearchClient.log",
+      "exit_code": 0,
+      "seconds": 0.002,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/importGraph",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-importGraph.log",
+      "exit_code": 0,
+      "seconds": 0.002,
+      "sha256": "beee196d376cbcc10e3140bf4c47078bed2563375b0a6189d0e29be32bb44bd0"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/importGraph",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-clean-importGraph.log",
+      "exit_code": 0,
+      "seconds": 0.002,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/proofwidgets",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-proofwidgets.log",
+      "exit_code": 0,
+      "seconds": 0.001,
+      "sha256": "e8c71765893c5d59b72bc776fb1fe597ef9d309bcb24fa71a2a996a32e9d1ba9"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/proofwidgets",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-clean-proofwidgets.log",
+      "exit_code": 0,
+      "seconds": 0.002,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/aesop",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-aesop.log",
+      "exit_code": 0,
+      "seconds": 0.001,
+      "sha256": "99c37a88bb37e2a2bcf14c815fe3566049d4b248abe38f14a90f7f5f937f2ed3"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/aesop",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-clean-aesop.log",
+      "exit_code": 0,
+      "seconds": 0.002,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/Qq",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-Qq.log",
+      "exit_code": 0,
+      "seconds": 0.002,
+      "sha256": "17868872911131a3923b8d7cdb904ec5d68862fdcec312261d60431cc0d46ee9"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/Qq",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-clean-Qq.log",
+      "exit_code": 0,
+      "seconds": 0.002,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/batteries",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-batteries.log",
+      "exit_code": 0,
+      "seconds": 0.002,
+      "sha256": "94443aefcbcf3594e3549caa35b2c61e295222bf1c8e2e2a90fa6d134dcb6a86"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/batteries",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-clean-batteries.log",
+      "exit_code": 0,
+      "seconds": 0.002,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/Cli",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-Cli.log",
+      "exit_code": 0,
+      "seconds": 0.002,
+      "sha256": "dbd038f701a70f6857c1e65b0492b56a7fb4d398d3ffa349d53fa118c733fde1"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/Cli",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-clean-Cli.log",
+      "exit_code": 0,
+      "seconds": 0.002,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/mathlib",
+        "rev-parse",
+        "HEAD"
+      ],
+      "log": "dependency-mathlib.log",
+      "exit_code": 0,
+      "seconds": 0.001,
+      "sha256": "45319df962db10a4cdbd4747247efadca3d49e40557f5c83ec7dad63a043992a"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/ASSEMBLY/.lake/packages/mathlib",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "log": "dependency-clean-mathlib.log",
+      "exit_code": 0,
+      "seconds": 0.007,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "lake",
+        "--no-ansi",
+        "--verbose",
+        "--log-level=warning",
+        "build",
+        "GRAssembly.Strengthening.Calculus",
+        "GRAssembly.Strengthening.SourceCarrier",
+        "GRAssembly.Strengthening.GermEvaluation",
+        "GRAssembly.Strengthening.GermFamilies",
+        "SingularClosure.TorusSobolevReal",
+        "SingularClosure.SobolevCoefficient",
+        "SingularClosure.SobolevScaleTimeSmooth",
+        "SingularClosure.SmoothEvaluation",
+        "SingularClosure.SobolevSpacetimeSmooth",
+        "GRAssembly.Strengthening.SobolevTrace",
+        "SingularClosure.FourierProduct",
+        "SingularClosure.FourierSobolevOperators",
+        "SingularClosure.FourierSobolevProduct",
+        "SingularClosure.FourierSobolevRhs",
+        "SingularClosure.FourierTransport",
+        "SingularClosure.FullFourierRhs",
+        "SingularClosure.GalerkinEnergyIntegral",
+        "SingularClosure.HighOrderProduct",
+        "SingularClosure.InfiniteFourierPressure",
+        "SingularClosure.InfiniteScalarProduct",
+        "SingularClosure.LerayL2Contraction",
+        "SingularClosure.PeriodicPoincare",
+        "SingularClosure.PhysicalEnergy",
+        "SingularClosure.SobolevL2Realization",
+        "SingularClosure.SobolevMultiplierBasics",
+        "SingularClosure.SobolevPressure",
+        "GRAssembly.Strengthening.SobolevNSETrace",
+        "GRAssembly.Strengthening.PositivePDE",
+        "GRAssembly.Strengthening.PositiveProfiles",
+        "GRAssembly.Strengthening.SourceUniqueness",
+        "GRAssembly.Strengthening.PhysicalFourier",
+        "GRAssembly.Strengthening.AnalyticPressure",
+        "GRAssembly.Strengthening.ExactChain",
+        "GRAssembly.Strengthening.TraceEndpoint",
+        "GRAssembly.Strengthening.PressureIdentification",
+        "GRAssembly.Strengthening.PhysicalFourierNSE"
+      ],
+      "log": "build-batch.log",
+      "exit_code": 1,
+      "seconds": 13.725,
+      "sha256": "c98f853302cd37d4cd557feb07db96b395a286e2c86a1dc39101203528925435"
+    },
+    {
+      "command": [
+        "lake",
+        "--no-ansi",
+        "build",
+        "--no-build",
+        "GRAssembly.Strengthening.Calculus",
+        "GRAssembly.Strengthening.SourceCarrier",
+        "GRAssembly.Strengthening.GermEvaluation",
+        "GRAssembly.Strengthening.GermFamilies",
+        "SingularClosure.TorusSobolevReal",
+        "SingularClosure.SobolevCoefficient",
+        "SingularClosure.SobolevScaleTimeSmooth",
+        "SingularClosure.SmoothEvaluation",
+        "SingularClosure.SobolevSpacetimeSmooth",
+        "GRAssembly.Strengthening.SobolevTrace",
+        "SingularClosure.FourierProduct",
+        "SingularClosure.FourierSobolevOperators",
+        "SingularClosure.FourierSobolevProduct",
+        "SingularClosure.FourierSobolevRhs",
+        "SingularClosure.FourierTransport",
+        "SingularClosure.FullFourierRhs",
+        "SingularClosure.GalerkinEnergyIntegral",
+        "SingularClosure.HighOrderProduct",
+        "SingularClosure.InfiniteFourierPressure",
+        "SingularClosure.InfiniteScalarProduct",
+        "SingularClosure.LerayL2Contraction",
+        "SingularClosure.PeriodicPoincare",
+        "SingularClosure.PhysicalEnergy",
+        "SingularClosure.SobolevL2Realization",
+        "SingularClosure.SobolevMultiplierBasics",
+        "SingularClosure.SobolevPressure",
+        "GRAssembly.Strengthening.SobolevNSETrace"
+      ],
+      "log": "freshness-batch.log",
+      "exit_code": 0,
+      "seconds": 3.928,
+      "sha256": "50ca4e857e2e4d2bdf2462f6dacd150bd0093d38b9feae8a926993b9a6a7e547"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "/home/runner/work/NSE---MAXWELL---GR---QFT/NSE---MAXWELL---GR---QFT/Auxillary/GR/Strengthening/evidence-current/Batch-Audit.lean"
+      ],
+      "log": "audit-batch.log",
+      "exit_code": 0,
+      "seconds": 4.144,
+      "sha256": "d1bb5ab88f355192c60e336c4f3ec00b280315b636ba6a0abf5ecdea905b328c"
+    }
+  ],
+  "status": "PARTIAL_STANDARD_ONLY",
+  "semantic_discharge": "NOT_INFERRED_FROM_AXIOM_AUDIT",
+  "actual_lean_version": "Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)",
+  "dependency_revisions": [
+    {
+      "name": "plausible",
+      "revision": "38e9c3ce15cbb63c92e90bb9a92e4eb82131f669"
+    },
+    {
+      "name": "LeanSearchClient",
+      "revision": "2bc7cf064315b26bc38dac2e9612fb581be9b75f"
+    },
+    {
+      "name": "importGraph",
+      "revision": "978b7ec9fbbf9a535114f1de8fe5b3778b358870"
+    },
+    {
+      "name": "proofwidgets",
+      "revision": "99e8adeea3c3cd86b6b79ba01a1383bf2d31d055"
+    },
+    {
+      "name": "aesop",
+      "revision": "c1c4362a130f12e632d252180a6c2a31d8fd4726"
+    },
+    {
+      "name": "Qq",
+      "revision": "3b55e9d00c6b0018e5d984eb011b6f93c09bd163"
+    },
+    {
+      "name": "batteries",
+      "revision": "01bc479e7432594821ba3fb0ca465211941de86d"
+    },
+    {
+      "name": "Cli",
+      "revision": "af8bc067a4cc6c6df472a68909a3f40b1c76c43e"
+    },
+    {
+      "name": "mathlib",
+      "revision": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11"
+    }
+  ],
+  "actual_mathlib_commit": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
+  "source_manifest_sha256": "aa8b225815d2f17e5ac857ee0bd2f38f50167e2a51614a4f92349a455c8a685e"
+}

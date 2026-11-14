@@ -1,0 +1,498 @@
+REPORT = NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_VELOCITY_ANALYTICITY
+DOCUMENT_ROLE = VERIFIED_A_TIER_REPORT
+MODE = A_TIER_DERIVATION
+BRANCH = STRENGTHENING-GR-FB
+NAMESPACE = NSEGR.Strengthening
+
+[EXTERNAL_RECEIPT]
+VERIFIED_SOURCE_COMMIT = b6c03bf098dd908d4c3e93fd47a323f35f263226
+VERIFIED_SOURCE_TREE = ed9b9f059ad99fb4ced81b09e44e1804ab35e74f
+VERIFIED_RUN_ID = 43536994970
+VERIFIED_JOB_ID = 132268289900
+VERIFIED_RUN_URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43536994970
+VERIFIED_COMPILER_VERSION = Lean (version 4.34.0-rc1, x86_64-unknown-linux-gnu, commit 3447a668783dbce1a8fdb97101dd067687b2b418, Release)
+VERIFIED_TOOLCHAIN_PIN = leanprover/lean4:v4.34.0-rc1
+VERIFIED_MATHLIB_COMMIT = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+VERIFIED_MODULE_COUNT = 45
+VERIFIED_TARGET_COUNT = 554
+VERIFIED_SOURCE_INPUT_COUNT = 443
+VERIFIED_RUN_ATTEMPT = 1
+VERIFIED_JOB_URL = https://github.com/randogelist/NSE---MAXWELL---GR---QFT/actions/runs/43536994970/job/132268289900
+VERIFIED_AXIOM_AUDIT_PASS_COUNT = 554
+VERIFIED_MODULE_FAILURE_COUNT = 0
+VERIFIED_AUDIT_FAILURE_COUNT = 0
+VERIFIED_SOURCE_MANIFEST_SHA256 = a45f2cc18c6e4f1616ec74f03ff4d44a4bda3afd5828ff3df9635672b10f2e7e
+VERIFIED_AUDIT_SUMMARY_SHA256 = f220198468cba4fd663abf6eef48cc80f06364f13269ee2e40d0694740a92766
+VERIFIED_EVIDENCE_ARCHIVE_SHA256 = e5767b5a105ca43da29d4d3375be8f6e4f7a344be53293aaa77c393e2aaef544
+VERIFIED_EVIDENCE_PATH = Auxillary/GR/Strengthening/evidence/b6c03bf098dd908d4c3e93fd47a323f35f263226
+VERIFIED_EVIDENCE_ARCHIVE_PATH = Auxillary/GR/Strengthening/evidence/b6c03bf098dd908d4c3e93fd47a323f35f263226/external-evidence.zip
+VERIFIED_SOURCE_ARCHIVE_SCOPE = SOURCE_AT_VERIFIED_COMMIT
+EVIDENCE_ARCHIVE_SHA256_SCOPE = EXTERNAL_CI_ARTIFACT_ZIP
+VERIFIED_ROOT_SOURCE_SHA256 = 5cb4cff42b68abf6da1ba3f26b98ad2ca8a786599a581db7510112b68455e73b
+INDEPENDENT_VERIFICATION_SHA256 = 270b94edd992518c4653d54434b5091b4ad41d7facbe59b8562843e5a621d1fe
+VERIFIED_DIRECT_DOWNLOAD_LEAN = https://raw.githubusercontent.com/randogelist/NSE---MAXWELL---GR---QFT/b6c03bf098dd908d4c3e93fd47a323f35f263226/ASSEMBLY/GRAssembly/Strengthening/NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_VELOCITY_ANALYTICITY.lean
+REPORT_REPOSITORY_PATH = Auxillary/GR/Strengthening/NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_VELOCITY_ANALYTICITY_A_TIER.txt
+VERIFIED_DIRECT_DOWNLOAD_RUN_CMD = https://raw.githubusercontent.com/randogelist/NSE---MAXWELL---GR---QFT/b6c03bf098dd908d4c3e93fd47a323f35f263226/Auxillary/GR/Strengthening/run.cmd
+VERIFIED_SOURCE_ARCHIVE_URL = https://codeload.github.com/randogelist/NSE---MAXWELL---GR---QFT/zip/b6c03bf098dd908d4c3e93fd47a323f35f263226
+APPROVED_FOUNDATIONAL_AXIOMS = {propext, Classical.choice, Quot.sound}
+OBSERVED_ROOT_AXIOMS = [propext, Classical.choice.{u}, Quot.sound.{u}]
+OBSERVED_REVERSE_AXIOMS = [propext, Classical.choice.{u}, Quot.sound.{u}]
+SORRYAX_COUNT = 0
+UNAPPROVED_AXIOM_COUNT = 0
+MATCHED_COMPILER_AND_AUDIT_EVIDENCE = TRUE
+A_TIER_STATUS = A_TIER
+CONDITIONAL_FORMAL_CLOSURE_STATUS = CONDITIONAL_FORMAL_CLOSURE
+FROZEN_UNCONDITIONAL_ROOT_A_TIER_STATUS = OPEN
+FROZEN_UNCONDITIONAL_ROOT_MATHEMATICAL_STATUS = B_TIER_DERIVED
+FORMAL_CLOSURE_SCOPE = EXACT_hV_CONDITIONAL_ROOT_IMPLICATION
+UNRESOLVED_ROOT_ANALYTIC_PREMISE = hV
+UNRESOLVED_ROOT_ANALYTIC_PREMISE_STATUS = OPEN
+UNRESOLVED_ROOT_ANALYTIC_PREMISE_COUNT = 1
+A_TIER_OBLIGATION_MARKER = !=!
+
+[EXECUTION_CONTRACT]
+LOCAL_LEAN_EXECUTION = FORBIDDEN
+LOCAL_LAKE_EXECUTION = FORBIDDEN
+LOCAL_ELAN_EXECUTION = FORBIDDEN
+REPORTED_LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+COMPILATION_SURFACE = EXTERNAL_NATIVE_LINUX_CI
+EXPECTED_LEAN_PIN = leanprover/lean4:v4.34.0-rc1
+EXPECTED_MATHLIB_PIN = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+CACHE_POLICY = RESTORE_PINNED_TOOLCHAIN_AND_DEPENDENCIES_AND_VERIFIED_ASSEMBLY_ARTIFACT
+CACHE_DESTRUCTION = FORBIDDEN
+PROOF_SCHEDULING = NATIVE_LEAN_ASYNCHRONOUS_ELABORATION
+PROOF_SCHEDULING_SEMANTICS = UNCHANGED_THEOREMS_UNCHANGED_PREMISES_UNCHANGED_AXIOMS
+VERIFIED_SOURCE_STATUS = A_TIER
+PRE_VERIFICATION_SOURCE_CLASSIFICATION = A_TIER_CANDIDATE
+PROMOTION_RULE = MATCHED_EXTERNAL_COMPILER_PASS_AND_THEOREM_LEVEL_FOUNDATIONAL_ONLY_AXIOM_AUDIT
+AUDIT_SCOPE_RULE = THEOREM_HYPOTHESES_ARE_NOT_DISCHARGED_BY_AXIOM_AUDIT
+RUNNER_PATHS = {Auxillary/GR/Strengthening/run.py, Auxillary/GR/Strengthening/run.cmd}
+PROOF_ROOT_PATH = ASSEMBLY/GRAssembly/Strengthening/NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_VELOCITY_ANALYTICITY.lean
+
+[FROZEN_SCOPE]
+PARAMETERS = ν ∈ ℝ, ρ ∈ ℝ, ν > 0, ρ ≠ 0
+SPATIAL_DOMAIN = ℝ³_WITH_ℤ³_PERIODICITY ≅ 𝕋³
+FORWARD_TIME_DOMAIN = [0,∞)
+POSITIVE_TIME_DOMAIN = (0,∞)
+DATUM_PREDICATE = NSEMaxwell.Classical.Data
+DATUM_QUANTIFIER = ∀ a : Field, NSEMaxwell.Classical.Data a
+VELOCITY_MEAN_RESTRICTION = NONE
+SOURCE_NEGATIVE_TIME_VALUES = QUOTIENTED_OUT
+SOURCE_PRESSURE_NORMALIZATION = ∀ t ≥ 0, q(t,0)=0
+SOURCE_REGULARITY = JOINT_ContDiffOn_ℝ_∞_ON_forwardSpacetime
+INITIAL_TIME_DERIVATIVE = derivWithin (fun s => u s x) (Ici 0) 0
+INITIAL_TIME_TWO_SIDED_ANALYTICITY_PREMISE = NONE
+PRESSURE_ANALYTICITY_ROOT_PREMISE = NONE
+PRESSURE_TRACE_ROOT_PREMISE = NONE
+TEMPORAL_TRACE_ROOT_PREMISE = NONE
+SMOOTH_BOUNDARY_EXTENSION_ROOT_PREMISE = NONE
+SMOOTH_SOURCE_SPATIAL_TRACE_ROOT_PREMISE = NONE
+
+FROZEN_GOAL =
+  ∀ ν > 0, ∀ ρ ≠ 0, ∀ a : Field,
+    NSEMaxwell.Classical.Data a →
+    Nonempty (NormalizedForwardTrajectory ν a ≃ GRForwardFamily ν ρ a)
+
+FROZEN_GOAL_PROOF_STATUS = UNRESOLVED_VELOCITY_ANALYTICITY_ENDPOINT
+
+[EXACT_SOURCE]
+SOURCE_TYPE = NormalizedForwardTrajectory ν a
+SOURCE_REPRESENTATIVE_TYPE = NormalizedTrajectoryRepresentative ν a
+SOURCE_REPRESENTATIVE_FIELDS =
+  velocity : Velocity
+  pressure : Pressure
+  solution : NSEMaxwell.Classical.NSSolution ν a velocity pressure
+  origin_normalized : ∀ t : ℝ, 0 ≤ t → pressure t 0 = 0
+SOURCE_EQUIVALENCE_RELATION =
+  (u,p) ~ (v,q) ↔ ∀ t ≥ 0, u(t)=v(t) ∧ p(t)=q(t)
+SOURCE_DERIVED_EXTENSIONALITY =
+  s=r ↔ ∀ t>0, s.velocity(t)=r.velocity(t)
+SOURCE_TOTALIZATION =
+  t≥0 → forward evaluation
+  t<0 → zero
+SOURCE_TOTALIZATION_THEOREM =
+  NSEMaxwell.Classical.NSSolution ν a s.totalVelocity s.totalPressure
+SOURCE_EXISTENCE_EQUIVALENCE =
+  (∃ u p, NSEMaxwell.Classical.NSSolution ν a u p)
+  ↔ Nonempty (NormalizedForwardTrajectory ν a)
+SOURCE_EXISTENCE_EQUIVALENCE_DECLARATION =
+  NSEGR.Strengthening.literal_nssolution_nonempty_normalized_source
+
+[ACTUAL_CARRIER_CHAIN]
+CHAIN =
+  \mathscr S_\nu(a)
+    \simeq_{h_V}
+  \mathscr P_\nu^+(a)
+    \simeq
+  \mathscr N_\nu^+(a)
+    \simeq
+  \mathscr G_{\nu,\rho}^+(a)
+
+SOURCE_CARRIER = NormalizedForwardTrajectory ν a
+PROFILE_CARRIER = PositiveTimeProfile ν a
+NSE_FAMILY_CARRIER = NSEForwardFamily ν a
+GR_FAMILY_CARRIER = GRForwardFamily ν ρ a
+
+PROFILE_FIELDS =
+  JOINT_POSITIVE_TIME_ANALYTIC_VELOCITY
+  JOINT_POSITIVE_TIME_ANALYTIC_PRESSURE
+  ACTUAL_PERIODIC_NSE_ON_t>0
+  ORIGIN_NORMALIZED_PRESSURE
+  VELOCITY_ONLY_SpatialSmoothInitialTrace
+PROFILE_EQUIVALENCE_RELATION =
+  (u,p) ~ (v,q) ↔ ∀ t>0, u(t)=v(t) ∧ p(t)=q(t)
+
+SPATIAL_INITIAL_TRACE =
+  ∀ m : ℕ, ∃ U : ℝ → SingularClosure.TorusSobolev m,
+    (∀ t : PositiveTime,
+      (U t.val).val = SingularClosure.datumFourierCoeff (V t))
+    ∧ (U 0).val = SingularClosure.datumFourierCoeff a
+    ∧ Tendsto U (𝓝[>] (0 : ℝ)) (𝓝 (U 0))
+
+NSE_FAMILY_FIELDS =
+  η : (τ : PositiveTime) → NSEgerm ν τ.val
+  NSEVelocityCoherent η
+  SpatialSmoothInitialTrace (nseFamilyVelocity η) a
+
+GR_FAMILY_FIELDS =
+  γ : (τ : PositiveTime) → GRgerm ν ρ τ.val
+  DecodedVelocityCoherent γ
+  SpatialSmoothInitialTrace (grFamilyVelocity γ) a
+
+NSE_COHERENCE =
+  ∀ τ>0, ∃ n,d,
+    NSEgerm.mk n=η(τ)
+    ∧ 0<d<τ
+    ∧ d≤n.radius
+    ∧ ∀ t>0, |t-τ|<d → n.velocity(t)=nseFamilyVelocity(η,t)
+
+GR_COHERENCE =
+  ∀ τ>0, ∃ g,d,
+    GRgerm.mk g=γ(τ)
+    ∧ 0<d<τ
+    ∧ d≤g.timeRadius
+    ∧ ∀ t>0, |t-τ|<d →
+      boundaryVelocity(boundaryK(g.metric),t)=grFamilyVelocity(γ,t)
+
+CHAIN_MAP_DECLARATIONS =
+  NSEGR.Strengthening.trajectoryProfileEquiv
+  NSEGR.Strengthening.profileNSEFamilyEquiv
+  NSEGR.Strengthening.coherentFamilyEquiv
+  NSEGR.Strengthening.positiveProfileGRFamilyEquiv
+  NSEGR.Strengthening.derivedBoundaryGRFamilyEquiv
+
+SOURCE_TO_LOCAL_REPRESENTATIVE =
+  τ>0 → {radius=τ/2, velocity=u, pressure=q, solution=actual LocalNSE}
+LOCAL_GEOMETRIC_ENCODER =
+  nativeLocalEquiv ν ρ τ.val hρ
+
+SOURCE_TO_GEOMETRIC_FAMILY =
+  hS := positiveTimeSmoothingEndpoint_of_velocity_analyticity hV
+  hT := smoothTrajectoryTraceEndpoint ν a
+  hE := positiveProfileBoundaryEndpoint ν a ha
+  e := trajectoryGRFamilyEquiv ρ hρ hS hT hE
+  H_s := positiveAnalyticNSE_of_nssolution s.solution (hS s).1 (hS s).2
+  (e s).val τ =
+    nativeLocalEquiv ν ρ τ.val hρ
+      (NSEgerm.mk (positiveTimeNSERepresentative H_s τ.val τ.property))
+SOURCE_TO_GEOMETRIC_FAMILY_DECLARATION =
+  NSEGR.Strengthening.trajectoryGRFamilyEquiv_apply_germ
+
+INVERSE_VELOCITY =
+  ∀ τ>0, velocity(e⁻¹(γ),τ)=grFamilyVelocity(γ,τ)
+INVERSE_PRESSURE =
+  ∀ τ>0, pressure(e⁻¹(γ),τ)=Π(grFamilyVelocity(γ,τ))
+INVERSE_INITIAL_VELOCITY = velocity(e⁻¹(γ),0)=a
+INVERSE_INITIAL_PRESSURE = pressure(e⁻¹(γ),0)=Π(a)
+LEFT_INVERSE = ∀ s, e⁻¹(e(s))=s
+RIGHT_INVERSE = ∀ γ, e(e⁻¹(γ))=γ
+
+[GEOMETRIC_SECTOR]
+NATIVE_GEOMETRIC_DEFINITIONS =
+  GR_adapter/GRAdapter/Geometry.lean
+  GR_adapter/GRAdapter/Sector.lean
+  GR_adapter/GRAdapter/Germs.lean
+BULK_TYPE = EuclideanSpace ℝ (Fin 5)
+BULK_COORDINATES = (r,t,x₁,x₂,x₃)
+METRIC_TYPE = Bulk → Matrix (Fin 5) (Fin 5) ℝ
+GEOMETRIC_REPRESENTATIVE = NSEGR.CanonicalRepresentative ν ρ τ
+GEOMETRY_PREDICATE = NSEGR.GaussianVacuum ρ τ δ ε g
+GEOMETRIC_REQUIREMENTS =
+  δ>0
+  ε>0
+  JOINT_REAL_ANALYTICITY_ON_bulkCollar(τ,δ,ε)
+  SPATIAL_PERIODICITY
+  SYMMETRIC_METRIC
+  ACTUAL_LORENTZIAN_INERTIA
+  g_rr=1
+  g_rA=0
+  g_AB|r=0=eta4_AB
+  ACTUAL_RICCI_TENSOR=0_ON_COLLAR
+  boundaryBeta(boundaryK(g),τ)=ρ
+  ∂t boundaryBeta(boundaryK(g),τ)=0
+  boundaryStress(ν,boundaryK(g))=0
+MARKING = FIXED_NATIVE_COORDINATE_MARKING
+METRIC_GERM_RELATION =
+  SameMetricAt τ g h :=
+    ∀ᶠ (r,t) in 𝓝(0,τ), ∀ x : Vec,
+      g(bulkPoint r t x)=h(bulkPoint r t x)
+TARGET_DEFINED_AS_ENCODING_IMAGE = FALSE
+TARGET_DEFINED_WITH_NSSolution_FIELD = FALSE
+SPATIAL_SLICE_SCOPE = FULL_PERIODIC_SPATIAL_SLICE
+TEMPORAL_SCOPE = GERM_AT_EACH_τ>0
+RADIAL_SCOPE = LOCAL_COLLAR_AT_EACH_τ>0
+UNIFORM_POSITIVE_TIME_RADIUS_ASSERTED = FALSE
+UNIFORM_RADIAL_RADIUS_ASSERTED = FALSE
+RADIAL_OR_TIME_RADIUS_LOWER_BOUND_AS_τ→0_ASSERTED = FALSE
+GLOBAL_SINGLE_BULK_METRIC_ASSERTED = FALSE
+DIFFEOMORPHISM_QUOTIENT_ASSERTED = FALSE
+UNIVERSAL_ARBITRARY_GR_EQUIVALENCE_ASSERTED = FALSE
+GEOMETRIC_ANALYTIC_GERM_AT_t=0_REQUIRED = FALSE
+
+[ACTUAL_PRESSURE_AND_INITIAL_PDE]
+A(v)(x) = velocityOuter(v(x)) = v(x)⊗v(x)
+H(v) = -divergence(tensorDivergence(A(v)))
+quadraticPoissonPressure(v) = poissonInverse(H(v))
+Π(v)(x) = quadraticPoissonPressure(v)(x)-quadraticPoissonPressure(v)(0)
+Π_LEAN_DEFINITION = NSEGR.Strengthening.normalizedQuadraticPressure
+LERAY_LEAN_DEFINITION = NSEGR.leray
+leray(w) = w-gradient(poissonInverse(divergence(w)))
+
+PRESSURE_IDENTITY =
+  ∀ t≥0, p(t,·)-p(t,0)=Π(u(t,·))
+PRESSURE_IDENTITY_DECLARATION =
+  NSEGR.Strengthening.nssolution_normalized_pressure_eq_quadraticPoisson
+ACTUAL_TRANSPORT_PROJECTOR_IDENTITY =
+  tensorDivergence(A(v))+gradient(Π(v))=leray(tensorDivergence(A(v)))
+PROJECTED_NSE =
+  ∀ t≥0,
+    timeDerivative(u,t)+leray(tensorDivergence(A(u(t))))=ν•laplacian(u(t))
+INITIAL_RIGHT_DERIVATIVE =
+  timeDerivative(u,0)=ν•laplacian(a)-leray(tensorDivergence(A(a)))
+NORMALIZED_INITIAL_PRESSURE =
+  q(0)=Π(a)
+
+INITIAL_IDENTITY_DECLARATIONS =
+  NSEGR.Strengthening.nssolution_initial_right_derivative_leray
+  NSEGR.Strengthening.nssolution_initial_originPressure
+  NSEGR.Strengthening.nssolution_initial_normalized_pressure
+CONSTRUCTED_BOUNDARY_IDENTITY_DECLARATIONS =
+  NSEGR.Strengthening.profileBoundary_is_nssolution
+  NSEGR.Strengthening.profileBoundaryPressure_initial
+  NSEGR.Strengthening.profileBoundaryVelocity_initial_right_derivative_leray
+
+PRESSURE_ANALYTICITY_DERIVATION =
+  ACTUAL_POSITIVE_VELOCITY_ANALYTICITY
+  → ACTUAL_QUADRATIC_SOURCE_ANALYTICITY
+  → NATIVE_ANALYTIC_POISSON_INVERSION
+  → ACTUAL_ORIGIN_NORMALIZED_PRESSURE_ANALYTICITY
+PRESSURE_ANALYTICITY_DECLARATION =
+  NSEGR.Strengthening.nssolution_originNormalize_positive_analytic
+
+G05_SCOPE =
+  DIAGONAL_NATIVE_PRESSURE_IDENTITY
+  NATIVE_FULL_FOURIER_TRANSPORT_PRESSURE_IDENTIFICATION
+  ACTUAL_PROJECTED_NSE
+G05_GENERAL_POLARIZED_Hm_BILINEAR_STATEMENT_STATUS = NOT_CLAIMED_BY_THE_DIAGONAL_IDENTITIES
+G05_GENERAL_POLARIZED_Hm_BILINEAR_CERTIFICATE_IS_CURRENT_ROOT_PREMISE = FALSE
+
+[DERIVED_BOUNDARY_AND_TRACE]
+SOURCE_TRACE_DECLARATION =
+  NSEGR.Strengthening.smoothTrajectoryTraceEndpoint
+ACTUAL_PHYSICAL_SOBOLEV_EQUATION_DECLARATION =
+  NSEGR.Strengthening.profileSobolevCurve_hasDerivAt
+BOUNDARY_EXTENSION_DECLARATION =
+  NSEGR.Strengthening.positiveProfileBoundaryEndpoint
+BOUNDARY_EXTENSION_INPUT =
+  NSEMaxwell.Classical.Data a
+  PositiveProfileRepresentative ν a
+BOUNDARY_EXTENSION_OUTPUT =
+  ACTUAL_SMOOTH_FORWARD_VELOCITY
+  ACTUAL_SMOOTH_FORWARD_NORMALIZED_PRESSURE
+  INITIAL_VELOCITY=a
+  EQUALITY_WITH_POSITIVE_PROFILE_ON_t>0
+BOUNDARY_PDE_DERIVATION =
+  ACTUAL_FORWARD_RESIDUAL_CONTINUITY
+  ∧ RESIDUAL=0_ON_t>0
+  ∧ closure(positiveSpacetime)=forwardSpacetime
+  → RESIDUAL=0_ON_t≥0
+BOUNDARY_PDE_DECLARATION =
+  NSEGR.Strengthening.nssolution_of_positive_time_equations
+BOUNDARY_ASSEMBLY_DECLARATION =
+  NSEGR.Strengthening.smoothProfileExtension_is_nssolution
+
+[SOLE_REMAINING_ROOT_ENDPOINT]
+ENDPOINT_NAME = NSEGR.Strengthening.PositiveTimeVelocityAnalyticityEndpoint
+ENDPOINT_DEFINITION_BEGIN
+def PositiveTimeVelocityAnalyticityEndpoint (ν : ℝ) (a : Field) : Prop :=
+  ∀ s : NormalizedForwardTrajectory ν a,
+    AnalyticOnNhd ℝ (fun z : ℝ × Vec => s.totalVelocity z.1 z.2) positiveSpacetime
+ENDPOINT_DEFINITION_END
+ENDPOINT_INHABITANT = NOT_DERIVED
+ENDPOINT_STATUS = OPEN
+ENDPOINT_IS_EXPLICIT_ROOT_HYPOTHESIS = TRUE
+ENDPOINT_CANNOT_BE_DISCHARGED_BY = {DEFINITION, EQUIVALENCE_WITNESS, AXIOM_AUDIT}
+REMAINING_PROOF_ROUTE = G06–G15
+REMAINING_ROUTE_COMPONENTS =
+  ACTUAL_WEIGHTED_WIENER_BANACH_ALGEBRA
+  ACTUAL_COMPLEX_HEAT_AND_DUHAMEL_ESTIMATES
+  ACTUAL_COMPLETE_HOLOMORPHIC_SECTOR_SPACE
+  ACTUAL_NSE_FIXED_POINT_AND_MILD_UNIQUENESS
+  IDENTIFICATION_WITH_SUPPLIED_PHYSICAL_NSE
+  JOINT_MIXED_FACTORIAL_BOUNDS
+  ACTUAL_POSITIVE_TIME_JOINT_VELOCITY_ANALYTICITY
+SMOOTHING_REDUCTION_DECLARATION =
+  NSEGR.Strengthening.positiveTimeSmoothingEndpoint_iff_velocity_analyticity
+
+[EXACT_CONDITIONAL_ROOT_TYPES]
+ROOT_01_NAME =
+  NSEGR.Strengthening.NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_VELOCITY_ANALYTICITY
+ROOT_01_SIGNATURE_BEGIN
+theorem NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_VELOCITY_ANALYTICITY
+    (ν ρ : ℝ) (hν : 0 < ν) (hρ : ρ ≠ 0)
+    (a : Field) (ha : NSEMaxwell.Classical.Data a)
+    (hV : PositiveTimeVelocityAnalyticityEndpoint ν a) :
+    Nonempty (NormalizedForwardTrajectory ν a ≃ GRForwardFamily ν ρ a)
+ROOT_01_SIGNATURE_END
+
+ROOT_02_NAME =
+  NSEGR.Strengthening.NSE_B_IFF_GR_BOUNDARY_FAMILY_OF_VELOCITY_ANALYTICITY
+ROOT_02_SIGNATURE_BEGIN
+theorem NSE_B_IFF_GR_BOUNDARY_FAMILY_OF_VELOCITY_ANALYTICITY
+    (ν ρ : ℝ) (hν : 0 < ν) (hρ : ρ ≠ 0)
+    (hV : ∀ a : Field, NSEMaxwell.Classical.Data a →
+      PositiveTimeVelocityAnalyticityEndpoint ν a) :
+    NSEMaxwell.Classical.FeffermanB ν ↔ GRFamilyB ν ρ
+ROOT_02_SIGNATURE_END
+
+GRFamilyB(ν,ρ) =
+  ∀ a : Field, NSEMaxwell.Classical.Data a → Nonempty(GRForwardFamily ν ρ a)
+CONDITIONAL_ROOT_MATHEMATICAL_FORM =
+  ν>0 ∧ ρ≠0 ∧ Data(a) →
+    (hV(ν,a) → Nonempty(\mathscr S_ν(a) ≃ \mathscr G^+_{ν,ρ}(a)))
+UNIVERSAL_CONDITIONAL_ROOT_MATHEMATICAL_FORM =
+  ν>0 ∧ ρ≠0 →
+  (∀ a, Data(a) → hV(ν,a))
+  → (FeffermanB(ν) ↔ GRFamilyB(ν,ρ))
+
+[REVERSE_DIRECTION_WITHOUT_SMOOTHING_PREMISE]
+REVERSE_01_NAME = NSEGR.Strengthening.gr_family_implies_nssolution
+REVERSE_01_SIGNATURE_BEGIN
+theorem gr_family_implies_nssolution
+    (ν ρ : ℝ) (hρ : ρ ≠ 0) (a : Field)
+    (ha : NSEMaxwell.Classical.Data a) (g : GRForwardFamily ν ρ a) :
+    ∃ (u : Velocity) (p : Pressure), NSEMaxwell.Classical.NSSolution ν a u p
+REVERSE_01_SIGNATURE_END
+
+REVERSE_02_NAME = NSEGR.Strengthening.GR_BOUNDARY_FAMILY_IMPLIES_NSE_B
+REVERSE_02_SIGNATURE_BEGIN
+theorem GR_BOUNDARY_FAMILY_IMPLIES_NSE_B
+    (ν ρ : ℝ) (hρ : ρ ≠ 0) (hGR : GRFamilyB ν ρ) :
+    NSEMaxwell.Classical.FeffermanB ν
+REVERSE_02_SIGNATURE_END
+
+REVERSE_ANALYTIC_ENDPOINT_PREMISES = NONE
+REVERSE_VISCOSITY_POSITIVITY_PREMISE = NONE
+REVERSE_MATHEMATICAL_FORM =
+  ρ≠0 → (GRFamilyB(ν,ρ) → FeffermanB(ν))
+REVERSE_PROOF_SPINE =
+  ACTUAL_GRForwardFamily
+  → ACTUAL_PositiveTimeProfile
+  → ACTUAL_PositiveProfileRepresentative
+  → DERIVED_VELOCITY_TRACE_BOUNDARY_EXTENSION
+  → LITERAL_NSSolution
+
+[EXACT_CONTRAPOSITIVES]
+CONTRAPOSITIVE_01_NAME = NSEGR.Strengthening.not_gr_family_of_no_nssolution
+CONTRAPOSITIVE_01_SIGNATURE_BEGIN
+theorem not_gr_family_of_no_nssolution
+    (ν ρ : ℝ) (hρ : ρ ≠ 0) (a : Field)
+    (ha : NSEMaxwell.Classical.Data a)
+    (hNo : ¬ ∃ (u : Velocity) (p : Pressure), NSEMaxwell.Classical.NSSolution ν a u p) :
+    ¬ Nonempty (GRForwardFamily ν ρ a)
+CONTRAPOSITIVE_01_SIGNATURE_END
+
+CONTRAPOSITIVE_02_NAME = NSEGR.Strengthening.not_GRFamilyB_of_not_FeffermanB
+CONTRAPOSITIVE_02_SIGNATURE_BEGIN
+theorem not_GRFamilyB_of_not_FeffermanB
+    (ν ρ : ℝ) (hρ : ρ ≠ 0) (hNotB : ¬ NSEMaxwell.Classical.FeffermanB ν) :
+    ¬ GRFamilyB ν ρ
+CONTRAPOSITIVE_02_SIGNATURE_END
+
+ACTUAL_NSE_NONEXISTENCE_CERTIFICATE = NOT_SUPPLIED
+ACTUAL_NOT_FeffermanB_CERTIFICATE = NOT_SUPPLIED
+NONANALYTICITY_AT_t=0_IMPLIES_NSE_NONEXISTENCE = NOT_DERIVED
+NONANALYTICITY_AT_t=0_IS_EXCLUDED_BY_SOURCE = FALSE
+
+[VERIFIED_DECLARATION_PROMOTIONS]
+PROMOTION_MARKER = !=!
+PROMOTION_EVIDENCE = SOURCE_b6c03bf098dd908d4c3e93fd47a323f35f263226_RUN_43536994970
+PROMOTION_QUANTIFIER = EACH_LISTED_DECLARATION_WITH_ITS_EXACT_EXPLICIT_PREMISES
+!=! NSEGR.Strengthening.nse_gr_calculus_agree_on_positive_time
+!=! NSEGR.Strengthening.nssolution_originNormalize
+!=! NSEGR.Strengthening.NormalizedForwardTrajectory.eq_iff_positive_velocity
+!=! NSEGR.Strengthening.localNSE_originNormalize_eq_of_eventuallyEq
+!=! NSEGR.Strengthening.nssolution_normalized_pressure_eq_quadraticPoisson
+!=! NSEGR.Strengthening.nssolution_originNormalize_positive_analytic
+!=! NSEGR.Strengthening.positive_time_nse_representative
+!=! NSEGR.Strengthening.profileNSEFamilyEquiv
+!=! NSEGR.Strengthening.coherentFamilyEquiv
+!=! NSEGR.Strengthening.positiveProfileGRFamilyEquiv
+!=! NSEGR.Strengthening.smoothTrajectoryTraceEndpoint
+!=! NSEGR.Strengthening.positiveProfileBoundaryEndpoint
+!=! NSEGR.Strengthening.nssolution_of_positive_time_equations
+!=! NSEGR.Strengthening.nssolution_initial_right_derivative_leray
+!=! NSEGR.Strengthening.positiveTimeSmoothingEndpoint_iff_velocity_analyticity
+!=! NSEGR.Strengthening.derivedBoundaryGRFamilyEquiv
+!=! NSEGR.Strengthening.NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_VELOCITY_ANALYTICITY
+!=! NSEGR.Strengthening.NSE_B_IFF_GR_BOUNDARY_FAMILY_OF_VELOCITY_ANALYTICITY
+!=! NSEGR.Strengthening.gr_family_implies_nssolution
+!=! NSEGR.Strengthening.GR_BOUNDARY_FAMILY_IMPLIES_NSE_B
+!=! NSEGR.Strengthening.not_gr_family_of_no_nssolution
+!=! NSEGR.Strengthening.not_GRFamilyB_of_not_FeffermanB
+PROMOTED_ENDPOINT_INHABITANT_FOR_hV = NONE
+PROMOTED_UNCONDITIONAL_TWO_WAY_ROOT = NONE
+
+[CONCLUSION_BOUNDARY]
+ASSERTED =
+  EXACT_NATIVE_CARRIER_DEFINITIONS
+  EXACT_CONDITIONAL_EQUIVALENCE_WITH_EXPLICIT_hV
+  EXACT_REVERSE_IMPLICATION_WITHOUT_SMOOTHING_PREMISE
+  EXACT_CONTRAPOSITIVES_WITH_EXPLICIT_NONEXISTENCE_PREMISES
+  ACTUAL_PRESSURE_AND_RIGHT_INITIAL_DERIVATIVE_FORMULAS
+  VERIFIED_EXTERNAL_COMPILER_AND_EXACT_THEOREM_AXIOM_AUDIT_RECEIPT
+
+NOT_ASSERTED =
+  AN_INHABITANT_OF_PositiveTimeVelocityAnalyticityEndpoint
+  THE_UNCONDITIONAL_FROZEN_TWO_WAY_ROOT
+  FeffermanB(ν)
+  GRFamilyB(ν,ρ)
+  ARBITRARY_DATUM_GLOBAL_NSE_EXISTENCE
+  GLOBAL_SINGLE_BULK_GR_EXISTENCE
+  UNRESTRICTED_GENERAL_RELATIVITY_EQUIVALENCE
+  AN_NSE_COUNTEREXAMPLE
+  INITIAL_TIME_ANALYTICITY
+
+[RETAINED_INTERMEDIATE_GOAL_SCOPE]
+ORIGINAL_INTERMEDIATE_GOALS = 45
+FROZEN_MATHEMATICAL_STATEMENTS_CHANGED = FALSE
+INTEGRATION_INDEX = Auxillary/GR/Strengthening/integration-index.json
+PROMOTION_LEDGER = Auxillary/GR/Strengthening/a-tier-promotions.json
+EVIDENCE_INDEX = Auxillary/GR/Strengthening/evidence/index.json
+G04_ACTUAL_REALIZATION_SYNTHESIS_SOURCE_TRACE = A_TIER_EXACT_COMPONENTS
+G04_GENERAL_ALL_Hm_CONVERGENCE_IFF_SPATIAL_C_INFINITY_CONVERGENCE = OPEN
+G04_GENERAL_TOPOLOGY_IFF_IS_CURRENT_ROOT_PREMISE = FALSE
+G05_GENERAL_POLARIZED_Q_BOUND = OPEN
+G05_GENERAL_POLARIZED_Q_BOUND_IS_CURRENT_ROOT_PREMISE = FALSE
+G27_G28_G29_ALTERNATIVE_JET_ROUTE = OPEN
+G27_G28_G29_REQUIRED_BY_CURRENT_ASSEMBLY = FALSE
+G06_THROUGH_G15_VELOCITY_SMOOTHING_ROUTE = OPEN
+CURRENT_ROOT_REMAINING_ANALYTIC_PREMISE_COUNT = 1
+SOURCE_MANIFEST_INPUTS_MODIFIED_AFTER_VERIFICATION = 0
+
+[CACHED_EXTERNAL_REPRODUCTION]
+COMMAND = run.cmd 43536994970
+COMMAND_ROLE = RERUN_THE_CERTIFIED_EXTERNAL_WORKFLOW_RUN
+ALTERNATIVE_COMMAND = run.cmd
+ALTERNATIVE_COMMAND_ROLE = DISPATCH_CURRENT_BRANCH_WORKFLOW
+LOCAL_COMPILER_INVOCATIONS = 0

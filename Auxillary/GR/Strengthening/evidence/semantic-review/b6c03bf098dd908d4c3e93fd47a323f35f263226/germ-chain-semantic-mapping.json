@@ -1,0 +1,990 @@
+{
+  "artifact_kind": "SEMANTIC_COVERAGE_MAPPING_NOT_PROMOTION_EVIDENCE",
+  "source_repository": "/workspace/scratch/bdb594519396/nse-gr",
+  "mapping_scope": [
+    "G18-G26",
+    "G37-G42"
+  ],
+  "status_policy": "No A_TIER label is assigned here. Require exact matching external compiler and theorem-level axiom-audit evidence for every promoted statement.",
+  "pressure_semantics": {
+    "primitive_family_inverse": "nseFamilyToProfile uses actual center velocity and origin-normalized native germ-center pressure.",
+    "native_pi": "normalizedQuadraticPressure v = poissonInverse(-divergence(tensorDivergence(v tensor v))) - its value at spatial origin.",
+    "pi_identification": "PressureIdentification derives primitive recovered pressure = native Pi from actual PDE calculus.",
+    "fourier_identification": "SobolevPressureIdentification derives native Pi = normalized fullTransportPressure(physicalFourierValue 0 v) for every smooth periodic divergence-free v.",
+    "not_claimed": "The sharp bilinear Q:H^m x H^m -> H^m operator-norm bound from the broad G05 statement is not a theorem in these modules; it is not inserted as a root premise."
+  },
+  "entries": [
+    {
+      "goal_id": "G18",
+      "frozen_name": "physical_native_local_equivalence_family",
+      "frozen_statement": "For every tau>0 choose the actual native c_tau,r_tau,h_tau,i_tau and set E_tau=exactSectorEquivOfContracts c_tau r_tau h_tau i_tau, D_tau=reverseGerm h_tau. Then D_tau E_tau=id and E_tau D_tau=id, with D_tau the actual metric boundary decoder.",
+      "coverage": "FULL_NATIVE_MAP_AND_INVERSE_COMPONENT_SET",
+      "explicit_parent_premises": [
+        "nu : Real",
+        "rho : Real",
+        "rho != 0",
+        "t0 : Real; frozen positive-time specialization t0=tau>0"
+      ],
+      "endpoints": [
+        {
+          "qualified_name": "NSEGR.Strengthening.nativeLocalPackage_nonempty",
+          "module": "GRAssembly.Strengthening.GermEvaluation",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermEvaluation.lean",
+          "role": "Derives all actual native contract witnesses from literatureInputs_native.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nativeLocalPackage",
+          "module": "GRAssembly.Strengthening.GermEvaluation",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermEvaluation.lean",
+          "role": "Chooses only the derived actual native law package.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nativeLocalEquiv",
+          "module": "GRAssembly.Strengthening.GermEvaluation",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermEvaluation.lean",
+          "role": "Definition is exactSectorEquivOfContracts applied to that package.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nativeLocalEquiv_mk",
+          "module": "GRAssembly.Strengthening.GermEvaluation",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermEvaluation.lean",
+          "role": "Identifies the forward map with the actual forwardRepresentative.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nativeLocalEquiv_symm_mk",
+          "module": "GRAssembly.Strengthening.GermEvaluation",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermEvaluation.lean",
+          "role": "Identifies the inverse with the actual reverseRepresentative and metric boundary fields.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nativeLocalEquiv_left_inverse",
+          "module": "GRAssembly.Strengthening.GermEvaluation",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermEvaluation.lean",
+          "role": "Actual D_tau E_tau identity.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nativeLocalEquiv_right_inverse",
+          "module": "GRAssembly.Strengthening.GermEvaluation",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermEvaluation.lean",
+          "role": "Actual E_tau D_tau identity.",
+          "dedicated_full_frozen_statement": false
+        }
+      ],
+      "semantic_notes": [
+        "No arbitrary Equiv is selected. nativeLocalEquiv is built from the actual native completion, radial extension, reconstruction, and inverse laws.",
+        "The local law packages are derived internally; their type fields are not unresolved parent premises.",
+        "The implementation works for every real nu and t0, hence implies the frozen nu>0 and tau>0 specialization."
+      ],
+      "remaining_for_full_unconditional_frozen_statement": [],
+      "promotion_status": "NOT_SET_BY_THIS_MAPPING",
+      "external_audit_status": "MATCH_EXACT_THEOREM_AND_SOURCE_HASH_BEFORE_PROMOTION"
+    },
+    {
+      "goal_id": "G19",
+      "frozen_name": "nse_germ_center_velocity",
+      "frozen_statement": "Define evN_tau:NSEgerm(nu,tau)->Field by evN_tau([u,p])=u(tau). This is independent of the representative and has the displayed computation rule.",
+      "coverage": "FULL_CENTER_EVALUATION_COMPONENT_SET",
+      "explicit_parent_premises": [
+        "nu,t0 : Real",
+        "n : NSEgerm nu t0; representatives when invoking the computation rule"
+      ],
+      "endpoints": [
+        {
+          "qualified_name": "NSEGR.sameFlowAt_center_velocity",
+          "module": "GRAssembly.Strengthening.GermEvaluation",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermEvaluation.lean",
+          "role": "Representative-independence from actual full-field eventual equality.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.NSEgerm.velocityAtCenter",
+          "module": "GRAssembly.Strengthening.GermEvaluation",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermEvaluation.lean",
+          "role": "Actual quotient center evaluation.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.NSEgerm.velocityAtCenter_mk",
+          "module": "GRAssembly.Strengthening.GermEvaluation",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermEvaluation.lean",
+          "role": "Literal representative computation rule.",
+          "dedicated_full_frozen_statement": false
+        }
+      ],
+      "semantic_notes": [
+        "No spatial restriction or pressure-gauge choice enters the velocity evaluation."
+      ],
+      "remaining_for_full_unconditional_frozen_statement": [],
+      "promotion_status": "NOT_SET_BY_THIS_MAPPING",
+      "external_audit_status": "MATCH_EXACT_THEOREM_AND_SOURCE_HASH_BEFORE_PROMOTION"
+    },
+    {
+      "goal_id": "G20",
+      "frozen_name": "gr_germ_center_velocity",
+      "frozen_statement": "Define evG_tau:GRgerm(nu,rho,tau)->Field by evG_tau([g])=boundaryVelocity(boundaryK(g))(tau). This is independent of the metric representative.",
+      "coverage": "FULL_CENTER_EVALUATION_COMPONENT_SET",
+      "explicit_parent_premises": [
+        "nu,rho,t0 : Real",
+        "g : GRgerm nu rho t0"
+      ],
+      "endpoints": [
+        {
+          "qualified_name": "NSEGR.sameMetricAt_center_velocity",
+          "module": "GRAssembly.Strengthening.GermEvaluation",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermEvaluation.lean",
+          "role": "Uses native sameMetricAt_boundaryFields before evaluation.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.GRgerm.velocityAtCenter",
+          "module": "GRAssembly.Strengthening.GermEvaluation",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermEvaluation.lean",
+          "role": "Actual quotient boundaryVelocity(boundaryK metric) evaluation.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.GRgerm.velocityAtCenter_mk",
+          "module": "GRAssembly.Strengthening.GermEvaluation",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermEvaluation.lean",
+          "role": "Literal metric representative computation rule.",
+          "dedicated_full_frozen_statement": false
+        }
+      ],
+      "semantic_notes": [
+        "Representative independence is derived for whole spatial fields, so the spatially nonlocal Leray operation is respected.",
+        "No rho!=0 premise is needed for this evaluation itself."
+      ],
+      "remaining_for_full_unconditional_frozen_statement": [],
+      "promotion_status": "NOT_SET_BY_THIS_MAPPING",
+      "external_audit_status": "MATCH_EXACT_THEOREM_AND_SOURCE_HASH_BEFORE_PROMOTION"
+    },
+    {
+      "goal_id": "G21",
+      "frozen_name": "positive_recovery_interval_and_germ_identification",
+      "frozen_statement": "For tau>0, an actual local NSE representative n at tau and its forward metric representative g admit d>0 with d<=tau/2, d<=n.radius and d<=g.timeRadius, such that v_g=n.velocity and p_g-p_g(t,0)=n.pressure-n.pressure(t,0) throughout |t-tau|<d. Hence evG_tau(E_tau(NSEgerm.mk n))=evN_tau(NSEgerm.mk n), and evN_tau(D_tau gamma)=evG_tau(gamma).",
+      "coverage": "FULL_RECOVERY_AND_CENTER_IDENTITIES_COMPONENT_SET",
+      "explicit_parent_premises": [
+        "tau>0",
+        "n : NSERepresentative nu tau",
+        "rho!=0 when selecting the native package"
+      ],
+      "endpoints": [
+        {
+          "qualified_name": "NSEGR.Strengthening.forward_recovery_positive_interval",
+          "module": "GRAssembly.Strengthening.GermEvaluation",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermEvaluation.lean",
+          "role": "Positive common interval; both radius caps; full velocity and normalized-pressure recovery.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nativeLocalEquiv_velocityAtCenter",
+          "module": "GRAssembly.Strengthening.GermEvaluation",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermEvaluation.lean",
+          "role": "Forward center-velocity preservation.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nativeLocalEquiv_symm_velocityAtCenter",
+          "module": "GRAssembly.Strengthening.GermEvaluation",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermEvaluation.lean",
+          "role": "Actual inverse center-velocity preservation.",
+          "dedicated_full_frozen_statement": false
+        }
+      ],
+      "semantic_notes": [
+        "The generic interval theorem explicitly takes completion and radial law proofs; instantiate them with nativeLocalPackage to discharge those parameters.",
+        "The cap d<=tau/2 proves positivity of the entire recovery interval.",
+        "The normalized pressure equality is proved on the interval, not merely at its center."
+      ],
+      "remaining_for_full_unconditional_frozen_statement": [],
+      "promotion_status": "NOT_SET_BY_THIS_MAPPING",
+      "external_audit_status": "MATCH_EXACT_THEOREM_AND_SOURCE_HASH_BEFORE_PROMOTION"
+    },
+    {
+      "goal_id": "G22",
+      "frozen_name": "positive_time_profile_and_spatial_trace",
+      "frozen_statement": "Define P_nu^+(a) as pairs (v,q) on (0,infinity) x T3 that are jointly analytic, periodic, solve unforced incompressible NSE, obey q(t,0)=0, and satisfy lim_(t downarrow 0)||v(t)-a||_(H^m)=0 for every m. No temporal derivative or pressure trace belongs to this definition.",
+      "coverage": "FULL_LITERAL_PROFILE_AND_TRACE_DEFINITIONS; PI_FORMULA_SEPARATE",
+      "explicit_parent_premises": [
+        "nu : Real",
+        "a : Field; frozen specialization requires Data a"
+      ],
+      "endpoints": [
+        {
+          "qualified_name": "NSEGR.Strengthening.SpatialSmoothInitialTrace",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Actual all-order TorusSobolev coefficient membership and right norm convergence.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.PositiveProfileRepresentative",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "Actual positive analytic periodic NSE plus origin gauge and velocity-only spatial trace.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.PositiveTimeProfile",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "Quotient by equality of both fields at every positive time.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.PositiveTimeProfile.eq_iff_positive",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "Exact extensional equality on positive fields.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.PositiveTimeProfile.pressure_eq_quadraticPoisson",
+          "module": "GRAssembly.Strengthening.PressureIdentification",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PressureIdentification.lean",
+          "role": "Derives normalized pressure=literal native Pi from the profile PDE; not a carrier field.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.PositiveTimeProfile.pressure_eq_fullTransportPressure",
+          "module": "GRAssembly.Strengthening.SobolevPressureIdentification",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/SobolevPressureIdentification.lean",
+          "role": "Identifies the same pressure with actual normalized Fourier transport pressure.",
+          "dedicated_full_frozen_statement": false
+        }
+      ],
+      "semantic_notes": [
+        "SpatialSmoothInitialTrace quantifies actual TorusSobolev states U_m, fixes their coefficients to the actual cube Fourier integrals at every positive time and at zero, and requires Tendsto in the actual Sobolev norm.",
+        "No temporal derivative trace, pressure trace, smooth boundary extension, or pressure-recovery predicate is stored in this carrier.",
+        "The representatives are total functions, but the quotient removes all nonpositive-time baggage.",
+        "The pressure formula is an independent consequence of the exact PDE and normalization."
+      ],
+      "remaining_for_full_unconditional_frozen_statement": [],
+      "promotion_status": "NOT_SET_BY_THIS_MAPPING",
+      "external_audit_status": "MATCH_EXACT_THEOREM_AND_SOURCE_HASH_BEFORE_PROMOTION"
+    },
+    {
+      "goal_id": "G23",
+      "frozen_name": "coherent_native_nse_family_carrier",
+      "frozen_statement": "For eta in product_(tau>0) NSEgerm(nu,tau), set W_eta(t)=evN_t(eta_t). Define N_nu^+(a) by: at each tau, some representative n of eta_tau agrees in velocity with W_eta on |t-tau|<d for a 0<d<tau within n.radius; and W_eta(t)->a in every H^m. Coherence is an intrinsic property and is invariant under changing representative after shrinking.",
+      "coverage": "FULL_LITERAL_NSE_CARRIER_AND_REPRESENTATIVE_INVARIANCE",
+      "explicit_parent_premises": [
+        "nu : Real",
+        "a : Field",
+        "NSEVelocityCoherent eta for the representative-change theorem"
+      ],
+      "endpoints": [
+        {
+          "qualified_name": "NSEGR.Strengthening.PositiveTimeNSEGermFamily",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Dependent product of actual native NSE germs.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nseFamilyVelocity",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Actual center-velocity profile.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.NSEVelocityCoherent",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Existential neighborhood coherence of full spatial fields, with 0<d<tau and d<=radius.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.NSEForwardFamily",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Subtype carrying exactly velocity coherence and the actual Sobolev trace.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nse_coherence_any_representative",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Transfers the property to any representative after shrinking.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nseForwardFamily_ext",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Equality of the underlying dependent family suffices.",
+          "dedicated_full_frozen_statement": false
+        }
+      ],
+      "semantic_notes": [
+        "Representative and radius witnesses occur only in Prop. They are not additional carrier data."
+      ],
+      "remaining_for_full_unconditional_frozen_statement": [],
+      "promotion_status": "NOT_SET_BY_THIS_MAPPING",
+      "external_audit_status": "MATCH_EXACT_THEOREM_AND_SOURCE_HASH_BEFORE_PROMOTION"
+    },
+    {
+      "goal_id": "G24",
+      "frozen_name": "coherent_geometric_family_carrier",
+      "frozen_statement": "PositiveTimeGRGermFamily is product_(tau>0) GRgerm(nu,rho,tau). Set V_gamma(t)=evG_t(gamma_t). GRForwardFamily(nu,rho,a) is its subtype satisfying DecodedVelocityCoherent and SpatialSmoothInitialTrace(a), exactly as in frozen Section 6. Coherence is intrinsic under representative change.",
+      "coverage": "FULL_FROZEN_GEOMETRIC_CARRIER_AND_REPRESENTATIVE_INVARIANCE",
+      "explicit_parent_premises": [
+        "nu,rho : Real",
+        "a : Field",
+        "DecodedVelocityCoherent gamma for representative-change theorem"
+      ],
+      "endpoints": [
+        {
+          "qualified_name": "NSEGR.Strengthening.PositiveTimeGRGermFamily",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Dependent product of actual native canonical GR germs.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.grFamilyVelocity",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Actual decoded center-velocity profile.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.DecodedVelocityCoherent",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Whole-spatial-slice decoded velocity coherence on positive neighborhoods.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.GRForwardFamily",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Exact subtype: decoded velocity coherence and actual Sobolev trace only.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.gr_coherence_any_representative",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Intrinsic representative-independence after shrinking.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.grForwardFamily_ext",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Underlying family equality determines carrier equality.",
+          "dedicated_full_frozen_statement": false
+        }
+      ],
+      "semantic_notes": [
+        "No NSE predicate, encoding-image predicate, pressure trace, time-jet trace, or common metric collar is inserted in GRForwardFamily.",
+        "The underlying GRgerm is the existing marked canonical geometric sector. No claim about arbitrary GR spacetimes is made."
+      ],
+      "remaining_for_full_unconditional_frozen_statement": [],
+      "promotion_status": "NOT_SET_BY_THIS_MAPPING",
+      "external_audit_status": "MATCH_EXACT_THEOREM_AND_SOURCE_HASH_BEFORE_PROMOTION"
+    },
+    {
+      "goal_id": "G25",
+      "frozen_name": "coherent_native_family_decodes_to_positive_profile",
+      "frozen_statement": "For eta in N_nu^+(a), B(eta):=(W_eta,Pi(W_eta)) lies in P_nu^+(a), and [B(eta)]_tau=eta_tau for every tau>0.",
+      "coverage": "FULL_CARRIER_AND_GERM_RECOVERY; PI_FORMULA_IS_A_SEPARATE_EXACT_COMPONENT",
+      "explicit_parent_premises": [
+        "nu : Real",
+        "a : Field",
+        "eta : NSEForwardFamily nu a"
+      ],
+      "endpoints": [
+        {
+          "qualified_name": "NSEGR.Strengthening.coherent_nse_family_pressure_match",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "Derives pressure coherence from actual local momentum and equality of velocity neighborhoods.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.coherent_nse_family_positiveAnalyticNSE",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "Glues the actual analytic periodic NSE fields on every positive neighborhood.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nseFamilyToProfileRepresentative",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "Actual recovered velocity and normalized germ-center pressure; trace inherited.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nseFamilyToProfile",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "Positive-time quotient of the recovered representative.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileToNSEFamily_nseFamilyToProfile",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "Exact entire-family germ recovery A(B(eta))=eta.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nseGerm_pressure_eq_quadraticPoisson",
+          "module": "GRAssembly.Strengthening.PressureIdentification",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PressureIdentification.lean",
+          "role": "Every native germ center pressure is Pi of its center velocity.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nseFamilyPressure_eq_quadraticPoisson",
+          "module": "GRAssembly.Strengthening.PressureIdentification",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PressureIdentification.lean",
+          "role": "Identifies the inverse pressure with Pi(W_eta), without any coherence premise.",
+          "dedicated_full_frozen_statement": false
+        }
+      ],
+      "semantic_notes": [
+        "The inverse implementation initially selects normalized germ-center pressure, not a postulated pressure-recovery operator.",
+        "PressureIdentification identifies that exact implemented pressure with the literal native quadratic Poisson Pi; this is required when reporting the frozen Pi formula.",
+        "The displayed pointwise germ statement is obtained by evaluating the exported family equality."
+      ],
+      "remaining_for_full_unconditional_frozen_statement": [],
+      "promotion_status": "NOT_SET_BY_THIS_MAPPING",
+      "external_audit_status": "MATCH_EXACT_THEOREM_AND_SOURCE_HASH_BEFORE_PROMOTION"
+    },
+    {
+      "goal_id": "G26",
+      "frozen_name": "coherent_geometric_family_decodes_to_positive_profile",
+      "frozen_statement": "For gamma in G_nu,rho^+(a), (V_gamma,Pi(V_gamma)) belongs to P_nu^+(a). On every coherence interval this pair is the origin-normalized actual native boundary decode of the chosen metric representative.",
+      "coverage": "FULL_POSITIVE_PROFILE_COMPOSITE; INTERVAL_DECODE_FORMULA_COMPONENT_SET",
+      "explicit_parent_premises": [
+        "nu,rho : Real",
+        "rho!=0",
+        "a : Field",
+        "gamma : GRForwardFamily nu rho a"
+      ],
+      "endpoints": [
+        {
+          "qualified_name": "NSEGR.Strengthening.decodeGRFamily",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Pointwise actual native reverseGerm.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.decodeGRFamily_coherent",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Each chosen coherence metric becomes its actual reverseRepresentative on the same interval.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.decodeGRFamily_trace",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Preserves the exact velocity-only spatial trace.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.decodeGRFamily_velocity",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Identifies W_(D gamma) with actual V_gamma.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nseFamilyToProfile",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "Maps the decoded coherent NSE family to the actual positive profile.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.coherent_nse_family_pressure_match",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "Normalized representative pressure equals the recovered profile on each coherence interval.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.decodedGRFamily_pressure_eq_quadraticPoisson",
+          "module": "GRAssembly.Strengthening.PressureIdentification",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PressureIdentification.lean",
+          "role": "Recovered normalized native boundary pressure equals Pi(V_gamma).",
+          "dedicated_full_frozen_statement": false
+        }
+      ],
+      "semantic_notes": [
+        "The positive profile is nseFamilyToProfile applied to coherentFamilyEquiv.symm gamma.",
+        "The chosen metric representative is decoded by reverseRepresentative; its velocity and pressure are definitionally boundaryVelocity(boundaryK g) and boundaryPressure rho (boundaryK g).",
+        "The interval statement follows by instantiating coherent_nse_family_pressure_match with that actual reverseRepresentative and the same coherence interval. No single theorem currently packages the entire frozen G26 conjunction.",
+        "No global metric collar or metric-gluing premise occurs."
+      ],
+      "remaining_for_full_unconditional_frozen_statement": [],
+      "promotion_status": "NOT_SET_BY_THIS_MAPPING",
+      "external_audit_status": "MATCH_EXACT_THEOREM_AND_SOURCE_HASH_BEFORE_PROMOTION"
+    },
+    {
+      "goal_id": "G37",
+      "frozen_name": "positive_profile_native_family_equivalence",
+      "frozen_statement": "A:P_nu^+(a) ~= N_nu^+(a), with A(v,q)_tau=[v,q]_tau and inverse B(eta)=(W_eta,Pi(W_eta)).",
+      "coverage": "FULL_EXACT_CARRIER_EQUIVALENCE; PI_INVERSE_FORMULA_SEPARATELY_JUSTIFIED",
+      "explicit_parent_premises": [
+        "nu : Real",
+        "a : Field"
+      ],
+      "endpoints": [
+        {
+          "qualified_name": "NSEGR.Strengthening.positiveProfileRepresentativeToNSEFamily",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "A uses the actual same pair on radius tau/2.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileToNSEFamily",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "A descends to the positive-time equality quotient.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileToNSEFamily_velocity",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "Exact center velocity recovery.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileToNSEFamily_pressure",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "Exact normalized pressure recovery.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nseFamilyToProfile",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "Implemented inverse B.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nseFamilyToProfile_profileToNSEFamily",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "B A=id.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileToNSEFamily_nseFamilyToProfile",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "A B=id.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileNSEFamilyEquiv",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "Actual constructed equivalence P^+ ~= N^+.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.POSITIVE_PROFILE_NSE_FAMILY_EQUIVALENCE",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "Nonempty exact carrier equivalence.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nseFamilyPressure_eq_quadraticPoisson",
+          "module": "GRAssembly.Strengthening.PressureIdentification",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PressureIdentification.lean",
+          "role": "Separate formula B(eta)=(W_eta,Pi(W_eta)).",
+          "dedicated_full_frozen_statement": false
+        }
+      ],
+      "semantic_notes": [
+        "The carrier equivalence needs no unproved analytic smoothing, pressure recovery, or boundary-extension premise.",
+        "Positive-time analyticity is part of P^+, as frozen; the theorem does not assume it for every smooth forward source.",
+        "The inverse Pi formula must be cited together with PressureIdentification; the primitive inverse pressure is normalized germ-center pressure."
+      ],
+      "remaining_for_full_unconditional_frozen_statement": [],
+      "promotion_status": "NOT_SET_BY_THIS_MAPPING",
+      "external_audit_status": "MATCH_EXACT_THEOREM_AND_SOURCE_HASH_BEFORE_PROMOTION"
+    },
+    {
+      "goal_id": "G38",
+      "frozen_name": "native_geometric_family_equivalence",
+      "frozen_statement": "C:N_nu^+(a) ~= G_nu,rho^+(a), with C(eta)_tau=E_tau(eta_tau) and inverse D(gamma)_tau=D_tau(gamma_tau). Their decoded positive-time velocities are identical to those of the input families.",
+      "coverage": "FULL_EXACT_NATIVE_FAMILY_EQUIVALENCE",
+      "explicit_parent_premises": [
+        "nu,rho : Real",
+        "rho!=0",
+        "a : Field",
+        "nu>0 only for the named Nonempty wrapper"
+      ],
+      "endpoints": [
+        {
+          "qualified_name": "NSEGR.Strengthening.encodeNSEFamily",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Pointwise actual E_tau.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.decodeGRFamily",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Pointwise actual D_tau.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.encodeNSEFamily_coherent",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Proves forward preservation of intrinsic coherence.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.decodeGRFamily_coherent",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Proves reverse preservation of intrinsic coherence.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.encodeNSEFamily_trace",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Proves forward preservation of actual Sobolev trace.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.decodeGRFamily_trace",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Proves reverse preservation of actual Sobolev trace.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.decodeGRFamily_encodeNSEFamily",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "D C=id.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.encodeNSEFamily_decodeGRFamily",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "C D=id.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.coherentFamilyEquiv",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Actual equivalence with exactly the frozen carriers.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.NSE_GR_COHERENT_FAMILY_EQUIVALENCE",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "The frozen nu>0,rho!=0 specialization.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.coherentFamilyEquiv_velocity",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Velocity profile preserved by the actual forward equivalence.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.decodeGRFamily_velocity",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Velocity profile preserved by the actual inverse.",
+          "dedicated_full_frozen_statement": false
+        }
+      ],
+      "semantic_notes": [
+        "No analytic or geometric contract remains as a parent premise beyond rho!=0.",
+        "The equivalence neither asserts either carrier is inhabited nor constructs a common global bulk metric."
+      ],
+      "remaining_for_full_unconditional_frozen_statement": [],
+      "promotion_status": "NOT_SET_BY_THIS_MAPPING",
+      "external_audit_status": "MATCH_EXACT_THEOREM_AND_SOURCE_HASH_BEFORE_PROMOTION"
+    },
+    {
+      "goal_id": "G39",
+      "frozen_name": "frozen_global_maps_as_composites",
+      "frozen_statement": "Phi=C o A o R and Psi=T o B o D are well-defined between exactly the frozen carriers. Explicitly Phi(u,q)_tau=E_tau([u,q]_tau), while Psi(gamma)=(U_gamma,Pi(U_gamma)), with U_gamma(t)=V_gamma(t) for t>0 and U_gamma(0)=a.",
+      "coverage": "CONDITIONAL_FROZEN_MAPS_AND_FORMULAS; NOT_UNCONDITIONAL_G39",
+      "explicit_parent_premises": [
+        "rho!=0",
+        "nu : Real",
+        "a : Field",
+        "Generic map formulas explicitly take hS:PositiveTimeSmoothingEndpoint nu a, hT:SmoothTrajectoryTraceEndpoint nu a, hE:PositiveProfileBoundaryEndpoint nu a.",
+        "After concrete specializations: Data a and hV:PositiveTimeVelocityAnalyticityEndpoint nu a; no additional analytic endpoint remains."
+      ],
+      "endpoints": [
+        {
+          "qualified_name": "NSEGR.Strengthening.trajectoryProfileEquiv",
+          "module": "GRAssembly.Strengthening.ExactChain",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/ExactChain.lean",
+          "role": "S ~= P under three explicitly named analytic endpoints.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.trajectoryGRFamilyEquiv",
+          "module": "GRAssembly.Strengthening.ExactChain",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/ExactChain.lean",
+          "role": "Literal composition (S ~= P).trans (P ~= G).",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.trajectoryGRFamilyEquiv_apply_germ",
+          "module": "GRAssembly.Strengthening.ChainFormulas",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/ChainFormulas.lean",
+          "role": "Phi(s)_tau=actual E_tau applied to the actual restricted NSE pair.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.trajectoryGRFamilyEquiv_inverse_velocity",
+          "module": "GRAssembly.Strengthening.ChainFormulas",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/ChainFormulas.lean",
+          "role": "Psi(gamma)(t) has actual V_gamma(t) for positive t.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.trajectoryGRFamilyEquiv_inverse_pressure",
+          "module": "GRAssembly.Strengthening.ChainFormulas",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/ChainFormulas.lean",
+          "role": "Psi pressure at positive time is Pi(V_gamma(t)).",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.trajectoryGRFamilyEquiv_inverse_initial",
+          "module": "GRAssembly.Strengthening.ChainFormulas",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/ChainFormulas.lean",
+          "role": "Psi velocity at zero=a and pressure at zero=Pi(a).",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.derivedBoundaryGRFamilyEquiv",
+          "module": "GRAssembly.Strengthening.NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_VELOCITY_ANALYTICITY",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_VELOCITY_ANALYTICITY.lean",
+          "role": "Specializes the composition to the single remaining source velocity-analyticity endpoint.",
+          "dedicated_full_frozen_statement": false
+        }
+      ],
+      "semantic_notes": [
+        "hT is supplied by smoothTrajectoryTraceEndpoint. hE is supplied by positiveProfileBoundaryEndpoint under Data a. hS is supplied by positiveTimeSmoothingEndpoint_of_velocity_analyticity from hV.",
+        "Equiv.ofBijective chooses the source inverse extension; source uniqueness and ChainFormulas identify this exact inverse with the frozen velocity/pressure formulas.",
+        "Native Pi is the concrete normalized Poisson inverse of -div div(v tensor v); SobolevPressureIdentification identifies it with the literal full Fourier transport pressure."
+      ],
+      "remaining_for_full_unconditional_frozen_statement": [
+        "Derive an inhabitant of PositiveTimeVelocityAnalyticityEndpoint nu a from nu>0 and Data a."
+      ],
+      "promotion_status": "NOT_SET_BY_THIS_MAPPING",
+      "external_audit_status": "MATCH_EXACT_THEOREM_AND_SOURCE_HASH_BEFORE_PROMOTION"
+    },
+    {
+      "goal_id": "G40",
+      "frozen_name": "global_trajectory_inverse_identity",
+      "frozen_statement": "For every (u,q) in S_nu(a), Psi(Phi(u,q))=(u,q).",
+      "coverage": "CONDITIONAL_EXACT_SOURCE_LEFT_INVERSE; NOT_UNCONDITIONAL_G40",
+      "explicit_parent_premises": [
+        "rho!=0",
+        "Generic hS,hT,hE as in G39; after specialization Data a and hV remain.",
+        "s : NormalizedForwardTrajectory nu a"
+      ],
+      "endpoints": [
+        {
+          "qualified_name": "NSEGR.Strengthening.trajectoryGRFamilyEquiv_left_inverse",
+          "module": "GRAssembly.Strengthening.ChainFormulas",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/ChainFormulas.lean",
+          "role": "Exact Psi(Phi(s))=s for the constructed equivalence.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.normalizedForwardTrajectory_pressure_eq_quadratic",
+          "module": "GRAssembly.Strengthening.ChainFormulas",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/ChainFormulas.lean",
+          "role": "Actual normalized pressure formula at all t>=0, including t=0.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.NormalizedForwardTrajectory.eq_iff_forward",
+          "module": "GRAssembly.Strengthening.SourceCarrier",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/SourceCarrier.lean",
+          "role": "Source equality ignores all negative-time representative values.",
+          "dedicated_full_frozen_statement": false
+        }
+      ],
+      "semantic_notes": [
+        "The source quotient includes velocity and normalized pressure equality on the full closed forward domain.",
+        "The theorem itself is a conditional identity; no inhabitant of the source is asserted."
+      ],
+      "remaining_for_full_unconditional_frozen_statement": [
+        "Discharge hV for unconditional frozen G40."
+      ],
+      "promotion_status": "NOT_SET_BY_THIS_MAPPING",
+      "external_audit_status": "MATCH_EXACT_THEOREM_AND_SOURCE_HASH_BEFORE_PROMOTION"
+    },
+    {
+      "goal_id": "G41",
+      "frozen_name": "global_family_inverse_identity",
+      "frozen_statement": "For gamma in G_nu,rho^+(a), D_tau(gamma_tau)=[Psi(gamma)]_tau for each tau>0, and consequently Phi(Psi(gamma))=gamma.",
+      "coverage": "CONDITIONAL_EXACT_GR_RIGHT_INVERSE_AND_EXPLICIT_NATIVE_DECODER_GERM_FORMULA",
+      "explicit_parent_premises": [
+        "rho!=0",
+        "Generic hS,hT,hE as in G39; after specialization Data a and hV remain.",
+        "gamma : GRForwardFamily nu rho a"
+      ],
+      "endpoints": [
+        {
+          "qualified_name": "NSEGR.Strengthening.trajectoryGRFamilyEquiv_right_inverse",
+          "module": "GRAssembly.Strengthening.ChainFormulas",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/ChainFormulas.lean",
+          "role": "Exact Phi(Psi(gamma))=gamma.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.trajectoryGRFamilyEquiv_inverse_germ",
+          "module": "GRAssembly.Strengthening.ChainFormulas",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/ChainFormulas.lean",
+          "role": "Explicit actual D_tau(gamma_tau)=[Psi(gamma)]_tau; newly prepared after CI7, awaiting matching CI8 compiler and axiom audit.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.trajectoryGRFamilyEquiv_apply_germ",
+          "module": "GRAssembly.Strengthening.ChainFormulas",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/ChainFormulas.lean",
+          "role": "Identifies the positive local NSE germ used by Phi.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.nativeLocalEquiv_left_inverse",
+          "module": "GRAssembly.Strengthening.GermEvaluation",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermEvaluation.lean",
+          "role": "Applying actual D_tau to a component recovers that NSE germ.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.profileToNSEFamily_nseFamilyToProfile",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "Actual normalized local family reconstruction.",
+          "dedicated_full_frozen_statement": false
+        }
+      ],
+      "semantic_notes": [
+        "The exact GR family right-inverse and the actual native decoder-germ formula are both exported directly.",
+        "The decoder-germ proof evaluates apply_symm_apply at tau, expands actual native encoding, applies actual nativeLocalEquiv.symm, then uses symm_apply_apply.",
+        "The inverse_germ declaration is a CI8 candidate addition; CI7 evidence does not certify its new body.",
+        "No equality of metrics on a single common radial collar is required."
+      ],
+      "remaining_for_full_unconditional_frozen_statement": [
+        "Discharge hV for unconditional frozen G41."
+      ],
+      "promotion_status": "NOT_SET_BY_THIS_MAPPING",
+      "external_audit_status": "MATCH_EXACT_THEOREM_AND_SOURCE_HASH_BEFORE_PROMOTION"
+    },
+    {
+      "goal_id": "G42",
+      "frozen_name": "NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE",
+      "frozen_statement": "For every nu>0, rho!=0 and a in C-infinity_sigma(T3), S_nu(a) ~= G_nu,rho^+(a), with toFun=Phi and invFun=Psi. More precisely S_nu(a) ~= P_nu^+(a) ~= N_nu^+(a) ~= G_nu,rho^+(a).",
+      "coverage": "EXACT_CONDITIONAL_ROOT_ONLY; UNCONDITIONAL_FROZEN_ROOT_NOT_PROVED",
+      "explicit_parent_premises": [
+        "nu>0",
+        "rho!=0",
+        "a : Field",
+        "ha : NSEMaxwell.Classical.Data a (smooth, periodic, divergence-free; arbitrary velocity mean)",
+        "hV : PositiveTimeVelocityAnalyticityEndpoint nu a"
+      ],
+      "endpoints": [
+        {
+          "qualified_name": "NSEGR.Strengthening.POSITIVE_PROFILE_NSE_FAMILY_EQUIVALENCE",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "Unconditional scoped P ~= N carrier subchain.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.NSE_GR_COHERENT_FAMILY_EQUIVALENCE",
+          "module": "GRAssembly.Strengthening.GermFamilies",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/GermFamilies.lean",
+          "role": "Unconditional scoped N ~= G carrier subchain.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.POSITIVE_PROFILE_GR_FAMILY_EQUIVALENCE",
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "role": "Unconditional scoped P ~= G carrier subchain.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_ANALYTIC_ENDPOINTS",
+          "module": "GRAssembly.Strengthening.ExactChain",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/ExactChain.lean",
+          "role": "Exact source-to-geometric root with named hS,hT,hE premises.",
+          "dedicated_full_frozen_statement": false
+        },
+        {
+          "qualified_name": "NSEGR.Strengthening.NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_VELOCITY_ANALYTICITY",
+          "module": "GRAssembly.Strengthening.NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_VELOCITY_ANALYTICITY",
+          "path": "ASSEMBLY/GRAssembly/Strengthening/NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_VELOCITY_ANALYTICITY.lean",
+          "role": "Exact source-to-geometric root after deriving trace, boundary extension, and pressure analyticity; only hV remains.",
+          "dedicated_full_frozen_statement": false
+        }
+      ],
+      "semantic_notes": [
+        "The exact root conclusion is Nonempty (NormalizedForwardTrajectory nu a equiv GRForwardFamily nu rho a).",
+        "PositiveTimeVelocityAnalyticityEndpoint means: every actual normalized complete smooth forward source has jointly analytic velocity on positiveSpacetime.",
+        "The current root does not assert this endpoint has an inhabitant. Naming it does not discharge G06-G15.",
+        "Passing an external compiler and theorem-level axiom audit for this theorem establishes only its explicitly conditional implication; the unconditional frozen root remains open.",
+        "No source or target nonemptiness, global NSE regularity, or global metric existence is inferred from a carrier equivalence."
+      ],
+      "remaining_for_full_unconditional_frozen_statement": [
+        "Construct and audit the positive-time velocity analyticity derivation from the stated frozen nu>0 and Data a premises."
+      ],
+      "promotion_status": "NOT_SET_BY_THIS_MAPPING",
+      "external_audit_status": "MATCH_EXACT_THEOREM_AND_SOURCE_HASH_BEFORE_PROMOTION"
+    }
+  ],
+  "static_declaration_lookup_failures": [],
+  "additional_exact_reverse_direction": {
+    "module": "GRAssembly.Strengthening.ReverseChain",
+    "path": "ASSEMBLY/GRAssembly/Strengthening/ReverseChain.lean",
+    "qualified_names": [
+      "NSEGR.Strengthening.gr_family_implies_nssolution",
+      "NSEGR.Strengthening.GR_BOUNDARY_FAMILY_IMPLIES_NSE_B",
+      "NSEGR.Strengthening.not_gr_family_of_no_nssolution",
+      "NSEGR.Strengthening.not_GRFamilyB_of_not_FeffermanB"
+    ],
+    "premises": [
+      "rho!=0",
+      "Data a for the individual-datum statement",
+      "an actual GRForwardFamily value, or GRFamilyB for the universal statement"
+    ],
+    "unresolved_analytic_premises": [],
+    "semantic_scope": "The actual G->P equivalence and derived boundary endpoint yield a literal forward NSSolution. No positive-time source velocity analyticity endpoint is needed in this direction.",
+    "promotion_status": "NOT_SET_BY_THIS_MAPPING"
+  }
+}

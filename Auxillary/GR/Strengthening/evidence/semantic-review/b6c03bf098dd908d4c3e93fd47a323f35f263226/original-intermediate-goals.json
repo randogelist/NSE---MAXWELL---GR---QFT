@@ -1,0 +1,2584 @@
+{
+  "schema_version": 1,
+  "goal": "NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE",
+  "goal_version": 1,
+  "derivation_revision": 3,
+  "branch": "STRENGTHENING-GR-FB",
+  "anchor_collection_commit": "49801d86a61c09a6829ad430206d222239bff49a",
+  "anchor_index": "Auxillary/GR/Strengthening/endpoint-index.json",
+  "anchor_index_sha256": "e755ff0fbb6c1193b8c6e1e68871977d9740bf396cc57c64adcf3235f53a44c5",
+  "mathematical_status": "B_TIER_DERIVED",
+  "new_root_lean_status": "NOT_IMPLEMENTED",
+  "new_external_compiler_evidence": "NONE",
+  "new_external_theorem_axiom_audit": "NONE",
+  "local_lean_lake_elan_executions": 0,
+  "goal_scope_changed": false,
+  "derivation_file": "B <-> GR/Strengthening/Derivation/NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_B_TIER.txt",
+  "counts": {
+    "collected_existing_endpoints": 183,
+    "coarse_reserved_constructions": 24,
+    "fine_intermediate_goals": 45,
+    "distinct_referenced_anchors": 132,
+    "definitions": 5,
+    "primary_root_dependency_goals": 39,
+    "independent_alternative_jet_goals": 3
+  },
+  "carrier_chain": [
+    "S_nu(a)",
+    "P_nu^+(a)",
+    "N_nu^+(a)",
+    "G_nu,rho^+(a)"
+  ],
+  "maps": {
+    "restriction": "R(u,q)=(u,q)|_(t>0)",
+    "extension": "T(v,q)=(vbar,Pi(vbar))",
+    "nse_germs": "A(v,q)_tau=[v,q]_tau",
+    "nse_decode": "B(eta)=(W_eta,Pi(W_eta))",
+    "native_forward": "C(eta)_tau=E_tau(eta_tau)",
+    "native_reverse": "D(gamma)_tau=D_tau(gamma_tau)",
+    "frozen_forward": "Phi=C o A o R",
+    "frozen_reverse": "Psi=T o B o D"
+  },
+  "primary_root_dependency_goals": [
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09",
+    "G10",
+    "G11",
+    "G12",
+    "G13",
+    "G14",
+    "G15",
+    "G16",
+    "G17",
+    "G18",
+    "G19",
+    "G20",
+    "G21",
+    "G22",
+    "G23",
+    "G24",
+    "G25",
+    "G26",
+    "G30",
+    "G31",
+    "G32",
+    "G33",
+    "G34",
+    "G35",
+    "G36",
+    "G37",
+    "G38",
+    "G39",
+    "G40",
+    "G41",
+    "G42"
+  ],
+  "alternate_boundary_route": {
+    "goals": [
+      "G27",
+      "G28",
+      "G29"
+    ],
+    "replaces": "G30--G34 as a proof of smooth extension, with G04--G05 retained",
+    "note": "Same exact boundary theorem; derivative-losing polynomial jet proof. No extra root premise."
+  },
+  "optional_existing_stage": {
+    "stage": "E12_OptionalFieldGluing",
+    "role": "Optional gluing of equal decoded fields. Not a required edge in the primary chain and not bulk metric gluing."
+  },
+  "next_formalization_blocks": [
+    {
+      "id": "F1",
+      "goals": [
+        "G01",
+        "G02",
+        "G03",
+        "G17",
+        "G18",
+        "G19",
+        "G20",
+        "G21",
+        "G22",
+        "G23",
+        "G24"
+      ],
+      "purpose": "Exact carriers, physical local maps, center evaluation and interval/gauge semantics"
+    },
+    {
+      "id": "F2",
+      "goals": [
+        "G04",
+        "G05",
+        "G30",
+        "G31",
+        "G32",
+        "G33",
+        "G34",
+        "G35"
+      ],
+      "purpose": "Actual Fourier norm derivative, right boundary, native Sobolev-scale composition"
+    },
+    {
+      "id": "F3",
+      "goals": [
+        "G06",
+        "G07",
+        "G08",
+        "G09",
+        "G10",
+        "G11",
+        "G12",
+        "G13",
+        "G14",
+        "G15",
+        "G16"
+      ],
+      "purpose": "Complex Wiener sector, mild uniqueness, mixed analytic bridge"
+    },
+    {
+      "id": "F4",
+      "goals": [
+        "G25",
+        "G26",
+        "G36",
+        "G37",
+        "G38",
+        "G39",
+        "G40",
+        "G41",
+        "G42",
+        "G43",
+        "G44",
+        "G45"
+      ],
+      "purpose": "Carrier equivalences, deterministic global maps, both inverses and literal existence corollary"
+    }
+  ],
+  "promotion_gates": [
+    "New exact Lean declarations and their bodies must be prepared without new axioms or admissions.",
+    "M1 dependencies require a matching compiler cohort or an explicit source-preserving port into the GR target.",
+    "External cached Lean 4.34.0-rc1 compilation and matching theorem-level audit are required for the GR integration.",
+    "Only propext, Classical.choice and Quot.sound are approved foundational axioms.",
+    "Audit of an implication never discharges its analytic or semantic hypotheses; the G-goals record those discharges."
+  ],
+  "goals": [
+    {
+      "id": "G01",
+      "name": "normalized_forward_restriction_carrier",
+      "stage": "E01_GlobalLocalCalculus",
+      "kind": "DEFINITION",
+      "route": "PRIMARY",
+      "depends_on": [],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "Define S_nu(a) as normalized smooth NSE pairs on H=[0,infinity), with equality on H x T3. Equivalently quotient normalized total functions by equality on H. All source predicates descend to this quotient; equality has no negative-time component.",
+      "mathematical_derivation": "Within smoothness and within derivatives depend only on the forward restriction. The cited congruence results preserve the literal derivative predicates. Spatial derivatives use entire spatial slices at fixed forward t. Initial value and origin gauge are pointwise restrictions. Quotient or restricted-function extensionality therefore gives the exact carrier of Section 1.",
+      "anchors": [
+        {
+          "endpoint": "NSEMaxwell.Classical.Data",
+          "source_id": "S005",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Native/NSEMaxwell.Classical.Data",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Classical.SmoothVelocity",
+          "source_id": "S005",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Native/NSEMaxwell.Classical.SmoothVelocity",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Classical.SmoothPressure",
+          "source_id": "S005",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Native/NSEMaxwell.Classical.SmoothPressure",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Classical.forwardSpacetime",
+          "source_id": "S005",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Native/NSEMaxwell.Classical.forwardSpacetime",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Classical.timeDerivative_congr_field",
+          "source_id": "S006",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Native/NSEMaxwell.Classical.timeDerivative_congr_field",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Kinematics.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Classical.scalarTimeDerivative_congr_field",
+          "source_id": "S006",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Native/NSEMaxwell.Classical.scalarTimeDerivative_congr_field",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Kinematics.lean"
+        },
+        {
+          "endpoint": "ContDiffOn.congr",
+          "source_id": "S059",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Mathlib/ContDiffOn.congr",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Defs.lean"
+        }
+      ],
+      "mathematical_status": "DEFINITION_FIXED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G02",
+      "name": "positive_time_calculus_identification",
+      "stage": "E01_GlobalLocalCalculus",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "For t>0 the literal forward time derivative equals the native GR local time derivative. The spatial gradients, divergences, convections and Laplacians agree after the common Euclidean coordinate definitions are unfolded.",
+      "mathematical_derivation": "Ici 0 belongs to the neighborhood filter of every t>0. The within-derivative equalities therefore apply. Both spatial definitions use EuclideanSpace Real (Fin 3), the same coordinate vectors, and the same Frechet derivative. No ordinary two-sided time derivative at zero is inferred.",
+      "anchors": [
+        {
+          "endpoint": "Ici_mem_nhds",
+          "source_id": "S001",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Mathlib/Ici_mem_nhds",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Order/OrderClosed.lean"
+        },
+        {
+          "endpoint": "derivWithin_of_mem_nhds",
+          "source_id": "S002",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Mathlib/derivWithin_of_mem_nhds",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/Deriv/Basic.lean"
+        },
+        {
+          "endpoint": "fderivWithin_of_mem_nhds",
+          "source_id": "S003",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Mathlib/fderivWithin_of_mem_nhds",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Basic.lean"
+        },
+        {
+          "endpoint": "NSEGR.localTimeDerivative",
+          "source_id": "S004",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Native/NSEGR.localTimeDerivative",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Fields.lean"
+        },
+        {
+          "endpoint": "NSEGR.spatialPartial",
+          "source_id": "S004",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Native/NSEGR.spatialPartial",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Fields.lean"
+        },
+        {
+          "endpoint": "NSEGR.nseResidual",
+          "source_id": "S004",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Native/NSEGR.nseResidual",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Fields.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Classical.timeDerivative",
+          "source_id": "S005",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Native/NSEMaxwell.Classical.timeDerivative",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Classical.coordinateDerivative",
+          "source_id": "S005",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Native/NSEMaxwell.Classical.coordinateDerivative",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G03",
+      "name": "forward_pressure_normalization",
+      "stage": "E02_PressureGauge",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G01"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "NSSolution(nu,a,u,p) implies NSSolution(nu,a,u,q) and q(t,0)=0 for t>=0, where q(t,x)=p(t,x)-p(t,0). The velocity, initial datum and arbitrary mean are preserved.",
+      "mathematical_derivation": "The map (t,x)->(t,0) preserves forwardSpacetime and is smooth. Composition and subtraction give joint forward smoothness of q. The subtracted scalar is spatially constant, hence has zero spatial gradient. Periodicity and every remaining NSE predicate are preserved. Analyticity is not needed here.",
+      "anchors": [
+        {
+          "endpoint": "ContDiffOn.comp",
+          "source_id": "S007",
+          "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/Mathlib/ContDiffOn.comp",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Comp.lean"
+        },
+        {
+          "endpoint": "ContDiffOn.sub",
+          "source_id": "S008",
+          "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/Mathlib/ContDiffOn.sub",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Operations.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Classical.pressure_slice_smooth",
+          "source_id": "S006",
+          "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/Native/NSEMaxwell.Classical.pressure_slice_smooth",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Kinematics.lean"
+        },
+        {
+          "endpoint": "NSEGR.gradient_sub_constant",
+          "source_id": "S009",
+          "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/Native/NSEGR.gradient_sub_constant",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/FourierInversion.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G04",
+      "name": "arbitrary_mean_fourier_sobolev_realization",
+      "stage": "E03_FourierPressure",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "For every smooth periodic real field b, its actual Fourier coefficients define compatible elements of every TorusSobolev(m); synthesis recovers b pointwise. The squared norm is sum_k <2pi k>^(2m)|bhat(k)|^2, including k=0. Convergence in every H^m is equivalent to spatial C-infinity convergence.",
+      "mathematical_derivation": "Use generic smooth-datum membership, coefficient reality, rapid decay and the actual coefficient/synthesis inverse. Pointwise Fourier injectivity applies to continuous periodic fields. Weighted Cauchy--Schwarz gives H^m -> C^r for m>r+3/2; the finite derivative L2 expansion gives C^m -> H^m. No mean-zero packaged realization theorem is used.",
+      "anchors": [
+        {
+          "endpoint": "SingularClosure.SMOOTH_DATUM_MEM_TORUS_SOBOLEV",
+          "source_id": "S062",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.SMOOTH_DATUM_MEM_TORUS_SOBOLEV",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SmoothDatumSobolev.lean"
+        },
+        {
+          "endpoint": "SingularClosure.smoothDatumSobolev",
+          "source_id": "S062",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.smoothDatumSobolev",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SmoothDatumSobolev.lean"
+        },
+        {
+          "endpoint": "SingularClosure.datumFourierCoeff_reality",
+          "source_id": "S068",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.datumFourierCoeff_reality",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InitialFourier.lean"
+        },
+        {
+          "endpoint": "SingularClosure.ALL_SOBOLEV_IMP_RAPID_SCALAR",
+          "source_id": "S016",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.ALL_SOBOLEV_IMP_RAPID_SCALAR",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevSmoothRealization.lean"
+        },
+        {
+          "endpoint": "SingularClosure.datumFourierCoeff_smoothFourierSynthesis",
+          "source_id": "S016",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.datumFourierCoeff_smoothFourierSynthesis",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevSmoothRealization.lean"
+        },
+        {
+          "endpoint": "SingularClosure.datumFourierCoeff_injective_continuous_periodic",
+          "source_id": "S067",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.datumFourierCoeff_injective_continuous_periodic",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PeriodicFourierInjective.lean"
+        },
+        {
+          "endpoint": "SingularClosure.torusSobolev_norm_sq",
+          "source_id": "S066",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.torusSobolev_norm_sq",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/TorusSobolev.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G05",
+      "name": "normalized_quadratic_pressure_identity",
+      "stage": "E03_FourierPressure",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G02",
+        "G04"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "Let R(A)hat(0)=0 and R(A)hat(k)=-sum_ij k_i k_j Ahat_ij(k)/|k|^2 for k!=0. Set Q(b,c)=R(b tensor c)-R(b tensor c)(0), Pi(b)=Q(b,b). For m>=2, Q:H^m x H^m -> H^m is continuous bilinear. Every smooth periodic NSE pair satisfies p-p(t,0)=Pi(v) and v_t=F(v):=nu Delta v-P div(v tensor v).",
+      "mathematical_derivation": "The R symbol has Frobenius operator norm <=1. The Sobolev product estimate and bounded point evaluation prove continuity of Q. Taking divergence of NSE gives Delta p=-div div(v tensor v); the Fourier symbol solves this equation. A periodic harmonic difference has only its zero coefficient, hence is spatially constant. The transport-pressure coefficient i sum_i k_i b_i/(2pi|k|^2), with b_i=2pi i sum_j k_j (v_j v_i)hat, equals the displayed R symbol. The linear torusSobolevPressure is applied to transport coefficients, then normalized; it is not identified directly with Pi.",
+      "anchors": [
+        {
+          "endpoint": "SingularClosure.INFINITE_TRANSPORT_PRESSURE_RECOVERY",
+          "source_id": "S014",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Methlib/SingularClosure.INFINITE_TRANSPORT_PRESSURE_RECOVERY",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InfiniteFourierPressure.lean"
+        },
+        {
+          "endpoint": "SingularClosure.infiniteTransportPressure_coeff",
+          "source_id": "S014",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Methlib/SingularClosure.infiniteTransportPressure_coeff",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InfiniteFourierPressure.lean"
+        },
+        {
+          "endpoint": "SingularClosure.pressureFromTransport_recovery",
+          "source_id": "S015",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Methlib/SingularClosure.pressureFromTransport_recovery",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/LerayPressure.lean"
+        },
+        {
+          "endpoint": "SingularClosure.smoothFourierSynthesis_convection_coeff",
+          "source_id": "S017",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Methlib/SingularClosure.smoothFourierSynthesis_convection_coeff",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierProduct.lean"
+        },
+        {
+          "endpoint": "SingularClosure.torusSobolevPressure",
+          "source_id": "S018",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Methlib/SingularClosure.torusSobolevPressure",
+          "source_url": "https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevPressure.lean"
+        },
+        {
+          "endpoint": "NSEGR.Assembly.poissonInverse_scalarLaplacian",
+          "source_id": "S021",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Native/NSEGR.Assembly.poissonInverse_scalarLaplacian",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/HodgeTransport.lean"
+        },
+        {
+          "endpoint": "NSEGR.leray",
+          "source_id": "S004",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Native/NSEGR.leray",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Fields.lean"
+        },
+        {
+          "endpoint": "NSEGR.poissonInverse",
+          "source_id": "S004",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Native/NSEGR.poissonInverse",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Fields.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G06",
+      "name": "weighted_wiener_banach_algebra",
+      "stage": "E04_PositiveTimeAnalyticity",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "A_sigma={c: sum_k exp(sigma|2pi k|)|c(k)|<infinity} is a complex Banach space for sigma>=0. With Euclidean coefficient vectors and Frobenius tensors, ||v tensor w||_(A_sigma)<=||v||_(A_sigma)||w||_(A_sigma). P(0)=I, ||P(k)||<=1, and |(P div A)hat(k)|<=|2pi k||Ahat(k)|.",
+      "mathematical_derivation": "Multiplication by the positive weight is an isometric isomorphism onto vector-valued ell^1. The exponential triangle inequality bounds the convolution; absolute summability permits reindexing the lattice double sum. The real symmetric orthogonal projection formula, complexified, proves the Euclidean norm-one Leray bound. The default function-space supremum norm is not substituted for the Euclidean norm.",
+      "anchors": [
+        {
+          "endpoint": "lp.completeSpace",
+          "source_id": "S030",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/lp.completeSpace",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Lp/lpSpace.lean"
+        },
+        {
+          "endpoint": "lp.norm_eq_tsum_rpow",
+          "source_id": "S030",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/lp.norm_eq_tsum_rpow",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Lp/lpSpace.lean"
+        },
+        {
+          "endpoint": "lp.evalCLM",
+          "source_id": "S030",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/lp.evalCLM",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Lp/lpSpace.lean"
+        },
+        {
+          "endpoint": "lp.tsumCLM",
+          "source_id": "S030",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/lp.tsumCLM",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Lp/lpSpace.lean"
+        },
+        {
+          "endpoint": "Memℓp.summable_of_one",
+          "source_id": "S030",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/Memℓp.summable_of_one",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Lp/lpSpace.lean"
+        },
+        {
+          "endpoint": "Summable.mul_of_nonneg",
+          "source_id": "S031",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/Summable.mul_of_nonneg",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Ring/InfiniteSum.lean"
+        },
+        {
+          "endpoint": "Summable.tsum_prod",
+          "source_id": "S032",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/Summable.tsum_prod",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Algebra/InfiniteSum/Constructions.lean"
+        },
+        {
+          "endpoint": "tsum_mul_tsum_of_summable_norm",
+          "source_id": "S031",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/tsum_mul_tsum_of_summable_norm",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Ring/InfiniteSum.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G07",
+      "name": "smooth_trajectory_wiener_control",
+      "stage": "E04_PositiveTimeAnalyticity",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G04",
+        "G06"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "A supplied jointly smooth periodic trajectory is continuous into A_0 on every compact time interval, with finite uniform A_0 norm there.",
+      "mathematical_derivation": "Four spatial derivatives give |uhat(k)|<=C<k>^(-4), uniformly on a compact cylinder. The Z^3 majorant is summable. Uniform continuity of the spatial derivatives gives continuity into A_0 by dominated Fourier summation. The native uniform moment theorem is instantiated on the supplied trajectory, not on an unknown global solution.",
+      "anchors": [
+        {
+          "endpoint": "NSEMaxwell.HodgeProof.uniform_datumFourierCoeff_moment_bound",
+          "source_id": "S043",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Native/NSEMaxwell.HodgeProof.uniform_datumFourierCoeff_moment_bound",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/FourierHodgeLaws/UniformCoefficientBounds.lean"
+        },
+        {
+          "endpoint": "SingularClosure.FOURIER_POLYNOMIAL_DECAY",
+          "source_id": "S037",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Methlib/SingularClosure.FOURIER_POLYNOMIAL_DECAY",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierDecay.lean"
+        },
+        {
+          "endpoint": "SingularClosure.summable_torusSobolevWeight_inv_four",
+          "source_id": "S039",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Methlib/SingularClosure.summable_torusSobolevWeight_inv_four",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/LatticeSobolevSummability.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G08",
+      "name": "complex_heat_and_duhamel_bounds",
+      "stage": "E04_PositiveTimeAnalyticity",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G06"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "For 0<theta<pi/2, omega>0 and T>0, on S_(theta,T) put sigma(z)=omega sqrt(nu Re z), L=exp(omega^2/4), C=2 exp(omega^2/2)/sqrt(e cos theta). For b in A_0, z->exp(nu z Delta)b is A_0-holomorphic and tends to b in A_0 as z->0 inside the sector. Also ||exp(nu z Delta)b||_(A_sigma(z))<=L||b||_(A_0), and ||B(V,W)||_X<=C sqrt(T/nu)||V||_X||W||_X.",
+      "mathematical_derivation": "For y>=0, -nu Re(z)y^2+sigma(z)y<=omega^2/4. On compact subsets of the sector, Re z has a positive lower bound, so derivatives of the heat multipliers admit summable coefficient majorants and give A_0 holomorphy. Their moduli are <=1; dominated summation gives strong A_0 convergence to b at zero. For 0<s<1 set b0=nu(1-s)Re z and d=sigma(z)-sigma(sz). Then y exp(-b0 y^2+d y)<=(e b0)^(-1/2)exp(d^2/(2b0)), with d^2/(2b0)<=omega^2/2. Multiplication by |z| and integration of (1-s)^(-1/2), whose integral is 2, give the exact Duhamel constant. The zero-mode divergence is zero.",
+      "anchors": [
+        {
+          "endpoint": "Complex.exp_add",
+          "source_id": "S022",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/Complex.exp_add",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/Exponential.lean"
+        },
+        {
+          "endpoint": "Complex.hasDerivAt_exp",
+          "source_id": "S023",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/Complex.hasDerivAt_exp",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/ExpDeriv.lean"
+        },
+        {
+          "endpoint": "Complex.norm_exp",
+          "source_id": "S024",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/Complex.norm_exp",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/Trigonometric.lean"
+        },
+        {
+          "endpoint": "intervalIntegral.intervalIntegrable_rpow'",
+          "source_id": "S035",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/intervalIntegral.intervalIntegrable_rpow'",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/Integrability/Basic.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G09",
+      "name": "holomorphic_sector_space_complete",
+      "stage": "E04_PositiveTimeAnalyticity",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G06"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "X consists of A_0-holomorphic maps on S_(theta,T), continuous at 0 into A_0, with finite norm sup_z ||V(z)||_(A_sigma(z)). X is complete; the affine initial-value slice intersected with a closed norm ball is complete.",
+      "mathematical_derivation": "An X-Cauchy sequence is uniformly A_0-Cauchy. Its limit is continuous at zero and holomorphic by locally uniform convergence. Fatou applied at each z to the weighted coefficient differences preserves each uniform Cauchy estimate, so convergence also holds in X. Initial evaluation and the norm bound define closed sets. Fixed-weight lp completeness alone does not establish this variable-weight space.",
+      "anchors": [
+        {
+          "endpoint": "lp.completeSpace",
+          "source_id": "S030",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/lp.completeSpace",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Normed/Lp/lpSpace.lean"
+        },
+        {
+          "endpoint": "TendstoLocallyUniformlyOn.differentiableOn",
+          "source_id": "S033",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/TendstoLocallyUniformlyOn.differentiableOn",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/LocallyUniformLimit.lean"
+        },
+        {
+          "endpoint": "IsClosed.isComplete",
+          "source_id": "S028",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/IsClosed.isComplete",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/UniformSpace/Cauchy.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G10",
+      "name": "duhamel_holomorphic_and_closed_ball",
+      "stage": "E04_PositiveTimeAnalyticity",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G08",
+        "G09"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "B(V,W)(z)=-z integral_0^1 exp(nu(1-s)z Delta) P div(V(sz) tensor W(sz)) ds belongs to X and tends to 0 in A_0 as z->0. The map H(V)=exp(nu z Delta)b+B(V,V) preserves the initial-value ball when the constants in G11 are imposed.",
+      "mathematical_derivation": "For fixed 0<s<1, heat smoothing and bounded convolution give an A_0-holomorphic integrand. On a compact disk inside the sector its norm is bounded by C_D(1-s)^(-1/2). On nested disks, Cauchy gives derivative domination by (C_D/d)(1-s)^(-1/2), an integrable majorant. Thus parameter differentiation under the integral has all required hypotheses. The sqrt(|z|) estimate gives continuity at zero. Holomorphy of the real-valued variable weight is never assumed.",
+      "anchors": [
+        {
+          "endpoint": "IsBoundedBilinearMap.hasFDerivAt",
+          "source_id": "S027",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/IsBoundedBilinearMap.hasFDerivAt",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Bilinear.lean"
+        },
+        {
+          "endpoint": "hasFDerivAt_integral_of_dominated_of_fderiv_le",
+          "source_id": "S034",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/hasFDerivAt_integral_of_dominated_of_fderiv_le",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ParametricIntegral.lean"
+        },
+        {
+          "endpoint": "TendstoLocallyUniformlyOn.differentiableOn",
+          "source_id": "S033",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/TendstoLocallyUniformlyOn.differentiableOn",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/LocallyUniformLimit.lean"
+        },
+        {
+          "endpoint": "Complex.norm_iteratedDeriv_le_of_forall_mem_sphere_norm_le",
+          "source_id": "S025",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/Complex.norm_iteratedDeriv_le_of_forall_mem_sphere_norm_le",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/Liouville.lean"
+        },
+        {
+          "endpoint": "intervalIntegral.intervalIntegrable_rpow'",
+          "source_id": "S035",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/intervalIntegral.intervalIntegrable_rpow'",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/Integrability/Basic.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G11",
+      "name": "periodic_wiener_complex_sector_fixed_point",
+      "stage": "E04_PositiveTimeAnalyticity",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G08",
+        "G09",
+        "G10"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "For b in A_0 with ||b||_(A_0)<=M and M>0, choose R=2LM and T=nu/(64 C^2 L^2 M^2). There exists a unique fixed point in the complete affine closed ball of radius R; its contraction constant is <=1/2. If k dot bhat(k)=0 for every k, the fixed point is solenoidal. Its zero coefficient is bhat(0), with no mean restriction.",
+      "mathematical_derivation": "K=C sqrt(T/nu)=1/(8LM), hence KR=1/4. The heat path makes the affine ball nonempty; ||H(V)||<=R/2+R/4 and ||H(V)-H(W)||<=2KR||V-W||. Apply the cited fixed-point theorem on this complete subtype. Fourier divergence of every nonlinear iterate vanishes after projection; the zero coefficient remains bhat(0).",
+      "anchors": [
+        {
+          "endpoint": "ContractingWith.fixedPoint",
+          "source_id": "S026",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/ContractingWith.fixedPoint",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/MetricSpace/Contracting.lean"
+        },
+        {
+          "endpoint": "ContractingWith.fixedPoint_isFixedPt",
+          "source_id": "S026",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/ContractingWith.fixedPoint_isFixedPt",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/MetricSpace/Contracting.lean"
+        },
+        {
+          "endpoint": "ContractingWith.fixedPoint_unique",
+          "source_id": "S026",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/ContractingWith.fixedPoint_unique",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/MetricSpace/Contracting.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G12",
+      "name": "physical_nse_projected_mild_equation",
+      "stage": "E04_PositiveTimeAnalyticity",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G02",
+        "G05",
+        "G07",
+        "G08"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "Every supplied smooth NSE trajectory, restarted at s0>=0, satisfies uhat_t(k)+nu|2pi k|^2 uhat(k)=-(P div(u tensor u))hat(k), and therefore the actual A_0-valued heat/Duhamel equation on each compact forward interval.",
+      "mathematical_derivation": "Differentiate its actual Fourier coefficients under the finite-torus integral, use integration by parts and the pressure projection identity, and integrate the scalar coefficient ODE. G07 and the integrable one-derivative heat bound justify summation and time integration in A_0. This establishes the physical equation required for identification, not just a formal coefficient identity.",
+      "anchors": [
+        {
+          "endpoint": "SingularClosure.smoothFourierSynthesis_convection_coeff",
+          "source_id": "S017",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Methlib/SingularClosure.smoothFourierSynthesis_convection_coeff",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierProduct.lean"
+        },
+        {
+          "endpoint": "SingularClosure.datumFourierCoeff_coordinateDerivative",
+          "source_id": "S073",
+          "directory": "B <-> GR/Strengthening/Endpoints/E14_InitialPDE/Methlib/SingularClosure.datumFourierCoeff_coordinateDerivative",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InitialCutoffBounds.lean"
+        },
+        {
+          "endpoint": "SingularClosure.fourierSobolevRhs_coefficient_eq_fullRhs",
+          "source_id": "S069",
+          "directory": "B <-> GR/Strengthening/Endpoints/E14_InitialPDE/Methlib/SingularClosure.fourierSobolevRhs_coefficient_eq_fullRhs",
+          "source_url": "https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevRhs.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G13",
+      "name": "periodic_wiener_mild_uniqueness",
+      "stage": "E04_PositiveTimeAnalyticity",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G06",
+        "G08"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "Two A_0-continuous real-time mild solutions on [0,Tprime], with the same initial value and norms bounded by M0, are equal.",
+      "mathematical_derivation": "Their difference d satisfies d(t)<=(2M0/sqrt(e nu)) integral_0^t (t-s)^(-1/2)d(s) ds. Choose h>0 with 4M0 sqrt(h)/sqrt(e nu)<1. Taking the supremum on [0,h] forces d=0. Restart the semigroup equation on successive intervals of length <=h; finitely many cover [0,Tprime]. Membership of the supplied smooth solution in the analytic weighted ball is not assumed.",
+      "anchors": [
+        {
+          "endpoint": "intervalIntegral.intervalIntegrable_rpow'",
+          "source_id": "S035",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/intervalIntegral.intervalIntegrable_rpow'",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/SpecialFunctions/Integrability/Basic.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G14",
+      "name": "identify_analytic_solution_at_every_positive_center",
+      "stage": "E04_PositiveTimeAnalyticity",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G07",
+        "G11",
+        "G12",
+        "G13"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "For every tau>0, the supplied smooth trajectory equals the complex-sector fixed point on a real interval containing tau.",
+      "mathematical_derivation": "Set M_tau=max(1,sup_[tau/2,tau]||u(s)||_(A_0)), T_tau=nu/(64C^2L^2M_tau^2), h=min(tau/4,T_tau/4), s0=tau-h. Then s0>0 and h lies strictly inside the sector lifetime. G12 and G13 identify the real solutions up to a time strictly beyond h. Thus tau is an interior analytic center. No lower bound for these radii as tau->0 is needed.",
+      "anchors": [
+        {
+          "endpoint": "NSEMaxwell.HodgeProof.uniform_datumFourierCoeff_moment_bound",
+          "source_id": "S043",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Native/NSEMaxwell.HodgeProof.uniform_datumFourierCoeff_moment_bound",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/FourierHodgeLaws/UniformCoefficientBounds.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G15",
+      "name": "joint_factorial_bound_and_velocity_analyticity",
+      "stage": "E04_PositiveTimeAnalyticity",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G14"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "The actual velocity is jointly real analytic on (0,infinity) x T3. On a sufficiently small real cylinder there are C0,A>0 such that ||D^n u||<=C0 A^n n! for every n.",
+      "mathematical_derivation": "A closed complex time disk admits a fixed positive Fourier weight sigma. Cauchy bounds the mth coefficient derivative by m! R0^(-m) M exp(-sigma|2pi k|). Spatial differentiation and y^r<=r!exp(y) leave a summable exponential margin, giving |d_t^m d_x^alpha u|<=C0 m!|alpha|! R0^(-m)(2/sigma)^|alpha|. Expanding the total n-linear derivative in four coordinate directions gives A=4 max(R0^(-1),2/sigma), since m!|alpha|!<=n!. The actual source is already jointly smooth; the native factorial-bound theorem therefore applies. Separate real analyticity is not substituted for this mixed bound.",
+      "anchors": [
+        {
+          "endpoint": "Complex.norm_iteratedDeriv_le_of_forall_mem_sphere_norm_le",
+          "source_id": "S025",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Mathlib/Complex.norm_iteratedDeriv_le_of_forall_mem_sphere_norm_le",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Complex/Liouville.lean"
+        },
+        {
+          "endpoint": "NSEGR.NativeLiterature.fourier_partialWord_hasSumUniformly",
+          "source_id": "S042",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Native/NSEGR.NativeLiterature.fourier_partialWord_hasSumUniformly",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/NativeFourier.lean"
+        },
+        {
+          "endpoint": "NSEGR.Assembly.summable_frequencyExpWeight",
+          "source_id": "S041",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Native/NSEGR.Assembly.summable_frequencyExpWeight",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/AnalyticFourier.lean"
+        },
+        {
+          "endpoint": "NSEGR.Assembly.summable_latticeExpMajorant",
+          "source_id": "S041",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Native/NSEGR.Assembly.summable_latticeExpMajorant",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/AnalyticFourier.lean"
+        },
+        {
+          "endpoint": "NSEGR.Assembly.analyticAt_of_iteratedFDeriv_bound",
+          "source_id": "S040",
+          "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/Native/NSEGR.Assembly.analyticAt_of_iteratedFDeriv_bound",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/AnalyticHodgeTaylor.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G16",
+      "name": "origin_normalized_pressure_joint_analyticity",
+      "stage": "E04_PositiveTimeAnalyticity",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G05",
+        "G15"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "For the actual smooth pressure p of the supplied NSE trajectory, q(t,x)=p(t,x)-p(t,0) is jointly analytic on positive time.",
+      "mathematical_derivation": "H=-sum_ij partial_i partial_j(u_i u_j) is jointly analytic by G15 and analytic calculus. The native analytic Poisson theorem gives pi=poissonInverse(H) analytic on every positive-time open slab. Since H=Delta p, the actual inverse identity gives pi=p-mean(p); therefore pi-pi(t,0)=p-p(t,0)=q. This discharges the analytic-input hypothesis before using analytic Hodge preservation.",
+      "anchors": [
+        {
+          "endpoint": "NSEGR.Assembly.analyticHodge_scalarSpatialPartial_joint",
+          "source_id": "S019",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Native/NSEGR.Assembly.analyticHodge_scalarSpatialPartial_joint",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/AnalyticHodgeCalculus.lean"
+        },
+        {
+          "endpoint": "NSEGR.Assembly.poissonInverse_joint_analytic_on_open_slab",
+          "source_id": "S020",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Native/NSEGR.Assembly.poissonInverse_joint_analytic_on_open_slab",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/AnalyticHodge.lean"
+        },
+        {
+          "endpoint": "NSEGR.Assembly.poissonInverse_scalarLaplacian",
+          "source_id": "S021",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Native/NSEGR.Assembly.poissonInverse_scalarLaplacian",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/HodgeTransport.lean"
+        },
+        {
+          "endpoint": "AnalyticOnNhd.comp",
+          "source_id": "S012",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Mathlib/AnalyticOnNhd.comp",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Composition.lean"
+        },
+        {
+          "endpoint": "AnalyticOnNhd.mul",
+          "source_id": "S013",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Mathlib/AnalyticOnNhd.mul",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean"
+        },
+        {
+          "endpoint": "AnalyticOnNhd.sub",
+          "source_id": "S013",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Mathlib/AnalyticOnNhd.sub",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean"
+        },
+        {
+          "endpoint": "Finset.analyticOnNhd_sum",
+          "source_id": "S013",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Mathlib/Finset.analyticOnNhd_sum",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Constructions.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G17",
+      "name": "positive_time_nse_representative",
+      "stage": "E05_LocalRepresentatives",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G02"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "A jointly analytic periodic NSE pair on all positive times defines an actual native NSERepresentative and NSEgerm at every tau>0; one may use radius tau/2.",
+      "mathematical_derivation": "The slab |t-tau|<tau/2 lies in t>0. Restrict joint analyticity, periodicity and the exact PDE to this slab, using G02 for the derivative conventions when the input is a forward trajectory. Populate the actual AnalyticPeriodicPair and LocalNSE fields and apply NSEgerm.mk. This goal takes positive-time analyticity as its local input; G15 and G16 derive that input from S_nu(a).",
+      "anchors": [
+        {
+          "endpoint": "AnalyticOnNhd.mono",
+          "source_id": "S044",
+          "directory": "B <-> GR/Strengthening/Endpoints/E05_LocalRepresentatives/Mathlib/AnalyticOnNhd.mono",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Analytic/Basic.lean"
+        },
+        {
+          "endpoint": "NSEGR.AnalyticPeriodicPair",
+          "source_id": "S004",
+          "directory": "B <-> GR/Strengthening/Endpoints/E05_LocalRepresentatives/Native/NSEGR.AnalyticPeriodicPair",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Fields.lean"
+        },
+        {
+          "endpoint": "NSEGR.LocalNSE",
+          "source_id": "S004",
+          "directory": "B <-> GR/Strengthening/Endpoints/E05_LocalRepresentatives/Native/NSEGR.LocalNSE",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Fields.lean"
+        },
+        {
+          "endpoint": "NSEGR.NSERepresentative",
+          "source_id": "S011",
+          "directory": "B <-> GR/Strengthening/Endpoints/E05_LocalRepresentatives/Native/NSEGR.NSERepresentative",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Germs.lean"
+        },
+        {
+          "endpoint": "NSEGR.NSEgerm.mk",
+          "source_id": "S011",
+          "directory": "B <-> GR/Strengthening/Endpoints/E05_LocalRepresentatives/Native/NSEGR.NSEgerm.mk",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Germs.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G18",
+      "name": "physical_native_local_equivalence_family",
+      "stage": "E06_NativeLocalEquivalence",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "For every tau>0 choose the actual native c_tau,r_tau,h_tau,i_tau and set E_tau=exactSectorEquivOfContracts c_tau r_tau h_tau i_tau, D_tau=reverseGerm h_tau. Then D_tau E_tau=id and E_tau D_tau=id, with D_tau the actual metric boundary decoder.",
+      "mathematical_derivation": "Instantiate nativeLawPackages_of_literatureInputs at literatureInputs_native, nu,rho,tau and rho!=0. Its output supplies all named contracts and the actual inverse laws. The definition of exactSectorEquivOfContracts identifies its maps with the native forwardGerm and reverseGerm. Apply the two existing inverse theorems. Choice of a bare unrelated carrier equivalence would not identify its inverse with the physical decoder.",
+      "anchors": [
+        {
+          "endpoint": "NSEGR.NativeLiterature.literatureInputs_native",
+          "source_id": "S048",
+          "directory": "B <-> GR/Strengthening/Endpoints/E06_NativeLocalEquivalence/Native/NSEGR.NativeLiterature.literatureInputs_native",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/NSE_GR_NATIVE_LITERATURE_CLOSURE.lean"
+        },
+        {
+          "endpoint": "NSEGR.Assembly.nativeLawPackages_of_literatureInputs",
+          "source_id": "S046",
+          "directory": "B <-> GR/Strengthening/Endpoints/E06_NativeLocalEquivalence/Native/NSEGR.Assembly.nativeLawPackages_of_literatureInputs",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/RootClosure.lean"
+        },
+        {
+          "endpoint": "NSEGR.exactSectorEquivOfContracts",
+          "source_id": "S047",
+          "directory": "B <-> GR/Strengthening/Endpoints/E06_NativeLocalEquivalence/Native/NSEGR.exactSectorEquivOfContracts",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean"
+        },
+        {
+          "endpoint": "NSEGR.reverseGerm",
+          "source_id": "S047",
+          "directory": "B <-> GR/Strengthening/Endpoints/E11_PositiveTimeDecode/Native/NSEGR.reverseGerm",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean"
+        },
+        {
+          "endpoint": "NSEGR.forwardGerm",
+          "source_id": "S047",
+          "directory": "B <-> GR/Strengthening/Endpoints/E07_ForwardRecovery/Native/NSEGR.forwardGerm",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean"
+        },
+        {
+          "endpoint": "NSEGR.reverseGerm_forwardGerm",
+          "source_id": "S047",
+          "directory": "B <-> GR/Strengthening/Endpoints/E16_InverseIdentities/Native/NSEGR.reverseGerm_forwardGerm",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean"
+        },
+        {
+          "endpoint": "NSEGR.forwardGerm_reverseGerm",
+          "source_id": "S047",
+          "directory": "B <-> GR/Strengthening/Endpoints/E16_InverseIdentities/Native/NSEGR.forwardGerm_reverseGerm",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G19",
+      "name": "nse_germ_center_velocity",
+      "stage": "E09_GermEvaluation",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "Define evN_tau:NSEgerm(nu,tau)->Field by evN_tau([u,p])=u(tau). This is independent of the representative and has the displayed computation rule.",
+      "mathematical_derivation": "SameFlowAt contains eventual equality of the entire velocity field near tau. Evaluation at the center yields equality of fields, so Quotient.lift applies. The quotient computation rule follows from the eliminator. No pressure evaluation on the pressure-gauge quotient is used.",
+      "anchors": [
+        {
+          "endpoint": "NSEGR.NSERepresentative",
+          "source_id": "S011",
+          "directory": "B <-> GR/Strengthening/Endpoints/E05_LocalRepresentatives/Native/NSEGR.NSERepresentative",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Germs.lean"
+        },
+        {
+          "endpoint": "NSEGR.NSEgerm",
+          "source_id": "S011",
+          "directory": "B <-> GR/Strengthening/Endpoints/E05_LocalRepresentatives/Native/NSEGR.NSEgerm",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Germs.lean"
+        },
+        {
+          "endpoint": "NSEGR.NSEgerm.mk",
+          "source_id": "S011",
+          "directory": "B <-> GR/Strengthening/Endpoints/E05_LocalRepresentatives/Native/NSEGR.NSEgerm.mk",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Germs.lean"
+        },
+        {
+          "endpoint": "NSEGR.sameFlowAt_iff_origin_gauge",
+          "source_id": "S011",
+          "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/Native/NSEGR.sameFlowAt_iff_origin_gauge",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Germs.lean"
+        },
+        {
+          "endpoint": "Filter.EventuallyEq.eq_of_nhds",
+          "source_id": "S053",
+          "directory": "B <-> GR/Strengthening/Endpoints/E09_GermEvaluation/Mathlib/Filter.EventuallyEq.eq_of_nhds",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Neighborhoods.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G20",
+      "name": "gr_germ_center_velocity",
+      "stage": "E09_GermEvaluation",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "Define evG_tau:GRgerm(nu,rho,tau)->Field by evG_tau([g])=boundaryVelocity(boundaryK(g))(tau). This is independent of the metric representative.",
+      "mathematical_derivation": "SameMetricAt gives eventual equality of full spatial boundary-tensor slices, hence of boundary velocities. This full-slice equality is required by the spatially nonlocal Leray operator. Evaluate the equality at tau and use Quotient.lift. Neither representative choices nor radii remain in the output.",
+      "anchors": [
+        {
+          "endpoint": "NSEGR.CanonicalRepresentative",
+          "source_id": "S054",
+          "directory": "B <-> GR/Strengthening/Endpoints/E09_GermEvaluation/Native/NSEGR.CanonicalRepresentative",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Sector.lean"
+        },
+        {
+          "endpoint": "NSEGR.GRgerm",
+          "source_id": "S011",
+          "directory": "B <-> GR/Strengthening/Endpoints/E09_GermEvaluation/Native/NSEGR.GRgerm",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Germs.lean"
+        },
+        {
+          "endpoint": "NSEGR.GRgerm.mk",
+          "source_id": "S011",
+          "directory": "B <-> GR/Strengthening/Endpoints/E09_GermEvaluation/Native/NSEGR.GRgerm.mk",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Germs.lean"
+        },
+        {
+          "endpoint": "NSEGR.sameMetricAt_boundaryK",
+          "source_id": "S010",
+          "directory": "B <-> GR/Strengthening/Endpoints/E09_GermEvaluation/Native/NSEGR.sameMetricAt_boundaryK",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Locality.lean"
+        },
+        {
+          "endpoint": "NSEGR.sameMetricAt_boundaryFields",
+          "source_id": "S010",
+          "directory": "B <-> GR/Strengthening/Endpoints/E09_GermEvaluation/Native/NSEGR.sameMetricAt_boundaryFields",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Locality.lean"
+        },
+        {
+          "endpoint": "NSEGR.boundaryVelocity_congr_slice",
+          "source_id": "S055",
+          "directory": "B <-> GR/Strengthening/Endpoints/E09_GermEvaluation/Native/NSEGR.boundaryVelocity_congr_slice",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Boundary.lean"
+        },
+        {
+          "endpoint": "Filter.EventuallyEq.eq_of_nhds",
+          "source_id": "S053",
+          "directory": "B <-> GR/Strengthening/Endpoints/E09_GermEvaluation/Mathlib/Filter.EventuallyEq.eq_of_nhds",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Neighborhoods.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G21",
+      "name": "positive_recovery_interval_and_germ_identification",
+      "stage": "E08_RecoveryIntervals",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G18",
+        "G19",
+        "G20"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "For tau>0, an actual local NSE representative n at tau and its forward metric representative g admit d>0 with d<=tau/2, d<=n.radius and d<=g.timeRadius, such that v_g=n.velocity and p_g-p_g(t,0)=n.pressure-n.pressure(t,0) throughout |t-tau|<d. Hence evG_tau(E_tau(NSEgerm.mk n))=evN_tau(NSEgerm.mk n), and evN_tau(D_tau gamma)=evG_tau(gamma).",
+      "mathematical_derivation": "Native forward recovery gives SameFlowAt on a neighborhood R of tau. Apply positive_timeInterval_subset with cap min(tau/2,min(n.radius,g.timeRadius)) and neighborhood R. The cap, rather than the name of that theorem, establishes positive-time containment. Subtract the x=0 gauge equality to obtain exact normalized pressures. ReverseRepresentative has the actual decoded velocity by definition. For analytic local pairs the origin gauge is analytic on the intersection of their slabs, by the cited analytic gauge theorem.",
+      "anchors": [
+        {
+          "endpoint": "NSEGR.forwardRepresentative",
+          "source_id": "S049",
+          "directory": "B <-> GR/Strengthening/Endpoints/E07_ForwardRecovery/Native/NSEGR.forwardRepresentative",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRForward.lean"
+        },
+        {
+          "endpoint": "NSEGR.forward_velocity_recovery",
+          "source_id": "S049",
+          "directory": "B <-> GR/Strengthening/Endpoints/E07_ForwardRecovery/Native/NSEGR.forward_velocity_recovery",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRForward.lean"
+        },
+        {
+          "endpoint": "NSEGR.forward_pressure_gauge_recovery",
+          "source_id": "S049",
+          "directory": "B <-> GR/Strengthening/Endpoints/E07_ForwardRecovery/Native/NSEGR.forward_pressure_gauge_recovery",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRForward.lean"
+        },
+        {
+          "endpoint": "NSEGR.Assembly.positive_timeInterval_subset",
+          "source_id": "S052",
+          "directory": "B <-> GR/Strengthening/Endpoints/E08_RecoveryIntervals/Native/NSEGR.Assembly.positive_timeInterval_subset",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/NativeGluingAtlas.lean"
+        },
+        {
+          "endpoint": "NSEGR.Assembly.localNSE_restrict_native",
+          "source_id": "S051",
+          "directory": "B <-> GR/Strengthening/Endpoints/E08_RecoveryIntervals/Native/NSEGR.Assembly.localNSE_restrict_native",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/NativeCompletion.lean"
+        },
+        {
+          "endpoint": "NSEGR.sameFlowAt_iff_origin_gauge",
+          "source_id": "S011",
+          "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/Native/NSEGR.sameFlowAt_iff_origin_gauge",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Germs.lean"
+        },
+        {
+          "endpoint": "NSEGR.origin_pressure_gauge_analytic",
+          "source_id": "S010",
+          "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/Native/NSEGR.origin_pressure_gauge_analytic",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Locality.lean"
+        },
+        {
+          "endpoint": "NSEGR.sameFlowAt_iff_analytic_pressure_gauge",
+          "source_id": "S010",
+          "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/Native/NSEGR.sameFlowAt_iff_analytic_pressure_gauge",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Locality.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G22",
+      "name": "positive_time_profile_and_spatial_trace",
+      "stage": "E10_FamilyCarrier",
+      "kind": "DEFINITION",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G04",
+        "G05"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "Define P_nu^+(a) as pairs (v,q) on (0,infinity) x T3 that are jointly analytic, periodic, solve unforced incompressible NSE, obey q(t,0)=0, and satisfy lim_(t downarrow 0)||v(t)-a||_(H^m)=0 for every m. No temporal derivative or pressure trace belongs to this definition.",
+      "mathematical_derivation": "The spatial trace is meaningful through the actual coefficient/H^m identification in G04. G05 derives q=Pi(v) from the PDE and gauge; it is not an extra assumption. Equality is equality of these positive-time fields. This is an intermediate carrier; the frozen geometric target remains defined solely by geometric germs, velocity coherence and the spatial trace.",
+      "anchors": [
+        {
+          "endpoint": "SingularClosure.TorusSobolev",
+          "source_id": "S066",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.TorusSobolev",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/TorusSobolev.lean"
+        },
+        {
+          "endpoint": "SingularClosure.torusSobolev_norm_sq",
+          "source_id": "S066",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.torusSobolev_norm_sq",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/TorusSobolev.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Classical.Data",
+          "source_id": "S005",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Native/NSEMaxwell.Classical.Data",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean"
+        }
+      ],
+      "mathematical_status": "DEFINITION_FIXED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G23",
+      "name": "coherent_native_nse_family_carrier",
+      "stage": "E10_FamilyCarrier",
+      "kind": "DEFINITION",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G19",
+        "G22"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "For eta in product_(tau>0) NSEgerm(nu,tau), set W_eta(t)=evN_t(eta_t). Define N_nu^+(a) by: at each tau, some representative n of eta_tau agrees in velocity with W_eta on |t-tau|<d for a 0<d<tau within n.radius; and W_eta(t)->a in every H^m. Coherence is an intrinsic property and is invariant under changing representative after shrinking.",
+      "mathematical_derivation": "SameFlowAt relates any two representatives by equality of full velocity slices on a neighborhood. Intersect this neighborhood with the old coherence interval, the new representative domain, and t>0; select a symmetric interval with radius at most tau/2. Coherence transfers by equality. The family is a subtype of the dependent product; representative/radius/proof witnesses are not retained as data. Function and subtype extensionality determine equality.",
+      "anchors": [
+        {
+          "endpoint": "NSEGR.NSEgerm",
+          "source_id": "S011",
+          "directory": "B <-> GR/Strengthening/Endpoints/E05_LocalRepresentatives/Native/NSEGR.NSEgerm",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Germs.lean"
+        },
+        {
+          "endpoint": "NSEGR.NSERepresentative",
+          "source_id": "S011",
+          "directory": "B <-> GR/Strengthening/Endpoints/E05_LocalRepresentatives/Native/NSEGR.NSERepresentative",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Germs.lean"
+        },
+        {
+          "endpoint": "NSEGR.sameFlowAt_iff_origin_gauge",
+          "source_id": "S011",
+          "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/Native/NSEGR.sameFlowAt_iff_origin_gauge",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Germs.lean"
+        },
+        {
+          "endpoint": "NSEGR.timeInterval_mem_nhds",
+          "source_id": "S045",
+          "directory": "B <-> GR/Strengthening/Endpoints/E08_RecoveryIntervals/Native/NSEGR.timeInterval_mem_nhds",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Contracts.lean"
+        },
+        {
+          "endpoint": "NSEGR.timeInterval_mono",
+          "source_id": "S045",
+          "directory": "B <-> GR/Strengthening/Endpoints/E08_RecoveryIntervals/Native/NSEGR.timeInterval_mono",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Contracts.lean"
+        },
+        {
+          "endpoint": "Filter.inter_mem",
+          "source_id": "S050",
+          "directory": "B <-> GR/Strengthening/Endpoints/E08_RecoveryIntervals/Mathlib/Filter.inter_mem",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Order/Filter/Defs.lean"
+        }
+      ],
+      "mathematical_status": "DEFINITION_FIXED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G24",
+      "name": "coherent_geometric_family_carrier",
+      "stage": "E10_FamilyCarrier",
+      "kind": "DEFINITION",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G20",
+        "G22"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "PositiveTimeGRGermFamily is product_(tau>0) GRgerm(nu,rho,tau). Set V_gamma(t)=evG_t(gamma_t). GRForwardFamily(nu,rho,a) is its subtype satisfying DecodedVelocityCoherent and SpatialSmoothInitialTrace(a), exactly as in frozen Section 6. Coherence is intrinsic under representative change.",
+      "mathematical_derivation": "The metric-germ locality theorem gives equality of decoded full-slice fields on a neighborhood. Intersect with the coherence interval and the new representative domain and shrink below tau/2. This transfers the coherence witness. The trace concerns only V_gamma. No NSE predicate, encoding image, pressure trace, time trace, or common metric collar occurs in the definition. Proof witnesses do not affect subtype equality.",
+      "anchors": [
+        {
+          "endpoint": "NSEGR.GRgerm",
+          "source_id": "S011",
+          "directory": "B <-> GR/Strengthening/Endpoints/E09_GermEvaluation/Native/NSEGR.GRgerm",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Germs.lean"
+        },
+        {
+          "endpoint": "NSEGR.CanonicalRepresentative",
+          "source_id": "S054",
+          "directory": "B <-> GR/Strengthening/Endpoints/E09_GermEvaluation/Native/NSEGR.CanonicalRepresentative",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Sector.lean"
+        },
+        {
+          "endpoint": "NSEGR.sameMetricAt_boundaryFields",
+          "source_id": "S010",
+          "directory": "B <-> GR/Strengthening/Endpoints/E09_GermEvaluation/Native/NSEGR.sameMetricAt_boundaryFields",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Locality.lean"
+        },
+        {
+          "endpoint": "NSEGR.timeInterval_mem_nhds",
+          "source_id": "S045",
+          "directory": "B <-> GR/Strengthening/Endpoints/E08_RecoveryIntervals/Native/NSEGR.timeInterval_mem_nhds",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Contracts.lean"
+        },
+        {
+          "endpoint": "NSEGR.timeInterval_mono",
+          "source_id": "S045",
+          "directory": "B <-> GR/Strengthening/Endpoints/E08_RecoveryIntervals/Native/NSEGR.timeInterval_mono",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Contracts.lean"
+        },
+        {
+          "endpoint": "Filter.inter_mem",
+          "source_id": "S050",
+          "directory": "B <-> GR/Strengthening/Endpoints/E08_RecoveryIntervals/Mathlib/Filter.inter_mem",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Order/Filter/Defs.lean"
+        }
+      ],
+      "mathematical_status": "DEFINITION_FIXED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G25",
+      "name": "coherent_native_family_decodes_to_positive_profile",
+      "stage": "E11_PositiveTimeDecode",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G05",
+        "G23"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "For eta in N_nu^+(a), B(eta):=(W_eta,Pi(W_eta)) lies in P_nu^+(a), and [B(eta)]_tau=eta_tau for every tau>0.",
+      "mathematical_derivation": "Each coherence representative is an analytic LocalNSE pair on a neighborhood. G05 identifies its normalized pressure with Pi(W_eta), since its velocity agrees with W_eta over complete spatial slices. Normalization preserves the analytic local equation. These neighborhoods cover every positive center; thus analyticity, PDE and gauge hold globally on positive time. The inherited trace gives membership of P. Normalized local equality gives SameFlowAt and hence the displayed germ identity.",
+      "anchors": [
+        {
+          "endpoint": "NSEGR.LocalNSE",
+          "source_id": "S004",
+          "directory": "B <-> GR/Strengthening/Endpoints/E05_LocalRepresentatives/Native/NSEGR.LocalNSE",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Fields.lean"
+        },
+        {
+          "endpoint": "NSEGR.Assembly.localNSE_restrict_native",
+          "source_id": "S051",
+          "directory": "B <-> GR/Strengthening/Endpoints/E08_RecoveryIntervals/Native/NSEGR.Assembly.localNSE_restrict_native",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/NativeCompletion.lean"
+        },
+        {
+          "endpoint": "NSEGR.origin_pressure_gauge_analytic",
+          "source_id": "S010",
+          "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/Native/NSEGR.origin_pressure_gauge_analytic",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Locality.lean"
+        },
+        {
+          "endpoint": "NSEGR.gradient_sub_constant",
+          "source_id": "S009",
+          "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/Native/NSEGR.gradient_sub_constant",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/FourierInversion.lean"
+        },
+        {
+          "endpoint": "NSEGR.sameFlowAt_iff_origin_gauge",
+          "source_id": "S011",
+          "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/Native/NSEGR.sameFlowAt_iff_origin_gauge",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Germs.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G26",
+      "name": "coherent_geometric_family_decodes_to_positive_profile",
+      "stage": "E11_PositiveTimeDecode",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G05",
+        "G18",
+        "G24"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "For gamma in G_nu,rho^+(a), (V_gamma,Pi(V_gamma)) belongs to P_nu^+(a). On every coherence interval this pair is the origin-normalized actual native boundary decode of the chosen metric representative.",
+      "mathematical_derivation": "Native reconstruction uses the actual vacuum metric, actual boundary tensor and zero constitutive stress to produce LocalNSE. Restrict to the coherence interval. Full-slice velocity equality and G05 identify the pressure after normalization. Consequently every positive point has an analytic NSE neighborhood. The trace is precisely the admitted spatial trace. No metric gluing or additional geometric premise is used.",
+      "anchors": [
+        {
+          "endpoint": "NSEGR.Assembly.geometricReconstructionLaws_native",
+          "source_id": "S057",
+          "directory": "B <-> GR/Strengthening/Endpoints/E11_PositiveTimeDecode/Native/NSEGR.Assembly.geometricReconstructionLaws_native",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/NativeReconstruction.lean"
+        },
+        {
+          "endpoint": "NSEGR.localNSE_of_reconstruction_and_zero_stress",
+          "source_id": "S045",
+          "directory": "B <-> GR/Strengthening/Endpoints/E11_PositiveTimeDecode/Native/NSEGR.localNSE_of_reconstruction_and_zero_stress",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Contracts.lean"
+        },
+        {
+          "endpoint": "NSEGR.reverseRepresentative",
+          "source_id": "S047",
+          "directory": "B <-> GR/Strengthening/Endpoints/E11_PositiveTimeDecode/Native/NSEGR.reverseRepresentative",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean"
+        },
+        {
+          "endpoint": "NSEGR.GR_TO_NSE_OF_GEOMETRIC_RECONSTRUCTION",
+          "source_id": "S047",
+          "directory": "B <-> GR/Strengthening/Endpoints/E11_PositiveTimeDecode/Native/NSEGR.GR_TO_NSE_OF_GEOMETRIC_RECONSTRUCTION",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean"
+        },
+        {
+          "endpoint": "NSEGR.Assembly.localNSE_restrict_native",
+          "source_id": "S051",
+          "directory": "B <-> GR/Strengthening/Endpoints/E08_RecoveryIntervals/Native/NSEGR.Assembly.localNSE_restrict_native",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/ASSEMBLY/GRAssembly/NativeCompletion.lean"
+        },
+        {
+          "endpoint": "NSEGR.origin_pressure_gauge_analytic",
+          "source_id": "S010",
+          "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/Native/NSEGR.origin_pressure_gauge_analytic",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Locality.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G27",
+      "name": "spatial_jet_polynomial",
+      "stage": "E13_InitialTrace",
+      "kind": "THEOREM",
+      "route": "ALTERNATIVE_JET_ROUTE",
+      "depends_on": [
+        "G04",
+        "G05"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "Set J_0(b)=b and J_(n+1)(b)=nu Delta J_n(b)-sum_(j=0)^n binom(n,j) P div(J_j(b) tensor J_(n-j)(b)). For m>=2, J_n:H^(m+2n)->H^m is a continuous polynomial of degree <=n+1 and is Lipschitz on each bounded input ball.",
+      "mathematical_derivation": "Induct in n. The linear Laplacian costs two Sobolev orders. For each product term both lower jets are controlled in H^(m+1) by an input in H^(m+2n+2); use the Sobolev algebra estimate and P div:H^(m+1)->H^m. Finite sums and bounded multilinear compositions preserve polynomial continuity and bounded-ball Lipschitz bounds. The generic Methlib bilinear/Fourier-RHS anchors implement these operations without smallness or a mean-zero premise.",
+      "anchors": [
+        {
+          "endpoint": "SingularClosure.torusSobolevViscous",
+          "source_id": "S070",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.torusSobolevViscous",
+          "source_url": "https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevOperators.lean"
+        },
+        {
+          "endpoint": "SingularClosure.torusSobolevLeray",
+          "source_id": "S070",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.torusSobolevLeray",
+          "source_url": "https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevOperators.lean"
+        },
+        {
+          "endpoint": "SingularClosure.sobolevDivergenceProductBilinear",
+          "source_id": "S069",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.sobolevDivergenceProductBilinear",
+          "source_url": "https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevRhs.lean"
+        },
+        {
+          "endpoint": "SingularClosure.fourierSobolevRhs_contDiff",
+          "source_id": "S069",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.fourierSobolevRhs_contDiff",
+          "source_url": "https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevRhs.lean"
+        },
+        {
+          "endpoint": "SingularClosure.SOBOLEV_DIVERGENCE_PRODUCT_NORM_BOUND",
+          "source_id": "S064",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.SOBOLEV_DIVERGENCE_PRODUCT_NORM_BOUND",
+          "source_url": "https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevProduct.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G28",
+      "name": "time_jet_identities_and_spatial_trace_limits",
+      "stage": "E13_InitialTrace",
+      "kind": "THEOREM",
+      "route": "ALTERNATIVE_JET_ROUTE",
+      "depends_on": [
+        "G27"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "For a supplied smooth normalized positive-time NSE pair, partial_t^n v(t)=J_n(v(t)); with K_n(b)=sum_j binom(n,j)Q(J_j(b),J_(n-j)(b)), partial_t^n q(t)=K_n(v(t)). If v(t)->a in every H^m, these converge to J_n(a),K_n(a) in every H^m and after every spatial derivative uniformly.",
+      "mathematical_derivation": "Differentiate the actual positive-time PDE n times and apply the product rule; this gives precisely the J recurrence. Apply the same rule to q=Q(v,v). Polynomial continuity and the all-order spatial trace give the H^m limits. Sobolev embedding with m>|alpha|+3/2 gives each mixed derivative limit. This is differentiation of an existing trajectory, not an existence theorem for a derivative-losing Frechet ODE.",
+      "anchors": [
+        {
+          "endpoint": "SingularClosure.ALL_SOBOLEV_IMP_RAPID_SCALAR",
+          "source_id": "S016",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.ALL_SOBOLEV_IMP_RAPID_SCALAR",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevSmoothRealization.lean"
+        },
+        {
+          "endpoint": "SingularClosure.sobolev_weighted_component_summable",
+          "source_id": "S016",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.sobolev_weighted_component_summable",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevSmoothRealization.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G29",
+      "name": "joint_continuous_jet_extension",
+      "stage": "E13_InitialTrace",
+      "kind": "THEOREM",
+      "route": "ALTERNATIVE_JET_ROUTE",
+      "depends_on": [
+        "G28"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "Extend every velocity and pressure mixed jet at zero by the limits in G28. The extended fields are jointly C-infinity on [0,infinity) x T3, with right time jets J_n(a),K_n(a).",
+      "mathematical_derivation": "For W_n(t)=J_n(v(t)), continuity of W_(n+1) and the positive-time FTC give W_n(t)-W_n(0)=integral_0^t W_(n+1)(s)ds by taking the lower endpoint to zero. Hence the right derivative at zero is W_(n+1)(0). Pack finitely many mixed derivatives of each total order into its symmetric multilinear joint jet. Their component limits give operator-norm continuity. Positive-time derivative identities and continuous linear currying supply the actual hderiv/C tower required by the native closed-halfspace theorem. The same construction applies to pressure. No factorial estimate at zero is claimed.",
+      "anchors": [
+        {
+          "endpoint": "hasDerivWithinAt_Ici_of_tendsto_deriv",
+          "source_id": "S060",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Mathlib/hasDerivWithinAt_Ici_of_tendsto_deriv",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Extend.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.HodgeProof.contDiffOn_forwardSpacetime_of_continuous_jets",
+          "source_id": "S075",
+          "directory": "B <-> GR/Strengthening/Endpoints/E14_InitialPDE/Native/NSEMaxwell.HodgeProof.contDiffOn_forwardSpacetime_of_continuous_jets",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/FourierHodgeLaws/ClosedHalfspaceSmooth.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Spacetime.uniqueDiffOn_forwardSpacetime",
+          "source_id": "S077",
+          "directory": "B <-> GR/Strengthening/Endpoints/E14_InitialPDE/Native/NSEMaxwell.Spacetime.uniqueDiffOn_forwardSpacetime",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Spacetime.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G30",
+      "name": "physical_fourier_sobolev_norm_derivative",
+      "stage": "E13_InitialTrace",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G02",
+        "G04",
+        "G05"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "For the actual smooth positive-time field v with v_t=F(v), let U_m(t)=Fourier(v(t)) in TorusSobolev(m). Then HasDerivAt U_m (fourierSobolevRhs nu m (U_(m+2)(t))) t for every t>0.",
+      "mathematical_derivation": "On a compact cylinder around t, every spatial derivative through order m of the difference quotient minus v_t equals integral_0^1 [partial_x^alpha v_t(t+theta h)-partial_x^alpha v_t(t)]dtheta. Uniform continuity makes its C^m norm tend to zero. The C^m-to-H^m estimate and the defining Fourier Hilbert isometry give an actual norm derivative in TorusSobolev(m). Integration by parts, convolution and G05 identify it with the exact fourierSobolevRhs coefficient sequence. Coordinatewise coefficient derivatives alone would not discharge this goal.",
+      "anchors": [
+        {
+          "endpoint": "SingularClosure.fourierSobolevRhs",
+          "source_id": "S069",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.fourierSobolevRhs",
+          "source_url": "https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevRhs.lean"
+        },
+        {
+          "endpoint": "SingularClosure.fourierSobolevRhs_coefficient_eq_fullRhs",
+          "source_id": "S069",
+          "directory": "B <-> GR/Strengthening/Endpoints/E14_InitialPDE/Methlib/SingularClosure.fourierSobolevRhs_coefficient_eq_fullRhs",
+          "source_url": "https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevRhs.lean"
+        },
+        {
+          "endpoint": "SingularClosure.datumFourierCoeff_coordinateDerivative",
+          "source_id": "S073",
+          "directory": "B <-> GR/Strengthening/Endpoints/E14_InitialPDE/Methlib/SingularClosure.datumFourierCoeff_coordinateDerivative",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InitialCutoffBounds.lean"
+        },
+        {
+          "endpoint": "SingularClosure.smoothFourierSynthesis_convection_coeff",
+          "source_id": "S017",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Methlib/SingularClosure.smoothFourierSynthesis_convection_coeff",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierProduct.lean"
+        },
+        {
+          "endpoint": "SingularClosure.torusSobolevRepr",
+          "source_id": "S066",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.torusSobolevRepr",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/TorusSobolev.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G31",
+      "name": "compatible_fourier_curves_and_right_boundary_equation",
+      "stage": "E13_InitialTrace",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G22",
+        "G30"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "For any positive-time smooth NSE pair with the spatial trace in G22, put U_m(0)=Fourier(a). Each U_m is ContinuousOn(Ici 0), all U_m share one coefficient sequence at every forward time, and HasDerivWithinAt U_m (F_m(U_(m+2)(t))) (Ici 0) t holds for every t>=0.",
+      "mathematical_derivation": "Positive-time continuity follows from G30, and the boundary limit is the admitted H^m trace. Compatibility is definitional because every U_m is the same physical coefficient sequence. F_m is continuous, so deriv U_m(t)=F_m(U_(m+2)(t)) tends to F_m(U_(m+2)(0)). Apply hasDerivWithinAt_Ici_of_tendsto_deriv with s=Ioi 0. Its differentiability, continuity and derivative-limit premises have now been derived. Combine the boundary result with the positive-time derivative; uniqueDiffOn_Ici identifies the literal within derivative.",
+      "anchors": [
+        {
+          "endpoint": "SingularClosure.fourierSobolevRhs_contDiff",
+          "source_id": "S069",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.fourierSobolevRhs_contDiff",
+          "source_url": "https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevRhs.lean"
+        },
+        {
+          "endpoint": "hasDerivWithinAt_Ici_of_tendsto_deriv",
+          "source_id": "S060",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Mathlib/hasDerivWithinAt_Ici_of_tendsto_deriv",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/FDeriv/Extend.lean"
+        },
+        {
+          "endpoint": "HasDerivWithinAt.derivWithin",
+          "source_id": "S002",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Mathlib/HasDerivWithinAt.derivWithin",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/Deriv/Basic.lean"
+        },
+        {
+          "endpoint": "uniqueDiffOn_Ici",
+          "source_id": "S061",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Mathlib/uniqueDiffOn_Ici",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/TangentCone/Real.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G32",
+      "name": "sobolev_scale_all_forward_time_orders",
+      "stage": "E13_InitialTrace",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G31"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "For every m, U_m is ContDiffOn Real infinity on Ici 0.",
+      "mathematical_derivation": "Instantiate SOBOLEV_SCALE_TIME_SMOOTH with the actual compatible U_m and F_m=fourierSobolevRhs nu m. G31 supplies continuity and the within-derivative equation at every forward time. The existing RHS theorem supplies smoothness of F_m:H^(m+2)->H^m. Its simultaneous induction in temporal order consumes two spatial orders per step, all of which are available. The differential-equation hypothesis is discharged; no trajectory existence is assumed by this invocation.",
+      "anchors": [
+        {
+          "endpoint": "SingularClosure.SOBOLEV_SCALE_TIME_SMOOTH",
+          "source_id": "S065",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.SOBOLEV_SCALE_TIME_SMOOTH",
+          "source_url": "https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevScaleTimeSmooth.lean"
+        },
+        {
+          "endpoint": "SingularClosure.fourierSobolevRhs_contDiff",
+          "source_id": "S069",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.fourierSobolevRhs_contDiff",
+          "source_url": "https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/FourierSobolevRhs.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G33",
+      "name": "joint_forward_velocity_synthesis",
+      "stage": "E13_InitialTrace",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G04",
+        "G32"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "The extension vbar(t)=v(t) for t>0, vbar(0)=a is jointly ContDiffOn Real infinity on forwardSpacetime.",
+      "mathematical_derivation": "Apply the generic joint synthesis theorem to all smooth U_m and their coefficient compatibility from G31. G04 identifies this synthesized field with the original v at positive times and a at zero. ContDiffOn.congr transfers the conclusion to precisely vbar. The generic synthesis theorem has no SpectralMeanZero hypothesis.",
+      "anchors": [
+        {
+          "endpoint": "SingularClosure.SOBOLEV_CURVES_JOINT_SPACETIME_SMOOTH",
+          "source_id": "S063",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.SOBOLEV_CURVES_JOINT_SPACETIME_SMOOTH",
+          "source_url": "https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevSpacetimeSmooth.lean"
+        },
+        {
+          "endpoint": "SingularClosure.datumFourierCoeff_smoothFourierSynthesis",
+          "source_id": "S016",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.datumFourierCoeff_smoothFourierSynthesis",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevSmoothRealization.lean"
+        },
+        {
+          "endpoint": "SingularClosure.datumFourierCoeff_injective_continuous_periodic",
+          "source_id": "S067",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.datumFourierCoeff_injective_continuous_periodic",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/PeriodicFourierInjective.lean"
+        },
+        {
+          "endpoint": "ContDiffOn.congr",
+          "source_id": "S059",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Mathlib/ContDiffOn.congr",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Defs.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G34",
+      "name": "joint_forward_pressure_synthesis_and_origin_gauge",
+      "stage": "E13_InitialTrace",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G05",
+        "G32"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "qbar(t)=Pi(vbar(t)), including qbar(0)=Pi(a), is jointly smooth on forwardSpacetime and agrees with the supplied normalized positive-time pressure.",
+      "mathematical_derivation": "Apply SOBOLEV_TRANSPORT_PRESSURE_JOINT_SMOOTH to the same all-order compatible U_m. Its literal pressure multiplier is composed with the actual divergence-product coefficients; substitution gives exactly the R(vbar tensor vbar) symbol in G05. Subtract the value at spatial origin using smooth composition and subtraction. Pressure uniqueness from G05 identifies the result at every positive time. No pressure trace is included in the target.",
+      "anchors": [
+        {
+          "endpoint": "SingularClosure.SOBOLEV_TRANSPORT_PRESSURE_JOINT_SMOOTH",
+          "source_id": "S018",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Methlib/SingularClosure.SOBOLEV_TRANSPORT_PRESSURE_JOINT_SMOOTH",
+          "source_url": "https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevPressure.lean"
+        },
+        {
+          "endpoint": "SingularClosure.torusSobolevPressure",
+          "source_id": "S018",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Methlib/SingularClosure.torusSobolevPressure",
+          "source_url": "https://github.com/randogelist/Methlib/blob/4813604a46179c745b82f51bee51a186e9f4cc2d/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/SobolevPressure.lean"
+        },
+        {
+          "endpoint": "SingularClosure.infiniteTransportPressure_coeff",
+          "source_id": "S014",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Methlib/SingularClosure.infiniteTransportPressure_coeff",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/InfiniteFourierPressure.lean"
+        },
+        {
+          "endpoint": "SingularClosure.pressureFromTransport_recovery",
+          "source_id": "S015",
+          "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/Methlib/SingularClosure.pressureFromTransport_recovery",
+          "source_url": "https://github.com/randogelist/Methlib/blob/e9cf90726b8544a268469ebc8fa6634e9c713e07/regularity-B-assembly/Singular-Axiomatic-closure/SingularClosure/LerayPressure.lean"
+        },
+        {
+          "endpoint": "ContDiffOn.comp",
+          "source_id": "S007",
+          "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/Mathlib/ContDiffOn.comp",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Comp.lean"
+        },
+        {
+          "endpoint": "ContDiffOn.sub",
+          "source_id": "S008",
+          "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/Mathlib/ContDiffOn.sub",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Operations.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G35",
+      "name": "initial_nse_from_forward_smooth_extension",
+      "stage": "E14_InitialPDE",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G33",
+        "G34"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "The extended fields satisfy the literal forward NSE, divergence freedom and initial data on all t>=0. In particular partial_t^+ vbar(0)=nu Delta a-P div(a tensor a) and qbar(0)=Pi(a).",
+      "mathematical_derivation": "The native forward-spacetime calculus makes the within-time derivative, spatial derivatives, convection and full residual continuous on the closed halfspace. The residual vanishes on its positive-time interior. Its closure is the full forward domain, so equality extends by the cited closure theorem. Divergence follows by the same argument or from div a=0. Equivalently evaluate the actual boundary equation in G31 and the pressure identity. G29 supplies an alternative complete smoothness route with the same conclusion.",
+      "anchors": [
+        {
+          "endpoint": "NSEMaxwell.Spacetime.timeDerivative_smooth",
+          "source_id": "S077",
+          "directory": "B <-> GR/Strengthening/Endpoints/E14_InitialPDE/Native/NSEMaxwell.Spacetime.timeDerivative_smooth",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Spacetime.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Spacetime.coordinateDerivative_trajectory_smooth",
+          "source_id": "S077",
+          "directory": "B <-> GR/Strengthening/Endpoints/E14_InitialPDE/Native/NSEMaxwell.Spacetime.coordinateDerivative_trajectory_smooth",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Spacetime.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Spacetime.time_restriction_derivWithin",
+          "source_id": "S077",
+          "directory": "B <-> GR/Strengthening/Endpoints/E14_InitialPDE/Native/NSEMaxwell.Spacetime.time_restriction_derivWithin",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Spacetime.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Spacetime.spatial_restriction_fderiv",
+          "source_id": "S077",
+          "directory": "B <-> GR/Strengthening/Endpoints/E14_InitialPDE/Native/NSEMaxwell.Spacetime.spatial_restriction_fderiv",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Spacetime.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Spacetime.closure_interior_forwardSpacetime",
+          "source_id": "S077",
+          "directory": "B <-> GR/Strengthening/Endpoints/E14_InitialPDE/Native/NSEMaxwell.Spacetime.closure_interior_forwardSpacetime",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Spacetime.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.CanonicalSmoothness.divergence_trajectory_smooth",
+          "source_id": "S074",
+          "directory": "B <-> GR/Strengthening/Endpoints/E14_InitialPDE/Native/NSEMaxwell.CanonicalSmoothness.divergence_trajectory_smooth",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/CanonicalSmoothness.lean"
+        },
+        {
+          "endpoint": "Set.EqOn.of_subset_closure",
+          "source_id": "S071",
+          "directory": "B <-> GR/Strengthening/Endpoints/E14_InitialPDE/Mathlib/Set.EqOn.of_subset_closure",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Separation/Hausdorff.lean"
+        },
+        {
+          "endpoint": "closure_Ioi",
+          "source_id": "S072",
+          "directory": "B <-> GR/Strengthening/Endpoints/E14_InitialPDE/Mathlib/closure_Ioi",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Topology/Order/DenselyOrdered.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G36",
+      "name": "restriction_extension_equivalence",
+      "stage": "E15_GlobalMaps",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G01",
+        "G03",
+        "G15",
+        "G16",
+        "G22",
+        "G35"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "R:S_nu(a) ~= P_nu^+(a), with R(u,q)=(u,q)|_(t>0) and inverse T(v,q)=(vbar,Pi(vbar)), vbar(0)=a.",
+      "mathematical_derivation": "G15--G16 prove the analytic requirement for the restricted pair. Joint forward smoothness and spatial compactness give uniform convergence of every spatial derivative at zero, hence the all-H^m trace. Conversely G31--G35 derive joint forward smoothness and the actual right-time NSE from the velocity-only trace. G05 identifies the existing normalized pressure with Pi(v) for t>0. Thus R T=id there; T R=id on positive time and at zero by continuity and normalization. Forward-restriction extensionality from G01 completes the equality. The alternate G27--G29 route yields the identical T.",
+      "anchors": [
+        {
+          "endpoint": "ContDiffOn.congr",
+          "source_id": "S059",
+          "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/Mathlib/ContDiffOn.congr",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Calculus/ContDiff/Defs.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Classical.timeDerivative_congr_field",
+          "source_id": "S006",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Native/NSEMaxwell.Classical.timeDerivative_congr_field",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Kinematics.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G37",
+      "name": "positive_profile_native_family_equivalence",
+      "stage": "E15_GlobalMaps",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G17",
+        "G19",
+        "G23",
+        "G25"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "A:P_nu^+(a) ~= N_nu^+(a), with A(v,q)_tau=[v,q]_tau and inverse B(eta)=(W_eta,Pi(W_eta)).",
+      "mathematical_derivation": "G17 produces every local representative, and center evaluation gives W_(A(v,q))=v. Restrict the same positive-time pair to each slab to obtain coherence; the trace is inherited. G25 proves B is well-defined and gives [B(eta)]_tau=eta_tau. Hence A B=id pointwise on germs. Conversely B A=(v,Pi(v))=(v,q) by G05. Different valid input radii give the same germ by restriction, so A is independent of the radius witness.",
+      "anchors": [
+        {
+          "endpoint": "NSEGR.NSEgerm.mk",
+          "source_id": "S011",
+          "directory": "B <-> GR/Strengthening/Endpoints/E05_LocalRepresentatives/Native/NSEGR.NSEgerm.mk",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Germs.lean"
+        },
+        {
+          "endpoint": "NSEGR.sameFlowAt_iff_origin_gauge",
+          "source_id": "S011",
+          "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/Native/NSEGR.sameFlowAt_iff_origin_gauge",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Germs.lean"
+        },
+        {
+          "endpoint": "NSEGR.origin_pressure_gauge_analytic",
+          "source_id": "S010",
+          "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/Native/NSEGR.origin_pressure_gauge_analytic",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Locality.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G38",
+      "name": "native_geometric_family_equivalence",
+      "stage": "E15_GlobalMaps",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G18",
+        "G21",
+        "G23",
+        "G24"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "C:N_nu^+(a) ~= G_nu,rho^+(a), with C(eta)_tau=E_tau(eta_tau) and inverse D(gamma)_tau=D_tau(gamma_tau). Their decoded positive-time velocities are identical to those of the input families.",
+      "mathematical_derivation": "G21 gives center-velocity preservation for each pointwise map. For N->G, intersect the NSE coherence interval with the actual forward-recovery interval to obtain GR coherence. For G->N, the reverseRepresentative of a coherence metric has exactly its decoded velocity, so the same interval witnesses NSE coherence. The spatial traces are unchanged. Pointwise native inverse identities give D C=id and C D=id; function and subtype extensionality remove all proof-witness differences.",
+      "anchors": [
+        {
+          "endpoint": "NSEGR.forwardGerm",
+          "source_id": "S047",
+          "directory": "B <-> GR/Strengthening/Endpoints/E07_ForwardRecovery/Native/NSEGR.forwardGerm",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean"
+        },
+        {
+          "endpoint": "NSEGR.reverseGerm",
+          "source_id": "S047",
+          "directory": "B <-> GR/Strengthening/Endpoints/E11_PositiveTimeDecode/Native/NSEGR.reverseGerm",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean"
+        },
+        {
+          "endpoint": "NSEGR.forward_pressure_gauge_recovery",
+          "source_id": "S049",
+          "directory": "B <-> GR/Strengthening/Endpoints/E07_ForwardRecovery/Native/NSEGR.forward_pressure_gauge_recovery",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRForward.lean"
+        },
+        {
+          "endpoint": "NSEGR.reverseRepresentative",
+          "source_id": "S047",
+          "directory": "B <-> GR/Strengthening/Endpoints/E11_PositiveTimeDecode/Native/NSEGR.reverseRepresentative",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean"
+        },
+        {
+          "endpoint": "NSEGR.reverseGerm_forwardGerm",
+          "source_id": "S047",
+          "directory": "B <-> GR/Strengthening/Endpoints/E16_InverseIdentities/Native/NSEGR.reverseGerm_forwardGerm",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean"
+        },
+        {
+          "endpoint": "NSEGR.forwardGerm_reverseGerm",
+          "source_id": "S047",
+          "directory": "B <-> GR/Strengthening/Endpoints/E16_InverseIdentities/Native/NSEGR.forwardGerm_reverseGerm",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G39",
+      "name": "frozen_global_maps_as_composites",
+      "stage": "E15_GlobalMaps",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G26",
+        "G36",
+        "G37",
+        "G38"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "Phi=C o A o R and Psi=T o B o D are well-defined between exactly the frozen carriers. Explicitly Phi(u,q)_tau=E_tau([u,q]_tau), while Psi(gamma)=(U_gamma,Pi(U_gamma)), with U_gamma(t)=V_gamma(t) for t>0 and U_gamma(0)=a.",
+      "mathematical_derivation": "Expand the three carrier equivalences. D preserves actual center velocity, so B D(gamma)=(V_gamma,Pi(V_gamma)); T is its forced smooth forward extension. G26 independently identifies this positive-time pair with each actual local metric decode. Thus these composites agree with the frozen maps of Section 6, rather than merely giving an unspecified abstract bijection.",
+      "anchors": [
+        {
+          "endpoint": "NSEGR.forwardGerm",
+          "source_id": "S047",
+          "directory": "B <-> GR/Strengthening/Endpoints/E07_ForwardRecovery/Native/NSEGR.forwardGerm",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean"
+        },
+        {
+          "endpoint": "NSEGR.reverseGerm",
+          "source_id": "S047",
+          "directory": "B <-> GR/Strengthening/Endpoints/E11_PositiveTimeDecode/Native/NSEGR.reverseGerm",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean"
+        },
+        {
+          "endpoint": "NSEGR.forward_velocity_recovery",
+          "source_id": "S049",
+          "directory": "B <-> GR/Strengthening/Endpoints/E07_ForwardRecovery/Native/NSEGR.forward_velocity_recovery",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRForward.lean"
+        },
+        {
+          "endpoint": "NSEGR.sameFlowAt_iff_origin_gauge",
+          "source_id": "S011",
+          "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/Native/NSEGR.sameFlowAt_iff_origin_gauge",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Germs.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G40",
+      "name": "global_trajectory_inverse_identity",
+      "stage": "E16_InverseIdentities",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G05",
+        "G39"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "For every (u,q) in S_nu(a), Psi(Phi(u,q))=(u,q).",
+      "mathematical_derivation": "At every t>0, native center recovery gives U_(Phi(u,q))(t)=u(t); pressure recovery and normalization give Pi(u(t))=q(t). Both normalized pairs extend continuously to zero, with the same velocity a and pressure Pi(a). Equality on all forward times is precisely source equality by G01.",
+      "anchors": [
+        {
+          "endpoint": "NSEGR.forward_velocity_recovery",
+          "source_id": "S049",
+          "directory": "B <-> GR/Strengthening/Endpoints/E07_ForwardRecovery/Native/NSEGR.forward_velocity_recovery",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRForward.lean"
+        },
+        {
+          "endpoint": "NSEGR.reverseGerm_forwardGerm",
+          "source_id": "S047",
+          "directory": "B <-> GR/Strengthening/Endpoints/E16_InverseIdentities/Native/NSEGR.reverseGerm_forwardGerm",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Classical.timeDerivative_congr_field",
+          "source_id": "S006",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Native/NSEMaxwell.Classical.timeDerivative_congr_field",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Kinematics.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G41",
+      "name": "global_family_inverse_identity",
+      "stage": "E16_InverseIdentities",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G18",
+        "G21",
+        "G39"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "For gamma in G_nu,rho^+(a), D_tau(gamma_tau)=[Psi(gamma)]_tau for each tau>0, and consequently Phi(Psi(gamma))=gamma.",
+      "mathematical_derivation": "Choose a coherence representative at tau. Its actual velocity equals V_gamma on a positive symmetric neighborhood. G05 identifies its normalized pressure with Pi(V_gamma), so it defines the same NSEgerm as Psi(gamma). Apply E_tau D_tau=id to obtain equality of the tau components. This holds at every positive center; function and subtype extensionality prove the family equality.",
+      "anchors": [
+        {
+          "endpoint": "NSEGR.reverseRepresentative",
+          "source_id": "S047",
+          "directory": "B <-> GR/Strengthening/Endpoints/E11_PositiveTimeDecode/Native/NSEGR.reverseRepresentative",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean"
+        },
+        {
+          "endpoint": "NSEGR.sameFlowAt_iff_origin_gauge",
+          "source_id": "S011",
+          "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/Native/NSEGR.sameFlowAt_iff_origin_gauge",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/GRAdapter/Germs.lean"
+        },
+        {
+          "endpoint": "NSEGR.forwardGerm_reverseGerm",
+          "source_id": "S047",
+          "directory": "B <-> GR/Strengthening/Endpoints/E16_InverseIdentities/Native/NSEGR.forwardGerm_reverseGerm",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G42",
+      "name": "NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE",
+      "stage": "E17_GlobalEquivalence",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G39",
+        "G40",
+        "G41"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "For every nu>0, rho!=0 and a in C-infinity_sigma(T3), S_nu(a) ~= G_nu,rho^+(a), with toFun=Phi and invFun=Psi. More precisely S_nu(a) ~= P_nu^+(a) ~= N_nu^+(a) ~= G_nu,rho^+(a).",
+      "mathematical_derivation": "The two explicit maps are defined in G39 and have both inverse identities G40--G41. These fields construct the exact equivalence. Equivalently compose the equivalences G36, G37 and G38. Every application-specific analytic and semantic premise has been derived in the preceding goals; the local geometric contracts are supplied by G18. Empty carriers are allowed; nonemptiness is not inferred.",
+      "anchors": [
+        {
+          "endpoint": "NSEGR.exactSectorEquivOfContracts",
+          "source_id": "S047",
+          "directory": "B <-> GR/Strengthening/Endpoints/E06_NativeLocalEquivalence/Native/NSEGR.exactSectorEquivOfContracts",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/GR_adapter/NSEGRReverse.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G43",
+      "name": "literal_nssolution_nonempty_normalized_source",
+      "stage": "E18_ExistenceEquivalence",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G01",
+        "G03"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "(exists u,p, NSSolution(nu,a,u,p)) iff Nonempty(S_nu(a)).",
+      "mathematical_derivation": "Forward: normalize pressure by G03 and pass to forward restrictions by G01. Reverse: choose a representative of the forward restriction, or totalize it arbitrarily for t<0. All native hypotheses concern forwardSpacetime, initial data or within derivatives, so G01 makes the totalization satisfy the exact original NSSolution predicate. No assertion about the negative-time extension is added.",
+      "anchors": [
+        {
+          "endpoint": "NSEMaxwell.Classical.NSSolution",
+          "source_id": "S079",
+          "directory": "B <-> GR/Strengthening/Endpoints/E18_ExistenceEquivalence/Native/NSEMaxwell.Classical.NSSolution",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Classical.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Classical.Data",
+          "source_id": "S005",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Native/NSEMaxwell.Classical.Data",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Classical.timeDerivative_congr_field",
+          "source_id": "S006",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Native/NSEMaxwell.Classical.timeDerivative_congr_field",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Kinematics.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Classical.scalarTimeDerivative_congr_field",
+          "source_id": "S006",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Native/NSEMaxwell.Classical.scalarTimeDerivative_congr_field",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Kinematics.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G44",
+      "name": "geometric_global_existence_predicate",
+      "stage": "E18_ExistenceEquivalence",
+      "kind": "DEFINITION",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G24"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "Define GRFamilyB(nu,rho):=forall a, Data(a)->Nonempty(G_nu,rho^+(a)), using the original full smooth periodic divergence-free datum class and the independently defined geometric carrier.",
+      "mathematical_derivation": "This quantification introduces no new admission and no mean restriction. The target carrier is exactly G24. The definition of FeffermanB supplies the unchanged source datum quantification for the following corollary.",
+      "anchors": [
+        {
+          "endpoint": "NSEMaxwell.Classical.Data",
+          "source_id": "S005",
+          "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/Native/NSEMaxwell.Classical.Data",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Maxwell_Endpoint/MaxwellEndpoint/Geometry.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Classical.FeffermanB",
+          "source_id": "S079",
+          "directory": "B <-> GR/Strengthening/Endpoints/E18_ExistenceEquivalence/Native/NSEMaxwell.Classical.FeffermanB",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Classical.lean"
+        }
+      ],
+      "mathematical_status": "DEFINITION_FIXED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    },
+    {
+      "id": "G45",
+      "name": "NSE_B_IFF_GR_BOUNDARY_FAMILY",
+      "stage": "E18_ExistenceEquivalence",
+      "kind": "THEOREM",
+      "route": "PRIMARY",
+      "depends_on": [
+        "G42",
+        "G43",
+        "G44"
+      ],
+      "hypotheses": "nu>0; rho!=0 where geometric; a smooth periodic divergence-free with arbitrary mean; only the local inputs stated below",
+      "statement": "For every nu>0 and rho!=0, FeffermanB(nu) iff GRFamilyB(nu,rho).",
+      "mathematical_derivation": "For each datum, G43 identifies literal source existence with Nonempty(S_nu(a)); G42 and Equiv.nonempty_congr identify that with Nonempty(G_nu,rho^+(a)). Quantify the equivalence over the unchanged Data predicate. This proves equivalence of the two universal existence propositions, not either proposition independently.",
+      "anchors": [
+        {
+          "endpoint": "Equiv.nonempty_congr",
+          "source_id": "S078",
+          "directory": "B <-> GR/Strengthening/Endpoints/E18_ExistenceEquivalence/Mathlib/Equiv.nonempty_congr",
+          "source_url": "https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Logic/Equiv/Defs.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Classical.FeffermanB",
+          "source_id": "S079",
+          "directory": "B <-> GR/Strengthening/Endpoints/E18_ExistenceEquivalence/Native/NSEMaxwell.Classical.FeffermanB",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Classical.lean"
+        },
+        {
+          "endpoint": "NSEMaxwell.Classical.NSSolution",
+          "source_id": "S079",
+          "directory": "B <-> GR/Strengthening/Endpoints/E18_ExistenceEquivalence/Native/NSEMaxwell.Classical.NSSolution",
+          "source_url": "https://github.com/randogelist/NSE---MAXWELL---GR---QFT/blob/40fe0bbef0a615f1363ef1598a2dd8531b0eae31/Fefferman_adapter/NSEMaxwell/Classical.lean"
+        }
+      ],
+      "mathematical_status": "B_TIER_DERIVED",
+      "new_integration_lean_status": "NOT_IMPLEMENTED",
+      "external_compiler_evidence": "NONE",
+      "external_theorem_axiom_audit": "NONE"
+    }
+  ],
+  "coarse_endpoint_mapping": [
+    {
+      "endpoint": "nse_gr_calculus_agree_on_positive_time",
+      "stage": "E01_GlobalLocalCalculus",
+      "directory": "B <-> GR/Strengthening/Endpoints/E01_GlobalLocalCalculus/ToDerive/nse_gr_calculus_agree_on_positive_time",
+      "fine_goals": [
+        "G02"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "normalized_forward_pressure",
+      "stage": "E02_PressureGauge",
+      "directory": "B <-> GR/Strengthening/Endpoints/E02_PressureGauge/ToDerive/normalized_forward_pressure",
+      "fine_goals": [
+        "G01",
+        "G03"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "periodic_pressure_eq_normalized_quadratic_pressure",
+      "stage": "E03_FourierPressure",
+      "directory": "B <-> GR/Strengthening/Endpoints/E03_FourierPressure/ToDerive/periodic_pressure_eq_normalized_quadratic_pressure",
+      "fine_goals": [
+        "G04",
+        "G05"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "nse_positive_time_joint_analytic_normalized",
+      "stage": "E04_PositiveTimeAnalyticity",
+      "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/ToDerive/nse_positive_time_joint_analytic_normalized",
+      "fine_goals": [
+        "G06",
+        "G07",
+        "G08",
+        "G09",
+        "G10",
+        "G11",
+        "G12",
+        "G13",
+        "G14",
+        "G15",
+        "G16"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "periodic_wiener_complex_sector_fixed_point",
+      "stage": "E04_PositiveTimeAnalyticity",
+      "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/ToDerive/periodic_wiener_complex_sector_fixed_point",
+      "fine_goals": [
+        "G06",
+        "G08",
+        "G09",
+        "G10",
+        "G11"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "periodic_wiener_mild_uniqueness",
+      "stage": "E04_PositiveTimeAnalyticity",
+      "directory": "B <-> GR/Strengthening/Endpoints/E04_PositiveTimeAnalyticity/ToDerive/periodic_wiener_mild_uniqueness",
+      "fine_goals": [
+        "G12",
+        "G13"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "positive_time_nse_representative",
+      "stage": "E05_LocalRepresentatives",
+      "directory": "B <-> GR/Strengthening/Endpoints/E05_LocalRepresentatives/ToDerive/positive_time_nse_representative",
+      "fine_goals": [
+        "G02",
+        "G15",
+        "G16",
+        "G17"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "NSEGR.GRgerm.velocityAtCenter",
+      "stage": "E09_GermEvaluation",
+      "directory": "B <-> GR/Strengthening/Endpoints/E09_GermEvaluation/ToDerive/NSEGR.GRgerm.velocityAtCenter",
+      "fine_goals": [
+        "G20"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "DecodedVelocityCoherent",
+      "stage": "E10_FamilyCarrier",
+      "directory": "B <-> GR/Strengthening/Endpoints/E10_FamilyCarrier/ToDerive/DecodedVelocityCoherent",
+      "fine_goals": [
+        "G21",
+        "G24"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "GRForwardFamily",
+      "stage": "E10_FamilyCarrier",
+      "directory": "B <-> GR/Strengthening/Endpoints/E10_FamilyCarrier/ToDerive/GRForwardFamily",
+      "fine_goals": [
+        "G22",
+        "G24"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "PositiveTimeGRGermFamily",
+      "stage": "E10_FamilyCarrier",
+      "directory": "B <-> GR/Strengthening/Endpoints/E10_FamilyCarrier/ToDerive/PositiveTimeGRGermFamily",
+      "fine_goals": [
+        "G20",
+        "G24"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "SpatialSmoothInitialTrace",
+      "stage": "E10_FamilyCarrier",
+      "directory": "B <-> GR/Strengthening/Endpoints/E10_FamilyCarrier/ToDerive/SpatialSmoothInitialTrace",
+      "fine_goals": [
+        "G04",
+        "G22",
+        "G24"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "coherent_family_decoded_positive_time_nse",
+      "stage": "E11_PositiveTimeDecode",
+      "directory": "B <-> GR/Strengthening/Endpoints/E11_PositiveTimeDecode/ToDerive/coherent_family_decoded_positive_time_nse",
+      "fine_goals": [
+        "G05",
+        "G18",
+        "G21",
+        "G24",
+        "G26"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "nse_spatial_jet_polynomial",
+      "stage": "E13_InitialTrace",
+      "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/ToDerive/nse_spatial_jet_polynomial",
+      "fine_goals": [
+        "G27"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "nse_time_derivatives_eq_spatial_jets",
+      "stage": "E13_InitialTrace",
+      "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/ToDerive/nse_time_derivatives_eq_spatial_jets",
+      "fine_goals": [
+        "G27",
+        "G28"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "smooth_spatial_trace_implies_joint_forward_smoothness",
+      "stage": "E13_InitialTrace",
+      "directory": "B <-> GR/Strengthening/Endpoints/E13_InitialTrace/ToDerive/smooth_spatial_trace_implies_joint_forward_smoothness",
+      "fine_goals": [
+        "G27",
+        "G28",
+        "G29",
+        "G30",
+        "G31",
+        "G32",
+        "G33",
+        "G34"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "forward_residual_zero_of_positive_time_zero",
+      "stage": "E14_InitialPDE",
+      "directory": "B <-> GR/Strengthening/Endpoints/E14_InitialPDE/ToDerive/forward_residual_zero_of_positive_time_zero",
+      "fine_goals": [
+        "G35"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "GRFamilyToNormalizedTrajectory",
+      "stage": "E15_GlobalMaps",
+      "directory": "B <-> GR/Strengthening/Endpoints/E15_GlobalMaps/ToDerive/GRFamilyToNormalizedTrajectory",
+      "fine_goals": [
+        "G26",
+        "G35",
+        "G39"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "normalizedTrajectoryToGRFamily",
+      "stage": "E15_GlobalMaps",
+      "directory": "B <-> GR/Strengthening/Endpoints/E15_GlobalMaps/ToDerive/normalizedTrajectoryToGRFamily",
+      "fine_goals": [
+        "G17",
+        "G18",
+        "G21",
+        "G36",
+        "G37",
+        "G38",
+        "G39"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "GRFamilyToTrajectory_toGRFamily",
+      "stage": "E16_InverseIdentities",
+      "directory": "B <-> GR/Strengthening/Endpoints/E16_InverseIdentities/ToDerive/GRFamilyToTrajectory_toGRFamily",
+      "fine_goals": [
+        "G41"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "normalizedTrajectoryToGRFamily_toTrajectory",
+      "stage": "E16_InverseIdentities",
+      "directory": "B <-> GR/Strengthening/Endpoints/E16_InverseIdentities/ToDerive/normalizedTrajectoryToGRFamily_toTrajectory",
+      "fine_goals": [
+        "G40"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE",
+      "stage": "E17_GlobalEquivalence",
+      "directory": "B <-> GR/Strengthening/Endpoints/E17_GlobalEquivalence/ToDerive/NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE",
+      "fine_goals": [
+        "G42"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "GRFamilyB",
+      "stage": "E18_ExistenceEquivalence",
+      "directory": "B <-> GR/Strengthening/Endpoints/E18_ExistenceEquivalence/ToDerive/GRFamilyB",
+      "fine_goals": [
+        "G44"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    },
+    {
+      "endpoint": "NSE_B_IFF_GR_BOUNDARY_FAMILY",
+      "stage": "E18_ExistenceEquivalence",
+      "directory": "B <-> GR/Strengthening/Endpoints/E18_ExistenceEquivalence/ToDerive/NSE_B_IFF_GR_BOUNDARY_FAMILY",
+      "fine_goals": [
+        "G43",
+        "G44",
+        "G45"
+      ],
+      "mathematical_status": "B_TIER_DERIVED_OR_DEFINITION_FIXED",
+      "lean_status": "TO_DERIVE_NO_LEAN_IMPLEMENTATION"
+    }
+  ],
+  "derivation_sha256": "0038301225b531f80487faa5abf6fe947c8ca1b853f2ac576cc796c46d6d1d05"
+}

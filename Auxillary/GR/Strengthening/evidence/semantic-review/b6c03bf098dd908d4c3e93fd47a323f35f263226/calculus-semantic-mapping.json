@@ -1,0 +1,543 @@
+{
+  "schema_version": 1,
+  "artifact_role": "SEMANTIC_GOAL_MAPPING_NO_PROMOTION",
+  "source_repository": "randogelist/NSE---MAXWELL---GR---QFT",
+  "branch": "STRENGTHENING-GR-FB",
+  "observed_head": "df4038bb794212139a06b103e6c8a06c4dfb5539",
+  "author_agent": "/root/gr_a_calculus",
+  "compiler_executed_locally": false,
+  "audit_status_assigned": false,
+  "promotion_rule": "Join each declaration to matching external compiler and theorem-level foundational-only audit evidence at the exact source hash before assigning A_TIER. This mapping assigns no A-tier or unconditional-closure status.",
+  "scope_invariants": [
+    "The literal NSSolution predicate is unchanged.",
+    "Velocity mean is unrestricted.",
+    "The source is a quotient by equality of velocity and normalized pressure on t >= 0.",
+    "The native within derivative on Ici 0 is retained at t = 0.",
+    "No analyticity at t = 0 is required.",
+    "The target GR family is independently defined by native geometric germs, decoded-velocity coherence and actual all-Sobolev initial trace."
+  ],
+  "goals": [
+    {
+      "id": "G01",
+      "name": "normalized_forward_restriction_carrier",
+      "coverage": "FULL_FROZEN_DEFINITION_AND_DESCENT",
+      "full_frozen_goal_as_dependent_edge": true,
+      "components": [
+        {
+          "module": "GRAssembly.Strengthening.SourceCarrier",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/SourceCarrier.lean",
+          "declarations": [
+            "NSEGR.Strengthening.NormalizedTrajectoryRepresentative",
+            "NSEGR.Strengthening.NormalizedTrajectoryRepresentative.setoid",
+            "NSEGR.Strengthening.NormalizedForwardTrajectory",
+            "NSEGR.Strengthening.nssolution_congr_forward",
+            "NSEGR.Strengthening.NormalizedForwardTrajectory.eq_iff_forward",
+            "NSEGR.Strengthening.NormalizedForwardTrajectory.totalVelocity",
+            "NSEGR.Strengthening.NormalizedForwardTrajectory.totalPressure",
+            "NSEGR.Strengthening.NormalizedForwardTrajectory.solution",
+            "NSEGR.Strengthening.NormalizedForwardTrajectory.pressure_zero",
+            "NSEGR.Strengthening.NormalizedForwardTrajectory.initial"
+          ],
+          "explicit_parent_premises": [
+            "nu : Real and a : Field are arbitrary parameters.",
+            "Representatives carry actual NSSolution nu a velocity pressure and origin_normalized on t >= 0.",
+            "nssolution_congr_forward assumes equality of the two full spatial slices at each t >= 0."
+          ],
+          "conclusion": "Normalized forward-restriction quotient with well-defined evaluations, exact forward extensionality and actual NSSolution for canonical negative-time totalization.",
+          "observed_source_sha256": "e9591ecb03e50a38f3511ca08aeb4eaa6bb28d2e12a7a9781ae9d02384938dd5"
+        },
+        {
+          "module": "GRAssembly.Strengthening.SourceUniqueness",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/SourceUniqueness.lean",
+          "declarations": [
+            "NSEGR.Strengthening.NormalizedForwardTrajectory.eq_of_positive_velocity_eq",
+            "NSEGR.Strengthening.NormalizedForwardTrajectory.eq_iff_positive_velocity"
+          ],
+          "explicit_parent_premises": [
+            "s,r : NormalizedForwardTrajectory nu a.",
+            "Their velocity slices agree at every t > 0."
+          ],
+          "conclusion": "Additional derived source extensionality: positive-time velocity alone determines the normalized full forward source.",
+          "observed_source_sha256": "f81208d7b8b3f33ff518f59efa3fee966783418a747a8c09d7efb8720fc15c79"
+        }
+      ],
+      "not_claimed": [
+        "No arbitrary-data trajectory existence is proved."
+      ]
+    },
+    {
+      "id": "G02",
+      "name": "positive_time_calculus_identification",
+      "coverage": "FULL_FROZEN_EDGE",
+      "full_frozen_goal_as_dependent_edge": true,
+      "components": [
+        {
+          "module": "GRAssembly.Strengthening.Calculus",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/Calculus.lean",
+          "declarations": [
+            "NSEGR.Strengthening.spatialPartial_eq_coordinateDerivative",
+            "NSEGR.Strengthening.gradient_eq_classical",
+            "NSEGR.Strengthening.divergence_eq_classical",
+            "NSEGR.Strengthening.laplacian_eq_classical",
+            "NSEGR.Strengthening.convection_eq_classical",
+            "NSEGR.Strengthening.spatialPeriodic_iff_classical",
+            "NSEGR.Strengthening.timeDerivative_eq_localTimeDerivative",
+            "NSEGR.Strengthening.scalarTimeDerivative_eq_localTimeDerivative",
+            "NSEGR.Strengthening.nse_gr_calculus_agree_on_positive_time"
+          ],
+          "explicit_parent_premises": [
+            "Spatial identities require only the actual fields.",
+            "Time identities require 0 < t."
+          ],
+          "conclusion": "The native GR and literal forward NSE spatial operators agree; ordinary and within time derivatives agree at positive times.",
+          "observed_source_sha256": "eb3d336879cc8908c957a8b35c3c6c846b8abbdeb00c04f25bd85f96cd38d55a"
+        }
+      ],
+      "not_claimed": [
+        "No ordinary two-sided derivative identity at zero is asserted."
+      ]
+    },
+    {
+      "id": "G03",
+      "name": "forward_pressure_normalization",
+      "coverage": "FULL_FROZEN_EDGE",
+      "full_frozen_goal_as_dependent_edge": true,
+      "components": [
+        {
+          "module": "GRAssembly.Strengthening.Calculus",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/Calculus.lean",
+          "declarations": [
+            "NSEGR.Strengthening.originNormalize",
+            "NSEGR.Strengthening.originNormalize_zero",
+            "NSEGR.Strengthening.originNormalize_idempotent",
+            "NSEGR.Strengthening.originNormalize_gradient",
+            "NSEGR.Strengthening.originNormalize_smooth",
+            "NSEGR.Strengthening.originNormalize_periodic",
+            "NSEGR.Strengthening.nssolution_originNormalize",
+            "NSEGR.Strengthening.normalized_forward_pressure"
+          ],
+          "explicit_parent_premises": [
+            "For the root edge: h : NSSolution nu a u p.",
+            "For individual regularity/periodicity lemmas: the matching actual SmoothPressure or PeriodicPressure predicate."
+          ],
+          "conclusion": "q(t,x)=p(t,x)-p(t,0) is a normalized actual forward NSSolution pressure, with unchanged velocity and initial datum.",
+          "observed_source_sha256": "eb3d336879cc8908c957a8b35c3c6c846b8abbdeb00c04f25bd85f96cd38d55a"
+        }
+      ],
+      "not_claimed": [
+        "Pressure analyticity is not inferred by this normalization edge."
+      ]
+    },
+    {
+      "id": "G05",
+      "name": "normalized_quadratic_pressure_identity",
+      "coverage": "COMPONENTS_ONLY",
+      "full_frozen_goal_as_dependent_edge": false,
+      "components": [
+        {
+          "module": "GRAssembly.Strengthening.PressureIdentification",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/PressureIdentification.lean",
+          "declarations": [
+            "NSEGR.Strengthening.quadraticPressureSource",
+            "NSEGR.Strengthening.quadraticPoissonPressure",
+            "NSEGR.Strengthening.normalizedQuadraticPressure",
+            "NSEGR.Strengthening.pressure_poisson_of_divergence_free_momentum",
+            "NSEGR.Strengthening.quadraticPoissonPressure_eq_pressure_sub_mean",
+            "NSEGR.Strengthening.normalized_pressure_eq_quadraticPoisson",
+            "NSEGR.Strengthening.nssolution_normalized_pressure_eq_quadraticPoisson",
+            "NSEGR.Strengthening.localNSE_normalized_pressure_eq_quadraticPoisson",
+            "NSEGR.Strengthening.positiveAnalyticNSE_normalized_pressure_eq_quadraticPoisson"
+          ],
+          "explicit_parent_premises": [
+            "Global identity: h : NSSolution nu a u p and 0 <= t.",
+            "Local identity: actual LocalNSE and membership in its native timeInterval.",
+            "The generic spatial lemma assumes actual smooth v,d,p, div v=div d=0 and actual momentum; its pressure inversion also assumes actual pressure periodicity."
+          ],
+          "conclusion": "Native Poisson inversion gives the exact normalized quadratic pressure for actual global/local NSE; no pressure-recovery contract is assumed.",
+          "observed_source_sha256": "bf378cc53e20684a196af653757b5b31e5b68307ea6dad739781b7b3459fee0e"
+        },
+        {
+          "module": "GRAssembly.Strengthening.InitialPDE",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/InitialPDE.lean",
+          "declarations": [
+            "NSEGR.Strengthening.normalizedQuadraticPressure_gradient",
+            "NSEGR.Strengthening.normalizedQuadraticPressure_leray_transport",
+            "NSEGR.Strengthening.nssolution_projected_equation"
+          ],
+          "explicit_parent_premises": [
+            "The algebraic transport-pressure/projector identity has no analytic premise.",
+            "The projected NSE equation assumes actual NSSolution and t >= 0."
+          ],
+          "conclusion": "Actual d_t^+u + leray(tensorDivergence(u tensor u)) = nu*laplacian(u) on the whole forward domain.",
+          "observed_source_sha256": "83e8d08eccc48f5f61d60fe44f2b5e1ed9cd3c48961db25b2052297534028f09"
+        },
+        {
+          "module": "GRAssembly.Strengthening.SobolevPressureIdentification",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/SobolevPressureIdentification.lean",
+          "declarations": [
+            "NSEGR.Strengthening.normalizedQuadraticPressure_eq_fullTransportPressure",
+            "NSEGR.Strengthening.nssolution_normalized_pressure_eq_fullTransportPressure",
+            "NSEGR.Strengthening.positiveAnalyticNSE_normalized_pressure_eq_fullTransportPressure"
+          ],
+          "explicit_parent_premises": [
+            "The spatial native/Fourier comparison assumes actual smooth periodic divergence-free velocity.",
+            "The trajectory specializations assume the corresponding actual NSSolution or PositiveAnalyticNSE."
+          ],
+          "conclusion": "The native diagonal quadratic pressure is identified with origin-normalized full transport Fourier pressure on actual physical coefficients.",
+          "observed_source_sha256": "905fc355abf47a92d0131b40f79fd6092bdab2472f1dfa3fe722bd858c19cc22"
+        },
+        {
+          "module": "GRAssembly.Strengthening.PositivePDE",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/PositivePDE.lean",
+          "declarations": [
+            "NSEGR.Strengthening.localNSE_gradient_eq_of_eventuallyEq",
+            "NSEGR.Strengthening.localNSE_originNormalize_eq_of_eventuallyEq"
+          ],
+          "explicit_parent_premises": [
+            "Two actual LocalNSE representatives with the same viscosity.",
+            "A common interior time and equality of their entire velocity slices on a time neighborhood."
+          ],
+          "conclusion": "Local origin-normalized pressure uniqueness from actual momentum and connected-space differential calculus.",
+          "observed_source_sha256": "31ceb5810246491d4e573c719200ba5874986848f8a4e62479a23c087d48c182"
+        },
+        {
+          "module": "GRAssembly.Strengthening.SourceUniqueness",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/SourceUniqueness.lean",
+          "declarations": [
+            "NSEGR.Strengthening.nssolution_normalized_pressure_eq_of_positive_velocity_eq"
+          ],
+          "explicit_parent_premises": [
+            "Two actual NSSolutions with the same viscosity, normalized forward pressure, and equal velocity at every t > 0."
+          ],
+          "conclusion": "Actual normalized pressure equality through t=0, without positive-time analyticity.",
+          "observed_source_sha256": "f81208d7b8b3f33ff518f59efa3fee966783418a747a8c09d7efb8720fc15c79"
+        }
+      ],
+      "missing_frozen_components": [
+        "A new exact general bilinear declaration Q : H^m x H^m -> H^m for every m >= 2, including its bounded-bilinear norm law.",
+        "A new exact arbitrary-tensor R multiplier declaration with the stated zero/nonzero rank-two symbol and its complete identification with the frozen Q.",
+        "The diagonal native/Fourier pressure identities must not be relabeled as the entire polarized Sobolev-bilinear G05."
+      ],
+      "missing_frozen_component_is_additional_current_root_premise": false,
+      "current_root_route_note": "The current chain uses the proved diagonal native/Fourier pressure identities and native smooth Sobolev transport-pressure composition. Its theorem signatures do not assume a general polarized Q bounded-bilinear certificate; the missing broader frozen G05 substatements therefore are not an additional current root premise."
+    },
+    {
+      "id": "G16",
+      "name": "origin_normalized_pressure_joint_analyticity",
+      "coverage": "FULL_FROZEN_EDGE_RELATIVE_TO_G15",
+      "full_frozen_goal_as_dependent_edge": true,
+      "components": [
+        {
+          "module": "GRAssembly.Strengthening.AnalyticPressure",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/AnalyticPressure.lean",
+          "declarations": [
+            "NSEGR.Strengthening.analyticAt_velocityOuter_divergence_joint",
+            "NSEGR.Strengthening.analyticAt_quadraticPressureSource_joint",
+            "NSEGR.Strengthening.quadraticPressureSource_periodic",
+            "NSEGR.Strengthening.originNormalize_analytic_on_open_slab",
+            "NSEGR.Strengthening.normalizedQuadraticPressure_joint_analytic_on_open_slab",
+            "NSEGR.Strengthening.nssolution_originNormalize_positive_analytic",
+            "NSEGR.Strengthening.positiveAnalyticNSE_of_nssolution_velocity_analytic"
+          ],
+          "explicit_parent_premises": [
+            "h : NSSolution nu a u p.",
+            "hu : AnalyticOnNhd Real (fun z => u z.1 z.2) positiveSpacetime; this is the G15 output, not a proved premise here."
+          ],
+          "conclusion": "The actual origin-normalized pressure is jointly analytic on t>0; pressure analyticity is derived from the actual quadratic source and native analytic Poisson inversion.",
+          "observed_source_sha256": "730ad0bccae406b460cdf969db1e6cbe6236a1dd4bceb5c4a8ef4dc5507f5dbd",
+          "helper_scope_note": "Generic origin normalization is proved once for an abstract analytic pressure on an open slab and then instantiated with the actual native Poisson output. No analytic pressure premise is added to nssolution_originNormalize_positive_analytic."
+        },
+        {
+          "module": "GRAssembly.Strengthening.SmoothingEndpoint",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/SmoothingEndpoint.lean",
+          "declarations": [
+            "NSEGR.Strengthening.PositiveTimeVelocityAnalyticityEndpoint",
+            "NSEGR.Strengthening.NormalizedForwardTrajectory.originNormalize_totalPressure",
+            "NSEGR.Strengthening.positiveTimeSmoothingEndpoint_of_velocity_analyticity",
+            "NSEGR.Strengthening.positiveTimeSmoothingEndpoint_iff_velocity_analyticity"
+          ],
+          "explicit_parent_premises": [
+            "PositiveTimeVelocityAnalyticityEndpoint nu a quantifies the actual total velocity of every NormalizedForwardTrajectory nu a."
+          ],
+          "conclusion": "The earlier velocity-and-pressure smoothing endpoint is equivalent to the sole velocity-analyticity endpoint on the literal normalized source.",
+          "observed_source_sha256": "d9f8fb6d55fca158ad27d453bd2c1b21b66480a381e4a4d6439bf09ed1e52c80"
+        }
+      ],
+      "unresolved_parent_goals": [
+        "G06",
+        "G07",
+        "G08",
+        "G09",
+        "G10",
+        "G11",
+        "G12",
+        "G13",
+        "G14",
+        "G15"
+      ],
+      "not_claimed": [
+        "No inhabitant of PositiveTimeVelocityAnalyticityEndpoint is constructed."
+      ]
+    },
+    {
+      "id": "G17",
+      "name": "positive_time_nse_representative",
+      "coverage": "FULL_FROZEN_CONSTRUCTION",
+      "full_frozen_goal_as_dependent_edge": true,
+      "components": [
+        {
+          "module": "GRAssembly.Strengthening.Calculus",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/Calculus.lean",
+          "declarations": [
+            "NSEGR.Strengthening.PositiveAnalyticNSE",
+            "NSEGR.Strengthening.positiveAnalyticNSE_of_nssolution",
+            "NSEGR.Strengthening.half_timeInterval_positive",
+            "NSEGR.Strengthening.positiveTimeNSERepresentative",
+            "NSEGR.Strengthening.positive_time_nse_representative"
+          ],
+          "explicit_parent_premises": [
+            "Actual PositiveAnalyticNSE nu u p.",
+            "tau > 0."
+          ],
+          "conclusion": "Actual NSERepresentative nu tau with velocity=u, pressure=p, radius=tau/2; the native NSEgerm.mk constructor gives the germ.",
+          "observed_source_sha256": "eb3d336879cc8908c957a8b35c3c6c846b8abbdeb00c04f25bd85f96cd38d55a"
+        },
+        {
+          "module": "GRAssembly.Strengthening.PositiveProfiles",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/PositiveProfiles.lean",
+          "declarations": [
+            "NSEGR.Strengthening.positiveProfileRepresentativeToNSEFamily"
+          ],
+          "explicit_parent_premises": [
+            "Actual PositiveProfileRepresentative, including its already stated all-Sobolev trace."
+          ],
+          "conclusion": "The same radius-tau/2 representative construction is used at every positive center in the coherent NSE germ family.",
+          "observed_source_sha256": "cd9f2457dc9157b2f9b60cf7bc7fa69f79c0e4336516209d8eddb10c772bdae3"
+        }
+      ],
+      "existing_native_constructor": "NSEGR.NSEgerm.mk",
+      "not_claimed": [
+        "The analyticity required by PositiveAnalyticNSE is an input of this local edge; G15 remains its open source derivation."
+      ]
+    },
+    {
+      "id": "G35",
+      "name": "initial_nse_from_forward_smooth_extension",
+      "coverage": "FULL_FROZEN_EDGE_WITH_CONCRETE_PROFILE_BOUNDARY_INSTANTIATION",
+      "full_frozen_goal_as_dependent_edge": true,
+      "components": [
+        {
+          "module": "GRAssembly.Strengthening.PositivePDE",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/PositivePDE.lean",
+          "declarations": [
+            "NSEGR.Strengthening.closure_positiveSpacetime",
+            "NSEGR.Strengthening.continuousOn_forward_eq_zero_of_positive",
+            "NSEGR.Strengthening.forward_gradient_smooth",
+            "NSEGR.Strengthening.forward_convection_smooth",
+            "NSEGR.Strengthening.forward_laplacian_smooth",
+            "NSEGR.Strengthening.forward_divergence_smooth",
+            "NSEGR.Strengthening.forwardResidual_smooth",
+            "NSEGR.Strengthening.forward_residual_zero_of_positive",
+            "NSEGR.Strengthening.forward_divergence_zero_of_positive",
+            "NSEGR.Strengthening.nssolution_of_positive_time_equations"
+          ],
+          "explicit_parent_premises": [
+            "Actual joint forward SmoothVelocity u and SmoothPressure p (the G33/G34 outputs).",
+            "Actual forward periodicity, actual positive-time native momentum/divergence, and u 0=a."
+          ],
+          "conclusion": "The native within-time residual is continuous on the closed halfspace and vanishes there by density; construct the literal NSSolution including t=0.",
+          "observed_source_sha256": "31ceb5810246491d4e573c719200ba5874986848f8a4e62479a23c087d48c182"
+        },
+        {
+          "module": "GRAssembly.Strengthening.ExactChain",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/ExactChain.lean",
+          "declarations": [
+            "NSEGR.Strengthening.spatialPeriodic_forward_of_positive",
+            "NSEGR.Strengthening.smoothProfileExtension_is_nssolution"
+          ],
+          "explicit_parent_premises": [
+            "Actual PositiveProfileRepresentative r.",
+            "Actual smooth extensions u,p matching r on every t>0, with u 0=a."
+          ],
+          "conclusion": "Positive-time periodicity also extends by continuity; the exact smooth profile extension is a literal NSSolution without a separate boundary PDE input.",
+          "observed_source_sha256": "d3110d6530f5739d580d0c63bb921ecf05d61dbd8428cc0241b133d1f3f159fa"
+        },
+        {
+          "module": "GRAssembly.Strengthening.InitialPDE",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/InitialPDE.lean",
+          "declarations": [
+            "NSEGR.Strengthening.nssolution_initial_right_derivative_leray",
+            "NSEGR.Strengthening.nssolution_initial_originPressure",
+            "NSEGR.Strengthening.nssolution_initial_normalized_pressure"
+          ],
+          "explicit_parent_premises": [
+            "Actual NSSolution nu a u p.",
+            "For p(0)=Pi(a), the explicit normalization p 0 0=0; the unnormalized theorem concludes originNormalize p 0=Pi(a)."
+          ],
+          "conclusion": "The actual right derivative at zero equals nu*laplacian(a)-leray(tensorDivergence(a tensor a)); the normalized initial pressure equals native Pi(a).",
+          "observed_source_sha256": "83e8d08eccc48f5f61d60fe44f2b5e1ed9cd3c48961db25b2052297534028f09"
+        },
+        {
+          "module": "GRAssembly.Strengthening.BoundaryIdentities",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/BoundaryIdentities.lean",
+          "declarations": [
+            "NSEGR.Strengthening.profileBoundary_is_nssolution",
+            "NSEGR.Strengthening.profileBoundaryPressure_origin",
+            "NSEGR.Strengthening.profileBoundaryPressure_eq_quadratic",
+            "NSEGR.Strengthening.profileBoundaryPressure_initial",
+            "NSEGR.Strengthening.profileBoundaryVelocity_projected_equation",
+            "NSEGR.Strengthening.profileBoundaryVelocity_initial_right_derivative_leray"
+          ],
+          "explicit_parent_premises": [
+            "Native Data a and an actual PositiveProfileRepresentative nu a (actual positive analytic NSE plus velocity-only all-Sobolev initial trace).",
+            "The origin-zero pressure lemma only requires the representative and an arbitrary time."
+          ],
+          "conclusion": "The explicitly constructed profileBoundaryVelocity/profileBoundaryPressure are literal NSSolution fields; normalized pressure and the native projected right derivative have the exact frozen initial formulas. No smooth-boundary witness or pressure trace is an input.",
+          "observed_source_sha256": "e79314eee64cc0bae9b9d82e49d5df5a91c9b6e1cd5476763abbaabe092c7427"
+        }
+      ],
+      "parent_goal_dependencies": [
+        "G33",
+        "G34"
+      ],
+      "not_claimed": [
+        "The low-level continuity theorem does not construct a smooth extension. BoundaryEndpoint derives that construction and BoundaryIdentities supplies its explicit G35 instantiation."
+      ]
+    },
+    {
+      "id": "G43",
+      "name": "literal_nssolution_nonempty_normalized_source",
+      "coverage": "FULL_FROZEN_EDGE",
+      "full_frozen_goal_as_dependent_edge": true,
+      "components": [
+        {
+          "module": "GRAssembly.Strengthening.SourceCarrier",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/SourceCarrier.lean",
+          "declarations": [
+            "NSEGR.Strengthening.normalizedTrajectoryOfNSSolution",
+            "NSEGR.Strengthening.literal_nssolution_nonempty_normalized_source",
+            "NSEGR.Strengthening.feffermanB_iff_normalized_source_nonempty"
+          ],
+          "explicit_parent_premises": [
+            "nu : Real, a : Field are arbitrary; no existence hypothesis for the iff itself.",
+            "The universal FeffermanB reformulation retains the unchanged native Data predicate."
+          ],
+          "conclusion": "(exists u,p, NSSolution nu a u p) iff Nonempty(NormalizedForwardTrajectory nu a).",
+          "observed_source_sha256": "e9591ecb03e50a38f3511ca08aeb4eaa6bb28d2e12a7a9781ae9d02384938dd5"
+        }
+      ],
+      "not_claimed": [
+        "Neither side is proved inhabited for arbitrary datum."
+      ]
+    },
+    {
+      "id": "G44",
+      "name": "geometric_global_existence_predicate",
+      "coverage": "FULL_FROZEN_DEFINITION",
+      "full_frozen_goal_as_dependent_edge": true,
+      "components": [
+        {
+          "module": "GRAssembly.Strengthening.BEquivalence",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/BEquivalence.lean",
+          "declarations": [
+            "NSEGR.Strengthening.GRFamilyB"
+          ],
+          "explicit_parent_premises": [
+            "nu,rho : Real are parameters.",
+            "GRForwardFamily is the independent native geometric carrier from G24."
+          ],
+          "conclusion": "GRFamilyB nu rho := forall a : Field, Classical.Data a -> Nonempty (GRForwardFamily nu rho a).",
+          "observed_source_sha256": "d67292e72d2fc50141138905aba9cd4a382f7e6d71828726e6315088d9f09804"
+        }
+      ],
+      "not_claimed": [
+        "Definition of GRFamilyB is not a proof of GRFamilyB."
+      ]
+    },
+    {
+      "id": "G45",
+      "name": "NSE_B_IFF_GR_BOUNDARY_FAMILY",
+      "coverage": "CONDITIONAL_IFF_WITH_REVERSE_DIRECTION_WITHOUT_SMOOTHING_PREMISE",
+      "full_frozen_goal_as_dependent_edge": false,
+      "components": [
+        {
+          "module": "GRAssembly.Strengthening.NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_VELOCITY_ANALYTICITY",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/NSE_GR_POSITIVE_TIME_GERM_FAMILY_EQUIVALENCE_OF_VELOCITY_ANALYTICITY.lean",
+          "declarations": [
+            "NSEGR.Strengthening.NSE_B_IFF_GR_BOUNDARY_FAMILY_OF_VELOCITY_ANALYTICITY"
+          ],
+          "explicit_parent_premises": [
+            "nu > 0 and rho != 0.",
+            "hV : forall a : Field, Classical.Data a -> PositiveTimeVelocityAnalyticityEndpoint nu a."
+          ],
+          "conclusion": "Under the sole remaining actual velocity-analyticity endpoint, FeffermanB nu iff GRFamilyB nu rho.",
+          "observed_source_sha256": "5cb4cff42b68abf6da1ba3f26b98ad2ca8a786599a581db7510112b68455e73b"
+        },
+        {
+          "module": "GRAssembly.Strengthening.BEquivalence",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/BEquivalence.lean",
+          "declarations": [
+            "NSEGR.Strengthening.NSE_B_IFF_GR_BOUNDARY_FAMILY_OF_ANALYTIC_ENDPOINTS"
+          ],
+          "explicit_parent_premises": [
+            "nu > 0 and rho != 0.",
+            "Earlier-form positive-time smoothing and positive-profile boundary endpoints, quantified over native Data."
+          ],
+          "conclusion": "Earlier conditional assembly; source trace is already derived.",
+          "observed_source_sha256": "d67292e72d2fc50141138905aba9cd4a382f7e6d71828726e6315088d9f09804"
+        },
+        {
+          "module": "GRAssembly.Strengthening.ReverseChain",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/ReverseChain.lean",
+          "declarations": [
+            "NSEGR.Strengthening.gr_family_implies_nssolution",
+            "NSEGR.Strengthening.GR_BOUNDARY_FAMILY_IMPLIES_NSE_B"
+          ],
+          "explicit_parent_premises": [
+            "rho != 0; viscosity is arbitrary in these stronger direction lemmas.",
+            "Per datum: actual Data a and actual g : GRForwardFamily nu rho a.",
+            "Universally: actual GRFamilyB nu rho."
+          ],
+          "conclusion": "Actual geometric family existence implies actual NSSolution existence; GRFamilyB nu rho implies FeffermanB nu with no velocity-analyticity or smooth-boundary endpoint premise.",
+          "observed_source_sha256": "35770cf868c279fc4b6a5dac51d5d46cbca9eb97cdd2e33313eaa48a59a44c7f"
+        },
+        {
+          "module": "GRAssembly.Strengthening.ReverseChain",
+          "module_path": "ASSEMBLY/GRAssembly/Strengthening/ReverseChain.lean",
+          "declarations": [
+            "NSEGR.Strengthening.not_gr_family_of_no_nssolution",
+            "NSEGR.Strengthening.not_GRFamilyB_of_not_FeffermanB"
+          ],
+          "explicit_parent_premises": [
+            "rho != 0.",
+            "Pointwise contrapositive: native Data a and an actual proof that no u,p satisfy NSSolution nu a u p.",
+            "Universal contrapositive: an actual proof of not FeffermanB nu."
+          ],
+          "conclusion": "Actual NSE nonexistence excludes the matching independent geometric family; not FeffermanB nu implies not GRFamilyB nu rho without velocity analyticity.",
+          "observed_source_sha256": "35770cf868c279fc4b6a5dac51d5d46cbca9eb97cdd2e33313eaa48a59a44c7f",
+          "not_claimed": "No NSE counterexample, nonexistence proof or failure of FeffermanB is supplied by these contrapositive implications."
+        }
+      ],
+      "unresolved_parent_goals": [
+        "G06",
+        "G07",
+        "G08",
+        "G09",
+        "G10",
+        "G11",
+        "G12",
+        "G13",
+        "G14",
+        "G15"
+      ],
+      "missing_frozen_components": [
+        "Discharge the actual positive-time velocity-analyticity endpoint for every normalized forward source with nu>0."
+      ],
+      "not_claimed": [
+        "The unconditional frozen G45 is not proved by the conditional root.",
+        "An axiom audit does not discharge the hV hypothesis."
+      ]
+    }
+  ],
+  "hash_scope": "Observed worktree bytes; these hashes do not certify any external run."
+}
