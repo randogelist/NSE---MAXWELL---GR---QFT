@@ -1,11 +1,11 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "goal": "NSE_GR_POSITIVE_TIME_BIUNIQUE_CORRESPONDENCE",
   "goal_version": 1,
   "compiler": "leanprover/lean4:v4.34.0-rc1",
   "mathlib": "de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11",
   "global_status": "CONDITIONAL_ON_ANALYTICAL_QUANTITATIVE_FACTORIAL_CHECKPOINT",
-  "promotion": "Exact relation-first core, final adapter, and downstream analytical checkpoints are compiled/audited; the explicit quantitative factorial checkpoint remains.",
+  "promotion": "Exact relation-first core, final adapter, downstream checkpoints, and fixed-sector geometry are compiled/audited; the quantitative factorial checkpoint remains.",
   "modules": [
     {
       "module": "GRAssembly.Strengthening.RelationCarrier",
@@ -140,6 +140,21 @@
         "NSEGR.Strengthening.ANALYTICAL_QUANTITATIVE_FACTORIAL_CHECKPOINT",
         "NSEGR.Strengthening.ANALYTICAL_FACTORIAL_CHECKPOINT_of_quantitative",
         "NSEGR.Strengthening.ANALYTICAL_POINTWISE_CHECKPOINT_of_quantitative"
+      ],
+      "kind": "declaration",
+      "status": "A_TIER_CANDIDATE"
+    },
+    {
+      "module": "GRAssembly.Strengthening.AnalyticalFrontier.FixedSectorGeometry",
+      "path": "ASSEMBLY/GRAssembly/Strengthening/AnalyticalFrontier/FixedSectorGeometry.lean",
+      "audit_targets": [
+        "NSEGR.Strengthening.analyticalFixedSector",
+        "NSEGR.Strengthening.analyticalFixedSector_re_pos",
+        "NSEGR.Strengthening.analyticalFixedSector_real_mem",
+        "NSEGR.Strengthening.analyticalFixedSector_real_mul",
+        "NSEGR.Strengthening.analyticalFixedSector_norm_sq_lt",
+        "NSEGR.Strengthening.ANALYTICAL_FIXED_SECTOR_GEOMETRY_CHECKPOINT",
+        "NSEGR.Strengthening.ANALYTICAL_FIXED_SECTOR_GEOMETRY_CHECKPOINT_NATIVE"
       ],
       "kind": "declaration",
       "status": "A_TIER_CANDIDATE"
