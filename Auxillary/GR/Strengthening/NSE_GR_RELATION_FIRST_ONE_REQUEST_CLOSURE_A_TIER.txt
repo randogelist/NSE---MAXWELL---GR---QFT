@@ -1,0 +1,175 @@
+NSE_GR_RELATION_FIRST_ONE_REQUEST_CLOSURE_A_TIER
+================================================
+
+MODE = A_TIER_DERIVATION
+STATUS = !!! CONDITIONAL_FORMAL_CLOSURE
+PROOF_SOURCE_COMMIT = f8283fbf21c955c247834dacfd06fac077e3d9c2
+RELATION_CI_RUN = 43546200400
+RELATION_CI_ARTIFACT = 14094366759
+FULL_STRENGTHENING_CI_RUN = 43546200590
+COMPILER = Lean 4.34.0-rc1, x86_64-unknown-linux-gnu
+COMPILER_COMMIT = 3447a668783dbce1a8fdb97101dd067687b2b418
+MATHLIB_COMMIT = de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11
+LOCAL_LEAN_LAKE_ELAN_EXECUTIONS = 0
+RELATION_MODULES = 5/5 PASS
+RELATION_DECLARATIONS = 40/40 PASS_STANDARD_ONLY
+UNAPPROVED_AXIOMS = empty
+APPROVED_AXIOMS = {propext, Classical.choice, Quot.sound}
+SOURCE_INPUT_VERIFICATION = PASS
+
+1. A-TIER RELATION-FIRST CORE
+-----------------------------
+
+!=! [A_TIER]
+NSEGR.Strengthening.NSE_GR_POSITIVE_TIME_BIUNIQUE_CORRESPONDENCE
+
+For every nu>0, rho!=0, and datum a satisfying Data(a):
+
+  (forall s : AnalyticForwardTrajectory nu a,
+    exists! gamma : GRForwardFamily nu rho a,
+      NSEGRCorresponds h_rho s gamma)
+
+  and
+
+  (forall gamma : GRForwardFamily nu rho a,
+    exists! s : AnalyticForwardTrajectory nu a,
+      NSEGRCorresponds h_rho s gamma).
+
+The relation is physical:
+
+  NSEGRCorresponds h_rho s gamma
+    := forall tau>0,
+         (nativeLocalEquiv nu rho tau h_rho).symm (gamma tau)
+           = sourceGerm(s,tau).
+
+It is not defined by an arbitrary carrier bijection.
+
+!=! [A_TIER]
+NSEGR.Strengthening.NSE_GR_ANALYTIC_FORWARD_FAMILY_EQUIV
+
+  Nonempty
+    (AnalyticForwardTrajectory nu a
+       ~= GRForwardFamily nu rho a).
+
+The equivalence is the graph of NSEGRCorresponds.
+
+2. A-TIER EXISTENCE-LEVEL FACTORIZATION
+---------------------------------------
+
+Define:
+
+  AnalyticFeffermanB nu
+    := forall a, Data(a) ->
+         Nonempty (AnalyticForwardTrajectory nu a).
+
+!=! [A_TIER]
+NSEGR.Strengthening.ANALYTIC_NSE_B_IFF_GR_BOUNDARY_FAMILY
+
+  AnalyticFeffermanB nu <-> GRFamilyB nu rho.
+
+!=! [A_TIER]
+NSEGR.Strengthening.GR_BOUNDARY_FAMILY_IMPLIES_NSE_B_RELATION_FIRST
+
+  GRFamilyB nu rho -> FeffermanB nu.
+
+Thus the reverse direction of literal B <-> GR is unconditional in the
+relation-first architecture.
+
+3. SOLE REMAINING CERTIFICATE
+-----------------------------
+
+The exact remaining proposition is:
+
+  NSEGR.Strengthening.NSE_GR_FINAL_ANALYTIC_SELECTION_CERTIFICATE
+
+with definition:
+
+  forall nu, 0 < nu -> DatumwiseAnalyticSelection nu,
+
+where:
+
+  DatumwiseAnalyticSelection nu
+    := forall a, Data(a) ->
+         Nonempty (NormalizedForwardTrajectory nu a) ->
+         Nonempty (AnalyticForwardTrajectory nu a).
+
+This is an existence-selection statement. It does not assert that every
+smooth forward trajectory is positive-time analytic. It requires only one
+analytic representative whenever the normalized smooth source carrier is
+nonempty.
+
+The proposition definition is compiled and audited. It is not inhabited by
+that audit. Its inhabitant is the sole unresolved certificate.
+
+4. FINAL DETERMINISTIC ADAPTER
+------------------------------
+
+Define:
+
+  NSEGR.Strengthening.NSE_GR_FINAL_B_EQUIVALENCE
+    := forall nu rho, 0 < nu -> rho != 0 ->
+         (FeffermanB nu <-> GRFamilyB nu rho).
+
+!=! [A_TIER]
+NSEGR.Strengthening.NSE_GR_FINAL_B_EQUIVALENCE_OF_CERTIFICATE
+
+  NSE_GR_FINAL_ANALYTIC_SELECTION_CERTIFICATE ->
+  NSE_GR_FINAL_B_EQUIVALENCE.
+
+This is the exact one-certificate conditional root.
+
+CLASSIFICATION:
+
+  !!! CONDITIONAL_FORMAL_CLOSURE.
+
+The conclusion, relation, inverse maps, existence factorization, and final
+composition are all A-tier. The sole named unresolved premise is
+NSE_GR_FINAL_ANALYTIC_SELECTION_CERTIFICATE.
+
+5. ONE-REQUEST CLOSURE TARGET
+-----------------------------
+
+The next closure request has exactly one proof target:
+
+  theorem NSE_GR_FINAL_ANALYTIC_SELECTION_CERTIFICATE_NATIVE :
+      NSE_GR_FINAL_ANALYTIC_SELECTION_CERTIFICATE := by
+    <prove datumwise positive-time analytic selection>
+
+After this theorem passes the matching external compiler and theorem-level
+axiom audit, the root is deterministic:
+
+  theorem NSE_GR_FINAL_B_EQUIVALENCE_NATIVE :
+      NSE_GR_FINAL_B_EQUIVALENCE :=
+    NSE_GR_FINAL_B_EQUIVALENCE_OF_CERTIFICATE
+      NSE_GR_FINAL_ANALYTIC_SELECTION_CERTIFICATE_NATIVE
+
+No additional GR, quotient, pressure, trace, uniqueness, inverse-law, or
+carrier obligation remains in that final composition.
+
+6. PROMOTION CONDITION
+----------------------
+
+!!!! UNCONDITIONAL_CLOSURE is obtained only after:
+
+  (i) an exact Lean inhabitant of
+      NSE_GR_FINAL_ANALYTIC_SELECTION_CERTIFICATE;
+  (ii) matching external Lean 4.34.0-rc1 compilation;
+  (iii) theorem-level audit with no sorryAx and no unapproved axioms;
+  (iv) deterministic application of
+       NSE_GR_FINAL_B_EQUIVALENCE_OF_CERTIFICATE.
+
+Until then:
+
+  FINAL_STATUS = !!! CONDITIONAL_FORMAL_CLOSURE.
+
+7. CERTIFIED MODULES
+--------------------
+
+  ASSEMBLY/GRAssembly/Strengthening/RelationCarrier.lean
+  ASSEMBLY/GRAssembly/Strengthening/Correspondence.lean
+  ASSEMBLY/GRAssembly/Strengthening/RelationEquiv.lean
+  ASSEMBLY/GRAssembly/Strengthening/AnalyticBEquivalence.lean
+  ASSEMBLY/GRAssembly/Strengthening/FinalSelectionClosure.lean
+
+All five modules passed the cached external relation workflow at the exact
+proof-source commit above.
